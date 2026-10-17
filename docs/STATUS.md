@@ -9,10 +9,9 @@ Last updated 2026-10-17 (content decisions made). A short snapshot so the next s
 - **AKG Design System** second pass published: https://claude.ai/artifact/GWFUZ6rCthpEuhMik4Jiru (copy in `vendor/akg/`).
 
 ## Next: content planning (decided 2026-10-17, see DECISIONS.md)
-1. **Waiting on the owner:** the reference handbook PDF in `~/Documents/Wards-reference/`, and signing in to AMBOSS and OpenEvidence in the built-in browser.
-2. Claude drafts the topic list from the reference handbook; settle it together.
-3. Design card types, data types (one home per piece of information) and the interactive flowchart format; agree the citation format.
-4. 2–3 pilot cards, read on the phone; adjust; then scale in batches.
+1. Claude drafts the topic list from the reference handbook (PDF received); settle it together. The owner signs in to AMBOSS and OpenEvidence in the built-in browser when needed.
+2. Design card types (including physical exam references), then data types (one home per piece of information), the interactive flowchart format and the citation format.
+3. 2–3 pilot cards, read on the phone, with the accuracy-check pilot test; adjust; then scale in batches.
 - Entries will need their own links; any address inside `/wards/` other than the home page currently returns "not found", so the design must cover that.
 
 ## Known limits
