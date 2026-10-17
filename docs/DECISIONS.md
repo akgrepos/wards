@@ -4,6 +4,7 @@ Settled choices for Wards, newest first. Each entry says what was decided and wh
 
 | Date | Decision | Why |
 |---|---|---|
+| 2026-10-17 | **Repo settings:** only rebase merges are allowed (GitHub keeps the anonymous author); merged branches delete themselves; Issues, Wiki and Projects are off; Dependabot security alerts and automatic security fixes are on (alongside secret scanning and push protection). | Keeps the public repo anonymous and minimal, and patches known security holes quickly. |
 | 2026-10-17 | **App icon:** a white reference card with a small blue plus and gray "text" lines, on a light background (design system colors only, following Apple's app icon guidelines). Source: `public/favicon.svg`. | Quiet, readable at small sizes, and says "medical reference." Red was ruled out because the red cross is a protected emblem. |
 | 2026-10-17 | **Anonymity:** commits are authored as `akgrepos` with GitHub's private no-reply address; past history was rewritten the same way and the owner's name removed from all files. GitHub's "keep my email private" setting is on. Repo text refers to "the owner." | The site and repo are public; keep them as anonymous as possible. |
 | 2026-10-17 | **Branch protection:** `main` only accepts changes whose checks pass and are up to date, applies to admins too, and can't be force-pushed or deleted. | Nothing broken reaches the live app. |

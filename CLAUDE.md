@@ -6,7 +6,7 @@ The owner, a physician, is the only user. No coding experience: explain steps pl
 ## How to work here
 - **Don't build anything the owner hasn't asked for.** Propose options, wait for a decision, then build only what was agreed. Answering a question is not permission to build.
 - **Branch workflow:** never commit to `main` directly. Start a short-lived branch per task (`setup/…`, `feature/…`, `fix/…`, `content/…`), commit there, push, and open a pull request with a plain-language summary and simulator screenshots.
-- **Merging is yours:** merge the PR yourself once automated checks are green and your simulator check passes, then delete the branch. The owner reviews by using the app and asks for changes in chat. Never merge with a failing check.
+- **Merging is yours:** merge the PR yourself (rebase merges only, so commits stay anonymous) once automated checks are green and your simulator check passes, then delete the branch. The owner reviews by using the app and asks for changes in chat. Never merge with a failing check.
 - **Testing every change:** run it in the iOS 27 Simulator in Safari, added to the Home Screen (standalone), in light and dark mode and at least two text sizes. Attach screenshots to the PR.
 - **Releases:** bump the date-based version (`YYYY.MM.DD`, `.2` for a second release that day) and add a plain-language entry to `CHANGELOG.md` in any PR that changes what the owner sees.
 - Record every decision in `docs/DECISIONS.md` (date, what, why). Move items out of "Open questions" when they're settled.

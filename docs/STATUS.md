@@ -16,7 +16,7 @@ Last updated 2026-10-17 (after the app setup). A plain-language snapshot so the 
   - Follows light/dark and the iPhone's Text Size. Shows "Update Ready · Reload" when a new version has downloaded, and checks for one each time the app comes back to the front.
   - Automatic checks on every pull request (design system styles up to date, type-check, tests, build); `main` publishes to GitHub Pages after the same checks. Dependabot opens weekly update PRs.
   - Hidden from search engines (`noindex` + `robots.txt`). `CHANGELOG.md` lists each version.
-  - `main` is protected (checks must pass; no overwriting). Commits are anonymous (`akgrepos`, private no-reply email); history was rewritten to match.
+  - `main` is protected (checks must pass; no overwriting). Commits are anonymous (`akgrepos`, private no-reply email); history was rewritten to match. Only rebase merges are allowed; Issues, Wiki and Projects are off; Dependabot security alerts and fixes are on.
 
 ## Not started
 - Any content or content screens (entry list, entry page, search). Waits on the content question below.
@@ -24,8 +24,11 @@ Last updated 2026-10-17 (after the app setup). A plain-language snapshot so the 
 ## Waiting on the owner
 - **Content authorship and verification:** who writes entries and how each is marked verified (the one open question in DECISIONS.md).
 
+## Waiting on the owner (account security)
+- Recommended in GitHub account settings: two-factor sign-in (passkey), clear the display name "AG", make the profile private, review authorized apps, keep the akgrepos and personal accounts separate.
+
 ## Known limits of the app setup
-- GitHub still holds hidden copies of the original (pre-rewrite) commits behind pull requests #1–#6. Only GitHub Support, or deleting and re-creating the repo, can remove them.
+- GitHub still holds hidden copies of the original (pre-rewrite) commits behind pull requests #1–#7. Only GitHub Support, or deleting and re-creating the repo, can remove them.
 - The account name `akgrepos` and the AKG Design System name are the owner's initials.
 - The design system's components (buttons, banners, lists) use fixed sizes, so their text doesn't follow the iPhone's Text Size yet; the app's own text does. Fixing that is a design system change, for the owner to decide.
 - The installed app shows a brief black screen while it starts (iOS's default for web apps without a launch image).
