@@ -23,6 +23,11 @@ React + TypeScript + Vite, Vite PWA plugin (fully offline, prompt-to-update), Gi
 
 ## Design
 - Use the AKG Design System: https://claude.ai/artifact/GWFUZ6rCthpEuhMik4Jiru (read its `project/README.md` first). Don't invent colors, type sizes or components outside it; propose additions to the design system instead.
+- First version (published 2026-10-16): tokens for four themes (`ios-light`, `ios-dark`, `macos-light`, `macos-dark`, chosen with `data-theme` on `<html>`), 43 text styles, and 16 React components under the `AKG` namespace: Button, Toggle, SegmentedControl, Stepper, TextField, SearchField, Slider, List/ListRow, ProgressIndicator, TabBar, Toolbar, Sidebar, Sheet, Alert, Menu, Popover. Files: `project/tokens.json`, `project/components/bundle.js`, `bundle.css`, `index.d.ts`.
+- The design system is shared across AKG projects. Change it only when the owner asks, and keep it generic (nothing Wards-specific).
+
+## Where things stand
+See `docs/STATUS.md` for what's done, what's next, and what's waiting on a decision.
 
 ## Accounts
 - GitHub: `akgrepos`. Repo: https://github.com/akgrepos/wards. Live address: https://akgrepos.github.io/wards/
