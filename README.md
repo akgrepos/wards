@@ -13,7 +13,8 @@ A personal internal medicine reference for iPhone, built as a web app you add to
 ## Working on it
 
 - `main` is the live app. It changes only by merging a pull request.
-- Each task gets its own short-lived branch (`setup/…`, `feature/…`, `fix/…`), a pull request to review, then a merge. The branch is deleted after.
+- Each task gets its own short-lived branch (`setup/…`, `feature/…`, `fix/…`, `content/…`) and a pull request with a summary and iPhone-simulator screenshots. It's merged once automated checks pass, then the branch is deleted.
+- Your phone shows "Update ready · Reload" when a new version is available.
 
 See [docs/DECISIONS.md](docs/DECISIONS.md) for what has been decided and what is still open.
 
