@@ -2,7 +2,7 @@
 
 A personal internal medicine reference for iPhone, built as a web app you add to the Home Screen.
 
-**Status:** planning and foundations. No app code yet.
+**Status:** foundations decided and the design system's first version is published; no app code yet. See [docs/STATUS.md](docs/STATUS.md).
 
 ## How it works
 
