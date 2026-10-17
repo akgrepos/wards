@@ -33,7 +33,7 @@ React + TypeScript + Vite, Vite PWA plugin (fully offline, prompt-to-update), Gi
 - The design system is shared across AKG projects. Change it only when the owner asks, and keep it generic (nothing Wards-specific).
 
 ## Content structure
-Card types and their sections: `docs/CARD-TYPES.md`. Follow them exactly.
+Card types and their sections: `docs/CARD-TYPES.md`. Shared data (one home, inserted, never retyped): `docs/DATA-TYPES.md`. Follow both exactly.
 
 ## Where things stand
 See `docs/STATUS.md`.

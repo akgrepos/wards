@@ -1,6 +1,6 @@
 # Status
 
-Last updated 2026-10-17 (card types settled). A short snapshot so the next session can pick up where the last one stopped. The reasons behind each choice are in [DECISIONS.md](DECISIONS.md).
+Last updated 2026-10-17 (data types settled). A short snapshot so the next session can pick up where the last one stopped. The reasons behind each choice are in [DECISIONS.md](DECISIONS.md).
 
 ## Done
 - **Foundations and setup complete.** The app is live at https://akgrepos.github.io/wards/ (version 2026.10.17.2): a home screen with no entries yet, its own icon, offline use, the "Update Ready" banner, light/dark and Text Size support.
@@ -10,7 +10,7 @@ Last updated 2026-10-17 (card types settled). A short snapshot so the next sessi
 
 ## Next: content planning (decided 2026-10-17, see DECISIONS.md)
 1. ~~Topic list~~ done (v2, private): 16 systems plus the Library, about 456 cards plus 41 scores, Wave 1 = 30 cards. The owner signs in to AMBOSS and OpenEvidence in the built-in browser when needed.
-2. ~~Card types~~ done (`docs/CARD-TYPES.md`). **Next:** data types (one home per piece of information), then the interactive flowchart format and the citation format.
+2. ~~Card types~~ and ~~data types~~ done (`docs/CARD-TYPES.md`, `docs/DATA-TYPES.md`). **Next:** the interactive flowchart format and the citation format.
 3. 2–3 pilot cards, read on the phone, with the accuracy-check pilot test; adjust; then scale in batches.
 - Entries will need their own links; any address inside `/wards/` other than the home page currently returns "not found", so the design must cover that.
 
