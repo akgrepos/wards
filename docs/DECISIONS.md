@@ -4,6 +4,10 @@ Settled choices for Wards, newest first. Each entry says what was decided and wh
 
 | Date | Decision | Why |
 |---|---|---|
+| 2026-10-17 | **App icon:** a white reference card with a small blue plus and gray "text" lines, on a light background (design system colors only, following Apple's app icon guidelines). Source: `public/favicon.svg`. | Quiet, readable at small sizes, and says "medical reference." Red was ruled out because the red cross is a protected emblem. |
+| 2026-10-17 | **Anonymity:** commits are authored as `akgrepos` with GitHub's private no-reply address; past history was rewritten the same way and the owner's name removed from all files. GitHub's "keep my email private" setting is on. Repo text refers to "the owner." | The site and repo are public; keep them as anonymous as possible. |
+| 2026-10-17 | **Branch protection:** `main` only accepts changes whose checks pass and are up to date, applies to admins too, and can't be force-pushed or deleted. | Nothing broken reaches the live app. |
+| 2026-10-17 | **Dependabot updates** are handled like any pull request: Claude reviews the changes, waits for the checks, tests if anything visible changed, and merges. | Keeps tools current without routine approvals. |
 | 2026-10-17 | **Design system in the app:** a copy of the AKG Design System's files lives in `vendor/akg/`; `npm run tokens` turns its tokens into CSS (`src/design/tokens.css`), with iOS text styles scaled from the iPhone's Text Size. A check fails if that file is out of date. | Works offline with no outside downloads, and the app always matches a known version of the design system. |
 | 2026-10-17 | **Version number** lives in `src/version.ts`; a test fails if it doesn't match the newest `CHANGELOG.md` entry. | The version shown in the app and the changelog can't drift apart. |
 | 2026-10-17 | **Update checks:** besides at launch, the app looks for a new version each time it comes back to the front. | A Home Screen app can stay open in the background for days. |
