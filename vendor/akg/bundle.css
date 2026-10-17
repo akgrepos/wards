@@ -1,0 +1,2034 @@
+/* AKG base — platform is chosen by data-theme: ios-light | ios-dark | macos-light | macos-dark.
+   iOS rules are the default; macOS overrides live under [data-theme^="macos"]. */
+[class^="akg-"], [class*=" akg-"] { box-sizing: border-box; font-family: var(--font-sans); -webkit-font-smoothing: antialiased; }
+[class^="akg-"] *, [class*=" akg-"] * { box-sizing: border-box; }
+.akg-sym { display: inline-flex; align-items: center; justify-content: center; line-height: 1; flex: none; }
+.akg-sym svg { width: 1em; height: 1em; display: block; }
+:where([class^="akg-"]):focus-visible { outline: 3px solid var(--focus-ring); outline-offset: 1px; }
+
+/* Button — iOS 27 "Buttons" and macOS 27 "Buttons / Content Area" symbols. */
+.akg-button {
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--space-4);
+  border: 0; margin: 0; cursor: pointer; white-space: nowrap; text-decoration: none;
+  border-radius: var(--radius-full);
+  font-family: var(--font-sans); font-weight: 400; letter-spacing: 0;
+  color: var(--accent); background: transparent;
+  -webkit-tap-highlight-color: transparent;
+}
+.akg-button:active:not(:disabled) { filter: brightness(0.9); }
+
+/* iOS sizes (Small 28 · Medium 34 · Large 50). iOS has no mini or XL: mini = small, xlarge = large. */
+.akg-button--small, .akg-button--mini { height: var(--control-ios-small);  padding: 5px var(--space-10); font-size: 15px; line-height: 18px; }
+.akg-button--medium { height: var(--control-ios-medium); padding: var(--space-8) var(--space-12); font-size: 17px; line-height: 18px; }
+.akg-button--large, .akg-button--xlarge { height: var(--control-ios-large);  padding: var(--space-16) var(--space-20); font-size: 17px; line-height: 18px; }
+.akg-button--icon-only.akg-button--small, .akg-button--icon-only.akg-button--mini { width: var(--control-ios-small); padding: 0; }
+.akg-button--icon-only.akg-button--medium { width: var(--control-ios-medium); padding: 0; }
+.akg-button--icon-only.akg-button--large, .akg-button--icon-only.akg-button--xlarge { width: var(--control-ios-large); padding: 0; }
+
+/* iOS variants */
+.akg-button--bordered   { background: var(--button-bordered-fill); color: var(--accent); }
+.akg-button--prominent  { background: var(--accent); color: var(--on-accent); }
+.akg-button--borderless { background: transparent; color: var(--accent); }
+.akg-button--glass, .akg-button--glass-prominent {
+  font-weight: 500; color: var(--glass-label);
+  background: var(--glass-fill);
+  -webkit-backdrop-filter: blur(6px) saturate(180%); backdrop-filter: blur(6px) saturate(180%);
+  box-shadow: var(--shadow-glass-control), inset 0 0 0 0.5px var(--separator);
+}
+.akg-button--glass-prominent { background: var(--accent); color: var(--on-accent); }
+
+/* Tinted: accent label on an accent-tinted fill. The iOS kit has no tinted button; this is a 15% (20% dark) accent tint. */
+.akg-button--tinted { --akg-button-tint: var(--accent); background: color-mix(in srgb, var(--akg-button-tint) 15%, transparent); color: var(--akg-button-tint); }
+[data-theme="ios-dark"] .akg-button--tinted { background: color-mix(in srgb, var(--akg-button-tint) 20%, transparent); }
+.akg-button--destructive.akg-button--tinted { --akg-button-tint: var(--destructive); }
+
+/* Toggle: a button that stays on (aria-pressed). Off = gray fill + label, on = accent label on a light accent tint. */
+.akg-button--toggle { background: var(--button-bordered-fill); color: var(--label); }
+.akg-button--toggle.akg-button--pressed { background: color-mix(in srgb, var(--accent) 15%, transparent); color: var(--accent); }
+
+.akg-button--destructive.akg-button--bordered,
+.akg-button--destructive.akg-button--borderless,
+.akg-button--destructive.akg-button--glass { color: var(--destructive); }
+.akg-button--destructive.akg-button--prominent,
+.akg-button--destructive.akg-button--glass-prominent { background: var(--destructive); color: var(--on-accent); }
+
+.akg-button:disabled { cursor: default; color: var(--label-tertiary); }
+.akg-button--bordered:disabled, .akg-button--prominent:disabled, .akg-button--glass-prominent:disabled { background: var(--button-disabled-fill); }
+.akg-button--tinted:disabled, .akg-button--toggle:disabled { background: var(--button-disabled-fill); }
+
+/* macOS (Content Area): Small 20 · Regular 24 · Large 28, 13pt medium labels, 6px corners */
+[data-theme^="macos"] .akg-button { font-weight: 500; border-radius: var(--radius-regular); }
+[data-theme^="macos"] .akg-button--small  { height: var(--control-macos-small);   padding: 4px var(--space-10) 3px; font-size: 11px; line-height: 13px; border-radius: var(--radius-small); }
+[data-theme^="macos"] .akg-button--medium { height: var(--control-macos-regular); padding: var(--space-4) var(--space-16); font-size: 13px; line-height: 16px; }
+[data-theme^="macos"] .akg-button--large  { height: var(--control-macos-large);   padding: 6px var(--space-16); font-size: 13px; line-height: 16px; border-radius: var(--radius-full); }
+[data-theme^="macos"] .akg-button--mini   { height: 16px; padding: 2px 7px; font-size: 10px; line-height: 12px; border-radius: var(--radius-mini); }
+[data-theme^="macos"] .akg-button--xlarge { height: 36px; padding: var(--space-10) var(--space-16); font-size: 13px; line-height: 16px; border-radius: var(--radius-full); }
+[data-theme^="macos"] .akg-button--icon-only.akg-button--mini   { width: 16px; }
+[data-theme^="macos"] .akg-button--icon-only.akg-button--xlarge { width: 36px; }
+[data-theme^="macos"] .akg-button--icon-only.akg-button--small  { width: var(--control-macos-small); }
+[data-theme^="macos"] .akg-button--icon-only.akg-button--medium { width: var(--control-macos-regular); }
+[data-theme^="macos"] .akg-button--icon-only.akg-button--large  { width: var(--control-macos-large); }
+[data-theme^="macos"] .akg-button--bordered,
+[data-theme^="macos"] .akg-button--glass { background: var(--button-bordered-fill); color: var(--label); box-shadow: none; -webkit-backdrop-filter: none; backdrop-filter: none; }
+[data-theme^="macos"] .akg-button--glass-prominent { box-shadow: none; -webkit-backdrop-filter: none; backdrop-filter: none; }
+[data-theme^="macos"] .akg-button--destructive.akg-button--bordered { background: color-mix(in srgb, var(--destructive) 20%, transparent); color: var(--destructive); }
+[data-theme^="macos"] .akg-button:disabled { color: var(--label-tertiary); }
+[data-theme^="macos"] .akg-button--bordered:disabled { background: var(--button-disabled-fill); }
+
+/* macOS Bordered Tinted: accent label over (accent + Fills/1 Primary) at 22% (20% dark); 10% / 12% and a 40% label when disabled. */
+[data-theme^="macos"] .akg-button--tinted { position: relative; isolation: isolate; background: transparent; }
+[data-theme^="macos"] .akg-button--tinted::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; border-radius: inherit; pointer-events: none;
+  background: linear-gradient(var(--fill), var(--fill)), var(--akg-button-tint); opacity: 0.22;
+}
+[data-theme="macos-dark"] .akg-button--tinted::before { opacity: 0.2; }
+[data-theme^="macos"] .akg-button--tinted:active:not(:disabled) { filter: none; }
+[data-theme^="macos"] .akg-button--tinted:active:not(:disabled)::before { opacity: 0.28; }
+[data-theme^="macos"] .akg-button--tinted:disabled { background: transparent; color: color-mix(in srgb, var(--akg-button-tint) 40%, transparent); }
+[data-theme^="macos"] .akg-button--tinted:disabled::before { opacity: 0.1; }
+[data-theme="macos-dark"] .akg-button--tinted:disabled::before { opacity: 0.12; }
+
+/* macOS Toggle: off = Fills/3 Tertiary + label, on = accent label on a 6% accent bezel. */
+[data-theme^="macos"] .akg-button--toggle { background: var(--fill-tertiary); color: var(--label); }
+[data-theme^="macos"] .akg-button--toggle.akg-button--pressed { background: color-mix(in srgb, var(--accent) 6%, transparent); color: var(--accent); }
+[data-theme^="macos"] .akg-button--toggle:active:not(:disabled) { filter: none; background: var(--fill-secondary); }
+[data-theme^="macos"] .akg-button--toggle.akg-button--pressed:active:not(:disabled) { background: color-mix(in srgb, var(--accent) 16%, transparent); }
+[data-theme^="macos"] .akg-button--toggle:disabled { background: var(--fill-quinary); color: var(--label-tertiary); }
+[data-theme^="macos"] .akg-button--toggle.akg-button--pressed:disabled { background: color-mix(in srgb, var(--accent) 2%, transparent); color: color-mix(in srgb, var(--accent) 40%, transparent); }
+
+/* Toggle — iOS 27 "Toggles" and macOS 27 "Toggles - Switches / Content Area" symbols. */
+.akg-toggle {
+  display: inline-flex; align-items: center; justify-content: space-between; gap: var(--space-12);
+  cursor: pointer; color: var(--label); font-size: 17px; line-height: 22px;
+  -webkit-tap-highlight-color: transparent;
+}
+.akg-toggle__label { flex: 1 1 auto; min-width: 0; }
+
+/* iOS track: 64×28 capsule, 2pt inset, 38×24 knob */
+.akg-toggle__track {
+  position: relative; flex: none; display: block;
+  width: 64px; height: var(--control-ios-small); padding: var(--space-2);
+  border-radius: var(--radius-full);
+  background: var(--label-tertiary);
+  transition: background-color 0.2s ease;
+}
+.akg-toggle--on .akg-toggle__track { background: var(--toggle-on); }
+.akg-toggle__knob {
+  position: absolute; top: var(--space-2); left: var(--space-2);
+  width: 38px; height: 24px; border-radius: var(--radius-full);
+  background: var(--control-knob);
+  transition: left 0.2s ease, width 0.15s ease;
+  pointer-events: none;
+}
+.akg-toggle--on .akg-toggle__knob { left: 24px; }
+
+/* Press: the knob stretches toward the travel direction */
+.akg-toggle:not(.akg-toggle--disabled):active .akg-toggle__knob { width: 44px; }
+.akg-toggle--on:not(.akg-toggle--disabled):active .akg-toggle__knob { left: 18px; }
+
+/* The real checkbox covers the track so it stays clickable and focusable */
+.akg-toggle__input {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  margin: 0; opacity: 0; cursor: inherit; border-radius: var(--radius-full);
+}
+.akg-toggle__track:has(.akg-toggle__input:focus-visible) { outline: 3px solid var(--focus-ring); outline-offset: 1px; }
+
+.akg-toggle--disabled { cursor: default; }
+.akg-toggle--disabled .akg-toggle__track { opacity: 0.5; }
+.akg-toggle--disabled .akg-toggle__label { color: var(--label-tertiary); }
+
+/* macOS (Content Area): Mini 36×16 · Small 44×20 · Regular 54×24 · Large 64×28 · XL 80×36, accent when on */
+[data-theme^="macos"] .akg-toggle { font-size: 13px; line-height: 16px; gap: var(--space-8); }
+[data-theme^="macos"] .akg-toggle__track { background: var(--fill); }
+[data-theme^="macos"] .akg-toggle--on .akg-toggle__track { background: var(--toggle-on); }
+[data-theme^="macos"] .akg-toggle__knob { box-shadow: var(--shadow-knob); }
+[data-theme="macos-dark"] .akg-toggle__knob { background: color-mix(in srgb, var(--control-knob) 85%, transparent); }
+
+[data-theme^="macos"] .akg-toggle--mini .akg-toggle__track   { width: 36px; height: 16px; }
+[data-theme^="macos"] .akg-toggle--mini .akg-toggle__knob    { top: 1.5px; left: 1.5px; width: 21px; height: 13px; }
+[data-theme^="macos"] .akg-toggle--mini.akg-toggle--on .akg-toggle__knob { left: 13.5px; }
+
+[data-theme^="macos"] .akg-toggle--small .akg-toggle__track  { width: 44px; height: var(--control-macos-small); }
+[data-theme^="macos"] .akg-toggle--small .akg-toggle__knob   { width: 26px; height: 16px; }
+[data-theme^="macos"] .akg-toggle--small.akg-toggle--on .akg-toggle__knob { left: 16px; }
+
+[data-theme^="macos"] .akg-toggle--medium .akg-toggle__track { width: 54px; height: var(--control-macos-regular); }
+[data-theme^="macos"] .akg-toggle--medium .akg-toggle__knob  { width: 32px; height: 20px; }
+[data-theme^="macos"] .akg-toggle--medium.akg-toggle--on .akg-toggle__knob { left: 20px; }
+
+[data-theme^="macos"] .akg-toggle--large .akg-toggle__track  { width: 64px; height: var(--control-macos-large); }
+[data-theme^="macos"] .akg-toggle--large .akg-toggle__knob   { width: 38px; height: 24px; }
+[data-theme^="macos"] .akg-toggle--large.akg-toggle--on .akg-toggle__knob { left: 24px; }
+
+[data-theme^="macos"] .akg-toggle--xlarge .akg-toggle__track { width: 80px; height: 36px; }
+[data-theme^="macos"] .akg-toggle--xlarge .akg-toggle__knob  { top: 3px; left: 3px; width: 47px; height: 30px; }
+[data-theme^="macos"] .akg-toggle--xlarge.akg-toggle--on .akg-toggle__knob { left: 30px; }
+
+/* macOS knobs don't stretch on click */
+[data-theme^="macos"] .akg-toggle--mini:active .akg-toggle__knob   { width: 21px; }
+[data-theme^="macos"] .akg-toggle--xlarge:active .akg-toggle__knob { width: 47px; }
+[data-theme^="macos"] .akg-toggle--mini.akg-toggle--on:active .akg-toggle__knob   { left: 13.5px; }
+[data-theme^="macos"] .akg-toggle--xlarge.akg-toggle--on:active .akg-toggle__knob { left: 30px; }
+[data-theme^="macos"] .akg-toggle--small:active .akg-toggle__knob  { width: 26px; }
+[data-theme^="macos"] .akg-toggle--medium:active .akg-toggle__knob { width: 32px; }
+[data-theme^="macos"] .akg-toggle--large:active .akg-toggle__knob  { width: 38px; }
+[data-theme^="macos"] .akg-toggle--small.akg-toggle--on:active .akg-toggle__knob  { left: 16px; }
+[data-theme^="macos"] .akg-toggle--medium.akg-toggle--on:active .akg-toggle__knob { left: 20px; }
+[data-theme^="macos"] .akg-toggle--large.akg-toggle--on:active .akg-toggle__knob  { left: 24px; }
+[data-theme^="macos"] .akg-toggle:not(.akg-toggle--disabled):active .akg-toggle__track { filter: brightness(0.9); }
+
+/* Checkbox — macOS 27 "Toggles - Checkboxes / Content Area" symbols. iOS has no checkbox; iOS themes draw the
+   iOS 27 "Lists / Rows / Editing" selection circle instead. */
+.akg-checkbox {
+  position: relative; display: inline-flex; align-items: center; gap: var(--space-12);
+  cursor: pointer; color: var(--label); font-size: 17px; line-height: 22px;
+  -webkit-tap-highlight-color: transparent;
+}
+.akg-checkbox__label { min-width: 0; }
+
+/* The real checkbox is visually hidden; the box draws its state */
+.akg-checkbox__input {
+  position: absolute; width: 1px; height: 1px; margin: 0; padding: 0; opacity: 0;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; pointer-events: none;
+}
+.akg-checkbox__box {
+  position: relative; flex: none; display: inline-flex; align-items: center; justify-content: center;
+  color: var(--on-accent);
+}
+.akg-checkbox__glyph { display: block; opacity: 0; }
+.akg-checkbox--on .akg-checkbox__glyph, .akg-checkbox--mixed .akg-checkbox__glyph { opacity: 1; }
+.akg-checkbox__input:focus-visible + .akg-checkbox__box { outline: 3px solid var(--focus-ring); outline-offset: 1px; }
+
+/* iOS: 22pt selection circle, 1.5pt tertiary ring when off, accent fill with a white check when on */
+.akg-checkbox__box {
+  width: 22px; height: 22px; border-radius: var(--radius-full);
+  box-shadow: inset 0 0 0 1.5px var(--label-tertiary);
+}
+.akg-checkbox__glyph { width: 18px; height: 18px; }
+.akg-checkbox--on .akg-checkbox__box, .akg-checkbox--mixed .akg-checkbox__box { background: var(--accent); box-shadow: none; }
+.akg-checkbox:not(.akg-checkbox--disabled):active .akg-checkbox__box { filter: brightness(0.9); }
+.akg-checkbox--disabled { cursor: default; }
+.akg-checkbox--disabled .akg-checkbox__box { opacity: 0.5; }
+.akg-checkbox--disabled .akg-checkbox__label { color: var(--label-tertiary); }
+
+/* macOS (Content Area): Small 14 · Regular 16 · Large 18 boxes, 4.5 / 5.5 / 6.5 corners, 13pt medium label */
+[data-theme^="macos"] .akg-checkbox { font-size: 13px; line-height: 16px; font-weight: 500; gap: 5px; }
+[data-theme^="macos"] .akg-checkbox__box {
+  width: 16px; height: 16px; border-radius: 5.5px;
+  background: var(--fill); box-shadow: none; filter: none;
+}
+[data-theme^="macos"] .akg-checkbox__glyph { width: 16px; height: 16px; }
+[data-theme^="macos"] .akg-checkbox--on .akg-checkbox__box,
+[data-theme^="macos"] .akg-checkbox--mixed .akg-checkbox__box { background: var(--accent); }
+[data-theme="macos-dark"] .akg-checkbox--on .akg-checkbox__box,
+[data-theme="macos-dark"] .akg-checkbox--mixed .akg-checkbox__box { box-shadow: inset 0 0 0 99px var(--fill-tertiary); }
+
+/* Clicked: a second fill layer darkens the box */
+[data-theme^="macos"] .akg-checkbox:not(.akg-checkbox--disabled):active .akg-checkbox__box { filter: none; box-shadow: inset 0 0 0 99px var(--fill); }
+[data-theme^="macos"] .akg-checkbox--on:not(.akg-checkbox--disabled):active .akg-checkbox__box,
+[data-theme^="macos"] .akg-checkbox--mixed:not(.akg-checkbox--disabled):active .akg-checkbox__box { box-shadow: inset 0 0 0 99px var(--fill-secondary); }
+
+/* Disabled: off box lightens to tertiary fill; on box drops to 45% with a 50% glyph */
+[data-theme^="macos"] .akg-checkbox--disabled .akg-checkbox__box { opacity: 1; background: var(--fill-tertiary); }
+[data-theme^="macos"] .akg-checkbox--disabled.akg-checkbox--on .akg-checkbox__box,
+[data-theme^="macos"] .akg-checkbox--disabled.akg-checkbox--mixed .akg-checkbox__box { opacity: 0.45; background: var(--accent); box-shadow: inset 0 0 0 99px var(--fill-tertiary); }
+[data-theme^="macos"] .akg-checkbox--disabled.akg-checkbox--on .akg-checkbox__glyph,
+[data-theme^="macos"] .akg-checkbox--disabled.akg-checkbox--mixed .akg-checkbox__glyph { opacity: 0.5; }
+
+[data-theme^="macos"] .akg-checkbox--small { font-size: 11px; line-height: 13px; gap: var(--space-4); }
+[data-theme^="macos"] .akg-checkbox--small .akg-checkbox__box { width: 14px; height: 14px; border-radius: 4.5px; }
+[data-theme^="macos"] .akg-checkbox--small .akg-checkbox__glyph { width: 16px; height: 16px; }
+[data-theme^="macos"] .akg-checkbox--large .akg-checkbox__box { width: 18px; height: 18px; border-radius: 6.5px; }
+[data-theme^="macos"] .akg-checkbox--large .akg-checkbox__glyph { width: 20px; height: 20px; }
+
+/* RadioGroup — macOS 27 "Toggles - Radio Buttons / Content Area" symbols. iOS has no radio button; iOS themes draw
+   the iOS 27 "Lists / Rows" checkmark accessory: one row per option, the chosen one gets an accent checkmark. */
+.akg-radio-group { display: flex; flex-direction: column; }
+.akg-radio-group--horizontal { flex-direction: row; flex-wrap: wrap; column-gap: var(--space-20); }
+
+.akg-radio {
+  position: relative; display: flex; align-items: center; gap: var(--space-12);
+  cursor: pointer; color: var(--label); font-size: 17px; line-height: 22px;
+  -webkit-tap-highlight-color: transparent;
+}
+.akg-radio__label { flex: 1 1 auto; min-width: 0; }
+.akg-radio__input {
+  position: absolute; width: 1px; height: 1px; margin: 0; padding: 0; opacity: 0;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; pointer-events: none;
+}
+
+/* iOS: list rows (52pt) with a trailing 17pt semibold accent checkmark and inset hairlines */
+.akg-radio-group--vertical .akg-radio { min-height: var(--row-ios); padding: 0 var(--space-16); }
+.akg-radio-group--vertical .akg-radio + .akg-radio::before {
+  content: ""; position: absolute; top: 0; left: var(--space-16); right: 0;
+  height: var(--separator-width); background: var(--separator);
+}
+.akg-radio__circle { display: none; }
+.akg-radio__check { width: 16px; height: 16px; font-size: 16px; color: var(--accent); visibility: hidden; }
+.akg-radio--on .akg-radio__check { visibility: visible; }
+.akg-radio:has(.akg-radio__input:focus-visible) { outline: 3px solid var(--focus-ring); outline-offset: -3px; border-radius: var(--radius-small); }
+.akg-radio:not(.akg-radio--disabled):active { background: var(--fill-tertiary); }
+.akg-radio--disabled { cursor: default; }
+.akg-radio--disabled .akg-radio__label { color: var(--label-tertiary); }
+.akg-radio--disabled .akg-radio__check { opacity: 0.5; }
+/* Horizontal on iOS: inline options, checkmark before the label */
+.akg-radio-group--horizontal .akg-radio { min-height: var(--tap-target); gap: var(--space-8); }
+.akg-radio-group--horizontal .akg-radio__check { order: -1; }
+.akg-radio-group--horizontal .akg-radio__label { flex: 0 1 auto; }
+
+/* macOS (Content Area): Small 14 · Regular 16 · Large 18 circles, 13pt medium label */
+[data-theme^="macos"] .akg-radio-group { row-gap: 6px; }
+[data-theme^="macos"] .akg-radio-group--horizontal { column-gap: var(--space-16); }
+[data-theme^="macos"] .akg-radio,
+[data-theme^="macos"] .akg-radio-group--vertical .akg-radio,
+[data-theme^="macos"] .akg-radio-group--horizontal .akg-radio {
+  min-height: 0; padding: 0; gap: 3px; font-size: 13px; line-height: 16px; font-weight: 500; background: none;
+}
+[data-theme^="macos"] .akg-radio-group--vertical .akg-radio + .akg-radio::before { content: none; }
+[data-theme^="macos"] .akg-radio__label { flex: 0 1 auto; }
+[data-theme^="macos"] .akg-radio__check { display: none; }
+[data-theme^="macos"] .akg-radio__circle {
+  position: relative; display: block; flex: none; width: 16px; height: 16px;
+  border-radius: var(--radius-full); background: var(--fill);
+}
+[data-theme^="macos"] .akg-radio__circle::after {
+  content: ""; position: absolute; left: 50%; top: 50%; width: 4.8px; height: 4.8px;
+  transform: translate(-50%, -50%); border-radius: var(--radius-full); background: var(--on-accent); opacity: 0;
+}
+[data-theme^="macos"] .akg-radio--on .akg-radio__circle { background: var(--accent); }
+[data-theme^="macos"] .akg-radio--on .akg-radio__circle::after { opacity: 1; }
+[data-theme="macos-dark"] .akg-radio--on .akg-radio__circle { box-shadow: inset 0 0 0 99px var(--fill-tertiary); }
+[data-theme^="macos"] .akg-radio:has(.akg-radio__input:focus-visible) { outline: none; }
+[data-theme^="macos"] .akg-radio__input:focus-visible ~ .akg-radio__circle { outline: 3px solid var(--focus-ring); outline-offset: 1px; }
+
+/* Clicked: a second fill layer darkens the circle */
+[data-theme^="macos"] .akg-radio:not(.akg-radio--disabled):active .akg-radio__circle { box-shadow: inset 0 0 0 99px var(--fill); }
+[data-theme^="macos"] .akg-radio--on:not(.akg-radio--disabled):active .akg-radio__circle { box-shadow: inset 0 0 0 99px var(--fill-secondary); }
+
+/* Disabled: off circle lightens to tertiary fill; on circle drops to 45% */
+[data-theme^="macos"] .akg-radio--disabled .akg-radio__circle { background: var(--fill-tertiary); }
+[data-theme^="macos"] .akg-radio--disabled.akg-radio--on .akg-radio__circle { opacity: 0.45; background: var(--accent); box-shadow: inset 0 0 0 99px var(--fill-tertiary); }
+
+[data-theme^="macos"] .akg-radio--small { font-size: 11px; line-height: 13px; }
+[data-theme^="macos"] .akg-radio--small .akg-radio__circle { width: 14px; height: 14px; }
+[data-theme^="macos"] .akg-radio--large { gap: 5px; }
+[data-theme^="macos"] .akg-radio--large .akg-radio__circle { width: 18px; height: 18px; }
+[data-theme^="macos"] .akg-radio--large .akg-radio__circle::after { width: 5px; height: 5px; }
+
+/* SegmentedControl — iOS 27 "Segmented Controls" (Small/Large) and macOS 27 "Segmented Controls / Content Area" symbols. */
+.akg-segmented {
+  --akg-seg-pad: var(--space-2); --akg-seg-gap: var(--space-4);
+  position: relative; display: flex; align-items: stretch; gap: var(--akg-seg-gap);
+  width: 100%; height: 32px; padding: var(--akg-seg-pad);
+  border-radius: var(--radius-full);
+  background: var(--fill-tertiary);
+  -webkit-tap-highlight-color: transparent;
+}
+/* iOS: mini = small (32), xlarge = large (48) */
+.akg-segmented--large, .akg-segmented--xlarge { height: 48px; }
+
+/* Selected thumb: slides between equal-width segments */
+.akg-segmented__thumb {
+  position: absolute; top: var(--akg-seg-pad); bottom: var(--akg-seg-pad);
+  --akg-seg-w: calc((100% - 2 * var(--akg-seg-pad) - (var(--akg-seg-n) - 1) * var(--akg-seg-gap)) / var(--akg-seg-n));
+  width: var(--akg-seg-w);
+  left: calc(var(--akg-seg-pad) + var(--akg-seg-i) * (var(--akg-seg-w) + var(--akg-seg-gap)));
+  border-radius: var(--radius-full);
+  background: var(--segmented-thumb, var(--control-knob));
+  box-shadow: var(--shadow-glass-control);
+  transition: left 0.25s cubic-bezier(0.3, 0.7, 0.4, 1);
+  pointer-events: none;
+}
+[data-theme="ios-dark"] .akg-segmented__thumb { background: var(--segmented-thumb, color-mix(in srgb, var(--control-knob) 27%, transparent)); box-shadow: none; }
+
+.akg-segmented__item {
+  position: relative; z-index: 1; flex: 1 1 0; min-width: 0;
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--space-4);
+  margin: 0; border: 0; padding: 5px var(--space-4); cursor: pointer;
+  border-radius: var(--radius-full); background: transparent;
+  color: var(--label); font-family: var(--font-sans);
+  font-size: 13.33px; line-height: 18px; font-weight: 500; letter-spacing: -0.4px;
+  white-space: nowrap;
+}
+.akg-segmented__label { overflow: hidden; text-overflow: ellipsis; display: inline-grid; }
+/* Reserve the semibold width so the label doesn't shift when selected */
+.akg-segmented__label::after { content: attr(data-text); font-weight: 600; height: 0; visibility: hidden; overflow: hidden; }
+.akg-segmented__item--selected { font-weight: 600; }
+.akg-segmented__item:not(.akg-segmented__item--selected):not(:disabled):active { background: var(--fill-quaternary); }
+.akg-segmented__item .akg-sym { font-size: 15px; }
+.akg-segmented__item:disabled { cursor: default; color: var(--label-tertiary); }
+.akg-segmented--disabled { opacity: 0.5; }
+.akg-segmented--disabled .akg-segmented__item:disabled { color: var(--label); }
+
+/* macOS (Content Area): Mini 16 · Small 20 · Regular 24 · Large 28 · XL 36, no inset, accent-filled selected segment, hairline separators */
+[data-theme^="macos"] .akg-segmented {
+  --akg-seg-pad: 0px; --akg-seg-gap: 0px;
+  display: inline-grid; grid-auto-flow: column; grid-auto-columns: 1fr;
+  width: auto; height: var(--control-macos-regular);
+  border-radius: var(--radius-regular); background: var(--fill-secondary);
+}
+[data-theme^="macos"] .akg-segmented--small { height: var(--control-macos-small); border-radius: var(--radius-small); }
+[data-theme^="macos"] .akg-segmented--large { height: var(--control-macos-large); border-radius: var(--radius-full); }
+[data-theme^="macos"] .akg-segmented--mini   { height: 16px; border-radius: var(--radius-mini); }
+[data-theme^="macos"] .akg-segmented--xlarge { height: 36px; border-radius: var(--radius-full); }
+[data-theme^="macos"] .akg-segmented__thumb { border-radius: inherit; background: var(--accent); box-shadow: none; transition: none; }
+[data-theme^="macos"] .akg-segmented__item {
+  min-width: 30px; padding: 0 var(--space-10); border-radius: inherit;
+  color: var(--glass-label); font-size: 13px; line-height: 16px; font-weight: 500; letter-spacing: 0;
+}
+[data-theme^="macos"] .akg-segmented--small .akg-segmented__item { min-width: 26px; padding: 0 var(--space-8); font-size: 11px; line-height: 13px; }
+[data-theme^="macos"] .akg-segmented--large .akg-segmented__item { min-width: 34px; padding: 0 var(--space-12); }
+[data-theme^="macos"] .akg-segmented--mini .akg-segmented__item   { min-width: 23px; padding: 0 6px; font-size: 10px; line-height: 12px; }
+[data-theme^="macos"] .akg-segmented--xlarge .akg-segmented__item { min-width: 38px; padding: 0 var(--space-14); }
+[data-theme^="macos"] .akg-segmented--mini .akg-segmented__item .akg-sym { font-size: 10px; }
+[data-theme^="macos"] .akg-segmented__label::after { font-weight: 500; }
+[data-theme^="macos"] .akg-segmented__item--selected { color: var(--on-accent); font-weight: 500; }
+[data-theme^="macos"] .akg-segmented__item .akg-sym { font-size: 13px; }
+[data-theme^="macos"] .akg-segmented__item:not(.akg-segmented__item--selected):not(:disabled):active { background: var(--fill); }
+[data-theme^="macos"] .akg-segmented__item + .akg-segmented__item::before {
+  content: ""; position: absolute; left: -0.5px; top: 50%; width: 1px; height: 14px; transform: translateY(-50%);
+  border-radius: 0.5px; background: var(--separator);
+}
+[data-theme^="macos"] .akg-segmented--small .akg-segmented__item + .akg-segmented__item::before { height: 12px; }
+[data-theme^="macos"] .akg-segmented--large .akg-segmented__item + .akg-segmented__item::before { height: 18px; }
+[data-theme^="macos"] .akg-segmented--mini .akg-segmented__item + .akg-segmented__item::before   { height: 10px; }
+[data-theme^="macos"] .akg-segmented--xlarge .akg-segmented__item + .akg-segmented__item::before { height: 20px; }
+[data-theme^="macos"] .akg-segmented__item--selected::before,
+[data-theme^="macos"] .akg-segmented__item--selected + .akg-segmented__item::before { display: none; }
+[data-theme^="macos"] .akg-segmented__item:disabled { color: var(--glass-label-tertiary); }
+[data-theme^="macos"] .akg-segmented--disabled .akg-segmented__item:disabled { color: var(--glass-label); }
+[data-theme^="macos"] .akg-segmented--disabled .akg-segmented__item--selected:disabled { color: var(--on-accent); }
+
+/* PopUpButton — iOS 27 "Lists / Accessories - Trailing / Pop-up Button" and macOS 27 "Pop-up Buttons" / "Pulldown Buttons / Content Area". */
+.akg-pop-up-button { position: relative; display: inline-flex; vertical-align: middle; max-width: 100%; }
+
+/* iOS: borderless trailing accessory, 17pt secondary label + 17pt tertiary chevron, 10pt gap */
+.akg-pop-up-button__button {
+  display: inline-flex; align-items: center; gap: var(--space-10); width: 100%; min-width: 0;
+  min-height: var(--tap-target); margin: 0; padding: 0; border: 0; background: transparent; cursor: pointer;
+  font-family: var(--font-sans); font-size: 17px; line-height: 22px; font-weight: 400; letter-spacing: 0; text-align: left;
+  color: var(--label-secondary);
+  -webkit-tap-highlight-color: transparent;
+}
+.akg-pop-up-button__button:active:not(:disabled) { opacity: 0.6; }
+.akg-pop-up-button__label { flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.akg-pop-up-button__label--placeholder { color: var(--label-tertiary); }
+.akg-pop-up-button__chevron { flex: none; display: inline-flex; align-items: center; justify-content: center; width: 12px; height: 22px; color: var(--label-tertiary); }
+.akg-pop-up-button__chevron svg { display: block; width: 10px; height: 16px; }
+.akg-pop-up-button--pull-down .akg-pop-up-button__chevron svg { width: 12px; height: 8px; }
+.akg-pop-up-button__button:disabled { cursor: default; color: var(--label-tertiary); }
+.akg-pop-up-button__button:disabled .akg-pop-up-button__chevron { color: var(--label-quaternary); }
+
+/* Attached menu (AKG.Menu) */
+.akg-pop-up-button__menu { position: absolute; z-index: 20; top: calc(100% + var(--space-4)); left: 0; }
+.akg-pop-up-button--align-end .akg-pop-up-button__menu { left: auto; right: 0; }
+
+/* macOS Content Area: bordered fill, label leading, chevron in a square trailing slot.
+   Sm 20 (R5, 10 lead, 11pt) · Rg 24 (R6, 12 lead, 13pt) · Lg 28 (capsule, 14 lead, 13pt). */
+[data-theme^="macos"] .akg-pop-up-button__button {
+  gap: var(--space-4); min-height: 0; height: var(--control-macos-regular); padding: 0 0 0 var(--space-12);
+  border-radius: var(--radius-regular); background: var(--button-bordered-fill); color: var(--label);
+  font-size: 13px; line-height: 16px; font-weight: 500;
+}
+[data-theme^="macos"] .akg-pop-up-button__button:active:not(:disabled),
+[data-theme^="macos"] .akg-pop-up-button--open .akg-pop-up-button__button {
+  opacity: 1; background: linear-gradient(var(--fill-secondary), var(--fill-secondary)), var(--button-bordered-fill);
+}
+[data-theme^="macos"] .akg-pop-up-button__chevron { width: var(--control-macos-regular); height: var(--control-macos-regular); color: var(--label); }
+[data-theme^="macos"] .akg-pop-up-button__chevron svg { width: 7px; height: 11px; }
+[data-theme^="macos"] .akg-pop-up-button--pull-down .akg-pop-up-button__chevron svg { width: 8px; height: 5px; }
+[data-theme^="macos"] .akg-pop-up-button--small .akg-pop-up-button__button { height: var(--control-macos-small); padding-left: var(--space-10); border-radius: var(--radius-small); font-size: 11px; line-height: 13px; }
+[data-theme^="macos"] .akg-pop-up-button--small .akg-pop-up-button__chevron { width: var(--control-macos-small); height: var(--control-macos-small); }
+[data-theme^="macos"] .akg-pop-up-button--small .akg-pop-up-button__chevron svg { width: 6px; height: 9.5px; }
+[data-theme^="macos"] .akg-pop-up-button--small.akg-pop-up-button--pull-down .akg-pop-up-button__chevron svg { width: 8px; height: 5px; }
+[data-theme^="macos"] .akg-pop-up-button--large .akg-pop-up-button__button { height: var(--control-macos-large); padding-left: var(--space-14); border-radius: var(--radius-full); }
+[data-theme^="macos"] .akg-pop-up-button--large .akg-pop-up-button__chevron { width: var(--control-macos-large); height: var(--control-macos-large); }
+[data-theme^="macos"] .akg-pop-up-button__label--placeholder { color: var(--label-secondary); }
+[data-theme^="macos"] .akg-pop-up-button__button:disabled { background: var(--button-disabled-fill); color: var(--label-tertiary); }
+[data-theme^="macos"] .akg-pop-up-button__button:disabled .akg-pop-up-button__chevron { color: var(--label-tertiary); }
+[data-theme^="macos"] .akg-pop-up-button__menu { top: calc(100% + var(--space-2)); min-width: 100%; }
+[data-theme^="macos"] .akg-pop-up-button__menu .akg-menu { width: 100%; }
+
+/* Stepper — iOS 27 "Steppers" and macOS 27 "Steppers / Content Area" symbols. */
+.akg-stepper {
+  display: inline-flex; align-items: center; gap: var(--space-12);
+  color: var(--label); font-size: 17px; line-height: 22px;
+}
+.akg-stepper__value { min-width: 2ch; text-align: right; font-variant-numeric: tabular-nums; }
+
+/* iOS: 92×32 capsule, two 46×32 halves, 1×24 separator */
+.akg-stepper__control {
+  position: relative; display: inline-flex; flex: none;
+  width: 92px; height: 32px; border-radius: var(--radius-full); overflow: hidden;
+  background: var(--fill-tertiary);
+}
+[data-theme="ios-dark"] .akg-stepper__control { background: var(--fill-quaternary); }
+.akg-stepper__btn {
+  flex: 1 1 0; display: inline-flex; align-items: center; justify-content: center;
+  margin: 0; padding: 0; border: 0; background: transparent; cursor: pointer;
+  color: var(--label); font-size: 17px;
+  -webkit-tap-highlight-color: transparent;
+}
+.akg-stepper__btn:active:not(:disabled) { background: var(--fill-quaternary); filter: brightness(0.92); }
+.akg-stepper__btn:disabled { cursor: default; color: var(--label-tertiary); }
+.akg-stepper__btn:focus-visible { outline-offset: -3px; }
+.akg-stepper__sep {
+  position: absolute; left: 45.5px; top: var(--space-4); width: 1px; height: 24px;
+  background: var(--label-tertiary); pointer-events: none;
+}
+.akg-stepper__glyph-mac { display: none; }
+.akg-stepper--disabled .akg-stepper__value { color: var(--label-tertiary); }
+
+/* macOS (Content Area): stacked up/down chevrons. Mini 13×16 · Small 17×20 · Regular 20×24 · Large 23×28 · XL 30×36 */
+[data-theme^="macos"] .akg-stepper { gap: var(--space-4); font-size: 13px; line-height: 16px; }
+[data-theme^="macos"] .akg-stepper__control {
+  flex-direction: column-reverse; width: 20px; height: var(--control-macos-regular);
+  border-radius: var(--radius-regular); background: var(--button-bordered-fill);
+}
+[data-theme^="macos"] .akg-stepper--small .akg-stepper__control { width: 17px; height: var(--control-macos-small); border-radius: var(--radius-small); }
+[data-theme^="macos"] .akg-stepper--large .akg-stepper__control { width: 23px; height: var(--control-macos-large); border-radius: 7px; }
+[data-theme^="macos"] .akg-stepper--mini .akg-stepper__control   { width: 13px; height: 16px; border-radius: var(--radius-mini); }
+[data-theme^="macos"] .akg-stepper--xlarge .akg-stepper__control { width: 30px; height: 36px; border-radius: 9px; }
+[data-theme^="macos"] .akg-stepper__btn { font-size: 9px; }
+[data-theme^="macos"] .akg-stepper--small .akg-stepper__btn { font-size: 8px; }
+[data-theme^="macos"] .akg-stepper--large .akg-stepper__btn { font-size: 10px; }
+[data-theme^="macos"] .akg-stepper--mini .akg-stepper__btn   { font-size: 6px; }
+[data-theme^="macos"] .akg-stepper--xlarge .akg-stepper__btn { font-size: 10px; }
+[data-theme^="macos"] .akg-stepper__btn:active:not(:disabled) { background: var(--fill); filter: none; }
+[data-theme^="macos"] .akg-stepper--disabled .akg-stepper__control { background: var(--button-disabled-fill); }
+[data-theme^="macos"] .akg-stepper__sep {
+  left: 3px; right: 3px; top: 50%; width: auto; height: 1px; margin-top: -0.5px;
+  border-radius: 0.5px; background: var(--glass-label-quaternary);
+}
+[data-theme^="macos"] .akg-stepper--mini .akg-stepper__sep   { left: 2px; right: 2px; }
+[data-theme^="macos"] .akg-stepper--xlarge .akg-stepper__sep { left: 5px; right: 5px; }
+[data-theme^="macos"] .akg-stepper__glyph-ios { display: none; }
+[data-theme^="macos"] .akg-stepper__glyph-mac { display: inline-flex; }
+[data-theme^="macos"] .akg-stepper__glyph-mac svg { width: 1em; height: 0.64em; }
+
+/* TextField — iOS 27 "Text Fields" (a 52pt grouped-list row) and macOS 27 "Text Fields" (bordered box). */
+.akg-text-field {
+  position: relative; display: flex; align-items: center; gap: var(--space-4);
+  width: 100%; height: var(--row-ios); padding: 0 var(--space-16);
+  background: transparent; color: var(--label);
+}
+.akg-text-field::after {
+  content: ""; position: absolute; left: var(--space-16); right: var(--space-16); bottom: 0;
+  height: var(--separator-width); background: var(--separator); pointer-events: none;
+}
+.akg-text-field:last-child::after { display: none; }
+
+.akg-text-field__input {
+  flex: 1; min-width: 0; height: 100%; margin: 0; padding: 0; border: 0; outline: 0;
+  background: transparent; color: var(--label); caret-color: var(--accent);
+  font-family: var(--font-sans); font-size: 17px; line-height: 22px; font-weight: 500; letter-spacing: 0;
+}
+.akg-text-field__input::placeholder { color: var(--label-tertiary); opacity: 1; }
+.akg-text-field__input:focus-visible { outline: 0; }
+.akg-text-field__input:disabled { color: var(--label-tertiary); }
+
+/* Clear button (xmark.circle.fill, 24pt, tertiary label) — shown while editing a non-empty field. */
+.akg-text-field__clear {
+  display: none; flex: none; align-items: center; justify-content: center;
+  width: 29px; height: 36px; margin: 0 calc(-1 * var(--space-4)) 0 0; padding: 0; border: 0;
+  background: transparent; color: var(--label-tertiary); cursor: pointer; font-size: 20px;
+  -webkit-tap-highlight-color: transparent;
+}
+.akg-text-field--has-value:focus-within .akg-text-field__clear { display: inline-flex; }
+
+/* macOS: white/window-colored box, 1px hairline border, 13pt medium. Mn 16 · Sm 20 · Rg 24 · Lg 28 · XL 36. */
+[data-theme^="macos"] .akg-text-field {
+  height: var(--control-macos-regular); padding: 0 6px; gap: 3px;
+  background: var(--background); border-radius: var(--radius-regular);
+  box-shadow: inset 0 0 0 1px var(--fill-tertiary);
+}
+[data-theme^="macos"] .akg-text-field::after { display: none; }
+[data-theme^="macos"] .akg-text-field--small { height: var(--control-macos-small); border-radius: var(--radius-small); }
+[data-theme^="macos"] .akg-text-field--large { height: var(--control-macos-large); padding: 0 var(--space-8); border-radius: 7px; }
+[data-theme^="macos"] .akg-text-field--mini   { height: 16px; border-radius: var(--radius-mini); }
+[data-theme^="macos"] .akg-text-field--xlarge { height: 36px; padding: 0 var(--space-10); border-radius: 9px; }
+[data-theme^="macos"] .akg-text-field__input { font-size: 13px; line-height: 16px; }
+[data-theme^="macos"] .akg-text-field--mini .akg-text-field__input { font-size: 10px; line-height: 12px; }
+[data-theme^="macos"] .akg-text-field--small .akg-text-field__input { font-size: 11px; line-height: 13px; }
+[data-theme^="macos"] .akg-text-field:focus-within { box-shadow: inset 0 0 0 1px var(--focus-ring), 0 0 0 3.5px var(--focus-ring); }
+[data-theme^="macos"] .akg-text-field--disabled { background: color-mix(in srgb, var(--background) 50%, transparent); box-shadow: inset 0 0 0 1px var(--fill-quaternary); }
+[data-theme^="macos"] .akg-text-field__clear { display: none !important; }
+
+/* SearchField — iOS 27 "Sidebar / Search" (filled) and "Toolbars / Search - Bottom" (glass); macOS 27 "Search Fields". */
+.akg-search-field {
+  position: relative; display: flex; align-items: center; gap: var(--space-8);
+  width: 100%; height: var(--tap-target); padding: 0 11px;
+  border-radius: var(--radius-full);
+  background: var(--fill-tertiary); color: var(--label-secondary);
+}
+.akg-search-field__icon { width: 26px; height: 22px; font-size: 19px; color: inherit; }
+
+.akg-search-field__input {
+  flex: 1; min-width: 0; height: 100%; margin: 0; padding: 0; border: 0; outline: 0;
+  -webkit-appearance: none; appearance: none; background: transparent;
+  color: var(--label); caret-color: var(--accent);
+  font-family: var(--font-sans); font-size: 17px; line-height: 22px; font-weight: 500; letter-spacing: 0;
+}
+.akg-search-field__input::placeholder { color: var(--label-secondary); opacity: 1; }
+.akg-search-field__input::-webkit-search-cancel-button,
+.akg-search-field__input::-webkit-search-decoration { -webkit-appearance: none; appearance: none; display: none; }
+.akg-search-field__input:focus-visible { outline: 0; }
+.akg-search-field--disabled { opacity: 0.5; }
+
+/* Clear button (xmark.circle.fill, 17pt, secondary) — shown whenever there is text. */
+.akg-search-field__clear {
+  display: none; flex: none; align-items: center; justify-content: center;
+  width: 20px; height: 22px; margin: 0; padding: 0; border: 0;
+  background: transparent; color: var(--label-secondary); cursor: pointer; font-size: 17px;
+  -webkit-tap-highlight-color: transparent;
+}
+.akg-search-field--has-value .akg-search-field__clear { display: inline-flex; }
+
+/* iOS glass: the 48pt Liquid Glass capsule from bottom toolbars and tab bars. */
+.akg-search-field--glass {
+  height: 48px; padding: 0 var(--space-10) 0 11px; gap: var(--space-4);
+  background: var(--glass-fill); color: var(--glass-label-secondary);
+  -webkit-backdrop-filter: blur(6px) saturate(180%); backdrop-filter: blur(6px) saturate(180%);
+  box-shadow: var(--shadow-glass-control), inset 0 0 0 0.5px var(--separator);
+}
+.akg-search-field--glass .akg-search-field__input { color: var(--glass-label); font-weight: 400; }
+.akg-search-field--glass .akg-search-field__input::placeholder { color: var(--glass-label-secondary); }
+.akg-search-field--glass .akg-search-field__clear { color: var(--glass-label-secondary); }
+
+/* macOS: window-colored capsule with a 1px hairline, 13pt text, vibrant labels. Mn 16 · Sm 20 · Rg 24 · Lg 28 · XL 36. */
+[data-theme^="macos"] .akg-search-field {
+  height: var(--control-macos-regular); padding: 0 var(--space-4) 0 var(--space-8); gap: 3px;
+  background: var(--background); color: var(--glass-label);
+  box-shadow: inset 0 0 0 1px var(--fill-tertiary);
+  -webkit-backdrop-filter: none; backdrop-filter: none;
+}
+[data-theme^="macos"] .akg-search-field--small { height: var(--control-macos-small); padding: 0 2.5px 0 6px; }
+[data-theme^="macos"] .akg-search-field--large { height: var(--control-macos-large); padding: 0 6px 0 var(--space-8); }
+[data-theme^="macos"] .akg-search-field--mini   { height: 16px; padding: 0 var(--space-2) 0 6px; }
+[data-theme^="macos"] .akg-search-field--xlarge { height: 36px; padding: 0 var(--space-8) 0 var(--space-10); }
+[data-theme^="macos"] .akg-search-field__icon { width: 16px; height: 15px; font-size: 12px; }
+[data-theme^="macos"] .akg-search-field__input { font-size: 13px; line-height: 16px; font-weight: 500; color: var(--glass-label); }
+[data-theme^="macos"] .akg-search-field--small .akg-search-field__input { font-size: 11px; line-height: 13px; }
+[data-theme^="macos"] .akg-search-field--mini .akg-search-field__input  { font-size: 10px; line-height: 12px; }
+[data-theme^="macos"] .akg-search-field__input::placeholder { color: var(--glass-label-secondary); }
+[data-theme^="macos"] .akg-search-field__clear { width: 16px; height: 15px; font-size: 13px; color: var(--glass-label-secondary); }
+[data-theme^="macos"] .akg-search-field--mini .akg-search-field__icon  { width: 14px; height: 13px; font-size: 10px; }
+[data-theme^="macos"] .akg-search-field--mini .akg-search-field__clear { width: 13px; height: 13px; font-size: 11px; }
+[data-theme^="macos"] .akg-search-field:focus-within { outline: 0; box-shadow: inset 0 0 0 1px var(--focus-ring), 0 0 0 3.5px var(--focus-ring); }
+[data-theme^="macos"] .akg-search-field--disabled { opacity: 1; background: color-mix(in srgb, var(--background) 50%, transparent); box-shadow: inset 0 0 0 1px var(--fill-quaternary); }
+[data-theme^="macos"] .akg-search-field--disabled .akg-search-field__input { color: var(--glass-label-tertiary); }
+
+/* ComboBox — macOS 27 "Combo Boxes" (Text Field + inset Menu Button). iOS has no combo box: an inset grouped row with a trailing chevron and a menu-style list. */
+.akg-combo-box { position: relative; display: block; width: 100%; color: var(--label); }
+
+/* iOS: 52pt grouped row, 26 corners, 17pt text, 44pt chevron button */
+.akg-combo-box__field {
+  display: flex; align-items: center; width: 100%; height: var(--row-ios); padding: 0 0 0 var(--space-16);
+  border-radius: var(--radius-grouped); background: var(--background-grouped-secondary);
+}
+.akg-combo-box__input {
+  flex: 1; min-width: 0; height: 100%; margin: 0; padding: 0; border: 0; outline: 0;
+  background: transparent; color: var(--label); caret-color: var(--accent);
+  font-family: var(--font-sans); font-size: 17px; line-height: 22px; font-weight: 400; letter-spacing: 0;
+}
+.akg-combo-box__input::placeholder { color: var(--label-tertiary); opacity: 1; }
+.akg-combo-box__input:focus-visible { outline: 0; }
+.akg-combo-box__input:disabled { color: var(--label-tertiary); }
+.akg-combo-box__button {
+  flex: none; display: inline-flex; align-items: center; justify-content: center;
+  width: var(--tap-target); height: var(--tap-target); margin: 0 var(--space-4) 0 0; padding: 0; border: 0;
+  background: transparent; color: var(--label-tertiary); cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.akg-combo-box__button:disabled { cursor: default; color: var(--label-quaternary); }
+.akg-combo-box__chevron { display: inline-flex; align-items: center; justify-content: center; }
+.akg-combo-box__chevron svg { display: block; width: 14px; height: 9px; }
+.akg-combo-box--open .akg-combo-box__chevron svg { transform: rotate(180deg); }
+
+/* Suggestion list: iOS menu look (Liquid Glass, 10pt padding, 42pt rows, 20pt-corner highlight) */
+.akg-combo-box__list {
+  position: absolute; z-index: 20; top: calc(100% + var(--space-8)); left: 0; right: 0;
+  display: flex; flex-direction: column; max-height: 260px; overflow-y: auto; padding: var(--space-10);
+  border-radius: var(--radius-menu); background: var(--menu-fill);
+  -webkit-backdrop-filter: blur(15px) saturate(180%); backdrop-filter: blur(15px) saturate(180%);
+  box-shadow: var(--shadow-glass), inset 0 0 0 0.5px var(--separator);
+}
+.akg-combo-box__option {
+  flex: none; display: flex; align-items: center; min-height: 42px; padding: 0 var(--space-16); border-radius: 20px; cursor: pointer;
+  font-size: 17px; line-height: 20px; color: var(--label); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.akg-combo-box__option--active { background: var(--fill-tertiary); }
+.akg-combo-box__option--selected { font-weight: 600; }
+
+/* macOS: 24pt text field (6 corners, 1px hairline, 13pt medium) with a 24×20 bordered menu button inset 2pt. Sm 20 · Lg 28. */
+[data-theme^="macos"] .akg-combo-box { display: inline-block; width: 200px; max-width: 100%; vertical-align: middle; }
+[data-theme^="macos"] .akg-combo-box__field {
+  height: var(--control-macos-regular); padding: 0 0 0 6px; border-radius: var(--radius-regular);
+  background: var(--background); box-shadow: inset 0 0 0 1px var(--fill-tertiary);
+}
+[data-theme^="macos"] .akg-combo-box__field:focus-within { box-shadow: inset 0 0 0 1px var(--focus-ring), 0 0 0 3.5px var(--focus-ring); }
+[data-theme^="macos"] .akg-combo-box__input { font-size: 13px; line-height: 16px; font-weight: 500; }
+[data-theme^="macos"] .akg-combo-box__button {
+  width: var(--control-macos-regular); height: 20px; margin: 0 var(--space-2) 0 var(--space-2);
+  border-radius: 4.5px; background: var(--button-bordered-fill); color: var(--label);
+}
+[data-theme^="macos"] .akg-combo-box__button:active:not(:disabled),
+[data-theme^="macos"] .akg-combo-box--open .akg-combo-box__button { background: linear-gradient(var(--fill-secondary), var(--fill-secondary)), var(--button-bordered-fill); }
+[data-theme^="macos"] .akg-combo-box__button:disabled { background: var(--button-disabled-fill); color: var(--label-tertiary); }
+[data-theme^="macos"] .akg-combo-box__chevron svg { width: 8px; height: 5px; }
+[data-theme^="macos"] .akg-combo-box--open .akg-combo-box__chevron svg { transform: none; }
+[data-theme^="macos"] .akg-combo-box--small .akg-combo-box__field { height: var(--control-macos-small); border-radius: var(--radius-small); }
+[data-theme^="macos"] .akg-combo-box--small .akg-combo-box__input { font-size: 11px; line-height: 13px; }
+[data-theme^="macos"] .akg-combo-box--small .akg-combo-box__button { width: 20px; height: 16px; border-radius: 3.5px; }
+[data-theme^="macos"] .akg-combo-box--large .akg-combo-box__field { height: var(--control-macos-large); padding-left: var(--space-8); border-radius: 7px; }
+[data-theme^="macos"] .akg-combo-box--large .akg-combo-box__button { height: var(--control-macos-regular); border-radius: 5.5px; }
+[data-theme^="macos"] .akg-combo-box--large .akg-combo-box__chevron svg { width: 9px; height: 6px; }
+[data-theme^="macos"] .akg-combo-box--disabled .akg-combo-box__field { background: color-mix(in srgb, var(--background) 50%, transparent); box-shadow: inset 0 0 0 1px var(--fill-quaternary); }
+
+/* macOS list: menu panel (12 corners, 5pt inset), 22pt rows, 13pt medium, accent highlight */
+[data-theme^="macos"] .akg-combo-box__list {
+  top: calc(100% + var(--space-4)); padding: 5px; border-radius: 12px;
+  -webkit-backdrop-filter: blur(20px) saturate(180%); backdrop-filter: blur(20px) saturate(180%);
+}
+[data-theme^="macos"] .akg-combo-box__option {
+  min-height: 22px; height: 22px; padding: 0 var(--space-8); border-radius: 7px;
+  font-size: 13px; line-height: 15px; font-weight: 500; letter-spacing: -0.2px; color: var(--glass-label);
+}
+[data-theme^="macos"] .akg-combo-box__option--active { background: var(--menu-highlight); color: var(--on-accent); }
+[data-theme^="macos"] .akg-combo-box__option--selected { font-weight: 700; }
+
+/* Slider — iOS 27 "Sliders" (37×24 knob, 6pt track) and macOS 27 "Sliders / Content Area / Standard" (20×16 knob, Regular). */
+.akg-slider {
+  --akg-slider-knob-w: 37px; --akg-slider-knob-h: 24px; --akg-slider-track-h: 6px; --akg-slider-tick-size: 4px;
+  display: flex; align-items: center; gap: var(--space-12); width: 100%;
+  color: var(--label-secondary);
+}
+.akg-slider__glyph { width: 32px; font-size: 17px; font-weight: 600; color: var(--label-secondary); }
+.akg-slider__control { position: relative; flex: 1; min-width: 0; height: var(--akg-slider-knob-h); }
+
+.akg-slider__track, .akg-slider__fill {
+  position: absolute; left: 0; top: calc(50% - var(--akg-slider-track-h) / 2);
+  height: var(--akg-slider-track-h); border-radius: var(--radius-full); pointer-events: none;
+}
+.akg-slider__track { right: 0; background: var(--fill); }
+.akg-slider__fill {
+  width: calc(var(--akg-slider-frac) * (100% - var(--akg-slider-knob-w)) + var(--akg-slider-knob-w) / 2);
+  background: var(--accent);
+}
+
+/* Tick marks sit 4pt under the track, centered on each stop the knob can reach. */
+.akg-slider__ticks { position: absolute; left: 0; right: 0; top: calc(50% + var(--akg-slider-track-h) / 2 + var(--space-4)); height: var(--akg-slider-tick-size); pointer-events: none; }
+.akg-slider__tick {
+  position: absolute; top: 0; width: var(--akg-slider-tick-size); height: var(--akg-slider-tick-size);
+  left: calc(var(--akg-slider-knob-w) / 2 + var(--akg-slider-tick) * (100% - var(--akg-slider-knob-w)) - var(--akg-slider-tick-size) / 2);
+  border-radius: var(--radius-full); background: var(--label-quaternary);
+}
+
+.akg-slider__knob {
+  position: absolute; top: 50%; left: calc(var(--akg-slider-frac) * (100% - var(--akg-slider-knob-w)));
+  width: var(--akg-slider-knob-w); height: var(--akg-slider-knob-h); transform: translateY(-50%);
+  border-radius: var(--radius-full); background: var(--control-knob); box-shadow: var(--shadow-knob);
+  pointer-events: none; transition: transform 0.15s ease;
+}
+
+/* The real <input type=range> sits on top, invisible, with a thumb the same size as the knob. */
+.akg-slider__input {
+  position: absolute; inset: 0; z-index: 1; width: 100%; height: 100%; margin: 0; padding: 0;
+  opacity: 0; cursor: pointer; -webkit-appearance: none; appearance: none; background: transparent;
+}
+.akg-slider__input::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: var(--akg-slider-knob-w); height: var(--akg-slider-knob-h); }
+.akg-slider__input::-moz-range-thumb { width: var(--akg-slider-knob-w); height: var(--akg-slider-knob-h); border: 0; }
+.akg-slider__input:focus-visible ~ .akg-slider__knob { outline: 3px solid var(--focus-ring); outline-offset: 1px; }
+.akg-slider__input:active:not(:disabled) ~ .akg-slider__knob { transform: translateY(-50%) scale(1.3); }
+.akg-slider__input:disabled { cursor: default; }
+.akg-slider--disabled { opacity: 0.5; }
+
+/* macOS Regular: 6pt track, 20×16 knob, 2pt tertiary tick dots. */
+[data-theme^="macos"] .akg-slider { --akg-slider-knob-w: 20px; --akg-slider-knob-h: 16px; --akg-slider-tick-size: 2px; gap: var(--space-8); }
+[data-theme^="macos"] .akg-slider__control { height: var(--control-macos-regular); }
+[data-theme^="macos"] .akg-slider__glyph { width: auto; font-size: 13px; font-weight: 500; }
+[data-theme^="macos"] .akg-slider__knob { background: var(--slider-knob, var(--control-knob)); box-shadow: var(--shadow-knob); }
+[data-theme^="macos"] .akg-slider__ticks { top: 18px; }
+[data-theme^="macos"] .akg-slider__tick { background: var(--label-tertiary); }
+[data-theme^="macos"] .akg-slider__input:active:not(:disabled) ~ .akg-slider__knob { transform: translateY(-50%) scale(1.25); }
+[data-theme^="macos"] .akg-slider--disabled { opacity: 1; }
+[data-theme^="macos"] .akg-slider--disabled .akg-slider__fill { display: none; }
+[data-theme^="macos"] .akg-slider--disabled .akg-slider__glyph { color: var(--label-tertiary); }
+
+/* DatePicker — iOS 27 "Date and Time Pickers" (Compact Picker, Inline Picker, Date Picker Month/Week/Dates, Time Picker, AM-PM).
+   macOS 27 has no date picker symbols: the same design is drawn at macOS sizes. */
+.akg-date-picker { color: var(--label); font-size: 17px; line-height: 22px; }
+.akg-date-picker button { font-family: inherit; margin: 0; border: 0; -webkit-tap-highlight-color: transparent; }
+
+/* Compact: 36pt capsule buttons (Buttons/Date · Buttons/Time), 4pt apart */
+.akg-date-picker--compact { position: relative; display: inline-flex; align-items: center; gap: var(--space-4); vertical-align: middle; }
+.akg-date-picker__pill {
+  height: 36px; padding: 0 var(--space-12); border-radius: var(--radius-full);
+  background: var(--fill-tertiary); color: var(--label); cursor: pointer;
+  font-size: 17px; line-height: 20px; font-weight: 400; white-space: nowrap; font-variant-numeric: tabular-nums;
+}
+.akg-date-picker__pill--open { color: var(--accent); }
+.akg-date-picker__pill:disabled { cursor: default; color: var(--label-tertiary); }
+
+/* Compact pop-up: Liquid Glass Regular Large, 320 wide, 13 corners, 12 side padding */
+.akg-date-picker__popover {
+  position: absolute; z-index: 20; top: calc(100% + var(--space-8));
+  width: 320px; padding: 0 var(--space-12); border-radius: 13px;
+  background: var(--glass-fill);
+  -webkit-backdrop-filter: blur(30px) saturate(180%); backdrop-filter: blur(30px) saturate(180%);
+  box-shadow: var(--shadow-glass), inset 0 0 0 0.5px var(--separator);
+}
+.akg-date-picker__popover--end { right: 0; }
+.akg-date-picker__popover--start { left: 0; }
+.akg-date-picker__popover--time { padding: 0 var(--space-16); }
+
+/* Graphical (inline): fills its container (370 wide in a 402 screen) */
+.akg-date-picker--graphical { display: block; width: 100%; }
+
+/* Header Collapsed: 40 tall, month-year 17 semibold + accent chevron, prev/next chevrons */
+.akg-date-picker__header { display: flex; justify-content: space-between; align-items: flex-start; height: 40px; padding: 13px 0 3px var(--space-8); }
+.akg-date-picker__title { display: inline-flex; align-items: center; gap: var(--space-4); padding-top: var(--space-2); font-size: 17px; line-height: 22px; font-weight: 600; white-space: nowrap; }
+.akg-date-picker__title-chevron { color: var(--accent); font-size: 13px; }
+.akg-date-picker__title-chevron svg { width: 0.62em; height: 0.92em; stroke-width: 2.6; }
+.akg-date-picker__nav { display: inline-flex; gap: var(--space-16); }
+.akg-date-picker__nav-btn {
+  display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 24px; padding: 0;
+  background: transparent; color: var(--glass-label); cursor: pointer; font-size: 20px; border-radius: var(--radius-mini);
+}
+.akg-date-picker__nav-btn svg { width: 0.55em; height: 0.85em; stroke-width: 2.2; }
+.akg-date-picker__nav-btn:disabled { cursor: default; color: var(--label-tertiary); }
+
+/* Date Picker Month: 8 top/bottom, weekday row 18 tall, weeks 44 tall 7 apart */
+.akg-date-picker__month { display: flex; flex-direction: column; gap: 7px; padding: var(--space-8) 0; }
+.akg-date-picker__week { display: grid; grid-template-columns: repeat(7, 1fr); height: 44px; align-items: center; justify-items: center; }
+.akg-date-picker__week--head { height: 18px; margin-bottom: -3px; }
+.akg-date-picker__weekday { font-size: 13px; line-height: 18px; font-weight: 700; color: var(--label-secondary); }
+.akg-date-picker__cell { display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; }
+
+/* Dates: 38 circles, 20pt numbers */
+.akg-date-picker__day {
+  width: 38px; height: 38px; padding: 0; border-radius: var(--radius-full);
+  background: transparent; color: var(--label); cursor: pointer;
+  font-size: 20px; line-height: 24px; font-weight: 400; font-variant-numeric: tabular-nums;
+}
+.akg-date-picker__day:hover:not(:disabled):not(.akg-date-picker__day--selected) { background: var(--fill-quaternary); }
+.akg-date-picker__day--today { color: var(--accent); font-weight: 500; background: color-mix(in srgb, var(--accent) 12%, transparent); }
+.akg-date-picker__day--today:hover:not(:disabled) { background: color-mix(in srgb, var(--accent) 18%, transparent); }
+.akg-date-picker__day--selected { background: var(--label); color: var(--background); font-weight: 600; }
+.akg-date-picker__day--selected.akg-date-picker__day--today { background: var(--accent); color: var(--on-accent); }
+.akg-date-picker__day:disabled { cursor: default; color: var(--label-tertiary); background: transparent; }
+
+/* Time Picker row: 52 tall, 8 padding; h:mm capsule + AM/PM segmented, 10 apart */
+.akg-date-picker__time { display: flex; flex-direction: column; }
+.akg-date-picker__calendar + .akg-date-picker__time { border-top: var(--separator-width) solid var(--separator-opaque); }
+.akg-date-picker__popover .akg-date-picker__calendar + .akg-date-picker__time { border-top-color: var(--separator); }
+.akg-date-picker__time-row { display: flex; align-items: center; justify-content: space-between; gap: var(--space-8); min-height: 52px; padding: var(--space-8); }
+.akg-date-picker__popover--time .akg-date-picker__time-row { padding-left: 0; padding-right: 0; }
+.akg-date-picker__time-label { font-size: 17px; line-height: 22px; white-space: nowrap; }
+.akg-date-picker__time-controls { display: inline-flex; align-items: center; gap: var(--space-10); }
+.akg-date-picker__clock {
+  display: inline-flex; align-items: center; justify-content: center; gap: 1px;
+  min-width: 67px; height: 36px; padding: 0 var(--space-8); border-radius: var(--radius-full);
+  background: var(--fill-tertiary); color: var(--label); cursor: pointer;
+  font-size: 17px; line-height: 22px; font-variant-numeric: tabular-nums;
+}
+.akg-date-picker__clock-h { min-width: 22px; text-align: right; }
+.akg-date-picker__clock-m { min-width: 22px; text-align: left; }
+.akg-date-picker__clock-colon { padding-bottom: 1px; }
+.akg-date-picker__clock--open { color: var(--accent); }
+.akg-date-picker__clock:disabled { cursor: default; color: var(--label-tertiary); }
+.akg-date-picker__ampm {
+  display: inline-flex; align-items: center; height: 36px; padding: var(--space-4) 6px;
+  border-radius: var(--radius-full); background: var(--fill-tertiary);
+}
+.akg-date-picker__ampm-btn {
+  width: 44px; height: 28px; padding: 0; border-radius: var(--radius-full);
+  background: transparent; color: var(--label); cursor: pointer;
+  font-size: 14px; line-height: 18px; font-weight: 500;
+}
+.akg-date-picker__ampm-btn--on { background: var(--segmented-thumb); font-weight: 600; box-shadow: var(--shadow-glass-control); }
+.akg-date-picker__ampm-btn:disabled { cursor: default; color: var(--label-tertiary); }
+
+/* Hour and minute lists shown under the row when the h:mm capsule is open */
+.akg-date-picker__lists { display: flex; justify-content: flex-end; align-items: center; gap: var(--space-4); padding: 0 var(--space-8) var(--space-8); }
+.akg-date-picker__popover .akg-date-picker__lists { padding-left: 0; padding-right: 0; }
+.akg-date-picker__list {
+  position: relative; display: flex; flex-direction: column; gap: var(--space-2); width: 64px; height: 164px; padding: var(--space-4);
+  overflow-y: auto; scroll-snap-type: y proximity; scrollbar-width: none;
+  border-radius: 13px; background: var(--fill-quaternary);
+}
+.akg-date-picker__list::-webkit-scrollbar { display: none; }
+.akg-date-picker__list-colon { font-size: 17px; color: var(--label-secondary); }
+.akg-date-picker__option {
+  flex: none; height: 32px; padding: 0; border-radius: var(--radius-regular);
+  background: transparent; color: var(--label); cursor: pointer; scroll-snap-align: center;
+  font-size: 17px; line-height: 22px; font-variant-numeric: tabular-nums;
+}
+.akg-date-picker__option:hover { background: var(--fill-tertiary); }
+.akg-date-picker__option--selected,
+.akg-date-picker__option--selected:hover { background: var(--fill-secondary); color: var(--accent); font-weight: 600; }
+
+/* macOS: no kit symbol, so the iOS design at macOS control sizes (24pt controls, 13pt text) */
+[data-theme^="macos"] .akg-date-picker { font-size: 13px; line-height: 16px; }
+[data-theme^="macos"] .akg-date-picker__pill {
+  height: var(--control-macos-regular); padding: 0 var(--space-8); border-radius: var(--radius-regular);
+  background: var(--button-bordered-fill); font-size: 13px; line-height: 16px;
+}
+[data-theme^="macos"] .akg-date-picker__popover { width: 248px; padding: 0 var(--space-10); border-radius: 20px; top: calc(100% + 6px); }
+[data-theme^="macos"] .akg-date-picker__popover--time { width: auto; min-width: 220px; padding: 0 var(--space-12); }
+[data-theme^="macos"] .akg-date-picker__header { height: 32px; padding: var(--space-10) 0 0 6px; }
+[data-theme^="macos"] .akg-date-picker__title { padding-top: 0; font-size: 13px; line-height: 16px; gap: 3px; }
+[data-theme^="macos"] .akg-date-picker__title-chevron { font-size: 10px; }
+[data-theme^="macos"] .akg-date-picker__nav { gap: var(--space-4); }
+[data-theme^="macos"] .akg-date-picker__nav-btn { width: 20px; height: 18px; font-size: 14px; color: var(--label-secondary); }
+[data-theme^="macos"] .akg-date-picker__nav-btn:hover:not(:disabled) { background: var(--fill-secondary); color: var(--label); }
+[data-theme^="macos"] .akg-date-picker__month { gap: var(--space-2); padding: 6px 0 var(--space-8); }
+[data-theme^="macos"] .akg-date-picker__week { height: 28px; }
+[data-theme^="macos"] .akg-date-picker__week--head { height: 16px; margin-bottom: 0; }
+[data-theme^="macos"] .akg-date-picker__weekday { font-size: 10px; line-height: 16px; font-weight: 600; }
+[data-theme^="macos"] .akg-date-picker__day { width: 26px; height: 26px; font-size: 13px; line-height: 16px; }
+[data-theme^="macos"] .akg-date-picker__time-row { min-height: 40px; padding: var(--space-8) 6px; }
+[data-theme^="macos"] .akg-date-picker__time-label { font-size: 13px; line-height: 16px; }
+[data-theme^="macos"] .akg-date-picker__time-controls { gap: 6px; }
+[data-theme^="macos"] .akg-date-picker__clock {
+  min-width: 52px; height: var(--control-macos-regular); padding: 0 6px; border-radius: var(--radius-regular);
+  background: var(--button-bordered-fill); font-size: 13px; line-height: 16px;
+}
+[data-theme^="macos"] .akg-date-picker__clock-h,
+[data-theme^="macos"] .akg-date-picker__clock-m { min-width: 16px; }
+[data-theme^="macos"] .akg-date-picker__ampm { height: var(--control-macos-regular); padding: var(--space-2); border-radius: var(--radius-regular); background: var(--button-bordered-fill); }
+[data-theme^="macos"] .akg-date-picker__ampm-btn { width: 32px; height: var(--control-macos-small); border-radius: var(--radius-mini); font-size: 11px; line-height: 13px; }
+[data-theme^="macos"] .akg-date-picker__ampm-btn--on { background: var(--accent); color: var(--on-accent); box-shadow: none; }
+[data-theme^="macos"] .akg-date-picker__lists { padding: 0 6px var(--space-8); }
+[data-theme^="macos"] .akg-date-picker__list { width: 48px; height: 124px; padding: 3px; border-radius: var(--radius-regular); }
+[data-theme^="macos"] .akg-date-picker__list-colon { font-size: 13px; }
+[data-theme^="macos"] .akg-date-picker__option { height: 22px; border-radius: var(--radius-mini); font-size: 13px; line-height: 16px; }
+[data-theme^="macos"] .akg-date-picker__option--selected,
+[data-theme^="macos"] .akg-date-picker__option--selected:hover { background: var(--accent); color: var(--on-accent); }
+
+/* ColorWell — iOS 27 "Color Wells and Pickers" (Color Picker (Wheel) 28pt well, Swatches 30pt dots)
+   and macOS 27 "Color Wells" (Color Pickers / Content Area / Standard: Mini 32×16 … XL 72×36). */
+.akg-color-well { position: relative; display: inline-flex; vertical-align: middle; }
+
+/* iOS: 28pt circle, 3pt multicolor ring, 18pt color dot inset 5pt */
+.akg-color-well__button {
+  position: relative; display: inline-flex; flex: none; width: 28px; height: 28px; padding: 0; margin: 0; border: 0;
+  border-radius: var(--radius-full); background: transparent; cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.akg-color-well__ring {
+  position: absolute; inset: 0; border-radius: var(--radius-full);
+  background: conic-gradient(var(--system-red), var(--system-yellow), var(--system-green), var(--system-cyan), var(--system-blue), var(--system-purple), var(--system-pink), var(--system-red));
+  -webkit-mask: radial-gradient(circle, transparent 10.5px, currentColor 11px);
+  mask: radial-gradient(circle, transparent 10.5px, currentColor 11px);
+}
+.akg-color-well__swatch {
+  position: absolute; inset: 5px; border-radius: var(--radius-full);
+  box-shadow: inset 0 0 0 0.5px var(--separator);
+}
+.akg-color-well__button:active:not(:disabled) { filter: brightness(0.92); }
+.akg-color-well--disabled .akg-color-well__button { cursor: default; }
+.akg-color-well--disabled .akg-color-well__ring,
+.akg-color-well--disabled .akg-color-well__swatch { opacity: 0.5; }
+
+/* Palette: glass panel of 30pt dots, selected dot gets a 2pt white ring inset 3pt */
+.akg-color-well__panel {
+  position: absolute; z-index: 20; top: calc(100% + var(--space-8));
+  padding: var(--space-16); border-radius: 13px;
+  background: var(--glass-fill);
+  -webkit-backdrop-filter: blur(30px) saturate(180%); backdrop-filter: blur(30px) saturate(180%);
+  box-shadow: var(--shadow-glass), inset 0 0 0 0.5px var(--separator);
+}
+.akg-color-well__panel--end { right: 0; }
+.akg-color-well__panel--start { left: 0; }
+.akg-color-well__grid { display: grid; grid-template-columns: repeat(6, 30px); gap: var(--space-14) var(--space-14); }
+.akg-color-well__dot {
+  position: relative; width: 30px; height: 30px; padding: 0; margin: 0; border: 0;
+  border-radius: var(--radius-full); cursor: pointer;
+  box-shadow: inset 0 0 0 0.5px var(--separator);
+}
+.akg-color-well__dot--selected::after {
+  content: ""; position: absolute; inset: 3px; border-radius: var(--radius-full);
+  border: 2px solid var(--control-knob);
+  box-shadow: 0 0 0 0.5px var(--separator), inset 0 0 0 0.5px var(--separator);
+}
+.akg-color-well__dot:hover:not(.akg-color-well__dot--selected) { filter: brightness(0.94); }
+.akg-color-well__dot:focus-visible { outline-offset: 2px; }
+
+/* macOS: bordered capsule with a 3pt inset color capsule */
+[data-theme^="macos"] .akg-color-well__button { width: 48px; height: var(--control-macos-regular); padding: 3px; background: var(--button-bordered-fill); }
+[data-theme^="macos"] .akg-color-well--mini .akg-color-well__button { width: 32px; height: 16px; }
+[data-theme^="macos"] .akg-color-well--small .akg-color-well__button { width: 40px; height: var(--control-macos-small); }
+[data-theme^="macos"] .akg-color-well--large .akg-color-well__button { width: 56px; height: var(--control-macos-large); }
+[data-theme^="macos"] .akg-color-well--xl .akg-color-well__button { width: 72px; height: 36px; }
+[data-theme^="macos"] .akg-color-well--open .akg-color-well__button { background: var(--accent); }
+[data-theme^="macos"] .akg-color-well--disabled .akg-color-well__button { background: var(--button-disabled-fill); }
+[data-theme^="macos"] .akg-color-well__ring { display: none; }
+[data-theme^="macos"] .akg-color-well__swatch { inset: 3px; box-shadow: inset 0 0 0 1px var(--label-quaternary); }
+[data-theme^="macos"] .akg-color-well__button:active:not(:disabled) { filter: none; background: var(--fill); }
+[data-theme^="macos"] .akg-color-well__panel { top: calc(100% + 6px); padding: var(--space-12); border-radius: var(--radius-regular); background: var(--menu-fill); }
+[data-theme^="macos"] .akg-color-well__grid { grid-template-columns: repeat(6, 20px); gap: var(--space-8); }
+[data-theme^="macos"] .akg-color-well__dot { width: 20px; height: 20px; border-radius: var(--radius-mini); box-shadow: inset 0 0 0 1px var(--label-quaternary); }
+[data-theme^="macos"] .akg-color-well__dot--selected::after { inset: -3px; border-radius: var(--radius-regular); border-color: var(--accent); box-shadow: none; }
+
+/* List — iOS 27 "Lists" (Grouped Table View, Rows, Header, Footer, Buttons) and macOS 27 "Forms" (Example Forms). */
+.akg-list { margin: 0; color: var(--label); }
+.akg-list + .akg-list { margin-top: var(--space-20); }
+
+/* Section header: Nested (default) · Prominent · Extra Prominent */
+.akg-list__header { display: flex; align-items: flex-end; justify-content: space-between; gap: var(--space-16); padding: var(--space-10) var(--space-16); }
+.akg-list__header-title { min-width: 0; }
+.akg-list__header--default .akg-list__header-title { font-size: 17px; line-height: 22px; font-weight: 600; color: var(--label-secondary); }
+.akg-list__header--prominent .akg-list__header-title { font-size: 20px; line-height: 25px; font-weight: 600; color: var(--label); }
+.akg-list__header--extra-prominent .akg-list__header-title { font-size: 22px; line-height: 28px; font-weight: 700; color: var(--label); }
+.akg-list__header-action { flex: none; padding-bottom: 1px; font-size: 15px; line-height: 20px; color: var(--accent); }
+.akg-list__header-action .akg-button { height: auto; padding: 0; font-size: inherit; line-height: inherit; }
+
+.akg-list__footer { padding: var(--space-8) var(--space-16) 6px; font-size: 13px; line-height: 16px; color: var(--label-secondary); }
+
+/* Inset grouped table */
+.akg-list__group {
+  list-style: none; margin: 0; padding: 0; overflow: hidden;
+  background: var(--background-grouped-secondary); border-radius: var(--radius-grouped);
+}
+
+/* Row (Default 52 · Large 68 with subtitle) */
+.akg-list-row { display: block; margin: 0; padding: 0; }
+.akg-list-row__content {
+  display: flex; align-items: center; gap: var(--space-16); width: 100%; min-height: var(--row-ios);
+  margin: 0; padding: 0 var(--space-16); border: 0; background: transparent; text-align: left;
+  font: inherit; color: inherit; text-decoration: none; -webkit-tap-highlight-color: transparent;
+}
+button.akg-list-row__content, a.akg-list-row__content { cursor: pointer; }
+.akg-list-row--interactive .akg-list-row__content:active:not(:disabled) { background: var(--fill-tertiary); }
+.akg-list-row__content:focus-visible { outline-offset: -3px; }
+.akg-list-row--tall .akg-list-row__content { min-height: 68px; }
+
+.akg-list-row__icon { width: 30px; font-size: 22px; color: var(--accent); }
+.akg-list-row__body {
+  flex: 1; min-width: 0; align-self: stretch; display: flex; align-items: center; justify-content: space-between; gap: var(--space-16);
+  border-bottom: var(--separator-width) solid var(--separator);
+}
+.akg-list-row:last-child .akg-list-row__body { border-bottom: 0; }
+
+.akg-list-row__text { display: flex; flex-direction: column; flex: 1 1 auto; min-width: 0; padding: 15px 0; }
+.akg-list-row--tall .akg-list-row__text { padding: 14px 0; }
+.akg-list-row__title { font-size: 17px; line-height: 22px; font-weight: 400; color: var(--label); overflow-wrap: break-word; }
+.akg-list-row__subtitle { font-size: 15px; line-height: 18px; color: var(--label-secondary); overflow-wrap: break-word; }
+
+.akg-list-row__trailing { display: flex; align-items: center; gap: var(--space-16); flex: 0 1 auto; min-width: 0; max-width: 60%; }
+.akg-list-row__trailing > * { flex: none; }
+.akg-list-row__trailing > .akg-list-row__detail { flex: 0 1 auto; min-width: 0; }
+.akg-list-row__detail { font-size: 17px; line-height: 22px; color: var(--label-secondary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.akg-list-row__chevron { color: var(--label-tertiary); }
+.akg-list-row__chevron svg { width: 9px; height: 16px; }
+.akg-list-row__check { font-size: 17px; color: var(--label); }
+.akg-list-row__accessory { display: inline-flex; align-items: center; }
+.akg-list-row__switch {
+  -webkit-appearance: none; appearance: none; position: relative; flex: none; width: 64px; height: 28px; margin: 0;
+  border-radius: var(--radius-full); background: var(--fill); cursor: pointer; transition: background 0.2s;
+}
+.akg-list-row__switch::before {
+  content: ""; position: absolute; top: 2px; left: 2px; width: 38px; height: 24px;
+  border-radius: var(--radius-full); background: var(--control-knob); box-shadow: var(--shadow-knob); transition: transform 0.2s;
+}
+.akg-list-row__switch:checked { background: var(--toggle-on); }
+.akg-list-row__switch:checked::before { transform: translateX(22px); }
+.akg-list-row__switch:disabled { opacity: 0.5; cursor: default; }
+
+/* Button rows */
+.akg-list-row--action .akg-list-row__title { color: var(--accent); }
+.akg-list-row--destructive .akg-list-row__title { color: var(--destructive); }
+.akg-list-row--disabled .akg-list-row__title,
+.akg-list-row--disabled .akg-list-row__detail { color: var(--label-tertiary); }
+.akg-list-row--disabled .akg-list-row__content { cursor: default; }
+
+/* macOS: grouped form — 3% fill well, 12px corners, 10px side inset, 40pt rows, 13pt medium */
+[data-theme^="macos"] .akg-list + .akg-list { margin-top: var(--space-20); }
+[data-theme^="macos"] .akg-list__header { padding: 0 var(--space-10) 6px; align-items: center; }
+[data-theme^="macos"] .akg-list__header .akg-list__header-title { font-size: 13px; line-height: 16px; font-weight: 700; color: var(--label); }
+[data-theme^="macos"] .akg-list__header-action { padding: 0; font-size: 13px; line-height: 16px; font-weight: 500; }
+[data-theme^="macos"] .akg-list__footer { padding: 6px var(--space-10) 0; font-size: 11px; line-height: 14px; font-weight: 500; }
+[data-theme^="macos"] .akg-list__group { background: var(--fill-quaternary); border-radius: 12px; padding: 0 var(--space-10); }
+[data-theme^="macos"] .akg-list-row__content {
+  gap: var(--space-8); min-height: 40px; padding: var(--space-12) 0;
+  border-bottom: 1px solid var(--fill-tertiary);
+}
+[data-theme^="macos"] .akg-list-row:last-child .akg-list-row__content { border-bottom: 0; }
+[data-theme^="macos"] .akg-list-row--tall .akg-list-row__content { min-height: 40px; }
+[data-theme^="macos"] .akg-list-row--interactive .akg-list-row__content:active:not(:disabled) { background: var(--fill-quinary); }
+[data-theme^="macos"] .akg-list-row__icon { width: 20px; font-size: 13px; color: var(--label-secondary); }
+[data-theme^="macos"] .akg-list-row__body { border-bottom: 0; gap: var(--space-10); }
+[data-theme^="macos"] .akg-list-row__text,
+[data-theme^="macos"] .akg-list-row--tall .akg-list-row__text { padding: 0; gap: var(--space-2); }
+[data-theme^="macos"] .akg-list-row__title { font-size: 13px; line-height: 16px; font-weight: 500; }
+[data-theme^="macos"] .akg-list-row__subtitle { font-size: 11px; line-height: 14px; font-weight: 500; }
+[data-theme^="macos"] .akg-list-row__trailing { gap: var(--space-10); }
+[data-theme^="macos"] .akg-list-row__detail { font-size: 13px; line-height: 16px; font-weight: 500; }
+[data-theme^="macos"] .akg-list-row__chevron { color: var(--label-secondary); }
+[data-theme^="macos"] .akg-list-row__chevron svg { width: 7px; height: 12px; }
+[data-theme^="macos"] .akg-list-row__check { font-size: 13px; }
+[data-theme^="macos"] .akg-list-row__switch { width: 36px; height: 16px; }
+[data-theme^="macos"] .akg-list-row__switch::before { top: 1px; left: 1px; width: 22px; height: 14px; }
+[data-theme^="macos"] .akg-list-row__switch:checked::before { transform: translateX(12px); }
+
+/* GroupBox — macOS 27 "Group Boxes" symbol; iOS uses the inset grouped section from iOS 27 "Lists" (Grouped Table View). */
+.akg-group-box { margin: 0; color: var(--label); }
+.akg-group-box + .akg-group-box { margin-top: var(--space-20); }
+
+/* iOS: inset grouped section — white / dark-gray card, 26pt corners, 16pt padding, 17pt semibold secondary header */
+.akg-group-box__title {
+  margin: 0; padding: var(--space-10) var(--space-16);
+  font-size: 17px; line-height: 22px; font-weight: 600; color: var(--label-secondary);
+}
+.akg-group-box__box {
+  display: flex; flex-direction: column; gap: var(--space-12);
+  padding: var(--space-16);
+  background: var(--background-grouped-secondary); border-radius: var(--radius-grouped);
+  font-size: 17px; line-height: 22px;
+}
+.akg-group-box__footer {
+  margin: 0; padding: var(--space-8) var(--space-16) 6px;
+  font-size: 13px; line-height: 16px; color: var(--label-secondary);
+}
+
+/* macOS: Group Box — Fills/4 Quaternary (3%) well, 12pt corners; 13pt bold title above, 13pt medium content */
+[data-theme^="macos"] .akg-group-box__title { padding: 0 var(--space-10) 6px; font-size: 13px; line-height: 16px; font-weight: 700; color: var(--label); }
+[data-theme^="macos"] .akg-group-box__box {
+  gap: var(--space-10); padding: var(--space-12) var(--space-10);
+  background: var(--fill-quaternary); border-radius: 12px;
+  font-size: 13px; line-height: 16px; font-weight: 500;
+}
+[data-theme^="macos"] .akg-group-box__footer { padding: 6px var(--space-10) 0; font-size: 11px; line-height: 14px; font-weight: 500; }
+
+/* DisclosureGroup — macOS 27 "Forms / Rows - Leading / Disclosure" (triangle) and "Disclosure Buttons / Content Area"
+   symbols; iOS 27 "Lists / Rows / Accessories - Trailing / Disclosure Collapsed · Expanded". */
+.akg-disclosure { color: var(--label); }
+.akg-disclosure__header {
+  display: flex; align-items: center; gap: var(--space-12); width: 100%;
+  margin: 0; border: 0; background: transparent; cursor: pointer; text-align: left;
+  font-family: var(--font-sans); color: var(--label);
+  -webkit-tap-highlight-color: transparent;
+}
+.akg-disclosure__label { flex: 1 1 auto; min-width: 0; }
+.akg-disclosure__content[hidden] { display: none; }
+
+/* iOS: a 52pt list row, 17pt label, trailing 17pt semibold accent chevron (right when collapsed, down when expanded) */
+.akg-disclosure__header { min-height: var(--row-ios); padding: 0 var(--space-16); font-size: 17px; line-height: 22px; font-weight: 400; }
+.akg-disclosure__header:active:not(:disabled) { background: var(--fill-tertiary); }
+.akg-disclosure__chevron {
+  order: 2; width: 16px; height: 16px; font-size: 16px; color: var(--accent);
+  transition: transform 0.2s ease;
+}
+.akg-disclosure--open .akg-disclosure__chevron { transform: rotate(90deg); }
+.akg-disclosure__header:disabled { cursor: default; color: var(--label-tertiary); }
+.akg-disclosure__header:disabled .akg-disclosure__chevron { color: var(--label-tertiary); }
+
+/* Disclosure button: on iOS a 28pt bordered circle with an accent chevron */
+.akg-disclosure__button {
+  order: 2; flex: none; display: inline-flex; align-items: center; justify-content: center;
+  width: var(--control-ios-small); height: var(--control-ios-small); padding: 0; margin: 0; border: 0;
+  border-radius: var(--radius-full); background: var(--button-bordered-fill); color: var(--accent);
+  font-size: 14px; cursor: pointer;
+}
+.akg-disclosure__button .akg-sym { transition: transform 0.2s ease; }
+.akg-disclosure__button--open .akg-sym { transform: rotate(180deg); }
+button.akg-disclosure__button:disabled, .akg-disclosure__header:disabled .akg-disclosure__button { cursor: default; background: var(--button-disabled-fill); color: var(--label-tertiary); }
+
+/* macOS: a 40pt form row, leading 13pt semibold chevron in an 18pt slot, 13pt medium label; content aligns with the label */
+[data-theme^="macos"] .akg-disclosure__header { min-height: 40px; padding: var(--space-12) 0; gap: 0; font-size: 13px; line-height: 16px; font-weight: 500; }
+[data-theme^="macos"] .akg-disclosure__header:active:not(:disabled) { background: transparent; }
+[data-theme^="macos"] .akg-disclosure__chevron {
+  order: 0; width: 18px; height: 16px; justify-content: flex-start; font-size: 12px; color: var(--label);
+}
+[data-theme^="macos"] .akg-disclosure__chevron svg { transition: transform 0.2s ease; }
+[data-theme^="macos"] .akg-disclosure__chevron { transition: none; }
+[data-theme^="macos"] .akg-disclosure--open .akg-disclosure__chevron { transform: none; }
+[data-theme^="macos"] .akg-disclosure--open .akg-disclosure__chevron svg { transform: rotate(90deg); }
+[data-theme^="macos"] .akg-disclosure__header:disabled .akg-disclosure__chevron { color: var(--label-tertiary); }
+[data-theme^="macos"] .akg-disclosure--chevron .akg-disclosure__content { padding-left: 18px; }
+
+/* macOS disclosure button (Content Area, Regular): 24×24, 6pt corners, bordered fill, 13pt semibold chevron */
+[data-theme^="macos"] .akg-disclosure__button {
+  width: var(--control-macos-regular); height: var(--control-macos-regular);
+  border-radius: var(--radius-regular); color: var(--label); font-size: 11px;
+}
+[data-theme^="macos"] .akg-disclosure--button .akg-disclosure__header { gap: var(--space-8); }
+[data-theme^="macos"] .akg-disclosure__header:active:not(:disabled) .akg-disclosure__button,
+[data-theme^="macos"] button.akg-disclosure__button:active:not(:disabled) { box-shadow: inset 0 0 0 99px var(--fill-secondary); }
+
+/* ProgressIndicator — iOS 27 "Progress Indicators" (Table View Row bar, Indeterminate Spinner S/R/L, Spinner with Label)
+   and macOS 27 "Progress Indicators / Content Area" (Linear Sm/Rg, Circular Indeterminate Sm/Rg). */
+.akg-progress { color: var(--label-secondary); }
+
+/* Bar: iOS 4pt, full radius, accent fill on a fill track */
+.akg-progress--bar { display: block; width: 100%; }
+.akg-progress__track {
+  position: relative; overflow: hidden; height: 4px; border-radius: var(--radius-full);
+  background: var(--progress-track, var(--fill)); box-shadow: inset 0 0 0 0.5px var(--progress-track-border, transparent);
+}
+.akg-progress__fill { position: absolute; top: 0; bottom: 0; left: 0; width: 0; border-radius: var(--radius-full); background: var(--accent); transition: width 0.2s ease; }
+.akg-progress--indeterminate .akg-progress__fill { width: 60%; animation: akg-progress-slide 1.4s ease-in-out infinite; }
+@keyframes akg-progress-slide { 0% { left: -60%; } 100% { left: 100%; } }
+
+/* Spinner: eight spokes in the secondary label color; S 14 · R 20 · L 35 */
+.akg-progress--spinner { display: inline-flex; align-items: center; gap: var(--space-8); }
+.akg-progress__spinner { display: inline-flex; flex: none; }
+.akg-progress__spokes { display: block; animation: akg-progress-spin 1s steps(8, end) infinite; }
+.akg-progress__spokes--macos { display: none; }
+.akg-progress--small .akg-progress__spokes   { width: 14px; height: 14px; }
+.akg-progress--regular .akg-progress__spokes { width: 20px; height: 20px; }
+.akg-progress--large .akg-progress__spokes   { width: 35px; height: 35px; }
+.akg-progress__label { font-size: 17px; line-height: 22px; color: var(--label-secondary); }
+@keyframes akg-progress-spin { to { transform: rotate(360deg); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .akg-progress__spokes { animation-duration: 2s; }
+  .akg-progress--indeterminate .akg-progress__fill { animation: none; left: 20%; }
+}
+
+/* macOS: linear Rg 10 / Sm 6 with a hairline border; circular spinner Sm 16 / Rg 32 */
+[data-theme^="macos"] .akg-progress__track {
+  height: 10px;
+  background: var(--progress-track, var(--fill-secondary)); box-shadow: inset 0 0 0 0.5px var(--progress-track-border, var(--fill-tertiary));
+}
+[data-theme^="macos"] .akg-progress--small .akg-progress__track { height: 6px; }
+[data-theme^="macos"] .akg-progress__spokes--ios { display: none; }
+[data-theme^="macos"] .akg-progress__spokes--macos { display: block; }
+[data-theme^="macos"] .akg-progress--small .akg-progress__spokes { width: 16px; height: 16px; }
+[data-theme^="macos"] .akg-progress--regular .akg-progress__spokes,
+[data-theme^="macos"] .akg-progress--large .akg-progress__spokes { width: 32px; height: 32px; }
+[data-theme^="macos"] .akg-progress__label { font-size: 13px; line-height: 16px; font-weight: 500; }
+
+/* EmptyState — iOS 27 "Examples / Empty State / Large Symbol · Symbol in Circle · Title and Subtitle" (ContentUnavailableView).
+   Fills its container and centres a symbol, a 22pt bold title and a 22pt medium description, 16pt apart, inset 32pt. */
+.akg-empty-state {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--space-16);
+  width: 100%; height: 100%; padding: var(--space-16) calc(2 * var(--space-16));
+  text-align: center; color: var(--label);
+}
+.akg-empty-state__symbol { display: flex; align-items: center; justify-content: center; flex: none; color: var(--label-secondary); }
+.akg-empty-state__symbol--tinted { color: var(--akg-empty-state-tint); }
+/* Large Symbol: 40pt Large Title glyph (about 52×41) */
+.akg-empty-state__symbol--large { height: 41px; font-size: 44px; }
+/* Symbol in Circle: 50pt circle, 21pt semibold glyph */
+.akg-empty-state__symbol--circle { width: 50px; height: 50px; border-radius: var(--radius-full); font-size: 22px; background: var(--fill-tertiary); }
+.akg-empty-state__symbol--circle.akg-empty-state__symbol--tinted { background: color-mix(in srgb, var(--akg-empty-state-tint) 15%, transparent); }
+
+.akg-empty-state__text { display: flex; flex-direction: column; gap: var(--space-2); max-width: 338px; }
+.akg-empty-state__title { font-size: 22px; line-height: 26px; font-weight: 700; color: var(--label); }
+.akg-empty-state__description { font-size: 22px; line-height: 28px; font-weight: 500; color: var(--label-secondary); }
+/* Title and Subtitle (no symbol): the kit sets both lines in the secondary label color */
+.akg-empty-state--no-symbol .akg-empty-state__title { color: var(--label-secondary); }
+.akg-empty-state--no-symbol .akg-empty-state__description { line-height: 26px; }
+
+.akg-empty-state__actions { display: flex; flex-direction: column; align-items: center; gap: var(--space-8); margin-top: var(--space-8); }
+
+/* macOS: same pattern on the macOS type scale — 17pt bold title, 13pt description, 32pt symbol, 40pt circle */
+[data-theme^="macos"] .akg-empty-state { gap: var(--space-12); padding: var(--space-20); }
+[data-theme^="macos"] .akg-empty-state__symbol--large { height: 32px; font-size: 34px; }
+[data-theme^="macos"] .akg-empty-state__symbol--circle { width: 40px; height: 40px; font-size: 18px; }
+[data-theme^="macos"] .akg-empty-state__text { gap: var(--space-4); max-width: 300px; }
+[data-theme^="macos"] .akg-empty-state__title { font-size: 17px; line-height: 22px; font-weight: 700; }
+[data-theme^="macos"] .akg-empty-state__description,
+[data-theme^="macos"] .akg-empty-state--no-symbol .akg-empty-state__description { font-size: 13px; line-height: 16px; font-weight: 400; }
+[data-theme^="macos"] .akg-empty-state__actions { flex-direction: row; margin-top: var(--space-4); }
+
+/* Notification — iOS 27 "System / Notifications / Banners" (1 Single, 1 Single with Image, 2 Double) and macOS 27 "Notifications" (Single, Stacked) symbols. */
+.akg-notification { position: relative; display: block; width: 100%; margin: 0; color: var(--glass-label); font-family: var(--font-sans); }
+.akg-notification--stacked { margin-bottom: var(--space-8); }
+
+/* iOS banner: Liquid Glass (Clear), 22pt corners, 12 / 14pt padding, 10pt gaps */
+.akg-notification__banner {
+  position: relative; display: flex; flex-direction: column; gap: var(--space-10);
+  padding: var(--space-12) var(--space-14);
+  border-radius: 22px;
+  background: var(--glass-fill);
+  -webkit-backdrop-filter: blur(15px) saturate(180%); backdrop-filter: blur(15px) saturate(180%);
+  box-shadow: var(--shadow-glass-control), inset 0 0 0 0.5px var(--separator);
+}
+/* Stacked: the next banner peeks 8pt below, inset 20pt per side, 24pt corners */
+.akg-notification__plate {
+  position: absolute; left: var(--space-20); right: var(--space-20); bottom: calc(-1 * var(--space-8)); height: 32px;
+  border-radius: 24px;
+  background: var(--glass-fill);
+  -webkit-backdrop-filter: blur(15px) saturate(180%); backdrop-filter: blur(15px) saturate(180%);
+  box-shadow: var(--shadow-glass-control), inset 0 0 0 0.5px var(--separator);
+}
+
+.akg-notification__main { display: flex; align-items: flex-start; gap: var(--space-10); min-width: 0; }
+/* 38pt app icon, centered against the text */
+.akg-notification__icon-col { flex: none; align-self: stretch; display: flex; align-items: center; }
+.akg-notification__icon {
+  display: flex; align-items: center; justify-content: center; overflow: hidden;
+  width: 38px; height: 38px; border-radius: 9px; font-size: 22px;
+}
+.akg-notification__icon > * { width: 100%; height: 100%; display: block; object-fit: cover; }
+
+/* Title 15pt semibold, description 15pt regular, time 15pt secondary on the title line */
+.akg-notification__text { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; justify-content: center; align-self: center; }
+.akg-notification__title { margin: 0; font-size: 15px; line-height: 17px; font-weight: 600; color: var(--glass-label); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.akg-notification__body {
+  margin: 0; font-size: 15px; line-height: 18px; font-weight: 400; color: var(--glass-label);
+  display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden;
+}
+.akg-notification__trailing { flex: none; display: flex; flex-direction: column; align-items: flex-end; gap: 5px; }
+.akg-notification__time { font-size: 15px; line-height: 17px; font-weight: 400; color: var(--glass-label-secondary); white-space: nowrap; }
+.akg-notification__image { display: block; width: 32px; height: 32px; overflow: hidden; border-radius: var(--radius-regular); }
+.akg-notification__image > * { width: 100%; height: 100%; display: block; object-fit: cover; }
+
+/* Actions under the content, aligned with the text */
+.akg-notification__actions { display: flex; flex-wrap: wrap; gap: var(--space-8); padding-left: 48px; }
+.akg-notification__actions .akg-button--bordered { background: var(--fill-tertiary); }
+
+/* Close: 20pt glass circle on the leading top corner, shown on hover / focus (always on touch screens) */
+.akg-notification__close {
+  position: absolute; top: -6px; left: -6px; z-index: 1;
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 20px; height: 20px; padding: 0; margin: 0; border: 0; cursor: pointer;
+  border-radius: var(--radius-full); font-size: 10px;
+  color: var(--glass-label-secondary); background: var(--glass-fill);
+  -webkit-backdrop-filter: blur(15px) saturate(180%); backdrop-filter: blur(15px) saturate(180%);
+  box-shadow: var(--shadow-glass-control), inset 0 0 0 0.5px var(--separator);
+  opacity: 0; transition: opacity 0.15s;
+}
+.akg-notification:hover .akg-notification__close,
+.akg-notification:focus-within .akg-notification__close { opacity: 1; }
+@media (hover: none) { .akg-notification__close { opacity: 1; } }
+
+/* macOS: 344pt banner, 20pt corners, 12 / 14 / 12 / 10pt padding, 8pt gaps, 32pt icon in a 40pt column, 13pt text */
+[data-theme^="macos"] .akg-notification { max-width: 344px; }
+[data-theme^="macos"] .akg-notification__banner {
+  gap: var(--space-8); padding: var(--space-12) var(--space-14) var(--space-12) var(--space-10);
+  border-radius: 20px; min-height: 78px; justify-content: center;
+}
+[data-theme^="macos"] .akg-notification__plate { left: var(--space-16); right: var(--space-16); border-radius: 16px; }
+[data-theme^="macos"] .akg-notification__main { gap: var(--space-8); }
+[data-theme^="macos"] .akg-notification__icon-col { width: 40px; padding: 0 var(--space-4); }
+[data-theme^="macos"] .akg-notification__icon { width: 32px; height: 32px; border-radius: 7px; font-size: 18px; }
+[data-theme^="macos"] .akg-notification__text { align-self: flex-start; }
+[data-theme^="macos"] .akg-notification__title { font-size: 13px; line-height: 16px; font-weight: 700; }
+[data-theme^="macos"] .akg-notification__body { font-size: 13px; line-height: 16px; }
+[data-theme^="macos"] .akg-notification__trailing { gap: var(--space-8); }
+[data-theme^="macos"] .akg-notification__time { font-size: 11px; line-height: 14px; }
+[data-theme^="macos"] .akg-notification__actions { padding-left: 48px; }
+[data-theme^="macos"] .akg-notification__actions .akg-button--bordered { background: var(--fill-secondary); }
+
+/* Tooltip — macOS 27 "Tooltips" (19pt tall, 3/6 padding, 11pt medium, blurred translucent fill). Drawn the same on iOS themes. */
+.akg-tooltip { position: relative; display: inline-flex; vertical-align: middle; }
+.akg-tooltip__bubble {
+  position: absolute; z-index: 30; display: none; width: max-content; max-width: 240px;
+  padding: 3px 6px; border-radius: 0;
+  background: var(--tooltip-fill, var(--material-thick));
+  -webkit-backdrop-filter: blur(22px) saturate(180%); backdrop-filter: blur(22px) saturate(180%);
+  box-shadow: var(--shadow-tooltip, var(--shadow-knob)), inset 0 0 0 0.6px var(--tooltip-border, transparent);
+  color: var(--tooltip-label, var(--label-secondary));
+  font-family: var(--font-sans); font-size: 11px; line-height: 13px; font-weight: 500; letter-spacing: 0;
+  text-align: left; white-space: normal; pointer-events: none;
+}
+.akg-tooltip__bubble--shown { display: block; }
+.akg-tooltip--bottom .akg-tooltip__bubble { top: calc(100% + var(--space-4)); left: 50%; transform: translateX(-50%); }
+.akg-tooltip--top .akg-tooltip__bubble { bottom: calc(100% + var(--space-4)); left: 50%; transform: translateX(-50%); }
+.akg-tooltip--right .akg-tooltip__bubble { left: calc(100% + var(--space-4)); top: 50%; transform: translateY(-50%); }
+.akg-tooltip--left .akg-tooltip__bubble { right: calc(100% + var(--space-4)); top: 50%; transform: translateY(-50%); }
+
+/* TabBar — iOS 27 "Tab Bars / iPhone / Horizontal" symbols; macOS has no tab bar, so it renders as a toolbar segmented group ("Titlebars and Toolbars / XL / Segmented Control"). */
+.akg-tab-bar {
+  display: flex; align-items: center; justify-content: center; gap: var(--space-8);
+  width: 100%;
+}
+.akg-tab-bar--search { justify-content: space-between; }
+
+/* The glass capsule: 62pt tall, 4 / 8 padding (Liquid Glass / Regular - Small) */
+.akg-tab-bar__tabs {
+  display: flex; align-items: center; min-width: 0; max-width: 100%;
+  height: 62px; padding: var(--space-4) var(--space-8);
+  border-radius: var(--radius-full);
+  background: var(--glass-fill);
+  -webkit-backdrop-filter: blur(6px) saturate(180%); backdrop-filter: blur(6px) saturate(180%);
+  box-shadow: var(--shadow-glass-control), inset 0 0 0 0.5px var(--separator);
+}
+/* Kit widths: 2 tabs 202 · 3 tabs 276 · 4–5 tabs full width (346 on a 402pt screen). With search the group leaves 70pt for the search button. */
+.akg-tab-bar--n1 .akg-tab-bar__tabs { width: 118px; }
+.akg-tab-bar--n2 .akg-tab-bar__tabs { width: 202px; }
+.akg-tab-bar--n3 .akg-tab-bar__tabs { width: 276px; }
+.akg-tab-bar--n4 .akg-tab-bar__tabs,
+.akg-tab-bar--n5 .akg-tab-bar__tabs { width: 100%; }
+.akg-tab-bar--search.akg-tab-bar--n3 .akg-tab-bar__tabs,
+.akg-tab-bar--search.akg-tab-bar--n4 .akg-tab-bar__tabs,
+.akg-tab-bar--search.akg-tab-bar--n5 .akg-tab-bar__tabs { width: calc(100% - 70px); }
+
+/* Tab: 54pt tall, 18pt semibold symbol in a 28pt box from y7, 10pt semibold label */
+.akg-tab-bar__tab {
+  position: relative; flex: 1 1 0; min-width: 0; height: 54px;
+  display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
+  padding: 7px var(--space-4) 0; margin: 0; border: 0; cursor: pointer;
+  background: transparent; color: var(--glass-label);
+  font-family: var(--font-sans);
+  -webkit-tap-highlight-color: transparent;
+}
+.akg-tab-bar__tab::before {
+  content: ""; position: absolute; top: 0; bottom: 0; left: calc(-1 * var(--space-4)); right: calc(-1 * var(--space-4));
+  border-radius: var(--radius-full); background: transparent; z-index: -1;
+}
+.akg-tab-bar__tab--selected { color: var(--accent); }
+.akg-tab-bar__tab--selected::before { background: var(--fill-secondary); }
+.akg-tab-bar__tabs { isolation: isolate; }
+.akg-tab-bar__symbol { height: 28px; font-size: 24px; }
+.akg-tab-bar__label {
+  display: block; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  font-size: 10px; line-height: 12px; font-weight: 600; letter-spacing: -0.1px;
+}
+.akg-tab-bar__tab--text { justify-content: center; padding-top: 0; }
+.akg-tab-bar__tab--text .akg-tab-bar__label { font-size: 13px; line-height: 16px; }
+.akg-tab-bar__tab:disabled { cursor: default; color: var(--glass-label-tertiary); }
+
+/* Separate search tab: 62pt glass circle, 17pt semibold glyph */
+.akg-tab-bar__search {
+  flex: none; width: 62px; height: 62px; padding: 0; margin: 0; border: 0; cursor: pointer;
+  display: inline-flex; align-items: center; justify-content: center;
+  border-radius: var(--radius-full); color: var(--glass-label); font-size: 22px;
+  background: var(--glass-fill);
+  -webkit-backdrop-filter: blur(6px) saturate(180%); backdrop-filter: blur(6px) saturate(180%);
+  box-shadow: var(--shadow-glass-control), inset 0 0 0 0.5px var(--separator);
+}
+.akg-tab-bar__search--selected { color: var(--accent); }
+
+/* macOS: a toolbar segmented group. 36pt glass capsule, 4pt padding, 32×28 icon segments, 13pt medium symbols */
+[data-theme^="macos"] .akg-tab-bar { justify-content: flex-start; width: auto; }
+[data-theme^="macos"] .akg-tab-bar .akg-tab-bar__tabs {
+  width: auto; height: 36px; padding: var(--space-4);
+  box-shadow: var(--shadow-glass-control), inset 0 0 0 0.5px var(--separator);
+}
+[data-theme^="macos"] .akg-tab-bar__tab {
+  flex: none; width: 32px; height: 28px; padding: 0; justify-content: center;
+  border-radius: var(--radius-full); color: var(--glass-label);
+}
+[data-theme^="macos"] .akg-tab-bar__tab::before { left: 0; right: 0; }
+[data-theme^="macos"] .akg-tab-bar__tab + .akg-tab-bar__tab { margin-left: 3px; }
+[data-theme^="macos"] .akg-tab-bar__tab--selected { color: var(--glass-label); }
+[data-theme^="macos"] .akg-tab-bar__symbol { height: auto; font-size: 15px; }
+[data-theme^="macos"] .akg-tab-bar__label {
+  position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
+}
+[data-theme^="macos"] .akg-tab-bar__tab--text { width: auto; padding: 0 var(--space-10); }
+[data-theme^="macos"] .akg-tab-bar__tab--text .akg-tab-bar__label {
+  position: static; width: auto; height: auto; clip: auto; font-size: 13px; line-height: 16px; font-weight: 500; letter-spacing: 0;
+}
+[data-theme^="macos"] .akg-tab-bar__tab:disabled { color: var(--glass-label-tertiary); }
+[data-theme^="macos"] .akg-tab-bar__search {
+  width: 36px; height: 36px; font-size: 15px;
+  box-shadow: var(--shadow-glass-control), inset 0 0 0 0.5px var(--separator);
+}
+
+/* Toolbar — iOS 27 "Toolbars / iPhone / Top - Standard" and macOS 27 "Windows / Unified Toolbar + Title" + "Titlebars and Toolbars" symbols. */
+.akg-toolbar {
+  display: block; width: 100%; margin: 0;
+  color: var(--glass-label); background: transparent;
+  font-family: var(--font-sans);
+}
+
+/* iOS: 54pt bar (44pt controls + 10pt), 16pt side margins, title centered on the screen */
+.akg-toolbar__bar {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; column-gap: var(--space-8);
+  height: 54px; padding: 0 var(--space-16) var(--space-10);
+}
+.akg-toolbar__window-controls { display: none; }
+.akg-toolbar__leading, .akg-toolbar__trailing { display: flex; align-items: center; gap: var(--space-12); min-width: 0; }
+.akg-toolbar__leading { justify-content: flex-start; }
+.akg-toolbar__trailing { justify-content: flex-end; }
+.akg-toolbar__heading { display: flex; flex-direction: column; align-items: center; min-width: 0; text-align: center; }
+.akg-toolbar__heading--inline-large { visibility: hidden; }
+.akg-toolbar__title {
+  margin: 0; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  font-size: 17px; line-height: 22px; font-weight: 600; color: var(--glass-label);
+}
+.akg-toolbar__subtitle {
+  margin: 0; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  font-size: 12px; line-height: 16px; font-weight: 500; color: var(--glass-label-secondary);
+}
+/* Title + subtitle: 15pt semibold over 12pt medium */
+.akg-toolbar__heading .akg-toolbar__subtitle { order: 2; }
+.akg-toolbar__heading .akg-toolbar__title:not(:only-child) { font-size: 15px; line-height: 20px; }
+
+/* Large title: 34pt bold, 41pt line, 16pt margins, 10pt below (105pt total) */
+.akg-toolbar__large { padding: 0 var(--space-16) var(--space-10); }
+.akg-toolbar__large .akg-toolbar__title { font-size: 34px; line-height: 41px; font-weight: 700; white-space: normal; }
+.akg-toolbar__large .akg-toolbar__subtitle { font-size: 15px; line-height: 20px; font-weight: 500; white-space: normal; }
+
+/* Glass group (Horizontal Group): 44pt capsule, 6pt side padding, 36pt buttons 20pt apart */
+.akg-toolbar-group {
+  display: inline-flex; align-items: center; gap: var(--space-20); flex: none;
+  height: var(--tap-target); padding: 0 6px;
+  border-radius: var(--radius-full);
+  background: var(--glass-fill);
+  -webkit-backdrop-filter: blur(6px) saturate(180%); backdrop-filter: blur(6px) saturate(180%);
+  box-shadow: var(--shadow-glass-control), inset 0 0 0 0.5px var(--separator);
+}
+
+/* Toolbar button: 44pt glass circle, 17pt medium symbol; text buttons 12pt side padding */
+.akg-toolbar-button {
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--space-4); flex: none;
+  margin: 0; border: 0; cursor: pointer; white-space: nowrap;
+  border-radius: var(--radius-full);
+  font-family: var(--font-sans); font-size: 17px; line-height: 22px; font-weight: 500;
+  color: var(--glass-label); background: transparent;
+  -webkit-tap-highlight-color: transparent;
+}
+.akg-toolbar-button .akg-sym { font-size: 20px; }
+.akg-toolbar-button--standalone {
+  height: var(--tap-target); min-width: var(--tap-target); padding: 0 var(--space-12);
+  background: var(--glass-fill);
+  -webkit-backdrop-filter: blur(6px) saturate(180%); backdrop-filter: blur(6px) saturate(180%);
+  box-shadow: var(--shadow-glass-control), inset 0 0 0 0.5px var(--separator);
+}
+.akg-toolbar-button--standalone.akg-toolbar-button--icon-only { width: var(--tap-target); padding: 0; }
+.akg-toolbar-button--standalone:not(.akg-toolbar-button--icon-only) .akg-sym { margin-left: 2px; }
+.akg-toolbar-button--grouped { width: 36px; height: 36px; padding: 0; }
+.akg-toolbar-button--grouped:not(.akg-toolbar-button--icon-only) { width: auto; padding: 0 var(--space-4); }
+.akg-toolbar-button--prominent { background: var(--accent); color: var(--on-accent); }
+.akg-toolbar-button:active:not(:disabled) { filter: brightness(0.92); }
+.akg-toolbar-button:disabled { cursor: default; color: var(--glass-label-tertiary); }
+.akg-toolbar-button--prominent:disabled { background: var(--button-disabled-fill); }
+
+/* macOS: unified titlebar + toolbar, 52pt tall, 8 / 8 / 8 / 18 padding, 8pt gaps, leading-aligned title */
+[data-theme^="macos"] .akg-toolbar { background: var(--background); }
+[data-theme^="macos"] .akg-toolbar__bar {
+  display: flex; align-items: center; gap: var(--space-8);
+  height: 52px; padding: var(--space-8) var(--space-8) var(--space-8) 18px;
+}
+[data-theme^="macos"] .akg-toolbar__window-controls { display: flex; align-items: center; gap: 9px; padding-right: var(--space-8); flex: none; }
+[data-theme^="macos"] .akg-toolbar__light {
+  width: 14px; height: 14px; border-radius: var(--radius-full);
+  box-shadow: 0 0 0 0.5px var(--separator);
+}
+[data-theme^="macos"] .akg-toolbar__light--close { background: var(--window-control-close); }
+[data-theme^="macos"] .akg-toolbar__light--minimize { background: var(--window-control-minimize); }
+[data-theme^="macos"] .akg-toolbar__light--zoom { background: var(--window-control-zoom); }
+[data-theme^="macos"] .akg-toolbar__leading { flex: none; gap: var(--space-8); }
+[data-theme^="macos"] .akg-toolbar__leading:empty { display: none; }
+[data-theme^="macos"] .akg-toolbar__trailing { flex: none; gap: var(--space-8); }
+[data-theme^="macos"] .akg-toolbar__heading { flex: 1 1 auto; align-items: flex-start; text-align: left; gap: var(--space-2); padding-left: var(--space-2); }
+[data-theme^="macos"] .akg-toolbar__heading--inline-large { visibility: visible; }
+[data-theme^="macos"] .akg-toolbar__large { display: none; }
+[data-theme^="macos"] .akg-toolbar__title,
+[data-theme^="macos"] .akg-toolbar__heading .akg-toolbar__title:not(:only-child) { font-size: 13px; line-height: 15px; font-weight: 700; }
+[data-theme^="macos"] .akg-toolbar__subtitle { font-size: 11px; line-height: 13px; font-weight: 500; color: var(--glass-label-tertiary); }
+
+/* macOS glass groups: 36pt capsule, 4pt padding, 28pt buttons 9pt apart, 13pt medium symbols */
+[data-theme^="macos"] .akg-toolbar-group { height: 36px; padding: var(--space-4); gap: 9px; }
+[data-theme^="macos"] .akg-toolbar-button { font-size: 13px; line-height: 16px; }
+[data-theme^="macos"] .akg-toolbar-button .akg-sym { font-size: 15px; }
+[data-theme^="macos"] .akg-toolbar-button--standalone { height: 36px; min-width: 36px; padding: 0 var(--space-12); }
+[data-theme^="macos"] .akg-toolbar-button--standalone.akg-toolbar-button--icon-only { width: 36px; padding: 0; }
+[data-theme^="macos"] .akg-toolbar-button--grouped { width: 28px; height: 28px; }
+[data-theme^="macos"] .akg-toolbar-button--grouped:not(.akg-toolbar-button--icon-only) { width: auto; padding: 0 var(--space-8); }
+[data-theme^="macos"] .akg-toolbar-button--grouped:hover:not(:disabled) { background: var(--fill-secondary); }
+[data-theme^="macos"] .akg-toolbar-button[aria-pressed="true"] { background: var(--fill-secondary); }
+[data-theme^="macos"] .akg-toolbar-button--prominent,
+[data-theme^="macos"] .akg-toolbar-button--prominent:hover:not(:disabled) { background: var(--accent); color: var(--on-accent); }
+
+/* Sidebar — iOS 27 "Sidebars" (Sidebar / Header, Items / Level 0–2, States) and macOS 27 "Sidebars / Medium" symbols. */
+.akg-sidebar {
+  display: flex; flex-direction: column; width: 100%; height: 100%;
+  padding: 0 var(--space-10) var(--space-10);
+  background: var(--sidebar-background); color: var(--label);
+  font-family: var(--font-sans);
+  overflow-y: auto;
+}
+.akg-sidebar__section { margin: 0; }
+.akg-sidebar__list { list-style: none; margin: 0; padding: 0; }
+.akg-sidebar__row { margin: 0; padding: 0; }
+
+/* iOS header: 54pt, padding 21 / 12 / 11, 17pt medium secondary label */
+.akg-sidebar__header {
+  display: flex; align-items: flex-end; gap: var(--space-8);
+  min-height: 54px; padding: 21px var(--space-12) 11px;
+}
+.akg-sidebar__header-title {
+  flex: 1 1 auto; min-width: 0; margin: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  font-size: 17px; line-height: 22px; font-weight: 500; color: var(--label-secondary);
+}
+.akg-sidebar__header-detail { flex: none; font-size: 17px; line-height: 22px; font-weight: 400; color: var(--label-secondary); }
+.akg-sidebar__disclosure {
+  flex: none; width: 18px; height: 22px; padding: 0; margin: 0; border: 0; cursor: pointer;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: transparent; color: var(--accent); font-size: 18px;
+}
+.akg-sidebar__disclosure .akg-sym { transition: transform 0.2s; }
+.akg-sidebar__section--closed .akg-sidebar__disclosure .akg-sym { transform: rotate(-90deg); }
+
+/* iOS item: 44pt capsule, 4pt side padding, 34pt symbol column (17pt, accent), 17pt title, detail with 8pt trailing padding.
+   Levels indent 20pt each (Level 0 / 1 / 2 = 10 / 30 / 50 from the sidebar edge). */
+.akg-sidebar__item {
+  display: flex; align-items: center; gap: var(--space-4); width: calc(100% - var(--akg-sidebar-level, 0) * 20px);
+  min-height: var(--tap-target); margin: 0 0 0 calc(var(--akg-sidebar-level, 0) * 20px); padding: 0 var(--space-12) 0 var(--space-10);
+  border: 0; border-radius: var(--radius-full); cursor: pointer; text-align: left;
+  background: transparent; color: var(--label);
+  font-family: var(--font-sans); font-size: 17px; line-height: 22px; font-weight: 400;
+  -webkit-tap-highlight-color: transparent;
+}
+.akg-sidebar__symbol { width: 34px; height: 36px; font-size: 22px; color: var(--accent); }
+.akg-sidebar__title { flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.akg-sidebar__detail { flex: none; color: var(--label-secondary); }
+.akg-sidebar__item--selected { background: var(--fill-tertiary); }
+.akg-sidebar__item:disabled { cursor: default; opacity: 0.5; }
+
+/* macOS source list (Medium): 14 / 16pt padding, sections 14pt apart, 18pt headers in 11pt bold tertiary,
+   32pt rows, 13pt symbols and titles, 8pt-radius full-width selection that overhangs the row by 4pt. Levels indent the content 12pt. */
+[data-theme^="macos"] .akg-sidebar {
+  padding: var(--space-10) var(--space-14) var(--space-16);
+  -webkit-backdrop-filter: blur(30px) saturate(180%); backdrop-filter: blur(30px) saturate(180%);
+}
+[data-theme^="macos"] .akg-sidebar__section { padding-bottom: var(--space-14); }
+[data-theme^="macos"] .akg-sidebar__header { align-items: center; gap: 1px; min-height: 18px; padding: var(--space-2) 0; }
+[data-theme^="macos"] .akg-sidebar__header-title { font-size: 11px; line-height: 14px; font-weight: 700; color: var(--glass-label-tertiary); }
+[data-theme^="macos"] .akg-sidebar__header-detail { font-size: 11px; line-height: 14px; font-weight: 500; color: var(--glass-label-tertiary); }
+[data-theme^="macos"] .akg-sidebar__disclosure { width: 20px; height: 14px; font-size: 11px; color: var(--glass-label-tertiary); }
+[data-theme^="macos"] .akg-sidebar__item {
+  width: calc(100% + 8px);
+  min-height: 32px; margin: 0 -4px; padding: 0 6px 0 calc(18px + var(--akg-sidebar-level, 0) * 12px);
+  border-radius: 8px; color: var(--glass-label);
+  font-size: 13px; line-height: 16px;
+}
+[data-theme^="macos"] .akg-sidebar__symbol { width: 20px; height: 32px; font-size: 15px; }
+[data-theme^="macos"] .akg-sidebar__detail { font-weight: 500; color: var(--glass-label-secondary); }
+[data-theme^="macos"] .akg-sidebar__item--selected { background: var(--fill-tertiary); }
+
+/* PageControl — iOS 27 "Page Control / Light · Dark / No Background · Background / 2–7 Dots · 8+ Dots" and "Dots" symbols.
+   44 tall row; 8pt dots on a 20pt pitch; selected = primary label, others = tertiary label; 8+ pages taper to 6pt and 4pt. */
+.akg-page-control { display: inline-flex; align-items: center; justify-content: center; height: var(--tap-target); }
+.akg-page-control__stack {
+  display: flex; align-items: center; height: 24px; padding: 0 7px; border-radius: 12px;
+}
+/* Background variant: Ultrathin material capsule, 24 tall, 12 side padding, 12 corners */
+.akg-page-control--background .akg-page-control__stack {
+  background: var(--material-ultra-thin);
+  -webkit-backdrop-filter: blur(30px) saturate(180%); backdrop-filter: blur(30px) saturate(180%);
+}
+
+/* Each dot is a 20×24 hit area (10pt dot cell + the kit's 10pt gap); the dot is drawn by ::before */
+.akg-page-control__dot {
+  position: relative; flex: none; width: 20px; height: 24px; padding: 0; margin: 0; border: 0;
+  background: transparent; cursor: pointer; -webkit-tap-highlight-color: transparent;
+}
+.akg-page-control__dot::before {
+  content: ""; position: absolute; left: 50%; top: 50%; width: 8px; height: 8px; margin: -4px 0 0 -4px;
+  border-radius: var(--radius-full); background: var(--label-tertiary);
+}
+.akg-page-control__dot--current::before { background: var(--label); }
+.akg-page-control__dot--medium::before { width: 6px; height: 6px; margin: -3px 0 0 -3px; }
+.akg-page-control__dot--small { width: 16px; }
+.akg-page-control__dot--small::before { width: 4px; height: 4px; margin: -2px 0 0 -2px; }
+.akg-page-control__dot:focus-visible { outline: none; }
+.akg-page-control__dot:focus-visible::before { box-shadow: 0 0 0 3px var(--focus-ring); }
+
+/* macOS: no native page control; the same dots and capsule, in a 28pt row instead of the 44pt touch row */
+[data-theme^="macos"] .akg-page-control { height: var(--control-macos-large); }
+
+/* Window — macOS 27 "Windows" (Default + Title, Unified Toolbar + Title, … + Sidebar; Active / Inactive), "Titlebars / Window Controls / Standard" and
+   "Titlebars and Toolbars / Window / Title" symbols. iOS has no windows: the same markup renders as a plain screen. */
+.akg-window {
+  --akg-window-sidebar-width: 320px;
+  display: flex; position: relative; overflow: hidden; width: 100%; margin: 0;
+  background: var(--background); color: var(--label);
+  font-family: var(--font-sans);
+}
+.akg-window__main { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; background: var(--background); }
+.akg-window__content { flex: 1 1 auto; min-height: 0; position: relative; overflow: auto; }
+
+/* iOS: no window chrome — an optional 54pt bar with a centered 17pt semibold title and the toolbar items trailing */
+.akg-window__controls { display: none; }
+.akg-window__titlebar {
+  flex: none; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, auto) minmax(min-content, 1fr); align-items: center; column-gap: var(--space-8);
+  min-height: 54px; padding: var(--space-4) var(--space-16);
+}
+.akg-window__titlebar--sidebar { display: none; }
+.akg-window:not(.akg-window--toolbar) .akg-window__titlebar:has(.akg-window__heading--empty) { display: none; }
+.akg-window__heading { grid-column: 2; display: flex; flex-direction: column; align-items: center; min-width: 0; text-align: center; }
+.akg-window__title {
+  margin: 0; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  font-size: 17px; line-height: 22px; font-weight: 600; color: var(--label);
+}
+.akg-window__subtitle {
+  margin: 0; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  font-size: 12px; line-height: 16px; font-weight: 500; color: var(--label-secondary);
+}
+.akg-window__toolbar { grid-column: 3; display: flex; align-items: center; justify-content: flex-end; gap: var(--space-12); min-width: 0; }
+
+/* iOS sidebar column (iPad split view) */
+.akg-window__sidebar-pane {
+  flex: none; display: flex; flex-direction: column; width: var(--akg-window-sidebar-width); min-height: 0;
+  background: var(--sidebar-background);
+}
+.akg-window__sidebar { flex: 1 1 auto; min-height: 0; overflow: auto; }
+
+/* macOS window: 16pt corners, window shadow; dark active windows get a 1px light rim */
+[data-theme^="macos"] .akg-window {
+  --akg-window-sidebar-width: 256px;
+  border-radius: 16px;
+  box-shadow: var(--shadow-window, var(--shadow-glass));
+}
+[data-theme^="macos"] .akg-window::after {
+  content: ""; position: absolute; inset: 0; z-index: 2; pointer-events: none;
+  border-radius: inherit; box-shadow: inset 0 0 0 1px var(--window-border, transparent);
+}
+[data-theme^="macos"] .akg-window--inactive::after { box-shadow: none; }
+[data-theme^="macos"] .akg-window--inactive { box-shadow: var(--shadow-window-inactive, var(--shadow-glass)); }
+[data-theme^="macos"] .akg-window__main { background: transparent; }
+[data-theme^="macos"] .akg-window--sidebar .akg-window__main { background: var(--background); }
+[data-theme^="macos"] .akg-window__sidebar-pane {
+  -webkit-backdrop-filter: blur(50px) saturate(180%); backdrop-filter: blur(50px) saturate(180%);
+}
+[data-theme^="macos"] .akg-window--inactive .akg-window__sidebar-pane { background: var(--sidebar-background-inactive, var(--sidebar-background)); }
+
+/* Titlebar (Default): 33pt, 9pt padding, 16pt gap. Unified toolbar: 52pt, 8 / 8 / 8 / 18pt padding, 8pt gap. */
+[data-theme^="macos"] .akg-window__titlebar {
+  display: flex; align-items: center; gap: var(--space-16);
+  min-height: 33px; padding: 9px;
+}
+[data-theme^="macos"] .akg-window--toolbar .akg-window__titlebar { gap: var(--space-8); min-height: 52px; padding: var(--space-8) var(--space-8) var(--space-8) 18px; }
+[data-theme^="macos"] .akg-window--sidebar .akg-window__titlebar { gap: var(--space-8); min-height: 52px; padding: var(--space-8); }
+[data-theme^="macos"] .akg-window--sidebar:not(.akg-window--toolbar) .akg-window__titlebar { gap: var(--space-16); }
+[data-theme^="macos"] .akg-window__titlebar--sidebar,
+[data-theme^="macos"] .akg-window--sidebar .akg-window__titlebar--sidebar { display: flex; padding: 0 var(--space-8) 0 18px; }
+[data-theme^="macos"] .akg-window:not(.akg-window--toolbar) .akg-window__titlebar:has(.akg-window__heading--empty) { display: flex; }
+
+/* Traffic lights: 14pt circles 9pt apart, 8pt trailing space, 0.5pt rim */
+[data-theme^="macos"] .akg-window__controls { display: flex; align-items: center; gap: 9px; padding-right: var(--space-8); flex: none; }
+[data-theme^="macos"] .akg-window__light {
+  display: block; flex: none; width: 14px; height: 14px; padding: 0; margin: 0; border: 0;
+  border-radius: var(--radius-full);
+  box-shadow: 0 0 0 0.5px var(--separator);
+}
+[data-theme^="macos"] button.akg-window__light { cursor: pointer; }
+[data-theme^="macos"] button.akg-window__light:active { filter: brightness(0.85); }
+[data-theme^="macos"] .akg-window__light--close { background: var(--window-control-close); }
+[data-theme^="macos"] .akg-window__light--minimize { background: var(--window-control-minimize); }
+[data-theme^="macos"] .akg-window__light--zoom { background: var(--window-control-zoom); }
+[data-theme^="macos"] .akg-window--inactive .akg-window__light { background: var(--window-control-inactive, var(--fill)); box-shadow: none; }
+
+/* Title: 13pt bold (15pt beside a sidebar), leading-aligned; 11pt medium tertiary subtitle 2pt below */
+[data-theme^="macos"] .akg-window__heading { flex: 1 1 auto; align-items: flex-start; gap: var(--space-2); text-align: left; }
+[data-theme^="macos"] .akg-window--sidebar .akg-window__heading { padding-left: var(--space-2); }
+[data-theme^="macos"] .akg-window__title { font-size: 13px; line-height: 15px; font-weight: 700; color: var(--glass-label); }
+[data-theme^="macos"] .akg-window--sidebar .akg-window__title { font-size: 15px; line-height: 15px; letter-spacing: -0.2px; }
+[data-theme^="macos"] .akg-window__subtitle { font-size: 11px; line-height: 13px; font-weight: 500; color: var(--glass-label-tertiary); }
+[data-theme^="macos"] .akg-window--inactive .akg-window__title { color: var(--glass-label-tertiary); }
+[data-theme^="macos"] .akg-window__toolbar { flex: none; gap: var(--space-8); }
+[data-theme^="macos"] .akg-window--inactive .akg-window__toolbar .akg-toolbar-button:not(.akg-toolbar-button--prominent),
+[data-theme^="macos"] .akg-window--inactive .akg-window__toolbar .akg-button--bordered { color: var(--glass-label-tertiary); }
+
+/* Sheet — iOS 27 "Sheets / iPhone / Medium Detent · Large Detent" and macOS 27 "Windows / Utility Panel" (Panels style).
+   The sheet fills its nearest positioned ancestor (the screen or window you present it in). */
+.akg-sheet { position: absolute; inset: 0; z-index: 10; overflow: hidden; border-radius: inherit; }
+.akg-sheet__scrim { position: absolute; inset: 0; background: var(--overlay-dim); }
+.akg-sheet--no-dim .akg-sheet__scrim { background: transparent; }
+
+.akg-sheet__panel {
+  position: absolute; display: flex; flex-direction: column; overflow: hidden;
+  color: var(--label);
+}
+/* Medium detent: Liquid Glass, inset 8 from the screen edges, 34 corners */
+.akg-sheet__panel--medium {
+  left: var(--space-8); right: var(--space-8); bottom: var(--space-8); height: 52%;
+  border-radius: var(--radius-sheet);
+  background: var(--glass-fill);
+  -webkit-backdrop-filter: blur(15px) saturate(180%); backdrop-filter: blur(15px) saturate(180%);
+  box-shadow: var(--shadow-glass), inset 0 0 0 0.5px var(--separator);
+}
+/* Large detent: opaque, full width, 38 top corners, 62 from the top */
+.akg-sheet__panel--large {
+  left: 0; right: 0; bottom: 0; top: min(62px, 8%);
+  border-radius: 38px 38px 0 0;
+  background: var(--background-elevated);
+  box-shadow: var(--shadow-glass);
+}
+
+/* Toolbar: 70 tall, 44pt circle buttons 16 from the edges, 17 semibold title */
+.akg-sheet__bar {
+  position: relative; flex: none; height: 70px; display: flex; align-items: center; gap: var(--space-8);
+  padding: var(--space-12) var(--space-16) 0;
+}
+.akg-sheet__grabber { position: absolute; top: 5px; left: 50%; width: 60px; height: 4px; margin-left: -30px; border-radius: 2px; background: var(--system-gray-4); }
+.akg-sheet__title { flex: 1; min-width: 0; text-align: center; font-size: 17px; line-height: 22px; font-weight: 600; color: var(--glass-label); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.akg-sheet__circle, .akg-sheet__spacer { flex: none; width: var(--tap-target); height: var(--tap-target); border-radius: var(--radius-full); }
+.akg-sheet__circle { display: inline-flex; align-items: center; justify-content: center; border: 0; margin: 0; padding: 0; cursor: pointer; font-size: 17px; -webkit-tap-highlight-color: transparent; }
+.akg-sheet__circle--close { background: var(--fill-secondary); color: var(--glass-label); }
+.akg-sheet__circle--done { background: var(--accent); color: var(--on-accent); }
+.akg-sheet__circle:active { filter: brightness(0.9); }
+.akg-sheet__content { flex: 1; min-height: 0; overflow: auto; padding: var(--space-8) var(--space-16) var(--space-16); }
+.akg-sheet__footer { display: none; }
+
+
+/* macOS: window-modal sheet hanging from the titlebar. Panel background, 15 corners, no grabber. */
+[data-theme^="macos"] .akg-sheet__scrim { background: transparent; }
+[data-theme^="macos"] .akg-sheet__panel,
+[data-theme^="macos"] .akg-sheet__panel--medium,
+[data-theme^="macos"] .akg-sheet__panel--large {
+  top: 0; bottom: auto; left: 0; right: 0; margin: 0 auto; height: auto; max-height: calc(100% - var(--space-20));
+  width: min(420px, calc(100% - 2 * var(--space-20)));
+  border-radius: 15px;
+  background: var(--background);
+  -webkit-backdrop-filter: none; backdrop-filter: none;
+  box-shadow: var(--shadow-glass), 0 0 0 1px var(--separator);
+}
+[data-theme^="macos"] .akg-sheet__bar { height: auto; padding: var(--space-20) var(--space-20) 0; }
+[data-theme^="macos"] .akg-sheet__grabber,
+[data-theme^="macos"] .akg-sheet__circle,
+[data-theme^="macos"] .akg-sheet__spacer { display: none; }
+[data-theme^="macos"] .akg-sheet__title { text-align: left; font-size: 13px; line-height: 16px; font-weight: 700; color: var(--label); }
+[data-theme^="macos"] .akg-sheet__content { padding: var(--space-12) var(--space-20) var(--space-20); font-size: 13px; line-height: 16px; }
+[data-theme^="macos"] .akg-sheet__footer { display: flex; justify-content: flex-end; gap: var(--space-8); padding: 0 var(--space-20) var(--space-20); }
+
+/* Alert — iOS 27 "Alerts / Default · Buttons Stacked · Input Field" and macOS 27 "Alerts / Side by Side · Stacked". */
+.akg-alert {
+  width: 300px; max-width: 100%; display: flex; flex-direction: column;
+  padding: var(--space-14);
+  border-radius: var(--radius-sheet);
+  background: var(--glass-fill);
+  -webkit-backdrop-filter: blur(30px) saturate(180%); backdrop-filter: blur(30px) saturate(180%);
+  box-shadow: var(--shadow-glass), inset 0 0 0 0.5px var(--separator);
+  color: var(--label); text-align: left;
+}
+.akg-alert-overlay { position: absolute; inset: 0; z-index: 20; display: flex; align-items: center; justify-content: center; padding: var(--space-16); background: var(--overlay-dim); border-radius: inherit; }
+.akg-alert__icon { display: none; }
+
+/* Title and message: 8 8 24 inset, 10 apart, both 17pt */
+.akg-alert__text { display: flex; flex-direction: column; gap: var(--space-10); padding: var(--space-8) var(--space-8) var(--space-24); }
+.akg-alert__title { font-size: 17px; line-height: 22px; font-weight: 600; color: var(--label); }
+.akg-alert__message { font-size: 17px; line-height: 22px; font-weight: 400; color: var(--label-secondary); }
+
+/* Text input: 52 tall capsule, tertiary fill */
+.akg-alert__fields { display: flex; flex-direction: column; border-radius: var(--radius-grouped); background: var(--fill-tertiary); overflow: hidden; }
+.akg-alert__field {
+  height: 52px; width: 100%; border: 0; margin: 0; padding: 0 var(--space-16); background: transparent; outline-offset: -3px;
+  font-family: var(--font-sans); font-size: 17px; font-weight: 500; color: var(--label);
+}
+.akg-alert__field::placeholder { color: var(--label-tertiary); }
+.akg-alert__field + .akg-alert__field { border-top: 1px solid var(--separator); }
+.akg-alert__fields + .akg-alert__actions { padding-top: 19px; }
+
+/* Actions: 48 tall capsules; 8 apart side by side, 12 apart stacked */
+.akg-alert__actions { display: flex; gap: var(--space-8); }
+.akg-alert--stacked .akg-alert__actions { flex-direction: column; gap: var(--space-12); }
+.akg-alert__action {
+  flex: 1 1 0; min-width: 0; height: 48px; padding: 0 var(--space-16); border: 0; margin: 0; cursor: pointer;
+  border-radius: var(--radius-full); background: var(--fill-tertiary); color: var(--label);
+  font-family: var(--font-sans); font-size: 17px; line-height: 22px; font-weight: 500;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; -webkit-tap-highlight-color: transparent;
+}
+.akg-alert--stacked .akg-alert__action { flex: none; width: 100%; }
+.akg-alert__action--preferred { background: var(--accent); color: var(--on-accent); font-weight: 600; }
+.akg-alert__action--destructive { color: var(--destructive); }
+.akg-alert__action:active:not(:disabled) { filter: brightness(0.92); }
+.akg-alert__action:disabled { cursor: default; color: var(--label-tertiary); background: var(--button-disabled-fill); }
+
+/* macOS: 260 wide, 20/16/16 padding, 26 corners, 13pt text, 28pt capsule buttons */
+[data-theme^="macos"] .akg-alert { width: 260px; padding: var(--space-20) var(--space-16) var(--space-16); gap: var(--space-14); border-radius: var(--radius-grouped); }
+[data-theme^="macos"] .akg-alert__icon { display: flex; width: 64px; height: 64px; margin-left: 6px; align-items: center; justify-content: center; font-size: 64px; }
+[data-theme^="macos"] .akg-alert__icon > * { max-width: 100%; max-height: 100%; }
+[data-theme^="macos"] .akg-alert__text { padding: 0 6px 2px; gap: var(--space-10); }
+[data-theme^="macos"] .akg-alert__title { font-size: 13px; line-height: 16px; font-weight: 700; }
+[data-theme^="macos"] .akg-alert__message { font-size: 13px; line-height: 16px; color: var(--glass-label); }
+[data-theme^="macos"] .akg-alert__fields { background: transparent; border-radius: 0; gap: var(--space-8); overflow: visible; }
+[data-theme^="macos"] .akg-alert__field {
+  height: var(--control-macos-regular); padding: 0 var(--space-8); border-radius: var(--radius-regular);
+  background: var(--background); box-shadow: inset 0 0 0 1px var(--separator); outline-offset: 0;
+  font-size: 13px; font-weight: 400;
+}
+[data-theme^="macos"] .akg-alert__field + .akg-alert__field { border-top: 0; }
+[data-theme^="macos"] .akg-alert__fields + .akg-alert__actions { padding-top: 0; }
+[data-theme^="macos"] .akg-alert--stacked .akg-alert__actions { gap: 6px; }
+[data-theme^="macos"] .akg-alert__action { height: var(--control-macos-large); padding: 0 var(--space-8); font-size: 13px; line-height: 16px; font-weight: 500; background: var(--fill-secondary); }
+[data-theme^="macos"] .akg-alert__action--preferred { background: var(--accent); color: var(--on-accent); font-weight: 500; }
+[data-theme^="macos"] .akg-alert__action--destructive { background: color-mix(in srgb, var(--destructive) 23%, transparent); color: var(--destructive); }
+[data-theme^="macos"] .akg-alert__action:disabled { color: var(--label-tertiary); background: var(--button-disabled-fill); }
+
+/* ActionSheet — iOS 27 "Action Sheets" (+ "Alerts / Secondary · Destructive" buttons, "Examples / Action Sheet");
+   macOS has no action sheet, so it renders as a compact panel styled like macOS 27 "Menus / Regular". */
+.akg-action-sheet {
+  position: relative; display: flex; flex-direction: column; width: 260px; max-width: 100%;
+  padding: var(--space-14);
+  border-radius: var(--radius-sheet);
+  background: var(--glass-fill);
+  -webkit-backdrop-filter: blur(30px) saturate(180%); backdrop-filter: blur(30px) saturate(180%);
+  box-shadow: var(--shadow-glass), inset 0 0 0 0.5px var(--separator);
+  color: var(--label); text-align: left;
+}
+
+/* Title and message: 8 8 24 inset, 10 apart; 17 semibold title, 15 regular message */
+.akg-action-sheet__header { display: flex; flex-direction: column; gap: var(--space-10); padding: var(--space-8) var(--space-8) var(--space-24); }
+.akg-action-sheet__title { font-size: 17px; line-height: 22px; font-weight: 600; color: var(--label); }
+.akg-action-sheet__message { font-size: 15px; line-height: 18px; font-weight: 400; color: var(--label-secondary); }
+
+/* Actions: 48 tall capsules, 10 apart, tertiary fill, 17 medium */
+.akg-action-sheet__actions { display: flex; flex-direction: column; gap: var(--space-10); }
+.akg-action-sheet__action {
+  display: flex; align-items: center; justify-content: center; gap: var(--space-8);
+  width: 100%; height: 48px; padding: 0 var(--space-16); border: 0; margin: 0; cursor: pointer;
+  border-radius: var(--radius-full); background: var(--fill-tertiary); color: var(--label);
+  font-family: var(--font-sans); font-size: 17px; line-height: 22px; font-weight: 500;
+  -webkit-tap-highlight-color: transparent;
+}
+.akg-action-sheet__label { min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.akg-action-sheet__icon { font-size: 17px; }
+.akg-action-sheet__action--destructive { color: var(--destructive); }
+.akg-action-sheet__action--cancel { font-weight: 600; }
+.akg-action-sheet__action:active:not(:disabled) { filter: brightness(0.92); }
+.akg-action-sheet__action:disabled { cursor: default; color: var(--label-tertiary); background: var(--button-disabled-fill); }
+
+/* Overlay: dims the nearest positioned ancestor and anchors the sheet near the bottom (36 up, 28 in when aligned) */
+.akg-action-sheet-overlay { position: absolute; inset: 0; z-index: 20; display: flex; align-items: flex-end; justify-content: center; padding: var(--space-16) 28px 36px; border-radius: inherit; }
+.akg-action-sheet-overlay--leading { justify-content: flex-start; }
+.akg-action-sheet-overlay--trailing { justify-content: flex-end; }
+.akg-action-sheet-overlay__scrim { position: absolute; inset: 0; background: var(--overlay-dim); border-radius: inherit; }
+
+/* macOS: compact menu-like panel. 12 corners, 6/16/5 padding, 24pt rows, 13pt medium, accent highlight. */
+[data-theme^="macos"] .akg-action-sheet {
+  width: auto; min-width: 200px; max-width: 280px; padding: 6px var(--space-16) 5px; border-radius: 12px;
+  background: var(--menu-fill);
+  -webkit-backdrop-filter: blur(20px) saturate(180%); backdrop-filter: blur(20px) saturate(180%);
+}
+[data-theme^="macos"] .akg-action-sheet__header { gap: var(--space-2); padding: var(--space-4) 0 6px; margin-bottom: 5px; border-bottom: 1px solid var(--fill-secondary); }
+[data-theme^="macos"] .akg-action-sheet__title { font-size: 13px; line-height: 16px; font-weight: 700; color: var(--glass-label); }
+[data-theme^="macos"] .akg-action-sheet__message { font-size: 11px; line-height: 13px; color: var(--glass-label-secondary); }
+[data-theme^="macos"] .akg-action-sheet__actions { gap: 0; }
+[data-theme^="macos"] .akg-action-sheet__action {
+  justify-content: flex-start; width: auto; height: var(--control-macos-regular); margin: 0 -11px; padding: 0 11px;
+  border-radius: 8px; background: transparent; color: var(--glass-label);
+  font-size: 13px; line-height: 15px; font-weight: 500; letter-spacing: -0.2px;
+}
+[data-theme^="macos"] .akg-action-sheet__icon { width: 16px; font-size: 13px; }
+[data-theme^="macos"] .akg-action-sheet__action--destructive { color: var(--destructive); }
+[data-theme^="macos"] .akg-action-sheet__action--cancel { position: relative; font-weight: 500; margin-top: 11px; }
+[data-theme^="macos"] .akg-action-sheet__action--cancel::before { content: ""; position: absolute; left: 11px; right: 11px; top: -6px; height: 1px; border-radius: 1px; background: var(--fill-secondary); }
+[data-theme^="macos"] .akg-action-sheet__action:hover:not(:disabled),
+[data-theme^="macos"] .akg-action-sheet__action:focus-visible { background: var(--menu-highlight); color: var(--on-accent); outline: none; filter: none; }
+[data-theme^="macos"] .akg-action-sheet__action:disabled { background: transparent; color: var(--label-tertiary); }
+[data-theme^="macos"] .akg-action-sheet-overlay { align-items: center; justify-content: center; padding: var(--space-16); }
+[data-theme^="macos"] .akg-action-sheet-overlay__scrim { background: transparent; }
+[data-theme^="macos"] .akg-action-sheet__action--cancel:first-child { margin-top: 0; }
+[data-theme^="macos"] .akg-action-sheet__action--cancel:first-child::before { display: none; }
+
+/* Menu — iOS 27 "Menus / iPhone" (context menu) and macOS 27 "Menus / Regular". */
+.akg-menu {
+  display: flex; flex-direction: column; width: 250px; max-width: 100%; padding: var(--space-10);
+  border-radius: var(--radius-menu);
+  background: var(--menu-fill);
+  -webkit-backdrop-filter: blur(15px) saturate(180%); backdrop-filter: blur(15px) saturate(180%);
+  box-shadow: var(--shadow-glass), inset 0 0 0 0.5px var(--separator);
+  color: var(--label); outline: none;
+}
+
+/* iPhone item: 42 tall (60 with subtitle), 28pt symbol column, 17pt label, 20 corner selection */
+.akg-menu-item {
+  display: flex; align-items: center; gap: 6px; width: 100%; min-height: 42px; margin: 0; padding: 0 var(--space-16);
+  border: 0; border-radius: 20px; background: transparent; cursor: pointer; text-align: left;
+  font-family: var(--font-sans); font-size: 17px; line-height: 20px; font-weight: 400; color: var(--label);
+  -webkit-tap-highlight-color: transparent;
+}
+.akg-menu-item--subtitle { min-height: 60px; }
+.akg-menu-item:hover:not(:disabled), .akg-menu-item:focus-visible, .akg-menu-item--highlighted { background: var(--fill-tertiary); outline: none; }
+.akg-menu-item__check { display: none; }
+.akg-menu--checkable .akg-menu-item__check { display: inline-flex; flex: none; width: 18px; font-size: 15px; justify-content: center; }
+.akg-menu-item__icon { width: 28px; font-size: 17px; }
+.akg-menu-item__icon:empty { display: none; }
+.akg-menu-item__text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: var(--space-2); padding-left: var(--space-4); }
+.akg-menu-item__label { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.akg-menu-item__subtitle { font-size: 13px; line-height: 16px; color: var(--glass-label-secondary); }
+.akg-menu-item__shortcut { flex: none; font-size: 15px; color: var(--label-tertiary); letter-spacing: 1px; }
+.akg-menu-item__chevron { width: 10px; font-size: 13px; color: var(--label-tertiary); }
+.akg-menu-item--destructive { color: var(--destructive); }
+.akg-menu-item:disabled { cursor: default; color: var(--label-tertiary); }
+
+.akg-menu-separator { flex: none; height: 1px; margin: var(--space-10) var(--space-14); background: var(--separator); }
+.akg-menu-section { padding: var(--space-2) var(--space-12) var(--space-10) 18px; font-size: 13px; line-height: 15px; font-weight: 500; color: var(--glass-label-secondary); }
+
+/* macOS Regular: 12 corners, 6/16/5 padding, 24pt rows, 13pt medium, accent highlight with 8 corners */
+[data-theme^="macos"] .akg-menu {
+  width: auto; min-width: 160px; padding: 6px var(--space-16) 5px; border-radius: 12px;
+  -webkit-backdrop-filter: blur(20px) saturate(180%); backdrop-filter: blur(20px) saturate(180%);
+}
+[data-theme^="macos"] .akg-menu-item {
+  width: auto; min-height: var(--control-macos-regular); height: var(--control-macos-regular); gap: var(--space-8);
+  margin: 0 -11px; padding: 0 11px; border-radius: 8px;
+  font-size: 13px; line-height: 15px; font-weight: 500; letter-spacing: -0.2px; color: var(--glass-label);
+}
+[data-theme^="macos"] .akg-menu-item:hover:not(:disabled),
+[data-theme^="macos"] .akg-menu-item:focus-visible,
+[data-theme^="macos"] .akg-menu-item--highlighted { background: var(--menu-highlight, var(--accent)); color: var(--on-accent); }
+[data-theme^="macos"] .akg-menu-item:hover:not(:disabled) *,
+[data-theme^="macos"] .akg-menu-item:focus-visible *,
+[data-theme^="macos"] .akg-menu-item--highlighted * { color: var(--on-accent); }
+[data-theme^="macos"] .akg-menu--checkable .akg-menu-item__check { width: 4px; font-size: 11px; overflow: visible; }
+[data-theme^="macos"] .akg-menu-item__icon { width: 11px; font-size: 13px; }
+[data-theme^="macos"] .akg-menu-item__text { padding-left: 0; }
+[data-theme^="macos"] .akg-menu-item__subtitle { font-size: 11px; line-height: 13px; font-weight: 400; }
+[data-theme^="macos"] .akg-menu-item--subtitle { height: auto; min-height: 36px; padding-top: var(--space-4); padding-bottom: var(--space-4); }
+[data-theme^="macos"] .akg-menu-item__shortcut { font-size: 13px; font-weight: 500; letter-spacing: 1.5px; padding-left: var(--space-8); }
+[data-theme^="macos"] .akg-menu-item__chevron { width: 12px; font-size: 11px; color: var(--glass-label-secondary); }
+[data-theme^="macos"] .akg-menu-item--destructive { color: var(--destructive); }
+[data-theme^="macos"] .akg-menu-item:disabled { color: var(--label-tertiary); }
+[data-theme^="macos"] .akg-menu-separator { margin: 5px 0; border-radius: 1px; background: var(--fill-secondary); }
+[data-theme^="macos"] .akg-menu-section { height: var(--control-macos-regular); padding: 5.5px 0 3.5px; font-size: 13px; line-height: 15px; font-weight: 700; letter-spacing: -0.2px; }
+
+/* Popover — iOS 27 "Popovers (iPad Only)" (13 corners, 56×13 arrow, Thick material) and macOS 27 "Popovers" (Liquid Glass, 20 corners, 46×10.5 arrow). */
+.akg-popover { position: relative; display: inline-flex; flex-direction: column; max-width: 100%; color: var(--label); vertical-align: top; }
+.akg-popover__body {
+  position: relative; min-width: 0; padding: var(--space-16);
+  border-radius: 13px;
+  background: var(--material-thick);
+  -webkit-backdrop-filter: blur(30px) saturate(180%); backdrop-filter: blur(30px) saturate(180%);
+  box-shadow: var(--shadow-glass);
+}
+.akg-popover__arrow {
+  position: absolute; width: 56px; height: 13px;
+  background: var(--material-thick);
+  -webkit-backdrop-filter: blur(30px) saturate(180%); backdrop-filter: blur(30px) saturate(180%);
+  clip-path: path("M0 13C11 13 19.5 1.2 25.6 0.4Q28 0 30.4 0.4C36.5 1.2 45 13 56 13Z");
+}
+
+/* Arrow edge and alignment (iOS sizes) */
+.akg-popover--bottom { margin-top: 13px; }
+.akg-popover--top { margin-bottom: 13px; }
+.akg-popover--right { margin-left: 13px; }
+.akg-popover--left { margin-right: 13px; }
+.akg-popover--bottom .akg-popover__arrow { top: -13px; }
+.akg-popover--top .akg-popover__arrow { bottom: -13px; transform: rotate(180deg); }
+.akg-popover--right .akg-popover__arrow { left: -34.5px; transform: rotate(-90deg); }
+.akg-popover--left .akg-popover__arrow { right: -34.5px; transform: rotate(90deg); }
+.akg-popover--bottom.akg-popover--align-center .akg-popover__arrow,
+.akg-popover--top.akg-popover--align-center .akg-popover__arrow { left: calc(50% - 28px); }
+.akg-popover--bottom.akg-popover--align-start .akg-popover__arrow,
+.akg-popover--top.akg-popover--align-start .akg-popover__arrow { left: var(--space-20); }
+.akg-popover--bottom.akg-popover--align-end .akg-popover__arrow,
+.akg-popover--top.akg-popover--align-end .akg-popover__arrow { right: var(--space-20); }
+.akg-popover--left.akg-popover--align-center .akg-popover__arrow,
+.akg-popover--right.akg-popover--align-center .akg-popover__arrow { top: calc(50% - 6.5px); }
+.akg-popover--left.akg-popover--align-start .akg-popover__arrow,
+.akg-popover--right.akg-popover--align-start .akg-popover__arrow { top: 41.5px; }
+.akg-popover--left.akg-popover--align-end .akg-popover__arrow,
+.akg-popover--right.akg-popover--align-end .akg-popover__arrow { bottom: 41.5px; }
+
+/* macOS: Liquid Glass, 20 corners, 46×10.5 arrow */
+[data-theme^="macos"] .akg-popover__body,
+[data-theme^="macos"] .akg-popover__arrow { background: var(--glass-fill); }
+[data-theme^="macos"] .akg-popover__body { border-radius: 20px; box-shadow: var(--shadow-glass), inset 0 0 0 0.5px var(--separator); }
+[data-theme^="macos"] .akg-popover__arrow { width: 46px; height: 10.5px; clip-path: path("M0 10.5C9 10.5 16 1 21 0.3Q23 0 25 0.3C30 1 37 10.5 46 10.5Z"); }
+[data-theme^="macos"] .akg-popover--bottom { margin-top: 10.5px; }
+[data-theme^="macos"] .akg-popover--top { margin-bottom: 10.5px; }
+[data-theme^="macos"] .akg-popover--right { margin-left: 10.5px; }
+[data-theme^="macos"] .akg-popover--left { margin-right: 10.5px; }
+[data-theme^="macos"] .akg-popover--bottom .akg-popover__arrow { top: -10.5px; }
+[data-theme^="macos"] .akg-popover--top .akg-popover__arrow { bottom: -10.5px; }
+[data-theme^="macos"] .akg-popover--right .akg-popover__arrow { left: -28.25px; }
+[data-theme^="macos"] .akg-popover--left .akg-popover__arrow { right: -28.25px; }
+[data-theme^="macos"] .akg-popover--bottom.akg-popover--align-center .akg-popover__arrow,
+[data-theme^="macos"] .akg-popover--top.akg-popover--align-center .akg-popover__arrow { left: calc(50% - 23px); }
+[data-theme^="macos"] .akg-popover--left.akg-popover--align-center .akg-popover__arrow,
+[data-theme^="macos"] .akg-popover--right.akg-popover--align-center .akg-popover__arrow { top: calc(50% - 5.25px); }
+[data-theme^="macos"] .akg-popover--left.akg-popover--align-start .akg-popover__arrow,
+[data-theme^="macos"] .akg-popover--right.akg-popover--align-start .akg-popover__arrow { top: 37.75px; }
+[data-theme^="macos"] .akg-popover--left.akg-popover--align-end .akg-popover__arrow,
+[data-theme^="macos"] .akg-popover--right.akg-popover--align-end .akg-popover__arrow { bottom: 37.75px; }

@@ -18,7 +18,7 @@ The owner, a physician, is the only user. No coding experience: explain steps pl
 - Clinical content needs a source. Never present generated medical content as verified (authorship/verification rules are still an open question).
 - All content edits happen through Claude in chat; there is no in-app editing.
 
-## Stack (decided, not yet set up)
+## Stack (set up 2026-10-17)
 React + TypeScript + Vite, Vite PWA plugin (fully offline, prompt-to-update), GitHub Actions for PR checks and deploy to Pages, Dependabot. Content as files in the repo. Must follow the iPhone's Text Size (Dynamic Type) and light/dark appearance; `noindex` + `robots.txt`.
 
 ## Design
