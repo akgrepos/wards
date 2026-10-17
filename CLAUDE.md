@@ -21,6 +21,7 @@ The owner, a physician, is the only user. No coding experience: explain steps pl
 - **Clinical content:** Claude writes it, evidence-based, and every claim cites its primary source (rules in DECISIONS.md, "Sources"). Never cite the reference handbook or OpenEvidence; cite AMBOSS only when its primary guideline can't be found. Summarize, never copy, any source's text. Run the internal accuracy check (DECISIONS.md) on every card, with extra care for doses.
 - Copyrighted reference material (the reference handbook PDF in `~/Documents/Wards-reference/`) never goes into the repo.
 - All content edits happen through Claude in chat; there is no in-app editing.
+- Use precise medical terminology (hypoxemia, not "low oxygen"); lay terms and abbreviations only as search aliases.
 
 ## Stack
 React + TypeScript + Vite, Vite PWA plugin (fully offline, prompt-to-update), GitHub Actions (checks on PRs, publish `main` to Pages), Dependabot. Content as files in the repo. Follows the iPhone's Text Size and light/dark appearance. Hidden from search engines by the page's `noindex` tag, and limited to its own scripts by a security policy in `index.html`. How to run it: see README.

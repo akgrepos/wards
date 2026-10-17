@@ -1,6 +1,6 @@
 # Status
 
-Last updated 2026-10-17 (content decisions made). A short snapshot so the next session can pick up where the last one stopped. The reasons behind each choice are in [DECISIONS.md](DECISIONS.md).
+Last updated 2026-10-17 (topic list settled). A short snapshot so the next session can pick up where the last one stopped. The reasons behind each choice are in [DECISIONS.md](DECISIONS.md).
 
 ## Done
 - **Foundations and setup complete.** The app is live at https://akgrepos.github.io/wards/ (version 2026.10.17.2): a home screen with no entries yet, its own icon, offline use, the "Update Ready" banner, light/dark and Text Size support.
@@ -9,8 +9,8 @@ Last updated 2026-10-17 (content decisions made). A short snapshot so the next s
 - **AKG Design System** second pass published: https://claude.ai/artifact/GWFUZ6rCthpEuhMik4Jiru (copy in `vendor/akg/`).
 
 ## Next: content planning (decided 2026-10-17, see DECISIONS.md)
-1. Claude drafts the topic list from the reference handbook (PDF received); settle it together. The owner signs in to AMBOSS and OpenEvidence in the built-in browser when needed.
-2. Design card types (including physical exam references), then data types (one home per piece of information), the interactive flowchart format and the citation format.
+1. ~~Topic list~~ done (v2, private): 16 systems plus the Library, about 456 cards plus 41 scores, Wave 1 = 30 cards. The owner signs in to AMBOSS and OpenEvidence in the built-in browser when needed.
+2. **Next:** design card types (including physical exam references), then data types (one home per piece of information), the interactive flowchart format and the citation format.
 3. 2–3 pilot cards, read on the phone, with the accuracy-check pilot test; adjust; then scale in batches.
 - Entries will need their own links; any address inside `/wards/` other than the home page currently returns "not found", so the design must cover that.
 
