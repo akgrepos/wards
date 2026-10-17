@@ -23,7 +23,11 @@ React + TypeScript + Vite, Vite PWA plugin (fully offline, prompt-to-update), Gi
 
 ## Design
 - Use the AKG Design System: https://claude.ai/artifact/GWFUZ6rCthpEuhMik4Jiru (read its `project/README.md` first). Don't invent colors, type sizes or components outside it; propose additions to the design system instead.
-- First version (published 2026-10-16): tokens for four themes (`ios-light`, `ios-dark`, `macos-light`, `macos-dark`, chosen with `data-theme` on `<html>`), 43 text styles, and 16 React components under the `AKG` namespace: Button, Toggle, SegmentedControl, Stepper, TextField, SearchField, Slider, List/ListRow, ProgressIndicator, TabBar, Toolbar, Sidebar, Sheet, Alert, Menu, Popover. Files: `project/tokens.json`, `project/components/bundle.js`, `bundle.css`, `index.d.ts`.
+- Current version (published 2026-10-16, second pass): tokens for four themes (`ios-light`, `ios-dark`, `macos-light`, `macos-dark`, chosen with `data-theme` on `<html>`), 43 text styles, and 30 React components under the `AKG` namespace:
+  - Shared: Button, Toggle, SegmentedControl, Stepper, TextField, SearchField, Slider, DatePicker, ColorWell, List/ListRow, ProgressIndicator, EmptyState, Notification, TabBar, Toolbar, Sidebar, Sheet, Alert, Menu, Popover.
+  - Mostly macOS: Checkbox, RadioGroup, PopUpButton, ComboBox, DisclosureGroup, GroupBox, Tooltip, Window.
+  - Mostly iOS: ActionSheet, PageControl.
+  - The README's "Choosing controls by platform" table says which to use where. Files: `project/tokens.json`, `project/components/bundle.js`, `bundle.css`, `index.d.ts`.
 - The design system is shared across AKG projects. Change it only when the owner asks, and keep it generic (nothing Wards-specific).
 
 ## Where things stand
