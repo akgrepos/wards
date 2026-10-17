@@ -12,19 +12,21 @@ Last updated 2026-10-17 (after the app setup). A plain-language snapshot so the 
   - macOS mini and XL sizes on buttons, toggles, segmented controls, steppers and fields; tinted and toggle button styles.
 - **App set up (version 2026.10.17):** live at https://akgrepos.github.io/wards/
   - React + TypeScript + Vite, with a home screen that says "No Entries Yet" and shows the version.
-  - Works offline once opened; installs to the Home Screen with a placeholder "W" icon.
+  - Works offline once opened; installs to the Home Screen with its own icon (a reference card with a blue plus; version 2026.10.17.2).
   - Follows light/dark and the iPhone's Text Size. Shows "Update Ready · Reload" when a new version has downloaded, and checks for one each time the app comes back to the front.
   - Automatic checks on every pull request (design system styles up to date, type-check, tests, build); `main` publishes to GitHub Pages after the same checks. Dependabot opens weekly update PRs.
   - Hidden from search engines (`noindex` + `robots.txt`). `CHANGELOG.md` lists each version.
+  - `main` is protected (checks must pass; no overwriting). Commits are anonymous (`akgrepos`, private no-reply email); history was rewritten to match.
 
 ## Not started
 - Any content or content screens (entry list, entry page, search). Waits on the content question below.
 
 ## Waiting on the owner
 - **Content authorship and verification:** who writes entries and how each is marked verified (the one open question in DECISIONS.md).
-- **App icon:** the "W" on blue is a placeholder; replace it whenever you like.
 
 ## Known limits of the app setup
+- GitHub still holds hidden copies of the original (pre-rewrite) commits behind pull requests #1–#6. Only GitHub Support, or deleting and re-creating the repo, can remove them.
+- The account name `akgrepos` and the AKG Design System name are the owner's initials.
 - The design system's components (buttons, banners, lists) use fixed sizes, so their text doesn't follow the iPhone's Text Size yet; the app's own text does. Fixing that is a design system change, for the owner to decide.
 - The installed app shows a brief black screen while it starts (iOS's default for web apps without a launch image).
 
