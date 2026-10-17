@@ -1,0 +1,64 @@
+/* Page-wide settings. Colors, spacing and text styles come from tokens.css (the AKG Design System). */
+
+/* Text Size: on iPhone, -apple-system-body follows Settings › Display & Brightness › Text Size,
+   and every iOS text style is in rem, so all text scales with it. Elsewhere body text is 17px. */
+html {
+  font-size: 17px;
+  -webkit-text-size-adjust: 100%;
+}
+@supports (font: -apple-system-body) {
+  html { font: -apple-system-body; }
+}
+
+html, body {
+  margin: 0;
+  background: var(--background);
+  color: var(--label);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, p { margin: 0; }
+
+/* One screen: content inside the iPhone's safe area with the iOS 16pt margin. */
+.screen {
+  min-height: 100dvh;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  padding:
+    env(safe-area-inset-top)
+    calc(env(safe-area-inset-right) + var(--space-16))
+    calc(env(safe-area-inset-bottom) + var(--space-16))
+    calc(env(safe-area-inset-left) + var(--space-16));
+}
+
+/* The large title sits where iOS puts it: below the 54pt toolbar row (as in AKG.Toolbar's largeTitle),
+   clear of the system's blur under the status bar. */
+.screen__title { margin-top: 54px; margin-bottom: var(--space-24); }
+
+.placeholder {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-8);
+  text-align: center;
+}
+.placeholder__text { color: var(--label-secondary); }
+
+.screen__footer {
+  color: var(--label-secondary);
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+/* The update banner floats near the top of the screen, above the content. */
+.update-prompt {
+  position: fixed;
+  top: calc(env(safe-area-inset-top) + var(--space-8));
+  left: calc(env(safe-area-inset-left) + var(--space-8));
+  right: calc(env(safe-area-inset-right) + var(--space-8));
+  z-index: 10;
+}

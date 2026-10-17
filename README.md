@@ -2,11 +2,11 @@
 
 A personal internal medicine reference for iPhone, built as a web app you add to the Home Screen.
 
-**Status:** foundations decided and the design system's first version is published; no app code yet. See [docs/STATUS.md](docs/STATUS.md).
+**Status:** the app is set up and live, with no content yet. See [docs/STATUS.md](docs/STATUS.md) and [CHANGELOG.md](CHANGELOG.md).
 
 ## How it works
 
-- **Hosting:** GitHub Pages serves whatever is on the `main` branch at `https://akgrepos.github.io/wards/` (once Pages is turned on).
+- **Hosting:** GitHub Pages serves whatever is on the `main` branch at `https://akgrepos.github.io/wards/`.
 - **Install on iPhone:** open that address in Safari → Share → Add to Home Screen.
 - **Design:** built on the [AKG Design System](https://claude.ai/artifact/GWFUZ6rCthpEuhMik4Jiru), a shared Apple HIG–based system for all AKG projects.
 
@@ -17,6 +17,11 @@ A personal internal medicine reference for iPhone, built as a web app you add to
 - Your phone shows "Update ready · Reload" when a new version is available.
 
 See [docs/DECISIONS.md](docs/DECISIONS.md) for what has been decided and what is still open.
+
+## For Claude: running it
+
+- `npm ci` once, then `npm run build` and `npx vite preview --host --port 4173` to serve the built app at `http://localhost:4173/wards/` (the simulator reaches it at the same address).
+- `npm test`, `npm run typecheck`. After updating `vendor/akg/` from the design system, run `npm run tokens`.
 
 ## Ground rules
 

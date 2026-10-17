@@ -4,6 +4,9 @@ Settled choices for Wards, newest first. Each entry says what was decided and wh
 
 | Date | Decision | Why |
 |---|---|---|
+| 2026-10-17 | **Design system in the app:** a copy of the AKG Design System's files lives in `vendor/akg/`; `npm run tokens` turns its tokens into CSS (`src/design/tokens.css`), with iOS text styles scaled from the iPhone's Text Size. A check fails if that file is out of date. | Works offline with no outside downloads, and the app always matches a known version of the design system. |
+| 2026-10-17 | **Version number** lives in `src/version.ts`; a test fails if it doesn't match the newest `CHANGELOG.md` entry. | The version shown in the app and the changelog can't drift apart. |
+| 2026-10-17 | **Update checks:** besides at launch, the app looks for a new version each time it comes back to the front. | A Home Screen app can stay open in the background for days. |
 | 2026-10-16 | **Web address:** `https://akgrepos.github.io/wards/`. | Free, no setup. Decided now because changing the address later means reinstalling the Home Screen app. |
 | 2026-10-16 | **Merging:** Claude merges each pull request once automated checks pass and its own simulator check looks right. The owner reviews by using the app and asks for changes in chat. | Keeps the owner out of routine approvals while every change still passes automated and visual checks. |
 | 2026-10-16 | **Testing:** automated checks on every PR (build, type-check, tests), plus Claude testing each change in the iOS 27 Simulator (installed as a Home Screen app, light and dark, at least two text sizes) and attaching screenshots to the PR. | Real iOS Safari behavior is checked before anything goes live. |

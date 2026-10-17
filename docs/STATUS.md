@@ -1,6 +1,6 @@
 # Status
 
-Last updated 2026-10-16 (after the design system second pass). A plain-language snapshot so the next session can pick up where the last one stopped.
+Last updated 2026-10-17 (after the app setup). A plain-language snapshot so the next session can pick up where the last one stopped.
 
 ## Done
 - **Foundations decided** and recorded in [DECISIONS.md](DECISIONS.md): stack, offline, content storage, privacy, updates, display, testing, merging, web address.
@@ -10,14 +10,23 @@ Last updated 2026-10-16 (after the design system second pass). A plain-language 
   - A brand book (usage rules, writing style, Liquid Glass, icons, which control to use on which platform, and native SwiftUI/UIKit/AppKit equivalents for every token).
   - 30 components, each checked in all four themes: Button, Toggle, Checkbox, RadioGroup, SegmentedControl, PopUpButton, Stepper, TextField, SearchField, ComboBox, Slider, DatePicker, ColorWell, List, GroupBox, DisclosureGroup, ProgressIndicator, EmptyState, Notification, Tooltip, TabBar, Toolbar, Sidebar, PageControl, Window, Sheet, Alert, ActionSheet, Menu, Popover.
   - macOS mini and XL sizes on buttons, toggles, segmented controls, steppers and fields; tinted and toggle button styles.
+- **App set up (version 2026.10.17):** live at https://akgrepos.github.io/wards/
+  - React + TypeScript + Vite, with a home screen that says "No Entries Yet" and shows the version.
+  - Works offline once opened; installs to the Home Screen with a placeholder "W" icon.
+  - Follows light/dark and the iPhone's Text Size. Shows "Update Ready · Reload" when a new version has downloaded, and checks for one each time the app comes back to the front.
+  - Automatic checks on every pull request (design system styles up to date, type-check, tests, build); `main` publishes to GitHub Pages after the same checks. Dependabot opens weekly update PRs.
+  - Hidden from search engines (`noindex` + `robots.txt`). `CHANGELOG.md` lists each version.
 
-## Not started (no app code exists yet)
-- App scaffold with the decided stack: React + TypeScript + Vite, PWA plugin, GitHub Actions checks and deploy, Dependabot, `noindex` + `robots.txt`, `CHANGELOG.md`.
-- Turning on GitHub Pages (happens with the scaffold, so the address doesn't serve an empty site).
+## Not started
+- Any content or content screens (entry list, entry page, search). Waits on the content question below.
 
 ## Waiting on the owner
 - **Content authorship and verification:** who writes entries and how each is marked verified (the one open question in DECISIONS.md).
-- **Go-ahead for the app scaffold** (the likely next step now that the design system is fuller).
+- **App icon:** the "W" on blue is a placeholder; replace it whenever you like.
+
+## Known limits of the app setup
+- The design system's components (buttons, banners, lists) use fixed sizes, so their text doesn't follow the iPhone's Text Size yet; the app's own text does. Fixing that is a design system change, for the owner to decide.
+- The installed app shows a brief black screen while it starts (iOS's default for web apps without a launch image).
 
 ## Possible later work on the design system
 Not requested yet; listed so nothing is forgotten.
