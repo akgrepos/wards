@@ -1,27 +1,21 @@
 name: Deploy
 
-# Publishes main to https://akgrepos.github.io/wards/ after the same checks pass.
+# Publishes main to https://akgrepos.github.io/wards/. Checks already passed on the pull request,
+# and main only accepts changes that are up to date and passing, so they aren't repeated here.
 on:
   push:
     branches: [main]
   workflow_dispatch:
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
 
 concurrency:
   group: pages
   cancel-in-progress: false
 
 jobs:
-  checks:
-    uses: ./.github/workflows/checks.yml
-
   build:
-    needs: checks
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-node@v7
@@ -29,7 +23,7 @@ jobs:
           node-version-file: .nvmrc
           cache: npm
       - run: npm ci
-      - run: npm run build
+      - run: npx vite build
       - uses: actions/upload-pages-artifact@v5
         with:
           path: dist
@@ -37,6 +31,9 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

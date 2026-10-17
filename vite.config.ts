@@ -12,7 +12,7 @@ export default defineConfig({
       // Wait for a tap on "Reload" before switching to a new version.
       registerType: 'prompt',
       // Icons are made from public/favicon.svg by `npm run icons` (settings in pwa-assets.config.ts).
-      includeAssets: ['favicon.svg', 'robots.txt', 'apple-touch-icon-180x180.png'],
+      includeAssets: ['favicon.svg', 'theme.js', 'apple-touch-icon-180x180.png'],
       manifest: {
         name: 'Wards',
         short_name: 'Wards',
@@ -31,7 +31,7 @@ export default defineConfig({
       },
       workbox: {
         // Save everything the app needs so it works with no signal.
-        globPatterns: ['**/*.{js,css,html,svg,png,txt,json,md}'],
+        globPatterns: ['**/*.{js,css,html,svg,png,json}'],
       },
     }),
   ],

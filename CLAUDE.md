@@ -5,33 +5,33 @@ The owner, a physician, is the only user. No coding experience: explain steps pl
 
 ## How to work here
 - **Don't build anything the owner hasn't asked for.** Propose options, wait for a decision, then build only what was agreed. Answering a question is not permission to build.
-- **Branch workflow:** never commit to `main` directly. Start a short-lived branch per task (`setup/…`, `feature/…`, `fix/…`, `content/…`), commit there, push, and open a pull request with a plain-language summary and simulator screenshots.
-- **Merging is yours:** merge the PR yourself (rebase merges only, so commits stay anonymous) once automated checks are green and your simulator check passes, then delete the branch. The owner reviews by using the app and asks for changes in chat. Never merge with a failing check.
-- **Testing every change:** run it in the iOS 27 Simulator in Safari, added to the Home Screen (standalone), in light and dark mode and at least two text sizes. Attach screenshots to the PR.
-- **Releases:** bump the date-based version (`YYYY.MM.DD`, `.2` for a second release that day) and add a plain-language entry to `CHANGELOG.md` in any PR that changes what the owner sees.
-- Record every decision in `docs/DECISIONS.md` (date, what, why). Move items out of "Open questions" when they're settled.
-- `main` is deployed to the live app; anything merged reaches the owner's phone after they tap "Update ready · Reload".
+- **One branch and pull request per task.** Never commit to `main` (it's protected). Branch names: `setup/…`, `feature/…`, `fix/…`, `content/…`. Open the PR with a plain-language summary.
+- **Merge it yourself** with `gh pr merge --rebase` (the only method allowed) once the checks pass and testing below is done. Branches delete themselves. Never merge with a failing check. The owner reviews by using the app and asks for changes in chat.
+- **Test in proportion to the change** (iOS 27 Simulator, Safari):
+  - *Visible change:* add to the Home Screen and check light and dark at two text sizes. Put screenshots in `docs/screenshots/<date>-<topic>/` and show them in the PR. Bump the version in `src/version.ts` (`YYYY.MM.DD`, `.2` for a second release that day) and add a plain-language `CHANGELOG.md` entry; a test enforces that the two match.
+  - *Behind-the-scenes change (build, security, tools):* a quick check that the app opens, works offline and still offers updates. No screenshots or version bump.
+  - *Notes only, or a Dependabot PR with nothing visible:* the automatic checks are enough. Read a Dependabot PR's changes before merging.
+- **Record decisions** in `docs/DECISIONS.md` (date, what, why) and keep `docs/STATUS.md` a short current snapshot. Move items out of "Open questions" when settled.
+- `main` publishes to the live app automatically; the owner gets it after tapping Reload on the "Update Ready" banner.
 
 ## Hard rules
-- No patient information (PHI) in the repo, the app, issues, or commit messages. The site and repo are public.
+- No patient information (PHI) anywhere: repo, app, pull requests or commit messages. The site and repo are public.
 - Nothing sensitive or institution-internal (internal protocols, phone or pager numbers).
+- **Stay anonymous.** Never put the owner's name, email or computer name in files, commits or PRs; refer to them as "the owner". Commits must be authored as `akgrepos <338781722+akgrepos@users.noreply.github.com>` (this repo's git config); a check rejects any other author.
 - Clinical content needs a source. Never present generated medical content as verified (authorship/verification rules are still an open question).
 - All content edits happen through Claude in chat; there is no in-app editing.
 
-## Stack (set up 2026-10-17)
-React + TypeScript + Vite, Vite PWA plugin (fully offline, prompt-to-update), GitHub Actions for PR checks and deploy to Pages, Dependabot. Content as files in the repo. Must follow the iPhone's Text Size (Dynamic Type) and light/dark appearance; `noindex` + `robots.txt`.
+## Stack
+React + TypeScript + Vite, Vite PWA plugin (fully offline, prompt-to-update), GitHub Actions (checks on PRs, publish `main` to Pages), Dependabot. Content as files in the repo. Follows the iPhone's Text Size and light/dark appearance. Hidden from search engines by the page's `noindex` tag, and limited to its own scripts by a security policy in `index.html`. How to run it: see README.
 
 ## Design
 - Use the AKG Design System: https://claude.ai/artifact/GWFUZ6rCthpEuhMik4Jiru (read its `project/README.md` first). Don't invent colors, type sizes or components outside it; propose additions to the design system instead.
-- Current version (published 2026-10-16, second pass): tokens for four themes (`ios-light`, `ios-dark`, `macos-light`, `macos-dark`, chosen with `data-theme` on `<html>`), 43 text styles, and 30 React components under the `AKG` namespace:
-  - Shared: Button, Toggle, SegmentedControl, Stepper, TextField, SearchField, Slider, DatePicker, ColorWell, List/ListRow, ProgressIndicator, EmptyState, Notification, TabBar, Toolbar, Sidebar, Sheet, Alert, Menu, Popover.
-  - Mostly macOS: Checkbox, RadioGroup, PopUpButton, ComboBox, DisclosureGroup, GroupBox, Tooltip, Window.
-  - Mostly iOS: ActionSheet, PageControl.
-  - The README's "Choosing controls by platform" table says which to use where. Files: `project/tokens.json`, `project/components/bundle.js`, `bundle.css`, `index.d.ts`.
+- The app uses a copy in `vendor/akg/`; `vendor/akg/VERSION.md` says which version and how to update it. `npm run tokens` turns its tokens into `src/design/tokens.css` (iOS text styles in rem so they follow Text Size).
+- Second pass (2026-10-16): four themes (`ios-light`, `ios-dark`, `macos-light`, `macos-dark`, set by `data-theme` on `<html>`), 43 text styles, and 30 React components under `AKG`. The README's "Choosing controls by platform" table says which to use where.
 - The design system is shared across AKG projects. Change it only when the owner asks, and keep it generic (nothing Wards-specific).
 
 ## Where things stand
-See `docs/STATUS.md` for what's done, what's next, and what's waiting on a decision.
+See `docs/STATUS.md`.
 
 ## Accounts
 - GitHub: `akgrepos`. Repo: https://github.com/akgrepos/wards. Live address: https://akgrepos.github.io/wards/

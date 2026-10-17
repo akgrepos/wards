@@ -1,9 +1,8 @@
 name: Checks
 
-# Runs on every pull request. A PR is merged only when this passes.
+# Runs on every pull request. main only accepts changes that pass, so publishing doesn't re-run these.
 on:
   pull_request:
-  workflow_call:
 
 permissions:
   contents: read
@@ -13,6 +12,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - name: Commit authors are anonymous
+        # Only GitHub no-reply addresses are allowed. Prints commit IDs, never names, because logs are public.
+        run: |
+          bad=$(git log --format='%h %ae %ce' ${{ github.event.pull_request.base.sha }}..${{ github.event.pull_request.head.sha }} \
+            | awk '{ for (i = 2; i <= 3; i++) if ($i !~ /@users\.noreply\.github\.com$/ && $i != "noreply@github.com") { print $1; break } }')
+          if [ -n "$bad" ]; then echo "These commits have a non-anonymous author or committer:"; echo "$bad"; exit 1; fi
       - uses: actions/setup-node@v7
         with:
           node-version-file: .nvmrc
