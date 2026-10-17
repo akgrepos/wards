@@ -32,6 +32,9 @@ React + TypeScript + Vite, Vite PWA plugin (fully offline, prompt-to-update), Gi
 - Second pass (2026-10-16): four themes (`ios-light`, `ios-dark`, `macos-light`, `macos-dark`, set by `data-theme` on `<html>`), 43 text styles, and 30 React components under `AKG`. The README's "Choosing controls by platform" table says which to use where.
 - The design system is shared across AKG projects. Change it only when the owner asks, and keep it generic (nothing Wards-specific).
 
+## Content structure
+Card types and their sections: `docs/CARD-TYPES.md`. Follow them exactly.
+
 ## Where things stand
 See `docs/STATUS.md`.
 
