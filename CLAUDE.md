@@ -18,7 +18,8 @@ The owner, a physician, is the only user. No coding experience: explain steps pl
 - No patient information (PHI) anywhere: repo, app, pull requests or commit messages. The site and repo are public.
 - Nothing sensitive or institution-internal (internal protocols, phone or pager numbers).
 - **Stay anonymous.** Never put the owner's name, email or computer name in files, commits or PRs; refer to them as "the owner". Commits must be authored as `akgrepos <338781722+akgrepos@users.noreply.github.com>` (this repo's git config); a check rejects any other author.
-- Clinical content needs a source. Never present generated medical content as verified (authorship/verification rules are still an open question).
+- **Clinical content:** Claude writes it, evidence-based, and every claim cites its primary source (rules in DECISIONS.md, "Sources"). Never cite the reference handbook or OpenEvidence; cite AMBOSS only when its primary guideline can't be found. Summarize, never copy, any source's text. Run the internal accuracy check (DECISIONS.md) on every card, with extra care for doses.
+- Copyrighted reference material (the reference handbook PDF in `~/Documents/Wards-reference/`) never goes into the repo.
 - All content edits happen through Claude in chat; there is no in-app editing.
 
 ## Stack

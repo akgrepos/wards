@@ -1,6 +1,6 @@
 # Status
 
-Last updated 2026-10-17 (after the setup audit). A short snapshot so the next session can pick up where the last one stopped. The reasons behind each choice are in [DECISIONS.md](DECISIONS.md).
+Last updated 2026-10-17 (content decisions made). A short snapshot so the next session can pick up where the last one stopped. The reasons behind each choice are in [DECISIONS.md](DECISIONS.md).
 
 ## Done
 - **Foundations and setup complete.** The app is live at https://akgrepos.github.io/wards/ (version 2026.10.17.2): a home screen with no entries yet, its own icon, offline use, the "Update Ready" banner, light/dark and Text Size support.
@@ -8,12 +8,12 @@ Last updated 2026-10-17 (after the setup audit). A short snapshot so the next se
 - **Privacy and security:** anonymous history, private GitHub profile with passkey and two-factor sign-in, protected `main`, rebase-only merges, page hidden from search engines and limited to its own scripts.
 - **AKG Design System** second pass published: https://claude.ai/artifact/GWFUZ6rCthpEuhMik4Jiru (copy in `vendor/akg/`).
 
-## Waiting on the owner
-- **Content authorship and verification:** who writes entries and how each is marked verified (the open question in DECISIONS.md). Nothing content-related is built until it's settled.
-
-## Next, once content is decided
-- Plan the entry format and screens (list, entry page, search).
-- Entries will need their own links; right now any address inside `/wards/` other than the home page returns "not found", so the plan must cover that.
+## Next: content planning (decided 2026-10-17, see DECISIONS.md)
+1. **Waiting on the owner:** the reference handbook PDF in `~/Documents/Wards-reference/`, and signing in to AMBOSS and OpenEvidence in the built-in browser.
+2. Claude drafts the topic list from the reference handbook; settle it together.
+3. Design card types, data types (one home per piece of information) and the interactive flowchart format; agree the citation format.
+4. 2–3 pilot cards, read on the phone; adjust; then scale in batches.
+- Entries will need their own links; any address inside `/wards/` other than the home page currently returns "not found", so the design must cover that.
 
 ## Known limits
 - The design system's components (buttons, banners, lists) use fixed sizes, so their text doesn't follow Text Size yet; the app's own text does. Fixing that is a design system change, for the owner to decide.
