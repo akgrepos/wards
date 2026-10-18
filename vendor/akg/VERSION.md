@@ -5,6 +5,7 @@ https://claude.ai/artifact/GWFUZ6rCthpEuhMik4Jiru
 
 | Copied | Artifact version | Files |
 |---|---|---|
+| 2026-10-18 | 1792363484-ef64 (Icons group: 32 symbols drawn after SF Symbols; Iconography: 1.4px Regular weight, filled variants in tab bars and tiles, one-line gaps) | none (README and icon assets only; the four copied files are unchanged) |
 | 2026-10-18 | 1792359443-4c69 (README Iconography only: SF Symbols as a reference, one 2px style, custom symbols where SF has none) | none (the four copied files are unchanged) |
 | 2026-10-18 | 1792356763-b1b7 (TabBar: tabs start at their label's width and share the spare space, so one longer label isn't cut off) | `project/components/bundle.css` (the other three files are unchanged) |
 | 2026-10-18 | 1792340382-7bfa (fifth pass, redesign additions: TabBar accessory slot and floating placement, 11pt tab labels; StepList, ValueRow, Tag, ScaleBar, ComparisonGrid, TimePoints, TimerCapsule, SourceLine; ContentSection card variant with collapsible header and useSectionState; ListRow iconTint and IconTile; Sheet heading and two-line title; layout tokens; akg-link press style) | `project/tokens.json`, `project/components/bundle.css`, `bundle.js`, `index.d.ts` |
