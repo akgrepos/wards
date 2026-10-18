@@ -1506,7 +1506,8 @@ button.akg-disclosure__button:disabled, .akg-disclosure__header:disabled .akg-di
   color: var(--glass-label); background: transparent;
   -webkit-tap-highlight-color: transparent;
 }
-.akg-toolbar-button .akg-sym { font-size: calc(20 * var(--akg-text-unit, 1px)); }
+/* Bar symbols keep their size at every Text Size, as iOS bar buttons do, so they always fit their glass circle */
+.akg-toolbar-button .akg-sym { font-size: 20px; }
 .akg-toolbar-button--standalone {
   height: var(--tap-target); min-width: var(--tap-target); padding: 0 var(--space-12);
   background: var(--glass-fill);
@@ -2296,9 +2297,10 @@ button.akg-sheet__grabber::after { content: ""; position: absolute; left: -20px;
 .akg-figure__close { position: absolute; z-index: 1; top: calc(env(safe-area-inset-top) + var(--space-8)); right: calc(env(safe-area-inset-right) + var(--space-16)); width: var(--tap-target); height: var(--tap-target); border: 0; border-radius: var(--radius-full); display: inline-flex; align-items: center; justify-content: center; font-size: 17px; color: #fff; background: rgba(120, 120, 128, 0.36); -webkit-backdrop-filter: blur(15px); backdrop-filter: blur(15px); cursor: pointer; }
 [data-theme^="macos"] .akg-figure__caption { font-size: 11px; line-height: 14px; }
 
-/* Banner — in-app status about the app itself. Glass card; Later + one action. Place it where it never covers navigation. */
+/* Banner — in-app status about the app itself. Glass card; Later + one action. Place it where it never covers navigation.
+   At large Text Sizes, when the text would get less than about 140pt beside the buttons, the buttons move below it. */
 .akg-banner {
-  display: flex; align-items: center; gap: var(--space-12); padding: var(--space-12) var(--space-12) var(--space-12) var(--space-16);
+  display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-12); padding: var(--space-12) var(--space-12) var(--space-12) var(--space-16);
   border-radius: 22px; color: var(--glass-label);
   background: var(--glass-fill); -webkit-backdrop-filter: blur(15px) saturate(180%); backdrop-filter: blur(15px) saturate(180%);
   box-shadow: var(--shadow-glass), inset 0 0 0 0.5px var(--separator);
@@ -2307,15 +2309,16 @@ button.akg-sheet__grabber::after { content: ""; position: absolute; left: -20px;
 .akg-banner--bottom { position: fixed; z-index: 900; left: calc(env(safe-area-inset-left) + var(--space-8)); right: calc(env(safe-area-inset-right) + var(--space-8)); bottom: calc(env(safe-area-inset-bottom) + var(--space-8)); }
 .akg-banner--top { position: fixed; z-index: 900; left: calc(env(safe-area-inset-left) + var(--space-8)); right: calc(env(safe-area-inset-right) + var(--space-8)); top: calc(env(safe-area-inset-top) + var(--space-8)); }
 @keyframes akg-banner-in { from { transform: translateY(12px); opacity: 0; } to { transform: none; opacity: 1; } }
-.akg-banner__text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: var(--space-2); }
+.akg-banner__text { flex: 1 1 calc(140 * var(--akg-text-unit, 1px)); min-width: 0; display: flex; flex-direction: column; gap: var(--space-2); }
 .akg-banner__title { font-weight: 600; font-size: calc(15 * var(--akg-text-unit, 1px)); line-height: calc(20 * var(--akg-text-unit, 1px)); }
 .akg-banner__message { color: var(--label-secondary); font-size: calc(15 * var(--akg-text-unit, 1px)); line-height: calc(20 * var(--akg-text-unit, 1px)); }
-.akg-banner__actions { flex: none; display: flex; gap: var(--space-8); }
+.akg-banner__actions { flex: none; display: flex; flex-wrap: wrap; justify-content: flex-end; gap: var(--space-8); margin-left: auto; }
 .akg-banner__action { position: relative; min-height: var(--control-ios-medium); padding: 0 var(--space-12); border: 0; border-radius: var(--radius-full); background: var(--fill-tertiary); color: var(--accent); font-family: inherit; font-weight: 600; font-size: calc(15 * var(--akg-text-unit, 1px)); cursor: pointer; -webkit-tap-highlight-color: transparent; }
 .akg-banner__action::after { content: ""; position: absolute; left: 50%; top: 50%; width: max(100%, var(--tap-target)); height: var(--tap-target); transform: translate(-50%, -50%); }
 .akg-banner__action--prominent { background: var(--accent); color: var(--on-accent); }
 .akg-banner__action:active { filter: brightness(0.9); }
 [data-theme^="macos"] .akg-banner { border-radius: 16px; padding: var(--space-10) var(--space-10) var(--space-10) var(--space-14); }
+[data-theme^="macos"] .akg-banner__text { flex-basis: 140px; }
 [data-theme^="macos"] .akg-banner__title, [data-theme^="macos"] .akg-banner__message { font-size: 13px; line-height: 16px; }
 [data-theme^="macos"] .akg-banner__action { min-height: var(--control-macos-regular); font-size: 13px; }
 [data-theme^="macos"] .akg-banner__action::after { display: none; }
