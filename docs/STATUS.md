@@ -30,7 +30,7 @@ Last updated 2026-10-17 (end of day: AKI pilot shipped, wrap-up done). A short s
 - **HIG reference:** full HIG text and rule summaries kept privately in `~/Documents/Wards-reference/hig/`.
 
 ## Waiting on the owner
-- Whether to delete an empty, untitled design canvas artifact created 2026-10-17.
+- Nothing pending.
 
 ## Watch
 - **KDIGO 2026 AKI/AKD guideline:** public-review draft only (March 2026). When the final is published, update the AKI card. Expected changes: cystatin C criteria, biomarker staging, AKD, glucose 140–180 mg/dL, bicarbonate before RRT at pH <7.20, deferred RRT.
