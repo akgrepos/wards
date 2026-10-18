@@ -1,0 +1,12 @@
+drug_name: Regular insulin
+indication: Moderate or severe hyperkalemia (shift potassium into cells)
+population: Adults
+route: IV
+amount: 10
+unit: units
+frequency: once, with dextrose
+adjustments:
+  - when: "Blood glucose above 200 mg/dL"
+    change: "May be given without additional dextrose"
+notes: "Recheck potassium at 60 minutes. Monitor glucose for 6 hours."
+sources: [ukka-hyperkalaemia-2026, kdigo-acute-hyperkalemia-2020]

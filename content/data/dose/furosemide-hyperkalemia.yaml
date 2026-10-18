@@ -1,0 +1,9 @@
+drug_name: Furosemide
+indication: Hyperkalemia in patients who make urine, especially with volume overload
+population: Adults
+route: IV
+amount: 40–80
+unit: mg
+frequency: once
+notes: "Onset about 15 minutes. Efficacy for acute hyperkalemia hasn't been studied; most useful with volume overload."
+sources: [emcreg-hyperkalemia-2025, kdigo-acute-hyperkalemia-2020]

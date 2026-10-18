@@ -17,7 +17,7 @@ variant: protocol               # only for types with variants (reference, medic
 system: renal
 title: Hyperkalemia
 aliases: [high potassium]       # search only
-order: 10                       # position within its group (optional)
+subsection: Potassium Disorders # condition cards only: the topic group within the system
 related:
   differential: [renal-pseudohyperkalemia]
   conditions: [renal-aki]
@@ -44,7 +44,7 @@ One line shown while the section is collapsed.
 
 ## Rules the check enforces
 - Section headings (`##`) are exactly the card type's sections, in their fixed order; Key points is required.
-- Every line of content ends with `^[source-id, …]`, unless it is an insert (inserts carry their own sources). Pearls and pitfalls are exempt.
+- Every line of content ends with `^[source-id, …]`, unless it is only an insert (inserts carry their own sources). This includes Pearls and pitfalls and section summaries.
 - Doses never appear as typed text (for example "40 mg"): insert them with `{{dose:id}}`. Concentrations such as `mmol/L` are fine.
 - Inserts (`{{type:id}}`), links (`[[card-id]]` or `[[card-id|label]]`) and related cards must exist.
 - Data items have their required fields, sources that exist, and US units.

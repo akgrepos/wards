@@ -117,14 +117,14 @@ export function parseCard(file, root) {
     variant: meta.variant ?? null,
     system: meta.system,
     group: meta.group ?? (meta.type === 'approach' ? 'approach' : meta.type === 'condition' ? 'condition' : 'reference'),
-    order: meta.order ?? 1000,
+    subsection: meta.subsection ?? null,
     title: meta.title,
     aliases: meta.aliases ?? [],
     related: meta.related ?? {},
     example: !!meta.example,
     unknownSections: unknown,
     sections: sections.map((s) => ({
-      key: s.key, title: s.title, collapsed: s.collapsed, summary: s.summary,
+      key: s.key, title: s.title, collapsed: s.collapsed, ...(() => { const x = s.summary ? splitSources(s.summary) : null; return { summary: x ? x.text : null, summarySources: x ? x.sources : [] }; })(),
       blocks: parseBlocks(s.lines), more: parseBlocks(s.moreLines), moreTitle: s.moreTitle ?? null,
     })),
   };

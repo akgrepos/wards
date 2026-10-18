@@ -28,6 +28,8 @@ export function checkContent({ systems, cards, data }) {
     if (cardIds.has(c.id)) err(where, `card id "${c.id}" is also used by ${cardIds.get(c.id)}`);
     cardIds.set(c.id, c.file);
     if (!c.title) err(where, 'missing title');
+    if (c.group === 'condition' && !c.subsection) err(where, 'condition cards need a subsection (e.g. "Arrhythmias")');
+    if (c.group !== 'condition' && c.subsection) err(where, 'only condition cards have a subsection; approach and reference cards are listed in their own groups');
     if (!systemIds.has(c.system)) err(where, `unknown system "${c.system}"`);
     const type = CARD_TYPES[c.type];
     if (!type) { err(where, `unknown card type "${c.type}"`); continue; }
@@ -52,12 +54,14 @@ export function checkContent({ systems, cards, data }) {
       if (n < 3 || n > 6) err(where, `Key points should have 3–6 bullets (has ${n})`);
     }
     for (const s of c.sections) {
+      if (s.summary && !(s.summarySources ?? []).length) err(where, `"${s.title}": the summary has no source`);
+      for (const id of s.summarySources ?? []) if (!data.source?.[id]) err(where, `"${s.title}" summary cites unknown source "${id}"`);
       for (const blocks of [s.blocks, s.more]) {
         for (const r of runs(blocks)) {
           const text = inlineText(r.inlines);
           if (DOSE_IN_TEXT.test(text)) err(where, `"${s.title}" has a dose typed as text ("${text.match(DOSE_IN_TEXT)[0]}"); insert it with {{dose:…}}`);
           for (const id of r.sources) if (!data.source?.[id]) err(where, `"${s.title}" cites unknown source "${id}"`);
-          const factual = !r.header && s.key !== 'pearls' && text.replace(/[\s.,;:()–-]/g, '').length > 0;
+          const factual = !r.header && text.replace(/[\s.,;:()–-]/g, '').length > 0;
           if (factual && r.sources.length === 0 && !r.inlines.some((x) => x.t === 'insert')) err(where, `"${s.title}": a line has no source ("${text.slice(0, 60)}…")`);
           for (const x of r.inlines) {
             if (x.t === 'insert' && !data[x.kind]?.[x.id]) err(where, `"${s.title}" inserts unknown ${x.kind} "${x.id}"`);

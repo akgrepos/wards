@@ -9,9 +9,9 @@ function withCard(md: string) {
   const blocks = (lines: string) => parseBlocks(lines.split('\n'));
   const base = JSON.parse(JSON.stringify(real));
   const card = {
-    file: 'test.md', id: 'test-card', type: 'condition', variant: null, system: 'renal', group: 'condition', order: 1,
+    file: 'test.md', id: 'test-card', type: 'condition', variant: null, system: 'renal', group: 'condition', subsection: 'Test Disorders',
     title: 'Test', aliases: [], related: {}, example: true, unknownSections: [],
-    sections: [{ key: 'key-points', title: 'Key points', collapsed: false, summary: null, blocks: blocks(md), more: [], moreTitle: null }],
+    sections: [{ key: 'key-points', title: 'Key points', collapsed: false, summary: null, blocks: blocks(md), more: [], moreTitle: null, summarySources: [] }],
   };
   base.cards.push(card);
   return checkContent(base);

@@ -10,9 +10,9 @@ export type Block =
   | { t: 'table'; header: Inline[][]; rows: { cells: Inline[][]; sources: string[] }[] }
   | { t: 'insert'; kind: string; id: string }
   | { t: 'subheading'; text: string };
-export type Section = { key: string; title: string; collapsed: boolean; summary: string | null; blocks: Block[]; more: Block[]; moreTitle: string | null };
+export type Section = { key: string; title: string; collapsed: boolean; summary: string | null; summarySources: string[]; blocks: Block[]; more: Block[]; moreTitle: string | null };
 export type Card = {
-  id: string; type: string; variant: string | null; system: string; group: string; order: number;
+  id: string; type: string; variant: string | null; system: string; group: string; subsection: string | null;
   title: string; aliases: string[]; related: Record<string, string[]>; example: boolean; sections: Section[];
 };
 export type System = { id: string; title: string; library?: boolean };

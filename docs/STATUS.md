@@ -14,7 +14,7 @@ Topic list (private; 16 systems plus the Library, about 488 cards plus 41 scores
 ## Next
 1. ~~**Design system additions**~~ done (2026-10-17, design system third pass, copied in version 2026.10.17.3): generic components the cards need (flowchart, source pill, card sections) and Text Size support for the design system's components.
 2. ~~**App build for cards**~~ done (version 2026.10.17.4): content files and checks, home and system screens, card pages with links, inserts, source pills and flowcharts. Search is not built yet.
-3. **Pilot cards:** 2–3 from Wave 1, read on the phone, with the accuracy-check pilot test; adjust; then scale in batches. The owner signs in to AMBOSS and OpenEvidence in the built-in browser when needed.
+3. **Pilot cards:** Hyperkalemia done (version 2026.10.17.5; the reviewer pilot test decided: reviewer on every card). Next: Acute kidney injury, then Electrolyte repletion, adjusting the template after each; then scale in batches. The owner signs in to AMBOSS and OpenEvidence in the built-in browser when needed.
 
 ## Known limits
 - The installed app shows a brief black screen while it starts (iOS default; a launch image could replace it, set aside for now).

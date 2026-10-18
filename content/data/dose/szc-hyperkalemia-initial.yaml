@@ -1,0 +1,11 @@
+drug_name: Sodium zirconium cyclosilicate
+brand: Lokelma
+indication: Hyperkalemia (initial correction)
+population: Adults
+route: PO
+amount: 10
+unit: g
+frequency: three times daily
+duration: up to 48 hours (US label; the UK guideline allows up to 72 hours)
+notes: "US label: not for emergency treatment of life-threatening hyperkalemia because of delayed onset (effect seen from about 1 hour). Each 5 g contains about 400 mg sodium; watch for edema. Avoid in severe constipation or bowel obstruction. Separate other oral drugs by 2 hours."
+sources: [label-lokelma-2024, ukka-hyperkalaemia-2026]

@@ -2,6 +2,7 @@
 id: example-condition
 type: condition
 system: renal
+subsection: Example Disorders
 title: Example Condition
 aliases: [sample card, test card]
 example: true
@@ -24,7 +25,7 @@ related:
 
 ## Epidemiology and risk factors
 ### Summary
-One-line placeholder summary.
+One-line placeholder summary. ^[example-guideline-a]
 
 - Placeholder risk factor. ^[example-trial-b]
 
@@ -41,4 +42,4 @@ One-line placeholder summary.
 - Give {{dose:example-drug-standard}} when indicated. ^[example-guideline-a]
 
 ## Pearls and pitfalls
-- Placeholder pearl.
+- Placeholder pearl. ^[example-guideline-a]

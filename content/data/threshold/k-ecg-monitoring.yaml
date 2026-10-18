@@ -1,0 +1,5 @@
+name: Potassium needing an urgent ECG
+value: "≥6.0"
+unit: mEq/L
+meaning: All hospitalized patients at or above this level need an urgent 12-lead ECG.
+sources: [ukka-hyperkalaemia-2026]

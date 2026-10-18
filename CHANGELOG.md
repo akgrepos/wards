@@ -2,6 +2,11 @@
 
 What changed in each version of Wards, newest first. The version is shown at the bottom of the app.
 
+## 2026.10.17.5
+
+- First card: Hyperkalemia, under Renal → Electrolyte Disorders. It has a step-by-step treatment flowchart, tappable doses and cutoffs, and a source on every line.
+- Systems now group their condition cards into topics (such as Electrolyte Disorders), listed alphabetically between Approach and Reference.
+
 ## 2026.10.17.4
 
 - New home screen: the 16 systems and the Library, ready for cards. Each system lists its cards under Approach, Conditions and Reference.

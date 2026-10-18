@@ -12,11 +12,22 @@ export function getSystem(id: string) {
   return content.systems.find((s) => s.id === id);
 }
 
-const GROUP_ORDER = ['approach', 'condition', 'reference'];
+const alpha = (a: Card, b: Card) => a.title.localeCompare(b.title);
 export function cardsInSystem(systemId: string) {
-  return content.cards
-    .filter((c) => c.system === systemId)
-    .sort((a, b) => GROUP_ORDER.indexOf(a.group) - GROUP_ORDER.indexOf(b.group) || a.order - b.order || a.title.localeCompare(b.title));
+  return content.cards.filter((c) => c.system === systemId);
+}
+
+// A system's list: Approach, then topic subsections (alphabetical), then Reference; cards alphabetical within each.
+export function systemGroups(systemId: string): { title: string; cards: Card[] }[] {
+  const cards = cardsInSystem(systemId);
+  const groups: { title: string; cards: Card[] }[] = [];
+  const approach = cards.filter((c) => c.group === 'approach').sort(alpha);
+  if (approach.length) groups.push({ title: 'Approach', cards: approach });
+  const subs = [...new Set(cards.filter((c) => c.group === 'condition').map((c) => c.subsection ?? 'Other'))].sort((a, b) => a.localeCompare(b));
+  for (const s of subs) groups.push({ title: s, cards: cards.filter((c) => c.group === 'condition' && (c.subsection ?? 'Other') === s).sort(alpha) });
+  const ref = cards.filter((c) => c.group === 'reference').sort(alpha);
+  if (ref.length) groups.push({ title: 'Reference', cards: ref });
+  return groups;
 }
 
 // Sources of an inserted item (dose, threshold, pathway).

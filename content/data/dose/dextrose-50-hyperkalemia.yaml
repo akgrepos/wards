@@ -1,0 +1,9 @@
+drug_name: Dextrose 50%
+indication: Given with IV insulin for hyperkalemia
+population: Adults
+route: IV
+amount: 50
+unit: mL
+frequency: once, with insulin
+notes: "50 mL of 50% dextrose contains 25 g of glucose. Can cause tissue injury if it extravasates."
+sources: [ukka-hyperkalaemia-2026, kdigo-acute-hyperkalemia-2020]

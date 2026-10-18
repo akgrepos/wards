@@ -1,0 +1,5 @@
+name: Glucose above which insulin may be given without dextrose
+value: ">200"
+unit: mg/dL
+meaning: Insulin may be given without additional glucose when blood glucose is above this level.
+sources: [kdigo-acute-hyperkalemia-2020]

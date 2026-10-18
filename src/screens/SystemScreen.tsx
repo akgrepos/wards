@@ -1,31 +1,25 @@
 import { AKG } from '../design/akg';
-import { cardsInSystem, cardTypeLabel, getSystem } from '../content';
+import { cardTypeLabel, getSystem, systemGroups } from '../content';
 import { href } from '../router';
 import { Screen } from './common';
-
-const GROUPS: [string, string][] = [['approach', 'Approach'], ['condition', 'Conditions'], ['reference', 'Reference']];
 
 export function SystemScreen({ id }: { id: string }) {
   const system = getSystem(id);
   if (!system) return <NotFound />;
-  const cards = cardsInSystem(id);
+  const groups = systemGroups(id);
   return (
     <Screen title={system.title} back={{ label: 'Wards', fallback: href.home() }}>
       <h1 className="ios-large-title-emphasized page-title">{system.title}</h1>
-      {cards.length === 0 ? (
+      {groups.length === 0 ? (
         <div className="empty"><AKG.EmptyState title="No Cards Yet" description="Cards for this section will appear here once they’re added." /></div>
       ) : (
-        GROUPS.map(([g, label]) => {
-          const list = cards.filter((c) => c.group === g);
-          if (!list.length) return null;
-          return (
-            <AKG.List key={g} header={label}>
-              {list.map((c) => (
-                <AKG.ListRow key={c.id} title={c.title} subtitle={g === 'reference' ? cardTypeLabel(c) : undefined} chevron href={href.card(c.id)} />
-              ))}
-            </AKG.List>
-          );
-        })
+        groups.map((g) => (
+          <AKG.List key={g.title} header={g.title}>
+            {g.cards.map((c) => (
+              <AKG.ListRow key={c.id} title={c.title} subtitle={g.title === 'Reference' ? cardTypeLabel(c) : undefined} chevron href={href.card(c.id)} />
+            ))}
+          </AKG.List>
+        ))
       )}
     </Screen>
   );

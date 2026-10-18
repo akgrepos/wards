@@ -3,7 +3,7 @@ import { AKG } from '../design/akg';
 import { cardSources, cardTypeLabel, content, getCard, getSystem, titleCase } from '../content';
 import type { Source } from '../content/types';
 import { href } from '../router';
-import { Blocks, SourceList } from '../ui/Rich';
+import { Blocks, Pill, RichText, SourceList } from '../ui/Rich';
 import { useSheet } from '../ui/SheetHost';
 import { NotFound } from './SystemScreen';
 import { Screen } from './common';
@@ -50,7 +50,7 @@ export function CardScreen({ id }: { id: string }) {
           id={`sec-${s.key}`}
           title={titleCase(s.title)}
           collapsible={s.collapsed}
-          summary={s.summary ?? undefined}
+          summary={s.summary ? <><RichText text={s.summary} /><Pill ids={s.summarySources} /></> : undefined}
           more={s.more.length ? <Blocks blocks={s.more} /> : undefined}
           moreLabel={s.moreTitle ? titleCase(s.moreTitle.replace(/^more\s*/i, 'Show ').trim() || 'Show More Detail') : undefined}
         >

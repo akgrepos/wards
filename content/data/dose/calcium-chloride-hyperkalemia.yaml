@@ -1,0 +1,9 @@
+drug_name: Calcium chloride 10%
+indication: Hyperkalemia with ECG changes in cardiac arrest or peri-arrest
+population: Adults
+route: IV
+amount: 10
+unit: mL
+frequency: over 5 minutes
+notes: "Preferred calcium salt in resuscitation (cardiac arrest or peri-arrest); calcium gluconate for all other patients. About three times the calcium of the same volume of calcium gluconate."
+sources: [ukka-hyperkalaemia-2026, kdigo-acute-hyperkalemia-2020]

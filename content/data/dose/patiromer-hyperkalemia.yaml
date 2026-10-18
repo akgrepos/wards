@@ -1,0 +1,11 @@
+drug_name: Patiromer
+brand: Veltassa
+indication: Hyperkalemia
+population: Adults
+route: PO
+amount: 8.4
+unit: g
+frequency: once daily
+max: "25.2 g once daily; increase by 8.4 g no more often than weekly"
+notes: "US label: not for emergency treatment (potassium falls from about 7 hours). Separate other oral drugs by 3 hours. Binds magnesium: monitor magnesium. Avoid in severe constipation or bowel obstruction."
+sources: [label-veltassa-2025]

@@ -1,0 +1,9 @@
+drug_name: Calcium gluconate 10%
+indication: Hyperkalemia with ECG changes (membrane stabilization)
+population: Adults
+route: IV
+amount: 30
+unit: mL
+frequency: over 10 minutes
+notes: "30 mL of 10% calcium gluconate gives about the same calcium (6.8 mmol) as 10 mL of 10% calcium chloride. Effect starts within 1–3 minutes and lasts 30–60 minutes; repeat if ECG changes persist or recur. Calcium does not lower potassium."
+sources: [ukka-hyperkalaemia-2026, kdigo-acute-hyperkalemia-2020]

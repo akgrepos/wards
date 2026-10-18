@@ -1,0 +1,9 @@
+drug_name: Albuterol (nebulized)
+indication: Adjunct for moderate or severe hyperkalemia
+population: Adults
+route: nebulized
+amount: 10–20
+unit: mg
+frequency: once
+notes: "Use with insulin-glucose, never alone for severe hyperkalemia. Peak potassium lowering around 90–120 minutes. This is a much larger dose than for bronchospasm; watch for tachycardia."
+sources: [ukka-hyperkalaemia-2026, kdigo-acute-hyperkalemia-2020]
