@@ -1,26 +1,27 @@
 # Status
 
-Last updated 2026-10-18 (repo re-created to remove the old non-anonymous commits). A short snapshot so the next session can pick up where the last one stopped. The reasons behind each choice are in [DECISIONS.md](DECISIONS.md).
+Last updated 2026-10-18 (repo re-created; app redesign approved). A short snapshot so the next session can pick up where the last one stopped. The reasons behind each choice are in [DECISIONS.md](DECISIONS.md).
 
 ## Start here next time
 1. **Read first:** `CLAUDE.md`, then DECISIONS.md "Sources, updated" (all content rules) before writing any card.
-2. **Review the audits** (filed 2026-10-17, no choices made yet). Five reports kept privately: design/UI/UX, navigation, process, systems/security/privacy, clinical content. Present the findings and let the owner choose what to fix with question pop-ups.
-   - Done: the repo identity fix (re-created 2026-10-18). Next: the clinical highs (terlipressin boxed warning, Hyperkalemia causes table, calcium chloride arrest rate, insulin onset).
-   - When the owner asks, run the saved "expert team" design prompt (kept privately with the audits).
-3. **Owner checks on the phone** (version 2026.10.17.7):
+2. **Build the approved redesign** (DECISIONS 2026-10-18): plan it with the owner first, add the new pieces to the AKG Design System, update CARD-TYPES.md, then build. The private mock-up canvas is the reference.
+3. **Review the rest of the audits** (filed 2026-10-17). Owner's order: design (done via the redesign), then process; clinical fixes later, since the app isn't in clinical use yet. Five reports kept privately: design/UI/UX, navigation, process, systems/security/privacy, clinical content. Present the findings and let the owner choose what to fix with question pop-ups.
+   - Done: the repo identity fix (re-created 2026-10-18).
+   - Saved for later: the clinical highs (terlipressin boxed warning, Hyperkalemia causes table, calcium chloride arrest rate, insulin onset).
+4. **Owner checks on the phone** (version 2026.10.17.7):
    - Tap Reload on "Update Ready" and confirm the app updates. One simulator Home Screen copy didn't reload; a safety net was added, and Safari reloaded fine.
    - Remove Wards from the Home Screen and add it back once, so the dark launch screen takes effect. Then confirm there's no white flash in dark mode.
    - Read the AKI and Hyperkalemia cards; note any wording or content changes.
-4. **Then: Pilot 3, Electrolyte repletion** (reference card, protocol variant):
+5. **Then: Pilot 3, Electrolyte repletion** (reference card, protocol variant):
    - Handbook section first, for wording and organization.
    - Primary sources via AMBOSS reference lists, plus OpenEvidence spot-checks (Sackett or Snow mode).
    - Independent reviewer; simulator check; PR.
-5. **After the three pilots:** adjust the card templates. Candidates:
+6. **After the three pilots:** adjust the card templates. Candidates:
    - a short style guide for the clinical register in `docs/CONTENT-FORMAT.md`
    - whether approach cards need fewer sections
    - the "most common" vs "cannot miss" layout
    Then plan batch production of Wave 1.
-6. **Inputs needed from the owner:** sign in to AMBOSS and OpenEvidence in the built-in browser if their sessions have expired.
+7. **Inputs needed from the owner:** sign in to AMBOSS and OpenEvidence in the built-in browser if their sessions have expired.
 
 ## Done
 - **App:** live at https://akgrepos.github.io/wards/ (version 2026.10.17.7).
@@ -33,7 +34,8 @@ Last updated 2026-10-18 (repo re-created to remove the old non-anonymous commits
 - **HIG reference:** full HIG text and rule summaries kept privately in `~/Documents/Wards-reference/hig/`.
 
 ## Waiting on the owner
-- Choices on the remaining 2026-10-17 audit findings.
+- Go-ahead on the build plan for the redesign.
+- Choices on the remaining 2026-10-17 audit findings (process next).
 
 ## Watch
 - **KDIGO 2026 AKI/AKD guideline:** public-review draft only (March 2026). When the final is published, update the AKI card. Expected changes: cystatin C criteria, biomarker staging, AKD, glucose 140–180 mg/dL, bicarbonate before RRT at pH <7.20, deferred RRT.
