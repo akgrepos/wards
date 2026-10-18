@@ -4,7 +4,7 @@ Last updated 2026-10-18 (repo re-created; app redesign approved). A short snapsh
 
 ## Start here next time
 1. **Read first:** `CLAUDE.md`, then DECISIONS.md "Sources, updated" (all content rules) before writing any card.
-2. **Build the approved redesign** (DECISIONS 2026-10-18): plan it with the owner first, add the new pieces to the AKG Design System, update CARD-TYPES.md, then build. The private mock-up canvas is the reference.
+2. **Build the approved redesign** (plan approved 2026-10-18, see DECISIONS): next is **Phase 1, design system additions** in the AKG Design System, then copy into `vendor/akg/`. Six phases, one PR each, each live when done. The private mock-up canvas is the reference.
 3. **Review the rest of the audits** (filed 2026-10-17). Owner's order: design (done via the redesign), then process; clinical fixes later, since the app isn't in clinical use yet. Five reports kept privately: design/UI/UX, navigation, process, systems/security/privacy, clinical content. Present the findings and let the owner choose what to fix with question pop-ups.
    - Done: the repo identity fix (re-created 2026-10-18).
    - Saved for later: the clinical highs (terlipressin boxed warning, Hyperkalemia causes table, calcium chloride arrest rate, insulin onset).
@@ -34,7 +34,6 @@ Last updated 2026-10-18 (repo re-created; app redesign approved). A short snapsh
 - **HIG reference:** full HIG text and rule summaries kept privately in `~/Documents/Wards-reference/hig/`.
 
 ## Waiting on the owner
-- Go-ahead on the build plan for the redesign.
 - Choices on the remaining 2026-10-17 audit findings (process next).
 
 ## Watch
