@@ -5,6 +5,7 @@ https://claude.ai/artifact/GWFUZ6rCthpEuhMik4Jiru
 
 | Copied | Artifact version | Files |
 |---|---|---|
+| 2026-10-18 | 1792364431-3935 (large Text Sizes: Banner buttons move below the text when it would get less than about 140pt beside them; toolbar symbols keep their 20pt size so they stay inside their glass circle) | `project/components/bundle.css` (the other three files are unchanged) |
 | 2026-10-18 | 1792363484-ef64 (Toolbar, first published in 1792363469-50e4: leading and trailing controls keep their full width; the title fits between them, centered when it can, truncating with an ellipsis when it can't) | `project/components/bundle.css` (the other three files are unchanged) |
 | 2026-10-18 | 1792363484-ef64 (Icons group: 32 symbols drawn after SF Symbols; Iconography: 1.4px Regular weight, filled variants in tab bars and tiles, one-line gaps) | none (README and icon assets only; the four copied files are unchanged) |
 | 2026-10-18 | 1792359443-4c69 (README Iconography only: SF Symbols as a reference, one 2px style, custom symbols where SF has none) | none (the four copied files are unchanged) |
