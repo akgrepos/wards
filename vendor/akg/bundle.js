@@ -303,9 +303,9 @@
   var h = window.React.createElement;
   var React = window.React;
   // chevron.up.chevron.down (pop-up) and chevron.down (pull-down), standing in for SF Symbols.
-  var upDown = h("svg", { viewBox: "0 0 10 16", fill: "none", stroke: "currentColor", strokeWidth: 1.7, strokeLinecap: "round", strokeLinejoin: "round" },
+  var upDown = h("svg", { viewBox: "0 0 10 16", fill: "none", stroke: "currentColor", strokeWidth: 1.1, strokeLinecap: "round", strokeLinejoin: "round" },
     h("path", { d: "M2 6l3-3 3 3M2 10l3 3 3-3" }));
-  var down = h("svg", { viewBox: "0 0 12 8", fill: "none", stroke: "currentColor", strokeWidth: 2, strokeLinecap: "round", strokeLinejoin: "round" },
+  var down = h("svg", { viewBox: "0 0 12 8", fill: "none", stroke: "currentColor", strokeWidth: 1.1, strokeLinecap: "round", strokeLinejoin: "round" },
     h("path", { d: "M1.5 1.5L6 6l4.5-4.5" }));
   var OWN = ["variant", "size", "options", "items", "title", "value", "defaultValue", "onChange", "open", "defaultOpen", "onOpenChange",
     "placeholder", "disabled", "align", "id", "name", "aria-label", "aria-labelledby", "className", "children"];
@@ -551,7 +551,7 @@
     el.focus();
   }
 
-  var magnifier = h("svg", { viewBox: "0 0 20 20", fill: "none", stroke: "currentColor", strokeWidth: 2.2, strokeLinecap: "round" },
+  var magnifier = h("svg", { viewBox: "0 0 20 20", fill: "none", stroke: "currentColor", strokeWidth: 1.4, strokeLinecap: "round" },
     h("circle", { cx: 8.5, cy: 8.5, r: 6 }), h("path", { d: "M13 13l5 5" })
   );
   var xmarkCircle = h("svg", { viewBox: "0 0 20 20", fill: "currentColor" },
@@ -618,7 +618,7 @@
   var React = window.React;
   var uid = 0;
   // chevron.down, standing in for the SF Symbol.
-  var down = h("svg", { viewBox: "0 0 12 8", fill: "none", stroke: "currentColor", strokeWidth: 2, strokeLinecap: "round", strokeLinejoin: "round" },
+  var down = h("svg", { viewBox: "0 0 12 8", fill: "none", stroke: "currentColor", strokeWidth: 1.1, strokeLinecap: "round", strokeLinejoin: "round" },
     h("path", { d: "M1.5 1.5L6 6l4.5-4.5" }));
   var OWN = ["options", "value", "defaultValue", "onChange", "onSelect", "open", "defaultOpen", "onOpenChange", "filter", "size",
     "placeholder", "disabled", "id", "name", "aria-label", "aria-labelledby", "inputProps", "className", "children"];
@@ -1176,7 +1176,7 @@
     for (var k in props) if (keys.indexOf(k) < 0) rest[k] = props[k];
     return rest;
   }
-  var chevron = h("svg", { viewBox: "0 0 9 16", fill: "none", stroke: "currentColor", strokeWidth: 2.2, strokeLinecap: "round", strokeLinejoin: "round" }, h("path", { d: "M1.6 1.6 7.4 8l-5.8 6.4" }));
+  var chevron = h("svg", { viewBox: "0 0 9 16", fill: "none", stroke: "currentColor", strokeWidth: 1.5, strokeLinecap: "round", strokeLinejoin: "round" }, h("path", { d: "M1.6 1.6 7.4 8l-5.8 6.4" }));
   var check = h("svg", { viewBox: "0 0 16 16", fill: "none", stroke: "currentColor", strokeWidth: 2.2, strokeLinecap: "round", strokeLinejoin: "round" }, h("path", { d: "M2 8.6 6.2 13 14 3" }));
 
   // A white symbol on a tinted rounded square, like the icons in Settings. tint: any color, e.g. "var(--system-red)".
@@ -1536,7 +1536,7 @@
 (function (AKG) {
   var h = window.React.createElement;
   var useState = window.React.useState;
-  var searchGlyph = h("svg", { viewBox: "0 0 20 20", fill: "none", stroke: "currentColor", strokeWidth: 2, strokeLinecap: "round" },
+  var searchGlyph = h("svg", { viewBox: "0 0 20 20", fill: "none", stroke: "currentColor", strokeWidth: 1.4, strokeLinecap: "round" },
     h("circle", { cx: 8.5, cy: 8.5, r: 5.5 }), h("path", { d: "M12.6 12.6 17 17" }));
 
   function TabBar(props) {
@@ -1674,7 +1674,7 @@
   var React = window.React;
   var h = React.createElement;
   var Ctx = React.createContext(null);
-  var chevron = h("svg", { viewBox: "0 0 20 20", fill: "none", stroke: "currentColor", strokeWidth: 2.4, strokeLinecap: "round", strokeLinejoin: "round" }, h("path", { d: "M5.5 8 10 12.5 14.5 8" }));
+  var chevron = h("svg", { viewBox: "0 0 20 20", fill: "none", stroke: "currentColor", strokeWidth: 1.2, strokeLinecap: "round", strokeLinejoin: "round" }, h("path", { d: "M5.5 8 10 12.5 14.5 8" }));
 
   function omit(props, keys) {
     var rest = {};
@@ -1867,7 +1867,7 @@
 /* Sheet */
 (function (AKG) {
   var R = window.React, h = R.createElement;
-  var xmark = h("svg", { viewBox: "0 0 20 20", fill: "none", stroke: "currentColor", strokeWidth: 2.2, strokeLinecap: "round" }, h("path", { d: "M5 5l10 10M15 5L5 15" }));
+  var xmark = h("svg", { viewBox: "0 0 20 20", fill: "none", stroke: "currentColor", strokeWidth: 1.45, strokeLinecap: "round" }, h("path", { d: "M5 5l10 10M15 5L5 15" }));
   var check = h("svg", { viewBox: "0 0 20 20", fill: "none", stroke: "currentColor", strokeWidth: 2.4, strokeLinecap: "round", strokeLinejoin: "round" }, h("path", { d: "M4 10.5l4 4 8-9" }));
   var OWN = ["open", "defaultOpen", "onClose", "onDone", "title", "heading", "subheading", "detent", "detents", "fixed", "doneLabel", "cancelLabel", "dim", "className", "children"];
   var LEAVE_MS = 220;
@@ -2096,7 +2096,7 @@
 /* Menu */
 (function (AKG) {
   var h = window.React.createElement;
-  var chevron = h("svg", { viewBox: "0 0 20 20", fill: "none", stroke: "currentColor", strokeWidth: 2.4, strokeLinecap: "round", strokeLinejoin: "round" }, h("path", { d: "M7.5 4l6 6-6 6" }));
+  var chevron = h("svg", { viewBox: "0 0 20 20", fill: "none", stroke: "currentColor", strokeWidth: 1.4, strokeLinecap: "round", strokeLinejoin: "round" }, h("path", { d: "M7.5 4l6 6-6 6" }));
   var check = h("svg", { viewBox: "0 0 20 20", fill: "none", stroke: "currentColor", strokeWidth: 2.6, strokeLinecap: "round", strokeLinejoin: "round" }, h("path", { d: "M4 10.5l4 4 8-9" }));
   var ITEM_OWN = ["label", "subtitle", "icon", "shortcut", "destructive", "disabled", "checked", "submenu", "highlighted", "onSelect", "type", "className", "children"];
 
@@ -2313,7 +2313,7 @@
 /* ContentSection + SectionBar */
 (function (AKG) {
   var h = window.React.createElement;
-  var chevron = h("svg", { viewBox: "0 0 20 20", fill: "none", stroke: "currentColor", strokeWidth: 2, strokeLinecap: "round", strokeLinejoin: "round" }, h("path", { d: "M7.5 4.5 13 10l-5.5 5.5" }));
+  var chevron = h("svg", { viewBox: "0 0 20 20", fill: "none", stroke: "currentColor", strokeWidth: 1.3, strokeLinecap: "round", strokeLinejoin: "round" }, h("path", { d: "M7.5 4.5 13 10l-5.5 5.5" }));
 
   // "Show Dosing Detail" → "Hide Dosing Detail", so the button always says what it does.
   function lessFor(label) { return typeof label === "string" && /^Show /.test(label) ? label.replace(/^Show /, "Hide ") : "Show Less"; }
@@ -2603,7 +2603,7 @@
 /* Figure — an image with a caption and credit; tap to view it full screen and pinch to zoom. */
 (function (AKG) {
   var R = window.React, h = R.createElement;
-  var xmark = h("svg", { viewBox: "0 0 20 20", fill: "none", stroke: "currentColor", strokeWidth: 2.2, strokeLinecap: "round" }, h("path", { d: "M5 5l10 10M15 5L5 15" }));
+  var xmark = h("svg", { viewBox: "0 0 20 20", fill: "none", stroke: "currentColor", strokeWidth: 1.45, strokeLinecap: "round" }, h("path", { d: "M5 5l10 10M15 5L5 15" }));
   function Figure(props) {
     var z = R.useState(false), zoomed = z[0];
     var zoomable = props.zoomable !== false;
@@ -2771,7 +2771,7 @@
 /* ValueRow — a bold name over a value (numbers line up), with optional tags. Tappable rows show a chevron and open detail. */
 (function (AKG) {
   var h = window.React.createElement;
-  var chevron = h("svg", { viewBox: "0 0 9 16", fill: "none", stroke: "currentColor", strokeWidth: 2.2, strokeLinecap: "round", strokeLinejoin: "round" }, h("path", { d: "M1.6 1.6 7.4 8l-5.8 6.4" }));
+  var chevron = h("svg", { viewBox: "0 0 9 16", fill: "none", stroke: "currentColor", strokeWidth: 1.5, strokeLinecap: "round", strokeLinejoin: "round" }, h("path", { d: "M1.6 1.6 7.4 8l-5.8 6.4" }));
   function ValueRow(props) {
     var interactive = !!(props.onClick || props.href);
     var rest = {};
@@ -2860,7 +2860,7 @@
 /* TimerCapsule — elapsed time in a glass capsule with a red dot; variant="accessory" is the full-width bar for TabBar's accessory slot. */
 (function (AKG) {
   var R = window.React, h = R.createElement;
-  var up = h("svg", { viewBox: "0 0 20 20", fill: "none", stroke: "currentColor", strokeWidth: 2.2, strokeLinecap: "round", strokeLinejoin: "round" }, h("path", { d: "M4.5 12.5 10 7l5.5 5.5" }));
+  var up = h("svg", { viewBox: "0 0 20 20", fill: "none", stroke: "currentColor", strokeWidth: 1.3, strokeLinecap: "round", strokeLinejoin: "round" }, h("path", { d: "M4.5 12.5 10 7l5.5 5.5" }));
 
   // "06:32", or "1:02:05" past an hour.
   AKG.formatElapsed = function (sec) {
