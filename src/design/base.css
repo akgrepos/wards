@@ -10,6 +10,9 @@ html {
   html { font: -apple-system-body; }
 }
 
+/* Design system components follow Text Size too (see the AKG Design System README, Typography). */
+:root { --akg-text-unit: calc(1rem / 17); }
+
 html, body {
   margin: 0;
   background: var(--background);

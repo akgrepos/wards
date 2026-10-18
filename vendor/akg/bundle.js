@@ -1,4 +1,4 @@
-/* @ds-bundle: {"format":4,"namespace":"AKG","components":[{"name":"Button"},{"name":"Toggle"},{"name":"Checkbox"},{"name":"RadioGroup"},{"name":"SegmentedControl"},{"name":"PopUpButton"},{"name":"Stepper"},{"name":"TextField"},{"name":"SearchField"},{"name":"ComboBox"},{"name":"Slider"},{"name":"DatePicker"},{"name":"ColorWell"},{"name":"List"},{"name":"GroupBox"},{"name":"DisclosureGroup"},{"name":"ProgressIndicator"},{"name":"EmptyState"},{"name":"Notification"},{"name":"Tooltip"},{"name":"TabBar"},{"name":"Toolbar"},{"name":"Sidebar"},{"name":"PageControl"},{"name":"Window"},{"name":"Sheet"},{"name":"Alert"},{"name":"ActionSheet"},{"name":"Menu"},{"name":"Popover"}]} */
+/* @ds-bundle: {"format":4,"namespace":"AKG","components":[{"name":"Button"},{"name":"Toggle"},{"name":"Checkbox"},{"name":"RadioGroup"},{"name":"SegmentedControl"},{"name":"PopUpButton"},{"name":"Stepper"},{"name":"TextField"},{"name":"SearchField"},{"name":"ComboBox"},{"name":"Slider"},{"name":"DatePicker"},{"name":"ColorWell"},{"name":"List"},{"name":"GroupBox"},{"name":"DisclosureGroup"},{"name":"ProgressIndicator"},{"name":"EmptyState"},{"name":"Notification"},{"name":"Tooltip"},{"name":"TabBar"},{"name":"Toolbar"},{"name":"Sidebar"},{"name":"PageControl"},{"name":"Window"},{"name":"Sheet"},{"name":"Alert"},{"name":"ActionSheet"},{"name":"Menu"},{"name":"Popover"},{"name":"Callout"},{"name":"SourcePill"},{"name":"ContentSection"},{"name":"Flowchart"}]} */
 /* Shared helpers — used by every AKG component. */
 (function (AKG) {
   // Join class names, skipping falsy values.
@@ -2084,4 +2084,232 @@
     );
   }
   AKG.Popover = Popover;
+})(window.AKG = window.AKG || {});
+
+/* Callout */
+(function (AKG) {
+  var h = window.React.createElement;
+  var OWN = ["variant", "title", "icon", "className", "children"];
+  var ICONS = {
+    caution: "M10 3 2 17h16zM10 8v4M10 14.5v.01",
+    critical: "M10 2.5a7.5 7.5 0 1 0 0 15a7.5 7.5 0 0 0 0-15zM10 6v5M10 13.8v.01",
+    info: "M10 2.5a7.5 7.5 0 1 0 0 15a7.5 7.5 0 0 0 0-15zM10 9v5M10 6.2v.01"
+  };
+  // A highlighted note inside content. caution = orange, critical = red, info = accent. Always pairs color with an icon.
+  function Callout(props) {
+    var variant = props.variant || "info";
+    var rest = {};
+    for (var k in props) if (OWN.indexOf(k) < 0) rest[k] = props[k];
+    rest.className = AKG.cx("akg-callout", "akg-callout--" + variant, props.className);
+    if (!rest.role) rest.role = variant === "info" ? "note" : "alert";
+    var icon = props.icon !== undefined ? props.icon : h("svg", { viewBox: "0 0 20 20", fill: "none", stroke: "currentColor", strokeWidth: 2, strokeLinecap: "round", strokeLinejoin: "round" }, h("path", { d: ICONS[variant] || ICONS.info }));
+    return h("div", rest,
+      icon ? h("span", { className: "akg-callout__icon akg-sym", "aria-hidden": "true" }, icon) : null,
+      h("div", { className: "akg-callout__text" },
+        props.title ? h("div", { className: "akg-callout__title" }, props.title) : null,
+        props.children ? h("div", { className: "akg-callout__body" }, props.children) : null
+      )
+    );
+  }
+  AKG.Callout = Callout;
+})(window.AKG = window.AKG || {});
+
+/* SourcePill */
+(function (AKG) {
+  var h = window.React.createElement;
+  var OWN = ["label", "more", "className", "children"];
+  // A small grey tag naming where a line's information comes from. Tapping it should open a Sheet with the full citation.
+  function SourcePill(props) {
+    var rest = {};
+    for (var k in props) if (OWN.indexOf(k) < 0) rest[k] = props[k];
+    rest.type = "button";
+    rest.className = AKG.cx("akg-source-pill", props.className);
+    var label = props.label != null ? props.label : props.children;
+    if (!rest["aria-label"]) rest["aria-label"] = "Source: " + (typeof label === "string" ? label : "") + (props.more ? ", and " + props.more + " more" : "");
+    return h("button", rest, label, props.more ? h("span", { className: "akg-source-pill__more" }, "+" + props.more) : null);
+  }
+  AKG.SourcePill = SourcePill;
+})(window.AKG = window.AKG || {});
+
+/* ContentSection + SectionBar */
+(function (AKG) {
+  var h = window.React.createElement;
+  var chevron = h("svg", { viewBox: "0 0 20 20", fill: "none", stroke: "currentColor", strokeWidth: 2, strokeLinecap: "round", strokeLinejoin: "round" }, h("path", { d: "M7.5 4.5 13 10l-5.5 5.5" }));
+
+  // A titled block of reading content. collapsible + summary = shows one line until opened. more = an extra "More" expander for detail.
+  function ContentSection(props) {
+    var React = window.React;
+    var st = React.useState(props.defaultExpanded !== undefined ? !!props.defaultExpanded : !props.collapsible);
+    var controlled = props.expanded !== undefined;
+    var open = controlled ? !!props.expanded : st[0];
+    var more = React.useState(false);
+    function toggle() {
+      if (!controlled) st[1](!open);
+      if (props.onExpandedChange) props.onExpandedChange(!open);
+    }
+    var title = props.collapsible
+      ? h("button", { type: "button", className: "akg-content-section__header akg-content-section__header--button", "aria-expanded": open, onClick: toggle },
+          h("span", { className: "akg-content-section__title" }, props.title),
+          h("span", { className: AKG.cx("akg-sym akg-content-section__chevron", open && "akg-content-section__chevron--open"), "aria-hidden": "true" }, chevron))
+      : h("div", { className: "akg-content-section__header" }, h("h2", { className: "akg-content-section__title" }, props.title), props.accessory || null);
+    return h("section", { id: props.id, className: AKG.cx("akg-content-section", props.className), style: props.style },
+      title,
+      !open && props.summary ? h("p", { className: "akg-content-section__summary" }, props.summary) : null,
+      open ? h("div", { className: "akg-content-section__body" }, props.children) : null,
+      open && props.more ? h("div", { className: "akg-content-section__more" },
+        h("button", { type: "button", className: "akg-content-section__more-button", "aria-expanded": more[0], onClick: function () { more[1](!more[0]); } },
+          more[0] ? (props.lessLabel || "Show Less") : (props.moreLabel || "Show More Detail"),
+          h("span", { className: AKG.cx("akg-sym akg-content-section__chevron", more[0] && "akg-content-section__chevron--down-open"), "aria-hidden": "true" }, chevron)),
+        more[0] ? h("div", { className: "akg-content-section__more-body" }, props.more) : null) : null
+    );
+  }
+
+  // A horizontal row of capsules that jump to sections on the page.
+  function SectionBar(props) {
+    var items = props.items || [];
+    return h("nav", { className: AKG.cx("akg-section-bar", props.className), "aria-label": props["aria-label"] || "Sections" },
+      items.map(function (it) {
+        var id = typeof it === "string" ? it : it.id;
+        var label = typeof it === "string" ? it : it.label;
+        return h("button", {
+          key: id, type: "button",
+          className: AKG.cx("akg-section-bar__item", props.value === id && "akg-section-bar__item--current"),
+          "aria-current": props.value === id ? "true" : undefined,
+          onClick: function () {
+            if (props.onSelect) props.onSelect(id);
+            else { var el = document.getElementById(id); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); }
+          }
+        }, label);
+      })
+    );
+  }
+  AKG.ContentSection = ContentSection;
+  AKG.SectionBar = SectionBar;
+})(window.AKG = window.AKG || {});
+
+/* Flowchart */
+(function (AKG) {
+  var h = window.React.createElement;
+  var KIND = { question: "Question", checklist: "Checklist", caution: "Caution", action: "Action", result: "Result" };
+  function svg(d, w) { return h("svg", { viewBox: "0 0 20 20", fill: "none", stroke: "currentColor", strokeWidth: w || 2, strokeLinecap: "round", strokeLinejoin: "round" }, h("path", { d: d })); }
+  var CHECK = svg("m5 10.5 3.2 3L15 6.5", 2.4), WARN = svg("M10 3 2 17h16zM10 8v4M10 14.5v.01");
+
+  function outs(s) {
+    var o = [];
+    (s.answers || []).forEach(function (a) { o.push([a.label, a.to]); });
+    if (s.kind === "checklist") { o.push([s.yesLabel || "All present", s.yes]); o.push([s.noLabel || "Not all present", s.no]); }
+    if (s.next) o.push([s.nextLabel || "Then", s.next]);
+    return o.filter(function (x) { return x[1]; });
+  }
+
+  // An interactive algorithm: one step at a time, earlier answers stacked above, plus a focused flowchart map.
+  function Flowchart(props) {
+    var React = window.React;
+    var steps = props.steps || {};
+    var start = props.start;
+    var stages = props.stages || [];
+    var pathSt = React.useState(function () { return [{ id: start }]; });
+    var path = pathSt[0], setPath = pathSt[1];
+    var viewSt = React.useState(props.defaultView || "steps");
+    var view = props.view || viewSt[0];
+    function setView(v) { if (!props.view) viewSt[1](v); if (props.onViewChange) props.onViewChange(v); }
+    function update(p) { setPath(p); if (props.onPathChange) props.onPathChange(p); }
+    function go(to, answer) { update(path.slice(0, -1).concat([{ id: path[path.length - 1].id, answer: answer }, { id: to }])); }
+    function back() { if (path.length > 1) update(path.slice(0, -2).concat([{ id: path[path.length - 2].id }])); }
+    function jump(i) { update(path.slice(0, i).concat([{ id: path[i].id }])); }
+    function restart() { update([{ id: start }]); }
+    var cur = steps[path[path.length - 1].id];
+    if (!cur) return null;
+
+    var header = h("div", { className: "akg-flowchart__bar" },
+      props.showMap === false ? h("span") : h(AKG.SegmentedControl, { options: [{ value: "steps", label: props.stepsLabel || "Steps" }, { value: "map", label: props.mapLabel || "Map" }], value: view, onChange: setView, size: "small" }),
+      h(AKG.Button, { variant: "borderless", size: "small", onClick: restart }, props.restartLabel || "Start Over"));
+
+    return h("div", { className: AKG.cx("akg-flowchart", props.className), style: props.style },
+      header,
+      view === "map" ? h(FlowMap, { steps: steps, start: start, path: path }) : h(StepView, { steps: steps, stages: stages, path: path, cur: cur, go: go, back: back, jump: jump, props: props })
+    );
+  }
+
+  function StageBar(p) {
+    var i = p.stages.indexOf(p.stage);
+    if (i < 0) return null;
+    return h("div", { className: "akg-flowchart__stage" },
+      h("div", { className: "akg-flowchart__stage-track", "aria-hidden": "true" }, p.stages.map(function (s, j) { return h("span", { key: s, className: j < i ? "is-done" : j === i ? "is-now" : "" }); })),
+      h("div", { className: "akg-flowchart__stage-label" }, "Stage " + (i + 1) + " of " + p.stages.length + " · " + p.stage));
+  }
+
+  function StepView(p) {
+    var React = window.React;
+    var s = p.cur, steps = p.steps, props = p.props;
+    var tick = React.useState(function () { return (s.items || []).map(function () { return false; }); });
+    var ticked = tick[0];
+    React.useEffect(function () { tick[1]((s.items || []).map(function () { return false; })); }, [s.id]);
+    var tone = s.kind === "caution" ? "caution" : s.kind === "result" ? "result" : "default";
+    return h(React.Fragment, null,
+      h(StageBar, { stages: p.stages, stage: s.stage }),
+      p.path.length > 1 ? h("div", { className: "akg-flowchart__history" },
+        p.path.slice(0, -1).map(function (x, i) {
+          return h("button", { key: i, type: "button", className: "akg-flowchart__history-row", onClick: function () { p.jump(i); } },
+            h("span", { className: "akg-sym akg-flowchart__check", "aria-hidden": "true" }, CHECK),
+            h("span", { className: "akg-flowchart__history-q" }, (steps[x.id] || {}).title),
+            h("span", { className: "akg-flowchart__history-a" }, x.answer));
+        })) : null,
+      h("div", { className: AKG.cx("akg-flowchart__step", "akg-flowchart__step--" + tone), "aria-live": "polite" },
+        h("div", { className: "akg-flowchart__kind" }, s.kind === "caution" ? h("span", { className: "akg-sym", "aria-hidden": "true" }, WARN) : null, s.kindLabel || KIND[s.kind] || KIND.question),
+        h("div", { className: "akg-flowchart__title" }, s.title),
+        s.detail ? h("div", { className: "akg-flowchart__detail" }, s.detail) : null,
+        s.content || null,
+        s.answers ? h(AKG.List, { className: "akg-flowchart__answers" }, s.answers.map(function (a) {
+          return h(AKG.ListRow, { key: a.label, title: a.label, subtitle: a.detail, chevron: true, onClick: function () { p.go(a.to, a.label); } });
+        })) : null,
+        s.kind === "checklist" ? h(React.Fragment, null,
+          h(AKG.List, { className: "akg-flowchart__answers", footer: s.logic || "All must be present." }, (s.items || []).map(function (it, i) {
+            return h(AKG.ListRow, { key: i, title: it, checked: ticked[i], onClick: function () { tick[1](ticked.map(function (v, j) { return j === i ? !v : v; })); } });
+          })),
+          h(AKG.Button, { variant: "prominent", size: "large", className: "akg-flowchart__wide", onClick: function () { var all = ticked.every(Boolean); p.go(all ? s.yes : s.no, all ? (s.yesLabel || "All present") : (s.noLabel || "Not all present")); } }, props.continueLabel || "Continue")) : null,
+        s.list ? h("ul", { className: "akg-flowchart__list" }, s.list.map(function (x, i) { return h("li", { key: i }, x); })) : null,
+        s.note ? h(AKG.Callout, { variant: "caution" }, s.note) : null,
+        s.links ? h("div", { className: "akg-flowchart__links" }, s.links) : null,
+        s.next ? h(AKG.Button, { variant: "prominent", size: "large", className: "akg-flowchart__wide", onClick: function () { p.go(s.next, s.nextLabel || "Done"); } }, props.continueLabel || "Continue") : null
+      ),
+      p.path.length > 1 && s.kind !== "result" ? h(AKG.Button, { variant: "borderless", onClick: p.back }, props.backLabel || "Previous Step") : null,
+      s.kind === "result" && p.path.length > 1 ? h(AKG.List, { header: props.summaryLabel || "Your Path" }, p.path.slice(0, -1).map(function (x, i) {
+        return h(AKG.ListRow, { key: i, title: (steps[x.id] || {}).title, subtitle: x.answer });
+      })) : null
+    );
+  }
+
+  // Focused map: top-down flowchart; only the branch you are on is open, others are tappable stubs.
+  function FlowMap(p) {
+    var React = window.React;
+    var steps = p.steps;
+    var visited = {}; p.path.forEach(function (x) { visited[x.id] = true; });
+    var curId = p.path[p.path.length - 1].id;
+    var openSt = React.useState(function () { var o = {}; p.path.forEach(function (x) { o[x.id] = true; }); return o; });
+    var open = openSt[0];
+    var drawn = {};
+    var ref = React.useRef(null);
+    React.useEffect(function () {
+      var el = ref.current, c = el && el.querySelector(".akg-flowchart__node.is-current");
+      if (el && c) { var r = c.getBoundingClientRect(), e = el.getBoundingClientRect(); el.scrollLeft += r.left + r.width / 2 - (e.left + e.width / 2); }
+    }, []);
+    function node(id, label) {
+      var s = steps[id]; if (!s) return null;
+      var head = label ? h("div", { className: "akg-flowchart__edge" }, label) : null;
+      if (drawn[id]) return h("div", { className: "akg-flowchart__branch" }, head, h("div", { className: "akg-flowchart__node is-stub" }, "Continues at " + s.title));
+      if (label && !open[id]) return h("div", { className: "akg-flowchart__branch" }, head,
+        h("button", { type: "button", className: "akg-flowchart__node is-stub", onClick: function () { var o = {}; for (var k in open) o[k] = open[k]; o[id] = true; openSt[1](o); } }, s.title, h("span", { "aria-hidden": "true" }, " +")));
+      drawn[id] = true;
+      var kids = outs(s);
+      return h("div", { className: "akg-flowchart__branch" }, head,
+        h("div", { className: AKG.cx("akg-flowchart__node", id === curId ? "is-current" : visited[id] ? "is-visited" : "is-idle", s.kind === "caution" && "is-caution") },
+          h("div", { className: "akg-flowchart__node-kind" }, s.kindLabel || KIND[s.kind] || KIND.question),
+          h("div", { className: "akg-flowchart__node-title" }, s.title)),
+        kids.length ? h("div", { className: "akg-flowchart__down", "aria-hidden": "true" }) : null,
+        kids.length ? h("div", { className: "akg-flowchart__kids" }, kids.map(function (k) { return h("div", { key: k[0], className: "akg-flowchart__kid" }, node(k[1], k[0])); })) : null);
+    }
+    return h("div", { ref: ref, className: "akg-flowchart__map" }, h("div", { className: "akg-flowchart__map-inner" }, node(p.start)));
+  }
+  AKG.Flowchart = Flowchart;
 })(window.AKG = window.AKG || {});

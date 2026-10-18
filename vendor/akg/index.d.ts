@@ -832,4 +832,121 @@ export interface PopoverProps extends React.HTMLAttributes<HTMLDivElement> {
 /** A container only: you position it next to its anchor. role="dialog". */
 export declare function Popover(props: PopoverProps): React.ReactElement | null;
 
-declare global { interface Window { AKG: { Button: typeof Button; Toggle: typeof Toggle; Checkbox: typeof Checkbox; RadioGroup: typeof RadioGroup; Radio: typeof Radio; SegmentedControl: typeof SegmentedControl; PopUpButton: typeof PopUpButton; Stepper: typeof Stepper; TextField: typeof TextField; SearchField: typeof SearchField; ComboBox: typeof ComboBox; Slider: typeof Slider; DatePicker: typeof DatePicker; ColorWell: typeof ColorWell; List: typeof List; ListRow: typeof ListRow; GroupBox: typeof GroupBox; DisclosureGroup: typeof DisclosureGroup; DisclosureButton: typeof DisclosureButton; ProgressIndicator: typeof ProgressIndicator; EmptyState: typeof EmptyState; Notification: typeof Notification; Tooltip: typeof Tooltip; TabBar: typeof TabBar; Toolbar: typeof Toolbar; ToolbarGroup: typeof ToolbarGroup; ToolbarButton: typeof ToolbarButton; Sidebar: typeof Sidebar; SidebarSection: typeof SidebarSection; SidebarItem: typeof SidebarItem; PageControl: typeof PageControl; Window: typeof Window; Sheet: typeof Sheet; Alert: typeof Alert; ActionSheet: typeof ActionSheet; Menu: typeof Menu; MenuItem: typeof MenuItem; MenuSeparator: typeof MenuSeparator; MenuSection: typeof MenuSection; Popover: typeof Popover; cx(...c: any[]): string; platform(el?: Element): 'ios' | 'macos' } } }
+export interface CalloutProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'title'> {
+  /** caution = orange warning, critical = red danger, info = accent note (default). Color is always paired with an icon. */
+  variant?: 'info' | 'caution' | 'critical';
+  /** Optional bold first line. */
+  title?: React.ReactNode;
+  /** Replace the default symbol (an inline SVG at 1em), or pass null for none. */
+  icon?: React.ReactNode;
+  children?: React.ReactNode;
+}
+export declare function Callout(props: CalloutProps): React.ReactElement;
+
+export interface SourcePillProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  /** Short source name and year, e.g. "ACC/AHA '23". */
+  label?: React.ReactNode;
+  /** How many further sources support the same line; shown as "+N". */
+  more?: number;
+  /** Open a Sheet with the full citation(s). */
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+}
+export declare function SourcePill(props: SourcePillProps): React.ReactElement;
+
+export interface ContentSectionProps {
+  /** Section heading (title case). */
+  title: React.ReactNode;
+  /** Anchor id, used by SectionBar to jump here. */
+  id?: string;
+  /** Tap the heading to show or hide the body (disclosure chevron on the trailing edge). */
+  collapsible?: boolean;
+  /** One line shown under the heading while collapsed. */
+  summary?: React.ReactNode;
+  /** Initial state when uncontrolled. Default: open unless collapsible. */
+  defaultExpanded?: boolean;
+  /** Open state when controlled. */
+  expanded?: boolean;
+  onExpandedChange?: (expanded: boolean) => void;
+  /** Extra detail behind a disclosure button under the body. */
+  more?: React.ReactNode;
+  /** Descriptive label for the disclosure button. Default "Show More Detail". */
+  moreLabel?: string;
+  lessLabel?: string;
+  /** A node at the trailing end of a non-collapsible heading (e.g. a small Button). */
+  accessory?: React.ReactNode;
+  className?: string;
+  style?: React.CSSProperties;
+  children?: React.ReactNode;
+}
+export declare function ContentSection(props: ContentSectionProps): React.ReactElement;
+
+export interface SectionBarItem { id: string; label: React.ReactNode; }
+export interface SectionBarProps {
+  /** Sections to jump to (ids of ContentSections on the page). */
+  items: Array<SectionBarItem | string>;
+  /** Highlight the section currently in view. */
+  value?: string;
+  /** Called on tap; default scrolls the element with that id into view. */
+  onSelect?: (id: string) => void;
+  className?: string;
+  'aria-label'?: string;
+}
+export declare function SectionBar(props: SectionBarProps): React.ReactElement;
+
+export interface FlowchartAnswer {
+  /** The interpretation, in bold (e.g. "Hypotonic"). */
+  label: string;
+  /** The criteria, in grey under it (e.g. "Serum osmolality below 275 mOsm/kg"). */
+  detail?: React.ReactNode;
+  /** Id of the step this answer leads to. */
+  to: string;
+}
+export interface FlowchartStep {
+  /** question (answers) · checklist (all-of items) · caution (orange, then next) · action · result (end). */
+  kind: 'question' | 'checklist' | 'caution' | 'action' | 'result';
+  /** Override the small kind label, e.g. "Start". */
+  kindLabel?: string;
+  /** One of Flowchart.stages; drives the stage bar. */
+  stage?: string;
+  title: string;
+  detail?: React.ReactNode;
+  /** Any extra node under the detail (e.g. an inserted dose). */
+  content?: React.ReactNode;
+  answers?: FlowchartAnswer[];
+  /** checklist: items to tick; all ticked → yes, otherwise → no. */
+  items?: React.ReactNode[];
+  yes?: string; no?: string; yesLabel?: string; noLabel?: string;
+  /** Logic line under the checklist. Default "All must be present." */
+  logic?: React.ReactNode;
+  /** caution / action: the step that follows; shows a Continue button. */
+  next?: string; nextLabel?: string;
+  /** result: bulleted list (e.g. causes). */
+  list?: React.ReactNode[];
+  /** A caution Callout under the step. */
+  note?: React.ReactNode;
+  /** Links to related content. */
+  links?: React.ReactNode;
+}
+export interface FlowchartPathEntry { id: string; answer?: string; }
+export interface FlowchartProps {
+  /** Every step, by id. Paths may rejoin (two answers leading to one step). */
+  steps: Record<string, FlowchartStep>;
+  /** Id of the first step. For several entry points, make it a question whose answers are the entry points. */
+  start: string;
+  /** Ordered stage names for the stage bar. */
+  stages?: string[];
+  /** "steps" (default) or "map". */
+  defaultView?: 'steps' | 'map';
+  view?: 'steps' | 'map';
+  onViewChange?: (view: 'steps' | 'map') => void;
+  /** Hide the Steps/Map control. */
+  showMap?: boolean;
+  /** Called with the path each time an answer changes it. The component keeps nothing between mounts. */
+  onPathChange?: (path: FlowchartPathEntry[]) => void;
+  stepsLabel?: string; mapLabel?: string; restartLabel?: string; backLabel?: string; continueLabel?: string; summaryLabel?: string;
+  className?: string;
+  style?: React.CSSProperties;
+}
+export declare function Flowchart(props: FlowchartProps): React.ReactElement;
+
+declare global { interface Window { AKG: { Button: typeof Button; Toggle: typeof Toggle; Checkbox: typeof Checkbox; RadioGroup: typeof RadioGroup; Radio: typeof Radio; SegmentedControl: typeof SegmentedControl; PopUpButton: typeof PopUpButton; Stepper: typeof Stepper; TextField: typeof TextField; SearchField: typeof SearchField; ComboBox: typeof ComboBox; Slider: typeof Slider; DatePicker: typeof DatePicker; ColorWell: typeof ColorWell; List: typeof List; ListRow: typeof ListRow; GroupBox: typeof GroupBox; DisclosureGroup: typeof DisclosureGroup; DisclosureButton: typeof DisclosureButton; ProgressIndicator: typeof ProgressIndicator; EmptyState: typeof EmptyState; Notification: typeof Notification; Tooltip: typeof Tooltip; TabBar: typeof TabBar; Toolbar: typeof Toolbar; ToolbarGroup: typeof ToolbarGroup; ToolbarButton: typeof ToolbarButton; Sidebar: typeof Sidebar; SidebarSection: typeof SidebarSection; SidebarItem: typeof SidebarItem; PageControl: typeof PageControl; Window: typeof Window; Sheet: typeof Sheet; Alert: typeof Alert; ActionSheet: typeof ActionSheet; Menu: typeof Menu; MenuItem: typeof MenuItem; MenuSeparator: typeof MenuSeparator; MenuSection: typeof MenuSection; Popover: typeof Popover; Callout: typeof Callout; SourcePill: typeof SourcePill; ContentSection: typeof ContentSection; SectionBar: typeof SectionBar; Flowchart: typeof Flowchart; cx(...c: any[]): string; platform(el?: Element): 'ios' | 'macos' } } }
