@@ -2,6 +2,12 @@
 
 What changed in each version of Wards, newest first. The version is shown in Settings (gear on Home).
 
+## 2026.10.18.6
+
+- At the largest Text Sizes, the "Update Ready" message now puts its Later and Reload buttons below the text instead of squeezing the text into one word per line under the buttons.
+- The Contents and star buttons at the top keep their icons inside the round button at every Text Size, as iPhone apps do.
+- The small arrows, magnifying glass and close "x" built into lists, search and sheets now use the same thinner lines as the other icons.
+
 ## 2026.10.18.5
 
 - At the largest Text Sizes, a long page title at the top (like Acute Kidney Injury) now ends in "…" before the Contents and star buttons instead of running underneath them. Titles stay centered whenever there's room.
