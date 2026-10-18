@@ -41,19 +41,31 @@ export function insertSources(kind: string, id: string): string[] {
 export const MARKER_KINDS = ['practice', 'reference'] as const;
 export const isMarkerSource = (id: string) => MARKER_KINDS.includes((content.data.source?.[id] as { kind?: string } | undefined)?.kind as never);
 
-// All sources a card relies on, numbered in order of first use (its own markers, then inserted items').
-export function cardSources(card: Card): string[] {
+// Sources of some blocks, in order of first use (their own markers, then inserted items'). Markers included.
+export function blockSources(bs: Block[]): string[] {
   const seen: string[] = [];
   const add = (ids: string[]) => ids.forEach((s) => !seen.includes(s) && seen.push(s));
   const inl = (xs: Inline[]) => xs.forEach((x) => x.t === 'insert' && add(insertSources(x.kind, x.id)));
   const item = (it: ListItem) => { add(it.sources); inl(it.inlines); it.children.forEach(item); };
-  const blocks = (bs: Block[]) => bs.forEach((b) => {
+  const walk = (list: Block[]) => list.forEach((b) => {
     if (b.t === 'paragraph') { add(b.sources); inl(b.inlines); }
     if (b.t === 'list') b.items.forEach(item);
     if (b.t === 'table') { b.header.forEach(inl); b.rows.forEach((r) => { add(r.sources); r.cells.forEach(inl); }); }
     if (b.t === 'insert') add(insertSources(b.kind, b.id));
+    if (b.t === 'steps') b.items.forEach((it) => { add(it.sources); inl(it.inlines); walk(it.blocks); });
+    if (b.t === 'scale' || b.t === 'compare' || b.t === 'times') { add(b.sources); inl(b.title); b.items.forEach((it) => { add(it.sources); inl(it.label); inl(it.inlines); }); }
   });
-  card.sections.forEach((s) => { add(s.summarySources); blocks(s.blocks); blocks(s.more); });
+  walk(bs);
+  return seen;
+}
+
+// All sources a card relies on, numbered in order of first use (header first). Markers left out.
+export function cardSources(card: Card): string[] {
+  const seen: string[] = [];
+  const add = (ids: string[]) => ids.forEach((s) => !seen.includes(s) && seen.push(s));
+  add(card.basedOn ?? []);
+  if (card.definition) { add(card.definition.sources); add(blockSources([{ t: 'paragraph', inlines: card.definition.inlines, sources: [] }])); }
+  card.sections.forEach((s) => { add(blockSources(s.blocks)); s.subsections.forEach((x) => add(blockSources(x.blocks))); });
   return seen.filter((id) => !isMarkerSource(id));
 }
 
@@ -73,10 +85,13 @@ export function pathwayHomes(): { id: string; title: string; card: Card; section
   const out: { id: string; title: string; card: Card; section: string }[] = [];
   for (const card of content.cards) {
     for (const s of card.sections) {
-      for (const b of [...s.blocks, ...s.more]) {
-        if (b.t === 'insert' && b.kind === 'pathway' && !out.some((o) => o.id === b.id)) {
-          const p = content.data.pathway?.[b.id];
-          out.push({ id: b.id, title: p?.title ?? card.title, card, section: s.key });
+      const parts = [{ key: s.key, blocks: s.blocks }, ...s.subsections];
+      for (const part of parts) {
+        for (const b of part.blocks) {
+          if (b.t === 'insert' && b.kind === 'pathway' && !out.some((o) => o.id === b.id)) {
+            const p = content.data.pathway?.[b.id];
+            out.push({ id: b.id, title: p?.title ?? card.title, card, section: part.key });
+          }
         }
       }
     }

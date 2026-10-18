@@ -5,5 +5,7 @@ route: IV
 amount: 50
 unit: mL
 frequency: once, with insulin
-notes: "50 mL of 50% dextrose contains 25 g of glucose. Can cause tissue injury if it extravasates."
+cautions:
+  - "Can cause tissue injury if it extravasates."
+notes: "50 mL of 50% dextrose contains 25 g of glucose."
 sources: [ukka-hyperkalaemia-2026, kdigo-acute-hyperkalemia-2020]

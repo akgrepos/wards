@@ -5,7 +5,7 @@ How cards and shared data are written. The rules behind it are in `CARD-TYPES.md
 ## Where things live
 - `content/systems.yaml`: the 16 systems and the Library, in display order (quote titles that contain commas).
 - `content/cards/<system>/<card-id>.md`: one file per card.
-- `content/data/<type>/<item-id>.yaml`: one file per shared data item. Types so far: `source`, `dose`, `threshold`, `criteria`, `pathway`. A `criteria` item (a formal definition or staging system) has `name`, `short` (the words shown when it's inserted in a sentence), optional `logic` ("Any of:"), `items`, `columns` and `rows` (a table), `notes`, and `sources`. On a line of its own it shows in full; inside a sentence it shows its `short` name and opens in a sheet.
+- `content/data/<type>/<item-id>.yaml`: one file per shared data item. Types so far: `source`, `dose`, `threshold`, `criteria`, `pathway`. A `criteria` item (a formal definition or staging system) has `name`, `short` (the words shown when it's inserted in a sentence), optional `logic` ("Any of:"), `items`, `columns` and `rows` (a table), `notes`, and `sources`. On a line of its own it shows in full; inside a sentence it shows its `short` name and opens in a sheet. Dose fields: `DATA-TYPES.md`.
 - `content/examples/`: development-only samples (placeholder content). They appear while developing and are never in the published app.
 
 ## A card file
@@ -17,43 +17,77 @@ variant: protocol               # only for types with variants (reference, medic
 system: renal
 title: Hyperkalemia
 aliases: [high potassium]       # search only
-subsection: Potassium Disorders # condition cards only: the topic group within the system
+subsection: Electrolyte Disorders # condition cards only: the topic group within the system
+definition: "Commonly K⁺ ≥5.5 mEq/L. ^[kdigo-acute-hyperkalemia-2020]"  # one line under the title, with its source
+based_on: [ukka-hyperkalaemia-2026]   # the guidelines the page rests on ("Based on" line)
+reviewed: 2026-10-17            # last full review (shown as "Reviewed Oct 2026")
 related:
   differential: [renal-pseudohyperkalemia]
   conditions: [renal-aki]
   tools: []
   medications: []
 ---
-## Key points
-- One idea per bullet, 3–6 bullets. ^[kdigo-2024]
+## At a Glance
+- One idea per bullet, 3–6 bullets. ^[source-id]
 
-## Epidemiology and risk factors
-### Summary
-One line shown while the section is collapsed.
+## Severity
+:::scale K⁺
+- Mild: {{threshold:k-mild}} ^[source-id]
+- Severe: {{threshold:k-severe}} ^[source-id]
+:::
 
+## Treatment
+{{pathway:hyperkalemia-management}}
+
+1. Cardiac membrane stabilization
+   - ECG changes: IV calcium gluconate. ^[source-id]
+
+   {{dose:calcium-gluconate-hyperkalemia}}
+
+2. Intracellular shift
+   - A sourced line. ^[source-id]
+
+## Monitor
+:::times K⁺ at least at these times ^[source-id]
+- 1 h
+- 24 h
+:::
+
+## More Information
+### Where Guidelines Differ: Insulin dose
+:::compare Insulin dose
+- KDIGO 2020: What it says. ^[source-id]
+- UK guideline 2026: What it says. ^[source-id]
+:::
+
+### Epidemiology and Pathophysiology: Who gets it
 - A sourced line. ^[source-id]
 
-## Diagnostic evaluation
-- A line with an inserted threshold: {{threshold:k-emergency}}. ^[source-id]
-
-{{pathway:hyperkalemia-workup}}
-
-### More detail on testing
-- Detail behind a "Show Detail on Testing" button. ^[source-id]
+## Pearls
+- A sourced pearl. ^[source-id]
 ```
 
+- Condition and approach cards need `definition` and `reviewed`. The "Based on" line shows `based_on` plus the definition's sources.
+- Related and Sources are added by the app; don't write them as sections.
+
 ## Rules the check enforces
-- Section headings (`##`) are exactly the card type's sections, in their fixed order; Key points is required.
-- Every line of content ends with `^[source-id, …]`, unless it is only an insert (inserts carry their own sources). This includes Pearls and pitfalls and section summaries.
-- Doses never appear as typed text (for example "40 mg"): insert them with `{{dose:id}}`. Concentrations such as `mmol/L` are fine.
-- Inserts (`{{type:id}}`), links (`[[card-id]]` or `[[card-id|label]]`) and related cards must exist.
-- Data items have their required fields, sources that exist, and US units.
+- Section headings (`##`) are exactly the card type's sections (`CARD-TYPES.md` Part 2), in their fixed order; At a Glance is required and has 3–6 bullets.
+- `###` headings appear only inside More Information and are its subsections, in their fixed order. `### Title: description` adds a short description (60 characters at most) shown while the row is closed. More Information holds nothing outside its subsections.
+- Every line of content ends with `^[source-id, …]`, unless it is only an insert (inserts carry their own sources). This includes Pearls, the definition, and each `:::scale` / `:::compare` item and `:::times` title.
+- **Doses go on a line of their own** (`{{dose:id}}`), never inside a sentence, so each shows as one dose row. Doses never appear as typed text (for example "40 mg"). Concentrations such as `mmol/L` are fine.
+- Inserts (`{{type:id}}`), links (`[[card-id]]` or `[[card-id|label]]`), related cards and `based_on` sources must exist.
+- `:::scale` has 2–5 bands, `:::compare` 2–3 columns (both "Label: text"), `:::times` 1–12 times.
+- Data items have their required fields, sources that exist, and US units; dose items use only the fields in `DATA-TYPES.md`.
 
 ## Formatting inside sections
-- Bullets (`- `, one nesting level), paragraphs, tables (`| … |`; a row's sources go at the end of the row), `####` subheadings.
+- Bullets (`- `, one nesting level), paragraphs, tables (`| … |`; a row's sources go at the end of the row; the first column stays in place when the table scrolls), `####` subheadings.
+- Numbered steps: `1. Step title`, then the step's own content indented by three spaces (bullets, dose lines, tables). Blank lines inside a step are fine; content after the steps starts unindented.
+- `:::scale Title` (severity bands, least to most severe), `:::compare Title` (statements that differ, side by side), `:::times Title` (recheck times as chips), each closed by `:::`.
 - `**bold**`, `*italic*`.
-- A line that is only `{{pathway:id}}` shows the interactive flowchart there.
+- A line that is only `{{pathway:id}}` shows the interactive flowchart there; a line that is only `{{criteria:id}}` shows the criteria in full.
 
 ## In the app
-- Each card has its own link: `#/card/<card-id>` (works offline and when opened directly).
-- Inserts read like normal text; tapping one opens its details. Source pills open the full citation in a sheet.
+- Each card has its own link: `#/card/<card-id>`; `#/card/<card-id>/<section>` opens the page at that section or More Information subsection (opening it if closed). Works offline and when opened directly.
+- Sections open and close from their headings; the phone remembers which are closed and where each page was scrolled.
+- One source line ends each section; tapping it lists that section's sources with View Citation links.
+- Inserts read like normal text; tapping one opens its details. Dose rows open the dose sheet.

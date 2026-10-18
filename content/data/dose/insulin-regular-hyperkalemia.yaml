@@ -8,5 +8,7 @@ frequency: once, with dextrose
 adjustments:
   - when: "Blood glucose above 200 mg/dL"
     change: "May be given without additional dextrose"
-notes: "Recheck potassium at 60 minutes. Monitor glucose for 6 hours."
+cautions:
+  - "Hypoglycemia: monitor glucose for 6 hours."
+notes: "Recheck potassium at 60 minutes."
 sources: [ukka-hyperkalaemia-2026, kdigo-acute-hyperkalemia-2020]

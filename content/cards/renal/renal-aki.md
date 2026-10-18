@@ -4,15 +4,21 @@ type: approach
 system: renal
 title: Acute Kidney Injury
 aliases: [AKI, acute renal failure, ARF, rising creatinine, creatinine up, oliguria]
+definition: "Abrupt decrease in kidney function, defined and staged by {{criteria:kdigo-aki}}. ^[kdigo-aki-2012]"
+based_on: [kdigo-aki-2012, nice-aki-2024]
+reviewed: 2026-10-17
+related:
+  conditions: [renal-hyperkalemia]
 ---
-## Key points
+## At a Glance
 - Diagnose and stage by {{criteria:kdigo-aki}}; stage by whichever of SCr or UOP is higher. ^[kdigo-aki-2012]
 - First: exclude obstruction, assess volume status and perfusion, stop nephrotoxins. ^[kdigo-aki-2012, nice-aki-2024]
 - Urine dipstick in all. ^[nice-aki-2024]
 - Sediment microscopy: granular casts or tubular epithelial cells favor ATN over prerenal AKI. ^[perazella-urine-microscopy-2008]
 - Diuretics do not prevent or treat AKI; use only for volume overload. ^[kdigo-aki-2012]
 - RRT urgently for complications refractory to medical therapy. ^[kdigo-aki-2012, nice-aki-2024]
-## Definition
+
+## Definition and Staging
 {{criteria:kdigo-aki}}
 
 - Baseline: prefer a prior SCr. Without one, the lowest SCr this admission is usually at or above the true baseline, so it may understage AKI; hemodilution after massive resuscitation is the exception. ^[kdigo-aki-2012]
@@ -20,7 +26,7 @@ aliases: [AKI, acute renal failure, ARF, rising creatinine, creatinine up, oligu
 - UOP criteria are less well validated; interpret with fluid balance and drugs (e.g. ACE inhibitors). ^[kdigo-aki-2012]
 - SCr rise without GFR loss: trimethoprim and cimetidine block tubular creatinine secretion. ^[kdigo-aki-controversies-2020, delanaye-trimethoprim-2011]
 
-## Immediate assessment
+## First Steps
 - Refer immediately for RRT if refractory to medical therapy: hyperkalemia ([[renal-hyperkalemia]]), metabolic acidosis, fluid overload or pulmonary edema, uremic complications (pericarditis, encephalopathy). ^[nice-aki-2024, kdigo-aki-2012]
 - Dialyzable poisoning (e.g. lithium, toxic alcohols, salicylates): urgent extracorporeal removal. ^[common-practice]
 - Hemorrhagic shock: blood products and hemorrhage control; crystalloid-first guidance does not apply. ^[kdigo-aki-2012, common-practice]
@@ -28,7 +34,7 @@ aliases: [AKI, acute renal failure, ARF, rising creatinine, creatinine up, oligu
 - Anuria: exclude a blocked catheter. ^[common-practice]
 - Anuria otherwise suggests obstruction, renal arterial or venous occlusion (rapid, irreversible injury) or severe tubular injury. ^[kdigo-aki-2012]
 
-## Differential diagnosis
+## Causes
 | Category | Mechanism | Examples |
 |---|---|---|
 | Prerenal | Decreased kidney perfusion | Hypovolemia, hemorrhage, shock, heart failure, cirrhosis, NSAIDs, ACE inhibitors, ARBs, abdominal compartment syndrome ^[kdigo-aki-2012, aha-cardiorenal-2019, aasld-ascites-hrs-2021, moore-aki-core-2018] |
@@ -46,18 +52,19 @@ aliases: [AKI, acute renal failure, ARF, rising creatinine, creatinine up, oligu
 - Sepsis is the most common condition associated with AKI in the ICU. ^[kdigo-aki-2012]
 - Causes often coexist. ^[kdigo-aki-2012]
 
-## Focused history
+## Presentation
+#### Focused history
 - Exposures: sepsis, shock, surgery (especially cardiac), trauma, burns, contrast, nephrotoxic drugs. ^[kdigo-aki-2012]
 - Medications, including over-the-counter, herbal and recreational. ^[kdigo-aki-2012]
 - Susceptibility: volume depletion, older age, CKD, diabetes, heart, lung or liver disease, cancer, anemia. ^[kdigo-aki-2012]
 - Travel and exposures to waterways, sewage or rodents (leptospirosis, hantavirus). ^[kdigo-aki-2012]
 
-## Focused examination
+#### Focused examination
 - Volume status (JVP, edema, pulmonary congestion, orthostasis). ^[kdigo-aki-2012]
 - Signs of heart failure, infection or sepsis. ^[kdigo-aki-2012]
 - Dynamic indices (pulse-pressure variation, IVC ultrasound, echocardiography) predict fluid responsiveness better than CVP. ^[kdigo-aki-2012]
 
-## Diagnostic evaluation
+## Diagnosis
 #### First line
 - BMP, CBC with differential. ^[kdigo-aki-2012]
 - Urine dipstick in all; hematuria with proteinuria without UTI or catheter trauma suggests acute nephritis. ^[nice-aki-2024]
@@ -91,16 +98,16 @@ aliases: [AKI, acute renal failure, ARF, rising creatinine, creatinine up, oligu
 
 - Suspected AIN: urine eosinophils do not distinguish AIN from other causes; definitive diagnosis is by kidney biopsy. ^[muriithi-urine-eos-2013]
 
-## Pathway
+#### Pathway
 {{pathway:aki-evaluation}}
 
-## Common initial orders
+## Treatment
+#### Common initial orders
 - Daily BMP; CBC; urine dipstick, sediment microscopy, urine Na, Cr and urea. ^[nice-aki-2024, kdigo-aki-2012]
 - Strict intake and output. ^[kdigo-aki-2012]
 - Bladder scan; renal ultrasound per indications above. ^[nice-aki-2024]
 - Pharmacist review of all medication doses. ^[nice-aki-2024]
 
-## Initial management
 #### All stages
 - Stop nephrotoxins where possible (NSAIDs, aminoglycosides, amphotericin B); consider alternatives to iodinated contrast. ^[kdigo-aki-2012]
 - Consider holding ACE inhibitors and ARBs during diarrhea, vomiting or sepsis until stable. ^[nice-aki-2024]
@@ -125,22 +132,30 @@ aliases: [AKI, acute renal failure, ARF, rising creatinine, creatinine up, oligu
 - IV contrast, eGFR {{threshold:egfr-contrast-prophylaxis}} or AKI, not on maintenance dialysis: IV 0.9% saline prophylaxis; consider at {{threshold:egfr-contrast-consider}}. ^[acr-nkf-contrast-2020]
 - Do not delay contrast in an emergency when delay would be clinically significant. ^[nice-aki-2024, acr-nkf-contrast-2020]
 - Cardiorenal: loop diuretics for congestion; a modest SCr rise during effective decongestion is not by itself harmful. ^[aha-cardiorenal-2019]
-- Cirrhosis with ascites: stop diuretics and nephrotoxins; {{dose:albumin-aki-cirrhosis}}. ^[aasld-ascites-hrs-2021]
+- Cirrhosis with ascites: stop diuretics and nephrotoxins; give albumin. ^[aasld-ascites-hrs-2021]
+
+{{dose:albumin-aki-cirrhosis}}
+
 - HRS-AKI (no response after 2 days, no shock, no recent nephrotoxins, no structural injury): vasoconstrictor (terlipressin or norepinephrine) plus albumin. ^[aasld-ascites-hrs-2021]
-- ICU, metabolic acidemia (pH ≤7.20) with moderate–severe AKI: IV sodium bicarbonate (target pH ≥7.30) did not reduce 90-day mortality; less RRT use (secondary outcome). ^[bicaricu2-2025, bicar-icu-2018]
 
 #### RRT
 - Initiate urgently for complications refractory to medical therapy; discuss potential indications with nephrology or critical care immediately. ^[kdigo-aki-2012, nice-aki-2024]
 - Otherwise decide on the whole clinical picture and trends, not single urea, SCr or K⁺ values. ^[kdigo-aki-2012, nice-aki-2024]
-- Critically ill, stage 2–3 without urgent indication: accelerated RRT did not lower 90-day mortality and increased RRT dependence among survivors. ^[starrt-aki-2020]
 
-## Specialist involvement
+## When to Call
 - Nephrology within 24 h: possible GN, vasculitis, AIN or myeloma; no clear cause; inadequate response; complications; stage 3; kidney transplant; CKD stage 4–5. ^[nice-aki-2024]
 - Not needed when the cause is clear and AKI responds promptly (unless kidney transplant). ^[nice-aki-2024]
 - Urology for upper tract obstruction; immediately for pyonephrosis, solitary kidney, bilateral obstruction or complications; nephrostomy or stent within 12 h. ^[nice-aki-2024]
 
-## Pearls and pitfalls
-- SCr and BUN lag behind kidney injury; an early normal SCr does not exclude AKI. ^[kdigo-aki-2012]
-- Response to treatment (e.g. stopping a nephrotoxin) is itself diagnostic. ^[kdigo-aki-2012]
+## More Information
+### After the Acute Phase: CKD risk, kidney follow-up
 - AKI raises the risk of CKD; reassess kidney function about 3 months after AKI. ^[kdigo-aki-2012]
 - After recovery, consider nephrology referral if eGFR ≤30. ^[nice-aki-2024]
+
+### Evidence: Bicarbonate, timing of RRT
+- ICU, metabolic acidemia (pH ≤7.20) with moderate–severe AKI: IV sodium bicarbonate (target pH ≥7.30) did not reduce 90-day mortality; less RRT use (secondary outcome). ^[bicaricu2-2025, bicar-icu-2018]
+- Critically ill, stage 2–3 without urgent indication: accelerated RRT did not lower 90-day mortality and increased RRT dependence among survivors. ^[starrt-aki-2020]
+
+## Pearls
+- SCr and BUN lag behind kidney injury; an early normal SCr does not exclude AKI. ^[kdigo-aki-2012]
+- Response to treatment (e.g. stopping a nephrotoxin) is itself diagnostic. ^[kdigo-aki-2012]

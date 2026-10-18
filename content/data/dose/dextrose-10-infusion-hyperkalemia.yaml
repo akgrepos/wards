@@ -5,4 +5,5 @@ route: IV
 amount: 50
 unit: mL/h
 frequency: for 5 hours (25 g)
+give_when: Pre-treatment glucose below 126 mg/dL
 sources: [ukka-hyperkalaemia-2026]

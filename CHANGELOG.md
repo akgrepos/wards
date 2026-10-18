@@ -2,6 +2,19 @@
 
 What changed in each version of Wards, newest first. The version is shown in Settings (gear on Home).
 
+## 2026.10.18.3
+
+- New topic pages. Each opens with its type and system, a one-line definition, the guidelines it's based on and when it was last reviewed.
+- Sections in the same order on every topic: At a Glance, Severity, Causes, Presentation, Diagnosis, Treatment, Monitor, When to Call, More Information, Pearls, Related and Sources. Acute Kidney Injury uses the same names where they fit (Definition and Staging, First Steps).
+- Tap a section's heading to close or open it. The app remembers which sections you closed and where you were on each page.
+- The Contents button at the top right lists the sections (the one you're reading is checked) and can collapse or expand them all. It replaces the row of section buttons.
+- More Information holds the deeper material, each part closed until you tap it: where guidelines differ (side by side), special populations, complications, after the acute phase, evidence, epidemiology and pathophysiology.
+- One source line at the end of each section instead of a gray tag on every line. Tap it for that section's sources, each with a View Citation link. The stethoscope still marks common clinical practice.
+- Every dose is its own row, one drug per row. Tap it for the dose sheet: dose, rate, when to give, when to repeat, onset and how long it lasts, boxed warning, an alternative, cautions, Check Interactions (Medscape, opens in Safari) and sources. Fields are filled only where the existing sources say so.
+- Severity shows as a colored scale, recheck times as small time chips, treatment as numbered steps, and guideline disagreements side by side.
+- Tables keep their first column in place while you swipe sideways.
+- Clearing Recent and Continue Reading in Settings also forgets where you were on each page.
+
 ## 2026.10.18.2
 
 - New icons chosen to fit each place, modeled on Apple's SF Symbols: a star of life for Rapids, a clipboard with a heart for Topics, a medical kit for Library, and a house for Home.

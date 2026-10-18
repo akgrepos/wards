@@ -22,12 +22,24 @@ Settled 2026-10-17. **Data types** are the shared pieces of information that eac
 ### 1. Source
 Every citation lives here once; cards cite by number, which points to the source.
 - Fields: kind (guideline · study · systematic review · prescribing information · dataset · AMBOSS when the rules allow) · issuing society · title · year/edition · journal, DOI, PMID or URL · date checked
-- Shown as: a grey source pill on each line it supports, and the numbered Sources list in each card's footer (short form, full citation on tap)
+- Shown as: one source line at the end of each section it supports (short form; tap for the full citations with View Citation links), and the numbered Sources list at the end of each card
 
 ### 2. Dose
 One drug, one indication, one population. The only place a dose is written.
-- Fields: drug · indication · population (e.g. adult, dialysis) · route · amount and unit (or per kg) · frequency · duration · maximum · kidney-function bands · liver adjustment · dialysis · notes · sources
-- Home: the medication card. Inserted into condition, approach, protocol and pathway steps.
+- Fields (YAML name in brackets; fill a field only from the item's cited sources, and leave it out rather than guess):
+  - drug name [`drug_name`] · brand [`brand`] · drug card [`drug`] · indication [`indication`] · population [`population`]
+  - route [`route`] · amount and unit [`amount`, `unit`] (or per kg) · frequency [`frequency`] and/or rate [`rate`, e.g. "over 10 minutes"]: one of the two is required
+  - give when [`give_when`]: the trigger, short ("ECG changes")
+  - repeat [`repeat`]: when to give it again
+  - onset and how long it lasts [`onset`, `lasts`]
+  - duration of treatment [`duration`] · maximum [`max`]
+  - boxed warning [`boxed_warning`]: the warning, or "None" only when the cited prescribing information is the source
+  - alternative [`alternative`]: another dose item and when to use it (`dose: <id>`, `when: …`)
+  - adjustments [`adjustments`]: kidney-function bands, liver, dialysis (`when`, `change`)
+  - cautions [`cautions`]: a list of short sentences
+  - notes [`notes`] · sources [`sources`]
+- Home: the medication card. Inserted into condition, approach, protocol and pathway steps, always as its own **dose row** (one drug per row).
+- Shown as: the dose row (drug name over "amount unit route rate frequency"); tapping opens the **dose sheet**: "Dose" bar title, the drug as heading, the fields above, the alternative (tap to open it), cautions, Check Interactions (Medscape's free checker, opens in Safari) and a source line.
 
 ### 3. Regimen
 A treatment combination for one indication, built from doses (never retyping them).
@@ -118,7 +130,7 @@ A specific guideline statement.
 
 ## Decisions (2026-10-17)
 1. Inserted items look like normal content; **tap opens their home** (e.g. the drug card).
-2. Doses show as **one line; tap for more** (adjustments, maximum, notes).
+2. Doses show as **one line; tap for more** (adjustments, maximum, notes). Updated 2026-10-18: one dose row per drug, opening the dose sheet with the fields above.
 3. Kidney dose adjustments use **whatever measure the source uses** (usually CrCl, sometimes eGFR), labeled each time.
 4. Weight-based doses: **optional calculator**. Enter a weight to see the dose with maximums applied; nothing is saved.
 5. Coverage chart: **antimicrobials × pathogens with ●/◐/○** and tap-for-notes.
