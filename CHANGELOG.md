@@ -2,6 +2,12 @@
 
 What changed in each version of Wards, newest first. The version is shown in Settings (gear on Home).
 
+## 2026.10.18.4
+
+- All icons redrawn to look much closer to Apple's own: thinner lines, the same shapes and proportions, and solid versions in the tab bar and the colored tiles, as iPhone apps use.
+- Details added where Apple's icons have them, for example the chimney and door on Home, the airways in the lungs, the markings on the test tubes and the folds of the brain.
+- The organ icons Apple doesn't make (stomach, liver, kidney, thyroid, ribbon) were reshaped to match.
+
 ## 2026.10.18.3
 
 - New topic pages. Each opens with its type and system, a one-line definition, the guidelines it's based on and when it was last reviewed.
