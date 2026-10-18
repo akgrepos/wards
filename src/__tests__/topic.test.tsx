@@ -29,12 +29,12 @@ beforeEach(() => { localStorage.clear(); });
 afterEach(() => { cleanup(); vi.restoreAllMocks(); });
 
 describe('topic page', () => {
-  it('has the header: type and system tags, definition, based-on line and reviewed date', () => {
+  it('has the header: type and system tags, definition and reviewed date (no based-on line)', () => {
     launch('#/card/renal-hyperkalemia');
     expect(screen.getByText('Condition')).toBeTruthy();
     expect(screen.getAllByText('Kidney, Electrolytes and Urology').length).toBeGreaterThan(0);
     expect(screen.getByText(/cutoffs vary by laboratory/)).toBeTruthy();
-    expect(screen.getByRole('button', { name: /^Based on: UKKA '26, KDIGO '20/ })).toBeTruthy();
+    expect(screen.queryByRole('button', { name: /^Based on/ })).toBeNull();
     expect(screen.getByText('Reviewed Oct 2026')).toBeTruthy();
   });
 
@@ -147,6 +147,57 @@ describe('remembered sections', () => {
     await tick();
     expect(isOpen('Special Populations')).toBe(true);
     expect(location.hash).toBe('#/card/renal-hyperkalemia');
+  });
+
+  it('a link to a section of the same page scrolls there without opening the page again', async () => {
+    launch('#/card/renal-aki');
+    await tick();
+    act(() => { fireEvent.click(screen.getByRole('button', { name: 'Diagnosis' })); });
+    expect(isOpen('Diagnosis')).toBe(false);
+    const link = screen.getByText('first-line tests in Diagnosis');
+    expect(link.getAttribute('href')).toBe('#/card/renal-aki/diagnosis');
+    await act(async () => { fireEvent.click(link); });
+    await tick();
+    expect(isOpen('Diagnosis')).toBe(true);
+    expect(location.hash).toBe('#/card/renal-aki');
+  });
+
+  it('nested bullets and links woven into the sentence', () => {
+    launch('#/card/renal-aki');
+    expect(screen.getAllByRole('link', { name: 'Hyperkalemia' }).some((l) => l.closest('ul ul'))).toBe(true);
+    expect(screen.queryByText(/\(Hyperkalemia\)/)).toBeNull();
+  });
+
+  it('causes are one grouped list with a Cannot miss tag', () => {
+    launch('#/card/renal-hyperkalemia');
+    expect(screen.getByText('Impaired excretion:')).toBeTruthy();
+    expect(screen.getByText('Cannot miss')).toBeTruthy();
+  });
+
+  it('Compare Onset and Duration opens all agents, fastest first', async () => {
+    launch('#/card/renal-hyperkalemia');
+    expect(screen.queryByText('Onset and duration')).toBeNull();
+    await act(async () => { fireEvent.click(screen.getByRole('button', { name: 'Compare Onset and Duration' })); });
+    const names = within(dialog()).getAllByRole('rowheader').map((c) => c.textContent);
+    expect(names).toEqual(['Hemodialysis', 'Calcium gluconate 10%', 'Furosemide', 'Albuterol (nebulized)', 'Insulin-dextrose', 'Sodium zirconium cyclosilicate', 'Patiromer']);
+  });
+
+  it('the flowchart map shows only the chosen path; a stub switches it; Start Over resets it', async () => {
+    launch('#/card/renal-hyperkalemia');
+    const chart = document.querySelector('.akg-flowchart') as HTMLElement;
+    const drawn = () => [...chart.querySelectorAll('.akg-flowchart__node-title')].map((n) => n.textContent);
+    await act(async () => { fireEvent.click(within(chart).getByText('Confirmed or likely')); });
+    await act(async () => { fireEvent.click(within(chart).getByRole('radio', { name: 'Map' })); });
+    // The chosen answer's step is drawn; the other answer is a stub, and the next step's answers are stubs too.
+    expect(drawn()).toEqual(['True hyperkalemia?', 'ECG changes of hyperkalemia?']);
+    expect(within(chart).getByRole('button', { name: /^Choose Possibly spurious/ })).toBeTruthy();
+    expect(within(chart).getByRole('button', { name: /^Choose Yes/ })).toBeTruthy();
+    await act(async () => { fireEvent.click(within(chart).getByRole('button', { name: /^Choose Possibly spurious/ })); });
+    expect(drawn()).toEqual(['True hyperkalemia?', 'Repeat measurement']);
+    expect(within(chart).getByRole('button', { name: /^Choose Confirmed or likely/ })).toBeTruthy();
+    await act(async () => { fireEvent.click(within(chart).getByRole('button', { name: 'Start Over' })); });
+    expect(within(chart).getAllByRole('button', { name: /^Choose / }).length).toBe(2);
+    expect(drawn()).toEqual(['True hyperkalemia?']);
   });
 
   it('scroll positions are kept per page and cleared with page memory', () => {

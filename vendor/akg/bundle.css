@@ -1419,8 +1419,9 @@ button.akg-disclosure__button:disabled, .akg-disclosure__header:disabled .akg-di
 .akg-tab-bar--floating::before {
   content: ""; position: absolute; z-index: -1; pointer-events: none;
   left: calc(-1 * (env(safe-area-inset-left) + var(--tab-bar-inset))); right: calc(-1 * (env(safe-area-inset-right) + var(--tab-bar-inset)));
-  top: -40px; bottom: calc(-1 * var(--tab-bar-inset));
-  background: linear-gradient(transparent, var(--akg-tab-bar-fade, var(--background)) 60%);
+  top: -72px; bottom: calc(-1 * var(--tab-bar-inset));
+  /* Eased, so the fade starts well above the bar with no visible edge. */
+  background: linear-gradient(transparent, color-mix(in srgb, var(--akg-tab-bar-fade, var(--background)) 50%, transparent) 30%, color-mix(in srgb, var(--akg-tab-bar-fade, var(--background)) 85%, transparent) 48%, var(--akg-tab-bar-fade, var(--background)) 62%);
 }
 
 /* macOS: a toolbar segmented group. 36pt glass capsule, 4pt padding, 32×28 icon segments, 13pt medium symbols */
@@ -2174,8 +2175,12 @@ button.akg-sheet__grabber::after { content: ""; position: absolute; left: -20px;
 .akg-flowchart__step--result .akg-flowchart__kind { color: var(--system-green); }
 .akg-flowchart__title { font-size: calc(20 * var(--akg-t)); line-height: calc(25 * var(--akg-t)); font-weight: 600; letter-spacing: -0.4px; }
 .akg-flowchart__detail { color: var(--label-secondary); font-size: calc(15 * var(--akg-t)); line-height: calc(20 * var(--akg-t)); }
-.akg-flowchart__answers { margin: var(--space-4) calc(-1 * var(--space-16)) 0; }
+.akg-flowchart__answers { margin: var(--space-4) 0 0; }
+/* Answers sit on their own filled surface with separators and chevrons, so they read as choices before any is tapped. */
 .akg-flowchart__answers.akg-list { background: transparent; }
+.akg-flowchart__answers .akg-list__group { background: var(--fill-tertiary); border-radius: 16px; }
+.akg-flowchart__answers .akg-list-row--interactive .akg-list-row__content:active:not(:disabled) { background: var(--fill-secondary); }
+.akg-flowchart__answers .akg-list-row__title { font-weight: 600; }
 .akg-flowchart__list { margin: 0; padding-left: 1.2em; font-size: calc(17 * var(--akg-t)); line-height: calc(22 * var(--akg-t)); }
 .akg-flowchart__links { display: flex; flex-direction: column; gap: var(--space-4); }
 .akg-flowchart__wide { width: 100%; margin-top: var(--space-4); }
@@ -2183,24 +2188,26 @@ button.akg-sheet__grabber::after { content: ""; position: absolute; left: -20px;
 .akg-flowchart__map { overflow-x: auto; padding-bottom: var(--space-8); }
 .akg-flowchart__map-inner { width: max-content; min-width: 100%; }
 .akg-flowchart__branch { display: flex; flex-direction: column; align-items: center; min-width: 0; }
-.akg-flowchart__node { width: 132px; padding: 5px 7px; border-radius: 10px; border: 2px solid transparent; background: var(--background-grouped-secondary); color: var(--label); text-align: center; font-family: var(--font-sans); }
-.akg-flowchart__node-kind { color: var(--label-secondary); font-size: calc(11 * var(--akg-t)); line-height: calc(13 * var(--akg-t)); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; }
-.akg-flowchart__node-title { font-size: calc(12 * var(--akg-t)); line-height: calc(16 * var(--akg-t)); font-weight: 600; }
+.akg-flowchart__node { box-sizing: border-box; width: min(calc(148 * var(--akg-t)), 200px); padding: var(--space-8) var(--space-10); border-radius: 12px; border: 2px solid transparent; background: var(--fill-tertiary); color: var(--label); text-align: center; font-family: var(--font-sans); overflow-wrap: break-word; }
+.akg-flowchart__node-kind { margin-bottom: 2px; color: var(--label-secondary); font-size: calc(11 * var(--akg-t)); line-height: calc(14 * var(--akg-t)); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; }
+.akg-flowchart__node-title { font-size: calc(13 * var(--akg-t)); line-height: calc(18 * var(--akg-t)); font-weight: 600; }
 .akg-flowchart__node.is-current { border-color: var(--accent); }
-.akg-flowchart__node.is-idle { opacity: 0.5; }
 .akg-flowchart__node.is-caution { border-color: var(--system-orange); }
 .akg-flowchart__node.is-current.is-caution { box-shadow: 0 0 0 2px var(--accent); }
-.akg-flowchart__node.is-stub { width: 88px; border: 1.5px dashed var(--separator-opaque); background: none; color: var(--label-secondary); font-size: calc(12 * var(--akg-t)); line-height: calc(16 * var(--akg-t)); cursor: pointer; hyphens: auto; }
-.akg-flowchart__down { height: 10px; border-left: 1.5px solid var(--label-tertiary); }
-.akg-flowchart__kids { display: flex; justify-content: center; gap: 4px; }
-.akg-flowchart__kid { position: relative; flex: 0 0 auto; min-width: 136px; padding-top: 12px; }
-.akg-flowchart__kid:has(> .akg-flowchart__branch > .is-stub) { min-width: 92px; }
+.akg-flowchart__node.is-stub { width: min(calc(124 * var(--akg-t)), 160px); min-height: var(--tap-target); padding: var(--space-8) var(--space-10); border: 1.5px dashed var(--separator-opaque); background: none; color: var(--label-secondary); font-size: calc(13 * var(--akg-t)); line-height: calc(18 * var(--akg-t)); font-weight: 400; cursor: pointer; }
+.akg-flowchart__node.is-stub:active { background: var(--fill-quaternary); }
+.akg-flowchart__node.is-static { cursor: default; }
+.akg-flowchart__stub-mark { color: var(--accent); font-weight: 600; }
+.akg-flowchart__down { height: 12px; border-left: 1.5px solid var(--label-tertiary); }
+.akg-flowchart__kids { display: flex; justify-content: center; gap: var(--space-8); }
+.akg-flowchart__kid { position: relative; flex: 0 0 auto; min-width: min(calc(148 * var(--akg-t)), 200px); padding-top: 14px; }
+.akg-flowchart__kid--stub { min-width: min(calc(124 * var(--akg-t)), 160px); }
 .akg-flowchart__kid::before { content: ''; position: absolute; top: 0; left: 0; right: 0; border-top: 1.5px solid var(--label-tertiary); }
 .akg-flowchart__kid:first-child::before { left: 50%; }
 .akg-flowchart__kid:last-child::before { right: 50%; }
 .akg-flowchart__kid:only-child::before { display: none; }
 .akg-flowchart__kid::after { content: ''; position: absolute; top: 0; left: calc(50% - 4px); border: 4px solid transparent; border-top: 9px solid var(--label-tertiary); border-bottom: 0; }
-.akg-flowchart__edge { max-width: 132px; margin-bottom: 2px; color: var(--accent); text-align: center; font-size: calc(11 * var(--akg-t)); line-height: calc(13 * var(--akg-t)); font-weight: 600; }
+.akg-flowchart__edge { max-width: min(calc(140 * var(--akg-t)), 160px); margin-bottom: var(--space-4); color: var(--accent); text-align: center; font-size: calc(12 * var(--akg-t)); line-height: calc(16 * var(--akg-t)); font-weight: 600; }
 
 [data-theme^="macos"] .akg-flowchart__step { padding: var(--space-12); border-radius: 12px; }
 [data-theme^="macos"] .akg-flowchart__title { font-size: 15px; line-height: 20px; letter-spacing: 0; font-weight: 700; }
@@ -2210,6 +2217,11 @@ button.akg-sheet__grabber::after { content: ""; position: absolute; left: -20px;
 [data-theme^="macos"] .akg-flowchart__history { border-radius: 10px; }
 [data-theme^="macos"] .akg-flowchart__history-row { min-height: 0; padding: 6px var(--space-10); }
 [data-theme^="macos"] .akg-flowchart__answers { margin: var(--space-4) 0 0; }
+[data-theme^="macos"] .akg-flowchart__answers .akg-list__group { border-radius: 8px; }
+[data-theme^="macos"] .akg-flowchart__node { width: 132px; padding: 6px 8px; border-radius: 8px; }
+[data-theme^="macos"] .akg-flowchart__node.is-stub { width: 108px; min-height: 0; padding: 6px 8px; }
+[data-theme^="macos"] .akg-flowchart__kid { min-width: 132px; }
+[data-theme^="macos"] .akg-flowchart__kid--stub { min-width: 108px; }
 [data-theme^="macos"] .akg-flowchart__node-title, [data-theme^="macos"] .akg-flowchart__node.is-stub { font-size: 11px; line-height: 14px; }
 [data-theme^="macos"] .akg-flowchart__node-kind, [data-theme^="macos"] .akg-flowchart__edge { font-size: 10px; line-height: 12px; }
 
@@ -2271,6 +2283,11 @@ button.akg-sheet__grabber::after { content: ""; position: absolute; left: -20px;
 /* Table — grouped-cell look; first column stays put while the rest scrolls; the hidden side fades. */
 .akg-table { margin: 0; min-width: 0; position: relative; }
 .akg-table__scroll { overflow-x: auto; border-radius: 14px; background: var(--background-grouped-secondary); overscroll-behavior-x: contain; }
+/* With a fixed first column the system scroll bar would run under it too; draw one under the scrolling columns instead. */
+.akg-table--sticky .akg-table__scroll { scrollbar-width: none; }
+.akg-table--sticky .akg-table__scroll::-webkit-scrollbar { display: none; }
+.akg-table__indicator { position: absolute; bottom: 3px; height: 3px; border-radius: var(--radius-full); background: var(--label-tertiary); pointer-events: none; opacity: 0; transition: opacity 400ms; }
+.akg-table__indicator--on { opacity: 1; transition: opacity 80ms; }
 .akg-table__table { border-collapse: separate; border-spacing: 0; min-width: 100%; font-size: calc(15 * var(--akg-text-unit, 1px)); line-height: calc(20 * var(--akg-text-unit, 1px)); color: var(--label); }
 .akg-table__caption { caption-side: top; text-align: left; padding: 0 var(--space-4) var(--space-8); color: var(--label-secondary); font-size: calc(13 * var(--akg-text-unit, 1px)); line-height: calc(18 * var(--akg-text-unit, 1px)); }
 .akg-table__table th, .akg-table__table td { text-align: left; vertical-align: top; padding: var(--space-8) var(--space-12); border-bottom: var(--separator-width) solid var(--separator); min-width: 7em; }
@@ -2500,12 +2517,16 @@ button.akg-sheet__grabber::after { content: ""; position: absolute; left: -20px;
 /* TimePoints — 13pt semibold capsules with tabular figures, under an optional 15pt semibold label. */
 .akg-time-points { font-family: var(--font-sans); color: var(--label); }
 .akg-time-points__label { font-size: calc(15 * var(--akg-t)); line-height: calc(20 * var(--akg-t)); font-weight: 600; }
-.akg-time-points__list { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; margin: 6px 0 0; padding: 0; }
-.akg-time-points__label + .akg-time-points__list { margin-top: 6px; }
+.akg-time-points__list { display: flex; flex-wrap: wrap; row-gap: var(--space-8); list-style: none; margin: var(--space-8) 0 0; padding: 0; }
 .akg-time-points__list:first-child { margin-top: 0; }
-.akg-time-points__chip { padding: var(--space-4) var(--space-10); border-radius: var(--radius-full); background: var(--fill-tertiary); font-size: calc(13 * var(--akg-t)); line-height: calc(16 * var(--akg-t)); font-weight: 600; font-variant-numeric: tabular-nums; white-space: nowrap; }
+/* Plain timeline labels, not buttons: a dot on a thin line, the time below it; no fill, no capsule. */
+.akg-time-points__chip { position: relative; display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-4); padding-right: calc(22 * var(--akg-t)); font-size: calc(15 * var(--akg-t)); line-height: calc(20 * var(--akg-t)); font-variant-numeric: tabular-nums; white-space: nowrap; color: var(--label); }
+.akg-time-points__chip::before { content: ""; width: 7px; height: 7px; border-radius: var(--radius-full); background: var(--label-secondary); }
+.akg-time-points__chip::after { content: ""; position: absolute; top: 3px; left: 9px; right: 2px; border-top: 1px solid var(--separator-opaque); }
+.akg-time-points__chip:last-child { padding-right: 0; }
+.akg-time-points__chip:last-child::after { display: none; }
 [data-theme^="macos"] .akg-time-points__label { font-size: 13px; line-height: 16px; }
-[data-theme^="macos"] .akg-time-points__chip { padding: 2px var(--space-8); font-size: 11px; line-height: 14px; }
+[data-theme^="macos"] .akg-time-points__chip { padding-right: 16px; font-size: 12px; line-height: 15px; }
 
 /* TimerCapsule — glass capsule, red dot, 18pt bold tabular time in system red (darkened slightly in light mode for 4.5:1).
    variant="accessory": the full-width 52pt glass bar for TabBar's accessory slot, with a title, subtitle and an up chevron. */

@@ -1,9 +1,10 @@
-import { Fragment, useState, type ReactNode } from 'react';
+import { Fragment, useState, type MouseEvent, type ReactNode } from 'react';
 import { AKG } from '../design/akg';
 import { content, getCard, isMarkerSource } from '../content';
 import type { Block, ContainerItem, Criteria, Dose, Inline, ListItem, Pathway, Source, Threshold } from '../content/types';
-import { parseInline } from '../../scripts/content/inline.mjs';
-import { href } from '../router';
+import { parseInline, TAGS } from '../../scripts/content/inline.mjs';
+import { onsetRows } from '../../scripts/content/onset.mjs';
+import { href, parseRoute } from '../router';
 import { useSheet, type ShowSheet } from './SheetHost';
 import { icons } from './icons';
 
@@ -241,14 +242,24 @@ function Insert({ kind, id }: { kind: string; id: string }) {
   return <span>{id}</span>;
 }
 
+// A link to a section of the page on screen scrolls there instead of opening the page again (CardScreen listens).
+export const JUMP_EVENT = 'wards:jump';
+function jumpWithin(e: MouseEvent, id: string, section?: string | null) {
+  const r = parseRoute(location.hash);
+  if (!section || r.name !== 'card' || r.id !== id) return;
+  e.preventDefault();
+  dispatchEvent(new CustomEvent(JUMP_EVENT, { detail: section }));
+}
+
 export function Inlines({ xs }: { xs: Inline[] }) {
   return (
     <>
       {xs.map((x, i) => {
         if (x.t === 'insert') return <Insert key={i} kind={x.kind} id={x.id} />;
+        if (x.t === 'tag') return <AKG.Tag key={i} className="inline-tag" variant={x.v === 'cannot-miss' ? 'critical' : 'neutral'}>{TAGS[x.v] ?? x.v}</AKG.Tag>;
         if (x.t !== 'link') return x.t === 'strong' ? <strong key={i}>{x.v}</strong> : x.t === 'em' ? <em key={i}>{x.v}</em> : <Fragment key={i}>{x.v}</Fragment>;
         const c = getCard(x.id);
-        return <a key={i} className="akg-link" href={href.card(x.id)}>{x.label ?? c?.title ?? x.id}</a>;
+        return <a key={i} className="akg-link" href={href.card(x.id, x.section ?? undefined)} onClick={(e) => jumpWithin(e, x.id, x.section)}>{x.label ?? c?.title ?? x.id}</a>;
       })}
     </>
   );
@@ -298,20 +309,48 @@ function PathwayBlock({ id }: { id: string }) {
 
 const hasText = (xs: Inline[]) => xs.some((x) => x.t !== 'text' || x.v.trim());
 
-function Container({ b }: { b: Extract<Block, { t: 'scale' | 'compare' | 'times' }> }) {
+type ContainerBlock = Extract<Block, { items: ContainerItem[] }>;
+
+// Onset and duration side by side, fastest first, in a sheet opened from one row (Treatment).
+function OnsetSheet({ b }: { b: ContainerBlock }) {
+  const rows = onsetRows(b.items, content.data.dose);
+  const ids = [...new Set([...b.sources, ...rows.flatMap((r) => r.sources)])];
+  return (
+    <div className="detail-sheet">
+      <p className="ios-footnote secondary">Fastest first.</p>
+      <AKG.Table stickyFirstColumn columns={['Treatment', 'Onset', 'Lasts']} rows={rows.map((r) => ({ key: r.i, cells: [r.name, cap(r.onset), cap(r.lasts) || '—'] }))} />
+      <SheetSources ids={ids} />
+    </div>
+  );
+}
+
+function OnsetRow({ b }: { b: ContainerBlock }) {
+  const sheet = useSheet();
+  const title = hasText(b.title) ? <Inlines xs={b.title} /> : 'Compare Onset and Duration';
+  return (
+    <AKG.List className="onset-row">
+      <AKG.ListRow title={title} chevron onClick={() => sheet({ title: 'Onset and Duration', body: <OnsetSheet b={b} /> })} />
+    </AKG.List>
+  );
+}
+
+function Container({ b }: { b: ContainerBlock }) {
+  const t: string = b.t;
+  const items: ContainerItem[] = b.items;
+  if (t === 'onset') return <OnsetRow b={b} />;
   const title = hasText(b.title) ? <Inlines xs={b.title} /> : undefined;
-  if (b.t === 'scale') {
+  if (t === 'scale') {
     return (
       <div className="scale-block">
         {title && <p className="ios-subheadline-emphasized">{title}</p>}
-        <AKG.ScaleBar segments={b.items.map((it: ContainerItem) => ({ label: <Inlines xs={it.label} />, range: <Inlines xs={it.inlines} /> }))} />
+        <AKG.ScaleBar segments={items.map((it: ContainerItem) => ({ label: <Inlines xs={it.label} />, range: <Inlines xs={it.inlines} /> }))} />
       </div>
     );
   }
-  if (b.t === 'compare') {
-    return <AKG.ComparisonGrid title={title} columns={b.items.map((it) => ({ label: <Inlines xs={it.label} />, content: <Inlines xs={it.inlines} /> }))} />;
+  if (t === 'compare') {
+    return <AKG.ComparisonGrid title={title} columns={items.map((it) => ({ label: <Inlines xs={it.label} />, content: <Inlines xs={it.inlines} /> }))} />;
   }
-  return <AKG.TimePoints label={title} items={b.items.map((it, i) => <Fragment key={i}>{it.text}</Fragment>)} />;
+  return <AKG.TimePoints label={title} items={items.map((it, i) => <Fragment key={i}>{it.text}</Fragment>)} />;
 }
 
 export function Blocks({ blocks }: { blocks: Block[] }) {
@@ -347,7 +386,7 @@ function BlockView({ b }: { b: Block }) {
     if (b.kind === 'criteria') return <CriteriaBlock id={b.id} />;
     return <p className="ios-body"><Insert kind={b.kind} id={b.id} /></p>;
   }
-  if (b.t !== 'table') return <Container b={b as Extract<Block, { t: 'scale' | 'compare' | 'times' }>} />;
+  if (b.t !== 'table') return <Container b={b as ContainerBlock} />;
   return (
     // The first column stays in place while a wide table scrolls sideways (audit 2026-10-17).
     <AKG.Table

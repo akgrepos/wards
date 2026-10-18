@@ -1,6 +1,6 @@
 # Status
 
-Last updated 2026-10-18 (repo re-created; app redesign approved; redesign Phases 1–3 done). A short snapshot so the next session can pick up where the last one stopped. The reasons behind each choice are in [DECISIONS.md](DECISIONS.md).
+Last updated 2026-10-18 (repo re-created; app redesign approved; redesign Phases 1–3 done; owner's card feedback fixed in 2026.10.18.7). A short snapshot so the next session can pick up where the last one stopped. The reasons behind each choice are in [DECISIONS.md](DECISIONS.md).
 
 ## Start here next time
 1. **Read first:** `CLAUDE.md`, then DECISIONS.md "Sources, updated" (all content rules) before writing any card.
@@ -13,7 +13,7 @@ Last updated 2026-10-18 (repo re-created; app redesign approved; redesign Phases
    - Try the new tabs, the star, Continue Reading and Search.
    - Tap Reload on "Update Ready" and confirm the app updates. One simulator Home Screen copy didn't reload; a safety net was added, and Safari reloaded fine.
    - Remove Wards from the Home Screen and add it back once, so the dark launch screen takes effect. Then confirm there's no white flash in dark mode.
-   - Read the AKI and Hyperkalemia cards; note any wording or content changes.
+   - Read the AKI and Hyperkalemia cards; note any wording or content changes. (First round of feedback fixed in 2026.10.18.7; the mock-up round for guideline attribution, color, the flowchart's end and the urine-index layout is separate.)
 5. **Then: Pilot 3, Electrolyte repletion** (reference card, protocol variant):
    - Handbook section first, for wording and organization.
    - Primary sources via AMBOSS reference lists, plus OpenEvidence spot-checks (Sackett or Snow mode).
@@ -26,7 +26,7 @@ Last updated 2026-10-18 (repo re-created; app redesign approved; redesign Phases
 7. **Inputs needed from the owner:** sign in to AMBOSS and OpenEvidence in the built-in browser if their sessions have expired.
 
 ## Done
-- **App:** live at https://akgrepos.github.io/wards/ (version 2026.10.18.3).
+- **App:** live at https://akgrepos.github.io/wards/ (version 2026.10.18.7).
   - Cards: Hyperkalemia (condition) and Acute Kidney Injury (approach) on the new topic pages: Contents menu, collapsible remembered sections, More Information, one source line per section (stethoscope/check markers kept), dose rows with dose sheets, flowcharts, cutoffs and criteria.
   - App features: four tabs (Home, Rapids, Topics, Library) with search; Continue Reading, Favorites and Recent kept on the phone; offline use (checked on every build), the "Update Ready" banner, light/dark mode and Text Size support, readable width, and reopening on the last page within 30 minutes.
 - **Process:** branch and pull request per task, automatic checks (anonymous authors, design system styles, content, type-check, tests, build), automatic publishing from `main`, weekly Dependabot updates plus security fixes. End-of-chat wrap-up via the `wards-wrap-up` skill.

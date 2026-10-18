@@ -1025,6 +1025,8 @@ export interface FlowchartProps {
   /** Called with the path each time an answer changes it. The component keeps nothing between mounts. */
   onPathChange?: (path: FlowchartPathEntry[]) => void;
   stepsLabel?: string; mapLabel?: string; restartLabel?: string; backLabel?: string; continueLabel?: string; summaryLabel?: string;
+  /** Map view: spoken before a stub's answer ("Choose"), and the text of a stub where paths rejoin ("Continues at"). */
+  chooseLabel?: string; continuesLabel?: string;
   className?: string;
   style?: React.CSSProperties;
 }
@@ -1212,7 +1214,7 @@ export interface TimePointsProps extends React.HTMLAttributes<HTMLDivElement> {
   /** Times, short ("1 h", "24 h"). */
   items: React.ReactNode[];
 }
-/** A row of small time chips. Not interactive. */
+/** A short timeline of plain time labels (a dot on a thin line, the time below). Not interactive, and doesn't look it. */
 export declare function TimePoints(props: TimePointsProps): React.ReactElement;
 
 export interface TimerCapsuleProps extends Omit<React.HTMLAttributes<HTMLElement>, 'title'> {

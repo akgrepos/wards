@@ -28,8 +28,16 @@ h1, p { margin: 0; }
 .top-bar {
   position: sticky; top: 0; z-index: 5;
   padding: env(safe-area-inset-top) env(safe-area-inset-right) 0 env(safe-area-inset-left);
-  /* Scroll edge effect: content fades under the controls instead of a solid bar (Apple HIG: controls float above content). */
-  background: linear-gradient(var(--background-grouped) 55%, transparent);
+}
+/* Scroll edge effect: content fades under the controls instead of a solid bar (Apple HIG: controls float above content).
+   The fade starts above the buttons' bottom edge and runs 32pt below the bar, easing out so there is no visible line. */
+.top-bar::before {
+  content: ""; position: absolute; inset: 0 0 -32px; z-index: -1; pointer-events: none;
+  background: linear-gradient(
+    var(--background-grouped) calc(100% - 60px),
+    color-mix(in srgb, var(--background-grouped) 85%, transparent) calc(100% - 44px),
+    color-mix(in srgb, var(--background-grouped) 50%, transparent) calc(100% - 22px),
+    transparent);
 }
 .screen-body {
   display: flex; flex-direction: column; gap: var(--space-20);
@@ -47,10 +55,12 @@ h1, p { margin: 0; }
 .card-head { display: flex; flex-direction: column; gap: var(--space-8); }
 .card-head h1 { margin: 0; }
 .card-tags { display: flex; flex-wrap: wrap; gap: var(--space-8); }
-.card-meta { display: flex; flex-direction: column; align-items: flex-start; }
-.card-meta .akg-source-line { padding-left: 0; padding-right: 0; }
 .rich-list { margin: 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: var(--space-8); }
-.rich-list ul { margin: var(--space-4) 0 0; padding-left: 1.1em; display: flex; flex-direction: column; gap: var(--space-4); color: var(--label-secondary); }
+/* One nesting level (HIG): sub-items under their lead-in, open circles, the same text color. */
+.rich-list ul { margin: var(--space-4) 0 0; padding-left: 1.1em; display: flex; flex-direction: column; gap: var(--space-4); list-style: circle; }
+/* A "Cannot miss" or "Most common" tag after a cause's name. */
+.inline-tag { margin: 0 var(--space-2); vertical-align: 0.1em; }
+.onset-row { margin: 0; }
 .akg-content-section p { margin: 0; }
 .subheading { margin: var(--space-4) 0 0; }
 .missing { color: var(--system-red); }

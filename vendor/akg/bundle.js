@@ -1871,6 +1871,8 @@
   var check = h("svg", { viewBox: "0 0 20 20", fill: "none", stroke: "currentColor", strokeWidth: 2.4, strokeLinecap: "round", strokeLinejoin: "round" }, h("path", { d: "M4 10.5l4 4 8-9" }));
   var OWN = ["open", "defaultOpen", "onClose", "onDone", "title", "heading", "subheading", "detent", "detents", "fixed", "doneLabel", "cancelLabel", "dim", "className", "children"];
   var LEAVE_MS = 220;
+  // Detent sizes, as in the CSS: medium is 52% of the screen; large leaves 62pt at the top.
+  var MEDIUM = 0.52, LARGE_TOP = 62;
 
   // Locks page scrolling while a full-screen overlay is open (counted, so nested overlays restore correctly).
   var locks = 0, saved = "";
@@ -1914,10 +1916,15 @@
     var done = function () { if (props.onDone) props.onDone(); };
     var cycle = function () { if (detents.length > 1) dt[1](detents[(detents.indexOf(detent) + 1) % detents.length]); };
 
-    // Drag the bar: down past a threshold shrinks to the smaller detent or dismisses; up grows to large.
+    // Drag the bar. Between detents the sheet's top edge follows the finger (its height changes, as on iOS); on release
+    // it settles at the next detent from the CSS height it was dragged to, so shrinking from large is one smooth motion.
+    // Below the smallest detent it slides down instead, and past a threshold it dismisses.
     var onDown = function (e) {
       if (e.button || e.target.closest("button:not(.akg-sheet__grabber)")) return;
-      drag.current = { y: e.clientY, dy: 0 };
+      var p = panelRef.current, box = p && p.parentElement;
+      if (!p || !box) return;
+      // The medium detent's height (52%, as in the CSS) is the floor while resizing from large.
+      drag.current = { y: e.clientY, dy: 0, h: p.offsetHeight, floor: Math.min(p.offsetHeight, box.clientHeight * MEDIUM), ceil: box.clientHeight - LARGE_TOP };
       e.currentTarget.setPointerCapture && e.currentTarget.setPointerCapture(e.pointerId);
     };
     var onMove = function (e) {
@@ -1925,15 +1932,32 @@
       d.dy = e.clientY - d.y;
       var p = panelRef.current; if (!p) return;
       p.style.transition = "none";
-      p.style.transform = "translateY(" + Math.max(d.dy, -24) + "px)";
+      var i = detents.indexOf(detent), canGrow = i < detents.length - 1, canShrink = i > 0;
+      var want = d.h - d.dy;
+      if (d.dy < 0) {
+        // Up: grow toward the large detent, or stretch a little at the top.
+        if (canGrow) { p.style.height = Math.min(want, d.ceil) + "px"; p.style.transform = ""; }
+        else p.style.transform = "translateY(" + Math.max(d.dy, -24) + "px)";
+      } else if (canShrink) {
+        // Down from a larger detent: shrink to the smallest one, then slide down past it.
+        var hgt = Math.max(want, d.floor);
+        p.style.height = hgt + "px";
+        p.style.transform = want < d.floor ? "translateY(" + (d.floor - want) + "px)" : "";
+      } else p.style.transform = "translateY(" + d.dy + "px)";
     };
     var onUp = function () {
       var d = drag.current; drag.current = null;
-      var p = panelRef.current; if (p) { p.style.transition = ""; p.style.transform = ""; }
-      if (!d) return;
-      if (Math.abs(d.dy) < 6) return;
+      var p = panelRef.current;
+      if (!d || !p) return;
       var i = detents.indexOf(detent);
-      if (d.dy > 60) { if (i > 0) dt[1](detents[i - 1]); else close(); }
+      var slid = i > 0 ? Math.max(0, d.floor - (d.h - d.dy)) : Math.max(0, d.dy);
+      var dismiss = i > 0 ? slid > 80 : d.dy > 60;
+      // Hand back to the CSS transition; the height animates from where the finger left it to the new detent.
+      p.style.transition = "";
+      if (dismiss) { p.style.transform = ""; close(); return; }
+      p.style.height = ""; p.style.transform = "";
+      if (Math.abs(d.dy) < 6) return;
+      if (d.dy > 60 && i > 0) dt[1](detents[i - 1]);
       else if (d.dy < -40 && i < detents.length - 1) dt[1](detents[i + 1]);
     };
 
@@ -2452,6 +2476,8 @@
     function back() { if (path.length > 1) update(path.slice(0, -2).concat([{ id: path[path.length - 2].id }])); }
     function jump(i) { update(path.slice(0, i).concat([{ id: path[i].id }])); }
     function restart() { update([{ id: start }]); }
+    // From the map: take a different answer at step i of the path (or answer the current step).
+    function choose(i, answer, to) { update(path.slice(0, i).concat([{ id: path[i].id, answer: answer }, { id: to }])); }
     var cur = steps[path[path.length - 1].id];
     if (!cur) return null;
 
@@ -2461,7 +2487,7 @@
 
     return h("div", { className: AKG.cx("akg-flowchart", props.className), style: props.style },
       header,
-      view === "map" ? h(FlowMap, { steps: steps, start: start, path: path }) : h(StepView, { steps: steps, stages: stages, path: path, cur: cur, go: go, back: back, jump: jump, props: props })
+      view === "map" ? h(FlowMap, { steps: steps, start: start, path: path, choose: choose, chooseLabel: props.chooseLabel, continuesLabel: props.continuesLabel }) : h(StepView, { steps: steps, stages: stages, path: path, cur: cur, go: go, back: back, jump: jump, props: props })
     );
   }
 
@@ -2514,36 +2540,45 @@
     );
   }
 
-  // Focused map: top-down flowchart; only the branch you are on is open, others are tappable stubs.
+  // Focused map: a top-down flowchart of the path taken so far. Only the chosen branch at each step is drawn; the other
+  // answers are dashed stubs, and tapping one takes that answer instead (the path, and the Steps view, follow).
   function FlowMap(p) {
     var React = window.React;
-    var steps = p.steps;
-    var visited = {}; p.path.forEach(function (x) { visited[x.id] = true; });
-    var curId = p.path[p.path.length - 1].id;
-    var openSt = React.useState(function () { var o = {}; p.path.forEach(function (x) { o[x.id] = true; }); return o; });
-    var open = openSt[0];
+    var steps = p.steps, path = p.path;
+    var curId = path[path.length - 1].id;
     var drawn = {};
     var ref = React.useRef(null);
+    // Keep the current step in view: on opening the map and whenever the path changes.
     React.useEffect(function () {
       var el = ref.current, c = el && el.querySelector(".akg-flowchart__node.is-current");
       if (el && c) { var r = c.getBoundingClientRect(), e = el.getBoundingClientRect(); el.scrollLeft += r.left + r.width / 2 - (e.left + e.width / 2); }
-    }, []);
-    function node(id, label) {
-      var s = steps[id]; if (!s) return null;
+    }, [path.map(function (x) { return x.id; }).join(">")]);
+    // The step at path position i, and the branches below it.
+    function node(i, label) {
+      var id = path[i].id, s = steps[id]; if (!s) return null;
       var head = label ? h("div", { className: "akg-flowchart__edge" }, label) : null;
-      if (drawn[id]) return h("div", { className: "akg-flowchart__branch" }, head, h("div", { className: "akg-flowchart__node is-stub" }, "Continues at " + s.title));
-      if (label && !open[id]) return h("div", { className: "akg-flowchart__branch" }, head,
-        h("button", { type: "button", className: "akg-flowchart__node is-stub", onClick: function () { var o = {}; for (var k in open) o[k] = open[k]; o[id] = true; openSt[1](o); } }, s.title, h("span", { "aria-hidden": "true" }, " +")));
+      if (drawn[id]) return h("div", { className: "akg-flowchart__branch" }, head, h("div", { className: "akg-flowchart__node is-stub is-static" }, (p.continuesLabel || "Continues at") + " " + s.title));
       drawn[id] = true;
-      var kids = outs(s);
+      var kids = outs(s), next = path[i + 1];
+      // The chosen branch: the answer recorded at this step (or, if the labels differ, the one leading to the next step).
+      var picked = next ? kids.filter(function (k) { return k[1] === next.id && k[0] === path[i].answer; })[0] || kids.filter(function (k) { return k[1] === next.id; })[0] : null;
       return h("div", { className: "akg-flowchart__branch" }, head,
-        h("div", { className: AKG.cx("akg-flowchart__node", id === curId ? "is-current" : visited[id] ? "is-visited" : "is-idle", s.kind === "caution" && "is-caution") },
+        h("div", { className: AKG.cx("akg-flowchart__node", id === curId ? "is-current" : "is-visited", s.kind === "caution" && "is-caution") },
           h("div", { className: "akg-flowchart__node-kind" }, s.kindLabel || KIND[s.kind] || KIND.question),
           h("div", { className: "akg-flowchart__node-title" }, s.title)),
         kids.length ? h("div", { className: "akg-flowchart__down", "aria-hidden": "true" }) : null,
-        kids.length ? h("div", { className: "akg-flowchart__kids" }, kids.map(function (k) { return h("div", { key: k[0], className: "akg-flowchart__kid" }, node(k[1], k[0])); })) : null);
+        kids.length ? h("div", { className: "akg-flowchart__kids" }, kids.map(function (k) {
+          var on = picked === k;
+          var t = steps[k[1]];
+          return h("div", { key: k[0], className: "akg-flowchart__kid" + (on ? "" : " akg-flowchart__kid--stub") },
+            on ? node(i + 1, k[0])
+              : h("div", { className: "akg-flowchart__branch" },
+                  h("div", { className: "akg-flowchart__edge" }, k[0]),
+                  h("button", { type: "button", className: "akg-flowchart__node is-stub", "aria-label": (p.chooseLabel || "Choose") + " " + k[0] + (t ? ": " + t.title : ""), onClick: function () { p.choose(i, k[0], k[1]); } },
+                    t ? t.title : k[1], h("span", { className: "akg-flowchart__stub-mark", "aria-hidden": "true" }, "\u00a0+"))));
+        })) : null);
     }
-    return h("div", { ref: ref, className: "akg-flowchart__map" }, h("div", { className: "akg-flowchart__map-inner" }, node(p.start)));
+    return h("div", { ref: ref, className: "akg-flowchart__map" }, h("div", { className: "akg-flowchart__map-inner" }, node(0)));
   }
   AKG.Flowchart = Flowchart;
 })(window.AKG = window.AKG || {});
@@ -2573,17 +2608,32 @@
 (function (AKG) {
   var R = window.React, h = R.createElement;
   function Table(props) {
-    var ref = R.useRef(null), edge = R.useState("");
+    var ref = R.useRef(null), bar = R.useRef(null), timer = R.useRef(0), edge = R.useState("");
+    var sticky = props.stickyFirstColumn !== false;
     var measure = function () {
       var el = ref.current; if (!el) return;
       var start = el.scrollLeft > 2, end = el.scrollLeft + el.clientWidth < el.scrollWidth - 2;
       edge[1]((start ? " akg-table--more-start" : "") + (end ? " akg-table--more-end" : ""));
     };
-    R.useEffect(function () { measure(); window.addEventListener("resize", measure); return function () { window.removeEventListener("resize", measure); }; }, []);
-    var sticky = props.stickyFirstColumn !== false;
+    // The scroll indicator for a table with a fixed first column: it spans only the columns that move, shows while
+    // scrolling and fades out after, like the system one.
+    var indicate = function () {
+      var el = ref.current, b = bar.current; if (!el || !b || !sticky) return;
+      var first = el.querySelector("tr > :first-child"), fixed = first ? first.offsetWidth : 0;
+      var track = el.clientWidth - fixed - 12, span = el.scrollWidth - fixed, max = el.scrollWidth - el.clientWidth;
+      if (max <= 2 || track <= 0) return;
+      var w = Math.max(24, track * (el.clientWidth - fixed) / span);
+      b.style.width = w + "px";
+      b.style.left = fixed + 6 + (track - w) * (el.scrollLeft / max) + "px";
+      b.classList.add("akg-table__indicator--on");
+      clearTimeout(timer.current);
+      timer.current = setTimeout(function () { b.classList.remove("akg-table__indicator--on"); }, 700);
+    };
+    R.useEffect(function () { measure(); window.addEventListener("resize", measure); return function () { window.removeEventListener("resize", measure); clearTimeout(timer.current); }; }, []);
     var rows = props.rows || [];
     return h("figure", { className: AKG.cx("akg-table", sticky && "akg-table--sticky", props.className) + edge[0], style: props.style },
-      h("div", { className: "akg-table__scroll", ref: ref, onScroll: measure },
+      sticky ? h("div", { className: "akg-table__indicator", ref: bar, "aria-hidden": "true" }) : null,
+      h("div", { className: "akg-table__scroll", ref: ref, onScroll: function () { measure(); indicate(); } },
         h("table", { className: "akg-table__table" },
           props.caption ? h("caption", { className: "akg-table__caption" }, props.caption) : null,
           props.columns ? h("thead", null, h("tr", null, props.columns.map(function (c, i) { return h("th", { key: i, scope: "col" }, c); }))) : null,
@@ -2842,13 +2892,14 @@
   AKG.ComparisonGrid = ComparisonGrid;
 })(window.AKG = window.AKG || {});
 
-/* TimePoints — a row of small time chips ("1 h", "2 h", "6 h"), such as when to recheck something. */
+/* TimePoints — a short timeline of plain time labels ("1 h", "2 h", "6 h"), such as when to recheck something. */
 (function (AKG) {
   var h = window.React.createElement;
   function TimePoints(props) {
     var rest = {};
     for (var k in props) if (["items", "label", "className"].indexOf(k) < 0) rest[k] = props[k];
     rest.className = AKG.cx("akg-time-points", props.className);
+    // Plain labels on a short timeline (not chips that look tappable): a dot and a line per time.
     return h("div", rest,
       props.label != null ? h("div", { className: "akg-time-points__label" }, props.label) : null,
       h("ul", { className: "akg-time-points__list", "aria-label": typeof props.label === "string" ? props.label : undefined },

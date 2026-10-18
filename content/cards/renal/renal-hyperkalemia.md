@@ -31,15 +31,10 @@ related:
 - Severe hyperkalemia: urgent hospital assessment, monitored bed. ^[ukka-hyperkalaemia-2026]
 
 ## Causes
-| Diagnosis | Distinguishing features |
-|---|---|
-| Pseudohyperkalemia | Hemolysis, prolonged tourniquet or fist clenching, clotted sample, marked leukocytosis or thrombocytosis, delayed or cold storage; normal K⁺ on careful repeat ^[kdigo-acute-hyperkalemia-2020, ukka-hyperkalaemia-2026] |
-
-#### True hyperkalemia
-- Drugs: K⁺-sparing diuretics, MRAs, ACE inhibitors, ARBs, direct renin inhibitors, β-blockers, NSAIDs, heparin, digoxin, succinylcholine. ^[kdigo-acute-hyperkalemia-2020]
-- Trimethoprim-sulfamethoxazole. ^[emcreg-hyperkalemia-2025]
-- AKI, especially oliguric; acidosis, catabolism and tissue breakdown add to K⁺ release. ^[emcreg-hyperkalemia-2025]
-- Rhabdomyolysis and tissue injury; K⁺ supplements and salt substitutes. ^[kdigo-acute-hyperkalemia-2020]
+- **Pseudohyperkalemia:** hemolysis, prolonged tourniquet or fist clenching, clotted sample, marked leukocytosis or thrombocytosis, delayed or cold storage; normal K⁺ on careful repeat. ^[kdigo-acute-hyperkalemia-2020, ukka-hyperkalaemia-2026]
+- **Shift out of cells:** acidosis, catabolism, rhabdomyolysis and tissue injury; β-blockers, digoxin, succinylcholine. ^[kdigo-acute-hyperkalemia-2020, emcreg-hyperkalemia-2025]
+- **Impaired excretion:** [!cannot-miss] AKI, especially oliguric; reduced GFR; K⁺-sparing diuretics, MRAs, ACE inhibitors, ARBs, direct renin inhibitors, NSAIDs, heparin, trimethoprim-sulfamethoxazole. ^[kdigo-acute-hyperkalemia-2020, emcreg-hyperkalemia-2025]
+- **Intake:** K⁺ supplements and salt substitutes; rarely the sole cause with normal renal K⁺ excretion. ^[kdigo-acute-hyperkalemia-2020]
 
 ## Presentation
 - Often asymptomatic. ^[kdigo-acute-hyperkalemia-2020]
@@ -58,6 +53,16 @@ related:
 
 ## Treatment
 {{pathway:hyperkalemia-management}}
+
+:::onset Compare Onset and Duration
+- {{dose:calcium-gluconate-hyperkalemia}}
+- {{dose:albuterol-neb-hyperkalemia}}
+- Insulin-dextrose: About 1 hour | Variable ^[emcreg-hyperkalemia-2025]
+- {{dose:furosemide-hyperkalemia}}
+- {{dose:szc-hyperkalemia-initial}}
+- {{dose:patiromer-hyperkalemia}}
+- Hemodialysis: Immediate | Variable ^[emcreg-hyperkalemia-2025]
+:::
 
 1. Cardiac membrane stabilization
    - ECG changes: IV calcium gluconate. ^[ukka-hyperkalaemia-2026]
@@ -109,15 +114,6 @@ related:
 
 #### Hyperkalemic cardiac arrest
 - IV calcium, sodium bicarbonate, and insulin-dextrose may be reasonable (weak recommendations); inhaled albuterol not recommended during arrest. ^[aha-special-circumstances-2025]
-
-#### Onset and duration
-| Treatment | Onset | Duration |
-|---|---|---|
-| IV calcium | 1–3 min | 30–60 min ^[kdigo-acute-hyperkalemia-2020] |
-| Insulin-dextrose | ~1 h | Variable ^[emcreg-hyperkalemia-2025] |
-| Nebulized albuterol | ~30 min | ~2 h ^[emcreg-hyperkalemia-2025] |
-| IV furosemide | ~15 min | 2–3 h ^[emcreg-hyperkalemia-2025] |
-| Hemodialysis | Immediate | Variable ^[emcreg-hyperkalemia-2025] |
 
 ## Monitor
 :::times K⁺ at least at these times after treating moderate or severe hyperkalemia ^[ukka-hyperkalaemia-2026]
