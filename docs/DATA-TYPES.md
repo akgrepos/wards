@@ -22,7 +22,7 @@ Settled 2026-10-17. **Data types** are the shared pieces of information that eac
 ### 1. Source
 Every citation lives here once; cards cite by number, which points to the source.
 - Fields: kind (guideline · study · systematic review · prescribing information · dataset · AMBOSS when the rules allow) · issuing society · title · year/edition · journal, DOI, PMID or URL · date checked
-- Shown as: the numbered source list in each card's footer
+- Shown as: a grey source pill on each line it supports, and the numbered Sources list in each card's footer (short form, full citation on tap)
 
 ### 2. Dose
 One drug, one indication, one population. The only place a dose is written.
@@ -65,7 +65,8 @@ Ordinal scales used in exams and documentation.
 
 ### 9. Pathway (flowchart)
 An interactive algorithm.
-- Fields: nodes (question · action · result) · branches with conditions · inserted doses, scores and thresholds at nodes · sources per node
+- Fields: steps (kinds: start, question, range, all-of checklist, caution, result) · stage of each step · answers, each with an interpretation, criteria text and the next step (paths may rejoin) · result lists, side notes and links · inserted doses, scores and thresholds · sources per step
+- Display: see the flowchart decision in DECISIONS.md (stacked step view; focused mini-flowchart map)
 - Home: the card it belongs to (stored as its own item so the Library's Pathways page can index it)
 
 ### 10. Coverage

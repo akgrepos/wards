@@ -1,6 +1,6 @@
 # Status
 
-Last updated 2026-10-17 (data types settled). A short snapshot so the next session can pick up where the last one stopped. The reasons behind each choice are in [DECISIONS.md](DECISIONS.md).
+Last updated 2026-10-17 (planning complete; audit done). A short snapshot so the next session can pick up where the last one stopped. The reasons behind each choice are in [DECISIONS.md](DECISIONS.md).
 
 ## Done
 - **Foundations and setup complete.** The app is live at https://akgrepos.github.io/wards/ (version 2026.10.17.2): a home screen with no entries yet, its own icon, offline use, the "Update Ready" banner, light/dark and Text Size support.
@@ -8,11 +8,13 @@ Last updated 2026-10-17 (data types settled). A short snapshot so the next sessi
 - **Privacy and security:** anonymous history, private GitHub profile with passkey and two-factor sign-in, protected `main`, rebase-only merges, page hidden from search engines and limited to its own scripts.
 - **AKG Design System** second pass published: https://claude.ai/artifact/GWFUZ6rCthpEuhMik4Jiru (copy in `vendor/akg/`).
 
-## Next: content planning (decided 2026-10-17, see DECISIONS.md)
-1. ~~Topic list~~ done (v2, private): 16 systems plus the Library, about 456 cards plus 41 scores, Wave 1 = 30 cards. The owner signs in to AMBOSS and OpenEvidence in the built-in browser when needed.
-2. ~~Card types~~ and ~~data types~~ done (`docs/CARD-TYPES.md`, `docs/DATA-TYPES.md`). ~~Flowchart format~~ and ~~citation format~~ done. **Next:** 2–3 pilot cards from Wave 1, with the accuracy-check pilot test. Building flowcharts needs a generic Flowchart component proposed to the AKG Design System first.
-3. 2–3 pilot cards, read on the phone, with the accuracy-check pilot test; adjust; then scale in batches.
-- Entries will need their own links; any address inside `/wards/` other than the home page currently returns "not found", so the design must cover that.
+## Content planning: done (2026-10-17, see DECISIONS.md)
+Topic list (private; 16 systems plus the Library, about 488 cards plus 41 scores, Wave 1 = 30 cards), card types (`docs/CARD-TYPES.md`), data types (`docs/DATA-TYPES.md`), flowchart format and citation format.
+
+## Next
+1. **Design system additions** (proposed, awaiting the owner's approval): generic components the cards need (flowchart, source pill, card sections) and Text Size support for the design system's components.
+2. **App build for cards** (proposed, awaiting approval): card pages, content and data files with automatic checks, links to individual cards (any address inside `/wards/` other than the home page currently returns "not found").
+3. **Pilot cards:** 2–3 from Wave 1, read on the phone, with the accuracy-check pilot test; adjust; then scale in batches. The owner signs in to AMBOSS and OpenEvidence in the built-in browser when needed.
 
 ## Known limits
 - The design system's components (buttons, banners, lists) use fixed sizes, so their text doesn't follow Text Size yet; the app's own text does. Fixing that is a design system change, for the owner to decide.

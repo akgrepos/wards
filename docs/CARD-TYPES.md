@@ -24,7 +24,7 @@ Settled 2026-10-17. Defines **8 card types**, each with a fixed structure and su
 **Footer, the same on every card**
 - **Pearls and pitfalls:** common errors and high-yield nuances
 - **Related cards:** links grouped as "Differential", "Conditions", "Tools" and "Medications"
-- **Sources:** numbered list. Each claim in the card carries a small superscript number pointing here.
+- **Sources:** numbered list in short form ("Society Year: title"), full citation on tap. Each sourced line ends with a grey **source pill** (short source and year, "+1" for more than one); tapping it opens a sheet with the full citation and an Open source link.
 
 **Formatting rules**
 - Bullets and tables over paragraphs; one idea per bullet
