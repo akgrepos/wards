@@ -218,7 +218,9 @@ export function CriteriaSheet({ c }: { c: Criteria }) {
 }
 export const openCriteria = (sheet: ShowSheet, c: Criteria) => sheet({ title: 'Criteria', heading: c.name, body: <CriteriaSheet c={c} /> });
 
-function Insert({ kind, id }: { kind: string; id: string }) {
+// `plain`: show the value as text, never tappable (inside a ScaleBar, where the band already says what it means).
+// A cutoff is tappable only when its pop-up adds something beyond the value shown: a `meaning` (owner's rule, 2026-10-18).
+function Insert({ kind, id, plain }: { kind: string; id: string; plain?: boolean }) {
   const sheet = useSheet();
   const item = content.data[kind]?.[id];
   if (!item) return <span className="missing">[missing {kind}: {id}]</span>;
@@ -229,6 +231,7 @@ function Insert({ kind, id }: { kind: string; id: string }) {
   }
   if (kind === 'threshold') {
     const t = item as unknown as Threshold;
+    if (plain || !t.meaning) return <span className="plain-value">{t.value} {t.unit}</span>;
     return (
       <AKG.TappableValue onClick={() => sheet({ title: 'Cutoff', heading: t.name, body: <div className="detail-sheet"><p className="ios-title-3-emphasized">{t.value} {t.unit}</p><p className="ios-body">{t.meaning}</p><SheetSources ids={t.sources} /></div> })}>
         {t.value} {t.unit}
@@ -251,11 +254,11 @@ function jumpWithin(e: MouseEvent, id: string, section?: string | null) {
   dispatchEvent(new CustomEvent(JUMP_EVENT, { detail: section }));
 }
 
-export function Inlines({ xs }: { xs: Inline[] }) {
+export function Inlines({ xs, plain }: { xs: Inline[]; plain?: boolean }) {
   return (
     <>
       {xs.map((x, i) => {
-        if (x.t === 'insert') return <Insert key={i} kind={x.kind} id={x.id} />;
+        if (x.t === 'insert') return <Insert key={i} kind={x.kind} id={x.id} plain={plain} />;
         if (x.t === 'tag') return <AKG.Tag key={i} className="inline-tag" variant={x.v === 'cannot-miss' ? 'critical' : 'neutral'}>{TAGS[x.v] ?? x.v}</AKG.Tag>;
         if (x.t !== 'link') return x.t === 'strong' ? <strong key={i}>{x.v}</strong> : x.t === 'em' ? <em key={i}>{x.v}</em> : <Fragment key={i}>{x.v}</Fragment>;
         const c = getCard(x.id);
@@ -343,7 +346,7 @@ function Container({ b }: { b: ContainerBlock }) {
     return (
       <div className="scale-block">
         {title && <p className="ios-subheadline-emphasized">{title}</p>}
-        <AKG.ScaleBar segments={items.map((it: ContainerItem) => ({ label: <Inlines xs={it.label} />, range: <Inlines xs={it.inlines} /> }))} />
+        <AKG.ScaleBar segments={items.map((it: ContainerItem) => ({ label: <Inlines xs={it.label} />, range: <Inlines xs={it.inlines} plain /> }))} />
       </div>
     );
   }

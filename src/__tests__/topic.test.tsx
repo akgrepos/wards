@@ -168,6 +168,16 @@ describe('remembered sections', () => {
     expect(screen.queryByText(/\(Hyperkalemia\)/)).toBeNull();
   });
 
+  it('values are tappable only when the pop-up adds something', () => {
+    launch('#/card/renal-hyperkalemia');
+    const scale = document.querySelector('.scale-block') as HTMLElement;
+    expect(within(scale).queryAllByRole('button')).toHaveLength(0);
+    expect(within(scale).getByText('≥6.5 mEq/L')).toBeTruthy();
+    // ≥6.5 explains more in its pop-up, so it stays tappable in sentences; 6.0–6.4 has nothing more to say.
+    expect(screen.getAllByRole('button', { name: '≥6.5 mEq/L' }).length).toBeGreaterThan(0);
+    expect(screen.queryByRole('button', { name: '6.0–6.4 mEq/L' })).toBeNull();
+  });
+
   it('causes are one grouped list with a Cannot miss tag', () => {
     launch('#/card/renal-hyperkalemia');
     expect(screen.getByText('Impaired excretion:')).toBeTruthy();

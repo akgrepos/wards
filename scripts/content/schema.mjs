@@ -186,7 +186,7 @@ export const DATA_TYPES = {
   source: { required: ['kind', 'short', 'title', 'year'], sourced: false },
   // A dose needs a frequency or a rate (e.g. "over 10 minutes"); the dose sheet fields are listed in DOSE_FIELDS.
   dose: { required: ['drug_name', 'indication', 'route', 'amount', 'unit'], sourced: true },
-  threshold: { required: ['name', 'value', 'unit', 'meaning'], sourced: true },
+  threshold: { required: ['name', 'value', 'unit'], sourced: true },
   pathway: { required: ['start', 'steps'], sourced: true },
   // A formal definition or set of criteria: optional "any of" items and/or a table (e.g. stages).
   criteria: { required: ['name', 'short'], sourced: true },
