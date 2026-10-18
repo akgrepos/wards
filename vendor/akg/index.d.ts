@@ -875,6 +875,8 @@ export interface SourcePillProps extends React.ButtonHTMLAttributes<HTMLButtonEl
   more?: number;
   /** Open a Sheet with the full citation(s). */
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  /** An icon instead of a label. "verified": green checkmark, for a line checked with a reference that isn't named. "practice": stethoscope, for common clinical practice without a citation. Pair each with a sheet that says so in plain words. */
+  marker?: 'verified' | 'practice';
 }
 export declare function SourcePill(props: SourcePillProps): React.ReactElement;
 

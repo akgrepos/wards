@@ -19,13 +19,24 @@ export function UpdatePrompt() {
     },
   });
 
+  // Normally the page reloads as soon as the new version takes over. As a safety net (some Home Screen apps miss
+  // that signal), ask the waiting version to take over directly and reload after a few seconds.
+  const reload = () => {
+    void updateServiceWorker(true);
+    setTimeout(async () => {
+      const reg = await navigator.serviceWorker?.getRegistration();
+      reg?.waiting?.postMessage({ type: 'SKIP_WAITING' });
+      setTimeout(() => location.reload(), 500);
+    }, 3000);
+  };
+
   if (!needRefresh || later) return null;
 
   return (
     <AKG.Banner
       placement="bottom"
       title="Update Ready"
-      actions={[{ label: 'Reload', onClick: () => updateServiceWorker(true) }]}
+      actions={[{ label: 'Reload', onClick: reload }]}
       onClose={() => setLater(true)}
     >
       A new version of Wards has downloaded.

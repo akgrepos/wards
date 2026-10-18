@@ -18,7 +18,12 @@ The owner, a physician, is the only user. No coding experience: explain steps pl
 - No patient information (PHI) anywhere: repo, app, pull requests or commit messages. The site and repo are public.
 - Nothing sensitive or institution-internal (internal protocols, phone or pager numbers).
 - **Stay anonymous.** Never put the owner's name, email or computer name in files, commits or PRs; refer to them as "the owner". Commits must be authored as `akgrepos <338781722+akgrepos@users.noreply.github.com>` (this repo's git config); a check rejects any other author.
-- **Clinical content:** Claude writes it, evidence-based, and every claim cites its primary source (rules in DECISIONS.md, "Sources"). Never cite the reference handbook or OpenEvidence; cite AMBOSS only when its primary guideline can't be found. Summarize, never copy, any source's text. Run the internal accuracy check (DECISIONS.md) on every card, with extra care for doses.
+- **Clinical content:** Claude writes it, evidence-based (full rules in DECISIONS.md, "Sources, updated"):
+  - Cite the primary guideline or study (US first, newest final edition; drafts aren't cited). Use AMBOSS's reference lists to find primary sources; a paywalled primary source may be cited on AMBOSS's word.
+  - Model wording, organization, terminology and content on the reference handbook (terse clinical register), but never name, cite or copy it.
+  - Common clinical practice may go uncited with the stethoscope marker. AMBOSS itself only as a last resort (green check, hidden source, tell the owner each time). Never cite OpenEvidence; use it (Sackett or Snow mode) to spot-check.
+  - AMBOSS, OpenEvidence and the handbook are never named or cited in the app.
+  - Summarize, never copy. Every card gets the internal accuracy check and an independent reviewer (DECISIONS.md), with extra care for doses.
 - Copyrighted reference material (the reference handbook PDF in `~/Documents/Wards-reference/`) never goes into the repo.
 - All content edits happen through Claude in chat; there is no in-app editing.
 - Use precise medical terminology (hypoxemia, not "low oxygen"); lay terms and abbreviations only as search aliases.
@@ -30,7 +35,7 @@ React + TypeScript + Vite, Vite PWA plugin (fully offline, prompt-to-update), Gi
 - Use the AKG Design System: https://claude.ai/artifact/GWFUZ6rCthpEuhMik4Jiru (read its `project/README.md` first). Don't invent colors, type sizes or components outside it; propose additions to the design system instead.
 - The app uses a copy in `vendor/akg/`; `vendor/akg/VERSION.md` says which version and how to update it. `npm run tokens` turns its tokens into `src/design/tokens.css` (iOS text styles in rem so they follow Text Size).
 - Third pass (2026-10-17): four themes (`ios-light`, `ios-dark`, `macos-light`, `macos-dark`, set by `data-theme` on `<html>`), 43 text styles, and 34 React components under `AKG` (adds Callout, SourcePill, ContentSection + SectionBar, Flowchart). iOS component text follows Text Size via `--akg-text-unit`. The README's "Choosing controls by platform" table says which to use where.
-- When Wards needs something generic (a component, a style), add it to the design system first, then copy it in. Follow Apple's HIG for how information is organized and presented.
+- **Every visual element and interaction is checked against the design system and Apple's HIG** before it ships (rule summaries: `~/Documents/Wards-reference/hig/digest/`, full text alongside). When Wards needs something the design system lacks, add it there first (kept generic), then copy it in.
 - The design system is shared across AKG projects. Change it only when the owner asks, and keep it generic (nothing Wards-specific).
 
 ## Content structure

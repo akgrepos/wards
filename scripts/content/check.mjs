@@ -88,6 +88,8 @@ export function checkContent({ systems, cards, data }) {
       }
       if (item.unit && !UNITS.includes(item.unit)) err(where, `unit "${item.unit}" is not a recognized US unit`);
       if (kind === 'dose' && item.drug && !cards.some((k) => k.id === item.drug)) err(where, `drug card "${item.drug}" does not exist`);
+      if (kind === 'criteria' && !(item.items?.length || item.rows?.length)) err(where, 'needs items or rows');
+      if (kind === 'criteria' && item.rows?.some((r) => !Array.isArray(r) || r.length !== (item.columns ?? []).length)) err(where, 'every row needs one cell per column');
       if (kind === 'pathway') {
         const steps = item.steps ?? {};
         if (!steps[item.start]) err(where, `start step "${item.start}" does not exist`);

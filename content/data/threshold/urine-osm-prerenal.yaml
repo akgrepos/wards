@@ -1,0 +1,5 @@
+name: "Urine osmolality suggesting prerenal physiology"
+value: ">500"
+unit: "mOsm/kg"
+meaning: "In oliguric AKI, suggests prerenal azotemia; <350 mOsm/kg suggests ATN."
+sources: [miller-urine-indices-1978]

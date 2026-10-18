@@ -2293,3 +2293,12 @@ button.akg-sheet__grabber::after { content: ""; position: absolute; left: -20px;
 
 /* Highlight — search matches */
 .akg-highlight { background: color-mix(in srgb, var(--system-yellow) 45%, transparent); color: inherit; border-radius: 3px; padding: 0 1px; }
+
+/* SourcePill markers: an icon in place of a source name, sized to the pill text like an SF Symbol.
+   verified = checkmark.circle.fill in system green (enclosed, filled: legible at small sizes; shape carries the meaning, not color alone);
+   practice = stethoscope outline in the pill's secondary label color. */
+.akg-source-pill--marker { padding: 1px 6px; min-width: calc(26 * var(--akg-t)); justify-content: center; }
+.akg-source-pill--marker .akg-sym svg { width: 1.25em; height: 1.25em; }
+.akg-source-pill--verified { color: var(--system-green); }
+.akg-source-pill__check { stroke: var(--on-accent); }
+[data-theme^="macos"] .akg-source-pill--marker { min-width: 20px; }

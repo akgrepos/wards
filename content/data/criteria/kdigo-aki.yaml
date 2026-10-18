@@ -1,0 +1,15 @@
+name: KDIGO AKI definition and staging
+short: KDIGO criteria
+logic: "AKI is any of:"
+items:
+  - "SCr rise ≥0.3 mg/dL within 48 h"
+  - "SCr ≥1.5× baseline, known or presumed to have occurred within the prior 7 days"
+  - "Urine output <0.5 mL/kg/h for 6 h"
+columns: [Stage, Serum creatinine, Urine output]
+rows:
+  - ["1", "1.5–1.9× baseline, or rise ≥0.3 mg/dL", "<0.5 mL/kg/h for 6–12 h"]
+  - ["2", "2.0–2.9× baseline", "<0.5 mL/kg/h for ≥12 h"]
+  - ["3", "3.0× baseline, or SCr ≥4.0 mg/dL, or RRT started", "<0.3 mL/kg/h for ≥24 h, or anuria ≥12 h"]
+notes:
+  - "Stage by whichever criterion (SCr or urine output) gives the higher stage."
+sources: [kdigo-aki-2012]

@@ -59,6 +59,7 @@ h1, p { margin: 0; }
 .card-link { color: var(--accent-text); text-decoration: none; }
 .missing { color: var(--system-red); }
 .pathway { display: flex; flex-direction: column; gap: var(--space-8); }
+.criteria-block, .criteria { display: flex; flex-direction: column; gap: var(--space-8); }
 
 /* Sheets */
 .sheet-body { padding: var(--space-8) 0 var(--space-16); }

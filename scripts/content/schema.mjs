@@ -159,15 +159,18 @@ export const DATA_TYPES = {
   dose: { required: ['drug_name', 'indication', 'route', 'amount', 'unit', 'frequency'], sourced: true },
   threshold: { required: ['name', 'value', 'unit', 'meaning'], sourced: true },
   pathway: { required: ['start', 'steps'], sourced: true },
+  // A formal definition or set of criteria: optional "any of" items and/or a table (e.g. stages).
+  criteria: { required: ['name', 'short'], sourced: true },
 };
 
 // US units accepted in data items.
 export const UNITS = [
-  'mg', 'mcg', 'g', 'kg', 'mEq', 'mmol', 'units', 'mL', 'L', 'mg/kg', 'mcg/kg', 'units/kg', 'mL/kg',
+  'mg', 'mcg', 'g', 'kg', 'mEq', 'mmol', 'units', 'mL', 'L', 'g/kg', 'mg/kg', 'mcg/kg', 'units/kg', 'mL/kg',
   'mg/h', 'mcg/min', 'mcg/kg/min', 'units/h', 'units/kg/h', 'mL/h', 'mg/dL', 'g/dL', 'mmol/L', 'mEq/L',
   'mOsm/kg', 'ng/mL', 'pg/mL', 'mcg/mL', 'mm Hg', 'beats/min', 'breaths/min', '%', '°F', 'mL/min', 'mL/min/1.73 m²',
   'cells/µL', 'IU/L', 'U/L', 'seconds', 'minutes', 'hours', 'days', 'weeks', 'points',
 ];
 
 // Text in card prose that looks like a dose (an amount with a dosing unit). Doses must come from {{dose:…}} inserts.
-export const DOSE_IN_TEXT = /\b\d+(?:\.\d+)?\s?(?:mg|mcg|g|mEq|mmol|units?|mL)\b(?!\s*\/\s*(?:L|dL|mL|kg\/min)\b)/;
+// Rates such as urine output (mL/kg/h) and concentrations (mEq/L) are not doses.
+export const DOSE_IN_TEXT = /\b\d+(?:\.\d+)?\s?(?:mg|mcg|g|mEq|mmol|units?|mL)\b(?!\s*\/\s*(?:L|dL|mL|kg\/min|kg\/h)\b)/;

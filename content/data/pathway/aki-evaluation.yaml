@@ -1,0 +1,136 @@
+title: AKI evaluation
+stages: [Confirm, Stabilize, Postrenal, Prerenal, Intrinsic]
+start: confirm
+sources: [kdigo-aki-2012, nice-aki-2024, aasld-ascites-hrs-2021, aha-cardiorenal-2019, smart-2018, perazella-urine-microscopy-2008, moore-aki-core-2018, muriithi-urine-eos-2013]
+steps:
+  confirm:
+    kind: question
+    stage: Confirm
+    title: Meets KDIGO criteria for AKI?
+    detail: "Apply {{criteria:kdigo-aki}}. Compare with prior SCr values."
+    answers:
+      - { label: "Yes", detail: "Stage by SCr or UOP, whichever is higher", to: emergent }
+      - { label: "No; stable elevated SCr", detail: "No acute change on prior or serial values", to: not-aki }
+  not-aki:
+    kind: result
+    stage: Confirm
+    title: Not AKI by KDIGO criteria
+    list:
+      - "Obtain prior SCr values; evaluate for CKD"
+      - "Recheck SCr and UOP while risk factors or exposures persist"
+  emergent:
+    kind: question
+    stage: Stabilize
+    title: Complication refractory to medical therapy?
+    detail: "Hyperkalemia, metabolic acidosis, fluid overload or pulmonary edema, uremic complications (pericarditis, encephalopathy)."
+    answers:
+      - { label: "Yes", to: rrt }
+      - { label: "No", to: obstruction }
+  rrt:
+    kind: caution
+    stage: Stabilize
+    title: Urgent RRT evaluation
+    detail: "Discuss with nephrology or critical care immediately. Temporize meanwhile; hyperkalemia: [[renal-hyperkalemia]]."
+    next: obstruction
+  obstruction:
+    kind: question
+    stage: Postrenal
+    title: Urinary tract obstruction?
+    detail: "Bladder scan. Renal ultrasound within 24 h if no clear cause or risk of obstruction; within 6 h if pyonephrosis suspected."
+    answers:
+      - { label: "Retention or hydronephrosis", to: relieve }
+      - { label: "No obstruction", to: perfusion }
+  relieve:
+    kind: action
+    stage: Postrenal
+    title: Relieve obstruction
+    detail: "Bladder catheter for retention. Upper tract obstruction: urology; nephrostomy or stent within 12 h. Immediate referral for pyonephrosis, solitary kidney or bilateral obstruction."
+    next: perfusion
+  perfusion:
+    kind: question
+    stage: Prerenal
+    title: Volume status and hemodynamics?
+    answers:
+      - { label: "Hypovolemia or vasodilatory shock", detail: "Volume loss, sepsis", to: resuscitate }
+      - { label: "Hemorrhage", to: hemorrhage }
+      - { label: "Congestion or low cardiac output", detail: "Heart failure", to: cardiorenal }
+      - { label: "Cirrhosis with ascites", to: cirrhosis }
+      - { label: "Euvolemic, normotensive", to: sediment }
+  resuscitate:
+    kind: action
+    stage: Prerenal
+    title: Restore intravascular volume and perfusion
+    detail: "Isotonic crystalloid (balanced over 0.9% saline in critical illness); vasopressors with fluids in vasomotor shock. Hold NSAIDs, ACE inhibitors and ARBs. Reassess SCr and UOP."
+    next: sediment
+  hemorrhage:
+    kind: caution
+    stage: Prerenal
+    title: Hemorrhagic shock
+    detail: "Blood products and hemorrhage control; crystalloid-first guidance does not apply."
+    next: sediment
+  cardiorenal:
+    kind: action
+    stage: Prerenal
+    title: Cardiorenal physiology
+    detail: "Decongest with loop diuretics. A modest SCr rise during effective decongestion is not by itself a reason to stop."
+    next: sediment
+  cirrhosis:
+    kind: action
+    stage: Prerenal
+    title: AKI in cirrhosis
+    detail: "Stop diuretics, NSAIDs and other nephrotoxins; treat precipitants (infection, bleeding). {{dose:albumin-aki-cirrhosis}}. HRS-AKI if no improvement after 2 days without shock, recent nephrotoxins or structural injury (proteinuria >500 mg/day, >50 RBC/hpf, abnormal ultrasound): vasoconstrictor (terlipressin or norepinephrine) plus albumin."
+    next: sediment
+  sediment:
+    kind: question
+    stage: Intrinsic
+    title: Urinalysis with sediment microscopy
+    answers:
+      - { label: "Granular casts or tubular epithelial cells", detail: "Muddy brown casts", to: atn }
+      - { label: "Hematuria with proteinuria, RBC casts", to: gn }
+      - { label: "Pyuria or WBC casts without infection", to: ain }
+      - { label: "Heme-positive dipstick without RBCs", to: pigment }
+      - { label: "Bland sediment", to: bland }
+  atn:
+    kind: result
+    stage: Intrinsic
+    title: Acute tubular injury (ATN) likely
+    list:
+      - "Ischemic (hypoperfusion, sepsis) or toxic (aminoglycosides, amphotericin B, contrast)"
+      - "Supportive: remove nephrotoxins, avoid hypotension and volume overload, adjust drug doses"
+  gn:
+    kind: caution
+    stage: Intrinsic
+    title: Possible glomerulonephritis or vasculitis
+    detail: "Nephrology within 24 h. Serologic and hematologic testing; biopsy if needed for diagnosis."
+    next: done
+  ain:
+    kind: result
+    stage: Intrinsic
+    title: Possible acute interstitial nephritis
+    list:
+      - "Stop the likely culprit drug"
+      - "Nephrology within 24 h; definitive diagnosis is by kidney biopsy"
+      - "Urine eosinophils do not help"
+  pigment:
+    kind: result
+    stage: Intrinsic
+    title: Pigment nephropathy
+    list:
+      - "Rhabdomyolysis: CK"
+      - "Hemolysis: hemoglobin, LDH, haptoglobin, bilirubin"
+  bland:
+    kind: result
+    stage: Intrinsic
+    title: Bland sediment
+    list:
+      - "Prerenal physiology: response to restored perfusion"
+      - "Tumor lysis (uric acid, phosphate), myeloma (SPEP, serum free light chains), drug crystals"
+      - "Thrombotic microangiopathy (hematologic testing); renal arterial or venous occlusion"
+      - "Abdominal compartment syndrome (bladder pressure)"
+      - "Early obstruction; repeat ultrasound if suspicion persists"
+  done:
+    kind: result
+    stage: Intrinsic
+    title: Cause-directed management
+    list:
+      - "Daily SCr, UOP and electrolytes; manage by stage"

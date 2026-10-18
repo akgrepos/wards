@@ -5,7 +5,7 @@ How cards and shared data are written. The rules behind it are in `CARD-TYPES.md
 ## Where things live
 - `content/systems.yaml`: the 16 systems and the Library, in display order (quote titles that contain commas).
 - `content/cards/<system>/<card-id>.md`: one file per card.
-- `content/data/<type>/<item-id>.yaml`: one file per shared data item. Types so far: `source`, `dose`, `threshold`, `pathway`.
+- `content/data/<type>/<item-id>.yaml`: one file per shared data item. Types so far: `source`, `dose`, `threshold`, `criteria`, `pathway`. A `criteria` item (a formal definition or staging system) has `name`, `short` (the words shown when it's inserted in a sentence), optional `logic` ("Any of:"), `items`, `columns` and `rows` (a table), `notes`, and `sources`. On a line of its own it shows in full; inside a sentence it shows its `short` name and opens in a sheet.
 - `content/examples/`: development-only samples (placeholder content). They appear while developing and are never in the published app.
 
 ## A card file

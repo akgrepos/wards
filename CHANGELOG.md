@@ -2,6 +2,12 @@
 
 What changed in each version of Wards, newest first. The version is shown at the bottom of the app.
 
+## 2026.10.17.7
+
+- New card: Acute Kidney Injury (Renal → Approach). KDIGO definition and staging, a step-by-step evaluation flowchart, urine index cutoffs, and initial management by stage and situation.
+- Hyperkalemia reworded in a more clinical, concise style.
+- A stethoscope beside a line marks common clinical practice that doesn't come from a specific source.
+
 ## 2026.10.17.6
 
 - Doses, cutoffs and sources now open their sheet right where you are reading. Before, the sheet could open off-screen after scrolling.

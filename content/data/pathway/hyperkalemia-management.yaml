@@ -1,34 +1,34 @@
 title: Acute hyperkalemia management
-stages: [Confirm, Protect, Shift, Remove, Monitor]
+stages: [Confirm, Stabilize, Shift, Eliminate, Monitor]
 start: confirm
 sources: [ukka-hyperkalaemia-2026, kdigo-acute-hyperkalemia-2020]
 steps:
   confirm:
     kind: question
     stage: Confirm
-    title: Is the high potassium real?
-    detail: Consider pseudohyperkalemia if the result doesn't fit the clinical picture.
+    title: True hyperkalemia?
+    detail: Consider pseudohyperkalemia if the result is discordant with the clinical picture.
     answers:
-      - { label: Confirmed or likely real, detail: "Fits the clinical picture, or confirmed on a repeat or blood gas sample", to: ecg }
-      - { label: Possibly spurious, detail: "Hemolyzed or delayed sample, tourniquet or fist clenching, very high white cell or platelet count", to: spurious }
+      - { label: Confirmed or likely, detail: "Concordant with the clinical picture, or confirmed on repeat or blood gas sample", to: ecg }
+      - { label: Possibly spurious, detail: "Hemolysis, delayed sample, tourniquet or fist clenching, marked leukocytosis or thrombocytosis", to: spurious }
   ecg:
     kind: question
-    stage: Protect
+    stage: Stabilize
     title: ECG changes of hyperkalemia?
-    detail: "Get an urgent 12-lead ECG at {{threshold:k-ecg-monitoring}}. A normal ECG does not exclude danger."
+    detail: "STAT 12-lead ECG at {{threshold:k-ecg-monitoring}}. A normal ECG does not exclude life-threatening hyperkalemia."
     answers:
-      - { label: "Yes", detail: "Peaked T waves, small P waves, long PR, wide QRS, sine wave, bradycardia", to: calcium }
+      - { label: "Yes", detail: "Peaked T waves, P-wave flattening, PR prolongation, QRS widening, sine wave, bradycardia", to: calcium }
       - { label: "No", detail: No ECG changes, to: severity }
   calcium:
     kind: caution
-    stage: Protect
-    title: Protect the heart first
-    detail: "Give {{dose:calcium-gluconate-hyperkalemia}}. In cardiac arrest or peri-arrest use {{dose:calcium-chloride-hyperkalemia}}. Repeat if ECG changes persist or recur. Calcium does not lower potassium."
+    stage: Stabilize
+    title: Cardiac membrane stabilization
+    detail: "{{dose:calcium-gluconate-hyperkalemia}}. Cardiac arrest or peri-arrest: {{dose:calcium-chloride-hyperkalemia}}. Repeat if ECG changes persist or recur. Does not lower K⁺."
     next: severity
   severity:
     kind: question
     stage: Shift
-    title: How high is the potassium?
+    title: Severity?
     answers:
       - { label: Severe, detail: "{{threshold:k-severe}}", to: shift }
       - { label: Moderate, detail: "{{threshold:k-moderate}}", to: shift-moderate }
@@ -36,47 +36,47 @@ steps:
   shift:
     kind: action
     stage: Shift
-    title: Shift potassium into cells
-    detail: "Give {{dose:insulin-regular-hyperkalemia}} with {{dose:dextrose-50-hyperkalemia}}, plus {{dose:albuterol-neb-hyperkalemia}}. If glucose was {{threshold:glucose-hypoglycemia-risk}} before treatment, follow with {{dose:dextrose-10-infusion-hyperkalemia}}."
+    title: Intracellular shift
+    detail: "{{dose:insulin-regular-hyperkalemia}} with {{dose:dextrose-50-hyperkalemia}}, plus {{dose:albuterol-neb-hyperkalemia}}. Pre-treatment glucose {{threshold:glucose-hypoglycemia-risk}}: follow with {{dose:dextrose-10-infusion-hyperkalemia}}."
     next: remove
   shift-moderate:
     kind: action
     stage: Shift
-    title: Consider shifting potassium into cells
-    detail: "Insulin with dextrose is suggested, and albuterol may be added. Doses as for severe hyperkalemia: {{dose:insulin-regular-hyperkalemia}} with {{dose:dextrose-50-hyperkalemia}}."
+    title: Consider intracellular shift
+    detail: "Insulin-dextrose suggested; albuterol may be added. Doses as for severe: {{dose:insulin-regular-hyperkalemia}} with {{dose:dextrose-50-hyperkalemia}}."
     next: remove-moderate
   remove:
     kind: action
-    stage: Remove
-    title: Remove potassium from the body
-    detail: "Start {{dose:szc-hyperkalemia-initial}}. If making urine with volume overload, add {{dose:furosemide-hyperkalemia}}. On dialysis: urgent dialysis. Oliguric kidney failure or no response: involve nephrology to consider dialysis."
+    stage: Eliminate
+    title: K⁺ elimination
+    detail: "{{dose:szc-hyperkalemia-initial}}. Non-oliguric with volume overload: add {{dose:furosemide-hyperkalemia}}. Maintenance dialysis: urgent dialysis. Oliguric AKI or refractory: nephrology to consider dialysis."
     next: monitor
   remove-moderate:
     kind: action
-    stage: Remove
-    title: Consider removing potassium
-    detail: "Consider {{dose:szc-hyperkalemia-initial}}. If making urine with volume overload, consider {{dose:furosemide-hyperkalemia}}."
+    stage: Eliminate
+    title: Consider K⁺ elimination
+    detail: "Consider {{dose:szc-hyperkalemia-initial}}. Non-oliguric with volume overload: consider {{dose:furosemide-hyperkalemia}}."
     next: monitor
   monitor:
     kind: result
     stage: Monitor
-    title: Monitor and treat the cause
+    title: Monitoring and etiology
     list:
-      - "Continuous cardiac monitoring at {{threshold:k-severe}}, with ECG changes, or when unwell at {{threshold:k-moderate}}"
-      - "Potassium at least at 1, 2, 4, 6 and 24 hours; expect rebound after 2–3 hours"
-      - "Glucose at 0, 30, 60, 90, 120, 180, 240, 300 and 360 minutes after insulin"
-      - "Stop or reduce drugs that raise potassium and treat the cause"
+      - "Continuous cardiac monitoring: {{threshold:k-severe}}, ECG changes, or {{threshold:k-moderate}} if unwell"
+      - "K⁺ at least at 1, 2, 4, 6 and 24 h; rebound at 2–3 h"
+      - "Glucose at 0, 30, 60, 90, 120, 180, 240, 300 and 360 min after insulin"
+      - "Stop or reduce K⁺-raising drugs; treat the cause"
   mild:
     kind: result
     stage: Monitor
     title: Mild hyperkalemia
     list:
-      - "Find and treat the cause, including drugs that raise potassium"
-      - "Recheck potassium"
+      - "Identify and treat the cause, including K⁺-raising drugs"
+      - "Repeat K⁺"
   spurious:
     kind: result
     stage: Confirm
-    title: Repeat the measurement
+    title: Repeat measurement
     list:
-      - "Repeat from a large vein with gentle traction and prompt analysis"
-      - "A blood gas potassium gives a quick result while waiting"
+      - "Repeat from a large vein, gentle traction, prompt analysis"
+      - "Blood gas K⁺ for a rapid result"

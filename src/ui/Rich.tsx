@@ -1,7 +1,7 @@
 import { Fragment, type ReactNode } from 'react';
 import { AKG } from '../design/akg';
-import { content, getCard, insertSources } from '../content';
-import type { Block, Dose, Inline, ListItem, Pathway, Source, Threshold } from '../content/types';
+import { content, getCard, insertSources, isMarkerSource } from '../content';
+import type { Block, Criteria, Dose, Inline, ListItem, Pathway, Source, Threshold } from '../content/types';
 import { parseInline } from '../../scripts/content/inline.mjs';
 import { href } from '../router';
 import { useSheet } from './SheetHost';
@@ -11,7 +11,7 @@ const src = (id: string) => content.data.source?.[id] as Source | undefined;
 export function SourceList({ ids }: { ids: string[] }) {
   return (
     <div className="source-list">
-      {ids.map((id) => {
+      {ids.filter((id) => !isMarkerSource(id)).map((id) => {
         const s = src(id);
         if (!s) return null;
         return (
@@ -29,14 +29,24 @@ export function SourceList({ ids }: { ids: string[] }) {
 // The grey pill at the end of a sourced line.
 export function Pill({ ids }: { ids: string[] }) {
   const sheet = useSheet();
+  const named = ids.filter((id) => !isMarkerSource(id));
+  const practice = ids.some((id) => src(id)?.kind === 'practice');
+  const verified = ids.some((id) => src(id)?.kind === 'reference');
   if (!ids.length) return null;
-  const first = src(ids[0]);
+  const first = src(named[0]);
+  const note = (title: string, text: string) => sheet({ title, body: <p className="ios-body">{text}</p> });
   return (
-    <AKG.SourcePill
-      label={first?.short ?? ids[0]}
-      more={ids.length > 1 ? ids.length - 1 : undefined}
-      onClick={() => sheet({ title: ids.length > 1 ? 'Sources' : 'Source', body: <SourceList ids={ids} /> })}
-    />
+    <>
+      {named.length > 0 && (
+        <AKG.SourcePill
+          label={first?.short ?? named[0]}
+          more={named.length > 1 ? named.length - 1 : undefined}
+          onClick={() => sheet({ title: named.length > 1 ? 'Sources' : 'Source', body: <SourceList ids={named} /> })}
+        />
+      )}
+      {practice && <AKG.SourcePill marker="practice" onClick={() => note('Common Clinical Practice', 'Common clinical practice.')} />}
+      {verified && <AKG.SourcePill marker="verified" onClick={() => note('Verified', 'Verified with a clinical reference.')} />}
+    </>
   );
 }
 
@@ -68,6 +78,31 @@ function DoseDetail({ d }: { d: Dose }) {
   );
 }
 
+// A criteria set (e.g. KDIGO AKI staging): the "any of" items, then the table. Shown in place, or in a sheet when tapped in text.
+function CriteriaBody({ c }: { c: Criteria }) {
+  return (
+    <div className="criteria">
+      {c.logic && <p className="ios-subheadline-emphasized secondary">{c.logic}</p>}
+      {c.items?.length ? <ul className="ios-body rich-list">{c.items.map((t, i) => <li key={i}><RichText text={t} /></li>)}</ul> : null}
+      {c.rows?.length ? (
+        <AKG.Table columns={(c.columns ?? []).map((h, i) => <RichText key={i} text={h} />)} rows={c.rows.map((r) => r.map((t, j) => <RichText key={j} text={t} />))} />
+      ) : null}
+      {c.notes?.length ? <ul className="ios-subheadline secondary rich-list">{c.notes.map((t, i) => <li key={i}><RichText text={t} /></li>)}</ul> : null}
+    </div>
+  );
+}
+
+function CriteriaBlock({ id }: { id: string }) {
+  const c = content.data.criteria?.[id] as Criteria | undefined;
+  if (!c) return <span className="missing">[missing criteria: {id}]</span>;
+  return (
+    <div className="criteria-block">
+      <p className="ios-headline">{c.name} <Pill ids={c.sources} /></p>
+      <CriteriaBody c={c} />
+    </div>
+  );
+}
+
 function Insert({ kind, id }: { kind: string; id: string }) {
   const sheet = useSheet();
   const item = content.data[kind]?.[id];
@@ -81,6 +116,14 @@ function Insert({ kind, id }: { kind: string; id: string }) {
     return (
       <AKG.TappableValue onClick={() => sheet({ title: t.name, body: <div className="detail-sheet"><p className="ios-title-3-emphasized">{t.value} {t.unit}</p><p className="ios-body">{t.meaning}</p><p className="ios-footnote-emphasized secondary">Sources</p><SourceList ids={t.sources} /></div> })}>
         {t.value} {t.unit}
+      </AKG.TappableValue>
+    );
+  }
+  if (kind === 'criteria') {
+    const c = item as unknown as Criteria;
+    return (
+      <AKG.TappableValue onClick={() => sheet({ title: c.name, body: <div className="detail-sheet"><CriteriaBody c={c} /><p className="ios-footnote-emphasized secondary">Sources</p><SourceList ids={c.sources} /></div> })}>
+        {c.short}
       </AKG.TappableValue>
     );
   }
@@ -145,6 +188,7 @@ export function Blocks({ blocks }: { blocks: Block[] }) {
         if (b.t === 'subheading') return <h3 key={i} className="ios-headline subheading">{b.text}</h3>;
         if (b.t === 'insert') {
           if (b.kind === 'pathway') return <PathwayBlock key={i} id={b.id} />;
+          if (b.kind === 'criteria') return <CriteriaBlock key={i} id={b.id} />;
           return <p key={i} className="ios-body"><Insert kind={b.kind} id={b.id} /><Pill ids={insertSources(b.kind, b.id)} /></p>;
         }
         return (

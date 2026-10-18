@@ -23,6 +23,7 @@ export type Dose = {
   adjustments?: { when: string; change: string }[]; notes?: string; sources: string[];
 };
 export type Threshold = { name: string; value: string | number; unit: string; meaning: string; sources: string[] };
+export type Criteria = { name: string; short: string; logic?: string; items?: string[]; columns?: string[]; rows?: string[][]; notes?: string[]; sources: string[] };
 export type PathwayStep = {
   kind: 'question' | 'checklist' | 'caution' | 'action' | 'result'; kindLabel?: string; stage?: string; title: string; detail?: string;
   answers?: { label: string; detail?: string; to: string }[]; items?: string[]; yes?: string; no?: string; logic?: string;
@@ -32,5 +33,5 @@ export type Pathway = { title?: string; stages?: string[]; start: string; steps:
 export type Content = {
   systems: System[];
   cards: Card[];
-  data: { source?: Record<string, Source>; dose?: Record<string, Dose>; threshold?: Record<string, Threshold>; pathway?: Record<string, Pathway>; [k: string]: Record<string, unknown> | undefined };
+  data: { source?: Record<string, Source>; dose?: Record<string, Dose>; threshold?: Record<string, Threshold>; criteria?: Record<string, Criteria>; pathway?: Record<string, Pathway>; [k: string]: Record<string, unknown> | undefined };
 };

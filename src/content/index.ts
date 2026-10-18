@@ -36,6 +36,11 @@ export function insertSources(kind: string, id: string): string[] {
   return item?.sources ?? [];
 }
 
+// Sources shown as an icon instead of by name (decided 2026-10-17):
+// "practice" = common clinical practice (stethoscope); "reference" = checked with a clinical reference that isn't named (green check, last resort).
+export const MARKER_KINDS = ['practice', 'reference'] as const;
+export const isMarkerSource = (id: string) => MARKER_KINDS.includes((content.data.source?.[id] as { kind?: string } | undefined)?.kind as never);
+
 // All sources a card relies on, numbered in order of first use (its own markers, then inserted items').
 export function cardSources(card: Card): string[] {
   const seen: string[] = [];
@@ -48,8 +53,8 @@ export function cardSources(card: Card): string[] {
     if (b.t === 'table') { b.header.forEach(inl); b.rows.forEach((r) => { add(r.sources); r.cells.forEach(inl); }); }
     if (b.t === 'insert') add(insertSources(b.kind, b.id));
   });
-  card.sections.forEach((s) => { blocks(s.blocks); blocks(s.more); });
-  return seen;
+  card.sections.forEach((s) => { add(s.summarySources); blocks(s.blocks); blocks(s.more); });
+  return seen.filter((id) => !isMarkerSource(id));
 }
 
 // Title Case for headings (Apple style), keeping short joining words lowercase.

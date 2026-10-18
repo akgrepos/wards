@@ -1,0 +1,5 @@
+name: "FENa suggesting prerenal physiology"
+value: "<1"
+unit: "%"
+meaning: "In oliguric AKI without diuretics, suggests prerenal azotemia rather than ATN. Not valid after diuretics."
+sources: [miller-urine-indices-1978, carvounis-feurea-2002]

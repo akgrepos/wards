@@ -15,7 +15,7 @@ Topic list (private; 16 systems plus the Library, about 488 cards plus 41 scores
 1. ~~**Design system additions**~~ done (2026-10-17, design system third pass, copied in version 2026.10.17.3): generic components the cards need (flowchart, source pill, card sections) and Text Size support for the design system's components.
 2. ~~**App build for cards**~~ done (version 2026.10.17.4): content files and checks, home and system screens, card pages with links, inserts, source pills and flowcharts. Search is not built yet.
 3. ~~**HIG review**~~ done (version 2026.10.17.6): design system fourth pass and the app fixes chosen by the owner (see DECISIONS.md).
-4. **Pilot cards:** Hyperkalemia done (version 2026.10.17.5; the reviewer pilot test decided: reviewer on every card). Next: Acute kidney injury, then Electrolyte repletion, adjusting the template after each; then scale in batches. The owner signs in to AMBOSS and OpenEvidence in the built-in browser when needed.
+4. **Pilot cards:** Hyperkalemia (2026.10.17.5, reworded in 2026.10.17.7) and Acute kidney injury (2026.10.17.7) done. Next: Electrolyte repletion, adjusting the template after each; then scale in batches. The owner signs in to AMBOSS and OpenEvidence in the built-in browser when needed.
 
 ## Known limits
 - GitHub keeps hidden copies of the pre-rewrite commits behind pull requests #1–#7; only GitHub Support or re-creating the repo removes them. One later commit lists the old display name "AG", and the account name is also the owner's initials.

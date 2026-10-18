@@ -2227,12 +2227,26 @@
 /* SourcePill */
 (function (AKG) {
   var h = window.React.createElement;
-  var OWN = ["label", "more", "className", "children"];
+  var OWN = ["label", "more", "marker", "className", "children"];
+  function svg(d, w) { return h("svg", { viewBox: "0 0 20 20", fill: "none", stroke: "currentColor", strokeWidth: w, strokeLinecap: "round", strokeLinejoin: "round" }, h("path", { d: d })); }
+  // Markers shown instead of a source name. verified: checked against a reference that isn't named. practice: common clinical practice.
+  // Like SF Symbols at small sizes: the status mark is enclosed and filled (checkmark.circle.fill in system green);
+  // the attribution mark is an outline (stethoscope) in the pill's secondary color. Both use the system's 2pt rounded stroke.
+  var MARKERS = {
+    verified: { glyph: h("svg", { viewBox: "0 0 20 20" }, h("circle", { cx: 10, cy: 10, r: 8.5, fill: "currentColor" }), h("path", { className: "akg-source-pill__check", d: "M6.2 10.4 8.8 13l5-6", fill: "none", strokeWidth: 2, strokeLinecap: "round", strokeLinejoin: "round" })), label: "Verified" },
+    practice: { glyph: svg("M4 2.5v5.5a4.5 4.5 0 0 0 9 0V2.5M8.5 12.5v1.5a4 4 0 0 0 8 0v-2.5M16.5 11.5a2 2 0 1 0 0-4 2 2 0 0 0 0 4", 2), label: "Common clinical practice" },
+  };
   // A small grey tag naming where a line's information comes from. Tapping it should open a Sheet with the full citation.
   function SourcePill(props) {
     var rest = {};
     for (var k in props) if (OWN.indexOf(k) < 0) rest[k] = props[k];
     rest.type = "button";
+    var m = props.marker && MARKERS[props.marker];
+    if (m) {
+      rest.className = AKG.cx("akg-source-pill", "akg-source-pill--marker", "akg-source-pill--" + props.marker, props.className);
+      if (!rest["aria-label"]) rest["aria-label"] = m.label;
+      return h("button", rest, h("span", { className: "akg-sym", "aria-hidden": "true" }, m.glyph));
+    }
     rest.className = AKG.cx("akg-source-pill", props.className);
     var label = props.label != null ? props.label : props.children;
     if (!rest["aria-label"]) rest["aria-label"] = "Source: " + (typeof label === "string" ? label : "") + (props.more ? ", and " + props.more + " more" : "");
