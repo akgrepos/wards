@@ -17,7 +17,7 @@ export function EmergenciesTab() {
         <Empty title="No Rapids Yet" description="Rapid pages with Do Now steps will appear here. Until then, open the topic from Topics or Search." />
       ) : (
         <AKG.List>
-          {cards.map((c) => <AKG.ListRow key={c.id} title={c.title} icon={icons.bolt} iconTint="var(--system-red)" chevron href={href.card(c.id)} />)}
+          {cards.map((c) => <AKG.ListRow key={c.id} title={c.title} icon={icons.staroflifeFill} iconTint="var(--system-red)" chevron href={href.card(c.id)} />)}
         </AKG.List>
       )}
     </Screen>
@@ -52,11 +52,11 @@ export function TopicsTab() {
 
 // Library tab: tools and reference used across topics.
 export const LIBRARY_LISTS: Record<string, { title: string; icon: keyof typeof icons; tint: string; subtitle: string; empty: string }> = {
-  scores: { title: 'Scores and Calculators', icon: 'calculator', tint: 'var(--system-indigo)', subtitle: 'Risk scores and bedside calculators', empty: 'Scores and calculators will appear here once they’re added.' },
-  criteria: { title: 'Criteria and Staging', icon: 'criteria', tint: 'var(--system-indigo)', subtitle: 'Diagnostic criteria and staging systems', empty: 'Criteria and staging systems will appear here once they’re added.' },
-  medications: { title: 'Medications', icon: 'pill', tint: 'var(--system-orange)', subtitle: 'Doses, adjustments, warnings', empty: 'Medications will appear here once they’re added.' },
-  pathways: { title: 'Pathways', icon: 'pathway', tint: 'var(--accent)', subtitle: 'Every flowchart, opened in its topic', empty: 'Pathways will appear here once they’re added.' },
-  labs: { title: 'Labs and Tests', icon: 'flask', tint: 'var(--system-purple)', subtitle: 'Interpretation, cutoffs, accuracy', empty: 'Labs and tests will appear here once they’re added.' },
+  scores: { title: 'Scores and Calculators', icon: 'plusForwardslashMinus', tint: 'var(--system-indigo)', subtitle: 'Risk scores and bedside calculators', empty: 'Scores and calculators will appear here once they’re added.' },
+  criteria: { title: 'Criteria and Staging', icon: 'checklist', tint: 'var(--system-indigo)', subtitle: 'Diagnostic criteria and staging systems', empty: 'Criteria and staging systems will appear here once they’re added.' },
+  medications: { title: 'Medications', icon: 'pills', tint: 'var(--system-orange)', subtitle: 'Doses, adjustments, warnings', empty: 'Medications will appear here once they’re added.' },
+  pathways: { title: 'Pathways', icon: 'flowchart', tint: 'var(--accent)', subtitle: 'Every flowchart, opened in its topic', empty: 'Pathways will appear here once they’re added.' },
+  labs: { title: 'Labs and Tests', icon: 'testtube2', tint: 'var(--system-purple)', subtitle: 'Interpretation, cutoffs, accuracy', empty: 'Labs and tests will appear here once they’re added.' },
 };
 export const INTERACTION_CHECKER = 'https://reference.medscape.com/drug-interactionchecker';
 
@@ -75,9 +75,9 @@ export function LibraryTab() {
         <AKG.ListRow
           title="Medscape Drug Interaction Checker"
           subtitle="Opens in Safari · needs internet"
-          icon={icons.interactions}
+          icon={icons.arrowLeftArrowRight}
           iconTint="var(--system-orange)"
-          detail={<span className="external-mark" role="img" aria-label="Opens in Safari">{icons.external}</span>}
+          detail={<span className="external-mark" role="img" aria-label="Opens in Safari">{icons.arrowUpRight}</span>}
           onClick={() => window.open(INTERACTION_CHECKER, '_blank', 'noopener')}
         />
       </AKG.List>

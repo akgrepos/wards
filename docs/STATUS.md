@@ -5,11 +5,10 @@ Last updated 2026-10-18 (repo re-created; app redesign approved; redesign Phases
 ## Start here next time
 1. **Read first:** `CLAUDE.md`, then DECISIONS.md "Sources, updated" (all content rules) before writing any card.
 2. **Build the approved redesign** (plan approved 2026-10-18, see DECISIONS): Phases 1 (design system additions) and 2 (app frame and navigation) are done. Next is **Phase 3, topic pages**: new template and content format, dose fields, Contents menu, collapsible remembered sections, migrate Hyperkalemia and AKI. Then 4 (Rapids pages and Timed Mode), 5 (Library and full search), 6 (final check). One PR each, each live when done. The private mock-up canvas is the reference.
-   - Also queued: redraw the design system's icons to match SF Symbols (reference only, never copied; DECISIONS 2026-10-18).
 3. **Review the rest of the audits** (filed 2026-10-17). Owner's order: design (done via the redesign), then process; clinical fixes later, since the app isn't in clinical use yet. Five reports kept privately: design/UI/UX, navigation, process, systems/security/privacy, clinical content. Present the findings and let the owner choose what to fix with question pop-ups.
    - Done: the repo identity fix (re-created 2026-10-18).
    - Saved for later: the clinical highs (terlipressin boxed warning, Hyperkalemia causes table, calcium chloride arrest rate, insulin onset).
-4. **Owner checks on the phone** (version 2026.10.18):
+4. **Owner checks on the phone** (version 2026.10.18.2):
    - Try the new tabs, the star, Continue Reading and Search; say what feels off.
    - Tap Reload on "Update Ready" and confirm the app updates. One simulator Home Screen copy didn't reload; a safety net was added, and Safari reloaded fine.
    - Remove Wards from the Home Screen and add it back once, so the dark launch screen takes effect. Then confirm there's no white flash in dark mode.
@@ -26,12 +25,12 @@ Last updated 2026-10-18 (repo re-created; app redesign approved; redesign Phases
 7. **Inputs needed from the owner:** sign in to AMBOSS and OpenEvidence in the built-in browser if their sessions have expired.
 
 ## Done
-- **App:** live at https://akgrepos.github.io/wards/ (version 2026.10.18).
+- **App:** live at https://akgrepos.github.io/wards/ (version 2026.10.18.2).
   - Cards: Hyperkalemia (condition) and Acute Kidney Injury (approach), with flowcharts, tappable doses, cutoffs and criteria, and source pills with stethoscope/check markers.
   - App features: four tabs (Home, Rapids, Topics, Library) with search; Continue Reading, Favorites and Recent kept on the phone; offline use (checked on every build), the "Update Ready" banner, light/dark mode and Text Size support, readable width, and reopening on the last page within 30 minutes.
 - **Process:** branch and pull request per task, automatic checks (anonymous authors, design system styles, content, type-check, tests, build), automatic publishing from `main`, weekly Dependabot updates plus security fixes. End-of-chat wrap-up via the `wards-wrap-up` skill.
 - **Privacy and security:** anonymous history, private GitHub profile with passkey and two-factor sign-in, protected `main`, rebase-only merges, page hidden from search engines and limited to its own scripts.
-- **AKG Design System** fifth pass, redesign additions, tabs sized to labels (version 1792356763-b1b7): https://claude.ai/artifact/GWFUZ6rCthpEuhMik4Jiru (copy in `vendor/akg/`).
+- **AKG Design System** fifth pass, redesign additions, tabs sized to labels, SF Symbols iconography rule (version 1792359443-4c69): https://claude.ai/artifact/GWFUZ6rCthpEuhMik4Jiru (copy in `vendor/akg/`).
 - **Content planning:** topic list (private; 16 systems plus the Library, about 488 cards plus 41 scores, Wave 1 = 30 cards), card types, data types (now including criteria sets), flowchart and citation formats.
 - **HIG reference:** full HIG text and rule summaries kept privately in `~/Documents/Wards-reference/hig/`.
 
