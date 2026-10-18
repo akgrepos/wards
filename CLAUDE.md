@@ -14,6 +14,8 @@ The owner, a physician, is the only user. No coding experience: explain steps pl
 - **Record decisions** in `docs/DECISIONS.md` (date, what, why) and keep `docs/STATUS.md` a short current snapshot. Move items out of "Open questions" when settled.
 - `main` publishes to the live app automatically; the owner gets it after tapping Reload on the "Update Ready" banner.
 
+- **End of a chat:** when the owner says to wrap up (or is done for the day), follow the `wards-wrap-up` skill in the owner's Claude settings: finish or park work, stop servers, clean Git and files, update STATUS/DECISIONS/memory, and leave a "Start here next time" handoff.
+
 ## Hard rules
 - No patient information (PHI) anywhere: repo, app, pull requests or commit messages. The site and repo are public.
 - Nothing sensitive or institution-internal (internal protocols, phone or pager numbers).
@@ -34,7 +36,7 @@ React + TypeScript + Vite, Vite PWA plugin (fully offline, prompt-to-update), Gi
 ## Design
 - Use the AKG Design System: https://claude.ai/artifact/GWFUZ6rCthpEuhMik4Jiru (read its `project/README.md` first). Don't invent colors, type sizes or components outside it; propose additions to the design system instead.
 - The app uses a copy in `vendor/akg/`; `vendor/akg/VERSION.md` says which version and how to update it. `npm run tokens` turns its tokens into `src/design/tokens.css` (iOS text styles in rem so they follow Text Size).
-- Third pass (2026-10-17): four themes (`ios-light`, `ios-dark`, `macos-light`, `macos-dark`, set by `data-theme` on `<html>`), 43 text styles, and 34 React components under `AKG` (adds Callout, SourcePill, ContentSection + SectionBar, Flowchart). iOS component text follows Text Size via `--akg-text-unit`. The README's "Choosing controls by platform" table says which to use where.
+- Current version: fourth pass plus SourcePill markers (2026-10-17; exact version in `vendor/akg/VERSION.md`). Four themes (`ios-light`, `ios-dark`, `macos-light`, `macos-dark`, set by `data-theme` on `<html>`), 43 text styles, and 42 React components under `AKG`, including content components (Callout, SourcePill with practice/verified markers, ContentSection + SectionBar, Flowchart, TappableValue, Table, Figure) and app pieces (Banner, BottomBar, Highlight, ShareButton, NumberField). iOS component text follows Text Size via `--akg-text-unit`. The README's "Choosing controls by platform" table says which to use where.
 - **Every visual element and interaction is checked against the design system and Apple's HIG** before it ships (rule summaries: `~/Documents/Wards-reference/hig/digest/`, full text alongside). When Wards needs something the design system lacks, add it there first (kept generic), then copy it in.
 - The design system is shared across AKG projects. Change it only when the owner asks, and keep it generic (nothing Wards-specific).
 
