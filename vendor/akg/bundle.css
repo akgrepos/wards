@@ -1457,9 +1457,11 @@ button.akg-disclosure__button:disabled, .akg-disclosure__header:disabled .akg-di
   font-family: var(--font-sans);
 }
 
-/* iOS: 54pt bar (44pt controls + 10pt), 16pt side margins, title centered on the screen */
+/* iOS: 54pt bar (44pt controls + 10pt), 16pt side margins, title centered on the screen.
+   The leading and trailing columns never shrink below their controls; the title takes what's left,
+   staying centered when there's room and truncating with an ellipsis when there isn't. */
 .akg-toolbar__bar {
-  display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; column-gap: var(--space-8);
+  display: grid; grid-template-columns: minmax(max-content, 1fr) minmax(0, auto) minmax(max-content, 1fr); align-items: center; column-gap: var(--space-8);
   height: 54px; padding: 0 var(--space-16) var(--space-10);
 }
 .akg-toolbar__window-controls { display: none; }
