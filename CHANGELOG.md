@@ -2,6 +2,10 @@
 
 What changed in each version of Wards, newest first. The version is shown in Settings (gear on Home).
 
+## 2026.10.18.5
+
+- At the largest Text Sizes, a long page title at the top (like Acute Kidney Injury) now ends in "…" before the Contents and star buttons instead of running underneath them. Titles stay centered whenever there's room.
+
 ## 2026.10.18.4
 
 - All icons redrawn to look much closer to Apple's own: thinner lines, the same shapes and proportions, and solid versions in the tab bar and the colored tiles, as iPhone apps use.
