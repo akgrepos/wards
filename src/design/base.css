@@ -58,7 +58,7 @@ h1, p { margin: 0; }
 .criteria-block, .criteria { display: flex; flex-direction: column; gap: var(--space-8); }
 .dose-rows { display: flex; flex-direction: column; gap: var(--space-8); }
 .step-body .rich-list { list-style: disc; }
-.step-body { display: flex; flex-direction: column; gap: var(--space-8); margin-top: var(--space-4); }
+.step-body { color: var(--label); display: flex; flex-direction: column; gap: var(--space-8); margin-top: var(--space-4); }
 .scale-block { display: flex; flex-direction: column; gap: var(--space-8); }
 /* More Information: one card of subsections, each a 44pt row that opens in place, separated by hairlines. */
 .more-list { display: flex; flex-direction: column; }
@@ -75,6 +75,8 @@ h1, p { margin: 0; }
   width: min(17rem, calc(100vw - 2 * var(--space-16))); max-height: calc(100dvh - env(safe-area-inset-top) - var(--toolbar-height) - var(--scroll-margin-bottom));
   overflow-y: auto; border-radius: var(--radius-menu); overscroll-behavior: contain;
 }
+/* At large Text Size a long section name wraps rather than being cut off. */
+.contents-menu .akg-menu-item__label { white-space: normal; }
 .all-sources { margin: 0; padding-left: 1.4em; display: flex; flex-direction: column; gap: var(--space-16); }
 .all-sources li::marker { color: var(--label-secondary); font-weight: 600; }
 
@@ -87,8 +89,9 @@ h1, p { margin: 0; }
 .sheet-sources { display: flex; flex-direction: column; gap: var(--space-12); }
 .sheet-sources .akg-source-line, .more-item .akg-source-line { padding-left: 0; padding-right: 0; }
 /* Dose sheet rows: a long value wraps on the trailing side instead of being cut off. */
-.dose-field .akg-list-row__detail { white-space: normal; text-align: right; max-width: 62%; }
-.dose-field .akg-list-row__title { flex: none; }
+.dose-field .akg-list-row__text { flex: 0 0 auto; }
+.dose-field .akg-list-row__trailing { flex: 1 1 auto; max-width: none; justify-content: flex-end; }
+.dose-field .akg-list-row__trailing > .akg-list-row__detail { flex: 0 1 auto; white-space: normal; overflow: visible; text-overflow: clip; text-align: right; }
 .dose-alt { display: flex; flex-direction: column; gap: var(--space-8); }
 .external-detail { display: inline-flex; align-items: center; gap: var(--space-4); }
 .detail-sheet { display: flex; flex-direction: column; gap: var(--space-12); }
