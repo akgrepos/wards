@@ -11,10 +11,10 @@ import { UpdatePrompt } from './UpdatePrompt';
 import { useAppearance } from './useAppearance';
 
 const TABS = [
-  { value: 'home', label: 'Home', icon: icons.home },
-  { value: 'emergencies', label: 'Rapids', icon: icons.bolt },
-  { value: 'topics', label: 'Topics', icon: icons.book },
-  { value: 'library', label: 'Library', icon: icons.books },
+  { value: 'home', label: 'Home', icon: icons.house },
+  { value: 'emergencies', label: 'Rapids', icon: icons.staroflifeFill },
+  { value: 'topics', label: 'Topics', icon: icons.heartTextClipboard },
+  { value: 'library', label: 'Library', icon: icons.crossCase },
 ];
 
 function Page({ route }: { route: Route }) {

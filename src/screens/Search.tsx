@@ -67,7 +67,7 @@ export function SearchScreen() {
         </Screen>
       </div>
       <AKG.BottomBar className="search-bar">
-        <AKG.ToolbarButton icon={icons.close} aria-label="Close Search" onClick={() => goBack(href.home())} />
+        <AKG.ToolbarButton icon={icons.xmark} aria-label="Close Search" onClick={() => goBack(href.home())} />
         <AKG.SearchField
           id={SEARCH_INPUT_ID}
           variant="glass"

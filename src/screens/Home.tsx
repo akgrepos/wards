@@ -22,7 +22,7 @@ export function Home() {
   const at = Math.max(0, sections.findIndex((s) => s.key === reading?.section));
 
   return (
-    <Screen title="Reference" trailing={<AKG.ToolbarButton icon={icons.gear} aria-label="Settings" onClick={() => open(href.settings())} />}>
+    <Screen title="Reference" trailing={<AKG.ToolbarButton icon={icons.gearshape} aria-label="Settings" onClick={() => open(href.settings())} />}>
       {readCard && (
         <a className="continue" href={href.card(readCard.id, reading?.section)}>
           <span className="ios-footnote-emphasized secondary eyebrow">Continue Reading</span>
@@ -36,7 +36,7 @@ export function Home() {
         {emergencies.length === 0 ? (
           <AKG.ListRow title="No Rapids Yet" subtitle="Shortcuts to your four main rapids will appear here." />
         ) : (
-          emergencies.map((c) => <AKG.ListRow key={c.id} title={c.title} icon={icons.bolt} iconTint="var(--system-red)" chevron href={href.card(c.id)} />)
+          emergencies.map((c) => <AKG.ListRow key={c.id} title={c.title} icon={icons.staroflifeFill} iconTint="var(--system-red)" chevron href={href.card(c.id)} />)
         )}
       </AKG.List>
 

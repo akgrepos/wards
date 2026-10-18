@@ -24,7 +24,7 @@ export function Screen({ title, back, trailing, head, titleRef, children }: {
         <AKG.Toolbar
           title={title}
           showTitle={scrolled}
-          leading={back ? <AKG.ToolbarButton icon={icons.back} aria-label={`Back to ${backLabel(back.label)}`} onClick={() => goBack(back.fallback)} /> : undefined}
+          leading={back ? <AKG.ToolbarButton icon={icons.chevronBackward} aria-label={`Back to ${backLabel(back.label)}`} onClick={() => goBack(back.fallback)} /> : undefined}
           trailing={trailing}
         />
       </div>

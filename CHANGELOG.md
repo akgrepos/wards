@@ -2,6 +2,11 @@
 
 What changed in each version of Wards, newest first. The version is shown in Settings (gear on Home).
 
+## 2026.10.18.2
+
+- New icons chosen to fit each place, modeled on Apple's SF Symbols: a star of life for Rapids, a clipboard with a heart for Topics, a medical kit for Library, and a house for Home.
+- Systems got clearer icons too (for example kidney, ECG trace, microbe, brain, lungs), and Library's lists now show a calculator sign, checklist, flowchart, pills and test tubes.
+
 ## 2026.10.18
 
 - New layout: four tabs in a floating bar at the bottom (Home, Rapids, Topics, Library) plus a round search button.
