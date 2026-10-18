@@ -3,7 +3,7 @@ import { AKG } from '../design/akg';
 import { cardTypeLabel, cardsInSystem, content, emergencyCards, getCard, pathwayHomes } from '../content';
 import type { Card, Criteria } from '../content/types';
 import { href, switchTab } from '../router';
-import { CriteriaSheet } from '../ui/Rich';
+import { INTERACTION_CHECKER, openCriteria } from '../ui/Rich';
 import { useSheet } from '../ui/SheetHost';
 import { iconFor, icons } from '../ui/icons';
 import { Empty, Screen } from './common';
@@ -58,7 +58,6 @@ export const LIBRARY_LISTS: Record<string, { title: string; icon: keyof typeof i
   pathways: { title: 'Pathways', icon: 'flowchart', tint: 'var(--accent)', subtitle: 'Every flowchart, opened in its topic', empty: 'Pathways will appear here once they’re added.' },
   labs: { title: 'Labs and Tests', icon: 'testtube2', tint: 'var(--system-purple)', subtitle: 'Interpretation, cutoffs, accuracy', empty: 'Labs and tests will appear here once they’re added.' },
 };
-export const INTERACTION_CHECKER = 'https://reference.medscape.com/drug-interactionchecker';
 
 const libRow = (id: string) => {
   const l = LIBRARY_LISTS[id];
@@ -105,7 +104,7 @@ export function LibraryList({ id }: { id: string }) {
   if (id === 'criteria') {
     rows = Object.entries(content.data.criteria ?? {})
       .sort(([, a], [, b]) => (a as Criteria).name.localeCompare((b as Criteria).name))
-      .map(([cid, c]) => <AKG.ListRow key={cid} title={(c as Criteria).name} chevron onClick={() => sheet({ title: (c as Criteria).name, body: <CriteriaSheet c={c as Criteria} /> })} />);
+      .map(([cid, c]) => <AKG.ListRow key={cid} title={(c as Criteria).name} chevron onClick={() => openCriteria(sheet, c as Criteria)} />);
   }
   if (id === 'pathways') {
     rows = pathwayHomes().map((p) => <AKG.ListRow key={p.id} title={p.title} subtitle={`In ${getCard(p.card.id)?.title}`} chevron href={href.card(p.card.id, p.section)} />);

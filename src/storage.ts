@@ -5,7 +5,7 @@ import { useSyncExternalStore } from 'react';
 export type Recent = { id: string; t: number };
 export type Reading = { id: string; section?: string; t: number };
 
-const KEYS = { favorites: 'wards:favorites', recent: 'wards:recent', reading: 'wards:reading' } as const;
+const KEYS = { favorites: 'wards:favorites', recent: 'wards:recent', reading: 'wards:reading', scroll: 'wards:scroll' } as const;
 export const RECENT_MAX = 5;
 
 function read<T>(key: string, fallback: T, valid: (v: unknown) => boolean): T {
@@ -65,6 +65,25 @@ export function setReading(id: string, section: string | undefined, now = Date.n
   write(KEYS.reading, { id, section, t: now });
 }
 export const clearReading = () => write(KEYS.reading, null);
+
+// Where each topic page was scrolled to, so opening it again returns to the same place (audit 2026-10-17).
+// The 30 most recent pages are kept. Not shared with the lists above, so no re-render on every scroll.
+const SCROLL_MAX = 30;
+const isScrolls = (v: unknown) => !!v && typeof v === 'object' && Object.values(v as object).every((y) => typeof y === 'number');
+export const getCardScroll = (id: string): number | undefined => read<Record<string, number>>(KEYS.scroll, {}, isScrolls)[id];
+export function setCardScroll(id: string, y: number) {
+  const all = read<Record<string, number>>(KEYS.scroll, {}, isScrolls);
+  delete all[id];
+  const next = Object.fromEntries([...Object.entries(all), [id, Math.max(0, Math.round(y))]].slice(-SCROLL_MAX));
+  try { localStorage.setItem(KEYS.scroll, JSON.stringify(next)); } catch { /* not available */ }
+}
+// Forget where each page was scrolled to and which of its sections were open ("akg-sections:card:<id>").
+export function clearPageMemory() {
+  try {
+    localStorage.removeItem(KEYS.scroll);
+    for (const k of Object.keys(localStorage)) if (k.startsWith('akg-sections:card:')) localStorage.removeItem(k);
+  } catch { /* not available */ }
+}
 
 /** Re-renders when the stored lists change. */
 export function useStored<T>(get: () => T): T {

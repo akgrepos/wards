@@ -6,40 +6,56 @@ subsection: Example Disorders
 title: Example Condition
 aliases: [sample card, test card]
 example: true
+definition: "Placeholder one-line definition. ^[example-guideline-a]"
+based_on: [example-guideline-a]
+reviewed: 2026-10-18
 related:
   conditions: []
 ---
-## Key points
+## At a Glance
 - This is a **development-only** sample card with placeholder content. ^[example-guideline-a]
-- Doses come from inserts: {{dose:example-drug-standard}}.
 - Thresholds come from inserts: emergency at {{threshold:example-cutoff}}. ^[example-guideline-a]
 - A line with two sources. ^[example-guideline-a, example-trial-b]
 
-## Definition and classification
-- Placeholder definition sentence. ^[example-guideline-a]
+## Severity
+:::scale Placeholder scale
+- Mild: Below the cutoff ^[example-guideline-a]
+- Severe: {{threshold:example-cutoff}} ^[example-guideline-a]
+:::
 
-| Grade | Placeholder criterion |
-|---|---|
-| Mild | Below the cutoff ^[example-guideline-a] |
-| Severe | At or above {{threshold:example-cutoff}} ^[example-guideline-a] |
-
-## Epidemiology and risk factors
-### Summary
-One-line placeholder summary. ^[example-guideline-a]
-
-- Placeholder risk factor. ^[example-trial-b]
-
-## Diagnostic evaluation
-- Placeholder first test. ^[example-guideline-a]
-  - Placeholder nested detail. ^[example-guideline-a]
+## Diagnosis
+1. Placeholder first step
+   - Placeholder detail. ^[example-guideline-a]
+2. Placeholder second step
+   - Placeholder detail. ^[example-trial-b]
 
 {{pathway:example-workup}}
 
-### More detail on testing
-- Placeholder deeper detail. ^[example-trial-b]
+## Treatment
+- Give the example drug when indicated. ^[example-guideline-a]
 
-## Management
-- Give {{dose:example-drug-standard}} when indicated. ^[example-guideline-a]
+{{dose:example-drug-standard}}
 
-## Pearls and pitfalls
+| Grade | Placeholder criterion | Third column |
+|---|---|---|
+| Mild | Below the cutoff | Placeholder ^[example-guideline-a] |
+| Severe | At or above {{threshold:example-cutoff}} | Placeholder ^[example-guideline-a] |
+
+## Monitor
+:::times Placeholder recheck times ^[example-guideline-a]
+- 1 h
+- 6 h
+:::
+
+## More Information
+### Where Guidelines Differ: Placeholder comparison
+:::compare Placeholder question
+- Guideline A: Placeholder position. ^[example-guideline-a]
+- Trial B: Placeholder finding. ^[example-trial-b]
+:::
+
+### Epidemiology and Pathophysiology
+- Placeholder risk factor. ^[example-trial-b]
+
+## Pearls
 - Placeholder pearl. ^[example-guideline-a]

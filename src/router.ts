@@ -110,6 +110,10 @@ function readLast(): { hash: string; y: number; t?: number } | null {
 // On a fresh launch (the Home Screen icon opens the app with no page in the address), go back to the last page,
 // but only if it was open in the last 30 minutes and still exists. Otherwise start on Home.
 let restoreY: number | null = null;
+// How the page on screen was reached: by Back or Forward (or a reopen), which restores its own scroll position,
+// or as a new page, which starts at the top unless the page restores itself (topic pages, storage.getCardScroll).
+let returning = false;
+export const isReturning = () => returning || restoreY != null;
 export function reopenLastPage(now = Date.now()) {
   if (location.hash && location.hash !== '#') return;
   const last = readLast();
@@ -123,7 +127,7 @@ export function reopenLastPage(now = Date.now()) {
 }
 
 // Return to a scroll position once the page is long enough (long cards take a moment to lay out).
-function restoreScroll(y: number) {
+export function restoreScroll(y: number) {
   let tries = 0;
   const attempt = () => {
     scrollTo(0, y);
@@ -137,6 +141,7 @@ function sync(isNew?: boolean) {
   const key = `${location.hash}|${stateNow()?.wardsDepth ?? 'new'}`;
   if (!isNew && key === lastKey) return;
   const seen = stateNow()?.wardsDepth != null;
+  returning = seen && !isNew;
   const route = adopt();
   notify?.(route);
   // Back or Forward to a page we've seen: return to where it was. A new page starts at the top.
@@ -215,5 +220,5 @@ export function forgetSection(id: string) {
 
 /** For tests: forget everything, as if the app had just launched. */
 export function resetRouterForTests() {
-  depth = 0; tab = 'home'; lastKey = ''; pageTitle = 'Reference'; restoreY = null; scrollAt.length = 0;
+  depth = 0; tab = 'home'; lastKey = ''; pageTitle = 'Reference'; restoreY = null; scrollAt.length = 0; returning = false;
 }

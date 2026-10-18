@@ -29,6 +29,9 @@ export const icons = {
   xmark: sym(<path d="M5 5l10 10M15 5L5 15" />),
   chevronBackward: sym(<path d="M12.5 4 6.5 10l6 6" />),
   arrowUpRight: sym(<path d="M6 14 14 6M7.5 6H14v6.5" />),
+  // Topic pages: the Contents menu and its Collapse All item.
+  listBullet: sym(<path d="M7.5 5H17M7.5 10H17M7.5 15H17M3.5 5h.01M3.5 10h.01M3.5 15h.01" strokeWidth="2.2" />),
+  chevronUpChevronDown: sym(<path d="M6 7.5 10 3.5l4 4M6 12.5l4 4 4-4" />),
   // Library
   plusForwardslashMinus: sym(<path d="M3 6h5M5.5 3.5v5M14 3 6 17M12 14.5h5" />),
   checklist: sym(<>

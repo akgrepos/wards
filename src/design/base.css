@@ -43,29 +43,54 @@ h1, p { margin: 0; }
 .secondary { color: var(--label-secondary); }
 .accent-link { color: var(--accent-text); text-decoration: none; }
 
-/* Card page */
-.card-head { display: flex; flex-direction: column; gap: var(--space-4); }
+/* Topic page */
+.card-head { display: flex; flex-direction: column; gap: var(--space-8); }
 .card-head h1 { margin: 0; }
-.section-bar-wrap {
-  position: sticky; top: calc(env(safe-area-inset-top) + 54px); z-index: 4;
-  margin: 0 calc(-1 * var(--space-16)); padding: var(--space-4) var(--space-16);
-  background: var(--material-thin); -webkit-backdrop-filter: blur(20px) saturate(180%); backdrop-filter: blur(20px) saturate(180%);
-}
-.akg-content-section { scroll-margin-top: calc(env(safe-area-inset-top) + 110px); }
+.card-tags { display: flex; flex-wrap: wrap; gap: var(--space-8); }
+.card-meta { display: flex; flex-direction: column; align-items: flex-start; }
+.card-meta .akg-source-line { padding-left: 0; padding-right: 0; }
 .rich-list { margin: 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: var(--space-8); }
 .rich-list ul { margin: var(--space-4) 0 0; padding-left: 1.1em; display: flex; flex-direction: column; gap: var(--space-4); color: var(--label-secondary); }
 .akg-content-section p { margin: 0; }
 .subheading { margin: var(--space-4) 0 0; }
-.card-link { color: var(--accent-text); text-decoration: none; }
 .missing { color: var(--system-red); }
 .pathway { display: flex; flex-direction: column; gap: var(--space-8); }
 .criteria-block, .criteria { display: flex; flex-direction: column; gap: var(--space-8); }
+.dose-rows { display: flex; flex-direction: column; gap: var(--space-8); }
+.step-body .rich-list { list-style: disc; }
+.step-body { display: flex; flex-direction: column; gap: var(--space-8); margin-top: var(--space-4); }
+.scale-block { display: flex; flex-direction: column; gap: var(--space-8); }
+/* More Information: one card of subsections, each a 44pt row that opens in place, separated by hairlines. */
+.more-list { display: flex; flex-direction: column; }
+.more-item { padding: var(--space-4) var(--space-16) var(--space-8); }
+.more-item + .more-item { border-top: 0.5px solid var(--separator); }
+.more-item .akg-content-section__title { font-size: calc(17 * var(--akg-text-unit)); line-height: calc(22 * var(--akg-text-unit)); font-weight: 600; letter-spacing: 0; }
+.akg-content-section--card .more-item .akg-content-section__header { padding-left: 0; padding-right: 0; }
+.akg-content-section--card .more-item .akg-content-section__body { padding: 0 0 var(--space-4); }
+.more-item .akg-content-section__summary { margin-top: calc(-1 * var(--space-8)); }
+/* The Contents menu hangs below its button in the top bar; a tap anywhere else closes it. */
+.contents-layer { position: fixed; inset: 0; z-index: 20; }
+.contents-menu {
+  position: absolute; top: calc(env(safe-area-inset-top) + var(--toolbar-height)); right: calc(env(safe-area-inset-right) + var(--space-16));
+  width: min(17rem, calc(100vw - 2 * var(--space-16))); max-height: calc(100dvh - env(safe-area-inset-top) - var(--toolbar-height) - var(--scroll-margin-bottom));
+  overflow-y: auto; border-radius: var(--radius-menu); overscroll-behavior: contain;
+}
+.all-sources { margin: 0; padding-left: 1.4em; display: flex; flex-direction: column; gap: var(--space-16); }
+.all-sources li::marker { color: var(--label-secondary); font-weight: 600; }
 
 /* Sheets */
 .sheet-body { padding: var(--space-8) 0 var(--space-16); }
 .source-list { display: flex; flex-direction: column; gap: var(--space-16); }
 .source-item { display: flex; flex-direction: column; gap: var(--space-4); }
 .source-item p, .detail-sheet p { margin: 0; }
+.view-citation { display: inline-flex; align-items: center; gap: var(--space-4); align-self: flex-start; min-height: var(--tap-target); }
+.sheet-sources { display: flex; flex-direction: column; gap: var(--space-12); }
+.sheet-sources .akg-source-line, .more-item .akg-source-line { padding-left: 0; padding-right: 0; }
+/* Dose sheet rows: a long value wraps on the trailing side instead of being cut off. */
+.dose-field .akg-list-row__detail { white-space: normal; text-align: right; max-width: 62%; }
+.dose-field .akg-list-row__title { flex: none; }
+.dose-alt { display: flex; flex-direction: column; gap: var(--space-8); }
+.external-detail { display: inline-flex; align-items: center; gap: var(--space-4); }
 .detail-sheet { display: flex; flex-direction: column; gap: var(--space-12); }
 
 /* Floating tab bar: content fades out under it into the page background. */

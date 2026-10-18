@@ -1,11 +1,12 @@
 drug_name: Albumin 25%
 indication: "AKI in cirrhosis with ascites, stage >1A (ICA) or progressing: volume expansion after diuretic withdrawal"
-population: "Watch for volume overload and pulmonary edema"
 route: IV
 amount: 1
 unit: g/kg
 frequency: daily
 duration: 2 days
 max: 100 g/day
+cautions:
+  - "Watch for volume overload and pulmonary edema."
 notes: "If SCr does not improve after 2 days and HRS-AKI criteria are met, treat with a vasoconstrictor plus albumin."
 sources: [aasld-ascites-hrs-2021]

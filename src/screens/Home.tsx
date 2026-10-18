@@ -3,7 +3,7 @@ import { AKG } from '../design/akg';
 import { cardTypeLabel, emergencyCards, getCard, getSystem, titleCase } from '../content';
 import type { Card } from '../content/types';
 import { href, open } from '../router';
-import { clearFavorites, clearReading, clearRecent, getFavorites, getReading, getRecent, useStored } from '../storage';
+import { clearFavorites, clearPageMemory, clearReading, clearRecent, getFavorites, getReading, getRecent, useStored } from '../storage';
 import { iconFor, icons } from '../ui/icons';
 import { APP_VERSION } from '../version';
 import { Screen, ago } from './common';
@@ -104,7 +104,7 @@ export function SettingsScreen() {
       <AKG.List header="About">
         <AKG.ListRow title="Version" detail={APP_VERSION} />
       </AKG.List>
-      <AKG.List header="On This iPhone" footer="Favorites, Recent and Continue Reading are kept only on this iPhone. Nothing is sent anywhere.">
+      <AKG.List header="On This iPhone" footer="Favorites, Recent, Continue Reading, and where you were on each page are kept only on this iPhone. Nothing is sent anywhere.">
         <AKG.ListRow title="Clear Recent and Continue Reading" destructive onClick={() => setConfirm('history')} />
         <AKG.ListRow title="Clear Favorites" destructive onClick={() => setConfirm('favorites')} />
       </AKG.List>
@@ -113,10 +113,10 @@ export function SettingsScreen() {
         overlay
         fixed
         title={confirm === 'favorites' ? 'Clear Favorites?' : 'Clear Recent and Continue Reading?'}
-        message="This can’t be undone."
+        message={confirm === 'favorites' ? 'This can’t be undone.' : 'Pages also forget where you were and which sections you closed. This can’t be undone.'}
         actions={[
           { label: 'Cancel', role: 'cancel', onClick: () => setConfirm(null) },
-          { label: 'Clear', role: 'destructive', onClick: () => { if (confirm === 'favorites') clearFavorites(); else { clearRecent(); clearReading(); } setConfirm(null); } },
+          { label: 'Clear', role: 'destructive', onClick: () => { if (confirm === 'favorites') clearFavorites(); else { clearRecent(); clearReading(); clearPageMemory(); } setConfirm(null); } },
         ]}
       />
     </Screen>

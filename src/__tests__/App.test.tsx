@@ -26,14 +26,14 @@ describe('App', () => {
     expect(screen.getByText(APP_VERSION)).toBeTruthy();
   });
 
-  it('opens a card by its link, with sections, inserts and source pills', async () => {
+  it('opens a card by its link, with sections, dose rows and one source line per section', async () => {
     location.hash = '#/card/example-condition';
     render(<App />);
     expect(screen.getAllByText('Example Condition').length).toBeGreaterThan(0);
-    expect(screen.getAllByText('Key Points').length).toBeGreaterThan(0);
-    expect(screen.getAllByText('Exampledrug 10 mg IV once').length).toBeGreaterThan(0);
-    expect(screen.getAllByRole('button', { name: /^Source:/ }).length).toBeGreaterThan(0);
-    expect(screen.getByText('Sources')).toBeTruthy();
+    expect(screen.getAllByText('At a Glance').length).toBeGreaterThan(0);
+    expect(screen.getByRole('button', { name: /^Exampledrug 10 mg IV once/ })).toBeTruthy();
+    expect(screen.getAllByRole('button', { name: /^Sources?:/ }).length).toBeGreaterThan(0);
+    expect(screen.getByText('All Sources')).toBeTruthy();
   });
 
   it('shows Not Found for an unknown card', async () => {
