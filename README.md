@@ -2,7 +2,7 @@
 
 A personal internal medicine reference for iPhone, built as a web app you add to the Home Screen.
 
-**Status:** the app is set up and live, with no content yet. See [docs/STATUS.md](docs/STATUS.md) and [CHANGELOG.md](CHANGELOG.md).
+**Status:** live, with the first pilot cards. See [docs/STATUS.md](docs/STATUS.md) and [CHANGELOG.md](CHANGELOG.md).
 
 ## How it works
 
@@ -16,7 +16,7 @@ A personal internal medicine reference for iPhone, built as a web app you add to
 - Each task gets its own short-lived branch and a pull request with a plain-language summary (and simulator screenshots when something visible changed). It's merged once automated checks pass.
 - Your phone shows an "Update Ready" banner with a Reload button when a new version is available.
 
-See [docs/DECISIONS.md](docs/DECISIONS.md) for what has been decided and what is still open.
+See [docs/DECISIONS.md](docs/DECISIONS.md) for what has been decided and why.
 
 ## For Claude: running it
 
