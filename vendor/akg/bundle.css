@@ -1005,6 +1005,12 @@ button.akg-list-row__content, a.akg-list-row__content { cursor: pointer; }
 .akg-list-row--tall .akg-list-row__content { min-height: 68px; }
 
 .akg-list-row__icon { width: 30px; font-size: calc(22 * var(--akg-text-unit, 1px)); color: var(--accent); }
+/* IconTile: a white symbol on a tinted rounded square (Settings style). 30pt tile, 8pt corners, 18pt symbol. */
+.akg-icon-tile {
+  display: inline-flex; align-items: center; justify-content: center; flex: none;
+  width: 30px; height: 30px; border-radius: 8px;
+  background: var(--akg-icon-tile-tint, var(--accent)); color: var(--on-accent); font-size: 18px;
+}
 .akg-list-row__body {
   flex: 1; min-width: 0; align-self: stretch; display: flex; align-items: center; justify-content: space-between; gap: var(--space-16);
   border-bottom: var(--separator-width) solid var(--separator);
@@ -1058,6 +1064,7 @@ button.akg-list-row__content, a.akg-list-row__content { cursor: pointer; }
 [data-theme^="macos"] .akg-list-row--tall .akg-list-row__content { min-height: 40px; }
 [data-theme^="macos"] .akg-list-row--interactive .akg-list-row__content:active:not(:disabled) { background: var(--fill-quinary); }
 [data-theme^="macos"] .akg-list-row__icon { width: 20px; font-size: 13px; color: var(--label-secondary); }
+[data-theme^="macos"] .akg-icon-tile { width: 20px; height: 20px; border-radius: var(--radius-small); font-size: 12px; }
 [data-theme^="macos"] .akg-list-row__body { border-bottom: 0; gap: var(--space-10); }
 [data-theme^="macos"] .akg-list-row__text,
 [data-theme^="macos"] .akg-list-row--tall .akg-list-row__text { padding: 0; gap: var(--space-2); }
@@ -1374,10 +1381,11 @@ button.akg-disclosure__button:disabled, .akg-disclosure__header:disabled .akg-di
 .akg-tab-bar__tab--selected { color: var(--accent); }
 .akg-tab-bar__tab--selected::before { background: var(--fill-secondary); }
 .akg-tab-bar__tabs { isolation: isolate; }
-.akg-tab-bar__symbol { height: 28px; font-size: calc(24 * var(--akg-text-unit, 1px)); }
+.akg-tab-bar__symbol { height: 28px; font-size: min(calc(24 * var(--akg-text-unit, 1px)), 28px); }
+/* Labels are 11pt (one step above the kit's 10pt, for legibility) and stop growing at 13pt so the 54pt tab never clips. */
 .akg-tab-bar__label {
   display: block; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
-  font-size: calc(10 * var(--akg-text-unit, 1px)); line-height: calc(12 * var(--akg-text-unit, 1px)); font-weight: 600; letter-spacing: -0.1px;
+  font-size: min(calc(11 * var(--akg-text-unit, 1px)), 13px); line-height: min(calc(13 * var(--akg-text-unit, 1px)), 15px); font-weight: 600; letter-spacing: -0.1px;
 }
 .akg-tab-bar__tab--text { justify-content: center; padding-top: 0; }
 .akg-tab-bar__tab--text .akg-tab-bar__label { font-size: calc(13 * var(--akg-text-unit, 1px)); line-height: calc(16 * var(--akg-text-unit, 1px)); }
@@ -1393,6 +1401,25 @@ button.akg-disclosure__button:disabled, .akg-disclosure__header:disabled .akg-di
   box-shadow: var(--shadow-glass-control), inset 0 0 0 0.5px var(--separator);
 }
 .akg-tab-bar__search--selected { color: var(--accent); }
+.akg-tab-bar__search:active, .akg-tab-bar__tab:active { filter: brightness(0.9); }
+
+/* Accessory: a full-width bar above the tabs (a running timer, now playing), 12pt above the capsule. */
+.akg-tab-bar--with-accessory { flex-wrap: wrap; row-gap: var(--space-12); }
+.akg-tab-bar__accessory { flex: 0 0 100%; order: -1; min-width: 0; display: flex; }
+.akg-tab-bar__accessory > * { flex: 1; min-width: 0; }
+
+/* Floating: fixed above the bottom of the screen with the kit's margins; content behind fades out under it.
+   Set --akg-tab-bar-fade to the page background (for example var(--background-grouped)). */
+.akg-tab-bar--floating {
+  position: fixed; z-index: 800; width: auto;
+  left: calc(env(safe-area-inset-left) + var(--tab-bar-inset)); right: calc(env(safe-area-inset-right) + var(--tab-bar-inset)); bottom: var(--tab-bar-inset);
+}
+.akg-tab-bar--floating::before {
+  content: ""; position: absolute; z-index: -1; pointer-events: none;
+  left: calc(-1 * (env(safe-area-inset-left) + var(--tab-bar-inset))); right: calc(-1 * (env(safe-area-inset-right) + var(--tab-bar-inset)));
+  top: -40px; bottom: calc(-1 * var(--tab-bar-inset));
+  background: linear-gradient(transparent, var(--akg-tab-bar-fade, var(--background)) 60%);
+}
 
 /* macOS: a toolbar segmented group. 36pt glass capsule, 4pt padding, 32×28 icon segments, 13pt medium symbols */
 [data-theme^="macos"] .akg-tab-bar { justify-content: flex-start; width: auto; }
@@ -1761,7 +1788,14 @@ button.akg-disclosure__button:disabled, .akg-disclosure__header:disabled .akg-di
 .akg-sheet__grabber { position: absolute; top: 5px; left: 50%; width: 60px; height: 4px; margin-left: -30px; padding: 0; border: 0; border-radius: 2px; background: var(--system-gray-4); -webkit-tap-highlight-color: transparent; }
 button.akg-sheet__grabber { cursor: pointer; }
 button.akg-sheet__grabber::after { content: ""; position: absolute; left: -20px; right: -20px; top: -5px; bottom: -14px; }
-.akg-sheet__title { flex: 1; min-width: 0; text-align: center; font-size: calc(17 * var(--akg-text-unit, 1px)); line-height: calc(22 * var(--akg-text-unit, 1px)); font-weight: 600; color: var(--glass-label); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.akg-sheet__title { flex: 1; min-width: 0; text-align: center; font-size: calc(17 * var(--akg-text-unit, 1px)); line-height: calc(20 * var(--akg-text-unit, 1px)); font-weight: 600; color: var(--glass-label); overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow-wrap: anywhere; }
+/* heading + subheading: the full name at the top of the content, where it can wrap (22pt bold over 15pt secondary). */
+.akg-sheet__heading { padding: var(--space-4) var(--space-4) var(--space-12); }
+.akg-sheet__heading-title { margin: 0; font-size: calc(22 * var(--akg-text-unit, 1px)); line-height: calc(28 * var(--akg-text-unit, 1px)); font-weight: 700; color: var(--label); overflow-wrap: break-word; }
+.akg-sheet__heading-sub { margin: var(--space-2) 0 0; font-size: calc(15 * var(--akg-text-unit, 1px)); line-height: calc(20 * var(--akg-text-unit, 1px)); color: var(--label-secondary); }
+[data-theme^="macos"] .akg-sheet__heading { padding: 0 0 var(--space-10); }
+[data-theme^="macos"] .akg-sheet__heading-title { font-size: 15px; line-height: 20px; }
+[data-theme^="macos"] .akg-sheet__heading-sub { font-size: 12px; line-height: 16px; }
 .akg-sheet__circle, .akg-sheet__spacer { flex: none; width: var(--tap-target); height: var(--tap-target); border-radius: var(--radius-full); }
 .akg-sheet__circle { display: inline-flex; align-items: center; justify-content: center; border: 0; margin: 0; padding: 0; cursor: pointer; font-size: calc(17 * var(--akg-text-unit, 1px)); -webkit-tap-highlight-color: transparent; }
 .akg-sheet__circle--close { background: var(--fill-secondary); color: var(--glass-label); }
@@ -2082,7 +2116,7 @@ button.akg-sheet__grabber::after { content: ""; position: absolute; left: -20px;
 [data-theme^="macos"] .akg-source-pill::after { display: none; }
 
 /* ContentSection + SectionBar */
-.akg-content-section { display: flex; flex-direction: column; gap: var(--space-8); color: var(--label); font-family: var(--font-sans); scroll-margin-top: 64px; }
+.akg-content-section { display: flex; flex-direction: column; gap: var(--space-8); color: var(--label); font-family: var(--font-sans); scroll-margin-top: calc(env(safe-area-inset-top) + var(--scroll-margin-top)); scroll-margin-bottom: var(--scroll-margin-bottom); }
 .akg-content-section__header { display: flex; align-items: center; justify-content: space-between; gap: var(--space-8); margin: 0; }
 .akg-content-section__header--button { width: 100%; min-height: var(--tap-target); padding: 0; border: 0; background: none; color: inherit; font: inherit; text-align: left; cursor: pointer; }
 .akg-content-section__title { margin: 0; font-size: calc(20 * var(--akg-t)); line-height: calc(25 * var(--akg-t)); font-weight: 600; letter-spacing: -0.4px; }
@@ -2302,3 +2336,204 @@ button.akg-sheet__grabber::after { content: ""; position: absolute; left: -20px;
 .akg-source-pill--verified { color: var(--system-green); }
 .akg-source-pill__check { stroke: var(--on-accent); }
 [data-theme^="macos"] .akg-source-pill--marker { min-width: 20px; }
+
+/* ContentSection variant="card": title above a rounded card (iOS grouped style). Collapsible header is 44pt, 20pt bold, chevron in label-secondary. */
+.akg-content-section--card { gap: var(--space-4); }
+.akg-content-section__heading { margin: 0; font: inherit; }
+.akg-content-section--card .akg-content-section__header { padding: 0 var(--space-4) 0 var(--space-16); min-height: var(--tap-target); }
+.akg-content-section--card .akg-content-section__title { font-size: calc(20 * var(--akg-t)); line-height: calc(25 * var(--akg-t)); font-weight: 700; letter-spacing: -0.4px; }
+.akg-content-section--card .akg-content-section__chevron { color: var(--label-secondary); padding: 0 var(--space-12); }
+.akg-content-section__card { overflow: hidden; border-radius: var(--radius-grouped); background: var(--background-grouped-secondary); }
+.akg-content-section--card .akg-content-section__body { padding: 14px var(--space-16); }
+.akg-content-section__card--flush > .akg-content-section__body { padding: 0; }
+.akg-content-section__card:has(> .akg-content-section__footer) > .akg-content-section__body:not(:only-child) { padding-bottom: var(--space-4); }
+.akg-content-section__card--flush:has(> .akg-content-section__footer) > .akg-content-section__body { padding-bottom: 0; }
+.akg-content-section--card .akg-content-section__more { padding: 0 var(--space-16) var(--space-8); }
+.akg-content-section__card--summary { padding: var(--space-12) var(--space-16); }
+.akg-content-section__card[hidden] { display: none !important; }
+[data-theme^="macos"] .akg-content-section--card .akg-content-section__header { padding: 0 var(--space-4) 0 var(--space-10); min-height: 28px; }
+[data-theme^="macos"] .akg-content-section--card .akg-content-section__title { font-size: 15px; line-height: 20px; letter-spacing: 0; }
+[data-theme^="macos"] .akg-content-section__card { border-radius: 12px; background: var(--fill-quaternary); }
+[data-theme^="macos"] .akg-content-section--card .akg-content-section__body { padding: var(--space-10); }
+[data-theme^="macos"] .akg-content-section__card--flush > .akg-content-section__body { padding: 0; }
+[data-theme^="macos"] .akg-content-section__card--summary { padding: var(--space-8) var(--space-10); }
+
+/* SourceLine — one compact line per section: 12pt "Sources", names in semibold accent text. The whole line is a 44pt button. */
+.akg-source-line {
+  display: flex; align-items: center; flex-wrap: wrap; gap: var(--space-4); width: 100%; min-height: var(--tap-target);
+  margin: 0; padding: var(--space-4) var(--space-16); border: 0; background: transparent; text-align: left; cursor: pointer;
+  font-family: var(--font-sans); font-size: calc(12 * var(--akg-t)); line-height: calc(16 * var(--akg-t)); color: var(--label-secondary);
+  -webkit-tap-highlight-color: transparent;
+}
+.akg-source-line:active { background: var(--fill-tertiary); }
+.akg-source-line:focus-visible { outline-offset: -3px; }
+.akg-source-line__items { display: inline-flex; flex-wrap: wrap; align-items: center; gap: var(--space-4); min-width: 0; }
+.akg-source-line__name { font-weight: 600; color: var(--accent-text); }
+.akg-source-line__marker { display: inline-flex; align-items: center; gap: 3px; }
+.akg-source-line__marker .akg-sym svg { width: 1.25em; height: 1.25em; }
+.akg-source-line__marker--verified .akg-sym { color: var(--system-green); }
+[data-theme^="macos"] .akg-source-line { min-height: 0; padding: var(--space-4) var(--space-10); font-size: 11px; line-height: 14px; }
+
+/* StepList — numbered steps: a 24pt numbered circle, a 15pt secondary condition line, then any content. */
+.akg-step-list { --akg-step-tint: var(--accent); list-style: none; margin: 0; padding: 0; font-family: var(--font-sans); color: var(--label); }
+.akg-step-list--critical { --akg-step-tint: var(--system-red); }
+.akg-step { position: relative; display: flex; gap: var(--space-12); padding: var(--space-10) var(--space-16); }
+.akg-step + .akg-step::before {
+  content: ""; position: absolute; top: 0; right: 0; left: calc(var(--space-16) + max(24px, calc(24 * var(--akg-t))) + var(--space-12));
+  border-top: var(--separator-width) solid var(--separator);
+}
+.akg-step__marker {
+  flex: none; display: inline-flex; align-items: center; justify-content: center; margin-top: 1px;
+  width: max(24px, calc(24 * var(--akg-t))); height: max(24px, calc(24 * var(--akg-t))); border-radius: var(--radius-full);
+  background: var(--akg-step-tint); color: var(--on-accent);
+  font-size: calc(13 * var(--akg-t)); line-height: 1; font-weight: 700; font-variant-numeric: tabular-nums;
+}
+.akg-step--done .akg-step__marker { background: var(--system-gray); font-size: calc(12 * var(--akg-t)); }
+[data-theme$="dark"] .akg-step--done .akg-step__marker { background: var(--system-gray-2); }
+.akg-step--current .akg-step__marker { box-shadow: 0 0 0 2px var(--background-grouped-secondary), 0 0 0 4px var(--akg-step-tint); }
+.akg-step__body { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: var(--space-2); }
+/* Conditions and details say when and how to act, so they use secondary text mixed toward label (4.5:1 or more in every theme). */
+.akg-step__condition { margin: 0; font-size: calc(15 * var(--akg-t)); line-height: calc(20 * var(--akg-t)); color: color-mix(in srgb, var(--label) 30%, var(--label-secondary)); }
+.akg-step__title { font-size: calc(15 * var(--akg-t)); line-height: calc(20 * var(--akg-t)); font-weight: 600; }
+.akg-step__content { display: flex; flex-direction: column; gap: 6px; font-size: calc(13 * var(--akg-t)); line-height: calc(18 * var(--akg-t)); color: color-mix(in srgb, var(--label) 30%, var(--label-secondary)); }
+.akg-step__condition + .akg-step__content { margin-top: var(--space-4); }
+[data-theme^="macos"] .akg-step { gap: var(--space-8); padding: var(--space-8) var(--space-10); }
+[data-theme^="macos"] .akg-step + .akg-step::before { left: calc(var(--space-10) + 20px + var(--space-8)); }
+[data-theme^="macos"] .akg-step__marker { width: 20px; height: 20px; font-size: 11px; }
+[data-theme^="macos"] .akg-step__condition, [data-theme^="macos"] .akg-step__title { font-size: 13px; line-height: 16px; }
+[data-theme^="macos"] .akg-step__content { font-size: 11px; line-height: 14px; }
+
+/* Tag — a 12pt semibold capsule. Status variants carry an icon as well as a tint. Small text on a fill loses contrast,
+   so every variant's text is mixed toward label until it reaches 4.5:1 in all four themes. */
+.akg-tag {
+  --akg-tag-tint: var(--label-secondary);
+  display: inline-flex; align-items: center; gap: var(--space-4); max-width: 100%; vertical-align: middle;
+  border-radius: var(--radius-full); background: var(--fill-tertiary); color: color-mix(in srgb, var(--label) 30%, var(--label-secondary));
+  font-family: var(--font-sans); font-size: calc(12 * var(--akg-t)); line-height: calc(16 * var(--akg-t)); font-weight: 600;
+}
+.akg-tag--small { padding: var(--space-2) var(--space-8); }
+.akg-tag--regular { padding: var(--space-4) var(--space-10); }
+.akg-tag__icon { font-size: 1.05em; }
+.akg-tag__label { min-width: 0; overflow-wrap: break-word; }
+.akg-tag--warning { background: color-mix(in srgb, var(--system-orange) 16%, transparent); color: color-mix(in srgb, var(--system-orange) 50%, var(--label)); }
+.akg-tag--critical { background: color-mix(in srgb, var(--system-red) 14%, transparent); color: color-mix(in srgb, var(--system-red) 60%, var(--label)); }
+.akg-tag--accent { background: color-mix(in srgb, var(--accent) 14%, transparent); color: color-mix(in srgb, var(--accent-text) 75%, var(--label)); }
+[data-theme$="dark"] .akg-tag--warning { background: color-mix(in srgb, var(--system-orange) 22%, transparent); color: color-mix(in srgb, var(--system-orange) 80%, var(--label)); }
+[data-theme$="dark"] .akg-tag--critical { background: color-mix(in srgb, var(--system-red) 22%, transparent); color: color-mix(in srgb, var(--system-red) 60%, var(--label)); }
+[data-theme$="dark"] .akg-tag--accent { background: color-mix(in srgb, var(--accent) 22%, transparent); }
+[data-theme^="macos"] .akg-tag { font-size: 11px; line-height: 14px; }
+[data-theme^="macos"] .akg-tag--small { padding: 1px 6px; }
+[data-theme^="macos"] .akg-tag--regular { padding: var(--space-2) var(--space-8); }
+
+/* ValueRow — 16pt semibold name over a 16pt value with tabular figures. Tappable: filled, chevron, pressed state. Static: no fill, no chevron. */
+.akg-value-row {
+  display: flex; align-items: center; gap: var(--space-8); width: 100%; min-height: var(--tap-target);
+  margin: 0; padding: var(--space-8) var(--space-10); border: 0; border-radius: 12px; text-align: left; text-decoration: none;
+  background: var(--fill-quaternary); color: var(--label); font-family: var(--font-sans); -webkit-tap-highlight-color: transparent;
+}
+.akg-value-row--raised { background: var(--background-elevated); }
+.akg-value-row--static { background: transparent; }
+.akg-value-row--interactive { cursor: pointer; }
+.akg-value-row--interactive:active { background: var(--fill-tertiary); }
+.akg-value-row--raised.akg-value-row--interactive:active { background: var(--background-elevated); filter: brightness(0.94); }
+[data-theme$="dark"] .akg-value-row--raised.akg-value-row--interactive:active { filter: brightness(1.25); }
+.akg-value-row__text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: var(--space-2); }
+.akg-value-row__title { font-size: calc(16 * var(--akg-t)); line-height: calc(21 * var(--akg-t)); font-weight: 600; overflow-wrap: break-word; }
+.akg-value-row__value { font-size: calc(16 * var(--akg-t)); line-height: calc(21 * var(--akg-t)); font-variant-numeric: tabular-nums; overflow-wrap: break-word; }
+.akg-value-row__extra { font-size: calc(13 * var(--akg-t)); line-height: calc(18 * var(--akg-t)); color: var(--label-secondary); }
+.akg-value-row__tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 3px; }
+.akg-value-row__chevron { color: var(--label-tertiary); }
+.akg-value-row__chevron svg { width: 7px; height: 12px; }
+[data-theme^="macos"] .akg-value-row { min-height: 0; padding: 6px var(--space-8); border-radius: var(--radius-regular); }
+[data-theme^="macos"] .akg-value-row__title, [data-theme^="macos"] .akg-value-row__value { font-size: 13px; line-height: 16px; }
+[data-theme^="macos"] .akg-value-row__extra { font-size: 11px; line-height: 14px; }
+
+/* ScaleBar — ordered bands tinted neutral → orange → red. 10pt corners, 12pt uppercase label over a 15pt semibold range.
+   Bands stack into rows when there isn't room (measured in em, so larger Text Size stacks sooner). */
+.akg-scale-bar { container-type: inline-size; font-family: var(--font-sans); font-size: calc(15 * var(--akg-t)); color: var(--label); }
+.akg-scale-bar__bands { display: grid; grid-template-columns: repeat(var(--akg-scale-n, 3), minmax(0, 1fr)); gap: var(--space-4); list-style: none; margin: 0; padding: 0; }
+.akg-scale-bar--n2 { --akg-scale-n: 2; } .akg-scale-bar--n3 { --akg-scale-n: 3; } .akg-scale-bar--n4 { --akg-scale-n: 4; } .akg-scale-bar--n5 { --akg-scale-n: 5; }
+.akg-scale-bar__band { display: flex; flex-direction: column; gap: var(--space-2); min-width: 0; padding: var(--space-8) var(--space-10); border-radius: 10px; background: var(--fill-tertiary); }
+.akg-scale-bar__band--caution-low { background: color-mix(in srgb, var(--system-orange) 10%, transparent); }
+.akg-scale-bar__band--caution { background: color-mix(in srgb, var(--system-orange) 18%, transparent); }
+.akg-scale-bar__band--critical-low { background: color-mix(in srgb, var(--system-red) 11%, transparent); }
+.akg-scale-bar__band--critical { background: color-mix(in srgb, var(--system-red) 18%, transparent); }
+[data-theme$="dark"] .akg-scale-bar__band--caution-low { background: color-mix(in srgb, var(--system-orange) 16%, transparent); }
+[data-theme$="dark"] .akg-scale-bar__band--caution { background: color-mix(in srgb, var(--system-orange) 26%, transparent); }
+[data-theme$="dark"] .akg-scale-bar__band--critical-low { background: color-mix(in srgb, var(--system-red) 18%, transparent); }
+[data-theme$="dark"] .akg-scale-bar__band--critical { background: color-mix(in srgb, var(--system-red) 28%, transparent); }
+.akg-scale-bar__band--current { box-shadow: inset 0 0 0 2px var(--label); }
+.akg-scale-bar__label { font-size: calc(12 * var(--akg-t)); line-height: calc(16 * var(--akg-t)); font-weight: 600; text-transform: uppercase; letter-spacing: 0.02em; color: color-mix(in srgb, var(--label) 30%, var(--label-secondary)); overflow-wrap: anywhere; }
+.akg-scale-bar__range { font-size: calc(15 * var(--akg-t)); line-height: calc(20 * var(--akg-t)); font-weight: 600; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.akg-scale-bar__caption { margin: var(--space-8) 0 0; font-size: calc(13 * var(--akg-t)); line-height: calc(18 * var(--akg-t)); color: var(--label-secondary); }
+@container (max-width: 15em) { .akg-scale-bar--n2 .akg-scale-bar__bands, .akg-scale-bar--n3 .akg-scale-bar__bands { grid-template-columns: minmax(0, 1fr); } .akg-scale-bar--n2 .akg-scale-bar__band, .akg-scale-bar--n3 .akg-scale-bar__band { flex-direction: row; justify-content: space-between; align-items: baseline; gap: var(--space-8); } }
+@container (max-width: 22em) { .akg-scale-bar--n4 .akg-scale-bar__bands { grid-template-columns: minmax(0, 1fr); } .akg-scale-bar--n4 .akg-scale-bar__band { flex-direction: row; justify-content: space-between; align-items: baseline; gap: var(--space-8); } }
+@container (max-width: 28em) { .akg-scale-bar--n5 .akg-scale-bar__bands { grid-template-columns: minmax(0, 1fr); } .akg-scale-bar--n5 .akg-scale-bar__band { flex-direction: row; justify-content: space-between; align-items: baseline; gap: var(--space-8); } }
+[data-theme^="macos"] .akg-scale-bar { font-size: 13px; }
+[data-theme^="macos"] .akg-scale-bar__band { padding: 6px var(--space-8); border-radius: var(--radius-regular); }
+[data-theme^="macos"] .akg-scale-bar__label { font-size: 10px; line-height: 13px; }
+[data-theme^="macos"] .akg-scale-bar__range { font-size: 13px; line-height: 16px; }
+[data-theme^="macos"] .akg-scale-bar__caption { font-size: 11px; line-height: 14px; }
+
+/* ComparisonGrid — 2–3 columns of 12pt cells on fill-quaternary; a 12pt semibold label names each column. Stacks when narrow. */
+.akg-comparison { container-type: inline-size; font-family: var(--font-sans); font-size: calc(15 * var(--akg-t)); color: var(--label); }
+.akg-comparison__title { font-size: calc(15 * var(--akg-t)); line-height: calc(20 * var(--akg-t)); font-weight: 600; margin-bottom: var(--space-8); }
+.akg-comparison__grid { display: grid; grid-template-columns: repeat(var(--akg-comparison-n, 2), minmax(0, 1fr)); gap: var(--space-8); }
+.akg-comparison--n3 { --akg-comparison-n: 3; }
+.akg-comparison__cell { min-width: 0; display: flex; flex-direction: column; gap: var(--space-2); padding: var(--space-8) var(--space-10); border-radius: 12px; background: var(--fill-quaternary); }
+.akg-comparison__label { font-size: calc(12 * var(--akg-t)); line-height: calc(16 * var(--akg-t)); font-weight: 600; color: color-mix(in srgb, var(--label) 30%, var(--label-secondary)); }
+.akg-comparison__content { font-size: calc(13 * var(--akg-t)); line-height: calc(18 * var(--akg-t)); overflow-wrap: break-word; }
+@container (max-width: 16em) { .akg-comparison__grid { grid-template-columns: minmax(0, 1fr); } }
+@container (max-width: 24em) { .akg-comparison--n3 .akg-comparison__grid { grid-template-columns: minmax(0, 1fr); } }
+[data-theme^="macos"] .akg-comparison, [data-theme^="macos"] .akg-comparison__title { font-size: 13px; line-height: 16px; }
+[data-theme^="macos"] .akg-comparison__cell { padding: 6px var(--space-8); border-radius: var(--radius-regular); }
+[data-theme^="macos"] .akg-comparison__label { font-size: 11px; line-height: 14px; }
+[data-theme^="macos"] .akg-comparison__content { font-size: 12px; line-height: 16px; }
+
+/* TimePoints — 13pt semibold capsules with tabular figures, under an optional 15pt semibold label. */
+.akg-time-points { font-family: var(--font-sans); color: var(--label); }
+.akg-time-points__label { font-size: calc(15 * var(--akg-t)); line-height: calc(20 * var(--akg-t)); font-weight: 600; }
+.akg-time-points__list { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; margin: 6px 0 0; padding: 0; }
+.akg-time-points__label + .akg-time-points__list { margin-top: 6px; }
+.akg-time-points__list:first-child { margin-top: 0; }
+.akg-time-points__chip { padding: var(--space-4) var(--space-10); border-radius: var(--radius-full); background: var(--fill-tertiary); font-size: calc(13 * var(--akg-t)); line-height: calc(16 * var(--akg-t)); font-weight: 600; font-variant-numeric: tabular-nums; white-space: nowrap; }
+[data-theme^="macos"] .akg-time-points__label { font-size: 13px; line-height: 16px; }
+[data-theme^="macos"] .akg-time-points__chip { padding: 2px var(--space-8); font-size: 11px; line-height: 14px; }
+
+/* TimerCapsule — glass capsule, red dot, 18pt bold tabular time in system red (darkened slightly in light mode for 4.5:1).
+   variant="accessory": the full-width 52pt glass bar for TabBar's accessory slot, with a title, subtitle and an up chevron. */
+.akg-timer {
+  display: inline-flex; align-items: center; gap: var(--space-8); margin: 0; border: 0; color: var(--glass-label); text-align: left;
+  font-family: var(--font-sans); border-radius: var(--radius-full);
+  background: var(--glass-fill); -webkit-backdrop-filter: blur(12px) saturate(180%); backdrop-filter: blur(12px) saturate(180%);
+  box-shadow: var(--shadow-glass-control), inset 0 0 0 0.5px var(--separator); -webkit-tap-highlight-color: transparent;
+}
+.akg-timer--capsule { min-height: var(--tap-target); padding: 0 var(--space-16); }
+.akg-timer--accessory { display: flex; width: 100%; min-height: var(--tab-bar-accessory-height); padding: var(--space-4) var(--space-8) var(--space-4) var(--space-16); gap: var(--space-10); box-shadow: var(--shadow-glass), inset 0 0 0 0.5px var(--separator); }
+.akg-timer--interactive { cursor: pointer; }
+.akg-timer--interactive:active { filter: brightness(0.92); }
+.akg-timer__dot { flex: none; width: 8px; height: 8px; border-radius: var(--radius-full); background: var(--system-red); }
+.akg-timer--accessory .akg-timer__dot { width: 10px; height: 10px; }
+.akg-timer--paused .akg-timer__dot { background: transparent; box-shadow: inset 0 0 0 2px var(--system-red); }
+.akg-timer__time { font-size: calc(18 * var(--akg-t)); line-height: calc(22 * var(--akg-t)); font-weight: 700; font-variant-numeric: tabular-nums; color: color-mix(in srgb, var(--system-red) 82%, var(--label)); white-space: nowrap; }
+[data-theme$="dark"] .akg-timer__time { color: var(--system-red); }
+.akg-timer__text { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.akg-timer__title { font-size: calc(15 * var(--akg-t)); line-height: calc(20 * var(--akg-t)); font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.akg-timer__subtitle { font-size: calc(12 * var(--akg-t)); line-height: calc(16 * var(--akg-t)); color: var(--glass-label-secondary); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.akg-timer__chevron { color: var(--glass-label-secondary); font-size: calc(15 * var(--akg-t)); margin-right: var(--space-8); }
+[data-theme^="macos"] .akg-timer--capsule { min-height: var(--control-macos-large); padding: 0 var(--space-10); gap: 6px; }
+[data-theme^="macos"] .akg-timer--accessory { min-height: 36px; }
+[data-theme^="macos"] .akg-timer__time { font-size: 13px; line-height: 16px; }
+[data-theme^="macos"] .akg-timer__title { font-size: 13px; line-height: 16px; }
+[data-theme^="macos"] .akg-timer__subtitle { font-size: 11px; line-height: 14px; }
+[data-theme^="macos"] .akg-timer__chevron { font-size: 12px; margin-right: 0; }
+[data-theme^="macos"] .akg-timer__dot { width: 6px; height: 6px; }
+@media (prefers-reduced-transparency: reduce) { .akg-timer { background: var(--background-elevated); -webkit-backdrop-filter: none; backdrop-filter: none; } }
+
+/* Inline link — accent text that dims behind a soft gray highlight while pressed (like system text links). Works on <a> and <button>. */
+.akg-link {
+  color: var(--accent-text); text-decoration: none; cursor: pointer; border-radius: 4px;
+  -webkit-box-decoration-break: clone; box-decoration-break: clone; -webkit-tap-highlight-color: transparent;
+}
+button.akg-link { margin: 0; padding: 0; border: 0; background: none; font: inherit; text-align: inherit; }
+.akg-link:active { background: var(--fill-tertiary); box-shadow: 0 0 0 2px var(--fill-tertiary); }

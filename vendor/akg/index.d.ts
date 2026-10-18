@@ -401,6 +401,8 @@ export interface ListRowProps extends Omit<React.LiHTMLAttributes<HTMLLIElement>
   subtitle?: React.ReactNode;
   /** Leading symbol (inline SVG or glyph), drawn in the accent color on iOS and secondary label color on macOS. */
   icon?: React.ReactNode;
+  /** Draw the icon white on a tinted rounded square (Settings style). Any CSS color, e.g. "var(--system-teal)". */
+  iconTint?: string;
   /** Trailing value text in the secondary label color, e.g. "On", "Home Wi-Fi". */
   detail?: React.ReactNode;
   /** Show a trailing disclosure chevron (the row opens another view). */
@@ -424,6 +426,15 @@ export interface ListRowProps extends Omit<React.LiHTMLAttributes<HTMLLIElement>
   children?: React.ReactNode;
 }
 export declare function ListRow(props: ListRowProps): React.ReactElement;
+
+export interface IconTileProps extends React.HTMLAttributes<HTMLSpanElement> {
+  /** Tile color, any CSS color, e.g. "var(--system-red)". Default accent. The symbol is white (on-accent). */
+  tint?: string;
+  /** The symbol (inline SVG). */
+  children?: React.ReactNode;
+}
+/** A white symbol on a 30pt tinted rounded square, like the icons in Settings. ListRow uses it for iconTint; use it in cards and grids too. */
+export declare function IconTile(props: IconTileProps): React.ReactElement;
 
 export interface GroupBoxProps extends Omit<React.HTMLAttributes<HTMLElement>, 'title'> {
   /** Optional label above the box (iOS 17pt semibold secondary; macOS 13pt bold). Also names the group for assistive tech. */
@@ -573,6 +584,10 @@ export interface TabBarProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 
   searchSelected?: boolean;
   /** Called when the search tab is pressed. */
   onSearch?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  /** A persistent full-width bar above the tabs, such as a TimerCapsule variant="accessory" (a running timer, now playing). Keep it on every screen while it applies. */
+  accessory?: React.ReactNode;
+  /** Fix the bar above the bottom of the screen with the kit's margins (tab-bar-inset), over a fade of the page background (set --akg-tab-bar-fade). Leave space at the end of pages with the scroll-margin-bottom tokens. */
+  floating?: boolean;
 }
 export declare function TabBar(props: TabBarProps): React.ReactElement;
 
@@ -708,8 +723,12 @@ export interface SheetProps extends Omit<React.HTMLAttributes<HTMLDivElement>, '
   onClose?: () => void;
   /** Shows the iOS checkmark button and the macOS Done button; called when either is pressed. */
   onDone?: () => void;
-  /** Toolbar title (iOS, centered) or heading (macOS, leading, bold). */
+  /** Toolbar title (iOS, centered) or heading (macOS, leading, bold). Keep it short ("Details", "Sources"); it wraps to two lines at most. */
   title?: React.ReactNode;
+  /** The full name at the top of the content, 22pt bold, wrapping freely (e.g. a long item name). Also the sheet's accessible name. */
+  heading?: React.ReactNode;
+  /** One line under the heading in the secondary label color. */
+  subheading?: React.ReactNode;
   /** iOS height: medium = glass, inset 8pt, about half the screen · large = opaque, nearly full height. Ignored on macOS. */
   detent?: 'medium' | 'large';
   /** iOS: the heights people can switch between, smallest first, e.g. ['medium', 'large']. Opens at the first. Dragging the bar up grows it; dragging down shrinks it, then dismisses; tapping the grabber cycles. */
@@ -880,6 +899,23 @@ export interface SourcePillProps extends React.ButtonHTMLAttributes<HTMLButtonEl
 }
 export declare function SourcePill(props: SourcePillProps): React.ReactElement;
 
+export interface SourceLineItem {
+  /** Short source name and year ("Guideline '24"). With a marker, optional words shown after the icon ("common practice"). */
+  label?: React.ReactNode;
+  /** Show the SourcePill marker icon: "verified" (green checkmark) or "practice" (stethoscope). */
+  marker?: 'verified' | 'practice';
+}
+export interface SourceLineProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  /** Sources in order; strings are names. */
+  items: Array<SourceLineItem | string>;
+  /** Leading word. Default "Source" for one item, "Sources" for more. */
+  label?: React.ReactNode;
+  /** Open a Sheet with the full citations. */
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+}
+/** One compact 12pt line per section naming its sources, as a single 44pt button that opens the citations. Put it at the bottom of the section (ContentSection footer). */
+export declare function SourceLine(props: SourceLineProps): React.ReactElement;
+
 export interface ContentSectionProps {
   /** Section heading (title case). */
   title: React.ReactNode;
@@ -901,11 +937,29 @@ export interface ContentSectionProps {
   lessLabel?: string;
   /** A node at the trailing end of a non-collapsible heading (e.g. a small Button). */
   accessory?: React.ReactNode;
+  /** plain (default): heading over the body · card: heading above a rounded card holding the body; a collapsible card heading is a 44pt button with a label-secondary chevron. */
+  variant?: 'plain' | 'card';
+  /** card: false removes the card's inner padding, for edge-to-edge content (a StepList, Table or rows). Default true. */
+  inset?: boolean;
+  /** card: a node at the bottom of the card, usually a SourceLine. */
+  footer?: React.ReactNode;
   className?: string;
   style?: React.CSSProperties;
   children?: React.ReactNode;
 }
 export declare function ContentSection(props: ContentSectionProps): React.ReactElement;
+
+export interface SectionState {
+  /** Whether a section is open; fallback when nothing is stored yet (default true). */
+  isOpen(id: string, fallback?: boolean): boolean;
+  setOpen(id: string, open: boolean): void;
+  /** Open or close several at once ("Collapse All"). */
+  setAll(ids: string[], open: boolean): void;
+  /** Forget everything stored for this scope. */
+  reset(): void;
+}
+/** Remembers which ContentSections are open, per page, on this device (localStorage, key "akg-sections:<scope>"). Without a scope it only lasts while mounted. Pass isOpen/setOpen to expanded/onExpandedChange. */
+export declare function useSectionState(scope?: string | null): SectionState;
 
 export interface SectionBarItem { id: string; label: React.ReactNode; }
 export interface SectionBarProps {
@@ -1066,6 +1120,128 @@ export interface NumberFieldProps {
 /** A labeled number entry for calculators: decimal keyboard, unit, range check. Renders a TextField row. */
 export declare function NumberField(props: NumberFieldProps): React.ReactElement;
 
+export interface StepListProps extends React.OlHTMLAttributes<HTMLOListElement> {
+  /** accent (default) or critical (system red, for urgent sequences). */
+  tint?: 'accent' | 'critical';
+  /** First number. Default 1. */
+  start?: number;
+  /** Step elements. */
+  children?: React.ReactNode;
+}
+/** Numbered steps in order, separated by hairlines that start at the text. */
+export declare function StepList(props: StepListProps): React.ReactElement;
+export interface StepProps extends Omit<React.LiHTMLAttributes<HTMLLIElement>, 'title'> {
+  /** Set by StepList from the order. */
+  number?: number;
+  /** A short line saying when the step applies ("If the value is over 6"), 15pt secondary. */
+  condition?: React.ReactNode;
+  /** A short bold name for the step. */
+  title?: React.ReactNode;
+  /** Shows a checkmark on gray instead of the number. */
+  done?: boolean;
+  /** Rings the number; marks the step people are on (aria-current="step"). */
+  current?: boolean;
+  /** Any content: ValueRows, text, Tags. */
+  children?: React.ReactNode;
+}
+export declare function Step(props: StepProps): React.ReactElement;
+
+export interface ValueRowProps extends Omit<React.HTMLAttributes<HTMLElement>, 'title'> {
+  /** Bold name ("Item name 10%"). */
+  title: React.ReactNode;
+  /** The value line, with tabular figures ("30 mL over 10 min"). */
+  value?: React.ReactNode;
+  /** Tags under the value (Tag elements). */
+  tags?: React.ReactNode;
+  /** Makes the row a button that opens detail (chevron shown). */
+  onClick?: (event: React.MouseEvent<HTMLElement>) => void;
+  /** Makes the row a link (chevron shown). */
+  href?: string;
+  /** fill (default): fill-quaternary, for plain cards · raised: background-elevated, for tinted cards. */
+  surface?: 'fill' | 'raised';
+  /** An extra 13pt secondary line under the value. */
+  children?: React.ReactNode;
+}
+/** A name over a value, with optional tags. Tappable rows are filled and show a chevron; rows without onClick/href have no fill and no chevron, so they don't look tappable. */
+export declare function ValueRow(props: ValueRowProps): React.ReactElement;
+
+export interface TagProps extends React.HTMLAttributes<HTMLSpanElement> {
+  /** neutral (gray, no icon) · info (gray, info icon) · warning (orange, triangle) · critical (red, exclamation) · accent (blue, no icon). */
+  variant?: 'neutral' | 'info' | 'warning' | 'critical' | 'accent';
+  /** small (2/8 padding, default) or regular (4/10). */
+  size?: 'small' | 'regular';
+  /** Replace the variant's icon; null removes it (don't remove it from warning or critical). */
+  icon?: React.ReactNode | null;
+  children?: React.ReactNode;
+}
+/** A 12pt capsule label. Status tags pair the tint with an icon and words, never color alone. */
+export declare function Tag(props: TagProps): React.ReactElement;
+
+export interface ScaleBarSegment {
+  /** Band name ("Mild"); shown in small caps. */
+  label: React.ReactNode;
+  /** Its range ("5.5–5.9"), tabular figures. */
+  range?: React.ReactNode;
+  /** Override the default tint: neutral, caution-low, caution, critical-low, critical. */
+  tone?: 'neutral' | 'caution-low' | 'caution' | 'critical-low' | 'critical';
+}
+export interface ScaleBarProps extends React.HTMLAttributes<HTMLDivElement> {
+  /** 2–5 bands, least to most severe. */
+  segments: ScaleBarSegment[];
+  /** Index of the band that applies now; it gets an outline and aria-current. */
+  current?: number;
+  /** A 13pt secondary line under the bands (units, what to do at each level). */
+  caption?: React.ReactNode;
+}
+/** Ordered bands tinted neutral → orange → red. They stack into rows when there isn't room for them side by side. */
+export declare function ScaleBar(props: ScaleBarProps): React.ReactElement;
+
+export interface ComparisonColumn { label: React.ReactNode; content: React.ReactNode; }
+export interface ComparisonGridProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'title'> {
+  /** What is being compared, 15pt semibold. */
+  title?: React.ReactNode;
+  /** Two or three columns. */
+  columns: ComparisonColumn[];
+}
+/** Two or three labeled cells side by side for statements that differ (by source, option or group). Stacks when narrow. */
+export declare function ComparisonGrid(props: ComparisonGridProps): React.ReactElement;
+
+export interface TimePointsProps extends React.HTMLAttributes<HTMLDivElement> {
+  /** What happens at these times ("Recheck"). */
+  label?: React.ReactNode;
+  /** Times, short ("1 h", "24 h"). */
+  items: React.ReactNode[];
+}
+/** A row of small time chips. Not interactive. */
+export declare function TimePoints(props: TimePointsProps): React.ReactElement;
+
+export interface TimerCapsuleProps extends Omit<React.HTMLAttributes<HTMLElement>, 'title'> {
+  /** When timing began (Date or ms timestamp); the capsule ticks every second. */
+  start?: Date | number;
+  /** Seconds to show instead (controlled). */
+  elapsed?: number;
+  /** false pauses ticking and shows a hollow dot. Default true. */
+  running?: boolean;
+  /** capsule (default): 44pt glass capsule · accessory: full-width 52pt glass bar for TabBar's accessory slot. */
+  variant?: 'capsule' | 'accessory';
+  /** accessory: what is being timed. */
+  title?: React.ReactNode;
+  /** accessory: a second line ("Step 2 of 4"). */
+  subtitle?: React.ReactNode;
+  /** Spoken before the time. Default "Elapsed time". */
+  label?: string;
+  /** Makes it a button (the accessory shows an up chevron): return to the timed screen. */
+  onClick?: (event: React.MouseEvent<HTMLElement>) => void;
+}
+/** Elapsed time with a red dot, in tabular figures. VoiceOver reads it as words ("6 minutes 32 seconds"). */
+export declare function TimerCapsule(props: TimerCapsuleProps): React.ReactElement;
+/** Seconds since start, updated every second while running. */
+export declare function useElapsed(start?: Date | number | null, running?: boolean): number;
+/** "06:32", or "1:02:05" past an hour. */
+export declare function formatElapsed(seconds: number): string;
+/** "6 minutes 32 seconds". */
+export declare function speakElapsed(seconds: number): string;
+
 /** True once ref's element has scrolled up under the top bar (offset, default 60px). Pair with Toolbar showTitle. */
 export declare function useScrolledPast(ref: React.RefObject<Element | null>, offset?: number): boolean;
 /** Locks page scrolling; returns the function that unlocks it. */
@@ -1073,4 +1249,4 @@ export declare function lockScroll(): () => void;
 /** Calls fn on Escape anywhere in the document while active. */
 export declare function useEscape(active: boolean, fn: (e: KeyboardEvent) => void): void;
 
-declare global { interface Window { AKG: { Button: typeof Button; Toggle: typeof Toggle; Checkbox: typeof Checkbox; RadioGroup: typeof RadioGroup; Radio: typeof Radio; SegmentedControl: typeof SegmentedControl; PopUpButton: typeof PopUpButton; Stepper: typeof Stepper; TextField: typeof TextField; SearchField: typeof SearchField; ComboBox: typeof ComboBox; Slider: typeof Slider; DatePicker: typeof DatePicker; ColorWell: typeof ColorWell; List: typeof List; ListRow: typeof ListRow; GroupBox: typeof GroupBox; DisclosureGroup: typeof DisclosureGroup; DisclosureButton: typeof DisclosureButton; ProgressIndicator: typeof ProgressIndicator; EmptyState: typeof EmptyState; Notification: typeof Notification; Tooltip: typeof Tooltip; TabBar: typeof TabBar; Toolbar: typeof Toolbar; ToolbarGroup: typeof ToolbarGroup; ToolbarButton: typeof ToolbarButton; Sidebar: typeof Sidebar; SidebarSection: typeof SidebarSection; SidebarItem: typeof SidebarItem; PageControl: typeof PageControl; Window: typeof Window; Sheet: typeof Sheet; Alert: typeof Alert; ActionSheet: typeof ActionSheet; Menu: typeof Menu; MenuItem: typeof MenuItem; MenuSeparator: typeof MenuSeparator; MenuSection: typeof MenuSection; Popover: typeof Popover; Callout: typeof Callout; SourcePill: typeof SourcePill; ContentSection: typeof ContentSection; SectionBar: typeof SectionBar; Flowchart: typeof Flowchart; TappableValue: typeof TappableValue; Table: typeof Table; Figure: typeof Figure; Banner: typeof Banner; BottomBar: typeof BottomBar; Highlight: typeof Highlight; ShareButton: typeof ShareButton; NumberField: typeof NumberField; useScrolledPast: typeof useScrolledPast; lockScroll: typeof lockScroll; useEscape: typeof useEscape; cx(...c: any[]): string; platform(el?: Element): 'ios' | 'macos' } } }
+declare global { interface Window { AKG: { Button: typeof Button; Toggle: typeof Toggle; Checkbox: typeof Checkbox; RadioGroup: typeof RadioGroup; Radio: typeof Radio; SegmentedControl: typeof SegmentedControl; PopUpButton: typeof PopUpButton; Stepper: typeof Stepper; TextField: typeof TextField; SearchField: typeof SearchField; ComboBox: typeof ComboBox; Slider: typeof Slider; DatePicker: typeof DatePicker; ColorWell: typeof ColorWell; List: typeof List; ListRow: typeof ListRow; GroupBox: typeof GroupBox; DisclosureGroup: typeof DisclosureGroup; DisclosureButton: typeof DisclosureButton; ProgressIndicator: typeof ProgressIndicator; EmptyState: typeof EmptyState; Notification: typeof Notification; Tooltip: typeof Tooltip; TabBar: typeof TabBar; Toolbar: typeof Toolbar; ToolbarGroup: typeof ToolbarGroup; ToolbarButton: typeof ToolbarButton; Sidebar: typeof Sidebar; SidebarSection: typeof SidebarSection; SidebarItem: typeof SidebarItem; PageControl: typeof PageControl; Window: typeof Window; Sheet: typeof Sheet; Alert: typeof Alert; ActionSheet: typeof ActionSheet; Menu: typeof Menu; MenuItem: typeof MenuItem; MenuSeparator: typeof MenuSeparator; MenuSection: typeof MenuSection; Popover: typeof Popover; Callout: typeof Callout; SourcePill: typeof SourcePill; ContentSection: typeof ContentSection; SectionBar: typeof SectionBar; Flowchart: typeof Flowchart; TappableValue: typeof TappableValue; Table: typeof Table; Figure: typeof Figure; Banner: typeof Banner; BottomBar: typeof BottomBar; Highlight: typeof Highlight; ShareButton: typeof ShareButton; NumberField: typeof NumberField; IconTile: typeof IconTile; SourceLine: typeof SourceLine; StepList: typeof StepList; Step: typeof Step; ValueRow: typeof ValueRow; Tag: typeof Tag; ScaleBar: typeof ScaleBar; ComparisonGrid: typeof ComparisonGrid; TimePoints: typeof TimePoints; TimerCapsule: typeof TimerCapsule; useSectionState: typeof useSectionState; useElapsed: typeof useElapsed; formatElapsed: typeof formatElapsed; speakElapsed: typeof speakElapsed; useScrolledPast: typeof useScrolledPast; lockScroll: typeof lockScroll; useEscape: typeof useEscape; cx(...c: any[]): string; platform(el?: Element): 'ios' | 'macos' } } }

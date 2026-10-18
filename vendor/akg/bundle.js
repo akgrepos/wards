@@ -1,4 +1,4 @@
-/* @ds-bundle: {"format":4,"namespace":"AKG","components":[{"name":"Button"},{"name":"Toggle"},{"name":"Checkbox"},{"name":"RadioGroup"},{"name":"SegmentedControl"},{"name":"PopUpButton"},{"name":"Stepper"},{"name":"TextField"},{"name":"SearchField"},{"name":"ComboBox"},{"name":"Slider"},{"name":"DatePicker"},{"name":"ColorWell"},{"name":"List"},{"name":"GroupBox"},{"name":"DisclosureGroup"},{"name":"ProgressIndicator"},{"name":"EmptyState"},{"name":"Notification"},{"name":"Tooltip"},{"name":"TabBar"},{"name":"Toolbar"},{"name":"Sidebar"},{"name":"PageControl"},{"name":"Window"},{"name":"Sheet"},{"name":"Alert"},{"name":"ActionSheet"},{"name":"Menu"},{"name":"Popover"},{"name":"Callout"},{"name":"SourcePill"},{"name":"ContentSection"},{"name":"Flowchart"},{"name":"TappableValue"},{"name":"Table"},{"name":"Figure"},{"name":"Banner"},{"name":"BottomBar"},{"name":"Highlight"},{"name":"ShareButton"},{"name":"NumberField"}]} */
+/* @ds-bundle: {"format":4,"namespace":"AKG","components":[{"name":"Button"},{"name":"Toggle"},{"name":"Checkbox"},{"name":"RadioGroup"},{"name":"SegmentedControl"},{"name":"PopUpButton"},{"name":"Stepper"},{"name":"TextField"},{"name":"SearchField"},{"name":"ComboBox"},{"name":"Slider"},{"name":"DatePicker"},{"name":"ColorWell"},{"name":"List"},{"name":"GroupBox"},{"name":"DisclosureGroup"},{"name":"ProgressIndicator"},{"name":"EmptyState"},{"name":"Notification"},{"name":"Tooltip"},{"name":"TabBar"},{"name":"Toolbar"},{"name":"Sidebar"},{"name":"PageControl"},{"name":"Window"},{"name":"Sheet"},{"name":"Alert"},{"name":"ActionSheet"},{"name":"Menu"},{"name":"Popover"},{"name":"Callout"},{"name":"SourcePill"},{"name":"ContentSection"},{"name":"Flowchart"},{"name":"TappableValue"},{"name":"Table"},{"name":"Figure"},{"name":"Banner"},{"name":"BottomBar"},{"name":"Highlight"},{"name":"ShareButton"},{"name":"NumberField"},{"name":"SourceLine"},{"name":"StepList"},{"name":"ValueRow"},{"name":"Tag"},{"name":"ScaleBar"},{"name":"ComparisonGrid"},{"name":"TimePoints"},{"name":"TimerCapsule"}]} */
 /* Shared helpers — used by every AKG component. */
 (function (AKG) {
   // Join class names, skipping falsy values.
@@ -1179,6 +1179,15 @@
   var chevron = h("svg", { viewBox: "0 0 9 16", fill: "none", stroke: "currentColor", strokeWidth: 2.2, strokeLinecap: "round", strokeLinejoin: "round" }, h("path", { d: "M1.6 1.6 7.4 8l-5.8 6.4" }));
   var check = h("svg", { viewBox: "0 0 16 16", fill: "none", stroke: "currentColor", strokeWidth: 2.2, strokeLinecap: "round", strokeLinejoin: "round" }, h("path", { d: "M2 8.6 6.2 13 14 3" }));
 
+  // A white symbol on a tinted rounded square, like the icons in Settings. tint: any color, e.g. "var(--system-red)".
+  function IconTile(props) {
+    var rest = omit(props, ["tint", "className", "style", "children"]);
+    rest.className = AKG.cx("akg-icon-tile", props.className);
+    rest.style = Object.assign({ "--akg-icon-tile-tint": props.tint || "var(--accent)" }, props.style);
+    rest["aria-hidden"] = rest["aria-hidden"] || "true";
+    return h("span", rest, h("span", { className: "akg-sym" }, props.children));
+  }
+
   function List(props) {
     var headerStyle = props.headerStyle || "default";
     var rest = omit(props, ["header", "headerStyle", "headerAction", "footer", "className", "children"]);
@@ -1197,7 +1206,7 @@
 
   function ListRow(props) {
     var interactive = !!(props.onClick || props.href);
-    var rest = omit(props, ["title", "subtitle", "icon", "detail", "chevron", "checked", "accessory", "toggle", "action", "destructive", "disabled", "onClick", "href", "className", "children"]);
+    var rest = omit(props, ["title", "subtitle", "icon", "iconTint", "detail", "chevron", "checked", "accessory", "toggle", "action", "destructive", "disabled", "onClick", "href", "className", "children"]);
     rest.className = AKG.cx(
       "akg-list-row",
       props.subtitle != null && "akg-list-row--tall",
@@ -1225,7 +1234,10 @@
       props.subtitle != null ? h("span", { className: "akg-list-row__subtitle" }, props.subtitle) : null
     );
     var inner = [
-      props.icon != null ? h("span", { key: "i", className: "akg-sym akg-list-row__icon", "aria-hidden": "true" }, props.icon) : null,
+      props.icon != null
+        ? (props.iconTint ? h(IconTile, { key: "i", tint: props.iconTint, className: "akg-list-row__tile" }, props.icon)
+          : h("span", { key: "i", className: "akg-sym akg-list-row__icon", "aria-hidden": "true" }, props.icon))
+        : null,
       h("span", { key: "b", className: "akg-list-row__body" },
         text,
         trailing.length ? h("span", { className: "akg-list-row__trailing" }, trailing) : null)
@@ -1244,6 +1256,7 @@
 
   AKG.List = List;
   AKG.ListRow = ListRow;
+  AKG.IconTile = IconTile;
 })(window.AKG = window.AKG || {});
 
 /* GroupBox */
@@ -1537,12 +1550,14 @@
       if (props.onChange) props.onChange(v);
     }
     var rest = {};
-    for (var k in props) if (["items", "value", "defaultValue", "onChange", "search", "searchLabel", "searchSelected", "onSearch", "className", "aria-label"].indexOf(k) < 0) rest[k] = props[k];
+    for (var k in props) if (["items", "value", "defaultValue", "onChange", "search", "searchLabel", "searchSelected", "onSearch", "accessory", "floating", "className", "aria-label"].indexOf(k) < 0) rest[k] = props[k];
     var n = Math.min(Math.max(items.length, 1), 5);
     rest.className = AKG.cx(
       "akg-tab-bar",
       props.search && "akg-tab-bar--search",
       "akg-tab-bar--n" + n,
+      props.floating && "akg-tab-bar--floating",
+      props.accessory != null && "akg-tab-bar--with-accessory",
       props.className
     );
     var tabs = items.map(function (it) {
@@ -1558,6 +1573,8 @@
       );
     });
     return h("div", rest,
+      // Accessory: a persistent bar above the tabs (a running timer, now playing). Spans the full width.
+      props.accessory != null ? h("div", { className: "akg-tab-bar__accessory" }, props.accessory) : null,
       h("div", { className: "akg-tab-bar__tabs", role: "tablist", "aria-label": props["aria-label"] || "Tabs" }, tabs),
       props.search ? h("button", {
         type: "button", "aria-label": props.searchLabel || "Search", title: props.searchLabel || "Search",
@@ -1852,7 +1869,7 @@
   var R = window.React, h = R.createElement;
   var xmark = h("svg", { viewBox: "0 0 20 20", fill: "none", stroke: "currentColor", strokeWidth: 2.2, strokeLinecap: "round" }, h("path", { d: "M5 5l10 10M15 5L5 15" }));
   var check = h("svg", { viewBox: "0 0 20 20", fill: "none", stroke: "currentColor", strokeWidth: 2.4, strokeLinecap: "round", strokeLinejoin: "round" }, h("path", { d: "M4 10.5l4 4 8-9" }));
-  var OWN = ["open", "defaultOpen", "onClose", "onDone", "title", "detent", "detents", "fixed", "doneLabel", "cancelLabel", "dim", "className", "children"];
+  var OWN = ["open", "defaultOpen", "onClose", "onDone", "title", "heading", "subheading", "detent", "detents", "fixed", "doneLabel", "cancelLabel", "dim", "className", "children"];
   var LEAVE_MS = 220;
 
   // Locks page scrolling while a full-screen overlay is open (counted, so nested overlays restore correctly).
@@ -1926,7 +1943,8 @@
     rest.className = AKG.cx("akg-sheet__panel", "akg-sheet__panel--" + detent, props.className);
     rest.role = rest.role || "dialog";
     rest["aria-modal"] = "true";
-    if (props.title && !rest["aria-label"]) rest["aria-label"] = typeof props.title === "string" ? props.title : undefined;
+    var named = props.heading != null ? props.heading : props.title;
+    if (named && !rest["aria-label"]) rest["aria-label"] = typeof named === "string" ? named : undefined;
     var doneLabel = props.doneLabel || "Done", cancelLabel = props.cancelLabel || "Cancel";
 
     return h("div", { className: AKG.cx("akg-sheet", props.fixed && "akg-sheet--fixed", props.dim === false && "akg-sheet--no-dim", leaving && "akg-sheet--leaving") },
@@ -1941,7 +1959,12 @@
           h("div", { className: "akg-sheet__title" }, props.title),
           props.onDone ? h("button", { type: "button", className: "akg-sheet__circle akg-sheet__circle--done", "aria-label": doneLabel, onClick: done }, h("span", { className: "akg-sym" }, check)) : h("span", { className: "akg-sheet__spacer" })
         ),
-        h("div", { className: "akg-sheet__content" }, props.children),
+        h("div", { className: "akg-sheet__content" },
+          // A long name goes here, where it can wrap; the bar keeps a short title ("Details", "Sources").
+          props.heading != null ? h("div", { className: "akg-sheet__heading" },
+            h("h2", { className: "akg-sheet__heading-title" }, props.heading),
+            props.subheading != null ? h("p", { className: "akg-sheet__heading-sub" }, props.subheading) : null) : null,
+          props.children),
         // macOS: footer buttons
         h("div", { className: "akg-sheet__footer" },
           h(AKG.Button, { variant: "bordered", onClick: close }, cancelLabel),
@@ -2253,6 +2276,38 @@
     return h("button", rest, label, props.more ? h("span", { className: "akg-source-pill__more" }, "+" + props.more) : null);
   }
   AKG.SourcePill = SourcePill;
+
+  // One compact line per section naming its sources: "Sources  Guideline '24 · Study '19". The whole line is one button
+  // (at least 44pt tall) that opens a Sheet with the full citations. Items are source names or markers.
+  function SourceLine(props) {
+    var items = props.items || [];
+    var rest = {};
+    for (var k in props) if (["items", "label", "className"].indexOf(k) < 0) rest[k] = props[k];
+    rest.type = "button";
+    rest.className = AKG.cx("akg-source-line", props.className);
+    var spoken = [];
+    var parts = [];
+    items.forEach(function (it, i) {
+      var o = typeof it === "string" ? { label: it } : it;
+      if (i) parts.push(h("span", { key: "s" + i, className: "akg-source-line__sep", "aria-hidden": "true" }, "·"));
+      var m = o.marker && MARKERS[o.marker];
+      if (m) {
+        parts.push(h("span", { key: i, className: AKG.cx("akg-source-line__marker", "akg-source-line__marker--" + o.marker) },
+          h("span", { className: "akg-sym", "aria-hidden": "true" }, m.glyph),
+          o.label != null ? h("span", { className: "akg-source-line__marker-label" }, o.label) : null));
+        spoken.push(typeof o.label === "string" ? o.label : m.label);
+      } else {
+        parts.push(h("span", { key: i, className: "akg-source-line__name" }, o.label));
+        if (typeof o.label === "string") spoken.push(o.label);
+      }
+    });
+    var label = props.label != null ? props.label : (items.length === 1 ? "Source" : "Sources");
+    if (!rest["aria-label"]) rest["aria-label"] = (typeof label === "string" ? label : "Sources") + ": " + spoken.join(", ");
+    return h("button", rest,
+      h("span", { className: "akg-source-line__label" }, label),
+      h("span", { className: "akg-source-line__items" }, parts));
+  }
+  AKG.SourceLine = SourceLine;
 })(window.AKG = window.AKG || {});
 
 /* ContentSection + SectionBar */
@@ -2264,33 +2319,67 @@
   function lessFor(label) { return typeof label === "string" && /^Show /.test(label) ? label.replace(/^Show /, "Hide ") : "Show Less"; }
 
   // A titled block of reading content. collapsible + summary = shows one line until opened. more = an extra "More" expander for detail.
+  // variant="card": the title sits above a rounded card that holds the body (and an optional footer, such as a SourceLine).
   function ContentSection(props) {
     var React = window.React;
     var st = React.useState(props.defaultExpanded !== undefined ? !!props.defaultExpanded : !props.collapsible);
     var controlled = props.expanded !== undefined;
     var open = controlled ? !!props.expanded : st[0];
     var more = React.useState(false);
+    var card = props.variant === "card";
     function toggle() {
       if (!controlled) st[1](!open);
       if (props.onExpandedChange) props.onExpandedChange(!open);
     }
+    var bodyId = props.id ? props.id + "-body" : undefined;
     var title = props.collapsible
-      ? h("button", { type: "button", className: "akg-content-section__header akg-content-section__header--button", "aria-expanded": open, onClick: toggle },
-          h("span", { className: "akg-content-section__title" }, props.title),
-          h("span", { className: AKG.cx("akg-sym akg-content-section__chevron", open && "akg-content-section__chevron--open"), "aria-hidden": "true" }, chevron))
+      ? h(card ? "h2" : React.Fragment, card ? { className: "akg-content-section__heading" } : null,
+          h("button", { type: "button", className: "akg-content-section__header akg-content-section__header--button", "aria-expanded": open, "aria-controls": bodyId, onClick: toggle },
+            h("span", { className: "akg-content-section__title" }, props.title),
+            h("span", { className: AKG.cx("akg-sym akg-content-section__chevron", open && "akg-content-section__chevron--open"), "aria-hidden": "true" }, chevron)))
       : h("div", { className: "akg-content-section__header" }, h("h2", { className: "akg-content-section__title" }, props.title), props.accessory || null);
-    return h("section", { id: props.id, className: AKG.cx("akg-content-section", props.className), style: props.style },
-      title,
-      !open && props.summary ? h("p", { className: "akg-content-section__summary" }, props.summary) : null,
-      // Collapsed content stays mounted (hidden), so anything inside keeps its state, such as a flowchart's answers.
-      h("div", { className: "akg-content-section__body", hidden: !open }, props.children),
-      props.more ? h("div", { className: "akg-content-section__more", hidden: !open },
+    var moreBlock = props.more ? h("div", { className: "akg-content-section__more", hidden: !open },
         h("button", { type: "button", className: "akg-content-section__more-button", "aria-expanded": more[0], onClick: function () { more[1](!more[0]); } },
           more[0] ? (props.lessLabel || lessFor(props.moreLabel)) : (props.moreLabel || "Show More Detail"),
           h("span", { className: AKG.cx("akg-sym akg-content-section__chevron", more[0] && "akg-content-section__chevron--down-open"), "aria-hidden": "true" }, chevron)),
-        h("div", { className: "akg-content-section__more-body", hidden: !more[0] }, props.more)) : null
+        h("div", { className: "akg-content-section__more-body", hidden: !more[0] }, props.more)) : null;
+    var summary = !open && props.summary ? h("p", { className: "akg-content-section__summary" }, props.summary) : null;
+    // Collapsed content stays mounted (hidden), so anything inside keeps its state, such as a flowchart's answers.
+    var body = h("div", { id: bodyId, className: "akg-content-section__body", hidden: !open }, props.children);
+    return h("section", { id: props.id, className: AKG.cx("akg-content-section", card && "akg-content-section--card", props.className), style: props.style },
+      title,
+      card
+        ? h(React.Fragment, null,
+            summary ? h("div", { className: "akg-content-section__card akg-content-section__card--summary" }, summary) : null,
+            h("div", { className: AKG.cx("akg-content-section__card", props.inset === false && "akg-content-section__card--flush"), hidden: !open },
+              body, moreBlock,
+              props.footer != null ? h("div", { className: "akg-content-section__footer" }, props.footer) : null))
+        : h(React.Fragment, null, summary, body, moreBlock)
     );
   }
+
+  // Remembers which sections are open, per page (scope), on this device. Without a scope it only lasts while the page is shown.
+  // const s = AKG.useSectionState("topic:anemia"); <ContentSection expanded={s.isOpen("causes", true)} onExpandedChange={(o) => s.setOpen("causes", o)} />
+  AKG.useSectionState = function (scope) {
+    var React = window.React;
+    var key = scope ? "akg-sections:" + scope : null;
+    var read = function () {
+      if (!key) return {};
+      try { return JSON.parse(window.localStorage.getItem(key) || "{}") || {}; } catch (e) { return {}; }
+    };
+    var st = React.useState(read), map = st[0], setMap = st[1];
+    React.useEffect(function () { setMap(read()); }, [key]);
+    var save = function (next) {
+      setMap(next);
+      if (key) try { window.localStorage.setItem(key, JSON.stringify(next)); } catch (e) { /* storage full or blocked: keep it in memory */ }
+    };
+    return {
+      isOpen: function (id, fallback) { return map[id] !== undefined ? !!map[id] : fallback !== undefined ? !!fallback : true; },
+      setOpen: function (id, open) { var next = Object.assign({}, map); next[id] = !!open; save(next); },
+      setAll: function (ids, open) { var next = Object.assign({}, map); ids.forEach(function (id) { next[id] = !!open; }); save(next); },
+      reset: function () { save({}); if (key) try { window.localStorage.removeItem(key); } catch (e) {} }
+    };
+  };
 
   // A horizontal row of capsules that jump to sections on the page.
   function SectionBar(props) {
@@ -2620,4 +2709,209 @@
     });
   }
   AKG.NumberField = NumberField;
+})(window.AKG = window.AKG || {});
+
+/* StepList + Step — numbered steps, each with an optional short condition line and any content. */
+(function (AKG) {
+  var R = window.React, h = R.createElement;
+  var check = h("svg", { viewBox: "0 0 20 20", fill: "none", stroke: "currentColor", strokeWidth: 3, strokeLinecap: "round", strokeLinejoin: "round" }, h("path", { d: "M4.5 10.5 8 14l7.5-8" }));
+  function omit(props, keys) { var r = {}; for (var k in props) if (keys.indexOf(k) < 0) r[k] = props[k]; return r; }
+
+  // tint: accent (default) or critical (system red, for urgent sequences). Numbers come from the order of the steps.
+  function StepList(props) {
+    var rest = omit(props, ["tint", "start", "className", "children"]);
+    rest.className = AKG.cx("akg-step-list", "akg-step-list--" + (props.tint || "accent"), props.className);
+    var n = props.start != null ? props.start : 1, i = 0;
+    return h("ol", rest, R.Children.map(props.children, function (child) {
+      if (!R.isValidElement(child)) return child;
+      var num = n + i++;
+      return child.props.number != null ? child : R.cloneElement(child, { number: num });
+    }));
+  }
+
+  // done: the number becomes a checkmark on gray. current: the step being worked on gets a ring.
+  function Step(props) {
+    var rest = omit(props, ["number", "title", "condition", "done", "current", "className", "children"]);
+    rest.className = AKG.cx("akg-step", props.done && "akg-step--done", props.current && "akg-step--current", props.className);
+    if (props.current) rest["aria-current"] = "step";
+    return h("li", rest,
+      h("span", { className: "akg-step__marker", "aria-hidden": props.done ? undefined : "true" },
+        props.done ? h("span", { className: "akg-sym", role: "img", "aria-label": "Done" }, check) : props.number),
+      h("div", { className: "akg-step__body" },
+        props.condition != null ? h("p", { className: "akg-step__condition" }, props.condition) : null,
+        props.title != null ? h("div", { className: "akg-step__title" }, props.title) : null,
+        props.children != null ? h("div", { className: "akg-step__content" }, props.children) : null));
+  }
+  AKG.StepList = StepList;
+  AKG.Step = Step;
+})(window.AKG = window.AKG || {});
+
+/* Tag — a small capsule label. Status tags pair their color with an icon, never color alone. */
+(function (AKG) {
+  var h = window.React.createElement;
+  var ICONS = {
+    info: "M10 2.5a7.5 7.5 0 1 0 0 15a7.5 7.5 0 0 0 0-15zM10 9v5M10 6.2v.01",
+    warning: "M10 3 2 17h16zM10 8v4M10 14.5v.01",
+    critical: "M10 2.5a7.5 7.5 0 1 0 0 15a7.5 7.5 0 0 0 0-15zM10 6v5M10 13.8v.01"
+  };
+  function Tag(props) {
+    var variant = props.variant || "neutral";
+    var rest = {};
+    for (var k in props) if (["variant", "size", "icon", "className", "children"].indexOf(k) < 0) rest[k] = props[k];
+    rest.className = AKG.cx("akg-tag", "akg-tag--" + variant, "akg-tag--" + (props.size || "small"), props.className);
+    var icon = props.icon !== undefined ? props.icon
+      : ICONS[variant] ? h("svg", { viewBox: "0 0 20 20", fill: "none", stroke: "currentColor", strokeWidth: 2.2, strokeLinecap: "round", strokeLinejoin: "round" }, h("path", { d: ICONS[variant] })) : null;
+    return h("span", rest,
+      icon ? h("span", { className: "akg-sym akg-tag__icon", "aria-hidden": "true" }, icon) : null,
+      h("span", { className: "akg-tag__label" }, props.children));
+  }
+  AKG.Tag = Tag;
+})(window.AKG = window.AKG || {});
+
+/* ValueRow — a bold name over a value (numbers line up), with optional tags. Tappable rows show a chevron and open detail. */
+(function (AKG) {
+  var h = window.React.createElement;
+  var chevron = h("svg", { viewBox: "0 0 9 16", fill: "none", stroke: "currentColor", strokeWidth: 2.2, strokeLinecap: "round", strokeLinejoin: "round" }, h("path", { d: "M1.6 1.6 7.4 8l-5.8 6.4" }));
+  function ValueRow(props) {
+    var interactive = !!(props.onClick || props.href);
+    var rest = {};
+    for (var k in props) if (["title", "value", "tags", "surface", "className", "children"].indexOf(k) < 0) rest[k] = props[k];
+    rest.className = AKG.cx("akg-value-row", interactive ? "akg-value-row--interactive" : "akg-value-row--static",
+      props.surface === "raised" && "akg-value-row--raised", props.className);
+    var tag = "div";
+    if (interactive) {
+      if (props.href) tag = "a";
+      else { tag = "button"; rest.type = rest.type || "button"; }
+    }
+    return h(tag, rest,
+      h("span", { className: "akg-value-row__text" },
+        h("span", { className: "akg-value-row__title" }, props.title),
+        props.value != null ? h("span", { className: "akg-value-row__value" }, props.value) : null,
+        props.children != null ? h("span", { className: "akg-value-row__extra" }, props.children) : null,
+        props.tags != null ? h("span", { className: "akg-value-row__tags" }, props.tags) : null),
+      interactive ? h("span", { className: "akg-sym akg-value-row__chevron", "aria-hidden": "true" }, chevron) : null);
+  }
+  AKG.ValueRow = ValueRow;
+})(window.AKG = window.AKG || {});
+
+/* ScaleBar — 2 to 5 ordered bands (mild → severe), each a label and a range, tinted neutral → orange → red. */
+(function (AKG) {
+  var h = window.React.createElement;
+  // Default tones by number of bands. The labels and the order carry the meaning; the tint only reinforces it.
+  var RAMP = {
+    1: ["neutral"],
+    2: ["neutral", "critical"],
+    3: ["neutral", "caution", "critical"],
+    4: ["neutral", "caution-low", "caution", "critical"],
+    5: ["neutral", "caution-low", "caution", "critical-low", "critical"]
+  };
+  function ScaleBar(props) {
+    var segs = (props.segments || []).slice(0, 5);
+    var tones = RAMP[Math.max(segs.length, 1)];
+    var rest = {};
+    for (var k in props) if (["segments", "current", "caption", "className"].indexOf(k) < 0) rest[k] = props[k];
+    rest.className = AKG.cx("akg-scale-bar", "akg-scale-bar--n" + segs.length, props.className);
+    return h("div", rest,
+      h("ol", { className: "akg-scale-bar__bands" }, segs.map(function (s, i) {
+        var on = props.current === i;
+        return h("li", { key: i, className: AKG.cx("akg-scale-bar__band", "akg-scale-bar__band--" + (s.tone || tones[i]), on && "akg-scale-bar__band--current"), "aria-current": on ? "true" : undefined },
+          h("span", { className: "akg-scale-bar__label" }, s.label),
+          s.range != null ? h("span", { className: "akg-scale-bar__range" }, s.range) : null);
+      })),
+      props.caption != null ? h("p", { className: "akg-scale-bar__caption" }, props.caption) : null);
+  }
+  AKG.ScaleBar = ScaleBar;
+})(window.AKG = window.AKG || {});
+
+/* ComparisonGrid — two or three labeled columns side by side, for statements that differ by source, option or group. */
+(function (AKG) {
+  var h = window.React.createElement;
+  function ComparisonGrid(props) {
+    var cols = (props.columns || []).slice(0, 3);
+    var rest = {};
+    for (var k in props) if (["title", "columns", "className"].indexOf(k) < 0) rest[k] = props[k];
+    rest.className = AKG.cx("akg-comparison", "akg-comparison--n" + cols.length, props.className);
+    return h("div", rest,
+      props.title != null ? h("div", { className: "akg-comparison__title" }, props.title) : null,
+      h("div", { className: "akg-comparison__grid", role: "list" }, cols.map(function (c, i) {
+        return h("div", { key: i, className: "akg-comparison__cell", role: "listitem" },
+          h("div", { className: "akg-comparison__label" }, c.label),
+          h("div", { className: "akg-comparison__content" }, c.content));
+      })));
+  }
+  AKG.ComparisonGrid = ComparisonGrid;
+})(window.AKG = window.AKG || {});
+
+/* TimePoints — a row of small time chips ("1 h", "2 h", "6 h"), such as when to recheck something. */
+(function (AKG) {
+  var h = window.React.createElement;
+  function TimePoints(props) {
+    var rest = {};
+    for (var k in props) if (["items", "label", "className"].indexOf(k) < 0) rest[k] = props[k];
+    rest.className = AKG.cx("akg-time-points", props.className);
+    return h("div", rest,
+      props.label != null ? h("div", { className: "akg-time-points__label" }, props.label) : null,
+      h("ul", { className: "akg-time-points__list", "aria-label": typeof props.label === "string" ? props.label : undefined },
+        (props.items || []).map(function (t, i) { return h("li", { key: i, className: "akg-time-points__chip" }, t); })));
+  }
+  AKG.TimePoints = TimePoints;
+})(window.AKG = window.AKG || {});
+
+/* TimerCapsule — elapsed time in a glass capsule with a red dot; variant="accessory" is the full-width bar for TabBar's accessory slot. */
+(function (AKG) {
+  var R = window.React, h = R.createElement;
+  var up = h("svg", { viewBox: "0 0 20 20", fill: "none", stroke: "currentColor", strokeWidth: 2.2, strokeLinecap: "round", strokeLinejoin: "round" }, h("path", { d: "M4.5 12.5 10 7l5.5 5.5" }));
+
+  // "06:32", or "1:02:05" past an hour.
+  AKG.formatElapsed = function (sec) {
+    sec = Math.max(0, Math.floor(sec || 0));
+    var hh = Math.floor(sec / 3600), mm = Math.floor(sec / 60) % 60, ss = sec % 60;
+    var p = function (n) { return (n < 10 ? "0" : "") + n; };
+    return hh ? hh + ":" + p(mm) + ":" + p(ss) : p(mm) + ":" + p(ss);
+  };
+  // "6 minutes 32 seconds", for VoiceOver.
+  AKG.speakElapsed = function (sec) {
+    sec = Math.max(0, Math.floor(sec || 0));
+    var hh = Math.floor(sec / 3600), mm = Math.floor(sec / 60) % 60, ss = sec % 60, out = [];
+    if (hh) out.push(hh + (hh === 1 ? " hour" : " hours"));
+    if (mm) out.push(mm + (mm === 1 ? " minute" : " minutes"));
+    if (ss || !out.length) out.push(ss + (ss === 1 ? " second" : " seconds"));
+    return out.join(" ");
+  };
+  // Seconds since `start` (a Date or a timestamp in ms), updated every second while running.
+  AKG.useElapsed = function (start, running) {
+    var t0 = start instanceof Date ? start.getTime() : start;
+    var st = R.useState(Date.now()), now = st[0];
+    R.useEffect(function () {
+      if (t0 == null || running === false) return;
+      st[1](Date.now());
+      var id = setInterval(function () { st[1](Date.now()); }, 1000);
+      return function () { clearInterval(id); };
+    }, [t0, running]);
+    return t0 == null ? 0 : Math.max(0, (now - t0) / 1000);
+  };
+
+  function TimerCapsule(props) {
+    var live = AKG.useElapsed(props.elapsed != null ? null : props.start, props.running);
+    var sec = props.elapsed != null ? props.elapsed : live;
+    var accessory = props.variant === "accessory";
+    var interactive = !!props.onClick;
+    var rest = {};
+    for (var k in props) if (["start", "elapsed", "running", "variant", "title", "subtitle", "label", "className"].indexOf(k) < 0) rest[k] = props[k];
+    rest.className = AKG.cx("akg-timer", accessory ? "akg-timer--accessory" : "akg-timer--capsule", interactive && "akg-timer--interactive", props.running === false && "akg-timer--paused", props.className);
+    var spoken = (props.label || "Elapsed time") + ", " + AKG.speakElapsed(sec) + (props.running === false ? ", paused" : "");
+    if (accessory && typeof props.title === "string") spoken = props.title + (typeof props.subtitle === "string" ? ", " + props.subtitle : "") + ". " + spoken;
+    if (!rest["aria-label"]) rest["aria-label"] = spoken;
+    if (interactive) rest.type = "button"; else rest.role = "timer";
+    var clock = h("span", { className: "akg-timer__time", "aria-hidden": "true" }, AKG.formatElapsed(sec));
+    var dot = h("span", { className: "akg-timer__dot", "aria-hidden": "true" });
+    if (!accessory) return h(interactive ? "button" : "div", rest, dot, clock);
+    return h(interactive ? "button" : "div", rest, dot,
+      h("span", { className: "akg-timer__text", "aria-hidden": "true" },
+        props.title != null ? h("span", { className: "akg-timer__title" }, props.title) : null,
+        props.subtitle != null ? h("span", { className: "akg-timer__subtitle" }, props.subtitle) : null),
+      clock,
+      interactive ? h("span", { className: "akg-sym akg-timer__chevron", "aria-hidden": "true" }, up) : null);
+  }
+  AKG.TimerCapsule = TimerCapsule;
 })(window.AKG = window.AKG || {});
