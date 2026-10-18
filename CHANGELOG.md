@@ -1,6 +1,20 @@
 # Changelog
 
-What changed in each version of Wards, newest first. The version is shown at the bottom of the app.
+What changed in each version of Wards, newest first. The version is shown in Settings (gear on Home).
+
+## 2026.10.18
+
+- New layout: four tabs in a floating bar at the bottom (Home, Rapids, Topics, Library) plus a round search button.
+- Home (now titled "Reference"): Continue Reading takes you back to the topic and section you were reading; Favorites and Recent (last five pages). These are kept only on this iPhone.
+- A star at the top right of each page adds it to Favorites.
+- Topics lists the systems with colored icons; systems without topics yet show "Coming Soon".
+- Library groups Tools (scores and calculators, criteria and staging, the Medscape Drug Interaction Checker, which opens in Safari) and Reference (medications, pathways, labs and tests). Criteria and pathways already list what's in the app; the rest fill in as content is added.
+- Rapids (emergencies) has its own tab; rapid pages with Do Now steps arrive in a later update.
+- Search finds pages by name or alias (for example "hyperK"). The field sits at the bottom; Close returns to where you were.
+- Back always has somewhere to go, and is named for the page it returns to. The app reopens on the last page only if it was open in the last 30 minutes.
+- "Page Not Found" has a Go to Home button.
+- The "Update Ready" banner sits above the tab bar, and says so if an update didn't finish installing.
+- Settings (gear on Home) shows the version and can clear what's kept on this iPhone.
 
 ## 2026.10.17.7
 

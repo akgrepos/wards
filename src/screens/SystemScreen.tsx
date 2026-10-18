@@ -1,16 +1,18 @@
 import { AKG } from '../design/akg';
 import { cardTypeLabel, getSystem, systemGroups } from '../content';
 import { href } from '../router';
-import { Screen } from './common';
+import { Empty, Screen } from './common';
+import { NotFoundScreen } from './Tabs';
 
 export function SystemScreen({ id }: { id: string }) {
   const system = getSystem(id);
-  if (!system) return <NotFound />;
+  if (!system) return <NotFoundScreen />;
   const groups = systemGroups(id);
+  const library = !!system.library;
   return (
-    <Screen title={system.title} back={{ label: 'Wards', fallback: href.home() }}>
+    <Screen title={system.title} back={library ? { label: 'Library', fallback: href.library() } : { label: 'Topics', fallback: href.topics() }}>
       {groups.length === 0 ? (
-        <div className="empty"><AKG.EmptyState title="No Cards Yet" description="Cards for this section will appear here once they’re added." /></div>
+        <Empty title="No Topics Yet" description="Topics for this system will appear here once they’re added." />
       ) : (
         groups.map((g) => (
           <AKG.List key={g.title} header={g.title}>
@@ -20,14 +22,6 @@ export function SystemScreen({ id }: { id: string }) {
           </AKG.List>
         ))
       )}
-    </Screen>
-  );
-}
-
-export function NotFound() {
-  return (
-    <Screen title="Not Found" back={{ label: 'Wards', fallback: href.home() }}>
-      <div className="empty"><AKG.EmptyState title="Page Not Found" description="This card may have moved or been renamed." /></div>
     </Screen>
   );
 }

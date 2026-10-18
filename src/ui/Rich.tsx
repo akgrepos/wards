@@ -103,6 +103,11 @@ function CriteriaBlock({ id }: { id: string }) {
   );
 }
 
+// A criteria set in a sheet: the criteria, then its sources.
+export function CriteriaSheet({ c }: { c: Criteria }) {
+  return <div className="detail-sheet"><CriteriaBody c={c} /><p className="ios-footnote-emphasized secondary">Sources</p><SourceList ids={c.sources} /></div>;
+}
+
 function Insert({ kind, id }: { kind: string; id: string }) {
   const sheet = useSheet();
   const item = content.data[kind]?.[id];
@@ -122,7 +127,7 @@ function Insert({ kind, id }: { kind: string; id: string }) {
   if (kind === 'criteria') {
     const c = item as unknown as Criteria;
     return (
-      <AKG.TappableValue onClick={() => sheet({ title: c.name, body: <div className="detail-sheet"><CriteriaBody c={c} /><p className="ios-footnote-emphasized secondary">Sources</p><SourceList ids={c.sources} /></div> })}>
+      <AKG.TappableValue onClick={() => sheet({ title: c.name, body: <CriteriaSheet c={c} /> })}>
         {c.short}
       </AKG.TappableValue>
     );
