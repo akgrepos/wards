@@ -1,11 +1,11 @@
 # Status
 
-Last updated 2026-10-17 (end of day: AKI pilot shipped, five audits filed, wrap-up done). A short snapshot so the next session can pick up where the last one stopped. The reasons behind each choice are in [DECISIONS.md](DECISIONS.md).
+Last updated 2026-10-18 (repo re-created to remove the old non-anonymous commits). A short snapshot so the next session can pick up where the last one stopped. The reasons behind each choice are in [DECISIONS.md](DECISIONS.md).
 
 ## Start here next time
 1. **Read first:** `CLAUDE.md`, then DECISIONS.md "Sources, updated" (all content rules) before writing any card.
 2. **Review the audits** (filed 2026-10-17, no choices made yet). Five reports kept privately: design/UI/UX, navigation, process, systems/security/privacy, clinical content. Present the findings and let the owner choose what to fix with question pop-ups.
-   - **First decision:** GitHub still shows the original, non-anonymous commits behind pull requests #1–#5 (see Known limits). Options: re-create the repo, or ask GitHub Support to remove them.
+   - Done: the repo identity fix (re-created 2026-10-18). Next: the clinical highs (terlipressin boxed warning, Hyperkalemia causes table, calcium chloride arrest rate, insulin onset).
    - When the owner asks, run the saved "expert team" design prompt (kept privately with the audits).
 3. **Owner checks on the phone** (version 2026.10.17.7):
    - Tap Reload on "Update Ready" and confirm the app updates. One simulator Home Screen copy didn't reload; a safety net was added, and Safari reloaded fine.
@@ -33,13 +33,13 @@ Last updated 2026-10-17 (end of day: AKI pilot shipped, five audits filed, wrap-
 - **HIG reference:** full HIG text and rule summaries kept privately in `~/Documents/Wards-reference/hig/`.
 
 ## Waiting on the owner
-- Choices on the 2026-10-17 audit findings, starting with the repo identity fix.
+- Choices on the remaining 2026-10-17 audit findings.
 
 ## Watch
 - **KDIGO 2026 AKI/AKD guideline:** public-review draft only (March 2026). When the final is published, update the AKI card. Expected changes: cystatin C criteria, biomarker staging, AKD, glucose 140–180 mg/dL, bicarbonate before RRT at pH <7.20, deferred RRT.
 
 ## Known limits
-- GitHub keeps hidden copies of the pre-rewrite commits behind pull requests #1–#7; only GitHub Support or re-creating the repo removes them. One later commit lists the old display name "AG", and the account name is also the owner's initials.
+- The GitHub account name is the owner's initials. (The old non-anonymous commits were removed by re-creating the repo on 2026-10-18.)
 
 ## Possible later work
 Not requested yet; listed so nothing is forgotten.
