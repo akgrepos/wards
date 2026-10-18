@@ -62,3 +62,45 @@ const SMALL = new Set(['a', 'an', 'and', 'as', 'at', 'by', 'for', 'in', 'of', 'o
 export function titleCase(s: string) {
   return s.split(' ').map((w, i) => (i > 0 && SMALL.has(w.toLowerCase()) ? w.toLowerCase() : w.charAt(0).toUpperCase() + w.slice(1))).join(' ');
 }
+
+// Emergency pages arrive in Phase 4 of the redesign; until then no card is marked as one.
+export function emergencyCards(): Card[] {
+  return [];
+}
+
+// Every place a pathway (flowchart) appears: the card and section that show it.
+export function pathwayHomes(): { id: string; title: string; card: Card; section: string }[] {
+  const out: { id: string; title: string; card: Card; section: string }[] = [];
+  for (const card of content.cards) {
+    for (const s of card.sections) {
+      for (const b of [...s.blocks, ...s.more]) {
+        if (b.t === 'insert' && b.kind === 'pathway' && !out.some((o) => o.id === b.id)) {
+          const p = content.data.pathway?.[b.id];
+          out.push({ id: b.id, title: p?.title ?? card.title, card, section: s.key });
+        }
+      }
+    }
+  }
+  return out.sort((a, b) => a.title.localeCompare(b.title));
+}
+
+// Basic search over card titles and aliases (full search across sections, drugs and tools comes later).
+// Every word typed must match the start of a word in the title or an alias; title matches rank first.
+const norm = (s: string) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+export function searchCards(query: string): Card[] {
+  const words = norm(query).split(' ').filter(Boolean);
+  if (!words.length) return [];
+  const matches = (text: string) => {
+    const t = ' ' + norm(text);
+    return words.every((w) => t.includes(' ' + w));
+  };
+  const scored: { card: Card; score: number }[] = [];
+  for (const card of content.cards) {
+    const title = norm(card.title);
+    let score = 0;
+    if (matches(card.title)) score = title.startsWith(words.join(' ')) ? 3 : 2;
+    else if (card.aliases.some(matches)) score = 1;
+    if (score) scored.push({ card, score });
+  }
+  return scored.sort((a, b) => b.score - a.score || alpha(a.card, b.card)).map((s) => s.card);
+}

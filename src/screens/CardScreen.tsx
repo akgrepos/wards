@@ -2,16 +2,19 @@ import { useEffect, useRef, useState } from 'react';
 import { AKG } from '../design/akg';
 import { cardSources, cardTypeLabel, content, getCard, getSystem, titleCase } from '../content';
 import type { Source } from '../content/types';
-import { href } from '../router';
+import { forgetSection, href } from '../router';
+import { addRecent, getFavorites, setReading, toggleFavorite, useStored } from '../storage';
 import { Blocks, Pill, RichText, SourceList } from '../ui/Rich';
 import { useSheet } from '../ui/SheetHost';
-import { NotFound } from './SystemScreen';
+import { icons } from '../ui/icons';
 import { Screen } from './common';
+import { NotFoundScreen } from './Tabs';
 
 const RELATED: [string, string][] = [['differential', 'Differential'], ['conditions', 'Conditions'], ['tools', 'Tools'], ['medications', 'Medications']];
 
-export function CardScreen({ id }: { id: string }) {
+export function CardScreen({ id, section }: { id: string; section?: string }) {
   const card = getCard(id);
+  const favorite = useStored(getFavorites).includes(id);
   const sheet = useSheet();
   const [current, setCurrent] = useState<string | undefined>(undefined);
   // Collapsible sections that are open. Jumping to a collapsed section from the section bar opens it.
@@ -24,6 +27,28 @@ export function CardScreen({ id }: { id: string }) {
     if (s?.collapsed) setOpen(s.key, true);
     requestAnimationFrame(() => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' }));
   };
+
+  // Opened at a section (Continue Reading, a pathway): open it if collapsed and scroll to it, once.
+  useEffect(() => {
+    if (!card) return;
+    addRecent(id);
+    const s = section && sections.find((x) => x.key === section);
+    if (!s) return;
+    forgetSection(id);
+    if (s.collapsed) setOpen(s.key, true);
+    let tries = 0;
+    const go = () => {
+      const el = document.getElementById(`sec-${s.key}`);
+      if (el) el.scrollIntoView({ block: 'start' });
+      else if (tries++ < 20) setTimeout(go, 50);
+    };
+    setTimeout(go, 60);
+  }, [id]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // Topics remember the section on screen, for Continue Reading on Home.
+  useEffect(() => {
+    if (card && card.system !== 'library' && current) setReading(id, current.replace(/^sec-/, ''));
+  }, [id, current]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Highlight the section being read in the jump bar: the last one whose heading has reached the bar.
   useEffect(() => {
@@ -39,7 +64,7 @@ export function CardScreen({ id }: { id: string }) {
     return () => removeEventListener('scroll', update);
   }, [id]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  if (!card) return <NotFound />;
+  if (!card) return <NotFoundScreen />;
   const system = getSystem(card.system);
   const sources = cardSources(card);
   const related = RELATED.filter(([k]) => (card.related?.[k] ?? []).length > 0);
@@ -48,7 +73,15 @@ export function CardScreen({ id }: { id: string }) {
     <Screen
       title={card.title}
       titleRef={titleRef}
-      back={{ label: system?.title ?? 'Wards', fallback: href.system(card.system) }}
+      back={{ label: system?.title ?? 'Topics', fallback: href.system(card.system) }}
+      trailing={
+        <AKG.ToolbarButton
+          icon={favorite ? icons.starFill : icons.star}
+          aria-label={favorite ? 'Remove from Favorites' : 'Add to Favorites'}
+          aria-pressed={favorite}
+          onClick={() => toggleFavorite(id)}
+        />
+      }
       head={
         <header className="card-head">
           <p className="ios-subheadline-emphasized secondary">{cardTypeLabel(card)} · {system?.title}</p>

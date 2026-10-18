@@ -1365,9 +1365,11 @@ button.akg-disclosure__button:disabled, .akg-disclosure__header:disabled .akg-di
 .akg-tab-bar--search.akg-tab-bar--n4 .akg-tab-bar__tabs,
 .akg-tab-bar--search.akg-tab-bar--n5 .akg-tab-bar__tabs { width: calc(100% - 70px); }
 
-/* Tab: 54pt tall, 18pt semibold symbol in a 28pt box from y7, 10pt semibold label */
+/* Tab: 54pt tall, 18pt semibold symbol in a 28pt box from y7, 10pt semibold label.
+   Tabs start at their label's width and share the spare space, so a longer label isn't cut off while the others have room
+   (labels truncate only when they can't all fit). */
 .akg-tab-bar__tab {
-  position: relative; flex: 1 1 0; min-width: 0; height: 54px;
+  position: relative; flex: 1 1 auto; min-width: 0; height: 54px;
   display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
   padding: 7px var(--space-4) 0; margin: 0; border: 0; cursor: pointer;
   background: transparent; color: var(--glass-label);

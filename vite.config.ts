@@ -47,7 +47,8 @@ export default defineConfig(({ command }) => ({
         start_url: '/wards/',
         scope: '/wards/',
         background_color: '#f2f2f7',
-        theme_color: '#ffffff',
+        // Matches the page background (grouped background, light), so the bar behind the clock blends in.
+        theme_color: '#f2f2f7',
         icons: [
           { src: 'pwa-64x64.png', sizes: '64x64', type: 'image/png' },
           { src: 'pwa-192x192.png', sizes: '192x192', type: 'image/png' },
@@ -57,9 +58,12 @@ export default defineConfig(({ command }) => ({
       },
       workbox: {
         // Save everything the app needs so it works with no signal.
-        globPatterns: ['**/*.{js,css,html,svg,png,json}'],
+        globPatterns: ['**/*.{js,css,html,svg,png,ico,json,webmanifest}'],
         // iOS keeps its own copy of the launch screens; no need to store them twice.
         globIgnores: ['startup/**'],
+        // The default (2 MB) would silently leave the content out once there are about 60 cards.
+        // `npm run build` checks that every built file is saved for offline use (scripts/check-precache.mjs).
+        maximumFileSizeToCacheInBytes: 25 * 1024 * 1024,
       },
     }),
   ],
