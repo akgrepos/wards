@@ -46,7 +46,7 @@ export default defineConfig(({ command }) => ({
         display: 'standalone',
         start_url: '/wards/',
         scope: '/wards/',
-        background_color: '#ffffff',
+        background_color: '#f2f2f7',
         theme_color: '#ffffff',
         icons: [
           { src: 'pwa-64x64.png', sizes: '64x64', type: 'image/png' },
@@ -58,6 +58,8 @@ export default defineConfig(({ command }) => ({
       workbox: {
         // Save everything the app needs so it works with no signal.
         globPatterns: ['**/*.{js,css,html,svg,png,json}'],
+        // iOS keeps its own copy of the launch screens; no need to store them twice.
+        globIgnores: ['startup/**'],
       },
     }),
   ],

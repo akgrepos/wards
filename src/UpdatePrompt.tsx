@@ -1,8 +1,11 @@
+import { useState } from 'react';
 import { useRegisterSW } from 'virtual:pwa-register/react';
 import { AKG } from './design/akg';
 
-// Shown when a new version has downloaded in the background. Nothing changes until "Reload" is tapped.
+// Shown when a new version has downloaded in the background. Nothing changes until "Reload" is tapped;
+// "Later" hides it until the app is next opened.
 export function UpdatePrompt() {
+  const [later, setLater] = useState(false);
   const {
     needRefresh: [needRefresh],
     updateServiceWorker,
@@ -16,16 +19,16 @@ export function UpdatePrompt() {
     },
   });
 
-  if (!needRefresh) return null;
+  if (!needRefresh || later) return null;
 
   return (
-    <div className="update-prompt">
-      <AKG.Notification
-        icon={<img src={`${import.meta.env.BASE_URL}pwa-64x64.png`} alt="" />}
-        title="Update Ready"
-        body="A new version of Wards has downloaded."
-        actions={[{ label: 'Reload', onClick: () => updateServiceWorker(true) }]}
-      />
-    </div>
+    <AKG.Banner
+      placement="bottom"
+      title="Update Ready"
+      actions={[{ label: 'Reload', onClick: () => updateServiceWorker(true) }]}
+      onClose={() => setLater(true)}
+    >
+      A new version of Wards has downloaded.
+    </AKG.Banner>
   );
 }

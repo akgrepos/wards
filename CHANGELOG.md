@@ -2,6 +2,18 @@
 
 What changed in each version of Wards, newest first. The version is shown at the bottom of the app.
 
+## 2026.10.17.6
+
+- Doses, cutoffs and sources now open their sheet right where you are reading. Before, the sheet could open off-screen after scrolling.
+- Sheets slide up, can be dragged taller or swiped down to close, and close when you follow a link.
+- Each page shows its title once: large at the top, then small in the bar after you scroll.
+- Back returns you to where you were in the list or card, and the app reopens on the card you were reading if iOS closed it.
+- The section bar keeps the current section in view, and jumping to a collapsed section opens it.
+- Doses and cutoffs are easier to tap and show a pressed look; links are a clearer blue.
+- Tables keep their first column in place while you scroll sideways.
+- The "Update Ready" banner moved to the bottom, so it never covers Back, and has a "Later" button.
+- No more white flash when the app opens in dark mode. Text stays at a comfortable width on iPad and in landscape.
+
 ## 2026.10.17.5
 
 - First card: Hyperkalemia, under Renal → Electrolyte Disorders. It has a step-by-step treatment flowchart, tappable doses and cutoffs, and a source on every line.

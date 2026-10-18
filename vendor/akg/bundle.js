@@ -1,4 +1,4 @@
-/* @ds-bundle: {"format":4,"namespace":"AKG","components":[{"name":"Button"},{"name":"Toggle"},{"name":"Checkbox"},{"name":"RadioGroup"},{"name":"SegmentedControl"},{"name":"PopUpButton"},{"name":"Stepper"},{"name":"TextField"},{"name":"SearchField"},{"name":"ComboBox"},{"name":"Slider"},{"name":"DatePicker"},{"name":"ColorWell"},{"name":"List"},{"name":"GroupBox"},{"name":"DisclosureGroup"},{"name":"ProgressIndicator"},{"name":"EmptyState"},{"name":"Notification"},{"name":"Tooltip"},{"name":"TabBar"},{"name":"Toolbar"},{"name":"Sidebar"},{"name":"PageControl"},{"name":"Window"},{"name":"Sheet"},{"name":"Alert"},{"name":"ActionSheet"},{"name":"Menu"},{"name":"Popover"},{"name":"Callout"},{"name":"SourcePill"},{"name":"ContentSection"},{"name":"Flowchart"}]} */
+/* @ds-bundle: {"format":4,"namespace":"AKG","components":[{"name":"Button"},{"name":"Toggle"},{"name":"Checkbox"},{"name":"RadioGroup"},{"name":"SegmentedControl"},{"name":"PopUpButton"},{"name":"Stepper"},{"name":"TextField"},{"name":"SearchField"},{"name":"ComboBox"},{"name":"Slider"},{"name":"DatePicker"},{"name":"ColorWell"},{"name":"List"},{"name":"GroupBox"},{"name":"DisclosureGroup"},{"name":"ProgressIndicator"},{"name":"EmptyState"},{"name":"Notification"},{"name":"Tooltip"},{"name":"TabBar"},{"name":"Toolbar"},{"name":"Sidebar"},{"name":"PageControl"},{"name":"Window"},{"name":"Sheet"},{"name":"Alert"},{"name":"ActionSheet"},{"name":"Menu"},{"name":"Popover"},{"name":"Callout"},{"name":"SourcePill"},{"name":"ContentSection"},{"name":"Flowchart"},{"name":"TappableValue"},{"name":"Table"},{"name":"Figure"},{"name":"Banner"},{"name":"BottomBar"},{"name":"Highlight"},{"name":"ShareButton"},{"name":"NumberField"}]} */
 /* Shared helpers — used by every AKG component. */
 (function (AKG) {
   // Join class names, skipping falsy values.
@@ -468,7 +468,7 @@
 (function (AKG) {
   var h = window.React.createElement;
   var React = window.React;
-  var OWN = ["className", "style", "size", "clearButton", "value", "defaultValue", "onChange"];
+  var OWN = ["className", "style", "size", "clearButton", "value", "defaultValue", "onChange", "label", "unit", "error"];
 
   // Empty the input through the native setter so React fires onChange as if the person typed.
   function clearInput(el) {
@@ -502,17 +502,25 @@
       if (props.onChange) props.onChange(e);
     };
 
-    return h("div", {
+    var ids = React.useId ? React.useId() : "akg-tf";
+    if (props.label && !rest.id) rest.id = ids + "-in";
+    if (props.error) { rest["aria-invalid"] = "true"; rest["aria-describedby"] = rest["aria-describedby"] || ids + "-err"; }
+    var row = h("div", {
         className: AKG.cx(
           "akg-text-field",
           "akg-text-field--" + size,
           value !== "" && "akg-text-field--has-value",
           props.disabled && "akg-text-field--disabled",
+          props.label && "akg-text-field--labeled",
+          props.error && "akg-text-field--invalid",
           props.className
         ),
         style: props.style
       },
+      // A visible label: iOS forms put it on the leading side of the row (a placeholder is only a hint).
+      props.label ? h("label", { className: "akg-text-field__label", htmlFor: rest.id }, props.label) : null,
       h("input", rest),
+      props.unit ? h("span", { className: "akg-text-field__unit" }, props.unit) : null,
       clearButton && !props.disabled && !props.readOnly ? h("button", {
         type: "button",
         className: "akg-text-field__clear",
@@ -522,6 +530,8 @@
         onClick: function () { clearInput(ref.current); }
       }, h("span", { className: "akg-sym", "aria-hidden": "true" }, xmarkCircle)) : null
     );
+    if (!props.error) return row;
+    return h(React.Fragment, null, row, h("p", { className: "akg-text-field__error", id: ids + "-err", role: "alert" }, props.error));
   }
   AKG.TextField = TextField;
 })(window.AKG = window.AKG || {});
@@ -1573,9 +1583,9 @@
   }
 
   function Toolbar(props) {
-    var rest = omit(props, ["title", "subtitle", "largeTitle", "leading", "trailing", "windowControls", "className", "children"]);
+    var rest = omit(props, ["title", "subtitle", "largeTitle", "showTitle", "leading", "trailing", "windowControls", "className", "children"]);
     var large = !!props.largeTitle;
-    rest.className = AKG.cx("akg-toolbar", large && "akg-toolbar--large", props.className);
+    rest.className = AKG.cx("akg-toolbar", large && "akg-toolbar--large", props.showTitle === false && "akg-toolbar--title-hidden", props.className);
     var titleBlock = function (cls) {
       if (props.title == null && props.subtitle == null) return null;
       return h("div", { className: cls },
@@ -1598,6 +1608,20 @@
       props.children
     );
   }
+
+  // True once `ref`'s element (a page's own large title) has scrolled up under the bar.
+  // Pair with <Toolbar showTitle={…}> so the title shows once: large in the page, then small in the bar.
+  AKG.useScrolledPast = function (ref, offset) {
+    var st = React.useState(false);
+    React.useEffect(function () {
+      var el = ref.current; if (!el || !window.IntersectionObserver) return;
+      var io = new IntersectionObserver(function (e) { st[1](!e[0].isIntersecting && e[0].boundingClientRect.top < (offset || 60)); },
+        { rootMargin: "-" + (offset || 60) + "px 0px 0px 0px" });
+      io.observe(el);
+      return function () { io.disconnect(); };
+    }, [ref.current]);
+    return st[0];
+  };
 
   function ToolbarGroup(props) {
     var rest = omit(props, ["className", "children"]);
@@ -1825,35 +1849,94 @@
 
 /* Sheet */
 (function (AKG) {
-  var h = window.React.createElement;
-  var useState = window.React.useState;
+  var R = window.React, h = R.createElement;
   var xmark = h("svg", { viewBox: "0 0 20 20", fill: "none", stroke: "currentColor", strokeWidth: 2.2, strokeLinecap: "round" }, h("path", { d: "M5 5l10 10M15 5L5 15" }));
   var check = h("svg", { viewBox: "0 0 20 20", fill: "none", stroke: "currentColor", strokeWidth: 2.4, strokeLinecap: "round", strokeLinejoin: "round" }, h("path", { d: "M4 10.5l4 4 8-9" }));
-  var OWN = ["open", "defaultOpen", "onClose", "onDone", "title", "detent", "doneLabel", "cancelLabel", "dim", "className", "children"];
+  var OWN = ["open", "defaultOpen", "onClose", "onDone", "title", "detent", "detents", "fixed", "doneLabel", "cancelLabel", "dim", "className", "children"];
+  var LEAVE_MS = 220;
+
+  // Locks page scrolling while a full-screen overlay is open (counted, so nested overlays restore correctly).
+  var locks = 0, saved = "";
+  AKG.lockScroll = function () {
+    if (locks++ === 0) { saved = document.documentElement.style.overflow; document.documentElement.style.overflow = "hidden"; }
+    return function () { if (--locks === 0) document.documentElement.style.overflow = saved; };
+  };
+  // Calls fn on Escape anywhere in the document while active.
+  AKG.useEscape = function (active, fn) {
+    var ref = R.useRef(fn); ref.current = fn;
+    R.useEffect(function () {
+      if (!active) return;
+      var on = function (e) { if (e.key === "Escape") ref.current(e); };
+      document.addEventListener("keydown", on);
+      return function () { document.removeEventListener("keydown", on); };
+    }, [active]);
+  };
 
   function Sheet(props) {
     var controlled = props.open !== undefined;
-    var st = useState(props.defaultOpen !== undefined ? !!props.defaultOpen : true);
+    var st = R.useState(props.defaultOpen !== undefined ? !!props.defaultOpen : true);
     var open = controlled ? props.open : st[0];
+    var detents = props.detents && props.detents.length ? props.detents : [props.detent || "medium"];
+    var dt = R.useState(detents[0]), detent = detents.indexOf(dt[0]) >= 0 ? dt[0] : detents[0];
+    var lv = R.useState(false), leaving = lv[0];
+    var panelRef = R.useRef(null), drag = R.useRef(null);
+
+    R.useEffect(function () { if (open) { dt[1](detents[0]); lv[1](false); } }, [open]);
+    R.useEffect(function () { if (open && props.fixed) return AKG.lockScroll(); }, [open, !!props.fixed]);
+
+    var finish = function () { lv[1](false); if (!controlled) st[1](false); if (props.onClose) props.onClose(); };
+    var close = function () {
+      if (leaving) return;
+      var still = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (still || AKG.platform(panelRef.current) === "macos") return finish();
+      lv[1](true); setTimeout(finish, LEAVE_MS);
+    };
+    AKG.useEscape(open, close);
     if (!open) return null;
-    var detent = props.detent || "medium";
-    var close = function () { if (!controlled) st[1](false); if (props.onClose) props.onClose(); };
+
     var done = function () { if (props.onDone) props.onDone(); };
+    var cycle = function () { if (detents.length > 1) dt[1](detents[(detents.indexOf(detent) + 1) % detents.length]); };
+
+    // Drag the bar: down past a threshold shrinks to the smaller detent or dismisses; up grows to large.
+    var onDown = function (e) {
+      if (e.button || e.target.closest("button:not(.akg-sheet__grabber)")) return;
+      drag.current = { y: e.clientY, dy: 0 };
+      e.currentTarget.setPointerCapture && e.currentTarget.setPointerCapture(e.pointerId);
+    };
+    var onMove = function (e) {
+      var d = drag.current; if (!d) return;
+      d.dy = e.clientY - d.y;
+      var p = panelRef.current; if (!p) return;
+      p.style.transition = "none";
+      p.style.transform = "translateY(" + Math.max(d.dy, -24) + "px)";
+    };
+    var onUp = function () {
+      var d = drag.current; drag.current = null;
+      var p = panelRef.current; if (p) { p.style.transition = ""; p.style.transform = ""; }
+      if (!d) return;
+      if (Math.abs(d.dy) < 6) return;
+      var i = detents.indexOf(detent);
+      if (d.dy > 60) { if (i > 0) dt[1](detents[i - 1]); else close(); }
+      else if (d.dy < -40 && i < detents.length - 1) dt[1](detents[i + 1]);
+    };
+
     var rest = {};
     for (var k in props) if (OWN.indexOf(k) < 0) rest[k] = props[k];
+    rest.ref = panelRef;
     rest.className = AKG.cx("akg-sheet__panel", "akg-sheet__panel--" + detent, props.className);
     rest.role = rest.role || "dialog";
     rest["aria-modal"] = "true";
     if (props.title && !rest["aria-label"]) rest["aria-label"] = typeof props.title === "string" ? props.title : undefined;
-    rest.onKeyDown = function (e) { if (e.key === "Escape") close(); if (props.onKeyDown) props.onKeyDown(e); };
     var doneLabel = props.doneLabel || "Done", cancelLabel = props.cancelLabel || "Cancel";
 
-    return h("div", { className: AKG.cx("akg-sheet", props.dim === false && "akg-sheet--no-dim") },
+    return h("div", { className: AKG.cx("akg-sheet", props.fixed && "akg-sheet--fixed", props.dim === false && "akg-sheet--no-dim", leaving && "akg-sheet--leaving") },
       h("div", { className: "akg-sheet__scrim", onClick: close, "aria-hidden": "true" }),
       h("div", rest,
-        // iOS: grabber + toolbar with a close and a done button
-        h("div", { className: "akg-sheet__bar" },
-          h("span", { className: "akg-sheet__grabber", "aria-hidden": "true" }),
+        // iOS: grabber + toolbar with a close and a done button. Drag the bar to resize or dismiss.
+        h("div", { className: "akg-sheet__bar", onPointerDown: onDown, onPointerMove: onMove, onPointerUp: onUp, onPointerCancel: onUp },
+          detents.length > 1
+            ? h("button", { type: "button", className: "akg-sheet__grabber", "aria-label": detent === "large" ? "Shrink" : "Expand", onClick: cycle })
+            : h("span", { className: "akg-sheet__grabber", "aria-hidden": "true" }),
           h("button", { type: "button", className: "akg-sheet__circle akg-sheet__circle--close", "aria-label": cancelLabel, onClick: close }, h("span", { className: "akg-sym" }, xmark)),
           h("div", { className: "akg-sheet__title" }, props.title),
           props.onDone ? h("button", { type: "button", className: "akg-sheet__circle akg-sheet__circle--done", "aria-label": doneLabel, onClick: done }, h("span", { className: "akg-sym" }, check)) : h("span", { className: "akg-sheet__spacer" })
@@ -1873,17 +1956,25 @@
 /* Alert */
 (function (AKG) {
   var h = window.React.createElement;
-  var OWN = ["open", "title", "message", "actions", "fields", "layout", "icon", "overlay", "className", "children"];
+  var OWN = ["open", "title", "message", "actions", "fields", "layout", "icon", "overlay", "fixed", "className", "children"];
 
   var n = 0;
   function Alert(props) {
     var R = window.React;
     var id = R.useId ? R.useId() : R.useState(function () { return "akg-alert-" + (++n); })[0];
+    var all = props.actions || [{ label: "OK", role: "preferred" }];
+    var cancel = all.filter(function (a) { return a.role === "cancel"; })[0];
+    // Escape cancels (the HIG's alternate way to back out), when there is a Cancel action.
+    AKG.useEscape(props.open !== false && !!cancel, function () { if (cancel && cancel.onClick) cancel.onClick(); });
+    R.useEffect(function () { if (props.open !== false && props.fixed && props.overlay) return AKG.lockScroll(); }, [props.open !== false, !!props.fixed, !!props.overlay]);
     if (props.open === false) return null;
-    var actions = props.actions || [{ label: "OK", role: "preferred" }];
     var fields = props.fields || [];
     var layout = props.layout || "auto";
-    if (layout === "auto") layout = actions.length <= 2 ? "side-by-side" : "stacked";
+    if (layout === "auto") layout = all.length <= 2 ? "side-by-side" : "stacked";
+    // Apple's order: side by side, Cancel is leading; stacked, the preferred action is first and Cancel last.
+    var others = all.filter(function (a) { return a.role !== "cancel"; });
+    if (layout === "stacked") others = others.filter(function (a) { return a.role === "preferred"; }).concat(others.filter(function (a) { return a.role !== "preferred"; }));
+    var actions = cancel ? (layout === "side-by-side" ? [cancel].concat(others) : others.concat([cancel])) : others;
     var rest = {};
     for (var k in props) if (OWN.indexOf(k) < 0) rest[k] = props[k];
     rest.className = AKG.cx("akg-alert", "akg-alert--" + layout, props.className);
@@ -1917,7 +2008,7 @@
       }))
     );
     if (!props.overlay) return card;
-    return h("div", { className: "akg-alert-overlay" }, card);
+    return h("div", { className: AKG.cx("akg-alert-overlay", props.fixed && "akg-alert-overlay--fixed") }, card);
   }
   AKG.Alert = Alert;
 })(window.AKG = window.AKG || {});
@@ -1925,7 +2016,7 @@
 /* ActionSheet */
 (function (AKG) {
   var h = window.React.createElement;
-  var OWN = ["open", "defaultOpen", "onClose", "title", "message", "actions", "overlay", "align", "className", "children"];
+  var OWN = ["open", "defaultOpen", "onClose", "title", "message", "actions", "overlay", "fixed", "align", "className", "children"];
 
   var n = 0;
   function ActionSheet(props) {
@@ -1934,12 +2025,16 @@
     var controlled = props.open !== undefined;
     var st = R.useState(props.defaultOpen !== undefined ? !!props.defaultOpen : true);
     var open = controlled ? props.open : st[0];
-    if (!open) return null;
     var close = function () { if (!controlled) st[1](false); if (props.onClose) props.onClose(); };
+    AKG.useEscape(open, close);
+    R.useEffect(function () { if (open && props.fixed && props.overlay) return AKG.lockScroll(); }, [open, !!props.fixed, !!props.overlay]);
+    if (!open) return null;
 
-    // Cancel always goes last, whatever order the actions come in.
-    var list = (props.actions || []).filter(function (a) { return a.role !== "cancel"; })
-      .concat((props.actions || []).filter(function (a) { return a.role === "cancel"; }));
+    // Destructive choices first and Cancel always last (Apple's action sheet order), whatever order the actions come in.
+    var acts = props.actions || [];
+    var list = acts.filter(function (a) { return a.role === "destructive"; })
+      .concat(acts.filter(function (a) { return a.role !== "destructive" && a.role !== "cancel"; }))
+      .concat(acts.filter(function (a) { return a.role === "cancel"; }));
 
     var rest = {};
     for (var k in props) if (OWN.indexOf(k) < 0) rest[k] = props[k];
@@ -1949,7 +2044,6 @@
     if (props.title) rest["aria-labelledby"] = rest["aria-labelledby"] || id + "-t";
     else if (!rest["aria-label"]) rest["aria-label"] = "Actions";
     if (props.message) rest["aria-describedby"] = rest["aria-describedby"] || id + "-m";
-    rest.onKeyDown = function (e) { if (e.key === "Escape") close(); if (props.onKeyDown) props.onKeyDown(e); };
 
     var sheet = h("div", rest,
       props.title || props.message ? h("div", { className: "akg-action-sheet__header" },
@@ -1969,7 +2063,7 @@
       }))
     );
     if (!props.overlay) return sheet;
-    return h("div", { className: AKG.cx("akg-action-sheet-overlay", "akg-action-sheet-overlay--" + (props.align || "center")) },
+    return h("div", { className: AKG.cx("akg-action-sheet-overlay", props.fixed && "akg-action-sheet-overlay--fixed", "akg-action-sheet-overlay--" + (props.align || "center")) },
       h("div", { className: "akg-action-sheet-overlay__scrim", onClick: close, "aria-hidden": "true" }),
       sheet);
   }
@@ -2017,7 +2111,7 @@
   function MenuSeparator() { return h("div", { className: "akg-menu-separator", role: "separator" }); }
   function MenuSection(props) { return h("div", { className: "akg-menu-section", role: "presentation" }, props.label != null ? props.label : props.children); }
 
-  var OWN = ["items", "onSelect", "className", "children"];
+  var OWN = ["items", "onSelect", "onClose", "className", "children"];
   function Menu(props) {
     var rest = {};
     for (var k in props) if (OWN.indexOf(k) < 0) rest[k] = props[k];
@@ -2028,6 +2122,7 @@
     rest.className = AKG.cx("akg-menu", hasCheck && "akg-menu--checkable", props.className);
     rest.onKeyDown = function (e) {
       if (props.onKeyDown) props.onKeyDown(e);
+      if (e.key === "Escape" && props.onClose) { e.preventDefault(); props.onClose(); return; }
       var keys = { ArrowDown: 1, ArrowUp: -1, Home: "first", End: "last" };
       if (!(e.key in keys)) return;
       var list = Array.prototype.slice.call(e.currentTarget.querySelectorAll(".akg-menu-item:not(:disabled)"));
@@ -2065,11 +2160,26 @@
 /* Popover */
 (function (AKG) {
   var h = window.React.createElement;
-  var OWN = ["open", "placement", "align", "onClose", "className", "children"];
+  var OWN = ["open", "placement", "align", "onClose", "anchorRef", "className", "children"];
 
   // placement = where the popover sits relative to its anchor; the arrow is on the opposite edge.
   // bottom → arrow on top (macOS "North"), top → arrow on the bottom ("South").
   function Popover(props) {
+    var R = window.React, ref = R.useRef(null), active = props.open !== false && !!props.onClose;
+    var onClose = R.useRef(props.onClose); onClose.current = props.onClose;
+    AKG.useEscape(active, function () { onClose.current(); });
+    // A tap or click outside the popover (and outside its anchor, which toggles it) closes it.
+    R.useEffect(function () {
+      if (!active) return;
+      var on = function (e) {
+        if (ref.current && ref.current.contains(e.target)) return;
+        var a = props.anchorRef && props.anchorRef.current;
+        if (a && a.contains(e.target)) return;
+        onClose.current();
+      };
+      document.addEventListener("pointerdown", on);
+      return function () { document.removeEventListener("pointerdown", on); };
+    }, [active]);
     if (props.open === false) return null;
     var placement = props.placement || "bottom";
     var align = props.align || "center";
@@ -2077,7 +2187,7 @@
     for (var k in props) if (OWN.indexOf(k) < 0) rest[k] = props[k];
     rest.className = AKG.cx("akg-popover", "akg-popover--" + placement, "akg-popover--align-" + align, props.className);
     rest.role = rest.role || "dialog";
-    rest.onKeyDown = function (e) { if (e.key === "Escape" && props.onClose) props.onClose(); if (props.onKeyDown) props.onKeyDown(e); };
+    rest.ref = ref;
     return h("div", rest,
       placement !== "none" ? h("span", { className: "akg-popover__arrow", "aria-hidden": "true" }) : null,
       h("div", { className: "akg-popover__body" }, props.children)
@@ -2136,6 +2246,9 @@
   var h = window.React.createElement;
   var chevron = h("svg", { viewBox: "0 0 20 20", fill: "none", stroke: "currentColor", strokeWidth: 2, strokeLinecap: "round", strokeLinejoin: "round" }, h("path", { d: "M7.5 4.5 13 10l-5.5 5.5" }));
 
+  // "Show Dosing Detail" → "Hide Dosing Detail", so the button always says what it does.
+  function lessFor(label) { return typeof label === "string" && /^Show /.test(label) ? label.replace(/^Show /, "Hide ") : "Show Less"; }
+
   // A titled block of reading content. collapsible + summary = shows one line until opened. more = an extra "More" expander for detail.
   function ContentSection(props) {
     var React = window.React;
@@ -2155,19 +2268,37 @@
     return h("section", { id: props.id, className: AKG.cx("akg-content-section", props.className), style: props.style },
       title,
       !open && props.summary ? h("p", { className: "akg-content-section__summary" }, props.summary) : null,
-      open ? h("div", { className: "akg-content-section__body" }, props.children) : null,
-      open && props.more ? h("div", { className: "akg-content-section__more" },
+      // Collapsed content stays mounted (hidden), so anything inside keeps its state, such as a flowchart's answers.
+      h("div", { className: "akg-content-section__body", hidden: !open }, props.children),
+      props.more ? h("div", { className: "akg-content-section__more", hidden: !open },
         h("button", { type: "button", className: "akg-content-section__more-button", "aria-expanded": more[0], onClick: function () { more[1](!more[0]); } },
-          more[0] ? (props.lessLabel || "Show Less") : (props.moreLabel || "Show More Detail"),
+          more[0] ? (props.lessLabel || lessFor(props.moreLabel)) : (props.moreLabel || "Show More Detail"),
           h("span", { className: AKG.cx("akg-sym akg-content-section__chevron", more[0] && "akg-content-section__chevron--down-open"), "aria-hidden": "true" }, chevron)),
-        more[0] ? h("div", { className: "akg-content-section__more-body" }, props.more) : null) : null
+        h("div", { className: "akg-content-section__more-body", hidden: !more[0] }, props.more)) : null
     );
   }
 
   // A horizontal row of capsules that jump to sections on the page.
   function SectionBar(props) {
+    var React = window.React;
     var items = props.items || [];
-    return h("nav", { className: AKG.cx("akg-section-bar", props.className), "aria-label": props["aria-label"] || "Sections" },
+    var ref = React.useRef(null);
+    var edge = React.useState(""), setEdge = edge[1];
+    // Fade the edge that has more capsules beyond it, so it's clear the row scrolls.
+    var measure = function () {
+      var el = ref.current; if (!el) return;
+      var start = el.scrollLeft > 2, end = el.scrollLeft + el.clientWidth < el.scrollWidth - 2;
+      setEdge((start ? " akg-section-bar--more-start" : "") + (end ? " akg-section-bar--more-end" : ""));
+    };
+    React.useEffect(function () { measure(); window.addEventListener("resize", measure); return function () { window.removeEventListener("resize", measure); }; }, []);
+    // Keep the current capsule in view as the page scrolls.
+    React.useEffect(function () {
+      var el = ref.current; if (!el) return;
+      var cur = el.querySelector(".akg-section-bar__item--current"); if (!cur) return;
+      var left = cur.offsetLeft - el.offsetLeft, right = left + cur.offsetWidth;
+      if (left < el.scrollLeft + 16 || right > el.scrollLeft + el.clientWidth - 16) { var x = Math.max(0, left - (el.clientWidth - cur.offsetWidth) / 2); if (el.scrollTo) el.scrollTo({ left: x, behavior: "smooth" }); else el.scrollLeft = x; }
+    }, [props.value]);
+    return h("nav", { ref: ref, onScroll: measure, className: AKG.cx("akg-section-bar", props.className) + edge[0], "aria-label": props["aria-label"] || "Sections" },
       items.map(function (it) {
         var id = typeof it === "string" ? it : it.id;
         var label = typeof it === "string" ? it : it.label;
@@ -2312,4 +2443,167 @@
     return h("div", { ref: ref, className: "akg-flowchart__map" }, h("div", { className: "akg-flowchart__map-inner" }, node(p.start)));
   }
   AKG.Flowchart = Flowchart;
+})(window.AKG = window.AKG || {});
+
+/* TappableValue — a value inside running text that opens more detail (a dose, a cutoff, a defined term). */
+(function (AKG) {
+  var h = window.React.createElement;
+  // A span with the button role, not a <button>: a button can't wrap across lines like words do, so a long value would
+  // jump to its own line and strand the punctuation after it.
+  function TappableValue(props) {
+    var rest = {};
+    for (var k in props) if (k !== "className" && k !== "children" && k !== "disabled") rest[k] = props[k];
+    rest.role = "button";
+    rest.tabIndex = props.disabled ? -1 : 0;
+    if (props.disabled) { rest["aria-disabled"] = "true"; rest.onClick = undefined; }
+    rest.className = AKG.cx("akg-tappable-value", props.className);
+    rest.onKeyDown = function (e) {
+      if (props.onKeyDown) props.onKeyDown(e);
+      if (!props.disabled && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); e.currentTarget.click(); }
+    };
+    return h("span", rest, props.children);
+  }
+  AKG.TappableValue = TappableValue;
+})(window.AKG = window.AKG || {});
+
+/* Table — a data table for reading content: header row, first column that stays put while the rest scrolls sideways, edge fade when more columns are hidden. */
+(function (AKG) {
+  var R = window.React, h = R.createElement;
+  function Table(props) {
+    var ref = R.useRef(null), edge = R.useState("");
+    var measure = function () {
+      var el = ref.current; if (!el) return;
+      var start = el.scrollLeft > 2, end = el.scrollLeft + el.clientWidth < el.scrollWidth - 2;
+      edge[1]((start ? " akg-table--more-start" : "") + (end ? " akg-table--more-end" : ""));
+    };
+    R.useEffect(function () { measure(); window.addEventListener("resize", measure); return function () { window.removeEventListener("resize", measure); }; }, []);
+    var sticky = props.stickyFirstColumn !== false;
+    var rows = props.rows || [];
+    return h("figure", { className: AKG.cx("akg-table", sticky && "akg-table--sticky", props.className) + edge[0], style: props.style },
+      h("div", { className: "akg-table__scroll", ref: ref, onScroll: measure },
+        h("table", { className: "akg-table__table" },
+          props.caption ? h("caption", { className: "akg-table__caption" }, props.caption) : null,
+          props.columns ? h("thead", null, h("tr", null, props.columns.map(function (c, i) { return h("th", { key: i, scope: "col" }, c); }))) : null,
+          h("tbody", null, rows.map(function (r, i) {
+            var cells = Array.isArray(r) ? r : r.cells;
+            return h("tr", { key: r.key != null ? r.key : i }, cells.map(function (c, j) {
+              return j === 0 && props.rowHeaders !== false ? h("th", { key: j, scope: "row" }, c) : h("td", { key: j }, c);
+            }));
+          }))
+        )
+      )
+    );
+  }
+  AKG.Table = Table;
+})(window.AKG = window.AKG || {});
+
+/* Figure — an image with a caption and credit; tap to view it full screen and pinch to zoom. */
+(function (AKG) {
+  var R = window.React, h = R.createElement;
+  var xmark = h("svg", { viewBox: "0 0 20 20", fill: "none", stroke: "currentColor", strokeWidth: 2.2, strokeLinecap: "round" }, h("path", { d: "M5 5l10 10M15 5L5 15" }));
+  function Figure(props) {
+    var z = R.useState(false), zoomed = z[0];
+    var zoomable = props.zoomable !== false;
+    var close = function () { z[1](false); };
+    AKG.useEscape(zoomed, close);
+    R.useEffect(function () { if (zoomed) return AKG.lockScroll(); }, [zoomed]);
+    var img = h("img", { className: "akg-figure__image", src: props.src, alt: props.alt || "", width: props.width, height: props.height, loading: "lazy", decoding: "async" });
+    return h("figure", { className: AKG.cx("akg-figure", props.paper && "akg-figure--paper", props.className), style: props.style },
+      zoomable ? h("button", { type: "button", className: "akg-figure__open", "aria-label": "View full screen", onClick: function () { z[1](true); } }, img) : img,
+      props.caption || props.credit ? h("figcaption", { className: "akg-figure__caption" },
+        props.caption ? h("span", null, props.caption) : null,
+        props.credit ? h("span", { className: "akg-figure__credit" }, props.credit) : null) : null,
+      zoomed ? h("div", { className: "akg-figure__viewer", role: "dialog", "aria-modal": "true", "aria-label": props.alt || "Image" },
+        h("button", { type: "button", className: "akg-figure__close", "aria-label": "Close", onClick: close }, h("span", { className: "akg-sym" }, xmark)),
+        h("div", { className: "akg-figure__stage", onClick: function (e) { if (e.target === e.currentTarget) close(); } },
+          h("img", { className: AKG.cx("akg-figure__full", props.paper && "akg-figure__full--paper"), src: props.src, alt: props.alt || "" }))) : null
+    );
+  }
+  AKG.Figure = Figure;
+})(window.AKG = window.AKG || {});
+
+/* Banner — an in-app message about the app itself (an update, a lost connection), with an action and a dismiss. */
+(function (AKG) {
+  var h = window.React.createElement;
+  function Banner(props) {
+    var actions = props.actions || [];
+    return h("div", { className: AKG.cx("akg-banner", props.placement && "akg-banner--" + props.placement, props.className), role: props.role || "status", style: props.style },
+      h("div", { className: "akg-banner__text" },
+        props.title ? h("div", { className: "akg-banner__title" }, props.title) : null,
+        props.children ? h("div", { className: "akg-banner__message" }, props.children) : null),
+      h("div", { className: "akg-banner__actions" },
+        props.onClose ? h("button", { type: "button", className: "akg-banner__action", onClick: props.onClose }, props.closeLabel || "Later") : null,
+        actions.map(function (a, i) {
+          return h("button", { key: i, type: "button", className: AKG.cx("akg-banner__action", a.prominent !== false && i === actions.length - 1 && "akg-banner__action--prominent"), onClick: a.onClick }, a.label);
+        }))
+    );
+  }
+  AKG.Banner = Banner;
+})(window.AKG = window.AKG || {});
+
+/* BottomBar — the floating bar at the bottom of an iPhone screen, for search or a few actions, above the home indicator. */
+(function (AKG) {
+  var h = window.React.createElement;
+  function BottomBar(props) {
+    return h("div", { className: AKG.cx("akg-bottom-bar", props.className), style: props.style }, props.children);
+  }
+  AKG.BottomBar = BottomBar;
+})(window.AKG = window.AKG || {});
+
+/* Highlight — marks the parts of a text that match a search query. */
+(function (AKG) {
+  var h = window.React.createElement;
+  function escape(s) { return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); }
+  function Highlight(props) {
+    var text = String(props.text == null ? "" : props.text), q = String(props.query || "").trim();
+    if (!q) return text;
+    var words = q.split(/\s+/).filter(Boolean).map(escape);
+    var parts = text.split(new RegExp("(" + words.join("|") + ")", "ig"));
+    return h(window.React.Fragment, null, parts.map(function (p, i) {
+      return i % 2 ? h("mark", { key: i, className: "akg-highlight" }, p) : p;
+    }));
+  }
+  AKG.Highlight = Highlight;
+})(window.AKG = window.AKG || {});
+
+/* ShareButton — opens the system share sheet (or copies the link where there is none). */
+(function (AKG) {
+  var R = window.React, h = R.createElement;
+  var share = h("svg", { viewBox: "0 0 20 20", fill: "none", stroke: "currentColor", strokeWidth: 1.8, strokeLinecap: "round", strokeLinejoin: "round" }, h("path", { d: "M10 3v10M6.5 6.5 10 3l3.5 3.5M5 10v6h10v-6" }));
+  var check = h("svg", { viewBox: "0 0 20 20", fill: "none", stroke: "currentColor", strokeWidth: 2.2, strokeLinecap: "round", strokeLinejoin: "round" }, h("path", { d: "M4.5 10.5 8 14l7.5-8" }));
+  function ShareButton(props) {
+    var c = R.useState(false), copied = c[0];
+    var onClick = function () {
+      var data = { title: props.title, text: props.text, url: props.url || location.href };
+      if (navigator.share) { navigator.share(data).catch(function () {}); return; }
+      if (navigator.clipboard) navigator.clipboard.writeText(data.url).then(function () { c[1](true); setTimeout(function () { c[1](false); }, 1500); });
+    };
+    return h(AKG.ToolbarButton, { icon: copied ? check : share, "aria-label": copied ? "Link Copied" : (props.label || "Share"), onClick: onClick, className: props.className });
+  }
+  AKG.ShareButton = ShareButton;
+})(window.AKG = window.AKG || {});
+
+/* NumberField — a labeled number entry for calculators: decimal keyboard, unit, range check. */
+(function (AKG) {
+  var R = window.React, h = R.createElement;
+  function NumberField(props) {
+    var t = R.useState(props.defaultValue != null ? String(props.defaultValue) : ""), text = props.value != null ? String(props.value) : t[0];
+    var n = text.trim() === "" ? null : Number(text.replace(",", "."));
+    var error = props.error;
+    if (!error && n != null) {
+      if (isNaN(n)) error = "Enter a number.";
+      else if ((props.min != null && n < props.min) || (props.max != null && n > props.max))
+        error = "Enter a value from " + (props.min != null ? props.min : "") + " to " + (props.max != null ? props.max : "") + (props.unit ? " " + props.unit : "") + ".";
+    }
+    return h(AKG.TextField, {
+      label: props.label, unit: props.unit, error: error, placeholder: props.placeholder, value: text, disabled: props.disabled,
+      inputMode: props.integer ? "numeric" : "decimal", enterKeyHint: props.enterKeyHint || "done", autoComplete: "off", className: props.className,
+      onChange: function (e) {
+        var v = e.target.value;
+        if (props.value == null) t[1](v);
+        if (props.onChange) { var x = v.trim() === "" ? null : Number(v.replace(",", ".")); props.onChange(x != null && isNaN(x) ? null : x, v); }
+      }
+    });
+  }
+  AKG.NumberField = NumberField;
 })(window.AKG = window.AKG || {});

@@ -74,14 +74,14 @@ function Insert({ kind, id }: { kind: string; id: string }) {
   if (!item) return <span className="missing">[missing {kind}: {id}]</span>;
   if (kind === 'dose') {
     const d = item as unknown as Dose;
-    return <button className="insert" onClick={() => sheet({ title: 'Dose', body: <DoseDetail d={d} /> })}>{doseLine(d)}</button>;
+    return <AKG.TappableValue onClick={() => sheet({ title: 'Dose', body: <DoseDetail d={d} /> })}>{doseLine(d)}</AKG.TappableValue>;
   }
   if (kind === 'threshold') {
     const t = item as unknown as Threshold;
     return (
-      <button className="insert" onClick={() => sheet({ title: t.name, body: <div className="detail-sheet"><p className="ios-title-3-emphasized">{t.value} {t.unit}</p><p className="ios-body">{t.meaning}</p><p className="ios-footnote-emphasized secondary">Sources</p><SourceList ids={t.sources} /></div> })}>
+      <AKG.TappableValue onClick={() => sheet({ title: t.name, body: <div className="detail-sheet"><p className="ios-title-3-emphasized">{t.value} {t.unit}</p><p className="ios-body">{t.meaning}</p><p className="ios-footnote-emphasized secondary">Sources</p><SourceList ids={t.sources} /></div> })}>
         {t.value} {t.unit}
-      </button>
+      </AKG.TappableValue>
     );
   }
   return <span>{id}</span>;
@@ -148,14 +148,11 @@ export function Blocks({ blocks }: { blocks: Block[] }) {
           return <p key={i} className="ios-body"><Insert kind={b.kind} id={b.id} /><Pill ids={insertSources(b.kind, b.id)} /></p>;
         }
         return (
-          <div key={i} className="table-scroll">
-            <table className="rich-table ios-subheadline">
-              <thead><tr>{b.header.map((h, j) => <th key={j}><Inlines xs={h} /></th>)}</tr></thead>
-              <tbody>{b.rows.map((r, j) => (
-                <tr key={j}>{r.cells.map((c, k) => <td key={k}><Inlines xs={c} />{k === r.cells.length - 1 && <Pill ids={r.sources} />}</td>)}</tr>
-              ))}</tbody>
-            </table>
-          </div>
+          <AKG.Table
+            key={i}
+            columns={b.header.map((h, j) => <Inlines key={j} xs={h} />)}
+            rows={b.rows.map((r) => r.cells.map((c, k) => <><Inlines xs={c} />{k === r.cells.length - 1 && <Pill ids={r.sources} />}</>))}
+          />
         );
       })}
     </>

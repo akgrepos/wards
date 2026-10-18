@@ -35,6 +35,7 @@
   --control-macos-large: 28px;
   --row-ios: 52px;
   --separator-width: 0.5px;
+  --readable-width: 672px;
 }
 
 :root, [data-theme="ios-light"] {
@@ -90,6 +91,7 @@
   --glass-fill: #ffffffb3;
   --menu-fill: #e6e6e68c;
   --accent: var(--system-blue);
+  --accent-text: #0066cc;
   --on-accent: #ffffff;
   --destructive: var(--system-red);
   --toggle-on: var(--system-green);
@@ -167,6 +169,7 @@
   --glass-fill: #1a1a1a80;
   --menu-fill: #5a5a5a80;
   --accent: var(--system-blue);
+  --accent-text: var(--system-blue);
   --on-accent: #ffffff;
   --destructive: var(--system-red);
   --toggle-on: var(--system-green);
@@ -244,6 +247,7 @@
   --glass-fill: #ffffffb3;
   --menu-fill: #e6e6e68c;
   --accent: var(--system-blue);
+  --accent-text: #0066cc;
   --on-accent: #ffffff;
   --destructive: var(--system-red);
   --toggle-on: var(--accent);
@@ -321,6 +325,7 @@
   --glass-fill: #1a1a1a80;
   --menu-fill: #5a5a5a80;
   --accent: var(--system-blue);
+  --accent-text: var(--system-blue);
   --on-accent: #ffffff;
   --destructive: var(--system-red);
   --toggle-on: var(--accent);

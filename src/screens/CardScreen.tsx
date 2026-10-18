@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { AKG } from '../design/akg';
 import { cardSources, cardTypeLabel, content, getCard, getSystem, titleCase } from '../content';
 import type { Source } from '../content/types';
@@ -14,17 +14,29 @@ export function CardScreen({ id }: { id: string }) {
   const card = getCard(id);
   const sheet = useSheet();
   const [current, setCurrent] = useState<string | undefined>(undefined);
+  // Collapsible sections that are open. Jumping to a collapsed section from the section bar opens it.
+  const [opened, setOpened] = useState<Set<string>>(() => new Set());
+  const titleRef = useRef<HTMLHeadingElement>(null);
   const sections = card?.sections ?? [];
+  const setOpen = (key: string, on: boolean) => setOpened((o) => { const n = new Set(o); if (on) n.add(key); else n.delete(key); return n; });
+  const jump = (id: string) => {
+    const s = sections.find((x) => `sec-${x.key}` === id);
+    if (s?.collapsed) setOpen(s.key, true);
+    requestAnimationFrame(() => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' }));
+  };
 
-  // Highlight the section in view in the jump bar.
+  // Highlight the section being read in the jump bar: the last one whose heading has reached the bar.
   useEffect(() => {
-    const els = sections.map((s) => document.getElementById(`sec-${s.key}`)).filter(Boolean) as HTMLElement[];
-    const io = new IntersectionObserver((entries) => {
-      const vis = entries.filter((e) => e.isIntersecting).sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
-      if (vis) setCurrent(vis.target.id);
-    }, { rootMargin: '-120px 0px -60% 0px' });
-    els.forEach((e) => io.observe(e));
-    return () => io.disconnect();
+    const update = () => {
+      const els = sections.map((s) => document.getElementById(`sec-${s.key}`)).filter(Boolean) as HTMLElement[];
+      const line = (els[0] ? parseFloat(getComputedStyle(els[0]).scrollMarginTop) : 110) + 8;
+      let cur: string | undefined;
+      for (const el of els) if (el.getBoundingClientRect().top <= line) cur = el.id;
+      setCurrent(cur ?? els[0]?.id);
+    };
+    update();
+    addEventListener('scroll', update, { passive: true });
+    return () => removeEventListener('scroll', update);
   }, [id]); // eslint-disable-line react-hooks/exhaustive-deps
 
   if (!card) return <NotFound />;
@@ -33,15 +45,21 @@ export function CardScreen({ id }: { id: string }) {
   const related = RELATED.filter(([k]) => (card.related?.[k] ?? []).length > 0);
 
   return (
-    <Screen title={card.title} back={{ label: system?.title ?? 'Wards', fallback: href.system(card.system) }}>
-      <header className="card-head">
-        <p className="ios-subheadline-emphasized secondary">{cardTypeLabel(card)} · {system?.title}</p>
-        <h1 className="ios-title-1-emphasized">{card.title}</h1>
-        {card.example && <AKG.Callout variant="info">Development sample with placeholder content. Not shown in the published app.</AKG.Callout>}
-      </header>
+    <Screen
+      title={card.title}
+      titleRef={titleRef}
+      back={{ label: system?.title ?? 'Wards', fallback: href.system(card.system) }}
+      head={
+        <header className="card-head">
+          <p className="ios-subheadline-emphasized secondary">{cardTypeLabel(card)} · {system?.title}</p>
+          <h1 ref={titleRef} className="ios-title-1-emphasized">{card.title}</h1>
+          {card.example && <AKG.Callout variant="info">Development sample with placeholder content. Not shown in the published app.</AKG.Callout>}
+        </header>
+      }
+    >
       {sections.length > 2 && (
         <div className="section-bar-wrap">
-          <AKG.SectionBar items={sections.map((s) => ({ id: `sec-${s.key}`, label: titleCase(s.title) }))} value={current} />
+          <AKG.SectionBar items={sections.map((s) => ({ id: `sec-${s.key}`, label: titleCase(s.title) }))} value={current} onSelect={jump} />
         </div>
       )}
       {sections.map((s) => (
@@ -50,6 +68,8 @@ export function CardScreen({ id }: { id: string }) {
           id={`sec-${s.key}`}
           title={titleCase(s.title)}
           collapsible={s.collapsed}
+          expanded={s.collapsed ? opened.has(s.key) : undefined}
+          onExpandedChange={(on: boolean) => setOpen(s.key, on)}
           summary={s.summary ? <><RichText text={s.summary} /><Pill ids={s.summarySources} /></> : undefined}
           more={s.more.length ? <Blocks blocks={s.more} /> : undefined}
           moreLabel={s.moreTitle ? titleCase(s.moreTitle.replace(/^more\s*/i, 'Show ').trim() || 'Show More Detail') : undefined}

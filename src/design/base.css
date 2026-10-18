@@ -33,13 +33,15 @@ h1, p { margin: 0; }
 }
 .screen-body {
   display: flex; flex-direction: column; gap: var(--space-20);
+  /* Long reading text stays at a comfortable width on iPad and in landscape (design system: readable-width). */
+  box-sizing: content-box; max-width: var(--readable-width); margin: 0 auto;
   padding: var(--space-4) calc(env(safe-area-inset-right) + var(--space-16)) calc(env(safe-area-inset-bottom) + var(--space-24)) calc(env(safe-area-inset-left) + var(--space-16));
 }
 .page-title { margin: 0; }
 .version { color: var(--label-secondary); text-align: center; font-variant-numeric: tabular-nums; }
 .empty { min-height: 50vh; display: flex; }
 .secondary { color: var(--label-secondary); }
-.accent-link { color: var(--accent); text-decoration: none; }
+.accent-link { color: var(--accent-text); text-decoration: none; }
 
 /* Card page */
 .card-head { display: flex; flex-direction: column; gap: var(--space-4); }
@@ -54,18 +56,7 @@ h1, p { margin: 0; }
 .rich-list ul { margin: var(--space-4) 0 0; padding-left: 1.1em; display: flex; flex-direction: column; gap: var(--space-4); color: var(--label-secondary); }
 .akg-content-section p { margin: 0; }
 .subheading { margin: var(--space-4) 0 0; }
-.table-scroll { overflow-x: auto; margin: 0 calc(-1 * var(--space-16)); padding: 0 var(--space-16); }
-.rich-table { border-collapse: collapse; min-width: 100%; background: var(--background-grouped-secondary); border-radius: 14px; overflow: hidden; }
-.rich-table th, .rich-table td { text-align: left; vertical-align: top; padding: var(--space-8) var(--space-12); border-bottom: var(--separator-width) solid var(--separator); }
-.rich-table th { color: var(--label-secondary); font-weight: 600; }
-.rich-table tr:last-child td { border-bottom: 0; }
-
-/* Inserted items look like the text around them; a faint dotted underline shows they open their home. */
-.insert {
-  padding: 0; border: 0; background: none; color: inherit; font: inherit; cursor: pointer;
-  text-decoration: underline dotted var(--label-tertiary); text-underline-offset: 3px; -webkit-tap-highlight-color: transparent;
-}
-.card-link { color: var(--accent); text-decoration: none; }
+.card-link { color: var(--accent-text); text-decoration: none; }
 .missing { color: var(--system-red); }
 .pathway { display: flex; flex-direction: column; gap: var(--space-8); }
 
@@ -76,11 +67,5 @@ h1, p { margin: 0; }
 .source-item p, .detail-sheet p { margin: 0; }
 .detail-sheet { display: flex; flex-direction: column; gap: var(--space-12); }
 
-/* The update banner floats near the top of the screen, above the content. */
-.update-prompt {
-  position: fixed;
-  top: calc(env(safe-area-inset-top) + var(--space-8));
-  left: calc(env(safe-area-inset-left) + var(--space-8));
-  right: calc(env(safe-area-inset-right) + var(--space-8));
-  z-index: 10;
-}
+/* The update banner floats at the bottom, so it never covers Back; leave room so the last line can scroll above it. */
+.screen-page:has(~ .akg-banner--bottom) .screen-body { padding-bottom: calc(env(safe-area-inset-bottom) + 96px); }

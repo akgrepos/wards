@@ -9,7 +9,6 @@ export function SystemScreen({ id }: { id: string }) {
   const groups = systemGroups(id);
   return (
     <Screen title={system.title} back={{ label: 'Wards', fallback: href.home() }}>
-      <h1 className="ios-large-title-emphasized page-title">{system.title}</h1>
       {groups.length === 0 ? (
         <div className="empty"><AKG.EmptyState title="No Cards Yet" description="Cards for this section will appear here once they’re added." /></div>
       ) : (

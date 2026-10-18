@@ -9,7 +9,7 @@ export function Home() {
   const library = content.systems.find((s) => s.library);
   const count = (id: string) => cardsInSystem(id).length;
   return (
-    <Screen title="Wards" large>
+    <Screen title="Wards">
       <AKG.List header="Systems">
         {systems.map((s) => (
           <AKG.ListRow key={s.id} title={s.title} detail={count(s.id) ? String(count(s.id)) : undefined} chevron href={href.system(s.id)} />

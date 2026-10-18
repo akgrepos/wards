@@ -235,6 +235,16 @@ export interface TextFieldProps extends Omit<React.InputHTMLAttributes<HTMLInput
   className?: string;
   /** Applied to the wrapper (use it to set a width on macOS). */
   style?: React.CSSProperties;
+  /** Visible label on the leading side of the row (iOS forms); the value is then trailing-aligned. A placeholder is not a label. */
+  label?: React.ReactNode;
+  /** Unit shown after the value ("mg/dL", "kg"). */
+  unit?: React.ReactNode;
+  /** Error message shown in red under the field; marks the value invalid. */
+  error?: React.ReactNode;
+  /** Keyboard to show on iPhone: "decimal" for numbers with a point, "numeric" for whole numbers, "email", "url", "search". */
+  inputMode?: React.HTMLAttributes<HTMLInputElement>['inputMode'];
+  /** Label on the keyboard's Return key: "done", "next", "search", "go". */
+  enterKeyHint?: React.InputHTMLAttributes<HTMLInputElement>['enterKeyHint'];
 }
 export declare function TextField(props: TextFieldProps): React.ReactElement;
 
@@ -543,6 +553,7 @@ export interface TabBarItem {
   label: string;
   /** A symbol: an inline SVG element (SF Symbols are not bundled). Without one the tab shows its label only. */
   icon?: React.ReactNode;
+  /** @deprecated Apple: never disable or hide a tab; show an empty state inside it instead. Kept for compatibility. */
   disabled?: boolean;
 }
 export interface TabBarProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange' | 'defaultValue'> {
@@ -572,6 +583,8 @@ export interface ToolbarProps extends Omit<React.HTMLAttributes<HTMLElement>, 't
   subtitle?: React.ReactNode;
   /** iOS: show the title as a 34pt bold large title below the bar. Ignored on macOS. */
   largeTitle?: boolean;
+  /** false fades the bar title out. For a page whose own large title scrolls with its content, pass showTitle={useScrolledPast(titleRef)} so the title shows once: large in the page, then small in the bar (Apple's large-title behavior). */
+  showTitle?: boolean;
   /** Controls at the leading edge, usually a back ToolbarButton. */
   leading?: React.ReactNode;
   /** Controls at the trailing edge: ToolbarButtons or a ToolbarGroup. */
@@ -699,6 +712,10 @@ export interface SheetProps extends Omit<React.HTMLAttributes<HTMLDivElement>, '
   title?: React.ReactNode;
   /** iOS height: medium = glass, inset 8pt, about half the screen · large = opaque, nearly full height. Ignored on macOS. */
   detent?: 'medium' | 'large';
+  /** iOS: the heights people can switch between, smallest first, e.g. ['medium', 'large']. Opens at the first. Dragging the bar up grows it; dragging down shrinks it, then dismisses; tapping the grabber cycles. */
+  detents?: Array<'medium' | 'large'>;
+  /** Cover the whole viewport (position: fixed) and lock page scrolling while open. Use it when the sheet is presented from a scrolling page rather than a fixed screen. */
+  fixed?: boolean;
   /** Accessible label / macOS button text for the done action. Defaults to "Done". */
   doneLabel?: string;
   /** Accessible label / macOS button text for the close action. Defaults to "Cancel". */
@@ -708,7 +725,7 @@ export interface SheetProps extends Omit<React.HTMLAttributes<HTMLDivElement>, '
   /** Sheet content. */
   children?: React.ReactNode;
 }
-/** Fills its nearest positioned ancestor; className and other props go to the panel (role="dialog"). */
+/** Fills its nearest positioned ancestor (or the viewport with `fixed`); slides up when it opens and down when it closes. Escape closes it. className and other props go to the panel (role="dialog"). */
 export declare function Sheet(props: SheetProps): React.ReactElement | null;
 
 export interface AlertAction {
@@ -726,7 +743,7 @@ export interface AlertProps extends Omit<React.HTMLAttributes<HTMLDivElement>, '
   title: React.ReactNode;
   /** Optional one- or two-sentence explanation. */
   message?: React.ReactNode;
-  /** Buttons in display order. Defaults to a single preferred "OK". */
+  /** The buttons. Placed in Apple's order: side by side, Cancel leading; stacked, the preferred action first and Cancel last. Escape triggers Cancel. Defaults to a single preferred "OK". */
   actions?: AlertAction[];
   /** Text fields shown under the message; each object is spread onto an <input>. */
   fields?: Array<React.InputHTMLAttributes<HTMLInputElement>>;
@@ -736,6 +753,8 @@ export interface AlertProps extends Omit<React.HTMLAttributes<HTMLDivElement>, '
   icon?: React.ReactNode;
   /** Wraps the alert in a dimming layer that fills and centers within the nearest positioned ancestor. */
   overlay?: boolean;
+  /** With overlay: cover the whole viewport and lock page scrolling. */
+  fixed?: boolean;
   /** Extra content under the message. */
   children?: React.ReactNode;
 }
@@ -763,10 +782,12 @@ export interface ActionSheetProps extends React.HTMLAttributes<HTMLDivElement> {
   title?: React.ReactNode;
   /** Optional one-sentence explanation under the title. */
   message?: React.ReactNode;
-  /** The choices, top to bottom. Cancel is moved to the end. */
+  /** The choices, top to bottom. Destructive choices move to the top and Cancel to the end. Keep it to about four including Cancel. */
   actions?: ActionSheetAction[];
   /** Dims and fills the nearest positioned ancestor and anchors the sheet near its bottom (iOS) or centre (macOS). Without it you get the panel alone. */
   overlay?: boolean;
+  /** With overlay: cover the whole viewport and lock page scrolling. */
+  fixed?: boolean;
   /** iOS overlay only: horizontal anchor, matching the control that opened it. Default center. */
   align?: 'center' | 'leading' | 'trailing';
   /** Extra content between the message and the actions. */
@@ -805,6 +826,8 @@ export interface MenuProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'o
   items?: MenuEntry[];
   /** Called with the entry and its index when an item from `items` is chosen. */
   onSelect?: (item: MenuEntry, index: number) => void;
+  /** Called on Escape. */
+  onClose?: () => void;
   children?: React.ReactNode;
 }
 export interface MenuSectionProps {
@@ -824,12 +847,14 @@ export interface PopoverProps extends React.HTMLAttributes<HTMLDivElement> {
   placement?: 'bottom' | 'top' | 'left' | 'right' | 'none';
   /** Arrow position along its edge. */
   align?: 'start' | 'center' | 'end';
-  /** Called on Escape. */
+  /** Called on Escape and on a tap or click outside the popover. */
   onClose?: () => void;
+  /** The control that opens the popover; taps on it don't count as outside (so it can toggle). */
+  anchorRef?: React.RefObject<HTMLElement | null>;
   /** Popover content. The body has 16pt padding. */
   children?: React.ReactNode;
 }
-/** A container only: you position it next to its anchor. role="dialog". */
+/** A container only: you position it next to its anchor. role="dialog". On iPhone use a Sheet instead. */
 export declare function Popover(props: PopoverProps): React.ReactElement | null;
 
 export interface CalloutProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'title'> {
@@ -949,4 +974,101 @@ export interface FlowchartProps {
 }
 export declare function Flowchart(props: FlowchartProps): React.ReactElement;
 
-declare global { interface Window { AKG: { Button: typeof Button; Toggle: typeof Toggle; Checkbox: typeof Checkbox; RadioGroup: typeof RadioGroup; Radio: typeof Radio; SegmentedControl: typeof SegmentedControl; PopUpButton: typeof PopUpButton; Stepper: typeof Stepper; TextField: typeof TextField; SearchField: typeof SearchField; ComboBox: typeof ComboBox; Slider: typeof Slider; DatePicker: typeof DatePicker; ColorWell: typeof ColorWell; List: typeof List; ListRow: typeof ListRow; GroupBox: typeof GroupBox; DisclosureGroup: typeof DisclosureGroup; DisclosureButton: typeof DisclosureButton; ProgressIndicator: typeof ProgressIndicator; EmptyState: typeof EmptyState; Notification: typeof Notification; Tooltip: typeof Tooltip; TabBar: typeof TabBar; Toolbar: typeof Toolbar; ToolbarGroup: typeof ToolbarGroup; ToolbarButton: typeof ToolbarButton; Sidebar: typeof Sidebar; SidebarSection: typeof SidebarSection; SidebarItem: typeof SidebarItem; PageControl: typeof PageControl; Window: typeof Window; Sheet: typeof Sheet; Alert: typeof Alert; ActionSheet: typeof ActionSheet; Menu: typeof Menu; MenuItem: typeof MenuItem; MenuSeparator: typeof MenuSeparator; MenuSection: typeof MenuSection; Popover: typeof Popover; Callout: typeof Callout; SourcePill: typeof SourcePill; ContentSection: typeof ContentSection; SectionBar: typeof SectionBar; Flowchart: typeof Flowchart; cx(...c: any[]): string; platform(el?: Element): 'ios' | 'macos' } } }
+/** A value inside running text that opens more detail on tap: a dose, a cutoff, a defined term. Looks like the text around it with a dotted underline; 44pt hit area on iOS. */
+export interface TappableValueProps extends React.HTMLAttributes<HTMLSpanElement> { disabled?: boolean; children?: React.ReactNode; }
+export declare function TappableValue(props: TappableValueProps): React.ReactElement;
+
+export interface TableRow { key?: React.Key; cells: React.ReactNode[]; }
+export interface TableProps {
+  /** Header cells. */
+  columns?: React.ReactNode[];
+  /** Rows: arrays of cells, or { key, cells }. */
+  rows: Array<React.ReactNode[] | TableRow>;
+  /** Short caption above the table. */
+  caption?: React.ReactNode;
+  /** Keep the first column in place while the rest scrolls sideways. Default true. */
+  stickyFirstColumn?: boolean;
+  /** Treat each row's first cell as its label (bold, a row header). Default true. */
+  rowHeaders?: boolean;
+  className?: string;
+  style?: React.CSSProperties;
+}
+/** A data table for reading content. Scrolls sideways when wide, with a fade on the side that has more. */
+export declare function Table(props: TableProps): React.ReactElement;
+
+export interface FigureProps {
+  src: string;
+  /** Describes the image. */
+  alt: string;
+  caption?: React.ReactNode;
+  /** Source or license line, under the caption. */
+  credit?: React.ReactNode;
+  /** Tap to view full screen with pinch to zoom. Default true. */
+  zoomable?: boolean;
+  /** Keep a white backing in dark mode, for tracings, scans and diagrams drawn on white. */
+  paper?: boolean;
+  width?: number; height?: number;
+  className?: string;
+  style?: React.CSSProperties;
+}
+export declare function Figure(props: FigureProps): React.ReactElement;
+
+export interface BannerAction { label: string; onClick?: () => void; prominent?: boolean; }
+export interface BannerProps {
+  title?: React.ReactNode;
+  /** The message. */
+  children?: React.ReactNode;
+  /** Usually one action ("Reload"). The last one is prominent. */
+  actions?: BannerAction[];
+  /** Dismisses the banner; shown as a "Later" button (closeLabel). */
+  onClose?: () => void;
+  closeLabel?: string;
+  /** Float fixed at the top or bottom of the screen (inside the safe area). Bottom never covers navigation. Omit to place it yourself. */
+  placement?: 'top' | 'bottom';
+  role?: string;
+  className?: string;
+  style?: React.CSSProperties;
+}
+/** In-app status about the app itself (an update is ready, you're offline). For messages from content, use Notification. */
+export declare function Banner(props: BannerProps): React.ReactElement;
+
+export interface BottomBarProps { children?: React.ReactNode; className?: string; style?: React.CSSProperties; }
+/** The floating bar at the bottom of an iPhone screen, above the home indicator. iOS puts search here: a glass SearchField, with results replacing the page content. */
+export declare function BottomBar(props: BottomBarProps): React.ReactElement;
+
+export interface HighlightProps { text: string; query?: string; }
+/** Marks the words of `query` inside `text` (for search results). */
+export declare function Highlight(props: HighlightProps): React.ReactElement | string;
+
+export interface ShareButtonProps { url?: string; title?: string; text?: string; label?: string; className?: string; }
+/** A toolbar button that opens the system share sheet; where there is none, it copies the link and shows a checkmark. */
+export declare function ShareButton(props: ShareButtonProps): React.ReactElement;
+
+export interface NumberFieldProps {
+  label: React.ReactNode;
+  unit?: React.ReactNode;
+  value?: number | string | null;
+  defaultValue?: number | string;
+  /** Called with the number (null when empty or not a number) and the raw text. */
+  onChange?: (value: number | null, text: string) => void;
+  min?: number; max?: number;
+  /** Whole numbers only (numeric keyboard). Default false (decimal keyboard). */
+  integer?: boolean;
+  placeholder?: string;
+  /** Your own error message; otherwise a range message when the value is outside min–max. */
+  error?: React.ReactNode;
+  enterKeyHint?: React.InputHTMLAttributes<HTMLInputElement>['enterKeyHint'];
+  disabled?: boolean;
+  className?: string;
+}
+/** A labeled number entry for calculators: decimal keyboard, unit, range check. Renders a TextField row. */
+export declare function NumberField(props: NumberFieldProps): React.ReactElement;
+
+/** True once ref's element has scrolled up under the top bar (offset, default 60px). Pair with Toolbar showTitle. */
+export declare function useScrolledPast(ref: React.RefObject<Element | null>, offset?: number): boolean;
+/** Locks page scrolling; returns the function that unlocks it. */
+export declare function lockScroll(): () => void;
+/** Calls fn on Escape anywhere in the document while active. */
+export declare function useEscape(active: boolean, fn: (e: KeyboardEvent) => void): void;
+
+declare global { interface Window { AKG: { Button: typeof Button; Toggle: typeof Toggle; Checkbox: typeof Checkbox; RadioGroup: typeof RadioGroup; Radio: typeof Radio; SegmentedControl: typeof SegmentedControl; PopUpButton: typeof PopUpButton; Stepper: typeof Stepper; TextField: typeof TextField; SearchField: typeof SearchField; ComboBox: typeof ComboBox; Slider: typeof Slider; DatePicker: typeof DatePicker; ColorWell: typeof ColorWell; List: typeof List; ListRow: typeof ListRow; GroupBox: typeof GroupBox; DisclosureGroup: typeof DisclosureGroup; DisclosureButton: typeof DisclosureButton; ProgressIndicator: typeof ProgressIndicator; EmptyState: typeof EmptyState; Notification: typeof Notification; Tooltip: typeof Tooltip; TabBar: typeof TabBar; Toolbar: typeof Toolbar; ToolbarGroup: typeof ToolbarGroup; ToolbarButton: typeof ToolbarButton; Sidebar: typeof Sidebar; SidebarSection: typeof SidebarSection; SidebarItem: typeof SidebarItem; PageControl: typeof PageControl; Window: typeof Window; Sheet: typeof Sheet; Alert: typeof Alert; ActionSheet: typeof ActionSheet; Menu: typeof Menu; MenuItem: typeof MenuItem; MenuSeparator: typeof MenuSeparator; MenuSection: typeof MenuSection; Popover: typeof Popover; Callout: typeof Callout; SourcePill: typeof SourcePill; ContentSection: typeof ContentSection; SectionBar: typeof SectionBar; Flowchart: typeof Flowchart; TappableValue: typeof TappableValue; Table: typeof Table; Figure: typeof Figure; Banner: typeof Banner; BottomBar: typeof BottomBar; Highlight: typeof Highlight; ShareButton: typeof ShareButton; NumberField: typeof NumberField; useScrolledPast: typeof useScrolledPast; lockScroll: typeof lockScroll; useEscape: typeof useEscape; cx(...c: any[]): string; platform(el?: Element): 'ios' | 'macos' } } }

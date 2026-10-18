@@ -1720,18 +1720,25 @@ button.akg-disclosure__button:disabled, .akg-disclosure__header:disabled .akg-di
 [data-theme^="macos"] .akg-window--inactive .akg-window__toolbar .akg-button--bordered { color: var(--glass-label-tertiary); }
 
 /* Sheet — iOS 27 "Sheets / iPhone / Medium Detent · Large Detent" and macOS 27 "Windows / Utility Panel" (Panels style).
-   The sheet fills its nearest positioned ancestor (the screen or window you present it in). */
+   The sheet fills its nearest positioned ancestor (the screen or window you present it in), or the viewport with `fixed`. */
 .akg-sheet { position: absolute; inset: 0; z-index: 10; overflow: hidden; border-radius: inherit; }
-.akg-sheet__scrim { position: absolute; inset: 0; background: var(--overlay-dim); }
+.akg-sheet--fixed { position: fixed; z-index: 1000; border-radius: 0; height: 100dvh; }
+.akg-sheet__scrim { position: absolute; inset: 0; background: var(--overlay-dim); animation: akg-fade-in 250ms ease-out; }
+.akg-sheet--leaving .akg-sheet__scrim { opacity: 0; transition: opacity 220ms ease-in; }
 .akg-sheet--no-dim .akg-sheet__scrim { background: transparent; }
 
 .akg-sheet__panel {
   position: absolute; display: flex; flex-direction: column; overflow: hidden;
   color: var(--label);
+  animation: akg-sheet-in 320ms cubic-bezier(0.2, 0.9, 0.3, 1);
+  transition: height 300ms cubic-bezier(0.2, 0.9, 0.3, 1), left 300ms, right 300ms, bottom 300ms, border-radius 300ms, transform 300ms cubic-bezier(0.2, 0.9, 0.3, 1);
 }
-/* Medium detent: Liquid Glass, inset 8 from the screen edges, 34 corners */
+.akg-sheet--leaving .akg-sheet__panel { transform: translateY(110%); transition: transform 220ms ease-in; }
+@keyframes akg-sheet-in { from { transform: translateY(100%); } to { transform: none; } }
+@keyframes akg-fade-in { from { opacity: 0; } to { opacity: 1; } }
+/* Medium detent: Liquid Glass, inset 8 from the screen edges (plus the home indicator area), 34 corners */
 .akg-sheet__panel--medium {
-  left: var(--space-8); right: var(--space-8); bottom: var(--space-8); height: 52%;
+  left: var(--space-8); right: var(--space-8); bottom: calc(var(--space-8) + env(safe-area-inset-bottom) * 0.5); height: 52%;
   border-radius: var(--radius-sheet);
   background: var(--glass-fill);
   -webkit-backdrop-filter: blur(15px) saturate(180%); backdrop-filter: blur(15px) saturate(180%);
@@ -1739,7 +1746,7 @@ button.akg-disclosure__button:disabled, .akg-disclosure__header:disabled .akg-di
 }
 /* Large detent: opaque, full width, 38 top corners, 62 from the top */
 .akg-sheet__panel--large {
-  left: 0; right: 0; bottom: 0; top: min(62px, 8%);
+  left: 0; right: 0; bottom: 0; height: calc(100% - max(62px, env(safe-area-inset-top) + 10px));
   border-radius: 38px 38px 0 0;
   background: var(--background-elevated);
   box-shadow: var(--shadow-glass);
@@ -1750,19 +1757,23 @@ button.akg-disclosure__button:disabled, .akg-disclosure__header:disabled .akg-di
   position: relative; flex: none; height: 70px; display: flex; align-items: center; gap: var(--space-8);
   padding: var(--space-12) var(--space-16) 0;
 }
-.akg-sheet__grabber { position: absolute; top: 5px; left: 50%; width: 60px; height: 4px; margin-left: -30px; border-radius: 2px; background: var(--system-gray-4); }
+.akg-sheet__bar { touch-action: none; }
+.akg-sheet__grabber { position: absolute; top: 5px; left: 50%; width: 60px; height: 4px; margin-left: -30px; padding: 0; border: 0; border-radius: 2px; background: var(--system-gray-4); -webkit-tap-highlight-color: transparent; }
+button.akg-sheet__grabber { cursor: pointer; }
+button.akg-sheet__grabber::after { content: ""; position: absolute; left: -20px; right: -20px; top: -5px; bottom: -14px; }
 .akg-sheet__title { flex: 1; min-width: 0; text-align: center; font-size: calc(17 * var(--akg-text-unit, 1px)); line-height: calc(22 * var(--akg-text-unit, 1px)); font-weight: 600; color: var(--glass-label); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .akg-sheet__circle, .akg-sheet__spacer { flex: none; width: var(--tap-target); height: var(--tap-target); border-radius: var(--radius-full); }
 .akg-sheet__circle { display: inline-flex; align-items: center; justify-content: center; border: 0; margin: 0; padding: 0; cursor: pointer; font-size: calc(17 * var(--akg-text-unit, 1px)); -webkit-tap-highlight-color: transparent; }
 .akg-sheet__circle--close { background: var(--fill-secondary); color: var(--glass-label); }
 .akg-sheet__circle--done { background: var(--accent); color: var(--on-accent); }
 .akg-sheet__circle:active { filter: brightness(0.9); }
-.akg-sheet__content { flex: 1; min-height: 0; overflow: auto; padding: var(--space-8) var(--space-16) var(--space-16); }
+.akg-sheet__content { flex: 1; min-height: 0; overflow: auto; overscroll-behavior: contain; padding: var(--space-8) var(--space-16) var(--space-16); }
 .akg-sheet__footer { display: none; }
 
 
 /* macOS: window-modal sheet hanging from the titlebar. Panel background, 15 corners, no grabber. */
 [data-theme^="macos"] .akg-sheet__scrim { background: transparent; }
+[data-theme^="macos"] .akg-sheet__panel { animation: none; transition: none; }
 [data-theme^="macos"] .akg-sheet__panel,
 [data-theme^="macos"] .akg-sheet__panel--medium,
 [data-theme^="macos"] .akg-sheet__panel--large {
@@ -1792,6 +1803,8 @@ button.akg-disclosure__button:disabled, .akg-disclosure__header:disabled .akg-di
   color: var(--label); text-align: left;
 }
 .akg-alert-overlay { position: absolute; inset: 0; z-index: 20; display: flex; align-items: center; justify-content: center; padding: var(--space-16); background: var(--overlay-dim); border-radius: inherit; }
+.akg-alert-overlay--fixed, .akg-action-sheet-overlay--fixed { position: fixed; z-index: 1000; border-radius: 0; }
+.akg-alert-overlay, .akg-action-sheet-overlay__scrim { animation: akg-fade-in 200ms ease-out; }
 .akg-alert__icon { display: none; }
 
 /* Title and message: 8 8 24 inset, 10 apart, both 17pt */
@@ -2090,6 +2103,11 @@ button.akg-disclosure__button:disabled, .akg-disclosure__header:disabled .akg-di
 
 .akg-section-bar { display: flex; gap: var(--space-8); overflow-x: auto; scrollbar-width: none; padding: var(--space-4) 0; font-family: var(--font-sans); }
 .akg-section-bar::-webkit-scrollbar { display: none; }
+.akg-section-bar { position: relative; }
+.akg-section-bar--more-end { -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 32px), transparent); mask-image: linear-gradient(to right, #000 calc(100% - 32px), transparent); }
+.akg-section-bar--more-start { -webkit-mask-image: linear-gradient(to left, #000 calc(100% - 32px), transparent); mask-image: linear-gradient(to left, #000 calc(100% - 32px), transparent); }
+.akg-section-bar--more-start.akg-section-bar--more-end { -webkit-mask-image: linear-gradient(to right, transparent, #000 32px, #000 calc(100% - 32px), transparent); mask-image: linear-gradient(to right, transparent, #000 32px, #000 calc(100% - 32px), transparent); }
+.akg-content-section [hidden] { display: none !important; }
 .akg-section-bar__item { flex: none; min-height: var(--control-ios-medium); padding: 0 var(--space-14, 14px); border: 0; border-radius: var(--radius-full); background: var(--fill-tertiary); color: var(--label); font-family: inherit; font-size: calc(15 * var(--akg-t)); font-weight: 500; white-space: nowrap; cursor: pointer; }
 .akg-section-bar__item--current { background: var(--accent); color: var(--on-accent); }
 [data-theme^="macos"] .akg-section-bar__item { min-height: var(--control-macos-regular); padding: 0 var(--space-10); font-size: 13px; }
@@ -2158,3 +2176,120 @@ button.akg-disclosure__button:disabled, .akg-disclosure__header:disabled .akg-di
 
 /* iOS buttons and segmented controls use min-height so they grow with Text Size; macOS keeps its fixed heights. */
 [data-theme^="macos"] .akg-button, [data-theme^="macos"] .akg-segmented { min-height: 0; }
+
+/* Overlays shown over the whole viewport (`fixed`). */
+.akg-alert-overlay.akg-alert-overlay--fixed, .akg-action-sheet-overlay.akg-action-sheet-overlay--fixed { position: fixed; z-index: 1000; border-radius: 0; }
+
+/* Touch targets (iOS) — every control people tap gets at least a 44×44pt hit area (Apple's minimum),
+   without changing how big it looks. An invisible ::after extends the target; macOS (pointer) keeps the visible size. */
+.akg-button--small, .akg-button--mini, .akg-button--medium,
+.akg-toggle__track, .akg-date-picker__pill, .akg-text-field__clear, .akg-stepper__btn { position: relative; }
+.akg-button--small::after, .akg-button--mini::after, .akg-button--medium::after,
+.akg-toggle__track::after, .akg-date-picker__pill::after, .akg-text-field__clear::after {
+  content: ""; position: absolute; left: 50%; top: 50%;
+  width: max(100%, var(--tap-target)); height: max(100%, var(--tap-target)); transform: translate(-50%, -50%);
+}
+/* Stepper: each half grows to 44pt tall; the capsule clips only its pressed fill. */
+.akg-stepper__control { overflow: visible; }
+.akg-stepper__btn--dec { border-radius: var(--radius-full) 0 0 var(--radius-full); }
+.akg-stepper__btn--inc { border-radius: 0 var(--radius-full) var(--radius-full) 0; }
+[data-theme^="macos"] .akg-stepper__control { overflow: hidden; }
+[data-theme^="macos"] .akg-stepper__btn--dec, [data-theme^="macos"] .akg-stepper__btn--inc { border-radius: 0; }
+.akg-stepper__btn::after { content: ""; position: absolute; left: 0; right: 0; top: -6px; bottom: -6px; }
+/* Slider: the invisible range input is 44pt tall around the 24pt knob. */
+.akg-slider__input { inset: auto 0; top: 50%; height: var(--tap-target); transform: translateY(-50%); }
+[data-theme^="macos"] .akg-button--small::after, [data-theme^="macos"] .akg-button--mini::after, [data-theme^="macos"] .akg-button--medium::after,
+[data-theme^="macos"] .akg-toggle__track::after, [data-theme^="macos"] .akg-date-picker__pill::after,
+[data-theme^="macos"] .akg-stepper__btn::after { display: none; }
+[data-theme^="macos"] .akg-slider__input { inset: 0; top: 0; height: 100%; transform: none; }
+
+/* Toolbar title that appears once the page's own large title scrolls away (showTitle={false} until then). */
+.akg-toolbar__heading { transition: opacity 200ms ease; }
+.akg-toolbar--title-hidden .akg-toolbar__heading { opacity: 0; }
+
+/* TextField label, unit and error (iOS: label on the leading side of the row, value trailing; error in red below). */
+.akg-text-field__label { flex: none; max-width: 50%; color: var(--label); font-size: calc(17 * var(--akg-text-unit, 1px)); line-height: calc(22 * var(--akg-text-unit, 1px)); }
+.akg-text-field--labeled .akg-text-field__input { text-align: right; }
+.akg-text-field__unit { flex: none; color: var(--label-secondary); font-size: calc(17 * var(--akg-text-unit, 1px)); }
+.akg-text-field--invalid .akg-text-field__input { color: var(--system-red); }
+.akg-text-field__error { margin: var(--space-4) var(--space-16) var(--space-8); color: var(--system-red); font-size: calc(13 * var(--akg-text-unit, 1px)); line-height: calc(18 * var(--akg-text-unit, 1px)); }
+[data-theme^="macos"] .akg-text-field__label, [data-theme^="macos"] .akg-text-field__unit { font-size: 13px; line-height: 16px; }
+[data-theme^="macos"] .akg-text-field--labeled .akg-text-field__input { text-align: left; }
+[data-theme^="macos"] .akg-text-field__error { margin: var(--space-4) 0 0; font-size: 11px; line-height: 14px; }
+
+/* TappableValue — reads as part of the sentence; a dotted underline says it opens detail. 44pt hit area on iOS. */
+.akg-tappable-value {
+  position: relative; display: inline; padding: 0 1px; margin: 0 -1px; border: 0; border-radius: 4px; -webkit-box-decoration-break: clone; box-decoration-break: clone;
+  background: none; color: inherit; font: inherit; cursor: pointer; text-align: inherit;
+  text-decoration: underline dotted var(--label-secondary); text-decoration-thickness: 1.5px; text-underline-offset: 3px;
+  -webkit-tap-highlight-color: transparent;
+}
+.akg-tappable-value:active { background: var(--fill-tertiary); }
+.akg-tappable-value::after { content: ""; position: absolute; left: 50%; top: 50%; width: max(100%, var(--tap-target)); height: var(--tap-target); transform: translate(-50%, -50%); }
+[data-theme^="macos"] .akg-tappable-value::after { display: none; }
+[data-theme^="macos"] .akg-tappable-value:hover { background: var(--fill-quaternary); }
+
+/* Table — grouped-cell look; first column stays put while the rest scrolls; the hidden side fades. */
+.akg-table { margin: 0; min-width: 0; position: relative; }
+.akg-table__scroll { overflow-x: auto; border-radius: 14px; background: var(--background-grouped-secondary); overscroll-behavior-x: contain; }
+.akg-table__table { border-collapse: separate; border-spacing: 0; min-width: 100%; font-size: calc(15 * var(--akg-text-unit, 1px)); line-height: calc(20 * var(--akg-text-unit, 1px)); color: var(--label); }
+.akg-table__caption { caption-side: top; text-align: left; padding: 0 var(--space-4) var(--space-8); color: var(--label-secondary); font-size: calc(13 * var(--akg-text-unit, 1px)); line-height: calc(18 * var(--akg-text-unit, 1px)); }
+.akg-table__table th, .akg-table__table td { text-align: left; vertical-align: top; padding: var(--space-8) var(--space-12); border-bottom: var(--separator-width) solid var(--separator); min-width: 7em; }
+.akg-table__table thead th { color: var(--label-secondary); font-weight: 600; white-space: nowrap; }
+.akg-table__table tbody th { font-weight: 600; }
+.akg-table__table tr:last-child > * { border-bottom: 0; }
+.akg-table--sticky .akg-table__table th:first-child, .akg-table--sticky .akg-table__table td:first-child { position: sticky; left: 0; z-index: 1; background: var(--background-grouped-secondary); max-width: 40vw; }
+.akg-table--sticky.akg-table--more-start .akg-table__table :is(th, td):first-child { box-shadow: 1px 0 0 var(--separator), 6px 0 8px -6px rgba(0, 0, 0, 0.18); }
+.akg-table::after { content: ""; position: absolute; top: 0; right: 0; bottom: 0; width: 28px; border-radius: 0 14px 14px 0; pointer-events: none; opacity: 0; transition: opacity 150ms; background: linear-gradient(to right, transparent, var(--background-grouped-secondary)); }
+.akg-table--more-end::after { opacity: 1; }
+[data-theme^="macos"] .akg-table__table { font-size: 13px; line-height: 16px; }
+[data-theme^="macos"] .akg-table__scroll, [data-theme^="macos"] .akg-table::after { border-radius: 10px; }
+
+/* Figure — image with caption; `paper` keeps a white backing in dark mode (for tracings and scans that must not invert). */
+.akg-figure { margin: 0; display: flex; flex-direction: column; gap: var(--space-8); }
+.akg-figure__open { display: block; padding: 0; border: 0; background: none; cursor: zoom-in; border-radius: 14px; overflow: hidden; -webkit-tap-highlight-color: transparent; }
+.akg-figure__image { display: block; width: 100%; height: auto; border-radius: 14px; }
+.akg-figure--paper .akg-figure__image, .akg-figure__full--paper { background: #ffffff; }
+.akg-figure__caption { display: flex; flex-direction: column; gap: var(--space-2); color: var(--label-secondary); font-size: calc(13 * var(--akg-text-unit, 1px)); line-height: calc(18 * var(--akg-text-unit, 1px)); }
+.akg-figure__credit { color: var(--label-tertiary); font-size: calc(12 * var(--akg-text-unit, 1px)); line-height: calc(16 * var(--akg-text-unit, 1px)); }
+.akg-figure__viewer { position: fixed; inset: 0; z-index: 1100; background: #000; display: flex; animation: akg-fade-in 200ms ease-out; }
+.akg-figure__stage { flex: 1; display: flex; align-items: center; justify-content: center; overflow: auto; touch-action: pinch-zoom pan-x pan-y; padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left); }
+.akg-figure__full { max-width: 100%; max-height: 100%; object-fit: contain; }
+.akg-figure__close { position: absolute; z-index: 1; top: calc(env(safe-area-inset-top) + var(--space-8)); right: calc(env(safe-area-inset-right) + var(--space-16)); width: var(--tap-target); height: var(--tap-target); border: 0; border-radius: var(--radius-full); display: inline-flex; align-items: center; justify-content: center; font-size: 17px; color: #fff; background: rgba(120, 120, 128, 0.36); -webkit-backdrop-filter: blur(15px); backdrop-filter: blur(15px); cursor: pointer; }
+[data-theme^="macos"] .akg-figure__caption { font-size: 11px; line-height: 14px; }
+
+/* Banner — in-app status about the app itself. Glass card; Later + one action. Place it where it never covers navigation. */
+.akg-banner {
+  display: flex; align-items: center; gap: var(--space-12); padding: var(--space-12) var(--space-12) var(--space-12) var(--space-16);
+  border-radius: 22px; color: var(--glass-label);
+  background: var(--glass-fill); -webkit-backdrop-filter: blur(15px) saturate(180%); backdrop-filter: blur(15px) saturate(180%);
+  box-shadow: var(--shadow-glass), inset 0 0 0 0.5px var(--separator);
+  animation: akg-banner-in 300ms cubic-bezier(0.2, 0.9, 0.3, 1);
+}
+.akg-banner--bottom { position: fixed; z-index: 900; left: calc(env(safe-area-inset-left) + var(--space-8)); right: calc(env(safe-area-inset-right) + var(--space-8)); bottom: calc(env(safe-area-inset-bottom) + var(--space-8)); }
+.akg-banner--top { position: fixed; z-index: 900; left: calc(env(safe-area-inset-left) + var(--space-8)); right: calc(env(safe-area-inset-right) + var(--space-8)); top: calc(env(safe-area-inset-top) + var(--space-8)); }
+@keyframes akg-banner-in { from { transform: translateY(12px); opacity: 0; } to { transform: none; opacity: 1; } }
+.akg-banner__text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: var(--space-2); }
+.akg-banner__title { font-weight: 600; font-size: calc(15 * var(--akg-text-unit, 1px)); line-height: calc(20 * var(--akg-text-unit, 1px)); }
+.akg-banner__message { color: var(--label-secondary); font-size: calc(15 * var(--akg-text-unit, 1px)); line-height: calc(20 * var(--akg-text-unit, 1px)); }
+.akg-banner__actions { flex: none; display: flex; gap: var(--space-8); }
+.akg-banner__action { position: relative; min-height: var(--control-ios-medium); padding: 0 var(--space-12); border: 0; border-radius: var(--radius-full); background: var(--fill-tertiary); color: var(--accent); font-family: inherit; font-weight: 600; font-size: calc(15 * var(--akg-text-unit, 1px)); cursor: pointer; -webkit-tap-highlight-color: transparent; }
+.akg-banner__action::after { content: ""; position: absolute; left: 50%; top: 50%; width: max(100%, var(--tap-target)); height: var(--tap-target); transform: translate(-50%, -50%); }
+.akg-banner__action--prominent { background: var(--accent); color: var(--on-accent); }
+.akg-banner__action:active { filter: brightness(0.9); }
+[data-theme^="macos"] .akg-banner { border-radius: 16px; padding: var(--space-10) var(--space-10) var(--space-10) var(--space-14); }
+[data-theme^="macos"] .akg-banner__title, [data-theme^="macos"] .akg-banner__message { font-size: 13px; line-height: 16px; }
+[data-theme^="macos"] .akg-banner__action { min-height: var(--control-macos-regular); font-size: 13px; }
+[data-theme^="macos"] .akg-banner__action::after { display: none; }
+
+/* BottomBar — floats above the home indicator; holds a glass SearchField or a few glass buttons. */
+.akg-bottom-bar {
+  position: fixed; z-index: 800; left: 0; right: 0; bottom: 0; display: flex; align-items: center; gap: var(--space-8);
+  padding: var(--space-8) calc(env(safe-area-inset-right) + var(--space-16)) calc(env(safe-area-inset-bottom) + var(--space-8)) calc(env(safe-area-inset-left) + var(--space-16));
+  pointer-events: none;
+}
+.akg-bottom-bar > * { pointer-events: auto; }
+.akg-bottom-bar::before { content: ""; position: absolute; inset: -24px 0 0; z-index: -1; background: linear-gradient(transparent, var(--background) 70%); pointer-events: none; }
+
+/* Highlight — search matches */
+.akg-highlight { background: color-mix(in srgb, var(--system-yellow) 45%, transparent); color: inherit; border-radius: 3px; padding: 0 1px; }

@@ -4,6 +4,9 @@ import '../vendor/akg/bundle.css';
 import './design/tokens.css';
 import './design/base.css';
 import { App } from './App';
+import { reopenLastPage } from './router';
+
+reopenLastPage();
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
