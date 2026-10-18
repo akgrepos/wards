@@ -1,0 +1,5 @@
+export const CARD_TYPES: Record<string, { label: string; sections: { key: string; title: string; collapsed?: boolean; required?: boolean }[]; variants?: Record<string, string[]> }>;
+export const CARD_GROUPS: string[];
+export const DATA_TYPES: Record<string, { required: string[]; sourced: boolean }>;
+export const UNITS: string[];
+export const DOSE_IN_TEXT: RegExp;

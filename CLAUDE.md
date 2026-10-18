@@ -29,11 +29,12 @@ React + TypeScript + Vite, Vite PWA plugin (fully offline, prompt-to-update), Gi
 ## Design
 - Use the AKG Design System: https://claude.ai/artifact/GWFUZ6rCthpEuhMik4Jiru (read its `project/README.md` first). Don't invent colors, type sizes or components outside it; propose additions to the design system instead.
 - The app uses a copy in `vendor/akg/`; `vendor/akg/VERSION.md` says which version and how to update it. `npm run tokens` turns its tokens into `src/design/tokens.css` (iOS text styles in rem so they follow Text Size).
-- Second pass (2026-10-16): four themes (`ios-light`, `ios-dark`, `macos-light`, `macos-dark`, set by `data-theme` on `<html>`), 43 text styles, and 30 React components under `AKG`. The README's "Choosing controls by platform" table says which to use where.
+- Third pass (2026-10-17): four themes (`ios-light`, `ios-dark`, `macos-light`, `macos-dark`, set by `data-theme` on `<html>`), 43 text styles, and 34 React components under `AKG` (adds Callout, SourcePill, ContentSection + SectionBar, Flowchart). iOS component text follows Text Size via `--akg-text-unit`. The README's "Choosing controls by platform" table says which to use where.
+- When Wards needs something generic (a component, a style), add it to the design system first, then copy it in. Follow Apple's HIG for how information is organized and presented.
 - The design system is shared across AKG projects. Change it only when the owner asks, and keep it generic (nothing Wards-specific).
 
 ## Content structure
-Card types and their sections: `docs/CARD-TYPES.md`. Shared data (one home, inserted, never retyped): `docs/DATA-TYPES.md`. Follow both exactly.
+Card types and their sections: `docs/CARD-TYPES.md`. Shared data (one home, inserted, never retyped): `docs/DATA-TYPES.md`. How to write the files: `docs/CONTENT-FORMAT.md`. Follow them exactly; `npm run content:check` enforces them.
 
 ## Where things stand
 See `docs/STATUS.md`.

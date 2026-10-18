@@ -1,0 +1,18 @@
+# The 16 systems, in display order. Card files name their system by id.
+- { id: cardio, title: "Cardiology" }
+- { id: pulm, title: "Pulmonary" }
+- { id: crit, title: "Critical Care" }
+- { id: gi, title: "Gastroenterology" }
+- { id: liver, title: "Liver and Biliary" }
+- { id: renal, title: "Kidney, Electrolytes and Urology" }
+- { id: id, title: "Infectious Disease" }
+- { id: heme, title: "Hematology" }
+- { id: onc, title: "Oncology" }
+- { id: endo, title: "Endocrinology" }
+- { id: rheum, title: "Rheumatology and Musculoskeletal" }
+- { id: neuro, title: "Neurology" }
+- { id: psych, title: "Psychiatry and Substance Use" }
+- { id: derm, title: "Skin, Allergy, Eye and ENT" }
+- { id: wh, title: "Women's Health and Pregnancy" }
+- { id: hosp, title: "Hospital Medicine" }
+- { id: library, title: "Library", library: true }

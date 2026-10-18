@@ -1,0 +1,10 @@
+title: Example workup
+stages: [Start, Classify, Result]
+start: s
+sources: [example-guideline-a]
+steps:
+  s: { kind: question, kindLabel: Start, stage: Start, title: Is the finding confirmed?, answers: [{ label: Confirmed, detail: Repeat sample agrees, to: c }, { label: Likely spurious, detail: Sample problem suspected, to: r1 }] }
+  c: { kind: question, stage: Classify, title: Measured value, answers: [{ label: Severe, detail: "Above {{threshold:example-cutoff}}", to: w }, { label: Mild, detail: Below the cutoff, to: r2 }] }
+  w: { kind: caution, stage: Classify, title: Treat first, detail: "Give {{dose:example-drug-standard}}, then continue.", next: r2 }
+  r1: { kind: result, stage: Result, title: Repeat the sample, list: [Placeholder cause] }
+  r2: { kind: result, stage: Result, title: Find the cause, list: [Placeholder cause one, Placeholder cause two], note: Placeholder caution. }

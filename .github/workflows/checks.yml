@@ -27,6 +27,8 @@ jobs:
       - run: npm ci
       - name: Design system styles are up to date
         run: npm run tokens && git diff --exit-code src/design/tokens.css
+      - name: Content rules (sources, inserts, sections, units, no typed doses)
+        run: npm run content:check
       - name: Type-check
         run: npm run typecheck
       - name: Tests

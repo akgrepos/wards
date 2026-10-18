@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
     "target": "ES2022",
-    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "lib": [
+      "ES2022",
+      "DOM",
+      "DOM.Iterable"
+    ],
     "module": "ESNext",
     "moduleResolution": "bundler",
     "jsx": "react-jsx",
@@ -13,7 +17,20 @@
     "allowJs": false,
     "isolatedModules": true,
     "noEmit": true,
-    "types": ["vite/client", "vite-plugin-pwa/react", "node"]
+    "types": [
+      "vite/client",
+      "vite-plugin-pwa/react",
+      "node"
+    ]
   },
-  "include": ["src", "vendor/akg/index.d.ts", "vite.config.ts", "pwa-assets.config.ts"]
+  "include": [
+    "src",
+    "vendor/akg/index.d.ts",
+    "vite.config.ts",
+    "pwa-assets.config.ts",
+    "scripts/content/load.d.mts",
+    "scripts/content/inline.d.mts",
+    "scripts/content/schema.d.mts",
+    "scripts/content/check.d.mts"
+  ]
 }

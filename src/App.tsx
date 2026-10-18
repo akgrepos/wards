@@ -1,21 +1,20 @@
-import { APP_VERSION } from './version';
+import { useRoute } from './router';
+import { CardScreen } from './screens/CardScreen';
+import { Home } from './screens/Home';
+import { SystemScreen } from './screens/SystemScreen';
+import { SheetHost } from './ui/SheetHost';
 import { UpdatePrompt } from './UpdatePrompt';
 import { useAppearance } from './useAppearance';
 
 export function App() {
   useAppearance();
-
+  const route = useRoute();
   return (
-    <>
-      <main className="screen">
-        <h1 className="ios-large-title-emphasized screen__title">Wards</h1>
-        <section className="placeholder">
-          <p className="ios-title-3-emphasized">No Entries Yet</p>
-          <p className="ios-body placeholder__text">Reference entries will appear here once they’re added.</p>
-        </section>
-        <footer className="ios-footnote screen__footer">Version {APP_VERSION}</footer>
-      </main>
+    <SheetHost>
+      {route.name === 'home' && <Home />}
+      {route.name === 'system' && <SystemScreen id={route.id} />}
+      {route.name === 'card' && <CardScreen key={route.id} id={route.id} />}
       <UpdatePrompt />
-    </>
+    </SheetHost>
   );
 }

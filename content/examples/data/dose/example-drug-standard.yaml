@@ -1,0 +1,13 @@
+# Placeholder dose for testing the app. Not clinical guidance.
+drug_name: Exampledrug
+brand: Placebrand
+indication: Example indication
+route: IV
+amount: 10
+unit: mg
+frequency: once
+max: Placeholder maximum
+adjustments:
+  - { when: "Example kidney band", change: "Placeholder adjustment" }
+notes: Placeholder note.
+sources: [example-guideline-a]

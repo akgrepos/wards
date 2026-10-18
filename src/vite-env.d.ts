@@ -6,3 +6,8 @@ interface Window {
 }
 
 declare module '*/vendor/akg/bundle.js';
+
+declare module 'virtual:wards-content' {
+  const content: import('./content/types').Content;
+  export default content;
+}

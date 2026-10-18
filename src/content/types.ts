@@ -1,0 +1,36 @@
+// Shapes of the bundled content (produced by scripts/content/load.mjs).
+export type Inline =
+  | { t: 'text' | 'strong' | 'em'; v: string }
+  | { t: 'insert'; kind: string; id: string }
+  | { t: 'link'; id: string; label: string | null };
+export type ListItem = { inlines: Inline[]; sources: string[]; children: ListItem[] };
+export type Block =
+  | { t: 'paragraph'; inlines: Inline[]; sources: string[] }
+  | { t: 'list'; items: ListItem[] }
+  | { t: 'table'; header: Inline[][]; rows: { cells: Inline[][]; sources: string[] }[] }
+  | { t: 'insert'; kind: string; id: string }
+  | { t: 'subheading'; text: string };
+export type Section = { key: string; title: string; collapsed: boolean; summary: string | null; blocks: Block[]; more: Block[]; moreTitle: string | null };
+export type Card = {
+  id: string; type: string; variant: string | null; system: string; group: string; order: number;
+  title: string; aliases: string[]; related: Record<string, string[]>; example: boolean; sections: Section[];
+};
+export type System = { id: string; title: string; library?: boolean };
+export type Source = { kind: string; short: string; title: string; year: number; society?: string; citation?: string; url?: string };
+export type Dose = {
+  drug?: string; drug_name: string; brand?: string; indication: string; population?: string; route: string;
+  amount: string | number; unit: string; frequency: string; duration?: string; max?: string;
+  adjustments?: { when: string; change: string }[]; notes?: string; sources: string[];
+};
+export type Threshold = { name: string; value: string | number; unit: string; meaning: string; sources: string[] };
+export type PathwayStep = {
+  kind: 'question' | 'checklist' | 'caution' | 'action' | 'result'; kindLabel?: string; stage?: string; title: string; detail?: string;
+  answers?: { label: string; detail?: string; to: string }[]; items?: string[]; yes?: string; no?: string; logic?: string;
+  next?: string; list?: string[]; note?: string; links?: string[];
+};
+export type Pathway = { title?: string; stages?: string[]; start: string; steps: Record<string, PathwayStep>; sources: string[] };
+export type Content = {
+  systems: System[];
+  cards: Card[];
+  data: { source?: Record<string, Source>; dose?: Record<string, Dose>; threshold?: Record<string, Threshold>; pathway?: Record<string, Pathway>; [k: string]: Record<string, unknown> | undefined };
+};

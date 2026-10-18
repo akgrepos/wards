@@ -1,0 +1,5 @@
+name: Example cutoff
+value: 6.5
+unit: mmol/L
+meaning: Placeholder meaning of the cutoff.
+sources: [example-guideline-a]
