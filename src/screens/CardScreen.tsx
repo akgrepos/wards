@@ -4,7 +4,7 @@ import { blockSources, cardSources, cardTypeLabel, content, getCard, getSystem, 
 import type { Card, Source } from '../content/types';
 import { forgetSection, href, isReturning, parseRoute, restoreScroll } from '../router';
 import { addRecent, getCardScroll, getFavorites, setCardScroll, setReading, toggleFavorite, useStored } from '../storage';
-import { Blocks, Inlines, SectionSources, SourceList } from '../ui/Rich';
+import { Blocks, Inlines, JUMP_EVENT, SectionSources, SourceList } from '../ui/Rich';
 import { useSheet } from '../ui/SheetHost';
 import { icons } from '../ui/icons';
 import { Screen } from './common';
@@ -73,6 +73,13 @@ export function CardScreen({ id, section }: { id: string; section?: string }) {
     if (!isReturning() && y) restoreScroll(y);
   }, [id]); // eslint-disable-line react-hooks/exhaustive-deps
 
+  // A link to a section of this page (e.g. "the first-line tests in Diagnosis") scrolls there.
+  useEffect(() => {
+    const on = (e: Event) => jump((e as CustomEvent<string>).detail);
+    addEventListener(JUMP_EVENT, on);
+    return () => removeEventListener(JUMP_EVENT, on);
+  });
+
   // Remember where the page is scrolled to (after it has settled, and only while this page is the one on screen).
   useEffect(() => {
     if (!card) return;
@@ -121,7 +128,6 @@ export function CardScreen({ id, section }: { id: string; section?: string }) {
   const system = getSystem(card.system);
   const sources = cardSources(card);
   const related = RELATED.filter(([k]) => (card.related?.[k] ?? []).length > 0);
-  const headerSources = [...new Set([...(card.basedOn ?? []), ...(card.definition?.sources ?? [])])];
 
   const menuItems = [
     ...entries.map((e) => ({ label: e.title, checked: current === e.key, onSelect: () => { setMenu(false); jump(e.key); } })),
@@ -163,12 +169,8 @@ export function CardScreen({ id, section }: { id: string; section?: string }) {
           </div>
           <h1 ref={titleRef} className="ios-large-title-emphasized">{card.title}</h1>
           {card.definition && <p className="ios-callout secondary"><Inlines xs={card.definition.inlines} /></p>}
-          {(headerSources.length > 0 || card.reviewed) && (
-            <div className="card-meta">
-              <SectionSources ids={headerSources} label="Based on" forLabel="the definition and this page" />
-              {card.reviewed && <p className="ios-caption-1 secondary">{reviewedLabel(card.reviewed)}</p>}
-            </div>
-          )}
+          {/* No "Based on" line (owner, 2026-10-18): each section's source line and All Sources name the guidelines. */}
+          {card.reviewed && <p className="ios-caption-1 secondary">{reviewedLabel(card.reviewed)}</p>}
           {card.example && <AKG.Callout variant="info">Development sample with placeholder content. Not shown in the published app.</AKG.Callout>}
         </header>
       }

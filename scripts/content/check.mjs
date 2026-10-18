@@ -1,6 +1,10 @@
 // Content checks, run on every pull request (npm run content:check) and in the tests.
 // Each rule comes from docs/CARD-TYPES.md and docs/DATA-TYPES.md.
 import { CARD_TYPES, DATA_TYPES, DOSE_FIELDS, SHARED_SECTIONS, UNITS, DOSE_IN_TEXT } from './schema.mjs';
+import { TAGS } from './inline.mjs';
+import { onsetMinutes } from './onset.mjs';
+
+const DOSE_ONLY = /^\{\{\s*dose\s*:\s*([a-z0-9-]+)\s*\}\}$/;
 
 function inlineText(inlines) {
   return inlines.filter((x) => x.t !== 'insert' && x.t !== 'link').map((x) => x.v ?? '').join('');
@@ -10,7 +14,8 @@ function inlineText(inlines) {
 function* runs(blocks) {
   for (const b of blocks) {
     if (b.t === 'paragraph') yield { inlines: b.inlines, sources: b.sources };
-    if (b.t === 'list') for (const it of b.items) { yield { inlines: it.inlines, sources: it.sources }; for (const c of it.children) yield { inlines: c.inlines, sources: c.sources }; }
+    // A sub-bullet without its own source uses its parent's.
+    if (b.t === 'list') for (const it of b.items) { yield { inlines: it.inlines, sources: it.sources }; for (const c of it.children) yield { inlines: c.inlines, sources: c.sources.length ? c.sources : it.sources }; }
     if (b.t === 'table') { for (const h of b.header) yield { inlines: h, sources: [], header: true }; for (const r of b.rows) for (const c of r.cells) yield { inlines: c, sources: r.sources }; }
     if (b.t === 'steps') for (const it of b.items) { yield { inlines: it.inlines, sources: it.sources, header: true }; yield* runs(it.blocks); }
     if (b.t === 'scale' || b.t === 'compare') {
@@ -18,6 +23,11 @@ function* runs(blocks) {
       for (const it of b.items) yield { inlines: [...it.label, ...it.inlines], sources: it.sources.length ? it.sources : b.sources };
     }
     if (b.t === 'times') yield { inlines: b.title, sources: b.sources, timesTitle: true };
+    if (b.t === 'onset') {
+      yield { inlines: b.title, sources: b.sources, header: true };
+      // Dose items carry their own onset and sources; the others are "Name: onset | lasts ^[source]".
+      for (const it of b.items) if (!DOSE_ONLY.test(it.text.trim())) yield { inlines: [...it.label, ...it.inlines], sources: it.sources.length ? it.sources : b.sources };
+    }
   }
 }
 
@@ -26,7 +36,7 @@ function* allBlocks(blocks) {
   for (const b of blocks) { yield b; if (b.t === 'steps') for (const it of b.items) yield* allBlocks(it.blocks); }
 }
 
-const CONTAINERS = { scale: [2, 5], compare: [2, 3], times: [1, 12] };
+const CONTAINERS = { scale: [2, 5], compare: [2, 3], times: [1, 12], onset: [2, 12] };
 
 export function checkContent({ systems, cards, data }) {
   const errors = [];
@@ -101,7 +111,12 @@ export function checkContent({ systems, cards, data }) {
         for (const x of r.inlines) {
           if (x.t === 'insert' && !data[x.kind]?.[x.id]) err(where, `"${title}" inserts unknown ${x.kind} "${x.id}"`);
           if (x.t === 'insert' && x.kind === 'dose') err(where, `"${title}": put each dose on a line of its own ({{dose:${x.id}}}), so it shows as one dose row`);
-          if (x.t === 'link' && !cards.some((k) => k.id === x.id)) err(where, `"${title}" links to unknown card "${x.id}"`);
+          if (x.t === 'link') {
+            const target = cards.find((k) => k.id === x.id);
+            if (!target) err(where, `"${title}" links to unknown card "${x.id}"`);
+            else if (x.section && !target.sections.some((t) => t.key === x.section || t.subsections?.some((u) => u.key === x.section))) err(where, `"${title}" links to unknown section "${x.section}" of "${x.id}"`);
+          }
+          if (x.t === 'tag' && !TAGS[x.v]) err(where, `"${title}": unknown tag "[!${x.v}]" (use ${Object.keys(TAGS).map((k) => `[!${k}]`).join(' or ')})`);
         }
       }
       for (const b of allBlocks(blocks)) {
@@ -109,8 +124,18 @@ export function checkContent({ systems, cards, data }) {
         if (CONTAINERS[b.t]) {
           const [lo, hi] = CONTAINERS[b.t];
           if (b.items.length < lo || b.items.length > hi) err(where, `"${title}": a :::${b.t} needs ${lo}–${hi} items (has ${b.items.length})`);
-          if (b.t !== 'times' && b.items.some((it) => !it.inlines.length)) err(where, `"${title}": each :::${b.t} item is "Label: text"`);
-        } else if (!['paragraph', 'list', 'table', 'steps', 'insert', 'subheading'].includes(b.t)) err(where, `"${title}": unknown block ":::${b.t}" (use scale, compare or times)`);
+          if ((b.t === 'scale' || b.t === 'compare') && b.items.some((it) => !it.inlines.length)) err(where, `"${title}": each :::${b.t} item is "Label: text"`);
+          if (b.t === 'onset') for (const it of b.items) {
+            const d = it.text.trim().match(DOSE_ONLY);
+            if (d) {
+              const dose = data.dose?.[d[1]];
+              if (!dose) err(where, `"${title}": :::onset lists unknown dose "${d[1]}"`);
+              else if (onsetMinutes(dose.onset) == null) err(where, `"${title}": dose "${d[1]}" needs an "onset" such as "About 15 minutes" to be compared`);
+            } else if (!/^[^:]+: [^|]+(\|.*)?$/.test(it.text.trim()) || onsetMinutes(it.text.split(': ').slice(1).join(': ').split('|')[0]) == null) {
+              err(where, `"${title}": each :::onset item is {{dose:id}} or "Name: onset | lasts" with an onset such as "Immediate" or "About 1 hour" ("${it.text.slice(0, 40)}")`);
+            }
+          }
+        } else if (!['paragraph', 'list', 'table', 'steps', 'insert', 'subheading'].includes(b.t)) err(where, `"${title}": unknown block ":::${b.t}" (use scale, compare, times or onset)`);
       }
     }
     for (const [group, ids] of Object.entries(c.related ?? {})) {

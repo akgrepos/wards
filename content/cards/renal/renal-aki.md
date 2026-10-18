@@ -27,7 +27,11 @@ related:
 - SCr rise without GFR loss: trimethoprim and cimetidine block tubular creatinine secretion. ^[kdigo-aki-controversies-2020, delanaye-trimethoprim-2011]
 
 ## First Steps
-- Refer immediately for RRT if refractory to medical therapy: hyperkalemia ([[renal-hyperkalemia]]), metabolic acidosis, fluid overload or pulmonary edema, uremic complications (pericarditis, encephalopathy). ^[nice-aki-2024, kdigo-aki-2012]
+- Refer immediately for RRT if refractory to medical therapy: ^[nice-aki-2024, kdigo-aki-2012]
+  - [[renal-hyperkalemia|Hyperkalemia]]
+  - Metabolic acidosis
+  - Fluid overload or pulmonary edema
+  - Uremic complications (pericarditis, encephalopathy)
 - Dialyzable poisoning (e.g. lithium, toxic alcohols, salicylates): urgent extracorporeal removal. ^[common-practice]
 - Hemorrhagic shock: blood products and hemorrhage control; crystalloid-first guidance does not apply. ^[kdigo-aki-2012, common-practice]
 - Vasomotor shock: vasopressors with fluids. ^[kdigo-aki-2012]
@@ -46,7 +50,11 @@ related:
 | Postrenal | Urinary tract obstruction | Bladder outlet obstruction, bilateral ureteral or solitary kidney obstruction ^[kdigo-aki-2012, nice-aki-2024] |
 
 #### Cannot miss
-- Obstruction, GN or vasculitis, AIN and thrombotic microangiopathy need immediate diagnosis and specific therapy. ^[kdigo-aki-2012]
+- Need immediate diagnosis and specific therapy: ^[kdigo-aki-2012]
+  - Obstruction
+  - GN or vasculitis
+  - AIN
+  - Thrombotic microangiopathy
 
 #### Most common
 - Sepsis is the most common condition associated with AKI in the ICU. ^[kdigo-aki-2012]
@@ -66,10 +74,10 @@ related:
 
 ## Diagnosis
 #### First line
-- BMP, CBC with differential. ^[kdigo-aki-2012]
+- BMP daily, CBC with differential. ^[nice-aki-2024, kdigo-aki-2012]
 - Urine dipstick in all; hematuria with proteinuria without UTI or catheter trauma suggests acute nephritis. ^[nice-aki-2024]
-- Urine sediment microscopy. ^[kdigo-aki-2012, perazella-urine-microscopy-2008]
-- Urine Na, Cr, urea and osmolality. ^[kdigo-aki-2012]
+- Urine sediment microscopy: granular casts or tubular epithelial cells favor ATN over prerenal AKI. ^[kdigo-aki-2012, perazella-urine-microscopy-2008]
+- Urine Na, Cr, urea and osmolality: urinary indices below. ^[kdigo-aki-2012]
 - Renal ultrasound: within 24 h if no clear cause or risk of obstruction; within 6 h if pyonephrosis suspected; not routine once the cause is known. ^[nice-aki-2024]
 - Ultrasound rarely shows obstruction (<1%) without a suggestive history. ^[podoll-renal-us-2013]
 
@@ -103,13 +111,15 @@ related:
 
 ## Treatment
 #### Common initial orders
-- Daily BMP; CBC; urine dipstick, sediment microscopy, urine Na, Cr and urea. ^[nice-aki-2024, kdigo-aki-2012]
+- Stop nephrotoxins where possible (NSAIDs, aminoglycosides, amphotericin B). ^[kdigo-aki-2012]
 - Strict intake and output. ^[kdigo-aki-2012]
-- Bladder scan; renal ultrasound per indications above. ^[nice-aki-2024]
-- Pharmacist review of all medication doses. ^[nice-aki-2024]
+- Daily weights. ^[common-practice]
+- Renally dose all medications, with pharmacist review. ^[nice-aki-2024]
+- Bladder scan. ^[nice-aki-2024]
+- Tests: [[renal-aki/diagnosis|first-line tests in Diagnosis]]. ^[kdigo-aki-2012, nice-aki-2024]
 
 #### All stages
-- Stop nephrotoxins where possible (NSAIDs, aminoglycosides, amphotericin B); consider alternatives to iodinated contrast. ^[kdigo-aki-2012]
+- Consider alternatives to iodinated contrast. ^[kdigo-aki-2012]
 - Consider holding ACE inhibitors and ARBs during diarrhea, vomiting or sepsis until stable. ^[nice-aki-2024]
 - Restore intravascular volume and perfusion pressure with isotonic crystalloid rather than colloid (except hemorrhagic shock). ^[kdigo-aki-2012]
 - Critically ill: balanced crystalloid over 0.9% saline (fewer major adverse kidney events). ^[smart-2018]
@@ -117,7 +127,6 @@ related:
 - Monitor SCr and UOP. ^[kdigo-aki-2012]
 - Do not use diuretics to prevent AKI; avoid them for treatment except volume overload. ^[kdigo-aki-2012]
 - Do not use low-dose dopamine; avoid fenoldopam. ^[kdigo-aki-2012]
-- Adjust renally cleared drugs with pharmacist input. ^[nice-aki-2024]
 - Standard eGFR assumes steady state; kinetic estimates (KeGFR, Jelliffe) correlate with measured GFR but agree poorly. ^[pelletier-egfr-aki-2020]
 - Increase doses again as function recovers to avoid underdosing. ^[kdigo-aki-controversies-2020]
 - Do not restrict protein to delay RRT; prefer enteral nutrition. ^[kdigo-aki-2012]

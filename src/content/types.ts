@@ -2,7 +2,9 @@
 export type Inline =
   | { t: 'text' | 'strong' | 'em'; v: string }
   | { t: 'insert'; kind: string; id: string }
-  | { t: 'link'; id: string; label: string | null };
+  | { t: 'link'; id: string; section?: string | null; label: string | null }
+  // A small label after a cause: [!cannot-miss], [!most-common].
+  | { t: 'tag'; v: string };
 export type ListItem = { inlines: Inline[]; sources: string[]; children: ListItem[] };
 export type Block =
   | { t: 'paragraph'; inlines: Inline[]; sources: string[] }
@@ -13,7 +15,8 @@ export type Block =
   // Numbered steps (StepList): a title, then the step's own blocks.
   | { t: 'steps'; items: { inlines: Inline[]; sources: string[]; blocks: Block[] }[] }
   // :::scale (ScaleBar), :::compare (ComparisonGrid), :::times (TimePoints): "Label: text" items.
-  | { t: 'scale' | 'compare' | 'times'; title: Inline[]; sources: string[]; items: ContainerItem[] };
+  // :::onset (a row that opens onset and duration side by side): {{dose:id}} items, or "Label: onset | lasts".
+  | { t: 'scale' | 'compare' | 'times' | 'onset'; title: Inline[]; sources: string[]; items: ContainerItem[] };
 export type ContainerItem = { text: string; label: Inline[]; inlines: Inline[]; sources: string[] };
 export type Subsection = { key: string; title: string; description: string | null; blocks: Block[] };
 export type Section = { key: string; title: string; blocks: Block[]; subsections: Subsection[] };

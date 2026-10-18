@@ -57,6 +57,23 @@ describe('content checks', () => {
     expect(withCard(kp(':::times Recheck\n- 1 h\n:::')).join()).toMatch(/has no source/);
     expect(withCard(kp(':::chart X\n- a\n:::')).join()).toMatch(/unknown block/);
   });
+  it('lets a sub-bullet use its parent line’s source', () => {
+    expect(withCard(kp('- Lead-in: ^[example-guideline-a]\n  - Sub-item')).join()).not.toMatch(/has no source/);
+    expect(withCard(kp('- Lead-in:\n  - Sub-item')).join()).toMatch(/has no source/);
+  });
+  it('checks section links and tags', () => {
+    expect(withCard(kp('- See [[renal-aki/diagnosis|Diagnosis]]. ^[example-guideline-a]')).join()).not.toMatch(/unknown section/);
+    expect(withCard(kp('- See [[renal-aki/nowhere|it]]. ^[example-guideline-a]')).join()).toMatch(/unknown section "nowhere"/);
+    expect(withCard(kp('- **Cause** [!cannot-miss]: text ^[example-guideline-a]')).join()).not.toMatch(/unknown tag/);
+    expect(withCard(kp('- **Cause** [!urgent]: text ^[example-guideline-a]')).join()).toMatch(/unknown tag/);
+  });
+  it('checks onset comparisons', () => {
+    const ok = ':::onset Compare\n- {{dose:calcium-gluconate-hyperkalemia}}\n- Dialysis: Immediate | Variable ^[example-guideline-a]\n:::';
+    expect(withCard(kp(ok)).join()).toBe('');
+    expect(withCard(kp(':::onset Compare\n- {{dose:dextrose-50-hyperkalemia}}\n- Dialysis: Immediate ^[example-guideline-a]\n:::')).join()).toMatch(/needs an "onset"/);
+    expect(withCard(kp(':::onset Compare\n- {{dose:calcium-gluconate-hyperkalemia}}\n- Dialysis: soon ^[example-guideline-a]\n:::')).join()).toMatch(/each :::onset item/);
+    expect(withCard(kp(':::onset Compare\n- {{dose:calcium-gluconate-hyperkalemia}}\n- Dialysis: Immediate\n:::')).join()).toMatch(/has no source/);
+  });
   it('needs a definition and a reviewed date on topic pages', () => {
     const e = withCard(kp(''), { example: false }).join();
     expect(e).toMatch(/one-line "definition"/);

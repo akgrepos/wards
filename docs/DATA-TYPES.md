@@ -31,7 +31,7 @@ One drug, one indication, one population. The only place a dose is written.
   - route [`route`] · amount and unit [`amount`, `unit`] (or per kg) · frequency [`frequency`] and/or rate [`rate`, e.g. "over 10 minutes"]: one of the two is required
   - give when [`give_when`]: the trigger, short ("ECG changes")
   - repeat [`repeat`]: when to give it again
-  - onset and how long it lasts [`onset`, `lasts`]
+  - onset and how long it lasts [`onset`, `lasts`]; write onset as "About 15 minutes", "1–3 minutes" or "Immediate" so a Compare Onset and Duration row (`:::onset`) can sort it
   - duration of treatment [`duration`] · maximum [`max`]
   - boxed warning [`boxed_warning`]: the warning, or "None" only when the cited prescribing information is the source
   - alternative [`alternative`]: another dose item and when to use it (`dose: <id>`, `when: …`)

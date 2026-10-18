@@ -9,7 +9,7 @@ Settled 2026-10-17; page layout updated 2026-10-18 for the approved redesign (to
 **Header**
 - Type and system tags · title (precise medical term)
 - One-line definition, with its source
-- "Based on" line: the guidelines the page rests on (tap for the citations) · "Reviewed" month and year
+- "Reviewed" month and year. No "Based on" line (removed 2026-10-18, owner): the section source lines and All Sources name the guidelines
 - Search aliases (hidden; used by search)
 - Top right: the **Contents** button (a menu of the page's sections, the one being read checked, plus Collapse All / Expand All) grouped with the favorite star. Topics with an emergency also get a **bolt** button that opens the emergency pop-up (Phase 4); it is hidden when there is none. No row of section buttons.
 
@@ -36,7 +36,9 @@ Settled 2026-10-17; page layout updated 2026-10-18 for the approved redesign (to
 - Numbers always carry units and thresholds (e.g. "K⁺ ≥6.5 mmol/L")
 - First-line choices are listed first and labeled; alternatives follow
 - Drug doses only ever appear as ⟨inserted⟩ dose rows, **one drug per row, on a line of their own**: never two drugs and two amounts on one line. Tapping a row opens the dose sheet.
-- Severity grades as a scale (ScaleBar), steps in order as numbered steps (StepList), statements that differ by source as a side-by-side comparison (ComparisonGrid), recheck times as time chips (TimePoints). Tables keep their first column in place.
+- Severity grades as a scale (ScaleBar), steps in order as numbered steps (StepList), statements that differ by source as a side-by-side comparison (ComparisonGrid), recheck times as a timeline of plain labels (TimePoints). Tables keep their first column in place.
+- Items with sub-items use one level of nested bullets (HIG). Links to other pages are woven into the sentence ("[[renal-hyperkalemia|hyperkalemia]]"), never added after it in brackets.
+- Onset and duration of several treatments: a "Compare Onset and Duration" row (`:::onset`) that opens them side by side, fastest first, built from the dose items; not a table on the page.
 - Guideline recommendation grades (e.g. "Class I, Level A") are not shown (decided)
 
 ---
@@ -50,11 +52,11 @@ A disease or syndrome. The main card type.
 
 1. **At a Glance**
 2. **Severity**: grades as a scale; diagnostic criteria ⟨inserted⟩ when formal criteria exist; what makes it an emergency (monitoring, level of care, scores ⟨inserted, interactive⟩)
-3. **Causes**: categories, with "cannot miss" marked; pseudo-conditions and mimics (the differential: diagnosis · distinguishing features · link)
+3. **Causes**: categories as one grouped list (bold category name, then its causes), with "cannot miss" marked by a tag; pseudo-conditions and mimics (the differential: diagnosis · distinguishing features · link)
 4. **Presentation**: symptoms, atypical presentations, examination findings (grading scales ⟨inserted⟩ from the exam cards)
 5. **Diagnosis**: initial tests and why; interpretation and thresholds; further testing; low-value tests to avoid
 6. **Treatment**: pathway ⟨embedded flowchart⟩ when one exists; numbered steps (immediate, then definitive, by severity or subtype); dose rows ⟨inserted⟩
-7. **Monitor**: what to trend and when (time chips), targets, expected response, triggers to escalate
+7. **Monitor**: what to trend and when (timelines of recheck times), targets, expected response, triggers to escalate
 8. **When to Call**: which specialty and when (general criteria, never institution-specific)
 9. **More Information**: Where Guidelines Differ · Special Populations (kidney or liver disease, pregnancy, older adults, immunocompromised, drug-specific) · Complications · After the Acute Phase (discharge, follow-up, long-term management, prevention) · Evidence (key studies, one line each) · Why the Treatment Order · Epidemiology and Pathophysiology
 10. Pearls · Related · Sources
@@ -68,7 +70,7 @@ A symptom, sign or abnormal result. Uses the condition page's names where they f
 4. **Causes**: a framework (by mechanism, organ, location or acuity), with "cannot miss" and "most common", each linking to its condition card
 5. **Presentation**: focused history and focused examination that discriminate between causes
 6. **Diagnosis**: first-line tests, then second-line by scenario; interpretation tables (result → likely causes); the pathway ⟨embedded flowchart⟩
-7. **Treatment**: common initial orders (checklist), then initial management while the cause is being found
+7. **Treatment**: common initial orders (checklist of orders only, not tests; one line links to the first-line tests in Diagnosis), then initial management while the cause is being found
 8. **Monitor**
 9. **When to Call**
 10. **More Information**: Where Guidelines Differ · Special Populations · Complications · After the Acute Phase · Evidence · Epidemiology and Pathophysiology
@@ -108,10 +110,10 @@ The layouts for types 3–8 were proposed with the redesign and approved by the 
 ## Part 3 — Worked example: Hyperkalemia (condition card)
 *(Headings only, to show the shape.)*
 
-- Header: Condition · Kidney, Electrolytes and Urology · definition · based on UKKA 2026 and KDIGO 2020 · reviewed
-- **At a Glance** · **Severity** (scale mild / moderate / severe; monitoring) · **Causes** (pseudohyperkalemia; drugs and other causes) · **Presentation** (symptoms; ECG progression) · **Diagnosis**
-- **Treatment:** ⟨embedded pathway⟩ → numbered steps: membrane stabilization · intracellular shift · elimination, each with its dose rows; hyperkalemic cardiac arrest; onset and duration table
-- **Monitor:** K⁺ recheck times; glucose times after insulin · **When to Call**
+- Header: Condition · Kidney, Electrolytes and Urology · definition · reviewed
+- **At a Glance** · **Severity** (scale mild / moderate / severe; monitoring) · **Causes** (one grouped list: pseudohyperkalemia, shift out of cells, impaired excretion (cannot miss), intake) · **Presentation** (symptoms; ECG progression) · **Diagnosis**
+- **Treatment:** ⟨embedded pathway⟩ → numbered steps: membrane stabilization · intracellular shift · elimination, each with its dose rows; Compare Onset and Duration row; hyperkalemic cardiac arrest
+- **Monitor:** K⁺ recheck times; glucose times after insulin (timelines) · **When to Call**
 - **More Information:** Where Guidelines Differ (insulin dose, patiromer) · Special Populations (digoxin toxicity) · Complications · After the Acute Phase · Epidemiology and Pathophysiology
 - Pearls · Related (Acute Kidney Injury) · Sources
 
@@ -130,3 +132,10 @@ The layouts for types 3–8 were proposed with the redesign and approved by the 
 1. Topic page layout from the approved redesign: header with definition, based-on line and reviewed date; Contents menu instead of the section bar; collapsible, remembered sections; one source line per section; More Information for deeper material.
 2. Approach cards use the condition page's section names where they fit (owner's choice).
 3. The other card types follow the same pattern with their own sections (owner approved the proposal); adjust when each type's first card is written.
+
+## Decisions (2026-10-18, owner's review of the first two cards)
+1. No "Based on" line in the header; `based_on` stays optional in the front matter (not shown).
+2. Nested bullets (one level) for items with sub-items; links woven into the sentence.
+3. Approach cards: first-line tests live in Diagnosis with what each result means; Common initial orders holds only non-test orders plus a link to those tests.
+4. Condition cards: Causes as one grouped list; "cannot miss" as a tag.
+5. Onset and duration comparisons open from a row (`:::onset`), not a table on the page.

@@ -2,6 +2,21 @@
 
 What changed in each version of Wards, newest first. The version is shown in Settings (gear on Home).
 
+## 2026.10.18.7
+
+Changes from your review of the Acute Kidney Injury and Hyperkalemia pages:
+- The "Based on …" line under the title is gone; each section's source line and All Sources still name the guidelines.
+- Links to other pages are part of the sentence (e.g. "Hyperkalemia" in First Steps) instead of a separate name in brackets.
+- Lists with sub-items use one level of indented bullets: the RRT referral item in First Steps and Cannot miss in Causes.
+- AKI: Diagnosis keeps the first-line tests with what each result means; Common initial orders now lists only orders (stop nephrotoxins, strict intake and output, daily weights, renal dosing, bladder scan) plus a link to the tests.
+- Hyperkalemia causes are one grouped list: Pseudohyperkalemia, Shift out of cells, Impaired excretion (marked Cannot miss) and Intake.
+- Hyperkalemia: the Onset and duration table is replaced by a "Compare Onset and Duration" row in Treatment that lists every treatment, fastest first. Each dose pop-up still shows its own onset and duration.
+- Flowcharts: answer choices sit on a gray panel so they look tappable before you tap. The map shows only the path you chose; the other answers are dashed boxes you can tap to switch paths. Start Over now resets the map too, and map boxes have more room for their text.
+- Sliding a table sideways (like KDIGO staging) no longer shows a scroll bar under the first column.
+- The fade under the top buttons and above the tab bar is longer and softer.
+- Pop-ups: dragging from tall down to half height is now one smooth motion.
+- Recheck times (1 h, 2 h, …) are plain labels on a small timeline instead of buttons that did nothing.
+
 ## 2026.10.18.6
 
 - At the largest Text Sizes, the "Update Ready" message now puts its Later and Reload buttons below the text instead of squeezing the text into one word per line under the buttons.
