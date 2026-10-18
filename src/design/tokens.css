@@ -36,6 +36,13 @@
   --row-ios: 52px;
   --separator-width: 0.5px;
   --readable-width: 672px;
+  --toolbar-height: 54px;
+  --tab-bar-height: 62px;
+  --tab-bar-inset: 21px;
+  --tab-bar-accessory-height: 52px;
+  --scroll-margin-top: 62px;
+  --scroll-margin-bottom: 99px;
+  --scroll-margin-bottom-accessory: 163px;
 }
 
 :root, [data-theme="ios-light"] {
