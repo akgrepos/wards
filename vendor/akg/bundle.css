@@ -1393,11 +1393,11 @@ button.akg-disclosure__button:disabled, .akg-disclosure__header:disabled .akg-di
 .akg-tab-bar__tab--text .akg-tab-bar__label { font-size: calc(13 * var(--akg-text-unit, 1px)); line-height: calc(16 * var(--akg-text-unit, 1px)); }
 .akg-tab-bar__tab:disabled { cursor: default; color: var(--glass-label-tertiary); }
 
-/* Separate search tab: 62pt glass circle, 17pt semibold glyph */
+/* Separate search tab: 62pt glass circle, 17pt semibold glyph; like the tab symbols, it grows with Text Size only up to a cap so it stays inside the circle */
 .akg-tab-bar__search {
   flex: none; width: 62px; height: 62px; padding: 0; margin: 0; border: 0; cursor: pointer;
   display: inline-flex; align-items: center; justify-content: center;
-  border-radius: var(--radius-full); color: var(--glass-label); font-size: calc(22 * var(--akg-text-unit, 1px));
+  border-radius: var(--radius-full); color: var(--glass-label); font-size: min(calc(22 * var(--akg-text-unit, 1px)), 26px);
   background: var(--glass-fill);
   -webkit-backdrop-filter: blur(6px) saturate(180%); backdrop-filter: blur(6px) saturate(180%);
   box-shadow: var(--shadow-glass-control), inset 0 0 0 0.5px var(--separator);
