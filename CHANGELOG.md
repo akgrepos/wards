@@ -16,6 +16,9 @@ Changes from your review of the Acute Kidney Injury and Hyperkalemia pages:
 - The fade under the top buttons and above the tab bar is longer and softer.
 - Pop-ups: dragging from tall down to half height is now one smooth motion.
 - Recheck times (1 h, 2 h, …) are plain labels on a small timeline instead of buttons that did nothing.
+- Opening a page from Continue Reading or Recent goes straight to where you were, with no brief flash of the page's top.
+- A value is dotted (tappable) only when its pop-up adds something. The mild, moderate and severe values on the Hyperkalemia scale are now plain text.
+- Tables keep a clear gap between columns at every Text Size; a long word in the first column wraps (with a hyphen) instead of crowding the next column.
 
 ## 2026.10.18.6
 

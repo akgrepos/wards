@@ -2290,11 +2290,13 @@ button.akg-sheet__grabber::after { content: ""; position: absolute; left: -20px;
 .akg-table__indicator--on { opacity: 1; transition: opacity 80ms; }
 .akg-table__table { border-collapse: separate; border-spacing: 0; min-width: 100%; font-size: calc(15 * var(--akg-text-unit, 1px)); line-height: calc(20 * var(--akg-text-unit, 1px)); color: var(--label); }
 .akg-table__caption { caption-side: top; text-align: left; padding: 0 var(--space-4) var(--space-8); color: var(--label-secondary); font-size: calc(13 * var(--akg-text-unit, 1px)); line-height: calc(18 * var(--akg-text-unit, 1px)); }
-.akg-table__table th, .akg-table__table td { text-align: left; vertical-align: top; padding: var(--space-8) var(--space-12); border-bottom: var(--separator-width) solid var(--separator); min-width: 7em; }
+/* At least 24pt between columns (12pt each side of the divide), growing with Text Size; long words wrap inside their own cell. */
+.akg-table__table th, .akg-table__table td { text-align: left; vertical-align: top; padding: var(--space-8) max(var(--space-12), calc(10 * var(--akg-text-unit, 1px))); border-bottom: var(--separator-width) solid var(--separator); min-width: 7em; overflow-wrap: break-word; }
 .akg-table__table thead th { color: var(--label-secondary); font-weight: 600; white-space: nowrap; }
 .akg-table__table tbody th { font-weight: 600; }
 .akg-table__table tr:last-child > * { border-bottom: 0; }
-.akg-table--sticky .akg-table__table th:first-child, .akg-table--sticky .akg-table__table td:first-child { position: sticky; left: 0; z-index: 1; background: var(--background-grouped-secondary); max-width: 40vw; }
+/* The fixed first column: opaque (header included) so scrolled text passes cleanly under it, capped at 40% of the screen; a word too long for it hyphenates or breaks rather than running into the next column. */
+.akg-table--sticky .akg-table__table th:first-child, .akg-table--sticky .akg-table__table td:first-child { position: sticky; left: 0; z-index: 1; background: var(--background-grouped-secondary); max-width: 40vw; hyphens: auto; }
 .akg-table--sticky.akg-table--more-start .akg-table__table :is(th, td):first-child { box-shadow: 1px 0 0 var(--separator), 6px 0 8px -6px rgba(0, 0, 0, 0.18); }
 .akg-table::after { content: ""; position: absolute; top: 0; right: 0; bottom: 0; width: 28px; border-radius: 0 14px 14px 0; pointer-events: none; opacity: 0; transition: opacity 150ms; background: linear-gradient(to right, transparent, var(--background-grouped-secondary)); }
 .akg-table--more-end::after { opacity: 1; }

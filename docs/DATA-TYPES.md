@@ -54,7 +54,8 @@ A lab test's typical US range and critical values.
 
 ### 5. Threshold
 A single named cutoff that drives decisions.
-- Fields: name · value and unit · meaning · sources
+- Fields: name · value and unit · meaning (optional) · sources
+- Tappable only when the pop-up adds something beyond the value shown (owner's rule, 2026-10-18): give a `meaning` only when it says more than the value (what it implies, who it applies to). Without one, the value shows as plain text. Values inside a severity scale are always plain (the band names them).
 - Example: "Hyperkalemia emergency: K⁺ ≥6.5 mmol/L or ECG changes"
 - Kept separate so the same cutoff is never written two ways
 

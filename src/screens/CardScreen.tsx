@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { AKG } from '../design/akg';
 import { blockSources, cardSources, cardTypeLabel, content, getCard, getSystem, titleCase } from '../content';
 import type { Card, Source } from '../content/types';
@@ -41,6 +41,18 @@ export function CardScreen({ id, section }: { id: string; section?: string }) {
   const subs = sections.flatMap((s) => s.subsections.map((x) => subKey(x.key)));
   const anyOpen = collapsible.some((k) => state.isOpen(k, true)) || subs.some((k) => state.isOpen(k, false));
 
+  const pending = useRef<{ el: string; smooth: boolean } | null>(null);
+  const scrollToPending = () => {
+    const p = pending.current;
+    const node = p && document.getElementById(p.el);
+    if (!p || !node || node.offsetParent === null) return false;
+    node.scrollIntoView({ behavior: p.smooth ? 'smooth' : 'auto', block: 'start' });
+    pending.current = null;
+    return true;
+  };
+  // After a render that opened the target's section, scroll before the browser paints.
+  useLayoutEffect(() => { scrollToPending(); });
+
   // Open whatever holds a section or subsection, then scroll to it.
   const jump = (target: string, smooth = true) => {
     let el = `sec-${target}`;
@@ -49,19 +61,22 @@ export function CardScreen({ id, section }: { id: string; section?: string }) {
     if (top && !state.isOpen(top.key, true)) state.setOpen(top.key, true);
     if (parent) { state.setAll([parent.key, subKey(target)], true); el = `sub-${target}`; }
     if (!top && !parent && target !== 'related' && target !== 'sources') return false;
+    // Scroll as soon as the target is laid out and visible: before the next paint when possible (the layout effect
+    // below), so a page opened at a section never shows its top first; otherwise on the next frames.
+    pending.current = { el, smooth };
     let tries = 0;
     const go = () => {
-      const node = document.getElementById(el);
-      if (node) node.scrollIntoView({ behavior: smooth ? 'smooth' : 'auto', block: 'start' });
-      else if (tries++ < 20) setTimeout(go, 50);
+      if (pending.current?.el !== el) return;
+      if (!scrollToPending() && tries++ < 20) setTimeout(go, 50);
     };
-    requestAnimationFrame(() => requestAnimationFrame(go));
+    if (!scrollToPending()) requestAnimationFrame(go);
     return true;
   };
 
-  // Opened at a section (#/card/<id>/<section>: Continue Reading, a pathway, a link): jump there, once.
-  // Otherwise a page opened anew returns to where it was last read; Back and Forward restore their own place.
-  useEffect(() => {
+  // Opened at a section (#/card/<id>/<section>: Continue Reading, a pathway, a link): jump there, once, before the
+  // first paint (no flash of the page's top). Otherwise a page opened anew returns to where it was last read; Back and
+  // Forward restore their own place.
+  useLayoutEffect(() => {
     if (!card) return;
     addRecent(id);
     if (section) {
@@ -70,7 +85,8 @@ export function CardScreen({ id, section }: { id: string; section?: string }) {
       return;
     }
     const y = getCardScroll(id);
-    if (!isReturning() && y) restoreScroll(y);
+    // Try now, before the first paint; keep trying while a long page finishes laying out.
+    if (!isReturning() && y) { scrollTo(0, y); if (Math.abs(scrollY - y) > 2) restoreScroll(y); }
   }, [id]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // A link to a section of this page (e.g. "the first-line tests in Diagnosis") scrolls there.

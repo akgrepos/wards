@@ -89,6 +89,7 @@ related:
 - A line that is only `{{pathway:id}}` shows the interactive flowchart there; a line that is only `{{criteria:id}}` shows the criteria in full.
 
 ## In the app
+- A value is dotted and tappable only when its pop-up adds something beyond what's already shown (a cutoff's `meaning`, a criteria set's full criteria, a dose's details). Otherwise it is plain text: cutoffs without a `meaning`, and every value inside a `:::scale`.
 - Each card has its own link: `#/card/<card-id>`; `#/card/<card-id>/<section>` opens the page at that section or More Information subsection (opening it if closed). Works offline and when opened directly.
 - Sections open and close from their headings; the phone remembers which are closed and where each page was scrolled.
 - One source line ends each section; tapping it lists that section's sources with View Citation links.
