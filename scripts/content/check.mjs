@@ -3,6 +3,7 @@
 import { CARD_TYPES, DATA_TYPES, DOSE_FIELDS, SHARED_SECTIONS, UNITS, DOSE_IN_TEXT } from './schema.mjs';
 import { TAGS, parseInline } from './inline.mjs';
 import { onsetMinutes } from './onset.mjs';
+import { emergencySteps, offsetMinutes, stepDoses } from './emergency.mjs';
 
 const DOSE_ONLY = /^\{\{\s*dose\s*:\s*([a-z0-9-]+)\s*\}\}$/;
 
@@ -128,6 +129,25 @@ export function checkContent({ systems, cards, data }) {
     }
     for (const id of c.basedOn ?? []) if (!data.source?.[id]) err(where, `based_on lists unknown source "${id}"`);
     const parts = c.sections.flatMap((s) => [{ title: s.title, blocks: s.blocks }, ...(s.subsections ?? []).map((x) => ({ title: x.title, blocks: x.blocks }))]);
+    // The emergency (## Do Now): numbered steps in the Do Now format, then optional :::note boxes. Its lines follow
+    // the same rules as the page's (sources, doses on their own line, inserts that exist).
+    if (c.emergencyHintOnly) err(where, '"emergency_hint" is only for a topic with a "## Do Now" section');
+    const doNowDoses = new Set();
+    if (c.emergency) {
+      parts.push({ title: 'Do Now', blocks: c.emergency.blocks });
+      if (!type.topic) err(where, `a ${c.type} card can't have an emergency (## Do Now); only condition and approach topics can`);
+      const hint = c.emergency.hint;
+      if (!hint) err(where, 'an emergency needs "emergency_hint" in the front matter: one short line for the Rapids list ("Calcium, insulin-dextrose, remove K⁺")');
+      else if (String(hint).length > 50) err(where, `"emergency_hint" is over 50 characters`);
+      const bs = c.emergency.blocks;
+      if (bs[0]?.t !== 'steps') err(where, 'Do Now starts with numbered steps ("1. Stabilize the myocardium")');
+      bs.slice(1).forEach((b) => { if (b.t !== 'note') err(where, 'after its steps, Do Now holds only :::note boxes'); });
+      const problems = [];
+      const steps = emergencySteps(bs, problems);
+      problems.forEach((p) => err(where, `Do Now ${p}`));
+      if (steps.length && (steps.length < 2 || steps.length > 8)) err(where, `Do Now needs 2–8 steps (has ${steps.length})`);
+      steps.forEach((st) => stepDoses(st).forEach((d) => doNowDoses.add(d)));
+    }
     for (const { title, blocks } of parts) {
       for (const r of runs(blocks)) {
         useAt(r.inlines, `${where} "${title}"`, r.plain);
@@ -153,6 +173,16 @@ export function checkContent({ systems, cards, data }) {
           const [lo, hi] = CONTAINERS[b.t];
           if (b.items.length < lo || b.items.length > hi) err(where, `"${title}": a :::${b.t} needs ${lo}–${hi} items (has ${b.items.length})`);
           if ((b.t === 'scale' || b.t === 'compare') && b.items.some((it) => !it.inlines.length)) err(where, `"${title}": each :::${b.t} item is "Label: text"`);
+          if (b.attrs) {
+            // :::times{after=first|<dose id> check=<what> unit=min|h}: what Timed Mode lists under Due Next.
+            const a = b.attrs;
+            if (b.t !== 'times') err(where, `"${title}": only :::times takes {…} settings`);
+            for (const k of Object.keys(a)) if (!['after', 'check', 'unit'].includes(k)) err(where, `"${title}": unknown :::times setting "${k}" (use after, check, unit)`);
+            if (!a.after || !a.check) err(where, `"${title}": :::times{…} needs after= (first, or a dose in Do Now) and check= (what is rechecked)`);
+            else if (a.after !== 'first' && !doNowDoses.has(a.after)) err(where, `"${title}": :::times after="${a.after}" must be "first" or a dose in this topic's Do Now`);
+            if (a.unit && !['min', 'h'].includes(a.unit)) err(where, `"${title}": :::times unit is min or h`);
+            if (b.t === 'times' && b.items.some((it) => offsetMinutes(it.text, a.unit) == null)) err(where, `"${title}": every time needs a number and a unit ("1 h", or "30" with unit=min)`);
+          }
           if (b.t === 'onset') for (const it of b.items) {
             const d = it.text.trim().match(DOSE_ONLY);
             if (d) {

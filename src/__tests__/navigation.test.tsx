@@ -124,7 +124,7 @@ describe('tabs', () => {
     await act(async () => { fireEvent.click(screen.getByRole('tab', { name: 'Library' })); });
     expect(screen.getByText('Medscape Drug Interaction Checker')).toBeTruthy();
     await act(async () => { fireEvent.click(screen.getByRole('tab', { name: 'Rapids' })); });
-    expect(screen.getAllByText('No Rapids Yet').length).toBeGreaterThan(0);
+    expect(screen.getByText('Calcium, insulin-dextrose, remove K⁺')).toBeTruthy();
     expect(screen.getByRole('tab', { name: 'Rapids' }).getAttribute('aria-selected')).toBe('true');
   });
 
@@ -183,7 +183,7 @@ describe('Home lists', () => {
     await act(async () => { fireEvent.click(screen.getByRole('button', { name: 'Add to Favorites' })); });
     expect(screen.getByRole('button', { name: 'Remove from Favorites' })).toBeTruthy();
     await act(async () => { fireEvent.click(screen.getByRole('tab', { name: 'Home' })); });
-    expect(screen.getAllByText('Hyperkalemia').length).toBe(3); // Continue Reading, Favorites, Recent
+    expect(screen.getAllByText('Hyperkalemia').length).toBe(4); // Continue Reading, Rapids shortcut, Favorites, Recent
     expect(screen.getByText('Continue Reading')).toBeTruthy();
     await act(async () => { fireEvent.click(screen.getByRole('button', { name: 'Clear' })); });
     expect(screen.getByText('Nothing Opened Yet')).toBeTruthy();

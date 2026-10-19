@@ -1,28 +1,12 @@
 import { useState, type ReactNode } from 'react';
 import { AKG } from '../design/akg';
-import { cardTypeLabel, cardsInSystem, content, emergencyCards, getCard, pathwayHomes } from '../content';
+import { cardTypeLabel, cardsInSystem, content, getCard, pathwayHomes } from '../content';
 import type { Card, Criteria } from '../content/types';
 import { href, switchTab } from '../router';
 import { INTERACTION_CHECKER, openCriteria } from '../ui/Rich';
 import { useSheet } from '../ui/SheetHost';
 import { iconFor, icons } from '../ui/icons';
 import { Empty, Screen } from './common';
-
-// Rapids tab (emergencies): rapid pages (Do Now steps, Timed Mode) arrive in a later update.
-export function EmergenciesTab() {
-  const cards = emergencyCards();
-  return (
-    <Screen title="Rapids">
-      {cards.length === 0 ? (
-        <Empty title="No Rapids Yet" description="Rapid pages with Do Now steps will appear here. Until then, open the topic from Topics or Search." />
-      ) : (
-        <AKG.List>
-          {cards.map((c) => <AKG.ListRow key={c.id} title={c.title} icon={icons.staroflifeFill} iconTint="var(--system-red)" chevron href={href.card(c.id)} />)}
-        </AKG.List>
-      )}
-    </Screen>
-  );
-}
 
 // Topics tab: the systems. Systems with topics come first; the rest show as "Coming Soon" until written.
 const SOON_SHOWN = 3;

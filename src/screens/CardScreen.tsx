@@ -8,6 +8,7 @@ import { Blocks, Inlines, JUMP_EVENT, LinePill, LineSources, SourceList } from '
 import { useSheet } from '../ui/SheetHost';
 import { icons } from '../ui/icons';
 import { Screen } from './common';
+import { openDoNowPopup } from './Emergency';
 import { NotFoundScreen } from './Tabs';
 
 const RELATED: [string, string][] = [['differential', 'Differential'], ['conditions', 'Conditions'], ['tools', 'Tools'], ['medications', 'Medications']];
@@ -184,7 +185,10 @@ export function CardScreen({ id, section }: { id: string; section?: string }) {
               aria-pressed={favorite}
               onClick={() => toggleFavorite(id)}
             />
-            {/* Phase 4: a bolt button here opens the topic's emergency pop-up, shown only when the topic has one. */}
+            {/* Topics with an emergency: the Rapids tab's symbol, in red, opens its Do Now pop-up. */}
+            {card.emergency && (
+              <AKG.ToolbarButton className="emergency-button" icon={icons.staroflifeFill} aria-label="Do Now" onClick={() => openDoNowPopup(sheet, card)} />
+            )}
           </AKG.ToolbarGroup>
         }
         head={

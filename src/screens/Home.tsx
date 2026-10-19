@@ -3,12 +3,45 @@ import { AKG } from '../design/akg';
 import { cardTypeLabel, emergencyCards, getCard, getSystem, titleCase } from '../content';
 import type { Card } from '../content/types';
 import { href, open } from '../router';
-import { clearFavorites, clearPageMemory, clearReading, clearRecent, getFavorites, getReading, getRecent, useStored } from '../storage';
+import { clearFavorites, clearPageMemory, clearReading, clearRecent, getFavorites, getRapidShortcuts, getReading, getRecent, RAPIDS_MAX, setRapidShortcuts, useStored } from '../storage';
+import { useSheet } from '../ui/SheetHost';
+import { emergencyIcon } from './Emergency';
 import { iconFor, icons } from '../ui/icons';
 import { APP_VERSION } from '../version';
 import { Screen, ago } from './common';
 
 const cardIcon = (c: Card) => iconFor(c.system);
+
+// Home's Rapids shortcuts: the ones chosen with Edit (up to four, in the order chosen), or the first four.
+function useRapidShortcuts(): Card[] {
+  const chosen = useStored(getRapidShortcuts);
+  const all = emergencyCards();
+  if (!chosen) return all.slice(0, RAPIDS_MAX);
+  return chosen.map(getCard).filter((c): c is Card => !!c?.emergency);
+}
+
+// Edit: pick which emergencies Home shows (a checkmark list; HIG: choose from a list in a sheet).
+function EditRapids() {
+  const shown = useRapidShortcuts().map((c) => c.id);
+  const all = emergencyCards();
+  const toggle = (id: string) => setRapidShortcuts(shown.includes(id) ? shown.filter((x) => x !== id) : [...shown, id]);
+  return (
+    <div className="detail-sheet">
+      <AKG.List footer={`Choose up to ${RAPIDS_MAX}. They appear on Home in the order you choose them.`}>
+        {all.map((c) => (
+          <AKG.ListRow
+            key={c.id}
+            title={c.title}
+            subtitle={c.emergency?.hint}
+            checked={shown.includes(c.id)}
+            disabled={!shown.includes(c.id) && shown.length >= RAPIDS_MAX}
+            onClick={() => toggle(c.id)}
+          />
+        ))}
+      </AKG.List>
+    </div>
+  );
+}
 const kindLabel = (c: Card) => (c.system === 'library' ? cardTypeLabel(c) : 'Topic');
 
 // Home: pick up where you left off. Continue Reading, Rapids (emergency) shortcuts, Favorites and Recent (all kept on this phone).
@@ -16,7 +49,9 @@ export function Home() {
   const reading = useStored(getReading);
   const favorites = useStored(getFavorites).map(getCard).filter((c): c is Card => !!c);
   const recent = useStored(getRecent).filter((r) => getCard(r.id));
-  const emergencies = emergencyCards().slice(0, 4);
+  const emergencies = useRapidShortcuts();
+  const sheet = useSheet();
+  const anyEmergency = emergencyCards().length > 0;
   const readCard = reading ? getCard(reading.id) : undefined;
   const sections = readCard?.sections ?? [];
   const at = Math.max(0, sections.findIndex((s) => s.key === reading?.section));
@@ -32,11 +67,17 @@ export function Home() {
         </a>
       )}
 
-      <AKG.List header="Rapids" headerStyle="prominent">
-        {emergencies.length === 0 ? (
+      <AKG.List
+        header="Rapids"
+        headerStyle="prominent"
+        headerAction={anyEmergency ? <AKG.Button variant="borderless" onClick={() => sheet({ title: 'Rapids Shortcuts', body: <EditRapids /> })}>Edit</AKG.Button> : undefined}
+      >
+        {!anyEmergency ? (
           <AKG.ListRow title="No Rapids Yet" subtitle="Shortcuts to your four main rapids will appear here." />
+        ) : emergencies.length === 0 ? (
+          <AKG.ListRow title="No Shortcuts" subtitle="Tap Edit to choose up to four." />
         ) : (
-          emergencies.map((c) => <AKG.ListRow key={c.id} title={c.title} icon={icons.staroflifeFill} iconTint="var(--system-red)" chevron href={href.card(c.id)} />)
+          emergencies.map((c) => <AKG.ListRow key={c.id} title={c.title} subtitle={c.emergency?.hint} icon={emergencyIcon(c).icon} iconTint={emergencyIcon(c).tint} chevron href={href.emergency(c.id)} />)
         )}
       </AKG.List>
 

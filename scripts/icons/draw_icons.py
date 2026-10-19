@@ -141,6 +141,10 @@ def chevron_backward():  # chevron.backward
     return line([(13.1, 3.3), (6.6, 10), (13.1, 16.7)], 1.55)
 
 
+def chevron_down():  # chevron.down (the backward chevron turned a quarter, as SF Symbols draws it)
+    return line([(3.3, 6.9), (10, 13.4), (16.7, 6.9)], 1.55)
+
+
 def xmark():  # xmark
     return U(line([(4.9, 4.9), (15.1, 15.1)], 1.45), line([(15.1, 4.9), (4.9, 15.1)], 1.45))
 
@@ -328,7 +332,7 @@ def quote_opening():  # quote.opening
 ICONS = {
     'house': house_fill, 'staroflifeFill': staroflife_fill, 'heartTextClipboard': heart_text_clipboard_fill,
     'crossCase': cross_case_fill, 'gearshape': gearshape, 'star': star, 'starFill': star_fill,
-    'xmark': xmark, 'chevronBackward': chevron_backward, 'arrowUpRight': arrow_up_right,
+    'xmark': xmark, 'chevronBackward': chevron_backward, 'chevronDown': chevron_down, 'arrowUpRight': arrow_up_right,
     'listBullet': list_bullet, 'chevronUpChevronDown': chevron_up_chevron_down,
     'plusForwardslashMinus': plus_forwardslash_minus, 'checklist': checklist, 'arrowLeftArrowRight': arrow_left_arrow_right,
     'pills': pills_fill, 'flowchart': flowchart_fill, 'testtube2': testtube_2,

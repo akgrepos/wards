@@ -129,3 +129,67 @@ describe('card format', () => {
     expect(aki.sections.map((s) => s.key)).toEqual(['at-a-glance', 'definition', 'first-steps', 'causes', 'presentation', 'diagnosis', 'treatment', 'when-to-call', 'more', 'pearls']);
   });
 });
+
+describe('emergency (Do Now) sections', () => {
+  const steps = (md: string) => parseBlocks(md.split('\n'));
+  const OK = [
+    '1. Stabilize',
+    '   - If: ECG changes ^[example-guideline-a]',
+    '   - Check: Glucose first. ^[example-guideline-a]',
+    '',
+    '   {{dose:example-drug-standard}}',
+    '',
+    '   - Warning: Hypoglycemia ^[example-guideline-a]',
+    '2. Remove',
+    '   - Dialysis if refractory. ^[example-guideline-a]',
+  ].join('\n');
+  function withEmergency(md: string, extra: AnyCard = {}, hint: string | null = 'Stabilize, then remove') {
+    const base = JSON.parse(JSON.stringify(real));
+    base.cards.push({
+      file: 'test.md', id: 'test-card', type: 'condition', variant: null, system: 'renal', group: 'condition', subsection: 'Test Disorders',
+      title: 'Test', aliases: [], related: {}, example: true, unknownSections: [], unknownSubsections: [], definition: null, basedOn: [], reviewed: null,
+      sections: [{ key: 'at-a-glance', title: 'At a Glance', blocks: steps(kp('')), subsections: [] }],
+      emergency: { hint, blocks: steps(md) },
+      ...extra,
+    });
+    return checkContent(base).join('\n');
+  }
+  it('accepts steps with a condition, checks, doses, warnings and notes', () => {
+    expect(withEmergency(OK)).toBe('');
+  });
+  it('the Hyperkalemia emergency follows the format and AKI has none', () => {
+    const hk = real.cards.find((c) => (c as { id: string }).id === 'renal-hyperkalemia') as unknown as { emergency: { hint: string; blocks: { t: string }[] } };
+    expect(hk.emergency.hint).toBeTruthy();
+    expect(hk.emergency.blocks.map((b) => b.t)).toEqual(['steps', 'note']);
+    const aki = real.cards.find((c) => (c as { id: string }).id === 'renal-aki') as unknown as { emergency: unknown };
+    expect(aki.emergency).toBeNull();
+  });
+  it('needs a short hint and a topic card', () => {
+    expect(withEmergency(OK, {}, null)).toMatch(/needs "emergency_hint"/);
+    expect(withEmergency(OK, {}, 'x'.repeat(51))).toMatch(/over 50 characters/);
+    expect(withEmergency(OK, { type: 'procedure', group: 'reference', subsection: null, sections: [{ key: 'at-a-glance', title: 'At a Glance', blocks: steps(kp('')), subsections: [] }] })).toMatch(/can't have an emergency/);
+    expect(withEmergency(OK, { emergency: null, emergencyHintOnly: true })).toMatch(/only for a topic with a "## Do Now"/);
+  });
+  it('rejects lines without sources, typed doses and doses inside sentences', () => {
+    expect(withEmergency(OK + '\n   - An unsourced line')).toMatch(/has no source/);
+    expect(withEmergency(OK + '\n   - Give 40 mg now ^[example-guideline-a]')).toMatch(/dose typed as text/);
+    expect(withEmergency(OK + '\n   - Give {{dose:example-drug-standard}} now ^[example-guideline-a]')).toMatch(/on a line of its own/);
+  });
+  it('rejects what doesn’t follow the Do Now format', () => {
+    expect(withEmergency('- Not steps ^[example-guideline-a]')).toMatch(/starts with numbered steps/);
+    expect(withEmergency('1. Only one\n   - A line. ^[example-guideline-a]')).toMatch(/needs 2–8 steps/);
+    expect(withEmergency(OK + '\n   - If: Late condition ^[example-guideline-a]')).toMatch(/"If:" line comes first/);
+    expect(withEmergency(OK + '\n   - Warning: A warning that is far too long ^[example-guideline-a]')).toMatch(/one to three words/);
+    expect(withEmergency(OK + '\n3. Empty')).toMatch(/has nothing to do/);
+    expect(withEmergency(OK + '\n\n- A loose bullet ^[example-guideline-a]')).toMatch(/only :::note boxes/);
+  });
+  it('checks the recheck times Timed Mode lists under Due Next', () => {
+    const times = (head: string, items = '- 1 h') => withEmergency(OK, { sections: [{ key: 'at-a-glance', title: 'At a Glance', blocks: steps(kp(`:::times${head} Recheck ^[example-guideline-a]\n${items}\n:::`)), subsections: [] }] });
+    expect(times('{after=first check="K⁺"}')).toBe('');
+    expect(times('{after=example-drug-standard check=Glucose unit=min}', '- 30')).toBe('');
+    expect(times('{after=no-such-dose check=Glucose}')).toMatch(/must be "first" or a dose in this topic's Do Now/);
+    expect(times('{after=first}')).toMatch(/needs after= .* and check=/);
+    expect(times('{after=first check=K}', '- soon')).toMatch(/every time needs a number and a unit/);
+    expect(times('{after=first check=K color=red}')).toMatch(/unknown :::times setting "color"/);
+  });
+});

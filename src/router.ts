@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getCard, getSystem } from './content';
+import { getCard, getSystem, hasEmergency } from './content';
 
 // Hash-based addresses (#/card/<id>) so every page has its own link that works offline and on direct visits.
 export type Tab = 'home' | 'emergencies' | 'topics' | 'library' | 'search';
@@ -15,9 +15,12 @@ export type Route =
   | { name: 'system'; id: string }
   | { name: 'card'; id: string; section?: string }
   | { name: 'pathway'; id: string }
+  // An emergency page (Rapids), and Timed Mode, which runs one emergency at a time.
+  | { name: 'emergency'; id: string }
+  | { name: 'timed' }
   | { name: 'not-found' };
 
-const ROOTS = ['emergencies', 'topics', 'library', 'search', 'settings', 'favorites'] as const;
+const ROOTS = ['emergencies', 'topics', 'library', 'search', 'settings', 'favorites', 'timed'] as const;
 
 export function parseRoute(hash: string): Route {
   const parts = hash.replace(/^#\/?/, '').split('/').filter(Boolean).map((p) => { try { return decodeURIComponent(p); } catch { return p; } });
@@ -26,6 +29,7 @@ export function parseRoute(hash: string): Route {
   if (a === 'system' && b && !c) return { name: 'system', id: b };
   if (a === 'card' && b) return { name: 'card', id: b, section: c };
   if (a === 'pathway' && b && !c) return { name: 'pathway', id: b };
+  if (a === 'emergency' && b && !c) return { name: 'emergency', id: b };
   if (a === 'library' && b && !c) return { name: 'library-list', id: b };
   if ((ROOTS as readonly string[]).includes(a) && !b) return { name: a as (typeof ROOTS)[number] };
   return { name: 'not-found' };
@@ -42,6 +46,8 @@ export const href = {
   favorites: () => '#/favorites',
   system: (id: string) => `#/system/${encodeURIComponent(id)}`,
   pathway: (id: string) => `#/pathway/${encodeURIComponent(id)}`,
+  emergency: (id: string) => `#/emergency/${encodeURIComponent(id)}`,
+  timed: () => '#/timed',
   card: (id: string, section?: string) => `#/card/${encodeURIComponent(id)}${section ? `/${encodeURIComponent(section)}` : ''}`,
 };
 
@@ -52,7 +58,7 @@ export const TAB_ROOT: Record<Exclude<Tab, 'search'>, string> = {
 // The tab a page belongs to when we don't know how it was reached (a direct link or a reopen).
 export function tabFor(route: Route): Tab {
   switch (route.name) {
-    case 'emergencies': return 'emergencies';
+    case 'emergencies': case 'emergency': case 'timed': return 'emergencies';
     case 'topics': return 'topics';
     case 'library': case 'library-list': return 'library';
     case 'search': return 'search';
@@ -120,14 +126,28 @@ let returning = false;
 export const isReturning = () => returning || restoreY != null;
 export function reopenLastPage(now = Date.now()) {
   if (location.hash && location.hash !== '#') return;
+  // Timed Mode still running: back to it, however long the app was closed (the timer kept counting).
+  if (timedRunning()) {
+    history.replaceState({ wardsDepth: 0, tab: 'emergencies' } satisfies State, '', href.timed());
+    return;
+  }
   const last = readLast();
   if (!last?.hash || typeof last.t !== 'number' || now - last.t > REOPEN_WITHIN_MS || now < last.t) return;
   const route = parseRoute(last.hash);
   if (route.name === 'home' || route.name === 'search' || route.name === 'not-found') return;
   if (route.name === 'card' && !getCard(route.id)) return;
   if (route.name === 'system' && !getSystem(route.id)) return;
+  if (route.name === 'emergency' && !hasEmergency(route.id)) return;
+  if (route.name === 'timed') return;
   history.replaceState({ wardsDepth: 0, tab: tabFor(route) } satisfies State, '', last.hash);
   restoreY = last.y;
+}
+
+function timedRunning() {
+  try {
+    const s = JSON.parse(localStorage.getItem('wards:timed') ?? 'null');
+    return !!s && typeof s.card === 'string' && s.end == null && hasEmergency(s.card);
+  } catch { return false; }
 }
 
 // Return to a scroll position once the page is long enough (long cards take a moment to lay out).

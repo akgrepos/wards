@@ -5,7 +5,7 @@ import { useSyncExternalStore } from 'react';
 export type Recent = { id: string; t: number };
 export type Reading = { id: string; section?: string; t: number };
 
-const KEYS = { favorites: 'wards:favorites', recent: 'wards:recent', reading: 'wards:reading', scroll: 'wards:scroll' } as const;
+const KEYS = { favorites: 'wards:favorites', recent: 'wards:recent', reading: 'wards:reading', scroll: 'wards:scroll', rapids: 'wards:rapids', timed: 'wards:timed' } as const;
 export const RECENT_MAX = 5;
 
 function read<T>(key: string, fallback: T, valid: (v: unknown) => boolean): T {
@@ -84,6 +84,23 @@ export function clearPageMemory() {
     for (const k of Object.keys(localStorage)) if (k.startsWith('akg-sections:card:')) localStorage.removeItem(k);
   } catch { /* not available */ }
 }
+
+// Home's Rapids shortcuts: the emergencies chosen with Edit (up to four), or null for the first four.
+export const RAPIDS_MAX = 4;
+export const getRapidShortcuts = () => cached<string[] | null>(KEYS.rapids, () => read(KEYS.rapids, null, isStrings));
+export const setRapidShortcuts = (ids: string[] | null) => write(KEYS.rapids, ids ? ids.slice(0, RAPIDS_MAX) : null);
+
+// Timed Mode, kept only on this phone so the timer survives the app closing: which emergency, when it started (and
+// ended), and the log of what was given or skipped. Cleared when the summary's Done is tapped.
+export type TimedEntry = { t: number; step: number; kind: 'given' | 'skipped' | 'done'; dose?: string; for?: string };
+export type TimedSession = { card: string; start: number; end?: number; log: TimedEntry[] };
+const isEntry = (x: TimedEntry) => !!x && typeof x.t === 'number' && typeof x.step === 'number' && ['given', 'skipped', 'done'].includes(x.kind);
+const isTimed = (v: unknown) => {
+  const s = v as TimedSession;
+  return !!s && typeof s.card === 'string' && typeof s.start === 'number' && Array.isArray(s.log) && s.log.every(isEntry);
+};
+export const getTimed = () => cached<TimedSession | null>(KEYS.timed, () => read(KEYS.timed, null, isTimed));
+export const setTimed = (s: TimedSession | null) => write(KEYS.timed, s);
 
 /** Re-renders when the stored lists change. */
 export function useStored<T>(get: () => T): T {
