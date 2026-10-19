@@ -91,6 +91,29 @@ describe('content checks', () => {
   });
 });
 
+describe('tappable cutoffs', () => {
+  function withNote(note: string | undefined, md: string, field = 'note') {
+    const base = JSON.parse(JSON.stringify(real));
+    base.data.threshold['test-cut'] = { name: 'Potassium needing an urgent ECG', value: '≥6.0', unit: 'mEq/L', sources: ['example-guideline-a'], _file: 'test-cut.yaml', ...(note === undefined ? {} : { [field]: note }) };
+    base.cards.push({
+      file: 'test.md', id: 'test-card', type: 'condition', variant: null, system: 'renal', group: 'condition', subsection: 'Test Disorders',
+      title: 'Test', aliases: [], related: {}, example: true, unknownSections: [], unknownSubsections: [], definition: null, basedOn: [], reviewed: null,
+      sections: [{ key: 'at-a-glance', title: 'At a Glance', blocks: parseBlocks(kp(md).split('\n')), subsections: [] }],
+    });
+    return checkContent(base).join('\n');
+  }
+  it('allows a note that adds what the line does not say', () => {
+    expect(withNote('Only in individual high-risk circumstances.', '- STAT 12-lead ECG at {{threshold:test-cut}}. ^[example-guideline-a]')).toBe('');
+    expect(withNote(undefined, '| A | B |\n|---|---|\n| K | {{threshold:test-cut}} ^[example-guideline-a] |')).toBe('');
+  });
+  it('rejects a note that repeats the line, its value, or is only used where values are plain', () => {
+    expect(withNote('All hospitalized patients at or above this level need an urgent 12-lead ECG.', '- STAT 12-lead ECG at {{threshold:test-cut}}. ^[example-guideline-a]')).toMatch(/note mostly repeats/);
+    expect(withNote('Potassium 6.0 mEq/L or higher.', '- Check at {{threshold:test-cut}}. ^[example-guideline-a]')).toMatch(/note repeats the value/);
+    expect(withNote('Suggests a different population entirely.', '| A | B |\n|---|---|\n| K | {{threshold:test-cut}} ^[example-guideline-a] |')).toMatch(/only appears in tables or scales/);
+    expect(withNote('Something new.', '- At {{threshold:test-cut}}. ^[example-guideline-a]', 'meaning')).toMatch(/"meaning" is now "note"/);
+  });
+});
+
 describe('card format', () => {
   it('reads numbered steps with their own content, and containers', () => {
     const b = parseBlocks(['1. Stabilize', '   - Calcium first. ^[s]', '', '   {{dose:x}}', '2. Shift', '', ':::times Recheck ^[s]', '- 1 h', '- 2 h', ':::']) as { t: string; items: { blocks?: { t: string }[]; text?: string }[] }[];

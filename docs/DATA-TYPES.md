@@ -54,8 +54,8 @@ A lab test's typical US range and critical values.
 
 ### 5. Threshold
 A single named cutoff that drives decisions.
-- Fields: name · value and unit · meaning (optional) · sources
-- Tappable only when the pop-up adds something beyond the value shown (owner's rule, 2026-10-18): give a `meaning` only when it says more than the value (what it implies, who it applies to). Without one, the value shows as plain text. Values inside a severity scale are always plain (the band names them).
+- Fields: name · value and unit · note (optional) · sources
+- Tappable only when the pop-up shows something the line can't (owner's rule, 2026-10-19). The value is on the line and its sources are in the line's pill, so only the `note` can add anything: give one only for a caveat, a different population or a condition the line doesn't state, and write only that part. Without a note the value is plain text. Values in table cells and scale bands are always plain. `npm run content:check` rejects a note that repeats the value, one whose words are mostly (more than a third) already on the line or in the cutoff's name, and one on a cutoff used only in tables or scales.
 - Example: "Hyperkalemia emergency: K⁺ ≥6.5 mmol/L or ECG changes"
 - Kept separate so the same cutoff is never written two ways
 

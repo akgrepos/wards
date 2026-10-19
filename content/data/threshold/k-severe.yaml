@@ -1,5 +1,4 @@
 name: Severe hyperkalemia
 value: "≥6.5"
 unit: mEq/L
-meaning: Potassium 6.5 mEq/L or higher. Potentially life-threatening; needs urgent hospital treatment.
 sources: [ukka-hyperkalaemia-2026]

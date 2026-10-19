@@ -1,5 +1,5 @@
 name: Example cutoff
 value: 6.5
 unit: mmol/L
-meaning: Placeholder meaning of the cutoff.
+note: Placeholder caveat the line doesn't state.
 sources: [example-guideline-a]

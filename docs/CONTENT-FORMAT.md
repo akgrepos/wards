@@ -90,7 +90,7 @@ related:
 - A line that is only `{{pathway:id}}` shows one row that opens the pathway's own page (pathways are their own pages since 2026-10-19); a line that is only `{{criteria:id}}` shows the criteria in full.
 
 ## In the app
-- A value is dotted and tappable only when its pop-up adds something beyond what's already shown (a cutoff's `meaning`, a criteria set's full criteria, a dose's details). Otherwise it is plain text: cutoffs without a `meaning`, and every value inside a `:::scale`.
+- A value is dotted and tappable only when its pop-up shows something the line can't: a cutoff's `note` (a caveat, population or condition the line doesn't state), a criteria set's full criteria, a dose's details. Repeating the value, its label, its unit, what it means or its source doesn't count. Plain text: cutoffs without a `note`, and every value in a table cell or a `:::scale`. The content check enforces this (see DATA-TYPES.md, Threshold).
 - Each card has its own link: `#/card/<card-id>`; `#/card/<card-id>/<section>` opens the page at that section or More Information subsection (opening it if closed). Works offline and when opened directly.
 - Sections open and close from their headings; the phone remembers which are closed and where each page was scrolled.
 - The quote-mark button at the top shows one source pill at the end of every line (off when a page opens). A pill names the line's first source and "+N"; tapping it quotes the line and lists its sources. Tables get the pill at the end of each row; a sub-bullet without its own sources gets none.

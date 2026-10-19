@@ -283,8 +283,9 @@ export function CriteriaSheet({ c }: { c: Criteria }) {
 }
 export const openCriteria = (sheet: ShowSheet, c: Criteria) => sheet({ title: 'Criteria', heading: c.name, body: <CriteriaSheet c={c} /> });
 
-// `plain`: show the value as text, never tappable (inside a ScaleBar, where the band already says what it means).
-// A cutoff is tappable only when its pop-up adds something beyond the value shown: a `meaning` (owner's rule, 2026-10-18).
+// `plain`: show the value as text, never tappable (in table cells and scale bands, where the row or band says what it means).
+// A cutoff is tappable only when its pop-up adds something the line doesn't show: a `note` (owner's rule, 2026-10-19;
+// the content check rejects notes that repeat the line).
 function Insert({ kind, id, plain }: { kind: string; id: string; plain?: boolean }) {
   const sheet = useSheet();
   const item = content.data[kind]?.[id];
@@ -296,9 +297,9 @@ function Insert({ kind, id, plain }: { kind: string; id: string; plain?: boolean
   }
   if (kind === 'threshold') {
     const t = item as unknown as Threshold;
-    if (plain || !t.meaning) return <span className="plain-value">{t.value} {t.unit}</span>;
+    if (plain || !t.note) return <span className="plain-value">{t.value} {t.unit}</span>;
     return (
-      <AKG.TappableValue onClick={() => sheet({ title: 'Cutoff', heading: t.name, body: <div className="detail-sheet"><p className="ios-title-3-emphasized">{t.value} {t.unit}</p><p className="ios-body">{t.meaning}</p><SheetSources ids={t.sources} /></div> })}>
+      <AKG.TappableValue onClick={() => sheet({ title: 'Cutoff', heading: t.name, body: <div className="detail-sheet"><p className="ios-title-3-emphasized">{t.value} {t.unit}</p><p className="ios-body">{t.note}</p><SheetSources ids={t.sources} /></div> })}>
         {t.value} {t.unit}
       </AKG.TappableValue>
     );
@@ -493,7 +494,7 @@ function BlockView({ b }: { b: Block }) {
       columns={b.header.map((h, j) => <Inlines key={j} xs={h} />)}
       rows={b.rows.map((r, k) => ({
         key: k,
-        cells: r.cells.map((c, j) => <Fragment key={j}><Inlines xs={c} />{j === r.cells.length - 1 && <LinePill ids={r.sources} quote={r.cells.map((x) => plainText(x)).filter(Boolean).join(': ')} />}</Fragment>),
+        cells: r.cells.map((c, j) => <Fragment key={j}><Inlines xs={c} plain />{j === r.cells.length - 1 && <LinePill ids={r.sources} quote={r.cells.map((x) => plainText(x)).filter(Boolean).join(': ')} />}</Fragment>),
       }))}
     />
   );

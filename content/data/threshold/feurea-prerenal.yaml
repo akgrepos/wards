@@ -1,5 +1,4 @@
 name: "FEUrea suggesting prerenal physiology"
 value: "≤35"
 unit: "%"
-meaning: "Suggests prerenal azotemia, including in patients on diuretics."
 sources: [carvounis-feurea-2002]

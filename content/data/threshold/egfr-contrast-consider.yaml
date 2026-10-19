@@ -1,5 +1,5 @@
 name: "eGFR for discretionary contrast prophylaxis"
 value: "30–44"
 unit: "mL/min/1.73 m²"
-meaning: "Prophylaxis may be considered in individual high-risk circumstances."
+note: "Only in individual high-risk circumstances."
 sources: [acr-nkf-contrast-2020]

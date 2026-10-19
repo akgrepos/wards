@@ -169,14 +169,24 @@ describe('remembered sections', () => {
     expect(screen.queryByText(/\(Hyperkalemia\)/)).toBeNull();
   });
 
-  it('values are tappable only when the pop-up adds something', () => {
+  it('values are tappable only when the pop-up adds something the line does not show', async () => {
     launch('#/card/renal-hyperkalemia');
     const scale = document.querySelector('.scale-block') as HTMLElement;
     expect(within(scale).queryAllByRole('button')).toHaveLength(0);
     expect(within(scale).getByText('≥6.5 mEq/L')).toBeTruthy();
-    // ≥6.5 explains more in its pop-up, so it stays tappable in sentences; 6.0–6.4 has nothing more to say.
-    expect(screen.getAllByRole('button', { name: '≥6.5 mEq/L' }).length).toBeGreaterThan(0);
-    expect(screen.queryByRole('button', { name: '6.0–6.4 mEq/L' })).toBeNull();
+    // Every Hyperkalemia cutoff's pop-up only repeated its line, so none is tappable (owner, 2026-10-19).
+    for (const v of ['≥6.5 mEq/L', '≥6.0 mEq/L', '>6.5 mEq/L', '<126 mg/dL', '>200 mg/dL']) {
+      expect(screen.queryByRole('button', { name: v })).toBeNull();
+      expect(screen.getAllByText(v).length).toBeGreaterThan(0);
+    }
+    // AKI: the urinary indices table is plain; the contrast eGFR cutoffs add a caveat, so they open a pop-up.
+    launch('#/card/renal-aki');
+    const table = screen.getByText('FEUrea (on diuretics)').closest('table') as HTMLElement;
+    expect(within(table).queryAllByRole('button')).toHaveLength(0);
+    expect(within(table).getByText('<1 %')).toBeTruthy();
+    fireEvent.click(screen.getByRole('button', { name: '<30 mL/min/1.73 m²' }));
+    await tick();
+    expect(within(dialog()).getByText(/contraindicated \(e\.g\. heart failure\)/)).toBeTruthy();
   });
 
   it('causes are one grouped list with a Cannot miss tag', () => {

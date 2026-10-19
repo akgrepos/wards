@@ -1,5 +1,4 @@
 name: Pre-treatment glucose with high hypoglycemia risk
 value: "<126"
 unit: mg/dL
-meaning: Below this pre-treatment glucose (7.0 mmol/L in the source), start a 10% dextrose infusion after insulin-glucose to prevent hypoglycemia.
 sources: [ukka-hyperkalaemia-2026]

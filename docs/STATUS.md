@@ -1,6 +1,6 @@
 # Status
 
-Last updated 2026-10-19 (AKI card redesign live in 2026.10.19: sources per line, one color per job, stage rows, urinary indices table, pathways as their own pages). A short snapshot so the next session can pick up where the last one stopped. The reasons behind each choice are in [DECISIONS.md](DECISIONS.md).
+Last updated 2026-10-19 (2026.10.19.2: dotted values only where the pop-up adds something the line doesn't show, now checked automatically; before that, the AKI card redesign in 2026.10.19). A short snapshot so the next session can pick up where the last one stopped. The reasons behind each choice are in [DECISIONS.md](DECISIONS.md).
 
 ## Start here next time
 1. **Read first:** `CLAUDE.md`, then DECISIONS.md "Sources, updated" (all content rules) before writing any card.
@@ -9,7 +9,7 @@ Last updated 2026-10-19 (AKI card redesign live in 2026.10.19: sources per line,
 4. **Review the rest of the audits** (filed 2026-10-17). Owner's order: design (done via the redesign), then process; clinical fixes later, since the app isn't in clinical use yet. Five reports kept privately: design/UI/UX, navigation, process, systems/security/privacy, clinical content. Present the findings and let the owner choose what to fix with question pop-ups.
    - Done: the repo identity fix (re-created 2026-10-18).
    - Saved for later: the clinical highs (terlipressin boxed warning, Hyperkalemia causes table, calcium chloride arrest rate, insulin onset).
-5. **Owner checks on the phone** (version 2026.10.19): open Acute Kidney Injury, tap the quote-mark button and a few source tags, check the Criteria/Note boxes, stage rows and urinary indices table, and tap the Pathway row (empty page for now). Earlier checks (version 2026.10.18.3):
+5. **Owner checks on the phone** (version 2026.10.19.2): on AKI and Hyperkalemia, only the KDIGO criteria name, dose rows and AKI's two contrast eGFR cutoffs should be dotted; say if any other value should still open a pop-up. (Version 2026.10.19:) open Acute Kidney Injury, tap the quote-mark button and a few source tags, check the Criteria/Note boxes, stage rows and urinary indices table, and tap the Pathway row (empty page for now). Earlier checks (version 2026.10.18.3):
    - Open Hyperkalemia and Acute Kidney Injury: try the Contents button, closing sections, More Information and a dose row; say what feels off.
    - Try the new tabs, the star, Continue Reading and Search.
    - Tap Reload on "Update Ready" and confirm the app updates. One simulator Home Screen copy didn't reload; a safety net was added, and Safari reloaded fine.
@@ -27,7 +27,7 @@ Last updated 2026-10-19 (AKI card redesign live in 2026.10.19: sources per line,
 8. **Inputs needed from the owner:** sign in to AMBOSS and OpenEvidence in the built-in browser if their sessions have expired.
 
 ## Done
-- **App:** live at https://akgrepos.github.io/wards/ (version 2026.10.19).
+- **App:** live at https://akgrepos.github.io/wards/ (version 2026.10.19.2).
   - Cards: Hyperkalemia (condition) and Acute Kidney Injury (approach) on the new topic pages: Contents menu, collapsible remembered sections, More Information, source tags per line on demand (quote-mark button; no section source lines), one color per job (Criteria and Note boxes, gray tables, severity ramp), stage rows, dose rows with dose sheets, cutoffs and criteria. Pathways show as Open rows to their own (empty, to be designed) pages.
   - App features: four tabs (Home, Rapids, Topics, Library) with search; Continue Reading, Favorites and Recent kept on the phone; offline use (checked on every build), the "Update Ready" banner, light/dark mode and Text Size support, readable width, and reopening on the last page within 30 minutes.
 - **Process:** branch and pull request per task, automatic checks (anonymous authors, design system styles, content, type-check, tests, build), automatic publishing from `main`, weekly Dependabot updates plus security fixes. End-of-chat wrap-up via the `wards-wrap-up` skill.
