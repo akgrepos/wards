@@ -1,10 +1,10 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { AKG } from '../design/akg';
-import { blockSources, cardSources, cardTypeLabel, content, getCard, getSystem, titleCase } from '../content';
+import { cardSources, cardTypeLabel, content, getCard, getSystem, titleCase } from '../content';
 import type { Card, Source } from '../content/types';
 import { forgetSection, href, isReturning, parseRoute, restoreScroll } from '../router';
 import { addRecent, getCardScroll, getFavorites, setCardScroll, setReading, toggleFavorite, useStored } from '../storage';
-import { Blocks, Inlines, JUMP_EVENT, SectionSources, SourceList } from '../ui/Rich';
+import { Blocks, Inlines, JUMP_EVENT, LinePill, LineSources, SourceList } from '../ui/Rich';
 import { useSheet } from '../ui/SheetHost';
 import { icons } from '../ui/icons';
 import { Screen } from './common';
@@ -33,6 +33,8 @@ export function CardScreen({ id, section }: { id: string; section?: string }) {
   const state = AKG.useSectionState(card ? `card:${id}` : null);
   const [current, setCurrent] = useState<string | undefined>(undefined);
   const [menu, setMenu] = useState(false);
+  // Sources on every line, from the quote-mark button: off each time a page opens (owner, 2026-10-19).
+  const [showSources, setShowSources] = useState(false);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
   const sections = card?.sections ?? [];
@@ -154,117 +156,124 @@ export function CardScreen({ id, section }: { id: string; section?: string }) {
   ];
 
   return (
-    <Screen
-      title={card.title}
-      titleRef={titleRef}
-      back={{ label: system?.title ?? 'Topics', fallback: href.system(card.system) }}
-      trailing={
-        <AKG.ToolbarGroup>
-          <AKG.ToolbarButton
-            id="contents-button"
-            icon={icons.listBullet}
-            aria-label="Contents"
-            aria-haspopup="menu"
-            aria-expanded={menu}
-            onClick={() => (menu ? closeMenu() : setMenu(true))}
-          />
-          <AKG.ToolbarButton
-            icon={favorite ? icons.starFill : icons.star}
-            aria-label={favorite ? 'Remove from Favorites' : 'Add to Favorites'}
-            aria-pressed={favorite}
-            onClick={() => toggleFavorite(id)}
-          />
-          {/* Phase 4: a bolt button here opens the topic's emergency pop-up, shown only when the topic has one. */}
-        </AKG.ToolbarGroup>
-      }
-      head={
-        <header className="card-head">
-          <div className="card-tags">
-            <AKG.Tag>{cardTypeLabel(card)}</AKG.Tag>
-            {system && <AKG.Tag>{system.title}</AKG.Tag>}
-          </div>
-          <h1 ref={titleRef} className="ios-large-title-emphasized">{card.title}</h1>
-          {card.definition && <p className="ios-callout secondary"><Inlines xs={card.definition.inlines} /></p>}
-          {/* No "Based on" line (owner, 2026-10-18): each section's source line and All Sources name the guidelines. */}
-          {card.reviewed && <p className="ios-caption-1 secondary">{reviewedLabel(card.reviewed)}</p>}
-          {card.example && <AKG.Callout variant="info">Development sample with placeholder content. Not shown in the published app.</AKG.Callout>}
-        </header>
-      }
-    >
-      {menu && (
-        <div className="contents-layer" onClick={closeMenu}>
-          <div className="contents-menu" ref={menuRef} onClick={(e) => e.stopPropagation()}>
-            <AKG.Menu aria-label="Contents" items={menuItems} onClose={closeMenu} />
-          </div>
-        </div>
-      )}
-      {sections.map((s) =>
-        s.key === 'more' ? (
-          <AKG.ContentSection
-            key={s.key}
-            id="sec-more"
-            variant="card"
-            inset={false}
-            title={titleCase(s.title)}
-            collapsible
-            expanded={state.isOpen(s.key, true)}
-            onExpandedChange={(on: boolean) => state.setOpen(s.key, on)}
-          >
-            <div className="more-list">
-              {s.subsections.map((x) => (
-                <AKG.ContentSection
-                  key={x.key}
-                  id={`sub-${x.key}`}
-                  className="more-item"
-                  title={x.title}
-                  summary={x.description ?? undefined}
-                  collapsible
-                  expanded={state.isOpen(subKey(x.key), false)}
-                  onExpandedChange={(on: boolean) => state.setOpen(subKey(x.key), on)}
-                >
-                  <Blocks blocks={x.blocks} />
-                  <SectionSources ids={blockSources(x.blocks)} forLabel={x.title} />
-                </AKG.ContentSection>
-              ))}
-            </div>
-          </AKG.ContentSection>
-        ) : (
-          <AKG.ContentSection
-            key={s.key}
-            id={`sec-${s.key}`}
-            variant="card"
-            title={titleCase(s.title)}
-            collapsible
-            expanded={state.isOpen(s.key, true)}
-            onExpandedChange={(on: boolean) => state.setOpen(s.key, on)}
-            footer={blockSources(s.blocks).length ? <SectionSources ids={blockSources(s.blocks)} forLabel={titleCase(s.title)} /> : undefined}
-          >
-            <Blocks blocks={s.blocks} />
-          </AKG.ContentSection>
-        ),
-      )}
-      {related.length > 0 && (
-        <AKG.ContentSection id="sec-related" title="Related">
-          {related.map(([k, label]) => (
-            <AKG.List key={k} header={related.length > 1 ? label : undefined}>
-              {card.related[k].map((rid) => <AKG.ListRow key={rid} title={getCard(rid)?.title ?? rid} chevron href={href.card(rid)} />)}
-            </AKG.List>
-          ))}
-        </AKG.ContentSection>
-      )}
-      {sources.length > 0 && (
-        <AKG.ContentSection id="sec-sources" title="Sources">
-          <AKG.List>
-            <AKG.ListRow
-              title="All Sources"
-              detail={String(sources.length)}
-              chevron
-              onClick={() => sheet({ title: 'Sources', heading: card.title, body: <AllSources ids={sources} /> })}
+    <LineSources show={showSources}>
+      <Screen
+        title={card.title}
+        titleRef={titleRef}
+        back={{ label: system?.title ?? 'Topics', fallback: href.system(card.system) }}
+        trailing={
+          <AKG.ToolbarGroup>
+            {/* A toggle-style button (HIG: outside a list, a toggle is a button that highlights while on). */}
+            <AKG.ToolbarButton
+              icon={icons.quoteOpening}
+              aria-label="Show Sources"
+              selected={showSources}
+              onClick={() => setShowSources(!showSources)}
             />
-          </AKG.List>
-        </AKG.ContentSection>
-      )}
-    </Screen>
+            <AKG.ToolbarButton
+              id="contents-button"
+              icon={icons.listBullet}
+              aria-label="Contents"
+              aria-haspopup="menu"
+              aria-expanded={menu}
+              onClick={() => (menu ? closeMenu() : setMenu(true))}
+            />
+            <AKG.ToolbarButton
+              icon={favorite ? icons.starFill : icons.star}
+              aria-label={favorite ? 'Remove from Favorites' : 'Add to Favorites'}
+              aria-pressed={favorite}
+              onClick={() => toggleFavorite(id)}
+            />
+            {/* Phase 4: a bolt button here opens the topic's emergency pop-up, shown only when the topic has one. */}
+          </AKG.ToolbarGroup>
+        }
+        head={
+          <header className="card-head">
+            <div className="card-tags">
+              <AKG.Tag>{cardTypeLabel(card)}</AKG.Tag>
+              {system && <AKG.Tag>{system.title}</AKG.Tag>}
+            </div>
+            <h1 ref={titleRef} className="ios-large-title-emphasized">{card.title}</h1>
+            {card.definition && <p className="ios-callout secondary"><Inlines xs={card.definition.inlines} /><LinePill ids={card.definition.sources} quote={card.definition.inlines} /></p>}
+            {/* No "Based on" line (owner, 2026-10-18): each section's source line and All Sources name the guidelines. */}
+            {card.reviewed && <p className="ios-caption-1 secondary">{reviewedLabel(card.reviewed)}</p>}
+            {card.example && <AKG.Callout variant="info">Development sample with placeholder content. Not shown in the published app.</AKG.Callout>}
+          </header>
+        }
+      >
+        {menu && (
+          <div className="contents-layer" onClick={closeMenu}>
+            <div className="contents-menu" ref={menuRef} onClick={(e) => e.stopPropagation()}>
+              <AKG.Menu aria-label="Contents" items={menuItems} onClose={closeMenu} />
+            </div>
+          </div>
+        )}
+        {sections.map((s) =>
+          s.key === 'more' ? (
+            <AKG.ContentSection
+              key={s.key}
+              id="sec-more"
+              variant="card"
+              inset={false}
+              title={titleCase(s.title)}
+              collapsible
+              expanded={state.isOpen(s.key, true)}
+              onExpandedChange={(on: boolean) => state.setOpen(s.key, on)}
+            >
+              <div className="more-list">
+                {s.subsections.map((x) => (
+                  <AKG.ContentSection
+                    key={x.key}
+                    id={`sub-${x.key}`}
+                    className="more-item"
+                    title={x.title}
+                    summary={x.description ?? undefined}
+                    collapsible
+                    expanded={state.isOpen(subKey(x.key), false)}
+                    onExpandedChange={(on: boolean) => state.setOpen(subKey(x.key), on)}
+                  >
+                    <LineSources section={x.title}><Blocks blocks={x.blocks} /></LineSources>
+                  </AKG.ContentSection>
+                ))}
+              </div>
+            </AKG.ContentSection>
+          ) : (
+            <AKG.ContentSection
+              key={s.key}
+              id={`sec-${s.key}`}
+              variant="card"
+              title={titleCase(s.title)}
+              collapsible
+              expanded={state.isOpen(s.key, true)}
+              onExpandedChange={(on: boolean) => state.setOpen(s.key, on)}
+            >
+              <LineSources section={titleCase(s.title)}><Blocks blocks={s.blocks} /></LineSources>
+            </AKG.ContentSection>
+          ),
+        )}
+        {related.length > 0 && (
+          <AKG.ContentSection id="sec-related" title="Related">
+            {related.map(([k, label]) => (
+              <AKG.List key={k} header={related.length > 1 ? label : undefined}>
+                {card.related[k].map((rid) => <AKG.ListRow key={rid} title={getCard(rid)?.title ?? rid} chevron href={href.card(rid)} />)}
+              </AKG.List>
+            ))}
+          </AKG.ContentSection>
+        )}
+        {sources.length > 0 && (
+          <AKG.ContentSection id="sec-sources" title="Sources">
+            <AKG.List>
+              <AKG.ListRow
+                title="All Sources"
+                detail={String(sources.length)}
+                chevron
+                onClick={() => sheet({ title: 'Sources', heading: card.title, body: <AllSources ids={sources} /> })}
+              />
+            </AKG.List>
+          </AKG.ContentSection>
+        )}
+      </Screen>
+    </LineSources>
   );
 }
 

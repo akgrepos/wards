@@ -1,0 +1,4 @@
+name: "Urine sodium suggesting ATN"
+value: ">40"
+unit: "mEq/L"
+sources: [miller-urine-indices-1978]

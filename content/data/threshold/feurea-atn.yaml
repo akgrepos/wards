@@ -1,0 +1,4 @@
+name: "FEUrea suggesting ATN"
+value: ">50"
+unit: "%"
+sources: [gotfried-fe-indices-2012]

@@ -112,13 +112,15 @@ def cross_case_fill():  # cross.case.fill
 
 
 def gearshape():  # gearshape
+    # Eight short, rounded teeth on a round body, and a center ring, as in SF Symbols (not deep square cogs).
     pts = []
     for i in range(8):
         a = i * 45 - 90
-        for ang, r in ((a - 16, 5.75), (a - 9.5, 7.8), (a + 9.5, 7.8), (a + 16, 5.75)):
+        for ang, r in ((a - 15.5, 6.55), (a - 9, 8.15), (a + 9, 8.15), (a + 15.5, 6.55)):
             pts.append((10 + r * math.cos(math.radians(ang)), 10 + r * math.sin(math.radians(ang))))
-    teeth = LineString(pts + [pts[0]]).buffer(.67, quad_segs=12, join_style='round')
-    return U(teeth, ring(10, 10, 1.95, 1.34))
+    body = rounded(Polygon(pts), .55)
+    outline = LineString(list(body.exterior.coords)).buffer(W / 2, quad_segs=12, join_style='round')
+    return U(outline, ring(10, 10, 2.75))
 
 
 def star_poly():
@@ -315,6 +317,14 @@ def thyroid():
     return U(lobe, mirror(lobe), isthmus).buffer(.4).buffer(-.4)
 
 
+def quote_opening():  # quote.opening
+    def mark(dx):
+        blob = circle(5.4 + dx, 12.4, 2.75)
+        tail = line(bez((2.85 + dx, 12.6), (2.6 + dx, 9.2), (4.4 + dx, 6.6), (7.6 + dx, 5.5)), 1.7)
+        return U(blob, tail)
+    return U(mark(0), mark(8.2)).buffer(.2).buffer(-.2)
+
+
 ICONS = {
     'house': house_fill, 'staroflifeFill': staroflife_fill, 'heartTextClipboard': heart_text_clipboard_fill,
     'crossCase': cross_case_fill, 'gearshape': gearshape, 'star': star, 'starFill': star_fill,
@@ -327,6 +337,7 @@ ICONS = {
     'figureWalk': figure_walk, 'brainHeadProfile': brain_head_profile_fill,
     'bubbleLeftAndBubbleRight': bubble_left_and_bubble_right_fill, 'eye': eye_fill,
     'figureAndChildHoldinghands': figure_and_child_holdinghands, 'bedDouble': bed_double_fill,
+    'quoteOpening': quote_opening,
 }
 
 

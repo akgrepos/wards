@@ -25,7 +25,7 @@ function splitSources(line) {
 }
 
 // Markdown subset → blocks: paragraph, list (one nesting level), numbered steps, table, insert (a line that is only
-// an insert), subheading, and the containers :::scale, :::compare and :::times.
+// an insert), subheading, and the containers :::scale, :::compare, :::times, :::onset and :::note.
 const ONLY_INSERT = /^\{\{\s*([a-z-]+)\s*:\s*([a-z0-9-]+)\s*\}\}$/;
 const isTableRow = (l) => /^\s*\|.*\|\s*$/.test(l);
 const isBullet = (l) => /^\s*[-*]\s+/.test(l);
@@ -59,7 +59,8 @@ export function parseBlocks(lines) {
         const l = lines[i].trim();
         if (l) {
           const { text, sources } = splitSources(l.replace(/^[-*]\s+/, ''));
-          const { label, text: rest } = labelled(text);
+          // A note's lines are plain sentences, not "Label: text".
+          const { label, text: rest } = m[1] === 'note' ? { label: '', text } : labelled(text);
           items.push({ text, label: parseInline(label), inlines: parseInline(rest), sources });
         }
         i++;

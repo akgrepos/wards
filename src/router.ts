@@ -14,6 +14,7 @@ export type Route =
   | { name: 'favorites' }
   | { name: 'system'; id: string }
   | { name: 'card'; id: string; section?: string }
+  | { name: 'pathway'; id: string }
   | { name: 'not-found' };
 
 const ROOTS = ['emergencies', 'topics', 'library', 'search', 'settings', 'favorites'] as const;
@@ -24,6 +25,7 @@ export function parseRoute(hash: string): Route {
   if (!a || a === 'home') return parts.length <= 1 ? { name: 'home' } : { name: 'not-found' };
   if (a === 'system' && b && !c) return { name: 'system', id: b };
   if (a === 'card' && b) return { name: 'card', id: b, section: c };
+  if (a === 'pathway' && b && !c) return { name: 'pathway', id: b };
   if (a === 'library' && b && !c) return { name: 'library-list', id: b };
   if ((ROOTS as readonly string[]).includes(a) && !b) return { name: a as (typeof ROOTS)[number] };
   return { name: 'not-found' };
@@ -39,6 +41,7 @@ export const href = {
   settings: () => '#/settings',
   favorites: () => '#/favorites',
   system: (id: string) => `#/system/${encodeURIComponent(id)}`,
+  pathway: (id: string) => `#/pathway/${encodeURIComponent(id)}`,
   card: (id: string, section?: string) => `#/card/${encodeURIComponent(id)}${section ? `/${encodeURIComponent(section)}` : ''}`,
 };
 
@@ -55,6 +58,7 @@ export function tabFor(route: Route): Tab {
     case 'search': return 'search';
     case 'system': return route.id === 'library' ? 'library' : 'topics';
     case 'card': return getCard(route.id)?.system === 'library' ? 'library' : 'topics';
+    case 'pathway': return 'library';
     default: return 'home';
   }
 }

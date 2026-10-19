@@ -63,6 +63,7 @@ A single named cutoff that drives decisions.
 A formal definition or diagnostic criteria with their logic.
 - Fields: name · items (major/minor or lettered) · logic (e.g. "2 major, or 1 major + 3 minor") · stages or grades · sources
 - Examples: KDIGO AKI stages, Sepsis-3, modified Duke criteria, SIRS
+- Display (2026-10-19): the items in an indigo "Criteria" box; a table whose first column is "Stage" (up to five stages) as stage rows with tinted chips; any other table as a gray table; the notes in a brown "Note" box.
 - Home: the condition card it defines. Inserted elsewhere (and can power a checklist).
 
 ### 7. Score
@@ -79,8 +80,8 @@ Ordinal scales used in exams and documentation.
 ### 9. Pathway (flowchart)
 An interactive algorithm.
 - Fields: steps (kinds: start, question, range, all-of checklist, caution, result) · stage of each step · answers, each with an interpretation, criteria text and the next step (paths may rejoin) · result lists, side notes and links · inserted doses, scores and thresholds · sources per step
-- Display: see the flowchart decision in DECISIONS.md (stacked step view; focused mini-flowchart map)
-- Home: the card it belongs to (stored as its own item so the Library's Pathways page can index it)
+- Display: its own page (2026-10-19; being redesigned from scratch, an empty page for now); cards show one Open row where they insert it. The earlier display (stacked step view; focused mini-flowchart map) is in DECISIONS.md.
+- Home: its own page, listed in the Library's Pathways; inserted into the cards that use it
 
 ### 10. Coverage
 How well one antimicrobial covers one organism.

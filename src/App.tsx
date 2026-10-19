@@ -1,6 +1,7 @@
 import { AKG } from './design/akg';
 import { currentTab, href, open, switchTab, useRoute, type Route } from './router';
 import { CardScreen } from './screens/CardScreen';
+import { PathwayScreen } from './screens/PathwayScreen';
 import { FavoritesScreen, Home, SettingsScreen } from './screens/Home';
 import { FocusProxy, SearchScreen, focusProxy } from './screens/Search';
 import { SystemScreen } from './screens/SystemScreen';
@@ -29,6 +30,7 @@ function Page({ route }: { route: Route }) {
     case 'favorites': return <FavoritesScreen />;
     case 'system': return <SystemScreen key={route.id} id={route.id} />;
     case 'card': return <CardScreen key={route.id} id={route.id} section={route.section} />;
+    case 'pathway': return <PathwayScreen key={route.id} id={route.id} />;
     default: return <NotFoundScreen />;
   }
 }

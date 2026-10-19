@@ -1,0 +1,4 @@
+name: "Urine osmolality suggesting ATN"
+value: "<350"
+unit: "mOsm/kg"
+sources: [miller-urine-indices-1978]

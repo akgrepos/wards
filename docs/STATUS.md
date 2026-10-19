@@ -1,37 +1,38 @@
 # Status
 
-Last updated 2026-10-18 (repo re-created; app redesign approved; redesign Phases 1–3 done; owner's card feedback fixed in 2026.10.18.7). A short snapshot so the next session can pick up where the last one stopped. The reasons behind each choice are in [DECISIONS.md](DECISIONS.md).
+Last updated 2026-10-19 (AKI card redesign live in 2026.10.19: sources per line, one color per job, stage rows, urinary indices table, pathways as their own pages). A short snapshot so the next session can pick up where the last one stopped. The reasons behind each choice are in [DECISIONS.md](DECISIONS.md).
 
 ## Start here next time
 1. **Read first:** `CLAUDE.md`, then DECISIONS.md "Sources, updated" (all content rules) before writing any card.
-2. **Build the approved redesign** (plan approved 2026-10-18, see DECISIONS): Phases 1 (design system additions), 2 (app frame and navigation) and 3 (topic pages) are done. Next is **Phase 4, Rapids pages and Timed Mode**: emergency pages with Do Now steps (living inside their topic's file, sharing its dose rows), the bolt pop-up on topic pages, Timed Mode with its log, minimize, end confirmation and summary. Then 5 (Library and full search), 6 (final check). One PR each, each live when done. The private mock-up canvas is the reference.
-3. **Review the rest of the audits** (filed 2026-10-17). Owner's order: design (done via the redesign), then process; clinical fixes later, since the app isn't in clinical use yet. Five reports kept privately: design/UI/UX, navigation, process, systems/security/privacy, clinical content. Present the findings and let the owner choose what to fix with question pop-ups.
+2. **Pathway pages, designed from scratch** (owner, 2026-10-19): pathways are now their own pages; cards show one Open row and the page is empty until this is done. Mock up first on the private design canvas, then build.
+3. **Build the approved redesign** (plan approved 2026-10-18, see DECISIONS): Phases 1 (design system additions), 2 (app frame and navigation) and 3 (topic pages) are done. Next is **Phase 4, Rapids pages and Timed Mode**: emergency pages with Do Now steps (living inside their topic's file, sharing its dose rows), the bolt pop-up on topic pages, Timed Mode with its log, minimize, end confirmation and summary. Then 5 (Library and full search), 6 (final check). One PR each, each live when done. The private mock-up canvas is the reference.
+4. **Review the rest of the audits** (filed 2026-10-17). Owner's order: design (done via the redesign), then process; clinical fixes later, since the app isn't in clinical use yet. Five reports kept privately: design/UI/UX, navigation, process, systems/security/privacy, clinical content. Present the findings and let the owner choose what to fix with question pop-ups.
    - Done: the repo identity fix (re-created 2026-10-18).
    - Saved for later: the clinical highs (terlipressin boxed warning, Hyperkalemia causes table, calcium chloride arrest rate, insulin onset).
-4. **Owner checks on the phone** (version 2026.10.18.3):
-   - Open Hyperkalemia and Acute Kidney Injury: try the Contents button, closing sections, More Information, a section's source line and a dose row; say what feels off.
+5. **Owner checks on the phone** (version 2026.10.19): open Acute Kidney Injury, tap the quote-mark button and a few source tags, check the Criteria/Note boxes, stage rows and urinary indices table, and tap the Pathway row (empty page for now). Earlier checks (version 2026.10.18.3):
+   - Open Hyperkalemia and Acute Kidney Injury: try the Contents button, closing sections, More Information and a dose row; say what feels off.
    - Try the new tabs, the star, Continue Reading and Search.
    - Tap Reload on "Update Ready" and confirm the app updates. One simulator Home Screen copy didn't reload; a safety net was added, and Safari reloaded fine.
    - Remove Wards from the Home Screen and add it back once, so the dark launch screen takes effect. Then confirm there's no white flash in dark mode.
    - Read the AKI and Hyperkalemia cards; note any wording or content changes. (First round of feedback fixed in 2026.10.18.7; the mock-up round for guideline attribution, color, the flowchart's end and the urine-index layout is separate.)
-5. **Then: Pilot 3, Electrolyte repletion** (reference card, protocol variant):
+6. **Then: Pilot 3, Electrolyte repletion** (reference card, protocol variant):
    - Handbook section first, for wording and organization.
    - Primary sources via AMBOSS reference lists, plus OpenEvidence spot-checks (Sackett or Snow mode).
    - Independent reviewer; simulator check; PR.
-6. **After the three pilots:** adjust the card templates. Candidates:
+7. **After the three pilots:** adjust the card templates. Candidates:
    - a short style guide for the clinical register in `docs/CONTENT-FORMAT.md`
    - whether approach cards need fewer sections
    - the "most common" vs "cannot miss" layout
    Then plan batch production of Wave 1.
-7. **Inputs needed from the owner:** sign in to AMBOSS and OpenEvidence in the built-in browser if their sessions have expired.
+8. **Inputs needed from the owner:** sign in to AMBOSS and OpenEvidence in the built-in browser if their sessions have expired.
 
 ## Done
-- **App:** live at https://akgrepos.github.io/wards/ (version 2026.10.18.7).
-  - Cards: Hyperkalemia (condition) and Acute Kidney Injury (approach) on the new topic pages: Contents menu, collapsible remembered sections, More Information, one source line per section (stethoscope/check markers kept), dose rows with dose sheets, flowcharts, cutoffs and criteria.
+- **App:** live at https://akgrepos.github.io/wards/ (version 2026.10.19).
+  - Cards: Hyperkalemia (condition) and Acute Kidney Injury (approach) on the new topic pages: Contents menu, collapsible remembered sections, More Information, source tags per line on demand (quote-mark button; no section source lines), one color per job (Criteria and Note boxes, gray tables, severity ramp), stage rows, dose rows with dose sheets, cutoffs and criteria. Pathways show as Open rows to their own (empty, to be designed) pages.
   - App features: four tabs (Home, Rapids, Topics, Library) with search; Continue Reading, Favorites and Recent kept on the phone; offline use (checked on every build), the "Update Ready" banner, light/dark mode and Text Size support, readable width, and reopening on the last page within 30 minutes.
 - **Process:** branch and pull request per task, automatic checks (anonymous authors, design system styles, content, type-check, tests, build), automatic publishing from `main`, weekly Dependabot updates plus security fixes. End-of-chat wrap-up via the `wards-wrap-up` skill.
 - **Privacy and security:** anonymous history, private GitHub profile with passkey and two-factor sign-in, protected `main`, rebase-only merges, page hidden from search engines and limited to its own scripts.
-- **AKG Design System** fifth pass, redesign additions, tabs sized to labels, SF Symbols iconography rule (version 1792445996-b83c): https://claude.ai/artifact/GWFUZ6rCthpEuhMik4Jiru (copy in `vendor/akg/`).
+- **AKG Design System** fifth pass, redesign additions, tabs sized to labels, SF Symbols iconography rule, AKI-redesign additions (Panel, GradeList, severity tones, toggle bar button, one-color-one-job rule, redrawn gear; version 1792451012-a7ea): https://claude.ai/artifact/GWFUZ6rCthpEuhMik4Jiru (copy in `vendor/akg/`).
 - **Content planning:** topic list (private; 16 systems plus the Library, about 488 cards plus 41 scores, Wave 1 = 30 cards), card types, data types (now including criteria sets), flowchart and citation formats.
 - **HIG reference:** full HIG text and rule summaries kept privately in `~/Documents/Wards-reference/hig/`.
 

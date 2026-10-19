@@ -5,7 +5,7 @@ items:
   - "SCr rise ≥0.3 mg/dL within 48 h"
   - "SCr ≥1.5× baseline, known or presumed to have occurred within the prior 7 days"
   - "Urine output <0.5 mL/kg/h for 6 h"
-columns: [Stage, Serum creatinine, Urine output]
+columns: [Stage, SCr, UOP]
 rows:
   - ["1", "1.5–1.9× baseline, or rise ≥0.3 mg/dL", "<0.5 mL/kg/h for 6–12 h"]
   - ["2", "2.0–2.9× baseline", "<0.5 mL/kg/h for ≥12 h"]

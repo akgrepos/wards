@@ -18,6 +18,7 @@ function* runs(blocks) {
     if (b.t === 'list') for (const it of b.items) { yield { inlines: it.inlines, sources: it.sources }; for (const c of it.children) yield { inlines: c.inlines, sources: c.sources.length ? c.sources : it.sources }; }
     if (b.t === 'table') { for (const h of b.header) yield { inlines: h, sources: [], header: true }; for (const r of b.rows) for (const c of r.cells) yield { inlines: c, sources: r.sources }; }
     if (b.t === 'steps') for (const it of b.items) { yield { inlines: it.inlines, sources: it.sources, header: true }; yield* runs(it.blocks); }
+    if (b.t === 'note') for (const it of b.items) yield { inlines: it.inlines, sources: it.sources.length ? it.sources : b.sources };
     if (b.t === 'scale' || b.t === 'compare') {
       yield { inlines: b.title, sources: b.sources, header: true };
       for (const it of b.items) yield { inlines: [...it.label, ...it.inlines], sources: it.sources.length ? it.sources : b.sources };
@@ -36,7 +37,7 @@ function* allBlocks(blocks) {
   for (const b of blocks) { yield b; if (b.t === 'steps') for (const it of b.items) yield* allBlocks(it.blocks); }
 }
 
-const CONTAINERS = { scale: [2, 5], compare: [2, 3], times: [1, 12], onset: [2, 12] };
+const CONTAINERS = { scale: [2, 5], compare: [2, 3], times: [1, 12], onset: [2, 12], note: [1, 3] };
 
 export function checkContent({ systems, cards, data }) {
   const errors = [];
@@ -135,7 +136,7 @@ export function checkContent({ systems, cards, data }) {
               err(where, `"${title}": each :::onset item is {{dose:id}} or "Name: onset | lasts" with an onset such as "Immediate" or "About 1 hour" ("${it.text.slice(0, 40)}")`);
             }
           }
-        } else if (!['paragraph', 'list', 'table', 'steps', 'insert', 'subheading'].includes(b.t)) err(where, `"${title}": unknown block ":::${b.t}" (use scale, compare, times or onset)`);
+        } else if (!['paragraph', 'list', 'table', 'steps', 'insert', 'subheading'].includes(b.t)) err(where, `"${title}": unknown block ":::${b.t}" (use scale, compare, times, onset or note)`);
       }
     }
     for (const [group, ids] of Object.entries(c.related ?? {})) {

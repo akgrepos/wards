@@ -403,6 +403,10 @@ export interface ListRowProps extends Omit<React.LiHTMLAttributes<HTMLLIElement>
   icon?: React.ReactNode;
   /** Draw the icon white on a tinted rounded square (Settings style). Any CSS color, e.g. "var(--system-teal)". */
   iconTint?: string;
+  /** A small uppercase word above the title in accent, naming the kind of item ("Pathway"). */
+  overline?: React.ReactNode;
+  /** A tinted capsule on the trailing side naming what tapping the row does ("Open"). Drawn only; the whole row is the button. */
+  buttonLabel?: React.ReactNode;
   /** Trailing value text in the secondary label color, e.g. "On", "Home Wi-Fi". */
   detail?: React.ReactNode;
   /** Show a trailing disclosure chevron (the row opens another view). */
@@ -622,6 +626,8 @@ export interface ToolbarButtonProps extends React.ButtonHTMLAttributes<HTMLButto
   icon?: React.ReactNode;
   /** Accent-filled button for the screen's main action (Done, Add). One per bar. */
   prominent?: boolean;
+  /** Makes it a toggle-style button: true highlights it (accent tint) and sets aria-pressed; false is off. Leave unset for a plain button. */
+  selected?: boolean;
   /** Text label, e.g. "Edit" or the back title. */
   children?: React.ReactNode;
 }
@@ -1042,8 +1048,14 @@ export interface TableProps {
   columns?: React.ReactNode[];
   /** Rows: arrays of cells, or { key, cells }. */
   rows: Array<React.ReactNode[] | TableRow>;
-  /** Short caption above the table. */
+  /** Short caption above the table (its title when `label` or `subcaption` is set). */
   caption?: React.ReactNode;
+  /** One word naming the block ("Table"), small and uppercase above the caption; the table then sits on its own rounded surface. */
+  label?: React.ReactNode;
+  /** A short qualifier under the caption ("Oliguric AKI"). */
+  subcaption?: React.ReactNode;
+  /** Header row on a gray fill. */
+  shadedHeader?: boolean;
   /** Keep the first column in place while the rest scrolls sideways. Default true. */
   stickyFirstColumn?: boolean;
   /** Treat each row's first cell as its label (bold, a row header). Default true. */
@@ -1184,9 +1196,10 @@ export interface ScaleBarSegment {
   label: React.ReactNode;
   /** Its range ("5.5–5.9"), tabular figures. */
   range?: React.ReactNode;
-  /** Override the default tint: neutral, caution-low, caution, critical-low, critical. */
-  tone?: 'neutral' | 'caution-low' | 'caution' | 'critical-low' | 'critical';
+  /** Override the default tint. Severity ramp: normal (green), mild (yellow), moderate-low, moderate (orange), severe-low, severe (red); neutral is gray. The older caution/critical names still work. */
+  tone?: SeverityTone | 'caution-low' | 'caution' | 'critical-low' | 'critical';
 }
+export type SeverityTone = 'neutral' | 'normal' | 'mild' | 'moderate-low' | 'moderate' | 'severe-low' | 'severe';
 export interface ScaleBarProps extends React.HTMLAttributes<HTMLDivElement> {
   /** 2–5 bands, least to most severe. */
   segments: ScaleBarSegment[];
@@ -1195,8 +1208,40 @@ export interface ScaleBarProps extends React.HTMLAttributes<HTMLDivElement> {
   /** A 13pt secondary line under the bands (units, what to do at each level). */
   caption?: React.ReactNode;
 }
-/** Ordered bands tinted neutral → orange → red. They stack into rows when there isn't room for them side by side. */
+/** Ordered bands tinted along the severity ramp (yellow → orange → red). They stack into rows when there isn't room for them side by side. */
 export declare function ScaleBar(props: ScaleBarProps): React.ReactElement;
+
+export interface PanelProps extends React.HTMLAttributes<HTMLDivElement> {
+  /** definition: indigo (criteria, definitions); note: brown (notes, caveats); plain: light gray; quote: light gray, for a quoted passage. Default plain. */
+  tone?: 'definition' | 'note' | 'plain' | 'quote';
+  /** One word naming the kind of information ("Criteria", "Note"), small and uppercase. Always give one, except for a quote. */
+  label?: React.ReactNode;
+  children?: React.ReactNode;
+}
+/** A tinted box in reading content holding one kind of information, named by its word label. */
+export declare function Panel(props: PanelProps): React.ReactElement;
+
+export interface GradeListRow {
+  /** The grade ("1", "G3a"), large in the chip. */
+  grade: React.ReactNode;
+  /** The word over the grade, if different from the list's gradeLabel. */
+  gradeLabel?: React.ReactNode;
+  /** Override the default tint from the severity ramp. */
+  tone?: SeverityTone;
+  /** Label/value pairs for this grade ("SCr": "2.0–2.9× baseline"). */
+  values?: { label: React.ReactNode; value: React.ReactNode }[];
+  key?: React.Key;
+}
+export interface GradeListProps extends React.HTMLAttributes<HTMLDivElement> {
+  /** Small uppercase label above the rows ("Stage"). */
+  label?: React.ReactNode;
+  /** The word over every grade ("Stage"). */
+  gradeLabel?: React.ReactNode;
+  /** 1–5 grades, least to most severe. Default tints follow ScaleBar's severity ramp. */
+  rows: GradeListRow[];
+}
+/** The grades of a staging system as rows: a tinted chip ("STAGE 3") beside that grade's criteria. */
+export declare function GradeList(props: GradeListProps): React.ReactElement;
 
 export interface ComparisonColumn { label: React.ReactNode; content: React.ReactNode; }
 export interface ComparisonGridProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'title'> {
@@ -1251,4 +1296,4 @@ export declare function lockScroll(): () => void;
 /** Calls fn on Escape anywhere in the document while active. */
 export declare function useEscape(active: boolean, fn: (e: KeyboardEvent) => void): void;
 
-declare global { interface Window { AKG: { Button: typeof Button; Toggle: typeof Toggle; Checkbox: typeof Checkbox; RadioGroup: typeof RadioGroup; Radio: typeof Radio; SegmentedControl: typeof SegmentedControl; PopUpButton: typeof PopUpButton; Stepper: typeof Stepper; TextField: typeof TextField; SearchField: typeof SearchField; ComboBox: typeof ComboBox; Slider: typeof Slider; DatePicker: typeof DatePicker; ColorWell: typeof ColorWell; List: typeof List; ListRow: typeof ListRow; GroupBox: typeof GroupBox; DisclosureGroup: typeof DisclosureGroup; DisclosureButton: typeof DisclosureButton; ProgressIndicator: typeof ProgressIndicator; EmptyState: typeof EmptyState; Notification: typeof Notification; Tooltip: typeof Tooltip; TabBar: typeof TabBar; Toolbar: typeof Toolbar; ToolbarGroup: typeof ToolbarGroup; ToolbarButton: typeof ToolbarButton; Sidebar: typeof Sidebar; SidebarSection: typeof SidebarSection; SidebarItem: typeof SidebarItem; PageControl: typeof PageControl; Window: typeof Window; Sheet: typeof Sheet; Alert: typeof Alert; ActionSheet: typeof ActionSheet; Menu: typeof Menu; MenuItem: typeof MenuItem; MenuSeparator: typeof MenuSeparator; MenuSection: typeof MenuSection; Popover: typeof Popover; Callout: typeof Callout; SourcePill: typeof SourcePill; ContentSection: typeof ContentSection; SectionBar: typeof SectionBar; Flowchart: typeof Flowchart; TappableValue: typeof TappableValue; Table: typeof Table; Figure: typeof Figure; Banner: typeof Banner; BottomBar: typeof BottomBar; Highlight: typeof Highlight; ShareButton: typeof ShareButton; NumberField: typeof NumberField; IconTile: typeof IconTile; SourceLine: typeof SourceLine; StepList: typeof StepList; Step: typeof Step; ValueRow: typeof ValueRow; Tag: typeof Tag; ScaleBar: typeof ScaleBar; ComparisonGrid: typeof ComparisonGrid; TimePoints: typeof TimePoints; TimerCapsule: typeof TimerCapsule; useSectionState: typeof useSectionState; useElapsed: typeof useElapsed; formatElapsed: typeof formatElapsed; speakElapsed: typeof speakElapsed; useScrolledPast: typeof useScrolledPast; lockScroll: typeof lockScroll; useEscape: typeof useEscape; cx(...c: any[]): string; platform(el?: Element): 'ios' | 'macos' } } }
+declare global { interface Window { AKG: { Button: typeof Button; Toggle: typeof Toggle; Checkbox: typeof Checkbox; RadioGroup: typeof RadioGroup; Radio: typeof Radio; SegmentedControl: typeof SegmentedControl; PopUpButton: typeof PopUpButton; Stepper: typeof Stepper; TextField: typeof TextField; SearchField: typeof SearchField; ComboBox: typeof ComboBox; Slider: typeof Slider; DatePicker: typeof DatePicker; ColorWell: typeof ColorWell; List: typeof List; ListRow: typeof ListRow; GroupBox: typeof GroupBox; DisclosureGroup: typeof DisclosureGroup; DisclosureButton: typeof DisclosureButton; ProgressIndicator: typeof ProgressIndicator; EmptyState: typeof EmptyState; Notification: typeof Notification; Tooltip: typeof Tooltip; TabBar: typeof TabBar; Toolbar: typeof Toolbar; ToolbarGroup: typeof ToolbarGroup; ToolbarButton: typeof ToolbarButton; Sidebar: typeof Sidebar; SidebarSection: typeof SidebarSection; SidebarItem: typeof SidebarItem; PageControl: typeof PageControl; Window: typeof Window; Sheet: typeof Sheet; Alert: typeof Alert; ActionSheet: typeof ActionSheet; Menu: typeof Menu; MenuItem: typeof MenuItem; MenuSeparator: typeof MenuSeparator; MenuSection: typeof MenuSection; Popover: typeof Popover; Callout: typeof Callout; SourcePill: typeof SourcePill; ContentSection: typeof ContentSection; SectionBar: typeof SectionBar; Flowchart: typeof Flowchart; TappableValue: typeof TappableValue; Table: typeof Table; Figure: typeof Figure; Banner: typeof Banner; BottomBar: typeof BottomBar; Highlight: typeof Highlight; ShareButton: typeof ShareButton; NumberField: typeof NumberField; IconTile: typeof IconTile; SourceLine: typeof SourceLine; StepList: typeof StepList; Step: typeof Step; ValueRow: typeof ValueRow; Tag: typeof Tag; ScaleBar: typeof ScaleBar; Panel: typeof Panel; GradeList: typeof GradeList; ComparisonGrid: typeof ComparisonGrid; TimePoints: typeof TimePoints; TimerCapsule: typeof TimerCapsule; useSectionState: typeof useSectionState; useElapsed: typeof useElapsed; formatElapsed: typeof formatElapsed; speakElapsed: typeof speakElapsed; useScrolledPast: typeof useScrolledPast; lockScroll: typeof lockScroll; useEscape: typeof useEscape; cx(...c: any[]): string; platform(el?: Element): 'ios' | 'macos' } } }

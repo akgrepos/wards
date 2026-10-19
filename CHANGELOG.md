@@ -2,6 +2,20 @@
 
 What changed in each version of Wards, newest first. The version is shown in Settings (gear on Home).
 
+## 2026.10.19
+
+The Acute Kidney Injury card, redesigned as you approved on the mock-up:
+- A new quote-mark button at the top of every card shows where each line comes from. Tap it and every line ends in a small blue tag with its first source ("KDIGO '12 +1"); tap a tag to see that line and all of its sources. Tap the button again to hide them. It starts off each time you open a card.
+- The long "Sources …" list at the end of each section is gone; the tags on each line and All Sources at the bottom replace it.
+- One color, one job: blue means you can tap it; red means danger; yellow, orange and red only grade severity; an indigo box holds criteria; a beige box holds notes; tables are gray. Each box has its label ("Criteria", "Note", "Table").
+- KDIGO staging shows as three stage rows with colored "Stage 1–3" chips, each with its SCr and urine output criteria.
+- Diagnosis: the urinary indices table now compares prerenal with ATN (FENa, FEUrea, urine sodium, urine osmolality, sediment), with a note that values in between are indeterminate and that postrenal AKI is found by bladder scan and urinary tract ultrasound.
+- Pathways are becoming their own pages. For now a card shows one "Pathway · Open" row, which opens an empty page until the new pathway pages are designed. This applies to Hyperkalemia's treatment pathway too.
+- Hyperkalemia gets the same source button, and its mild, moderate and severe scale now uses the yellow, orange and red severity colors.
+- The Settings gear on Home is redrawn closer to Apple's gear symbol: short rounded teeth and a larger center ring.
+- At the largest Text Sizes, long section titles and words wrap instead of pushing the page sideways, and each stage's chip sits above its criteria.
+- Library › Pathways now says each pathway has its own page.
+
 ## 2026.10.18.7
 
 Changes from your review of the Acute Kidney Injury and Hyperkalemia pages:

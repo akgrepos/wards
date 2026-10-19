@@ -51,9 +51,10 @@ export function blockSources(bs: Block[]): string[] {
     if (b.t === 'paragraph') { add(b.sources); inl(b.inlines); }
     if (b.t === 'list') b.items.forEach(item);
     if (b.t === 'table') { b.header.forEach(inl); b.rows.forEach((r) => { add(r.sources); r.cells.forEach(inl); }); }
-    if (b.t === 'insert') add(insertSources(b.kind, b.id));
+    // A pathway shows as one Open row (its page lists its own sources), so its sources aren't the section's.
+    if (b.t === 'insert' && b.kind !== 'pathway') add(insertSources(b.kind, b.id));
     if (b.t === 'steps') b.items.forEach((it) => { add(it.sources); inl(it.inlines); walk(it.blocks); });
-    if (b.t === 'scale' || b.t === 'compare' || b.t === 'times' || b.t === 'onset') { add(b.sources); inl(b.title); b.items.forEach((it) => { add(it.sources); inl(it.label); inl(it.inlines); }); }
+    if (b.t === 'scale' || b.t === 'compare' || b.t === 'times' || b.t === 'onset' || b.t === 'note') { add(b.sources); inl(b.title); b.items.forEach((it) => { add(it.sources); inl(it.label); inl(it.inlines); }); }
   });
   walk(bs);
   return seen;
