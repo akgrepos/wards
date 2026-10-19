@@ -17,7 +17,8 @@ export type Block =
   // :::scale (ScaleBar), :::compare (ComparisonGrid), :::times (TimePoints): "Label: text" items.
   // :::onset (a row that opens onset and duration side by side): {{dose:id}} items, or "Label: onset | lasts".
   // :::note (a brown Note box): 1–3 plain sentences.
-  | { t: 'scale' | 'compare' | 'times' | 'onset' | 'note'; title: Inline[]; sources: string[]; items: ContainerItem[] };
+  // :::times{after=… check=… unit=…}: the recheck times Timed Mode lists under Due Next.
+  | { t: 'scale' | 'compare' | 'times' | 'onset' | 'note'; title: Inline[]; sources: string[]; items: ContainerItem[]; attrs?: Record<string, string> };
 export type ContainerItem = { text: string; label: Inline[]; inlines: Inline[]; sources: string[] };
 export type Subsection = { key: string; title: string; description: string | null; blocks: Block[] };
 export type Section = { key: string; title: string; blocks: Block[]; subsections: Subsection[] };
@@ -25,6 +26,8 @@ export type Card = {
   id: string; type: string; variant: string | null; system: string; group: string; subsection: string | null;
   title: string; aliases: string[]; related: Record<string, string[]>; example: boolean; sections: Section[];
   definition: { inlines: Inline[]; sources: string[] } | null; basedOn: string[]; reviewed: string | null;
+  // The "## Do Now" section, when the topic has an emergency (its page in the Rapids tab, and Timed Mode).
+  emergency: { hint: string | null; blocks: Block[] } | null;
 };
 export type System = { id: string; title: string; library?: boolean };
 export type Source = { kind: string; short: string; title: string; year: number; society?: string; citation?: string; url?: string };

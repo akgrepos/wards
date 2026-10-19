@@ -51,7 +51,7 @@ function MarkerNotes({ ids }: { ids: string[] }) {
 }
 
 // The SourceLine's items: short names, then the markers.
-function lineItems(ids: string[]) {
+export function lineItems(ids: string[]) {
   const named = ids.filter((id) => !isMarkerSource(id)).map((id) => src(id)?.short ?? id);
   const items: (string | { marker: 'practice' | 'verified'; label?: string })[] = [...named];
   if (ids.some((id) => src(id)?.kind === 'practice')) items.push({ marker: 'practice', label: 'common practice' });
@@ -221,19 +221,45 @@ export function openDose(sheet: ShowSheet, id: string) {
   sheet({ title: 'Dose', heading: drugTitle(d), subheading: d.indication, body: <DoseSheet id={id} /> });
 }
 
-// One drug per row: its name over its dose; tap for the dose sheet.
-export function DoseRow({ id }: { id: string }) {
+// One drug per row: its name over its dose; tap for the dose sheet. `warnings` adds warning tags (an emergency's
+// Do Now steps); `large` shows the dose at Title 2 size (Timed Mode).
+export function DoseRow({ id, warnings, large, children }: { id: string; warnings?: string[]; large?: boolean; children?: ReactNode }) {
   const sheet = useSheet();
   const d = doseItem(id);
   if (!d) return <span className="missing">[missing dose: {id}]</span>;
+  const tags = [
+    ...(hasBoxedWarning(d) ? [<AKG.Tag key="boxed" variant="critical">Boxed warning</AKG.Tag>] : []),
+    ...(warnings ?? []).map((w) => <AKG.Tag key={w} variant="warning">{w}</AKG.Tag>),
+  ];
   return (
     <AKG.ValueRow
+      className={large ? 'dose-row--large' : undefined}
       title={d.drug_name}
-      value={doseValue(d)}
-      tags={hasBoxedWarning(d) ? <AKG.Tag variant="critical">Boxed warning</AKG.Tag> : undefined}
+      value={large ? <span className="ios-title-2-emphasized">{doseValue(d)}</span> : doseValue(d)}
+      tags={tags.length ? <span className="tag-row">{tags}</span> : undefined}
       onClick={() => openDose(sheet, id)}
-      aria-label={`${doseLine(d)}. Opens dose details.`}
-    />
+      aria-label={`${doseLine(d)}${warnings?.length ? `. Warning: ${warnings.join(', ')}` : ''}. Opens dose details.`}
+    >
+      {children}
+    </AKG.ValueRow>
+  );
+}
+
+/** The dose's alternative, when it has one ("Or calcium chloride 10%", with when to use it), as its own row. */
+export function AlternativeRow({ id }: { id: string }) {
+  const sheet = useSheet();
+  const d = doseItem(id);
+  const alt = d?.alternative ? doseItem(d.alternative.dose) : undefined;
+  if (!d?.alternative || !alt) return null;
+  return (
+    <AKG.ValueRow
+      title={`Or ${alt.drug_name}`}
+      value={doseValue(alt)}
+      onClick={() => openDose(sheet, d.alternative!.dose)}
+      aria-label={`Or ${doseLine(alt)}${d.alternative.when ? `, ${d.alternative.when}` : ''}. Opens dose details.`}
+    >
+      {d.alternative.when}
+    </AKG.ValueRow>
   );
 }
 

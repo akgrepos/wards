@@ -10,7 +10,54 @@ based_on: [ukka-hyperkalaemia-2026, kdigo-acute-hyperkalemia-2020]
 reviewed: 2026-10-17
 related:
   conditions: [renal-aki]
+emergency_hint: Calcium, insulin-dextrose, remove K⁺
 ---
+## Do Now
+1. Stabilize the myocardium
+   - If: ECG changes ^[ukka-hyperkalaemia-2026]
+   - Check: STAT 12-lead ECG at {{threshold:k-ecg-monitoring}}. ^[ukka-hyperkalaemia-2026]
+
+   {{dose:calcium-gluconate-hyperkalemia}}
+
+   - Repeat if ECG changes persist or recur. ^[kdigo-acute-hyperkalemia-2020]
+   - KDIGO: give calcium at {{threshold:k-calcium-without-ecg}} if no ECG or monitor is yet available. ^[kdigo-acute-hyperkalemia-2020]
+   - Normal ECG: IV calcium not recommended. ^[ukka-hyperkalaemia-2026]
+2. Shift K⁺ into cells
+   - If: moderate {{threshold:k-moderate}} or severe {{threshold:k-severe}} ^[ukka-hyperkalaemia-2026]
+   - Check: Pre-treatment glucose {{threshold:glucose-hypoglycemia-risk}}: follow with a dextrose 10% infusion. ^[ukka-hyperkalaemia-2026]
+   - Check: Glucose {{threshold:glucose-skip-dextrose}}: insulin may be given without dextrose. ^[kdigo-acute-hyperkalemia-2020]
+
+   {{dose:insulin-regular-hyperkalemia}}
+
+   - Warning: Hypoglycemia ^[ukka-hyperkalaemia-2026]
+
+   {{dose:dextrose-50-hyperkalemia}}
+   {{dose:dextrose-10-infusion-hyperkalemia}}
+
+   - Insulin with dextrose: recommended in severe, suggested in moderate. ^[ukka-hyperkalaemia-2026]
+3. Add albuterol
+   - If: severe {{threshold:k-severe}} ^[ukka-hyperkalaemia-2026]
+
+   {{dose:albuterol-neb-hyperkalemia}}
+
+   - Never albuterol alone. ^[ukka-hyperkalaemia-2026]
+4. Remove K⁺
+   - Severe: sodium zirconium cyclosilicate (UK guideline recommends); moderate: consider. ^[ukka-hyperkalaemia-2026]
+
+   {{dose:szc-hyperkalemia-initial}}
+
+   - US labels: K⁺ binders are not emergency treatment for life-threatening hyperkalemia (delayed onset). ^[label-lokelma-2024, label-veltassa-2025]
+   - Non-oliguric, especially with volume overload: IV furosemide. ^[kdigo-acute-hyperkalemia-2020, emcreg-hyperkalemia-2025]
+
+   {{dose:furosemide-hyperkalemia}}
+
+   - On maintenance dialysis with severe hyperkalemia: urgent dialysis. ^[ukka-hyperkalaemia-2026]
+   - Refractory hyperkalemia or oliguric AKI: nephrology to consider dialysis. ^[kdigo-acute-hyperkalemia-2020, ukka-hyperkalaemia-2026]
+
+:::note
+- Hyperkalemic cardiac arrest: IV calcium, sodium bicarbonate, and insulin-dextrose may be reasonable (weak recommendations); inhaled albuterol not recommended during arrest. ^[aha-special-circumstances-2025]
+:::
+
 ## At a Glance
 - Severity: mild {{threshold:k-mild}}, moderate {{threshold:k-moderate}}, severe {{threshold:k-severe}}. ^[ukka-hyperkalaemia-2026]
 - STAT 12-lead ECG at {{threshold:k-ecg-monitoring}}. ^[ukka-hyperkalaemia-2026]
@@ -116,7 +163,7 @@ related:
 - IV calcium, sodium bicarbonate, and insulin-dextrose may be reasonable (weak recommendations); inhaled albuterol not recommended during arrest. ^[aha-special-circumstances-2025]
 
 ## Monitor
-:::times K⁺ at least at these times after treating moderate or severe hyperkalemia ^[ukka-hyperkalaemia-2026]
+:::times{after=first check="K⁺"} K⁺ at least at these times after treating moderate or severe hyperkalemia ^[ukka-hyperkalaemia-2026]
 - 1 h
 - 2 h
 - 4 h
@@ -126,7 +173,7 @@ related:
 
 - Rebound at 2–3 h if K⁺ has not been eliminated. ^[kdigo-acute-hyperkalemia-2020]
 
-:::times Glucose after insulin-dextrose, minutes ^[ukka-hyperkalaemia-2026]
+:::times{after=insulin-regular-hyperkalemia check=Glucose unit=min} Glucose after insulin-dextrose, minutes ^[ukka-hyperkalaemia-2026]
 - 0
 - 30
 - 60

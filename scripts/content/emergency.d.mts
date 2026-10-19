@@ -1,0 +1,10 @@
+import type { Block, Card, Inline } from '../../src/content/types';
+export type Sourced = { inlines: Inline[]; sources: string[] };
+export type DoNowWarning = { text: string; sources: string[] };
+export type DoNowPart = ({ kind: 'check' | 'note' } & Sourced) | { kind: 'dose'; id: string; warnings: DoNowWarning[] };
+export type DoNowStep = { title: Inline[]; condition: Sourced | null; parts: DoNowPart[]; warnings: DoNowWarning[] };
+export type RecheckSchedule = { check: string; after: string; minutes: number[]; sources: string[] };
+export function emergencySteps(blocks: Block[], problems?: string[]): DoNowStep[];
+export function stepDoses(step: DoNowStep): string[];
+export function offsetMinutes(text: string, unit?: string): number | null;
+export function recheckSchedules(card: Card): RecheckSchedule[];

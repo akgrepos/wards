@@ -50,9 +50,11 @@ export function parseBlocks(lines) {
     const h4 = line.match(/^####\s+(.*)$/);
     if (h4) { blocks.push({ t: 'subheading', text: h4[1].trim() }); i++; continue; }
     if (isFence(line)) {
-      // :::kind Title ^[sources] … ::: — the items are "- " lines.
+      // :::kind Title ^[sources] … ::: — the items are "- " lines. A :::times block may name what it times from:
+      // :::times{after=<dose-id>|first check=Glucose unit=min} (Timed Mode's "Due Next" list).
       const head = splitSources(line.trim().slice(3));
-      const m = head.text.trim().match(/^([a-z]+)\s*(.*)$/) ?? ['', '', ''];
+      const m = head.text.trim().match(/^([a-z]+)(?:\{([^}]*)\})?\s*(.*)$/) ?? ['', '', '', ''];
+      const attrs = m[2] != null ? parseAttrs(m[2]) : null;
       const items = [];
       i++;
       while (i < lines.length && !isFence(lines[i])) {
@@ -66,7 +68,7 @@ export function parseBlocks(lines) {
         i++;
       }
       i++; // the closing :::
-      blocks.push({ t: m[1], title: parseInline(m[2].trim()), sources: head.sources, items });
+      blocks.push({ t: m[1], title: parseInline(m[3].trim()), sources: head.sources, items, ...(attrs ? { attrs } : {}) });
       continue;
     }
     if (isTableRow(line)) {
@@ -124,6 +126,17 @@ export function parseBlocks(lines) {
   return blocks;
 }
 
+// key=value pairs separated by spaces; a value with spaces goes in quotes (check="Repeat K⁺").
+function parseAttrs(text) {
+  const out = {};
+  for (const m of text.matchAll(/([a-z]+)=(?:"([^"]*)"|(\S+))/g)) out[m[1]] = m[2] ?? m[3];
+  return out;
+}
+
+// A topic with an emergency has a "## Do Now" section: the numbered steps its emergency page shows (Rapids tab,
+// Timed Mode). It lives in the topic's file (one home, shared dose data) but isn't one of the page's sections.
+export const DO_NOW = 'Do Now';
+
 const findDef = (list, title) => list?.find((s) => s.title.toLowerCase() === title.toLowerCase());
 
 export function parseCard(file, root) {
@@ -137,11 +150,18 @@ export function parseCard(file, root) {
   const unknownSub = [];
   let cur = null;
   let sub = null;
+  let emergencyLines = null;
   for (const line of body.split('\n')) {
     const h2 = line.match(/^##\s+(.*)$/);
     const h3 = line.match(/^###\s+(.*)$/);
     if (h2) {
       const title = h2[1].trim();
+      if (title.toLowerCase() === DO_NOW.toLowerCase()) {
+        cur = { key: 'do-now', title: DO_NOW, lines: [], subsections: [], emergency: true };
+        emergencyLines = cur.lines;
+        sub = null;
+        continue;
+      }
       const def = findDef(type?.sections, title);
       if (!def) unknown.push(title);
       cur = { key: def?.key ?? title, title: def?.title ?? title, lines: [], subsections: [] };
@@ -149,7 +169,7 @@ export function parseCard(file, root) {
       sub = null;
       continue;
     }
-    if (h3 && cur) {
+    if (h3 && cur && !cur.emergency) {
       // Inside More Information: "### Title" or "### Title: what it covers" (a short description shown while closed).
       const { label, text } = labelled(h3[1].trim());
       const def = cur.key === 'more' ? findDef(type?.more, label) : null;
@@ -176,6 +196,8 @@ export function parseCard(file, root) {
     example: !!meta.example,
     definition: definition ? { inlines: parseInline(definition.text.trim()), sources: definition.sources } : null,
     basedOn: meta.based_on ?? [],
+    emergency: emergencyLines ? { hint: meta.emergency_hint ?? null, blocks: parseBlocks(emergencyLines) } : null,
+    emergencyHintOnly: !emergencyLines && meta.emergency_hint != null,
     reviewed: meta.reviewed ? String(meta.reviewed instanceof Date ? meta.reviewed.toISOString().slice(0, 10) : meta.reviewed) : null,
     unknownSections: unknown,
     unknownSubsections: unknownSub,

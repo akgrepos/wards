@@ -160,3 +160,44 @@ h1, p { margin: 0; }
 .akg-bottom-bar.search-bar::before { background: linear-gradient(transparent, var(--background-grouped) 70%); }
 /* The hidden field the search button focuses first (16px so iOS doesn't zoom). */
 .focus-proxy { position: fixed; top: 0; left: 0; width: 1px; height: 1px; opacity: 0; border: 0; padding: 0; font-size: 16px; pointer-events: none; }
+
+/* Rapids (emergencies) and Timed Mode */
+.wide-button { width: 100%; }
+.tag-row { display: inline-flex; flex-wrap: wrap; gap: var(--space-4) var(--space-8); }
+/* Do Now: the Rapids symbol in the emergency color beside the heading. */
+.do-now-title { display: inline-flex; align-items: center; gap: var(--space-8); }
+.do-now-icon { display: inline-flex; width: 1em; height: 1em; color: var(--system-red); flex: none; }
+.do-now-icon svg { width: 100%; height: 100%; }
+.do-now-body { gap: var(--space-8); }
+.do-now-note { color: var(--label-secondary); }
+.do-now-notes { padding: 0 var(--space-16) var(--space-12); }
+.do-now-compact .akg-step-list { margin: 0 calc(-1 * var(--space-16)); }
+/* A topic's emergency button: the Rapids symbol in the emergency color. */
+.akg-toolbar-button.emergency-button { color: var(--system-red); }
+.centered { text-align: center; }
+
+/* While Timed Mode runs, its bar sits above the tab bar: the end of every page scrolls clear of both,
+   and the update banner moves above it. */
+html[data-timed] .screen-body { padding-bottom: calc(env(safe-area-inset-bottom) + var(--scroll-margin-bottom-accessory)); }
+html[data-timed] .akg-banner--bottom.update-banner { bottom: calc(var(--tab-bar-inset) + var(--tab-bar-height) + var(--tab-bar-accessory-height) + var(--space-20)); }
+
+/* Timed Mode: full screen, the timer centered in the top bar, Skip and Mark Given fixed at the bottom. */
+.timed-page .akg-toolbar__title { overflow: visible; line-height: normal; }
+.timed-page .screen-body.timed-body { gap: var(--space-16); padding-bottom: calc(env(safe-area-inset-bottom) + 10rem); }
+html[data-timed] .timed-page .screen-body.timed-body { padding-bottom: calc(env(safe-area-inset-bottom) + 10rem); }
+.timed-head { display: flex; flex-direction: column; gap: var(--space-4); }
+.timed-head h1 { overflow-wrap: break-word; }
+.timed-doses { display: flex; flex-direction: column; gap: var(--space-16); }
+.timed-dose { display: flex; flex-direction: column; gap: var(--space-4); }
+.timed-dose--done:not(.timed-dose--current) .akg-value-row { opacity: 0.6; }
+.timed-alt { display: flex; flex-direction: column; gap: var(--space-8); margin-top: var(--space-4); }
+.timed-notes { color: var(--label-secondary); }
+.timed-buttons { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-10); }
+.timed-actions {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 6;
+  display: flex; flex-direction: column; gap: var(--space-4);
+  padding: var(--space-24) calc(env(safe-area-inset-right) + var(--space-16)) calc(env(safe-area-inset-bottom) + var(--space-8)) calc(env(safe-area-inset-left) + var(--space-16));
+  background: linear-gradient(transparent, var(--background-grouped) var(--space-24));
+}
+.timed-actions > * { max-width: var(--readable-width); width: 100%; margin: 0 auto; box-sizing: border-box; }
+.timed-summary { padding-top: 0; }

@@ -76,9 +76,18 @@ export function titleCase(s: string) {
   return s.split(' ').map((w, i) => (i > 0 && SMALL.has(w.toLowerCase()) ? w.toLowerCase() : w.charAt(0).toUpperCase() + w.slice(1))).join(' ');
 }
 
-// Emergency pages arrive in Phase 4 of the redesign; until then no card is marked as one.
+// Topics with an emergency (a "## Do Now" section): their emergency pages make up the Rapids tab.
 export function emergencyCards(): Card[] {
-  return [];
+  return content.cards.filter((c) => c.emergency).sort(alpha);
+}
+export const hasEmergency = (id: string) => !!getCard(id)?.emergency;
+
+// The Rapids tab: emergencies grouped by their topic's system, in the systems' order.
+export function emergencyGroups(): { title: string; cards: Card[] }[] {
+  const cards = emergencyCards();
+  return content.systems
+    .map((s) => ({ title: s.title, cards: cards.filter((c) => c.system === s.id) }))
+    .filter((g) => g.cards.length);
 }
 
 // Every place a pathway (flowchart) appears: the card and section that show it.
