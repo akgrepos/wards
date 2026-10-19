@@ -1,6 +1,6 @@
-import { Fragment, useState, type MouseEvent, type ReactNode } from 'react';
+import { createContext, Fragment, useContext, useState, type MouseEvent, type ReactNode } from 'react';
 import { AKG } from '../design/akg';
-import { content, getCard, isMarkerSource } from '../content';
+import { content, getCard, isMarkerSource, titleCase } from '../content';
 import type { Block, ContainerItem, Criteria, Dose, Inline, ListItem, Pathway, Source, Threshold } from '../content/types';
 import { parseInline, TAGS } from '../../scripts/content/inline.mjs';
 import { onsetRows } from '../../scripts/content/onset.mjs';
@@ -72,13 +72,6 @@ export function openSources(sheet: ShowSheet, ids: string[], forLabel?: string) 
   });
 }
 
-// One source line at the end of a section (replaces a pill on every line); tap for the full citations.
-export function SectionSources({ ids, forLabel, label }: { ids: string[]; forLabel?: string; label?: string }) {
-  const sheet = useSheet();
-  if (!ids.length) return null;
-  return <AKG.SourceLine items={lineItems(ids)} label={label} onClick={() => openSources(sheet, ids, forLabel)} />;
-}
-
 // Inside a sheet: the source line opens the citations in place (one sheet at a time).
 function SheetSources({ ids }: { ids: string[] }) {
   const [open, setOpen] = useState(false);
@@ -88,6 +81,65 @@ function SheetSources({ ids }: { ids: string[] }) {
       <AKG.SourceLine items={lineItems(ids)} aria-expanded={open} onClick={() => setOpen(!open)} />
       {open && <><SourceList ids={ids} /><MarkerNotes ids={ids} /></>}
     </div>
+  );
+}
+
+// ---- Sources per line ----
+
+// The card's quote-mark button shows one SourcePill at the end of every line (off by default; owner, 2026-10-19).
+// `section` names the section, quoted with the line in the pill's sheet.
+type LineSourcesState = { show: boolean; section?: string };
+const LineSourcesCtx = createContext<LineSourcesState>({ show: false });
+export function LineSources({ show, section, children }: { show?: boolean; section?: string; children: ReactNode }) {
+  const outer = useContext(LineSourcesCtx);
+  return <LineSourcesCtx.Provider value={{ show: show ?? outer.show, section: section ?? outer.section }}>{children}</LineSourcesCtx.Provider>;
+}
+
+// A line as plain words, for the quote at the top of its sources sheet (nothing in it is tappable).
+export function plainText(xs: Inline[]): string {
+  return xs.map((x) => {
+    if (x.t === 'insert') {
+      const item = content.data[x.kind]?.[x.id] as Record<string, unknown> | undefined;
+      if (!item) return '';
+      if (x.kind === 'threshold') return `${item.value} ${item.unit}`;
+      if (x.kind === 'criteria') return String(item.short);
+      if (x.kind === 'dose') return String(item.drug_name);
+      return String(item.title ?? item.name ?? '');
+    }
+    if (x.t === 'link') return x.label ?? getCard(x.id)?.title ?? x.id;
+    if (x.t === 'tag') return '';
+    return x.v;
+  }).join('').replace(/\s+/g, ' ').trim();
+}
+
+function openLineSources(sheet: ShowSheet, ids: string[], quote: string, section?: string) {
+  sheet({
+    title: ids.filter((id) => !isMarkerSource(id)).length === 1 ? 'Source' : 'Sources',
+    body: (
+      <div className="detail-sheet">
+        {quote && <AKG.Panel tone="quote"><p>{section && <span className="secondary">{section} · </span>}{quote}</p></AKG.Panel>}
+        <SourceList ids={ids} />
+        <MarkerNotes ids={ids} />
+      </div>
+    ),
+  });
+}
+
+// One pill per line: its first named source, "+N" for the rest; a marker (stethoscope or check) when none is named.
+export function LinePill({ ids, quote }: { ids: string[]; quote: Inline[] | string }) {
+  const sheet = useSheet();
+  const { show, section } = useContext(LineSourcesCtx);
+  if (!show || !ids.length) return null;
+  const text = typeof quote === 'string' ? quote : plainText(quote);
+  const open = () => openLineSources(sheet, ids, text, section);
+  const named = ids.filter((id) => !isMarkerSource(id));
+  if (!named.length) {
+    const marker = ids.some((id) => src(id)?.kind === 'practice') ? 'practice' : 'verified';
+    return <AKG.SourcePill className="line-pill" marker={marker} onClick={open} />;
+  }
+  const names = ids.map((id) => (isMarkerSource(id) ? (src(id)?.kind === 'practice' ? 'common clinical practice' : 'verified') : src(id)?.short ?? id));
+  return (
+    <AKG.SourcePill className="line-pill" label={src(named[0])?.short ?? named[0]} more={ids.length > 1 ? ids.length - 1 : undefined} aria-label={`Sources: ${names.join(', ')}`} onClick={open} />
   );
 }
 
@@ -187,16 +239,34 @@ export function DoseRow({ id }: { id: string }) {
 
 // ---- Criteria and cutoffs ----
 
-// A criteria set (e.g. KDIGO AKI staging): the "any of" items, then the table. Shown in place, or in a sheet when tapped in text.
+// A criteria set (e.g. KDIGO AKI staging), shown in place or in a sheet when tapped in text: the "any of" items in an
+// indigo Criteria box; a staging table (first column "Stage") as stage rows on the severity ramp, any other table as a
+// table; the notes in a brown Note box. One color per kind of information, always with its word (owner, 2026-10-19).
+const isStaging = (c: Criteria) => (c.columns?.[0] ?? '').trim().toLowerCase() === 'stage' && (c.rows?.length ?? 0) <= 5;
 function CriteriaBody({ c }: { c: Criteria }) {
   return (
     <div className="criteria">
-      {c.logic && <p className="ios-subheadline-emphasized secondary">{c.logic}</p>}
-      {c.items?.length ? <ul className="ios-body rich-list">{c.items.map((t, i) => <li key={i}><RichText text={t} /></li>)}</ul> : null}
-      {c.rows?.length ? (
-        <AKG.Table stickyFirstColumn columns={(c.columns ?? []).map((h, i) => <RichText key={i} text={h} />)} rows={c.rows.map((r, i) => ({ key: i, cells: r.map((t, j) => <RichText key={j} text={t} />) }))} />
+      {c.logic || c.items?.length ? (
+        <AKG.Panel tone="definition" label="Criteria">
+          {c.logic && <p className="ios-subheadline-emphasized">{c.logic}</p>}
+          {c.items?.length ? <ul className="ios-body rich-list">{c.items.map((t, i) => <li key={i}><RichText text={t} /></li>)}</ul> : null}
+        </AKG.Panel>
       ) : null}
-      {c.notes?.length ? <ul className="ios-subheadline secondary rich-list">{c.notes.map((t, i) => <li key={i}><RichText text={t} /></li>)}</ul> : null}
+      {c.rows?.length && isStaging(c) ? (
+        <AKG.GradeList
+          className="staging"
+          label="Staging"
+          gradeLabel="Stage"
+          rows={c.rows.map((r, i) => ({ key: i, grade: r[0], values: r.slice(1).map((t, j) => ({ label: <RichText text={c.columns?.[j + 1]} />, value: <RichText text={t} /> })) }))}
+        />
+      ) : c.rows?.length ? (
+        <AKG.Table stickyFirstColumn shadedHeader label="Table" columns={(c.columns ?? []).map((h, i) => <RichText key={i} text={h} />)} rows={c.rows.map((r, i) => ({ key: i, cells: r.map((t, j) => <RichText key={j} text={t} />) }))} />
+      ) : null}
+      {c.notes?.length ? (
+        <AKG.Panel tone="note" label="Note">
+          {c.notes.map((t, i) => <p key={i} className="ios-body"><RichText text={t} /><LinePill ids={c.sources} quote={t} /></p>)}
+        </AKG.Panel>
+      ) : null}
     </div>
   );
 }
@@ -204,12 +274,7 @@ function CriteriaBody({ c }: { c: Criteria }) {
 function CriteriaBlock({ id }: { id: string }) {
   const c = content.data.criteria?.[id] as Criteria | undefined;
   if (!c) return <span className="missing">[missing criteria: {id}]</span>;
-  return (
-    <div className="criteria-block">
-      <p className="ios-headline">{c.name}</p>
-      <CriteriaBody c={c} />
-    </div>
-  );
+  return <CriteriaBody c={c} />;
 }
 
 // A criteria set in a sheet: the criteria, then its sources.
@@ -275,6 +340,7 @@ function Item({ it }: { it: ListItem }) {
   return (
     <li>
       <Inlines xs={it.inlines} />
+      <LinePill ids={it.sources} quote={it.inlines} />
       {it.children.length > 0 && <ul>{it.children.map((c, i) => <Item key={i} it={c} />)}</ul>}
     </li>
   );
@@ -283,7 +349,27 @@ function Item({ it }: { it: ListItem }) {
 // A flowchart step's doses, one row each, under the step's text.
 const dosesIn = (text?: string) => [...(text ?? '').matchAll(/\{\{\s*dose\s*:\s*([a-z0-9-]+)\s*\}\}/g)].map((m) => m[1]).filter((id, i, a) => a.indexOf(id) === i);
 
-function PathwayBlock({ id }: { id: string }) {
+// Pathways are their own pages now (owner, 2026-10-19): a card shows one row that opens the pathway's page.
+function PathwayRow({ id }: { id: string }) {
+  const p = content.data.pathway?.[id] as Pathway | undefined;
+  if (!p) return null;
+  return (
+    <AKG.List className="pathway-row">
+      <AKG.ListRow
+        overline="Pathway"
+        title={titleCase(p.title ?? 'Pathway')}
+        subtitle={p.stages?.length ? p.stages.join(', ') : undefined}
+        icon={icons.flowchart}
+        iconTint="var(--accent)"
+        buttonLabel="Open"
+        href={href.pathway(id)}
+      />
+    </AKG.List>
+  );
+}
+
+// The interactive flowchart, kept for the pathway pages' redesign (not shown on cards).
+export function PathwayBlock({ id }: { id: string }) {
   const p = content.data.pathway?.[id] as Pathway | undefined;
   if (!p) return null;
   const steps: Record<string, unknown> = {};
@@ -341,19 +427,26 @@ function Container({ b }: { b: ContainerBlock }) {
   const t: string = b.t;
   const items: ContainerItem[] = b.items;
   if (t === 'onset') return <OnsetRow b={b} />;
+  if (t === 'note') {
+    return (
+      <AKG.Panel tone="note" label="Note">
+        {items.map((it, i) => <p key={i} className="ios-body"><Inlines xs={it.inlines} /><LinePill ids={it.sources.length ? it.sources : b.sources} quote={it.inlines} /></p>)}
+      </AKG.Panel>
+    );
+  }
   const title = hasText(b.title) ? <Inlines xs={b.title} /> : undefined;
   if (t === 'scale') {
     return (
       <div className="scale-block">
         {title && <p className="ios-subheadline-emphasized">{title}</p>}
-        <AKG.ScaleBar segments={items.map((it: ContainerItem) => ({ label: <Inlines xs={it.label} />, range: <Inlines xs={it.inlines} plain /> }))} />
+        <AKG.ScaleBar segments={items.map((it: ContainerItem) => ({ label: <Inlines xs={it.label} />, range: <><Inlines xs={it.inlines} plain /><LinePill ids={it.sources.length ? it.sources : b.sources} quote={it.text} /></> }))} />
       </div>
     );
   }
   if (t === 'compare') {
-    return <AKG.ComparisonGrid title={title} columns={items.map((it) => ({ label: <Inlines xs={it.label} />, content: <Inlines xs={it.inlines} /> }))} />;
+    return <AKG.ComparisonGrid title={title} columns={items.map((it) => ({ label: <Inlines xs={it.label} />, content: <><Inlines xs={it.inlines} /><LinePill ids={it.sources.length ? it.sources : b.sources} quote={it.text} /></> }))} />;
   }
-  return <AKG.TimePoints label={title} items={items.map((it, i) => <Fragment key={i}>{it.text}</Fragment>)} />;
+  return <AKG.TimePoints label={title && <>{title}<LinePill ids={b.sources} quote={b.title} /></>} items={items.map((it, i) => <Fragment key={i}>{it.text}</Fragment>)} />;
 }
 
 export function Blocks({ blocks }: { blocks: Block[] }) {
@@ -374,28 +467,34 @@ export function Blocks({ blocks }: { blocks: Block[] }) {
 }
 
 function BlockView({ b }: { b: Block }) {
-  if (b.t === 'paragraph') return <p className="ios-body"><Inlines xs={b.inlines} /></p>;
+  if (b.t === 'paragraph') return <p className="ios-body"><Inlines xs={b.inlines} /><LinePill ids={b.sources} quote={b.inlines} /></p>;
   if (b.t === 'list') return <ul className="ios-body rich-list">{b.items.map((it, j) => <Item key={j} it={it} />)}</ul>;
   if (b.t === 'subheading') return <h3 className="ios-headline subheading">{b.text}</h3>;
   if (b.t === 'steps') {
     return (
       <AKG.StepList>
-        {b.items.map((it, j) => <AKG.Step key={j} title={<Inlines xs={it.inlines} />}><div className="step-body"><Blocks blocks={it.blocks} /></div></AKG.Step>)}
+        {b.items.map((it, j) => <AKG.Step key={j} title={<><Inlines xs={it.inlines} /><LinePill ids={it.sources} quote={it.inlines} /></>}><div className="step-body"><Blocks blocks={it.blocks} /></div></AKG.Step>)}
       </AKG.StepList>
     );
   }
   if (b.t === 'insert') {
-    if (b.kind === 'pathway') return <PathwayBlock id={b.id} />;
+    if (b.kind === 'pathway') return <PathwayRow id={b.id} />;
     if (b.kind === 'criteria') return <CriteriaBlock id={b.id} />;
     return <p className="ios-body"><Insert kind={b.kind} id={b.id} /></p>;
   }
   if (b.t !== 'table') return <Container b={b as ContainerBlock} />;
   return (
-    // The first column stays in place while a wide table scrolls sideways (audit 2026-10-17).
+    // The first column stays in place while a wide table scrolls sideways (audit 2026-10-17). Tables are gray, with
+    // their word label (owner, 2026-10-19); a row's pill ends its last cell.
     <AKG.Table
       stickyFirstColumn
+      shadedHeader
+      label="Table"
       columns={b.header.map((h, j) => <Inlines key={j} xs={h} />)}
-      rows={b.rows.map((r, k) => ({ key: k, cells: r.cells.map((c, j) => <Inlines key={j} xs={c} />) }))}
+      rows={b.rows.map((r, k) => ({
+        key: k,
+        cells: r.cells.map((c, j) => <Fragment key={j}><Inlines xs={c} />{j === r.cells.length - 1 && <LinePill ids={r.sources} quote={r.cells.map((x) => plainText(x)).filter(Boolean).join(': ')} />}</Fragment>),
+      }))}
     />
   );
 }

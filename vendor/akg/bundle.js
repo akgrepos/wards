@@ -1,4 +1,4 @@
-/* @ds-bundle: {"format":4,"namespace":"AKG","components":[{"name":"Button"},{"name":"Toggle"},{"name":"Checkbox"},{"name":"RadioGroup"},{"name":"SegmentedControl"},{"name":"PopUpButton"},{"name":"Stepper"},{"name":"TextField"},{"name":"SearchField"},{"name":"ComboBox"},{"name":"Slider"},{"name":"DatePicker"},{"name":"ColorWell"},{"name":"List"},{"name":"GroupBox"},{"name":"DisclosureGroup"},{"name":"ProgressIndicator"},{"name":"EmptyState"},{"name":"Notification"},{"name":"Tooltip"},{"name":"TabBar"},{"name":"Toolbar"},{"name":"Sidebar"},{"name":"PageControl"},{"name":"Window"},{"name":"Sheet"},{"name":"Alert"},{"name":"ActionSheet"},{"name":"Menu"},{"name":"Popover"},{"name":"Callout"},{"name":"SourcePill"},{"name":"ContentSection"},{"name":"Flowchart"},{"name":"TappableValue"},{"name":"Table"},{"name":"Figure"},{"name":"Banner"},{"name":"BottomBar"},{"name":"Highlight"},{"name":"ShareButton"},{"name":"NumberField"},{"name":"SourceLine"},{"name":"StepList"},{"name":"ValueRow"},{"name":"Tag"},{"name":"ScaleBar"},{"name":"ComparisonGrid"},{"name":"TimePoints"},{"name":"TimerCapsule"}]} */
+/* @ds-bundle: {"format":4,"namespace":"AKG","components":[{"name":"Button"},{"name":"Toggle"},{"name":"Checkbox"},{"name":"RadioGroup"},{"name":"SegmentedControl"},{"name":"PopUpButton"},{"name":"Stepper"},{"name":"TextField"},{"name":"SearchField"},{"name":"ComboBox"},{"name":"Slider"},{"name":"DatePicker"},{"name":"ColorWell"},{"name":"List"},{"name":"GroupBox"},{"name":"DisclosureGroup"},{"name":"ProgressIndicator"},{"name":"EmptyState"},{"name":"Notification"},{"name":"Tooltip"},{"name":"TabBar"},{"name":"Toolbar"},{"name":"Sidebar"},{"name":"PageControl"},{"name":"Window"},{"name":"Sheet"},{"name":"Alert"},{"name":"ActionSheet"},{"name":"Menu"},{"name":"Popover"},{"name":"Callout"},{"name":"SourcePill"},{"name":"ContentSection"},{"name":"Flowchart"},{"name":"TappableValue"},{"name":"Table"},{"name":"Figure"},{"name":"Banner"},{"name":"BottomBar"},{"name":"Highlight"},{"name":"ShareButton"},{"name":"NumberField"},{"name":"SourceLine"},{"name":"StepList"},{"name":"ValueRow"},{"name":"Tag"},{"name":"ScaleBar"},{"name":"Panel"},{"name":"GradeList"},{"name":"ComparisonGrid"},{"name":"TimePoints"},{"name":"TimerCapsule"}]} */
 /* Shared helpers — used by every AKG component. */
 (function (AKG) {
   // Join class names, skipping falsy values.
@@ -1206,7 +1206,7 @@
 
   function ListRow(props) {
     var interactive = !!(props.onClick || props.href);
-    var rest = omit(props, ["title", "subtitle", "icon", "iconTint", "detail", "chevron", "checked", "accessory", "toggle", "action", "destructive", "disabled", "onClick", "href", "className", "children"]);
+    var rest = omit(props, ["title", "subtitle", "overline", "buttonLabel", "icon", "iconTint", "detail", "chevron", "checked", "accessory", "toggle", "action", "destructive", "disabled", "onClick", "href", "className", "children"]);
     rest.className = AKG.cx(
       "akg-list-row",
       props.subtitle != null && "akg-list-row--tall",
@@ -1219,6 +1219,8 @@
 
     var trailing = [];
     if (props.detail != null) trailing.push(h("span", { key: "d", className: "akg-list-row__detail" }, props.detail));
+    // A tinted capsule naming what the row does ("Open"); the whole row stays the one tap target.
+    if (props.buttonLabel != null) trailing.push(h("span", { key: "o", className: "akg-list-row__button" }, props.buttonLabel));
     if (props.toggle) {
       var t = props.toggle;
       trailing.push(AKG.Toggle
@@ -1230,6 +1232,7 @@
     if (props.chevron) trailing.push(h("span", { key: "v", className: "akg-sym akg-list-row__chevron", "aria-hidden": "true" }, chevron));
 
     var text = h("span", { className: "akg-list-row__text" },
+      props.overline != null ? h("span", { className: "akg-list-row__overline" }, props.overline) : null,
       h("span", { className: "akg-list-row__title" }, props.title != null ? props.title : props.children),
       props.subtitle != null ? h("span", { className: "akg-list-row__subtitle" }, props.subtitle) : null
     );
@@ -1649,9 +1652,12 @@
 
   function ToolbarButton(props) {
     var inGroup = React.useContext(GroupCtx);
-    var rest = omit(props, ["icon", "prominent", "className", "children"]);
+    var rest = omit(props, ["icon", "prominent", "selected", "className", "children"]);
+    // selected: a toggle-style button (on or off) that highlights while on, as iOS bar buttons do outside lists.
+    if (props.selected != null) rest["aria-pressed"] = !!props.selected;
     rest.className = AKG.cx(
       "akg-toolbar-button",
+      props.selected && "akg-toolbar-button--selected",
       inGroup ? "akg-toolbar-button--grouped" : "akg-toolbar-button--standalone",
       props.prominent && "akg-toolbar-button--prominent",
       props.children == null && props.icon && "akg-toolbar-button--icon-only",
@@ -2631,11 +2637,17 @@
     };
     R.useEffect(function () { measure(); window.addEventListener("resize", measure); return function () { window.removeEventListener("resize", measure); clearTimeout(timer.current); }; }, []);
     var rows = props.rows || [];
-    return h("figure", { className: AKG.cx("akg-table", sticky && "akg-table--sticky", props.className) + edge[0], style: props.style },
+    // label: one word naming the kind of block ("Table"); caption and subcaption: its title and a short qualifier.
+    var head = props.label != null || props.subcaption != null;
+    return h("figure", { className: AKG.cx("akg-table", sticky && "akg-table--sticky", props.shadedHeader && "akg-table--shaded-header", head && "akg-table--headed", props.className) + edge[0], style: props.style },
+      head ? h("figcaption", { className: "akg-table__head" },
+        props.label != null ? h("span", { className: "akg-table__label" }, props.label) : null,
+        props.caption ? h("span", { className: "akg-table__title" }, props.caption) : null,
+        props.subcaption != null ? h("span", { className: "akg-table__subcaption" }, props.subcaption) : null) : null,
       sticky ? h("div", { className: "akg-table__indicator", ref: bar, "aria-hidden": "true" }) : null,
       h("div", { className: "akg-table__scroll", ref: ref, onScroll: function () { measure(); indicate(); } },
         h("table", { className: "akg-table__table" },
-          props.caption ? h("caption", { className: "akg-table__caption" }, props.caption) : null,
+          props.caption && !head ? h("caption", { className: "akg-table__caption" }, props.caption) : null,
           props.columns ? h("thead", null, h("tr", null, props.columns.map(function (c, i) { return h("th", { key: i, scope: "col" }, c); }))) : null,
           h("tbody", null, rows.map(function (r, i) {
             var cells = Array.isArray(r) ? r : r.cells;
@@ -2847,13 +2859,14 @@
 /* ScaleBar — 2 to 5 ordered bands (mild → severe), each a label and a range, tinted neutral → orange → red. */
 (function (AKG) {
   var h = window.React.createElement;
-  // Default tones by number of bands. The labels and the order carry the meaning; the tint only reinforces it.
-  var RAMP = {
-    1: ["neutral"],
-    2: ["neutral", "critical"],
-    3: ["neutral", "caution", "critical"],
-    4: ["neutral", "caution-low", "caution", "critical"],
-    5: ["neutral", "caution-low", "caution", "critical-low", "critical"]
+  // Default tones by number of bands, from the severity ramp (yellow, orange, red; green only when passed as
+  // tone "normal"). The labels and the order carry the meaning; the tint only reinforces it.
+  var RAMP = AKG.SEVERITY_RAMP = {
+    1: ["severe"],
+    2: ["moderate", "severe"],
+    3: ["mild", "moderate", "severe"],
+    4: ["mild", "moderate", "severe-low", "severe"],
+    5: ["mild", "moderate-low", "moderate", "severe-low", "severe"]
   };
   function ScaleBar(props) {
     var segs = (props.segments || []).slice(0, 5);
@@ -2864,13 +2877,56 @@
     return h("div", rest,
       h("ol", { className: "akg-scale-bar__bands" }, segs.map(function (s, i) {
         var on = props.current === i;
-        return h("li", { key: i, className: AKG.cx("akg-scale-bar__band", "akg-scale-bar__band--" + (s.tone || tones[i]), on && "akg-scale-bar__band--current"), "aria-current": on ? "true" : undefined },
+        return h("li", { key: i, className: AKG.cx("akg-scale-bar__band", "akg-scale-bar__band--" + (s.tone || tones[i]), "akg-tone--" + (s.tone || tones[i]), on && "akg-scale-bar__band--current"), "aria-current": on ? "true" : undefined },
           h("span", { className: "akg-scale-bar__label" }, s.label),
           s.range != null ? h("span", { className: "akg-scale-bar__range" }, s.range) : null);
       })),
       props.caption != null ? h("p", { className: "akg-scale-bar__caption" }, props.caption) : null);
   }
   AKG.ScaleBar = ScaleBar;
+})(window.AKG = window.AKG || {});
+
+/* Panel — a tinted box in reading content that holds one kind of information, named by a word label ("Criteria", "Note"). */
+(function (AKG) {
+  var h = window.React.createElement;
+  // definition: indigo (criteria, definitions); note: brown (notes and caveats); plain: the grouped surface; quote: a
+  // quoted passage on a light fill (no label). One tint per kind of information; the label carries the meaning.
+  function Panel(props) {
+    var tone = props.tone || "plain";
+    var rest = {};
+    for (var k in props) if (["tone", "label", "className", "children"].indexOf(k) < 0) rest[k] = props[k];
+    rest.className = AKG.cx("akg-panel", "akg-panel--" + tone, props.className);
+    if (!rest.role && tone === "note") rest.role = "note";
+    return h("div", rest,
+      props.label != null ? h("div", { className: "akg-panel__label" }, props.label) : null,
+      h("div", { className: "akg-panel__body" }, props.children));
+  }
+  AKG.Panel = Panel;
+})(window.AKG = window.AKG || {});
+
+/* GradeList — the grades of a staging system as rows: a tinted chip ("STAGE 3") and the criteria for that grade. */
+(function (AKG) {
+  var h = window.React.createElement;
+  function GradeList(props) {
+    var rows = props.rows || [];
+    var tones = (AKG.SEVERITY_RAMP || {})[Math.min(Math.max(rows.length, 1), 5)] || [];
+    var rest = {};
+    for (var k in props) if (["label", "rows", "gradeLabel", "className"].indexOf(k) < 0) rest[k] = props[k];
+    rest.className = AKG.cx("akg-grade-list", props.className);
+    return h("div", rest,
+      props.label != null ? h("div", { className: "akg-grade-list__label" }, props.label) : null,
+      h("ol", { className: "akg-grade-list__rows" }, rows.map(function (r, i) {
+        var word = r.gradeLabel != null ? r.gradeLabel : props.gradeLabel;
+        return h("li", { key: r.key != null ? r.key : i, className: "akg-grade-list__row" },
+          h("span", { className: AKG.cx("akg-grade-list__chip", "akg-tone--" + (r.tone || tones[i] || "neutral")) },
+            word != null ? h("span", { className: "akg-grade-list__word" }, word) : null,
+            h("span", { className: "akg-grade-list__grade" }, r.grade)),
+          h("dl", { className: "akg-grade-list__values" }, (r.values || []).map(function (v, j) {
+            return [h("dt", { key: "k" + j }, v.label), h("dd", { key: "v" + j }, v.value)];
+          })));
+      })));
+  }
+  AKG.GradeList = GradeList;
 })(window.AKG = window.AKG || {});
 
 /* ComparisonGrid — two or three labeled columns side by side, for statements that differ by source, option or group. */

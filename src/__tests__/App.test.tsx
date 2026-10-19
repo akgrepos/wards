@@ -26,13 +26,12 @@ describe('App', () => {
     expect(screen.getByText(APP_VERSION)).toBeTruthy();
   });
 
-  it('opens a card by its link, with sections, dose rows and one source line per section', async () => {
+  it('opens a card by its link, with sections, dose rows and All Sources', async () => {
     location.hash = '#/card/example-condition';
     render(<App />);
     expect(screen.getAllByText('Example Condition').length).toBeGreaterThan(0);
     expect(screen.getAllByText('At a Glance').length).toBeGreaterThan(0);
     expect(screen.getByRole('button', { name: /^Exampledrug 10 mg IV once/ })).toBeTruthy();
-    expect(screen.getAllByRole('button', { name: /^Sources?:/ }).length).toBeGreaterThan(0);
     expect(screen.getByText('All Sources')).toBeTruthy();
   });
 

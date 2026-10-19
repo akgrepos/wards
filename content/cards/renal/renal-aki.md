@@ -82,12 +82,18 @@ related:
 - Ultrasound rarely shows obstruction (<1%) without a suggestive history. ^[podoll-renal-us-2013]
 
 #### Urinary indices (oliguric AKI)
-| Index | Suggests prerenal |
-|---|---|
-| FENa | {{threshold:fena-prerenal}} ^[miller-urine-indices-1978, carvounis-feurea-2002] |
-| FEUrea (on diuretics) | {{threshold:feurea-prerenal}} ^[carvounis-feurea-2002] |
-| Urine Na | {{threshold:urine-na-prerenal}} ^[miller-urine-indices-1978] |
-| Urine osmolality | {{threshold:urine-osm-prerenal}} ^[miller-urine-indices-1978] |
+| Index | Prerenal | ATN |
+|---|---|---|
+| FENa | {{threshold:fena-prerenal}} | {{threshold:fena-atn}} ^[miller-urine-indices-1978, carvounis-feurea-2002, gotfried-fe-indices-2012] |
+| FEUrea (on diuretics) | {{threshold:feurea-prerenal}} | {{threshold:feurea-atn}} ^[carvounis-feurea-2002, gotfried-fe-indices-2012] |
+| Urine Na | {{threshold:urine-na-prerenal}} | {{threshold:urine-na-atn}} ^[miller-urine-indices-1978] |
+| Urine osmolality | {{threshold:urine-osm-prerenal}} | {{threshold:urine-osm-atn}} ^[miller-urine-indices-1978] |
+| Sediment | No granular casts or tubular epithelial cells | Granular casts, tubular epithelial cells ^[perazella-urine-microscopy-2008] |
+
+:::note
+- Values between the prerenal and ATN cutoffs are indeterminate; many oliguric patients fall between them. ^[miller-urine-indices-1978, gotfried-fe-indices-2012]
+- Postrenal AKI is not identified by urine indices; look for it by bladder scan and urinary tract ultrasound. ^[nice-aki-2024, common-practice]
+:::
 
 - Low FENa despite intrinsic AKI: contrast, rhabdomyolysis, hemoglobinuria, acute GN, AIN, nonoliguric ATN, chronic low-flow states (heart failure, cirrhosis). ^[gotfried-fe-indices-2012]
 - FENa rises with diuretics; use FEUrea. ^[carvounis-feurea-2002]
@@ -106,7 +112,6 @@ related:
 
 - Suspected AIN: urine eosinophils do not distinguish AIN from other causes; definitive diagnosis is by kidney biopsy. ^[muriithi-urine-eos-2013]
 
-#### Pathway
 {{pathway:aki-evaluation}}
 
 ## Treatment

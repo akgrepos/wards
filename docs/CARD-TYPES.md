@@ -1,6 +1,6 @@
 # Card types
 
-Settled 2026-10-17; page layout updated 2026-10-18 for the approved redesign (topic pages). Defines **8 card types**, each with a fixed set of sections in a fixed order. Shared data (doses, lab values, scores, criteria and similar) appears as **⟨inserted⟩** blocks: content that lives elsewhere and is shown in place, never retyped. How to write the files: `CONTENT-FORMAT.md`.
+Settled 2026-10-17; page layout updated 2026-10-18 for the approved redesign (topic pages), and 2026-10-19 for the AKI card redesign (sources per line, one color per job, pathways as their own pages). Defines **8 card types**, each with a fixed set of sections in a fixed order. Shared data (doses, lab values, scores, criteria and similar) appears as **⟨inserted⟩** blocks: content that lives elsewhere and is shown in place, never retyped. How to write the files: `CONTENT-FORMAT.md`.
 
 ---
 
@@ -9,9 +9,9 @@ Settled 2026-10-17; page layout updated 2026-10-18 for the approved redesign (to
 **Header**
 - Type and system tags · title (precise medical term)
 - One-line definition, with its source
-- "Reviewed" month and year. No "Based on" line (removed 2026-10-18, owner): the section source lines and All Sources name the guidelines
+- "Reviewed" month and year. No "Based on" line (removed 2026-10-18, owner): the per-line source tags and All Sources name the guidelines
 - Search aliases (hidden; used by search)
-- Top right: the **Contents** button (a menu of the page's sections, the one being read checked, plus Collapse All / Expand All) grouped with the favorite star. Topics with an emergency also get a **bolt** button that opens the emergency pop-up (Phase 4); it is hidden when there is none. No row of section buttons.
+- Top right: the **quote-mark** button (Show Sources: off when a page opens; while on it is highlighted and every line ends in one source pill), the **Contents** button (a menu of the page's sections, the one being read checked, plus Collapse All / Expand All) and the favorite star, in one group. Topics with an emergency also get a **bolt** button that opens the emergency pop-up (Phase 4); it is hidden when there is none. No row of section buttons.
 
 **At a Glance** (always first)
 - 3–6 bullets: the bottom line you need in 15 seconds at the bedside
@@ -20,7 +20,8 @@ Settled 2026-10-17; page layout updated 2026-10-18 for the approved redesign (to
 - The card type's sections, **always in the same order** (Part 2)
 - Every section has a 44pt heading that closes and opens it; all start open. Which sections are closed, and where the page was scrolled, are remembered per page on the phone.
 - A section that doesn't apply is left out rather than shown empty, so the order of the remaining ones never changes
-- Each section ends with **one source line** naming its sources (stethoscope and check markers included); tapping it lists that section's sources with View Citation links. No source tag on each line.
+- No source line ends a section (removed 2026-10-19, owner): sources are shown per line on demand, and All Sources lists them all.
+- **Sources per line, on demand** (2026-10-19): with the quote-mark button on, each line (bullet, paragraph, table row, step, note) ends in one pill: its first source and "+N" for the rest, or the stethoscope or check marker when no source is named. Tapping a pill opens a sheet that quotes the line, then lists its sources.
 
 **More Information** (after the main sections)
 - The deeper material, as rows that open in place (closed at first), each with a short description: for topics, Where Guidelines Differ, Special Populations, Complications, After the Acute Phase, Evidence, Why the Treatment Order, Epidemiology and Pathophysiology
@@ -36,6 +37,9 @@ Settled 2026-10-17; page layout updated 2026-10-18 for the approved redesign (to
 - Numbers always carry units and thresholds (e.g. "K⁺ ≥6.5 mmol/L")
 - First-line choices are listed first and labeled; alternatives follow
 - Drug doses only ever appear as ⟨inserted⟩ dose rows, **one drug per row, on a line of their own**: never two drugs and two amounts on one line. Tapping a row opens the dose sheet.
+- **One color, one job** (2026-10-19), always with a word label: blue = tappable; red = danger (emergencies and the most severe grade); the severity ramp (yellow, orange, red; green only for a normal grade) only inside grades, stages and scales; indigo box labelled "Criteria" = formal criteria; brown box labelled "Note" = notes and caveats (`:::note`); gray = tables (labelled "Table", gray header) and anything neutral. Other colors stay out of card content.
+- Staging systems as stage rows (GradeList: a tinted "STAGE n" chip beside each stage's criteria).
+- **Pathways are their own pages** (2026-10-19, reverses "flowcharts live inside their cards"): a card shows a pathway as one row ("Pathway", its name and stages, Open). The pathway pages will be designed from scratch; until then the row opens an empty page with the pathway's name. The Library's Pathways list opens the same pages.
 - Severity grades as a scale (ScaleBar), steps in order as numbered steps (StepList), statements that differ by source as a side-by-side comparison (ComparisonGrid), recheck times as a timeline of plain labels (TimePoints). Tables keep their first column in place.
 - Items with sub-items use one level of nested bullets (HIG). Links to other pages are woven into the sentence ("[[renal-hyperkalemia|hyperkalemia]]"), never added after it in brackets.
 - Onset and duration of several treatments: a "Compare Onset and Duration" row (`:::onset`) that opens them side by side, fastest first, built from the dose items; not a table on the page.
@@ -55,7 +59,7 @@ A disease or syndrome. The main card type.
 3. **Causes**: categories as one grouped list (bold category name, then its causes), with "cannot miss" marked by a tag; pseudo-conditions and mimics (the differential: diagnosis · distinguishing features · link)
 4. **Presentation**: symptoms, atypical presentations, examination findings (grading scales ⟨inserted⟩ from the exam cards)
 5. **Diagnosis**: initial tests and why; interpretation and thresholds; further testing; low-value tests to avoid
-6. **Treatment**: pathway ⟨embedded flowchart⟩ when one exists; numbered steps (immediate, then definitive, by severity or subtype); dose rows ⟨inserted⟩
+6. **Treatment**: pathway ⟨Open row⟩ when one exists; numbered steps (immediate, then definitive, by severity or subtype); dose rows ⟨inserted⟩
 7. **Monitor**: what to trend and when (timelines of recheck times), targets, expected response, triggers to escalate
 8. **When to Call**: which specialty and when (general criteria, never institution-specific)
 9. **More Information**: Where Guidelines Differ · Special Populations (kidney or liver disease, pregnancy, older adults, immunocompromised, drug-specific) · Complications · After the Acute Phase (discharge, follow-up, long-term management, prevention) · Evidence (key studies, one line each) · Why the Treatment Order · Epidemiology and Pathophysiology
@@ -69,7 +73,7 @@ A symptom, sign or abnormal result. Uses the condition page's names where they f
 3. **First Steps**: red flags, signs of instability, what to do first
 4. **Causes**: a framework (by mechanism, organ, location or acuity), with "cannot miss" and "most common", each linking to its condition card
 5. **Presentation**: focused history and focused examination that discriminate between causes
-6. **Diagnosis**: first-line tests, then second-line by scenario; interpretation tables (result → likely causes); the pathway ⟨embedded flowchart⟩
+6. **Diagnosis**: first-line tests, then second-line by scenario; interpretation tables (result → likely causes), notes on their limits ⟨Note box⟩; the pathway ⟨Open row⟩
 7. **Treatment**: common initial orders (checklist of orders only, not tests; one line links to the first-line tests in Diagnosis), then initial management while the cause is being found
 8. **Monitor**
 9. **When to Call**
@@ -112,7 +116,7 @@ The layouts for types 3–8 were proposed with the redesign and approved by the 
 
 - Header: Condition · Kidney, Electrolytes and Urology · definition · reviewed
 - **At a Glance** · **Severity** (scale mild / moderate / severe; monitoring) · **Causes** (one grouped list: pseudohyperkalemia, shift out of cells, impaired excretion (cannot miss), intake) · **Presentation** (symptoms; ECG progression) · **Diagnosis**
-- **Treatment:** ⟨embedded pathway⟩ → numbered steps: membrane stabilization · intracellular shift · elimination, each with its dose rows; Compare Onset and Duration row; hyperkalemic cardiac arrest
+- **Treatment:** ⟨pathway Open row⟩ → numbered steps: membrane stabilization · intracellular shift · elimination, each with its dose rows; Compare Onset and Duration row; hyperkalemic cardiac arrest
 - **Monitor:** K⁺ recheck times; glucose times after insulin (timelines) · **When to Call**
 - **More Information:** Where Guidelines Differ (insulin dose, patiromer) · Special Populations (digoxin toxicity) · Complications · After the Acute Phase · Epidemiology and Pathophysiology
 - Pearls · Related (Acute Kidney Injury) · Sources
@@ -129,7 +133,7 @@ The layouts for types 3–8 were proposed with the redesign and approved by the 
 
 
 ## Decisions (2026-10-18)
-1. Topic page layout from the approved redesign: header with definition, based-on line and reviewed date; Contents menu instead of the section bar; collapsible, remembered sections; one source line per section; More Information for deeper material.
+1. Topic page layout from the approved redesign: header with definition, based-on line and reviewed date; Contents menu instead of the section bar; collapsible, remembered sections; one source line per section (removed 2026-10-19 for per-line tags); More Information for deeper material.
 2. Approach cards use the condition page's section names where they fit (owner's choice).
 3. The other card types follow the same pattern with their own sections (owner approved the proposal); adjust when each type's first card is written.
 

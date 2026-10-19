@@ -47,9 +47,9 @@ describe('topic page', () => {
     expect(screen.getByText('24 h')).toBeTruthy();
     expect(screen.getByText('Intracellular shift')).toBeTruthy();
     expect(screen.getAllByText('Insulin dose').length).toBeGreaterThan(0);
-    // No pill on every line: one source line per section.
+    // Sources are per line, shown on demand; no source line ends a section (owner, 2026-10-19).
     expect(document.querySelectorAll('.akg-source-pill').length).toBe(0);
-    expect(screen.getAllByRole('button', { name: /^Sources?:/ }).length).toBeGreaterThan(8);
+    expect(document.querySelectorAll('.akg-source-line').length).toBe(0);
   });
 
   it('shows each dose as its own row, never two drugs on one line', () => {
@@ -60,12 +60,13 @@ describe('topic page', () => {
     expect(screen.getAllByRole('button', { name: /^Dextrose 50% 50 mL IV/ }).length).toBeGreaterThan(0);
   });
 
-  it('a section source line lists that section’s sources with View Citation links', async () => {
+  it('with sources shown, a pill lists that line’s sources with View Citation links', async () => {
     launch('#/card/renal-hyperkalemia');
-    const line = screen.getAllByRole('button', { name: /^Sources?:/ }).find((b) => b.closest('#sec-at-a-glance'))!;
-    await act(async () => { fireEvent.click(line); });
-    expect(within(dialog()).getByText('For At a Glance')).toBeTruthy();
-    expect(within(dialog()).getAllByText('View Citation').length).toBe(2);
+    await act(async () => { fireEvent.click(screen.getByRole('button', { name: 'Show Sources' })); });
+    const pill = document.querySelector('#sec-at-a-glance .line-pill') as HTMLElement;
+    await act(async () => { fireEvent.click(pill); });
+    expect(dialog().querySelector('.akg-panel--quote')!.textContent).toMatch(/^At a Glance · /);
+    expect(within(dialog()).getAllByText('View Citation').length).toBeGreaterThan(0);
   });
 });
 
@@ -192,22 +193,45 @@ describe('remembered sections', () => {
     expect(names).toEqual(['Hemodialysis', 'Calcium gluconate 10%', 'Furosemide', 'Albuterol (nebulized)', 'Insulin-dextrose', 'Sodium zirconium cyclosilicate', 'Patiromer']);
   });
 
-  it('the flowchart map shows only the chosen path; a stub switches it; Start Over resets it', async () => {
-    launch('#/card/renal-hyperkalemia');
-    const chart = document.querySelector('.akg-flowchart') as HTMLElement;
-    const drawn = () => [...chart.querySelectorAll('.akg-flowchart__node-title')].map((n) => n.textContent);
-    await act(async () => { fireEvent.click(within(chart).getByText('Confirmed or likely')); });
-    await act(async () => { fireEvent.click(within(chart).getByRole('radio', { name: 'Map' })); });
-    // The chosen answer's step is drawn; the other answer is a stub, and the next step's answers are stubs too.
-    expect(drawn()).toEqual(['True hyperkalemia?', 'ECG changes of hyperkalemia?']);
-    expect(within(chart).getByRole('button', { name: /^Choose Possibly spurious/ })).toBeTruthy();
-    expect(within(chart).getByRole('button', { name: /^Choose Yes/ })).toBeTruthy();
-    await act(async () => { fireEvent.click(within(chart).getByRole('button', { name: /^Choose Possibly spurious/ })); });
-    expect(drawn()).toEqual(['True hyperkalemia?', 'Repeat measurement']);
-    expect(within(chart).getByRole('button', { name: /^Choose Confirmed or likely/ })).toBeTruthy();
-    await act(async () => { fireEvent.click(within(chart).getByRole('button', { name: 'Start Over' })); });
-    expect(within(chart).getAllByRole('button', { name: /^Choose / }).length).toBe(2);
-    expect(drawn()).toEqual(['True hyperkalemia?']);
+  it('a pathway shows as one Open row that goes to its own page', async () => {
+    launch('#/card/renal-aki');
+    expect(document.querySelector('.akg-flowchart')).toBeNull();
+    const row = document.querySelector('.pathway-row a') as HTMLElement;
+    expect(row.textContent).toContain('AKI Evaluation');
+    expect(row.getAttribute('href')).toBe('#/pathway/aki-evaluation');
+    expect(row.textContent).toContain('Open');
+    launch('#/pathway/aki-evaluation');
+    expect(document.querySelector('.page-title')!.textContent).toBe('AKI Evaluation');
+  });
+
+  it('the quote-mark button shows one source pill per line; a pill lists that line\'s sources', async () => {
+    launch('#/card/renal-aki');
+    const toggle = screen.getByRole('button', { name: 'Show Sources' });
+    expect(toggle.getAttribute('aria-pressed')).toBe('false');
+    expect(document.querySelector('.line-pill')).toBeNull();
+    await act(async () => { fireEvent.click(toggle); });
+    expect(toggle.getAttribute('aria-pressed')).toBe('true');
+    // "First: exclude obstruction, …" cites KDIGO 2012 and NICE 2024: one pill, the first source and "+1".
+    const pill = screen.getAllByRole('button', { name: "Sources: KDIGO '12, NICE '24" })[0];
+    expect(pill.textContent).toBe("KDIGO '12+1");
+    await act(async () => { fireEvent.click(pill); });
+    expect(dialog().querySelector('.akg-panel--quote')!.textContent).toMatch(/^At a Glance · First: exclude obstruction/);
+    expect(within(dialog()).getAllByRole('link', { name: /View Citation/ }).length).toBe(2);
+    // Common practice alone shows the stethoscope pill.
+    expect(screen.getAllByRole('button', { name: 'Common clinical practice' }).length).toBeGreaterThan(0);
+  });
+
+  it('criteria, staging and notes each have their own labelled box', () => {
+    launch('#/card/renal-aki');
+    const crit = document.querySelector('.akg-panel--definition')!;
+    expect(crit.querySelector('.akg-panel__label')!.textContent).toBe('Criteria');
+    const stages = [...document.querySelectorAll('.staging .akg-grade-list__chip')];
+    expect(stages.map((c) => c.textContent)).toEqual(['Stage1', 'Stage2', 'Stage3']);
+    expect(stages.map((c) => [...c.classList].find((k) => k.startsWith('akg-tone--')))).toEqual(['akg-tone--mild', 'akg-tone--moderate', 'akg-tone--severe']);
+    const notes = [...document.querySelectorAll('.akg-panel--note')].map((n) => n.textContent);
+    expect(notes.some((t) => t!.startsWith('Note') && t!.includes('Postrenal AKI is not identified by urine indices'))).toBe(true);
+    const indices = screen.getByRole('columnheader', { name: 'ATN' }).closest('table')!;
+    expect(within(indices).getByRole('rowheader', { name: 'Sediment' })).toBeTruthy();
   });
 
   it('scroll positions are kept per page and cleared with page memory', () => {

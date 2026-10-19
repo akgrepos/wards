@@ -16,7 +16,8 @@ export type Block =
   | { t: 'steps'; items: { inlines: Inline[]; sources: string[]; blocks: Block[] }[] }
   // :::scale (ScaleBar), :::compare (ComparisonGrid), :::times (TimePoints): "Label: text" items.
   // :::onset (a row that opens onset and duration side by side): {{dose:id}} items, or "Label: onset | lasts".
-  | { t: 'scale' | 'compare' | 'times' | 'onset'; title: Inline[]; sources: string[]; items: ContainerItem[] };
+  // :::note (a brown Note box): 1–3 plain sentences.
+  | { t: 'scale' | 'compare' | 'times' | 'onset' | 'note'; title: Inline[]; sources: string[]; items: ContainerItem[] };
 export type ContainerItem = { text: string; label: Inline[]; inlines: Inline[]; sources: string[] };
 export type Subsection = { key: string; title: string; description: string | null; blocks: Block[] };
 export type Section = { key: string; title: string; blocks: Block[]; subsections: Subsection[] };

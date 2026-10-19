@@ -1020,11 +1020,17 @@ button.akg-list-row__content, a.akg-list-row__content { cursor: pointer; }
 .akg-list-row__text { display: flex; flex-direction: column; flex: 1 1 auto; min-width: 0; padding: 15px 0; }
 .akg-list-row--tall .akg-list-row__text { padding: 14px 0; }
 .akg-list-row__title { font-size: calc(17 * var(--akg-text-unit, 1px)); line-height: calc(22 * var(--akg-text-unit, 1px)); font-weight: 400; color: var(--label); overflow-wrap: break-word; }
+.akg-list-row__overline { font-size: calc(12 * var(--akg-text-unit, 1px)); line-height: calc(16 * var(--akg-text-unit, 1px)); font-weight: 700; text-transform: uppercase; letter-spacing: 0.02em; color: var(--accent-text); }
+.akg-list-row__button { display: inline-flex; align-items: center; min-height: calc(34 * var(--akg-text-unit, 1px)); padding: 0 14px; border-radius: var(--radius-full); background: color-mix(in srgb, var(--accent) 14%, transparent); color: var(--accent-text); font-size: calc(15 * var(--akg-text-unit, 1px)); line-height: calc(20 * var(--akg-text-unit, 1px)); font-weight: 600; white-space: nowrap; }
+[data-theme^="macos"] .akg-list-row__overline { font-size: 10px; line-height: 13px; }
+[data-theme^="macos"] .akg-list-row__button { min-height: 22px; padding: 0 10px; font-size: 13px; line-height: 16px; }
 .akg-list-row__subtitle { font-size: calc(15 * var(--akg-text-unit, 1px)); line-height: calc(18 * var(--akg-text-unit, 1px)); color: var(--label-secondary); overflow-wrap: break-word; }
 
 .akg-list-row__trailing { display: flex; align-items: center; gap: var(--space-16); flex: 0 1 auto; min-width: 0; max-width: 60%; }
 .akg-list-row__trailing > * { flex: none; }
 .akg-list-row__trailing > .akg-list-row__detail { flex: 0 1 auto; min-width: 0; }
+/* A row's button capsule keeps its full width; the title wraps instead. */
+.akg-list-row__trailing:has(> .akg-list-row__button) { flex: none; }
 .akg-list-row__detail { font-size: calc(17 * var(--akg-text-unit, 1px)); line-height: calc(22 * var(--akg-text-unit, 1px)); color: var(--label-secondary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .akg-list-row__chevron { color: var(--label-tertiary); }
 .akg-list-row__chevron svg { width: 9px; height: 16px; }
@@ -1520,6 +1526,8 @@ button.akg-disclosure__button:disabled, .akg-disclosure__header:disabled .akg-di
 .akg-toolbar-button--grouped { width: 36px; height: 36px; padding: 0; }
 .akg-toolbar-button--grouped:not(.akg-toolbar-button--icon-only) { width: auto; padding: 0 var(--space-4); }
 .akg-toolbar-button--prominent { background: var(--accent); color: var(--on-accent); }
+/* Toggle-style bar button while on: an accent-tinted circle with the symbol in accent (HIG: outside lists, a toggle is a button that highlights). */
+.akg-toolbar-button--selected { background: color-mix(in srgb, var(--accent) 16%, transparent); color: var(--accent-text); }
 .akg-toolbar-button:active:not(:disabled) { filter: brightness(0.92); }
 .akg-toolbar-button:disabled { cursor: default; color: var(--glass-label-tertiary); }
 .akg-toolbar-button--prominent:disabled { background: var(--button-disabled-fill); }
@@ -2111,13 +2119,15 @@ button.akg-sheet__grabber::after { content: ""; position: absolute; left: -20px;
 .akg-source-pill {
   position: relative; display: inline-flex; align-items: center; vertical-align: 1px;
   margin: 0 0 0 var(--space-4); padding: 1px var(--space-8); border: 0; border-radius: var(--radius-full);
-  background: var(--fill-tertiary); color: var(--label-secondary);
-  font-family: var(--font-sans); font-size: calc(13 * var(--akg-t)); line-height: calc(18 * var(--akg-t)); font-weight: 400;
+  background: color-mix(in srgb, var(--accent) 12%, transparent); color: var(--accent-text);
+  font-family: var(--font-sans); font-size: calc(11 * var(--akg-t)); line-height: calc(16 * var(--akg-t)); font-weight: 600;
   white-space: nowrap; cursor: pointer; -webkit-tap-highlight-color: transparent;
 }
 .akg-source-pill::after { content: ''; position: absolute; left: 50%; top: 50%; width: max(100%, 44px); height: 44px; transform: translate(-50%, -50%); }
 .akg-source-pill:active { filter: brightness(0.9); }
-.akg-source-pill__more { color: var(--label-tertiary); margin-left: 0.25em; }
+.akg-source-pill__more { color: var(--label-secondary); margin-left: 0.3em; }
+[data-theme$="dark"] .akg-source-pill { background: color-mix(in srgb, var(--accent) 22%, transparent); }
+[data-theme$="dark"] .akg-source-pill--marker { background: var(--fill-tertiary); }
 [data-theme^="macos"] .akg-source-pill { font-size: 11px; line-height: 14px; padding: 1px 6px; }
 [data-theme^="macos"] .akg-source-pill::after { display: none; }
 
@@ -2127,6 +2137,10 @@ button.akg-sheet__grabber::after { content: ""; position: absolute; left: -20px;
 .akg-content-section__header--button { width: 100%; min-height: var(--tap-target); padding: 0; border: 0; background: none; color: inherit; font: inherit; text-align: left; cursor: pointer; }
 .akg-content-section__title { margin: 0; font-size: calc(20 * var(--akg-t)); line-height: calc(25 * var(--akg-t)); font-weight: 600; letter-spacing: -0.4px; }
 .akg-content-section__chevron { color: var(--label-tertiary); font-size: calc(15 * var(--akg-t)); transition: transform 0.2s; }
+/* Large Text Sizes: a long title wraps (or hyphenates a word too long for the line) and the chevron keeps its place. */
+.akg-content-section__header > :first-child { min-width: 0; }
+.akg-content-section__title { overflow-wrap: break-word; hyphens: auto; }
+.akg-content-section__header .akg-content-section__chevron { flex: none; }
 @media (prefers-reduced-motion: reduce) { .akg-content-section__chevron { transition: none; } }
 .akg-content-section__chevron--open { transform: rotate(90deg); }
 .akg-content-section__summary { margin: 0; color: var(--label-secondary); font-size: calc(15 * var(--akg-t)); line-height: calc(20 * var(--akg-t)); }
@@ -2293,6 +2307,18 @@ button.akg-sheet__grabber::after { content: ""; position: absolute; left: -20px;
 /* At least 24pt between columns (12pt each side of the divide), growing with Text Size; long words wrap inside their own cell. */
 .akg-table__table th, .akg-table__table td { text-align: left; vertical-align: top; padding: var(--space-8) max(var(--space-12), calc(10 * var(--akg-text-unit, 1px))); border-bottom: var(--separator-width) solid var(--separator); min-width: 7em; overflow-wrap: break-word; }
 .akg-table__table thead th { color: var(--label-secondary); font-weight: 600; white-space: nowrap; }
+/* shadedHeader: the header row on a gray fill (opaque, so the fixed first column's header stays solid). */
+.akg-table--shaded-header .akg-table__table thead th, .akg-table--shaded-header.akg-table--sticky .akg-table__table thead th:first-child { background: linear-gradient(var(--fill-tertiary), var(--fill-tertiary)), var(--background-grouped-secondary); }
+/* A labelled table: word label, title and qualifier above the rows, on the same surface. */
+.akg-table--headed { border-radius: 14px; background: var(--background-grouped-secondary); overflow: hidden; }
+.akg-table__head { display: flex; flex-direction: column; gap: 2px; padding: var(--space-12) 14px var(--space-8); }
+.akg-table__label { font-size: calc(12 * var(--akg-text-unit, 1px)); line-height: calc(16 * var(--akg-text-unit, 1px)); font-weight: 700; text-transform: uppercase; letter-spacing: 0.02em; color: color-mix(in srgb, var(--label) 30%, var(--label-secondary)); }
+.akg-table__title { font-size: calc(17 * var(--akg-text-unit, 1px)); line-height: calc(22 * var(--akg-text-unit, 1px)); font-weight: 600; color: var(--label); }
+.akg-table__subcaption { font-size: calc(13 * var(--akg-text-unit, 1px)); line-height: calc(18 * var(--akg-text-unit, 1px)); color: var(--label-secondary); }
+[data-theme^="macos"] .akg-table__head { padding: var(--space-8) var(--space-10) var(--space-4); }
+[data-theme^="macos"] .akg-table__label { font-size: 10px; line-height: 13px; }
+[data-theme^="macos"] .akg-table__title { font-size: 13px; line-height: 16px; }
+[data-theme^="macos"] .akg-table__subcaption { font-size: 11px; line-height: 14px; }
 .akg-table__table tbody th { font-weight: 600; }
 .akg-table__table tr:last-child > * { border-bottom: 0; }
 /* The fixed first column: opaque (header included) so scrolled text passes cleanly under it, capped at 40% of the screen; a word too long for it hyphenates or breaks rather than running into the next column. */
@@ -2357,7 +2383,7 @@ button.akg-sheet__grabber::after { content: ""; position: absolute; left: -20px;
 /* SourcePill markers: an icon in place of a source name, sized to the pill text like an SF Symbol.
    verified = checkmark.circle.fill in system green (enclosed, filled: legible at small sizes; shape carries the meaning, not color alone);
    practice = stethoscope outline in the pill's secondary label color. */
-.akg-source-pill--marker { padding: 1px 6px; min-width: calc(26 * var(--akg-t)); justify-content: center; }
+.akg-source-pill--marker { background: var(--fill-tertiary); color: var(--label-secondary); padding: 1px 6px; min-width: calc(26 * var(--akg-t)); justify-content: center; }
 .akg-source-pill--marker .akg-sym svg { width: 1.25em; height: 1.25em; }
 .akg-source-pill--verified { color: var(--system-green); }
 .akg-source-pill__check { stroke: var(--on-accent); }
@@ -2500,6 +2526,63 @@ button.akg-sheet__grabber::after { content: ""; position: absolute; left: -20px;
 [data-theme^="macos"] .akg-scale-bar__label { font-size: 10px; line-height: 13px; }
 [data-theme^="macos"] .akg-scale-bar__range { font-size: 13px; line-height: 16px; }
 [data-theme^="macos"] .akg-scale-bar__caption { font-size: 11px; line-height: 14px; }
+
+/* Severity tones — one ramp for every graded scale and staging system: normal (green, only when passed), mild (yellow),
+   moderate (orange), severe (red), with lighter -low steps. Tint fills; text mixed toward label keeps 4.5:1 or more. */
+.akg-tone--normal { background: color-mix(in srgb, var(--system-green) 18%, transparent); --akg-tone-text: color-mix(in srgb, var(--system-green) 50%, var(--label)); }
+.akg-tone--mild { background: color-mix(in srgb, var(--system-yellow) 28%, transparent); --akg-tone-text: color-mix(in srgb, var(--system-orange) 45%, var(--label)); }
+.akg-tone--moderate-low { background: color-mix(in srgb, var(--system-orange) 18%, transparent); --akg-tone-text: color-mix(in srgb, var(--system-orange) 50%, var(--label)); }
+.akg-tone--moderate { background: color-mix(in srgb, var(--system-orange) 28%, transparent); --akg-tone-text: color-mix(in srgb, var(--system-orange) 55%, var(--label)); }
+.akg-tone--severe-low { background: color-mix(in srgb, var(--system-red) 16%, transparent); --akg-tone-text: color-mix(in srgb, var(--system-red) 55%, var(--label)); }
+.akg-tone--severe { background: color-mix(in srgb, var(--system-red) 26%, transparent); --akg-tone-text: color-mix(in srgb, var(--system-red) 60%, var(--label)); }
+.akg-tone--neutral { background: var(--fill-tertiary); }
+[data-theme$="dark"] .akg-tone--normal { background: color-mix(in srgb, var(--system-green) 26%, transparent); }
+[data-theme$="dark"] .akg-tone--mild { background: color-mix(in srgb, var(--system-yellow) 24%, transparent); --akg-tone-text: color-mix(in srgb, var(--system-yellow) 55%, var(--label)); }
+[data-theme$="dark"] .akg-tone--moderate-low { background: color-mix(in srgb, var(--system-orange) 22%, transparent); }
+[data-theme$="dark"] .akg-tone--moderate { background: color-mix(in srgb, var(--system-orange) 32%, transparent); }
+[data-theme$="dark"] .akg-tone--severe-low { background: color-mix(in srgb, var(--system-red) 22%, transparent); }
+[data-theme$="dark"] .akg-tone--severe { background: color-mix(in srgb, var(--system-red) 34%, transparent); }
+.akg-scale-bar__band[class*="akg-tone--"] .akg-scale-bar__label { color: var(--akg-tone-text, color-mix(in srgb, var(--label) 30%, var(--label-secondary))); }
+
+/* Panel — a tinted box naming one kind of information: definition (indigo), note (brown), plain, quote. 14pt corners like Table. */
+.akg-panel { display: flex; flex-direction: column; gap: var(--space-4); padding: var(--space-12) 14px; border-radius: 14px; background: var(--fill-quaternary); color: var(--label); font-family: var(--font-sans); font-size: calc(17 * var(--akg-t)); line-height: calc(22 * var(--akg-t)); }
+.akg-panel__label { font-size: calc(12 * var(--akg-t)); line-height: calc(16 * var(--akg-t)); font-weight: 700; text-transform: uppercase; letter-spacing: 0.02em; color: var(--akg-panel-label, color-mix(in srgb, var(--label) 30%, var(--label-secondary))); }
+.akg-panel__body { display: flex; flex-direction: column; gap: var(--space-8); min-width: 0; }
+.akg-panel__body > p, .akg-panel__body > ul, .akg-panel__body > ol { margin: 0; }
+.akg-panel--definition { background: color-mix(in srgb, var(--system-indigo) 10%, transparent); --akg-panel-label: color-mix(in srgb, var(--system-indigo) 80%, var(--label)); }
+.akg-panel--note { background: color-mix(in srgb, var(--system-brown) 16%, transparent); --akg-panel-label: color-mix(in srgb, var(--system-brown) 70%, var(--label)); }
+.akg-panel--quote { font-size: calc(15 * var(--akg-t)); line-height: calc(20 * var(--akg-t)); }
+[data-theme$="dark"] .akg-panel--definition { background: color-mix(in srgb, var(--system-indigo) 22%, transparent); --akg-panel-label: color-mix(in srgb, var(--system-indigo) 55%, var(--label)); }
+[data-theme$="dark"] .akg-panel--note { background: color-mix(in srgb, var(--system-brown) 26%, transparent); --akg-panel-label: color-mix(in srgb, var(--system-brown) 55%, var(--label)); }
+[data-theme^="macos"] .akg-panel { padding: var(--space-8) var(--space-10); border-radius: 10px; font-size: 13px; line-height: 16px; }
+[data-theme^="macos"] .akg-panel__label { font-size: 10px; line-height: 13px; }
+
+/* GradeList — staging rows: a 64pt tinted chip (word over a large grade) beside label/value pairs; separators between rows. */
+.akg-grade-list { display: flex; flex-direction: column; color: var(--label); font-family: var(--font-sans); container-type: inline-size; }
+.akg-grade-list__label { padding-bottom: var(--space-4); font-size: calc(12 * var(--akg-t)); line-height: calc(16 * var(--akg-t)); font-weight: 700; text-transform: uppercase; letter-spacing: 0.02em; color: color-mix(in srgb, var(--label) 30%, var(--label-secondary)); }
+.akg-grade-list__rows { list-style: none; margin: 0; padding: 0; }
+.akg-grade-list__row { display: flex; gap: var(--space-12); align-items: flex-start; padding: var(--space-12) 0; }
+.akg-grade-list__row + .akg-grade-list__row { border-top: var(--separator-width) solid var(--separator); }
+.akg-grade-list__row:last-child { padding-bottom: 0; }
+.akg-grade-list__chip { flex: none; box-sizing: border-box; min-width: calc(64 * var(--akg-t)); padding: 6px var(--space-4); border-radius: 10px; display: flex; flex-direction: column; align-items: center; color: var(--akg-tone-text, var(--label)); font-weight: 700; text-align: center; }
+.akg-grade-list__word { font-size: calc(12 * var(--akg-t)); line-height: calc(16 * var(--akg-t)); text-transform: uppercase; letter-spacing: 0.02em; }
+.akg-grade-list__grade { font-size: calc(20 * var(--akg-t)); line-height: calc(25 * var(--akg-t)); font-variant-numeric: tabular-nums; }
+.akg-grade-list__values { flex: 1; min-width: 0; margin: 0; display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: var(--space-10); row-gap: var(--space-4); align-items: baseline; }
+.akg-grade-list__values dt { font-size: calc(13 * var(--akg-t)); line-height: calc(18 * var(--akg-t)); font-weight: 600; color: color-mix(in srgb, var(--label) 30%, var(--label-secondary)); }
+.akg-grade-list__values dd { margin: 0; font-size: calc(15 * var(--akg-t)); line-height: calc(20 * var(--akg-t)); font-variant-numeric: tabular-nums; overflow-wrap: break-word; }
+/* Not enough room beside the chip (large Text Sizes): the chip becomes one line ("STAGE 2") above its values. */
+@container (max-width: 16em) {
+  .akg-grade-list__row { flex-direction: column; gap: var(--space-8); }
+  .akg-grade-list__chip { flex-direction: row; align-items: baseline; gap: 0.35em; min-width: 0; padding: 2px var(--space-10); }
+  .akg-grade-list__grade { font-size: calc(17 * var(--akg-t)); line-height: calc(22 * var(--akg-t)); }
+  .akg-grade-list__values { width: 100%; }
+}
+/* Narrower still: each value goes under its label. */
+@container (max-width: 12em) { .akg-grade-list__values { grid-template-columns: minmax(0, 1fr); } }
+[data-theme^="macos"] .akg-grade-list__chip { min-width: 48px; border-radius: var(--radius-regular); padding: 4px; }
+[data-theme^="macos"] .akg-grade-list__word, [data-theme^="macos"] .akg-grade-list__label, [data-theme^="macos"] .akg-grade-list__values dt { font-size: 10px; line-height: 13px; }
+[data-theme^="macos"] .akg-grade-list__grade { font-size: 15px; line-height: 20px; }
+[data-theme^="macos"] .akg-grade-list__values dd { font-size: 13px; line-height: 16px; }
 
 /* ComparisonGrid — 2–3 columns of 12pt cells on fill-quaternary; a 12pt semibold label names each column. Stacks when narrow. */
 .akg-comparison { container-type: inline-size; font-family: var(--font-sans); font-size: calc(15 * var(--akg-t)); color: var(--label); }

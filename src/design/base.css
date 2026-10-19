@@ -56,6 +56,8 @@ h1, p { margin: 0; }
 .card-head h1 { margin: 0; }
 .card-tags { display: flex; flex-wrap: wrap; gap: var(--space-8); }
 .rich-list { margin: 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: var(--space-8); }
+/* At the largest Text Sizes a word too long for the line ("Hyperkalemia") breaks rather than widening the page. */
+.akg-content-section p, .rich-list li, .akg-panel p { overflow-wrap: break-word; }
 /* One nesting level (HIG): sub-items under their lead-in, open circles, the same text color. */
 .rich-list ul { margin: var(--space-4) 0 0; padding-left: 1.1em; display: flex; flex-direction: column; gap: var(--space-4); list-style: circle; }
 /* A "Cannot miss" or "Most common" tag after a cause's name. */

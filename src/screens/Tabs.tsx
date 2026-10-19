@@ -55,7 +55,7 @@ export const LIBRARY_LISTS: Record<string, { title: string; icon: keyof typeof i
   scores: { title: 'Scores and Calculators', icon: 'plusForwardslashMinus', tint: 'var(--system-indigo)', subtitle: 'Risk scores and bedside calculators', empty: 'Scores and calculators will appear here once they’re added.' },
   criteria: { title: 'Criteria and Staging', icon: 'checklist', tint: 'var(--system-indigo)', subtitle: 'Diagnostic criteria and staging systems', empty: 'Criteria and staging systems will appear here once they’re added.' },
   medications: { title: 'Medications', icon: 'pills', tint: 'var(--system-orange)', subtitle: 'Doses, adjustments, warnings', empty: 'Medications will appear here once they’re added.' },
-  pathways: { title: 'Pathways', icon: 'flowchart', tint: 'var(--accent)', subtitle: 'Every flowchart, opened in its topic', empty: 'Pathways will appear here once they’re added.' },
+  pathways: { title: 'Pathways', icon: 'flowchart', tint: 'var(--accent)', subtitle: 'Step-by-step pathways, each on its own page', empty: 'Pathways will appear here once they’re added.' },
   labs: { title: 'Labs and Tests', icon: 'testtube2', tint: 'var(--system-purple)', subtitle: 'Interpretation, cutoffs, accuracy', empty: 'Labs and tests will appear here once they’re added.' },
 };
 
@@ -107,7 +107,7 @@ export function LibraryList({ id }: { id: string }) {
       .map(([cid, c]) => <AKG.ListRow key={cid} title={(c as Criteria).name} chevron onClick={() => openCriteria(sheet, c as Criteria)} />);
   }
   if (id === 'pathways') {
-    rows = pathwayHomes().map((p) => <AKG.ListRow key={p.id} title={p.title} subtitle={`In ${getCard(p.card.id)?.title}`} chevron href={href.card(p.card.id, p.section)} />);
+    rows = pathwayHomes().map((p) => <AKG.ListRow key={p.id} title={p.title} subtitle={`In ${getCard(p.card.id)?.title}`} chevron href={href.pathway(p.id)} />);
   }
   return (
     <Screen title={list.title} back={{ label: 'Library', fallback: href.library() }}>

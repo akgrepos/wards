@@ -69,5 +69,7 @@ export default defineConfig(({ command }) => ({
   ],
   test: {
     environment: 'jsdom',
+    // Other sessions' worktrees live under .claude/; test only this checkout.
+    exclude: ['**/node_modules/**', '.claude/**'],
   },
 }));
