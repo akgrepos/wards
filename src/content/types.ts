@@ -35,7 +35,7 @@ export type Dose = {
   alternative?: { dose: string; when?: string }; adjustments?: { when: string; change: string }[];
   cautions?: string[]; notes?: string; sources: string[];
 };
-export type Threshold = { name: string; value: string | number; unit: string; meaning?: string; sources: string[] };
+export type Threshold = { name: string; value: string | number; unit: string; note?: string; sources: string[] };
 export type Criteria = { name: string; short: string; logic?: string; items?: string[]; columns?: string[]; rows?: string[][]; notes?: string[]; sources: string[] };
 export type PathwayStep = {
   kind: 'question' | 'checklist' | 'caution' | 'action' | 'result'; kindLabel?: string; stage?: string; title: string; detail?: string;

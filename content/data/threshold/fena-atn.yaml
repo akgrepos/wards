@@ -1,5 +1,4 @@
 name: "FENa suggesting ATN"
 value: ">3"
 unit: "%"
-meaning: "In AKI, suggests an intrinsic cause such as ATN rather than prerenal azotemia. Cutoffs differ among studies."
 sources: [gotfried-fe-indices-2012]

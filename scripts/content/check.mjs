@@ -1,7 +1,7 @@
 // Content checks, run on every pull request (npm run content:check) and in the tests.
 // Each rule comes from docs/CARD-TYPES.md and docs/DATA-TYPES.md.
 import { CARD_TYPES, DATA_TYPES, DOSE_FIELDS, SHARED_SECTIONS, UNITS, DOSE_IN_TEXT } from './schema.mjs';
-import { TAGS } from './inline.mjs';
+import { TAGS, parseInline } from './inline.mjs';
 import { onsetMinutes } from './onset.mjs';
 
 const DOSE_ONLY = /^\{\{\s*dose\s*:\s*([a-z0-9-]+)\s*\}\}$/;
@@ -16,12 +16,13 @@ function* runs(blocks) {
     if (b.t === 'paragraph') yield { inlines: b.inlines, sources: b.sources };
     // A sub-bullet without its own source uses its parent's.
     if (b.t === 'list') for (const it of b.items) { yield { inlines: it.inlines, sources: it.sources }; for (const c of it.children) yield { inlines: c.inlines, sources: c.sources.length ? c.sources : it.sources }; }
-    if (b.t === 'table') { for (const h of b.header) yield { inlines: h, sources: [], header: true }; for (const r of b.rows) for (const c of r.cells) yield { inlines: c, sources: r.sources }; }
+    // Values in table cells and scale bands show as plain text (the row or band already says what they mean).
+    if (b.t === 'table') { for (const h of b.header) yield { inlines: h, sources: [], header: true }; for (const r of b.rows) for (const c of r.cells) yield { inlines: c, sources: r.sources, plain: true }; }
     if (b.t === 'steps') for (const it of b.items) { yield { inlines: it.inlines, sources: it.sources, header: true }; yield* runs(it.blocks); }
     if (b.t === 'note') for (const it of b.items) yield { inlines: it.inlines, sources: it.sources.length ? it.sources : b.sources };
     if (b.t === 'scale' || b.t === 'compare') {
       yield { inlines: b.title, sources: b.sources, header: true };
-      for (const it of b.items) yield { inlines: [...it.label, ...it.inlines], sources: it.sources.length ? it.sources : b.sources };
+      for (const it of b.items) yield { inlines: [...it.label, ...it.inlines], sources: it.sources.length ? it.sources : b.sources, plain: b.t === 'scale' };
     }
     if (b.t === 'times') yield { inlines: b.title, sources: b.sources, timesTitle: true };
     if (b.t === 'onset') {
@@ -37,6 +38,22 @@ function* allBlocks(blocks) {
   for (const b of blocks) { yield b; if (b.t === 'steps') for (const it of b.items) yield* allBlocks(it.blocks); }
 }
 
+// A cutoff's pop-up shows its name, value, unit, sources and `note`. Only the note can add anything the reader
+// can't already see on the line (the value is on it and the sources are in its pill), so a cutoff is tappable only
+// when it has a note that says something new (owner's rule, 2026-10-19).
+const STOP = new Set('the and for with this that from than then into when what which who are was were has have had not but its also only may can all any per'.split(' '));
+const words = (text) => (text.toLowerCase().match(/[a-z0-9][a-z0-9-]*/g) ?? []).filter((w) => w.length >= 3 && !STOP.has(w) && !/^[\d.]+$/.test(w));
+// "needs" and "needing" count as the same word as "need".
+const stem = (w) => w.replace(/(ing|ed|es|s)$/, '');
+export function noteRepeats(note, visible) {
+  const seen = new Set(words(visible).map(stem));
+  const ws = words(note);
+  if (!ws.length) return true;
+  // A note says only what the line doesn't: at least two-thirds of its words must be new.
+  return ws.filter((w) => seen.has(stem(w))).length / ws.length > 1 / 3;
+}
+const numbers = (v) => String(v).match(/\d+(\.\d+)?/g) ?? [];
+
 const CONTAINERS = { scale: [2, 5], compare: [2, 3], times: [1, 12], onset: [2, 12], note: [1, 3] };
 
 export function checkContent({ systems, cards, data }) {
@@ -45,6 +62,14 @@ export function checkContent({ systems, cards, data }) {
   const systemIds = new Set(systems.map((s) => s.id));
   for (const s of systems) if (typeof s.title !== 'string' || !s.title || typeof s.id !== 'string') errors.push(`content/systems.yaml: system "${s.id}" needs an id and a title (quote titles that contain commas)`);
   const cardIds = new Map();
+  // Where each cutoff appears: the words around it, and whether it shows plain there (tables, scales).
+  const thresholdUses = new Map();
+  const useAt = (inlines, where, plain) => {
+    for (const x of inlines) if (x.t === 'insert' && x.kind === 'threshold') {
+      if (!thresholdUses.has(x.id)) thresholdUses.set(x.id, []);
+      thresholdUses.get(x.id).push({ where, plain: !!plain, text: inlines.map((y) => (y.t === 'insert' ? '' : y.v ?? y.label ?? '')).join('') });
+    }
+  };
 
   for (const c of cards) {
     const where = c.file;
@@ -99,11 +124,13 @@ export function checkContent({ systems, cards, data }) {
       for (const id of c.definition.sources) if (!data.source?.[id]) err(where, `the definition cites unknown source "${id}"`);
       for (const x of c.definition.inlines) if (x.t === 'insert' && !data[x.kind]?.[x.id]) err(where, `the definition inserts unknown ${x.kind} "${x.id}"`);
       if (c.definition.inlines.some((x) => x.t === 'insert' && x.kind === 'dose')) err(where, 'the definition cannot contain a dose');
+      useAt(c.definition.inlines, `${where} definition`, false);
     }
     for (const id of c.basedOn ?? []) if (!data.source?.[id]) err(where, `based_on lists unknown source "${id}"`);
     const parts = c.sections.flatMap((s) => [{ title: s.title, blocks: s.blocks }, ...(s.subsections ?? []).map((x) => ({ title: x.title, blocks: x.blocks }))]);
     for (const { title, blocks } of parts) {
       for (const r of runs(blocks)) {
+        useAt(r.inlines, `${where} "${title}"`, r.plain);
         const text = inlineText(r.inlines);
         if (DOSE_IN_TEXT.test(text)) err(where, `"${title}" has a dose typed as text ("${text.match(DOSE_IN_TEXT)[0]}"); insert it with {{dose:…}}`);
         for (const id of r.sources) if (!data.source?.[id]) err(where, `"${title}" cites unknown source "${id}"`);
@@ -171,6 +198,7 @@ export function checkContent({ systems, cards, data }) {
         const steps = item.steps ?? {};
         if (!steps[item.start]) err(where, `start step "${item.start}" does not exist`);
         for (const [sid, st] of Object.entries(steps)) {
+          for (const t of [st.title, st.question, st.detail, ...(st.answers ?? []).flatMap((a) => [a.label, a.detail])]) if (typeof t === 'string') useAt(parseInline(t), `${where} step "${sid}"`, false);
           const targets = [...(st.answers ?? []).map((a) => a.to), st.yes, st.no, st.next].filter(Boolean);
           for (const t of targets) if (!steps[t]) err(where, `step "${sid}" leads to missing step "${t}"`);
           if (st.kind !== 'result' && targets.length === 0) err(where, `step "${sid}" leads nowhere`);
@@ -178,6 +206,20 @@ export function checkContent({ systems, cards, data }) {
         }
       }
       if (/^[a-z0-9]+(-[a-z0-9]+)*$/.test(id) === false) err(where, `id "${id}" must be lowercase words joined by hyphens`);
+    }
+  }
+
+  // A cutoff with a note must be tappable somewhere, and its note must add something to every line it is tappable on.
+  for (const [id, t] of Object.entries(data.threshold ?? {})) {
+    const where = t._file;
+    if (t.meaning !== undefined) err(where, '"meaning" is now "note": only what the reader can\'t see on the line (see docs/DATA-TYPES.md)');
+    if (t.note === undefined) continue;
+    const uses = thresholdUses.get(id) ?? [];
+    const tappable = uses.filter((u) => !u.plain);
+    if (!tappable.length) err(where, 'has a note, but it only appears in tables or scales, where values are plain; remove the note');
+    if (numbers(t.value).some((n) => new RegExp(`(^|[^\\d.])${n.replace('.', '\\.')}($|[^\\d])`).test(t.note))) err(where, 'the note repeats the value; say only what the line doesn\'t');
+    for (const u of tappable) {
+      if (noteRepeats(t.note, `${u.text} ${t.name} ${t.unit}`)) err(where, `the note mostly repeats what ${u.where} already says; remove it (the value then shows plain) or say only what the line doesn't`);
     }
   }
   return errors;

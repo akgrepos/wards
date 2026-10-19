@@ -1,5 +1,4 @@
 name: "Urine sodium suggesting prerenal physiology"
 value: "<20"
 unit: "mEq/L"
-meaning: "In oliguric AKI, suggests prerenal azotemia; >40 mEq/L suggests ATN."
 sources: [miller-urine-indices-1978]

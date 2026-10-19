@@ -1,5 +1,5 @@
 name: "eGFR for IV saline prophylaxis before IV contrast"
 value: "<30"
 unit: "mL/min/1.73 m²"
-meaning: "IV normal saline prophylaxis is indicated (also with AKI), unless on maintenance dialysis or contraindicated (e.g. heart failure)."
+note: "Not when IV saline is contraindicated (e.g. heart failure)."
 sources: [acr-nkf-contrast-2020]

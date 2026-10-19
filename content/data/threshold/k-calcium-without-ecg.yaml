@@ -1,5 +1,4 @@
 name: Potassium for calcium when no ECG is available
 value: ">6.5"
 unit: mEq/L
-meaning: If the potassium is known but an ECG or monitor isn't immediately available, give IV calcium above this level.
 sources: [kdigo-acute-hyperkalemia-2020]

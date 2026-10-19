@@ -2,6 +2,13 @@
 
 What changed in each version of Wards, newest first. The version is shown in Settings (gear on Home).
 
+## 2026.10.19.2
+
+Fewer dotted values: a value is underlined and tappable only when its pop-up tells you something the line doesn't already say.
+- Acute Kidney Injury: the urinary indices table (FENa, FEUrea, urine sodium, urine osmolality) is plain text; those pop-ups only repeated the table.
+- Hyperkalemia: no dotted values left. The potassium cutoffs (≥6.0 for an ECG, ≥6.5 severe, >6.5 for calcium without an ECG) and the glucose cutoffs (<126 and >200) were plain repeats of their line.
+- Still tappable: the KDIGO criteria name (opens the full criteria), every dose row (opens the dose details), and the two contrast eGFR cutoffs in AKI Treatment, whose pop-ups now say only what the line doesn't (not when saline is contraindicated, e.g. heart failure; only in individual high-risk circumstances).
+
 ## 2026.10.19
 
 The Acute Kidney Injury card, redesigned as you approved on the mock-up:
