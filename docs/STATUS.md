@@ -1,10 +1,10 @@
 # Status
 
-Last updated 2026-10-19 (2026.10.19.5: pathway pages with three test layouts; 2026.10.19.4: third pilot card, Electrolyte Repletion; before that, redesign Phase 4, Rapids pages and Timed Mode, in 2026.10.19.3). A short snapshot so the next session can pick up where the last one stopped. The reasons behind each choice are in [DECISIONS.md](DECISIONS.md).
+Last updated 2026-10-19 (2026.10.19.6: pathway test layouts Stages, Tree and Map; 2026.10.19.5: first set; 2026.10.19.4: third pilot card, Electrolyte Repletion; before that, redesign Phase 4, Rapids pages and Timed Mode, in 2026.10.19.3). A short snapshot so the next session can pick up where the last one stopped. The reasons behind each choice are in [DECISIONS.md](DECISIONS.md).
 
 ## Start here next time
 1. **Read first:** `CLAUDE.md`, then DECISIONS.md "Sources, updated" (all content rules) before writing any card.
-2. **Pathway pages: choose a layout** (2026.10.19.5): open AKI or Hyperkalemia, tap the Pathway row, and try Flowchart, Stages and Steps (switch at the top). Then pick one; it moves into the design system and the other two (and the old Flowchart component) are removed. Mock-ups: private design canvas, rows "Pathway pages" and "round 2".
+2. **Pathway pages: choose a layout** (2026.10.19.6): open AKI or Hyperkalemia, tap the Pathway row, and try Stages (owner's top choice so far), Tree and Map (switch at the top). Then pick one; it moves into the design system and the others (and the old Flowchart component) are removed. Mock-ups: private design canvas, rows "Pathway pages" and "round 2".
 3. **Build the approved redesign** (plan approved 2026-10-18, see DECISIONS): Phases 1–4 are done (design system additions; app frame and navigation; topic pages; Rapids pages and Timed Mode). Next is **Phase 5, Library and full search** (offline search across sections, drugs and tools; possibly one file per card), then 6 (final light/dark/Text Size check and independent review). One PR each, each live when done.
    - Phase 4 follow-up: Search doesn't list emergencies yet (Phase 5).
 4. **Review the rest of the audits** (filed 2026-10-17). Owner's order: design (done via the redesign), then process; clinical fixes later, since the app isn't in clinical use yet. Five reports kept privately: design/UI/UX, navigation, process, systems/security/privacy, clinical content. Present the findings and let the owner choose what to fix with question pop-ups.

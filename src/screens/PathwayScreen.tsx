@@ -10,26 +10,27 @@ import { Screen } from './common';
 import { NotFoundScreen } from './Tabs';
 
 // A pathway's own page (owner, 2026-10-19: pathways leave their cards and become pages).
-// TEST BUILD (owner, 2026-10-19: "build the best options to use in the actual app"): three layouts from the
-// mock-up canvas, switched at the top of the page, so the owner can try them on the phone before choosing one.
-//   Flowchart (option D): boxes and arrows; answer by tapping a box; other answers stay as boxes saying where they lead.
+// TEST BUILD (owner, 2026-10-19): three layouts from the mock-up canvas, switched at the top of the page, so the owner
+// can try them on the phone before choosing one. Second set (owner, same day: "Replace with B, I, E2"; Stages is
+// the top choice so far, so it opens first):
+//   Tree (option B): the whole pathway as one scrolling decision tree, your answers in place, End marker.
 //   Stages (option I): one list of stages; finished stages fold to one line, the current one is open.
-//   Steps (option H): one step at a time, with every stage on a rail beside it.
+//   Map (option E): a small chart of the route behind, the current step in a panel at the bottom.
 // All three share one route: answers are kept while switching layouts, cleared by Start Over and on leaving the page.
 // Caution steps are red (owner, 2026-10-19). There is no list of all treatments at the end (owner, same day).
 
-export type Layout = 'flowchart' | 'stages' | 'steps';
+export type Layout = 'tree' | 'stages' | 'map';
 const LAYOUTS: { value: Layout; label: string }[] = [
-  { value: 'flowchart', label: 'Flowchart' },
   { value: 'stages', label: 'Stages' },
-  { value: 'steps', label: 'Steps' },
+  { value: 'tree', label: 'Tree' },
+  { value: 'map', label: 'Map' },
 ];
 const LAYOUT_KEY = 'wards:pathway-layout';
 function readLayout(): Layout {
   try {
     const v = localStorage.getItem(LAYOUT_KEY);
-    return LAYOUTS.some((l) => l.value === v) ? (v as Layout) : 'flowchart';
-  } catch { return 'flowchart'; }
+    return LAYOUTS.some((l) => l.value === v) ? (v as Layout) : 'stages';
+  } catch { return 'stages'; }
 }
 function writeLayout(v: Layout) {
   try { localStorage.setItem(LAYOUT_KEY, v); } catch { /* not available */ }
@@ -43,9 +44,9 @@ const answersOf = (s: PathwayStep): Answer[] =>
 const asks = (s: PathwayStep) => s.kind === 'question' || s.kind === 'checklist';
 
 type Visit = { id: string; step: PathwayStep; answer?: number };
-// Follows the answers from the start. Caution and action steps lead on by themselves, except where `stopAt` is given
-// (Steps layout: each needs Continue). Returns the steps on the route and whether it reached an end.
-export function walk(p: Pathway, choices: Record<string, number>, stopAt?: Set<string>): { route: Visit[]; ended: boolean } {
+// Follows the answers from the start; caution and action steps lead on by themselves. Returns the steps on the
+// route and whether it reached an end.
+export function walk(p: Pathway, choices: Record<string, number>): { route: Visit[]; ended: boolean } {
   const route: Visit[] = [];
   const seen = new Set<string>();
   let id: string | undefined = p.start;
@@ -61,7 +62,6 @@ export function walk(p: Pathway, choices: Record<string, number>, stopAt?: Set<s
     }
     route.push({ id, step });
     if (step.kind === 'result' && !step.next) return { route, ended: true };
-    if (stopAt && !stopAt.has(id)) return { route, ended: false };
     id = step.next;
   }
   return { route, ended: true };
@@ -78,10 +78,10 @@ function where(p: Pathway, to: string) {
   return t.kind === 'result' && !t.next ? `${t.title} (End)` : t.title;
 }
 
-function KindLabel({ step, now }: { step: PathwayStep; now?: boolean }) {
+function KindLabel({ step, now, noStage }: { step: PathwayStep; now?: boolean; noStage?: boolean }) {
   return (
     <p className={`pw-kind ios-caption-1-emphasized${step.kind === 'caution' ? ' pw-kind--caution' : ''}`}>
-      {KIND[step.kind]}{step.stage ? ` · ${step.stage}` : ''}{now ? ' · Now' : ''}
+      {KIND[step.kind]}{step.stage && !noStage ? ` · ${step.stage}` : ''}{now ? ' · Now' : ''}
     </p>
   );
 }
@@ -102,12 +102,10 @@ function StepBody({ step }: { step: PathwayStep }) {
 
 // The answers under a question. Before one is chosen, every answer is a solid tile with a blue chevron; after,
 // the chosen one is outlined ("Your answer") and the others say where they lead and switch the route when tapped.
-function Answers({ p, v, onChoose, compact }: { p: Pathway; v: Visit; onChoose: (i: number) => void; compact?: boolean }) {
+function Answers({ p, v, onChoose }: { p: Pathway; v: Visit; onChoose: (i: number) => void }) {
   const list = answersOf(v.step);
-  // Side by side, like a flowchart's branches, only when every answer is short; long ones stack (owner: no cramped boxes).
-  const grid = compact && list.length > 1 && list.every((a) => a.label.length <= 24 && (a.detail ?? '').replace(/\{\{[^}]*\}\}/g, 'xxxxxxxxxx').length <= 24);
   return (
-    <div className={`pw-answers${compact ? ' pw-answers--branch' : ''}${grid ? ' pw-answers--grid' : ''}`} role="group" aria-label={`Answers: ${v.step.title}`}>
+    <div className="pw-answers" role="group" aria-label={`Answers: ${v.step.title}`}>
       {list.map((a, i) => {
         const chosen = v.answer === i;
         const state = v.answer == null ? 'open' : chosen ? 'chosen' : 'other';
@@ -139,32 +137,65 @@ function EndMark({ reached }: { reached: boolean }) {
   );
 }
 
-// ---- Layout D: flowchart ----
+// ---- Layout B: decision tree ----
 
-function FlowchartLayout({ p, route, ended, onChoose }: LayoutProps) {
+// The whole pathway as one scrolling tree: a line down the left joins the steps, grouped by stage. An answered
+// question keeps your answer in place; the other answers become small "Other answer" links that switch the route.
+// Stages not reached are dotted; the line ends in a square End marker.
+function TreeLayout({ p, route, ended, onChoose }: LayoutProps) {
+  const stages = p.stages?.length ? p.stages : [...new Set(route.map((v) => v.step.stage ?? 'Steps'))];
   const last = route[route.length - 1];
-  const ahead = (p.stages ?? []).slice((p.stages ?? []).indexOf(last.step.stage ?? '') + 1);
+  const nowIdx = stages.indexOf(last.step.stage ?? 'Steps');
   return (
-    <div className="pw-flow">
-      {route.map((v, i) => {
-        const now = !ended && v === last;
+    <div className="pw-tree">
+      {stages.map((s, i) => {
+        const visits = route.filter((v) => (v.step.stage ?? 'Steps') === s);
+        const ahead = i > nowIdx;
         return (
-          <Fragment key={v.id}>
-            {i > 0 && <span className="pw-arrow" aria-hidden="true" />}
-            <section className={`pw-box pw-box--${v.step.kind}${now ? ' pw-box--now' : ''}`} aria-current={now ? 'step' : undefined}>
-              <KindLabel step={v.step} now={now} />
-              <h2 className="ios-headline">{v.step.title}</h2>
-              <StepBody step={v.step} />
-            </section>
-            {asks(v.step) && <><span className="pw-branch" aria-hidden="true" /><Answers p={p} v={v} onChoose={(a) => onChoose(v.id, a)} compact /></>}
+          <Fragment key={s}>
+            <div className={`pw-tree__stage${ahead || !visits.length ? ' pw-tree__stage--ahead' : ''}`}>
+              <span className="ios-caption-1-emphasized pw-kind">{s}</span>
+              {!visits.length && <span className="ios-footnote secondary">{ahead && !ended ? 'Not reached yet' : 'Not on this route'}</span>}
+            </div>
+            {visits.map((v) => {
+              const now = !ended && v === last;
+              const answered = asks(v.step) && v.answer != null;
+              const dot = now ? 'now' : v.step.kind === 'caution' ? 'caution' : 'done';
+              return (
+                <div key={v.id} className="pw-tree__node">
+                  <span className={`pw-tree__dot pw-tree__dot--${dot}`} aria-hidden="true" />
+                  <section className={`pw-tree__card pw-step--${v.step.kind}${now ? ' pw-tree__card--now' : ''}`} aria-current={now ? 'step' : undefined}>
+                    <KindLabel step={v.step} now={now} noStage />
+                    <h2 className="ios-headline">{v.step.title}</h2>
+                    {answered ? (
+                      <>
+                        <p className="pw-tree__pick ios-body"><span className="secondary">Your answer: </span><strong>{answersOf(v.step)[v.answer!]?.label}</strong></p>
+                        {answersOf(v.step).map((a, j) => j === v.answer ? null : (
+                          <button key={j} type="button" className="pw-tree__stub ios-subheadline" onClick={() => onChoose(v.id, j)}>
+                            <span className="secondary">Other answer: </span>{a.label}<span className="secondary"> → {where(p, a.to)}</span>
+                          </button>
+                        ))}
+                      </>
+                    ) : (
+                      <>
+                        <StepBody step={v.step} />
+                        {asks(v.step) && <Answers p={p} v={v} onChoose={(a) => onChoose(v.id, a)} />}
+                      </>
+                    )}
+                  </section>
+                </div>
+              );
+            })}
           </Fragment>
         );
       })}
-      {ended ? (
-        <><span className="pw-arrow" aria-hidden="true" /><div className="pw-terminal"><span className="ios-caption-1-emphasized pw-kind">End</span><span className="ios-headline">End of pathway</span></div></>
-      ) : (
-        <><span className="pw-arrow pw-arrow--ahead" aria-hidden="true" /><p className="ios-footnote secondary centered">{ahead.length ? `Then ${ahead.join(', ')}, then End` : 'Then End'}</p></>
-      )}
+      <div className={`pw-tree__node pw-tree__node--end${ended ? '' : ' pw-tree__node--ahead'}`}>
+        <span className="pw-tree__dot pw-tree__dot--end" aria-hidden="true" />
+        <div className="pw-tree__endtext">
+          <span className="ios-headline">End of pathway</span>
+          {ended && <span className="ios-footnote secondary pw-block">The line stops here. Continue in the card.</span>}
+        </div>
+      </div>
     </div>
   );
 }
@@ -227,47 +258,66 @@ function StagesLayout({ p, route, ended, onChoose }: LayoutProps) {
   );
 }
 
-// ---- Layout H: one step with a stage rail ----
+// ---- Layout E: map behind, step in front ----
 
-function StepsLayout({ p, route, ended, onChoose, onContinue, onBack }: LayoutProps) {
-  const v = route[route.length - 1];
-  const prev = route[route.length - 2];
-  const stages = p.stages ?? [];
-  const nowIdx = stages.indexOf(v.step.stage ?? '');
-  const prevLabel = prev ? (prev.answer != null ? `${prev.step.title} ${answersOf(prev.step)[prev.answer]?.label}` : prev.step.title) : null;
+// The route as a small chart that fills the page (your route in the label color, other answers as gray boxes that
+// switch the route, End as a rounded terminal), with the current step in a panel at the bottom, above the tab bar.
+// The panel holds everything since your last answer (so an action's doses are always readable); its grabber makes
+// it taller or shorter.
+function MapLayout({ p, route, ended, onChoose, after }: LayoutProps) {
+  const [tall, setTall] = useState(false);
+  const last = route[route.length - 1];
+  const ahead = (p.stages ?? []).slice((p.stages ?? []).indexOf(last.step.stage ?? '') + 1);
+  // Steps shown in the panel: from just after the last answered question to the end of the route.
+  let from = 0;
+  for (let i = route.length - 1; i >= 0; i--) if (route[i].answer != null) { from = i + 1; break; }
+  const shown = route.slice(Math.min(from, route.length - 1));
   return (
-    <div className="pw-railbox"><div className="pw-railwrap">
-      <ol className="pw-rail" aria-label="Stages">
-        {stages.map((s, i) => {
-          const state = i < nowIdx || (ended && i === nowIdx) ? 'done' : i === nowIdx ? 'now' : 'later';
-          return <li key={s} className={`pw-rail__stage pw-rail__stage--${state} ios-caption-1-emphasized`} aria-current={state === 'now' ? 'step' : undefined}><span className="pw-rail__dot" aria-hidden="true" />{s}</li>;
+    <>
+      <div className="pw-map" aria-label="Map of your route">
+        {route.map((v, i) => {
+          const now = !ended && v === last;
+          return (
+            <Fragment key={v.id}>
+              {i > 0 && <span className="pw-map__arrow" aria-hidden="true" />}
+              <div className={`pw-map__box pw-map__box--${v.step.kind}${now ? ' pw-map__box--now' : ''} ios-caption-1`}>{v.step.title}</div>
+              {asks(v.step) && (
+                <div className="pw-map__branches">
+                  {answersOf(v.step).map((a, j) => {
+                    const state = v.answer == null ? 'open' : v.answer === j ? 'chosen' : 'other';
+                    return state === 'other'
+                      ? <button key={j} type="button" className="pw-map__box pw-map__box--other ios-caption-1" onClick={() => onChoose(v.id, j)} aria-label={`Switch to ${a.label}`}>{a.label}<span className="pw-map__to"> → {where(p, a.to)}</span></button>
+                      : <div key={j} className={`pw-map__box pw-map__box--${state} ios-caption-1`}>{a.label}</div>;
+                  })}
+                </div>
+              )}
+            </Fragment>
+          );
         })}
-        <li className={`pw-rail__stage pw-rail__stage--end${ended ? ' pw-rail__stage--done' : ' pw-rail__stage--later'} ios-caption-1-emphasized`}><span className="pw-rail__dot" aria-hidden="true" />End</li>
-      </ol>
-      <div className="pw-railmain">
-        {prevLabel && (
-          <div className="pw-prev">
-            <span className="ios-subheadline secondary">After: <span className="pw-prev__v">{prevLabel}</span></span>
-            <AKG.Button variant="borderless" onClick={onBack}>Back</AKG.Button>
-          </div>
-        )}
-        <section className={`pw-single pw-step--${v.step.kind}`} aria-current="step">
-          <KindLabel step={v.step} />
-          <h2 className="ios-title-2-emphasized">{v.step.title}</h2>
-          <StepBody step={v.step} />
-          {asks(v.step) && <Answers p={p} v={v} onChoose={(a) => onChoose(v.id, a)} />}
-          {!asks(v.step) && !ended && <AKG.Button variant="prominent" size="large" className="wide-button" onClick={() => onContinue(v.id)}>Continue</AKG.Button>}
-          {ended && <EndMark reached />}
-        </section>
+        {ended
+          ? <><span className="pw-map__arrow" aria-hidden="true" /><div className="pw-map__end ios-caption-1-emphasized">End</div></>
+          : <><span className="pw-map__arrow pw-map__arrow--ahead" aria-hidden="true" /><p className="ios-caption-1 secondary centered">{ahead.length ? `${ahead.join(', ')}, End` : 'End'}</p></>}
       </div>
-    </div></div>
+      <div className="pw-panel-space" aria-hidden="true" />
+      <section className={`pw-panel${tall ? ' pw-panel--tall' : ''}`} aria-label="Current step">
+        <button type="button" className="pw-panel__grabber" aria-label={tall ? 'Make step panel shorter' : 'Make step panel taller'} onClick={() => setTall(!tall)}><span /></button>
+        <div className="pw-panel__body">
+          {shown.map((v) => (
+            <div key={v.id} className={`pw-step pw-step--${v.step.kind}`}>
+              <KindLabel step={v.step} now={!ended && v === last} />
+              <h2 className="ios-title-3-emphasized">{v.step.title}</h2>
+              <StepBody step={v.step} />
+              {asks(v.step) && <Answers p={p} v={v} onChoose={(a) => onChoose(v.id, a)} />}
+            </div>
+          ))}
+          {ended && <><EndMark reached />{after}</>}
+        </div>
+      </section>
+    </>
   );
 }
 
-type LayoutProps = {
-  p: Pathway; route: Visit[]; ended: boolean;
-  onChoose: (id: string, answer: number) => void; onContinue: (id: string) => void; onBack: () => void;
-};
+type LayoutProps = { p: Pathway; route: Visit[]; ended: boolean; onChoose: (id: string, answer: number) => void; after?: ReactNode };
 
 // ---- The page ----
 
@@ -276,48 +326,42 @@ export function PathwayScreen({ id }: { id: string }) {
   const sheet = useSheet();
   const [layout, setLayout] = useState<Layout>(readLayout);
   const [choices, setChoices] = useState<Record<string, number>>({});
-  const [acks, setAcks] = useState<string[]>([]);
   // A new pathway starts empty (answers are never kept between visits).
-  useEffect(() => { setChoices({}); setAcks([]); }, [id]);
+  useEffect(() => { setChoices({}); }, [id]);
   if (!p) return <NotFoundScreen />;
 
-  const ackSet = new Set(acks);
-  const { route, ended } = walk(p, choices, layout === 'steps' ? ackSet : undefined);
-  const started = Object.keys(choices).length > 0 || acks.length > 0;
+  const { route, ended } = walk(p, choices);
+  const started = Object.keys(choices).length > 0;
   const homes = pathwayHomes().filter((h) => h.id === id);
 
-  // Changing an answer clears everything after it on the route.
-  const after = (stepId: string) => {
-    const full = walk(p, choices).route;
-    const i = full.findIndex((v) => v.id === stepId);
-    return new Set(i < 0 ? [] : full.slice(i + 1).map((v) => v.id));
-  };
+  // Changing an answer clears every answer after it on the route.
   const choose = (stepId: string, a: number) => {
-    const drop = after(stepId);
+    const i = route.findIndex((v) => v.id === stepId);
+    const drop = new Set(i < 0 ? [] : route.slice(i + 1).map((v) => v.id));
     const next: Record<string, number> = {};
     for (const [k, x] of Object.entries(choices)) if (!drop.has(k)) next[k] = x;
     next[stepId] = a;
     setChoices(next);
-    setAcks(acks.filter((k) => !drop.has(k)));
   };
-  const cont = (stepId: string) => setAcks([...acks, stepId]);
-  // Back (Steps): undo the last answer or Continue.
-  const back = () => {
-    for (let i = route.length - 1; i >= 0; i--) {
-      const v = route[i];
-      if (v.answer != null) { const next = { ...choices }; delete next[v.id]; setChoices(next); setAcks(acks.filter((k) => !after(v.id).has(k))); return; }
-      if (ackSet.has(v.id)) { setAcks(acks.filter((k) => k !== v.id)); return; }
-    }
-  };
-  const startOver = () => { setChoices({}); setAcks([]); scrollTo({ top: 0 }); };
+  const startOver = () => { setChoices({}); scrollTo({ top: 0 }); };
   const pick = (v: string | number) => { setLayout(v as Layout); writeLayout(v as Layout); };
-  const props: LayoutProps = { p, route, ended, onChoose: choose, onContinue: cont, onBack: back };
 
   const title = titleCase(p.title ?? 'Pathway');
+  const after = (
+    <div className="pw-after">
+      {homes.length > 0 && (
+        <AKG.List header="In the Card">
+          {homes.map((h) => <AKG.ListRow key={h.card.id} title={h.card.title} subtitle={h.card.sections.find((s) => s.key === h.section)?.title} chevron href={href.card(h.card.id, h.section)} />)}
+        </AKG.List>
+      )}
+      <AKG.Button size="large" className="wide-button" onClick={startOver}>Start Over</AKG.Button>
+    </div>
+  );
+  const props: LayoutProps = { p, route, ended, onChoose: choose };
   let body: ReactNode;
-  if (layout === 'stages') body = <StagesLayout {...props} />;
-  else if (layout === 'steps') body = <StepsLayout {...props} />;
-  else body = <FlowchartLayout {...props} />;
+  if (layout === 'tree') body = <TreeLayout {...props} />;
+  else if (layout === 'map') body = <MapLayout {...props} after={after} />;
+  else body = <StagesLayout {...props} />;
 
   return (
     <Screen
@@ -330,16 +374,7 @@ export function PathwayScreen({ id }: { id: string }) {
         <p className="ios-footnote secondary">Test layouts: try each, then choose one.</p>
       </div>
       {body}
-      {ended && (
-        <div className="pw-after">
-          {homes.length > 0 && (
-            <AKG.List header="In the Card">
-              {homes.map((h) => <AKG.ListRow key={h.card.id} title={h.card.title} subtitle={h.card.sections.find((s) => s.key === h.section)?.title} chevron href={href.card(h.card.id, h.section)} />)}
-            </AKG.List>
-          )}
-          <AKG.Button size="large" className="wide-button" onClick={startOver}>Start Over</AKG.Button>
-        </div>
-      )}
+      {ended && layout !== 'map' && after}
       {p.sources?.length > 0 && <AKG.SourceLine className="pw-sources" items={lineItems(p.sources)} onClick={() => openSources(sheet, p.sources, title)} />}
     </Screen>
   );
