@@ -2,6 +2,15 @@
 
 What changed in each version of Wards, newest first. The version is shown in Settings (gear on Home).
 
+## 2026.10.19.7
+
+Pathway pages: a new set of test layouts, matching the letters on the design canvas. The switch at the top shows just the letter:
+- **I · Stages** (kept, opens first): one list of the stages; finished stages fold to one line with Change.
+- **K · Choice lists** (new): one page in the style of Settings. Each question is a list; tap your answer and it gets a checkmark (tap another to change it). Doses appear in their own sections; Caution is red.
+- **J · Drill-down** (new): each step is its own page. Tap an answer to open the next step; the back button at the top left goes back a step. Actions show their doses with a Next row; the last page has Done, which returns to the card.
+- **L · Full screen** (new): Start Pathway opens the pathway over the whole screen, one step at a time, with the answers low on the screen within thumb reach, Previous Step, and Close at the top left. Done at the end returns to the card.
+- Tree (B) and Map (E) are gone.
+
 ## 2026.10.19.6
 
 Pathway pages: a new set of test layouts, as you asked (switch at the top; Stages opens first):

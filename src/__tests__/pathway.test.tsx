@@ -28,10 +28,12 @@ beforeEach(() => { localStorage.clear(); });
 afterEach(() => { cleanup(); vi.restoreAllMocks(); });
 
 describe('pathway page (test layouts)', () => {
-  it('opens in Stages; answering walks the route to the End; Start Over clears it', async () => {
+  it('opens in I (Stages); answering walks the route to the End; Start Over clears it', async () => {
     launch('#/pathway/hyperkalemia-management');
     expect(document.querySelector('.page-title')!.textContent).toBe('Acute Hyperkalemia Management');
-    expect(screen.getByRole('radio', { name: 'Stages' }).getAttribute('aria-checked')).toBe('true');
+    // The switch shows letters only (owner), with full names for VoiceOver.
+    expect(screen.getAllByRole('radio').map((r) => r.textContent)).toEqual(['I', 'K', 'J', 'L']);
+    expect(screen.getByRole('radio', { name: 'I, Stages' }).getAttribute('aria-checked')).toBe('true');
     expect(hasText('ECG changes of hyperkalemia?')).toBe(false);
     await tap(/^Confirmed or likely/);
     await tap(/^Yes/);
@@ -45,7 +47,7 @@ describe('pathway page (test layouts)', () => {
     expect(hasText('ECG changes of hyperkalemia?')).toBe(false);
   });
 
-  it('stages: finished stages fold to one line; the layout is remembered, answers are not', async () => {
+  it('I: finished stages fold to one line; the layout is remembered, answers are not', async () => {
     launch('#/pathway/hyperkalemia-management');
     await tap(/^Confirmed or likely/);
     const folded = screen.getByRole('button', { name: /Confirmed or likely.*Change/ });
@@ -53,37 +55,58 @@ describe('pathway page (test layouts)', () => {
     await act(async () => { fireEvent.click(folded); });
     expect(folded.getAttribute('aria-expanded')).toBe('true');
     expect(hasText('Not reached yet')).toBe(true);
-    await layout('Tree');
+    await layout('K, Choice lists');
     launch('#/pathway/hyperkalemia-management');
-    expect(screen.getByRole('radio', { name: 'Tree' }).getAttribute('aria-checked')).toBe('true');
-    expect(hasText('Your answer:')).toBe(false);
+    expect(screen.getByRole('radio', { name: 'K, Choice lists' }).getAttribute('aria-checked')).toBe('true');
+    expect(hasText('ECG changes of hyperkalemia?')).toBe(false);
   });
 
-  it('tree: answers stay in place; "Other answer" switches the route; the line ends in End', async () => {
+  it('K: each question is a list; the chosen answer is checked; tapping another switches the route', async () => {
     launch('#/pathway/hyperkalemia-management');
-    await layout('Tree');
+    await layout('K, Choice lists');
     await tap(/^Confirmed or likely/);
     await tap(/^Yes/);
+    expect(document.querySelectorAll('[aria-checked="true"].akg-list-row, .akg-list-row [aria-checked="true"], [aria-checked="true"]').length).toBeGreaterThan(0);
+    expect(hasText('Cardiac membrane stabilization')).toBe(true);
+    await tap(/^No/);
+    expect(hasText('Cardiac membrane stabilization')).toBe(false);
+    expect(hasText('Severity?')).toBe(true);
+  });
+
+  it('J: one step per page; the back button steps back; the last page has Done', async () => {
+    launch('#/pathway/hyperkalemia-management');
+    await layout('J, Drill-down');
+    const heading = () => document.querySelector('.pw-drill__head h2')!.textContent;
+    expect(heading()).toBe('True hyperkalemia?');
+    await tap(/^Confirmed or likely/);
+    expect(heading()).toBe('ECG changes of hyperkalemia?');
+    await tap('Back to True hyperkalemia?');
+    expect(heading()).toBe('True hyperkalemia?');
+    await tap(/^Confirmed or likely/);
+    await tap(/^Yes/);
+    expect(heading()).toBe('Cardiac membrane stabilization');
+    await tap(/Severity\?/);
     await tap(/^Severe/);
-    expect(hasText('Your answer:')).toBe(true);
-    expect(document.querySelector('.pw-tree__dot--caution')).toBeTruthy();
-    expect(document.querySelector('.pw-tree__node--end:not(.pw-tree__node--ahead)')).toBeTruthy();
-    await tap(/^Other answer:\s*No/);
-    expect(hasText('Cardiac membrane stabilization')).toBe(false);
-    expect(document.querySelector('.pw-tree__node--ahead')).toBeTruthy();
+    await tap(/K⁺ elimination/);
+    await tap(/Monitoring and etiology/);
+    expect(heading()).toBe('Monitoring and etiology');
+    expect(screen.getByRole('button', { name: 'Done' })).toBeTruthy();
   });
 
-  it('map: the step is in the panel, with any doses since the last answer; the chart switches branches', async () => {
+  it('L: opens full screen over everything; answers at the bottom; Close keeps the place', async () => {
     launch('#/pathway/hyperkalemia-management');
-    await layout('Map');
+    await layout('L, Full screen');
+    expect(screen.queryByRole('dialog')).toBeNull();
+    await tap('Start Pathway');
+    expect(screen.getByRole('dialog').textContent).toContain('True hyperkalemia?');
     await tap(/^Confirmed or likely/);
     await tap(/^Yes/);
-    const panel = document.querySelector('.pw-panel')!;
-    expect(panel.textContent).toContain('Cardiac membrane stabilization');
-    expect(panel.textContent).toContain('Severity?');
-    expect(panel.querySelector('.dose-rows')).toBeTruthy();
-    await tap('Switch to No');
-    expect(hasText('Cardiac membrane stabilization')).toBe(false);
+    expect(screen.getByRole('dialog').textContent).toContain('Cardiac membrane stabilization');
+    await tap('Continue');
+    expect(screen.getByRole('dialog').textContent).toContain('Severity?');
+    await tap('Close');
+    expect(screen.queryByRole('dialog')).toBeNull();
+    expect(screen.getByRole('button', { name: /Continue Pathway/ })).toBeTruthy();
   });
 
   it('the AKI pathway works too, and the Rapids page links to its pathway', async () => {
