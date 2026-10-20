@@ -2,6 +2,18 @@
 
 What changed in each version of Wards, newest first. The version is shown in Settings (gear on Home).
 
+## 2026.10.19.3
+
+Rapids and Timed Mode, as approved on the mock-ups:
+- The Rapids tab lists emergencies by system, each with a one-line hint. Hyperkalemia is the first one.
+- Home's Rapids shortcuts open the emergency directly. Tap Edit to choose which ones (up to four).
+- An emergency page has Start Timed Mode at the top, then the Do Now steps in red: when each step applies ("If ECG changes"), what to check first, one drug per dose row (tap for the dose details; calcium chloride shows under calcium gluconate for cardiac arrest), and warnings such as Hypoglycemia. The button at the top right shows the topic's At a Glance, with Open Full Topic.
+- The Hyperkalemia topic page has a red button at the top right that shows the Do Now steps, with Start Timed Mode and Open Full Emergency.
+- Timed Mode fills the screen and shows the time since you started. It shows one step at a time with large doses; tap Mark Given or Skip for each dose. The log shows the clock time and the time since start for each dose; Undo takes back a mistaken tap. Due Next shows the next glucose and potassium checks.
+- The down arrow at the top left minimizes Timed Mode: the timer stays in a bar above the tabs on every screen; tap it to go back to the same step. It keeps running if you close the app.
+- End Timed Mode asks first, then shows a summary of what was given and when and what's due next, with Copy Summary. It stays on this iPhone only and is cleared when you tap Done.
+- No clinical content changed: the Do Now steps use the Hyperkalemia card's existing lines, doses and sources.
+
 ## 2026.10.19.2
 
 Fewer dotted values: a value is underlined and tappable only when its pop-up tells you something the line doesn't already say.

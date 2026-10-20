@@ -70,6 +70,41 @@ related:
 - Condition and approach cards need `definition` and `reviewed`. `based_on` is optional and not shown (the "Based on" line was removed 2026-10-18); All Sources includes it and the definition's sources.
 - Related and Sources are added by the app; don't write them as sections.
 
+## An emergency (Do Now)
+A condition or approach topic that is also an emergency has a `## Do Now` section, written **before** At a Glance, and a one-line `emergency_hint` in the front matter (50 characters at most, shown under its name in Rapids). It lives in the topic's file (one home) and uses the topic's own dose items; it is not one of the page's sections. It becomes the emergency's page in the Rapids tab, the pop-up behind the topic page's red Rapids button, and the steps of Timed Mode.
+
+```markdown
+emergency_hint: Calcium, insulin-dextrose, remove K⁺   # in the front matter
+---
+## Do Now
+1. Stabilize the myocardium
+   - If: ECG changes ^[source-id]
+   - Check: STAT 12-lead ECG at {{threshold:k-ecg-monitoring}}. ^[source-id]
+
+   {{dose:calcium-gluconate-hyperkalemia}}
+
+   - Repeat if ECG changes persist or recur. ^[source-id]
+2. Shift K⁺ into cells
+   {{dose:insulin-regular-hyperkalemia}}
+
+   - Warning: Hypoglycemia ^[source-id]
+
+:::note
+- A caveat about the whole emergency. ^[source-id]
+:::
+
+## At a Glance
+```
+
+- 2–8 numbered steps, each with a short name ("Shift K⁺ into cells"). Inside a step, every line is one of:
+  - `- If: …` the condition line ("If ECG changes"); at most one, first.
+  - `- Check: …` what to check before giving (shown in an orange Check box).
+  - `{{dose:id}}` a dose, one drug per row, in the order they're given. A dose's `alternative` (e.g. calcium chloride in arrest) shows under it automatically.
+  - `- Warning: …` one to three words, shown as a warning tag on the dose row above it.
+  - `- …` a short note.
+- After the steps, only `:::note` boxes. Every line needs its source, as everywhere else; no doses typed as text.
+- **Due Next in Timed Mode** comes from the topic's own recheck times: give a `:::times` block `{after=… check=…}`: `after=first` (from the first dose given) or `after=<dose-id>` (from that dose, which must be in Do Now), `check=` what is rechecked, and `unit=min` or `unit=h` when the times are bare numbers. For example `:::times{after=insulin-regular-hyperkalemia check=Glucose unit=min} Glucose after insulin-dextrose, minutes ^[source-id]`.
+
 ## Rules the check enforces
 - Section headings (`##`) are exactly the card type's sections (`CARD-TYPES.md` Part 2), in their fixed order; At a Glance is required and has 3–6 bullets.
 - `###` headings appear only inside More Information and are its subsections, in their fixed order. `### Title: description` adds a short description (60 characters at most) shown while the row is closed. More Information holds nothing outside its subsections.
@@ -78,6 +113,7 @@ related:
 - Inserts (`{{type:id}}`), links (`[[card-id]]`, `[[card-id|label]]` or `[[card-id/section|label]]`), the linked section, related cards and `based_on` sources must exist. Tags are `[!cannot-miss]` or `[!most-common]`.
 - `:::scale` has 2–5 bands, `:::compare` 2–3 columns (both "Label: text"), `:::note` 1–3 lines, `:::times` 1–12 times, `:::onset` 2–12 items: each `{{dose:id}}` (the dose needs an `onset` like "About 15 minutes") or `Name: onset | lasts ^[source]` for something that isn't a dose (e.g. `Hemodialysis: Immediate | Variable`).
 - Data items have their required fields, sources that exist, and US units; dose items use only the fields in `DATA-TYPES.md`.
+- An emergency (`## Do Now`) follows the format above: topics only, a short `emergency_hint`, 2–8 steps that each do something, `If:` first and once, warnings of one to three words, only `:::note` after the steps; `:::times{…}` settings name a dose in Do Now (or `first`), what is checked, and readable times.
 
 ## Formatting inside sections
 - Bullets (`- `, one nesting level: indent sub-bullets two spaces under a lead-in line ending in a colon), paragraphs, tables (`| … |`; a row's sources go at the end of the row; the first column stays in place when the table scrolls), `####` subheadings.
