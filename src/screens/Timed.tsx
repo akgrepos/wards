@@ -83,7 +83,7 @@ export function TimedScreen() {
           <>
             <div className="timed-head">
               <p className="ios-footnote-emphasized secondary eyebrow">{card.title} · Step {current!.step + 1} of {total} · {plainText(step.title)}</p>
-              <h1 className="ios-title-1-emphasized">{step.condition ? <>If <Inlines xs={step.condition.inlines} /></> : <Inlines xs={step.title} />}</h1>
+              <h1 className="ios-title-2-emphasized">{step.condition ? <>If <Inlines xs={step.condition.inlines} /></> : <Inlines xs={step.title} />}</h1>
             </div>
             <Checks parts={checks} />
             {doses.length > 0 && (

@@ -11,7 +11,7 @@ Settled 2026-10-17; page layout updated 2026-10-18 for the approved redesign (to
 - One-line definition, with its source
 - "Reviewed" month and year. No "Based on" line (removed 2026-10-18, owner): the per-line source tags and All Sources name the guidelines
 - Search aliases (hidden; used by search)
-- Top right: the **quote-mark** button (Show Sources: off when a page opens; while on it is highlighted and every line ends in one source pill), the **Contents** button (a menu of the page's sections, the one being read checked, plus Collapse All / Expand All) and the favorite star, in one group. Topics with an emergency also get a **bolt** button that opens the emergency pop-up (Phase 4); it is hidden when there is none. No row of section buttons.
+- Top right: the **quote-mark** button (Show Sources: off when a page opens; while on it is highlighted and every line ends in one source pill), the **Contents** button (a menu of the page's sections, the one being read checked, plus Collapse All / Expand All) and the favorite star, in one group. Topics with an emergency also get a red **Rapids** button (the Rapids tab's symbol, `staroflife.fill`) that opens the Do Now pop-up: the steps and doses, Start Timed Mode and Open Full Emergency; it is hidden when there is none. No row of section buttons.
 
 **At a Glance** (always first)
 - 3–6 bullets: the bottom line you need in 15 seconds at the bedside
@@ -44,6 +44,12 @@ Settled 2026-10-17; page layout updated 2026-10-18 for the approved redesign (to
 - Items with sub-items use one level of nested bullets (HIG). Links to other pages are woven into the sentence ("[[renal-hyperkalemia|hyperkalemia]]"), never added after it in brackets.
 - Onset and duration of several treatments: a "Compare Onset and Duration" row (`:::onset`) that opens them side by side, fastest first, built from the dose items; not a table on the page.
 - Guideline recommendation grades (e.g. "Class I, Level A") are not shown (decided)
+
+**Emergency page (Rapids)** (2026-10-19, Phase 4)
+- For a topic with a `## Do Now` section (`CONTENT-FORMAT.md`). Listed in the Rapids tab by system, with its one-line hint; Home shows up to four as shortcuts (Edit chooses them).
+- Red "Rapids" tag, title, **Start Timed Mode** (accent color, not red), then **Do Now**: red numbered steps, each with its "If …" condition line, a Check box for what to check first, one drug per dose row (each opens its dose sheet; an alternative shows under it), warnings as tags, short notes; Note boxes after the steps; one source line for the section (Sources UKKA '26 · KDIGO '20 …).
+- Top right: the Topics tab's symbol opens the topic pop-up (At a Glance, then Open Full Topic). One pop-up at a time.
+- **Timed Mode** (full screen, no tab bar): the elapsed time in a red timer capsule at the top; Minimize (chevron down) keeps it running in a bar above the tab bar on every screen, which returns to the same step; progress, the current step's condition, Check box and large doses ("Give", "Then Give"), Skip and Mark Given (accent), "Mark … Given Instead" for an alternative; Due Next (from the topic's recheck times) and a log with clock time and time since start, with Undo. End Timed Mode (red text) asks first, then shows a summary: what was given and when, what's due next, Copy Summary and Done. Kept only on the phone, cleared on Done; the timer survives the app closing.
 
 ---
 
