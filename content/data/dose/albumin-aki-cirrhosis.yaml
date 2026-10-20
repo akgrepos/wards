@@ -8,5 +8,5 @@ duration: 2 days
 max: 100 g/day
 cautions:
   - "Watch for volume overload and pulmonary edema."
-notes: "If SCr does not improve after 2 days and HRS-AKI criteria are met, treat with a vasoconstrictor plus albumin."
-sources: [aasld-ascites-hrs-2021]
+notes: "Given as a 48-hour volume challenge after diuretics are stopped and precipitants (e.g. infection) treated. If SCr does not improve after 2 days and stage 2 or higher HRS-AKI criteria are met, treat with a vasoconstrictor plus albumin."
+sources: [aasld-ascites-hrs-2021, aasld-aclf-2024]

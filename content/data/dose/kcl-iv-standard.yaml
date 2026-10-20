@@ -12,7 +12,7 @@ alternative:
   when: "Arrhythmia, digitalis toxicity, cardiac ischemia or severe hypokalemia, on continuous ECG"
 adjustments:
   - when: "GFR <30 mL/min/1.73 m²"
-    change: "Reduce rates by 50–80%; recheck K⁺ every 2–4 hours"
+    change: "Start low and recheck K⁺ every 2–4 hours (label: risk of life-threatening hyperkalemia; contraindicated in renal failure)"
 cautions:
   - "Never undiluted or as an IV push: direct injection of the concentrate can be instantly fatal."
   - "Give in saline, not dextrose: dextrose can lower K⁺ further."
