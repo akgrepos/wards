@@ -11,6 +11,8 @@ Three new topics in Infectious Disease (Wave 1, second batch):
 
 New: **regimen boxes.** A gray "Regimen" box lists a treatment's options joined by "Or", with "Plus" between drugs given together and "One of:" above a choice of drugs. Every drug is still its own dose row; tap it for the dose sheet (kidney dose changes, cautions). Antibiotic doses are shared, so later cards reuse the same rows.
 
+Fixed: numbered steps (in Treatment and elsewhere) showed blank circles; the numbers are back.
+
 ## 2026.10.19.13
 
 Dose details tightened on existing topics (no new topics):
