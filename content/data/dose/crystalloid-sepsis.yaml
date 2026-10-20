@@ -1,0 +1,14 @@
+drug_name: Crystalloid (balanced crystalloid preferred)
+indication: Sepsis-induced hypoperfusion or septic shock, initial resuscitation
+population: Adults
+route: IV
+amount: "30"
+unit: mL/kg
+rate: "at least this, within the first 3 hours"
+give_when: "Sepsis with hypotension, elevated lactate or other signs of hypoperfusion"
+repeat: "Further fluid only with signs of hypoperfusion, guided by dynamic measures (passive leg raise, stroke volume), capillary refill and lactate"
+cautions:
+  - "A weak recommendation from low-quality evidence; individualize in heart failure, kidney failure or volume overload."
+  - "Albumin may be added after large crystalloid volumes."
+notes: "Surviving Sepsis 2021: crystalloids first line (strong); balanced over saline (weak); against starches (strong) and gelatin (weak). CLOVERS: a restrictive, vasopressor-early strategy after 1–3 L had similar mortality to a liberal one."
+sources: [ssc-sepsis-2021, clovers-2023]

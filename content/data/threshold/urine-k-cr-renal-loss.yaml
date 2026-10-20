@@ -1,0 +1,5 @@
+name: Spot urine K⁺-to-creatinine ratio indicating renal K⁺ loss
+value: ">13"
+unit: mEq/g
+note: "Same as >1.5 mEq/mmol; cutoffs vary between sources. A 24-hour collection (>15 mEq/day) is more accurate."
+sources: [kardalas-hypokalemia-2018]

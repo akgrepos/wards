@@ -1,0 +1,14 @@
+drug_name: Dextrose 5% in water (D5W)
+indication: Overcorrection of chronic hyponatremia (re-lowering serum Na⁺)
+population: Adults
+route: IV
+amount: "3"
+unit: mL/kg
+rate: "over 1 hour"
+give_when: "Prevent: from a rise of 6–8 mEq/L in the first 24 h (starting Na⁺ <120 mEq/L), match ongoing dilute urine losses. Re-lower: consider once Na⁺ is past the limit"
+repeat: "Recheck Na⁺ after each hour; repeat until Na⁺ is back below the limit"
+cautions:
+  - "Give with desmopressin to stop the ongoing water diuresis."
+  - "Re-lowering is not validated in controlled trials."
+notes: "The European guideline uses 10 mL/kg of electrolyte-free water, with or without desmopressin 2 mcg IV, once the 10 mEq/L limit is exceeded. Starting Na⁺ ≥120 mEq/L: intervention is probably unnecessary (US panel)."
+sources: [verbalis-hyponatremia-2013, hoorn-hyponatremia-guidelines-2017]

@@ -2,6 +2,13 @@
 
 What changed in each version of Wards, newest first. The version is shown in Settings (gear on Home).
 
+## 2026.10.19.11
+
+Three new topics in Kidney, Electrolytes and Urology (Wave 1, first batch):
+- **Hyponatremia** (condition), with a Rapids page for severe symptoms: hypertonic saline boluses, rechecks, correction limits and how to prevent or reverse overcorrection. The topic covers causes by tonicity and volume, the SIADH criteria, urine tests, treatment by symptoms and cause (fluid restriction, urea, tolvaptan), and the US and European guidelines side by side.
+- **Hypokalemia** (condition): severity, causes, the urine potassium and acid–base workup, and treatment using the same potassium and magnesium doses as Electrolyte Repletion.
+- **IV Fluids: Selection and Dosing** (reference): what each fluid contains, balanced fluids vs saline, resuscitation and maintenance doses, replacement, albumin in cirrhosis, and the main trials.
+
 ## 2026.10.19.10
 
 Topic pages: the "When to Call" section is now called **Escalation** (consults, ICU, transfer). Its content is unchanged, and old links to the section still open it.

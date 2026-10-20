@@ -1,0 +1,15 @@
+drug_name: Sodium chloride 3% (hypertonic saline)
+indication: Chronic hyponatremia with moderate symptoms (e.g. nausea, confusion), continuous infusion
+population: Adults
+route: IV
+amount: "1–1.5"
+unit: mL/kg
+rate: "over 6 hours, as a continuous infusion"
+give_when: "Moderate symptoms without seizures, coma or signs of herniation"
+repeat: "Serum Na⁺ every 4–6 hours; adjust to a rise of 4–8 mEq/L per day (4–6 at high risk of osmotic demyelination)"
+max: "Na⁺ rise ≤10–12 mEq/L in any 24 h (≤8 mEq/L at high risk of osmotic demyelination)"
+cautions:
+  - "Correction formulas are often inaccurate; follow measured Na⁺."
+  - "Watch urine output: a water diuresis can raise Na⁺ quickly; with hypovolemia or low solute intake, an expert review gives desmopressin alongside."
+notes: "Example: 80 kg × 1.5 mL/kg = 120 mL over 6 hours (20 mL/h). The European guideline instead gives a single 150 mL bolus for moderately severe symptoms."
+sources: [rondon-berrios-hypertonic-2022, hoorn-hyponatremia-guidelines-2017, verbalis-hyponatremia-2013]

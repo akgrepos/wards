@@ -1,0 +1,5 @@
+name: Urine osmolality showing suppressed ADH (maximally dilute urine)
+value: "≤100"
+unit: mOsm/kg
+note: "Advanced kidney disease limits dilution, so urine osmolality may stay higher despite suppressed ADH."
+sources: [verbalis-hyponatremia-2013, hoorn-hyponatremia-guidelines-2017]

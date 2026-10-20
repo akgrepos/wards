@@ -1,0 +1,13 @@
+drug_name: Albumin 25%
+indication: Spontaneous bacterial peritonitis, with antibiotics (day 3)
+population: Adults
+route: IV
+amount: "1"
+unit: g/kg
+frequency: "once on day 3"
+give_when: "After the day 1 dose"
+cautions:
+  - "Watch for volume overload and pulmonary edema."
+  - "Label: with normal blood volume, infuse no faster than about 1 mL per minute; no more than 2 g/kg per day."
+  - "Dilute only with 0.9% saline or D5W, never sterile water (hemolysis)."
+sources: [label-flexbumin-2024, aasld-ascites-hrs-2021, ictmg-albumin-2024]
