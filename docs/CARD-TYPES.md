@@ -67,7 +67,7 @@ A disease or syndrome. The main card type.
 5. **Diagnosis**: initial tests and why; interpretation and thresholds; further testing; low-value tests to avoid
 6. **Treatment**: pathway ⟨Open row⟩ when one exists; numbered steps (immediate, then definitive, by severity or subtype); dose rows ⟨inserted⟩
 7. **Monitor**: what to trend and when (timelines of recheck times), targets, expected response, triggers to escalate
-8. **When to Call**: which specialty and when (general criteria, never institution-specific)
+8. **Escalation**: which specialty and when (general criteria, never institution-specific)
 9. **More Information**: Where Guidelines Differ · Special Populations (kidney or liver disease, pregnancy, older adults, immunocompromised, drug-specific) · Complications · After the Acute Phase (discharge, follow-up, long-term management, prevention) · Evidence (key studies, one line each) · Why the Treatment Order · Epidemiology and Pathophysiology
 10. Pearls · Related · Sources
 
@@ -82,7 +82,7 @@ A symptom, sign or abnormal result. Uses the condition page's names where they f
 6. **Diagnosis**: first-line tests, then second-line by scenario; interpretation tables (result → likely causes), notes on their limits ⟨Note box⟩; the pathway ⟨Open row⟩
 7. **Treatment**: common initial orders (checklist of orders only, not tests; one line links to the first-line tests in Diagnosis), then initial management while the cause is being found
 8. **Monitor**
-9. **When to Call**
+9. **Escalation**
 10. **More Information**: Where Guidelines Differ · Special Populations · Complications · After the Acute Phase · Evidence · Epidemiology and Pathophysiology
 11. Pearls · Related · Sources
 
@@ -123,7 +123,7 @@ The layouts for types 3–8 were proposed with the redesign and approved by the 
 - Header: Condition · Kidney, Electrolytes and Urology · definition · reviewed
 - **At a Glance** · **Severity** (scale mild / moderate / severe; monitoring) · **Causes** (one grouped list: pseudohyperkalemia, shift out of cells, impaired excretion (cannot miss), intake) · **Presentation** (symptoms; ECG progression) · **Diagnosis**
 - **Treatment:** ⟨pathway Open row⟩ → numbered steps: membrane stabilization · intracellular shift · elimination, each with its dose rows; Compare Onset and Duration row; hyperkalemic cardiac arrest
-- **Monitor:** K⁺ recheck times; glucose times after insulin (timelines) · **When to Call**
+- **Monitor:** K⁺ recheck times; glucose times after insulin (timelines) · **Escalation**
 - **More Information:** Where Guidelines Differ (insulin dose, patiromer) · Special Populations (digoxin toxicity) · Complications · After the Acute Phase · Epidemiology and Pathophysiology
 - Pearls · Related (Acute Kidney Injury) · Sources
 

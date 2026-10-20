@@ -156,7 +156,7 @@ related:
 - Initiate urgently for complications refractory to medical therapy; discuss potential indications with nephrology or critical care immediately. ^[kdigo-aki-2012, nice-aki-2024]
 - Otherwise decide on the whole clinical picture and trends, not single urea, SCr or K⁺ values. ^[kdigo-aki-2012, nice-aki-2024]
 
-## When to Call
+## Escalation
 - Nephrology within 24 h: possible GN, vasculitis, AIN or myeloma; no clear cause; inadequate response; complications; stage 3; kidney transplant; CKD stage 4–5. ^[nice-aki-2024]
 - Not needed when the cause is clear and AKI responds promptly (unless kidney transplant). ^[nice-aki-2024]
 - Urology for upper tract obstruction; immediately for pyonephrosis, solitary kidney, bilateral obstruction or complications; nephrostomy or stent within 12 h. ^[nice-aki-2024]

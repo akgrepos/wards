@@ -40,7 +40,7 @@ describe('topic page', () => {
 
   it('shows the sections in order, with severity bands, time chips, steps and comparisons', () => {
     launch('#/card/renal-hyperkalemia');
-    for (const t of ['At a Glance', 'Severity', 'Causes', 'Presentation', 'Diagnosis', 'Treatment', 'Monitor', 'When to Call', 'More Information', 'Pearls']) {
+    for (const t of ['At a Glance', 'Severity', 'Causes', 'Presentation', 'Diagnosis', 'Treatment', 'Monitor', 'Escalation', 'More Information', 'Pearls']) {
       expect(screen.getAllByText(t).length).toBeGreaterThan(0);
     }
     expect(document.querySelector('.akg-scale-bar, [class*="scale"]')).toBeTruthy();

@@ -20,6 +20,9 @@ export type Route =
   | { name: 'timed' }
   | { name: 'not-found' };
 
+// Sections renamed since: old links still open the right section ("When to Call" became "Escalation", 2026-10-19).
+const RENAMED_SECTIONS: Record<string, string> = { 'when-to-call': 'escalation' };
+
 const ROOTS = ['emergencies', 'topics', 'library', 'search', 'settings', 'favorites', 'timed'] as const;
 
 export function parseRoute(hash: string): Route {
@@ -27,7 +30,7 @@ export function parseRoute(hash: string): Route {
   const [a, b, c] = parts;
   if (!a || a === 'home') return parts.length <= 1 ? { name: 'home' } : { name: 'not-found' };
   if (a === 'system' && b && !c) return { name: 'system', id: b };
-  if (a === 'card' && b) return { name: 'card', id: b, section: c };
+  if (a === 'card' && b) return { name: 'card', id: b, section: c && (RENAMED_SECTIONS[c] ?? c) };
   if (a === 'pathway' && b && !c) return { name: 'pathway', id: b };
   if (a === 'emergency' && b && !c) return { name: 'emergency', id: b };
   if (a === 'library' && b && !c) return { name: 'library-list', id: b };

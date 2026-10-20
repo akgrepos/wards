@@ -123,10 +123,10 @@ describe('card format', () => {
   });
   it('the migrated cards use the new sections', () => {
     const hk = real.cards.find((c) => (c as { id: string }).id === 'renal-hyperkalemia') as unknown as { sections: { key: string; subsections: { key: string }[] }[] };
-    expect(hk.sections.map((s) => s.key)).toEqual(['at-a-glance', 'severity', 'causes', 'presentation', 'diagnosis', 'treatment', 'monitor', 'when-to-call', 'more', 'pearls']);
+    expect(hk.sections.map((s) => s.key)).toEqual(['at-a-glance', 'severity', 'causes', 'presentation', 'diagnosis', 'treatment', 'monitor', 'escalation', 'more', 'pearls']);
     expect(hk.sections.find((s) => s.key === 'more')!.subsections.map((s) => s.key)).toEqual(['guidelines-differ', 'special-populations', 'complications', 'after-acute', 'epi-patho']);
     const aki = real.cards.find((c) => (c as { id: string }).id === 'renal-aki') as unknown as { sections: { key: string }[] };
-    expect(aki.sections.map((s) => s.key)).toEqual(['at-a-glance', 'definition', 'first-steps', 'causes', 'presentation', 'diagnosis', 'treatment', 'when-to-call', 'more', 'pearls']);
+    expect(aki.sections.map((s) => s.key)).toEqual(['at-a-glance', 'definition', 'first-steps', 'causes', 'presentation', 'diagnosis', 'treatment', 'escalation', 'more', 'pearls']);
   });
 });
 

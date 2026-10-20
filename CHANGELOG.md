@@ -2,6 +2,10 @@
 
 What changed in each version of Wards, newest first. The version is shown in Settings (gear on Home).
 
+## 2026.10.19.10
+
+Topic pages: the "When to Call" section is now called **Escalation** (consults, ICU, transfer). Its content is unchanged, and old links to the section still open it.
+
 ## 2026.10.19.9
 
 Pathway pages: new test layout **M · Flowchart**. The switch now reads I · K · A · L · M.
