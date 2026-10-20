@@ -67,6 +67,111 @@ h1, p { margin: 0; }
 .subheading { margin: var(--space-4) 0 0; }
 .missing { color: var(--system-red); }
 .pathway { display: flex; flex-direction: column; gap: var(--space-8); }
+
+/* Pathway pages, TEST LAYOUTS (owner, 2026-10-19). AKG tokens only; the layout the owner chooses moves into the
+   design system as a generic component, and the other two are removed. One color, one job: blue = tappable,
+   red = caution (danger), gray = neutral; your route is drawn in the label color. */
+.pw-layout { display: flex; flex-direction: column; gap: var(--space-8); }
+.pw-block { display: block; }
+.pw-kind { margin: 0; text-transform: uppercase; letter-spacing: 0.02em; color: color-mix(in srgb, var(--label) 30%, var(--label-secondary)); }
+.pw-kind--caution { color: color-mix(in srgb, var(--system-red) 75%, var(--label)); }
+.pw-kind--now { color: var(--accent-text); }
+.pw-box h2, .pw-step h2, .pw-single h2 { margin: 0; overflow-wrap: break-word; }
+.pw-box p, .pw-step p, .pw-single p { margin: 0; overflow-wrap: break-word; }
+
+/* Answers: solid tiles with a blue chevron before choosing; then "Your answer" outlined, the others switch the route. */
+.pw-answers { display: flex; flex-direction: column; gap: var(--space-8); }
+.pw-answers--grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 9.5rem), 1fr)); width: 100%; }
+.pw-answer {
+  display: flex; align-items: center; gap: var(--space-12); width: 100%; min-height: 3.5rem; box-sizing: border-box;
+  padding: var(--space-12) var(--space-14) var(--space-12) var(--space-16); border: 0; border-radius: 18px; text-align: left;
+  font: inherit; color: var(--label); cursor: pointer; background: var(--background-grouped-secondary); box-shadow: 0 0 0 0.5px var(--separator);
+}
+.pw-step .pw-answer, .pw-single .pw-answer { background: var(--fill-tertiary); box-shadow: none; }
+.pw-answer:active { background: var(--fill-secondary); }
+.pw-answer__text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: var(--space-2); overflow-wrap: break-word; }
+.pw-answer__detail { color: color-mix(in srgb, var(--label) 30%, var(--label-secondary)); }
+.pw-answer__chevron { flex: none; width: 0.5rem; height: 0.5rem; margin-right: var(--space-4); border-right: 2px solid var(--accent-text); border-bottom: 2px solid var(--accent-text); transform: rotate(-45deg); }
+.pw-answer--chosen, .pw-step .pw-answer--chosen, .pw-single .pw-answer--chosen { background: var(--background-grouped-secondary); box-shadow: 0 0 0 2px var(--label); }
+.pw-answer__mark { color: var(--label); }
+.pw-answer--other, .pw-step .pw-answer--other { background: transparent; box-shadow: 0 0 0 1px var(--separator-opaque); color: color-mix(in srgb, var(--label) 30%, var(--label-secondary)); }
+.pw-answer__to { color: var(--accent-text); }
+
+/* D: flowchart. Full-width boxes joined by arrows; the current box is outlined in blue; End is a rounded terminal. */
+.pw-flow { display: flex; flex-direction: column; align-items: center; }
+.pw-box {
+  width: 100%; box-sizing: border-box; display: flex; flex-direction: column; gap: var(--space-8);
+  padding: var(--space-14) var(--space-16); border-radius: 18px; background: var(--background-grouped-secondary); box-shadow: 0 0 0 1.5px var(--label);
+}
+.pw-box--caution { background: color-mix(in srgb, var(--system-red) 8%, var(--background-grouped-secondary)); box-shadow: 0 0 0 1.5px var(--system-red); }
+.pw-box--caution .akg-value-row, .pw-step--caution .akg-value-row { background: var(--background-grouped-secondary); }
+.pw-box--now { box-shadow: 0 0 0 2.5px var(--accent); }
+.pw-arrow { position: relative; flex: none; width: 2px; height: var(--space-24); margin-bottom: var(--space-8); background: var(--label); }
+.pw-arrow::after { content: ""; position: absolute; left: -5px; bottom: -8px; border: 6px solid transparent; border-bottom: 0; border-top: 8px solid var(--label); }
+.pw-arrow--ahead { background: repeating-linear-gradient(var(--separator-opaque) 0 4px, transparent 4px 8px); }
+.pw-arrow--ahead::after { border-top-color: var(--separator-opaque); }
+.pw-branch { width: 2px; height: var(--space-12); background: var(--label); }
+.pw-flow .pw-answers--branch { width: 100%; padding-top: var(--space-12); border-top: 2px solid var(--label); }
+.pw-terminal {
+  width: 100%; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; gap: var(--space-2);
+  padding: var(--space-12) var(--space-16); border-radius: 999px; background: var(--background-grouped-secondary); box-shadow: 0 0 0 2.5px var(--label);
+}
+
+/* I: stages that fold. One card; finished stages are one line (tap Change to reopen), later ones gray. */
+.pw-stages { display: flex; flex-direction: column; border-radius: var(--radius-grouped); background: var(--background-grouped-secondary); overflow: hidden; }
+.pw-stage { position: relative; }
+.pw-stage + .pw-stage::before, .pw-stages .pw-end::before { content: ""; position: absolute; top: 0; left: 3.25rem; right: 0; border-top: 0.5px solid var(--separator); }
+.pw-stage__head, .pw-stage--later {
+  display: flex; align-items: center; gap: var(--space-12); width: 100%; min-height: 3.75rem; box-sizing: border-box;
+  padding: var(--space-10) var(--space-16); border: 0; background: transparent; font: inherit; color: var(--label); text-align: left;
+}
+button.pw-stage__head { cursor: pointer; }
+button.pw-stage__head:active { background: var(--fill-tertiary); }
+.pw-stage__num { flex: none; width: 1.6rem; height: 1.6rem; border-radius: 999px; display: flex; align-items: center; justify-content: center; background: var(--label); color: var(--background-grouped-secondary); }
+.pw-stage__num--now { background: var(--accent); color: var(--on-accent); }
+.pw-stage--later .pw-stage__num { background: transparent; box-shadow: inset 0 0 0 2px var(--label-tertiary); color: color-mix(in srgb, var(--label) 30%, var(--label-secondary)); }
+.pw-stage--later .ios-body { color: color-mix(in srgb, var(--label) 30%, var(--label-secondary)); }
+.pw-stage__text { flex: 1; min-width: 0; display: flex; flex-direction: column; overflow-wrap: break-word; }
+.pw-stage__toggle { flex: none; color: var(--accent-text); }
+.pw-stage__body { display: flex; flex-direction: column; gap: var(--space-16); padding: 0 var(--space-16) var(--space-16) 3.25rem; }
+.pw-step { display: flex; flex-direction: column; gap: var(--space-8); }
+.pw-step--caution { padding: var(--space-12); border-radius: 16px; background: color-mix(in srgb, var(--system-red) 8%, var(--background-grouped-secondary)); }
+.pw-end { position: relative; display: flex; align-items: center; gap: var(--space-12); min-height: 3.75rem; box-sizing: border-box; padding: var(--space-10) var(--space-16); color: color-mix(in srgb, var(--label) 30%, var(--label-secondary)); }
+.pw-end > span:last-child { display: flex; flex-direction: column; }
+.pw-end__square { flex: none; width: 1.6rem; height: 1.6rem; border-radius: 6px; box-shadow: inset 0 0 0 2px var(--label-tertiary); }
+.pw-end--reached { color: var(--label); }
+.pw-end--reached .pw-end__square { background: var(--label); box-shadow: none; }
+.pw-single .pw-end { padding: var(--space-12); border-radius: 16px; background: var(--fill-tertiary); }
+
+/* H: one step with a stage rail. The rail moves above the step when the text is large. */
+.pw-railbox { container-type: inline-size; }
+.pw-railwrap { display: flex; gap: var(--space-8); }
+.pw-rail { flex: none; width: 5.25rem; margin: 0; padding: 0; list-style: none; }
+.pw-rail__stage { position: relative; display: flex; align-items: center; gap: var(--space-8); min-height: 3.25rem; color: color-mix(in srgb, var(--label) 30%, var(--label-secondary)); }
+.pw-rail__stage::before { content: ""; position: absolute; left: 6px; top: 0; bottom: 0; width: 2px; background: var(--separator-opaque); }
+.pw-rail__stage:first-child::before { top: 50%; }
+.pw-rail__stage:last-child::before { bottom: 50%; }
+.pw-rail__stage--done::before { background: var(--label); }
+.pw-rail__dot { position: relative; z-index: 1; flex: none; width: 14px; height: 14px; border-radius: 999px; background: var(--background-grouped); box-shadow: inset 0 0 0 2px var(--label-tertiary); }
+.pw-rail__stage--done .pw-rail__dot { background: var(--label); box-shadow: none; }
+.pw-rail__stage--now { color: var(--label); }
+.pw-rail__stage--now .pw-rail__dot { background: var(--accent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 25%, transparent); }
+.pw-rail__stage--end .pw-rail__dot { border-radius: 3px; }
+.pw-railmain { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: var(--space-8); }
+.pw-prev { display: flex; align-items: center; gap: var(--space-8); }
+.pw-prev > span { flex: 1; min-width: 0; overflow-wrap: break-word; }
+.pw-prev__v { color: var(--label); font-weight: 600; }
+.pw-single { display: flex; flex-direction: column; gap: var(--space-12); }
+.pw-single.pw-step--caution { padding: var(--space-16); border-radius: var(--radius-grouped); }
+@container (max-width: 20rem) {
+  .pw-railwrap { flex-direction: column; }
+  .pw-rail { width: auto; display: flex; flex-wrap: wrap; gap: var(--space-4) var(--space-12); }
+  .pw-rail__stage { min-height: 0; }
+  .pw-rail__stage::before { display: none; }
+}
+
+.pw-after { display: flex; flex-direction: column; gap: var(--space-16); }
+.pw-sources { padding-left: 0; padding-right: 0; }
 .criteria-block, .criteria { display: flex; flex-direction: column; gap: var(--space-8); }
 .dose-rows { display: flex; flex-direction: column; gap: var(--space-8); }
 .step-body .rich-list { list-style: disc; }

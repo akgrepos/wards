@@ -377,7 +377,7 @@ function Item({ it }: { it: ListItem }) {
 const dosesIn = (text?: string) => [...(text ?? '').matchAll(/\{\{\s*dose\s*:\s*([a-z0-9-]+)\s*\}\}/g)].map((m) => m[1]).filter((id, i, a) => a.indexOf(id) === i);
 
 // Pathways are their own pages now (owner, 2026-10-19): a card shows one row that opens the pathway's page.
-function PathwayRow({ id }: { id: string }) {
+export function PathwayRow({ id }: { id: string }) {
   const p = content.data.pathway?.[id] as Pathway | undefined;
   if (!p) return null;
   return (
