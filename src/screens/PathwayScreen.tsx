@@ -12,19 +12,20 @@ import { NotFoundScreen } from './Tabs';
 
 // A pathway's own page (owner, 2026-10-19: pathways leave their cards and become pages).
 // TEST BUILD (owner, 2026-10-19): layouts from the mock-up canvas, switched at the top of the page by letter (the
-// canvas's option letters), so the owner can try them on the phone before choosing one. Third set (owner, same day):
+// canvas's option letters), so the owner can try them on the phone before choosing one. Fourth set (owner, same day; A
+// replaced J):
 //   I · Stages: one list of stages; finished stages fold to one line, the current one is open (top choice so far).
 //   K · Choice lists: Settings-style sections; the chosen answer gets a checkmark.
-//   J · Drill-down: each step is its own page; the back button steps back.
+//   A · One step at a time: only the current step on the page, a stage bar, Your Path for earlier answers.
 //   L · Full screen: a focused full-screen task, one step at a time, answers within thumb reach.
 // All share one route: answers are kept while switching layouts, cleared by Start Over and on leaving the page.
 // Caution steps are red (owner, 2026-10-19). There is no list of all treatments at the end (owner, same day).
 
-export type Layout = 'stages' | 'choice' | 'drill' | 'guided';
+export type Layout = 'stages' | 'choice' | 'step' | 'guided';
 const LAYOUTS: { value: Layout; label: string; 'aria-label': string }[] = [
   { value: 'stages', label: 'I', 'aria-label': 'I, Stages' },
   { value: 'choice', label: 'K', 'aria-label': 'K, Choice lists' },
-  { value: 'drill', label: 'J', 'aria-label': 'J, Drill-down' },
+  { value: 'step', label: 'A', 'aria-label': 'A, One step at a time' },
   { value: 'guided', label: 'L', 'aria-label': 'L, Full screen' },
 ];
 const LAYOUT_KEY = 'wards:pathway-layout';
@@ -240,45 +241,59 @@ function ChoiceLayout({ p, route, ended, onChoose }: LayoutProps) {
   );
 }
 
-// ---- Layout J: drill-down pages ----
+// ---- Layout A: one step at a time ----
 
-// Each step is its own page, like Settings: the answers are a list and tapping one opens the next step; the top
-// bar's back button returns a step (HIG: hierarchical navigation). Actions show their doses with a Next row. The
-// last page ends with Done, which goes back to the card.
-function DrillLayout({ p, route, ended, view, onChoose, onNext, onDone, after }: StepProps) {
+// Only the current step, large, on the page. A stage bar says how far you are; the last answer shows above the
+// step with Change, and Your Path (top of the step) lists every earlier answer in a sheet. Actions show their doses
+// with Continue; Previous Step goes back one. The last step is the result with End of pathway.
+function StepLayout({ p, route, ended, view, onChoose, onNext, onPrev, onJump, after }: StepProps & { onJump: (i: number) => void }) {
+  const sheet = useSheet();
   const v = route[view];
   const stages = p.stages ?? [];
-  const stageNo = stages.indexOf(v.step.stage ?? '') + 1;
-  const earlier = route.slice(0, view).filter((x) => x.answer != null);
+  const stageIdx = stages.indexOf(v.step.stage ?? '');
   const isEnd = ended && view === route.length - 1;
+  const earlier = route.slice(0, view).map((x, i) => ({ x, i })).filter(({ x }) => x.answer != null);
+  const prev = earlier[earlier.length - 1];
+  const showPath = () => sheet({
+    title: 'Your Path',
+    body: (
+      <AKG.List footer="Tap a step to go back to it.">
+        {earlier.map(({ x, i }) => <AKG.ListRow key={x.id} title={answersOf(x.step)[x.answer!]?.label} subtitle={x.step.title} chevron onClick={() => { sheet(null); onJump(i); }} />)}
+      </AKG.List>
+    ),
+  });
   return (
-    <div className="pw-drill">
-      <header className="pw-drill__head">
-        <p className="ios-caption-1-emphasized pw-kind">{v.step.stage ?? KIND[v.step.kind]}{stageNo > 0 ? ` · Stage ${stageNo} of ${stages.length}` : ''}</p>
+    <div className="pw-one">
+      {stages.length > 0 && (
+        <div className="pw-one__progress">
+          <AKG.ProgressIndicator value={isEnd ? stages.length : Math.max(stageIdx, 0) + 1} max={stages.length} aria-label={`Stage ${stageIdx + 1} of ${stages.length}`} />
+          <div className="pw-one__progressline">
+            <span className="ios-footnote secondary">{isEnd ? 'End of pathway' : `Stage ${stageIdx + 1} of ${stages.length} · ${v.step.stage}`}</span>
+            {earlier.length > 0 && <AKG.Button variant="borderless" size="small" onClick={showPath}>Your Path ({earlier.length})</AKG.Button>}
+          </div>
+        </div>
+      )}
+      {prev && (
+        <div className="pw-one__prev">
+          <span className="ios-subheadline secondary">{prev.x.step.title} <strong className="pw-one__prevv">{answersOf(prev.x.step)[prev.x.answer!]?.label}</strong></span>
+          <AKG.Button variant="borderless" size="small" onClick={() => onJump(prev.i)}>Change</AKG.Button>
+        </div>
+      )}
+      <section className={`pw-one__step pw-step pw-step--${v.step.kind}`} aria-current="step">
+        <KindLabel step={v.step} />
         <h2 className="ios-title-1-emphasized">{v.step.title}</h2>
-        {v.step.kind === 'caution' && <AKG.Tag variant="critical">Caution</AKG.Tag>}
-      </header>
-      {asks(v.step) ? (
-        <>
-          {v.step.detail && <p className="ios-body"><RichText text={v.step.detail} /></p>}
-          <AKG.List header="Choose One" footer="Each answer opens the next step. Back returns to the last one.">
-            {answersOf(v.step).map((a, j) => (
-              <AKG.ListRow key={j} title={a.label} subtitle={a.detail ? <Plain text={a.detail} /> : undefined} checked={v.answer === j} chevron={v.answer !== j} onClick={() => onChoose(v.id, j)} />
-            ))}
-          </AKG.List>
-        </>
-      ) : (
-        <div className={`pw-drill__body pw-step pw-step--${v.step.kind}`}><StepBody step={v.step} /></div>
+        <StepBody step={v.step} />
+        {asks(v.step) && <Answers p={p} v={v} onChoose={(a) => onChoose(v.id, a)} />}
+        {isEnd && <EndMark reached />}
+      </section>
+      {!asks(v.step) && !isEnd && (
+        <div className="pw-one__buttons">
+          {view > 0 && <AKG.Button size="large" onClick={onPrev}>Previous Step</AKG.Button>}
+          <AKG.Button variant="prominent" size="large" onClick={onNext}>Continue</AKG.Button>
+        </div>
       )}
-      {!asks(v.step) && !isEnd && route[view + 1] && (
-        <AKG.List><AKG.ListRow overline="Next" title={route[view + 1].step.title} chevron onClick={onNext} /></AKG.List>
-      )}
-      {isEnd && <><EndMark reached /><AKG.Button variant="prominent" size="large" className="wide-button" onClick={onDone}>Done</AKG.Button>{after}</>}
-      {earlier.length > 0 && (
-        <AKG.List header="So Far">
-          {earlier.map((x) => <AKG.ListRow key={x.id} title={answersOf(x.step)[x.answer!]?.label} subtitle={x.step.title} />)}
-        </AKG.List>
-      )}
+      {asks(v.step) && view > 0 && <AKG.Button variant="borderless" onClick={onPrev}>Previous Step</AKG.Button>}
+      {isEnd && after}
     </div>
   );
 }
@@ -345,7 +360,7 @@ export function PathwayScreen({ id }: { id: string }) {
   const sheet = useSheet();
   const [layout, setLayout] = useState<Layout>(readLayout);
   const [choices, setChoices] = useState<Record<string, number>>({});
-  // J and L show one step at a time: the step on screen, as a place on the route.
+  // A and L show one step at a time: the step on screen, as a place on the route.
   const [view, setView] = useState(0);
   // A new pathway starts empty (answers are never kept between visits).
   useEffect(() => { setChoices({}); setView(0); }, [id]);
@@ -355,7 +370,7 @@ export function PathwayScreen({ id }: { id: string }) {
   const at = Math.min(view, route.length - 1);
   const started = Object.keys(choices).length > 0 || view > 0;
   const homes = pathwayHomes().filter((h) => h.id === id);
-  const stepped = layout === 'drill' || layout === 'guided';
+  const stepped = layout === 'step' || layout === 'guided';
 
   // Changing an answer clears every answer after it on the route.
   const choose = (stepId: string, a: number) => {
@@ -386,24 +401,19 @@ export function PathwayScreen({ id }: { id: string }) {
   const props: StepProps = { p, route, ended, onChoose: choose, view: at, onNext: () => go(at + 1), onPrev: () => go(at - 1), onDone: done };
   let body: ReactNode;
   if (layout === 'choice') body = <ChoiceLayout {...props} />;
-  else if (layout === 'drill') body = <DrillLayout {...props} after={after} />;
+  else if (layout === 'step') body = <StepLayout {...props} after={after} onJump={go} />;
   else if (layout === 'guided') body = <GuidedLayout {...props} title={title} cardTitle={homes[0]?.card.title} />;
   else body = <StagesLayout {...props} />;
-
-  // J: the back button steps back through the pathway's pages, then leaves the page.
-  const back = layout === 'drill' && at > 0
-    ? { label: route[at - 1].step.title, fallback: href.libraryList('pathways'), onBack: () => go(at - 1) }
-    : { label: 'Pathways', fallback: href.libraryList('pathways') };
 
   return (
     <Screen
       title={title}
-      back={back}
+      back={{ label: 'Pathways', fallback: href.libraryList('pathways') }}
       trailing={<AKG.ToolbarButton onClick={startOver} disabled={!started}>Start Over</AKG.ToolbarButton>}
     >
       <div className="pw-layout">
         <AKG.SegmentedControl options={LAYOUTS} value={layout} onChange={pick} aria-label="Test layout" />
-        <p className="ios-footnote secondary">Test layouts: I Stages · K Choice lists · J Drill-down · L Full screen.</p>
+        <p className="ios-footnote secondary">Test layouts: I Stages · K Choice lists · A One step · L Full screen.</p>
       </div>
       {body}
       {ended && (layout === 'stages' || layout === 'choice') && after}

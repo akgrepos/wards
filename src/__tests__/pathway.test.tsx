@@ -32,7 +32,7 @@ describe('pathway page (test layouts)', () => {
     launch('#/pathway/hyperkalemia-management');
     expect(document.querySelector('.page-title')!.textContent).toBe('Acute Hyperkalemia Management');
     // The switch shows letters only (owner), with full names for VoiceOver.
-    expect(screen.getAllByRole('radio').map((r) => r.textContent)).toEqual(['I', 'K', 'J', 'L']);
+    expect(screen.getAllByRole('radio').map((r) => r.textContent)).toEqual(['I', 'K', 'A', 'L']);
     expect(screen.getByRole('radio', { name: 'I, Stages' }).getAttribute('aria-checked')).toBe('true');
     expect(hasText('ECG changes of hyperkalemia?')).toBe(false);
     await tap(/^Confirmed or likely/);
@@ -73,24 +73,29 @@ describe('pathway page (test layouts)', () => {
     expect(hasText('Severity?')).toBe(true);
   });
 
-  it('J: one step per page; the back button steps back; the last page has Done', async () => {
+  it('A: one step at a time; actions need Continue; Your Path lists earlier answers; Change goes back', async () => {
     launch('#/pathway/hyperkalemia-management');
-    await layout('J, Drill-down');
-    const heading = () => document.querySelector('.pw-drill__head h2')!.textContent;
+    await layout('A, One step at a time');
+    const heading = () => document.querySelector('.pw-one__step h2')!.textContent;
     expect(heading()).toBe('True hyperkalemia?');
     await tap(/^Confirmed or likely/);
     expect(heading()).toBe('ECG changes of hyperkalemia?');
-    await tap('Back to True hyperkalemia?');
+    await tap(/^Yes/);
+    expect(heading()).toBe('Cardiac membrane stabilization');
+    await tap('Continue');
+    expect(heading()).toBe('Severity?');
+    await tap('Your Path (2)');
+    expect(screen.getByRole('dialog').textContent).toContain('Confirmed or likely');
+    await tap(/^Confirmed or likely.*True hyperkalemia/);
     expect(heading()).toBe('True hyperkalemia?');
     await tap(/^Confirmed or likely/);
     await tap(/^Yes/);
-    expect(heading()).toBe('Cardiac membrane stabilization');
-    await tap(/Severity\?/);
+    await tap('Continue');
     await tap(/^Severe/);
-    await tap(/K⁺ elimination/);
-    await tap(/Monitoring and etiology/);
+    await tap('Continue');
+    await tap('Continue');
     expect(heading()).toBe('Monitoring and etiology');
-    expect(screen.getByRole('button', { name: 'Done' })).toBeTruthy();
+    expect(document.querySelector('.pw-end--reached')).toBeTruthy();
   });
 
   it('L: opens full screen over everything; answers at the bottom; Close keeps the place', async () => {
