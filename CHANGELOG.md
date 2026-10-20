@@ -2,6 +2,14 @@
 
 What changed in each version of Wards, newest first. The version is shown in Settings (gear on Home).
 
+## 2026.10.19.6
+
+Pathway pages: a new set of test layouts, as you asked (switch at the top; Stages opens first):
+- **Stages** (kept, your top choice so far): one list of the stages; finished stages fold to one line with Change.
+- **Tree** (new, mock-up B): the whole pathway as one scrolling decision tree. A line down the left joins the steps, grouped by stage. Your answer stays in place; the other answers become "Other answer" links that switch the route. Stages not reached are dotted, and the line ends in a square End marker.
+- **Map** (new, mock-up E): a small chart of your route fills the page (your route outlined in black, other answers as gray boxes you can tap to switch, End as a rounded box), with the current step in a panel at the bottom. The panel shows everything since your last answer, so doses are always readable; tap its grabber to make it taller.
+- Flowchart and Steps are gone for now.
+
 ## 2026.10.19.5
 
 Pathway pages now work, as a test with three layouts to try (switch at the top of the page; the app remembers your pick):
