@@ -2,6 +2,12 @@
 
 What changed in each version of Wards, newest first. The version is shown in Settings (gear on Home).
 
+## 2026.10.19.8
+
+Pathway pages: J (Drill-down) is replaced by **A · One step at a time**. The switch now reads I · K · A · L.
+- A shows only the current step, large, with a stage bar on top. Your last answer sits above the step with Change; Your Path lists every earlier answer (tap one to go back to it).
+- Actions show their doses with Continue and Previous Step; the last step is the result with End of pathway, links back to the card and Start Over.
+
 ## 2026.10.19.7
 
 Pathway pages: a new set of test layouts, matching the letters on the design canvas. The switch at the top shows just the letter:

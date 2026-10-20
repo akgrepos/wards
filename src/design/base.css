@@ -131,15 +131,19 @@ button.pw-stage__head:active { background: var(--fill-tertiary); }
 .pw-choice__cell { padding: var(--space-14) var(--space-16); border-radius: var(--radius-grouped); background: var(--background-grouped-secondary); }
 .pw-choice__cell.pw-step--caution { background: color-mix(in srgb, var(--system-red) 8%, var(--background-grouped-secondary)); }
 .pw-choice__then { margin: 0; padding: 0 var(--space-16); }
-.pw-choice .pw-end, .pw-drill .pw-end { border-radius: var(--radius-grouped); background: var(--background-grouped-secondary); }
+.pw-choice .pw-end { border-radius: var(--radius-grouped); background: var(--background-grouped-secondary); }
 
-/* J: drill-down pages. One step per page; answers are a plain list; the back button steps back. */
-.pw-drill { display: flex; flex-direction: column; gap: var(--space-20); }
-.pw-drill__head { display: flex; flex-direction: column; gap: var(--space-4); align-items: flex-start; }
-.pw-drill__head h2, .pw-drill > p { margin: 0; overflow-wrap: break-word; }
-.pw-drill .akg-list { margin: 0; }
-.pw-drill__body { padding: var(--space-14) var(--space-16); border-radius: var(--radius-grouped); background: var(--background-grouped-secondary); }
-.pw-drill__body.pw-step--caution { background: color-mix(in srgb, var(--system-red) 8%, var(--background-grouped-secondary)); }
+/* A: one step at a time. Stage bar, the last answer with Change, then only the current step, large. */
+.pw-one { display: flex; flex-direction: column; gap: var(--space-16); }
+.pw-one__progress { display: flex; flex-direction: column; gap: var(--space-8); }
+.pw-one__progressline, .pw-one__prev { display: flex; align-items: center; justify-content: space-between; gap: var(--space-8); }
+.pw-one__progressline > span, .pw-one__prev > span { flex: 1; min-width: 0; overflow-wrap: break-word; }
+.pw-one__prevv { color: var(--label); font-weight: 600; }
+.pw-one__step { display: flex; flex-direction: column; gap: var(--space-12); }
+.pw-one__step.pw-step--caution { padding: var(--space-16); border-radius: var(--radius-grouped); }
+.pw-one__step h2 { margin: 0; overflow-wrap: break-word; }
+.pw-one__step .pw-end { border-radius: var(--radius-grouped); background: var(--background-grouped-secondary); }
+.pw-one__buttons { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 9rem), 1fr)); gap: var(--space-10); }
 
 /* L: full-screen guided mode. Covers the tab bar and update banner (800, 900) but not the dose sheet (1000); the step scrolls; the answers stay at the bottom within thumb reach. */
 .pw-guided {
