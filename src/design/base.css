@@ -68,140 +68,46 @@ h1, p { margin: 0; }
 .missing { color: var(--system-red); }
 .pathway { display: flex; flex-direction: column; gap: var(--space-8); }
 
-/* Pathway pages, TEST LAYOUTS (owner, 2026-10-19). AKG tokens only; the layout the owner chooses moves into the
-   design system as a generic component, and the others are removed. One color, one job: blue = tappable,
-   red = caution (danger), gray = neutral; your route is drawn in the label color. */
-.pw-layout { display: flex; flex-direction: column; gap: var(--space-8); }
-.pw-block { display: block; }
+/* Pathways (owner, 2026-10-19): the whole card as one flowchart, full screen under the top bar. AKG tokens and
+   components only (owner: HIG): grouped cards for boxes, Buttons for answers and links, Tags, right-angled lines
+   (2pt label color on your route, 1pt separator elsewhere, dashed where a detour rejoins), a toolbar group for zoom.
+   Boxes off your route dim; the box you're on is outlined in blue. */
+.pw-map-page { position: fixed; inset: 0; display: flex; flex-direction: column; background: var(--background-grouped); --pw-col: 16rem; }
+.pw-map-page .top-bar { position: relative; flex: none; }
+.pw-viewport { flex: 1; min-height: 0; overflow: auto; overscroll-behavior: contain; touch-action: pan-x pan-y; -webkit-overflow-scrolling: touch; }
+.pw-sizer { position: relative; margin: 0 auto; }
+.pw-plane { position: absolute; top: 0; left: 0; transform-origin: 0 0; width: max-content; will-change: transform; backface-visibility: hidden; box-sizing: border-box; padding: var(--space-16) var(--space-24) calc(env(safe-area-inset-bottom) + var(--tab-bar-inset) + var(--tab-bar-height) + 6rem); }
+.pw-lines { position: absolute; top: 0; left: 0; overflow: visible; pointer-events: none; }
+.pw-line { fill: none; stroke: var(--separator-opaque); stroke-width: 1; }
+.pw-line--on { stroke: var(--label); stroke-width: 2; }
+.pw-line--dash { stroke-dasharray: 5 4; }
+.pw-grid { position: relative; display: grid; column-gap: 2.75rem; row-gap: 3rem; align-items: start; }
+.pw-cell { position: relative; min-width: 0; contain: layout paint; }
+/* While two fingers pinch, taps can't land on the boxes. */
+.pw-plane--moving { pointer-events: none; }
+.pw-box { box-sizing: border-box; display: flex; flex-direction: column; gap: var(--space-8); padding: var(--space-14) var(--space-16); border-radius: var(--radius-grouped); background: var(--background-grouped-secondary); }
+.pw-box h2, .pw-box p { margin: 0; overflow-wrap: break-word; }
 .pw-kind { margin: 0; text-transform: uppercase; letter-spacing: 0.02em; color: color-mix(in srgb, var(--label) 30%, var(--label-secondary)); }
-.pw-kind--caution { color: color-mix(in srgb, var(--system-red) 75%, var(--label)); }
-.pw-kind--now { color: var(--accent-text); }
-.pw-step h2 { margin: 0; overflow-wrap: break-word; }
-.pw-step p { margin: 0; overflow-wrap: break-word; }
-
-/* Answers: solid tiles with a blue chevron before choosing; then "Your answer" outlined, the others switch the route. */
-.pw-answers { display: flex; flex-direction: column; gap: var(--space-8); }
-.pw-answer {
-  display: flex; align-items: center; gap: var(--space-12); width: 100%; min-height: 3.5rem; box-sizing: border-box;
-  padding: var(--space-12) var(--space-14) var(--space-12) var(--space-16); border: 0; border-radius: 18px; text-align: left;
-  font: inherit; color: var(--label); cursor: pointer; background: var(--background-grouped-secondary); box-shadow: 0 0 0 0.5px var(--separator);
-}
-.pw-step .pw-answer { background: var(--fill-tertiary); box-shadow: none; }
-.pw-answer:active { background: var(--fill-secondary); }
-.pw-answer__text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: var(--space-2); overflow-wrap: break-word; }
-.pw-answer__detail { color: color-mix(in srgb, var(--label) 30%, var(--label-secondary)); }
-.pw-answer__chevron { flex: none; width: 0.5rem; height: 0.5rem; margin-right: var(--space-4); border-right: 2px solid var(--accent-text); border-bottom: 2px solid var(--accent-text); transform: rotate(-45deg); }
-.pw-answer--chosen, .pw-step .pw-answer--chosen { background: var(--background-grouped-secondary); box-shadow: 0 0 0 2px var(--label); }
-.pw-answer__mark { color: var(--label); }
-.pw-answer--other, .pw-step .pw-answer--other { background: transparent; box-shadow: 0 0 0 1px var(--separator-opaque); color: color-mix(in srgb, var(--label) 30%, var(--label-secondary)); }
-.pw-answer__to { color: var(--accent-text); }
-
-/* I: stages that fold. One card; finished stages are one line (tap Change to reopen), later ones gray. */
-.pw-stages { display: flex; flex-direction: column; border-radius: var(--radius-grouped); background: var(--background-grouped-secondary); overflow: hidden; }
-.pw-stage { position: relative; }
-.pw-stage + .pw-stage::before, .pw-stages .pw-end::before { content: ""; position: absolute; top: 0; left: 3.25rem; right: 0; border-top: 0.5px solid var(--separator); }
-.pw-stage__head, .pw-stage--later {
-  display: flex; align-items: center; gap: var(--space-12); width: 100%; min-height: 3.75rem; box-sizing: border-box;
-  padding: var(--space-10) var(--space-16); border: 0; background: transparent; font: inherit; color: var(--label); text-align: left;
-}
-button.pw-stage__head { cursor: pointer; }
-button.pw-stage__head:active { background: var(--fill-tertiary); }
-.pw-stage__num { flex: none; width: 1.6rem; height: 1.6rem; border-radius: 999px; display: flex; align-items: center; justify-content: center; background: var(--label); color: var(--background-grouped-secondary); }
-.pw-stage__num--now { background: var(--accent); color: var(--on-accent); }
-.pw-stage--later .pw-stage__num { background: transparent; box-shadow: inset 0 0 0 2px var(--label-tertiary); color: color-mix(in srgb, var(--label) 30%, var(--label-secondary)); }
-.pw-stage--later .ios-body { color: color-mix(in srgb, var(--label) 30%, var(--label-secondary)); }
-.pw-stage__text { flex: 1; min-width: 0; display: flex; flex-direction: column; overflow-wrap: break-word; }
-.pw-stage__toggle { flex: none; color: var(--accent-text); }
-.pw-stage__body { display: flex; flex-direction: column; gap: var(--space-16); padding: 0 var(--space-16) var(--space-16) 3.25rem; }
-.pw-step { display: flex; flex-direction: column; gap: var(--space-8); }
-.pw-step--caution { padding: var(--space-12); border-radius: 16px; background: color-mix(in srgb, var(--system-red) 8%, var(--background-grouped-secondary)); }
-.pw-end { position: relative; display: flex; align-items: center; gap: var(--space-12); min-height: 3.75rem; box-sizing: border-box; padding: var(--space-10) var(--space-16); color: color-mix(in srgb, var(--label) 30%, var(--label-secondary)); }
-.pw-end > span:last-child { display: flex; flex-direction: column; }
-.pw-end__square { flex: none; width: 1.6rem; height: 1.6rem; border-radius: 6px; box-shadow: inset 0 0 0 2px var(--label-tertiary); }
-.pw-end--reached { color: var(--label); }
-.pw-end--reached .pw-end__square { background: var(--label); box-shadow: none; }
-.pw-guided .pw-end { padding: var(--space-12); border-radius: 16px; background: var(--fill-tertiary); }
-
-/* K: choice lists. Settings-style sections; the question is the section's heading and the chosen answer has a checkmark. */
-.pw-choice { display: flex; flex-direction: column; gap: var(--space-24); }
-.pw-choice__section { display: flex; flex-direction: column; gap: var(--space-8); }
-.pw-choice__head { display: flex; flex-direction: column; padding: 0 var(--space-16); overflow-wrap: break-word; }
-.pw-choice__detail { margin: 0; padding: 0 var(--space-16); }
-.pw-choice__section .akg-list { margin: 0; }
-.pw-choice__cell { padding: var(--space-14) var(--space-16); border-radius: var(--radius-grouped); background: var(--background-grouped-secondary); }
-.pw-choice__cell.pw-step--caution { background: color-mix(in srgb, var(--system-red) 8%, var(--background-grouped-secondary)); }
-.pw-choice__then { margin: 0; padding: 0 var(--space-16); }
-.pw-choice .pw-end { border-radius: var(--radius-grouped); background: var(--background-grouped-secondary); }
-
-/* A: one step at a time. Stage bar, the last answer with Change, then only the current step, large. */
-.pw-one { display: flex; flex-direction: column; gap: var(--space-16); }
-.pw-one__progress { display: flex; flex-direction: column; gap: var(--space-8); }
-.pw-one__progressline, .pw-one__prev { display: flex; align-items: center; justify-content: space-between; gap: var(--space-8); }
-.pw-one__progressline > span, .pw-one__prev > span { flex: 1; min-width: 0; overflow-wrap: break-word; }
-.pw-one__prevv { color: var(--label); font-weight: 600; }
-.pw-one__step { display: flex; flex-direction: column; gap: var(--space-12); }
-.pw-one__step.pw-step--caution { padding: var(--space-16); border-radius: var(--radius-grouped); }
-.pw-one__step h2 { margin: 0; overflow-wrap: break-word; }
-.pw-one__step .pw-end { border-radius: var(--radius-grouped); background: var(--background-grouped-secondary); }
-.pw-one__buttons { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 9rem), 1fr)); gap: var(--space-10); }
-
-/* L: full-screen guided mode. Covers the tab bar and update banner (800, 900) but not the dose sheet (1000); the step scrolls; the answers stay at the bottom within thumb reach. */
-.pw-guided {
-  position: fixed; inset: 0; z-index: 950; display: flex; flex-direction: column; background: var(--background);
-  padding: env(safe-area-inset-top) env(safe-area-inset-right) 0 env(safe-area-inset-left);
-}
-.pw-guided__bar { flex: none; display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: var(--space-8); min-height: var(--toolbar-height); padding: 0 var(--space-16); }
-.pw-guided__title { text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.pw-guided__spacer { width: var(--tap-target); }
-.pw-guided__scroll { flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; padding: var(--space-8) var(--space-16) var(--space-16); }
-.pw-guided__scroll > * { max-width: var(--readable-width); margin-left: auto; margin-right: auto; }
-.pw-guided__progress { display: flex; flex-direction: column; gap: var(--space-8); margin-bottom: var(--space-24); }
-.pw-guided__progress p, .pw-guided__step h2 { margin: 0; overflow-wrap: break-word; }
-.pw-guided__step { display: flex; flex-direction: column; gap: var(--space-12); }
-.pw-guided__step.pw-step--caution { padding: var(--space-16); border-radius: var(--radius-grouped); }
-.pw-guided__actions {
-  flex: none; display: flex; flex-direction: column; align-items: stretch; gap: var(--space-8); max-height: 50dvh; overflow-y: auto;
-  padding: var(--space-12) var(--space-16) calc(env(safe-area-inset-bottom) + var(--space-12)); border-top: 0.5px solid var(--separator);
-}
-.pw-guided__actions > * { max-width: var(--readable-width); width: 100%; margin: 0 auto; box-sizing: border-box; }
-.pw-guided__actions .pw-answer { background: var(--fill-tertiary); box-shadow: none; }
-.pw-guided__actions .pw-answer--chosen { background: var(--background-grouped-secondary); box-shadow: 0 0 0 2px var(--label); }
-
-/* M: the whole flowchart, full screen. Rows of boxes joined by lines; pinch or the zoom buttons scale the plane;
-   one finger scrolls. Your route is outlined in the label color, the chosen answer filled blue, answers not yet
-   chosen outlined blue (tappable), the other answers in a chosen row unfilled, and steps off the route gray. */
-.pw-chartview { background: var(--background-grouped); }
-.pw-chart__viewport { flex: 1; min-height: 0; overflow: auto; overscroll-behavior: contain; touch-action: pan-x pan-y; -webkit-overflow-scrolling: touch; }
-.pw-chart__sizer { position: relative; margin: 0 auto; }
-.pw-chart__plane {
-  position: absolute; top: 0; left: 0; transform-origin: 0 0; width: max-content;
-  display: flex; flex-direction: column; align-items: center; gap: var(--space-24); padding: var(--space-24) var(--space-24) 10rem; box-sizing: border-box;
-}
-.pw-chart__lines { position: absolute; top: 0; left: 0; overflow: visible; pointer-events: none; }
-.pw-chart__line { fill: none; stroke: var(--separator-opaque); stroke-width: 1; }
-.pw-chart__line--on { stroke: var(--label); stroke-width: 2; }
-.pw-chart__row { position: relative; display: flex; justify-content: center; align-items: flex-start; gap: var(--space-24); }
-.pw-chart__box {
-  position: relative; width: 16rem; box-sizing: border-box; display: flex; flex-direction: column; gap: var(--space-8);
-  padding: var(--space-14) var(--space-16); border-radius: var(--radius-grouped); background: var(--background-grouped-secondary);
-}
-.pw-chart__box h2, .pw-chart__box p { margin: 0; overflow-wrap: break-word; }
-.pw-chart__box--now { box-shadow: 0 0 0 2px var(--accent); }
-.pw-chart__box--off { color: color-mix(in srgb, var(--label) 30%, var(--label-secondary)); }
-.pw-chart__box--off .dose-rows { opacity: 0.6; }
-.pw-chart__box.pw-step--caution { background: color-mix(in srgb, var(--system-red) 8%, var(--background-grouped-secondary)); }
-.pw-chart__answer { position: relative; width: 10rem; display: flex; flex-direction: column; align-items: stretch; gap: var(--space-4); text-align: center; }
-.pw-chart__answer .akg-button { width: 100%; white-space: normal; }
-.pw-chart__answerdetail { color: color-mix(in srgb, var(--label) 30%, var(--label-secondary)); overflow-wrap: break-word; }
-.pw-chart__answer--off .pw-chart__answerdetail { color: var(--label-tertiary); }
-.pw-chart__glyph { font-size: calc(22 * var(--akg-text-unit)); line-height: 1; font-weight: 500; }
-.pw-chart__zoom {
-  position: absolute; left: 0; right: 0; bottom: calc(env(safe-area-inset-bottom) + var(--space-12)); display: flex; justify-content: center; gap: var(--space-8); pointer-events: none;
-}
-.pw-chart__zoom > * { pointer-events: auto; }
-
-.pw-after { display: flex; flex-direction: column; gap: var(--space-16); }
-.pw-sources { padding-left: 0; padding-right: 0; }
+.pw-box__text { color: color-mix(in srgb, var(--label) 30%, var(--label-secondary)); }
+.pw-box--start { background: var(--fill-tertiary); }
+.pw-box--do, .pw-box--note { background: color-mix(in srgb, var(--fill-quaternary) 60%, var(--background-grouped-secondary)); }
+.pw-box--urgent { background: color-mix(in srgb, var(--system-red) 8%, var(--background-grouped-secondary)); }
+.pw-box--now { box-shadow: 0 0 0 2px var(--accent); }
+.pw-box--off > *:not(.pw-links), .pw-box--off .pw-links { opacity: 0.55; }
+.pw-box--link { margin: 0; padding: 0; background: none; }
+.pw-box--link.pw-box--off { opacity: 0.55; }
+.pw-links { display: flex; flex-wrap: wrap; gap: var(--space-8); }
+.pw-links .akg-button { max-width: 100%; white-space: normal; text-align: left; height: auto; min-height: var(--control-ios-small); }
+.pw-answer { justify-self: center; width: 11rem; display: flex; flex-direction: column; align-items: stretch; gap: var(--space-4); text-align: center; }
+.pw-answer .akg-button { width: 100%; white-space: normal; height: auto; min-height: var(--tap-target); }
+.pw-answer__detail { color: color-mix(in srgb, var(--label) 30%, var(--label-secondary)); overflow-wrap: break-word; }
+.pw-answer--off .pw-answer__detail { color: var(--label-tertiary); }
+.pw-foot { display: flex; flex-direction: column; gap: var(--space-8); margin-top: 3rem; max-width: 40rem; }
+.pw-foot .akg-source-line { padding-left: 0; padding-right: 0; }
+.pw-zoom { position: fixed; left: 0; right: 0; bottom: calc(env(safe-area-inset-bottom) + var(--tab-bar-inset) + var(--tab-bar-height) + var(--space-12)); display: flex; justify-content: center; pointer-events: none; z-index: 6; }
+.pw-zoom > * { pointer-events: auto; }
+.pw-glyph { font-size: calc(22 * var(--akg-text-unit)); line-height: 1; font-weight: 500; }
+html[data-timed] .pw-zoom { bottom: calc(env(safe-area-inset-bottom) + var(--tab-bar-inset) + var(--tab-bar-height) + var(--tab-bar-accessory-height) + var(--space-20)); }
 .criteria-block, .criteria { display: flex; flex-direction: column; gap: var(--space-8); }
 .dose-rows { display: flex; flex-direction: column; gap: var(--space-8); }
 .step-body .rich-list { list-style: disc; }

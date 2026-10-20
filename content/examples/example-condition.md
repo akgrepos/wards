@@ -29,7 +29,6 @@ related:
 2. Placeholder second step
    - Placeholder detail. ^[example-trial-b]
 
-{{pathway:example-workup}}
 
 ## Treatment
 - Give the example drug when indicated. ^[example-guideline-a]

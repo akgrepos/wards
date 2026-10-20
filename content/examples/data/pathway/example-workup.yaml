@@ -1,10 +1,27 @@
+# Example whole-card map (format: docs/CONTENT-FORMAT.md, "Pathways"). Boxes sit on a grid ("at: [column, row]");
+# only questions branch; links open the card's own content instead of copying it.
 title: Example workup
-stages: [Start, Classify, Result]
-start: s
+card: example-condition
+columns: 3
+start: start
 sources: [example-guideline-a]
-steps:
-  s: { kind: question, kindLabel: Start, stage: Start, title: Is the finding confirmed?, answers: [{ label: Confirmed, detail: Repeat sample agrees, to: c }, { label: Likely spurious, detail: Sample problem suspected, to: r1 }] }
-  c: { kind: question, stage: Classify, title: Measured value, answers: [{ label: Severe, detail: "Above {{threshold:example-cutoff}}", to: w }, { label: Mild, detail: Below the cutoff, to: r2 }] }
-  w: { kind: caution, stage: Classify, title: Treat first, detail: "Give {{dose:example-drug-standard}}, then continue.", next: r2 }
-  r1: { kind: result, stage: Result, title: Repeat the sample, list: [Placeholder cause] }
-  r2: { kind: result, stage: Result, title: Find the cause, list: [Placeholder cause one, Placeholder cause two], note: Placeholder caution. }
+nodes:
+  start: { kind: start, at: [1, 0], title: Finding on a test, next: confirmed }
+  confirmed:
+    kind: question
+    at: [1, 1]
+    title: Is the finding confirmed?
+    links: [section:example-condition/diagnosis]
+    answers:
+      - { label: Confirmed, detail: Repeat sample agrees, at: [1, 2], to: value }
+      - { label: Likely spurious, at: [2, 2], to: repeat }
+  repeat: { kind: result, at: [2, 3], title: Repeat the sample, links: ["section:example-condition/diagnosis#placeholder-first-step"] }
+  value:
+    kind: question
+    at: [1, 3]
+    title: Measured value
+    answers:
+      - { label: Severe, detail: "Above {{threshold:example-cutoff}}", at: [0, 4], to: treat }
+      - { label: Mild, at: [1, 4], to: cause }
+  treat: { kind: urgent, at: [0, 5], title: Treat first, links: [dose:example-drug-standard, section:example-condition/treatment], next: cause }
+  cause: { kind: result, at: [1, 6], title: Find the cause, links: [section:example-condition/more] }

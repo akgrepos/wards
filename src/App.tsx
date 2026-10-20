@@ -35,7 +35,7 @@ function Page({ route }: { route: Route }) {
     case 'settings': return <SettingsScreen />;
     case 'favorites': return <FavoritesScreen />;
     case 'system': return <SystemScreen key={route.id} id={route.id} />;
-    case 'card': return <CardScreen key={route.id} id={route.id} section={route.section} />;
+    case 'card': return <CardScreen key={route.id} id={route.id} section={route.section} anchor={route.anchor} />;
     case 'pathway': return <PathwayScreen key={route.id} id={route.id} />;
     case 'emergency': return <EmergencyScreen key={route.id} id={route.id} />;
     case 'timed': return <TimedScreen />;

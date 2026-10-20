@@ -4,6 +4,7 @@ import { CARD_TYPES, DATA_TYPES, DOSE_FIELDS, SHARED_SECTIONS, UNITS, DOSE_IN_TE
 import { TAGS, parseInline } from './inline.mjs';
 import { onsetMinutes } from './onset.mjs';
 import { emergencySteps, offsetMinutes, stepDoses } from './emergency.mjs';
+import { checkPathway } from './pathway.mjs';
 
 const DOSE_ONLY = /^\{\{\s*dose\s*:\s*([a-z0-9-]+)\s*\}\}$/;
 
@@ -169,6 +170,7 @@ export function checkContent({ systems, cards, data }) {
       }
       for (const b of allBlocks(blocks)) {
         if (b.t === 'insert' && !data[b.kind]?.[b.id]) err(where, `"${title}" inserts unknown ${b.kind} "${b.id}"`);
+        if (b.t === 'insert' && b.kind === 'pathway') err(where, `"${title}": a pathway opens from the card's header (its file names the card with "card:"); remove {{pathway:${b.id}}}`);
         if (CONTAINERS[b.t]) {
           const [lo, hi] = CONTAINERS[b.t];
           if (b.items.length < lo || b.items.length > hi) err(where, `"${title}": a :::${b.t} needs ${lo}–${hi} items (has ${b.items.length})`);
@@ -224,17 +226,8 @@ export function checkContent({ systems, cards, data }) {
       }
       if (kind === 'criteria' && !(item.items?.length || item.rows?.length)) err(where, 'needs items or rows');
       if (kind === 'criteria' && item.rows?.some((r) => !Array.isArray(r) || r.length !== (item.columns ?? []).length)) err(where, 'every row needs one cell per column');
-      if (kind === 'pathway') {
-        const steps = item.steps ?? {};
-        if (!steps[item.start]) err(where, `start step "${item.start}" does not exist`);
-        for (const [sid, st] of Object.entries(steps)) {
-          for (const t of [st.title, st.question, st.detail, ...(st.answers ?? []).flatMap((a) => [a.label, a.detail])]) if (typeof t === 'string') useAt(parseInline(t), `${where} step "${sid}"`, false);
-          const targets = [...(st.answers ?? []).map((a) => a.to), st.yes, st.no, st.next].filter(Boolean);
-          for (const t of targets) if (!steps[t]) err(where, `step "${sid}" leads to missing step "${t}"`);
-          if (st.kind !== 'result' && targets.length === 0) err(where, `step "${sid}" leads nowhere`);
-          if (item.stages && st.stage && !item.stages.includes(st.stage)) err(where, `step "${sid}" has unknown stage "${st.stage}"`);
-        }
-      }
+      // A whole-card map: every link resolves, every box is reachable, nothing is copied (docs/DATA-TYPES.md, 9).
+      if (kind === 'pathway') for (const m of checkPathway(id, item, { cards, data })) err(where, m.slice(id.length + 2));
       if (/^[a-z0-9]+(-[a-z0-9]+)*$/.test(id) === false) err(where, `id "${id}" must be lowercase words joined by hyphens`);
     }
   }

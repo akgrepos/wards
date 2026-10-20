@@ -1,6 +1,6 @@
 import content from 'virtual:wards-content';
 import { CARD_TYPES } from '../../scripts/content/schema.mjs';
-import type { Block, Card, Inline, ListItem } from './types';
+import type { Block, Card, Inline, ListItem, Pathway } from './types';
 
 export { content };
 export const cardTypeLabel = (c: Card) => (CARD_TYPES as Record<string, { label: string }>)[c.type]?.label ?? c.type;
@@ -90,24 +90,16 @@ export function emergencyGroups(): { title: string; cards: Card[] }[] {
     .filter((g) => g.cards.length);
 }
 
-// Every place a pathway (flowchart) appears: the card and section that show it.
-export function pathwayHomes(): { id: string; title: string; card: Card; section: string }[] {
-  const out: { id: string; title: string; card: Card; section: string }[] = [];
-  for (const card of content.cards) {
-    for (const s of card.sections) {
-      const parts = [{ key: s.key, blocks: s.blocks }, ...s.subsections];
-      for (const part of parts) {
-        for (const b of part.blocks) {
-          if (b.t === 'insert' && b.kind === 'pathway' && !out.some((o) => o.id === b.id)) {
-            const p = content.data.pathway?.[b.id];
-            out.push({ id: b.id, title: p?.title ?? card.title, card, section: part.key });
-          }
-        }
-      }
-    }
+// Every pathway map and the card it maps (its "card:" field), A–Z. A card shows its map as a row under its title.
+export function pathwayHomes(): { id: string; title: string; card: Card }[] {
+  const out: { id: string; title: string; card: Card }[] = [];
+  for (const [id, p] of Object.entries((content.data.pathway ?? {}) as Record<string, Pathway>)) {
+    const card = getCard(p.card);
+    if (card) out.push({ id, title: p.title, card });
   }
   return out.sort((a, b) => a.title.localeCompare(b.title));
 }
+export const pathwayFor = (cardId: string) => pathwayHomes().find((h) => h.card.id === cardId);
 
 // Basic search over card titles and aliases (full search across sections, drugs and tools comes later).
 // Every word typed must match the start of a word in the title or an alias; title matches rank first.

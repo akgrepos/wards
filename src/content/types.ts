@@ -40,12 +40,15 @@ export type Dose = {
 };
 export type Threshold = { name: string; value: string | number; unit: string; note?: string; sources: string[] };
 export type Criteria = { name: string; short: string; logic?: string; items?: string[]; columns?: string[]; rows?: string[][]; notes?: string[]; sources: string[] };
-export type PathwayStep = {
-  kind: 'question' | 'checklist' | 'caution' | 'action' | 'result'; kindLabel?: string; stage?: string; title: string; detail?: string;
-  answers?: { label: string; detail?: string; to: string }[]; items?: string[]; yes?: string; no?: string; logic?: string;
-  next?: string; list?: string[]; note?: string; links?: string[];
+// A whole-card map (docs/DATA-TYPES.md, 9): boxes on a grid; only questions branch; links open the card's content.
+export type PathwayAnswer = { label: string; detail?: string; at: [number, number]; to: string; rejoin?: boolean };
+export type PathwayNode = {
+  kind: 'start' | 'question' | 'do' | 'urgent' | 'note' | 'result' | 'link'; at: [number, number]; stage?: string;
+  title?: string; text?: string; links?: string[]; answers?: PathwayAnswer[]; next?: string; rejoin?: boolean;
+  // A link box: what it opens, and the box it hangs from.
+  to?: string; from?: string;
 };
-export type Pathway = { title?: string; stages?: string[]; start: string; steps: Record<string, PathwayStep>; sources: string[] };
+export type Pathway = { title: string; card: string; columns: number; start: string; nodes: Record<string, PathwayNode>; footer?: string[]; sources: string[] };
 export type Content = {
   systems: System[];
   cards: Card[];

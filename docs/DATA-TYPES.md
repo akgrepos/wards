@@ -77,11 +77,11 @@ Ordinal scales used in exams and documentation.
 - Examples: murmur grade I–VI, edema 0–4+, strength 0–5, reflexes 0–4+, RASS
 - Home: the physical exam card. Inserted into condition cards.
 
-### 9. Pathway (flowchart)
-An interactive algorithm.
-- Fields: steps (kinds: start, question, range, all-of checklist, caution, result) · stage of each step · answers, each with an interpretation, criteria text and the next step (paths may rejoin) · result lists, side notes and links · inserted doses, scores and thresholds · sources per step
-- Display: its own page (2026-10-19; being redesigned from scratch, an empty page for now); cards show one Open row where they insert it. The earlier display (stacked step view; focused mini-flowchart map) is in DECISIONS.md.
-- Home: its own page, listed in the Library's Pathways; inserted into the cards that use it
+### 9. Pathway (whole-card map)
+A zoomable flowchart of one whole card (2026-10-19): another way to look at the card, not a copy of it.
+- Fields: title · card · columns · start · nodes (kinds: start, question, do, urgent, note, result, link), each placed on a grid (`at: [column, row]`) · questions' answers (label, optional detail, next box, rejoin) · links per box to card sections and their subheadings or steps, criteria, dose sheets, other cards and Rapids pages · optional footer links · sources
+- Display: its own full-screen page; every box is always drawn, answered rows fill in and boxes off the route dim; pinch or − Fit + to zoom. Format: CONTENT-FORMAT.md, "Pathway maps".
+- Home: its own page, opened from a "Pathway" row under its card's title and from the Library's Pathways; never inserted into a card
 
 ### 10. Coverage
 How well one antimicrobial covers one organism.

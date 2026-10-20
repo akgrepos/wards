@@ -1,10 +1,10 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { AKG } from '../design/akg';
-import { cardSources, cardTypeLabel, content, getCard, getSystem, titleCase } from '../content';
+import { cardSources, cardTypeLabel, content, getCard, getSystem, pathwayFor, titleCase } from '../content';
 import type { Card, Source } from '../content/types';
 import { forgetSection, href, isReturning, parseRoute, restoreScroll } from '../router';
 import { addRecent, getCardScroll, getFavorites, setCardScroll, setReading, toggleFavorite, useStored } from '../storage';
-import { Blocks, Inlines, JUMP_EVENT, LinePill, LineSources, SourceList } from '../ui/Rich';
+import { AnchorScope, Blocks, Inlines, JUMP_EVENT, LinePill, LineSources, PathwayRow, SourceList } from '../ui/Rich';
 import { useSheet } from '../ui/SheetHost';
 import { icons } from '../ui/icons';
 import { Screen } from './common';
@@ -26,7 +26,7 @@ export function pageEntries(card: Card): { key: string; title: string }[] {
   return out;
 }
 
-export function CardScreen({ id, section }: { id: string; section?: string }) {
+export function CardScreen({ id, section, anchor }: { id: string; section?: string; anchor?: string }) {
   const card = getCard(id);
   const favorite = useStored(getFavorites).includes(id);
   const sheet = useSheet();
@@ -56,9 +56,11 @@ export function CardScreen({ id, section }: { id: string; section?: string }) {
   // After a render that opened the target's section, scroll before the browser paints.
   useLayoutEffect(() => { scrollToPending(); });
 
-  // Open whatever holds a section or subsection, then scroll to it.
-  const jump = (target: string, smooth = true) => {
-    let el = `sec-${target}`;
+  // Open whatever holds a section or subsection, then scroll to it, or to a subheading or step inside a section
+  // (`at`, from a pathway's link; More Information's subsections are reached by their own key).
+  const jump = (target: string, smooth = true, at?: string): boolean => {
+    if (target === 'more' && at) return jump(at, smooth);
+    let el = at ? `a-${target}-${at}` : `sec-${target}`;
     const top = sections.find((s) => s.key === target);
     const parent = sections.find((s) => s.subsections.some((x) => x.key === target));
     if (top && !state.isOpen(top.key, true)) state.setOpen(top.key, true);
@@ -84,7 +86,7 @@ export function CardScreen({ id, section }: { id: string; section?: string }) {
     addRecent(id);
     if (section) {
       forgetSection(id);
-      jump(section, false);
+      jump(section, false, anchor);
       return;
     }
     const y = getCardScroll(id);
@@ -147,6 +149,7 @@ export function CardScreen({ id, section }: { id: string; section?: string }) {
   const system = getSystem(card.system);
   const sources = cardSources(card);
   const related = RELATED.filter(([k]) => (card.related?.[k] ?? []).length > 0);
+  const pathway = pathwayFor(card.id);
 
   const menuItems = [
     ...entries.map((e) => ({ label: e.title, checked: current === e.key, onSelect: () => { setMenu(false); jump(e.key); } })),
@@ -201,6 +204,9 @@ export function CardScreen({ id, section }: { id: string; section?: string }) {
             {card.definition && <p className="ios-callout secondary"><Inlines xs={card.definition.inlines} /><LinePill ids={card.definition.sources} quote={card.definition.inlines} /></p>}
             {/* No "Based on" line (owner, 2026-10-18): each section's source line and All Sources name the guidelines. */}
             {card.reviewed && <p className="ios-caption-1 secondary">{reviewedLabel(card.reviewed)}</p>}
+            {/* The card's pathway, the whole card as a flowchart, opens from under the title: it spans every section, so it
+                isn't in any one of them (owner, 2026-10-19). */}
+            {pathway && <PathwayRow id={pathway.id} />}
             {card.example && <AKG.Callout variant="info">Development sample with placeholder content. Not shown in the published app.</AKG.Callout>}
           </header>
         }
@@ -251,7 +257,7 @@ export function CardScreen({ id, section }: { id: string; section?: string }) {
               expanded={state.isOpen(s.key, true)}
               onExpandedChange={(on: boolean) => state.setOpen(s.key, on)}
             >
-              <LineSources section={titleCase(s.title)}><Blocks blocks={s.blocks} /></LineSources>
+              <LineSources section={titleCase(s.title)}><AnchorScope section={s.key}><Blocks blocks={s.blocks} /></AnchorScope></LineSources>
             </AKG.ContentSection>
           ),
         )}
