@@ -2,6 +2,13 @@
 
 What changed in each version of Wards, newest first. The version is shown in Settings (gear on Home).
 
+## 2026.10.19.13
+
+Dose details tightened on existing topics (no new topics):
+- **Acute Kidney Injury** and **IV Fluids:** the albumin dose for AKI in cirrhosis (1 g/kg a day, up to 100 g a day, for 2 days) now cites the newest liver-society guidance and says it follows stopping diuretics and treating the trigger.
+- **Electrolyte Repletion** and **Hypokalemia:** with severe kidney impairment, potassium now reads as the labels put it (start low, recheck every 2–4 hours on IV; the IV potassium chloride labels list kidney failure as a contraindication). The unverified "cut the rate by 50–80%" figure is removed.
+- **Potassium for prevention on diuretics:** the dose sheet now says to adjust to the potassium level.
+
 ## 2026.10.19.12
 
 Pathways are now **one large map of the whole card**, for Acute Kidney Injury and Hyperkalemia.

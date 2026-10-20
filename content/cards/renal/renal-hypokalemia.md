@@ -120,7 +120,7 @@ related:
 ## More Information
 ### Special Populations: Kidney disease, heart disease, DKA
 - Severe kidney impairment or dialysis: replace very cautiously with nephrology. ^[kardalas-hypokalemia-2018]
-- GFR {{threshold:gfr-severe-impairment}}: cut IV KCl rates by 50–80% and recheck K⁺ every 2–4 h. ^[asmar-hypokalemia-2012]
+- GFR {{threshold:gfr-severe-impairment}}: start low and recheck K⁺ often, every 2–4 h on IV replacement (risk of life-threatening hyperkalemia; the IV KCl concentrate and premixed-bag labels list renal failure as a contraindication). ^[label-kcl-injection-2026, label-kcl-premix-2018, label-klor-con-2025, asmar-hypokalemia-2012]
 - Heart failure or myocardial infarction: K⁺ ≥4.0 mEq/L is the long-standing advice; see [[renal-electrolyte-repletion/indications|Electrolyte Repletion]] for the evidence. ^[cohn-potassium-2000, goyal-potassium-ami-2012]
 - DKA: K⁺ <3.5 mEq/L: replete first and delay insulin until K⁺ is >3.5 mEq/L. ^[ada-hyperglycemic-crises-2024]
 

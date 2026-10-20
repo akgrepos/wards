@@ -6,5 +6,5 @@ amount: "20"
 unit: mEq
 frequency: once daily
 boxed_warning: None
-notes: "A potassium-sparing diuretic is an alternative to supplements."
-sources: [label-klor-con-2025, asmar-hypokalemia-2012]
+notes: "The label's typical dose; individualize to serum K⁺. A potassium-sparing diuretic is an alternative to supplements."
+sources: [label-klor-con-2025, label-kcl-oral-solution-2026, asmar-hypokalemia-2012]

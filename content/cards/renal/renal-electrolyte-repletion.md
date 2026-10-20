@@ -166,7 +166,7 @@ related:
 
 ## Special Populations
 #### Kidney impairment
-- K⁺, GFR {{threshold:gfr-severe-impairment}}: cut IV KCl rates by 50–80% and recheck K⁺ every 2–4 h. ^[asmar-hypokalemia-2012]
+- K⁺, GFR {{threshold:gfr-severe-impairment}}: start low and recheck K⁺ often, every 2–4 h on IV replacement (risk of life-threatening hyperkalemia; the IV KCl concentrate and premixed-bag labels list renal failure as a contraindication). ^[label-kcl-injection-2026, label-kcl-premix-2018, label-klor-con-2025, asmar-hypokalemia-2012]
 - Dialysis or severe impairment: replace K⁺ very cautiously, with nephrology involved. ^[kardalas-hypokalemia-2018]
 - Mg: generally not recommended in kidney failure; with moderately reduced GFR and severe deficiency, give a reduced dose with close monitoring. ^[hansen-magnesium-icu-2018]
 - Phosphate: potassium phosphate injection is contraindicated at eGFR {{threshold:gfr-severe-impairment}} or kidney failure; start at the low end of the dose range at eGFR 30–59. ^[label-kphos-injection-2026]
