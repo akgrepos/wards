@@ -5,7 +5,7 @@ system: id
 subsection: Urinary Tract Infections
 title: Pyelonephritis and Complicated Urinary Tract Infection
 aliases: [pyelonephritis, pyelo, complicated UTI, cUTI, febrile UTI, upper UTI, urosepsis, kidney infection, CAUTI, catheter-associated UTI, UTI]
-definition: "UTI extending beyond the bladder: fever or other systemic illness, flank pain or costovertebral angle tenderness; includes pyelonephritis and febrile catheter-associated UTI. ^[idsa-cuti-2025]"
+definition: "UTI extending beyond the bladder: fever, bacteremia or other systemic illness, flank pain or costovertebral angle tenderness; includes pyelonephritis, catheter-associated UTI with systemic symptoms, and symptomatic UTI with a long-term catheter, stent or nephrostomy. ^[idsa-cuti-2025]"
 based_on: [idsa-cuti-selection-2025, idsa-cuti-ivpo-2025, idsa-cuti-duration-2025]
 reviewed: 2026-10-19
 related:
@@ -29,7 +29,7 @@ related:
 :::
 
 - Emergencies: obstruction with infection (pyonephrosis), emphysematous pyelonephritis, renal or perinephric abscess. ^[johnson-pyelonephritis-2018]
-- Most bacteremic patients are older, with flank pain, high CRP or hypotension; about 30% of febrile UTIs are bacteremic. ^[johnson-pyelonephritis-2018]
+- Bacteremia is common in febrile UTI, more so in older patients and those with hypotension: blood cultures before antibiotics. ^[johnson-pyelonephritis-2018, common-practice]
 
 ## Causes
 - **Organisms:** [!most-common] *Escherichia coli*; *Klebsiella*, *Proteus* and other Enterobacterales; *Enterococcus* and *Pseudomonas* more often with catheters or instrumentation. ^[johnson-pyelonephritis-2018, idsa-cuti-selection-2025]
@@ -42,15 +42,15 @@ related:
 
 ## Presentation
 - Fever, chills or rigors, flank pain, costovertebral angle tenderness, nausea and vomiting, with or without dysuria and frequency. ^[johnson-pyelonephritis-2018, idsa-cuti-2025]
-- Catheterized patients: fever, rigors, flank pain, new delirium with systemic signs; often no urinary symptoms. ^[idsa-asb-2019, common-practice]
+- Catheterized patients: fever, rigors, flank pain, new altered mental status with no other cause; often no urinary symptoms. ^[idsa-cauti-2009]
 - Older patients with bacteriuria and delirium but no fever, hemodynamic instability or local urinary symptoms: look for another cause and observe rather than treat. ^[idsa-asb-2019]
 - Bacteriuria, delirium and systemic signs of infection: broad therapy covering urinary and other sources. ^[idsa-asb-2019]
 
 ## Diagnosis
 #### Urine and blood
-- Urinalysis: pyuria supports UTI but also accompanies asymptomatic bacteriuria; absent pyuria makes UTI unlikely. ^[idsa-asb-2019, common-practice]
+- Urinalysis: pyuria supports UTI but also accompanies asymptomatic bacteriuria; absent pyuria makes UTI unlikely (not reliable in neutropenia). ^[idsa-asb-2019, common-practice]
 - Urine culture with susceptibilities before antibiotics in every patient. ^[johnson-pyelonephritis-2018]
-- Long-term catheter (more than 2 weeks): replace it and culture from the new catheter before antibiotics. ^[idsa-cauti-2009]
+- Catheter in place more than 2 weeks: replace it if still needed (remove it if not), and culture from the new catheter before antibiotics. ^[idsa-cauti-2009]
 - Blood cultures with sepsis or when admitted; CBC, BMP and creatinine; lactate if septic. ^[common-practice]
 - Review prior urine cultures: they guide empiric choice. ^[idsa-cuti-selection-2025]
 
@@ -58,20 +58,21 @@ related:
 - First, uncomplicated episode responding to treatment: no imaging. ^[acr-pyelonephritis-2022]
 - Recurrent pyelonephritis, diabetes, immunocompromise, advanced age, or no response: CT abdomen and pelvis with IV contrast. ^[acr-pyelonephritis-2022]
 - History of stones or obstruction: CT abdomen and pelvis (with, or without and with, IV contrast). ^[acr-pyelonephritis-2022]
-- Pregnancy: renal ultrasound or MRI without contrast. ^[acr-pyelonephritis-2022]
+- Pregnancy: no routine imaging; if needed (no response, suspected obstruction), kidney ultrasound or MRI without contrast. ^[acr-pyelonephritis-2022]
 - Ultrasound at the bedside quickly shows hydronephrosis when CT is delayed or contrast is a concern. ^[acr-pyelonephritis-2022, common-practice]
 
 ## Treatment
 1. Empiric antibiotics by severity
    - Avoid agents a prior urine isolate was resistant to (more recent cultures count more), and fluoroquinolones if used in the last 12 months. ^[idsa-cuti-selection-2025]
-   - Sepsis: use the antibiogram only if it is local and from the last 12 months; choose an agent with ≥90% susceptibility in shock and ≥80% without shock. ^[idsa-cuti-selection-2025]
+   - Sepsis: use the antibiogram only if it is local, from the last 12 months and relevant to the patient; choose an agent with ≥90% susceptibility in shock and ≥80% without shock. ^[idsa-cuti-selection-2025]
 
    {{regimen:cuti-sepsis}}
 
    {{regimen:cuti-no-sepsis}}
 
    - Nitrofurantoin and oral fosfomycin do not reach adequate kidney or blood levels: not for complicated UTI. ^[idsa-cuti-selection-2025]
-   - Suspected *Enterococcus* or MRSA (gram-positive cocci in urine, recent instrumentation, prior isolate): add vancomycin. ^[idsa-cuti-selection-2025, common-practice]
+   - Sepsis with suspected *Enterococcus* or MRSA (gram-positive cocci in urine, prior isolate; recent instrumentation by practice): add vancomycin. ^[idsa-cuti-selection-2025, common-practice]
+   - Otherwise treat the culture result: ampicillin-susceptible *E. faecalis* is treated with ampicillin or amoxicillin. ^[idsa-cuti-selection-2025, common-practice]
 
    {{dose:vancomycin-iv}}
 
@@ -86,7 +87,7 @@ related:
 
 4. Switch to oral
    - Clinically improving, able to take oral medication, and an effective oral option: switch rather than finishing IV. ^[idsa-cuti-ivpo-2025]
-   - With gram-negative bacteremia, the same applies once afebrile, hemodynamically stable and with source control. ^[idsa-cuti-ivpo-2025]
+   - With gram-negative bacteremia, the same applies, with an oral agent that reaches blood levels; the supporting trials switched once patients were afebrile, hemodynamically stable and with source control. ^[idsa-cuti-ivpo-2025]
 
    {{regimen:cuti-oral}}
 
@@ -115,9 +116,10 @@ related:
 :::
 
 ### Special Populations: Men, pregnancy, transplant
+- The IDSA 2025 regimens and durations do not address pregnancy, kidney transplant, neutropenia or prostatitis. ^[idsa-cuti-2025]
 - Men: no separate duration; suspected prostatitis may need 10–14 days. ^[idsa-cuti-duration-2025]
-- Pregnancy: admit; treat asymptomatic bacteriuria in pregnancy; avoid fluoroquinolones. ^[idsa-asb-2019, common-practice]
-- Kidney transplant: imaging and infectious diseases or transplant input early. ^[acr-pyelonephritis-2022, common-practice]
+- Pregnancy: usually admit; a β-lactam such as ceftriaxone; avoid fluoroquinolones and tetracyclines, and trimethoprim-sulfamethoxazole in the first trimester and near term; treat asymptomatic bacteriuria in pregnancy. ^[idsa-asb-2019, common-practice]
+- Kidney transplant: duplex Doppler ultrasound of the transplant or CT abdomen and pelvis with IV contrast; infectious diseases or transplant input early. ^[acr-pyelonephritis-2022, common-practice]
 - Kidney impairment: adjust doses by CrCl (see each dose sheet). ^[common-practice]
 
 ### Complications: Abscess, emphysematous pyelonephritis

@@ -9,6 +9,7 @@ cautions:
   - "IV: 2 mg/mL over 1 hour or 1 mg/mL over 3 hours; never as a bolus."
   - "QT prolongation and torsades: avoid with a long QTc, uncorrected hypokalemia or hypomagnesemia, or other QT-prolonging drugs."
   - Switch IV to oral at the same dose when improving.
+  - No dose change for kidney impairment; use caution at GFR <10 mL/min (higher levels).
 notes: "IV label: at least 2 days IV, then oral. Total course follows the CAP duration on the card."
 sources:
   - label-zithromax-iv-2026

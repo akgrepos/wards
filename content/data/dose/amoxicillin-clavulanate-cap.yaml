@@ -8,7 +8,9 @@ frequency: every 12 hours
 adjustments:
   - when: GFR <30 mL/min
     change: Not the 875 mg tablet; 500 mg or 250 mg every 12 hours (GFR 10–30) or every 24 hours (GFR <10)
-notes: "Guideline alternatives: 500/125 mg every 8 hours, or 2,000/125 mg extended-release every 12 hours."
+  - when: Hemodialysis
+    change: 500 mg or 250 mg every 24 hours, plus a dose during and at the end of dialysis
+notes: "Guideline alternatives: 500/125 mg every 8 hours, or 2,000/125 mg extended-release every 12 hours (not below CrCl 30)."
 sources:
   - idsa-ats-cap-2019
   - label-amox-clav-2026

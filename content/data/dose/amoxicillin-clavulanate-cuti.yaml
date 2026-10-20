@@ -6,8 +6,12 @@ amount: 875/125
 unit: mg
 frequency: every 8–12 hours
 adjustments:
-  - when: GFR <30 mL/min
-    change: Not the 875 mg tablet (label)
+  - when: GFR 10–<30 mL/min
+    change: Not the 875 mg tablet; 500 mg or 250 mg every 12 hours
+  - when: GFR <10 mL/min
+    change: 500 mg or 250 mg every 24 hours
+  - when: Hemodialysis
+    change: 500 mg or 250 mg every 24 hours, plus a dose during and at the end of dialysis
 notes: Less well studied in complicated UTI; the more frequent dosing is preferred.
 sources:
   - idsa-cuti-ivpo-2025

@@ -245,6 +245,12 @@ describe('remembered sections', () => {
     expect(within(dialog()).getAllByText(/Ceftriaxone/).length).toBeGreaterThan(0);
   });
 
+  it('numbered steps show their numbers', () => {
+    launch('#/card/id-cap');
+    const markers = [...document.querySelectorAll('.akg-step-list')][0].querySelectorAll(':scope > .akg-step > .akg-step__marker');
+    expect([...markers].map((m) => m.textContent)).toEqual(['1', '2', '3', '4', '5']);
+  });
+
   it('scroll positions are kept per page and cleared with page memory', () => {
     setCardScroll('renal-aki', 812.4);
     expect(getCardScroll('renal-aki')).toBe(812);

@@ -439,8 +439,9 @@ const useAnchor = (words: string) => { const sec = useContext(AnchorCtx); return
 function Subheading({ text }: { text: string }) {
   return <h3 id={useAnchor(text)} className="ios-headline subheading">{text}</h3>;
 }
-function StepItem({ it }: { it: { inlines: Inline[]; sources: string[]; blocks: Block[] } }) {
-  return <AKG.Step id={useAnchor(plainText(it.inlines))} title={<><Inlines xs={it.inlines} /><LinePill ids={it.sources} quote={it.inlines} /></>}><div className="step-body"><Blocks blocks={it.blocks} /></div></AKG.Step>;
+// StepList numbers its children by cloning them with `number`; pass it on to the Step.
+function StepItem({ it, number }: { it: { inlines: Inline[]; sources: string[]; blocks: Block[] }; number?: number }) {
+  return <AKG.Step id={useAnchor(plainText(it.inlines))} number={number} title={<><Inlines xs={it.inlines} /><LinePill ids={it.sources} quote={it.inlines} /></>}><div className="step-body"><Blocks blocks={it.blocks} /></div></AKG.Step>;
 }
 
 const hasText = (xs: Inline[]) => xs.some((x) => x.t !== 'text' || x.v.trim());

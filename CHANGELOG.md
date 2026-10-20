@@ -2,6 +2,15 @@
 
 What changed in each version of Wards, newest first. The version is shown in Settings (gear on Home).
 
+## 2026.10.19.14
+
+Three new topics in Infectious Disease (Wave 1, second batch):
+- **Community-Acquired Pneumonia** (condition): the IDSA/ATS severe-CAP criteria, who needs cultures and urinary antigens, inpatient and outpatient antibiotic regimens, when to add MRSA or *Pseudomonas* coverage and when to stop it, short courses once clinically stable, oseltamivir, and hydrocortisone for severe CAP. Where the 2025 ATS guideline and IDSA disagree (antibiotics when a virus is found; steroids) both are shown side by side.
+- **Cellulitis and Erysipelas** (condition): severity, mimics, which patients need MRSA coverage, oral and IV regimens, 5-day courses, recurrence prevention, and short pointers for abscess and necrotizing infection (red flags, urgent surgery, empiric regimen).
+- **Pyelonephritis and Complicated Urinary Tract Infection** (condition), from the 2025 IDSA guideline: what makes a UTI complicated, the four steps for choosing the first antibiotic, imaging, source control, switching to oral, and 5–7 or 7-day courses.
+
+New: **regimen boxes.** A gray "Regimen" box lists a treatment's options joined by "Or", with "Plus" between drugs given together and "One of:" above a choice of drugs. Every drug is still its own dose row; tap it for the dose sheet (kidney dose changes, cautions). Antibiotic doses are shared, so later cards reuse the same rows.
+
 ## 2026.10.19.13
 
 Dose details tightened on existing topics (no new topics):

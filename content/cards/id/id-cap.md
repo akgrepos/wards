@@ -17,7 +17,7 @@ related:
 - Diagnosis needs a new infiltrate on imaging; a positive viral test does not exclude bacterial coinfection. ^[idsa-ats-cap-2019, ats-cap-2025]
 - Severity by {{criteria:idsa-ats-severe-cap}}; site of care by PSI (preferred) or CURB-65 plus judgment. ^[idsa-ats-cap-2019]
 - Inpatient, not severe: β-lactam plus macrolide, or a respiratory fluoroquinolone alone; severe: β-lactam plus macrolide or fluoroquinolone. ^[idsa-ats-cap-2019]
-- MRSA or *Pseudomonas* coverage only with locally validated risk factors (prior respiratory isolate; hospitalization with IV antibiotics in the last 90 days); culture and de-escalate. ^[idsa-ats-cap-2019]
+- MRSA or *Pseudomonas* coverage: add it for a prior respiratory isolate (within 1 year), or in severe CAP after hospitalization with IV antibiotics in the last 90 days; culture and de-escalate. ^[idsa-ats-cap-2019]
 - Short courses once clinically stable: 3–5 days if not severe, at least 5 days if severe. ^[ats-cap-2025]
 - Systemic corticosteroids for severe CAP, not for nonsevere CAP or influenza. ^[ats-cap-2025, sccm-corticosteroids-2024]
 
@@ -32,7 +32,7 @@ related:
 ## Causes
 - **Bacterial:** [!most-common] *Streptococcus pneumoniae*; *Haemophilus influenzae*, *Moraxella catarrhalis*, *Staphylococcus aureus*, *Legionella*, *Mycoplasma pneumoniae*, *Chlamydia pneumoniae*. ^[idsa-ats-cap-2019]
 - **Viral:** influenza, SARS-CoV-2 and other respiratory viruses; bacterial coinfection occurs but most have none. ^[idsa-ats-cap-2019, idsa-cap-position-2025]
-- **Resistant organisms:** [!cannot-miss] MRSA and *Pseudomonas aeruginosa*: strongest risk factors are a prior respiratory isolate and hospitalization with IV antibiotics in the last 90 days. ^[idsa-ats-cap-2019]
+- **Resistant organisms:** [!cannot-miss] MRSA and *Pseudomonas aeruginosa*: strongest risk factors are a prior respiratory isolate (within 1 year) and hospitalization with IV antibiotics in the last 90 days. ^[idsa-ats-cap-2019]
 - **MRSA clues:** post-influenza pneumonia, cavitation or necrotizing pneumonia, empyema. ^[idsa-ats-cap-2019, common-practice]
 - **Aspiration:** anaerobes are uncommon; cover them only for lung abscess or empyema. ^[idsa-ats-cap-2019]
 - **Mimics:** heart failure, pulmonary embolism, atelectasis, aspiration pneumonitis, organizing pneumonia, malignancy, drug reaction. ^[common-practice]
@@ -46,12 +46,12 @@ related:
 ## Diagnosis
 #### Imaging
 - Chest radiograph for all; CT if the radiograph is equivocal and the result would change management. ^[idsa-ats-cap-2019, common-practice]
-- Lung ultrasound is an acceptable alternative where radiography or CT is not readily available and the operator is trained. ^[ats-cap-2025]
+- Lung ultrasound by a trained operator is an acceptable alternative to radiography. ^[ats-cap-2025]
 
 #### Microbiology (inpatients)
 - Severe CAP, or empiric MRSA or *Pseudomonas* coverage, or either organism previously isolated, or hospitalized with IV antibiotics in the last 90 days: blood cultures and sputum Gram stain and culture before antibiotics. ^[idsa-ats-cap-2019]
 - Intubated: endotracheal aspirate for Gram stain and culture promptly. ^[idsa-ats-cap-2019]
-- Severe CAP: pneumococcal and *Legionella* urinary antigens; *Legionella* also with an outbreak or recent travel. ^[idsa-ats-cap-2019]
+- Severe CAP: pneumococcal and *Legionella* urinary antigens, plus *Legionella* culture or PCR of lower respiratory secretions; *Legionella* testing also with an outbreak or recent travel. ^[idsa-ats-cap-2019]
 - MRSA nasal PCR when covering MRSA: negative favors stopping MRSA coverage. ^[idsa-ats-cap-2019]
 - Influenza molecular test when influenza is circulating; test for SARS-CoV-2 during community transmission. ^[idsa-ats-cap-2019, common-practice]
 - Not routine in nonsevere CAP without these risks: blood cultures, sputum culture, urinary antigens. ^[idsa-ats-cap-2019]
@@ -70,7 +70,7 @@ related:
    {{regimen:cap-inpatient-severe}}
 
 2. Add MRSA or *Pseudomonas* coverage only with risk factors
-   - Prior respiratory isolate of either organism: add coverage and culture. ^[idsa-ats-cap-2019]
+   - Prior respiratory isolate of either organism (within 1 year): add coverage and culture. ^[idsa-ats-cap-2019]
    - Hospitalization with IV antibiotics in the last 90 days plus locally validated risk factors: severe CAP, add coverage; nonsevere CAP, culture and add only if positive (MRSA: or if the nasal PCR is positive). ^[idsa-ats-cap-2019]
 
    {{regimen:cap-mrsa}}
@@ -81,12 +81,13 @@ related:
 
 3. Respiratory virus positive
    - Influenza: oseltamivir for all inpatients with CAP and influenza, regardless of symptom duration. ^[idsa-ats-cap-2019]
-   - Antibacterial therapy: ATS suggests it for all inpatients; IDSA advises deciding case by case (see Where Guidelines Differ). ^[ats-cap-2025, idsa-cap-position-2025]
+   - Influenza with CAP: standard antibacterial therapy too (strong recommendation). ^[idsa-ats-cap-2019]
+   - Other viruses: ATS suggests antibacterials for all inpatients; IDSA favors deciding case by case in nonsevere illness (see Where Guidelines Differ). ^[ats-cap-2025, idsa-cap-position-2025]
 
    {{dose:oseltamivir-influenza}}
 
 4. Severe CAP: systemic corticosteroids
-   - Suggested for severe CAP, best within 24 hours of meeting severe criteria; not for nonsevere CAP; not with influenza. ^[ats-cap-2025, sccm-corticosteroids-2024]
+   - Suggested for severe CAP, best within 24 hours of meeting severe criteria; not for nonsevere CAP; not with influenza. ^[ats-cap-2025, sccm-corticosteroids-2024, cape-cod-2023]
 
    {{dose:hydrocortisone-severe-cap}}
 
@@ -95,7 +96,7 @@ related:
    - Not severe, clinically stable: 3–5 days in total. ^[ats-cap-2025]
    - Severe, clinically stable: at least 5 days. ^[ats-cap-2025]
    - Suspected or proven MRSA or *Pseudomonas*: 7 days. ^[idsa-ats-cap-2019]
-   - Longer for empyema, lung abscess, meningitis or other extrapulmonary infection, or slow response. ^[ats-cap-2025, common-practice]
+   - Longer for empyema, lung abscess, meningitis or other extrapulmonary infection, or slow response. ^[ats-cap-2025, idsa-ats-cap-2019, common-practice]
 
 - Aspiration pneumonia: standard CAP regimens; add anaerobic coverage only for lung abscess or empyema. ^[idsa-ats-cap-2019]
 - Parapneumonic effusion: sample it; drain empyema or a complicated effusion. ^[common-practice]
@@ -115,7 +116,8 @@ related:
 ## More Information
 ### Where Guidelines Differ: Viral tests, duration, steroids
 :::compare Antibiotics when a respiratory virus is found
-- ATS 2025: Suggests antibiotics for all inpatients and for outpatients with comorbidities. ^[ats-cap-2025]
+- IDSA/ATS 2019: Influenza with CAP: standard antibacterials, inpatient and outpatient (strong). ^[idsa-ats-cap-2019]
+- ATS 2025: Suggests antibiotics for all virus-positive inpatients and for outpatients with comorbidities. ^[ats-cap-2025]
 - IDSA 2025: Did not endorse the guideline for this reason; most have no bacterial coinfection, and briefly withholding antibiotics in nonsevere illness to clarify the diagnosis is safe. ^[idsa-cap-position-2025]
 :::
 
@@ -126,7 +128,7 @@ related:
 
 :::compare Corticosteroids in severe CAP
 - ATS 2025: Suggests them (conditional); not in influenza. ^[ats-cap-2025]
-- SCCM 2024: Recommends them for hospitalized severe CAP (strong). ^[sccm-corticosteroids-2024]
+- SCCM 2024: Recommends them for hospitalized severe bacterial CAP (strong). ^[sccm-corticosteroids-2024]
 - IDSA/ATS 2019: Did not suggest routine use (superseded). ^[idsa-ats-cap-2019]
 :::
 
@@ -134,7 +136,7 @@ related:
 - Immunocompromise (neutropenia, chemotherapy, transplant, advanced HIV): outside these guidelines; broader coverage and early infectious diseases input. ^[idsa-ats-cap-2019, common-practice]
 - Pregnancy: avoid fluoroquinolones and tetracyclines when alternatives exist. ^[common-practice]
 - Kidney impairment: adjust β-lactams, fluoroquinolones and oseltamivir by CrCl (see each dose sheet). ^[common-practice]
-- Macrolides and fluoroquinolones prolong QT: check the ECG and interacting drugs. ^[idsa-ats-cap-2019]
+- Macrolides and fluoroquinolones prolong QT: check the ECG and interacting drugs. ^[label-zithromax-iv-2026, label-levofloxacin-2024, label-moxifloxacin-2025]
 
 ### Complications: Effusion, abscess, sepsis
 - Parapneumonic effusion and empyema; lung abscess; necrotizing pneumonia (*S. aureus*). ^[common-practice]
@@ -159,5 +161,5 @@ related:
 ## Pearls
 - Aspiration is not an indication for anaerobic coverage unless there is abscess or empyema. ^[idsa-ats-cap-2019]
 - Doxycycline replaces the macrolide only when macrolides and fluoroquinolones are both unsuitable, and not in severe CAP. ^[idsa-ats-cap-2019]
-- A negative MRSA nasal PCR is a reason to stop vancomycin or linezolid. ^[idsa-ats-cap-2019]
+- A negative MRSA nasal PCR favors stopping vancomycin or linezolid, especially in nonsevere CAP with negative cultures. ^[idsa-ats-cap-2019]
 - Low procalcitonin does not rule out bacterial CAP. ^[idsa-ats-cap-2019]

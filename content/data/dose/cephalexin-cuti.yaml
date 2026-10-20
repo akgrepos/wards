@@ -6,8 +6,14 @@ amount: 500–1,000
 unit: mg
 frequency: every 6 hours
 adjustments:
-  - when: CrCl <60 mL/min
-    change: "Reduce per the label (CrCl 30–59: no more than 1 g per day)"
+  - when: CrCl 30–59 mL/min
+    change: "Label: no more than 1 g per day"
+  - when: CrCl 15–29 mL/min
+    change: 250 mg every 8–12 hours
+  - when: CrCl 5–14 mL/min
+    change: 250 mg every 24 hours
+cautions:
+  - "With CrCl <60 mL/min the label cap is far below this dose: prefer another agent."
 notes: Lower doses had more treatment failure; the top of the range reaches the label maximum of 4 g per day.
 sources:
   - idsa-cuti-ivpo-2025
