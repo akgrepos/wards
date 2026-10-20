@@ -9,9 +9,9 @@ rate: over at least 60 minutes
 give_when: Actual body weight; pharmacist-led dosing
 adjustments:
   - when: Kidney impairment or dialysis
-    change: "Dose by levels: AUC-guided (target AUC 400–600 mg·h/L) or trough monitoring, with the pharmacy"
+    change: Dose by levels, AUC-guided (target AUC 400–600 mg·h/L), with the pharmacy; trough-only monitoring is no longer recommended
 cautions:
-  - Loading dose 20–35 mg/kg may be considered in critical illness.
+  - Loading dose 20–35 mg/kg (maximum 3,000 mg) may be considered in serious infection.
   - Nephrotoxicity, more with piperacillin-tazobactam and other nephrotoxins; check creatinine.
   - "Infusion reaction (flushing) with fast infusion: slow it."
 notes: "CAP guideline: 15 mg/kg every 12 hours, adjusted by levels. Label: 2 g a day in divided doses; it predates AUC dosing."

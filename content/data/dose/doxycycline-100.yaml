@@ -5,8 +5,8 @@ route: PO or IV
 amount: "100"
 unit: mg
 frequency: every 12 hours
-rate: IV over at least 1 hour
 cautions:
+  - "IV: infuse over at least 1 hour."
   - No dose change for kidney impairment (label).
   - Take tablets with a full glass of water, upright; separate from antacids, calcium and iron.
   - Avoid in pregnancy.

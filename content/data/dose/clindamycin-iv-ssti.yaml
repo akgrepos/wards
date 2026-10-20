@@ -5,8 +5,10 @@ route: IV
 amount: "600"
 unit: mg
 frequency: every 8 hours
-rate: over 20 minutes (no faster than 30 mg per minute)
+rate: over 20 minutes
 boxed_warning: Clostridioides difficile–associated diarrhea, including fatal colitis; reserve for infections where less toxic agents are inappropriate.
+cautions:
+  - No faster than 30 mg per minute.
 sources:
   - idsa-ssti-2014
   - label-cleocin-iv-2026

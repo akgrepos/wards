@@ -5,8 +5,8 @@ route: IV or PO
 amount: "600"
 unit: mg
 frequency: every 12 hours
-rate: IV over 30–120 minutes
 cautions:
+  - "IV: infuse over 30–120 minutes; oral and IV doses are the same."
   - No dose change for kidney impairment (label).
   - Serotonin syndrome with SSRIs, SNRIs and other serotonergic drugs.
   - "Myelosuppression, especially beyond 2 weeks: weekly CBC."
