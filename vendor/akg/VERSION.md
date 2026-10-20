@@ -5,6 +5,7 @@ https://claude.ai/artifact/GWFUZ6rCthpEuhMik4Jiru
 
 | Copied | Artifact version | Files |
 |---|---|---|
+| 2026-10-19 | 1792454681-dae8 (Icons group: `chevron.down` added, drawn like `chevron.backward`; Wards uses it to minimize Timed Mode) | none (icon assets only; the four copied files are unchanged) |
 | 2026-10-19 | 1792451012-a7ea (gearshape redrawn closer to SF Symbols; large Text Sizes: ContentSection titles wrap so the chevron stays on screen, GradeList chip moves above its values when the row is narrow) | `project/components/bundle.css` (the other two files are unchanged) |
 | 2026-10-19 | 1792449122-2a4d (AKI card redesign: Panel; GradeList; severity tones shared with ScaleBar, whose default ramp is now yellow → orange → red; ToolbarButton `selected`; ListRow `overline` and `buttonLabel`; Table `label`, `subcaption`, `shadedHeader`; blue-tinted SourcePill with gray markers; quote.opening icon; README "One color, one job"; components published in 1792449100-21a4) | `project/components/bundle.css`, `bundle.js`, `index.d.ts` |
 | 2026-10-19 | 1792445996-b83c (owner's card feedback: Flowchart map shows only the chosen path, Start Over resets it, roomier nodes, answers on a filled surface; Sheet drag resizes between detents; TimePoints as a timeline of plain labels; Table column gaps grow with Text Size, long first-column words hyphenate, scroll indicator only under the moving columns; longer, eased tab-bar fade) | `project/components/bundle.css`, `bundle.js`, `index.d.ts` |
