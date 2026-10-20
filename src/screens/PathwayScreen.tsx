@@ -1,4 +1,4 @@
-import { useEffect, useState, type ReactNode } from 'react';
+import { useEffect, useLayoutEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { AKG } from '../design/akg';
 import { content, pathwayHomes, titleCase } from '../content';
 import type { Pathway, PathwayStep } from '../content/types';
@@ -18,15 +18,17 @@ import { NotFoundScreen } from './Tabs';
 //   K · Choice lists: Settings-style sections; the chosen answer gets a checkmark.
 //   A · One step at a time: only the current step on the page, a stage bar, Your Path for earlier answers.
 //   L · Full screen: a focused full-screen task, one step at a time, answers within thumb reach.
+//   M · Flowchart: the whole chart, full screen and always complete; pinch to zoom; tap answers in a row.
 // All share one route: answers are kept while switching layouts, cleared by Start Over and on leaving the page.
 // Caution steps are red (owner, 2026-10-19). There is no list of all treatments at the end (owner, same day).
 
-export type Layout = 'stages' | 'choice' | 'step' | 'guided';
+export type Layout = 'stages' | 'choice' | 'step' | 'guided' | 'chart';
 const LAYOUTS: { value: Layout; label: string; 'aria-label': string }[] = [
   { value: 'stages', label: 'I', 'aria-label': 'I, Stages' },
   { value: 'choice', label: 'K', 'aria-label': 'K, Choice lists' },
   { value: 'step', label: 'A', 'aria-label': 'A, One step at a time' },
   { value: 'guided', label: 'L', 'aria-label': 'L, Full screen' },
+  { value: 'chart', label: 'M', 'aria-label': 'M, Flowchart' },
 ];
 const LAYOUT_KEY = 'wards:pathway-layout';
 function readLayout(): Layout {
@@ -350,6 +352,220 @@ function GuidedLayout({ p, route, ended, view, onChoose, onNext, onPrev, onDone,
   );
 }
 
+// ---- Layout M: the whole flowchart, full screen ----
+
+// A traditional flowchart that is always complete: every step and every answer is drawn, in rows from the top.
+// Pinch (or the zoom buttons) to zoom, drag to move around, like a map. Tap an answer in a row: it fills in blue and
+// the route continues from it; the other answers in that row stay unfilled, and steps off your route turn gray.
+// Only standard pieces (owner: HIG, "not random shapes and lines"): design-system buttons for answers, grouped
+// cards for steps, Tags for Caution and End, right-angled 1/2pt connectors, a toolbar group for zoom.
+// Only answers to questions on your route can be tapped (never two branches at once).
+type ChartNode = { key: string; kind: 'step' | 'answer'; step: string; answer?: number };
+
+function chartRows(p: Pathway): { rows: ChartNode[][]; edges: [string, string][] } {
+  const nodes = new Map<string, ChartNode>();
+  const kids = new Map<string, string[]>();
+  const edges: [string, string][] = [];
+  const add = (n: ChartNode) => { if (!nodes.has(n.key)) nodes.set(n.key, n); };
+  const link = (a: string, b: string) => { edges.push([a, b]); kids.set(a, [...(kids.get(a) ?? []), b]); };
+  for (const [id, s] of Object.entries(p.steps)) {
+    add({ key: `s:${id}`, kind: 'step', step: id });
+    if (asks(s)) {
+      answersOf(s).forEach((a, j) => {
+        const k = `a:${id}:${j}`;
+        add({ key: k, kind: 'answer', step: id, answer: j });
+        link(`s:${id}`, k);
+        if (p.steps[a.to]) link(k, `s:${a.to}`);
+      });
+    } else if (s.next && p.steps[s.next]) link(`s:${id}`, `s:${s.next}`);
+  }
+  // Rows by longest distance from the start, so a step reached two ways sits below both.
+  const order: string[] = [];
+  const seen = new Set<string>();
+  const visit = (k: string) => { if (seen.has(k)) return; seen.add(k); (kids.get(k) ?? []).forEach(visit); order.push(k); };
+  visit(`s:${p.start}`);
+  order.reverse();
+  const depth = new Map<string, number>([[`s:${p.start}`, 0]]);
+  for (const k of order) for (const c of kids.get(k) ?? []) depth.set(c, Math.max(depth.get(c) ?? 0, (depth.get(k) ?? 0) + 1));
+  const rows: ChartNode[][] = [];
+  for (const k of order) { const d = depth.get(k) ?? 0; (rows[d] ??= []).push(nodes.get(k)!); }
+  // Within a row, follow the order of the rows above (answers stay in their own order, side by side).
+  const pos = new Map<string, number>();
+  rows.forEach((row, d) => {
+    if (d > 0) {
+      const parents = (k: string) => edges.filter(([, b]) => b === k).map(([a]) => pos.get(a)).filter((x): x is number => x != null);
+      const score = (n: ChartNode) => { const ps = parents(n.key); return (ps.length ? ps.reduce((x, y) => x + y, 0) / ps.length : 0) + (n.answer ?? 0) * 0.001; };
+      row.sort((a, b) => score(a) - score(b));
+    }
+    row.forEach((n, i) => pos.set(n.key, i - (row.length - 1) / 2));
+  });
+  return { rows: rows.filter(Boolean), edges };
+}
+
+function ChartLayout({ p, route, ended, onChoose, onStartOver, title }: LayoutProps & { onStartOver: () => void; title: string }) {
+  const [open, setOpen] = useState(false);
+  const [scale, setScale] = useState(0);
+  const [size, setSize] = useState({ w: 0, h: 0 });
+  const [lines, setLines] = useState<{ d: string; on: boolean }[]>([]);
+  const viewport = useRef<HTMLDivElement>(null);
+  const plane = useRef<HTMLDivElement>(null);
+  const els = useRef(new Map<string, HTMLElement>());
+  const { rows, edges } = useMemo(() => chartRows(p), [p]);
+  useEffect(() => (open ? AKG.lockScroll() : undefined), [open]);
+  AKG.useEscape(open, () => setOpen(false));
+
+  const onRoute = new Map(route.map((v) => [v.id, v]));
+  const last = route[route.length - 1];
+  const chosenKey = (id: string) => { const v = onRoute.get(id); return v?.answer != null ? `a:${id}:${v.answer}` : null; };
+  const edgeOn = ([a, b]: [string, string]) => {
+    const [ka, ia] = a.split(':'); const [kb, ib] = b.split(':');
+    if (ka === 's' && kb === 's') return onRoute.has(ia) && onRoute.has(ib);
+    if (ka === 's') return chosenKey(ia) === b;
+    return chosenKey(ia) === a && onRoute.has(ib);
+  };
+
+  // Measure the boxes (unscaled) and draw the lines between them.
+  useLayoutEffect(() => {
+    if (!open || !plane.current) return;
+    const pr = plane.current.getBoundingClientRect();
+    const s = scale || 1;
+    const at = (k: string) => { const r = els.current.get(k)?.getBoundingClientRect(); return r && { x: (r.left - pr.left) / s, y: (r.top - pr.top) / s, w: r.width / s, h: r.height / s }; };
+    setLines(edges.map((e) => {
+      const a = at(e[0]); const b = at(e[1]);
+      if (!a || !b) return null;
+      // Right-angled connectors: down, across at the gap between the rows, down into the next box.
+      const x1 = a.x + a.w / 2, y1 = a.y + a.h, x2 = b.x + b.w / 2, y2 = b.y, m = Math.round((y1 + y2) / 2);
+      return { d: x1 === x2 ? `M${x1},${y1} V${y2}` : `M${x1},${y1} V${m} H${x2} V${y2}`, on: edgeOn(e) };
+    }).filter((x): x is { d: string; on: boolean } => !!x));
+    setSize({ w: plane.current.offsetWidth, h: plane.current.offsetHeight });
+  }, [open, choicesKey(route), scale]);
+
+  // Start fitted to the screen width.
+  useLayoutEffect(() => {
+    if (open && !scale) setScale(fit());
+  }, [open]);
+  const fit = () => {
+    const w = plane.current?.offsetWidth ?? 0, vw = viewport.current?.clientWidth ?? 0;
+    return w && vw ? Math.min(1, Math.max(0.3, (vw - 16) / w)) : 1;
+  };
+  // The zoom in use right now (state lags behind a pinch, which zooms many times a second).
+  const live = useRef(1);
+  if (scale) live.current = scale;
+  const zoomTo = (next: number, cx?: number, cy?: number) => {
+    const vp = viewport.current; if (!vp) return;
+    const s0 = live.current; const s1 = Math.min(2.5, Math.max(0.25, next));
+    live.current = s1;
+    const fx = cx ?? vp.clientWidth / 2, fy = cy ?? vp.clientHeight / 2;
+    const px = (vp.scrollLeft + fx) / s0, py = (vp.scrollTop + fy) / s0;
+    pending.current = { x: px * s1 - fx, y: py * s1 - fy };
+    setScale(s1);
+  };
+  // Keep the point under the fingers (or the screen's center) in place: scroll once the chart has its new size.
+  const pending = useRef<{ x: number; y: number } | null>(null);
+  useLayoutEffect(() => {
+    const vp = viewport.current, to = pending.current;
+    if (vp && to) { vp.scrollLeft = Math.max(0, to.x); vp.scrollTop = Math.max(0, to.y); pending.current = null; }
+  }, [scale]);
+
+  // Two-finger pinch zooms around the fingers; one finger scrolls natively.
+  const pinch = useRef<{ d: number; s: number } | null>(null);
+  useEffect(() => {
+    const vp = viewport.current; if (!open || !vp) return;
+    const dist = (t: TouchList) => Math.hypot(t[0].clientX - t[1].clientX, t[0].clientY - t[1].clientY);
+    const start = (e: TouchEvent) => { if (e.touches.length === 2) pinch.current = { d: dist(e.touches), s: live.current }; };
+    const move = (e: TouchEvent) => {
+      if (e.touches.length !== 2 || !pinch.current) return;
+      e.preventDefault();
+      const r = vp.getBoundingClientRect();
+      const cx = (e.touches[0].clientX + e.touches[1].clientX) / 2 - r.left, cy = (e.touches[0].clientY + e.touches[1].clientY) / 2 - r.top;
+      zoomTo(pinch.current.s * (dist(e.touches) / pinch.current.d), cx, cy);
+    };
+    const end = () => { pinch.current = null; };
+    const stop = (e: Event) => e.preventDefault();
+    vp.addEventListener('touchstart', start, { passive: true });
+    vp.addEventListener('touchmove', move, { passive: false });
+    vp.addEventListener('touchend', end);
+    vp.addEventListener('gesturestart', stop);
+    vp.addEventListener('gesturechange', stop);
+    return () => {
+      vp.removeEventListener('touchstart', start); vp.removeEventListener('touchmove', move); vp.removeEventListener('touchend', end);
+      vp.removeEventListener('gesturestart', stop); vp.removeEventListener('gesturechange', stop);
+    };
+  });
+
+  const reg = (k: string) => (el: HTMLElement | null) => { if (el) els.current.set(k, el); else els.current.delete(k); };
+  const s = scale || 1;
+  return (
+    <>
+      <AKG.List footer="The whole pathway as one chart. Pinch to zoom, drag to move around.">
+        <AKG.ListRow title="Open Flowchart" subtitle={route.some((v) => v.answer != null) ? `At: ${last.step.title}` : undefined} action onClick={() => setOpen(true)} />
+      </AKG.List>
+      {open && (
+        <div className="pw-guided pw-chartview" role="dialog" aria-modal="true" aria-label={`${title}, flowchart`}>
+          <div className="pw-guided__bar">
+            <AKG.ToolbarButton icon={icons.xmark} aria-label="Close" onClick={() => setOpen(false)} />
+            <span className="ios-headline pw-guided__title">Flowchart</span>
+            <AKG.ToolbarButton onClick={onStartOver} disabled={!route.some((v) => v.answer != null)}>Start Over</AKG.ToolbarButton>
+          </div>
+          <div className="pw-chart__viewport" ref={viewport}>
+            <div className="pw-chart__sizer" style={{ width: size.w * s, height: size.h * s }}>
+              <div className="pw-chart__plane" ref={plane} style={{ transform: `scale(${s})`, visibility: scale ? 'visible' : 'hidden' }} role="group" aria-label={`${title} flowchart`}>
+                <svg className="pw-chart__lines" width={size.w} height={size.h} aria-hidden="true">
+                  {[...lines].sort((x, y) => Number(x.on) - Number(y.on)).map((l, i) => <path key={i} d={l.d} className={l.on ? 'pw-chart__line pw-chart__line--on' : 'pw-chart__line'} />)}
+                </svg>
+                {rows.map((row, d) => (
+                  <div key={d} className="pw-chart__row">
+                    {row.map((n) => {
+                      const st = p.steps[n.step];
+                      if (n.kind === 'answer') {
+                        const a = answersOf(st)[n.answer!];
+                        const v = onRoute.get(n.step);
+                        const state = !v ? 'off' : v.answer == null ? 'open' : v.answer === n.answer ? 'chosen' : 'other';
+                        // Standard buttons (HIG): filled when chosen, tinted while it can be chosen, gray otherwise.
+                        const variant = state === 'chosen' ? 'prominent' : state === 'open' ? 'tinted' : 'bordered';
+                        return (
+                          <div key={n.key} ref={reg(n.key)} className={`pw-chart__answer pw-chart__answer--${state}`}>
+                            <AKG.Button variant={variant} disabled={state === 'off'} aria-pressed={state === 'chosen'} onClick={() => onChoose(n.step, n.answer!)}>{a.label}</AKG.Button>
+                            {a.detail && <span className="ios-caption-1 pw-chart__answerdetail"><Plain text={a.detail} /></span>}
+                          </div>
+                        );
+                      }
+                      const on = onRoute.has(n.step);
+                      const now = !ended && last.id === n.step;
+                      const end = st.kind === 'result' && !st.next;
+                      return (
+                        <section key={n.key} ref={reg(n.key)} className={`pw-chart__box pw-step pw-step--${st.kind}${on ? ' pw-chart__box--on' : ' pw-chart__box--off'}${now ? ' pw-chart__box--now' : ''}`} aria-current={now ? 'step' : undefined}>
+                          {(st.kind === 'caution' || end) && (
+                            <span className="tag-row">
+                              {st.kind === 'caution' && <AKG.Tag variant="critical">Caution</AKG.Tag>}
+                              {end && <AKG.Tag variant="neutral">End of Pathway</AKG.Tag>}
+                            </span>
+                          )}
+                          {st.kind === 'caution' ? <p className="pw-kind ios-caption-1-emphasized">{st.stage}{now ? ' · Now' : ''}</p> : <KindLabel step={st} now={now} />}
+                          <h2 className="ios-headline">{st.title}</h2>
+                          <StepBody step={st} />
+                        </section>
+                      );
+                    })}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+          <div className="pw-chart__zoom">
+            <AKG.ToolbarGroup>
+              <AKG.ToolbarButton icon={<span className="pw-chart__glyph" aria-hidden="true">−</span>} aria-label="Zoom Out" onClick={() => zoomTo(s / 1.25)} />
+              <AKG.ToolbarButton onClick={() => { zoomTo(fit()); viewport.current?.scrollTo({ left: 0 }); }}>Fit</AKG.ToolbarButton>
+              <AKG.ToolbarButton icon={<span className="pw-chart__glyph" aria-hidden="true">+</span>} aria-label="Zoom In" onClick={() => zoomTo(s * 1.25)} />
+            </AKG.ToolbarGroup>
+          </div>
+        </div>
+      )}
+    </>
+  );
+}
+const choicesKey = (route: Visit[]) => route.map((v) => `${v.id}:${v.answer ?? ''}`).join('|');
+
 type LayoutProps = { p: Pathway; route: Visit[]; ended: boolean; onChoose: (id: string, answer: number) => void };
 type StepProps = LayoutProps & { view: number; onNext: () => void; onPrev: () => void; onDone: () => void; after?: ReactNode };
 
@@ -402,6 +618,7 @@ export function PathwayScreen({ id }: { id: string }) {
   let body: ReactNode;
   if (layout === 'choice') body = <ChoiceLayout {...props} />;
   else if (layout === 'step') body = <StepLayout {...props} after={after} onJump={go} />;
+  else if (layout === 'chart') body = <ChartLayout {...props} onStartOver={startOver} title={title} />;
   else if (layout === 'guided') body = <GuidedLayout {...props} title={title} cardTitle={homes[0]?.card.title} />;
   else body = <StagesLayout {...props} />;
 
@@ -413,7 +630,7 @@ export function PathwayScreen({ id }: { id: string }) {
     >
       <div className="pw-layout">
         <AKG.SegmentedControl options={LAYOUTS} value={layout} onChange={pick} aria-label="Test layout" />
-        <p className="ios-footnote secondary">Test layouts: I Stages · K Choice lists · A One step · L Full screen.</p>
+        <p className="ios-footnote secondary">Test layouts: I Stages · K Choice lists · A One step · L Full screen · M Flowchart.</p>
       </div>
       {body}
       {ended && (layout === 'stages' || layout === 'choice') && after}

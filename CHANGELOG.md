@@ -2,6 +2,14 @@
 
 What changed in each version of Wards, newest first. The version is shown in Settings (gear on Home).
 
+## 2026.10.19.9
+
+Pathway pages: new test layout **M · Flowchart**. The switch now reads I · K · A · L · M.
+- Open Flowchart shows the whole pathway as one traditional flowchart, full screen, with every step and every answer always drawn.
+- Pinch to zoom (or use − Fit +) and drag to move around.
+- Tap an answer in a row: it fills in blue and the route continues from it; the other answers in that row stay gray, and steps off your route are dimmed. Answers further down light up (tinted blue) once their question is on your route.
+- Only standard pieces: buttons for answers, cards for steps, Caution and End of Pathway tags, straight right-angled lines.
+
 ## 2026.10.19.8
 
 Pathway pages: J (Drill-down) is replaced by **A · One step at a time**. The switch now reads I · K · A · L.

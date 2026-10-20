@@ -167,6 +167,39 @@ button.pw-stage__head:active { background: var(--fill-tertiary); }
 .pw-guided__actions .pw-answer { background: var(--fill-tertiary); box-shadow: none; }
 .pw-guided__actions .pw-answer--chosen { background: var(--background-grouped-secondary); box-shadow: 0 0 0 2px var(--label); }
 
+/* M: the whole flowchart, full screen. Rows of boxes joined by lines; pinch or the zoom buttons scale the plane;
+   one finger scrolls. Your route is outlined in the label color, the chosen answer filled blue, answers not yet
+   chosen outlined blue (tappable), the other answers in a chosen row unfilled, and steps off the route gray. */
+.pw-chartview { background: var(--background-grouped); }
+.pw-chart__viewport { flex: 1; min-height: 0; overflow: auto; overscroll-behavior: contain; touch-action: pan-x pan-y; -webkit-overflow-scrolling: touch; }
+.pw-chart__sizer { position: relative; margin: 0 auto; }
+.pw-chart__plane {
+  position: absolute; top: 0; left: 0; transform-origin: 0 0; width: max-content;
+  display: flex; flex-direction: column; align-items: center; gap: var(--space-24); padding: var(--space-24) var(--space-24) 10rem; box-sizing: border-box;
+}
+.pw-chart__lines { position: absolute; top: 0; left: 0; overflow: visible; pointer-events: none; }
+.pw-chart__line { fill: none; stroke: var(--separator-opaque); stroke-width: 1; }
+.pw-chart__line--on { stroke: var(--label); stroke-width: 2; }
+.pw-chart__row { position: relative; display: flex; justify-content: center; align-items: flex-start; gap: var(--space-24); }
+.pw-chart__box {
+  position: relative; width: 16rem; box-sizing: border-box; display: flex; flex-direction: column; gap: var(--space-8);
+  padding: var(--space-14) var(--space-16); border-radius: var(--radius-grouped); background: var(--background-grouped-secondary);
+}
+.pw-chart__box h2, .pw-chart__box p { margin: 0; overflow-wrap: break-word; }
+.pw-chart__box--now { box-shadow: 0 0 0 2px var(--accent); }
+.pw-chart__box--off { color: color-mix(in srgb, var(--label) 30%, var(--label-secondary)); }
+.pw-chart__box--off .dose-rows { opacity: 0.6; }
+.pw-chart__box.pw-step--caution { background: color-mix(in srgb, var(--system-red) 8%, var(--background-grouped-secondary)); }
+.pw-chart__answer { position: relative; width: 10rem; display: flex; flex-direction: column; align-items: stretch; gap: var(--space-4); text-align: center; }
+.pw-chart__answer .akg-button { width: 100%; white-space: normal; }
+.pw-chart__answerdetail { color: color-mix(in srgb, var(--label) 30%, var(--label-secondary)); overflow-wrap: break-word; }
+.pw-chart__answer--off .pw-chart__answerdetail { color: var(--label-tertiary); }
+.pw-chart__glyph { font-size: calc(22 * var(--akg-text-unit)); line-height: 1; font-weight: 500; }
+.pw-chart__zoom {
+  position: absolute; left: 0; right: 0; bottom: calc(env(safe-area-inset-bottom) + var(--space-12)); display: flex; justify-content: center; gap: var(--space-8); pointer-events: none;
+}
+.pw-chart__zoom > * { pointer-events: auto; }
+
 .pw-after { display: flex; flex-direction: column; gap: var(--space-16); }
 .pw-sources { padding-left: 0; padding-right: 0; }
 .criteria-block, .criteria { display: flex; flex-direction: column; gap: var(--space-8); }
