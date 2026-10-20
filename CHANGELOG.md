@@ -2,6 +2,17 @@
 
 What changed in each version of Wards, newest first. The version is shown in Settings (gear on Home).
 
+## 2026.10.19.12
+
+Pathways are now **one large map of the whole card**, for Acute Kidney Injury and Hyperkalemia.
+- Open it from the new **Pathway** row under the card's title, or from Library › Pathways.
+- Every box is always drawn. Tap an answer and the route fills in; boxes off your route dim. Pinch to zoom, or use − Fit +.
+- Boxes link to the card itself instead of copying it: a section or one of its steps, criteria, dose sheets, other cards and the Rapids page. Back returns to the map with your answers kept; Start Over clears them.
+- Detours rejoin the main path (dashed line), e.g. AKI: relieve the obstruction, then "Relieved, and AKI resolving?" No → back to volume status.
+- The wording now matches the cards (checked by an independent reviewer); the old copied text is gone.
+- The test layouts (I, K, A, L, M) and the letter switch are removed.
+- Smoother zooming on large maps: pinching moves only the map layer, and the map isn't redrawn until you let go.
+
 ## 2026.10.19.11
 
 Three new topics in Kidney, Electrolytes and Urology (Wave 1, first batch):
