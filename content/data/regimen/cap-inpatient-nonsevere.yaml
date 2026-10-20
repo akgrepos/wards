@@ -12,4 +12,5 @@ options:
 duration: "3–5 days once clinically stable (7 days for MRSA or Pseudomonas)"
 notes:
   - "β-lactam monotherapy is not routinely recommended."
+  - "Clarithromycin is an oral macrolide alternative; severe β-lactam allergy: the fluoroquinolone option."
 sources: [idsa-ats-cap-2019, ats-cap-2025]

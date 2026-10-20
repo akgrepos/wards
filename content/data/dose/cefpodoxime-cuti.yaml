@@ -8,6 +8,8 @@ frequency: every 12 hours
 adjustments:
   - when: CrCl <30 mL/min
     change: Every 24 hours
+  - when: Hemodialysis
+    change: 3 times a week after dialysis
 cautions:
   - Take with food.
 notes: Guideline dose; the label lists only uncomplicated UTI.

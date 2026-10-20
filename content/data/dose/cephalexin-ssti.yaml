@@ -12,6 +12,9 @@ adjustments:
     change: 250 mg every 8–12 hours
   - when: CrCl 5–14 mL/min
     change: 250 mg every 24 hours
+  - when: CrCl 1–4 mL/min
+    change: 250 mg every 48–60 hours
+notes: Guideline dose; the label's usual adult dose is 250 mg every 6 hours or 500 mg every 12 hours, up to 4 g per day.
 sources:
   - idsa-ssti-2014
   - label-cephalexin-2026

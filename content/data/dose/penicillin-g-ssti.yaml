@@ -6,8 +6,12 @@ amount: 2–4 million
 unit: units
 frequency: every 4–6 hours
 adjustments:
-  - when: Severe kidney impairment
-    change: "Reduce per the label (e.g., CrCl <10 mL/min: full loading dose, then half every 8–10 hours)"
+  - when: Uremia with CrCl >10 mL/min
+    change: Full loading dose, then half the loading dose every 4–5 hours
+  - when: CrCl <10 mL/min
+    change: Full loading dose, then half the loading dose every 8–10 hours
+  - when: Liver and kidney disease together
+    change: Further reduction may be needed (label)
 cautions:
   - High doses carry a potassium load.
 sources:

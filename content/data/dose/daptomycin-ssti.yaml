@@ -7,7 +7,7 @@ unit: mg/kg
 frequency: every 24 hours
 adjustments:
   - when: CrCl <30 mL/min, hemodialysis or CAPD
-    change: Same dose every 48 hours
+    change: Same dose every 48 hours, after hemodialysis on dialysis days
 cautions:
   - IV over 2 minutes (injection) or 30 minutes (infusion).
   - "Not for pneumonia: inactivated by surfactant."

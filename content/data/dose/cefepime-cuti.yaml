@@ -11,7 +11,7 @@ adjustments:
     change: Reduce per the label's table (e.g., 2 g every 12 hours becomes 2 g every 24 hours at CrCl 30–60)
 cautions:
   - Neurotoxicity when not reduced for kidney function.
-notes: "Label: severe UTI or pyelonephritis 2 g every 12 hours."
+notes: "Range from the guideline's trial-dose table; the label's UTI dosing is every 12 hours (severe: 2 g every 12 hours), with every 8 hours labeled for Pseudomonas and pneumonia."
 sources:
   - idsa-cuti-selection-2025
   - label-cefepime-2024

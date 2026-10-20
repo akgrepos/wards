@@ -1,12 +1,12 @@
 name: MRSA risk
 indication: Cellulitis
-setting: "Penetrating trauma, MRSA elsewhere or in the nose, injection drug use, or SIRS"
+setting: "Penetrating trauma, MRSA elsewhere or in the nose, injection drug use, purulent drainage, or SIRS"
 options:
-  - label: IV
+  - label: IV, for SIRS or inpatients
     doses: [[vancomycin-iv, linezolid-600, daptomycin-ssti, ceftaroline-iv]]
-  - label: Oral, covering streptococci and MRSA
+  - label: Oral, no systemic signs
     doses: [clindamycin-po-ssti]
-  - label: Oral, β-lactam plus MRSA agent
+  - label: Oral, no systemic signs, β-lactam plus MRSA agent
     doses: [[cephalexin-ssti, penicillin-vk-ssti], [tmp-smx-ssti, doxycycline-100]]
 duration: "5 days; extend if not improved"
 notes:
