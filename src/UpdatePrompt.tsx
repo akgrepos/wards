@@ -28,11 +28,14 @@ export function UpdatePrompt() {
     needRefresh: [needRefresh],
     updateServiceWorker,
   } = useRegisterSW({
-    // A Home Screen app can stay open for days, so also look for a new version each time it comes back to the front.
+    // Look for a new version when the app opens (the browser itself only checks on opening once a day) and each time
+    // it comes back to the front, since a Home Screen app can stay open for days. Offline, a check just fails quietly.
     onRegisteredSW(_url, registration) {
       if (!registration) return;
+      const check = () => { if (navigator.onLine) registration.update().catch(() => {}); };
+      check();
       document.addEventListener('visibilitychange', () => {
-        if (document.visibilityState === 'visible' && navigator.onLine) registration.update();
+        if (document.visibilityState === 'visible') check();
       });
     },
   });
