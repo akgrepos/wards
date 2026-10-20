@@ -1,0 +1,15 @@
+drug_name: Magnesium sulfate
+indication: Severe symptomatic hypomagnesemia, hemodynamically stable, after the initial dose
+population: Adults
+route: IV
+amount: "4–8"
+unit: g
+rate: "over 12–24 hours"
+give_when: "Severe symptoms (e.g. tetany, seizures, arrhythmia) after an initial IV dose"
+adjustments:
+  - when: "Severe renal insufficiency"
+    change: "Lower dose; no more than 20 g in 48 hours; frequent Mg levels"
+cautions:
+  - "Contraindicated in heart block or myocardial damage (US label)."
+notes: "US label alternative for severe deficiency: 5 g in 1 L of D5W or saline over 3 hours."
+sources: [hansen-magnesium-icu-2018, label-mgso4-2021]

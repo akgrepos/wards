@@ -1,0 +1,21 @@
+drug_name: Magnesium sulfate
+indication: Hypomagnesemia
+population: Adults
+route: IV
+amount: "1–2"
+unit: g
+rate: "over 1–2 hours when stable (no faster than 1 g per hour); over 5–60 minutes for severe symptoms"
+repeat: "As needed by level; with repeated doses check patellar reflexes and breathing before each"
+max: "US label: generally no faster than 150 mg per minute; faster only for life-threatening symptoms (seizures, ventricular arrhythmia, torsades de pointes)"
+alternative:
+  dose: mgso4-iv-infusion
+  when: "Severe symptomatic hypomagnesemia, after this dose"
+adjustments:
+  - when: "Severe renal insufficiency"
+    change: "Lower dose; no more than 20 g in 48 hours; frequent Mg levels"
+cautions:
+  - "Contraindicated in heart block or myocardial damage (US label)."
+  - "Rapid infusion can cause hypotension and asystole."
+  - "Keep IV calcium available to reverse magnesium toxicity."
+notes: "1 g provides about 8 mEq (4 mmol) of magnesium. Up to 90% of an IV dose may be lost in the urine within 24 hours; slower infusion is thought to improve retention. ICU rule of thumb: each 1 g raises serum Mg by about 0.15 mEq/L over 18–30 hours."
+sources: [label-mgso4-2021, adomako-magnesium-2024, hansen-magnesium-icu-2018]

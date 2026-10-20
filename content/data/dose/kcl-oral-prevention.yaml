@@ -1,0 +1,10 @@
+drug_name: Potassium chloride
+indication: Prevention of hypokalemia (e.g. on loop or thiazide diuretics)
+population: Adults
+route: PO
+amount: "20"
+unit: mEq
+frequency: once daily
+boxed_warning: None
+notes: "A potassium-sparing diuretic is an alternative to supplements."
+sources: [label-klor-con-2025, asmar-hypokalemia-2012]

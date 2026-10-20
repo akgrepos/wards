@@ -1,0 +1,19 @@
+drug_name: Potassium chloride
+brand: "Klor-Con, K-Tab (extended-release tablets); oral solution or powder"
+indication: Hypokalemia (treatment)
+population: Adults
+route: PO
+amount: "20–40"
+unit: mEq
+frequency: "2–5 times daily (40–100 mEq per day), with meals"
+max: "40 mEq per dose; usual total 40–100 mEq per day (label ceiling 200 mEq per day)"
+boxed_warning: None
+adjustments:
+  - when: "Severe kidney impairment or dialysis"
+    change: "Replace very cautiously with frequent K⁺ checks; involve nephrology"
+cautions:
+  - "Take with meals and a full glass of water; swallow extended-release tablets whole."
+  - "Extended-release tablets are better tolerated than liquid but can still cause GI ulceration."
+  - "Contraindicated with triamterene or amiloride (US label)."
+notes: "Mild to moderate hypokalemia (K⁺ 3.0–3.5 mEq/L): a typical course is 60–80 mEq per day in divided doses. Serum K⁺ poorly reflects the total-body deficit; correction may take several days with ongoing losses."
+sources: [label-klor-con-2025, label-kcl-oral-solution-2026, asmar-hypokalemia-2012, kardalas-hypokalemia-2018]

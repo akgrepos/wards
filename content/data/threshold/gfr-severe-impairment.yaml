@@ -1,0 +1,4 @@
+name: "Severe kidney impairment (GFR)"
+value: "<30"
+unit: "mL/min/1.73 m²"
+sources: [asmar-hypokalemia-2012, label-kphos-injection-2026]
