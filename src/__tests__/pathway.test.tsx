@@ -32,7 +32,7 @@ describe('pathway page (test layouts)', () => {
     launch('#/pathway/hyperkalemia-management');
     expect(document.querySelector('.page-title')!.textContent).toBe('Acute Hyperkalemia Management');
     // The switch shows letters only (owner), with full names for VoiceOver.
-    expect(screen.getAllByRole('radio').map((r) => r.textContent)).toEqual(['I', 'K', 'A', 'L']);
+    expect(screen.getAllByRole('radio').map((r) => r.textContent)).toEqual(['I', 'K', 'A', 'L', 'M']);
     expect(screen.getByRole('radio', { name: 'I, Stages' }).getAttribute('aria-checked')).toBe('true');
     expect(hasText('ECG changes of hyperkalemia?')).toBe(false);
     await tap(/^Confirmed or likely/);
@@ -112,6 +112,24 @@ describe('pathway page (test layouts)', () => {
     await tap('Close');
     expect(screen.queryByRole('dialog')).toBeNull();
     expect(screen.getByRole('button', { name: /Continue Pathway/ })).toBeTruthy();
+  });
+
+  it('M: the whole flowchart opens full screen; every step and answer is drawn; picking one fills it, its row-mates do not', async () => {
+    launch('#/pathway/hyperkalemia-management');
+    await layout('M, Flowchart');
+    await tap('Open Flowchart');
+    const chart = screen.getByRole('dialog');
+    // Every step is always on the chart, answered or not.
+    for (const t of ['True hyperkalemia?', 'Repeat measurement', 'Severity?', 'Mild hyperkalemia', 'Monitoring and etiology']) expect(chart.textContent).toContain(t);
+    // Answers to questions not yet on the route can't be tapped.
+    expect((screen.getByRole('button', { name: /^Severe/ }) as HTMLButtonElement).disabled).toBe(true);
+    await tap(/^Confirmed or likely/);
+    expect(screen.getByRole('button', { name: /^Confirmed or likely/ }).getAttribute('aria-pressed')).toBe('true');
+    expect(screen.getByRole('button', { name: /^Possibly spurious/ }).closest('.pw-chart__answer')!.className).toContain('pw-chart__answer--other');
+    expect(screen.getByRole('button', { name: /^Yes/ }).closest('.pw-chart__answer')!.className).toContain('pw-chart__answer--open');
+    await tap('Zoom In');
+    await tap('Close');
+    expect(screen.queryByRole('dialog')).toBeNull();
   });
 
   it('the AKI pathway works too, and the Rapids page links to its pathway', async () => {
