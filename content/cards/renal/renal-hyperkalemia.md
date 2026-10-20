@@ -99,7 +99,6 @@ emergency_hint: Calcium, insulin-dextrose, remove K⁺
 - Etiology: medication review, renal function, hemolysis screen, cause of AKI if present. ^[kdigo-acute-hyperkalemia-2020]
 
 ## Treatment
-{{pathway:hyperkalemia-management}}
 
 :::onset Compare Onset and Duration
 - {{dose:calcium-gluconate-hyperkalemia}}

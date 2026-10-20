@@ -13,7 +13,8 @@ export type Route =
   | { name: 'settings' }
   | { name: 'favorites' }
   | { name: 'system'; id: string }
-  | { name: 'card'; id: string; section?: string }
+  // section: a section key; anchor: a subheading or step inside it (pathway links land on it).
+  | { name: 'card'; id: string; section?: string; anchor?: string }
   | { name: 'pathway'; id: string }
   // An emergency page (Rapids), and Timed Mode, which runs one emergency at a time.
   | { name: 'emergency'; id: string }
@@ -22,16 +23,18 @@ export type Route =
 
 // Sections renamed since: old links still open the right section ("When to Call" became "Escalation", 2026-10-19).
 const RENAMED_SECTIONS: Record<string, string> = { 'when-to-call': 'escalation' };
+// Pathways renamed since (2026-10-19: whole-card maps).
+const RENAMED_PATHWAYS: Record<string, string> = { 'hyperkalemia-management': 'hyperkalemia' };
 
 const ROOTS = ['emergencies', 'topics', 'library', 'search', 'settings', 'favorites', 'timed'] as const;
 
 export function parseRoute(hash: string): Route {
   const parts = hash.replace(/^#\/?/, '').split('/').filter(Boolean).map((p) => { try { return decodeURIComponent(p); } catch { return p; } });
-  const [a, b, c] = parts;
+  const [a, b, c, d] = parts;
   if (!a || a === 'home') return parts.length <= 1 ? { name: 'home' } : { name: 'not-found' };
   if (a === 'system' && b && !c) return { name: 'system', id: b };
-  if (a === 'card' && b) return { name: 'card', id: b, section: c && (RENAMED_SECTIONS[c] ?? c) };
-  if (a === 'pathway' && b && !c) return { name: 'pathway', id: b };
+  if (a === 'card' && b && parts.length <= 4) return { name: 'card', id: b, section: c && (RENAMED_SECTIONS[c] ?? c), anchor: c ? d : undefined };
+  if (a === 'pathway' && b && !c) return { name: 'pathway', id: RENAMED_PATHWAYS[b] ?? b };
   if (a === 'emergency' && b && !c) return { name: 'emergency', id: b };
   if (a === 'library' && b && !c) return { name: 'library-list', id: b };
   if ((ROOTS as readonly string[]).includes(a) && !b) return { name: a as (typeof ROOTS)[number] };
@@ -51,7 +54,7 @@ export const href = {
   pathway: (id: string) => `#/pathway/${encodeURIComponent(id)}`,
   emergency: (id: string) => `#/emergency/${encodeURIComponent(id)}`,
   timed: () => '#/timed',
-  card: (id: string, section?: string) => `#/card/${encodeURIComponent(id)}${section ? `/${encodeURIComponent(section)}` : ''}`,
+  card: (id: string, section?: string, anchor?: string) => `#/card/${encodeURIComponent(id)}${section ? `/${encodeURIComponent(section)}${anchor ? `/${encodeURIComponent(anchor)}` : ''}` : ''}`,
 };
 
 export const TAB_ROOT: Record<Exclude<Tab, 'search'>, string> = {

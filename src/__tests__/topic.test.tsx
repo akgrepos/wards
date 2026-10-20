@@ -203,17 +203,6 @@ describe('remembered sections', () => {
     expect(names).toEqual(['Hemodialysis', 'Calcium gluconate 10%', 'Furosemide', 'Albuterol (nebulized)', 'Insulin-dextrose', 'Sodium zirconium cyclosilicate', 'Patiromer']);
   });
 
-  it('a pathway shows as one Open row that goes to its own page', async () => {
-    launch('#/card/renal-aki');
-    expect(document.querySelector('.akg-flowchart')).toBeNull();
-    const row = document.querySelector('.pathway-row a') as HTMLElement;
-    expect(row.textContent).toContain('AKI Evaluation');
-    expect(row.getAttribute('href')).toBe('#/pathway/aki-evaluation');
-    expect(row.textContent).toContain('Open');
-    launch('#/pathway/aki-evaluation');
-    expect(document.querySelector('.page-title')!.textContent).toBe('AKI Evaluation');
-  });
-
   it('the quote-mark button shows one source pill per line; a pill lists that line\'s sources', async () => {
     launch('#/card/renal-aki');
     const toggle = screen.getByRole('button', { name: 'Show Sources' });

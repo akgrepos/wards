@@ -39,7 +39,7 @@ Settled 2026-10-17; page layout updated 2026-10-18 for the approved redesign (to
 - Drug doses only ever appear as ⟨inserted⟩ dose rows, **one drug per row, on a line of their own**: never two drugs and two amounts on one line. Tapping a row opens the dose sheet.
 - **One color, one job** (2026-10-19), always with a word label: blue = tappable; red = danger (emergencies and the most severe grade); the severity ramp (yellow, orange, red; green only for a normal grade) only inside grades, stages and scales; indigo box labelled "Criteria" = formal criteria; brown box labelled "Note" = notes and caveats (`:::note`); gray = tables (labelled "Table", gray header) and anything neutral. Other colors stay out of card content.
 - Staging systems as stage rows (GradeList: a tinted "STAGE n" chip beside each stage's criteria).
-- **Pathways are their own pages** (2026-10-19, reverses "flowcharts live inside their cards"): a card shows a pathway as one row ("Pathway", its name and stages, Open). The pathway pages will be designed from scratch; until then the row opens an empty page with the pathway's name. The Library's Pathways list opens the same pages.
+- **Pathways are whole-card maps** (2026-10-19, reverses "flowcharts live inside their cards"): a card with a pathway shows one "Pathway" row under its title (above the first section) that opens a full-screen, zoomable flowchart of the whole card. The map links to the card's sections, steps, criteria and dose sheets instead of copying them. The Library's Pathways list opens the same pages.
 - Severity grades as a scale (ScaleBar), steps in order as numbered steps (StepList), statements that differ by source as a side-by-side comparison (ComparisonGrid), recheck times as a timeline of plain labels (TimePoints). Tables keep their first column in place.
 - Items with sub-items use one level of nested bullets (HIG). Links to other pages are woven into the sentence ("[[renal-hyperkalemia|hyperkalemia]]"), never added after it in brackets.
 - Onset and duration of several treatments: a "Compare Onset and Duration" row (`:::onset`) that opens them side by side, fastest first, built from the dose items; not a table on the page.
@@ -65,7 +65,7 @@ A disease or syndrome. The main card type.
 3. **Causes**: categories as one grouped list (bold category name, then its causes), with "cannot miss" marked by a tag; pseudo-conditions and mimics (the differential: diagnosis · distinguishing features · link)
 4. **Presentation**: symptoms, atypical presentations, examination findings (grading scales ⟨inserted⟩ from the exam cards)
 5. **Diagnosis**: initial tests and why; interpretation and thresholds; further testing; low-value tests to avoid
-6. **Treatment**: pathway ⟨Open row⟩ when one exists; numbered steps (immediate, then definitive, by severity or subtype); dose rows ⟨inserted⟩
+6. **Treatment**: numbered steps (immediate, then definitive, by severity or subtype); dose rows ⟨inserted⟩
 7. **Monitor**: what to trend and when (timelines of recheck times), targets, expected response, triggers to escalate
 8. **Escalation**: which specialty and when (general criteria, never institution-specific)
 9. **More Information**: Where Guidelines Differ · Special Populations (kidney or liver disease, pregnancy, older adults, immunocompromised, drug-specific) · Complications · After the Acute Phase (discharge, follow-up, long-term management, prevention) · Evidence (key studies, one line each) · Why the Treatment Order · Epidemiology and Pathophysiology
@@ -79,7 +79,7 @@ A symptom, sign or abnormal result. Uses the condition page's names where they f
 3. **First Steps**: red flags, signs of instability, what to do first
 4. **Causes**: a framework (by mechanism, organ, location or acuity), with "cannot miss" and "most common", each linking to its condition card
 5. **Presentation**: focused history and focused examination that discriminate between causes
-6. **Diagnosis**: first-line tests, then second-line by scenario; interpretation tables (result → likely causes), notes on their limits ⟨Note box⟩; the pathway ⟨Open row⟩
+6. **Diagnosis**: first-line tests, then second-line by scenario; interpretation tables (result → likely causes), notes on their limits ⟨Note box⟩
 7. **Treatment**: common initial orders (checklist of orders only, not tests; one line links to the first-line tests in Diagnosis), then initial management while the cause is being found
 8. **Monitor**
 9. **Escalation**
@@ -122,7 +122,7 @@ The layouts for types 3–8 were proposed with the redesign and approved by the 
 
 - Header: Condition · Kidney, Electrolytes and Urology · definition · reviewed
 - **At a Glance** · **Severity** (scale mild / moderate / severe; monitoring) · **Causes** (one grouped list: pseudohyperkalemia, shift out of cells, impaired excretion (cannot miss), intake) · **Presentation** (symptoms; ECG progression) · **Diagnosis**
-- **Treatment:** ⟨pathway Open row⟩ → numbered steps: membrane stabilization · intracellular shift · elimination, each with its dose rows; Compare Onset and Duration row; hyperkalemic cardiac arrest
+- **Treatment:** numbered steps: membrane stabilization · intracellular shift · elimination, each with its dose rows; Compare Onset and Duration row; hyperkalemic cardiac arrest
 - **Monitor:** K⁺ recheck times; glucose times after insulin (timelines) · **Escalation**
 - **More Information:** Where Guidelines Differ (insulin dose, patiromer) · Special Populations (digoxin toxicity) · Complications · After the Acute Phase · Epidemiology and Pathophysiology
 - Pearls · Related (Acute Kidney Injury) · Sources

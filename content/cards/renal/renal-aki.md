@@ -112,7 +112,6 @@ related:
 
 - Suspected AIN: urine eosinophils do not distinguish AIN from other causes; definitive diagnosis is by kidney biopsy. ^[muriithi-urine-eos-2013]
 
-{{pathway:aki-evaluation}}
 
 ## Treatment
 #### Common initial orders

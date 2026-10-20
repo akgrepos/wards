@@ -37,8 +37,6 @@ related:
 :::
 
 ## Treatment
-{{pathway:hyperkalemia-management}}
-
 1. Cardiac membrane stabilization
    - ECG changes: IV calcium gluconate. ^[source-id]
 
@@ -123,7 +121,20 @@ emergency_hint: Calcium, insulin-dextrose, remove K⁺   # in the front matter
 - Links go inside the sentence: `[[renal-hyperkalemia|hyperkalemia]]`, not "hyperkalemia ([[renal-hyperkalemia]])". `[[card-id/section|label]]` opens a page at a section; on the same page it just scrolls there.
 - Causes in a condition card: one list, `- **Category:** causes ^[source]`; mark one with `[!cannot-miss]` after the colon.
 - `**bold**`, `*italic*`.
-- A line that is only `{{pathway:id}}` shows one row that opens the pathway's own page (pathways are their own pages since 2026-10-19); a line that is only `{{criteria:id}}` shows the criteria in full.
+- A line that is only `{{criteria:id}}` shows the criteria in full. Cards never insert a pathway: a card's pathway shows as a row under its title, found through the pathway's `card` field (the content check rejects `{{pathway:…}}`).
+
+## Pathway maps
+One file per map in `content/data/pathway/<id>.yaml` (example: `content/examples/data/pathway/example-workup.yaml`). A map is another way to look at one whole card; its boxes say what to decide or do in a few words and **link** to the card's content instead of copying it.
+- Top: `title`, `card` (the card it maps), `columns` (grid width), `start` (first node), `sources`, optional `footer` (links that apply to every route).
+- `nodes`, each with `kind` and `at: [column, row]` (one box per cell):
+  - `start`, `do`, `urgent` (red, Treat Now), `note`: `title`, optional `text`, `links`, and `next`.
+  - `question`: the only kind that branches; `answers`, each `{ label, at, to }`, optional `detail` and `rejoin: true` (drawn as a dashed line back to the main path).
+  - `result`: ends a route (no `next`).
+  - `link`: a row that opens `to`; `from` hangs it under another box.
+  - `rejoin: true` on a box draws its `next` as a dashed return line.
+- Links: `section:<card>/<section>[#anchor]` (anchor = a subheading, a numbered step's title, or a More Information subsection key, as a slug), `criteria:<id>`, `dose:<id>`, `card:<id>`, `emergency:<id>` (Rapids Do Now), optional `|label`. Their words come from the content, so they can't go stale.
+- Text may insert thresholds; never doses (link `dose:` instead) and never `[[…]]` links (use `links:`).
+- The content check: every link resolves, cells are unique and inside the grid, every box is reachable from the start, routes end in a result.
 
 ## In the app
 - A value is dotted and tappable only when its pop-up shows something the line can't: a cutoff's `note` (a caveat, population or condition the line doesn't state), a criteria set's full criteria, a dose's details. Repeating the value, its label, its unit, what it means or its source doesn't count. Plain text: cutoffs without a `note`, and every value in a table cell or a `:::scale`. The content check enforces this (see DATA-TYPES.md, Threshold).

@@ -4,6 +4,7 @@ import { content, getCard, isMarkerSource, titleCase } from '../content';
 import type { Block, ContainerItem, Criteria, Dose, Inline, ListItem, Pathway, Source, Threshold } from '../content/types';
 import { parseInline, TAGS } from '../../scripts/content/inline.mjs';
 import { onsetRows } from '../../scripts/content/onset.mjs';
+import { slug } from '../../scripts/content/pathway.mjs';
 import { href, parseRoute } from '../router';
 import { useSheet, type ShowSheet } from './SheetHost';
 import { icons } from './icons';
@@ -373,10 +374,7 @@ function Item({ it }: { it: ListItem }) {
   );
 }
 
-// A flowchart step's doses, one row each, under the step's text.
-const dosesIn = (text?: string) => [...(text ?? '').matchAll(/\{\{\s*dose\s*:\s*([a-z0-9-]+)\s*\}\}/g)].map((m) => m[1]).filter((id, i, a) => a.indexOf(id) === i);
-
-// Pathways are their own pages now (owner, 2026-10-19): a card shows one row that opens the pathway's page.
+// A card's pathway (the whole card as a flowchart) opens from one row: under the card's title, and on its Rapids page.
 export function PathwayRow({ id }: { id: string }) {
   const p = content.data.pathway?.[id] as Pathway | undefined;
   if (!p) return null;
@@ -384,8 +382,8 @@ export function PathwayRow({ id }: { id: string }) {
     <AKG.List className="pathway-row">
       <AKG.ListRow
         overline="Pathway"
-        title={titleCase(p.title ?? 'Pathway')}
-        subtitle={p.stages?.length ? p.stages.join(', ') : undefined}
+        title={titleCase(p.title)}
+        subtitle="The whole card as a flowchart"
         icon={icons.flowchart}
         iconTint="var(--accent)"
         buttonLabel="Open"
@@ -395,33 +393,20 @@ export function PathwayRow({ id }: { id: string }) {
   );
 }
 
-// The interactive flowchart, kept for the pathway pages' redesign (not shown on cards).
-export function PathwayBlock({ id }: { id: string }) {
-  const p = content.data.pathway?.[id] as Pathway | undefined;
-  if (!p) return null;
-  const steps: Record<string, unknown> = {};
-  for (const [sid, s] of Object.entries(p.steps)) {
-    const doses = dosesIn(s.detail);
-    steps[sid] = {
-      ...s,
-      detail: s.detail ? <RichText text={s.detail} /> : undefined,
-      content: doses.length ? <div className="dose-rows">{doses.map((d) => <DoseRow key={d} id={d} />)}</div> : undefined,
-      answers: s.answers?.map((a) => ({ ...a, detail: a.detail ? <RichText text={a.detail} /> : undefined })),
-      items: s.items?.map((t, i) => <RichText key={i} text={t} />),
-      list: s.list?.map((t, i) => <RichText key={i} text={t} />),
-      note: s.note ? <RichText text={s.note} /> : undefined,
-      links: s.links?.length ? s.links.map((l) => <a key={l} className="ios-body akg-link" href={href.card(l)}>Open {getCard(l)?.title ?? l}</a>) : undefined,
-    };
-  }
-  return (
-    <div className="pathway">
-      {p.title && <p className="ios-headline">{p.title}</p>}
-      <AKG.Flowchart steps={steps as never} start={p.start} stages={p.stages} />
-    </div>
-  );
-}
-
 // ---- Blocks ----
+
+// Pathway links land on a subheading or numbered step inside a section: each gets an id from its section and words.
+const AnchorCtx = createContext<string | undefined>(undefined);
+export function AnchorScope({ section, children }: { section: string; children: ReactNode }) {
+  return <AnchorCtx.Provider value={section}>{children}</AnchorCtx.Provider>;
+}
+const useAnchor = (words: string) => { const sec = useContext(AnchorCtx); return sec ? `a-${sec}-${slug(words)}` : undefined; };
+function Subheading({ text }: { text: string }) {
+  return <h3 id={useAnchor(text)} className="ios-headline subheading">{text}</h3>;
+}
+function StepItem({ it }: { it: { inlines: Inline[]; sources: string[]; blocks: Block[] } }) {
+  return <AKG.Step id={useAnchor(plainText(it.inlines))} title={<><Inlines xs={it.inlines} /><LinePill ids={it.sources} quote={it.inlines} /></>}><div className="step-body"><Blocks blocks={it.blocks} /></div></AKG.Step>;
+}
 
 const hasText = (xs: Inline[]) => xs.some((x) => x.t !== 'text' || x.v.trim());
 
@@ -496,11 +481,11 @@ export function Blocks({ blocks }: { blocks: Block[] }) {
 function BlockView({ b }: { b: Block }) {
   if (b.t === 'paragraph') return <p className="ios-body"><Inlines xs={b.inlines} /><LinePill ids={b.sources} quote={b.inlines} /></p>;
   if (b.t === 'list') return <ul className="ios-body rich-list">{b.items.map((it, j) => <Item key={j} it={it} />)}</ul>;
-  if (b.t === 'subheading') return <h3 className="ios-headline subheading">{b.text}</h3>;
+  if (b.t === 'subheading') return <Subheading text={b.text} />;
   if (b.t === 'steps') {
     return (
       <AKG.StepList>
-        {b.items.map((it, j) => <AKG.Step key={j} title={<><Inlines xs={it.inlines} /><LinePill ids={it.sources} quote={it.inlines} /></>}><div className="step-body"><Blocks blocks={it.blocks} /></div></AKG.Step>)}
+        {b.items.map((it, j) => <StepItem key={j} it={it} />)}
       </AKG.StepList>
     );
   }
