@@ -1,0 +1,21 @@
+drug_name: Trimethoprim-sulfamethoxazole
+indication: MRSA skin infection or abscess
+population: Adults
+route: PO
+amount: 160–320
+unit: mg
+frequency: every 12 hours
+adjustments:
+  - when: CrCl 15–30 mL/min
+    change: Half the usual dose
+  - when: CrCl <15 mL/min
+    change: Not recommended
+cautions:
+  - Hyperkalemia and creatinine rise (trimethoprim), especially with ACE inhibitors, ARBs or spironolactone.
+  - Raises warfarin effect; rash including SJS/TEN.
+  - May not cover β-hemolytic streptococci.
+notes: "Dose is the trimethoprim part: 1–2 double-strength tablets (160 mg/800 mg each)."
+sources:
+  - idsa-ssti-2014
+  - idsa-mrsa-2011
+  - label-tmp-smx-2024

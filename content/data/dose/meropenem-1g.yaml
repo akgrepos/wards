@@ -1,0 +1,23 @@
+drug_name: Meropenem
+indication: Pseudomonas-risk pneumonia, complicated UTI with sepsis or resistant organisms, severe or necrotizing skin infection
+population: Adults
+route: IV
+amount: "1"
+unit: g
+frequency: every 8 hours
+rate: over 15–30 minutes
+adjustments:
+  - when: CrCl 26–50 mL/min
+    change: 1 g every 12 hours
+  - when: CrCl 10–25 mL/min
+    change: 500 mg every 12 hours
+  - when: CrCl <10 mL/min
+    change: 500 mg every 24 hours
+cautions:
+  - "Lowers valproate levels sharply: avoid together."
+  - Seizure risk, mostly with kidney impairment or CNS disease.
+sources:
+  - label-meropenem-2024
+  - idsa-ats-cap-2019
+  - idsa-cuti-selection-2025
+  - idsa-ssti-2014

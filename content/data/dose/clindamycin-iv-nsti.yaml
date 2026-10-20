@@ -1,0 +1,13 @@
+drug_name: Clindamycin
+indication: Necrotizing soft tissue infection (toxin suppression)
+population: Adults
+route: IV
+amount: 600–900
+unit: mg
+frequency: every 8 hours
+rate: 600 mg over 20 minutes, 900 mg over 30 minutes
+boxed_warning: Clostridioides difficile–associated diarrhea, including fatal colitis; reserve for infections where less toxic agents are inappropriate.
+notes: Added to broad therapy; with confirmed group A streptococcus, given with penicillin.
+sources:
+  - idsa-ssti-2014
+  - label-cleocin-iv-2026

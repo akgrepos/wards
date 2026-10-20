@@ -1,0 +1,15 @@
+drug_name: Penicillin G potassium
+indication: Moderate cellulitis or erysipelas; streptococcal necrotizing infection (with clindamycin)
+population: Adults
+route: IV
+amount: 2–4 million
+unit: units
+frequency: every 4–6 hours
+adjustments:
+  - when: Severe kidney impairment
+    change: "Reduce per the label (e.g., CrCl <10 mL/min: full loading dose, then half every 8–10 hours)"
+cautions:
+  - High doses carry a potassium load.
+sources:
+  - idsa-ssti-2014
+  - label-penicillin-g-2025

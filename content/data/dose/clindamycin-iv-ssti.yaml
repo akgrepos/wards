@@ -1,0 +1,12 @@
+drug_name: Clindamycin
+indication: Moderate cellulitis with serious β-lactam allergy
+population: Adults
+route: IV
+amount: "600"
+unit: mg
+frequency: every 8 hours
+rate: over 20 minutes (no faster than 30 mg per minute)
+boxed_warning: Clostridioides difficile–associated diarrhea, including fatal colitis; reserve for infections where less toxic agents are inappropriate.
+sources:
+  - idsa-ssti-2014
+  - label-cleocin-iv-2026

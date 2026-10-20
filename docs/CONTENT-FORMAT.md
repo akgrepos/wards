@@ -5,7 +5,7 @@ How cards and shared data are written. The rules behind it are in `CARD-TYPES.md
 ## Where things live
 - `content/systems.yaml`: the 16 systems and the Library, in display order (quote titles that contain commas).
 - `content/cards/<system>/<card-id>.md`: one file per card.
-- `content/data/<type>/<item-id>.yaml`: one file per shared data item. Types so far: `source`, `dose`, `threshold`, `criteria`, `pathway`. A `criteria` item (a formal definition or staging system) has `name`, `short` (the words shown when it's inserted in a sentence), optional `logic` ("Any of:"), `items`, `columns` and `rows` (a table), `notes`, and `sources`. On a line of its own it shows in full (items in an indigo Criteria box; a table whose first column is `Stage` as stage rows; notes in a brown Note box); inside a sentence it shows its `short` name and opens in a sheet. Dose fields: `DATA-TYPES.md`.
+- `content/data/<type>/<item-id>.yaml`: one file per shared data item. Types so far: `source`, `dose`, `threshold`, `criteria`, `regimen`, `pathway`. A `criteria` item (a formal definition or staging system) has `name`, `short` (the words shown when it's inserted in a sentence), optional `logic` ("Any of:"), `items`, `columns` and `rows` (a table), `notes`, and `sources`. On a line of its own it shows in full (items in an indigo Criteria box; a table whose first column is `Stage` as stage rows; notes in a brown Note box); inside a sentence it shows its `short` name and opens in a sheet. Dose fields: `DATA-TYPES.md`.
 - `content/examples/`: development-only samples (placeholder content). They appear while developing and are never in the published app.
 
 ## A card file
@@ -110,7 +110,7 @@ emergency_hint: Calcium, insulin-dextrose, remove K⁺   # in the front matter
 - **Doses go on a line of their own** (`{{dose:id}}`), never inside a sentence, so each shows as one dose row. Doses never appear as typed text (for example "40 mg"). Concentrations such as `mmol/L` are fine.
 - Inserts (`{{type:id}}`), links (`[[card-id]]`, `[[card-id|label]]` or `[[card-id/section|label]]`), the linked section, related cards and `based_on` sources must exist. Tags are `[!cannot-miss]` or `[!most-common]`.
 - `:::scale` has 2–5 bands, `:::compare` 2–3 columns (both "Label: text"), `:::note` 1–3 lines, `:::times` 1–12 times, `:::onset` 2–12 items: each `{{dose:id}}` (the dose needs an `onset` like "About 15 minutes") or `Name: onset | lasts ^[source]` for something that isn't a dose (e.g. `Hemodialysis: Immediate | Variable`).
-- Data items have their required fields, sources that exist, and US units; dose items use only the fields in `DATA-TYPES.md`.
+- Data items have their required fields, sources that exist, and US units; dose and regimen items use only the fields in `DATA-TYPES.md`; a regimen's options list doses that exist and its words carry no typed doses.
 - An emergency (`## Do Now`) follows the format above: topics only, a short `emergency_hint`, 2–8 steps that each do something, `If:` first and once, warnings of one to three words, only `:::note` after the steps; `:::times{…}` settings name a dose in Do Now (or `first`), what is checked, and readable times.
 
 ## Formatting inside sections
@@ -121,6 +121,7 @@ emergency_hint: Calcium, insulin-dextrose, remove K⁺   # in the front matter
 - Links go inside the sentence: `[[renal-hyperkalemia|hyperkalemia]]`, not "hyperkalemia ([[renal-hyperkalemia]])". `[[card-id/section|label]]` opens a page at a section; on the same page it just scrolls there.
 - Causes in a condition card: one list, `- **Category:** causes ^[source]`; mark one with `[!cannot-miss]` after the colon.
 - `**bold**`, `*italic*`.
+- A line that is only `{{regimen:id}}` shows the regimen box (options, dose rows, duration); regimens are never inserted inside a sentence. Fields: `DATA-TYPES.md`, Regimen.
 - A line that is only `{{criteria:id}}` shows the criteria in full. Cards never insert a pathway: a card's pathway shows as a row under its title, found through the pathway's `card` field (the content check rejects `{{pathway:…}}`).
 
 ## Pathway maps

@@ -1,0 +1,19 @@
+drug_name: Ertapenem
+indication: Complicated UTI or pyelonephritis with an ESBL-producing or other resistant organism
+population: Adults
+route: IV
+amount: "1"
+unit: g
+frequency: every 24 hours
+rate: over 30 minutes
+adjustments:
+  - when: CrCl ≤30 mL/min
+    change: 500 mg every 24 hours
+  - when: Hemodialysis
+    change: 500 mg daily; extra 150 mg after dialysis if dosed within 6 hours before it
+cautions:
+  - No Pseudomonas or Enterococcus coverage.
+  - "Lowers valproate levels: avoid together."
+sources:
+  - label-invanz-2026
+  - idsa-cuti-selection-2025

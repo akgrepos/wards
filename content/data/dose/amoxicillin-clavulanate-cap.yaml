@@ -1,0 +1,14 @@
+drug_name: Amoxicillin-clavulanate
+indication: Community-acquired pneumonia, outpatient with comorbidities (with a macrolide or doxycycline)
+population: Adults
+route: PO
+amount: 875/125
+unit: mg
+frequency: every 12 hours
+adjustments:
+  - when: GFR <30 mL/min
+    change: Not the 875 mg tablet; 500 mg or 250 mg every 12 hours (GFR 10–30) or every 24 hours (GFR <10)
+notes: "Guideline alternatives: 500/125 mg every 8 hours, or 2,000/125 mg extended-release every 12 hours."
+sources:
+  - idsa-ats-cap-2019
+  - label-amox-clav-2026

@@ -1,0 +1,17 @@
+drug_name: Daptomycin
+indication: MRSA skin infection
+population: Adults
+route: IV
+amount: "4"
+unit: mg/kg
+frequency: every 24 hours
+rate: over 2 minutes (injection) or 30 minutes (infusion)
+adjustments:
+  - when: CrCl <30 mL/min, hemodialysis or CAPD
+    change: Same dose every 48 hours
+cautions:
+  - "Not for pneumonia: inactivated by surfactant."
+  - Weekly CK; consider holding statins. Eosinophilic pneumonia.
+sources:
+  - label-cubicin-2025
+  - idsa-ssti-2014

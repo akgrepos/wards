@@ -3,3 +3,6 @@ export const CARD_GROUPS: string[];
 export const DATA_TYPES: Record<string, { required: string[]; sourced: boolean }>;
 export const UNITS: string[];
 export const DOSE_IN_TEXT: RegExp;
+export const DOSE_FIELDS: string[];
+export const REGIMEN_FIELDS: string[];
+export const REGIMEN_OPTION_FIELDS: string[];

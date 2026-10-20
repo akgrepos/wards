@@ -39,6 +39,10 @@ export type Dose = {
   cautions?: string[]; notes?: string; sources: string[];
 };
 export type Threshold = { name: string; value: string | number; unit: string; note?: string; sources: string[] };
+// A treatment combination for one indication (docs/DATA-TYPES.md, 3), built from dose items: options joined by "or";
+// inside an option, parts given together ("plus"); a part that is a list means any one of those doses.
+export type RegimenOption = { label?: string; when?: string; doses: (string | string[])[] };
+export type Regimen = { name: string; indication?: string; setting?: string; options: RegimenOption[]; duration?: string; notes?: string[]; sources: string[] };
 export type Criteria = { name: string; short: string; logic?: string; items?: string[]; columns?: string[]; rows?: string[][]; notes?: string[]; sources: string[] };
 // A whole-card map (docs/DATA-TYPES.md, 9): boxes on a grid; only questions branch; links open the card's content.
 export type PathwayAnswer = { label: string; detail?: string; at: [number, number]; to: string; rejoin?: boolean };
@@ -52,5 +56,5 @@ export type Pathway = { title: string; card: string; columns: number; start: str
 export type Content = {
   systems: System[];
   cards: Card[];
-  data: { source?: Record<string, Source>; dose?: Record<string, Dose>; threshold?: Record<string, Threshold>; criteria?: Record<string, Criteria>; pathway?: Record<string, Pathway>; [k: string]: Record<string, unknown> | undefined };
+  data: { source?: Record<string, Source>; dose?: Record<string, Dose>; threshold?: Record<string, Threshold>; criteria?: Record<string, Criteria>; regimen?: Record<string, Regimen>; pathway?: Record<string, Pathway>; [k: string]: Record<string, unknown> | undefined };
 };

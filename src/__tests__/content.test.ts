@@ -26,6 +26,13 @@ function withDose(fields: Record<string, unknown>) {
 }
 const kp = (extra: string) => `- One ^[example-guideline-a]\n- Two ^[example-guideline-a]\n- Three ^[example-guideline-a]\n${extra}`;
 
+function withRegimen(fields: Record<string, unknown>) {
+  const base = JSON.parse(JSON.stringify(real));
+  base.data.regimen ??= {};
+  base.data.regimen['test-regimen'] = { name: 'Test', options: [{ doses: ['example-drug-standard'] }], sources: ['example-guideline-a'], _file: 'test.yaml', ...fields };
+  return checkContent(base).join('\n');
+}
+
 describe('content checks', () => {
   it('all content passes', () => {
     expect(checkContent(real)).toEqual([]);
@@ -50,6 +57,15 @@ describe('content checks', () => {
   it('puts every dose on a line of its own, never inside a sentence', () => {
     expect(withCard(kp('- Give {{dose:example-drug-standard}} now ^[example-guideline-a]')).join()).toMatch(/on a line of its own/);
     expect(withCard(kp('\n{{dose:example-drug-standard}}'))).toEqual([]);
+  });
+  it('checks regimens: known doses, known fields, no typed doses, inserted on a line of its own', () => {
+    expect(withRegimen({})).toBe('');
+    expect(withRegimen({ options: [{ doses: [['example-drug-standard', 'nope']] }] })).toMatch(/unknown dose "nope"/);
+    expect(withRegimen({ options: [] })).toMatch(/at least one option/);
+    expect(withRegimen({ options: [{ label: 'A' }] })).toMatch(/needs "doses"/);
+    expect(withRegimen({ colour: 'red' })).toMatch(/unknown regimen field "colour"/);
+    expect(withRegimen({ duration: 'Give 500 mg for 5 days' })).toMatch(/dose typed as text/);
+    expect(withRegimen({ sources: [] })).toMatch(/has no sources/);
   });
   it('checks scale, comparison and time blocks', () => {
     expect(withCard(kp(':::scale Grades\n- Mild: low ^[example-guideline-a]\n:::')).join()).toMatch(/needs 2–5 items/);

@@ -1,0 +1,13 @@
+drug_name: Dicloxacillin
+indication: Mild cellulitis (streptococci and MSSA)
+population: Adults
+route: PO
+amount: "500"
+unit: mg
+frequency: every 6 hours
+cautions:
+  - Take on an empty stomach.
+notes: Guideline dose; the older label lists up to 250 mg every 6 hours.
+sources:
+  - idsa-ssti-2014
+  - label-dicloxacillin-2022

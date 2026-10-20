@@ -233,6 +233,18 @@ describe('remembered sections', () => {
     expect(within(indices).getByRole('rowheader', { name: 'Sediment' })).toBeTruthy();
   });
 
+  it('a regimen shows its options joined by Or, parts joined by Plus, one dose row per drug', async () => {
+    launch('#/card/id-cap');
+    const box = [...document.querySelectorAll('.regimen')].find((r) => r.textContent!.includes('Inpatient, not severe'))!;
+    expect(box.querySelector('.akg-panel__label')!.textContent).toBe('Regimen');
+    const joins = [...box.querySelectorAll('.regimen-join')].map((j) => j.textContent);
+    expect(joins).toContain('Or');
+    expect(joins).toContain('Plus');
+    expect(within(box as HTMLElement).getAllByText('One of:').length).toBeGreaterThan(0);
+    await act(async () => { fireEvent.click(within(box as HTMLElement).getAllByRole('button', { name: /^Ceftriaxone/ })[0]); });
+    expect(within(dialog()).getAllByText(/Ceftriaxone/).length).toBeGreaterThan(0);
+  });
+
   it('scroll positions are kept per page and cleared with page memory', () => {
     setCardScroll('renal-aki', 812.4);
     expect(getCardScroll('renal-aki')).toBe(812);

@@ -1,0 +1,14 @@
+name: MRSA risk
+indication: Cellulitis
+setting: "Penetrating trauma, MRSA elsewhere or in the nose, injection drug use, or SIRS"
+options:
+  - label: IV
+    doses: [[vancomycin-iv, linezolid-600, daptomycin-ssti, ceftaroline-iv]]
+  - label: Oral, covering streptococci and MRSA
+    doses: [clindamycin-po-ssti]
+  - label: Oral, β-lactam plus MRSA agent
+    doses: [[cephalexin-ssti, penicillin-vk-ssti], [tmp-smx-ssti, doxycycline-100]]
+duration: "5 days; extend if not improved"
+notes:
+  - "Doxycycline and trimethoprim-sulfamethoxazole alone may not cover β-hemolytic streptococci."
+sources: [idsa-ssti-2014, idsa-mrsa-2011]

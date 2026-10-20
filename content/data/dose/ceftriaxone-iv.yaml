@@ -1,0 +1,19 @@
+drug_name: Ceftriaxone
+indication: Community-acquired pneumonia, cellulitis, complicated UTI or pyelonephritis
+population: Adults
+route: IV
+amount: 1–2
+unit: g
+frequency: every 24 hours
+rate: over 30 minutes
+max: 4 g per day (label)
+cautions:
+  - No dose change for kidney or liver impairment alone (label).
+  - Not with calcium-containing IV solutions in the same line.
+  - Does not cover MRSA, Enterococcus or Pseudomonas.
+notes: "CAP: 1–2 g daily; cellulitis: commonly 1 g daily; complicated UTI: 1–2 g daily."
+sources:
+  - label-ceftriaxone-2026
+  - idsa-ats-cap-2019
+  - idsa-ssti-2014
+  - idsa-cuti-selection-2025

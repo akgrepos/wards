@@ -1,0 +1,9 @@
+name: Pseudomonas risk
+indication: Community-acquired pneumonia
+setting: "An antipseudomonal β-lactam in place of the standard β-lactam, with a macrolide or respiratory fluoroquinolone"
+options:
+  - doses: [[piperacillin-tazobactam-cap, cefepime-cap, meropenem-1g], [azithromycin-iv-cap, levofloxacin-750]]
+duration: "7 days if Pseudomonas is suspected or proven; narrow when cultures are negative"
+notes:
+  - "These options do not reliably cover ESBL-producing organisms; consider those only on patient or local data."
+sources: [idsa-ats-cap-2019]

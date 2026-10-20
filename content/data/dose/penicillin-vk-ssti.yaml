@@ -1,0 +1,10 @@
+drug_name: Penicillin V potassium
+indication: Mild cellulitis or erysipelas
+population: Adults
+route: PO
+amount: "500"
+unit: mg
+frequency: every 6 hours
+sources:
+  - idsa-ssti-2014
+  - label-penicillin-vk-2022

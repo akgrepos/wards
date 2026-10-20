@@ -1,6 +1,6 @@
 // Content checks, run on every pull request (npm run content:check) and in the tests.
 // Each rule comes from docs/CARD-TYPES.md and docs/DATA-TYPES.md.
-import { CARD_TYPES, DATA_TYPES, DOSE_FIELDS, SHARED_SECTIONS, UNITS, DOSE_IN_TEXT } from './schema.mjs';
+import { CARD_TYPES, DATA_TYPES, DOSE_FIELDS, REGIMEN_FIELDS, REGIMEN_OPTION_FIELDS, SHARED_SECTIONS, UNITS, DOSE_IN_TEXT } from './schema.mjs';
 import { TAGS, parseInline } from './inline.mjs';
 import { onsetMinutes } from './onset.mjs';
 import { emergencySteps, offsetMinutes, stepDoses } from './emergency.mjs';
@@ -160,6 +160,7 @@ export function checkContent({ systems, cards, data }) {
         for (const x of r.inlines) {
           if (x.t === 'insert' && !data[x.kind]?.[x.id]) err(where, `"${title}" inserts unknown ${x.kind} "${x.id}"`);
           if (x.t === 'insert' && x.kind === 'dose') err(where, `"${title}": put each dose on a line of its own ({{dose:${x.id}}}), so it shows as one dose row`);
+          if (x.t === 'insert' && x.kind === 'regimen') err(where, `"${title}": put each regimen on a line of its own ({{regimen:${x.id}}}), so it shows in full`);
           if (x.t === 'link') {
             const target = cards.find((k) => k.id === x.id);
             if (!target) err(where, `"${title}" links to unknown card "${x.id}"`);
@@ -223,6 +224,26 @@ export function checkContent({ systems, cards, data }) {
         if (alt?.dose && !data.dose?.[alt.dose]) err(where, `alternative dose "${alt.dose}" does not exist`);
         if (alt?.dose === id) err(where, 'a dose cannot be its own alternative');
         if (item.cautions !== undefined && (!Array.isArray(item.cautions) || item.cautions.some((x) => typeof x !== 'string'))) err(where, 'cautions must be a list of short sentences');
+      }
+      // A regimen: options joined by "or", each a list of parts given together; a part is a dose id or a list of dose
+      // ids (any one of them). Its words never carry a dose: the dose rows do.
+      if (kind === 'regimen') {
+        for (const f of Object.keys(item)) if (f !== '_file' && !REGIMEN_FIELDS.includes(f)) err(where, `unknown regimen field "${f}" (see docs/DATA-TYPES.md)`);
+        if (!Array.isArray(item.options) || !item.options.length) err(where, 'needs at least one option');
+        for (const [i, o] of (Array.isArray(item.options) ? item.options : []).entries()) {
+          const at = `option ${i + 1}`;
+          if (!o || typeof o !== 'object') { err(where, `${at} must be { label, doses }`); continue; }
+          for (const f of Object.keys(o)) if (!REGIMEN_OPTION_FIELDS.includes(f)) err(where, `${at}: unknown field "${f}" (use label, when, doses)`);
+          if (!Array.isArray(o.doses) || !o.doses.length) { err(where, `${at} needs "doses": a list of dose ids (a nested list means any one of them)`); continue; }
+          for (const part of o.doses) {
+            const ids = Array.isArray(part) ? part : [part];
+            if (!ids.length) err(where, `${at} has an empty list of doses`);
+            for (const d of ids) if (typeof d !== 'string' || !data.dose?.[d]) err(where, `${at} lists unknown dose "${d}"`);
+          }
+        }
+        if (item.notes !== undefined && (!Array.isArray(item.notes) || item.notes.some((x) => typeof x !== 'string'))) err(where, 'notes must be a list of short sentences');
+        const texts = [item.name, item.indication, item.setting, item.duration, ...(item.notes ?? []), ...(item.options ?? []).flatMap((o) => [o?.label, o?.when])];
+        for (const t of texts) if (typeof t === 'string' && DOSE_IN_TEXT.test(t)) err(where, `has a dose typed as text ("${t.match(DOSE_IN_TEXT)[0]}"); the dose rows show the doses`);
       }
       if (kind === 'criteria' && !(item.items?.length || item.rows?.length)) err(where, 'needs items or rows');
       if (kind === 'criteria' && item.rows?.some((r) => !Array.isArray(r) || r.length !== (item.columns ?? []).length)) err(where, 'every row needs one cell per column');

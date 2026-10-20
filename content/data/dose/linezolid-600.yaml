@@ -1,0 +1,17 @@
+drug_name: Linezolid
+indication: MRSA pneumonia or skin infection
+population: Adults
+route: IV or PO
+amount: "600"
+unit: mg
+frequency: every 12 hours
+rate: IV over 30–120 minutes
+cautions:
+  - No dose change for kidney impairment (label).
+  - Serotonin syndrome with SSRIs, SNRIs and other serotonergic drugs.
+  - "Myelosuppression, especially beyond 2 weeks: weekly CBC."
+  - Lactic acidosis, hypoglycemia in diabetes, peripheral and optic neuropathy with long courses.
+sources:
+  - label-zyvox-2026
+  - idsa-ats-cap-2019
+  - idsa-ssti-2014

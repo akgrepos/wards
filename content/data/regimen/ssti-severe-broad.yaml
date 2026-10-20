@@ -1,0 +1,7 @@
+name: Severe or immunocompromised
+indication: Skin and soft tissue infection
+setting: "Failed oral therapy, SIRS with hypotension, immunocompromise or signs of deeper infection"
+options:
+  - doses: [vancomycin-iv, [piperacillin-tazobactam-ssti, meropenem-1g]]
+duration: "Guided by response and surgical findings; narrow to culture results"
+sources: [idsa-ssti-2014]
