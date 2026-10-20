@@ -2,6 +2,15 @@
 
 What changed in each version of Wards, newest first. The version is shown in Settings (gear on Home).
 
+## 2026.10.19.5
+
+Pathway pages now work, as a test with three layouts to try (switch at the top of the page; the app remembers your pick):
+- **Flowchart:** boxes and arrows. Tap an answer box to choose it; your route is drawn in black, and the answers you didn't choose stay as boxes saying where they would lead (tap one to switch). The route ends in a rounded End box.
+- **Stages:** one list of the stages. Finished stages fold to one line with your answer (tap Change to reopen), the current stage is open, later stages wait in gray, and the list ends with End of pathway.
+- **Steps:** one step at a time, with every stage on a rail beside it (above it at large Text Sizes). Actions need Continue; Back undoes the last step.
+- All three: Caution steps are red, doses open the dose sheet, Start Over at the top right, and at the end links back to the card. Answers carry over when you switch layouts and clear when you leave the page.
+- The Hyperkalemia Rapids page now has the same Pathway row as the topic page.
+
 ## 2026.10.19.4
 
 New card: Electrolyte Repletion (Kidney, Electrolytes and Urology › Reference), the third pilot card.
