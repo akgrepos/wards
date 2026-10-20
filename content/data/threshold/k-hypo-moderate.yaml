@@ -1,0 +1,4 @@
+name: Moderate hypokalemia
+value: "2.5–2.9"
+unit: mEq/L
+sources: [kardalas-hypokalemia-2018]

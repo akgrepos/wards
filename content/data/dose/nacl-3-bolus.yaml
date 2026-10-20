@@ -1,0 +1,16 @@
+drug_name: Sodium chloride 3% (hypertonic saline)
+indication: Hyponatremia with severe symptoms (seizures, obtundation, coma, cardiorespiratory distress), or acute hyponatremia or intracranial pathology with symptoms (high risk of herniation)
+population: Adults
+route: IV
+amount: "100"
+unit: mL
+rate: "over 10 minutes"
+give_when: "Severe symptoms; with seizures or coma, start before the Na⁺ result returns"
+repeat: "Up to 3 boluses in total, until symptoms improve or Na⁺ has risen 4–6 mEq/L; keep a third bolus for ongoing seizures or signs of herniation"
+max: "Total Na⁺ rise ≤10–12 mEq/L in any 24 h (≤8 mEq/L at high risk of osmotic demyelination) and ≤18 mEq/L in 48 h, unless the hyponatremia is known to be acute"
+cautions:
+  - "Recheck Na⁺ after each bolus."
+  - "A peripheral IV is acceptable; phlebitis is rare."
+  - "Overcorrection is common after a third bolus and once the cause resolves (water diuresis)."
+notes: "A rise of 4–6 mEq/L is usually enough to relieve symptoms and stop seizures. The European guideline gives 150 mL over 20 minutes, 2–3 times as needed, and the same bolus once for moderately severe symptoms."
+sources: [verbalis-hyponatremia-2013, rondon-berrios-hypertonic-2022, hoorn-hyponatremia-guidelines-2017, spasovski-hyponatraemia-2014, adrogue-hyponatremia-2022]

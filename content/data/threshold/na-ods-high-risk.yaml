@@ -1,0 +1,4 @@
+name: Serum sodium placing a patient at high risk of osmotic demyelination
+value: "≤105"
+unit: mEq/L
+sources: [verbalis-hyponatremia-2013]

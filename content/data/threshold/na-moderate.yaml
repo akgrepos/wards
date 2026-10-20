@@ -1,0 +1,4 @@
+name: Moderate hyponatremia
+value: "125–129"
+unit: mEq/L
+sources: [hoorn-hyponatremia-guidelines-2017]

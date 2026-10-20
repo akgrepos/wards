@@ -1,0 +1,13 @@
+name: SIADH diagnostic criteria
+short: SIADH criteria
+logic: "All of:"
+items:
+  - "Hypotonic hyponatremia (low measured serum osmolality)"
+  - "Urine osmolality >100 mOsm/kg (inappropriately concentrated)"
+  - "Clinical euvolemia: no orthostasis, tachycardia, dry mucous membranes, edema or ascites"
+  - "Urine Na⁺ >20–30 mEq/L on normal salt and water intake"
+  - "Normal thyroid and adrenal function"
+  - "Normal kidney function and no recent diuretic use, especially thiazides"
+notes:
+  - "Supporting: serum uric acid low and fractional excretion of uric acid >12%; no correction after a 0.5–1 L saline infusion."
+sources: [verbalis-hyponatremia-2013, hoorn-hyponatremia-guidelines-2017]

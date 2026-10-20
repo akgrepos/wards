@@ -1,0 +1,17 @@
+drug_name: Desmopressin
+brand: DDAVP
+indication: Preventing or reversing overcorrection of chronic hyponatremia (off-label)
+population: Adults
+route: IV or SC
+amount: "2–4"
+unit: mcg
+frequency: "every 6–8 hours"
+give_when: "Reactive: Na⁺ up 6–8 mEq/L in 24 h, or dilute urine output >1 mL/kg/h. Rescue: past the limit (with D5W). Proactive: starting Na⁺ <120 mEq/L with a high risk of rapid correction"
+repeat: "Proactive: continue until Na⁺ is 125–130 mEq/L, checking the 48-hour limit before stopping. Rescue: continue until Na⁺ is back below the limit"
+cautions:
+  - "Restrict fluids while it acts (an expert review: under 800 mL per day); free water will lower Na⁺."
+  - "Not for self-induced water intoxication, heart failure, cirrhosis or long-standing SIADH, where a water diuresis is unlikely."
+  - "Proactive use: give 3% saline alongside to raise Na⁺ by 4–6 mEq/L per day."
+  - "Off-label: the US label lists hyponatremia, SIADH and CrCl <50 mL/min as contraindications."
+notes: "Relowering after overcorrection (US panel): desmopressin every 8 hours with D5W, checking Na⁺ hourly. Evidence for proactive use is retrospective."
+sources: [rondon-berrios-hypertonic-2022, verbalis-hyponatremia-2013, hoorn-hyponatremia-guidelines-2017, label-ddavp-injection-2022]

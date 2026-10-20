@@ -1,0 +1,5 @@
+name: Urine sodium suggesting low effective arterial blood volume
+value: "<30"
+unit: mEq/L
+note: "Unreliable on diuretics or with CKD; a low-sodium diet also lowers it."
+sources: [hoorn-hyponatremia-guidelines-2017, verbalis-hyponatremia-2013]

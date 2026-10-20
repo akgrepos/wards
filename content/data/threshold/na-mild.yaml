@@ -1,0 +1,4 @@
+name: Mild hyponatremia
+value: "130–134"
+unit: mEq/L
+sources: [spasovski-hyponatraemia-2014, common-practice]

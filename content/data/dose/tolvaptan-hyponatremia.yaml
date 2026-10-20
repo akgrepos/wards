@@ -1,0 +1,23 @@
+drug_name: Tolvaptan
+brand: Samsca
+indication: Euvolemic or hypervolemic hyponatremia (SIADH, heart failure) with Na⁺ <125 mEq/L, or symptomatic and not corrected by fluid restriction
+population: Adults
+route: PO
+amount: "15"
+unit: mg
+frequency: once daily
+give_when: "Fluid restriction has failed or is unlikely to work; start only in hospital"
+repeat: "Increase to 30 mg after at least 24 h, then to 60 mg, if Na⁺ is still <135 mEq/L or rose <5 mEq/L in the previous 24 h"
+duration: "No more than 30 days (liver injury)"
+max: "60 mg once daily"
+boxed_warning: "Start and restart only in hospital where Na⁺ can be monitored closely; too-rapid correction (e.g. >12 mEq/L in 24 h) can cause osmotic demyelination. Not for autosomal dominant polycystic kidney disease outside its safety program (liver injury)."
+cautions:
+  - "Contraindicated in hypovolemic hyponatremia, inability to sense or respond to thirst, anuria, and with strong CYP3A inhibitors; avoid moderate CYP3A inhibitors and grapefruit juice, and uncorrected urinary outflow obstruction."
+  - "Higher risk of overcorrection with SIADH, Na⁺ <120 mEq/L or diuretics: check Na⁺ more often. Rise >8 mEq/L: hold the next dose; too fast: stop and give water or D5W."
+  - "Monitor K⁺ if K⁺ >5 mEq/L or on K⁺-raising drugs."
+  - "Not for an urgent rise in Na⁺: use 3% saline for severe symptoms."
+  - "No fluid restriction in the first 24 h; let the patient drink to thirst."
+  - "Avoid in liver disease, including cirrhosis; stop if liver injury is suspected."
+  - "Not with, or right after, hypertonic saline; not with desmopressin."
+notes: "Na⁺ every 6–8 h for the first 24–48 h (US panel), especially after starting and after each dose change. Resume fluid restriction and monitor Na⁺ when it is stopped. European guideline: not recommended at Na⁺ <130 mEq/L and recommended against at <125 mEq/L."
+sources: [label-samsca-2021, verbalis-hyponatremia-2013, hoorn-hyponatremia-guidelines-2017]

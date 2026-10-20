@@ -1,0 +1,4 @@
+name: Severe (profound) hyponatremia
+value: "<125"
+unit: mEq/L
+sources: [hoorn-hyponatremia-guidelines-2017]

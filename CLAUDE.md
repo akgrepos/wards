@@ -22,12 +22,13 @@ The owner, a physician, is the only user. No coding experience: explain steps pl
 - No patient information (PHI) anywhere: repo, app, pull requests or commit messages. The site and repo are public.
 - Nothing sensitive or institution-internal (internal protocols, phone or pager numbers).
 - **Stay anonymous.** Never put the owner's name, email or computer name in files, commits or PRs; refer to them as "the owner". Commits must be authored as `akgrepos <338781722+akgrepos@users.noreply.github.com>` (this repo's git config); a check rejects any other author.
-- **Clinical content:** Claude writes it, evidence-based (full rules in DECISIONS.md, "Sources, updated"):
-  - Cite the primary guideline or study (US first, newest final edition; drafts aren't cited). Use AMBOSS's reference lists to find primary sources; a paywalled primary source may be cited on AMBOSS's word.
-  - Model wording, organization, terminology and content on the reference handbook (terse clinical register), but never name, cite or copy it.
-  - Common clinical practice may go uncited with the stethoscope marker. AMBOSS itself only as a last resort (green check, hidden source, tell the owner each time). Never cite OpenEvidence; use it (Sackett or Snow mode) to spot-check.
-  - AMBOSS, OpenEvidence and the handbook are never named or cited in the app.
-  - Summarize, never copy. Every card gets the internal accuracy check and an independent reviewer (DECISIONS.md), with extra care for doses.
+- **Clinical content:** Claude writes it, evidence-based (full rules in DECISIONS.md, "Card-writing process" 2026-10-19 and "Sources, updated"):
+  - The reference handbook is the starting outline: it decides what a card covers and how it's organized, including practical bedside details, in its terse clinical register. It is a guide only: never copy, closely paraphrase or reproduce its text, tables or structure verbatim; never name or cite it.
+  - AMBOSS is the main drafting knowledge base; its reference lists supply the primary citations (a paywalled primary source may be cited on AMBOSS's word).
+  - Cite the primary guideline or study (US first, newest final edition; drafts aren't cited). Common clinical practice may go uncited with the stethoscope marker. AMBOSS itself only as a last resort (green check, hidden source, tell the owner each time).
+  - OpenEvidence (Sackett or Snow mode) checks every key claim and every dose, and confirms the newest final guideline edition; never cite it.
+  - AMBOSS, OpenEvidence and the handbook are never named or cited in the app or in card content and sources.
+  - Summarize, never copy. Every card gets the internal accuracy check and an independent reviewer (DECISIONS.md), with extra care for doses; the review log notes which claims and doses OpenEvidence checked.
 - Copyrighted reference material (the reference handbook PDF in `~/Documents/Wards-reference/`) never goes into the repo.
 - All content edits happen through Claude in chat; there is no in-app editing.
 - Use precise medical terminology (hypoxemia, not "low oxygen"); lay terms and abbreviations only as search aliases.

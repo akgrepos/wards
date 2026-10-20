@@ -1,0 +1,4 @@
+name: Severe hypokalemia
+value: "<2.5"
+unit: mEq/L
+sources: [kardalas-hypokalemia-2018]
