@@ -2,6 +2,14 @@
 
 What changed in each version of Wards, newest first. The version is shown in Settings (gear on Home).
 
+## 2026.10.19.4
+
+New card: Electrolyte Repletion (Kidney, Electrolytes and Urology › Reference), the third pilot card.
+- Potassium, magnesium, phosphate and calcium in adults: when to replete, when IV beats oral, and when not to replete (for example, low total calcium with low albumin).
+- One dose row per drug and route, each opening its dose details: oral and IV potassium chloride (standard rate and the faster monitored rate), magnesium sulfate and oxide, potassium phosphate by phosphorus level, sodium phosphate, oral phosphate tablets, IV calcium gluconate (bolus and infusion), calcium chloride and oral calcium carbonate. Rate limits, maximums, kidney adjustments and cautions come from the FDA labels.
+- Monitoring (when to recheck each level), and special situations: kidney impairment, heart disease and digoxin, diabetic ketoacidosis and refeeding risk.
+- Evidence: the 2024 TIGHT-K trial and a 2026 magnesium study, both finding no benefit from aiming higher.
+
 ## 2026.10.19.3
 
 Rapids and Timed Mode, as approved on the mock-ups:

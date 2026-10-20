@@ -1,0 +1,17 @@
+drug_name: Potassium chloride
+indication: Hypokalemia needing faster IV replacement (arrhythmia, digitalis toxicity, cardiac ischemia, K⁺ <2.5 mEq/L)
+population: Adults
+route: IV
+amount: "20"
+unit: mEq
+rate: "over 1 hour, central line, continuous ECG monitoring"
+give_when: "Arrhythmia, digitalis toxicity, recent or ongoing cardiac ischemia, or K⁺ <2.5 mEq/L or symptoms"
+repeat: "Recheck K⁺ every 2–4 hours until >3.5 mEq/L"
+max: "US label: above 10 mEq per hour only for K⁺ <2.0 mEq/L with ECG changes or muscle paralysis (up to 40 mEq per hour, 400 mEq per 24 hours, on continuous ECG)"
+cautions:
+  - "Above the US label's 10 mEq per hour for K⁺ ≥2.0 mEq/L: this rate comes from expert reviews, not the label."
+  - "Replacement rates should generally not exceed 20 mEq per hour."
+  - "Give in saline, not dextrose."
+  - "Higher risk of hyperkalemia with reduced kidney, adrenal or pancreatic beta-cell function."
+notes: "At this rate K⁺ rises by about 0.25 mEq/L per hour on average, with mild hyperkalemia in about 2%. In a small ICU study of 1-hour central infusions at this dose, rhythm and ECG intervals were unchanged, with no new ectopy in 6 of 7 patients and a mean K⁺ rise of 0.4 mEq/L."
+sources: [asmar-hypokalemia-2012, label-kcl-injection-2026, label-kcl-premix-2018, kardalas-hypokalemia-2018, hootkins-central-kcl-2020]

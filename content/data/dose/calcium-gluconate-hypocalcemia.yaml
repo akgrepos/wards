@@ -1,0 +1,23 @@
+drug_name: Calcium gluconate
+indication: Acute symptomatic hypocalcemia
+population: Adults
+route: IV
+amount: "1,000–2,000"
+unit: mg
+rate: "over about 10 minutes, no faster than 200 mg per minute; diluted to 10–50 mg/mL in D5W or saline"
+give_when: "Symptoms (paresthesias, tetany, seizures, laryngospasm, arrhythmia)"
+repeat: "Until symptoms clear; then every 6 hours if needed, or switch to an infusion"
+boxed_warning: None
+alternative:
+  dose: calcium-gluconate-infusion
+  when: "Hypocalcemia persists or recurs after boluses"
+adjustments:
+  - when: "Renal impairment"
+    change: "Start at the lowest dose; serum calcium every 4 hours"
+cautions:
+  - "ECG monitoring during infusion: rapid injection can cause hypotension, bradycardia, arrhythmia and cardiac arrest."
+  - "On digoxin: avoid, or give slowly in small amounts with close ECG monitoring."
+  - "Don't mix with bicarbonate or phosphate; don't give with ceftriaxone through the same line at the same time."
+  - "Extravasation can cause tissue necrosis and calcinosis cutis."
+notes: "1,000 mg (10 mL of 10%) contains 93 mg (4.65 mEq) of elemental calcium. Preferred over calcium chloride for peripheral use (less local irritation)."
+sources: [label-calcium-gluconate-2026, endotext-hypocalcemia-2016, cooper-hypocalcaemia-2008]
