@@ -8,7 +8,7 @@ import { icons } from '../ui/icons';
 // is no page behind this one (after a reopen or a direct link). Pass `head` and `titleRef` for a custom page header.
 export function Screen({ title, back, trailing, head, titleRef, children }: {
   title: string;
-  back?: { label: string; fallback: string };
+  back?: { label: string; fallback: string; onBack?: () => void };
   trailing?: ReactNode;
   head?: ReactNode;
   titleRef?: RefObject<HTMLHeadingElement | null>;
@@ -24,7 +24,7 @@ export function Screen({ title, back, trailing, head, titleRef, children }: {
         <AKG.Toolbar
           title={title}
           showTitle={scrolled}
-          leading={back ? <AKG.ToolbarButton icon={icons.chevronBackward} aria-label={`Back to ${backLabel(back.label)}`} onClick={() => goBack(back.fallback)} /> : undefined}
+          leading={back ? <AKG.ToolbarButton icon={icons.chevronBackward} aria-label={`Back to ${back.onBack ? back.label : backLabel(back.label)}`} onClick={() => (back.onBack ? back.onBack() : goBack(back.fallback))} /> : undefined}
           trailing={trailing}
         />
       </div>

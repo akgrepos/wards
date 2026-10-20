@@ -96,66 +96,6 @@ h1, p { margin: 0; }
 .pw-answer--other, .pw-step .pw-answer--other { background: transparent; box-shadow: 0 0 0 1px var(--separator-opaque); color: color-mix(in srgb, var(--label) 30%, var(--label-secondary)); }
 .pw-answer__to { color: var(--accent-text); }
 
-/* B: decision tree. A line down the left joins the steps; your route's dots are filled, the current one blue,
-   caution red; stages not reached are dotted; the line ends in a square End marker. */
-.pw-tree { display: flex; flex-direction: column; }
-.pw-tree__stage, .pw-tree__node { position: relative; padding-left: 2.1rem; }
-.pw-tree__stage::before, .pw-tree__node::before { content: ""; position: absolute; left: 0.66rem; top: 0; bottom: 0; width: 2px; background: var(--label); }
-.pw-tree__stage:first-child::before { top: 0.9rem; }
-.pw-tree__stage--ahead::before, .pw-tree__node--ahead::before { background: repeating-linear-gradient(var(--separator-opaque) 0 4px, transparent 4px 8px); }
-.pw-tree__stage { display: flex; flex-direction: column; gap: var(--space-2); padding-top: var(--space-8); padding-bottom: var(--space-8); }
-.pw-tree__stage .pw-kind { color: var(--label); }
-.pw-tree__stage--ahead .pw-kind { color: color-mix(in srgb, var(--label) 30%, var(--label-secondary)); }
-.pw-tree__node { padding-bottom: var(--space-12); }
-.pw-tree__node--end::before { bottom: auto; height: 1.2rem; }
-.pw-tree__dot { position: absolute; z-index: 1; left: calc(0.66rem + 1px - 0.5rem); top: 1.1rem; width: 1rem; height: 1rem; border-radius: 999px; box-sizing: border-box; background: var(--label); }
-.pw-tree__dot--now { background: var(--accent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 25%, transparent); }
-.pw-tree__dot--caution { background: var(--system-red); }
-.pw-tree__dot--end { top: 0.7rem; border-radius: 3px; }
-.pw-tree__node--ahead .pw-tree__dot--end { background: var(--background-grouped); box-shadow: inset 0 0 0 2px var(--separator-opaque); }
-.pw-tree__endtext { display: flex; flex-direction: column; padding-top: 0.45rem; }
-.pw-tree__node--ahead .pw-tree__endtext { color: color-mix(in srgb, var(--label) 30%, var(--label-secondary)); }
-.pw-tree__card { display: flex; flex-direction: column; gap: var(--space-8); padding: var(--space-14) var(--space-16); border-radius: 20px; background: var(--background-grouped-secondary); }
-.pw-tree__card.pw-step--caution { background: color-mix(in srgb, var(--system-red) 8%, var(--background-grouped-secondary)); }
-.pw-tree__card--now { box-shadow: 0 0 0 2px var(--accent); }
-.pw-tree__card .pw-answer { background: var(--fill-tertiary); box-shadow: none; }
-.pw-tree__pick { padding: var(--space-8) var(--space-12); border-radius: 14px; background: var(--fill-quaternary); }
-.pw-tree__stub { display: block; width: 100%; min-height: var(--tap-target); padding: var(--space-8) 0; border: 0; background: transparent; font: inherit; text-align: left; color: var(--accent-text); cursor: pointer; }
-.pw-tree h2, .pw-tree p, .pw-map h2, .pw-panel h2, .pw-panel p { margin: 0; overflow-wrap: break-word; }
-
-/* E: map behind, step in front. A small chart of your route fills the page; the current step sits in a panel
-   above the tab bar (its grabber makes it taller), and the page leaves room to scroll the chart above it. */
-.pw-map { display: flex; flex-direction: column; align-items: center; }
-.pw-map__box {
-  box-sizing: border-box; max-width: 100%; padding: var(--space-4) var(--space-10); border-radius: 10px; text-align: center; overflow-wrap: break-word;
-  background: var(--background-grouped-secondary); box-shadow: 0 0 0 1.5px var(--label); color: var(--label); font-family: inherit;
-}
-.pw-map__box--caution { box-shadow: 0 0 0 1.5px var(--system-red); }
-.pw-map__box--now { box-shadow: 0 0 0 2.5px var(--accent); font-weight: 600; }
-.pw-map__box--open { background: transparent; box-shadow: 0 0 0 1px var(--separator-opaque); color: color-mix(in srgb, var(--label) 30%, var(--label-secondary)); }
-.pw-map__box--other { background: transparent; box-shadow: 0 0 0 1px var(--separator-opaque); color: color-mix(in srgb, var(--label) 30%, var(--label-secondary)); border: 0; cursor: pointer; min-height: var(--tap-target); }
-.pw-map__to { color: var(--accent-text); }
-.pw-map__branches { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-8); width: 100%; margin-top: var(--space-8); padding-top: var(--space-8); border-top: 1.5px solid var(--label); }
-.pw-map__branches > * { flex: 1 1 6rem; display: flex; flex-direction: column; align-items: center; justify-content: center; }
-.pw-map__arrow { position: relative; flex: none; width: 2px; height: var(--space-16); margin: var(--space-4) 0 var(--space-10); background: var(--label); }
-.pw-map__arrow::after { content: ""; position: absolute; left: -4px; bottom: -6px; border: 5px solid transparent; border-bottom: 0; border-top: 6px solid var(--label); }
-.pw-map__arrow--ahead { background: repeating-linear-gradient(var(--separator-opaque) 0 4px, transparent 4px 8px); }
-.pw-map__arrow--ahead::after { border-top-color: var(--separator-opaque); }
-.pw-map__end { padding: var(--space-4) var(--space-20); border-radius: 999px; background: var(--background-grouped-secondary); box-shadow: 0 0 0 2.5px var(--label); }
-.pw-panel-space { height: calc(36dvh + var(--space-16)); flex: none; }
-.pw-panel {
-  position: fixed; z-index: 4; left: 0; right: 0; bottom: calc(var(--tab-bar-inset) + var(--tab-bar-height) + var(--space-8));
-  max-width: var(--readable-width); margin: 0 auto; box-sizing: border-box; height: 36dvh; display: flex; flex-direction: column;
-  padding: 0 calc(env(safe-area-inset-right) + var(--space-16)) 0 calc(env(safe-area-inset-left) + var(--space-16));
-  border-radius: var(--radius-sheet); background: var(--background-elevated); box-shadow: var(--shadow-glass);
-}
-.pw-panel--tall { height: calc(100dvh - env(safe-area-inset-top) - var(--toolbar-height) - var(--tab-bar-inset) - var(--tab-bar-height) - var(--space-16)); }
-html[data-timed] .pw-panel { bottom: calc(var(--tab-bar-inset) + var(--tab-bar-height) + var(--tab-bar-accessory-height) + var(--space-16)); }
-.pw-panel__grabber { flex: none; display: flex; align-items: center; justify-content: center; height: var(--tap-target); border: 0; background: transparent; cursor: pointer; }
-.pw-panel__grabber span { width: 36px; height: 5px; border-radius: 999px; background: var(--fill); }
-.pw-panel__body { flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; display: flex; flex-direction: column; gap: var(--space-16); padding-bottom: var(--space-16); }
-.pw-panel .pw-answer { background: var(--fill-tertiary); box-shadow: none; }
-
 /* I: stages that fold. One card; finished stages are one line (tap Change to reopen), later ones gray. */
 .pw-stages { display: flex; flex-direction: column; border-radius: var(--radius-grouped); background: var(--background-grouped-secondary); overflow: hidden; }
 .pw-stage { position: relative; }
@@ -180,7 +120,48 @@ button.pw-stage__head:active { background: var(--fill-tertiary); }
 .pw-end__square { flex: none; width: 1.6rem; height: 1.6rem; border-radius: 6px; box-shadow: inset 0 0 0 2px var(--label-tertiary); }
 .pw-end--reached { color: var(--label); }
 .pw-end--reached .pw-end__square { background: var(--label); box-shadow: none; }
-.pw-panel .pw-end { padding: var(--space-12); border-radius: 16px; background: var(--fill-tertiary); }
+.pw-guided .pw-end { padding: var(--space-12); border-radius: 16px; background: var(--fill-tertiary); }
+
+/* K: choice lists. Settings-style sections; the question is the section's heading and the chosen answer has a checkmark. */
+.pw-choice { display: flex; flex-direction: column; gap: var(--space-24); }
+.pw-choice__section { display: flex; flex-direction: column; gap: var(--space-8); }
+.pw-choice__head { display: flex; flex-direction: column; padding: 0 var(--space-16); overflow-wrap: break-word; }
+.pw-choice__detail { margin: 0; padding: 0 var(--space-16); }
+.pw-choice__section .akg-list { margin: 0; }
+.pw-choice__cell { padding: var(--space-14) var(--space-16); border-radius: var(--radius-grouped); background: var(--background-grouped-secondary); }
+.pw-choice__cell.pw-step--caution { background: color-mix(in srgb, var(--system-red) 8%, var(--background-grouped-secondary)); }
+.pw-choice__then { margin: 0; padding: 0 var(--space-16); }
+.pw-choice .pw-end, .pw-drill .pw-end { border-radius: var(--radius-grouped); background: var(--background-grouped-secondary); }
+
+/* J: drill-down pages. One step per page; answers are a plain list; the back button steps back. */
+.pw-drill { display: flex; flex-direction: column; gap: var(--space-20); }
+.pw-drill__head { display: flex; flex-direction: column; gap: var(--space-4); align-items: flex-start; }
+.pw-drill__head h2, .pw-drill > p { margin: 0; overflow-wrap: break-word; }
+.pw-drill .akg-list { margin: 0; }
+.pw-drill__body { padding: var(--space-14) var(--space-16); border-radius: var(--radius-grouped); background: var(--background-grouped-secondary); }
+.pw-drill__body.pw-step--caution { background: color-mix(in srgb, var(--system-red) 8%, var(--background-grouped-secondary)); }
+
+/* L: full-screen guided mode. Covers the tab bar and update banner (800, 900) but not the dose sheet (1000); the step scrolls; the answers stay at the bottom within thumb reach. */
+.pw-guided {
+  position: fixed; inset: 0; z-index: 950; display: flex; flex-direction: column; background: var(--background);
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) 0 env(safe-area-inset-left);
+}
+.pw-guided__bar { flex: none; display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: var(--space-8); min-height: var(--toolbar-height); padding: 0 var(--space-16); }
+.pw-guided__title { text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.pw-guided__spacer { width: var(--tap-target); }
+.pw-guided__scroll { flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; padding: var(--space-8) var(--space-16) var(--space-16); }
+.pw-guided__scroll > * { max-width: var(--readable-width); margin-left: auto; margin-right: auto; }
+.pw-guided__progress { display: flex; flex-direction: column; gap: var(--space-8); margin-bottom: var(--space-24); }
+.pw-guided__progress p, .pw-guided__step h2 { margin: 0; overflow-wrap: break-word; }
+.pw-guided__step { display: flex; flex-direction: column; gap: var(--space-12); }
+.pw-guided__step.pw-step--caution { padding: var(--space-16); border-radius: var(--radius-grouped); }
+.pw-guided__actions {
+  flex: none; display: flex; flex-direction: column; align-items: stretch; gap: var(--space-8); max-height: 50dvh; overflow-y: auto;
+  padding: var(--space-12) var(--space-16) calc(env(safe-area-inset-bottom) + var(--space-12)); border-top: 0.5px solid var(--separator);
+}
+.pw-guided__actions > * { max-width: var(--readable-width); width: 100%; margin: 0 auto; box-sizing: border-box; }
+.pw-guided__actions .pw-answer { background: var(--fill-tertiary); box-shadow: none; }
+.pw-guided__actions .pw-answer--chosen { background: var(--background-grouped-secondary); box-shadow: 0 0 0 2px var(--label); }
 
 .pw-after { display: flex; flex-direction: column; gap: var(--space-16); }
 .pw-sources { padding-left: 0; padding-right: 0; }
