@@ -5,6 +5,8 @@ The owner, a physician, is the only user. No coding experience: explain steps pl
 
 ## How to work here
 - **Don't build anything the owner hasn't asked for.** Propose options, wait for a decision, then build only what was agreed. Answering a question is not permission to build.
+- **Main chat and side sessions.** A chat the owner opens directly is the **Main** chat: follow the `wards-main` skill in the owner's Claude settings (it renames the chat to "Main" and runs the project as the organizer). Main delegates all building, card writing and mock-ups to side sessions it starts with a brief, keeps branches and sessions clean, and closes sessions once their work is merged and live. The owner works inside each side session's own chat. A session started with a brief is a side session: do its task, not Main's job.
+- **At most three work branches (side sessions) at a time.** Finish or close one before starting another.
 - **One branch and pull request per task.** Never commit to `main` (it's protected). Branch names: `setup/…`, `feature/…`, `fix/…`, `content/…`. Open the PR with a plain-language summary.
 - **Merge it yourself** with `gh pr merge --rebase` (the only method allowed) once the checks pass and testing below is done. Branches delete themselves. Never merge with a failing check. The owner reviews by using the app and asks for changes in chat.
 - **Test in proportion to the change** (iOS 27 Simulator, Safari):
