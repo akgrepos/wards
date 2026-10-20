@@ -33,6 +33,7 @@ describe('addresses', () => {
     expect(parseRoute('')).toEqual({ name: 'home' });
     expect(parseRoute('#/')).toEqual({ name: 'home' });
     expect(parseRoute('#/topics')).toEqual({ name: 'topics' });
+    expect(parseRoute('#/card/renal-aki/when-to-call')).toEqual({ name: 'card', id: 'renal-aki', section: 'escalation' });
     expect(parseRoute('#/emergencies')).toEqual({ name: 'emergencies' });
     expect(parseRoute('#/library')).toEqual({ name: 'library' });
     expect(parseRoute('#/library/criteria')).toEqual({ name: 'library-list', id: 'criteria' });

@@ -185,7 +185,7 @@ emergency_hint: Calcium, insulin-dextrose, remove K⁺
 - 360
 :::
 
-## When to Call
+## Escalation
 - Severe hyperkalemia: urgent renal or critical care opinion, guided by the clinical picture. ^[ukka-hyperkalaemia-2026]
 - Nephrology: maintenance dialysis, refractory hyperkalemia, hyperkalemia with AKI. ^[ukka-hyperkalaemia-2026, kdigo-acute-hyperkalemia-2020]
 - Critical care: airway, breathing, circulation or consciousness compromise, or need for escalation. ^[ukka-hyperkalaemia-2026]

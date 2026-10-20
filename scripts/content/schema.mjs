@@ -20,7 +20,7 @@ export const CARD_TYPES = {
       S('diagnosis', 'Diagnosis'),
       S('treatment', 'Treatment'),
       S('monitor', 'Monitor'),
-      S('when-to-call', 'When to Call'),
+      S('escalation', 'Escalation'),
       ...FOOTER,
     ],
     more: [
@@ -46,7 +46,7 @@ export const CARD_TYPES = {
       S('diagnosis', 'Diagnosis'),
       S('treatment', 'Treatment'),
       S('monitor', 'Monitor'),
-      S('when-to-call', 'When to Call'),
+      S('escalation', 'Escalation'),
       ...FOOTER,
     ],
     more: [
