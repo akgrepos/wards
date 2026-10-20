@@ -42,10 +42,13 @@ One drug, one indication, one population. The only place a dose is written.
 - Shown as: the dose row (drug name over "amount unit route rate frequency"); tapping opens the **dose sheet**: "Dose" bar title, the drug as heading, the fields above, the alternative (tap to open it), cautions, Check Interactions (Medscape's free checker, opens in Safari) and a source line.
 
 ### 3. Regimen
-A treatment combination for one indication, built from doses (never retyping them).
-- Fields: indication · setting/severity · first-line option(s) (each a list of dose IDs) · alternatives (e.g. beta-lactam allergy) · duration · de-escalation notes · sources
-- Example: community-acquired pneumonia, inpatient, not severe
-- Home: the condition card. Inserted into the "Empiric therapy by infection" chart.
+A treatment combination for one indication and setting, built from dose items (never retyping them). Built 2026-10-19 for Wave 1 batch 2 (owner's choice over plain dose rows).
+- Fields (YAML name in brackets): name [`name`] (the setting, short: "Inpatient, not severe") · indication [`indication`] · setting [`setting`] (who it is for, one line) · options [`options`] · duration [`duration`] · notes [`notes`] (a list of short sentences) · sources [`sources`]
+- Each option: label [`label`] (optional, e.g. "β-lactam plus macrolide") · when [`when`] (optional condition, e.g. allergy) · doses [`doses`]: the parts given together; a part is a dose id, or a list of dose ids meaning any one of them. Example: `doses: [[ceftriaxone-iv, ampicillin-sulbactam-cap], azithromycin-iv-cap]` = one of the β-lactams plus azithromycin.
+- Its words never carry a dose (the content check rejects typed doses); every drug shows as its own dose row.
+- Home: `content/data/regimen/<id>.yaml`. Inserted on a line of its own (`{{regimen:id}}`) in condition cards, and later in the "Empiric therapy by infection" chart.
+- Shown as: a gray box labelled "Regimen": the name and setting, then the options joined by "Or"; inside an option, parts joined by "Plus" and "One of:" above a choice of drugs; then the duration and notes. All Sources includes the regimen's sources and its doses' sources.
+- Dose items used by regimens are shared: the same dose (e.g. ceftriaxone 1–2 g IV every 24 hours) is one item reused by every card and regimen that gives it.
 
 ### 4. Reference value
 A lab test's typical US range and critical values.

@@ -1,0 +1,20 @@
+drug_name: Piperacillin-tazobactam
+indication: Severe or necrotizing skin and soft tissue infection (with vancomycin)
+population: Adults
+route: IV
+amount: "3.375"
+unit: g
+frequency: every 6 hours
+rate: over 30 minutes
+adjustments:
+  - when: CrCl 20–40 mL/min
+    change: 2.25 g every 6 hours
+  - when: CrCl <20 mL/min
+    change: 2.25 g every 8 hours
+  - when: Hemodialysis or CAPD
+    change: 2.25 g every 12 hours, plus 0.75 g after each dialysis
+cautions:
+  - More AKI with vancomycin; monitor creatinine.
+sources:
+  - label-zosyn-2026
+  - idsa-ssti-2014

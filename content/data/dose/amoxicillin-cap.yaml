@@ -1,0 +1,17 @@
+drug_name: Amoxicillin
+indication: Community-acquired pneumonia, outpatient without comorbidities
+population: Adults
+route: PO
+amount: "1"
+unit: g
+frequency: every 8 hours
+adjustments:
+  - when: GFR 10–30 mL/min
+    change: "Label: 500 mg or 250 mg every 12 hours"
+  - when: GFR <10 mL/min or hemodialysis
+    change: "Label: 500 mg or 250 mg every 24 hours (hemodialysis: extra dose during and after)"
+cautions:
+  - The guideline's high dose; the label's highest lower-respiratory dose is 875 mg every 12 hours or 500 mg every 8 hours.
+sources:
+  - idsa-ats-cap-2019
+  - label-amoxicillin-2024

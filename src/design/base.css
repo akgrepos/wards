@@ -110,6 +110,8 @@ h1, p { margin: 0; }
 html[data-timed] .pw-zoom { bottom: calc(env(safe-area-inset-bottom) + var(--tab-bar-inset) + var(--tab-bar-height) + var(--tab-bar-accessory-height) + var(--space-20)); }
 .criteria-block, .criteria { display: flex; flex-direction: column; gap: var(--space-8); }
 .dose-rows { display: flex; flex-direction: column; gap: var(--space-8); }
+.regimen-option { display: flex; flex-direction: column; gap: var(--space-8); }
+.regimen-join { text-transform: uppercase; letter-spacing: 0.02em; }
 .step-body .rich-list { list-style: disc; }
 .step-body { color: var(--label); display: flex; flex-direction: column; gap: var(--space-8); margin-top: var(--space-4); }
 .scale-block { display: flex; flex-direction: column; gap: var(--space-8); }

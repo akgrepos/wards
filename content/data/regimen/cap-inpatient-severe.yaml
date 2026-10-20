@@ -1,0 +1,12 @@
+name: Inpatient, severe
+indication: Community-acquired pneumonia
+setting: "No MRSA or Pseudomonas risk factors"
+options:
+  - label: β-lactam plus macrolide
+    doses: [[ceftriaxone-iv, ampicillin-sulbactam-cap, ceftaroline-iv], azithromycin-iv-cap]
+  - label: β-lactam plus respiratory fluoroquinolone
+    doses: [[ceftriaxone-iv, ampicillin-sulbactam-cap, ceftaroline-iv], [levofloxacin-750, moxifloxacin-cap]]
+duration: "At least 5 days, and until clinically stable"
+notes:
+  - "Fluoroquinolone alone and β-lactam plus doxycycline are not studied enough for severe CAP."
+sources: [idsa-ats-cap-2019, ats-cap-2025]

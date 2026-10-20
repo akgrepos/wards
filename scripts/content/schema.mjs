@@ -189,9 +189,15 @@ export const DATA_TYPES = {
   threshold: { required: ['name', 'value', 'unit'], sourced: true },
   // A whole-card map (docs/DATA-TYPES.md, 9): grid layout, boxes that link to the card's content.
   pathway: { required: ['title', 'card', 'columns', 'start', 'nodes'], sourced: true },
+  // A treatment combination for one indication, built from dose items (docs/DATA-TYPES.md, 3).
+  regimen: { required: ['name', 'options'], sourced: true },
   // A formal definition or set of criteria: optional "any of" items and/or a table (e.g. stages).
   criteria: { required: ['name', 'short'], sourced: true },
 };
+
+// Every field a regimen and each of its options can have.
+export const REGIMEN_FIELDS = ['name', 'indication', 'setting', 'options', 'duration', 'notes', 'sources'];
+export const REGIMEN_OPTION_FIELDS = ['label', 'when', 'doses'];
 
 // US units accepted in data items.
 export const UNITS = [

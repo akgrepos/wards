@@ -1,0 +1,16 @@
+drug_name: Cefpodoxime
+indication: Complicated UTI or pyelonephritis, oral step-down
+population: Adults
+route: PO
+amount: 200–400
+unit: mg
+frequency: every 12 hours
+adjustments:
+  - when: CrCl <30 mL/min
+    change: Every 24 hours
+cautions:
+  - Take with food.
+notes: Guideline dose; the label lists only uncomplicated UTI.
+sources:
+  - idsa-cuti-ivpo-2025
+  - label-cefpodoxime-2026

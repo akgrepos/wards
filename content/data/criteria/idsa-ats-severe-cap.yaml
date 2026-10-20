@@ -1,0 +1,18 @@
+name: IDSA/ATS criteria for severe community-acquired pneumonia
+short: IDSA/ATS severe CAP criteria
+logic: "Severe CAP: 1 major or ≥3 minor criteria"
+items:
+  - "Major: septic shock needing vasopressors"
+  - "Major: respiratory failure needing mechanical ventilation"
+  - "Minor: respiratory rate ≥30 breaths/min"
+  - "Minor: PaO₂/FiO₂ ≤250"
+  - "Minor: multilobar infiltrates"
+  - "Minor: confusion or disorientation"
+  - "Minor: BUN ≥20 mg/dL"
+  - "Minor: WBC <4,000 cells/µL, from infection alone (not chemotherapy)"
+  - "Minor: platelets <100,000/µL"
+  - "Minor: core temperature <36 °C (96.8 °F)"
+  - "Minor: hypotension needing aggressive fluid resuscitation"
+notes:
+  - "From the 2007 IDSA/ATS guideline, kept in 2019; one major or three minor criteria predicted ICU admission with a pooled sensitivity of 84% and specificity of 78%."
+sources: [idsa-ats-cap-2019]

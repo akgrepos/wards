@@ -1,0 +1,7 @@
+name: Abscess after drainage
+indication: Purulent skin infection with systemic signs
+setting: "Moderate: oral MRSA-active agent; severe: IV options as for MRSA risk"
+options:
+  - doses: [[tmp-smx-ssti, doxycycline-100]]
+duration: "5–10 days, guided by response"
+sources: [idsa-ssti-2014, idsa-mrsa-2011]

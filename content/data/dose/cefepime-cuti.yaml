@@ -1,0 +1,17 @@
+drug_name: Cefepime
+indication: Complicated UTI or pyelonephritis
+population: Adults
+route: IV
+amount: 1–2
+unit: g
+frequency: every 8–12 hours
+rate: over about 30 minutes
+adjustments:
+  - when: CrCl ≤60 mL/min
+    change: Reduce per the label's table (e.g., 2 g every 12 hours becomes 2 g every 24 hours at CrCl 30–60)
+cautions:
+  - Neurotoxicity when not reduced for kidney function.
+notes: "Label: severe UTI or pyelonephritis 2 g every 12 hours."
+sources:
+  - idsa-cuti-selection-2025
+  - label-cefepime-2024

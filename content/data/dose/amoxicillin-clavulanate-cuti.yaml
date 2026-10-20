@@ -1,0 +1,14 @@
+drug_name: Amoxicillin-clavulanate
+indication: Complicated UTI, oral, susceptible isolate
+population: Adults
+route: PO
+amount: 875/125
+unit: mg
+frequency: every 8–12 hours
+adjustments:
+  - when: GFR <30 mL/min
+    change: Not the 875 mg tablet (label)
+notes: Less well studied in complicated UTI; the more frequent dosing is preferred.
+sources:
+  - idsa-cuti-ivpo-2025
+  - label-amox-clav-2026

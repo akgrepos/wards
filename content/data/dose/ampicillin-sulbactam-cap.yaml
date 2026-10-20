@@ -1,0 +1,18 @@
+drug_name: Ampicillin-sulbactam
+indication: Community-acquired pneumonia, inpatient (with a macrolide)
+population: Adults
+route: IV
+amount: 1.5–3
+unit: g
+frequency: every 6 hours
+rate: over 15–30 minutes
+max: Sulbactam 4 g per day
+adjustments:
+  - when: CrCl 15–29 mL/min
+    change: Every 12 hours
+  - when: CrCl 5–14 mL/min
+    change: Every 24 hours
+notes: CAP use rests on the guideline; the label lists skin, intra-abdominal and gynecologic infections.
+sources:
+  - idsa-ats-cap-2019
+  - label-unasyn-2026

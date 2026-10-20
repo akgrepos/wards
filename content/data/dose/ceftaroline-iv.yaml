@@ -1,0 +1,21 @@
+drug_name: Ceftaroline
+indication: Community-acquired pneumonia (inpatient β-lactam); skin infection with MRSA risk
+population: Adults
+route: IV
+amount: "600"
+unit: mg
+frequency: every 12 hours
+rate: over 5–60 minutes
+adjustments:
+  - when: CrCl >30–50 mL/min
+    change: 400 mg every 12 hours
+  - when: CrCl 15–30 mL/min
+    change: 300 mg every 12 hours
+  - when: CrCl <15 mL/min or hemodialysis
+    change: 200 mg every 12 hours, after dialysis
+cautions:
+  - Active against MRSA; does not cover Pseudomonas.
+sources:
+  - label-teflaro-2024
+  - idsa-ats-cap-2019
+  - idsa-ssti-2014

@@ -1,0 +1,7 @@
+name: Moderate, IV
+indication: Nonpurulent cellulitis or erysipelas
+setting: "Systemic signs of infection"
+options:
+  - doses: [[cefazolin-ssti, ceftriaxone-iv, penicillin-g-ssti, clindamycin-iv-ssti]]
+duration: "5 days in total; switch to oral when improving"
+sources: [idsa-ssti-2014]

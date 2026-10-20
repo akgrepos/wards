@@ -30,10 +30,12 @@ export function systemGroups(systemId: string): { title: string; cards: Card[] }
   return groups;
 }
 
-// Sources of an inserted item (dose, threshold, pathway).
+// Sources of an inserted item (dose, threshold, pathway). A regimen's include its doses' sources.
 export function insertSources(kind: string, id: string): string[] {
-  const item = content.data[kind]?.[id] as { sources?: string[] } | undefined;
-  return item?.sources ?? [];
+  const item = content.data[kind]?.[id] as { sources?: string[]; options?: { doses: (string | string[])[] }[] } | undefined;
+  if (kind !== 'regimen') return item?.sources ?? [];
+  const doses = (item?.options ?? []).flatMap((o) => o.doses.flat());
+  return [...new Set([...(item?.sources ?? []), ...doses.flatMap((d) => insertSources('dose', d))])];
 }
 
 // Sources shown as an icon instead of by name (decided 2026-10-17):

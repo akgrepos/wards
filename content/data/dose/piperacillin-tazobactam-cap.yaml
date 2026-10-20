@@ -1,0 +1,21 @@
+drug_name: Piperacillin-tazobactam
+indication: Community-acquired pneumonia with Pseudomonas risk
+population: Adults
+route: IV
+amount: "4.5"
+unit: g
+frequency: every 6 hours
+rate: over 30 minutes
+adjustments:
+  - when: CrCl 20–40 mL/min
+    change: 3.375 g every 6 hours
+  - when: CrCl <20 mL/min
+    change: 2.25 g every 6 hours
+  - when: Hemodialysis or CAPD
+    change: 2.25 g every 8 hours, plus 0.75 g after each dialysis
+cautions:
+  - More AKI with vancomycin than with other β-lactams; monitor creatinine.
+notes: Adjustments are the label's nosocomial pneumonia column, which uses this dose.
+sources:
+  - idsa-ats-cap-2019
+  - label-zosyn-2026

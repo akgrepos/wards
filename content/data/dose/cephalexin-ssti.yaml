@@ -1,0 +1,17 @@
+drug_name: Cephalexin
+indication: Mild cellulitis or erysipelas
+population: Adults
+route: PO
+amount: "500"
+unit: mg
+frequency: every 6 hours
+adjustments:
+  - when: CrCl 30–59 mL/min
+    change: "Label: no more than 1 g per day"
+  - when: CrCl 15–29 mL/min
+    change: 250 mg every 8–12 hours
+  - when: CrCl 5–14 mL/min
+    change: 250 mg every 24 hours
+sources:
+  - idsa-ssti-2014
+  - label-cephalexin-2026

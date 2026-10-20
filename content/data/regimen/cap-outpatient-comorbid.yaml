@@ -1,0 +1,10 @@
+name: Outpatient, with comorbidities
+indication: Community-acquired pneumonia
+setting: "Chronic heart, lung, liver or kidney disease, diabetes, alcohol use disorder, malignancy or asplenia; no order of preference"
+options:
+  - label: β-lactam plus macrolide or doxycycline
+    doses: [[amoxicillin-clavulanate-cap, cefpodoxime-cap], [azithromycin-po-cap, doxycycline-100]]
+  - label: Respiratory fluoroquinolone alone
+    doses: [[levofloxacin-750, moxifloxacin-cap]]
+duration: "3–5 days once clinically stable"
+sources: [idsa-ats-cap-2019, ats-cap-2025]

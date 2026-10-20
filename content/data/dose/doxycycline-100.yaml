@@ -1,0 +1,18 @@
+drug_name: Doxycycline
+indication: Community-acquired pneumonia (with a β-lactam, or alone in healthy outpatients); MRSA skin infection
+population: Adults
+route: PO or IV
+amount: "100"
+unit: mg
+frequency: every 12 hours
+rate: IV over at least 1 hour
+cautions:
+  - No dose change for kidney impairment (label).
+  - Take tablets with a full glass of water, upright; separate from antacids, calcium and iron.
+  - Avoid in pregnancy.
+notes: Some experts give 200 mg for the first dose. Activity against β-hemolytic streptococci is uncertain.
+sources:
+  - idsa-ats-cap-2019
+  - idsa-mrsa-2011
+  - label-doxycycline-2026
+  - label-doxy-iv-2021

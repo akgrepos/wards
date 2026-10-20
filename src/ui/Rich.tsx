@@ -1,7 +1,7 @@
 import { createContext, Fragment, useContext, useState, type MouseEvent, type ReactNode } from 'react';
 import { AKG } from '../design/akg';
 import { content, getCard, isMarkerSource, titleCase } from '../content';
-import type { Block, ContainerItem, Criteria, Dose, Inline, ListItem, Pathway, Source, Threshold } from '../content/types';
+import type { Block, ContainerItem, Criteria, Dose, Inline, ListItem, Pathway, Regimen, Source, Threshold } from '../content/types';
 import { parseInline, TAGS } from '../../scripts/content/inline.mjs';
 import { onsetRows } from '../../scripts/content/onset.mjs';
 import { slug } from '../../scripts/content/pathway.mjs';
@@ -105,6 +105,7 @@ export function plainText(xs: Inline[]): string {
       if (x.kind === 'threshold') return `${item.value} ${item.unit}`;
       if (x.kind === 'criteria') return String(item.short);
       if (x.kind === 'dose') return String(item.drug_name);
+      if (x.kind === 'regimen') return String(item.name);
       return String(item.title ?? item.name ?? '');
     }
     if (x.t === 'link') return x.label ?? getCard(x.id)?.title ?? x.id;
@@ -223,8 +224,8 @@ export function openDose(sheet: ShowSheet, id: string) {
 }
 
 // One drug per row: its name over its dose; tap for the dose sheet. `warnings` adds warning tags (an emergency's
-// Do Now steps); `large` shows the dose at Title 2 size (Timed Mode).
-export function DoseRow({ id, warnings, large, children }: { id: string; warnings?: string[]; large?: boolean; children?: ReactNode }) {
+// Do Now steps); `large` shows the dose at Title 2 size (Timed Mode); `surface="raised"` sets it apart on a tinted box.
+export function DoseRow({ id, warnings, large, surface, children }: { id: string; warnings?: string[]; large?: boolean; surface?: 'fill' | 'raised'; children?: ReactNode }) {
   const sheet = useSheet();
   const d = doseItem(id);
   if (!d) return <span className="missing">[missing dose: {id}]</span>;
@@ -235,6 +236,7 @@ export function DoseRow({ id, warnings, large, children }: { id: string; warning
   return (
     <AKG.ValueRow
       className={large ? 'dose-row--large' : undefined}
+      surface={surface}
       title={d.drug_name}
       value={large ? <span className="ios-title-2-emphasized">{doseValue(d)}</span> : doseValue(d)}
       tags={tags.length ? <span className="tag-row">{tags}</span> : undefined}
@@ -261,6 +263,39 @@ export function AlternativeRow({ id }: { id: string }) {
     >
       {d.alternative.when}
     </AKG.ValueRow>
+  );
+}
+
+// ---- Regimens ----
+
+// A regimen (docs/DATA-TYPES.md, 3) in a gray box labelled "Regimen": its name and setting, then its options joined by
+// "Or". Inside an option, parts given together are joined by "Plus"; a part with several doses is "One of" them. Every
+// drug is its own dose row (one drug per row), so the words never carry a dose.
+function RegimenBlock({ id }: { id: string }) {
+  const r = content.data.regimen?.[id] as Regimen | undefined;
+  if (!r) return <span className="missing">[missing regimen: {id}]</span>;
+  const ids = (part: string | string[]) => (Array.isArray(part) ? part : [part]);
+  return (
+    <AKG.Panel tone="plain" label="Regimen" className="regimen">
+      <p className="ios-headline"><RichText text={r.name} /><LinePill ids={r.sources} quote={r.name} /></p>
+      {r.setting && <p className="ios-subheadline secondary"><RichText text={r.setting} /></p>}
+      {r.options.map((o, i) => (
+        <div key={i} className="regimen-option">
+          {i > 0 && <p className="ios-footnote-emphasized secondary regimen-join">Or</p>}
+          {o.label && <p className="ios-subheadline-emphasized"><RichText text={o.label} /></p>}
+          {o.when && <p className="ios-subheadline secondary"><RichText text={o.when} /></p>}
+          {o.doses.map((part, j) => (
+            <Fragment key={j}>
+              {j > 0 && <p className="ios-footnote-emphasized secondary regimen-join">Plus</p>}
+              {ids(part).length > 1 && <p className="ios-footnote secondary">One of:</p>}
+              <div className="dose-rows">{ids(part).map((d) => <DoseRow key={d} id={d} surface="raised" />)}</div>
+            </Fragment>
+          ))}
+        </div>
+      ))}
+      {r.duration && <p className="ios-body"><strong>Duration:</strong> <RichText text={r.duration} /></p>}
+      {r.notes?.map((n, i) => <p key={i} className="ios-subheadline secondary"><RichText text={n} /></p>)}
+    </AKG.Panel>
   );
 }
 
@@ -492,6 +527,7 @@ function BlockView({ b }: { b: Block }) {
   if (b.t === 'insert') {
     if (b.kind === 'pathway') return <PathwayRow id={b.id} />;
     if (b.kind === 'criteria') return <CriteriaBlock id={b.id} />;
+    if (b.kind === 'regimen') return <RegimenBlock id={b.id} />;
     return <p className="ios-body"><Insert kind={b.kind} id={b.id} /></p>;
   }
   if (b.t !== 'table') return <Container b={b as ContainerBlock} />;

@@ -1,0 +1,13 @@
+drug_name: Azithromycin
+indication: Community-acquired pneumonia, outpatient
+population: Adults
+route: PO
+amount: "500"
+unit: mg
+frequency: on day 1, then 250 mg once daily on days 2–5
+cautions:
+  - "QT prolongation: avoid with a long QTc or other QT-prolonging drugs."
+  - Alone only where pneumococcal macrolide resistance is <25%.
+sources:
+  - label-zithromax-oral-2026
+  - idsa-ats-cap-2019

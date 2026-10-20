@@ -1,0 +1,22 @@
+drug_name: Cefepime
+indication: Community-acquired pneumonia with Pseudomonas risk
+population: Adults
+route: IV
+amount: "2"
+unit: g
+frequency: every 8 hours
+rate: over about 30 minutes
+adjustments:
+  - when: CrCl 30–60 mL/min
+    change: 2 g every 12 hours
+  - when: CrCl 11–29 mL/min
+    change: 2 g every 24 hours
+  - when: CrCl <11 mL/min
+    change: 1 g every 24 hours
+  - when: Hemodialysis
+    change: 1 g on day 1, then 500 mg every 24 hours, after dialysis
+cautions:
+  - Neurotoxicity (encephalopathy, nonconvulsive status) when not reduced for kidney function.
+sources:
+  - idsa-ats-cap-2019
+  - label-cefepime-2024

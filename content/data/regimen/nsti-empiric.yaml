@@ -1,0 +1,9 @@
+name: Necrotizing infection, empiric
+indication: Suspected necrotizing soft tissue infection
+setting: "With emergency surgical debridement"
+options:
+  - doses: [vancomycin-iv, [piperacillin-tazobactam-ssti, meropenem-1g], clindamycin-iv-nsti]
+duration: "Until no further debridement is needed, the patient has improved and has been afebrile for 48–72 hours"
+notes:
+  - "Group A streptococcus confirmed: penicillin plus clindamycin."
+sources: [idsa-ssti-2014]

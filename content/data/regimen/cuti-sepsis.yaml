@@ -1,0 +1,10 @@
+name: Sepsis
+indication: Complicated UTI or pyelonephritis
+setting: "Choose one by the four steps: resistance risk, patient factors and a recent local antibiogram"
+options:
+  - doses: [[ceftriaxone-iv, cefepime-cuti, piperacillin-tazobactam-cuti, meropenem-1g, ertapenem-1g, ciprofloxacin-iv-cuti, levofloxacin-750]]
+duration: "7 days (fluoroquinolone: 5–7) once improving, counted from the first effective day"
+notes:
+  - "Newer agents, cefiderocol, plazomicin and older aminoglycosides are alternatives, not first choices."
+  - "Broader gram-positive or Pseudomonas coverage if the source is unclear or these organisms are suspected."
+sources: [idsa-cuti-selection-2025, idsa-cuti-duration-2025]

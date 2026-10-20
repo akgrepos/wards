@@ -1,0 +1,19 @@
+drug_name: Trimethoprim-sulfamethoxazole
+indication: Complicated UTI or pyelonephritis, oral, susceptible isolate
+population: Adults
+route: PO
+amount: "160"
+unit: mg
+frequency: every 12 hours
+adjustments:
+  - when: CrCl 15–30 mL/min
+    change: Half the usual dose
+  - when: CrCl <15 mL/min
+    change: Not recommended
+cautions:
+  - Hyperkalemia and creatinine rise.
+  - Raises warfarin effect; rash including SJS/TEN.
+notes: "Dose is the trimethoprim part: 1 double-strength tablet (160 mg/800 mg)."
+sources:
+  - idsa-cuti-ivpo-2025
+  - label-tmp-smx-2024

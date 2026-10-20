@@ -1,0 +1,17 @@
+drug_name: Cefazolin
+indication: Moderate cellulitis or erysipelas; MSSA
+population: Adults
+route: IV
+amount: "1"
+unit: g
+frequency: every 8 hours
+adjustments:
+  - when: CrCl 35–54 mL/min
+    change: Usual dose every 8 hours or longer
+  - when: CrCl 11–34 mL/min
+    change: Half the usual dose every 12 hours
+  - when: CrCl ≤10 mL/min
+    change: Half the usual dose every 18–24 hours
+sources:
+  - idsa-ssti-2014
+  - label-cefazolin-2024

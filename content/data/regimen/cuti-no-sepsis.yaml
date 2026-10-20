@@ -1,0 +1,10 @@
+name: No sepsis, IV
+indication: Complicated UTI or pyelonephritis
+setting: "Choose one by resistance risk and patient factors"
+options:
+  - doses: [[ceftriaxone-iv, cefepime-cuti, piperacillin-tazobactam-cuti, ciprofloxacin-iv-cuti, levofloxacin-750]]
+  - label: Carbapenem
+    when: "Only when resistance (e.g., a prior ESBL-producing isolate) rules out the first choices"
+    doses: [[ertapenem-1g, meropenem-1g]]
+duration: "7 days (fluoroquinolone: 5–7) once improving, counted from the first effective day"
+sources: [idsa-cuti-selection-2025, idsa-cuti-duration-2025]

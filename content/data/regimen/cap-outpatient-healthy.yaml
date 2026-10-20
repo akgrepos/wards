@@ -1,0 +1,10 @@
+name: Outpatient, no comorbidities
+indication: Community-acquired pneumonia
+setting: "No comorbidities and no MRSA or Pseudomonas risk factors"
+options:
+  - doses: [amoxicillin-cap]
+  - doses: [doxycycline-100]
+  - when: "Only where pneumococcal macrolide resistance is <25%"
+    doses: [azithromycin-po-cap]
+duration: "3–5 days once clinically stable"
+sources: [idsa-ats-cap-2019, ats-cap-2025]

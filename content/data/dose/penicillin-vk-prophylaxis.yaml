@@ -1,0 +1,12 @@
+drug_name: Penicillin V potassium
+indication: Prevention of recurrent leg cellulitis
+population: Adults
+route: PO
+amount: "250"
+unit: mg
+frequency: every 12 hours
+duration: 12 months in the trial; continue while risk factors persist
+notes: "Guideline: 3–4 episodes a year despite treating predisposing factors. Benefit fades after stopping."
+sources:
+  - patch1-2013
+  - idsa-ssti-2014
