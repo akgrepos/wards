@@ -23,7 +23,7 @@ export function SheetHost({ children }: { children: ReactNode }) {
   return (
     <Ctx.Provider value={show}>
       {children}
-      <AKG.Sheet key={n} open={!!sheet} onClose={() => setSheet(null)} title={sheet?.title} heading={sheet?.heading} subheading={sheet?.subheading} detent={sheet?.detent} detents={['medium', 'large']} fixed cancelLabel="Close">
+      <AKG.Sheet key={n} open={!!sheet} onClose={() => setSheet(null)} title={sheet?.title} heading={sheet?.heading} subheading={sheet?.subheading} detents={sheet?.detent === 'large' ? ['large'] : ['medium', 'large']} fixed cancelLabel="Close">
         <div className="sheet-body">{sheet?.body}</div>
       </AKG.Sheet>
     </Ctx.Provider>
