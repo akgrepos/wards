@@ -459,9 +459,15 @@ const useAnchor = (words: string) => { const sec = useContext(AnchorCtx); return
 function Subheading({ text }: { text: string }) {
   return <h3 id={useAnchor(text)} className="ios-headline subheading">{text}</h3>;
 }
-// StepList numbers its children by cloning them with `number`; pass it on to the Step.
-function StepItem({ it, number }: { it: { inlines: Inline[]; sources: string[]; blocks: Block[] }; number?: number }) {
-  return <AKG.Step id={useAnchor(plainText(it.inlines))} number={number} title={<><Inlines xs={it.inlines} /><LinePill ids={it.sources} quote={it.inlines} /></>}><div className="step-body"><Blocks blocks={it.blocks} /></div></AKG.Step>;
+// Numbers for a list of steps: an alternative to the step above ("or. Title") reads "or" and doesn't use up a number,
+// so "3. Insulin, DKA" / "or. Insulin, HHS" / "4. Dextrose" shows 3, or, 4.
+export function stepNumbers(items: { alt?: boolean }[]): (number | 'or')[] {
+  let n = 0;
+  return items.map((it, i) => (it.alt && i > 0 ? 'or' : ++n));
+}
+// StepList numbers its children by cloning them with `number`; here the numbers are given (see stepNumbers).
+function StepItem({ it, number }: { it: { inlines: Inline[]; sources: string[]; blocks: Block[]; alt?: boolean }; number?: number | 'or' }) {
+  return <AKG.Step id={useAnchor(plainText(it.inlines))} number={number as number} className={number === 'or' ? 'step-alt' : undefined} title={<><Inlines xs={it.inlines} /><LinePill ids={it.sources} quote={it.inlines} /></>}><div className="step-body"><Blocks blocks={it.blocks} /></div></AKG.Step>;
 }
 
 const hasText = (xs: Inline[]) => xs.some((x) => x.t !== 'text' || x.v.trim());
@@ -541,7 +547,7 @@ function BlockView({ b }: { b: Block }) {
   if (b.t === 'steps') {
     return (
       <AKG.StepList density="compact" strong>
-        {b.items.map((it, j) => <StepItem key={j} it={it} />)}
+        {b.items.map((it, j) => <StepItem key={j} it={it} number={stepNumbers(b.items)[j]} />)}
       </AKG.StepList>
     );
   }

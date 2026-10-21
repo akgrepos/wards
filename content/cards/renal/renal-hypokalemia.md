@@ -81,7 +81,7 @@ related:
 
    {{dose:mgso4-iv-repletion}}
 
-2. Mild to moderate
+or. Mild to moderate
    - Oral KCl if the gut works. ^[kardalas-hypokalemia-2018, asmar-hypokalemia-2012]
 
    {{dose:kcl-oral-treatment}}

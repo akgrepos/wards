@@ -13,7 +13,7 @@ export type Block =
   | { t: 'insert'; kind: string; id: string }
   | { t: 'subheading'; text: string }
   // Numbered steps (StepList): a title, then the step's own blocks.
-  | { t: 'steps'; items: { inlines: Inline[]; sources: string[]; blocks: Block[] }[] }
+  | { t: 'steps'; items: { inlines: Inline[]; sources: string[]; blocks: Block[]; alt?: boolean }[] }
   // :::scale (ScaleBar), :::compare (ComparisonGrid), :::times (TimePoints): "Label: text" items.
   // :::onset (a row that opens onset and duration side by side): {{dose:id}} items, or "Label: onset | lasts".
   // :::note (a brown Note box): 1–3 plain sentences.

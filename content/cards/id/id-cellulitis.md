@@ -70,17 +70,17 @@ related:
 
    {{regimen:cellulitis-mrsa}}
 
-3. Severe or immunocompromised
+or. Severe or immunocompromised
    - Broad empiric therapy; rule out necrotizing infection. ^[idsa-ssti-2014]
 
    {{regimen:ssti-severe-broad}}
 
-4. Abscess
+or. Abscess
    - Incision and drainage; antibiotics against MRSA for systemic signs, impaired host defenses, or failure of drainage. ^[idsa-ssti-2014]
 
    {{regimen:abscess-oral}}
 
-5. Suspected necrotizing infection
+or. Suspected necrotizing infection
    - Emergency surgical exploration and debridement, with broad empiric therapy. ^[idsa-ssti-2014]
    - Add clindamycin for toxin suppression when group A streptococcus or toxic shock is possible; penicillin plus clindamycin once group A streptococcus is confirmed. ^[idsa-ssti-2014, common-practice]
 

@@ -26,7 +26,7 @@ emergency_hint: "Airway, O₂, find the cause, HFNC, intubate early"
    - If: hypoxemia or distress despite conventional oxygen ^[ats-nirs-2026, ssc-sepsis-2026]
    - Start about 50 L/min with FiO₂ 1.0, then titrate FiO₂ to the target. ^[florali-2015]
    - {{calc:rox-index}} at 2, 6 and 12 hours. ^[roca-rox-2019]
-4. NIV or CPAP instead
+or. NIV or CPAP instead
    - If: hypercapnia, cardiogenic pulmonary edema, or high-flow not tolerated ^[ats-nirs-2026, ers-ats-niv-2017]
    - Check: also none of recent upper airway or upper GI surgery, upper GI bleeding, hemodynamic instability. ^[common-practice]
    - Check: none of: arrest, unable to protect airway or clear secretions, vomiting, facial trauma, uncontrolled agitation. ^[common-practice]

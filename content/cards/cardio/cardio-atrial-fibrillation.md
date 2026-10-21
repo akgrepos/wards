@@ -20,7 +20,7 @@ emergency_hint: "Unstable: cardiovert; stable: IV rate control"
    - Check: rate likely the cause (usually >150 beats/min); sedation; pads; synchronize. ^[aha-acls-2025, common-practice]
    - Start anticoagulation as soon as feasible without delaying cardioversion; continue at least 4 weeks after. ^[acc-aha-af-2023, common-practice]
    - Biphasic: at least 200 J initially; escalate if unsuccessful. ^[aha-acls-2025]
-2. IV rate control
+or. IV rate control
    - If: stable and not decompensated; β-blocker at any LVEF, diltiazem only if LVEF >40% ^[acc-aha-af-2023]
    - Check: pre-excitation on ECG (delta wave, wide bizarre QRS): no AV nodal blockers. ^[acc-aha-af-2023]
 
@@ -28,7 +28,7 @@ emergency_hint: "Unstable: cardiovert; stable: IV rate control"
    {{dose:diltiazem-iv-af}}
 
    - Warning: Hypotension ^[label-diltiazem-inj-2026, label-metoprolol-inj-2026]
-3. IV rate control, decompensated or hypotensive
+or. IV rate control, decompensated or hypotensive
    - If: decompensated heart failure, critically ill, or blood pressure limiting a β-blocker or diltiazem ^[acc-aha-af-2023, common-practice]
    - No IV diltiazem or verapamil if LVEF ≤40%, compensated or not. ^[acc-aha-af-2023]
 
@@ -105,7 +105,7 @@ emergency_hint: "Unstable: cardiovert; stable: IV rate control"
    - Immediate cardioversion; do not delay for anticoagulation, but start it as soon as possible. ^[acc-aha-af-2023]
    - Biphasic: at least 200 J initially. ^[aha-acls-2025]
 
-2. Rate control
+or. Rate control
    - LVEF >40%: IV or oral β-blocker or nondihydropyridine calcium channel blocker. ^[acc-aha-af-2023]
 
    {{dose:metoprolol-iv-af}}

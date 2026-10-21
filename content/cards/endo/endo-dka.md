@@ -34,7 +34,7 @@ emergency_hint: "Fluids, potassium, then insulin"
    {{dose:insulin-regular-dka}}
 
    - Warning: Hypokalemia, hypoglycemia ^[ada-hyperglycemic-crises-2024]
-4. Insulin infusion, HHS
+or. Insulin infusion, HHS
    - If: HHS without significant ketoacidosis, K⁺ >3.5 mEq/L ^[ada-hyperglycemic-crises-2024]
 
    {{dose:insulin-regular-hhs}}

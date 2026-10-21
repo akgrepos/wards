@@ -102,7 +102,7 @@ emergency_hint: 3% saline bolus, limit the 24-h rise
 
    {{dose:nacl-3-bolus}}
 
-2. Moderate symptoms
+or. Moderate symptoms
    - Chronic or unknown onset: slow continuous 3% saline, within the daily goal below. ^[rondon-berrios-hypertonic-2022, verbalis-hyponatremia-2013]
 
    {{dose:nacl-3-infusion-slow}}
@@ -115,7 +115,7 @@ emergency_hint: 3% saline bolus, limit the 24-h rise
 
    {{dose:nacl-3-infusion}}
 
-3. Mild or no symptoms: treat the cause
+or. Mild or no symptoms: treat the cause
    - Hypovolemic: isotonic saline (or a balanced crystalloid) until euvolemic. ^[verbalis-hyponatremia-2013, hoorn-hyponatremia-guidelines-2017]
 
    {{dose:ns-trial-hyponatremia}}
