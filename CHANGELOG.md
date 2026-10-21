@@ -2,6 +2,10 @@
 
 What changed in each version of Wards, newest first. The version is shown in Settings (gear on Home).
 
+## 2026.10.21.20
+
+**Two new cards.** Anticoagulant Selection and Management (with a "Choosing an Anticoagulant" pathway) and Chest Pain (with a "First-Hour Workup" pathway). New MDCalc links for the 4Ts, HEART, PERC and ADD-RS scores.
+
 ## 2026.10.21.19
 
 **Fix: calculators open full height.** The change in the last update to open calculators at full height did not take effect; they now do.

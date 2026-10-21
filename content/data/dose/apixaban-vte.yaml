@@ -1,0 +1,22 @@
+drug_name: Apixaban
+brand: Eliquis
+indication: Acute DVT or PE treatment
+population: Adults
+route: PO
+amount: "10"
+unit: mg
+frequency: twice daily for 7 days, then 5 mg twice daily
+duration: "At least 3 months; extended therapy after 6 months: 2.5 mg twice daily"
+boxed_warning: "Premature discontinuation raises the risk of thrombotic events; spinal or epidural hematoma with neuraxial anesthesia or spinal puncture."
+adjustments:
+  - when: Kidney impairment, including dialysis
+    change: No dose adjustment for VTE treatment
+  - when: Combined strong CYP3A4 and P-gp inhibitors (ketoconazole, itraconazole, ritonavir)
+    change: "Reduce by 50% (5 or 10 mg to 2.5 mg or 5 mg); avoid if already on 2.5 mg twice daily"
+  - when: Liver impairment
+    change: "Child-Pugh A: no change; B: limited data; C: not recommended"
+cautions:
+  - "No parenteral lead-in needed."
+  - "Avoid combined strong CYP3A4 and P-gp inducers (rifampin, carbamazepine, phenytoin, St John's wort)."
+notes: "No weight or age adjustment for VTE treatment."
+sources: [label-eliquis-2025, ash-vte-treatment-2020, chest-vte-2021]

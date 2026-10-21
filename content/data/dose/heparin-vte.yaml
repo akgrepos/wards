@@ -1,0 +1,16 @@
+drug_name: Heparin (unfractionated)
+indication: Acute DVT or PE treatment
+population: Adults
+route: IV
+amount: "80"
+unit: units/kg
+frequency: once as a bolus, then an infusion
+rate: "18 units/kg/h; adjust to the institution's aPTT or anti-Xa nomogram"
+give_when: Preferred with kidney failure (CrCl <30 mL/min), high bleeding risk, planned thrombolysis or procedure, or unreliable SC absorption
+boxed_warning: "None"
+cautions:
+  - "Target anti-Xa 0.3–0.7 units/mL or the matching aPTT range per the laboratory (label: aPTT 1.5–2 times normal)."
+  - "Check platelets: heparin-induced thrombocytopenia."
+  - "Contraindicated with a history of heparin-induced thrombocytopenia."
+notes: "The US label gives 5,000 units IV, then 20,000–40,000 units per 24 hours adjusted to aPTT 1.5–2 times normal; this weight-based regimen and anti-Xa range follow CHEST 2012."
+sources: [chest-parenteral-2012, label-heparin-2025]

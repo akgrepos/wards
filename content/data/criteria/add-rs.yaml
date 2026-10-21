@@ -1,0 +1,11 @@
+name: Aortic dissection detection risk score (ADD-RS)
+title: "Aortic dissection detection risk score (ADD-RS), 2022"
+short: ADD-RS
+logic: "One point for each of three categories with at least one feature present (maximum 3):"
+items:
+  - "High-risk condition: Marfan syndrome or other connective tissue disease, family history of aortic disease, known aortic valve disease, known thoracic aortic aneurysm, recent aortic manipulation (including cardiac surgery)"
+  - "High-risk pain: chest, back or abdominal pain that is abrupt, severe, or ripping or tearing"
+  - "High-risk examination: pulse deficit or systolic blood pressure differential, focal neurologic deficit with pain, new aortic regurgitation murmur with pain, hypotension or shock"
+notes:
+  - "0: low risk. 1: intermediate risk. 2 or 3: high risk."
+sources: [acc-aha-aortic-2022, rogers-add-rs-2011]
