@@ -3,8 +3,8 @@ short: PE clinical categories
 columns: [Category, Definition]
 rows:
   - ["A, subclinical", "Incidental, asymptomatic PE"]
-  - ["B, symptomatic, low severity score", "PESI ≤85, sPESI 0 or Hestia 0. B1 subsegmental; B2 segmental or more proximal"]
-  - ["C, symptomatic, elevated severity score", "PESI >85, sPESI ≥1 or Hestia ≥1. C1 normal RV and biomarkers; C2 abnormal RV or ≥1 abnormal biomarker (troponin, BNP); C3 abnormal RV and ≥1 abnormal biomarker"]
+  - ["B, symptomatic, low severity score", "{{calc:pesi}} ≤85, {{calc:spesi}} 0 or {{calc:hestia}} 0. B1 subsegmental; B2 segmental or more proximal"]
+  - ["C, symptomatic, elevated severity score", "{{calc:pesi}} >85, {{calc:spesi}} ≥1 or {{calc:hestia}} ≥1. C1 normal RV and biomarkers; C2 abnormal RV or ≥1 abnormal biomarker (troponin, BNP); C3 abnormal RV and ≥1 abnormal biomarker"]
   - ["D, incipient cardiopulmonary failure", "D1 transient hypotension (SBP <90 mm Hg or fall >40 mm Hg lasting <15 minutes or responding to fluids); D2 normotensive shock (lactate >2 mmol/L, AKI, urine output <0.5 mL/kg/h, altered mental status, cardiac index <2.2 L/min/m², or MAP <60 mm Hg)"]
   - ["E, cardiopulmonary failure", "E1 recurrent or persistent hypotension with cardiogenic shock; E2 refractory shock or cardiac arrest"]
 notes:

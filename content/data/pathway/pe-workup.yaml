@@ -46,7 +46,7 @@ nodes:
     at: [0, 3]
     span: 9
     title: Clinical probability?
-    text: Wells, revised Geneva or gestalt.
+    text: Wells, {{calc:geneva-pe|revised Geneva}} or gestalt.
     links: [criteria:wells-pe]
     answers:
       - { label: Low, detail: "<15% and all PERC met", at: [0, 4], span: 3, to: perc-met }
@@ -103,7 +103,7 @@ nodes:
     at: [3, 11]
     span: 3
     title: PE confirmed
-    text: Assign the category (sPESI, troponin or BNP, lactate, RV imaging).
+    text: Assign the category ({{calc:spesi}}, troponin or BNP, lactate, RV imaging).
     links: [criteria:pe-clinical-categories, "section:pulm-vte-diagnosis/treatment#confirmed-pe-assign-the-category"]
   negative:
     kind: result

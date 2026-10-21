@@ -13,8 +13,8 @@ related:
   tools: []
 ---
 ## At a Glance
-- Estimate clinical probability first (Wells, Geneva or gestalt); it decides the next test. ^[aha-acc-pe-2026]
-- Low probability with all PERC criteria met: no testing. Low or intermediate: D-dimer with YEARS or an age-adjusted cutoff. High: imaging directly. ^[aha-acc-pe-2026]
+- Estimate clinical probability first ({{calc:wells-pe|Wells}}, {{calc:geneva-pe|Geneva}} or gestalt); it decides the next test. ^[aha-acc-pe-2026]
+- Low probability with all {{calc:perc}} criteria met: no testing. Low or intermediate: D-dimer with {{calc:years-pe|YEARS}} or an {{calc:age-adjusted-d-dimer|age-adjusted cutoff}}. High: imaging directly. ^[aha-acc-pe-2026]
 - CT pulmonary angiography is the test of choice; V/Q (SPECT) when CT is not possible. ^[aha-acc-pe-2026]
 - Suspected DVT: D-dimer first when unlikely; compression ultrasound first when likely. ^[ash-vte-diagnosis-2018]
 - Confirmed PE: assign the AHA/ACC category (A–E) by symptoms, severity score, RV and biomarkers, and hemodynamics; it sets the level of care. ^[aha-acc-pe-2026]
@@ -65,15 +65,15 @@ related:
 
 {{criteria:perc}}
 
-- Probability by a validated tool (Wells, revised Geneva) or gestalt: low <15%, intermediate 15–50%, high >50%. ^[aha-acc-pe-2026]
-- Low and all PERC criteria met: no further testing. ^[aha-acc-pe-2026, acep-vte-2018]
-- Low with PERC not met, or intermediate: D-dimer with YEARS items. ^[aha-acc-pe-2026]
+- Probability by a validated tool ({{calc:wells-pe|Wells}}, {{calc:geneva-pe|revised Geneva}}) or gestalt: low <15%, intermediate 15–50%, high >50%. ^[aha-acc-pe-2026]
+- Low and all {{calc:perc}} criteria met: no further testing. ^[aha-acc-pe-2026, acep-vte-2018]
+- Low with {{calc:perc}} not met, or intermediate: D-dimer with {{calc:years-pe|YEARS}} items. ^[aha-acc-pe-2026]
 - High: imaging directly; a negative D-dimer does not exclude PE. ^[aha-acc-pe-2026, ash-vte-diagnosis-2018]
 
 #### PE: D-dimer
 {{criteria:years-pe}}
 
-- Age-adjusted cutoff instead of YEARS: age × 10 µg/L FEU above age 50. ^[aha-acc-pe-2026, adjust-pe-2014]
+- {{calc:age-adjusted-d-dimer|Age-adjusted cutoff}} instead of YEARS: age × 10 µg/L FEU above age 50. ^[aha-acc-pe-2026, adjust-pe-2014]
 - A positive D-dimer alone never diagnoses VTE. ^[ash-vte-diagnosis-2018]
 - Validated in patients not on therapeutic anticoagulation; often positive in hospitalized, postoperative, pregnant and cancer patients. ^[aha-acc-pe-2026, ash-vte-diagnosis-2018]
 
@@ -87,10 +87,10 @@ related:
 #### DVT: lower extremity
 {{criteria:wells-dvt}}
 
-- Unlikely (low probability): D-dimer first; negative excludes DVT; positive: proximal compression or whole-leg ultrasound. ^[ash-vte-diagnosis-2018]
+- Unlikely by {{calc:wells-dvt|Wells}} (low probability): D-dimer first; negative excludes DVT; positive: proximal compression or whole-leg ultrasound. ^[ash-vte-diagnosis-2018]
 - Intermediate: whole-leg ultrasound (negative excludes), or proximal compression ultrasound repeated in 1 week if negative. ^[ash-vte-diagnosis-2018]
 - Likely (high probability): ultrasound directly; negative proximal scan with no other diagnosis: repeat in 1 week. ^[ash-vte-diagnosis-2018]
-- Age-adjusted D-dimer also safely excludes DVT when DVT is unlikely. ^[le-gal-ddimer-dvt-2026]
+- {{calc:age-adjusted-d-dimer|Age-adjusted D-dimer}} also safely excludes DVT when DVT is unlikely. ^[le-gal-ddimer-dvt-2026]
 
 #### DVT: upper extremity
 - Unlikely: D-dimer, then duplex ultrasound if positive; likely: duplex ultrasound directly, repeated if suspicion stays high. ^[ash-vte-diagnosis-2018]
@@ -112,7 +112,7 @@ related:
 #### Confirmed PE: assign the category
 {{criteria:spesi}}
 
-- Categories A–B: Hestia, PESI or sPESI to confirm low risk; selected patients can be treated as outpatients with reliable follow-up. ^[aha-acc-pe-2026]
+- Categories A–B: {{calc:hestia}}, {{calc:pesi}} or {{calc:spesi}} to confirm low risk; selected patients can be treated as outpatients with reliable follow-up. ^[aha-acc-pe-2026]
 - Category C: at least one cardiac biomarker (troponin or BNP) and lactate; RV imaging, echocardiography preferred over CT. ^[aha-acc-pe-2026]
 - Categories C–E: PE response team; categories D–E: ICU-level care. ^[aha-acc-pe-2026, common-practice]
 
@@ -129,7 +129,7 @@ related:
 ### Where Guidelines Differ: Risk classes, D-dimer strategy
 :::compare PE severity
 - AHA/ACC 2026: categories A–E with subcategories and a respiratory modifier. ^[aha-acc-pe-2026]
-- ESC 2019: low, intermediate-low, intermediate-high and high risk (sPESI or PESI, troponin, RV). ^[esc-pe-2019]
+- ESC 2019: low, intermediate-low, intermediate-high and high risk ({{calc:spesi}} or {{calc:pesi}}, troponin, RV). ^[esc-pe-2019]
 :::
 
 :::compare D-dimer threshold
@@ -152,11 +152,11 @@ related:
 - Baseline leg ultrasound when anticoagulation stops, to compare with later suspected recurrence. ^[ash-vte-diagnosis-2018]
 
 ### Evidence: Diagnostic strategies
-- ADJUST-PE (2014): age-adjusted D-dimer raised the number of patients excluded without imaging, with a 0.3% 3-month failure rate. ^[adjust-pe-2014]
+- ADJUST-PE (2014): {{calc:age-adjusted-d-dimer}} raised the number of patients excluded without imaging, with a 0.3% 3-month failure rate. ^[adjust-pe-2014]
 - YEARS (2017): the three-item strategy safely avoided CTPA in about half the patients. ^[years-2017]
 - PEGeD (2019): probability-adjusted D-dimer safely reduced imaging. ^[peged-2019]
 - Artemis (2019): pregnancy-adapted YEARS safely avoided CTPA in many pregnant patients. ^[artemis-2019]
-- Le Gal (2026): age-adjusted D-dimer safely excluded DVT, with the largest gain at age ≥75. ^[le-gal-ddimer-dvt-2026]
+- Le Gal (2026): {{calc:age-adjusted-d-dimer}} safely excluded DVT, with the largest gain at age ≥75. ^[le-gal-ddimer-dvt-2026]
 
 ### Epidemiology and Pathophysiology: Low yield of testing
 - Fewer than 10% of patients evaluated for PE have PE; the accepted miss rate for a rule-out strategy is under 2% at 3 months. ^[aha-acc-pe-2026]
@@ -164,7 +164,7 @@ related:
 
 ## Pearls
 - Pretest probability before D-dimer: a D-dimer in a high-probability patient misleads. ^[aha-acc-pe-2026]
-- Use PERC only when probability is already low. ^[aha-acc-pe-2026]
+- Use {{calc:perc}} only when probability is already low. ^[aha-acc-pe-2026]
 - Normal oxygen saturation does not exclude PE. ^[common-practice]
 - A negative CTPA ends the PE workup; don't add leg ultrasound. ^[aha-acc-pe-2026]
 - Category drives disposition: A–B can often go home, C–E need admission and the PE response team. ^[aha-acc-pe-2026]
