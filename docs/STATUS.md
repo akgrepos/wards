@@ -1,24 +1,26 @@
 # Status
 
-Last updated 2026-10-19 (live version 2026.10.19.14). A short snapshot so the next session can pick up where the last one stopped. The reasons behind each choice are in [DECISIONS.md](DECISIONS.md); what changed in each version is in [CHANGELOG.md](../CHANGELOG.md).
+Last updated 2026-10-20 (live version 2026.10.20.2, Wave 1 batch 3). A short snapshot so the next session can pick up where the last one stopped. The reasons behind each choice are in [DECISIONS.md](DECISIONS.md); what changed in each version is in [CHANGELOG.md](../CHANGELOG.md).
 
 ## Start here next time
 1. **Open a new chat and type "Start Main".** The `wards-main` skill renames it "Main", checks sessions, pull requests and branches, and runs the day by delegating to side sessions (at most three branches at a time). Nothing is parked: no open pull requests, no side sessions, only `main`.
 2. **Read first:** `CLAUDE.md`, then DECISIONS.md "Card-writing process" (2026-10-19) and "Sources, updated" before any card work.
-3. **Owner checks on the phone** (version 2026.10.19.14; tap Reload on "Update Ready"), then say what to change (Main sends it to a fix session):
+3. **Owner checks on the phone** (version 2026.10.20.2; tap Reload on "Update Ready"), then say what to change (Main sends it to a fix session):
+   - New cardiology cards: Atrial Fibrillation (with its Rapids page: AF with RVR, Timed Mode), Acute Coronary Syndrome: NSTEMI and Unstable Angina, Acute Decompensated Heart Failure (dose sheets, US vs European comparisons under More Information).
    - New cards: Community-Acquired Pneumonia, Cellulitis and Erysipelas, Pyelonephritis and Complicated UTI (gray Regimen boxes, dose sheets); Hyponatremia (with its Rapids page), Hypokalemia, IV Fluids; Electrolyte Repletion.
    - Pathway maps on AKI and Hyperkalemia (Pathway row under the title): is pinch-zoom smooth?
    - Rapids › Hyperkalemia: Timed Mode start to finish (Mark Given, minimize, reopen the app, End, summary).
 4. **Next work** (Main picks with the owner, within the three-branch limit):
-   - **Wave 1 batch 3**: the next three cards from the private topic list's Wave 1 (one batch at a time, owner reviews each on the phone). Batch 2 leftovers, possible later: an aztreonam row for beta-lactam allergy, IV moxifloxacin, the newer oral carbapenem for complicated UTI.
+   - **Wave 1 batch 4**: the next three cards from the private topic list's Wave 1 (one batch at a time, owner reviews each on the phone). Focused pathways for AF (e.g. rate vs rhythm, anticoagulation) and ADHF wait for the new pathway format; their drafted box content is in the batch 3 pull request. Batch 2 leftovers, possible later: an aztreonam row for beta-lactam allergy, IV moxifloxacin, the newer oral carbapenem for complicated UTI.
    - **Card template adjustments** from the three pilots: a short clinical-register style guide in CONTENT-FORMAT.md; whether approach cards need fewer sections; the "most common" vs "cannot miss" layout; rates and deficits in prose blocked by the typed-dose check; dose rows that need an indication lead-in; a definition line for reference cards; tall table rows on a phone; Contents menu names cut short at the largest Text Sizes.
    - **Redesign Phase 5, Library and full search** (offline search across sections, drugs and tools, including Rapids pages; possibly one file per card), then **Phase 6** (final light/dark/Text Size check and independent review).
    - **More pathway maps**, only where a flowchart helps; the owner picks the card.
    - **Audits** (filed 2026-10-17, kept privately): process items next; clinical fixes later (saved: terlipressin boxed warning, Hyperkalemia causes, calcium chloride arrest rate, insulin onset).
-5. **Inputs needed from the owner:** sign in to AMBOSS and OpenEvidence in the built-in browser if their sessions have expired. The OpenEvidence `.card_check` DotFlow and its how-to are kept privately (`~/Documents/Wards-reference/prompts/`).
+5. **Inputs needed from the owner:** The clinical reference is used in the owner's Chrome (Claude in Chrome, new window), where the sign-in lasts. The AI evidence checker is a last resort the owner runs by pasting batches (DECISIONS 2026-10-20); its `.card_check` DotFlow and its how-to are kept privately (`~/Documents/Wards-reference/prompts/`).
 
 ## Done
-- **App:** live at https://akgrepos.github.io/wards/ (version 2026.10.19.14).
+- **App:** live at https://akgrepos.github.io/wards/ (version 2026.10.20.2).
+  - Wave 1 batch 3: Atrial Fibrillation (condition, Rapids page for AF with RVR), Acute Coronary Syndrome: NSTEMI and Unstable Angina, Acute Decompensated Heart Failure (condition cards, Cardiology).
   - Wave 1 batch 2: Community-Acquired Pneumonia, Cellulitis and Erysipelas, Pyelonephritis and Complicated Urinary Tract Infection (all condition cards, Infectious Disease); regimen boxes.
   - Wave 1 batch 1: Hyponatremia (condition, Rapids page for severe symptoms), Hypokalemia (condition), IV Fluids: Selection and Dosing (reference, protocol).
   - Rapids: Hyperkalemia's emergency page (Do Now steps from the card's own lines and doses), the Do Now pop-up on its topic page, Home shortcuts with Edit, and Timed Mode (log with Undo, Due Next, minimize to a timer bar, end confirmation, summary with Copy Summary; kept on the phone, survives closing the app).
@@ -32,10 +34,11 @@ Last updated 2026-10-19 (live version 2026.10.19.14). A short snapshot so the ne
 
 ## Waiting on the owner
 - Phone review of the new cards, pathway maps and Timed Mode (see "Start here" 3).
-- Which Wave 1 cards go in batch 3, and which card gets the next pathway map.
+- Which Wave 1 cards go in batch 4.
 - Choices on the remaining 2026-10-17 audit findings (process next).
 
 ## Watch
+- **US heart failure guideline:** the 2022 AHA/ACC/HFSA guideline is still the newest US edition (October 2026); when a new one is published, update the ADHF card, whose European side already follows ESC 2026.
 - **KDIGO 2026 AKI/AKD guideline:** public-review draft only (March 2026). When the final is published, update the AKI card. Expected changes: cystatin C criteria, biomarker staging, AKD, glucose 140–180 mg/dL, bicarbonate before RRT at pH <7.20, deferred RRT.
 
 ## Known limits

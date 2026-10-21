@@ -27,7 +27,7 @@ related:
 #### Timing of invasive angiography
 | Risk | Features | Timing |
 |---|---|---|
-| Very high | Hemodynamic instability or cardiogenic shock, refractory or recurrent angina, life-threatening arrhythmia, mechanical complication, acute heart failure from ischemia, recurrent dynamic ST changes | Immediate, <2 h ^[acc-aha-acs-2025, esc-acs-2023] |
+| Very high | Instability or shock, refractory angina, life-threatening arrhythmia, mechanical complication, ischemic acute heart failure, recurrent dynamic ST changes | Immediate, <2 h ^[acc-aha-acs-2025, esc-acs-2023] |
 | High | GRACE >140, steeply rising troponin despite medical therapy, or ongoing dynamic ST changes | Early, <24 h ^[acc-aha-acs-2025] |
 | Intermediate | GRACE 109–140, no ongoing ischemia, troponin stable or falling | Before discharge (<72 h) ^[acc-aha-acs-2025] |
 | Low | GRACE <109 or TIMI <2, troponin below the 99th percentile, no dynamic ST changes | Routine invasive before discharge, or selective (noninvasive testing first) ^[acc-aha-acs-2025] |
