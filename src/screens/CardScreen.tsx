@@ -274,7 +274,7 @@ export function CardScreen({ id, section, anchor }: { id: string; section?: stri
             </AKG.List>
           </AKG.ContentSection>
         )}
-        {usesCalc(card) && <p className="ios-footnote secondary calc-note">Score and calculator names with an arrow open MDCalc in Safari. They need internet.</p>}
+        {usesCalc(card) && <p className="ios-footnote secondary calc-note">Score and calculator names marked with an arrow open MDCalc in Safari and need internet.</p>}
       </Screen>
     </LineSources>
   );

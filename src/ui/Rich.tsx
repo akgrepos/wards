@@ -358,7 +358,7 @@ export const openCriteria = (sheet: ShowSheet, c: Criteria) => sheet({ title: 'C
 function CalcLink({ c, label }: { c: Calc; label?: string }) {
   const text = label ?? c.short;
   return (
-    <a className="akg-link calc-link" href={c.url} target="_blank" rel="noopener noreferrer" aria-label={`${text}, ${c.name} on MDCalc. Opens in Safari, needs internet.`}>
+    <a className="akg-link calc-link" href={c.url} target="_blank" rel="noopener noreferrer" aria-label={`${text}${c.name.includes(c.short) ? '' : `, ${c.name}`}. Opens MDCalc in Safari, needs internet.`}>
       {text}<span className="external-mark" aria-hidden="true">{icons.arrowUpRight}</span>
     </a>
   );
