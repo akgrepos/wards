@@ -1,0 +1,86 @@
+# A focused pathway (owner, 2026-10-21): the first-hour workup of acute dyspnea as a decision tree that supplements the card.
+# Stabilize first, then tests, then route to the card that owns the cause. Text comes from the card's own lines.
+# Format: docs/CONTENT-FORMAT.md, "Pathways".
+title: First-Hour Workup
+card: pulm-dyspnea
+summary: Stabilize, core tests, route to the cause
+columns: 14
+start: arrival
+sources: [bts-oxygen-2017, acp-pocus-2021, esc-hf-2026, aha-acc-pe-2026, ats-nirs-2026]
+nodes:
+  arrival:
+    kind: start
+    at: [4, 0]
+    span: 6
+    title: Acute dyspnea
+    text: Airway, vital signs, monitor, intravenous access; oxygen to 94–98% (88–92% if hypercapnia risk).
+    next: unstable
+  unstable:
+    kind: question
+    at: [4, 1]
+    span: 6
+    title: Airway threat, exhaustion, altered mentation, shock or hypoxemia despite oxygen?
+    answers:
+      - { label: "No", at: [0, 2], span: 6, to: tests }
+      - { label: "Yes", at: [8, 2], span: 6, to: urgent }
+  urgent:
+    kind: urgent
+    at: [8, 3]
+    span: 6
+    title: Resuscitate while diagnosing
+    text:
+      - "Decompress a tension pneumothorax; call the airway team for upper airway obstruction."
+      - "High-flow nasal oxygen or noninvasive ventilation; ICU review; intubate early if failing."
+    links: ["card:crit-hypoxemic-respiratory-failure"]
+    next: urgent-end
+  urgent-end:
+    kind: result
+    at: [8, 4]
+    span: 6
+    title: Then run the core tests
+    text: Blood gas, ECG, chest radiograph and bedside ultrasound as the patient allows.
+  tests:
+    kind: do
+    at: [0, 3]
+    span: 6
+    title: Core tests
+    text: "Blood gas, ECG, chest radiograph, troponin, BNP or NT-proBNP, CBC, BMP; bedside ultrasound if uncertain."
+    links: ["section:pulm-dyspnea/diagnosis#natriuretic-peptides"]
+    next: cause
+  cause:
+    kind: question
+    at: [0, 4]
+    span: 6
+    title: What do the tests show?
+    answers:
+      - { label: Edema, detail: "B-lines, high natriuretic peptide", at: [0, 5], span: 3, to: hf }
+      - { label: Consolidation or wheeze, at: [3, 5], span: 3, to: lung }
+      - { label: "Clear lungs, PE possible", at: [6, 5], span: 3, to: pe }
+      - { label: Nondiagnostic, at: [9, 5], span: 3, to: other }
+  hf:
+    kind: result
+    at: [0, 6]
+    span: 3
+    title: Heart failure pathway
+    text: Noninvasive positive pressure for cardiogenic pulmonary edema.
+    links: [card:cardio-adhf]
+  lung:
+    kind: result
+    at: [3, 6]
+    span: 3
+    title: Pneumonia or airway disease
+    links: [card:id-cap, card:pulm-copd-exacerbation]
+  pe:
+    kind: result
+    at: [6, 6]
+    span: 3
+    title: Probability, PERC, D-dimer
+    text: "{{calc:wells-pe|Wells}} or gestalt first; CT pulmonary angiography if indicated."
+    links: [card:pulm-vte-diagnosis]
+  other:
+    kind: result
+    at: [9, 6]
+    span: 3
+    title: Widen the search
+    text: "Acute coronary syndrome, acidosis, anemia, neuromuscular weakness, effusion; chest CT or echocardiography."
+    links: [card:cardio-chest-pain]
