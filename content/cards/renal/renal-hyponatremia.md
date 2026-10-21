@@ -128,10 +128,9 @@ emergency_hint: 3% saline bolus, limit the 24-h rise
 
    - European alternative: low-dose loop diuretic with oral NaCl. ^[hoorn-hyponatremia-guidelines-2017, spasovski-hyponatraemia-2014]
    - Heart failure: fluid restriction to 1 L/day, loop diuretic if overloaded; tolvaptan if needed. ^[verbalis-hyponatremia-2013]
-   - Cirrhosis: Na⁺ and water restriction (1–1.5 L/day); reduce or stop diuretics and laxatives. ^[aga-cirrhosis-ascites-2025, verbalis-hyponatremia-2013]
-   - Cirrhosis, inpatient with severe or symptomatic hyponatremia: add IV albumin guided by volume status, or an oral vasoconstrictor (e.g. midodrine). ^[aga-cirrhosis-ascites-2025, common-practice]
-   - Cirrhosis, recurrent or refractory: involve hepatology and the transplant team; options are an IV vasoconstrictor, 3% saline, a vaptan, renal replacement therapy, or TIPS in selected patients. ^[aga-cirrhosis-ascites-2025]
-   - Tolvaptan in cirrhosis: avoid except when benefit outweighs liver risk (e.g. awaiting transplant). ^[verbalis-hyponatremia-2013]
+   - Cirrhosis, hypervolemic, asymptomatic: Na⁺ and water restriction (1–1.5 L/day), adjust diuretics and laxatives, monitor electrolytes. ^[aga-cirrhosis-ascites-2025]
+   - Cirrhosis, recurrent or refractory: multidisciplinary, with the transplant team when appropriate; options are an IV vasoconstrictor, 3% saline, a vaptan, renal replacement therapy, or TIPS in selected patients. ^[aga-cirrhosis-ascites-2025]
+   - Tolvaptan in cirrhosis: label says avoid (liver injury); US panel: only if benefit outweighs risk (e.g. awaiting transplant). ^[label-samsca-2021, verbalis-hyponatremia-2013]
    - Glucocorticoid deficiency: hydrocortisone (stress dose if ill); hypothyroidism: levothyroxine. ^[verbalis-hyponatremia-2013]
    - Primary polydipsia: reduce intake; low solute intake: improve nutrition, slowly (rapid correction risk). ^[verbalis-hyponatremia-2013]
 
@@ -183,11 +182,12 @@ emergency_hint: 3% saline bolus, limit the 24-h rise
 :::compare Vaptans
 - US panel 2013: An option for SIADH and heart failure; restricted in cirrhosis. ^[verbalis-hyponatremia-2013]
 - European 2014: Not recommended at Na⁺ <130, recommended against at <125 mEq/L and in hypervolemia. ^[hoorn-hyponatremia-guidelines-2017]
-- AGA 2025 (cirrhosis): Among the options for recurrent or refractory hyponatremia, with the transplant team. ^[aga-cirrhosis-ascites-2025]
+- AGA 2025 (cirrhosis): Among the options for recurrent or refractory hyponatremia, with the transplant team; the tolvaptan label says avoid in cirrhosis. ^[aga-cirrhosis-ascites-2025, label-samsca-2021]
 :::
 
 ### Special Populations: Cirrhosis, heart failure, thiazides
 - Cirrhosis: hyponatremia predicts encephalopathy, hepatorenal syndrome and death; tolvaptan is avoided because of liver injury. ^[verbalis-hyponatremia-2013]
+- Cirrhosis, hypervolemic, inpatient with severe Na⁺ or symptoms: Na⁺ and water restriction, reduce or stop diuretics and laxatives, plus IV albumin by volume status or an oral vasoconstrictor (e.g. midodrine); severe symptoms still get 3% saline (see Treatment). ^[aga-cirrhosis-ascites-2025, common-practice]
 - Cirrhosis workup: diet, diuretics and laxatives, kidney function, GI bleeding, infection (diagnostic paracentesis), thyroid and adrenal function. ^[aga-cirrhosis-ascites-2025]
 - Thiazides: stopping the drug and restoring volume can trigger a rapid water diuresis; many cases of osmotic demyelination followed. ^[verbalis-hyponatremia-2013]
 - Avoid repeating a thiazide after thiazide-induced hyponatremia; recheck Na⁺ within days if a diuretic is essential. ^[verbalis-hyponatremia-2013]
