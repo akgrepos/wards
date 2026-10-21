@@ -2,6 +2,10 @@
 
 What changed in each version of Wards, newest first. The version is shown in Settings (gear on Home).
 
+## 2026.10.21.18
+
+**Calculator layout.** Every calculator now opens full height. In the number-entry calculators the result stays just above the fields, with the normal range and Reset moved below them, so all the fields and the result fit on screen with the keyboard open.
+
 ## 2026.10.21.17
 
 **Calculator polish.** Score calculators now open full height so the total and risk level are in view; formula calculators show the result above the number fields so the keyboard doesn't hide it. Reset is a smaller button, screen readers announce only the result, and the MDCalc link starts with a capital letter.
