@@ -2,6 +2,14 @@
 
 What changed in each version of Wards, newest first. The version is shown in Settings (gear on Home).
 
+## 2026.10.21.2
+
+Three new topics (Wave 1, fourth batch):
+- **Sepsis and Septic Shock** (Critical Care), with a **Rapids page**: cultures and lactate, antibiotics within 1 hour (dose rows for piperacillin-tazobactam, cefepime and vancomycin), the crystalloid bolus, norepinephrine to MAP 65 (60–65 at 65 and older), vasopressin, hydrocortisone, source control. The card follows the **Surviving Sepsis Campaign 2026** guidelines: screening with NEWS or SIRS rather than qSOFA, antibiotic timing by how likely sepsis is, an empiric regimen box (resistant-organism and anaerobic coverage only with risk), extended β-lactam infusions, fluids guided by lactate and capillary refill, the vasopressor order, steroids, and supportive care. The 2026 IDSA-led hospital position paper is shown beside it where the two differ.
+- **Diabetic Ketoacidosis and Hyperosmolar Hyperglycemic State** (Endocrinology): HHS is covered in full on this card. A **Rapids page** (fluids, potassium before insulin, insulin infusion, dextrose, precipitant) and a new pathway, **DKA: Treatment** (Pathway row under the title, and Library › Pathways): fluids, potassium by level, insulin by type of crisis (IV, SC for mild DKA, lower-rate for HHS), dextrose, bicarbonate, monitoring and resolution. Criteria and severity tables, the SC insulin option for mild DKA, HHS correction limits, transition to SC insulin, and US vs UK differences.
+- **Hyperglycemia in the Hospitalized Patient** (Endocrinology): targets on the ward and in the ICU, when to start insulin, **starting doses** (basal-bolus, basal plus correction), steroids, tube feeds, hypoglycemia levels and treatment (oral glucose, dextrose, glucagon), CGM and pumps, discharge. Titration will come with the inpatient insulin card.
+- Dose rows that give a percentage now read "5–10%" rather than "5–10 %".
+
 ## 2026.10.21
 
 ECG figures on four cards, drawn to true ECG scale (25 mm/s, 10 mm/mV) on a 1 mm and 5 mm grid:

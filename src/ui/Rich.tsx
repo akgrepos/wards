@@ -10,6 +10,9 @@ import { useSheet, type ShowSheet } from './SheetHost';
 import { icons } from './icons';
 import { MediaFigure } from './Ecg';
 
+// "5–10%" without a space; every other unit after a space ("0.1 units/kg/h").
+const amountWithUnit = (amount: string | number, unit: string) => (unit === '%' ? `${amount}%` : `${amount} ${unit}`);
+
 // Free, clinician-oriented, no sign-in; opens in Safari (DECISIONS 2026-10-18, "Drug interactions: link out").
 export const INTERACTION_CHECKER = 'https://reference.medscape.com/drug-interactionchecker';
 
@@ -150,7 +153,7 @@ export function LinePill({ ids, quote }: { ids: string[]; quote: Inline[] | stri
 
 // The dose without the drug's name, e.g. "30 mL IV over 10 minutes".
 export function doseValue(d: Dose) {
-  return [`${d.amount} ${d.unit} ${d.route}`, d.rate, d.frequency].filter(Boolean).join(' ');
+  return [`${amountWithUnit(d.amount, d.unit)} ${d.route}`, d.rate, d.frequency].filter(Boolean).join(' ');
 }
 export function doseLine(d: Dose) {
   return `${d.drug_name} ${doseValue(d)}`;
@@ -174,7 +177,7 @@ function DoseSheet({ id }: { id: string }) {
   return (
     <div className="detail-sheet">
       <AKG.List>
-        <Field label="Dose" value={<strong>{[`${d.amount} ${d.unit} ${d.route}`, d.frequency].filter(Boolean).join(' ')}</strong>} />
+        <Field label="Dose" value={<strong>{[`${amountWithUnit(d.amount, d.unit)} ${d.route}`, d.frequency].filter(Boolean).join(' ')}</strong>} />
         <Field label="Rate" value={d.rate} />
         <Field label="Give when" value={d.give_when} />
         <Field label="Repeat" value={d.repeat} />

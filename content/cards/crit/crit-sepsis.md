@@ -20,16 +20,18 @@ emergency_hint: "Cultures, antibiotics, fluids, norepinephrine"
    - Check: two sets of blood cultures before antibiotics, only if they cause no delay. ^[ssc-sepsis-2026]
    - Measure lactate; start treatment at once, as a medical emergency. ^[ssc-sepsis-2026]
 2. Antibiotics within 1 hour
-   - If: possible, probable or definite septic shock, or probable sepsis ^[ssc-sepsis-2026]
+   - If: possible, probable or definite septic shock, or probable or definite sepsis ^[ssc-sepsis-2026]
    - Check: source, recent cultures and MRSA or resistant-organism risk; one β-lactam, plus vancomycin only with MRSA risk. ^[ssc-sepsis-2026, idsa-sepsis-hospital-2026]
+   - Community onset without resistance risk: ceftriaxone; Pseudomonas or multidrug-resistant risk: piperacillin-tazobactam or cefepime. ^[ssc-sepsis-2026, common-practice]
 
+   {{dose:ceftriaxone-iv}}
    {{dose:piperacillin-tazobactam-sepsis}}
    {{dose:cefepime-sepsis}}
    {{dose:vancomycin-iv}}
 
-   - Give the β-lactam first; after the first dose, prolonged infusions. ^[idsa-sepsis-hospital-2026, ssc-sepsis-2026]
+   - Give the β-lactam before vancomycin. ^[idsa-sepsis-hospital-2026]
 3. Crystalloid bolus
-   - If: hypotension or elevated lactate ^[ssc-sepsis-2026]
+   - If: hypotension or lactate ≥4 mmol/L (consider with 2–4) ^[ssc-sepsis-2026]
 
    {{dose:crystalloid-sepsis}}
 
@@ -58,7 +60,7 @@ emergency_hint: "Cultures, antibiotics, fluids, norepinephrine"
    - ICU within 6 hours when ICU care is needed. ^[ssc-sepsis-2026]
 
 :::note
-- Low likelihood of infection and no shock: rapid workup; antibiotics within 3 hours if sepsis remains possible. ^[ssc-sepsis-2026]
+- Possible sepsis without shock: rapid workup; antibiotics within 3 hours if concern persists. Low likelihood of infection without shock: defer antibiotics and monitor closely. ^[ssc-sepsis-2026]
 :::
 
 ## At a Glance
@@ -123,14 +125,15 @@ emergency_hint: "Cultures, antibiotics, fluids, norepinephrine"
 
    {{regimen:sepsis-empiric}}
 
-   - Cover a specific multidrug-resistant pathogen only when its risk is high (colonization or infection in the past year, prolonged broad-spectrum antibiotics, high local prevalence). ^[ssc-sepsis-2026]
+   - Cover a specific multidrug-resistant pathogen only when its risk is high (colonization or infection with it in the past year, prolonged broad-spectrum antibiotics, a long stay in a unit where it is common). ^[ssc-sepsis-2026]
    - Prolonged β-lactam infusion after a loading dose is recommended. ^[ssc-sepsis-2026]
    - Shock: order to infusion start within 30 minutes; β-lactam before vancomycin. ^[idsa-sepsis-hospital-2026]
+   - Reported penicillin allergy: most are not true allergies, and most patients can receive cefepime. ^[idsa-sepsis-hospital-2026]
    - Source-specific regimens: [[id-cap|pneumonia]], [[id-complicated-uti|complicated UTI]], [[id-cellulitis|cellulitis]]. ^[common-practice]
 
 2. Source control
    - Rapidly look for a source needing emergent control; drain or remove it, ideally within 6 hours. ^[ssc-sepsis-2026]
-   - Remove an infected intravascular device once alternative access is in place. ^[ssc-sepsis-2026, common-practice]
+   - Remove an intravascular device that may be the source once other access is in place. ^[ssc-sepsis-2021]
 
 3. Fluids
    - Sepsis-induced hypoperfusion or septic shock: ^[ssc-sepsis-2026]
@@ -138,13 +141,13 @@ emergency_hint: "Cultures, antibiotics, fluids, norepinephrine"
    {{dose:crystalloid-sepsis}}
 
    - Crystalloids first; balanced crystalloids over 0.9% saline, except saline with traumatic brain injury. ^[ssc-sepsis-2026]
-   - Crystalloids alone over adding albumin; albumin may suit cirrhosis or very large volumes, never traumatic brain injury. No starches or gelatin. ^[ssc-sepsis-2026]
+   - Crystalloids alone over adding albumin; albumin may suit cirrhosis or very large volumes; avoid it in traumatic brain injury. No starches or gelatin. ^[ssc-sepsis-2026]
    - Further fluid by dynamic measures (passive leg raise or fluid challenge with stroke volume or pulse pressure change), serial lactate and capillary refill, not until lactate normalizes. ^[ssc-sepsis-2026]
    - Persistent hypoperfusion after the initial bolus: a liberal or restrictive strategy are both acceptable. ^[ssc-sepsis-2026, clovers-2023]
    - Fluid choice and volumes: [[renal-iv-fluids|IV fluids]]. ^[common-practice]
 
 4. Vasopressors
-   - Initial crystalloid bolus, then a vasopressor if hypotension persists; in unstable shock, start both together. ^[ssc-sepsis-2026]
+   - Initial crystalloid bolus, then a vasopressor if hypotension persists; in unstable shock (profound hypotension, mottling, altered mentation), consider starting both together. ^[ssc-sepsis-2026]
    - Target MAP 65 mm Hg as a range (within about 5 mm Hg); 60–65 mm Hg if ≥65 years. ^[ssc-sepsis-2026]
    - Norepinephrine first line; start peripherally rather than delay. ^[ssc-sepsis-2026]
 
@@ -166,7 +169,7 @@ emergency_hint: "Cultures, antibiotics, fluids, norepinephrine"
    - Not recommended: dopamine, terlipressin, levosimendan, β-blockers (esmolol, landiolol). Angiotensin II is not preferred first line; methylene blue lacks evidence of survival benefit. ^[ssc-sepsis-2026]
 
 5. Corticosteroids
-   - Septic shock: IV corticosteroids suggested, regardless of vasopressor dose; not in sepsis without shock. ^[ssc-sepsis-2026, sccm-corticosteroids-2024]
+   - Septic shock: IV corticosteroids suggested, regardless of vasopressor dose; no recommendation for sepsis without shock (no benefit seen). ^[ssc-sepsis-2026, sccm-corticosteroids-2024]
 
    {{dose:hydrocortisone-septic-shock}}
    {{dose:fludrocortisone-septic-shock}}
@@ -181,8 +184,9 @@ emergency_hint: "Cultures, antibiotics, fluids, norepinephrine"
    {{dose:enoxaparin-prophylaxis}}
 
    - Stress ulcer prophylaxis with a PPI when GI bleeding risk factors are present (coagulopathy, shock, chronic liver disease, AKI). ^[ssc-sepsis-2026]
-   - Sodium bicarbonate only for pH ≤7.2 with AKI stage 2–3, not to raise blood pressure in lactic acidemia. ^[ssc-sepsis-2026]
+   - Septic shock with pH ≤7.2 and AKI stage 2–3: sodium bicarbonate suggested; not to raise blood pressure in lactic acidemia. ^[ssc-sepsis-2026]
    - No RRT for AKI without a definitive indication. ^[ssc-sepsis-2026]
+   - Hypoxemia: high-flow nasal oxygen over conventional oxygen (P/F <200) and over noninvasive ventilation as initial support; consider awake proning. ^[ssc-sepsis-2026]
    - Early enteral nutrition, within 72 hours. ^[ssc-sepsis-2026]
    - After the acute phase, active fluid removal (diuretics first). ^[ssc-sepsis-2026]
    - Not recommended: IV vitamin C, antipyretics to improve outcomes, IVIG, blood purification, vitamin D, probiotics. ^[ssc-sepsis-2026]
@@ -228,7 +232,7 @@ emergency_hint: "Cultures, antibiotics, fluids, norepinephrine"
 - BMI >30 kg/m²: fluid volume by adjusted or ideal body weight. ^[ssc-sepsis-2026]
 - Cirrhosis: albumin may be appropriate after crystalloid. ^[ssc-sepsis-2026]
 - Traumatic brain injury: 0.9% saline; no albumin. ^[ssc-sepsis-2026]
-- Heart failure or dialysis: start dynamic assessment before the full bolus; reassess after each portion. ^[ssc-sepsis-2026]
+- High risk of volume overload (e.g. heart failure, dialysis): start dynamic assessment before the full bolus; reassess after each portion. ^[ssc-sepsis-2026]
 - Neutropenia, transplant or other immunosuppression: broader empiric coverage; antifungal case by case. ^[ssc-sepsis-2026, common-practice]
 
 ### Complications: Organ dysfunction
@@ -249,7 +253,7 @@ emergency_hint: "Cultures, antibiotics, fluids, norepinephrine"
 - 65 trial (2020): permissive hypotension in patients ≥65 years did not raise mortality. ^[sixty-five-2020]
 - CLOVERS (2023): restrictive (early vasopressor) and liberal fluid strategies had similar mortality. ^[clovers-2023]
 - ANDROMEDA-SHOCK (2019): capillary refill–targeted resuscitation was at least as good as lactate-targeted. ^[andromeda-shock-2019]
-- BLING III (2024): continuous β-lactam infusion; pooled trials show lower mortality with prolonged infusion. ^[bling-iii-2024, ssc-sepsis-2026]
+- BLING III (2024): continuous β-lactam infusion did not significantly lower 90-day mortality on its own; meta-analyses including it show lower mortality with prolonged infusion. ^[bling-iii-2024, ssc-sepsis-2026]
 
 ### Why the Treatment Order: Antibiotics and perfusion first
 - Mortality rises with each hour of delay to antibiotics in septic shock, so antibiotics and perfusion come before a full workup; the diagnosis is then reconsidered daily. ^[idsa-sepsis-hospital-2026, ssc-sepsis-2026]

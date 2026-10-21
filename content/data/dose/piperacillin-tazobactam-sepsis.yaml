@@ -6,7 +6,7 @@ route: IV
 amount: "4.5"
 unit: g
 frequency: every 6 hours
-rate: "first dose over 30 minutes, then prolonged infusion (each dose over at least half the dosing interval, or continuous)"
+rate: "over 3–4 hours after a first dose over 30 minutes"
 adjustments:
   - when: CrCl 20–40 mL/min
     change: 3.375 g every 6 hours
@@ -16,5 +16,5 @@ adjustments:
     change: 2.25 g every 8 hours, plus 0.75 g after each dialysis
 cautions:
   - "Label: an independent risk factor for kidney failure in the critically ill; consider alternatives or monitor kidney function, especially with vancomycin."
-notes: "4.5 g every 6 hours is the label's nosocomial pneumonia dose (adjustments from that column); 3.375 g every 6 hours for most other infections."
+notes: "Extended infusion = each dose over at least half the dosing interval, or continuous; recommended in sepsis after a loading dose (labels give short infusions). 4.5 g every 6 hours is the label's nosocomial pneumonia dose (adjustments from that column); 3.375 g every 6 hours for most other infections."
 sources: [label-zosyn-2026, ssc-sepsis-2026, idsa-sepsis-hospital-2026]

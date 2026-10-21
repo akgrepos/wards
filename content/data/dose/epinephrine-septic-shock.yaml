@@ -5,7 +5,7 @@ population: Adults
 route: IV
 amount: 0.05–2
 unit: mcg/kg/min
-rate: "continuous infusion; adjust by 0.05–0.2 mcg/kg/min every 10–15 minutes to the MAP target"
+rate: "continuous infusion; adjust by 0.05–0.2 mcg/kg/min every 10–15 minutes"
 give_when: "MAP inadequate despite norepinephrine plus vasopressin; with cardiac dysfunction, an alternative first line (preferred with bradycardia)"
 cautions:
   - "Tachyarrhythmias and myocardial ischemia; hyperglycemia."

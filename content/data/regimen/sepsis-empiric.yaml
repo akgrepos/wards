@@ -9,7 +9,7 @@ options:
     doses: [[ceftriaxone-iv, cefepime-sepsis, piperacillin-tazobactam-sepsis, meropenem-sepsis], vancomycin-iv]
 duration: "Shorter courses once the source is controlled; de-escalate when cultures and susceptibilities return"
 notes:
-  - "Antipseudomonal agent (cefepime, piperacillin-tazobactam, meropenem) only with a specific risk; carbapenem for ESBL risk."
+  - "Match the spectrum to the source and resistance risk: an antipseudomonal agent (cefepime, piperacillin-tazobactam, meropenem) with Pseudomonas or multidrug-resistant risk; a carbapenem for ESBL risk."
   - "Anaerobic coverage only with intra-abdominal, deep pelvic, necrotizing soft-tissue, head and neck or CNS sources."
   - "No empiric antifungal for most; consider case by case with immunosuppression or an intra-abdominal source."
   - "Give the β-lactam first when vancomycin is also ordered."
