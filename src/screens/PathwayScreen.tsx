@@ -5,7 +5,7 @@ import type { Criteria, Pathway, PathwayNode } from '../content/types';
 import { doseLine, resolveLink, textLines } from '../../scripts/content/pathway.mjs';
 import { parseInline } from '../../scripts/content/inline.mjs';
 import { goBack, href, open, setPageTitle } from '../router';
-import { DoseRow, Inlines, lineItems, openCriteria, openDose, openSources, RichText } from '../ui/Rich';
+import { DoseRow, Inlines, SourcePills, openCriteria, openDose, openSources, RichText } from '../ui/Rich';
 import { useSheet } from '../ui/SheetHost';
 import { icons } from '../ui/icons';
 import { NotFoundScreen } from './Tabs';
@@ -495,7 +495,7 @@ export function PathwayScreen({ id }: { id: string }) {
             </div>
             {p.sources.length > 0 && (
               <div className="pw-foot">
-                <AKG.SourceLine items={lineItems(p.sources)} onClick={() => openSources(sheet, p.sources, title)} />
+                <SourcePills ids={p.sources} onOpen={() => openSources(sheet, p.sources, title)} />
               </div>
             )}
           </div>

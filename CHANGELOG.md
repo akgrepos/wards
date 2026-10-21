@@ -2,6 +2,13 @@
 
 What changed in each version of Wards, newest first. The version is shown in Settings (gear on Home).
 
+## 2026.10.21.11
+
+**Design pass, step 3: tidier dose popups and one style for sources.**
+- **Dose popups** are now left aligned: the population and route on top, the dose large with its frequency underneath, then separate sections (Give when, Adjust, Alternative, Cautions, Note) divided by thin lines. Each "Adjust" row shows the situation in bold over its change.
+- **Sources** now appear the same way everywhere: small blue tags (or the stethoscope / check marker) instead of a long "Sources" text line, in dose popups, Rapids Do Now and pathways.
+- No clinical wording or doses changed.
+
 ## 2026.10.21.10
 
 **Design pass, step 2: color-coded severity and staging that stacks.**

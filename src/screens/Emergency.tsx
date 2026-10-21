@@ -5,7 +5,7 @@ import type { Card } from '../content/types';
 import { href, open } from '../router';
 import { getTimed, useStored, type TimedSession } from '../storage';
 import { actions, doNowSteps, entryFor, isDone, isRunning, progress, startTimed, when } from '../timed';
-import { AlternativeRow, Blocks, DoseRow, Inlines, lineItems, openSources, PathwayRows, stepNumbers } from '../ui/Rich';
+import { AlternativeRow, Blocks, DoseRow, Inlines, SourcePills, openSources, PathwayRows, stepNumbers } from '../ui/Rich';
 import { useSheet, type ShowSheet } from '../ui/SheetHost';
 import { iconFor, icons } from '../ui/icons';
 import type { DoNowStep } from '../../scripts/content/emergency.mjs';
@@ -115,7 +115,7 @@ export function DoNow({ card, compact }: { card: Card; compact?: boolean }) {
       variant="card"
       inset={false}
       title={doNowTitle}
-      footer={sources.length ? <AKG.SourceLine items={lineItems(sources)} onClick={() => openSources(sheet, sources, 'Do Now')} /> : undefined}
+      footer={sources.length ? <SourcePills ids={sources} onOpen={() => openSources(sheet, sources, 'Do Now')} /> : undefined}
     >
       {list}
       {notes.length > 0 && <div className="do-now-notes"><Blocks blocks={notes} /></div>}

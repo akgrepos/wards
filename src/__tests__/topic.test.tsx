@@ -80,7 +80,7 @@ describe('dose sheet', () => {
     launch('#/card/renal-hyperkalemia');
     await act(async () => { fireEvent.click(screen.getAllByRole('button', { name: /^Calcium gluconate 10% 30 mL IV over 10 minutes/ })[0]); });
     const d = within(dialog());
-    expect(d.getAllByText('Dose').length).toBe(2); // the bar title and the dose row
+    expect(d.getAllByText('Dose').length).toBe(1); // the bar title; the dose itself is the large line
     expect(d.getByText('Calcium gluconate 10%')).toBeTruthy();
     for (const label of ['Rate', 'Give when', 'Repeat', 'Onset · lasts']) expect(d.getByText(label)).toBeTruthy();
     expect(d.getByText('1–3 minutes · 30–60 minutes')).toBeTruthy();

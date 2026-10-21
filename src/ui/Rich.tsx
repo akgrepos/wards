@@ -55,15 +55,6 @@ function MarkerNotes({ ids }: { ids: string[] }) {
   );
 }
 
-// The SourceLine's items: short names, then the markers.
-export function lineItems(ids: string[]) {
-  const named = ids.filter((id) => !isMarkerSource(id)).map((id) => src(id)?.short ?? id);
-  const items: (string | { marker: 'practice' | 'verified'; label?: string })[] = [...named];
-  if (ids.some((id) => src(id)?.kind === 'practice')) items.push({ marker: 'practice', label: 'common practice' });
-  if (ids.some((id) => src(id)?.kind === 'reference')) items.push({ marker: 'verified', label: 'verified' });
-  return items;
-}
-
 export function openSources(sheet: ShowSheet, ids: string[], forLabel?: string) {
   sheet({
     title: ids.filter((id) => !isMarkerSource(id)).length === 1 ? 'Source' : 'Sources',
@@ -77,13 +68,28 @@ export function openSources(sheet: ShowSheet, ids: string[], forLabel?: string) 
   });
 }
 
-// Inside a sheet: the source line opens the citations in place (one sheet at a time).
+// One SourcePill per named source, then the markers; all open the same citations (#8, one source style everywhere).
+export function SourcePills({ ids, onOpen }: { ids: string[]; onOpen: () => void }) {
+  const named = ids.filter((id) => !isMarkerSource(id));
+  const markers: ('practice' | 'verified')[] = [];
+  if (ids.some((id) => src(id)?.kind === 'practice')) markers.push('practice');
+  if (ids.some((id) => src(id)?.kind === 'reference')) markers.push('verified');
+  if (!named.length && !markers.length) return null;
+  return (
+    <span className="source-pills">
+      {named.map((id) => <AKG.SourcePill key={id} label={src(id)?.short ?? id} aria-label={`Source: ${src(id)?.short ?? id}`} onClick={onOpen} />)}
+      {markers.map((m) => <AKG.SourcePill key={m} marker={m} onClick={onOpen} />)}
+    </span>
+  );
+}
+
+// Inside a sheet: the pills open the citations in place (one sheet at a time).
 function SheetSources({ ids }: { ids: string[] }) {
   const [open, setOpen] = useState(false);
   if (!ids.length) return null;
   return (
     <div className="sheet-sources">
-      <AKG.SourceLine items={lineItems(ids)} aria-expanded={open} onClick={() => setOpen(!open)} />
+      <SourcePills ids={ids} onOpen={() => setOpen(!open)} />
       {open && <><SourceList ids={ids} /><MarkerNotes ids={ids} /></>}
     </div>
   );
@@ -162,51 +168,69 @@ export function doseLine(d: Dose) {
 const drugTitle = (d: Dose) => (d.brand ? `${d.drug_name} (${d.brand})` : d.drug_name);
 const hasBoxedWarning = (d: Dose) => !!d.boxed_warning && d.boxed_warning.toLowerCase() !== 'none';
 
-// One fact per row: the label, then its value on the trailing side (like Settings › About).
 const cap = (v: ReactNode) => (typeof v === 'string' ? v.charAt(0).toUpperCase() + v.slice(1) : v);
-function Field({ label, value }: { label: string; value?: ReactNode }) {
-  if (value == null || value === '') return null;
-  return <AKG.ListRow className="dose-field" title={label} detail={cap(value)} />;
+
+// A hairline-separated section with a small uppercase heading (#7).
+function DoseSection({ title, children }: { title: string; children: ReactNode }) {
+  return (
+    <section className="dose-section">
+      <h3 className="dose-section__title">{title}</h3>
+      {children}
+    </section>
+  );
 }
 
 function DoseSheet({ id }: { id: string }) {
   const sheet = useSheet();
+  const [open, setOpen] = useState(false);
   const d = doseItem(id);
   if (!d) return null;
   const alt = d.alternative ? doseItem(d.alternative.dose) : undefined;
   const onset = [d.onset, d.lasts].filter(Boolean).join(' · ');
+  const who = [d.population, d.route].filter(Boolean).join(' · ');
+  const facts: [string, string | undefined][] = [
+    ['Rate', d.rate],
+    ['Repeat', d.repeat],
+    [d.onset && d.lasts ? 'Onset · lasts' : d.onset ? 'Onset' : 'Lasts', onset],
+    ['Duration', d.duration],
+    ['Maximum', d.max],
+  ];
   return (
-    <div className="detail-sheet">
-      <AKG.List>
-        <Field label="Dose" value={<strong>{[`${amountWithUnit(d.amount, d.unit)} ${d.route}`, d.frequency].filter(Boolean).join(' ')}</strong>} />
-        <Field label="Rate" value={d.rate} />
-        <Field label="Give when" value={d.give_when} />
-        <Field label="Repeat" value={d.repeat} />
-        <Field label={d.onset && d.lasts ? 'Onset · lasts' : d.onset ? 'Onset' : 'Lasts'} value={onset} />
-        <Field label="Duration" value={d.duration} />
-        <Field label="Maximum" value={d.max} />
-        <Field label="Population" value={d.population} />
-        <Field label="Boxed warning" value={d.boxed_warning} />
-      </AKG.List>
+    <div className="detail-sheet dose-sheet">
+      <div className="dose-head">
+        {who && <p className="ios-subheadline">{who}</p>}
+        <p className="dose-amount">{amountWithUnit(d.amount, d.unit)}</p>
+        {d.frequency && <p className="ios-subheadline secondary">{d.frequency}</p>}
+        <SourcePills ids={d.sources} onOpen={() => setOpen(!open)} />
+      </div>
+      {open && <div className="dose-cites"><SourceList ids={d.sources} /><MarkerNotes ids={d.sources} /></div>}
+      {facts.some(([, v]) => v) && (
+        <DoseSection title="Details">
+          {facts.filter(([, v]) => v).map(([k, v]) => <p key={k} className="ios-subheadline"><strong>{k}</strong> <span>{v}</span></p>)}
+        </DoseSection>
+      )}
+      {d.give_when && <DoseSection title="Give when"><p className="ios-body">{d.give_when}</p></DoseSection>}
       {d.adjustments?.length ? (
-        <AKG.List header="Adjustments">
-          {d.adjustments.map((a, i) => <AKG.ListRow key={i} title={a.when} subtitle={a.change} />)}
-        </AKG.List>
+        <DoseSection title="Adjust">
+          {d.adjustments.map((a, i) => <AKG.ValueRow key={i} title={a.when} value={a.change} />)}
+        </DoseSection>
       ) : null}
       {alt && (
-        <div className="dose-alt">
-          <p className="ios-footnote-emphasized secondary">Alternative</p>
+        <DoseSection title="Alternative">
           <AKG.ValueRow title={alt.drug_name} value={doseValue(alt)} onClick={() => openDose(sheet, d.alternative!.dose)}>
             {d.alternative!.when}
           </AKG.ValueRow>
-        </div>
+        </DoseSection>
       )}
-      {d.cautions?.length ? (
-        <AKG.Callout variant="caution" title="Cautions">
-          <ul className="rich-list">{d.cautions.map((c, i) => <li key={i}>{c}</li>)}</ul>
-        </AKG.Callout>
+      {(d.cautions?.length || d.boxed_warning) ? (
+        <DoseSection title="Cautions">
+          <ul className="rich-list">
+            {d.boxed_warning && <li><strong>Boxed warning</strong> <span>{d.boxed_warning}</span></li>}
+            {d.cautions?.map((c, i) => <li key={i}>{c}</li>)}
+          </ul>
+        </DoseSection>
       ) : null}
-      {d.notes && <p className="ios-body">{d.notes}</p>}
+      {d.notes && <DoseSection title="Note"><p className="ios-body">{d.notes}</p></DoseSection>}
       <AKG.List>
         <AKG.ListRow
           title="Check Interactions"
@@ -216,7 +240,9 @@ function DoseSheet({ id }: { id: string }) {
         />
         {d.drug && getCard(d.drug) && <AKG.ListRow title={`Open ${getCard(d.drug)!.title}`} chevron href={href.card(d.drug)} />}
       </AKG.List>
-      <SheetSources ids={d.sources} />
+      {(d.adjustments?.length || d.cautions?.length || d.notes) ? (
+        <div className="sheet-sources"><SourcePills ids={d.sources} onOpen={() => setOpen(!open)} /></div>
+      ) : null}
     </div>
   );
 }
