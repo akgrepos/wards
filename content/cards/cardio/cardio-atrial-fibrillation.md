@@ -49,7 +49,7 @@ emergency_hint: "Unstable: cardiovert; stable: IV rate control"
 ## At a Glance
 - Unstable from AF: immediate synchronized cardioversion. ^[acc-aha-af-2023]
 - Stable RVR: IV β-blocker (any LVEF) or diltiazem (LVEF >40% only); amiodarone or digoxin if decompensated or hypotensive. ^[acc-aha-af-2023]
-- Anticoagulate by stroke risk, not by AF pattern: CHA₂DS₂-VASc {{threshold:af-anticoag-recommended}}; DOAC over warfarin except mechanical valve or moderate–severe mitral stenosis. ^[acc-aha-af-2023]
+- Anticoagulate by stroke risk, not by AF pattern: {{calc:cha2ds2-vasc}} {{threshold:af-anticoag-recommended}}; DOAC over warfarin except mechanical valve or moderate–severe mitral stenosis. ^[acc-aha-af-2023]
 - Cardioversion of AF ≥48 h or unknown duration: 3 weeks of anticoagulation or TEE first; after any cardioversion, anticoagulate at least 4 weeks. ^[acc-aha-af-2023]
 - Lenient rate target: resting HR {{threshold:af-rate-lenient}}; early rhythm control in selected patients. ^[acc-aha-af-2023, race-ii-2010, east-afnet-4-2020]
 - Look for the trigger: sepsis, thyrotoxicosis, PE, alcohol, ischemia, postoperative state. ^[acc-aha-af-2023]
@@ -129,12 +129,12 @@ emergency_hint: "Unstable: cardiovert; stable: IV rate control"
 3. Anticoagulation for stroke prevention
    {{criteria:cha2ds2-vasc}}
 
-   - CHA₂DS₂-VASc {{threshold:af-anticoag-recommended}} (annual stroke risk ≥2%): anticoagulation recommended. ^[acc-aha-af-2023]
+   - {{calc:cha2ds2-vasc}} {{threshold:af-anticoag-recommended}} (annual stroke risk ≥2%): anticoagulation recommended. ^[acc-aha-af-2023]
    - Score 1 in men or 2 in women (annual risk 1–2%): anticoagulation reasonable. ^[acc-aha-af-2023]
    - Decide by risk, not by pattern (paroxysmal, persistent, permanent) or by sinus rhythm after conversion. ^[acc-aha-af-2023]
    - DOAC preferred over warfarin; warfarin (INR 2.0–3.0), regardless of score, for a mechanical heart valve or rheumatic or moderate–severe mitral stenosis. ^[acc-aha-af-2023]
    - Aspirin alone, or aspirin with clopidogrel, is not an alternative for stroke prevention. ^[acc-aha-af-2023]
-   - Bleeding scores (e.g. HAS-BLED) identify modifiable risks; do not use them alone to withhold anticoagulation. ^[acc-aha-af-2023]
+   - Bleeding scores (e.g. {{calc:has-bled}}) identify modifiable risks; do not use them alone to withhold anticoagulation. ^[acc-aha-af-2023]
 
    {{dose:apixaban-af}}
    {{dose:rivaroxaban-af}}
@@ -147,8 +147,8 @@ emergency_hint: "Unstable: cardiovert; stable: IV rate control"
 4. Cardioversion and anticoagulation
    - AF ≥48 h or unknown duration: 3 weeks of uninterrupted therapeutic anticoagulation, or imaging to exclude left atrial thrombus, before elective cardioversion. ^[acc-aha-af-2023]
    - Any cardioversion: therapeutic anticoagulation established beforehand and continued at least 4 weeks after, then by stroke risk. ^[acc-aha-af-2023]
-   - AF <48 h, not anticoagulated, CHA₂DS₂-VASc ≥2: imaging to exclude thrombus may be considered. ^[acc-aha-af-2023]
-   - CHA₂DS₂-VASc 0–1 and AF <12 h: benefit of anticoagulation or imaging uncertain. ^[acc-aha-af-2023]
+   - AF <48 h, not anticoagulated, {{calc:cha2ds2-vasc}} ≥2: imaging to exclude thrombus may be considered. ^[acc-aha-af-2023]
+   - {{calc:cha2ds2-vasc}} 0–1 and AF <12 h: benefit of anticoagulation or imaging uncertain. ^[acc-aha-af-2023]
    - Recent onset and stable: early cardioversion or wait-and-see with rate control (most convert within 48 h). ^[race-7-2019, esc-af-2024]
 
 5. Rhythm control
@@ -159,9 +159,9 @@ emergency_hint: "Unstable: cardiovert; stable: IV rate control"
 ## Monitor
 - Telemetry, heart rate and blood pressure with each IV dose and during infusions. ^[common-practice]
 - Diltiazem or β-blocker: hypotension, bradycardia, heart failure. ^[label-diltiazem-inj-2026, label-metoprolol-inj-2026]
-- Amiodarone: blood pressure, bradycardia, QTc; liver and thyroid tests at baseline for ongoing therapy. ^[acc-aha-af-2023, label-nexterone-2024]
+- Amiodarone: blood pressure, bradycardia, {{calc:qtc}}; liver and thyroid tests at baseline for ongoing therapy. ^[acc-aha-af-2023, label-nexterone-2024]
 - Digoxin: level, K⁺, Mg²⁺ and creatinine; toxicity rises with hypokalemia and kidney impairment. ^[label-lanoxin-inj-2025]
-- DOAC: creatinine and CrCl at start and at least yearly (more often in CKD), hemoglobin, adherence. ^[acc-aha-af-2023]
+- DOAC: creatinine and {{calc:cockcroft-gault}} at start and at least yearly (more often in CKD), hemoglobin, adherence. ^[acc-aha-af-2023]
 
 ## Escalation
 - ICU and urgent cardiology: instability, refractory RVR, pre-excited AF, AF with acute MI or cardiogenic shock. ^[common-practice]
@@ -170,17 +170,17 @@ emergency_hint: "Unstable: cardiovert; stable: IV rate control"
 ## More Information
 ### Where Guidelines Differ: Stroke score, cardioversion timing
 :::compare Stroke risk score
-- ACC/AHA 2023: CHA₂DS₂-VASc (other validated scores acceptable); anticoagulate at ≥2 in men or ≥3 in women, reasonable at 1 or 2. ^[acc-aha-af-2023]
+- ACC/AHA 2023: {{calc:cha2ds2-vasc}} (other validated scores acceptable); anticoagulate at ≥2 in men or ≥3 in women, reasonable at 1 or 2. ^[acc-aha-af-2023]
 - ESC 2024: CHA₂DS₂-VA, dropping female sex; anticoagulate at ≥2, consider at 1. ^[esc-af-2024]
 :::
 
 :::compare Early cardioversion without prior anticoagulation
-- ACC/AHA 2023: 48-hour cutoff; under 48 h with CHA₂DS₂-VASc ≥2, pre-cardioversion imaging may be considered. ^[acc-aha-af-2023]
+- ACC/AHA 2023: 48-hour cutoff; under 48 h with {{calc:cha2ds2-vasc}} ≥2, pre-cardioversion imaging may be considered. ^[acc-aha-af-2023]
 - ESC 2024: Not recommended without 3 weeks of anticoagulation or TEE if AF has lasted more than 24 hours; wait-and-see within 48 hours is an option. ^[esc-af-2024]
 :::
 
 ### Special Populations: Kidney disease, valves, pregnancy
-- CrCl <15 or dialysis: warfarin or apixaban may be reasonable (weak evidence). ^[acc-aha-af-2023]
+- {{calc:cockcroft-gault}} <15 or dialysis: warfarin or apixaban may be reasonable (weak evidence). ^[acc-aha-af-2023]
 - Mechanical valve, or rheumatic or moderate–severe mitral stenosis: warfarin; DOACs are not used. ^[acc-aha-af-2023]
 - Other valve disease, including bioprosthetic valves: DOAC preferred over warfarin. ^[acc-aha-af-2023]
 - Postoperative AF: rate or rhythm control; anticoagulation weighed against surgical bleeding risk. ^[acc-aha-af-2023]

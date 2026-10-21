@@ -24,7 +24,7 @@ related:
 ## Severity
 :::scale Severity, which guides the first antibiotic
 - No sepsis: systemic signs without organ dysfunction ^[idsa-cuti-selection-2025]
-- Sepsis: organ dysfunction from infection (SOFA ≥2) ^[idsa-cuti-selection-2025]
+- Sepsis: organ dysfunction from infection ({{calc:sofa}} ≥2) ^[idsa-cuti-selection-2025]
 - Septic shock: vasopressors needed and lactate >2 mmol/L despite fluids ^[idsa-cuti-selection-2025]
 :::
 
@@ -125,7 +125,7 @@ related:
 - Men: no separate duration; suspected prostatitis may need 10–14 days. ^[idsa-cuti-duration-2025]
 - Pregnancy: usually admit; a β-lactam such as ceftriaxone; avoid fluoroquinolones and tetracyclines, and trimethoprim-sulfamethoxazole in the first trimester and near term; treat asymptomatic bacteriuria in pregnancy. ^[idsa-asb-2019, common-practice]
 - Kidney transplant: duplex Doppler ultrasound of the transplant or CT abdomen and pelvis with IV contrast; infectious diseases or transplant input early. ^[acr-pyelonephritis-2022, common-practice]
-- Kidney impairment: adjust doses by CrCl (see each dose sheet). ^[common-practice]
+- Kidney impairment: adjust doses by {{calc:cockcroft-gault}} (see each dose sheet). ^[common-practice]
 
 ### Complications: Abscess, emphysematous pyelonephritis
 - Renal and perinephric abscess, pyonephrosis, papillary necrosis, emphysematous pyelonephritis (mostly in diabetes), sepsis, AKI. ^[johnson-pyelonephritis-2018]

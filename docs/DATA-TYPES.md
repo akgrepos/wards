@@ -107,6 +107,13 @@ A word the app knows.
 
 ---
 
+### 12b. Calculator link
+A score, rule or calculator that has a page on MDCalc (added 2026-10-21). One file per calculator, `content/data/calc/<id>.yaml`, so each address lives in one place.
+- Fields: `name` (the calculator's full name) · `short` (the words shown in a sentence) · `url` (an `https://www.mdcalc.com/calc/<number>/<name>` page, opened and checked before it is added) · `match` (the words that name it in the content, e.g. `["CURB-65"]`, `["anion gap"]`; matched without regard to capitals, as whole words)
+- No sources (it points to a tool, not a claim).
+- Inserted inside a sentence with `{{calc:id}}` or `{{calc:id|other words}}`. Shown as a blue link with a small arrow mark that opens MDCalc in Safari; it needs internet, and the card says so under Sources.
+- The content check rejects: a link to a calculator that doesn't exist, one on a line of its own, an address that isn't an MDCalc calculator page, a duplicate address or match word, and any `match` word written without its link in a card, Do Now step, regimen, criteria set or pathway box.
+
 ### 13. Clinical finding
 A sign, symptom or exam finding.
 - Fields: name · how elicited (link to exam card) · documentation wording · accuracy for specific diagnoses (sensitivity, specificity, LR+, LR−) · sources

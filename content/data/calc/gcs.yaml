@@ -1,0 +1,4 @@
+name: Glasgow Coma Scale
+short: "GCS"
+url: https://www.mdcalc.com/calc/64/glasgow-coma-scale-score-gcs
+match: ["GCS"]

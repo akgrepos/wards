@@ -1,0 +1,4 @@
+name: Child-Pugh score
+short: "Child-Pugh"
+url: https://www.mdcalc.com/calc/340/child-pugh-score-cirrhosis-mortality
+match: ["Child-Pugh"]

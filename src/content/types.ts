@@ -1,7 +1,7 @@
 // Shapes of the bundled content (produced by scripts/content/load.mjs).
 export type Inline =
   | { t: 'text' | 'strong' | 'em'; v: string }
-  | { t: 'insert'; kind: string; id: string }
+  | { t: 'insert'; kind: string; id: string; label?: string }
   | { t: 'link'; id: string; section?: string | null; label: string | null }
   // A small label after a cause: [!cannot-miss], [!most-common].
   | { t: 'tag'; v: string };
@@ -38,6 +38,8 @@ export type Dose = {
   alternative?: { dose: string; when?: string }; adjustments?: { when: string; change: string }[];
   cautions?: string[]; notes?: string; sources: string[];
 };
+// A calculator or score on MDCalc (docs/DATA-TYPES.md, 12b), linked from every sentence that names it.
+export type Calc = { name: string; short: string; url: string; match: string[] };
 export type Threshold = { name: string; value: string | number; unit: string; note?: string; sources: string[] };
 // A treatment combination for one indication (docs/DATA-TYPES.md, 3), built from dose items: options joined by "or";
 // inside an option, parts given together ("plus"); a part that is a list means any one of those doses.
@@ -76,5 +78,5 @@ export type Media = EcgRecording | EcgDrawing;
 export type Content = {
   systems: System[];
   cards: Card[];
-  data: { source?: Record<string, Source>; dose?: Record<string, Dose>; threshold?: Record<string, Threshold>; criteria?: Record<string, Criteria>; regimen?: Record<string, Regimen>; pathway?: Record<string, Pathway>; media?: Record<string, Media>; [k: string]: Record<string, unknown> | undefined };
+  data: { source?: Record<string, Source>; dose?: Record<string, Dose>; threshold?: Record<string, Threshold>; calc?: Record<string, Calc>; criteria?: Record<string, Criteria>; regimen?: Record<string, Regimen>; pathway?: Record<string, Pathway>; media?: Record<string, Media>; [k: string]: Record<string, unknown> | undefined };
 };

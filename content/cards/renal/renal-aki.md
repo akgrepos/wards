@@ -84,8 +84,8 @@ related:
 #### Urinary indices (oliguric AKI)
 | Index | Prerenal | ATN |
 |---|---|---|
-| FENa | {{threshold:fena-prerenal}} | {{threshold:fena-atn}} ^[miller-urine-indices-1978, carvounis-feurea-2002, gotfried-fe-indices-2012] |
-| FEUrea (on diuretics) | {{threshold:feurea-prerenal}} | {{threshold:feurea-atn}} ^[carvounis-feurea-2002, gotfried-fe-indices-2012] |
+| {{calc:fena}} | {{threshold:fena-prerenal}} | {{threshold:fena-atn}} ^[miller-urine-indices-1978, carvounis-feurea-2002, gotfried-fe-indices-2012] |
+| {{calc:feurea}} (on diuretics) | {{threshold:feurea-prerenal}} | {{threshold:feurea-atn}} ^[carvounis-feurea-2002, gotfried-fe-indices-2012] |
 | Urine Na | {{threshold:urine-na-prerenal}} | {{threshold:urine-na-atn}} ^[miller-urine-indices-1978] |
 | Urine osmolality | {{threshold:urine-osm-prerenal}} | {{threshold:urine-osm-atn}} ^[miller-urine-indices-1978] |
 | Sediment | No granular casts or tubular epithelial cells | Granular casts, tubular epithelial cells ^[perazella-urine-microscopy-2008] |
@@ -95,8 +95,8 @@ related:
 - Postrenal AKI is not identified by urine indices; look for it by bladder scan and urinary tract ultrasound. ^[nice-aki-2024, common-practice]
 :::
 
-- Low FENa despite intrinsic AKI: contrast, rhabdomyolysis, hemoglobinuria, acute GN, AIN, nonoliguric ATN, chronic low-flow states (heart failure, cirrhosis). ^[gotfried-fe-indices-2012]
-- FENa rises with diuretics; use FEUrea. ^[carvounis-feurea-2002]
+- Low {{calc:fena}} despite intrinsic AKI: contrast, rhabdomyolysis, hemoglobinuria, acute GN, AIN, nonoliguric ATN, chronic low-flow states (heart failure, cirrhosis). ^[gotfried-fe-indices-2012]
+- {{calc:fena}} rises with diuretics; use {{calc:feurea}}. ^[carvounis-feurea-2002]
 - Low urine Na with high urine osmolality means intact tubular function, not necessarily benign prerenal azotemia; also seen in early GN and sepsis. ^[kdigo-aki-2012]
 - BUN:Cr ratio does not distinguish prerenal from intrinsic AKI. ^[manoeuvrier-bcr-2017]
 
@@ -131,7 +131,7 @@ related:
 - Monitor SCr and UOP. ^[kdigo-aki-2012]
 - Do not use diuretics to prevent AKI; avoid them for treatment except volume overload. ^[kdigo-aki-2012]
 - Do not use low-dose dopamine; avoid fenoldopam. ^[kdigo-aki-2012]
-- Standard eGFR assumes steady state; kinetic estimates (KeGFR, Jelliffe) correlate with measured GFR but agree poorly. ^[pelletier-egfr-aki-2020]
+- Standard {{calc:ckd-epi}} assumes steady state; kinetic estimates ({{calc:kegfr}}, Jelliffe) correlate with measured GFR but agree poorly. ^[pelletier-egfr-aki-2020]
 - Increase doses again as function recovers to avoid underdosing. ^[kdigo-aki-controversies-2020]
 - Do not restrict protein to delay RRT; prefer enteral nutrition. ^[kdigo-aki-2012]
 
@@ -142,7 +142,7 @@ related:
 - Avoid subclavian catheters; preserve veins for possible dialysis access. ^[kdigo-aki-2012]
 
 #### Specific situations
-- IV contrast, eGFR {{threshold:egfr-contrast-prophylaxis}} or AKI, not on maintenance dialysis: IV 0.9% saline prophylaxis; consider at {{threshold:egfr-contrast-consider}}. ^[acr-nkf-contrast-2020]
+- IV contrast, {{calc:ckd-epi}} {{threshold:egfr-contrast-prophylaxis}} or AKI, not on maintenance dialysis: IV 0.9% saline prophylaxis; consider at {{threshold:egfr-contrast-consider}}. ^[acr-nkf-contrast-2020]
 - Do not delay contrast in an emergency when delay would be clinically significant. ^[nice-aki-2024, acr-nkf-contrast-2020]
 - Cardiorenal: loop diuretics for congestion; a modest SCr rise during effective decongestion is not by itself harmful. ^[aha-cardiorenal-2019]
 - Cirrhosis with ascites: stop diuretics and nephrotoxins; give albumin. ^[aasld-ascites-hrs-2021]
@@ -163,7 +163,7 @@ related:
 ## More Information
 ### After the Acute Phase: CKD risk, kidney follow-up
 - AKI raises the risk of CKD; reassess kidney function about 3 months after AKI. ^[kdigo-aki-2012]
-- After recovery, consider nephrology referral if eGFR ≤30. ^[nice-aki-2024]
+- After recovery, consider nephrology referral if {{calc:ckd-epi}} ≤30. ^[nice-aki-2024]
 
 ### Evidence: Bicarbonate, timing of RRT
 - ICU, metabolic acidemia (pH ≤7.20) with moderate–severe AKI: IV sodium bicarbonate (target pH ≥7.30) did not reduce 90-day mortality; less RRT use (secondary outcome). ^[bicaricu2-2025, bicar-icu-2018]

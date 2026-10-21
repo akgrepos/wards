@@ -1,0 +1,4 @@
+name: "Pulmonary Embolism Severity Index (PESI)"
+short: "PESI"
+url: https://www.mdcalc.com/calc/1304/pulmonary-embolism-severity-index-pesi
+match: ["PESI"]

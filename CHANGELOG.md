@@ -2,6 +2,14 @@
 
 What changed in each version of Wards, newest first. The version is shown in Settings (gear on Home).
 
+## 2026.10.21.4
+
+**Score and calculator names now open the calculator on MDCalc.**
+- Every score and calculator named on a card is now a blue link with a small arrow, for example CURB-65, PSI, CHA₂DS₂-VASc, HAS-BLED, GRACE, TIMI, SOFA, qSOFA, NEWS, SIRS, LRINEC, anion gap, FENa, FEUrea, eGFR, CrCl and corrected calcium. Tap one and the MDCalc calculator opens in Safari; tap Done to come back to Wards where you left off.
+- It needs internet (offline, the calculator simply doesn't load; the card itself still works). A card that has such links says so at the bottom, under Sources.
+- Links are on all 15 cards, the Sepsis criteria, the DKA pathway and the cellulitis regimen boxes. The words on the cards are unchanged.
+- Behind the scenes: each MDCalc address is stored once (50 calculators, all checked), and the automatic checks now fail if a future card names a score without its link.
+
 ## 2026.10.21.3
 
 Pathways are simpler decision trees (Hyperkalemia: Treatment, AKI: Cause Workup and DKA: Treatment):

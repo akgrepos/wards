@@ -1,0 +1,4 @@
+name: TIMI risk score for UA/NSTEMI
+short: "TIMI"
+url: https://www.mdcalc.com/calc/111/timi-risk-score-ua-nstemi
+match: ["TIMI"]

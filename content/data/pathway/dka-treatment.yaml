@@ -14,7 +14,7 @@ nodes:
     span: 4
     title: Confirm DKA or HHS
     text:
-      - Glucose, β-hydroxybutyrate, venous pH, BMP with anion gap, calculated osmolality.
+      - Glucose, β-hydroxybutyrate, venous pH, BMP with {{calc:anion-gap}}, {{calc:serum-osmolality}}.
       - Look for the precipitant; stop SGLT2 inhibitors.
     links: [criteria:dka-hhs]
     next: fluids

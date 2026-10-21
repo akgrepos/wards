@@ -1,7 +1,7 @@
 import { createContext, Fragment, useContext, useState, type MouseEvent, type ReactNode } from 'react';
 import { AKG } from '../design/akg';
 import { content, getCard, isMarkerSource, pathwaysFor } from '../content';
-import type { Block, ContainerItem, Criteria, Dose, Inline, ListItem, Regimen, Source, Threshold } from '../content/types';
+import type { Block, Calc, ContainerItem, Criteria, Dose, Inline, ListItem, Regimen, Source, Threshold } from '../content/types';
 import { parseInline, TAGS } from '../../scripts/content/inline.mjs';
 import { onsetRows } from '../../scripts/content/onset.mjs';
 import { slug } from '../../scripts/content/pathway.mjs';
@@ -110,6 +110,7 @@ export function plainText(xs: Inline[]): string {
       if (x.kind === 'criteria') return String(item.short);
       if (x.kind === 'dose') return String(item.drug_name);
       if (x.kind === 'regimen') return String(item.name);
+      if (x.kind === 'calc') return x.label ?? String(item.short);
       return String(item.title ?? item.name ?? '');
     }
     if (x.t === 'link') return x.label ?? getCard(x.id)?.title ?? x.id;
@@ -352,7 +353,18 @@ export const openCriteria = (sheet: ShowSheet, c: Criteria) => sheet({ title: 'C
 // `plain`: show the value as text, never tappable (in table cells and scale bands, where the row or band says what it means).
 // A cutoff is tappable only when its pop-up adds something the line doesn't show: a `note` (owner's rule, 2026-10-19;
 // the content check rejects notes that repeat the line).
-function Insert({ kind, id, plain }: { kind: string; id: string; plain?: boolean }) {
+// A named score or calculator: the words are a link to its MDCalc page, with the same arrow mark as the other links that
+// leave the app. It opens in Safari (a Done button returns to Wards) and needs internet; offline the page simply doesn't load.
+function CalcLink({ c, label }: { c: Calc; label?: string }) {
+  const text = label ?? c.short;
+  return (
+    <a className="akg-link calc-link" href={c.url} target="_blank" rel="noopener noreferrer" aria-label={`${text}, ${c.name} on MDCalc. Opens in Safari, needs internet.`}>
+      {text}<span className="external-mark" aria-hidden="true">{icons.arrowUpRight}</span>
+    </a>
+  );
+}
+
+function Insert({ kind, id, plain, label }: { kind: string; id: string; plain?: boolean; label?: string }) {
   const sheet = useSheet();
   const item = content.data[kind]?.[id];
   if (!item) return <span className="missing">[missing {kind}: {id}]</span>;
@@ -370,6 +382,7 @@ function Insert({ kind, id, plain }: { kind: string; id: string; plain?: boolean
       </AKG.TappableValue>
     );
   }
+  if (kind === 'calc') return <CalcLink c={item as unknown as Calc} label={label} />;
   if (kind === 'criteria') {
     const c = item as unknown as Criteria;
     return <AKG.TappableValue onClick={() => openCriteria(sheet, c)}>{c.short}</AKG.TappableValue>;
@@ -390,7 +403,7 @@ export function Inlines({ xs, plain }: { xs: Inline[]; plain?: boolean }) {
   return (
     <>
       {xs.map((x, i) => {
-        if (x.t === 'insert') return <Insert key={i} kind={x.kind} id={x.id} plain={plain} />;
+        if (x.t === 'insert') return <Insert key={i} kind={x.kind} id={x.id} label={x.label} plain={plain} />;
         if (x.t === 'tag') return <AKG.Tag key={i} className="inline-tag" variant={x.v === 'cannot-miss' ? 'critical' : 'neutral'}>{TAGS[x.v] ?? x.v}</AKG.Tag>;
         if (x.t !== 'link') return x.t === 'strong' ? <strong key={i}>{x.v}</strong> : x.t === 'em' ? <em key={i}>{x.v}</em> : <Fragment key={i}>{x.v}</Fragment>;
         const c = getCard(x.id);

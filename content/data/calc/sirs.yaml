@@ -1,0 +1,4 @@
+name: SIRS criteria
+short: "SIRS"
+url: https://www.mdcalc.com/calc/1096/sirs-sepsis-septic-shock-criteria
+match: ["SIRS"]

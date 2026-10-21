@@ -1,0 +1,4 @@
+name: "Serum osmolality/osmolarity (calculated)"
+short: "calculated osmolality"
+url: https://www.mdcalc.com/calc/91/serum-osmolality-osmolarity
+match: ["calculated osmolality"]

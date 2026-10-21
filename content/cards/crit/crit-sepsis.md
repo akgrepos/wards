@@ -73,7 +73,7 @@ emergency_hint: "Cultures, antibiotics, fluids, norepinephrine"
 ## Severity
 :::scale Infection to septic shock
 - Infection: no new organ dysfunction. ^[sepsis-3-2016]
-- Sepsis: infection with new organ dysfunction (SOFA rise ≥2). ^[sepsis-3-2016]
+- Sepsis: infection with new organ dysfunction ({{calc:sofa}} rise ≥2). ^[sepsis-3-2016]
 - Septic shock: vasopressors for MAP ≥65 mm Hg and lactate >2 mmol/L despite fluids. ^[sepsis-3-2016]
 :::
 
@@ -102,7 +102,7 @@ emergency_hint: "Cultures, antibiotics, fluids, norepinephrine"
 
 ## Diagnosis
 #### Screening
-- In hospital, use NEWS, NEWS2, MEWS or SIRS rather than qSOFA as a single screening tool. ^[ssc-sepsis-2026]
+- In hospital, use {{calc:news}}, {{calc:news2}}, {{calc:mews}} or {{calc:sirs}} rather than {{calc:qsofa}} as a single screening tool. ^[ssc-sepsis-2026]
 - Sepsis is a clinical diagnosis: no single test or biomarker rules it in or out. ^[ssc-sepsis-2026]
 
 #### Initial tests
@@ -185,7 +185,7 @@ emergency_hint: "Cultures, antibiotics, fluids, norepinephrine"
    - Stress ulcer prophylaxis with a PPI when GI bleeding risk factors are present (coagulopathy, shock, chronic liver disease, AKI). ^[ssc-sepsis-2026]
    - Septic shock with pH ≤7.2 and AKI stage 2–3: sodium bicarbonate suggested; not to raise blood pressure in lactic acidemia. ^[ssc-sepsis-2026]
    - No RRT for AKI without a definitive indication. ^[ssc-sepsis-2026]
-   - Hypoxemia: high-flow nasal oxygen over conventional oxygen (P/F <200) and over noninvasive ventilation as initial support; consider awake proning. ^[ssc-sepsis-2026]
+   - Hypoxemia: high-flow nasal oxygen over conventional oxygen ({{calc:pf-ratio}} <200) and over noninvasive ventilation as initial support; consider awake proning. ^[ssc-sepsis-2026]
    - Early enteral nutrition, within 72 hours. ^[ssc-sepsis-2026]
    - After the acute phase, active fluid removal (diuretics first). ^[ssc-sepsis-2026]
    - Not recommended: IV vitamin C, antipyretics to improve outcomes, IVIG, blood purification, vitamin D, probiotics. ^[ssc-sepsis-2026]
@@ -228,7 +228,7 @@ emergency_hint: "Cultures, antibiotics, fluids, norepinephrine"
 
 ### Special Populations: Older adults, obesity, cirrhosis, TBI
 - Age ≥65 years: MAP 60–65 mm Hg (less vasopressor exposure). ^[ssc-sepsis-2026, sixty-five-2020]
-- BMI >30 kg/m²: fluid volume by adjusted or ideal body weight. ^[ssc-sepsis-2026]
+- BMI >30 kg/m²: fluid volume by adjusted or {{calc:ideal-body-weight}}. ^[ssc-sepsis-2026]
 - Cirrhosis: albumin may be appropriate after crystalloid. ^[ssc-sepsis-2026]
 - Traumatic brain injury: 0.9% saline; no albumin. ^[ssc-sepsis-2026]
 - High risk of volume overload (e.g. heart failure, dialysis): start dynamic assessment before the full bolus; reassess after each portion. ^[ssc-sepsis-2026]
@@ -264,7 +264,7 @@ emergency_hint: "Cultures, antibiotics, fluids, norepinephrine"
 
 ## Pearls
 - Don't wait for cultures to give antibiotics in shock. ^[ssc-sepsis-2026]
-- qSOFA predicts poor outcome; it is a poor screening tool. ^[ssc-sepsis-2026, sepsis-3-2016]
+- {{calc:qsofa}} predicts poor outcome; it is a poor screening tool. ^[ssc-sepsis-2026, sepsis-3-2016]
 - Peripheral norepinephrine is fine to start; check the site often. ^[ssc-sepsis-2026]
 - No improvement after 48–72 hours: look for an undrained source, a resistant organism or a noninfectious mimic. ^[common-practice]
 - Euglycemic DKA, adrenal crisis and pancreatitis can look like septic shock. ^[common-practice]

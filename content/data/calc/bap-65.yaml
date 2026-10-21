@@ -1,0 +1,4 @@
+name: BAP-65 score for COPD exacerbation
+short: "BAP-65"
+url: https://www.mdcalc.com/calc/4019/bap-65-score-acute-exacerbation-copd
+match: ["BAP-65"]

@@ -1,6 +1,6 @@
 // Content checks, run on every pull request (npm run content:check) and in the tests.
 // Each rule comes from docs/CARD-TYPES.md and docs/DATA-TYPES.md.
-import { CARD_TYPES, DATA_TYPES, DOSE_FIELDS, REGIMEN_FIELDS, REGIMEN_OPTION_FIELDS, SHARED_SECTIONS, UNITS, DOSE_IN_TEXT } from './schema.mjs';
+import { CARD_TYPES, CALC_FIELDS, MDCALC_URL, DATA_TYPES, DOSE_FIELDS, REGIMEN_FIELDS, REGIMEN_OPTION_FIELDS, SHARED_SECTIONS, UNITS, DOSE_IN_TEXT } from './schema.mjs';
 import { TAGS, parseInline } from './inline.mjs';
 import { onsetMinutes } from './onset.mjs';
 import { emergencySteps, offsetMinutes, stepDoses } from './emergency.mjs';
@@ -57,12 +57,20 @@ export function noteRepeats(note, visible) {
 }
 const numbers = (v) => String(v).match(/\d+(\.\d+)?/g) ?? [];
 
+// Finds the names of known calculators (their `match` words) in plain text, so a mention can't go without its link.
+const escapeRe = (t) => t.replace(/[.*+?^${}()|[\]\\\/]/g, '\\$&');
+export function calcMatcher(calcs) {
+  const list = Object.entries(calcs ?? {}).flatMap(([id, c]) => (Array.isArray(c.match) ? c.match : []).map((term) => ({ id, term, re: new RegExp(`(?<![\\p{L}\\p{N}])${escapeRe(String(term))}(?![\\p{L}\\p{N}])`, 'iu') })));
+  return (text) => list.filter((m) => m.re.test(text));
+}
+
 const CONTAINERS = { scale: [2, 5], compare: [2, 3], times: [1, 12], onset: [2, 12], note: [1, 3] };
 
 export function checkContent({ systems, cards, data }) {
   const errors = [];
   const err = (where, msg) => errors.push(`${where}: ${msg}`);
   const systemIds = new Set(systems.map((s) => s.id));
+  const calcMentions = calcMatcher(data.calc);
   for (const s of systems) if (typeof s.title !== 'string' || !s.title || typeof s.id !== 'string') errors.push(`content/systems.yaml: system "${s.id}" needs an id and a title (quote titles that contain commas)`);
   const cardIds = new Map();
   // Where each cutoff appears: the words around it, and whether it shows plain there (tables, scales).
@@ -128,6 +136,7 @@ export function checkContent({ systems, cards, data }) {
       for (const x of c.definition.inlines) if (x.t === 'insert' && !data[x.kind]?.[x.id]) err(where, `the definition inserts unknown ${x.kind} "${x.id}"`);
       if (c.definition.inlines.some((x) => x.t === 'insert' && x.kind === 'dose')) err(where, 'the definition cannot contain a dose');
       useAt(c.definition.inlines, `${where} definition`, false);
+      for (const m of calcMentions(inlineText(c.definition.inlines))) err(where, `the definition names "${m.term}", a calculator; write {{calc:${m.id}}} so it links to MDCalc`);
     }
     for (const id of c.basedOn ?? []) if (!data.source?.[id]) err(where, `based_on lists unknown source "${id}"`);
     const parts = c.sections.flatMap((s) => [{ title: s.title, blocks: s.blocks }, ...(s.subsections ?? []).map((x) => ({ title: x.title, blocks: x.blocks }))]);
@@ -154,6 +163,7 @@ export function checkContent({ systems, cards, data }) {
       for (const r of runs(blocks)) {
         useAt(r.inlines, `${where} "${title}"`, r.plain);
         const text = inlineText(r.inlines);
+        for (const m of calcMentions(text)) err(where, `"${title}" names "${m.term}", a calculator; write {{calc:${m.id}}} so it links to MDCalc`);
         if (DOSE_IN_TEXT.test(text)) err(where, `"${title}" has a dose typed as text ("${text.match(DOSE_IN_TEXT)[0]}"); insert it with {{dose:…}}`);
         for (const id of r.sources) if (!data.source?.[id]) err(where, `"${title}" cites unknown source "${id}"`);
         const factual = !r.header && text.replace(/[\s.,;:()–-]/g, '').length > 0;
@@ -173,6 +183,7 @@ export function checkContent({ systems, cards, data }) {
       }
       for (const b of allBlocks(blocks)) {
         if (b.t === 'insert' && !data[b.kind]?.[b.id]) err(where, `"${title}" inserts unknown ${b.kind} "${b.id}"`);
+        if (b.t === 'insert' && b.kind === 'calc') err(where, `"${title}": a calculator link goes inside a sentence ({{calc:${b.id}}}), not on a line of its own`);
         if (b.t === 'insert' && b.kind === 'pathway') err(where, `"${title}": a pathway opens from the card's header (its file names the card with "card:"); remove {{pathway:${b.id}}}`);
         if (CONTAINERS[b.t]) {
           const [lo, hi] = CONTAINERS[b.t];
@@ -247,11 +258,26 @@ export function checkContent({ systems, cards, data }) {
         const texts = [item.name, item.indication, item.setting, item.duration, ...(item.notes ?? []), ...(item.options ?? []).flatMap((o) => [o?.label, o?.when])];
         for (const t of texts) if (typeof t === 'string' && DOSE_IN_TEXT.test(t)) err(where, `has a dose typed as text ("${t.match(DOSE_IN_TEXT)[0]}"); the dose rows show the doses`);
       }
+      if (kind === 'calc') {
+        for (const f of Object.keys(item)) if (f !== '_file' && !CALC_FIELDS.includes(f)) err(where, `unknown calculator field "${f}" (use ${CALC_FIELDS.join(', ')})`);
+        if (typeof item.url === 'string' && !MDCALC_URL.test(item.url)) err(where, 'url must be an MDCalc calculator page: https://www.mdcalc.com/calc/<number>/<name>');
+        if (!Array.isArray(item.match) || !item.match.length || item.match.some((x) => typeof x !== 'string' || !x.trim())) err(where, '"match" is a list of the words that name this calculator in the content');
+        for (const [oid, o] of Object.entries(items)) {
+          if (oid < id && o.url === item.url) err(where, `has the same url as calculator "${oid}"`);
+          if (oid !== id) for (const term of item.match ?? []) if ((o.match ?? []).some((t) => String(t).toLowerCase() === String(term).toLowerCase())) err(where, `"${term}" is also a match word of calculator "${oid}"`);
+        }
+      }
       if (kind === 'criteria' && !(item.items?.length || item.rows?.length)) err(where, 'needs items or rows');
       if (kind === 'criteria' && item.rows?.some((r) => !Array.isArray(r) || r.length !== (item.columns ?? []).length)) err(where, 'every row needs one cell per column');
       // A pathway: every link resolves, every box is reachable, doses come only from the card (docs/DATA-TYPES.md, 9).
       if (kind === 'pathway') for (const m of checkPathway(id, item, { cards, data })) err(where, m.slice(id.length + 2));
       if (kind === 'media') for (const m of checkMedia(id, item, { data })) err(where, m);
+      // Words in shared data that show in the app follow the same rule as a card's: a named calculator is a link.
+      const shown = kind === 'regimen' ? [item.name, item.setting, item.duration, ...(item.notes ?? []), ...(item.options ?? []).flatMap((o) => [o?.label, o?.when])]
+        : kind === 'criteria' ? [...(item.items ?? []), ...(item.notes ?? []), ...(item.rows ?? []).flat()]
+        : kind === 'pathway' ? Object.values(item.nodes ?? {}).flatMap((n) => (Array.isArray(n.text) ? n.text : [n.text]))
+        : [];
+      for (const t of shown) if (typeof t === 'string') for (const m of calcMentions(inlineText(parseInline(t)))) err(where, `names "${m.term}", a calculator; write {{calc:${m.id}}} so it links to MDCalc ("${t.slice(0, 50)}")`);
       if (/^[a-z0-9]+(-[a-z0-9]+)*$/.test(id) === false) err(where, `id "${id}" must be lowercase words joined by hyphens`);
     }
   }

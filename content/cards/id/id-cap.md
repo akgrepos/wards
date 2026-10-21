@@ -15,7 +15,7 @@ related:
 ---
 ## At a Glance
 - Diagnosis needs a new infiltrate on imaging; a positive viral test does not exclude bacterial coinfection. ^[idsa-ats-cap-2019, ats-cap-2025]
-- Severity by {{criteria:idsa-ats-severe-cap}}; site of care by PSI (preferred) or CURB-65 plus judgment. ^[idsa-ats-cap-2019]
+- Severity by {{criteria:idsa-ats-severe-cap}}; site of care by {{calc:psi-port}} (preferred) or {{calc:curb-65}} plus judgment. ^[idsa-ats-cap-2019]
 - Inpatient, not severe: β-lactam plus macrolide, or a respiratory fluoroquinolone alone; severe: β-lactam plus macrolide or fluoroquinolone. ^[idsa-ats-cap-2019]
 - MRSA or *Pseudomonas* coverage: add it for a prior respiratory isolate (within 1 year), or in severe CAP after hospitalization with IV antibiotics in the last 90 days; culture and de-escalate. ^[idsa-ats-cap-2019]
 - Short courses once clinically stable: 3–5 days if not severe, at least 5 days if severe. ^[ats-cap-2025]
@@ -24,8 +24,8 @@ related:
 ## Severity
 {{criteria:idsa-ats-severe-cap}}
 
-- Hospitalization: a validated prognostic rule plus clinical judgment; Pneumonia Severity Index (PSI) preferred over CURB-65. ^[idsa-ats-cap-2019]
-- PSI and CURB-65 predict 30-day mortality; they were not designed to choose ICU versus ward. ^[idsa-ats-cap-2019]
+- Hospitalization: a validated prognostic rule plus clinical judgment; Pneumonia Severity Index ({{calc:psi-port}}) preferred over {{calc:curb-65}}. ^[idsa-ats-cap-2019]
+- {{calc:psi-port}} and {{calc:curb-65}} predict 30-day mortality; they were not designed to choose ICU versus ward. ^[idsa-ats-cap-2019]
 - Direct ICU admission: hypotension needing vasopressors or respiratory failure needing mechanical ventilation. ^[idsa-ats-cap-2019]
 - Otherwise, use the minor criteria with judgment to decide on ICU, step-down or telemetry; ward patients later transferred to the ICU do worse than those admitted there directly. ^[idsa-ats-cap-2019]
 
@@ -135,7 +135,7 @@ related:
 ### Special Populations: Immunocompromise, pregnancy, kidney disease
 - Immunocompromise (neutropenia, chemotherapy, transplant, advanced HIV): outside these guidelines; broader coverage and early infectious diseases input. ^[idsa-ats-cap-2019, common-practice]
 - Pregnancy: avoid fluoroquinolones and tetracyclines when alternatives exist. ^[common-practice]
-- Kidney impairment: adjust β-lactams, fluoroquinolones and oseltamivir by CrCl (see each dose sheet). ^[common-practice]
+- Kidney impairment: adjust β-lactams, fluoroquinolones and oseltamivir by {{calc:cockcroft-gault}} (see each dose sheet). ^[common-practice]
 - Macrolides and fluoroquinolones prolong QT: check the ECG and interacting drugs. ^[label-zithromax-iv-2026, label-levofloxacin-2024, label-moxifloxacin-2025]
 
 ### Complications: Effusion, abscess, sepsis

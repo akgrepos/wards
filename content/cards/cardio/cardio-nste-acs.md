@@ -28,11 +28,11 @@ related:
 | Risk | Features | Timing |
 |---|---|---|
 | Very high | Instability or shock, refractory angina, life-threatening arrhythmia, mechanical complication, ischemic acute heart failure, recurrent dynamic ST changes | Immediate, <2 h ^[acc-aha-acs-2025, esc-acs-2023] |
-| High | GRACE >140, steeply rising troponin despite medical therapy, or ongoing dynamic ST changes | Early, <24 h ^[acc-aha-acs-2025] |
-| Intermediate | GRACE 109–140, no ongoing ischemia, troponin stable or falling | Before discharge (<72 h) ^[acc-aha-acs-2025] |
-| Low | GRACE <109 or TIMI <2, troponin below the sex-specific 99th percentile, no dynamic ST changes | Routine invasive before discharge, or selective (noninvasive testing first) ^[acc-aha-acs-2025] |
+| High | {{calc:grace}} >140, steeply rising troponin despite medical therapy, or ongoing dynamic ST changes | Early, <24 h ^[acc-aha-acs-2025] |
+| Intermediate | {{calc:grace}} 109–140, no ongoing ischemia, troponin stable or falling | Before discharge (<72 h) ^[acc-aha-acs-2025] |
+| Low | {{calc:grace}} <109 or {{calc:timi-nstemi}} <2, troponin below the sex-specific 99th percentile, no dynamic ST changes | Routine invasive before discharge, or selective (noninvasive testing first) ^[acc-aha-acs-2025] |
 
-- Risk scores: GRACE (mortality) or TIMI estimate risk and guide timing. ^[acc-aha-acs-2025]
+- Risk scores: {{calc:grace}} (mortality) or {{calc:timi-nstemi}} estimate risk and guide timing. ^[acc-aha-acs-2025]
 - Telemetry for at least 24 h in NSTEMI; CCU for very high-risk features. ^[common-practice]
 
 ## Causes
@@ -163,7 +163,7 @@ related:
 
 ### Special Populations: AF, kidney disease, older adults
 - AF on an oral anticoagulant after PCI: DOAC plus clopidogrel; stop aspirin after 1–4 weeks (triple therapy only briefly). ^[acc-aha-acs-2025]
-- Severe kidney impairment (CrCl below 30): adjust enoxaparin; fondaparinux contraindicated; UFH often simplest. ^[label-lovenox-2026, label-arixtra-2024, common-practice]
+- Severe kidney impairment ({{calc:cockcroft-gault}} below 30): adjust enoxaparin; fondaparinux contraindicated; UFH often simplest. ^[label-lovenox-2026, label-arixtra-2024, common-practice]
 - Older adults: an invasive strategy is reasonable (fewer reinfarctions, no clear mortality benefit at age ≥75); individualize by frailty, comorbidity and bleeding risk. ^[senior-rita-2024]
 - Cocaine or methamphetamine: avoid β-blockers during acute intoxication; benzodiazepines and nitrates. ^[aha-cocaine-2008]
 - Secondary (type 2) MI: treat the trigger; angiography if ischemia persists or recurs and primary MI is possible, otherwise imaging (e.g. CT coronary angiography) after recovery when it would change care; antithrombotics individualized. ^[udmi-2026, common-practice]
@@ -186,7 +186,7 @@ related:
 ### Evidence: Key trials
 - PLATO (2009): ticagrelor lowered cardiovascular death, MI or stroke versus clopidogrel, with more non-CABG bleeding. ^[plato-2009]
 - ISAR-REACT 5 (2019): prasugrel lowered death, MI or stroke versus ticagrelor with a planned invasive strategy. ^[isar-react-5-2019]
-- TIMACS (2009): early (<24 h) angiography did not reduce the primary outcome overall but did in the highest-risk third (GRACE >140). ^[timacs-2009]
+- TIMACS (2009): early (<24 h) angiography did not reduce the primary outcome overall but did in the highest-risk third ({{calc:grace}} >140). ^[timacs-2009]
 - OASIS-5 (2006): fondaparinux was noninferior to enoxaparin with less bleeding; catheter thrombosis during PCI without added UFH. ^[oasis-5-2006]
 - REDUCE-AMI (2024): long-term β-blocker after MI with LVEF ≥50% did not reduce death or reinfarction. ^[reduce-ami-2024]
 

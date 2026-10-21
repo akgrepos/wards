@@ -1,6 +1,6 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { AKG } from '../design/akg';
-import { cardSources, cardTypeLabel, content, getCard, getSystem, titleCase } from '../content';
+import { cardSources, cardTypeLabel, content, getCard, getSystem, titleCase, usesCalc } from '../content';
 import type { Card, Source } from '../content/types';
 import { forgetSection, href, isReturning, parseRoute, restoreScroll } from '../router';
 import { addRecent, getCardScroll, setCardScroll, setReading } from '../storage';
@@ -274,6 +274,7 @@ export function CardScreen({ id, section, anchor }: { id: string; section?: stri
             </AKG.List>
           </AKG.ContentSection>
         )}
+        {usesCalc(card) && <p className="ios-footnote secondary calc-note">Score and calculator names with an arrow open MDCalc in Safari. They need internet.</p>}
       </Screen>
     </LineSources>
   );
