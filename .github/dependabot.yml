@@ -1,17 +1,17 @@
-# Opens pull requests to keep the app's tools up to date, grouped so there's one PR per week per kind.
+# Opens pull requests to keep the app's tools up to date, grouped so there's one PR per month per kind.
 version: 2
 updates:
   - package-ecosystem: npm
     directory: /
     schedule:
-      interval: weekly
+      interval: monthly
     groups:
       npm:
         patterns: ['*']
   - package-ecosystem: github-actions
     directory: /
     schedule:
-      interval: weekly
+      interval: monthly
     groups:
       actions:
         patterns: ['*']
