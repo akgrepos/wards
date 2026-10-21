@@ -13,7 +13,7 @@ export const calcItem = (id: string) => content.data.calc?.[id] as Calc | undefi
 export const hasCalculator = (id: string) => !!calcItem(id)?.calculator;
 
 export const openCalculator = (sheet: ShowSheet, id: string) =>
-  sheet({ title: 'Calculator', body: <CalculatorSheet id={id} />, detent: calcItem(id)?.calculator?.kind === 'checklist' ? 'large' : 'medium' });
+  sheet({ title: 'Calculator', body: <CalculatorSheet id={id} />, detent: 'large' });
 
 export function CalculatorSheet({ id }: { id: string }) {
   const [current, setCurrent] = useState(id);
@@ -89,14 +89,14 @@ function Formula({ c }: { c: Calc }) {
           </div>
         )) : <p className="ios-subheadline secondary">Enter the values to see the result.</p>}
       </div>
-      <p className="ios-subheadline secondary"><RichText text={k.reference} /></p>
-      <div><AKG.Button variant="bordered" disabled={!Object.values(values).some((v) => v !== null && v !== undefined)} onClick={() => { setValues({}); setN(n + 1); }}>Reset</AKG.Button></div>
       <div className="calc-inputs" key={n}>
         {k.inputs!.map((inp) => (
           <AKG.NumberField key={inp.id} label={inp.label} unit={inp.unit} min={inp.min} max={inp.max} enterKeyHint="done"
             onChange={(v) => setValues((p) => ({ ...p, [inp.id]: v }))} />
         ))}
       </div>
+      <p className="ios-subheadline secondary"><RichText text={k.reference} /></p>
+      <div><AKG.Button variant="bordered" disabled={!Object.values(values).some((v) => v !== null && v !== undefined)} onClick={() => { setValues({}); setN(n + 1); }}>Reset</AKG.Button></div>
     </>
   );
 }
