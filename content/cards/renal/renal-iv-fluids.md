@@ -12,7 +12,7 @@ related:
 ---
 ## At a Glance
 - Prescribe by purpose: resuscitation, routine maintenance, replacement of ongoing losses; reassess at least daily. ^[nice-iv-fluids-2017]
-- Resuscitation: crystalloid boluses, reassessing after each; balanced crystalloid suggested over saline in sepsis. ^[nice-iv-fluids-2017, ssc-sepsis-2026]
+- Resuscitation: crystalloid boluses, reassessing after each; balanced crystalloid suggested over saline in sepsis (0.9% saline with traumatic brain injury). ^[nice-iv-fluids-2017, ssc-sepsis-2026]
 - Maintenance: only when oral or enteral intake is inadequate; order with a time limit. ^[nice-iv-fluids-2017, common-practice]
 - Albumin is not first-line for resuscitation; evidence-based uses are in cirrhosis: large-volume paracentesis, SBP, and AKI or HRS-AKI (with a vasoconstrictor). ^[ictmg-albumin-2024, aasld-ascites-hrs-2021]
 - Avoid hypotonic fluids in acute brain injury. ^[esicm-neuro-fluids-2018]
@@ -42,7 +42,7 @@ related:
 - Electrolytes in mEq/L. ^[label-nacl-2024]
 
 :::compare Balanced crystalloid vs saline
-- Balanced (LR, Plasma-Lyte): Suggested over saline in sepsis (less new kidney replacement therapy, possibly lower mortality on meta-analysis); fewer major adverse kidney events in one large ICU trial; mortality differences small or absent in single trials. ^[ssc-sepsis-2026, smart-2018, plus-2022, basics-2021]
+- Balanced (LR, Plasma-Lyte): Suggested over saline in sepsis (less new kidney replacement therapy, probably slightly lower mortality on meta-analysis, confidence interval crossing 1); fewer major adverse kidney events in one large ICU trial; mortality differences small or absent in single trials. ^[ssc-sepsis-2026, smart-2018, plus-2022, basics-2021]
 - 0.9% saline: Large volumes cause hyperchloremic metabolic acidosis; suggested in sepsis with traumatic brain injury and often preferred in other brain injury or raised ICP (LR is slightly hypotonic). ^[ssc-sepsis-2026, label-nacl-2024, smart-2018, common-practice]
 :::
 
@@ -65,7 +65,7 @@ related:
 {{dose:crystalloid-sepsis}}
 
 - Beyond the first boluses: dynamic measures (passive leg raise, stroke volume), capillary refill and serial lactate guide more fluid; vasopressors when hypotension persists. With persistent hypoperfusion after the initial volume, a liberal or a restrictive strategy is acceptable. ^[ssc-sepsis-2026, clovers-2023]
-- Septic shock after the acute resuscitation phase: active fluid removal suggested (diuretics first; ultrafiltration if they are not enough). ^[ssc-sepsis-2026]
+- Septic shock after the acute resuscitation phase: active fluid removal suggested, a weak recommendation (diuretics first; ultrafiltration if they are not enough). ^[ssc-sepsis-2026]
 
 #### Maintenance
 {{dose:maintenance-fluid}}

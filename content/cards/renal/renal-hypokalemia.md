@@ -135,7 +135,7 @@ related:
 
 {{dose:kcl-oral-prevention}}
 
-- Hypertension: screen for primary aldosteronism with aldosterone and renin; in resistant hypertension, screen even with normal K⁺ (hypokalemia in only 20–50%). Most antihypertensives need not be stopped first; interpret results knowing their effects on renin and aldosterone. ^[endocrine-aldosteronism-2025, aha-acc-bp-2025]
+- Hypertension: screen for primary aldosteronism with aldosterone and renin; in resistant hypertension, screen even with normal K⁺ (only 20–50% of primary aldosteronism has spontaneous hypokalemia). Continue antihypertensives other than MRAs for the initial screen; β-blockers and central α₂-agonists suppress renin (false positive), while ACE inhibitors, ARBs, diuretics and MRAs raise it (false negative); repeat off the drug if the result is discordant and stopping is safe. ^[aha-acc-bp-2025, endocrine-aldosteronism-2025]
 
 ### Epidemiology and Pathophysiology: Who gets it; K⁺ handling
 - Up to 20% of hospitalized patients; clinically significant in 4–5%. ^[kardalas-hypokalemia-2018]
