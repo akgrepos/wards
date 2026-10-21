@@ -3,7 +3,7 @@ import { AKG } from '../design/akg';
 import { cardSources, cardTypeLabel, content, getCard, getSystem, pathwayFor, titleCase } from '../content';
 import type { Card, Source } from '../content/types';
 import { forgetSection, href, isReturning, parseRoute, restoreScroll } from '../router';
-import { addRecent, getCardScroll, getFavorites, setCardScroll, setReading, toggleFavorite, useStored } from '../storage';
+import { addRecent, getCardScroll, setCardScroll, setReading } from '../storage';
 import { AnchorScope, Blocks, Inlines, JUMP_EVENT, LinePill, LineSources, PathwayRow, SourceList } from '../ui/Rich';
 import { useSheet } from '../ui/SheetHost';
 import { icons } from '../ui/icons';
@@ -28,7 +28,6 @@ export function pageEntries(card: Card): { key: string; title: string }[] {
 
 export function CardScreen({ id, section, anchor }: { id: string; section?: string; anchor?: string }) {
   const card = getCard(id);
-  const favorite = useStored(getFavorites).includes(id);
   const sheet = useSheet();
   // Which sections are open, kept on this phone per page (all open at first; More Information's subsections closed).
   const state = AKG.useSectionState(card ? `card:${id}` : null);
@@ -181,12 +180,6 @@ export function CardScreen({ id, section, anchor }: { id: string; section?: stri
               aria-haspopup="menu"
               aria-expanded={menu}
               onClick={() => (menu ? closeMenu() : setMenu(true))}
-            />
-            <AKG.ToolbarButton
-              icon={favorite ? icons.starFill : icons.star}
-              aria-label={favorite ? 'Remove from Favorites' : 'Add to Favorites'}
-              aria-pressed={favorite}
-              onClick={() => toggleFavorite(id)}
             />
             {/* Topics with an emergency: the Rapids tab's symbol, in red, opens its Do Now pop-up. */}
             {card.emergency && (

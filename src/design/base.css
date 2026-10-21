@@ -168,19 +168,6 @@ html[data-timed] .pw-zoom { bottom: calc(env(safe-area-inset-bottom) + var(--tab
 .continue:active { background: var(--fill-tertiary); }
 .continue .akg-progress { margin-top: var(--space-8); }
 .eyebrow { text-transform: uppercase; }
-.home-group { display: flex; flex-direction: column; }
-/* Favorites: a row of tiles that scrolls sideways. */
-.tiles {
-  display: flex; gap: var(--space-10); overflow-x: auto; scroll-snap-type: x proximity;
-  margin: 0 calc(-1 * var(--space-16)); padding: 0 var(--space-16); scrollbar-width: none;
-}
-.tiles::-webkit-scrollbar { display: none; }
-.tile {
-  flex: none; width: 9.5rem; box-sizing: border-box; scroll-snap-align: start;
-  display: flex; flex-direction: column; gap: var(--space-8); padding: var(--space-12);
-  border-radius: var(--radius-grouped); background: var(--background-grouped-secondary); color: var(--label); text-decoration: none;
-}
-.tile:active { background: var(--fill-tertiary); }
 
 /* Topics: systems not written yet are dimmed. */
 .akg-list-row--disabled.soon .akg-icon-tile { opacity: 0.4; }

@@ -11,7 +11,7 @@ Settled 2026-10-17; page layout updated 2026-10-18 for the approved redesign (to
 - One-line definition, with its source
 - "Reviewed" month and year. No "Based on" line (removed 2026-10-18, owner): the per-line source tags and All Sources name the guidelines
 - Search aliases (hidden; used by search)
-- Top right: the **quote-mark** button (Show Sources: off when a page opens; while on it is highlighted and every line ends in one source pill), the **Contents** button (a menu of the page's sections, the one being read checked, plus Collapse All / Expand All) and the favorite star, in one group. Topics with an emergency also get a red **Rapids** button (the Rapids tab's symbol, `staroflife.fill`) that opens the Do Now pop-up: the steps and doses, Start Timed Mode and Open Full Emergency; it is hidden when there is none. No row of section buttons.
+- Top right: the **quote-mark** button (Show Sources: off when a page opens; while on it is highlighted and every line ends in one source pill), the **Contents** button (a menu of the page's sections, the one being read checked, plus Collapse All / Expand All), in one group. Topics with an emergency also get a red **Rapids** button (the Rapids tab's symbol, `staroflife.fill`) that opens the Do Now pop-up: the steps and doses, Start Timed Mode and Open Full Emergency; it is hidden when there is none. No row of section buttons.
 
 **At a Glance** (always first)
 - 3–6 bullets: the bottom line you need in 15 seconds at the bedside

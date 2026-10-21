@@ -13,7 +13,7 @@ Element.prototype.scrollIntoView ??= () => {};
 
 const { App } = await import('../App');
 const { parseRoute, reopenLastPage, resetRouterForTests, REOPEN_WITHIN_MS } = await import('../router');
-const { clearFavorites, clearReading, clearRecent } = await import('../storage');
+const { clearReading, clearRecent } = await import('../storage');
 
 // Start each test as a fresh launch at the given address.
 function launch(hash: string) {
@@ -25,7 +25,7 @@ const tick = () => act(() => new Promise((r) => setTimeout(r, 20)));
 const go = async (hash: string) => { await act(async () => { location.hash = hash; }); await tick(); };
 const back = () => screen.getAllByRole('button', { name: /^Back to/ })[0];
 
-beforeEach(() => { localStorage.clear(); clearFavorites(); clearRecent(); clearReading(); });
+beforeEach(() => { localStorage.clear(); clearRecent(); clearReading(); });
 afterEach(() => { cleanup(); vi.restoreAllMocks(); });
 
 describe('addresses', () => {
@@ -178,13 +178,13 @@ describe('search', () => {
 });
 
 describe('Home lists', () => {
-  it('the star adds a card to Favorites, and Home shows it with Recent and Continue Reading', async () => {
+  it('a page opened shows on Home in Recent and Continue Reading; pages have no Favorites star', async () => {
     launch('#/card/renal-hyperkalemia');
     render(<App />);
-    await act(async () => { fireEvent.click(screen.getByRole('button', { name: 'Add to Favorites' })); });
-    expect(screen.getByRole('button', { name: 'Remove from Favorites' })).toBeTruthy();
+    expect(screen.queryByRole('button', { name: /Favorites/ })).toBeNull();
     await act(async () => { fireEvent.click(screen.getByRole('tab', { name: 'Home' })); });
-    expect(screen.getAllByText('Hyperkalemia').length).toBe(4); // Continue Reading, Rapids shortcut, Favorites, Recent
+    expect(screen.getAllByText('Hyperkalemia').length).toBe(3); // Continue Reading, Rapids shortcut, Recent
+    expect(screen.queryByText('Favorites')).toBeNull();
     expect(screen.getByText('Continue Reading')).toBeTruthy();
     await act(async () => { fireEvent.click(screen.getByRole('button', { name: 'Clear' })); });
     expect(screen.getByText('Nothing Opened Yet')).toBeTruthy();
@@ -193,7 +193,7 @@ describe('Home lists', () => {
   it('show empty states on a new phone', () => {
     launch('#/');
     render(<App />);
-    expect(screen.getByText('No Favorites Yet')).toBeTruthy();
+    expect(screen.queryByText(/Favorites/)).toBeNull();
     expect(screen.getByText('Nothing Opened Yet')).toBeTruthy();
     expect(screen.queryByText('Continue Reading')).toBeNull();
   });

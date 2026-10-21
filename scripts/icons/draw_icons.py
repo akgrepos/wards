@@ -123,20 +123,6 @@ def gearshape():  # gearshape
     return U(outline, ring(10, 10, 2.75))
 
 
-def star_poly():
-    return [(10 + (7.75 if i % 2 == 0 else 3.85) * math.cos(math.radians(-90 + 36 * i)),
-             10.55 + (7.75 if i % 2 == 0 else 3.85) * math.sin(math.radians(-90 + 36 * i))) for i in range(10)]
-
-
-def star():  # star
-    p = star_poly()
-    return LineString(p + [p[0]]).buffer(.68, quad_segs=12, join_style='round')
-
-
-def star_fill():  # star.fill
-    return Polygon(star_poly()).buffer(.68, quad_segs=12, join_style='round')
-
-
 def chevron_backward():  # chevron.backward
     return line([(13.1, 3.3), (6.6, 10), (13.1, 16.7)], 1.55)
 
@@ -331,7 +317,7 @@ def quote_opening():  # quote.opening
 
 ICONS = {
     'house': house_fill, 'staroflifeFill': staroflife_fill, 'heartTextClipboard': heart_text_clipboard_fill,
-    'crossCase': cross_case_fill, 'gearshape': gearshape, 'star': star, 'starFill': star_fill,
+    'crossCase': cross_case_fill, 'gearshape': gearshape,
     'xmark': xmark, 'chevronBackward': chevron_backward, 'chevronDown': chevron_down, 'arrowUpRight': arrow_up_right,
     'listBullet': list_bullet, 'chevronUpChevronDown': chevron_up_chevron_down,
     'plusForwardslashMinus': plus_forwardslash_minus, 'checklist': checklist, 'arrowLeftArrowRight': arrow_left_arrow_right,

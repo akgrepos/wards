@@ -11,7 +11,6 @@ export type Route =
   | { name: 'library-list'; id: string }
   | { name: 'search' }
   | { name: 'settings' }
-  | { name: 'favorites' }
   | { name: 'system'; id: string }
   // section: a section key; anchor: a subheading or step inside it (pathway links land on it).
   | { name: 'card'; id: string; section?: string; anchor?: string }
@@ -26,7 +25,7 @@ const RENAMED_SECTIONS: Record<string, string> = { 'when-to-call': 'escalation' 
 // Pathways renamed since (2026-10-19: whole-card maps).
 const RENAMED_PATHWAYS: Record<string, string> = { 'hyperkalemia-management': 'hyperkalemia' };
 
-const ROOTS = ['emergencies', 'topics', 'library', 'search', 'settings', 'favorites', 'timed'] as const;
+const ROOTS = ['emergencies', 'topics', 'library', 'search', 'settings', 'timed'] as const;
 
 export function parseRoute(hash: string): Route {
   const parts = hash.replace(/^#\/?/, '').split('/').filter(Boolean).map((p) => { try { return decodeURIComponent(p); } catch { return p; } });
@@ -49,7 +48,6 @@ export const href = {
   libraryList: (id: string) => `#/library/${encodeURIComponent(id)}`,
   search: () => '#/search',
   settings: () => '#/settings',
-  favorites: () => '#/favorites',
   system: (id: string) => `#/system/${encodeURIComponent(id)}`,
   pathway: (id: string) => `#/pathway/${encodeURIComponent(id)}`,
   emergency: (id: string) => `#/emergency/${encodeURIComponent(id)}`,
