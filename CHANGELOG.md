@@ -7,10 +7,8 @@ What changed in each version of Wards, newest first. The version is shown in Set
 Three new topics in Cardiology (Wave 1, third batch):
 - **Atrial Fibrillation** (condition): stages, the triggers to look for, IV rate control chosen by ejection fraction and blood pressure, the CHA₂DS₂-VASc table and who needs anticoagulation, dose rows for apixaban, rivaroxaban, dabigatran and edoxaban (kidney dose changes on each sheet), anticoagulation around cardioversion, and when to consider rhythm control. The US and European stroke scores, and their cardioversion timing, are shown side by side.
   - New **Rapids page: AF with rapid ventricular response.** Do Now: cardiovert if unstable; IV rate control (metoprolol or diltiazem, or amiodarone or digoxin when decompensated or hypotensive); no AV nodal blockers with pre-excitation. Opens from the red button on the topic and from the Rapids tab, with Timed Mode.
-  - New **Pathway** map of the whole card.
 - **Acute Coronary Syndrome: NSTEMI and Unstable Angina** (condition): the universal definition of MI, high-sensitivity troponin, when to go to the catheterization laboratory by risk (immediate, within 24 hours, before discharge, or selective), aspirin, the anticoagulant choices, P2Y12 inhibitors (which one, and when before angiography), statin, β-blocker and other in-hospital therapy, and the length of dual antiplatelet therapy. US and European differences on P2Y12 pretreatment and choice are side by side.
 - **Acute Decompensated Heart Failure** (condition): warm/cold and wet/dry profiles, triggers, natriuretic peptide cutoffs, IV loop diuretic dosing with urine sodium and urine output checks, what to add for diuretic resistance, nitroglycerin, when to go to the ICU, and which heart failure medicines to continue, hold or start before discharge (doses come with the later heart failure cards).
-  - New **Pathway** map of the whole card.
 
 ## 2026.10.20
 
