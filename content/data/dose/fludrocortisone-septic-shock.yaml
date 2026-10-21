@@ -1,0 +1,12 @@
+drug_name: Fludrocortisone
+indication: Septic shock, optionally added to hydrocortisone
+population: Adults
+route: PO or by tube
+amount: "50"
+unit: mcg
+frequency: once daily, with hydrocortisone
+duration: "7 days (APROCCHSS)"
+cautions:
+  - "Sodium retention, hypokalemia."
+notes: "Optional: no guideline recommends for or against it; SCCM 2024 lists hydrocortisone with or without fludrocortisone. Off-label (labeled for Addison disease); tablets are 0.1 mg."
+sources: [sccm-corticosteroids-2024, aprocchss-2018, label-fludrocortisone-2025]

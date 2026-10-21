@@ -1,0 +1,19 @@
+drug_name: Regular insulin
+brand: Humulin R, Novolin R
+indication: DKA or mixed DKA/HHS
+population: Adults
+route: IV
+amount: "0.1"
+unit: units/kg/h
+rate: continuous infusion
+give_when: "As soon as K⁺ is >3.5 mEq/L"
+repeat: "Glucose <250 mg/dL: reduce to 0.05 units/kg/h and add dextrose 5–10%; continue until DKA resolves"
+alternative:
+  dose: insulin-rapid-sc-dka
+  when: "Mild or uncomplicated moderate DKA (ED or step-down unit)"
+cautions:
+  - "Hypoglycemia and hypokalemia: glucose every 1–2 hours, K⁺ 2 hours after starting, then every 4 hours."
+  - "Do not stop the infusion for falling glucose: add dextrose."
+  - "Nurse-driven variable-rate protocols should not run below 1 unit/h while ketoacidosis persists."
+notes: "A bolus is needed only if starting the infusion will be delayed. Label: IV only under supervision, 0.1–1 unit/mL in 0.9% saline, with glucose and K⁺ monitoring."
+sources: [ada-hyperglycemic-crises-2024, ada-soc-hospital-2026, label-humulin-r-2026]

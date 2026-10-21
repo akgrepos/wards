@@ -1,0 +1,13 @@
+drug_name: Potassium phosphate
+indication: DKA or HHS with severe hypophosphatemia and muscle weakness or respiratory or cardiac compromise
+population: Adults
+route: IV
+amount: 20–30
+unit: mmol
+rate: "added to the IV fluids (peripheral: no faster than 6.8 mmol per hour)"
+give_when: "Not routine: only with weakness, respiratory or cardiac compromise and a very low phosphate"
+cautions:
+  - "Rapid replacement causes hypocalcemia; monitor calcium and magnesium."
+  - "Label: give only if K⁺ <4 mEq/L; contraindicated with eGFR <30."
+notes: "Phosphate falls with insulin; routine replacement does not improve outcomes."
+sources: [ada-hyperglycemic-crises-2024, label-kphos-injection-2026]

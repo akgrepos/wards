@@ -1,0 +1,14 @@
+drug_name: Glucagon
+brand: Gvoke, glucagon emergency kit
+indication: Severe hypoglycemia without IV access
+population: Adults
+route: SC or IM
+amount: "1"
+unit: mg
+frequency: once
+repeat: "Another 1 mg after 15 minutes if no response"
+cautions:
+  - "Ineffective with depleted liver glycogen (starvation, adrenal insufficiency, chronic hypoglycemia)."
+  - "Nausea and vomiting: protect the airway."
+notes: "The emergency kit may also be given IV under medical supervision."
+sources: [label-glucagon-kit-2026, label-gvoke-2026, ada-soc-hospital-2026]

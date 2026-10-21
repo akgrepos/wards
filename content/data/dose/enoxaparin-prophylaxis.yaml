@@ -1,0 +1,17 @@
+drug_name: Enoxaparin
+brand: Lovenox
+indication: VTE prophylaxis in acutely ill medical patients (sepsis, DKA, HHS)
+population: Adults
+route: SC
+amount: "40"
+unit: mg
+frequency: once daily
+give_when: Unless contraindicated (bleeding, severe thrombocytopenia)
+boxed_warning: "Spinal or epidural hematoma with neuraxial anesthesia or spinal puncture."
+adjustments:
+  - when: CrCl <30 mL/min
+    change: 30 mg once daily
+cautions:
+  - "Contraindicated with heparin-induced thrombocytopenia in the past 100 days or circulating antibodies."
+notes: "Sepsis: low-molecular-weight heparin preferred over unfractionated heparin. HHS: prophylaxis for the whole admission (UK guideline)."
+sources: [label-lovenox-2026, ssc-sepsis-2026, ada-hyperglycemic-crises-2024, jbds-hhs-2022]

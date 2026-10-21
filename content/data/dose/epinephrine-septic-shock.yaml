@@ -1,0 +1,14 @@
+drug_name: Epinephrine
+brand: Adrenalin
+indication: Septic shock, added when MAP is inadequate on norepinephrine plus vasopressin
+population: Adults
+route: IV
+amount: 0.05–2
+unit: mcg/kg/min
+rate: "continuous infusion; adjust by 0.05–0.2 mcg/kg/min every 10–15 minutes to the MAP target"
+give_when: "MAP inadequate despite norepinephrine plus vasopressin; with cardiac dysfunction, an alternative first line (preferred with bradycardia)"
+cautions:
+  - "Tachyarrhythmias and myocardial ischemia; hyperglycemia."
+  - "Extravasation: infiltrate with phentolamine 5–10 mg in 10–15 mL saline (within 12 hours)."
+notes: "Label dilution: 1 mg in 1,000 mL 5% dextrose (1 mcg/mL). Septic shock is a labeled indication."
+sources: [label-adrenalin-2026, ssc-sepsis-2026]

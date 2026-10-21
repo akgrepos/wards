@@ -1,0 +1,10 @@
+name: Sepsis-3 definitions
+short: Sepsis-3 definitions
+logic: "Sepsis-3:"
+items:
+  - "Sepsis: life-threatening organ dysfunction caused by a dysregulated host response to infection; clinically, an acute rise in the SOFA score of 2 points or more (baseline 0 unless prior organ dysfunction is known)"
+  - "Septic shock: sepsis with a vasopressor needed to keep MAP ≥65 mm Hg and lactate >2 mmol/L despite adequate volume resuscitation"
+notes:
+  - "Sepsis carries in-hospital mortality above 10%; septic shock above 40%."
+  - "qSOFA (respiratory rate ≥22, altered mentation, systolic BP ≤100 mm Hg) flags a higher risk of poor outcome but is not recommended as a single screening tool."
+sources: [sepsis-3-2016, ssc-sepsis-2026]
