@@ -25,7 +25,7 @@ emergency_hint: "Airway, O₂, find the cause, HFNC, intubate early"
 3. High-flow nasal oxygen
    - If: hypoxemia or distress despite conventional oxygen ^[ats-nirs-2026, ssc-sepsis-2026]
    - Start about 50 L/min with FiO₂ 1.0, then titrate FiO₂ to the target. ^[florali-2015]
-   - ROX index at 2, 6 and 12 hours. ^[roca-rox-2019]
+   - {{calc:rox-index}} at 2, 6 and 12 hours. ^[roca-rox-2019]
 4. NIV or CPAP instead
    - If: hypercapnia, cardiogenic pulmonary edema, or high-flow not tolerated ^[ats-nirs-2026, ers-ats-niv-2017]
    - Check: also none of recent upper airway or upper GI surgery, upper GI bleeding, hemodynamic instability. ^[common-practice]
@@ -46,7 +46,7 @@ emergency_hint: "Airway, O₂, find the cause, HFNC, intubate early"
 - Target SpO₂ 94–98% in most patients; 88–92% when at risk of hypercapnia. ^[bts-oxygen-2017]
 - High-flow nasal oxygen is the first noninvasive step: fewer intubations than conventional oxygen. ^[ats-nirs-2026]
 - NIV for hypercapnia; CPAP or NIV for cardiogenic pulmonary edema. ^[ats-nirs-2026, ers-ats-niv-2017]
-- Track response hourly (ROX index, work of breathing); intubate early when noninvasive support fails. ^[ats-nirs-2026, roca-rox-2019]
+- Track response hourly ({{calc:rox-index}}, work of breathing); intubate early when noninvasive support fails. ^[ats-nirs-2026, roca-rox-2019]
 - Intubated with ARDS: low tidal volume, plateau ≤30 cm H₂O; prone positioning for moderate–severe ARDS. ^[ssc-sepsis-2026, ats-esicm-sccm-ards-2017]
 
 ## Definition and Staging
@@ -55,7 +55,7 @@ emergency_hint: "Airway, O₂, find the cause, HFNC, intubate early"
 
 {{criteria:ards-global-2024}}
 
-- A–a gradient = [FiO₂ × (760 − 47) − PaCO₂/0.8] − PaO₂; normal about age/4 + 4 mm Hg on room air. ^[common-practice]
+- {{calc:aa-gradient|A–a gradient}} = [FiO₂ × (760 − 47) − PaCO₂/0.8] − PaO₂; normal about age/4 + 4 mm Hg on room air. ^[common-practice]
 
 ## First Steps
 - Red flags for immediate help (rapid response, ICU, anesthesia): SpO₂ <80% or PaO₂ <55 mm Hg despite oxygen, RR >35, rising PaCO₂, exhaustion, altered mentation, unable to protect airway, shock. ^[common-practice]
@@ -65,9 +65,9 @@ emergency_hint: "Airway, O₂, find the cause, HFNC, intubate early"
 ## Causes
 - **V/Q mismatch:** [!most-common] pneumonia, pulmonary edema, COPD or asthma, PE, atelectasis, mucus plugging; improves with oxygen. ^[common-practice]
 - **Shunt:** ARDS, lobar collapse, extensive pneumonia or edema, intracardiac or pulmonary vascular shunts; little response to 100% oxygen. ^[common-practice]
-- **Hypoventilation:** opioids or sedatives, neuromuscular weakness, obesity hypoventilation; normal A–a gradient, high PaCO₂. ^[common-practice]
+- **Hypoventilation:** opioids or sedatives, neuromuscular weakness, obesity hypoventilation; normal {{calc:aa-gradient|A–a gradient}}, high PaCO₂. ^[common-practice]
 - **Diffusion limitation:** interstitial lung disease, pulmonary hypertension; worse with exertion. ^[common-practice]
-- **Low inspired oxygen:** altitude; normal A–a gradient. ^[common-practice]
+- **Low inspired oxygen:** altitude; normal {{calc:aa-gradient|A–a gradient}}. ^[common-practice]
 - **Cannot miss:** [!cannot-miss] tension pneumothorax, PE, flash pulmonary edema or ACS, ARDS, aspiration, upper airway obstruction, hemothorax or massive effusion. ^[common-practice]
 
 ## Presentation
@@ -82,16 +82,16 @@ emergency_hint: "Airway, O₂, find the cause, HFNC, intubate early"
 
 ## Diagnosis
 #### First-line tests
-- Arterial blood gas: PaO₂, PaCO₂, pH; calculate PaO₂/FiO₂ and the A–a gradient. ^[ssc-sepsis-2026, common-practice]
+- Arterial blood gas: PaO₂, PaCO₂, pH; calculate PaO₂/FiO₂ and the {{calc:aa-gradient|A–a gradient}}. ^[ssc-sepsis-2026, common-practice]
 - Chest radiograph; ECG; troponin and natriuretic peptide; CBC, BMP, lactate. ^[common-practice]
 - Point-of-care ultrasound: B-lines (edema, ARDS), consolidation, effusion, absent lung sliding (pneumothorax), LV and RV function, DVT. ^[common-practice]
 
 #### Interpretation
 | Finding | Suggests |
 |---|---|
-| Normal A–a gradient, high PaCO₂ | Hypoventilation ^[common-practice] |
-| High A–a gradient, corrects with oxygen | V/Q mismatch ^[common-practice] |
-| High A–a gradient, little response to 100% oxygen | Shunt ^[common-practice] |
+| Normal {{calc:aa-gradient|A–a gradient}}, high PaCO₂ | Hypoventilation ^[common-practice] |
+| High {{calc:aa-gradient|A–a gradient}}, corrects with oxygen | V/Q mismatch ^[common-practice] |
+| High {{calc:aa-gradient|A–a gradient}}, little response to 100% oxygen | Shunt ^[common-practice] |
 | Clear chest radiograph | PE, asthma or COPD, intracardiac shunt, early pneumonia ^[common-practice] |
 
 #### Second line, by scenario
@@ -137,7 +137,7 @@ emergency_hint: "Airway, O₂, find the cause, HFNC, intubate early"
 - Pneumonia: [[id-cap|antibiotics]]; heart failure: [[cardio-adhf|diuresis and vasodilators]]; COPD: [[pulm-copd-exacerbation|bronchodilators, steroids, NIV]]; sepsis: [[crit-sepsis|sepsis bundle]]. ^[common-practice]
 
 ## Monitor
-:::times ROX index on high-flow, hours ^[roca-rox-2019]
+:::times {{calc:rox-index}} on high-flow, hours ^[roca-rox-2019]
 - 2
 - 6
 - 12
