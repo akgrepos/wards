@@ -1,0 +1,106 @@
+# Choosing an anticoagulant: a decision tree that supplements the card (heme-anticoagulation-management).
+# Format: docs/CONTENT-FORMAT.md, "Pathways".
+title: Choosing an Anticoagulant
+card: heme-anticoagulation-management
+summary: HIT, valves, pregnancy, kidney, cancer, then DOAC
+columns: 12
+start: indication
+sources: [chest-vte-2021, ash-vte-treatment-2020, acc-aha-af-2023, acc-aha-valvular-2020, ash-hit-2018, ash-vte-pregnancy-2018, asco-vte-cancer-2023, ash-vte-cancer-2021, isth-obesity-doac-2021]
+nodes:
+  indication:
+    kind: start
+    at: [4, 0]
+    span: 4
+    title: Anticoagulation is indicated
+    text: "Confirm the indication, no active bleeding, and baseline CBC, creatinine, liver tests and weight."
+    next: hit
+  hit:
+    kind: question
+    at: [4, 1]
+    span: 4
+    title: Suspected or previous heparin-induced thrombocytopenia?
+    answers:
+      - { label: "Yes", at: [0, 2], span: 4, to: hit-result }
+      - { label: "No", at: [8, 2], span: 4, to: valve }
+  hit-result:
+    kind: result
+    at: [0, 3]
+    span: 4
+    title: Non-heparin anticoagulant
+    text:
+      - "Stop all heparin. Unstable or high bleeding risk: argatroban or bivalirudin. Stable: fondaparinux or a DOAC."
+      - "No warfarin until platelets recover."
+    links: ["section:heme-anticoagulation-management/escalation#heparin-induced-thrombocytopenia"]
+  valve:
+    kind: question
+    at: [4, 4]
+    span: 4
+    title: Pregnant?
+    answers:
+      - { label: "Yes", at: [0, 5], span: 4, to: pregnancy-result }
+      - { label: "No", at: [8, 5], span: 4, to: pregnancy }
+  pregnancy-result:
+    kind: result
+    at: [0, 6]
+    span: 4
+    title: Low-molecular-weight heparin
+    text:
+      - "No warfarin or DOAC. Mechanical valve in pregnancy: specialist input."
+    links: ["section:heme-anticoagulation-management/more#special-populations"]
+  pregnancy:
+    kind: question
+    at: [4, 7]
+    span: 4
+    title: Mechanical valve, moderate–severe rheumatic mitral stenosis, or thrombotic antiphospholipid syndrome?
+    answers:
+      - { label: "Yes", at: [0, 8], span: 4, to: warfarin-result }
+      - { label: "No", at: [8, 8], span: 4, to: kidney }
+  warfarin-result:
+    kind: result
+    at: [0, 9]
+    span: 4
+    title: Warfarin
+    text:
+      - "Overlap with a parenteral agent until INR is therapeutic. INR target by valve and position. Single-antibody venous APS: a DOAC may be reasonable."
+    links: ["section:heme-anticoagulation-management/treatment#warfarin"]
+  kidney:
+    kind: question
+    at: [4, 10]
+    span: 4
+    title: Kidney failure, high bleeding risk, or a procedure or thrombolysis planned?
+    text: "{{calc:cockcroft-gault}} <30 mL/min; unreliable SC absorption."
+    answers:
+      - { label: "Yes", at: [0, 11], span: 4, to: ufh-result }
+      - { label: "No", at: [8, 11], span: 4, to: cancer }
+  ufh-result:
+    kind: result
+    at: [0, 12]
+    span: 4
+    title: Unfractionated heparin
+    text:
+      - "Short half-life and reversible; transition to the long-term agent when stable."
+    links: ["section:heme-anticoagulation-management/treatment#parenteral-agents"]
+  cancer:
+    kind: question
+    at: [4, 13]
+    span: 4
+    title: Active cancer (VTE)?
+    answers:
+      - { label: "Yes", at: [0, 14], span: 4, to: cancer-result }
+      - { label: "No", at: [8, 14], span: 4, to: doac-result }
+  cancer-result:
+    kind: result
+    at: [0, 15]
+    span: 4
+    title: DOAC or LMWH
+    text:
+      - "Apixaban, rivaroxaban, edoxaban or LMWH. Caution with factor Xa inhibitors in GI and GU cancers."
+    links: ["section:heme-anticoagulation-management/more#special-populations"]
+  doac-result:
+    kind: result
+    at: [8, 15]
+    span: 4
+    title: DOAC
+    text:
+      - "Apixaban or rivaroxaban need no lead-in. Dabigatran and edoxaban need 5–10 days of parenteral anticoagulation first."
+    links: ["section:heme-anticoagulation-management/treatment#dosing"]

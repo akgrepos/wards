@@ -1,0 +1,4 @@
+name: Aortic dissection detection risk score (ADD-RS)
+short: "ADD-RS"
+url: https://www.mdcalc.com/calc/4060/aortic-dissection-detection-risk-score-add-rs
+match: ["ADD-RS"]
