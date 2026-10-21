@@ -13,7 +13,7 @@ export const calcItem = (id: string) => content.data.calc?.[id] as Calc | undefi
 export const hasCalculator = (id: string) => !!calcItem(id)?.calculator;
 
 export const openCalculator = (sheet: ShowSheet, id: string) =>
-  sheet({ title: 'Calculator', body: <CalculatorSheet id={id} /> });
+  sheet({ title: 'Calculator', body: <CalculatorSheet id={id} />, detent: calcItem(id)?.calculator?.kind === 'checklist' ? 'large' : 'medium' });
 
 export function CalculatorSheet({ id }: { id: string }) {
   const [current, setCurrent] = useState(id);
@@ -27,7 +27,7 @@ export function CalculatorSheet({ id }: { id: string }) {
       <h3 className="ios-headline">{c.calculator!.heading}</h3>
       {/* Keyed so switching scores starts from a blank form. */}
       {c.calculator!.kind === 'checklist' ? <Checklist key={current} c={c} /> : <Formula key={current} c={c} />}
-      <p className="ios-body"><CalcLink c={c} label={`${c.short} on MDCalc`} /></p>
+      <p className="ios-body"><CalcLink c={c} label={`${c.short[0].toUpperCase()}${c.short.slice(1)} on MDCalc`} /></p>
       {c.calculator!.notes?.map((n, i) => <p key={i} className="ios-footnote secondary"><RichText text={n} /></p>)}
       <SheetSources ids={c.sources ?? []} />
     </div>
@@ -65,8 +65,8 @@ function Checklist({ c }: { c: Calc }) {
       <div className="calc-result" role="status" aria-live="polite">
         <p className="ios-title-2-emphasized">{fmt(total)} {total === 1 || total === -1 ? 'point' : 'points'}</p>
         {k.bandSets!.map((s, i) => <BandResult key={i} set={s} total={total} />)}
-        <AKG.Button variant="bordered" block disabled={!checked.some(Boolean)} onClick={() => setChecked(items.map(() => false))}>Reset</AKG.Button>
       </div>
+      <div><AKG.Button variant="bordered" disabled={!checked.some(Boolean)} onClick={() => setChecked(items.map(() => false))}>Reset</AKG.Button></div>
     </>
   );
 }
@@ -80,12 +80,7 @@ function Formula({ c }: { c: Calc }) {
   return (
     <>
       <p className="ios-footnote secondary">{k.expression}</p>
-      <div className="calc-inputs" key={n}>
-        {k.inputs!.map((inp) => (
-          <AKG.NumberField key={inp.id} label={inp.label} unit={inp.unit} min={inp.min} max={inp.max} enterKeyHint="done"
-            onChange={(v) => setValues((p) => ({ ...p, [inp.id]: v }))} />
-        ))}
-      </div>
+      {/* The result sits above the fields so it stays in view while the keyboard is open. */}
       <div className="calc-result" role="status" aria-live="polite">
         {shown.length ? shown.map(({ r, text }) => (
           <div key={r.fn}>
@@ -93,8 +88,14 @@ function Formula({ c }: { c: Calc }) {
             <p className="ios-title-2-emphasized">{text} {r.unit}</p>
           </div>
         )) : <p className="ios-subheadline secondary">Enter the values to see the result.</p>}
-        <p className="ios-subheadline secondary"><RichText text={k.reference} /></p>
-        <AKG.Button variant="bordered" block disabled={!Object.values(values).some((v) => v !== null && v !== undefined)} onClick={() => { setValues({}); setN(n + 1); }}>Reset</AKG.Button>
+      </div>
+      <p className="ios-subheadline secondary"><RichText text={k.reference} /></p>
+      <div><AKG.Button variant="bordered" disabled={!Object.values(values).some((v) => v !== null && v !== undefined)} onClick={() => { setValues({}); setN(n + 1); }}>Reset</AKG.Button></div>
+      <div className="calc-inputs" key={n}>
+        {k.inputs!.map((inp) => (
+          <AKG.NumberField key={inp.id} label={inp.label} unit={inp.unit} min={inp.min} max={inp.max} enterKeyHint="done"
+            onChange={(v) => setValues((p) => ({ ...p, [inp.id]: v }))} />
+        ))}
       </div>
     </>
   );
