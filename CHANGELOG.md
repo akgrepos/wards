@@ -2,6 +2,15 @@
 
 What changed in each version of Wards, newest first. The version is shown in Settings (gear on Home).
 
+## 2026.10.21.8
+
+**Design pass, step 1: tighter numbered steps and clearer Rapids text.**
+- **Numbered steps** (Treatment in blue, Rapids in red) are more compact, so more of each step fits on screen; the Timed Mode checkmarks and ring work as before.
+- **Rapids text:** everything you act on or decide on is now full strength, step names are larger, and "If:" is bold. Gray is kept for source markers and pure explanations. Warnings use the red warning tag.
+- **Search:** the page behind the search screen no longer moves when you drag with the box empty, so the bar should stay put.
+- **ECG full screen** says "Raw recording" so it is clear the trace is unsmoothed (the card figure is smoothed).
+- **Design system** (shared) gained: compact steps, stronger step text, a title line on boxes, one-level Contents sub-items, and a check row. The last three are not used in the app yet.
+
 ## 2026.10.21.7
 
 **Fixes and a simpler Library, from your phone testing.**

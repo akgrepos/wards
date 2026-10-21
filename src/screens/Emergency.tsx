@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, type ReactNode } from 'react';
 import { AKG } from '../design/akg';
 import { blockSources, emergencyGroups, getCard } from '../content';
 import type { Card } from '../content/types';
@@ -64,7 +64,7 @@ function StepParts({ step, compact }: { step: DoNowStep; compact?: boolean }) {
         if (p.kind === 'note' && !compact) return <p key={i} className="ios-subheadline do-now-note"><Inlines xs={p.inlines} /></p>;
         return null;
       })}
-      {step.warnings.length > 0 && <span className="tag-row">{step.warnings.map((w) => <AKG.Tag key={w.text} variant="warning">{w.text}</AKG.Tag>)}</span>}
+      {step.warnings.length > 0 && <span className="tag-row">{step.warnings.map((w) => <AKG.Tag key={w.text} variant="critical">{w.text}</AKG.Tag>)}</span>}
     </div>
   );
 }
@@ -76,11 +76,11 @@ function stepCondition(step: DoNowStep, i: number, session: TimedSession | null,
     if (acts.every((a) => isDone(session, a))) {
       const entries = acts.map((a) => entryFor(session, a)!);
       const given = entries.filter((e) => e.kind !== 'skipped');
-      if (!given.length) return { done: false, line: 'Skipped' };
+      if (!given.length) return { done: false, line: 'Skipped' as ReactNode };
       return { done: true, line: `${given[0].kind === 'done' ? 'Done' : 'Given'} at ${when(session, given[given.length - 1].t)}` };
     }
   }
-  return { done: false, line: step.condition ? <>If <Inlines xs={step.condition.inlines} /></> : undefined };
+  return { done: false, line: step.condition ? <Inlines xs={step.condition.inlines} /> : undefined, lead: step.condition ? 'If:' : undefined };
 }
 
 export const doNowTitle = <span className="do-now-title"><span className="do-now-icon" aria-hidden="true">{icons.staroflifeFill}</span>Do Now</span>;
@@ -96,11 +96,11 @@ export function DoNow({ card, compact }: { card: Card; compact?: boolean }) {
   const notes = (card.emergency?.blocks ?? []).filter((b) => b.t === 'note');
   const sources = blockSources(card.emergency?.blocks ?? []);
   const list = (
-    <AKG.StepList tint="critical">
+    <AKG.StepList tint="critical" density="compact" strong>
       {steps.map((st, i) => {
-        const { done, line } = stepCondition(st, i, session, all);
+        const { done, line, lead } = stepCondition(st, i, session, all);
         return (
-          <AKG.Step key={i} condition={line} title={<Inlines xs={st.title} />} done={done} current={current?.step === i}>
+          <AKG.Step key={i} lead={lead} condition={line} title={<Inlines xs={st.title} />} done={done} current={current?.step === i}>
             <StepParts step={st} compact={compact} />
           </AKG.Step>
         );

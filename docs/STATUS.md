@@ -5,6 +5,7 @@ Last updated 2026-10-21 (version 2026.10.21.4, MDCalc links). A short snapshot s
 ## Start here next time
 1. **Open a new chat and type "Start Main".** The `wards-main` skill renames it "Main", checks sessions, pull requests and branches, and runs the day by delegating to side sessions (one side session at a time).
 2. **Read first:** `CLAUDE.md`, then DECISIONS.md "Card-writing process" (2026-10-19) and "Sources, updated" before any card work.
+3. **Design pass (owner-approved, 7 steps, one at a time):** step 1 shipped in 2026.10.21.8 (compact steps, Rapids text, search bar, ECG note, design system additions). Next: step 2, table tones and stacked layout (spec: `~/Documents/Wards-reference/design-build-spec-2026-10-21.md`).
 3. **Owner checks on the phone** (version 2026.10.21.4; tap Reload on "Update Ready"), then say what to change (Main sends it to a fix session):
    - New (2026.10.21.4): **MDCalc links**. Score and calculator names (CURB-65, PSI, CHA₂DS₂-VASc, HAS-BLED, GRACE, TIMI, SOFA, qSOFA, NEWS, SIRS, LRINEC, anion gap, FENa, FEUrea, eGFR, CrCl...) are blue with a small arrow and open the MDCalc calculator in Safari (needs internet). Not linked, by choice: MAP, BMI and words inside dose sheets (say if you want them).
    - New (2026.10.21.2): Sepsis and Septic Shock (with its Rapids page), Diabetic Ketoacidosis and Hyperosmolar Hyperglycemic State (Rapids page and the DKA: Treatment pathway), Hyperglycemia in the Hospitalized Patient (starting doses only). Try both Rapids pages in Timed Mode and the dose sheets.

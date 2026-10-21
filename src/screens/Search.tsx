@@ -40,6 +40,8 @@ export function SearchScreen() {
   const area = useVisibleArea();
   const results = searchCards(q);
   const change = (v: string) => { setQ(v); rememberQuery(v); };
+  // The page behind stays still, so the bar can't ride along when there's nothing (or little) to scroll.
+  useEffect(() => AKG.lockScroll(), []);
   useEffect(() => {
     if (document.activeElement?.id === FOCUS_PROXY_ID) document.getElementById(SEARCH_INPUT_ID)?.focus();
   }, []);

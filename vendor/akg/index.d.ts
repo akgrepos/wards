@@ -845,6 +845,8 @@ export interface MenuItemProps extends Omit<React.ButtonHTMLAttributes<HTMLButto
   submenu?: boolean;
   /** Forces the hover/selection highlight (for keyboard-driven or demo states). */
   highlighted?: boolean;
+  /** 1 = a sub-item: indented 36pt, 44pt tall, with no checkmark or chevron. One level only. */
+  level?: 1;
   onSelect?: (e: React.MouseEvent<HTMLButtonElement>) => void;
   children?: React.ReactNode;
 }
@@ -1032,6 +1034,8 @@ export interface FlowchartProps {
   defaultView?: 'steps' | 'map';
   view?: 'steps' | 'map';
   onViewChange?: (view: 'steps' | 'map') => void;
+  /** Show each answer's detail at full label color instead of gray. */
+  strongDetail?: boolean;
   /** Hide the Steps/Map control. */
   showMap?: boolean;
   /** Called with the path each time an answer changes it. The component keeps nothing between mounts. */
@@ -1152,6 +1156,10 @@ export interface StepListProps extends React.OlHTMLAttributes<HTMLOListElement> 
   tint?: 'accent' | 'critical';
   /** First number. Default 1. */
   start?: number;
+  /** compact: 12pt side padding and an 8pt gap beside the number (default 16 and 12). */
+  density?: 'default' | 'compact';
+  /** Condition and details at full label color, titles 17pt, for steps people act on. */
+  strong?: boolean;
   /** Step elements. */
   children?: React.ReactNode;
 }
@@ -1164,6 +1172,10 @@ export interface StepProps extends Omit<React.LiHTMLAttributes<HTMLLIElement>, '
   condition?: React.ReactNode;
   /** A short bold name for the step. */
   title?: React.ReactNode;
+  /** A bold lead-in word before the condition ("If:", "Check:"). */
+  lead?: React.ReactNode;
+  /** Full-color text for this step (see StepList strong). */
+  strong?: boolean;
   /** Shows a checkmark on gray instead of the number. */
   done?: boolean;
   /** Rings the number; marks the step people are on (aria-current="step"). */
@@ -1224,11 +1236,24 @@ export interface ScaleBarProps extends React.HTMLAttributes<HTMLDivElement> {
 /** Ordered bands tinted along the severity ramp (yellow → orange → red). They stack into rows when there isn't room for them side by side. */
 export declare function ScaleBar(props: ScaleBarProps): React.ReactElement;
 
+export interface CheckRowProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'onChange'> {
+  checked?: boolean;
+  /** The row's text (children work too). */
+  label?: React.ReactNode;
+  /** Trailing points or value in footnote text ("+1"). */
+  points?: React.ReactNode;
+  onChange?: (checked: boolean, e: React.MouseEvent<HTMLButtonElement>) => void;
+}
+/** A full-width 48pt row with a circular check (accent when on), a label and trailing points, for scoring checklists. */
+export declare function CheckRow(props: CheckRowProps): React.ReactElement;
+
 export interface PanelProps extends React.HTMLAttributes<HTMLDivElement> {
   /** definition: indigo (criteria, definitions); note: brown (notes, caveats); plain: light gray; quote: light gray, for a quoted passage. Default plain. */
   tone?: 'definition' | 'note' | 'plain' | 'quote';
   /** One word naming the kind of information ("Criteria", "Note"), small and uppercase. Always give one, except for a quote. */
   label?: React.ReactNode;
+  /** An optional 17pt semibold line under the label saying what the box defines ("SIADH diagnostic criteria, 2007"). */
+  title?: React.ReactNode;
   children?: React.ReactNode;
 }
 /** A tinted box in reading content holding one kind of information, named by its word label. */
@@ -1309,4 +1334,4 @@ export declare function lockScroll(): () => void;
 /** Calls fn on Escape anywhere in the document while active. */
 export declare function useEscape(active: boolean, fn: (e: KeyboardEvent) => void): void;
 
-declare global { interface Window { AKG: { Button: typeof Button; Toggle: typeof Toggle; Checkbox: typeof Checkbox; RadioGroup: typeof RadioGroup; Radio: typeof Radio; SegmentedControl: typeof SegmentedControl; PopUpButton: typeof PopUpButton; Stepper: typeof Stepper; TextField: typeof TextField; SearchField: typeof SearchField; ComboBox: typeof ComboBox; Slider: typeof Slider; DatePicker: typeof DatePicker; ColorWell: typeof ColorWell; List: typeof List; ListRow: typeof ListRow; GroupBox: typeof GroupBox; DisclosureGroup: typeof DisclosureGroup; DisclosureButton: typeof DisclosureButton; ProgressIndicator: typeof ProgressIndicator; EmptyState: typeof EmptyState; Notification: typeof Notification; Tooltip: typeof Tooltip; TabBar: typeof TabBar; Toolbar: typeof Toolbar; ToolbarGroup: typeof ToolbarGroup; ToolbarButton: typeof ToolbarButton; Sidebar: typeof Sidebar; SidebarSection: typeof SidebarSection; SidebarItem: typeof SidebarItem; PageControl: typeof PageControl; Window: typeof Window; Sheet: typeof Sheet; Alert: typeof Alert; ActionSheet: typeof ActionSheet; Menu: typeof Menu; MenuItem: typeof MenuItem; MenuSeparator: typeof MenuSeparator; MenuSection: typeof MenuSection; Popover: typeof Popover; Callout: typeof Callout; SourcePill: typeof SourcePill; ContentSection: typeof ContentSection; SectionBar: typeof SectionBar; Flowchart: typeof Flowchart; TappableValue: typeof TappableValue; Table: typeof Table; Figure: typeof Figure; Banner: typeof Banner; BottomBar: typeof BottomBar; Highlight: typeof Highlight; ShareButton: typeof ShareButton; NumberField: typeof NumberField; IconTile: typeof IconTile; SourceLine: typeof SourceLine; StepList: typeof StepList; Step: typeof Step; ValueRow: typeof ValueRow; Tag: typeof Tag; ScaleBar: typeof ScaleBar; Panel: typeof Panel; GradeList: typeof GradeList; ComparisonGrid: typeof ComparisonGrid; TimePoints: typeof TimePoints; TimerCapsule: typeof TimerCapsule; useSectionState: typeof useSectionState; useElapsed: typeof useElapsed; formatElapsed: typeof formatElapsed; speakElapsed: typeof speakElapsed; useScrolledPast: typeof useScrolledPast; lockScroll: typeof lockScroll; useEscape: typeof useEscape; cx(...c: any[]): string; platform(el?: Element): 'ios' | 'macos' } } }
+declare global { interface Window { AKG: { Button: typeof Button; Toggle: typeof Toggle; Checkbox: typeof Checkbox; RadioGroup: typeof RadioGroup; Radio: typeof Radio; SegmentedControl: typeof SegmentedControl; PopUpButton: typeof PopUpButton; Stepper: typeof Stepper; TextField: typeof TextField; SearchField: typeof SearchField; ComboBox: typeof ComboBox; Slider: typeof Slider; DatePicker: typeof DatePicker; ColorWell: typeof ColorWell; List: typeof List; ListRow: typeof ListRow; GroupBox: typeof GroupBox; DisclosureGroup: typeof DisclosureGroup; DisclosureButton: typeof DisclosureButton; ProgressIndicator: typeof ProgressIndicator; EmptyState: typeof EmptyState; Notification: typeof Notification; Tooltip: typeof Tooltip; TabBar: typeof TabBar; Toolbar: typeof Toolbar; ToolbarGroup: typeof ToolbarGroup; ToolbarButton: typeof ToolbarButton; Sidebar: typeof Sidebar; SidebarSection: typeof SidebarSection; SidebarItem: typeof SidebarItem; PageControl: typeof PageControl; Window: typeof Window; Sheet: typeof Sheet; Alert: typeof Alert; ActionSheet: typeof ActionSheet; Menu: typeof Menu; MenuItem: typeof MenuItem; MenuSeparator: typeof MenuSeparator; MenuSection: typeof MenuSection; Popover: typeof Popover; Callout: typeof Callout; SourcePill: typeof SourcePill; ContentSection: typeof ContentSection; SectionBar: typeof SectionBar; Flowchart: typeof Flowchart; TappableValue: typeof TappableValue; Table: typeof Table; Figure: typeof Figure; Banner: typeof Banner; BottomBar: typeof BottomBar; Highlight: typeof Highlight; ShareButton: typeof ShareButton; NumberField: typeof NumberField; IconTile: typeof IconTile; SourceLine: typeof SourceLine; StepList: typeof StepList; Step: typeof Step; ValueRow: typeof ValueRow; Tag: typeof Tag; ScaleBar: typeof ScaleBar; Panel: typeof Panel; CheckRow: typeof CheckRow; GradeList: typeof GradeList; ComparisonGrid: typeof ComparisonGrid; TimePoints: typeof TimePoints; TimerCapsule: typeof TimerCapsule; useSectionState: typeof useSectionState; useElapsed: typeof useElapsed; formatElapsed: typeof formatElapsed; speakElapsed: typeof speakElapsed; useScrolledPast: typeof useScrolledPast; lockScroll: typeof lockScroll; useEscape: typeof useEscape; cx(...c: any[]): string; platform(el?: Element): 'ios' | 'macos' } } }
