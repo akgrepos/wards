@@ -22,14 +22,15 @@ function launch(hash: string) {
   render(<App />);
 }
 const tap = async (name: RegExp | string) => { await act(async () => { fireEvent.click(screen.getAllByRole('button', { name })[0]); }); };
-const answer = (name: RegExp) => screen.getAllByRole('button', { name }).find((b) => b.closest('.pw-answer'))!;
+const answer = (name: RegExp) => screen.getAllByRole('button', { name }).find((b) => b.closest('.pw-answer'))! as HTMLButtonElement;
 const choose = async (name: RegExp) => { await act(async () => { fireEvent.click(answer(name)); }); };
-const box = (title: string) => [...document.querySelectorAll('.pw-box')].find((b) => b.querySelector('h2')?.textContent === title)!;
+const box = (title: string) => [...document.querySelectorAll('.pw-box, .pw-question')].find((b) => b.querySelector('h2')?.textContent === title)!;
+const cellOf = (title: string) => box(title).closest('.pw-cell')!;
 
 beforeEach(() => { localStorage.clear(); forgetPathways(); });
 afterEach(() => { cleanup(); vi.restoreAllMocks(); });
 
-describe('pathways (focused, levelled flowcharts)', () => {
+describe('pathways (focused decision trees)', () => {
   it('a card lists its pathways as rows under the title, not inside a section', () => {
     launch('#/card/renal-aki');
     const row = document.querySelector('.card-head .pathway-row a') as HTMLElement;
@@ -38,30 +39,49 @@ describe('pathways (focused, levelled flowcharts)', () => {
     expect(document.querySelectorAll('.akg-content-section .pathway-row').length).toBe(0);
   });
 
-  it('equivalent answers share a level; each leads to its own box with the card\'s dose rows', async () => {
+  it('questions are headings, answers are decisions, steps show the card\'s dose rows', () => {
     launch('#/pathway/hyperkalemia-treatment');
     expect(screen.getByRole('group', { name: 'Hyperkalemia: Treatment pathway' })).toBeTruthy();
-    for (const t of ['IV calcium', 'Shift K⁺; consider removal', 'Shift K⁺, add albuterol, remove K⁺']) expect(box(t)).toBeTruthy();
-    // Doses show as the card's own dose rows.
+    expect(box('Severity?').className).toContain('pw-question');
+    for (const t of ['IV calcium', 'Shift K⁺; consider removal', 'Shift K⁺, add albuterol, remove K⁺']) expect(box(t).className).toContain('pw-box');
     expect(box('IV calcium').textContent).toContain('Calcium gluconate 10%');
-    // Answers further down wait until their question is on the route.
-    expect((answer(/^Severe/) as HTMLButtonElement).disabled).toBe(true);
-    await choose(/^Yes/);
-    expect(answer(/^Yes/).getAttribute('aria-pressed')).toBe('true');
-    expect(box('IV calcium').className).toContain('pw-box--on');
-    expect(box('Severity?').className).toContain('pw-box--now');
-    await choose(/^Severe/);
-    expect(box('Shift K⁺, add albuterol, remove K⁺').className).toContain('pw-box--on');
-    // The moderate regimen is ruled out and fades; boxes still ahead stay readable.
-    expect(box('Shift K⁺; consider removal').className).toContain('pw-box--off');
-    expect(box('Recheck K⁺ and glucose').className).toContain('pw-box--ahead');
+    // Every answer is a choice button, tappable from the start; nothing is chosen yet.
+    expect(answer(/^Severe/).className).toContain('akg-button--choice');
+    expect(answer(/^Severe/).disabled).toBe(false);
+    expect(answer(/^Severe/).getAttribute('aria-pressed')).toBe('false');
+    // The first unanswered question is the current step; no level rules or Now tags any more.
+    expect(box('ECG changes of hyperkalemia?').getAttribute('aria-current')).toBe('step');
+    expect(document.querySelectorAll('.pw-level, .pw-now').length).toBe(0);
   });
 
-  it('branches merge again: mild skips the shift regimens and rejoins at the kidney question', async () => {
+  it('choosing one answer grays the others and fades what only they lead to; tapping it again undoes', async () => {
     launch('#/pathway/hyperkalemia-treatment');
-    await choose(/^Normal ECG/);
-    await choose(/^Mild/);
-    expect(box('Kidney function and dialysis?').className).toContain('pw-box--now');
+    await choose(/^Severe/);
+    expect(answer(/^Severe/).getAttribute('aria-pressed')).toBe('true');
+    expect(answer(/^Severe/).className).toContain('akg-button--selected');
+    expect(answer(/^Moderate/).className).toContain('akg-button--unselected');
+    expect(answer(/^Moderate/).disabled).toBe(false);
+    expect(cellOf('Shift K⁺; consider removal').className).toContain('pw-cell--off');
+    expect(box('Shift K⁺, add albuterol, remove K⁺').className).toContain('pw-box--on');
+    // Steps every route shares stay at full strength.
+    expect(cellOf('Recheck K⁺ and glucose').className).not.toContain('pw-cell--off');
+    // The ECG question is still unanswered, so it stays the current step.
+    expect(box('ECG changes of hyperkalemia?').getAttribute('aria-current')).toBe('step');
+    await choose(/^Severe/);
+    expect(answer(/^Severe/).getAttribute('aria-pressed')).toBe('false');
+    expect(answer(/^Moderate/).className).not.toContain('akg-button--unselected');
+    expect(cellOf('Shift K⁺; consider removal').className).not.toContain('pw-cell--off');
+  });
+
+  it('choosing an answer on a ruled-out question drops the choice that ruled it out', async () => {
+    launch('#/pathway/aki-cause-workup');
+    await choose(/^No$/);
+    expect(cellOf('Urinary tract obstruction?').className).toContain('pw-cell--off');
+    expect(answer(/^Obstruction/).className).toContain('akg-button--unselected');
+    await choose(/^Obstruction/);
+    expect(answer(/^Obstruction/).getAttribute('aria-pressed')).toBe('true');
+    expect(answer(/^No$/).getAttribute('aria-pressed')).toBe('false');
+    expect(cellOf('Urinary tract obstruction?').className).not.toContain('pw-cell--off');
   });
 
   it('dose rows open dose sheets; links open the card; old addresses still work', async () => {
@@ -75,12 +95,12 @@ describe('pathways (focused, levelled flowcharts)', () => {
     expect(screen.getByRole('group', { name: 'Acute Kidney Injury: Cause Workup pathway' })).toBeTruthy();
   });
 
-  it('answers are kept after leaving and coming back; Start Over clears them', async () => {
+  it('choices are kept after leaving and coming back; Clear forgets them', async () => {
     launch('#/pathway/hyperkalemia-treatment');
     await choose(/^Yes/);
     launch('#/pathway/hyperkalemia-treatment');
     expect(answer(/^Yes/).getAttribute('aria-pressed')).toBe('true');
-    await tap('Start Over');
+    await tap('Clear');
     expect(answer(/^Yes/).getAttribute('aria-pressed')).toBe('false');
   });
 
@@ -90,5 +110,34 @@ describe('pathways (focused, levelled flowcharts)', () => {
     launch('#/library/pathways');
     expect(screen.getByText('Hyperkalemia: Treatment')).toBeTruthy();
     expect(screen.getByText('Acute Kidney Injury: Cause Workup')).toBeTruthy();
+  });
+
+  // Lines run straight down from each box and turn only just above the box they point to, so the column under a box
+  // must stay clear down to there (owner, 2026-10-21: no line runs through a box).
+  it('no line has to pass through another box', async () => {
+    const { content } = await import('../content');
+    for (const id of ['hyperkalemia-treatment', 'aki-cause-workup']) {
+      const p = content.data.pathway![id];
+      const cells: { k: string; at: [number, number]; span: number }[] = [];
+      for (const [k, n] of Object.entries(p.nodes)) {
+        cells.push({ k, at: n.at, span: n.span ?? 1 });
+        n.answers?.forEach((a, j) => cells.push({ k: `${k}#${j}`, at: a.at, span: a.span ?? 1 }));
+      }
+      const byKey = new Map(cells.map((c) => [c.k, c]));
+      const edges: [string, string][] = [];
+      for (const [k, n] of Object.entries(p.nodes)) {
+        n.answers?.forEach((a, j) => edges.push([k, `${k}#${j}`], [`${k}#${j}`, a.to]));
+        if (n.next) edges.push([k, n.next]);
+      }
+      for (const [from, to] of edges) {
+        const a = byKey.get(from)!, b = byKey.get(to)!;
+        expect(b.at[1], `${id}: ${to} sits below ${from}`).toBeGreaterThan(a.at[1]);
+        const x = a.at[0] + a.span / 2;
+        for (const c of cells) {
+          if (c.k === from || c.k === to || c.at[1] <= a.at[1] || c.at[1] >= b.at[1]) continue;
+          expect(x > c.at[0] && x < c.at[0] + c.span, `${id}: the line ${from} → ${to} crosses ${c.k}`).toBe(false);
+        }
+      }
+    }
   });
 });

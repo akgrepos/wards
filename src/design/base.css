@@ -68,10 +68,11 @@ h1, p { margin: 0; }
 .missing { color: var(--system-red); }
 .pathway { display: flex; flex-direction: column; gap: var(--space-8); }
 
-/* Pathways (owner, 2026-10-20): a levelled flowchart that supplements its card, full screen under the top bar.
-   AKG tokens and components only: white cards for steps, gray for questions, red tint for Treat Now; answers are
-   Buttons (filled with a checkmark when chosen); right-angled lines with arrowheads (2pt label color on your route,
-   1pt separator elsewhere); dashed rules between levels, numbered at the left; a toolbar group for zoom. */
+/* Pathways (owner, 2026-10-20; simplified 2026-10-21): a decision tree that supplements its card, full screen
+   under the top bar. Questions are short gray headings; their answers are decisions (Button `choice`: tinted, then
+   accent fill with a checkmark when chosen, gray when another answer is chosen); steps are white cards, red-tinted
+   for Treat Now. Lines leave a box straight down, turn once just above the box they point to, and join there with
+   one arrowhead: 2pt label color on your route, dashed where ruled out. A toolbar group for zoom. */
 .pw-map-page { position: fixed; inset: 0; display: flex; flex-direction: column; background: var(--background-grouped); --pw-col: 3.75rem; }
 .pw-map-page .top-bar { position: relative; flex: none; }
 .pw-viewport { flex: 1; min-height: 0; overflow: auto; overscroll-behavior: contain; touch-action: pan-x pan-y; -webkit-overflow-scrolling: touch; }
@@ -81,30 +82,26 @@ h1, p { margin: 0; }
 .pw-sizer { position: relative; margin: 0 auto; transform-origin: 0 0; }
 .pw-plane { position: absolute; top: 0; left: 0; transform-origin: 0 0; width: max-content; box-sizing: border-box; padding: var(--space-16) var(--space-24) calc(env(safe-area-inset-bottom) + var(--tab-bar-inset) + var(--tab-bar-height) + 7rem); }
 .pw-lines { position: absolute; top: 0; left: 0; overflow: visible; pointer-events: none; }
-.pw-line { fill: none; stroke: var(--separator-opaque); stroke-width: 1.5; }
+.pw-line { fill: none; stroke: var(--separator-opaque); stroke-width: 1.5; stroke-linejoin: round; }
 .pw-line--on { stroke: var(--label); stroke-width: 2; }
+.pw-line--off { stroke-dasharray: 4 5; }
 .pw-arrow { fill: var(--separator-opaque); }
 .pw-arrow--on { fill: var(--label); }
 .pw-grid { position: relative; display: grid; column-gap: 1rem; row-gap: 2.75rem; align-items: start; }
-.pw-cell { position: relative; min-width: 0; contain: layout; }
-.pw-level { position: relative; pointer-events: none; align-self: stretch; }
-.pw-level::before { content: ""; position: absolute; left: 0; right: 0; top: -1.375rem; border-top: 1px dashed var(--separator-opaque); }
-.pw-level-name { position: relative; pointer-events: none; z-index: 1; }
-.pw-level__label { position: absolute; left: 0; top: -1.375rem; transform: translateY(-50%); display: inline-flex; align-items: center; gap: var(--space-8); padding: 0 var(--space-8) 0 0; background: var(--background-grouped); color: var(--label-secondary); white-space: nowrap; }
-.pw-level__n { display: inline-flex; align-items: center; justify-content: center; min-width: 1.5em; height: 1.5em; border-radius: 999px; background: var(--fill-secondary); color: var(--label); }
+.pw-cell { position: relative; min-width: 0; contain: layout; transition: opacity 0.2s, filter 0.2s; }
+.pw-question { justify-self: center; display: flex; flex-direction: column; align-items: center; gap: var(--space-4); text-align: center; text-wrap: balance; }
+.pw-question h2, .pw-question p { margin: 0; overflow-wrap: break-word; color: var(--label-secondary); }
+.pw-question .akg-value-row, .pw-question .dose-row { text-align: left; align-self: stretch; }
 .pw-box { box-sizing: border-box; display: flex; flex-direction: column; gap: var(--space-8); padding: var(--space-14) var(--space-16); border-radius: var(--radius-grouped); background: var(--background-grouped-secondary); }
 .pw-box h2, .pw-box p { margin: 0; overflow-wrap: break-word; }
-.pw-kind { margin: 0; color: var(--label-secondary); }
 .pw-box__text { color: color-mix(in srgb, var(--label) 30%, var(--label-secondary)); }
-.pw-box--question { background: var(--fill-tertiary); }
 .pw-box--urgent { background: color-mix(in srgb, var(--system-red) 8%, var(--background-grouped-secondary)); }
 .pw-box .tag-row { display: flex; flex-wrap: wrap; gap: var(--space-4); }
-.pw-now { background: var(--label); color: var(--background-grouped-secondary); }
-/* Boxes on routes you've ruled out fade; boxes still ahead keep full strength so you can read ahead. */
-.pw-box--off > * { opacity: 0.4; }
-.pw-answer { display: flex; justify-content: center; }
-.pw-answer__hold { max-width: 100%; }
-.pw-answer .akg-button { max-width: 14rem; min-width: 7rem; white-space: normal; height: auto; min-height: var(--tap-target); padding-left: var(--space-20); padding-right: var(--space-20); text-align: center; }
+/* Ruled out (only reachable through an answer you didn't choose): steps and questions fade; answers stay readable
+   gray buttons, so you can change your mind. */
+.pw-cell--off { opacity: 0.4; filter: grayscale(1); }
+.pw-answer .akg-button { min-height: var(--tap-target); }
+@media (prefers-reduced-motion: reduce) { .pw-cell { transition: none; } }
 .pw-foot { margin-top: 3rem; max-width: 40rem; }
 .pw-foot .akg-source-line { padding-left: 0; padding-right: 0; }
 .pw-zoom { position: fixed; left: var(--space-16); right: var(--space-16); bottom: calc(env(safe-area-inset-bottom) + var(--tab-bar-inset) + var(--tab-bar-height) + var(--space-12)); display: flex; justify-content: space-between; align-items: center; pointer-events: none; z-index: 6; }

@@ -18,11 +18,15 @@
 /* Button */
 (function (AKG) {
   var h = window.React.createElement;
-  var OWN = ["variant", "size", "destructive", "icon", "subtitle", "className", "children", "pressed", "defaultPressed", "onPressedChange"];
+  var OWN = ["variant", "size", "destructive", "icon", "subtitle", "className", "children", "pressed", "defaultPressed", "onPressedChange", "selected", "block"];
+  // Choice: the checkmark a chosen option shows (SF Symbol checkmark).
+  var choiceCheck = h("svg", { viewBox: "0 0 16 16", fill: "none", stroke: "currentColor", strokeWidth: 2.2, strokeLinecap: "round", strokeLinejoin: "round" }, h("path", { d: "M2 8.6 6.2 13 14 3" }));
   function Button(props) {
     var variant = props.variant || "bordered";
     var size = props.size || "medium";
     var isToggle = variant === "toggle";
+    var isChoice = variant === "choice";
+    var icon = props.icon || (isChoice && props.selected === true ? choiceCheck : null);
     var st = window.React.useState(!!props.defaultPressed);
     var controlled = props.pressed !== undefined;
     var pressed = controlled ? !!props.pressed : st[0];
@@ -34,11 +38,15 @@
       "akg-button--" + size,
       props.destructive && "akg-button--destructive",
       isToggle && pressed && "akg-button--pressed",
-      !props.children && props.icon && "akg-button--icon-only",
+      isChoice && props.selected === true && "akg-button--selected",
+      isChoice && props.selected === false && "akg-button--unselected",
+      props.block && "akg-button--block",
+      !props.children && icon && "akg-button--icon-only",
       props.subtitle != null && "akg-button--subtitled",
       props.className
     );
     if (!rest.type) rest.type = "button";
+    if (isChoice) rest["aria-pressed"] = props.selected === true;
     if (isToggle) {
       rest["aria-pressed"] = pressed;
       rest.onClick = function (e) {
@@ -49,7 +57,7 @@
       };
     }
     return h("button", rest,
-      props.icon ? h("span", { className: "akg-sym", "aria-hidden": "true" }, props.icon) : null,
+      icon ? h("span", { className: "akg-sym", "aria-hidden": "true" }, icon) : null,
       props.children != null
         ? (props.subtitle != null
           ? h("span", { className: "akg-button__label" },

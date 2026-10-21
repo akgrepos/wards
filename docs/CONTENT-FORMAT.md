@@ -126,14 +126,15 @@ emergency_hint: Calcium, insulin-dextrose, remove K⁺   # in the front matter
 - A line that is only `{{criteria:id}}` shows the criteria in full. Cards never insert a pathway: each of a card's pathways shows as a row under its title, found through the pathway's `card` field (the content check rejects `{{pathway:…}}`).
 
 ## Pathways
-One file per pathway in `content/data/pathway/<id>.yaml` (example: `content/examples/data/pathway/example-workup.yaml`). A pathway is a short, levelled flowchart for one sequential task on its card: diagnostic (a workup), treatment, or mixed; a card may have several. Boxes may end in a diagnosis, a next test or a treatment. Its words come from the card.
-- Top: `title` (the task, e.g. "Workup", "Treatment"; shown as "Card: Title"), `card`, `summary` (one line for its rows), `columns` (grid width), `start`, optional `levels` (`{ title, row }`, numbered in order), `sources`.
+One file per pathway in `content/data/pathway/<id>.yaml` (example: `content/examples/data/pathway/example-workup.yaml`). A pathway is a short decision tree for one sequential task on its card: diagnostic (a workup), treatment, or mixed; a card may have several. Boxes may end in a diagnosis, a next test or a treatment. Its words come from the card.
+- Top: `title` (the task, e.g. "Workup", "Treatment"; shown as "Card: Title"), `card`, `summary` (one line for its rows), `columns` (grid width), `start`, `sources`. (`levels` is still accepted from older files but no longer shown, 2026-10-21.)
 - `nodes`, each with `kind`, `at: [column, row]` and optional `span` (columns wide; no two boxes share a cell):
   - `start`, `do`, `urgent` (red, Treat Now), `note`: `title`, optional `text` (one line or a list of lines), up to two `links`, and `next`.
-  - `question`: the only kind that branches; `answers`, each `{ label, at, to }` with optional `detail` (a second line in the button) and `span`. Put equivalent answers side by side on one row.
+  - `question`: the only kind that branches; shown as a short heading (its `text` and `links` sit under it). `answers`, each `{ label, at, to }` with optional `detail` (a second line in the button) and `span`. Put a question's answers side by side in the row **below** it; each leads to another question or to a box (a decision points to more decisions or to a specific action).
   - `result`: ends a route (no `next`).
 - Doses: a text line that is only `{{dose:id}}` shows that dose row; it must be a dose the card itself shows. Thresholds may be inserted in text. No `[[…]]` links in text (use `links:`).
 - Links: `section:<card>/<section>[#anchor]` (anchor = a subheading, a numbered step's title, or a More Information subsection key, as a slug), `criteria:<id>`, `dose:<id>`, `card:<id>`, `emergency:<id>`, optional `|label`. Their words come from the content.
+- Lines run down: a line leaves a box at its bottom middle, turns once in the gap just above the box it points to and enters at its top middle, so lines into one box join at one point. Place boxes so a line never has to pass through another box: keep the column under each box clear down to where its line turns (e.g. a box that skips the next row sits where that row is empty).
 - The content check: known fields only, every link resolves, boxes inside the grid and not overlapping, every box reachable from the start, routes end in a result, doses only from the card, at most two links per box.
 
 ## In the app

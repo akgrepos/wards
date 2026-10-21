@@ -10,49 +10,78 @@ import { useSheet } from '../ui/SheetHost';
 import { icons } from '../ui/icons';
 import { NotFoundScreen } from './Tabs';
 
-// A pathway (owner, 2026-10-20): a short, levelled flowchart that supplements its card, like a printed algorithm.
-// Equivalent answers sit side by side on one level and each leads to its own box; boxes show the card's own words
-// and dose rows, with a link back to the card only where it helps. Tap an answer to trace your route: it fills in
-// (with a checkmark), the route's lines turn bold, and boxes on routes you've ruled out fade. Pinch or − + to zoom;
-// Current Step brings you back. Answers, zoom and place are kept while the app is open; Start Over clears answers.
+// A pathway (owner, 2026-10-20; simplified 2026-10-21): a short decision tree that supplements its card, like a
+// teaching flowchart. A question is a short heading; its answers are decisions side by side under it, each leading
+// to another question or to a step (the card's own words and dose rows, with a link back only where it helps).
+// Tap a decision to choose it: it fills in with a checkmark, the other answers on that level turn gray, everything
+// only they lead to fades, and your route's lines turn bold. Any decision can be tapped at any time; tap a chosen
+// one again to undo. Pinch or − + to zoom; Current Step jumps to the next question you haven't answered. Choices,
+// zoom and place are kept while the app is open; Clear forgets the choices.
 
-type Visit = { id: string; node: PathwayNode; answer?: number };
+type Choices = Record<string, number>;
 const asks = (n: PathwayNode) => n.kind === 'question';
+const answerKey = (q: string, j: number) => `${q}#${j}`;
 
-export function walk(p: Pathway, choices: Record<string, number>): { route: Visit[]; ended: boolean } {
-  const route: Visit[] = [];
-  const seen = new Set<string>();
-  let id: string | undefined = p.start;
-  while (id && p.nodes[id] && !seen.has(id)) {
-    seen.add(id);
-    const node: PathwayNode = p.nodes[id];
-    if (asks(node)) {
-      const a: number | undefined = choices[id];
-      route.push({ id, node, answer: a });
-      if (a == null) return { route, ended: false };
-      id = node.answers?.[a]?.to;
-      continue;
-    }
-    route.push({ id, node });
-    if (node.kind === 'result') return { route, ended: true };
-    id = node.next;
-  }
-  return { route, ended: true };
-}
-
-// Boxes still reachable from where you are (they stay at full strength; the rest of the chart fades).
-function reachable(p: Pathway, from: string | undefined): Set<string> {
+// What's still possible: from the start, following only the chosen answer where a question has one. Holds node ids
+// and answer keys ("question#index").
+export function reach(p: Pathway, choices: Choices): Set<string> {
   const out = new Set<string>();
-  const stack = from ? [from] : [];
+  const stack = [p.start];
   while (stack.length) {
     const k = stack.pop()!;
     const n = p.nodes[k];
     if (!n || out.has(k)) continue;
     out.add(k);
     if (n.next) stack.push(n.next);
-    for (const a of n.answers ?? []) stack.push(a.to);
+    (n.answers ?? []).forEach((a, j) => {
+      if (choices[k] != null && choices[k] !== j) return;
+      out.add(answerKey(k, j));
+      stack.push(a.to);
+    });
   }
   return out;
+}
+
+// Each box's (and answer's) way in, for walking back up the chart.
+function parentsOf(p: Pathway): Map<string, string[]> {
+  const m = new Map<string, string[]>();
+  const add = (to: string, from: string) => m.set(to, [...(m.get(to) ?? []), from]);
+  for (const [k, n] of Object.entries(p.nodes)) {
+    if (n.next) add(n.next, k);
+    (n.answers ?? []).forEach((a, j) => { add(answerKey(k, j), k); add(a.to, answerKey(k, j)); });
+  }
+  return m;
+}
+
+// Your route, drawn bold: each chosen answer, everything still possible above it, and the steps it leads to up to
+// the next question.
+function routeOf(p: Pathway, choices: Choices, live: Set<string>, parents: Map<string, string[]>): Set<string> {
+  const out = new Set<string>();
+  for (const [q, j] of Object.entries(choices)) {
+    const key = answerKey(q, j);
+    if (!live.has(key)) continue;
+    out.add(key);
+    const up = [key];
+    while (up.length) for (const k of parents.get(up.pop()!) ?? []) if (live.has(k) && !out.has(k)) { out.add(k); up.push(k); }
+    let t: string | undefined = p.nodes[q].answers?.[j]?.to;
+    while (t && p.nodes[t] && !asks(p.nodes[t]) && !out.has(t)) { out.add(t); t = p.nodes[t].next; }
+  }
+  return out;
+}
+
+// Choose (or, tapped again, un-choose) an answer. Choosing one on a level you'd ruled out drops the earlier choices
+// that ruled it out, so the new choice is always on your route.
+export function choose(p: Pathway, choices: Choices, q: string, j: number): Choices {
+  const next: Choices = { ...choices };
+  if (next[q] === j) { delete next[q]; return next; }
+  next[q] = j;
+  while (!reach(p, next).has(q)) {
+    const others = Object.keys(next).filter((k) => k !== q);
+    const freeing = others.find((k) => { const t = { ...next }; delete t[k]; return reach(p, t).has(q); });
+    if (freeing) delete next[freeing];
+    else { for (const k of others) delete next[k]; break; }
+  }
+  return next;
 }
 
 const MAX_ZOOM = 2;
@@ -78,17 +107,12 @@ function LinkRow({ refText, surface }: { refText: string; surface: 'fill' | 'rai
   return <AKG.ValueRow className="pw-link" surface={surface} title={l.text} value={value} onClick={go} />;
 }
 
-function Box({ id, node, state }: { id: string; node: PathwayNode; state: string }) {
+// A step: what to do or what it means (white card; red tint and a Treat Now tag when urgent).
+function Box({ id, node, state }: { id: string; node: PathwayNode; state: State }) {
   const surface = node.kind === 'urgent' ? 'raised' : 'fill';
-  const tags = [
-    node.kind === 'urgent' && <AKG.Tag key="u" variant="critical">Treat Now</AKG.Tag>,
-    state === 'now' && <AKG.Tag key="n" variant="neutral" icon={null} className="pw-now">Now</AKG.Tag>,
-    node.kind === 'result' && <AKG.Tag key="e">End of Pathway</AKG.Tag>,
-  ].filter(Boolean);
   return (
-    <section className={`pw-box pw-box--${node.kind} pw-box--${state}`} aria-current={state === 'now' ? 'step' : undefined} data-node={id}>
-      {tags.length > 0 && <span className="tag-row">{tags}</span>}
-      {node.kind === 'start' && <p className="pw-kind ios-footnote-emphasized">Start</p>}
+    <section className={`pw-box pw-box--${node.kind} pw-box--${state}`} data-node={id}>
+      {node.kind === 'urgent' && <span className="tag-row"><AKG.Tag variant="critical">Treat Now</AKG.Tag></span>}
       <h2 className="ios-headline">{node.title}</h2>
       {textLines(node.text).map((t, i) => {
         const dose = doseLine(t);
@@ -99,7 +123,24 @@ function Box({ id, node, state }: { id: string; node: PathwayNode; state: string
   );
 }
 
-type Line = { d: string; on: boolean; arrow: boolean };
+// A question: a short heading over its answers, with any note or link under it.
+function Question({ id, node, current }: { id: string; node: PathwayNode; current: boolean }) {
+  return (
+    <section className="pw-question" data-node={id} aria-current={current ? 'step' : undefined}>
+      <h2 className="ios-subheadline-emphasized">{node.title}</h2>
+      {textLines(node.text).map((t, i) => {
+        const dose = doseLine(t);
+        return dose ? <DoseRow key={i} id={dose} surface="fill" /> : <p key={i} className="ios-footnote"><RichText text={t} /></p>;
+      })}
+      {(node.links ?? []).map((r) => <LinkRow key={r} refText={r} surface="fill" />)}
+    </section>
+  );
+}
+
+// on = on your route (bold) · open = still possible · off = ruled out (faded, dashed).
+type State = 'on' | 'open' | 'off';
+type Line = { d: string; state: State; arrow: boolean };
+const ORDER: Record<State, number> = { off: 0, open: 1, on: 2 };
 
 export function PathwayScreen({ id }: { id: string }) {
   const p = content.data.pathway?.[id] as Pathway | undefined;
@@ -125,34 +166,29 @@ export function PathwayScreen({ id }: { id: string }) {
   useEffect(() => { if (title) setPageTitle(title); }, [title]);
   useEffect(() => AKG.lockScroll(), []);
 
-  const { route, ended } = p ? walk(p, choices) : { route: [] as Visit[], ended: false };
-  const onRoute = new Map(route.map((v) => [v.id, v]));
-  const last = route[route.length - 1];
-  const current = !ended ? last?.id : undefined;
-  const ahead = p && current ? reachable(p, current) : new Set<string>();
-  const routeKey = route.map((v) => `${v.id}:${v.answer ?? ''}`).join('|');
+  const parents = useMemo(() => (p ? parentsOf(p) : new Map<string, string[]>()), [p]);
+  const possible = p ? reach(p, choices) : new Set<string>();
+  const route = p ? routeOf(p, choices, possible, parents) : new Set<string>();
+  const stateOf = (k: string): State => (!possible.has(k) ? 'off' : route.has(k) ? 'on' : 'open');
+  // The next question you haven't answered (top to bottom, then left to right).
+  const open = p ? Object.entries(p.nodes).filter(([k, n]) => asks(n) && possible.has(k) && choices[k] == null).sort(([, a], [, b]) => a.at[1] - b.at[1] || a.at[0] - b.at[0]) : [];
+  const current = open[0]?.[0];
+  const routeKey = JSON.stringify(choices);
 
-  // Every line: question → answer → its box, and a box's "next". Lines into a box end in an arrowhead.
+  // Every line: question → each answer → where it leads, and a step's "next". Every line ends in an arrowhead.
   const edges = useMemo(() => {
-    const out: { from: string; to: string; on: (r: Map<string, Visit>) => boolean; arrow: boolean }[] = [];
+    const out: { from: string; to: string }[] = [];
     if (!p) return out;
     for (const [nid, n] of Object.entries(p.nodes)) {
-      if (asks(n)) {
-        n.answers?.forEach((a, j) => {
-          const k = `${nid}#${j}`;
-          out.push({ from: nid, to: k, on: (r) => r.get(nid)?.answer === j, arrow: false });
-          out.push({ from: k, to: a.to, on: (r) => r.get(nid)?.answer === j && r.has(a.to), arrow: true });
-        });
-      } else if (n.next) {
-        out.push({ from: nid, to: n.next, on: (r) => r.has(nid) && r.has(n.next!), arrow: true });
-      }
+      n.answers?.forEach((a, j) => { out.push({ from: nid, to: answerKey(nid, j) }, { from: answerKey(nid, j), to: a.to }); });
+      if (n.next) out.push({ from: nid, to: n.next });
     }
     return out;
   }, [p]);
 
   // Lines, in the chart's own (unzoomed) units, measured only when the route or the text size changes.
-  // Down: straight when the next box is right below; otherwise down, across in the gap above the box, and down
-  // (lines into the same box share that crossing, like a printed algorithm). Beside: straight across.
+  // Down: leave the box straight down, turn once in the gap just above the box it points to, and enter it at its
+  // middle, so lines into the same box join at one point. Beside (older layouts only): straight across.
   useLayoutEffect(() => {
     const pl = plane.current, g = grid.current;
     if (!pl || !g) return;
@@ -167,21 +203,22 @@ export function PathwayScreen({ id }: { id: string }) {
     setLines(edges.map((e) => {
       const a = at(e.from), b = at(e.to);
       if (!a || !b) return null;
-      const on = e.on(onRoute), arrow = e.arrow;
+      const ends = [stateOf(e.from), stateOf(e.to)];
+      const state: State = ends.includes('off') ? 'off' : ends.every((s) => s === 'on') ? 'on' : 'open', arrow = true;
       const ax = a.x + a.w / 2, bx = b.x + b.w / 2;
       if (b.y >= a.y + a.h) {
         const y1 = a.y + a.h, y2 = b.y;
-        if (Math.abs(ax - bx) < 1 || (ax > b.x + 24 && ax < b.x + b.w - 24 && a.w < b.w)) return { d: `M${ax},${y1} V${y2}`, on, arrow };
+        if (Math.abs(ax - bx) < 1) return { d: `M${ax},${y1} V${y2}`, state, arrow };
         const m = Math.round(y2 - half);
-        return { d: `M${ax},${y1} V${m} H${bx} V${y2}`, on, arrow };
+        return { d: `M${ax},${y1} V${m} H${bx} V${y2}`, state, arrow };
       }
       if (b.x >= a.x + a.w || b.x + b.w <= a.x) {
         const right = b.x >= a.x + a.w;
         const y = Math.min(Math.max(b.y + b.h / 2, a.y + 16), a.y + a.h - 16);
-        return { d: `M${right ? a.x + a.w : a.x},${y} H${right ? b.x : b.x + b.w}`, on, arrow };
+        return { d: `M${right ? a.x + a.w : a.x},${y} H${right ? b.x : b.x + b.w}`, state, arrow };
       }
       const lane = Math.max(a.x + a.w, b.x + b.w) + 16;
-      return { d: `M${a.x + a.w},${a.y + 20} H${lane} V${b.y + 20} H${b.x + b.w}`, on, arrow };
+      return { d: `M${a.x + a.w},${a.y + 20} H${lane} V${b.y + 20} H${b.x + b.w}`, state, arrow };
     }).filter((x): x is Line => !!x));
     if (pl.offsetWidth !== size.w || pl.offsetHeight !== size.h) setSize({ w: pl.offsetWidth, h: pl.offsetHeight });
   }, [routeKey, edges, textSize]); // eslint-disable-line react-hooks/exhaustive-deps
@@ -338,8 +375,9 @@ export function PathwayScreen({ id }: { id: string }) {
     };
   }, [size.w, size.h]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  // The box to come back to: the open question, or the last box on the route.
-  const stepId = current ?? last?.id;
+  // The box to come back to: the next open question or, with every question answered, where the last answer leads.
+  const lastChosen = p ? Object.entries(choices).filter(([q, j]) => possible.has(answerKey(q, j))).sort(([a], [b]) => p.nodes[b].at[1] - p.nodes[a].at[1])[0] : undefined;
+  const stepId = current ?? (lastChosen && p ? p.nodes[lastChosen[0]].answers?.[lastChosen[1]]?.to : undefined);
   // A box's place in the scrolled page (viewport scroll units).
   const where = (el: HTMLElement) => {
     const vp = viewport.current!, r = el.getBoundingClientRect(), v = vp.getBoundingClientRect();
@@ -382,8 +420,8 @@ export function PathwayScreen({ id }: { id: string }) {
     prevKey.current = routeKey;
     const q = answered.current; answered.current = null;
     if (!q || !p) return;
-    const v = onRoute.get(q);
-    const to = v?.answer != null ? p.nodes[q].answers?.[v.answer]?.to : undefined;
+    const j = choices[q];
+    const to = j != null ? p.nodes[q].answers?.[j]?.to : undefined;
     if (!to) return;
     if (asks(p.nodes[to])) { frame(to, true); return; }
     const vp = viewport.current, el = els.current.get(to);
@@ -396,17 +434,11 @@ export function PathwayScreen({ id }: { id: string }) {
 
   if (!p || !card) return <NotFoundScreen />;
   const reg = (k: string) => (el: HTMLElement | null) => { if (el) els.current.set(k, el); else els.current.delete(k); };
-  const choose = (nid: string, a: number) => {
-    const i = route.findIndex((v) => v.id === nid);
-    const drop = new Set(i < 0 ? [] : route.slice(i + 1).map((v) => v.id));
-    const next: Record<string, number> = {};
-    for (const [k, x] of Object.entries(choices)) if (!drop.has(k)) next[k] = x;
-    next[nid] = a;
-    answered.current = nid;
-    setChoices(next);
+  const pick = (nid: string, j: number) => {
+    answered.current = choices[nid] === j ? null : nid;
+    setChoices(choose(p, choices, nid, j));
   };
-  const startOver = () => { setChoices({}); frame(p.start, true); };
-  const stateOf = (nid: string) => (onRoute.has(nid) ? (nid === current ? 'now' : 'on') : ahead.has(nid) ? 'ahead' : 'off');
+  const clear = () => { setChoices({}); frame(current ?? p.start, true); };
   const s = scale || 1;
   const cell = (at: [number, number], span = 1): CSSProperties => ({ gridColumn: `${at[0] + 1} / span ${span}`, gridRow: at[1] + 1 });
 
@@ -418,7 +450,7 @@ export function PathwayScreen({ id }: { id: string }) {
           subtitle={card.title}
           showTitle
           leading={<AKG.ToolbarButton icon={icons.chevronBackward} aria-label={`Back to ${card.title}`} onClick={() => goBack(href.card(card.id))} />}
-          trailing={<AKG.ToolbarButton onClick={startOver} disabled={!Object.keys(choices).length}>Start Over</AKG.ToolbarButton>}
+          trailing={<AKG.ToolbarButton onClick={clear} disabled={!Object.keys(choices).length}>Clear</AKG.ToolbarButton>}
         />
       </div>
       <div className="pw-viewport" ref={viewport}>
@@ -429,46 +461,29 @@ export function PathwayScreen({ id }: { id: string }) {
                 <marker id="pw-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse" markerUnits="strokeWidth"><path d="M0,1 L9,5 L0,9 z" className="pw-arrow" /></marker>
                 <marker id="pw-arrow-on" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse" markerUnits="strokeWidth"><path d="M0,1 L9,5 L0,9 z" className="pw-arrow pw-arrow--on" /></marker>
               </defs>
-              {[...lines].sort((x, y) => Number(x.on) - Number(y.on)).map((l, i) => (
-                <path key={i} d={l.d} className={`pw-line${l.on ? ' pw-line--on' : ''}`} markerEnd={l.arrow ? `url(#${l.on ? 'pw-arrow-on' : 'pw-arrow'})` : undefined} />
+              {/* Ruled-out lines first, your route last, so the bold route is drawn on top where lines share a stretch. */}
+              {[...lines].sort((x, y) => ORDER[x.state] - ORDER[y.state]).map((l, i) => (
+                <path key={i} d={l.d} className={`pw-line pw-line--${l.state}`} markerEnd={l.arrow ? `url(#${l.state === 'on' ? 'pw-arrow-on' : 'pw-arrow'})` : undefined} />
               ))}
             </svg>
             <div className="pw-grid" ref={grid} style={{ gridTemplateColumns: `repeat(${p.columns}, var(--pw-col))` }}>
-              {(p.levels ?? []).flatMap((l, i) => {
-                // The level's name sits on its rule, above the level's question (or first box), where you're reading.
-                const lead = Object.values(p.nodes).filter((n) => n.at[1] === l.row).sort((a, b) => Number(b.kind === 'question') - Number(a.kind === 'question') || a.at[0] - b.at[0])[0];
-                return [
-                  <div key={`rule-${i}`} className="pw-level" style={{ gridColumn: '1 / -1', gridRow: l.row + 1 }} aria-hidden="true" />,
-                  <div key={`level-${i}`} className="pw-level-name" style={lead ? cell(lead.at, lead.span) : { gridColumn: 1, gridRow: l.row + 1 }}>
-                    <span className="pw-level__label ios-footnote-emphasized"><span className="pw-level__n" aria-hidden="true">{i + 1}</span>{l.title}</span>
-                  </div>,
-                ];
-              })}
               {Object.entries(p.nodes).flatMap(([nid, n]) => {
                 const state = stateOf(nid);
                 const box = (
-                  <div key={nid} ref={reg(nid)} className="pw-cell" style={cell(n.at, n.span)}>
-                    <Box id={nid} node={n} state={state} />
+                  <div key={nid} ref={reg(nid)} className={`pw-cell${asks(n) ? ' pw-cell--question' : ''}${state === 'off' ? ' pw-cell--off' : ''}`} style={cell(n.at, n.span)}>
+                    {asks(n) ? <Question id={nid} node={n} current={nid === current} /> : <Box id={nid} node={n} state={state} />}
                   </div>
                 );
                 if (!asks(n)) return [box];
-                const v = onRoute.get(nid);
                 return [box, ...(n.answers ?? []).map((a, j) => {
-                  const st = !v ? 'off' : v.answer == null ? 'open' : v.answer === j ? 'chosen' : 'other';
+                  // Nothing chosen on this question yet (and it's still possible): the tinted look. Chosen: filled with
+                  // a checkmark. Another answer chosen, or the question ruled out: gray, still tappable.
+                  const selected = choices[nid] != null ? choices[nid] === j : possible.has(nid) ? undefined : false;
                   return (
-                    <div key={`${nid}#${j}`} className={`pw-cell pw-answer pw-answer--${st}`} data-question={nid} style={cell(a.at, a.span)}>
-                      <div ref={reg(`${nid}#${j}`)} className="pw-answer__hold">
-                        <AKG.Button
-                          variant={st === 'chosen' ? 'prominent' : st === 'open' ? 'tinted' : 'bordered'}
-                          disabled={st === 'off'}
-                          icon={st === 'chosen' ? icons.checkmark : undefined}
-                          subtitle={a.detail ? <Plain text={a.detail} /> : undefined}
-                          aria-pressed={st === 'chosen'}
-                          onClick={() => choose(nid, j)}
-                        >
-                          {a.label}
-                        </AKG.Button>
-                      </div>
+                    <div key={answerKey(nid, j)} ref={reg(answerKey(nid, j))} className="pw-cell pw-answer" data-question={nid} style={cell(a.at, a.span)}>
+                      <AKG.Button variant="choice" block selected={selected} subtitle={a.detail ? <Plain text={a.detail} /> : undefined} onClick={() => pick(nid, j)}>
+                        {a.label}
+                      </AKG.Button>
                     </div>
                   );
                 })];

@@ -1,40 +1,38 @@
-# Example pathway (format: docs/CONTENT-FORMAT.md, "Pathways"): a levelled flowchart that supplements its card.
-# Boxes sit on a grid ("at: [column, row]", "span" columns wide); equivalent answers share a row; only questions
-# branch. Text comes from the card; a line that is only {{dose:…}} shows the card's own dose row.
+# Example pathway (format: docs/CONTENT-FORMAT.md, "Pathways"): a decision tree that supplements its card.
+# Boxes sit on a grid ("at: [column, row]", "span" columns wide); a question is a heading and its answers sit side
+# by side in the row below it; only questions branch. Text comes from the card; a line that is only {{dose:…}}
+# shows the card's own dose row.
 title: Workup
 card: example-condition
 summary: Confirm, then grade
 columns: 6
 start: start
-levels:
-  - { title: Confirm, row: 1 }
-  - { title: Grade, row: 3 }
 sources: [example-guideline-a]
 nodes:
   start: { kind: start, at: [2, 0], span: 2, title: Finding on a test, next: confirmed }
   confirmed:
     kind: question
-    at: [2, 1]
-    span: 2
+    at: [1, 1]
+    span: 4
     title: Is the finding confirmed?
     links: [section:example-condition/diagnosis]
     answers:
-      - { label: Confirmed, detail: Repeat sample agrees, at: [2, 2], span: 2, to: value }
-      - { label: Likely spurious, at: [4, 1], span: 2, to: repeat }
-  repeat: { kind: result, at: [4, 2], span: 2, title: Repeat the sample, links: ["section:example-condition/diagnosis#placeholder-first-step"] }
+      - { label: Confirmed, detail: Repeat sample agrees, at: [1, 2], span: 2, to: value }
+      - { label: Likely spurious, at: [4, 2], span: 2, to: repeat }
+  repeat: { kind: result, at: [4, 3], span: 2, title: Repeat the sample, links: ["section:example-condition/diagnosis#placeholder-first-step"] }
   value:
     kind: question
-    at: [2, 3]
+    at: [1, 4]
     span: 2
     title: Measured value
     answers:
-      - { label: Mild, at: [0, 4], span: 3, to: cause }
-      - { label: Severe, detail: "Above {{threshold:example-cutoff}}", at: [3, 4], span: 3, to: treat }
+      - { label: Mild, at: [0, 5], span: 3, to: cause }
+      - { label: Severe, detail: "Above {{threshold:example-cutoff}}", at: [3, 5], span: 3, to: treat }
   treat:
     kind: urgent
-    at: [3, 5]
+    at: [3, 6]
     span: 3
     title: Treat first
     text: ["{{dose:example-drug-standard}}"]
     next: cause
-  cause: { kind: result, at: [2, 6], span: 2, title: Find the cause, links: [section:example-condition/more] }
+  cause: { kind: result, at: [1, 7], span: 3, title: Find the cause, links: [section:example-condition/more] }
