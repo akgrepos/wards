@@ -1,6 +1,8 @@
 name: COPD exacerbation severity (Rome classification)
 short: Rome severity
 columns: [Severity, Findings]
+layout: stacked
+tones: [yellow, orange, red]
 rows:
   - ["Mild (default)", "Dyspnea VAS <5; RR <24 breaths/min; HR <95 bpm; resting SaO₂ ≥92% on usual oxygen and fall ≤3% (when known); CRP <10 mg/L (if obtained)"]
   - ["Moderate", "At least 3 of: dyspnea VAS ≥5; RR ≥24 breaths/min; HR ≥95 bpm; SaO₂ <92% or fall >3%; CRP ≥10 mg/L. ABG, if obtained, may show PaO₂ 70–80 mm Hg"]

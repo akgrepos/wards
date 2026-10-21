@@ -2630,7 +2630,18 @@ button.akg-sheet__grabber::after { content: ""; position: absolute; left: -20px;
   .akg-grade-list__values { width: 100%; }
 }
 /* Narrower still: each value goes under its label. */
+/* GradeList layout="bands" — each grade a full-width tinted band: name (17 semibold) over 12pt semibold labels (as written, never uppercased, so β and SCr stay correct) and 15pt values, all at full label color so text on the tint keeps contrast. Bands are 8 apart. */
+.akg-grade-list--bands .akg-grade-list__rows { display: flex; flex-direction: column; gap: var(--space-8); }
+.akg-grade-list__band { display: flex; flex-direction: column; gap: var(--space-8); padding: var(--space-12) var(--space-14); border-radius: 14px; color: var(--label); min-width: 0; }
+.akg-grade-list__name { font-size: calc(17 * var(--akg-t)); line-height: calc(22 * var(--akg-t)); font-weight: 600; }
+.akg-grade-list__fields { margin: 0; display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.akg-grade-list__fields dt { margin-top: var(--space-8); font-size: calc(12 * var(--akg-t)); line-height: calc(16 * var(--akg-t)); font-weight: 600; color: var(--label); }
+.akg-grade-list__fields dt:first-child { margin-top: 0; }
+.akg-grade-list__fields dd { margin: 0; font-size: calc(15 * var(--akg-t)); line-height: calc(20 * var(--akg-t)); overflow-wrap: break-word; }
 @container (max-width: 12em) { .akg-grade-list__values { grid-template-columns: minmax(0, 1fr); } }
+[data-theme^="macos"] .akg-grade-list__band { padding: var(--space-8) var(--space-10); border-radius: 10px; }
+[data-theme^="macos"] .akg-grade-list__name, [data-theme^="macos"] .akg-grade-list__fields dd { font-size: 13px; line-height: 16px; }
+[data-theme^="macos"] .akg-grade-list__fields dt { font-size: 10px; line-height: 13px; }
 [data-theme^="macos"] .akg-grade-list__chip { min-width: 48px; border-radius: var(--radius-regular); padding: 4px; }
 [data-theme^="macos"] .akg-grade-list__word, [data-theme^="macos"] .akg-grade-list__label, [data-theme^="macos"] .akg-grade-list__values dt { font-size: 10px; line-height: 13px; }
 [data-theme^="macos"] .akg-grade-list__grade { font-size: 15px; line-height: 20px; }

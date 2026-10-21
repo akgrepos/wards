@@ -307,9 +307,9 @@ function RegimenBlock({ id }: { id: string }) {
 // ---- Criteria and cutoffs ----
 
 // A criteria set (e.g. KDIGO AKI staging), shown in place or in a sheet when tapped in text: the "any of" items in an
-// indigo Criteria box; a staging table (first column "Stage") as stage rows on the severity ramp, any other table as a
-// table; the notes in a brown Note box. One color per kind of information, always with its word (owner, 2026-10-19).
-const isStaging = (c: Criteria) => (c.columns?.[0] ?? '').trim().toLowerCase() === 'stage' && (c.rows?.length ?? 0) <= 5;
+// indigo Criteria box; a table with `layout: stacked` as tinted bands (yellow, orange, red from its `tones`, severity only),
+// any other table as a table; the notes in a brown Note box. One color per kind of information (owner, 2026-10-19).
+const TONE = { yellow: 'mild', orange: 'moderate', red: 'severe' } as const;
 function CriteriaBody({ c }: { c: Criteria }) {
   return (
     <div className="criteria">
@@ -319,12 +319,11 @@ function CriteriaBody({ c }: { c: Criteria }) {
           {c.items?.length ? <ul className="ios-body rich-list">{c.items.map((t, i) => <li key={i}><RichText text={t} /></li>)}</ul> : null}
         </AKG.Panel>
       ) : null}
-      {c.rows?.length && isStaging(c) ? (
+      {c.rows?.length && c.layout === 'stacked' && c.tones ? (
         <AKG.GradeList
           className="staging"
-          label="Staging"
-          gradeLabel="Stage"
-          rows={c.rows.map((r, i) => ({ key: i, grade: r[0], values: r.slice(1).map((t, j) => ({ label: <RichText text={c.columns?.[j + 1]} />, value: <RichText text={t} /> })) }))}
+          layout="bands"
+          rows={c.rows.map((r, i) => ({ key: i, grade: <RichText text={/^\d+$/.test(r[0]) ? `${c.columns?.[0]} ${r[0]}` : r[0]} />, tone: TONE[c.tones![i]], values: r.slice(1).map((t, j) => ({ label: <RichText text={c.columns?.[j + 1]} />, value: <RichText text={t} /> })) }))}
         />
       ) : c.rows?.length ? (
         <AKG.Table stickyFirstColumn shadedHeader label="Table" columns={(c.columns ?? []).map((h, i) => <RichText key={i} text={h} />)} rows={c.rows.map((r, i) => ({ key: i, cells: r.map((t, j) => <RichText key={j} text={t} />) }))} />

@@ -67,7 +67,7 @@ Definitions, criteria and staging are always in the app, in a titled box; scores
 A formal definition or diagnostic criteria with their logic.
 - Fields: name · items (major/minor or lettered) · logic (e.g. "2 major, or 1 major + 3 minor") · stages or grades · sources
 - Examples: KDIGO AKI stages, Sepsis-3, modified Duke criteria, SIRS
-- Display (2026-10-19): the items in an indigo "Criteria" box; a table whose first column is "Stage" (up to five stages) as stage rows with tinted chips; any other table as a gray table; the notes in a brown "Note" box.
+- Display (2026-10-19): the items in an indigo "Criteria" box; a table with `layout: stacked` and `tones` (one of yellow, orange, red per row, in order; severity only, nothing else) as full-width tinted bands, the first cell as the band name and the other columns as labeled fields (same on the card and in the sheet); any other table (`layout: columns`, the default) as a gray table; the notes in a brown "Note" box.
 - Home: the condition card it defines. Inserted elsewhere (and can power a checklist).
 
 ### 7. Score

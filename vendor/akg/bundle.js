@@ -2998,12 +2998,18 @@
     var rows = props.rows || [];
     var tones = (AKG.SEVERITY_RAMP || {})[Math.min(Math.max(rows.length, 1), 5)] || [];
     var rest = {};
-    for (var k in props) if (["label", "rows", "gradeLabel", "className"].indexOf(k) < 0) rest[k] = props[k];
-    rest.className = AKG.cx("akg-grade-list", props.className);
+    var bands = props.layout === "bands";
+    for (var k in props) if (["label", "rows", "gradeLabel", "className", "layout"].indexOf(k) < 0) rest[k] = props[k];
+    rest.className = AKG.cx("akg-grade-list", bands && "akg-grade-list--bands", props.className);
     return h("div", rest,
       props.label != null ? h("div", { className: "akg-grade-list__label" }, props.label) : null,
       h("ol", { className: "akg-grade-list__rows" }, rows.map(function (r, i) {
         var word = r.gradeLabel != null ? r.gradeLabel : props.gradeLabel;
+        if (bands) return h("li", { key: r.key != null ? r.key : i, className: AKG.cx("akg-grade-list__band", "akg-tone--" + (r.tone || tones[i] || "neutral")) },
+          h("div", { className: "akg-grade-list__name" }, r.grade),
+          h("dl", { className: "akg-grade-list__fields" }, (r.values || []).map(function (v, j) {
+            return [h("dt", { key: "k" + j }, v.label), h("dd", { key: "v" + j }, v.value)];
+          })));
         return h("li", { key: r.key != null ? r.key : i, className: "akg-grade-list__row" },
           h("span", { className: AKG.cx("akg-grade-list__chip", "akg-tone--" + (r.tone || tones[i] || "neutral")) },
             word != null ? h("span", { className: "akg-grade-list__word" }, word) : null,
