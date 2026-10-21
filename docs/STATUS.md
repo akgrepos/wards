@@ -3,16 +3,17 @@
 Last updated 2026-10-21 (live version 2026.10.21, ECG figures on four cards). A short snapshot so the next session can pick up where the last one stopped. The reasons behind each choice are in [DECISIONS.md](DECISIONS.md); what changed in each version is in [CHANGELOG.md](../CHANGELOG.md).
 
 ## Start here next time
-1. **Open a new chat and type "Start Main".** The `wards-main` skill renames it "Main", checks sessions, pull requests and branches, and runs the day by delegating to side sessions (at most three branches at a time). Nothing is parked: no open pull requests, no side sessions, only `main`.
+1. **Open a new chat and type "Start Main".** The `wards-main` skill renames it "Main", checks sessions, pull requests and branches, and runs the day by delegating to side sessions (at most three branches at a time). No open pull requests, no side sessions, only `main`. **First task: restart Wave 1 batch 4** (item 4); the owner's choices are already made, so the new session doesn't ask them again.
 2. **Read first:** `CLAUDE.md`, then DECISIONS.md "Card-writing process" (2026-10-19) and "Sources, updated" before any card work.
-3. **Owner checks on the phone** (version 2026.10.20.3; tap Reload on "Update Ready"), then say what to change (Main sends it to a fix session):
+3. **Owner checks on the phone** (version 2026.10.21; tap Reload on "Update Ready"), then say what to change (Main sends it to a fix session):
    - New cardiology cards: Atrial Fibrillation (with its Rapids page: AF with RVR, Timed Mode), Acute Coronary Syndrome: NSTEMI and Unstable Angina, Acute Decompensated Heart Failure (dose sheets, US vs European comparisons under More Information).
    - New cards: Community-Acquired Pneumonia, Cellulitis and Erysipelas, Pyelonephritis and Complicated UTI (gray Regimen boxes, dose sheets); Hyponatremia (with its Rapids page), Hypokalemia, IV Fluids; Electrolyte Repletion.
    - New focused pathways: Hyperkalemia: Treatment and AKI: Cause Workup (Pathway row under each title, Library › Pathways): levels, dose rows, checkmark answers, pinch zoom, Current Step.
    - ECG figures (2026.10.21) on AF, NSTE-ACS, Hypokalemia and Hyperkalemia: measurements, tap for full screen (scroll, − / +, pinch), light/dark, large Text Size.
    - Rapids › Hyperkalemia: Timed Mode start to finish (Mark Given, minimize, reopen the app, End, summary).
 4. **Next work** (Main picks with the owner, within the three-branch limit):
-   - **Wave 1 batch 4**: the next three cards from the private topic list's Wave 1 (one batch at a time, owner reviews each on the phone). Focused pathways for AF (e.g. rate vs rhythm, anticoagulation) and ADHF can now be built in the new format; their drafted box content is in the batch 3 pull request. Batch 2 leftovers, possible later: an aztreonam row for beta-lactam allergy, IV moxifloxacin, the newer oral carbapenem for complicated UTI.
+   - **Wave 1 batch 4 (parked 2026-10-21 before drafting; nothing committed):** Sepsis and Septic Shock, Diabetic Ketoacidosis, Hyperglycemia in the Hospitalized Patient. Owner's choices (pop-ups, 2026-10-21): Rapids pages for septic shock and for DKA; one focused pathway, DKA: Treatment; HHS covered in full on the DKA card (the separate Wave 2 HHS card is dropped); the inpatient hyperglycemia card gives starting insulin doses only (titration waits for the Wave 2 inpatient insulin card). Newest-guideline search, partly done: Surviving Sepsis 2026 (already a source), ADA Standards of Care 2026 hospital chapter (newer than anything cited), 2024 hyperglycemic crises consensus (still newest found); finish the search, then draft, verify, review, Simulator test, merge.
+   - **After batch 4:** the next three Wave 1 cards (one batch at a time, owner reviews each on the phone). Focused pathways for AF (e.g. rate vs rhythm, anticoagulation) and ADHF can now be built in the new format; their drafted box content is in the batch 3 pull request. Batch 2 leftovers, possible later: an aztreonam row for beta-lactam allergy, IV moxifloxacin, the newer oral carbapenem for complicated UTI.
    - **ECG library** (follow-on to the ECG figures): Library › ECGs built on the Media data type, the same figure and full-screen view, more patterns from open datasets (only where a real, labeled recording exists; otherwise a drawing, as for hyperkalemia).
    - **Card template adjustments** from the three pilots: a short clinical-register style guide in CONTENT-FORMAT.md; whether approach cards need fewer sections; the "most common" vs "cannot miss" layout; rates and deficits in prose blocked by the typed-dose check; dose rows that need an indication lead-in; a definition line for reference cards; tall table rows on a phone; Contents menu names cut short at the largest Text Sizes.
    - **Redesign Phase 5, Library and full search** (offline search across sections, drugs and tools, including Rapids pages; possibly one file per card), then **Phase 6** (final light/dark/Text Size check and independent review).
@@ -40,7 +41,7 @@ Last updated 2026-10-21 (live version 2026.10.21, ECG figures on four cards). A 
 
 ## Waiting on the owner
 - Phone review of the new cards, the focused pathways and Timed Mode (see "Start here" 3).
-- Which Wave 1 cards go in batch 4.
+- Whether to make the guideline-audit items not chosen yet (ADHF, AKI; see Watch).
 - Choices on the remaining 2026-10-17 audit findings (process next).
 
 ## Watch
