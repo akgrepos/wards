@@ -217,6 +217,8 @@ html[data-timed] .pw-zoom { bottom: calc(env(safe-area-inset-bottom) + var(--tab
 .do-now-body { gap: var(--space-8); }
 .do-now-note { color: var(--label); }
 .do-now-notes { padding: 0 var(--space-16) var(--space-12); }
+/* Steps in a card section use the section card's full width, like Rapids (owner, 2026-10-21): the section's 16px side padding is pulled back so the step's own 12px padding is the only inset. Only when the list sits directly in the section body (not inside a callout). */
+.akg-content-section--card .akg-content-section__body > .steps-bleed { margin: 0 calc(-1 * var(--space-16)); }
 .do-now-compact .akg-step-list { margin: 0 calc(-1 * var(--space-12)); }
 /* A topic's emergency button: the Rapids symbol in the emergency color. */
 .akg-toolbar-button.emergency-button { color: var(--system-red); }
