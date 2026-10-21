@@ -104,7 +104,7 @@ function LinkRow({ refText, surface }: { refText: string; surface: 'fill' | 'rai
     if (l.kind === 'section') open(href.card(l.card!, l.section, l.anchor));
     else if (l.kind === 'card') open(href.card(l.id!));
     else if (l.kind === 'emergency') open(href.emergency(l.id!));
-    else if (l.kind === 'criteria') openCriteria(sheet, content.data.criteria?.[l.id!] as Criteria);
+    else if (l.kind === 'criteria') openCriteria(sheet, content.data.criteria?.[l.id!] as Criteria, l.id);
     else if (l.kind === 'dose') openDose(sheet, l.id!);
   };
   const value = l.kind === 'criteria' ? 'Criteria' : l.kind === 'emergency' ? 'Rapids' : l.where ?? (l.cardTitle ? `${l.cardTitle} card` : undefined);

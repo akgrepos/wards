@@ -138,6 +138,11 @@ export function checkContent({ systems, cards, data }) {
       useAt(c.definition.inlines, `${where} definition`, false);
       for (const m of calcMentions(inlineText(c.definition.inlines))) err(where, `the definition names "${m.term}", a calculator; write {{calc:${m.id}}} so it links to MDCalc`);
     }
+    for (const k of c.contentsSub ?? []) {
+      const s = c.sections.find((x) => x.key === k);
+      if (!s) err(where, `contents_sub lists "${k}", which is not one of the card's sections`);
+      else if (!s.blocks.some((b) => b.t === 'subheading')) err(where, `contents_sub lists "${k}", which has no #### subheadings`);
+    }
     for (const id of c.basedOn ?? []) if (!data.source?.[id]) err(where, `based_on lists unknown source "${id}"`);
     const parts = c.sections.flatMap((s) => [{ title: s.title, blocks: s.blocks }, ...(s.subsections ?? []).map((x) => ({ title: x.title, blocks: x.blocks }))]);
     // The emergency (## Do Now): numbered steps in the Do Now format, then optional :::note boxes. Its lines follow
@@ -269,6 +274,9 @@ export function checkContent({ systems, cards, data }) {
       }
       if (kind === 'criteria' && !(item.items?.length || item.rows?.length)) err(where, 'needs items or rows');
       if (kind === 'criteria') {
+        // The box title says what the set defines and the source year (owner, 2026-10-21): "SIADH diagnostic criteria, 2013".
+        if (typeof item.title === 'string' && !/, (19|20)\d\d$/.test(item.title.trim())) err(where, '"title" must end with the source year, like "SIADH diagnostic criteria, 2013"')
+        else if (typeof item.title === 'string' && !(item.sources ?? []).some((sid) => String(data.source?.[sid]?.year) === item.title.trim().slice(-4))) err(where, '"title" year must be the year of one of its cited sources');
         const lay = item.layout ?? 'columns';
         if (!['columns', 'stacked'].includes(lay)) err(where, '"layout" is columns or stacked');
         if (lay === 'stacked') {

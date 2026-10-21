@@ -24,7 +24,7 @@ export type Subsection = { key: string; title: string; description: string | nul
 export type Section = { key: string; title: string; blocks: Block[]; subsections: Subsection[] };
 export type Card = {
   id: string; type: string; variant: string | null; system: string; group: string; subsection: string | null;
-  title: string; aliases: string[]; related: Record<string, string[]>; example: boolean; sections: Section[];
+  title: string; aliases: string[]; related: Record<string, string[]>; example: boolean; contentsSub: string[]; sections: Section[];
   definition: { inlines: Inline[]; sources: string[] } | null; basedOn: string[]; reviewed: string | null;
   // The "## Do Now" section, when the topic has an emergency (its page in the Rapids tab, and Timed Mode).
   emergency: { hint: string | null; blocks: Block[] } | null;
@@ -45,7 +45,7 @@ export type Threshold = { name: string; value: string | number; unit: string; no
 // inside an option, parts given together ("plus"); a part that is a list means any one of those doses.
 export type RegimenOption = { label?: string; when?: string; doses: (string | string[])[] };
 export type Regimen = { name: string; indication?: string; setting?: string; options: RegimenOption[]; duration?: string; notes?: string[]; sources: string[] };
-export type Criteria = { name: string; short: string; logic?: string; items?: string[]; columns?: string[]; rows?: string[][]; layout?: 'columns' | 'stacked'; tones?: ('yellow' | 'orange' | 'red')[]; notes?: string[]; sources: string[] };
+export type Criteria = { name: string; title: string; short: string; logic?: string; items?: string[]; columns?: string[]; rows?: string[][]; layout?: 'columns' | 'stacked'; tones?: ('yellow' | 'orange' | 'red')[]; notes?: string[]; sources: string[] };
 // A focused pathway (docs/DATA-TYPES.md, 9): a levelled flowchart on a grid; only questions branch; a line of text
 // that is only {{dose:…}} shows the card's dose row.
 export type PathwayAnswer = { label: string; detail?: string; at: [number, number]; span?: number; to: string };

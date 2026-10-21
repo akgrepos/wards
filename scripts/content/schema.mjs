@@ -192,7 +192,7 @@ export const DATA_TYPES = {
   // A treatment combination for one indication, built from dose items (docs/DATA-TYPES.md, 3).
   regimen: { required: ['name', 'options'], sourced: true },
   // A formal definition or set of criteria: optional "any of" items and/or a table (e.g. stages).
-  criteria: { required: ['name', 'short'], sourced: true },
+  criteria: { required: ['name', 'title', 'short'], sourced: true },
   // A calculator or score on MDCalc, linked from every sentence that names it (docs/DATA-TYPES.md, 12b). `match` lists the
   // words the content check looks for, so a mention can't be left without its link.
   calc: { required: ['name', 'short', 'url', 'match'], sourced: false },

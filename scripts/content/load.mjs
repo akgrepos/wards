@@ -196,6 +196,7 @@ export function parseCard(file, root) {
     aliases: meta.aliases ?? [],
     related: meta.related ?? {},
     example: !!meta.example,
+    contentsSub: meta.contents_sub ?? [],
     definition: definition ? { inlines: parseInline(definition.text.trim()), sources: definition.sources } : null,
     basedOn: meta.based_on ?? [],
     emergency: emergencyLines ? { hint: meta.emergency_hint ?? null, blocks: parseBlocks(emergencyLines) } : null,

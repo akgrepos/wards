@@ -1,4 +1,5 @@
 name: AHA/ACC acute PE clinical categories
+title: "Acute PE clinical categories, 2026"
 short: PE clinical categories
 columns: [Category, Definition]
 rows:

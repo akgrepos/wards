@@ -1,4 +1,5 @@
 name: DKA and HHS diagnostic criteria
+title: "DKA and HHS diagnostic criteria, 2024"
 short: DKA and HHS criteria
 logic: "All criteria in a column are needed:"
 columns: [Criterion, DKA, HHS]

@@ -4,6 +4,7 @@ import { cardSources, cardTypeLabel, content, getCard, getSystem, titleCase, use
 import type { Card, Source } from '../content/types';
 import { forgetSection, href, isReturning, parseRoute, restoreScroll } from '../router';
 import { addRecent, getCardScroll, setCardScroll, setReading } from '../storage';
+import { slug } from '../../scripts/content/pathway.mjs';
 import { AnchorScope, Blocks, Inlines, JUMP_EVENT, LinePill, LineSources, PathwayRows, SourceList } from '../ui/Rich';
 import { useSheet } from '../ui/SheetHost';
 import { icons } from '../ui/icons';
@@ -19,8 +20,14 @@ const reviewedLabel = (d: string) => `Reviewed ${MONTHS[Number(d.slice(5, 7)) - 
 const subKey = (key: string) => `more:${key}`;
 
 // What the Contents menu lists, in page order: the card's sections, then Related and Sources when the page has them.
-export function pageEntries(card: Card): { key: string; title: string }[] {
-  const out = card.sections.map((s) => ({ key: s.key, title: titleCase(s.title) }));
+// A section the card opts in to (`contents_sub` in its front matter) also lists its #### subheadings, one level down.
+export type PageEntry = { key: string; title: string; subs?: { text: string; anchor: string }[] };
+export function pageEntries(card: Card): PageEntry[] {
+  const out: PageEntry[] = card.sections.map((s) => ({
+    key: s.key,
+    title: titleCase(s.title),
+    ...(card.contentsSub?.includes(s.key) ? { subs: s.blocks.flatMap((b) => (b.t === 'subheading' ? [{ text: b.text, anchor: slug(b.text) }] : [])) } : {}),
+  }));
   if (RELATED.some(([k]) => (card.related?.[k] ?? []).length)) out.push({ key: 'related', title: 'Related' });
   if (cardSources(card).length) out.push({ key: 'sources', title: 'Sources' });
   return out;
@@ -153,7 +160,10 @@ export function CardScreen({ id, section, anchor }: { id: string; section?: stri
   const related = RELATED.filter(([k]) => (card.related?.[k] ?? []).length > 0);
 
   const menuItems = [
-    ...entries.map((e) => ({ label: e.title, checked: current === e.key, onSelect: () => { setMenu(false); jump(e.key); } })),
+    ...entries.flatMap((e) => [
+      { label: e.title, checked: current === e.key, onSelect: () => { setMenu(false); jump(e.key); } },
+      ...(e.subs ?? []).map((x) => ({ label: x.text, level: 1 as const, onSelect: () => { setMenu(false); jump(e.key, true, x.anchor); } })),
+    ]),
     { type: 'separator' as const },
     { label: showSources ? 'Hide Sources' : 'Show Sources', icon: icons.quoteOpening, onSelect: () => { setMenu(false); setShowSources(!showSources); } },
     anyOpen
