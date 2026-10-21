@@ -2,6 +2,10 @@
 
 What changed in each version of Wards, newest first. The version is shown in Settings (gear on Home).
 
+## 2026.10.21.14
+
+**Fix: Rapids pages.** The "or" marker on alternative steps is now a clean, centered "OR" ring in light and dark, and keeps its highlight ring when it is the current step in Timed Mode. The source pills at the bottom of the Do Now card now sit inside the card with room around them, so a second row is no longer cut off.
+
 ## 2026.10.21.13
 
 **Fix: jumping to a heading inside a section.** Tapping Potassium, Magnesium, Phosphate or Calcium in Contents (and any link to a heading inside a section) now stops with the heading in view instead of tucked under the top bar.

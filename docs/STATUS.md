@@ -44,6 +44,9 @@ Last updated 2026-10-21 (version 2026.10.21.4, MDCalc links). A short snapshot s
 - **Content planning:** topic list (private; 16 systems plus the Library, about 488 cards plus 41 scores, Wave 1 = 30 cards), card types, data types (now including criteria sets), flowchart and citation formats.
 - **HIG reference:** full HIG text and rule summaries kept privately in `~/Documents/Wards-reference/hig/`.
 
+## Pending check (2026.10.21.14)
+- Rapids "OR" marker and Do Now source pills fixed; confirm in the pinned Simulator app after deploy (normal and Timed Mode, light and dark).
+
 ## Waiting on the owner
 - Phone review of batch 4 (sepsis, DKA/HHS, inpatient hyperglycemia), the DKA pathway and both new Rapids pages, plus the earlier items in "Start here" 3.
 - Whether to make the guideline-audit items not chosen yet (ADHF, AKI; see Watch).
