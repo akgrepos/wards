@@ -20,7 +20,10 @@ related:
 
 ## First Steps
 - Confirm the indication and duration, and that there is no active major bleeding. ^[common-practice]
-- Labs: CBC with platelets, creatinine and {{calc:cockcroft-gault}}, liver panel, PT/INR and aPTT; weight; pregnancy test if applicable. ^[acc-aha-af-2023, common-practice]
+- Labs: ^[acc-aha-af-2023, common-practice]
+   - CBC with platelets, creatinine and {{calc:cockcroft-gault}}, liver panel, PT/INR and aPTT. ^[acc-aha-af-2023, common-practice]
+   - Weight. ^[acc-aha-af-2023, common-practice]
+   - Pregnancy test if applicable. ^[acc-aha-af-2023, common-practice]
 - Review every drug for interactions, including NSAIDs and antiplatelets (bleeding) and CYP3A4 or P-gp inhibitors and inducers (see Interactions). ^[label-eliquis-2025, label-xarelto-2026]
 - Valve or antiphospholipid syndrome history, prior heparin exposure with a platelet drop, and cancer change the choice. ^[acc-aha-valvular-2020, ash-hit-2018, ash-vte-treatment-2020]
 - Hemodynamically unstable PE or thrombolysis planned: start unfractionated heparin; see the [[pulm-vte-diagnosis|VTE diagnosis]] card and the Wave 2 PE treatment card. ^[aha-acc-pe-2026]
@@ -95,7 +98,10 @@ related:
 - Bleeding risk rises with NSAIDs, aspirin and other antiplatelets, and SSRIs or SNRIs. ^[label-eliquis-2025, label-warfarin-2025]
 - Apixaban: halve the dose with combined strong CYP3A4 and P-gp inhibitors (ketoconazole, itraconazole, ritonavir), avoid them if already on the lowest dose; avoid strong inducers (rifampin, carbamazepine, phenytoin, St John's wort). ^[label-eliquis-2025]
 - Rivaroxaban: avoid combined P-gp and strong CYP3A4 inhibitors and strong inducers. ^[label-xarelto-2026]
-- Dabigatran: dronedarone or ketoconazole with reduced kidney function lowers the AF dose or means avoidance; edoxaban reduces the dose for some P-gp inhibitors in VTE only; avoid rifampin with both. ^[label-pradaxa-2025, label-savaysa-2025]
+- Dabigatran: ^[label-pradaxa-2025, label-savaysa-2025]
+   - Dronedarone or ketoconazole with reduced kidney function lowers the AF dose or means avoidance. ^[label-pradaxa-2025, label-savaysa-2025]
+   - Edoxaban reduces the dose for some P-gp inhibitors in VTE only. ^[label-pradaxa-2025, label-savaysa-2025]
+   - Avoid rifampin with both. ^[label-pradaxa-2025, label-savaysa-2025]
 - Warfarin, stronger effect: amiodarone, azole antifungals, trimethoprim-sulfamethoxazole, metronidazole, fluoroquinolones, many antibiotics, regular acetaminophen, alcohol binge. ^[label-warfarin-2025, common-practice]
 - Warfarin, weaker effect: rifampin, carbamazepine, phenytoin, St John's wort, vitamin K–rich foods. ^[label-warfarin-2025, common-practice]
 - Keep vitamin K intake steady rather than avoiding greens; recheck INR within 3–5 days of starting or stopping an interacting drug. ^[label-warfarin-2025, common-practice]
