@@ -247,7 +247,7 @@ export function checkContent({ systems, cards, data }) {
       }
       if (kind === 'criteria' && !(item.items?.length || item.rows?.length)) err(where, 'needs items or rows');
       if (kind === 'criteria' && item.rows?.some((r) => !Array.isArray(r) || r.length !== (item.columns ?? []).length)) err(where, 'every row needs one cell per column');
-      // A whole-card map: every link resolves, every box is reachable, nothing is copied (docs/DATA-TYPES.md, 9).
+      // A pathway: every link resolves, every box is reachable, doses come only from the card (docs/DATA-TYPES.md, 9).
       if (kind === 'pathway') for (const m of checkPathway(id, item, { cards, data })) err(where, m.slice(id.length + 2));
       if (/^[a-z0-9]+(-[a-z0-9]+)*$/.test(id) === false) err(where, `id "${id}" must be lowercase words joined by hyphens`);
     }

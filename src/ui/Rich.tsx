@@ -1,7 +1,7 @@
 import { createContext, Fragment, useContext, useState, type MouseEvent, type ReactNode } from 'react';
 import { AKG } from '../design/akg';
-import { content, getCard, isMarkerSource, titleCase } from '../content';
-import type { Block, ContainerItem, Criteria, Dose, Inline, ListItem, Pathway, Regimen, Source, Threshold } from '../content/types';
+import { content, getCard, isMarkerSource, pathwaysFor } from '../content';
+import type { Block, ContainerItem, Criteria, Dose, Inline, ListItem, Regimen, Source, Threshold } from '../content/types';
 import { parseInline, TAGS } from '../../scripts/content/inline.mjs';
 import { onsetRows } from '../../scripts/content/onset.mjs';
 import { slug } from '../../scripts/content/pathway.mjs';
@@ -409,21 +409,24 @@ function Item({ it }: { it: ListItem }) {
   );
 }
 
-// A card's pathway (the whole card as a flowchart) opens from one row: under the card's title, and on its Rapids page.
-export function PathwayRow({ id }: { id: string }) {
-  const p = content.data.pathway?.[id] as Pathway | undefined;
-  if (!p) return null;
+// A card's pathways, one row each, under the card's title and on its Rapids page.
+export function PathwayRows({ cardId }: { cardId: string }) {
+  const list = pathwaysFor(cardId);
+  if (!list.length) return null;
   return (
     <AKG.List className="pathway-row">
-      <AKG.ListRow
-        overline="Pathway"
-        title={titleCase(p.title)}
-        subtitle="The whole card as a flowchart"
-        icon={icons.flowchart}
-        iconTint="var(--accent)"
-        buttonLabel="Open"
-        href={href.pathway(id)}
-      />
+      {list.map((h) => (
+        <AKG.ListRow
+          key={h.id}
+          overline="Pathway"
+          title={h.title}
+          subtitle={h.summary}
+          icon={icons.flowchart}
+          iconTint="var(--accent)"
+          buttonLabel="Open"
+          href={href.pathway(h.id)}
+        />
+      ))}
     </AKG.List>
   );
 }
@@ -526,7 +529,6 @@ function BlockView({ b }: { b: Block }) {
     );
   }
   if (b.t === 'insert') {
-    if (b.kind === 'pathway') return <PathwayRow id={b.id} />;
     if (b.kind === 'criteria') return <CriteriaBlock id={b.id} />;
     if (b.kind === 'regimen') return <RegimenBlock id={b.id} />;
     return <p className="ios-body"><Insert kind={b.kind} id={b.id} /></p>;

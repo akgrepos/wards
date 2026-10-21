@@ -99,6 +99,7 @@
   --menu-fill: #e6e6e68c;
   --accent: var(--system-blue);
   --accent-text: #0066cc;
+  --tinted-label: #005bb5;
   --on-accent: #ffffff;
   --destructive: var(--system-red);
   --toggle-on: var(--system-green);
@@ -177,6 +178,7 @@
   --menu-fill: #5a5a5a80;
   --accent: var(--system-blue);
   --accent-text: var(--system-blue);
+  --tinted-label: #4db2ff;
   --on-accent: #ffffff;
   --destructive: var(--system-red);
   --toggle-on: var(--system-green);
@@ -255,6 +257,7 @@
   --menu-fill: #e6e6e68c;
   --accent: var(--system-blue);
   --accent-text: #0066cc;
+  --tinted-label: #005bb5;
   --on-accent: #ffffff;
   --destructive: var(--system-red);
   --toggle-on: var(--accent);
@@ -333,6 +336,7 @@
   --menu-fill: #5a5a5a80;
   --accent: var(--system-blue);
   --accent-text: var(--system-blue);
+  --tinted-label: #4db2ff;
   --on-accent: #ffffff;
   --destructive: var(--system-red);
   --toggle-on: var(--accent);

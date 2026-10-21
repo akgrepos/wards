@@ -18,7 +18,7 @@
 /* Button */
 (function (AKG) {
   var h = window.React.createElement;
-  var OWN = ["variant", "size", "destructive", "icon", "className", "children", "pressed", "defaultPressed", "onPressedChange"];
+  var OWN = ["variant", "size", "destructive", "icon", "subtitle", "className", "children", "pressed", "defaultPressed", "onPressedChange"];
   function Button(props) {
     var variant = props.variant || "bordered";
     var size = props.size || "medium";
@@ -35,6 +35,7 @@
       props.destructive && "akg-button--destructive",
       isToggle && pressed && "akg-button--pressed",
       !props.children && props.icon && "akg-button--icon-only",
+      props.subtitle != null && "akg-button--subtitled",
       props.className
     );
     if (!rest.type) rest.type = "button";
@@ -49,7 +50,13 @@
     }
     return h("button", rest,
       props.icon ? h("span", { className: "akg-sym", "aria-hidden": "true" }, props.icon) : null,
-      props.children != null ? h("span", { className: "akg-button__label" }, props.children) : null
+      props.children != null
+        ? (props.subtitle != null
+          ? h("span", { className: "akg-button__label" },
+              h("span", { className: "akg-button__title" }, props.children),
+              h("span", { className: "akg-button__subtitle" }, props.subtitle))
+          : h("span", { className: "akg-button__label" }, props.children))
+        : null
     );
   }
   AKG.Button = Button;

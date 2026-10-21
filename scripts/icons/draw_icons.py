@@ -131,6 +131,18 @@ def chevron_down():  # chevron.down (the backward chevron turned a quarter, as S
     return line([(3.3, 6.9), (10, 13.4), (16.7, 6.9)], 1.55)
 
 
+def checkmark():  # checkmark (a short and a long stroke meeting low, as SF Symbols draws it)
+    return line([(4.3, 10.7), (8.2, 14.6), (15.8, 5.3)], 1.55)
+
+
+def plus():  # plus
+    return U(line([(4.4, 10), (15.6, 10)], 1.5), line([(10, 4.4), (10, 15.6)], 1.5))
+
+
+def minus():  # minus
+    return line([(4.4, 10), (15.6, 10)], 1.5)
+
+
 def xmark():  # xmark
     return U(line([(4.9, 4.9), (15.1, 15.1)], 1.45), line([(15.1, 4.9), (4.9, 15.1)], 1.45))
 
@@ -318,7 +330,7 @@ def quote_opening():  # quote.opening
 ICONS = {
     'house': house_fill, 'staroflifeFill': staroflife_fill, 'heartTextClipboard': heart_text_clipboard_fill,
     'crossCase': cross_case_fill, 'gearshape': gearshape,
-    'xmark': xmark, 'chevronBackward': chevron_backward, 'chevronDown': chevron_down, 'arrowUpRight': arrow_up_right,
+    'xmark': xmark, 'checkmark': checkmark, 'plus': plus, 'minus': minus, 'chevronBackward': chevron_backward, 'chevronDown': chevron_down, 'arrowUpRight': arrow_up_right,
     'listBullet': list_bullet, 'chevronUpChevronDown': chevron_up_chevron_down,
     'plusForwardslashMinus': plus_forwardslash_minus, 'checklist': checklist, 'arrowLeftArrowRight': arrow_left_arrow_right,
     'pills': pills_fill, 'flowchart': flowchart_fill, 'testtube2': testtube_2,

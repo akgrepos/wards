@@ -5,6 +5,7 @@ https://claude.ai/artifact/GWFUZ6rCthpEuhMik4Jiru
 
 | Copied | Artifact version | Files |
 |---|---|---|
+| 2026-10-20 | 1792549360-bdc1 (Button `subtitle`, a second smaller line as iOS buttons have; `tinted-label` token so iOS tinted labels reach 4.5:1; Icons group: `checkmark`, `plus`, `minus`; README: every symbol comes from SF Symbols) | `project/tokens.json`, `project/components/bundle.css`, `bundle.js`, `index.d.ts` |
 | 2026-10-19 | 1792454681-dae8 (Icons group: `chevron.down` added, drawn like `chevron.backward`; Wards uses it to minimize Timed Mode) | none (icon assets only; the four copied files are unchanged) |
 | 2026-10-19 | 1792451012-a7ea (gearshape redrawn closer to SF Symbols; large Text Sizes: ContentSection titles wrap so the chevron stays on screen, GradeList chip moves above its values when the row is narrow) | `project/components/bundle.css` (the other two files are unchanged) |
 | 2026-10-19 | 1792449122-2a4d (AKI card redesign: Panel; GradeList; severity tones shared with ScaleBar, whose default ramp is now yellow → orange → red; ToolbarButton `selected`; ListRow `overline` and `buttonLabel`; Table `label`, `subcaption`, `shadedHeader`; blue-tinted SourcePill with gray markers; quote.opening icon; README "One color, one job"; components published in 1792449100-21a4) | `project/components/bundle.css`, `bundle.js`, `index.d.ts` |

@@ -80,10 +80,10 @@ Ordinal scales used in exams and documentation.
 - Examples: murmur grade I–VI, edema 0–4+, strength 0–5, reflexes 0–4+, RASS
 - Home: the physical exam card. Inserted into condition cards.
 
-### 9. Pathway (whole-card map)
-A zoomable flowchart of one whole card (2026-10-19): another way to look at the card, not a copy of it.
-- Fields: title · card · columns · start · nodes (kinds: start, question, do, urgent, note, result, link), each placed on a grid (`at: [column, row]`) · questions' answers (label, optional detail, next box, rejoin) · links per box to card sections and their subheadings or steps, criteria, dose sheets, other cards and Rapids pages · optional footer links · sources
-- Display: its own full-screen page; every box is always drawn, answered rows fill in and boxes off the route dim; pinch or − Fit + to zoom. Format: CONTENT-FORMAT.md, "Pathway maps".
+### 9. Pathway (focused flowchart)
+A short, levelled flowchart for one sequential task on a card (2026-10-20): diagnostic (a workup), treatment, or mixed. Boxes may end in a diagnosis, a next test or a treatment. It supplements the card; a card may have several.
+- Fields: title · card · summary (one line for its rows) · columns · start · levels (numbered rows, `{ title, row }`) · nodes (kinds: start, question, do, urgent, note, result), each placed on a grid (`at: [column, row]`, `span` columns wide) · questions' answers (label, optional detail, its own grid place, next box) · text lines from the card (a line that is only `{{dose:id}}` shows the card's own dose row) · at most two links per box · sources
+- Display: its own full-screen page; equivalent answers side by side; tap an answer to trace the route (filled with a checkmark), ruled-out routes fade; pinch or − + to zoom; Current Step frames the current question. Format: CONTENT-FORMAT.md, "Pathways".
 - Home: its own page, opened from a "Pathway" row under its card's title and from the Library's Pathways; never inserted into a card
 
 ### 10. Coverage

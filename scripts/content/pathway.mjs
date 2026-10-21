@@ -1,5 +1,6 @@
-// Pathway maps (owner, 2026-10-19): one whole-card flowchart per condition, laid out on a grid. Boxes link to the
-// card's own content instead of copying it. Shared by the content check and the app.
+// Pathways (owner, 2026-10-20): focused, levelled flowcharts that supplement a card (a card may have several).
+// Boxes sit on a grid; their text and doses come from the card itself; a few links open the card's own content.
+// Shared by the content check and the app.
 //
 // A link is "kind:target", optionally "|label":
 //   section:<card>/<section>[#<anchor>]  a section of a card; the anchor is a subheading ("#### First line"), a
@@ -9,7 +10,14 @@
 //   emergency:<id>                       a card's Rapids page (Do Now steps, Timed Mode)
 import { parseInline } from './inline.mjs';
 
-export const NODE_KINDS = ['start', 'question', 'do', 'urgent', 'note', 'result', 'link'];
+export const NODE_KINDS = ['start', 'question', 'do', 'urgent', 'note', 'result'];
+export const PATHWAY_FIELDS = ['title', 'card', 'summary', 'columns', 'start', 'levels', 'nodes', 'sources'];
+export const NODE_FIELDS = ['kind', 'at', 'span', 'title', 'text', 'links', 'answers', 'next'];
+export const ANSWER_FIELDS = ['label', 'detail', 'at', 'span', 'to'];
+
+// A line of a box's text that is only a dose insert shows the card's dose row.
+export const doseLine = (line) => { const m = /^\{\{dose:([a-z0-9-]+)\}\}$/.exec(String(line).trim()); return m ? m[1] : null; };
+export const textLines = (t) => (t == null ? [] : Array.isArray(t) ? t : [t]);
 export const LINK_KINDS = ['section', 'criteria', 'dose', 'card', 'emergency'];
 
 // "Urinary indices (oliguric AKI)" → "urinary-indices-oliguric-aki"
@@ -72,28 +80,41 @@ export function resolveLink(ref, { cards, data }) {
   return { ...l, text: l.label ?? (l.kind === 'dose' ? item.drug_name : item.short ?? item.name) };
 }
 
-// Every problem with one pathway map, as messages.
+// Every problem with one pathway, as messages.
 export function checkPathway(id, p, content) {
   const out = [];
+  for (const f of Object.keys(p)) if (!PATHWAY_FIELDS.includes(f) && f !== '_file') out.push(`unknown field "${f}" (use ${PATHWAY_FIELDS.join(', ')})`);
   const nodes = p.nodes ?? {};
   const card = content.cards.find((c) => c.id === p.card);
-  if (!card) out.push(`belongs to unknown card "${p.card}" (set "card:" to the card it maps)`);
+  if (!card) out.push(`belongs to unknown card "${p.card}" (set "card:" to the card it supplements)`);
+  // Doses come from the card: only dose items the card itself shows.
+  const cardJson = card ? JSON.stringify(card) : '';
+  const onCard = (dose) => cardJson.includes(`"kind":"dose","id":"${dose}"`);
   if (!nodes[p.start]) out.push(`start node "${p.start}" does not exist`);
   const cols = p.columns ?? 0;
-  if (!Number.isInteger(cols) || cols < 1) out.push('needs "columns" (how many grid columns the map uses)');
+  if (!Number.isInteger(cols) || cols < 1) out.push('needs "columns" (how many grid columns the pathway uses)');
   const cells = new Map();
-  const place = (where, at) => {
+  const place = (where, at, span = 1) => {
     if (!Array.isArray(at) || at.length !== 2 || !at.every((n) => Number.isInteger(n) && n >= 0)) { out.push(`${where} needs "at: [column, row]"`); return; }
-    if (at[0] >= cols) out.push(`${where} is in column ${at[0]}, outside the ${cols} columns`);
-    const k = at.join(',');
-    if (cells.has(k)) out.push(`${where} and ${cells.get(k)} share the cell [${k}]`);
-    cells.set(k, where);
+    if (!Number.isInteger(span) || span < 1) { out.push(`${where}: "span" must be a whole number of columns`); return; }
+    if (at[0] + span > cols) out.push(`${where} reaches column ${at[0] + span - 1}, outside the ${cols} columns`);
+    for (let c = at[0]; c < at[0] + span; c++) {
+      const k = `${c},${at[1]}`;
+      if (cells.has(k)) out.push(`${where} and ${cells.get(k)} overlap at [${k}]`);
+      cells.set(k, where);
+    }
   };
   const checkText = (where, t) => {
-    if (typeof t !== 'string') return;
+    if (typeof t !== 'string') { if (t !== undefined) out.push(`${where}: text must be words`); return; }
+    const dose = doseLine(t);
+    if (dose) {
+      if (!content.data.dose?.[dose]) out.push(`${where} shows unknown dose "${dose}"`);
+      else if (card && !onCard(dose)) out.push(`${where} shows dose "${dose}", which is not on ${p.card}: use the card's own dose items`);
+      return;
+    }
     for (const x of parseInline(t)) {
       if (x.t === 'insert' && !content.data[x.kind]?.[x.id]) out.push(`${where} inserts unknown ${x.kind} "${x.id}"`);
-      if (x.t === 'insert' && x.kind === 'dose') out.push(`${where}: link a dose (links: [dose:${x.id}]) instead of inserting it in the text`);
+      if (x.t === 'insert' && x.kind === 'dose') out.push(`${where}: put {{dose:${x.id}}} on a line of its own (it shows as the dose row)`);
       if (x.t === 'link') out.push(`${where}: use "links:" for links, not [[…]] in the text`);
     }
   };
@@ -101,24 +122,27 @@ export function checkPathway(id, p, content) {
   const targets = new Map();
   for (const [nid, n] of Object.entries(nodes)) {
     const where = `node "${nid}"`;
+    for (const f of Object.keys(n)) if (!NODE_FIELDS.includes(f)) out.push(`${where}: unknown field "${f}" (use ${NODE_FIELDS.join(', ')})`);
     if (!NODE_KINDS.includes(n.kind)) out.push(`${where} has unknown kind "${n.kind}" (use ${NODE_KINDS.join(', ')})`);
-    place(where, n.at);
-    if (n.kind !== 'link' && !n.title) out.push(`${where} needs a title`);
-    for (const t of [n.title, n.text]) checkText(where, t);
+    place(where, n.at, n.span ?? 1);
+    if (!n.title) out.push(`${where} needs a title`);
+    checkText(where, n.title);
+    for (const t of textLines(n.text)) checkText(where, t);
+    if ((n.links ?? []).length > 2) out.push(`${where} has ${n.links.length} links; keep at most two (a pathway supplements the card)`);
     for (const ref of n.links ?? []) checkLink(where, ref);
     const to = [];
     if (n.kind === 'question') {
       if (!n.answers?.length) out.push(`${where} is a question with no answers`);
+      if (n.next) out.push(`${where} is a question; its answers lead on (no "next")`);
       for (const [i, a] of (n.answers ?? []).entries()) {
-        place(`${where} answer ${i + 1}`, a.at);
+        for (const f of Object.keys(a ?? {})) if (!ANSWER_FIELDS.includes(f)) out.push(`${where} answer ${i + 1}: unknown field "${f}" (use ${ANSWER_FIELDS.join(', ')})`);
+        place(`${where} answer ${i + 1}`, a.at, a.span ?? 1);
         if (!a.label) out.push(`${where} answer ${i + 1} needs a label`);
         checkText(`${where} answer "${a.label}"`, a.detail);
+        if (a.detail && doseLine(a.detail)) out.push(`${where} answer "${a.label}": an answer can't show a dose`);
         if (!nodes[a.to]) out.push(`${where} answer "${a.label}" leads to missing node "${a.to}"`);
         to.push(a.to);
       }
-    } else if (n.kind === 'link') {
-      if (!n.to) out.push(`${where} needs "to" (what it opens)`); else checkLink(where, n.to);
-      if (n.from && !nodes[n.from]) out.push(`${where} hangs from missing node "${n.from}"`);
     } else if (n.kind === 'result') {
       if (n.next) out.push(`${where} is a result; results end the route (no "next")`);
     } else {
@@ -128,14 +152,14 @@ export function checkPathway(id, p, content) {
     }
     targets.set(nid, to);
   }
-  for (const ref of p.footer ?? []) checkLink('footer', ref);
-  // Every box is reachable from the start (a link box hangs from the box it belongs to).
+  for (const [i, l] of (p.levels ?? []).entries()) {
+    if (!l?.title || !Number.isInteger(l.row)) out.push(`level ${i + 1} needs { title, row }`);
+  }
+  // Every box is reachable from the start, and every route ends in a result.
   const seen = new Set();
   const stack = [p.start];
   while (stack.length) { const k = stack.pop(); if (!k || seen.has(k) || !nodes[k]) continue; seen.add(k); stack.push(...(targets.get(k) ?? [])); }
-  for (const [nid, n] of Object.entries(nodes)) {
-    if (n.kind === 'link' && n.from) continue;
-    if (!seen.has(nid)) out.push(`node "${nid}" can't be reached from the start`);
-  }
+  for (const nid of Object.keys(nodes)) if (!seen.has(nid)) out.push(`node "${nid}" can't be reached from the start`);
+  if (!Object.values(nodes).some((n) => n.kind === 'result')) out.push('needs a result box (where routes end)');
   return out.map((m) => `${id}: ${m}`);
 }

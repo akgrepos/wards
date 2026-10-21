@@ -1,11 +1,11 @@
 import { useRef, useState } from 'react';
 import { AKG } from '../design/akg';
-import { blockSources, emergencyGroups, getCard, pathwayHomes } from '../content';
+import { blockSources, emergencyGroups, getCard } from '../content';
 import type { Card } from '../content/types';
 import { href, open } from '../router';
 import { getTimed, useStored, type TimedSession } from '../storage';
 import { actions, doNowSteps, entryFor, isDone, isRunning, progress, startTimed, when } from '../timed';
-import { AlternativeRow, Blocks, DoseRow, Inlines, lineItems, openSources, PathwayRow } from '../ui/Rich';
+import { AlternativeRow, Blocks, DoseRow, Inlines, lineItems, openSources, PathwayRows } from '../ui/Rich';
 import { useSheet, type ShowSheet } from '../ui/SheetHost';
 import { iconFor, icons } from '../ui/icons';
 import type { DoNowStep } from '../../scripts/content/emergency.mjs';
@@ -212,7 +212,7 @@ export function EmergencyScreen({ id }: { id: string }) {
     >
       <StartTimedButton card={card} />
       <DoNow card={card} />
-      {pathwayHomes().filter((h) => h.card.id === card.id).map((h) => <PathwayRow key={h.id} id={h.id} />)}
+      <PathwayRows cardId={card.id} />
     </Screen>
   );
 }

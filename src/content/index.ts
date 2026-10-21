@@ -92,16 +92,17 @@ export function emergencyGroups(): { title: string; cards: Card[] }[] {
     .filter((g) => g.cards.length);
 }
 
-// Every pathway map and the card it maps (its "card:" field), A–Z. A card shows its map as a row under its title.
-export function pathwayHomes(): { id: string; title: string; card: Card }[] {
-  const out: { id: string; title: string; card: Card }[] = [];
+// Every pathway with the card it supplements (its "card:" field), A–Z by card then pathway. A card shows one row per
+// pathway under its title; the Library lists them as "Card: Pathway".
+export function pathwayHomes(): { id: string; title: string; summary?: string; card: Card }[] {
+  const out: { id: string; title: string; summary?: string; card: Card }[] = [];
   for (const [id, p] of Object.entries((content.data.pathway ?? {}) as Record<string, Pathway>)) {
     const card = getCard(p.card);
-    if (card) out.push({ id, title: p.title, card });
+    if (card) out.push({ id, title: p.title, summary: p.summary, card });
   }
-  return out.sort((a, b) => a.title.localeCompare(b.title));
+  return out.sort((a, b) => a.card.title.localeCompare(b.card.title) || a.title.localeCompare(b.title));
 }
-export const pathwayFor = (cardId: string) => pathwayHomes().find((h) => h.card.id === cardId);
+export const pathwaysFor = (cardId: string) => pathwayHomes().filter((h) => h.card.id === cardId);
 
 // Basic search over card titles and aliases (full search across sections, drugs and tools comes later).
 // Every word typed must match the start of a word in the title or an alias; title matches rank first.

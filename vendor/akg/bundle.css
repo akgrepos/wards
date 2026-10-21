@@ -40,6 +40,14 @@
 /* Tinted: accent label on an accent-tinted fill. The iOS kit has no tinted button; this is a 15% (20% dark) accent tint. */
 .akg-button--tinted { --akg-button-tint: var(--accent); background: color-mix(in srgb, var(--akg-button-tint) 15%, transparent); color: var(--akg-button-tint); }
 [data-theme="ios-dark"] .akg-button--tinted { background: color-mix(in srgb, var(--akg-button-tint) 20%, transparent); }
+/* iOS tinted label: tinted-label instead of accent, which is too faint on its own tint (4.5:1 needs a darker blue in light mode and a lighter one in dark). Destructive tints keep their red; macOS keeps the kit's accent label. */
+.akg-button--tinted:not(.akg-button--destructive):not(:disabled) { color: var(--tinted-label); }
+[data-theme^="macos"] .akg-button--tinted:not(.akg-button--destructive):not(:disabled) { color: var(--akg-button-tint); }
+/* Subtitle: a second, smaller line under the label (iOS UIButton subtitle), for a range or a short qualifier. The button grows to fit; the label stays centered. */
+.akg-button--subtitled { height: auto; white-space: normal; text-align: center; padding-top: var(--space-10); padding-bottom: var(--space-10); padding-left: var(--space-20); padding-right: var(--space-20); }
+.akg-button--subtitled .akg-button__label { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+.akg-button__subtitle { font-size: calc(13 * var(--akg-text-unit, 1px)); line-height: calc(16 * var(--akg-text-unit, 1px)); font-weight: 400; opacity: 0.85; }
+[data-theme^="macos"] .akg-button__subtitle { font-size: 11px; line-height: 14px; }
 .akg-button--destructive.akg-button--tinted { --akg-button-tint: var(--destructive); }
 
 /* Toggle: a button that stays on (aria-pressed). Off = gray fill + label, on = accent label on a light accent tint. */

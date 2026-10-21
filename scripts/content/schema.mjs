@@ -187,7 +187,7 @@ export const DATA_TYPES = {
   // A dose needs a frequency or a rate (e.g. "over 10 minutes"); the dose sheet fields are listed in DOSE_FIELDS.
   dose: { required: ['drug_name', 'indication', 'route', 'amount', 'unit'], sourced: true },
   threshold: { required: ['name', 'value', 'unit'], sourced: true },
-  // A whole-card map (docs/DATA-TYPES.md, 9): grid layout, boxes that link to the card's content.
+  // A focused pathway (docs/DATA-TYPES.md, 9): a levelled flowchart on a grid that supplements its card.
   pathway: { required: ['title', 'card', 'columns', 'start', 'nodes'], sourced: true },
   // A treatment combination for one indication, built from dose items (docs/DATA-TYPES.md, 3).
   regimen: { required: ['name', 'options'], sourced: true },

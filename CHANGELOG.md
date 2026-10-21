@@ -2,6 +2,16 @@
 
 What changed in each version of Wards, newest first. The version is shown in Settings (gear on Home).
 
+## 2026.10.20.3
+
+Pathways rebuilt as short flowcharts:
+- **Hyperkalemia: Treatment** and **Acute Kidney Injury: Cause Workup** replace the old whole-card maps. Each covers one task, laid out like a printed algorithm: numbered levels (Stabilize, Shift, Remove, Monitor; Confirm, Postrenal, Prerenal, Intrinsic), with equal choices side by side (Mild, Moderate, Severe) and each leading to its own box.
+- Treatment boxes now show the card's own dose rows; tap one for the dose sheet. Links back to the card only where they help.
+- The answer you pick fills blue with a checkmark; routes you've ruled out fade; steps still ahead stay readable. A black "Now" tag marks where you are (the old blue outline that showed only at the corners is gone).
+- Zoom rebuilt: pinch no longer jumps, and − and + sit together at the bottom right. **Current Step** appears when you zoom out or scroll away and brings you back to your next question with all its answers.
+- A card can now have more than one pathway; each gets its own row under the card's title and in Library › Pathways.
+- Answer buttons have more room inside, and blue text on light-blue buttons is darker (lighter in dark mode) so it's easier to read everywhere in the app.
+
 ## 2026.10.20.2
 
 Three new topics in Cardiology (Wave 1, third batch):
