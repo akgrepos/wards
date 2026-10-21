@@ -89,7 +89,9 @@ related:
 - Measure BNP or NT-proBNP when heart failure is possible and the diagnosis is uncertain. ^[aha-acc-hfsa-hf-2022, esc-hf-2026]
 - Rule-out: BNP below 100 pg/mL or NT-proBNP below 300 pg/mL makes acute heart failure unlikely; ask for echocardiography if clinical suspicion stays high. ^[esc-hf-2026, icon-reloaded-2018]
 - Rule-in (NT-proBNP): above 450 pg/mL under age 50, above 900 pg/mL at 50–74, above 1,800 pg/mL at 75 or older; values in between need imaging and the clinical picture. ^[esc-hf-2026, icon-reloaded-2018]
-- False negatives: obesity; false positives: older age, atrial fibrillation, kidney disease, PE, sepsis. On sacubitril-valsartan use NT-proBNP, not BNP. ^[aha-acc-hfsa-hf-2022]
+- False negatives: obesity. ^[aha-acc-hfsa-hf-2022]
+- False positives: older age, atrial fibrillation, kidney disease, PE, sepsis. ^[aha-acc-hfsa-hf-2022]
+- On sacubitril-valsartan use NT-proBNP, not BNP. ^[aha-acc-hfsa-hf-2022]
 
 #### Pulmonary embolism
 - Estimate probability first ({{calc:wells-pe|Wells}}, revised {{calc:geneva-pe|Geneva}} or gestalt); it picks the next test. ^[aha-acc-pe-2026]
