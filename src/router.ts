@@ -22,8 +22,10 @@ export type Route =
 
 // Sections renamed since: old links still open the right section ("When to Call" became "Escalation", 2026-10-19).
 const RENAMED_SECTIONS: Record<string, string> = { 'when-to-call': 'escalation' };
-// Pathways renamed since (2026-10-19: whole-card maps).
-const RENAMED_PATHWAYS: Record<string, string> = { 'hyperkalemia-management': 'hyperkalemia' };
+// Pathways renamed since (2026-10-19: whole-card maps; 2026-10-20: focused pathways).
+const RENAMED_PATHWAYS: Record<string, string> = {
+  'hyperkalemia-management': 'hyperkalemia-treatment', hyperkalemia: 'hyperkalemia-treatment', 'aki-evaluation': 'aki-cause-workup',
+};
 
 const ROOTS = ['emergencies', 'topics', 'library', 'search', 'settings', 'timed'] as const;
 

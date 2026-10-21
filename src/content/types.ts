@@ -44,15 +44,15 @@ export type Threshold = { name: string; value: string | number; unit: string; no
 export type RegimenOption = { label?: string; when?: string; doses: (string | string[])[] };
 export type Regimen = { name: string; indication?: string; setting?: string; options: RegimenOption[]; duration?: string; notes?: string[]; sources: string[] };
 export type Criteria = { name: string; short: string; logic?: string; items?: string[]; columns?: string[]; rows?: string[][]; notes?: string[]; sources: string[] };
-// A whole-card map (docs/DATA-TYPES.md, 9): boxes on a grid; only questions branch; links open the card's content.
-export type PathwayAnswer = { label: string; detail?: string; at: [number, number]; to: string; rejoin?: boolean };
+// A focused pathway (docs/DATA-TYPES.md, 9): a levelled flowchart on a grid; only questions branch; a line of text
+// that is only {{dose:…}} shows the card's dose row.
+export type PathwayAnswer = { label: string; detail?: string; at: [number, number]; span?: number; to: string };
 export type PathwayNode = {
-  kind: 'start' | 'question' | 'do' | 'urgent' | 'note' | 'result' | 'link'; at: [number, number]; stage?: string;
-  title?: string; text?: string; links?: string[]; answers?: PathwayAnswer[]; next?: string; rejoin?: boolean;
-  // A link box: what it opens, and the box it hangs from.
-  to?: string; from?: string;
+  kind: 'start' | 'question' | 'do' | 'urgent' | 'note' | 'result'; at: [number, number]; span?: number;
+  title: string; text?: string | string[]; links?: string[]; answers?: PathwayAnswer[]; next?: string;
 };
-export type Pathway = { title: string; card: string; columns: number; start: string; nodes: Record<string, PathwayNode>; footer?: string[]; sources: string[] };
+export type PathwayLevel = { title: string; row: number };
+export type Pathway = { title: string; card: string; summary?: string; columns: number; start: string; levels?: PathwayLevel[]; nodes: Record<string, PathwayNode>; sources: string[] };
 export type Content = {
   systems: System[];
   cards: Card[];

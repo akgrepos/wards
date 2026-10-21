@@ -29,61 +29,66 @@ const box = (title: string) => [...document.querySelectorAll('.pw-box')].find((b
 beforeEach(() => { localStorage.clear(); forgetPathways(); });
 afterEach(() => { cleanup(); vi.restoreAllMocks(); });
 
-describe('pathways (whole-card maps)', () => {
-  it('the card shows its pathway as a row under the title, not inside a section', () => {
+describe('pathways (focused, levelled flowcharts)', () => {
+  it('a card lists its pathways as rows under the title, not inside a section', () => {
     launch('#/card/renal-aki');
     const row = document.querySelector('.card-head .pathway-row a') as HTMLElement;
-    expect(row.getAttribute('href')).toBe('#/pathway/aki-evaluation');
+    expect(row.getAttribute('href')).toBe('#/pathway/aki-cause-workup');
+    expect(row.textContent).toContain('Cause Workup');
     expect(document.querySelectorAll('.akg-content-section .pathway-row').length).toBe(0);
   });
 
-  it('draws every box at once; only questions on the route can be answered; the route fills in', async () => {
-    launch('#/pathway/aki-evaluation');
-    for (const t of ['Meets KDIGO criteria for AKI?', 'Relieve the obstruction', 'Acute tubular injury (ATN) likely', 'Possible HRS-AKI']) expect(box(t)).toBeTruthy();
+  it('equivalent answers share a level; each leads to its own box with the card\'s dose rows', async () => {
+    launch('#/pathway/hyperkalemia-treatment');
+    expect(screen.getByRole('group', { name: 'Hyperkalemia: Treatment pathway' })).toBeTruthy();
+    for (const t of ['IV calcium', 'Shift K⁺; consider removal', 'Shift K⁺, add albuterol, remove K⁺']) expect(box(t)).toBeTruthy();
+    // Doses show as the card's own dose rows.
+    expect(box('IV calcium').textContent).toContain('Calcium gluconate 10%');
     // Answers further down wait until their question is on the route.
-    expect((answer(/^Granular casts/) as HTMLButtonElement).disabled).toBe(true);
-    await choose(/^Yes$/);
-    expect(answer(/^Yes$/).getAttribute('aria-pressed')).toBe('true');
-    expect(box('Stage it; start the common orders').className).toContain('pw-box--on');
-    expect(box('Urgent RRT indication?').className).toContain('pw-box--now');
-    expect(box('Not AKI by KDIGO criteria').className).toContain('pw-box--off');
+    expect((answer(/^Severe/) as HTMLButtonElement).disabled).toBe(true);
+    await choose(/^Yes/);
+    expect(answer(/^Yes/).getAttribute('aria-pressed')).toBe('true');
+    expect(box('IV calcium').className).toContain('pw-box--on');
+    expect(box('Severity?').className).toContain('pw-box--now');
+    await choose(/^Severe/);
+    expect(box('Shift K⁺, add albuterol, remove K⁺').className).toContain('pw-box--on');
+    // The moderate regimen is ruled out and fades; boxes still ahead stay readable.
+    expect(box('Shift K⁺; consider removal').className).toContain('pw-box--off');
+    expect(box('Recheck K⁺ and glucose').className).toContain('pw-box--ahead');
   });
 
-  it('a detour rejoins the main path', async () => {
-    launch('#/pathway/aki-evaluation');
-    await choose(/^Yes$/);
-    await act(async () => { fireEvent.click(document.querySelectorAll('[data-question="refractory"] .akg-button')[1] as HTMLElement); });
-    expect(box('Urinary tract obstruction?').className).toContain('pw-box--now');
-    await choose(/^Hydronephrosis/);
-    expect(box('Relieve the obstruction').className).toContain('pw-box--on');
-    await choose(/^No: other causes too/);
-    expect(box('Volume status and hemodynamics?').className).toContain('pw-box--now');
+  it('branches merge again: mild skips the shift regimens and rejoins at the kidney question', async () => {
+    launch('#/pathway/hyperkalemia-treatment');
+    await choose(/^Normal ECG/);
+    await choose(/^Mild/);
+    expect(box('Kidney function and dialysis?').className).toContain('pw-box--now');
   });
 
-  it('links open dose sheets and the card at a subheading or step; old addresses still work', async () => {
-    launch('#/pathway/hyperkalemia-management');
-    expect(screen.getByRole('group', { name: 'Hyperkalemia pathway' })).toBeTruthy();
+  it('dose rows open dose sheets; links open the card; old addresses still work', async () => {
+    launch('#/pathway/hyperkalemia');
     await tap(/^Calcium gluconate 10%/);
     expect(screen.getByRole('dialog').textContent).toContain('Calcium gluconate');
-    launch('#/pathway/hyperkalemia');
-    await tap(/^Elimination · Treatment/);
+    launch('#/pathway/hyperkalemia-treatment');
+    await tap(/^Hyperkalemic cardiac arrest/);
     expect(document.querySelector('.card-head h1')!.textContent).toBe('Hyperkalemia');
-    expect(document.getElementById('a-treatment-elimination')).toBeTruthy();
+    launch('#/pathway/aki-evaluation');
+    expect(screen.getByRole('group', { name: 'Acute Kidney Injury: Cause Workup pathway' })).toBeTruthy();
   });
 
   it('answers are kept after leaving and coming back; Start Over clears them', async () => {
-    launch('#/pathway/hyperkalemia');
-    await choose(/^Confirmed or likely/);
-    launch('#/pathway/hyperkalemia');
-    expect(answer(/^Confirmed or likely/).getAttribute('aria-pressed')).toBe('true');
+    launch('#/pathway/hyperkalemia-treatment');
+    await choose(/^Yes/);
+    launch('#/pathway/hyperkalemia-treatment');
+    expect(answer(/^Yes/).getAttribute('aria-pressed')).toBe('true');
     await tap('Start Over');
-    expect(answer(/^Confirmed or likely/).getAttribute('aria-pressed')).toBe('false');
+    expect(answer(/^Yes/).getAttribute('aria-pressed')).toBe('false');
   });
 
   it('the Rapids page and the Library link to the pathway', () => {
     launch('#/emergency/renal-hyperkalemia');
-    expect((document.querySelector('.pathway-row a') as HTMLElement).getAttribute('href')).toBe('#/pathway/hyperkalemia');
+    expect((document.querySelector('.pathway-row a') as HTMLElement).getAttribute('href')).toBe('#/pathway/hyperkalemia-treatment');
     launch('#/library/pathways');
-    expect(screen.getByText('AKI Evaluation')).toBeTruthy();
+    expect(screen.getByText('Hyperkalemia: Treatment')).toBeTruthy();
+    expect(screen.getByText('Acute Kidney Injury: Cause Workup')).toBeTruthy();
   });
 });

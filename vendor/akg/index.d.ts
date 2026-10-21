@@ -9,6 +9,8 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   destructive?: boolean;
   /** A symbol before the label: an inline SVG element or a single glyph. With no children the button becomes a square/circle icon button. */
   icon?: React.ReactNode;
+  /** A second, smaller line under the label (iOS UIButton subtitle), e.g. a range or a short qualifier. The button grows to fit. */
+  subtitle?: React.ReactNode;
   /** variant="toggle" only: on/off state when controlled. Rendered as `aria-pressed`. */
   pressed?: boolean;
   /** variant="toggle" only: initial state when uncontrolled. */

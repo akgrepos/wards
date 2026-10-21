@@ -1,6 +1,8 @@
 import type { Card, Content } from '../../src/content/types';
 export const NODE_KINDS: string[];
 export const LINK_KINDS: string[];
+export function doseLine(line: string): string | null;
+export function textLines(t: string | string[] | undefined): string[];
 export function slug(text: string): string;
 export function sectionAnchors(section: Card['sections'][number]): Map<string, string>;
 export type PathwayLink = { kind: string; ref: string; label?: string; card?: string; section?: string; anchor?: string; id?: string };

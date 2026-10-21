@@ -1,0 +1,177 @@
+# A focused pathway (owner, 2026-10-20): the cause workup of AKI as a levelled flowchart that supplements the card.
+# Confirm, then postrenal, prerenal and intrinsic causes, each level's equivalent answers side by side. Text and
+# doses come from the card's own lines and dose items. Format: docs/CONTENT-FORMAT.md, "Pathways".
+title: Cause Workup
+card: renal-aki
+summary: Confirm, then postrenal, prerenal, intrinsic
+columns: 15
+start: start
+levels:
+  - { title: Confirm, row: 1 }
+  - { title: Postrenal, row: 3 }
+  - { title: Prerenal, row: 5 }
+  - { title: Intrinsic, row: 11 }
+sources: [kdigo-aki-2012, nice-aki-2024, aasld-ascites-hrs-2021, aha-cardiorenal-2019, smart-2018, perazella-urine-microscopy-2008, moore-aki-core-2018, muriithi-urine-eos-2013, podoll-renal-us-2013]
+nodes:
+  start:
+    kind: start
+    at: [5, 0]
+    span: 5
+    title: Rising SCr or low urine output
+    text:
+      - Compare with prior SCr values; evaluate for unrecognized CKD before labeling a rise as acute.
+      - Stop nephrotoxins where possible. Urine dipstick in all.
+    next: confirm
+  confirm:
+    kind: question
+    at: [5, 1]
+    span: 5
+    title: Meets KDIGO criteria for AKI?
+    links: [criteria:kdigo-aki]
+    answers:
+      - { label: "Yes", at: [5, 2], span: 5, to: obstruction }
+      - { label: "No", at: [10, 1], span: 2, to: not-aki }
+  not-aki:
+    kind: result
+    at: [10, 2]
+    span: 4
+    title: Not AKI by KDIGO criteria
+    text: SCr lags behind kidney injury; an early normal SCr does not exclude AKI. Repeat SCr and follow urine output.
+  obstruction:
+    kind: question
+    at: [5, 3]
+    span: 5
+    title: Urinary tract obstruction?
+    text: "Anuria: exclude a blocked catheter. Bladder scan; renal ultrasound within 24 h if no clear cause or risk of obstruction, within 6 h if pyonephrosis suspected."
+    answers:
+      - { label: No obstruction, at: [5, 4], span: 5, to: perfusion }
+      - { label: Obstruction, at: [10, 3], span: 3, to: postrenal }
+  postrenal:
+    kind: result
+    at: [10, 4]
+    span: 5
+    title: Postrenal AKI
+    text:
+      - "Upper tract obstruction: urology; immediately for pyonephrosis, solitary kidney, bilateral obstruction or complications; nephrostomy or stent within 12 h."
+      - "Causes often coexist. Inadequate response: nephrology within 24 h."
+  perfusion:
+    kind: question
+    at: [5, 5]
+    span: 5
+    title: Volume status and hemodynamics?
+    links: ["section:renal-aki/presentation#focused-examination"]
+    answers:
+      - { label: Hypovolemia or vasomotor shock, at: [0, 6], span: 3, to: volume }
+      - { label: Hemorrhage, at: [3, 6], span: 3, to: hemorrhage }
+      - { label: "Euvolemic, normotensive", at: [6, 6], span: 3, to: sediment }
+      - { label: Congestion (heart failure), at: [9, 6], span: 3, to: cardiorenal }
+      - { label: Cirrhosis with ascites, at: [12, 6], span: 3, to: cirrhosis }
+  volume:
+    kind: do
+    at: [0, 7]
+    span: 3
+    title: Restore volume and perfusion
+    text: Isotonic crystalloid; balanced crystalloid in the critically ill (0.9% saline in traumatic brain injury); vasopressors with fluids in vasomotor shock.
+    next: response
+  hemorrhage:
+    kind: do
+    at: [3, 7]
+    span: 3
+    title: Hemorrhagic shock
+    text: Blood products and hemorrhage control; crystalloid-first guidance does not apply.
+    next: response
+  cardiorenal:
+    kind: do
+    at: [9, 7]
+    span: 3
+    title: Cardiorenal
+    text: Loop diuretics for congestion; a modest SCr rise during effective decongestion is not by itself harmful.
+    next: response
+  cirrhosis:
+    kind: do
+    at: [12, 7]
+    span: 3
+    title: Cirrhosis with ascites
+    text:
+      - Stop diuretics and nephrotoxins; give albumin.
+      - "{{dose:albumin-aki-cirrhosis}}"
+    next: cirrhosis-response
+  response:
+    kind: question
+    at: [1, 8]
+    span: 5
+    title: SCr and urine output improve?
+    text: "Response to treatment is itself diagnostic. Cardiorenal: a modest SCr rise during effective decongestion is not by itself harmful."
+    answers:
+      - { label: "Yes", at: [0, 9], span: 3, to: prerenal }
+      - { label: "No", detail: "Inadequate response: nephrology within 24 h", at: [3, 9], span: 3, to: sediment }
+  prerenal:
+    kind: result
+    at: [0, 10]
+    span: 3
+    title: Prerenal AKI
+    text: Monitor SCr and UOP. Nephrology not needed when the cause is clear and AKI responds promptly (unless kidney transplant).
+  cirrhosis-response:
+    kind: question
+    at: [10, 8]
+    span: 5
+    title: Improves after 2 days?
+    answers:
+      - { label: "No", at: [9, 9], span: 3, to: hrs }
+      - { label: "Yes", at: [12, 9], span: 3, to: cirrhosis-ok }
+  hrs:
+    kind: do
+    at: [9, 10]
+    span: 3
+    title: Possible HRS-AKI
+    text: "HRS-AKI (no response after 2 days, no shock, no recent nephrotoxins, no structural injury): vasoconstrictor (terlipressin or norepinephrine) plus albumin."
+    next: sediment
+  cirrhosis-ok:
+    kind: result
+    at: [12, 10]
+    span: 3
+    title: Responds to treatment
+    text: Monitor SCr and UOP.
+  sediment:
+    kind: question
+    at: [5, 11]
+    span: 5
+    title: Urinalysis (dipstick and sediment microscopy)
+    links: ["section:renal-aki/diagnosis#urinary-indices-oliguric-aki"]
+    answers:
+      - { label: Granular casts or tubular epithelial cells, at: [0, 12], span: 3, to: atn }
+      - { label: Hematuria with proteinuria, detail: No UTI or catheter trauma, at: [3, 12], span: 3, to: gn }
+      - { label: Suspected AIN, detail: Mostly drug-induced, at: [6, 12], span: 3, to: ain }
+      - { label: Heme-positive dipstick without RBCs, at: [9, 12], span: 3, to: pigment }
+      - { label: None of these, at: [12, 12], span: 3, to: bland }
+  atn:
+    kind: result
+    at: [0, 13]
+    span: 3
+    title: Favors ATN over prerenal AKI
+    text: Ischemic (hypoperfusion, sepsis) or toxic (aminoglycosides, amphotericin B, contrast).
+  gn:
+    kind: result
+    at: [3, 13]
+    span: 3
+    title: Possible acute nephritis (GN, vasculitis)
+    text: Serologies; biopsy if needed for diagnosis. Nephrology within 24 h.
+  ain:
+    kind: result
+    at: [6, 13]
+    span: 3
+    title: Possible AIN
+    text: Stop nephrotoxins where possible. Urine eosinophils do not distinguish AIN; definitive diagnosis is by kidney biopsy. Nephrology within 24 h.
+  pigment:
+    kind: result
+    at: [9, 13]
+    span: 3
+    title: Rhabdomyolysis or hemolysis
+    text: "Rhabdomyolysis: CK. Hemolysis: hemoglobin, platelets, LDH, haptoglobin, bilirubin, smear."
+  bland:
+    kind: result
+    at: [12, 13]
+    span: 3
+    title: Second-line tests by scenario
+    text: Tumor lysis, myeloma, hemolysis or TMA, abdominal compartment syndrome. Nephrology within 24 h if no clear cause.
+    links: ["section:renal-aki/diagnosis#second-line-by-scenario"]

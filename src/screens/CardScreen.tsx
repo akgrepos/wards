@@ -1,10 +1,10 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { AKG } from '../design/akg';
-import { cardSources, cardTypeLabel, content, getCard, getSystem, pathwayFor, titleCase } from '../content';
+import { cardSources, cardTypeLabel, content, getCard, getSystem, titleCase } from '../content';
 import type { Card, Source } from '../content/types';
 import { forgetSection, href, isReturning, parseRoute, restoreScroll } from '../router';
 import { addRecent, getCardScroll, setCardScroll, setReading } from '../storage';
-import { AnchorScope, Blocks, Inlines, JUMP_EVENT, LinePill, LineSources, PathwayRow, SourceList } from '../ui/Rich';
+import { AnchorScope, Blocks, Inlines, JUMP_EVENT, LinePill, LineSources, PathwayRows, SourceList } from '../ui/Rich';
 import { useSheet } from '../ui/SheetHost';
 import { icons } from '../ui/icons';
 import { Screen } from './common';
@@ -148,7 +148,6 @@ export function CardScreen({ id, section, anchor }: { id: string; section?: stri
   const system = getSystem(card.system);
   const sources = cardSources(card);
   const related = RELATED.filter(([k]) => (card.related?.[k] ?? []).length > 0);
-  const pathway = pathwayFor(card.id);
 
   const menuItems = [
     ...entries.map((e) => ({ label: e.title, checked: current === e.key, onSelect: () => { setMenu(false); jump(e.key); } })),
@@ -197,9 +196,9 @@ export function CardScreen({ id, section, anchor }: { id: string; section?: stri
             {card.definition && <p className="ios-callout secondary"><Inlines xs={card.definition.inlines} /><LinePill ids={card.definition.sources} quote={card.definition.inlines} /></p>}
             {/* No "Based on" line (owner, 2026-10-18): each section's source line and All Sources name the guidelines. */}
             {card.reviewed && <p className="ios-caption-1 secondary">{reviewedLabel(card.reviewed)}</p>}
-            {/* The card's pathway, the whole card as a flowchart, opens from under the title: it spans every section, so it
-                isn't in any one of them (owner, 2026-10-19). */}
-            {pathway && <PathwayRow id={pathway.id} />}
+            {/* The card's pathways (focused flowcharts that supplement it) open from under the title, one row each
+                (owner, 2026-10-20). */}
+            <PathwayRows cardId={card.id} />
             {card.example && <AKG.Callout variant="info">Development sample with placeholder content. Not shown in the published app.</AKG.Callout>}
           </header>
         }
