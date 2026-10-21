@@ -5,7 +5,7 @@ How cards and shared data are written. The rules behind it are in `CARD-TYPES.md
 ## Where things live
 - `content/systems.yaml`: the 16 systems and the Library, in display order (quote titles that contain commas).
 - `content/cards/<system>/<card-id>.md`: one file per card.
-- `content/data/<type>/<item-id>.yaml`: one file per shared data item. Types so far: `source`, `dose`, `threshold`, `criteria`, `regimen`, `pathway`. A `criteria` item (a formal definition or staging system) has `name`, `short` (the words shown when it's inserted in a sentence), optional `logic` ("Any of:"), `items`, `columns` and `rows` (a table), `layout` (`columns` by default, or `stacked`) with `tones` (a staging or severity table: `stacked` plus one of `yellow`, `orange`, `red` per row, in order; the data sets the color, never the column name), `notes`, and `sources`. On a line of its own it shows in full (items in an indigo Criteria box; a `layout: stacked` table as tinted severity bands; notes in a brown Note box); inside a sentence it shows its `short` name and opens in a sheet. Dose fields: `DATA-TYPES.md`.
+- `content/data/<type>/<item-id>.yaml`: one file per shared data item. Types so far: `source`, `dose`, `threshold`, `criteria`, `regimen`, `pathway`. A `criteria` item (a formal definition or staging system) has `name`, `title` (required: what the box defines plus the year of one of its cited sources, written "SIADH diagnostic criteria, 2013"; the content check enforces both), `short` (the words shown when it's inserted in a sentence), optional `logic` ("Any of:"), `items`, `columns` and `rows` (a table), `layout` (`columns` by default, or `stacked`) with `tones` (a staging or severity table: `stacked` plus one of `yellow`, `orange`, `red` per row, in order; the data sets the color, never the column name), `notes`, and `sources`. On a line of its own it shows in full (items in an indigo Criteria box; a `layout: stacked` table as tinted severity bands; notes in a brown Note box); inside a sentence it shows its `short` name and opens in a sheet. Dose fields: `DATA-TYPES.md`.
 - `content/examples/`: development-only samples (placeholder content). They appear while developing and are never in the published app.
 
 ## A card file
@@ -67,6 +67,9 @@ related:
 
 - Condition and approach cards need `definition` and `reviewed`. `based_on` is optional and not shown (the "Based on" line was removed 2026-10-18); All Sources includes it and the definition's sources.
 - Related and Sources are added by the app; don't write them as sections.
+
+## Contents sub-level (optional)
+A card can list the `####` subheadings of a section in its Contents menu, one level down, always shown (no expand or collapse): add `contents_sub: [dosing]` to the front matter (the section keys; the content check rejects an unknown section or one with no subheadings). Each row jumps to its heading and opens the section if it was closed. Electrolyte Repletion uses it for Dosing and Protocol (Potassium, Magnesium, Phosphate, Calcium). Other cards are unchanged.
 
 ## An emergency (Do Now)
 A condition or approach topic that is also an emergency has a `## Do Now` section, written **before** At a Glance, and a one-line `emergency_hint` in the front matter (50 characters at most, shown under its name in Rapids). It lives in the topic's file (one home) and uses the topic's own dose items; it is not one of the page's sections. It becomes the emergency's page in the Rapids tab, the pop-up behind the topic page's red Rapids button, and the steps of Timed Mode.

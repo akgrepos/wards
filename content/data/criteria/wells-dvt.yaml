@@ -1,4 +1,5 @@
 name: Wells score for DVT (two-level)
+title: "Wells score for DVT (two-level), 2003"
 short: Wells DVT score
 columns: [Item, Points]
 rows:

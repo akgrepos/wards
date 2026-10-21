@@ -1,4 +1,5 @@
 name: PE rule-out criteria (PERC)
+title: "PE rule-out criteria (PERC), 2018"
 short: PERC
 logic: "Only when clinical probability is already low (<15%, e.g. Wells <2). All must be met:"
 items:

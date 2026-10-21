@@ -2,6 +2,12 @@
 
 What changed in each version of Wards, newest first. The version is shown in Settings (gear on Home).
 
+## 2026.10.21.12
+
+**Design pass, step 4: titled criteria boxes and a Contents menu that lists the electrolytes.**
+- **Every criteria box now has a title** saying what it defines and the source year, for example "SIADH diagnostic criteria, 2013". Scores such as Wells and CHA₂DS₂-VASc are labeled "Score" and end with their MDCalc link.
+- **Electrolyte Repletion's Contents menu** now lists Potassium, Magnesium, Phosphate and Calcium under Dosing and Protocol; tapping one jumps straight to it (and opens the section if it was closed).
+
 ## 2026.10.21.11
 
 **Design pass, step 3: tidier dose popups and one style for sources.**

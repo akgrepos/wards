@@ -1,4 +1,5 @@
 name: COPD exacerbation severity (Rome classification)
+title: "COPD exacerbation severity (Rome classification), 2021"
 short: Rome severity
 columns: [Severity, Findings]
 layout: stacked

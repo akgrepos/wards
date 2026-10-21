@@ -1,4 +1,5 @@
 name: Hospitalized COPD exacerbation severity
+title: "Hospitalized COPD exacerbation severity, 2026"
 short: hospital severity
 columns: [Class, Clinical, Gas exchange]
 layout: stacked

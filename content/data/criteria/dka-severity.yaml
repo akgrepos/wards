@@ -1,4 +1,5 @@
 name: DKA severity
+title: "DKA severity, 2024"
 short: DKA severity
 columns: [Severity, β-hydroxybutyrate, Acidosis, Mental status, Suggested setting]
 layout: stacked

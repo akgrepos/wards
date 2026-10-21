@@ -333,23 +333,27 @@ function RegimenBlock({ id }: { id: string }) {
 // indigo Criteria box; a table with `layout: stacked` as tinted bands (yellow, orange, red from its `tones`, severity only),
 // any other table as a table; the notes in a brown Note box. One color per kind of information (owner, 2026-10-19).
 const TONE = { yellow: 'mild', orange: 'moderate', red: 'severe' } as const;
-function CriteriaBody({ c }: { c: Criteria }) {
+function CriteriaBody({ c, id }: { c: Criteria; id?: string }) {
+  // A score or formula that has an MDCalc page ends its box with that link (a calculator file with the same id).
+  const calc = id ? (content.data.calc?.[id] as Calc | undefined) : undefined;
+  const stacked = !!(c.rows?.length && c.layout === 'stacked' && c.tones);
+  const table = c.rows?.length && !stacked ? (
+    <AKG.Table stickyFirstColumn shadedHeader label="Table" columns={(c.columns ?? []).map((h, i) => <RichText key={i} text={h} />)} rows={c.rows.map((r, i) => ({ key: i, cells: r.map((t, j) => <RichText key={j} text={t} />) }))} />
+  ) : null;
   return (
     <div className="criteria">
-      {c.logic || c.items?.length ? (
-        <AKG.Panel tone="definition" label="Criteria">
-          {c.logic && <p className="ios-subheadline-emphasized">{c.logic}</p>}
-          {c.items?.length ? <ul className="ios-body rich-list">{c.items.map((t, i) => <li key={i}><RichText text={t} /></li>)}</ul> : null}
-        </AKG.Panel>
-      ) : null}
-      {c.rows?.length && c.layout === 'stacked' && c.tones ? (
+      <AKG.Panel tone="definition" label={calc ? 'Score' : 'Criteria'} title={c.title}>
+        {c.logic && <p className="ios-subheadline-emphasized">{c.logic}</p>}
+        {c.items?.length ? <ul className="ios-body rich-list">{c.items.map((t, i) => <li key={i}><RichText text={t} /></li>)}</ul> : null}
+        {table}
+        {calc && <p className="ios-body"><CalcLink c={calc} label={`${calc.short} on MDCalc`} /></p>}
+      </AKG.Panel>
+      {stacked ? (
         <AKG.GradeList
           className="staging"
           layout="bands"
-          rows={c.rows.map((r, i) => ({ key: i, grade: <RichText text={/^\d+$/.test(r[0]) ? `${c.columns?.[0]} ${r[0]}` : r[0]} />, tone: TONE[c.tones![i]], values: r.slice(1).map((t, j) => ({ label: <RichText text={c.columns?.[j + 1]} />, value: <RichText text={t} /> })) }))}
+          rows={c.rows!.map((r, i) => ({ key: i, grade: <RichText text={/^\d+$/.test(r[0]) ? `${c.columns?.[0]} ${r[0]}` : r[0]} />, tone: TONE[c.tones![i]], values: r.slice(1).map((t, j) => ({ label: <RichText text={c.columns?.[j + 1]} />, value: <RichText text={t} /> })) }))}
         />
-      ) : c.rows?.length ? (
-        <AKG.Table stickyFirstColumn shadedHeader label="Table" columns={(c.columns ?? []).map((h, i) => <RichText key={i} text={h} />)} rows={c.rows.map((r, i) => ({ key: i, cells: r.map((t, j) => <RichText key={j} text={t} />) }))} />
       ) : null}
       {c.notes?.length ? (
         <AKG.Panel tone="note" label="Note">
@@ -363,14 +367,14 @@ function CriteriaBody({ c }: { c: Criteria }) {
 function CriteriaBlock({ id }: { id: string }) {
   const c = content.data.criteria?.[id] as Criteria | undefined;
   if (!c) return <span className="missing">[missing criteria: {id}]</span>;
-  return <CriteriaBody c={c} />;
+  return <CriteriaBody c={c} id={id} />;
 }
 
 // A criteria set in a sheet: the criteria, then its sources.
-export function CriteriaSheet({ c }: { c: Criteria }) {
-  return <div className="detail-sheet"><CriteriaBody c={c} /><SheetSources ids={c.sources} /></div>;
+export function CriteriaSheet({ c, id }: { c: Criteria; id?: string }) {
+  return <div className="detail-sheet"><CriteriaBody c={c} id={id} /><SheetSources ids={c.sources} /></div>;
 }
-export const openCriteria = (sheet: ShowSheet, c: Criteria) => sheet({ title: 'Criteria', heading: c.name, body: <CriteriaSheet c={c} /> });
+export const openCriteria = (sheet: ShowSheet, c: Criteria, id?: string) => sheet({ title: 'Criteria', body: <CriteriaSheet c={c} id={id} /> });
 
 // `plain`: show the value as text, never tappable (in table cells and scale bands, where the row or band says what it means).
 // A cutoff is tappable only when its pop-up adds something the line doesn't show: a `note` (owner's rule, 2026-10-19;
@@ -407,7 +411,7 @@ function Insert({ kind, id, plain, label }: { kind: string; id: string; plain?: 
   if (kind === 'calc') return <CalcLink c={item as unknown as Calc} label={label} />;
   if (kind === 'criteria') {
     const c = item as unknown as Criteria;
-    return <AKG.TappableValue onClick={() => openCriteria(sheet, c)}>{c.short}</AKG.TappableValue>;
+    return <AKG.TappableValue onClick={() => openCriteria(sheet, c, id)}>{c.short}</AKG.TappableValue>;
   }
   return <span>{id}</span>;
 }
