@@ -5,6 +5,7 @@ import { TAGS, parseInline } from './inline.mjs';
 import { onsetMinutes } from './onset.mjs';
 import { emergencySteps, offsetMinutes, stepDoses } from './emergency.mjs';
 import { checkPathway } from './pathway.mjs';
+import { checkMedia } from './media.mjs';
 
 const DOSE_ONLY = /^\{\{\s*dose\s*:\s*([a-z0-9-]+)\s*\}\}$/;
 
@@ -161,6 +162,7 @@ export function checkContent({ systems, cards, data }) {
           if (x.t === 'insert' && !data[x.kind]?.[x.id]) err(where, `"${title}" inserts unknown ${x.kind} "${x.id}"`);
           if (x.t === 'insert' && x.kind === 'dose') err(where, `"${title}": put each dose on a line of its own ({{dose:${x.id}}}), so it shows as one dose row`);
           if (x.t === 'insert' && x.kind === 'regimen') err(where, `"${title}": put each regimen on a line of its own ({{regimen:${x.id}}}), so it shows in full`);
+          if (x.t === 'insert' && x.kind === 'media') err(where, `"${title}": put each figure on a line of its own ({{media:${x.id}}})`);
           if (x.t === 'link') {
             const target = cards.find((k) => k.id === x.id);
             if (!target) err(where, `"${title}" links to unknown card "${x.id}"`);
@@ -249,6 +251,7 @@ export function checkContent({ systems, cards, data }) {
       if (kind === 'criteria' && item.rows?.some((r) => !Array.isArray(r) || r.length !== (item.columns ?? []).length)) err(where, 'every row needs one cell per column');
       // A pathway: every link resolves, every box is reachable, doses come only from the card (docs/DATA-TYPES.md, 9).
       if (kind === 'pathway') for (const m of checkPathway(id, item, { cards, data })) err(where, m.slice(id.length + 2));
+      if (kind === 'media') for (const m of checkMedia(id, item, { data })) err(where, m);
       if (/^[a-z0-9]+(-[a-z0-9]+)*$/.test(id) === false) err(where, `id "${id}" must be lowercase words joined by hyphens`);
     }
   }

@@ -193,6 +193,8 @@ export const DATA_TYPES = {
   regimen: { required: ['name', 'options'], sourced: true },
   // A formal definition or set of criteria: optional "any of" items and/or a table (e.g. stages).
   criteria: { required: ['name', 'short'], sourced: true },
+  // An ECG recording or a drawn ECG, shown as a figure (docs/DATA-TYPES.md, 11. Media).
+  media: { required: ['kind', 'title', 'alt', 'caption', 'illustrates'], sourced: true },
 };
 
 // Every field a regimen and each of its options can have.

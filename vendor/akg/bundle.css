@@ -2339,7 +2339,10 @@ button.akg-sheet__grabber::after { content: ""; position: absolute; left: -20px;
 
 /* Figure — image with caption; `paper` keeps a white backing in dark mode (for tracings and scans that must not invert). */
 .akg-figure { margin: 0; display: flex; flex-direction: column; gap: var(--space-8); }
-.akg-figure__open { display: block; padding: 0; border: 0; background: none; cursor: zoom-in; border-radius: 14px; overflow: hidden; -webkit-tap-highlight-color: transparent; }
+.akg-figure__open { position: relative; display: block; width: 100%; padding: 0; border: 0; background: none; color: inherit; font: inherit; text-align: left; cursor: zoom-in; border-radius: 14px; overflow: hidden; -webkit-tap-highlight-color: transparent; }
+.akg-figure__drawing { display: block; width: 100%; border-radius: 14px; overflow: hidden; }
+.akg-figure__badge { position: absolute; right: var(--space-8); bottom: var(--space-8); width: 30px; height: 30px; border-radius: var(--radius-full); display: inline-flex; align-items: center; justify-content: center; color: var(--label); background: var(--glass-fill); box-shadow: var(--shadow-glass-control); -webkit-backdrop-filter: blur(12px) saturate(180%); backdrop-filter: blur(12px) saturate(180%); pointer-events: none; }
+.akg-figure__badge svg { width: 15px; height: 15px; }
 .akg-figure__image { display: block; width: 100%; height: auto; border-radius: 14px; }
 .akg-figure--paper .akg-figure__image, .akg-figure__full--paper { background: #ffffff; }
 .akg-figure__caption { display: flex; flex-direction: column; gap: var(--space-2); color: var(--label-secondary); font-size: calc(13 * var(--akg-text-unit, 1px)); line-height: calc(18 * var(--akg-text-unit, 1px)); }
@@ -2348,6 +2351,16 @@ button.akg-sheet__grabber::after { content: ""; position: absolute; left: -20px;
 .akg-figure__stage { flex: 1; display: flex; align-items: center; justify-content: center; overflow: auto; touch-action: pinch-zoom pan-x pan-y; padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left); }
 .akg-figure__full { max-width: 100%; max-height: 100%; object-fit: contain; }
 .akg-figure__close { position: absolute; z-index: 1; top: calc(env(safe-area-inset-top) + var(--space-8)); right: calc(env(safe-area-inset-right) + var(--space-16)); width: var(--tap-target); height: var(--tap-target); border: 0; border-radius: var(--radius-full); display: inline-flex; align-items: center; justify-content: center; font-size: 17px; color: #fff; background: rgba(120, 120, 128, 0.36); -webkit-backdrop-filter: blur(15px); backdrop-filter: blur(15px); cursor: pointer; }
+.akg-figure__stage--wide { justify-content: flex-start; align-items: flex-start; touch-action: pan-x pan-y; }
+.akg-figure__wide { flex: none; max-width: 100%; margin: auto; }
+.akg-figure__wide--scroll { max-width: none; padding: calc(var(--tap-target) + var(--space-16)) var(--space-16) calc(var(--tap-target) + var(--space-24)); box-sizing: content-box; }
+.akg-figure__zoom { position: absolute; z-index: 1; bottom: calc(env(safe-area-inset-bottom) + var(--space-16)); right: calc(env(safe-area-inset-right) + var(--space-16)); display: flex; border-radius: var(--radius-full); background: rgba(120, 120, 128, 0.36); -webkit-backdrop-filter: blur(15px); backdrop-filter: blur(15px); }
+.akg-figure__zoom button { width: var(--tap-target); height: var(--tap-target); border: 0; padding: 0; background: none; color: #fff; display: inline-flex; align-items: center; justify-content: center; font-size: 17px; cursor: pointer; }
+.akg-figure__zoom button:disabled { opacity: 0.35; cursor: default; }
+/* A drawing opens on the theme background (it is drawn in the theme colors and matches the status bar); its buttons are gray fills that show on white and black. */
+.akg-figure__viewer--drawing { background: var(--background); }
+.akg-figure__viewer--drawing .akg-figure__close, .akg-figure__viewer--drawing .akg-figure__zoom { color: var(--label); background: var(--fill-secondary); -webkit-backdrop-filter: blur(15px); backdrop-filter: blur(15px); }
+.akg-figure__viewer--drawing .akg-figure__zoom button { color: var(--label); }
 [data-theme^="macos"] .akg-figure__caption { font-size: 11px; line-height: 14px; }
 
 /* Banner — in-app status about the app itself. Glass card; Later + one action. Place it where it never covers navigation.

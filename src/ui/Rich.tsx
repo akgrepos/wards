@@ -8,6 +8,7 @@ import { slug } from '../../scripts/content/pathway.mjs';
 import { href, parseRoute } from '../router';
 import { useSheet, type ShowSheet } from './SheetHost';
 import { icons } from './icons';
+import { MediaFigure } from './Ecg';
 
 // Free, clinician-oriented, no sign-in; opens in Safari (DECISIONS 2026-10-18, "Drug interactions: link out").
 export const INTERACTION_CHECKER = 'https://reference.medscape.com/drug-interactionchecker';
@@ -531,6 +532,7 @@ function BlockView({ b }: { b: Block }) {
   if (b.t === 'insert') {
     if (b.kind === 'criteria') return <CriteriaBlock id={b.id} />;
     if (b.kind === 'regimen') return <RegimenBlock id={b.id} />;
+    if (b.kind === 'media') return <MediaFigure id={b.id} pill={(ids, quote) => <LinePill ids={ids} quote={quote} />} />;
     return <p className="ios-body"><Insert kind={b.kind} id={b.id} /></p>;
   }
   if (b.t !== 'table') return <Container b={b as ContainerBlock} />;

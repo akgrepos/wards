@@ -1,6 +1,6 @@
 # Status
 
-Last updated 2026-10-20 (live version 2026.10.20.4, guideline audit of all 12 cards). A short snapshot so the next session can pick up where the last one stopped. The reasons behind each choice are in [DECISIONS.md](DECISIONS.md); what changed in each version is in [CHANGELOG.md](../CHANGELOG.md).
+Last updated 2026-10-21 (live version 2026.10.21, ECG figures on four cards). A short snapshot so the next session can pick up where the last one stopped. The reasons behind each choice are in [DECISIONS.md](DECISIONS.md); what changed in each version is in [CHANGELOG.md](../CHANGELOG.md).
 
 ## Start here next time
 1. **Open a new chat and type "Start Main".** The `wards-main` skill renames it "Main", checks sessions, pull requests and branches, and runs the day by delegating to side sessions (at most three branches at a time). Nothing is parked: no open pull requests, no side sessions, only `main`.
@@ -9,9 +9,11 @@ Last updated 2026-10-20 (live version 2026.10.20.4, guideline audit of all 12 ca
    - New cardiology cards: Atrial Fibrillation (with its Rapids page: AF with RVR, Timed Mode), Acute Coronary Syndrome: NSTEMI and Unstable Angina, Acute Decompensated Heart Failure (dose sheets, US vs European comparisons under More Information).
    - New cards: Community-Acquired Pneumonia, Cellulitis and Erysipelas, Pyelonephritis and Complicated UTI (gray Regimen boxes, dose sheets); Hyponatremia (with its Rapids page), Hypokalemia, IV Fluids; Electrolyte Repletion.
    - New focused pathways: Hyperkalemia: Treatment and AKI: Cause Workup (Pathway row under each title, Library › Pathways): levels, dose rows, checkmark answers, pinch zoom, Current Step.
+   - ECG figures (2026.10.21) on AF, NSTE-ACS, Hypokalemia and Hyperkalemia: measurements, tap for full screen (scroll, − / +, pinch), light/dark, large Text Size.
    - Rapids › Hyperkalemia: Timed Mode start to finish (Mark Given, minimize, reopen the app, End, summary).
 4. **Next work** (Main picks with the owner, within the three-branch limit):
    - **Wave 1 batch 4**: the next three cards from the private topic list's Wave 1 (one batch at a time, owner reviews each on the phone). Focused pathways for AF (e.g. rate vs rhythm, anticoagulation) and ADHF can now be built in the new format; their drafted box content is in the batch 3 pull request. Batch 2 leftovers, possible later: an aztreonam row for beta-lactam allergy, IV moxifloxacin, the newer oral carbapenem for complicated UTI.
+   - **ECG library** (follow-on to the ECG figures): Library › ECGs built on the Media data type, the same figure and full-screen view, more patterns from open datasets (only where a real, labeled recording exists; otherwise a drawing, as for hyperkalemia).
    - **Card template adjustments** from the three pilots: a short clinical-register style guide in CONTENT-FORMAT.md; whether approach cards need fewer sections; the "most common" vs "cannot miss" layout; rates and deficits in prose blocked by the typed-dose check; dose rows that need an indication lead-in; a definition line for reference cards; tall table rows on a phone; Contents menu names cut short at the largest Text Sizes.
    - **Redesign Phase 5, Library and full search** (offline search across sections, drugs and tools, including Rapids pages; possibly one file per card), then **Phase 6** (final light/dark/Text Size check and independent review).
    - **More focused pathways** (e.g. Hyponatremia: Workup and Treatment), only where sequential thinking helps; the owner picks.
@@ -20,7 +22,8 @@ Last updated 2026-10-20 (live version 2026.10.20.4, guideline audit of all 12 ca
 5. **Inputs needed from the owner:** The clinical reference is used in the owner's Chrome (Claude in Chrome, new window), where the sign-in lasts. The AI evidence checker is a last resort the owner runs by pasting batches (DECISIONS 2026-10-20); its `.card_check` DotFlow and its how-to are kept privately (`~/Documents/Wards-reference/prompts/`).
 
 ## Done
-- **App:** live at https://akgrepos.github.io/wards/ (version 2026.10.20.3).
+- **App:** live at https://akgrepos.github.io/wards/ (version 2026.10.21).
+  - ECG figures (2026.10.21): AF, NSTE-ACS and Hypokalemia from open recordings (PTB-XL; Zheng 2022 database), Hyperkalemia drawn; true scale on a grid, the criteria's measurements labeled, full screen with zoom; new Media data type (DECISIONS 2026-10-21).
   - Pathways are focused, levelled flowcharts (2026-10-20): Hyperkalemia: Treatment and AKI: Cause Workup; several per card allowed; dose rows in boxes; rebuilt pinch zoom and Current Step.
   - Guideline audit (2026.10.20.4): every card searched for newer guidelines; NSTE-ACS moved to the Fifth Universal Definition of MI (2026) and 2026 US lipid goals; IV Fluids to Surviving Sepsis 2026; Complicated UTI, Hypokalemia, Hyponatremia and Hyperkalemia sources updated (DECISIONS 2026-10-20).
   - Wave 1 batch 3: Atrial Fibrillation (condition, Rapids page for AF with RVR), Acute Coronary Syndrome: NSTEMI and Unstable Angina, Acute Decompensated Heart Failure (condition cards, Cardiology).
@@ -31,7 +34,7 @@ Last updated 2026-10-20 (live version 2026.10.20.4, guideline audit of all 12 ca
   - App features: four tabs (Home, Rapids, Topics, Library) with search; Continue Reading, Rapids shortcuts and Recent kept on the phone (Favorites removed 2026-10-20); offline use (checked on every build), the "Update Ready" banner, light/dark mode and Text Size support, readable width, and reopening on the last page within 30 minutes.
 - **Process:** a daily Main chat that delegates to side sessions (`wards-main` skill, at most three branches); branch and pull request per task, automatic checks (anonymous authors, design system styles, content, type-check, tests, build), automatic publishing from `main`, weekly Dependabot updates plus security fixes. End-of-chat wrap-up via the `wards-wrap-up` skill.
 - **Privacy and security:** anonymous history, private GitHub profile with passkey and two-factor sign-in, protected `main`, rebase-only merges, page hidden from search engines and limited to its own scripts.
-- **AKG Design System** fifth pass, redesign additions, tabs sized to labels, SF Symbols iconography rule, AKI-redesign additions (Panel, GradeList, severity tones, toggle bar button, one-color-one-job rule, redrawn gear), the `chevron.down` icon for Timed Mode, and (2026-10-20) Button subtitle, tinted-label contrast token and checkmark/plus/minus symbols (version 1792549360-bdc1): https://claude.ai/artifact/GWFUZ6rCthpEuhMik4Jiru (copy in `vendor/akg/`).
+- **AKG Design System** fifth pass, redesign additions, tabs sized to labels, SF Symbols iconography rule, AKI-redesign additions (Panel, GradeList, severity tones, toggle bar button, one-color-one-job rule, redrawn gear), the `chevron.down` icon for Timed Mode, and (2026-10-20) Button subtitle, tinted-label contrast token and checkmark/plus/minus symbols (version 1792549360-bdc1), and (2026-10-21) Figure drawings with a full-screen scroll-and-zoom view and an enlarge badge (version 1792558283-0903): https://claude.ai/artifact/GWFUZ6rCthpEuhMik4Jiru (copy in `vendor/akg/`).
 - **Content planning:** topic list (private; 16 systems plus the Library, about 488 cards plus 41 scores, Wave 1 = 30 cards), card types, data types (now including criteria sets), flowchart and citation formats.
 - **HIG reference:** full HIG text and rule summaries kept privately in `~/Documents/Wards-reference/hig/`.
 
@@ -53,7 +56,6 @@ Last updated 2026-10-20 (live version 2026.10.20.4, guideline audit of all 12 ca
 ## Possible later work
 Not requested yet; listed so nothing is forgotten.
 - **App:**
-  - ECG library
   - score calculators (NumberField is ready)
   - subsections assigned across the private topic list
 - **Design system, from the HIG review (not chosen):**

@@ -1069,13 +1069,20 @@ export interface TableProps {
 export declare function Table(props: TableProps): React.ReactElement;
 
 export interface FigureProps {
-  src: string;
-  /** Describes the image. */
+  /** The image. Leave out when passing a drawing as children. */
+  src?: string;
+  /** Describes the image or drawing. */
   alt: string;
+  /** A drawing (for example an inline SVG chart or tracing) shown instead of an image. Its text can follow Text Size. */
+  children?: React.ReactNode;
+  /** What the full-screen view shows, when it differs from the figure (a fuller or more detailed version). Defaults to the drawing or the image. */
+  full?: React.ReactNode;
+  /** Width in px of `full` at its starting size, for content wider than the screen (a long tracing): the view scrolls sideways, and − / + buttons or a pinch zoom it from 1× to 4×. */
+  fullWidth?: number;
   caption?: React.ReactNode;
   /** Source or license line, under the caption. */
   credit?: React.ReactNode;
-  /** Tap to view full screen with pinch to zoom. Default true. */
+  /** Tap to view full screen and zoom (a small enlarge badge shows). Default true. */
   zoomable?: boolean;
   /** Keep a white backing in dark mode, for tracings, scans and diagrams drawn on white. */
   paper?: boolean;

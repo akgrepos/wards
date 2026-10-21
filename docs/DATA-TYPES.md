@@ -94,10 +94,11 @@ How well one antimicrobial covers one organism.
 
 ### 11. Media
 Images, ECGs and diagrams.
-- **ECG:** dataset and record ID · leads · calibration (25 mm/s, 10 mm/mV) · annotations (e.g. measured intervals, highlighted voltages) · license and credit · the criteria it illustrates
-- **Image:** file · license and attribution · finding annotations · source
-- **Diagram:** drawn in the app's style · what it's based on (source)
-- Home: the ECG or imaging library; inserted into cards
+- **ECG** (`kind: ecg`, built): `title` · `alt` · `caption` · `illustrates` (the card's criteria it shows) · `sources` (the criteria's) · `recording` (`dataset`: a source of kind `dataset` with `license` and `license_url`; `record` ID; `rate` 250; `leads`: the leads kept, 9.8–10 s each, samples in 0.01 mV) · `show` (`lead`, `from`, `to` in seconds, 4 s at most; `smooth`) · `marks` (`interval`, `band`, `baseline`, `height`, `text`; times in seconds, voltages in mV; labels are the measurements). Drawn at 25 mm/s and 10 mm/mV on a 1 mm / 5 mm grid; full screen shows every stored lead, raw. Marks are measured on the raw recording by `scripts/media/extract_ecg.py`.
+- **ECG drawing** (`kind: ecg-drawing`, built): `panels`, each a `title`, `cue`, `seconds`, and either `beats` (R-wave times) with `waves` ([height mV, center s from R, width s]) or a `sine`; plus `marks`. For patterns with no reusable recording; credited "Drawing based on" its source.
+- **Image:** file · license and attribution · finding annotations · source (not built yet)
+- **Diagram:** drawn in the app's style · what it's based on (source) (not built yet)
+- Home: the ECG or imaging library (later); inserted into cards with a line that is only `{{media:id}}`
 
 ### 12. Term
 A word the app knows.

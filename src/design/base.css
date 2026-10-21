@@ -233,3 +233,27 @@ html[data-timed] .timed-page .screen-body.timed-body { padding-bottom: calc(env(
 }
 .timed-actions > * { max-width: var(--readable-width); width: 100%; margin: 0 auto; box-sizing: border-box; }
 .timed-summary { padding-top: 0; }
+
+/* ECG figures (src/ui/Ecg.tsx): true scale on a 1 mm / 5 mm grid; colors from the theme. Indigo marks the criteria
+   ("One color, one job": indigo = criteria). */
+.ecg-figure, .ecg-set { margin: var(--space-12) 0 0; }
+.ecg-box { position: relative; width: 100%; }
+.ecg-full { display: flex; flex-direction: column; gap: 0; border-radius: 14px; overflow: hidden; }
+.ecg-probe { position: absolute; visibility: hidden; pointer-events: none; font-size: calc(11 * var(--akg-text-unit)); line-height: 1; }
+.ecg-strip { display: block; }
+.ecg-paper { fill: var(--background-grouped-secondary); }
+.ecg-full .ecg-paper { fill: var(--background-elevated); }
+.ecg-grid-minor { stroke: color-mix(in srgb, var(--label) 7%, transparent); stroke-width: 0.6; fill: none; }
+.ecg-grid-major { stroke: color-mix(in srgb, var(--label) 20%, transparent); stroke-width: 0.8; fill: none; }
+.ecg-trace { stroke: var(--label); stroke-width: 1.6; fill: none; stroke-linejoin: round; stroke-linecap: round; }
+.ecg-band { fill: color-mix(in srgb, var(--system-indigo) 14%, transparent); }
+.ecg-mark { stroke: var(--system-indigo); stroke-width: 1.3; fill: none; }
+.ecg-baseline { stroke: var(--system-indigo); stroke-width: 1; stroke-dasharray: 3 3; fill: none; }
+.ecg-mark-text { font-family: var(--font-sans); font-weight: 600; fill: color-mix(in srgb, var(--system-indigo) 80%, var(--label)); paint-order: stroke; stroke: var(--background-grouped-secondary); stroke-width: 3px; stroke-linejoin: round; }
+.ecg-lead { font-family: var(--font-sans); font-weight: 600; fill: var(--label-secondary); }
+.ecg-figure .akg-figure__open, .ecg-panels .akg-figure__drawing { box-shadow: inset 0 0 0 0.5px var(--separator); }
+.ecg-figure .akg-figure__drawing, .ecg-panels .akg-figure__drawing { border-radius: 12px; }
+.ecg-set { display: flex; flex-direction: column; gap: var(--space-8); }
+.ecg-panels { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-10) var(--space-8); }
+.ecg-panels .akg-figure { gap: var(--space-4); }
+.ecg-panel-title { color: var(--label); font-weight: 600; }
