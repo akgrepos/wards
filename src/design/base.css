@@ -288,3 +288,11 @@ html[data-timed] .timed-page .screen-body.timed-body { padding-bottom: calc(env(
 .dose-section .rich-list { margin: 0; }
 .dose-section .akg-value-row--static { padding-left: 0; padding-right: 0; min-height: 0; }
 .dose-cites { display: flex; flex-direction: column; gap: var(--space-12); }
+
+/* Calculators (bottom sheet) */
+.calc-sheet { display: flex; flex-direction: column; gap: var(--space-12); }
+.calc-sheet p { margin: 0; }
+.calc-rows, .calc-inputs { display: flex; flex-direction: column; }
+.calc-result { display: flex; flex-direction: column; gap: var(--space-8); }
+.calc-band { display: flex; flex-direction: column; gap: var(--space-4); }
+.calc-high { color: var(--system-red); }

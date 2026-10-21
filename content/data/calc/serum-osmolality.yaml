@@ -2,3 +2,18 @@ name: "Serum osmolality/osmolarity (calculated)"
 short: "calculated osmolality"
 url: https://www.mdcalc.com/calc/91/serum-osmolality-osmolarity
 match: ["calculated osmolality"]
+sources: [rasouli-osmolality-2016, ada-hyperglycemic-crises-2009, ada-hyperglycemic-crises-2024]
+calculator:
+  kind: formula
+  heading: Calculated serum osmolality
+  expression: "2 × Na⁺ + glucose ÷ 18 + BUN ÷ 2.8"
+  inputs:
+    - { id: na, label: "Sodium", unit: "mEq/L", min: 90, max: 200 }
+    - { id: glucose, label: "Glucose", unit: "mg/dL", min: 10, max: 2000 }
+    - { id: bun, label: "BUN", unit: "mg/dL", min: 1, max: 300 }
+  results:
+    - { fn: osmolality, label: "Calculated osmolality", unit: "mOsm/kg", decimals: 0, needs: [na, glucose, bun] }
+    - { fn: effective-osmolality, label: "Effective osmolality (without BUN)", unit: "mOsm/kg", decimals: 0, needs: [na, glucose] }
+  reference: "Normal 275–295 mOsm/kg. Hyperosmolar hyperglycemic state: effective osmolality >300 mOsm/kg."
+  notes:
+    - "Calculated only; it does not include ethanol or other osmoles (a measured osmolality is needed for an osmolar gap)."

@@ -2,3 +2,19 @@ name: Serum anion gap
 short: "anion gap"
 url: https://www.mdcalc.com/calc/1669/anion-gap
 match: ["anion gap"]
+sources: [kraut-anion-gap-2007, ada-hyperglycemic-crises-2024, figge-albumin-1998]
+calculator:
+  kind: formula
+  heading: Serum anion gap
+  expression: "Na⁺ − (Cl⁻ + HCO₃⁻), without K⁺"
+  inputs:
+    - { id: na, label: "Sodium", unit: "mEq/L", min: 90, max: 200 }
+    - { id: cl, label: "Chloride", unit: "mEq/L", min: 50, max: 150 }
+    - { id: hco3, label: "Bicarbonate", unit: "mEq/L", min: 1, max: 60 }
+    - { id: albumin, label: "Albumin (optional)", unit: "g/dL", min: 0.5, max: 6, optional: true }
+  results:
+    - { fn: anion-gap, label: "Anion gap", unit: "mEq/L", decimals: 0, needs: [na, cl, hco3] }
+    - { fn: albumin-corrected-anion-gap, label: "Albumin-corrected anion gap", unit: "mEq/L", decimals: 0, needs: [na, cl, hco3, albumin] }
+  reference: "Normal depends on the analyzer, typically about 8–12 mEq/L without K⁺. Above 12 mEq/L is a high anion gap in the 2024 hyperglycemic crises consensus."
+  notes:
+    - "Albumin correction adds 2.5 mEq/L for each 1 g/dL that albumin is below 4.0 g/dL (normal albumin taken as 4.0 by convention)."
