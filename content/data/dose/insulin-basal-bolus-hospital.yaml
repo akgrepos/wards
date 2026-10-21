@@ -18,5 +18,5 @@ adjustments:
 cautions:
   - "Fasting glucose <100 mg/dL predicts hypoglycemia within 24 hours: lower the basal dose."
   - "Type 1 diabetes: never hold basal insulin, even when NPO."
-notes: "Starting dose only; adjust daily to glucose. Trials started 0.4–0.5 units/kg per day."
+notes: "Starting dose only; adjust daily to glucose. Trials started 0.4–0.5 units/kg per day and excluded ICU patients, glucocorticoid use and creatinine ≥3.0 mg/dL."
 sources: [ada-soc-hospital-2026, rabbit-2-2007, rabbit-2-surgery-2011, basal-plus-2013]
