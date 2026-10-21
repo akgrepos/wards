@@ -1,0 +1,180 @@
+---
+id: cardio-adhf
+type: condition
+system: cardio
+subsection: Heart Failure and Cardiomyopathy
+title: Acute Decompensated Heart Failure
+aliases: [ADHF, acute heart failure, AHF, CHF exacerbation, heart failure exacerbation, decompensated heart failure, volume overload, pulmonary edema, flash pulmonary edema, cardiogenic pulmonary edema, diuresis, diuretic resistance, HFrEF, HFpEF, GDMT]
+definition: "New or worsening symptoms and signs of heart failure, usually congestion, needing urgent evaluation and treatment. ^[aha-acc-hfsa-hf-2022, esc-hf-2021]"
+based_on: [aha-acc-hfsa-hf-2022, esc-hf-2021, esc-hf-2023, hfa-diuretics-2019]
+reviewed: 2026-10-20
+related:
+  differential: []
+  conditions: [cardio-atrial-fibrillation, cardio-nste-acs, renal-aki, renal-hyponatremia, renal-hypokalemia]
+  tools: []
+---
+## At a Glance
+- Classify by congestion (wet or dry) and perfusion (warm or cold); most are warm and wet. ^[aha-acc-hfsa-hf-2022]
+- Find the trigger: ischemia, arrhythmia, hypertension, infection, nonadherence to medications or sodium restriction, offending drugs. ^[aha-acc-hfsa-hf-2022]
+- Congestion: prompt IV loop diuretic, dose at least equal to the home oral daily dose; check response within hours. ^[aha-acc-hfsa-hf-2022, esc-hf-2021]
+- Poor response: double the loop dose, then add a thiazide-type diuretic or acetazolamide. ^[esc-hf-2021, hfa-diuretics-2019, advor-2022]
+- Hypoperfusion or hypotension: ICU and cardiology for inotropes or vasopressors. ^[aha-acc-hfsa-hf-2022]
+- Continue GDMT unless unstable; start missing pillars before discharge; decongest fully; follow up within 7 days. ^[aha-acc-hfsa-hf-2022, strong-hf-2022]
+
+## Severity
+#### Hemodynamic profile
+| Profile | Findings | Approach |
+|---|---|---|
+| Warm and wet | Congestion, adequate perfusion (most common) | Diuretics; vasodilator if hypertensive ^[aha-acc-hfsa-hf-2022, esc-hf-2021] |
+| Cold and wet | Congestion with hypoperfusion: cool extremities, narrow pulse pressure, altered mentation, oliguria, rising lactate | ICU; inotropes, vasopressors if hypotensive; diuretics once perfused ^[aha-acc-hfsa-hf-2022, esc-hf-2021] |
+| Cold and dry | Hypoperfusion without congestion | Cautious fluid if preload-dependent; inotropes ^[esc-hf-2021] |
+| Warm and dry | Compensated | Look for another cause of symptoms ^[esc-hf-2021] |
+
+- Cardiogenic shock (hypotension with hypoperfusion): ICU and cardiology emergently. ^[aha-acc-hfsa-hf-2022]
+- Respiratory distress or SpO₂ <90% despite oxygen: noninvasive ventilation, ICU if not improving. ^[esc-hf-2021]
+- Higher risk: SBP <100 mm Hg, rising creatinine, hyponatremia, high natriuretic peptide or troponin, LVEF ≤25%. ^[aha-acc-hfsa-hf-2022, common-practice]
+
+## Causes
+- **Ischemic:** [!cannot-miss] acute coronary syndrome; mechanical complications of MI. ^[aha-acc-hfsa-hf-2022]
+- **Arrhythmia:** AF with RVR, other tachyarrhythmias, bradyarrhythmia. ^[aha-acc-hfsa-hf-2022]
+- **Hemodynamic:** uncontrolled hypertension, acute valve dysfunction (endocarditis, chordal rupture, prosthetic valve thrombosis), PE. ^[aha-acc-hfsa-hf-2022, esc-hf-2021]
+- **Nonadherence:** medications, sodium or fluid intake. ^[aha-acc-hfsa-hf-2022]
+- **Drugs and toxins:** NSAIDs, nondihydropyridine calcium channel blockers in HFrEF, thiazolidinediones, some antiarrhythmics and chemotherapy, alcohol, stimulants. ^[aha-acc-hfsa-hf-2022]
+- **Systemic:** infection, anemia, thyroid disease, worsening kidney function, pregnancy. ^[aha-acc-hfsa-hf-2022, esc-hf-2021]
+- **Mimics:** pneumonia, COPD exacerbation, PE, nephrotic syndrome, cirrhosis, ARDS. ^[common-practice]
+
+## Presentation
+- Dyspnea on exertion, orthopnea, paroxysmal nocturnal dyspnea, edema, weight gain, abdominal fullness; fatigue in low output. ^[aha-acc-hfsa-hf-2022]
+- Congestion: elevated JVP, hepatojugular reflux, crackles, S3, peripheral edema, ascites, pleural effusions. ^[aha-acc-hfsa-hf-2022]
+- Elevated JVP and orthopnea are the most useful bedside signs of high filling pressures; crackles may be absent in chronic heart failure. ^[common-practice]
+- Hypoperfusion: cool extremities, narrow pulse pressure, confusion, oliguria. ^[esc-hf-2021]
+
+## Diagnosis
+#### Initial tests
+- ECG: ischemia, arrhythmia, LV hypertrophy. ^[aha-acc-hfsa-hf-2022]
+- BNP or NT-proBNP when the diagnosis is uncertain; also for prognosis. ^[aha-acc-hfsa-hf-2022]
+- Troponin: ACS, and prognosis (often modestly elevated). ^[aha-acc-hfsa-hf-2022]
+- Chest radiograph: pulmonary edema, effusions, other causes; lung ultrasound (B-lines) is a sensitive adjunct. ^[esc-hf-2021]
+- BMP, Mg²⁺, CBC, liver panel, TSH, glucose, iron studies (ferritin, transferrin saturation). ^[aha-acc-hfsa-hf-2022, esc-hf-2021]
+- Transthoracic echocardiogram if new heart failure or a change in clinical status. ^[aha-acc-hfsa-hf-2022]
+
+#### Natriuretic peptides
+| Use | BNP | NT-proBNP | Notes |
+|---|---|---|---|
+| Acute heart failure unlikely | <100 pg/mL | <300 pg/mL | ^[esc-hf-2021] |
+| Lower in | Obesity | Obesity | Values may be low despite heart failure ^[aha-acc-hfsa-hf-2022] |
+| Higher in | Age, AF, CKD, sepsis, PE | Age, AF, CKD, sepsis, PE | Interpret with the clinical picture ^[aha-acc-hfsa-hf-2022] |
+| Sacubitril-valsartan | Raised (neprilysin substrate) | Not affected | Use NT-proBNP on sacubitril-valsartan ^[aha-acc-hfsa-hf-2022] |
+
+#### Further testing
+- New heart failure: evaluate for ischemia and other cardiomyopathies (as outpatient or once stable). ^[aha-acc-hfsa-hf-2022]
+- Right heart catheterization: unclear filling pressures, hypotension, worsening kidney function or no response to therapy. ^[aha-acc-hfsa-hf-2022]
+
+## Treatment
+1. Respiratory support
+   - Oxygen for SpO₂ <90%; not routinely without hypoxemia. ^[esc-hf-2021]
+   - Respiratory distress: noninvasive ventilation (CPAP or BiPAP) to improve gas exchange and reduce intubation. ^[esc-hf-2021]
+   - Upright position. ^[common-practice]
+
+2. IV loop diuretic
+   - Start promptly when congested; IV, not oral, because of gut edema. ^[aha-acc-hfsa-hf-2022, esc-hf-2021]
+   - Bolus or continuous infusion are equivalent; a higher dose gives more diuresis with transient creatinine rise. ^[dose-2011]
+
+   {{dose:furosemide-iv-adhf}}
+
+   - Spot urine Na⁺ at 2 h and urine output at 6 h define response (see Monitor). ^[esc-hf-2021, hfa-diuretics-2019]
+   - Inadequate response: double the loop dose. ^[esc-hf-2021, hfa-diuretics-2019]
+
+3. Diuretic resistance
+   - Persistent congestion despite escalated loop dose: add a thiazide-type diuretic or acetazolamide; monitor K⁺, Mg²⁺ and Na⁺ closely. ^[aha-acc-hfsa-hf-2022, hfa-diuretics-2019]
+
+   {{dose:metolazone-adhf}}
+   {{dose:acetazolamide-adhf}}
+
+   - Refractory: ultrafiltration or kidney replacement therapy, or inotropes guided by hemodynamics; cardiology. ^[aha-acc-hfsa-hf-2022]
+   - A modest creatinine rise during effective decongestion should not stop diuresis. ^[aha-acc-hfsa-hf-2022]
+
+4. Vasodilator
+   - Hypertensive acute heart failure or pulmonary edema: IV nitroglycerin with diuretics, if SBP >110 mm Hg. ^[aha-acc-hfsa-hf-2022, esc-hf-2021]
+
+   {{dose:nitroglycerin-iv}}
+
+   - Avoid with hypotension, severe aortic stenosis, hypertrophic obstructive cardiomyopathy, or phosphodiesterase-5 inhibitor use. ^[common-practice, label-ntg-premix-2016]
+
+5. Hypoperfusion
+   - Cold profile or cardiogenic shock: ICU, inotropes (dobutamine, milrinone) and vasopressors (norepinephrine) to maintain perfusion; mechanical support by the shock team. ^[aha-acc-hfsa-hf-2022]
+   - Treat the cause: urgent revascularization for ACS, cardioversion for unstable arrhythmia, surgery for acute valve lesions. ^[aha-acc-hfsa-hf-2022]
+
+6. GDMT in hospital
+   - Continue existing GDMT unless hemodynamically unstable or contraindicated; a mild creatinine or blood pressure change is not a reason to stop. ^[aha-acc-hfsa-hf-2022]
+   - Cardiogenic shock or hypoperfusion: hold β-blocker; reduce or hold RAAS inhibitors with hypotension, hyperkalemia or AKI. ^[aha-acc-hfsa-hf-2022, common-practice]
+   - HFrEF: start missing pillars once stable (β-blocker after euvolemia and off IV diuretics, vasodilators and inotropes): ARNI (or ACE inhibitor or ARB), evidence-based β-blocker, MRA, SGLT2 inhibitor. ^[aha-acc-hfsa-hf-2022]
+   - SGLT2 inhibitor can be started in hospital once stable, including LVEF >40%. ^[aha-acc-hfsa-hf-2022, esc-hf-2023]
+   - Doses and titration: Wave 2 heart failure cards. ^[common-practice]
+
+7. Supportive care
+   - VTE prophylaxis. ^[aha-acc-hfsa-hf-2022]
+   - Daily weights, intake and output; sodium restriction per local practice (evidence limited). ^[aha-acc-hfsa-hf-2022, common-practice]
+   - Fluid restriction for hyponatremia or severe congestion. ^[aha-acc-hfsa-hf-2022]
+   - Stop offending drugs (NSAIDs, nondihydropyridine calcium channel blockers in HFrEF, thiazolidinediones). ^[aha-acc-hfsa-hf-2022]
+   - Iron deficiency (ferritin <100 ng/mL, or 100–299 ng/mL with transferrin saturation <20%) in HFrEF: IV iron. ^[aha-acc-hfsa-hf-2022, esc-hf-2023]
+
+## Monitor
+- Response at 2 h: spot urine Na⁺ {{threshold:adhf-urine-na-response}}; at 6 h: urine output {{threshold:adhf-uop-response}}; below these, intensify. ^[esc-hf-2021, hfa-diuretics-2019]
+- Daily: weight, intake and output, BMP and Mg²⁺ (K⁺ and Mg²⁺ fall with diuresis), congestion signs. ^[aha-acc-hfsa-hf-2022, common-practice]
+- Goal: resolution of congestion (JVP, edema, orthopnea) before discharge; residual congestion predicts readmission. ^[aha-acc-hfsa-hf-2022]
+- Hypotension, rising lactate, worsening mentation or oliguria: reassess perfusion. ^[esc-hf-2021]
+
+## Escalation
+- ICU: cardiogenic shock, need for inotropes or vasopressors, respiratory failure despite noninvasive ventilation. ^[aha-acc-hfsa-hf-2022, common-practice]
+- Cardiology: new heart failure, ACS, significant valve disease, diuretic resistance, persistent worsening kidney function. ^[aha-acc-hfsa-hf-2022, common-practice]
+- Advanced heart failure team: repeated admissions, inotrope dependence, intolerance of GDMT, end-organ dysfunction. ^[aha-acc-hfsa-hf-2022]
+- Palliative care for advanced disease. ^[aha-acc-hfsa-hf-2022]
+
+## More Information
+### Where Guidelines Differ: SGLT2 inhibitors, up-titration
+:::compare SGLT2 inhibitor for LVEF >40%
+- AHA/ACC/HFSA 2022: Reasonable (weaker recommendation), published before the HFpEF trials. ^[aha-acc-hfsa-hf-2022]
+- ESC 2023 update: Recommended for LVEF 41–49% and ≥50% to reduce heart failure hospitalization or cardiovascular death. ^[esc-hf-2023]
+:::
+
+:::compare After a heart failure admission
+- AHA/ACC/HFSA 2022: Start GDMT in hospital once stable; follow-up within 7 days. ^[aha-acc-hfsa-hf-2022]
+- ESC 2023 update: Rapid up-titration of GDMT with close follow-up in the first 6 weeks (strong recommendation, from STRONG-HF). ^[esc-hf-2023, strong-hf-2022]
+:::
+
+### Special Populations: HFpEF, kidney disease, right heart failure
+- HFpEF: diuretics for congestion; treat hypertension, AF and ischemia; SGLT2 inhibitor. ^[aha-acc-hfsa-hf-2022, esc-hf-2023]
+- CKD: higher loop doses needed; MRA and SGLT2 inhibitor limits by eGFR. ^[aha-acc-hfsa-hf-2022, hfa-diuretics-2019]
+- Predominant right heart failure: avoid excess preload reduction and hypotension. ^[common-practice]
+- Hypertrophic cardiomyopathy or severe aortic stenosis: avoid vasodilators and aggressive preload reduction. ^[common-practice]
+- Pregnancy and peripartum: cardiology and obstetrics; ACE inhibitors, ARBs, ARNI and MRAs are contraindicated in pregnancy. ^[aha-acc-hfsa-hf-2022]
+
+### Complications: Kidney, electrolytes, arrhythmia
+- Worsening kidney function (cardiorenal), hypokalemia, hypomagnesemia, hyponatremia, contraction alkalosis. ^[aha-acc-hfsa-hf-2022, hfa-diuretics-2019]
+- Arrhythmias, especially with hypokalemia or hypomagnesemia. ^[common-practice]
+- Cardiogenic shock; readmission and death after discharge. ^[aha-acc-hfsa-hf-2022]
+
+### After the Acute Phase: Discharge, follow-up
+- Discharge when euvolemic on an oral diuretic dose with a plan for adjustment. ^[aha-acc-hfsa-hf-2022]
+- Follow-up within 7 days and a call within 3 days; labs (K⁺, creatinine) within 1–2 weeks after starting or titrating GDMT. ^[aha-acc-hfsa-hf-2022, common-practice]
+- Education: daily weights, sodium intake, medication adherence, symptoms that should prompt a call. ^[aha-acc-hfsa-hf-2022]
+- Cardiac rehabilitation (HFrEF); influenza and pneumococcal vaccination; ICD and CRT assessment after GDMT optimization. ^[aha-acc-hfsa-hf-2022]
+
+### Evidence: Key trials
+- DOSE (2011): bolus versus continuous and low versus high (2.5 times oral) furosemide did not differ in symptoms or creatinine change; high dose diuresed more. ^[dose-2011]
+- ADVOR (2022): acetazolamide added to loop diuretics improved successful decongestion at 3 days. ^[advor-2022]
+- STRONG-HF (2022): rapid up-titration of GDMT with close follow-up after admission lowered 180-day death or heart failure readmission. ^[strong-hf-2022]
+
+### Why the Treatment Order: Breathing, congestion, cause
+- Hypoxemia and pulmonary edema kill first; decongestion relieves most symptoms; perfusion problems need inotropes before diuretics work; GDMT then prevents the next admission. ^[aha-acc-hfsa-hf-2022, common-practice]
+
+### Epidemiology and Pathophysiology: Congestion
+- Heart failure is a leading cause of hospitalization in adults over 65; post-discharge readmission and mortality are high. ^[aha-acc-hfsa-hf-2022]
+- Most admissions follow gradual fluid accumulation from neurohormonal activation; some are rapid fluid redistribution (hypertensive pulmonary edema). ^[esc-hf-2021]
+
+## Pearls
+- Weight loss alone is a poor marker: decongest to the clinical exam (JVP, orthopnea, edema). ^[aha-acc-hfsa-hf-2022]
+- Creatinine rising while the patient decongests is usually hemodynamic, not injury: keep going if congestion persists. ^[aha-acc-hfsa-hf-2022]
+- Flash pulmonary edema with hypertension responds fastest to vasodilators; the patient may not be volume overloaded. ^[esc-hf-2021]
+- Measure natriuretic peptide as NT-proBNP in patients on sacubitril-valsartan. ^[aha-acc-hfsa-hf-2022]

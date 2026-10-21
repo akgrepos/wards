@@ -1,0 +1,15 @@
+drug_name: Diltiazem infusion
+brand: Cardizem
+indication: Continued rate control of AF or atrial flutter after an IV bolus
+population: Adults
+route: IV
+amount: "5–15"
+unit: mg/h
+rate: "start 10 mg/h right after the bolus; titrate in 5 mg/h steps"
+max: "15 mg/h, for up to 24 hours"
+cautions:
+  - "Rates above 15 mg/h and use beyond 24 hours have not been studied."
+  - "Monitor blood pressure and heart rate; hold for hypotension or bradycardia."
+  - "Use with caution in kidney or liver impairment (no specific adjustment)."
+notes: "Transition to oral rate control once the rate is controlled."
+sources: [acc-aha-af-2023, label-diltiazem-inj-2026]

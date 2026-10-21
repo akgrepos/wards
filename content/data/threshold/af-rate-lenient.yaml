@@ -1,0 +1,4 @@
+name: "Lenient resting heart-rate target in AF"
+value: "<110"
+unit: beats/min
+sources: [acc-aha-af-2023, race-ii-2010]

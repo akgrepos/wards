@@ -1,0 +1,22 @@
+drug_name: Edoxaban
+brand: Savaysa
+indication: Stroke prevention in AF (not with a mechanical valve or moderate–severe mitral stenosis)
+population: Adults
+route: PO
+amount: "60"
+unit: mg
+frequency: once daily
+give_when: CrCl >50 to ≤95 mL/min
+boxed_warning: "Reduced efficacy (more ischemic strokes than warfarin) when CrCl >95 mL/min; premature discontinuation raises ischemic risk; spinal or epidural hematoma."
+adjustments:
+  - when: CrCl 15–50 mL/min
+    change: 30 mg once daily
+  - when: CrCl >95 mL/min
+    change: Do not use; choose another anticoagulant
+  - when: CrCl <15 mL/min
+    change: Not recommended
+  - when: Liver impairment
+    change: "Child-Pugh A: no change; B or C: not recommended"
+cautions:
+  - "In AF there is no dose reduction for weight or P-gp inhibitors (those apply to VTE treatment)."
+sources: [label-savaysa-2025, acc-aha-af-2023]

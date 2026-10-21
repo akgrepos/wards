@@ -1,0 +1,19 @@
+drug_name: Furosemide
+brand: Lasix
+indication: Congestion in acute decompensated heart failure
+population: Adults
+route: IV
+amount: "20–40"
+unit: mg
+frequency: "2–3 times daily as boluses, or as a continuous infusion"
+give_when: "Diuretic-naive. On a home loop diuretic: IV dose at least equal to (up to 2.5 times) the total daily oral dose"
+repeat: "Double the dose if the 2-hour urine Na⁺ or 6-hour urine output is inadequate"
+max: "400–600 mg per day (heart failure guidance)"
+rate: "bolus over 1–2 minutes; infusion no faster than 4 mg/min"
+onset: About 5 minutes
+cautions:
+  - "Hypokalemia, hypomagnesemia, hyponatremia, contraction alkalosis; check BMP and Mg²⁺ daily."
+  - "Ototoxicity with rapid injection, high doses or severe kidney impairment."
+  - "Contraindicated in anuria."
+notes: "Oral furosemide is about half as bioavailable as IV. Approximate equivalents: furosemide 40 mg PO = 20 mg IV = bumetanide 1 mg = torsemide 10–20 mg."
+sources: [aha-acc-hfsa-hf-2022, esc-hf-2021, hfa-diuretics-2019, dose-2011, label-furosemide-inj-2026]

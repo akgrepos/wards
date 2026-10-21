@@ -1,0 +1,15 @@
+drug_name: Acetazolamide
+brand: Diamox
+indication: Added to a loop diuretic for congestion in acute decompensated heart failure
+population: Adults
+route: IV
+amount: "500"
+unit: mg
+frequency: once daily
+duration: "3 days (as in ADVOR)"
+cautions:
+  - "Contraindicated with low Na⁺ or K⁺, marked kidney or liver disease, cirrhosis, hyperchloremic acidosis."
+  - "Possible sulfonamide cross-sensitivity."
+  - "Most useful with metabolic alkalosis from loop diuretics."
+notes: "Label heart failure dose is 250–375 mg once daily; the ADVOR trial dose (500 mg) is used here."
+sources: [advor-2022, hfa-diuretics-2019, label-acetazolamide-inj-2025]

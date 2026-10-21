@@ -1,0 +1,16 @@
+drug_name: Metolazone
+brand: Zaroxolyn
+indication: Diuretic resistance in acute decompensated heart failure, added to a loop diuretic
+population: Adults
+route: PO
+amount: "2.5–5"
+unit: mg
+frequency: once daily
+max: "20 mg daily (label, edema)"
+cautions:
+  - "Marked K⁺, Mg²⁺ and Na⁺ losses with a loop diuretic: check electrolytes at least daily."
+  - "Use for a limited time; reassess daily."
+  - "Formulations are not interchangeable (Zaroxolyn-type vs rapid-acting)."
+  - "Contraindicated in anuria and hepatic coma."
+notes: "Often given 30 minutes before the loop dose (common practice). IV chlorothiazide is an alternative."
+sources: [aha-acc-hfsa-hf-2022, hfa-diuretics-2019, label-metolazone-2019]

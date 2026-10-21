@@ -1,0 +1,20 @@
+drug_name: Digoxin
+brand: Lanoxin
+indication: Acute rate control of AF in heart failure or hypotension
+population: Adults
+route: IV
+amount: "0.25"
+unit: mg
+rate: over at least 5 minutes
+repeat: "Repeat doses as needed"
+max: "1.5 mg in 24 hours"
+give_when: LVEF ≤40%, decompensated heart failure or hypotension; add-on when one agent is insufficient
+adjustments:
+  - when: Kidney impairment
+    change: Smaller maintenance doses by CrCl and lean body weight; check levels (not removed by dialysis)
+cautions:
+  - "Slow onset; ineffective when adrenergic tone is high."
+  - "Contraindicated in ventricular fibrillation; avoid in pre-excited AF."
+  - "Toxicity more likely with hypokalemia, hypomagnesemia, hypercalcemia, kidney impairment and amiodarone."
+notes: "Label loading: 8–12 mcg/kg lean body weight in total, half first, then a quarter every 6–8 hours twice. Levels above 2 ng/mL add toxicity without benefit; draw at least 6 hours after a dose."
+sources: [acc-aha-af-2023, label-lanoxin-inj-2025]

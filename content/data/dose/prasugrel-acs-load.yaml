@@ -1,0 +1,16 @@
+drug_name: Prasugrel
+brand: Effient
+indication: Acute coronary syndrome managed with PCI, loading dose
+population: Adults
+route: PO
+amount: "60"
+unit: mg
+frequency: once
+give_when: Coronary anatomy known and PCI planned
+boxed_warning: "Significant, sometimes fatal bleeding: contraindicated with active bleeding or prior TIA or stroke; generally not recommended at age ≥75 years; do not start if urgent CABG is likely."
+alternative:
+  dose: prasugrel-acs
+  when: Maintenance
+cautions:
+  - "Loading before angiography in NSTE-ACS added bleeding without benefit."
+sources: [label-effient-2022, acc-aha-acs-2025]

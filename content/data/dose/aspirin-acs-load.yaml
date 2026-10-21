@@ -1,0 +1,12 @@
+drug_name: Aspirin (non-enteric-coated, chewed)
+indication: Acute coronary syndrome, loading dose
+population: Adults
+route: PO
+amount: "162–325"
+unit: mg
+frequency: once, as soon as possible
+cautions:
+  - "Chew a non-enteric-coated tablet for fast effect; rectal if unable to swallow."
+  - "True aspirin allergy: clopidogrel instead (with cardiology)."
+notes: "FDA professional labeling: 160–162.5 mg as soon as MI is suspected."
+sources: [acc-aha-acs-2025, label-aspirin-professional-1999]

@@ -1,0 +1,18 @@
+drug_name: Prasugrel
+brand: Effient
+indication: Acute coronary syndrome managed with PCI, maintenance
+population: Adults
+route: PO
+amount: "10"
+unit: mg
+frequency: once daily
+boxed_warning: "Significant, sometimes fatal bleeding: contraindicated with active bleeding or prior TIA or stroke; generally not recommended at age ≥75 years; do not start if urgent CABG is likely."
+adjustments:
+  - when: Weight <60 kg
+    change: Consider 5 mg once daily
+  - when: Age ≥75 years
+    change: Generally not recommended, except high risk (diabetes or prior MI)
+cautions:
+  - "Hold at least 7 days before surgery when possible."
+  - "No kidney or mild–moderate liver adjustment."
+sources: [label-effient-2022, acc-aha-acs-2025]
