@@ -24,11 +24,11 @@ The owner, a physician, is the only user. No coding experience: explain steps pl
 - **Stay anonymous.** Never put the owner's name, email or computer name in files, commits or PRs; refer to them as "the owner". Commits must be authored as `akgrepos <338781722+akgrepos@users.noreply.github.com>` (this repo's git config); a check rejects any other author.
 - **Clinical content:** Claude writes it, evidence-based (full rules in DECISIONS.md, "Card-writing process" 2026-10-19 and "Sources, updated"):
   - The reference handbook is the starting outline: it decides what a card covers and how it's organized, including practical bedside details, in its terse clinical register. It is a guide only: never copy, closely paraphrase or reproduce its text, tables or structure verbatim; never name or cite it.
-  - AMBOSS is the main drafting knowledge base; its reference lists supply the primary citations (a paywalled primary source may be cited on AMBOSS's word).
+  - AMBOSS is the main drafting knowledge base; its reference lists supply the primary citations (a paywalled primary source may be cited on AMBOSS's word). Use it in the owner's own Chrome (Claude in Chrome, new window), where the sign-in lasts.
   - Cite the primary guideline or study (US first, newest final edition; drafts aren't cited). Common clinical practice may go uncited with the stethoscope marker. AMBOSS itself only as a last resort (green check, hidden source, tell the owner each time).
-  - OpenEvidence (Sackett or Snow mode) checks every key claim and every dose, and confirms the newest final guideline edition; never cite it.
+  - Verify every key claim and dose against the guideline full text, the FDA label and AMBOSS. OpenEvidence is a last resort the owner runs: only claims nothing else can verify go to it, as one-line batches the owner pastes in and returns. Claude never types into OpenEvidence and never cites it (DECISIONS 2026-10-20).
   - AMBOSS, OpenEvidence and the handbook are never named or cited in the app or in card content and sources.
-  - Summarize, never copy. Every card gets the internal accuracy check and an independent reviewer (DECISIONS.md), with extra care for doses; the review log notes which claims and doses OpenEvidence checked.
+  - Summarize, never copy. Every card gets the internal accuracy check and an independent reviewer (DECISIONS.md), with extra care for doses; the review log notes how each claim and dose was verified.
 - Copyrighted reference material (the reference handbook PDF in `~/Documents/Wards-reference/`) never goes into the repo.
 - All content edits happen through Claude in chat; there is no in-app editing.
 - Use precise medical terminology (hypoxemia, not "low oxygen"); lay terms and abbreviations only as search aliases.
