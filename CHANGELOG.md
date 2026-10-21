@@ -2,6 +2,10 @@
 
 What changed in each version of Wards, newest first. The version is shown in Settings (gear on Home).
 
+## 2026.10.21.5
+
+Small polish on the MDCalc links: VoiceOver now reads the score name once ("PSI. Opens MDCalc in Safari, needs internet.") and the note at the bottom of a card is one plain sentence.
+
 ## 2026.10.21.4
 
 **Score and calculator names now open the calculator on MDCalc.**
