@@ -342,12 +342,17 @@ function CriteriaBody({ c, id }: { c: Criteria; id?: string }) {
   ) : null;
   return (
     <div className="criteria">
+      {stacked && !c.logic && !c.items?.length ? (
+        // Colored severity bands carry their own tint: the title is a plain heading, not an empty indigo box.
+        <h3 className="ios-headline subheading">{c.title}</h3>
+      ) : (
       <AKG.Panel tone="definition" label={calc ? 'Score' : 'Criteria'} title={c.title}>
         {c.logic && <p className="ios-subheadline-emphasized">{c.logic}</p>}
         {c.items?.length ? <ul className="ios-body rich-list">{c.items.map((t, i) => <li key={i}><RichText text={t} /></li>)}</ul> : null}
         {table}
         {calc && <p className="ios-body"><CalcLink c={calc} label={`${calc.short} on MDCalc`} /></p>}
       </AKG.Panel>
+      )}
       {stacked ? (
         <AKG.GradeList
           className="staging"
