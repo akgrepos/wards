@@ -1,0 +1,22 @@
+drug_name: Enoxaparin
+brand: Lovenox
+indication: Acute DVT or PE treatment, and bridging
+population: Adults
+route: SC
+amount: "1"
+unit: mg/kg
+frequency: every 12 hours (or 1.5 mg/kg once daily in hospitalized patients)
+duration: "At least 5 days and until INR is therapeutic if overlapped with warfarin"
+boxed_warning: "Spinal or epidural hematoma with neuraxial anesthesia or spinal puncture."
+adjustments:
+  - when: CrCl <30 mL/min
+    change: 1 mg/kg once daily
+  - when: Obesity
+    change: Use actual body weight; consider individualizing above 150 kg
+  - when: Pregnancy
+    change: "1 mg/kg every 12 hours; no routine anti-Xa monitoring (mechanical valves: peak 0.8–1.2 units/mL, 4–6 hours after the dose)"
+cautions:
+  - "Contraindicated with heparin-induced thrombocytopenia in the past 100 days or circulating antibodies."
+  - "Accumulates in kidney failure: prefer unfractionated heparin if CrCl <30 mL/min and unstable or high bleeding risk."
+  - "Low body weight (women <45 kg, men <57 kg) raises exposure: watch for bleeding."
+sources: [label-lovenox-2026, chest-vte-2021, ash-vte-pregnancy-2018, acc-aha-valvular-2020]
