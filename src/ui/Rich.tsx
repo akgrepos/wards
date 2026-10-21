@@ -540,7 +540,7 @@ function BlockView({ b }: { b: Block }) {
   if (b.t === 'subheading') return <Subheading text={b.text} />;
   if (b.t === 'steps') {
     return (
-      <AKG.StepList>
+      <AKG.StepList density="compact" strong>
         {b.items.map((it, j) => <StepItem key={j} it={it} />)}
       </AKG.StepList>
     );

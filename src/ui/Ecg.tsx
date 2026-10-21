@@ -152,6 +152,7 @@ function FullStrips({ ecg }: { ecg: EcgRecording }) {
   return (
     <div ref={ref} className="ecg-box ecg-full">
       <span ref={probe} className="ecg-probe" aria-hidden="true">0</span>
+      <p className="ecg-raw-note ios-footnote">Raw recording</p>
       {w > 0 && leads.map(({ L, mv }) => <Strip key={L} trace={{ mv, rate, t0: 0 }} from={0} to={secs} marks={L === ecg.show.lead ? ecg.marks : []} width={w} font={font} lead={L} />)}
     </div>
   );

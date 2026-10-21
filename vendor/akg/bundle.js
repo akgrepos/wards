@@ -2143,17 +2143,18 @@
   var h = window.React.createElement;
   var chevron = h("svg", { viewBox: "0 0 20 20", fill: "none", stroke: "currentColor", strokeWidth: 1.4, strokeLinecap: "round", strokeLinejoin: "round" }, h("path", { d: "M7.5 4l6 6-6 6" }));
   var check = h("svg", { viewBox: "0 0 20 20", fill: "none", stroke: "currentColor", strokeWidth: 2.6, strokeLinecap: "round", strokeLinejoin: "round" }, h("path", { d: "M4 10.5l4 4 8-9" }));
-  var ITEM_OWN = ["label", "subtitle", "icon", "shortcut", "destructive", "disabled", "checked", "submenu", "highlighted", "onSelect", "type", "className", "children"];
+  var ITEM_OWN = ["label", "subtitle", "icon", "shortcut", "destructive", "disabled", "checked", "submenu", "highlighted", "level", "onSelect", "type", "className", "children"];
 
   // One row: a button with role menuitem (or menuitemcheckbox when `checked` is set).
   function MenuItem(props) {
     var rest = {};
     for (var k in props) if (ITEM_OWN.indexOf(k) < 0) rest[k] = props[k];
-    var checkable = props.checked !== undefined;
+    var sub = props.level === 1;
+    var checkable = !sub && props.checked !== undefined;
     rest.type = "button";
     rest.role = checkable ? "menuitemcheckbox" : "menuitem";
     if (checkable) rest["aria-checked"] = props.checked ? "true" : "false";
-    if (props.submenu) rest["aria-haspopup"] = "menu";
+    if (props.submenu && !sub) rest["aria-haspopup"] = "menu";
     rest.disabled = props.disabled;
     rest.tabIndex = -1;
     rest.className = AKG.cx(
@@ -2161,18 +2162,19 @@
       props.destructive && "akg-menu-item--destructive",
       props.highlighted && "akg-menu-item--highlighted",
       props.subtitle && "akg-menu-item--subtitle",
+      props.level === 1 && "akg-menu-item--sub",
       props.className
     );
     rest.onClick = function (e) { if (props.onSelect) props.onSelect(e); if (props.onClick) props.onClick(e); };
     return h("button", rest,
-      h("span", { className: "akg-menu-item__check", "aria-hidden": "true" }, props.checked ? h("span", { className: "akg-sym" }, check) : null),
+      h("span", { className: "akg-menu-item__check", "aria-hidden": "true" }, !sub && props.checked ? h("span", { className: "akg-sym" }, check) : null),
       h("span", { className: "akg-menu-item__icon akg-sym", "aria-hidden": "true" }, props.icon || null),
       h("span", { className: "akg-menu-item__text" },
         h("span", { className: "akg-menu-item__label" }, props.label != null ? props.label : props.children),
         props.subtitle ? h("span", { className: "akg-menu-item__subtitle" }, props.subtitle) : null
       ),
-      props.shortcut && !props.submenu ? h("span", { className: "akg-menu-item__shortcut" }, props.shortcut) : null,
-      props.submenu ? h("span", { className: "akg-menu-item__chevron akg-sym", "aria-hidden": "true" }, chevron) : null
+      props.shortcut && !props.submenu && !sub ? h("span", { className: "akg-menu-item__shortcut" }, props.shortcut) : null,
+      props.submenu && !sub ? h("span", { className: "akg-menu-item__chevron akg-sym", "aria-hidden": "true" }, chevron) : null
     );
   }
 
@@ -2506,7 +2508,7 @@
       props.showMap === false ? h("span") : h(AKG.SegmentedControl, { options: [{ value: "steps", label: props.stepsLabel || "Steps" }, { value: "map", label: props.mapLabel || "Map" }], value: view, onChange: setView, size: "small" }),
       h(AKG.Button, { variant: "borderless", size: "small", onClick: restart }, props.restartLabel || "Start Over"));
 
-    return h("div", { className: AKG.cx("akg-flowchart", props.className), style: props.style },
+    return h("div", { className: AKG.cx("akg-flowchart", props.strongDetail && "akg-flowchart--strong", props.className), style: props.style },
       header,
       view === "map" ? h(FlowMap, { steps: steps, start: start, path: path, choose: choose, chooseLabel: props.chooseLabel, continuesLabel: props.continuesLabel }) : h(StepView, { steps: steps, stages: stages, path: path, cur: cur, go: go, back: back, jump: jump, props: props })
     );
@@ -2844,10 +2846,11 @@
   var check = h("svg", { viewBox: "0 0 20 20", fill: "none", stroke: "currentColor", strokeWidth: 3, strokeLinecap: "round", strokeLinejoin: "round" }, h("path", { d: "M4.5 10.5 8 14l7.5-8" }));
   function omit(props, keys) { var r = {}; for (var k in props) if (keys.indexOf(k) < 0) r[k] = props[k]; return r; }
 
+  // density: compact tightens the side padding and the gap beside the number. strong: condition and details at full label color.
   // tint: accent (default) or critical (system red, for urgent sequences). Numbers come from the order of the steps.
   function StepList(props) {
-    var rest = omit(props, ["tint", "start", "className", "children"]);
-    rest.className = AKG.cx("akg-step-list", "akg-step-list--" + (props.tint || "accent"), props.className);
+    var rest = omit(props, ["tint", "start", "density", "strong", "className", "children"]);
+    rest.className = AKG.cx("akg-step-list", "akg-step-list--" + (props.tint || "accent"), props.density === "compact" && "akg-step-list--compact", props.strong && "akg-step-list--strong", props.className);
     var n = props.start != null ? props.start : 1, i = 0;
     return h("ol", rest, R.Children.map(props.children, function (child) {
       if (!R.isValidElement(child)) return child;
@@ -2858,19 +2861,37 @@
 
   // done: the number becomes a checkmark on gray. current: the step being worked on gets a ring.
   function Step(props) {
-    var rest = omit(props, ["number", "title", "condition", "done", "current", "className", "children"]);
-    rest.className = AKG.cx("akg-step", props.done && "akg-step--done", props.current && "akg-step--current", props.className);
+    var rest = omit(props, ["number", "title", "condition", "lead", "strong", "done", "current", "className", "children"]);
+    rest.className = AKG.cx("akg-step", props.done && "akg-step--done", props.current && "akg-step--current", props.strong && "akg-step--strong", props.className);
     if (props.current) rest["aria-current"] = "step";
     return h("li", rest,
       h("span", { className: "akg-step__marker", "aria-hidden": props.done ? undefined : "true" },
         props.done ? h("span", { className: "akg-sym", role: "img", "aria-label": "Done" }, check) : props.number),
       h("div", { className: "akg-step__body" },
-        props.condition != null ? h("p", { className: "akg-step__condition" }, props.condition) : null,
+        props.condition != null || props.lead != null ? h("p", { className: "akg-step__condition" }, props.lead != null ? h("strong", { className: "akg-step__lead" }, props.lead, props.condition != null ? " " : null) : null, props.condition) : null,
         props.title != null ? h("div", { className: "akg-step__title" }, props.title) : null,
         props.children != null ? h("div", { className: "akg-step__content" }, props.children) : null));
   }
   AKG.StepList = StepList;
   AKG.Step = Step;
+})(window.AKG = window.AKG || {});
+
+/* CheckRow — a full-width row with a circular check, a label and trailing points (a scoring checklist). */
+(function (AKG) {
+  var h = window.React.createElement;
+  var tick = h("svg", { viewBox: "0 0 20 20", fill: "none", stroke: "currentColor", strokeWidth: 2.6, strokeLinecap: "round", strokeLinejoin: "round" }, h("path", { d: "M4.5 10.5 8 14l7.5-8" }));
+  function CheckRow(props) {
+    var rest = {};
+    for (var k in props) if (["checked", "label", "points", "onChange", "className", "children"].indexOf(k) < 0) rest[k] = props[k];
+    rest.type = "button"; rest.role = "checkbox"; rest["aria-checked"] = props.checked ? "true" : "false";
+    rest.className = AKG.cx("akg-check-row", props.checked && "akg-check-row--on", props.className);
+    rest.onClick = function (e) { if (props.onChange) props.onChange(!props.checked, e); };
+    return h("button", rest,
+      h("span", { className: "akg-check-row__box", "aria-hidden": "true" }, h("span", { className: "akg-sym" }, tick)),
+      h("span", { className: "akg-check-row__label" }, props.label != null ? props.label : props.children),
+      props.points != null ? h("span", { className: "akg-check-row__points" }, props.points) : null);
+  }
+  AKG.CheckRow = CheckRow;
 })(window.AKG = window.AKG || {});
 
 /* Tag — a small capsule label. Status tags pair their color with an icon, never color alone. */
@@ -2959,11 +2980,12 @@
   function Panel(props) {
     var tone = props.tone || "plain";
     var rest = {};
-    for (var k in props) if (["tone", "label", "className", "children"].indexOf(k) < 0) rest[k] = props[k];
+    for (var k in props) if (["tone", "label", "title", "className", "children"].indexOf(k) < 0) rest[k] = props[k];
     rest.className = AKG.cx("akg-panel", "akg-panel--" + tone, props.className);
     if (!rest.role && tone === "note") rest.role = "note";
     return h("div", rest,
       props.label != null ? h("div", { className: "akg-panel__label" }, props.label) : null,
+      props.title != null ? h("div", { className: "akg-panel__title" }, props.title) : null,
       h("div", { className: "akg-panel__body" }, props.children));
   }
   AKG.Panel = Panel;
