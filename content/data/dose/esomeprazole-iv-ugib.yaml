@@ -1,0 +1,21 @@
+drug_name: Esomeprazole
+brand: Nexium IV
+indication: Risk reduction of rebleeding of gastric or duodenal ulcers after therapeutic endoscopy
+population: Adults
+route: IV
+amount: "80"
+unit: mg
+frequency: once over 30 minutes, then a continuous infusion of 8 mg/h so the total treatment is 72 hours
+rate: "80 mg over 30 minutes, then 8 mg/h for 71.5 hours"
+give_when: After therapeutic endoscopy for an acutely bleeding gastric or duodenal ulcer
+duration: 72 hours
+boxed_warning: "None"
+adjustments:
+  - when: Mild to moderate hepatic impairment (Child-Pugh A or B)
+    change: "80 mg over 30 minutes, then 6 mg/h for 71.5 hours"
+  - when: Severe hepatic impairment (Child-Pugh C)
+    change: "80 mg over 30 minutes, then 4 mg/h for 71.5 hours"
+cautions:
+  - "IV therapy is only the acute initial management; follow it with oral acid suppression."
+notes: "Labeled regimen. ACG 2021 accepts continuous or intermittent high-dose PPI for 3 days."
+sources: [label-esomeprazole-iv-2025, acg-ugib-2021]

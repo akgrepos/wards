@@ -1,0 +1,5 @@
+name: Hemoglobin threshold for transfusion with cardiovascular disease
+value: "<8"
+unit: g/dL
+note: "Applies to preexisting cardiovascular disease (ACG 2021, AABB 2023). Acute coronary syndrome: ACG 2021 says a still higher threshold may be considered (very limited evidence)."
+sources: [acg-ugib-2021, aabb-rbc-2023]

@@ -1,0 +1,11 @@
+drug_name: Pantoprazole
+brand: Protonix
+indication: After the 72-hour high-dose phase for a bleeding ulcer with high-risk stigmata treated endoscopically
+population: Adults
+route: PO
+amount: "40"
+unit: mg
+frequency: twice daily for the first 2 weeks after endoscopy, then once daily
+duration: Twice daily to day 14, then once daily until the ulcer has healed or while the cause continues
+notes: "Any standard-dose PPI is acceptable. Low-risk ulcers (clean base, flat pigmented spot): once-daily oral PPI."
+sources: [acg-ugib-2021, icg-ugib-2019]
