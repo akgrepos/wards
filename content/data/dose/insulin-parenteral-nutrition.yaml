@@ -1,0 +1,11 @@
+drug_name: Regular insulin
+indication: Insulin added to parenteral nutrition
+population: Adults
+route: IV (in the parenteral nutrition bag)
+amount: "1"
+unit: units
+frequency: "per 10 g of dextrose in the bag, adjusted daily"
+give_when: "Hyperglycemia on parenteral nutrition, especially if more than 20 units of correction insulin were needed in 24 hours"
+cautions:
+  - "Avoid targeting glucose <140 mg/dL on continuous nutrition."
+sources: [ada-soc-hospital-2026]
