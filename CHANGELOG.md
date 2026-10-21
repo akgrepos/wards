@@ -2,6 +2,15 @@
 
 What changed in each version of Wards, newest first. The version is shown in Settings (gear on Home).
 
+## 2026.10.21.6
+
+**Three new cards.**
+- **COPD Exacerbation** (a Rapids page with Timed Mode): controlled oxygen, bronchodilators, steroids and antibiotics, with doses you can tap.
+- **Hypoxemic Respiratory Failure** (a Rapids page with Timed Mode): oxygen targets and escalation, step by step.
+- **Venous Thromboembolism: Diagnosis**, with a new **PE Workup** pathway: tap your answers (instability, clinical probability, D-dimer, imaging) to reach what to do next.
+- Scores on these cards (Wells, revised Geneva, PERC, YEARS, ROX index, A–a gradient and others) open their MDCalc calculator.
+- These cards have had the internal accuracy check but not yet the independent review.
+
 ## 2026.10.21.5
 
 Small polish on the MDCalc links: VoiceOver now reads the score name once ("PSI. Opens MDCalc in Safari, needs internet.") and the note at the bottom of a card is one plain sentence.
