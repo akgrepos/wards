@@ -83,7 +83,12 @@ related:
 
 3. Narrow to the culture result
    - Once identification and susceptibilities return, switch to a targeted effective agent rather than continuing broad therapy. ^[idsa-cuti-selection-2025]
-   - Difficult-to-treat resistant organisms may need agents not listed here; involve infectious diseases. ^[idsa-cuti-selection-2025]
+   - ESBL-producing Enterobacterales: oral TMP-SMX, ciprofloxacin or levofloxacin if susceptible; otherwise a carbapenem or cefepime-enmetazobactam, considered equivalent. ^[idsa-amr-2026]
+   - ESBL-producing Enterobacterales: avoid cefepime even if reported susceptible; piperacillin-tazobactam only as an alternative, and not with critical illness or bacteremia (IDSA 2025 keeps it a first empiric choice before the organism is known). ^[idsa-amr-2026, idsa-cuti-selection-2025]
+   - *Enterobacter cloacae* complex, *Klebsiella aerogenes*, *Citrobacter freundii* (inducible AmpC): cefepime if susceptible; avoid ceftriaxone and piperacillin-tazobactam for invasive infection. ^[idsa-amr-2026]
+   - Carbapenem-resistant Enterobacterales: a fluoroquinolone or TMP-SMX if susceptible (uncommon); otherwise ceftazidime-avibactam, meropenem-vaborbactam, imipenem-relebactam, aztreonam-avibactam or cefiderocol, especially if unstable; once-daily aminoglycosides are alternatives. ^[idsa-amr-2026]
+   - *Pseudomonas aeruginosa* with difficult-to-treat resistance: cefiderocol, ceftazidime-avibactam, ceftolozane-tazobactam or imipenem-relebactam; once-daily amikacin or tobramycin are alternatives. ^[idsa-amr-2026]
+   - Keep these newer β-lactams for carbapenem-resistant organisms, not ESBL or AmpC producers; involve infectious diseases for any difficult-to-treat resistant organism. ^[idsa-amr-2026, idsa-cuti-selection-2025]
 
 4. Switch to oral
    - Clinically improving, able to take oral medication, and an effective oral option: switch rather than finishing IV. ^[idsa-cuti-ivpo-2025]

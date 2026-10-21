@@ -12,7 +12,7 @@ related:
 ---
 ## At a Glance
 - Prescribe by purpose: resuscitation, routine maintenance, replacement of ongoing losses; reassess at least daily. ^[nice-iv-fluids-2017]
-- Resuscitation: crystalloid boluses, reassessing after each; balanced crystalloid suggested over saline in sepsis. ^[nice-iv-fluids-2017, ssc-sepsis-2021]
+- Resuscitation: crystalloid boluses, reassessing after each; balanced crystalloid suggested over saline in sepsis. ^[nice-iv-fluids-2017, ssc-sepsis-2026]
 - Maintenance: only when oral or enteral intake is inadequate; order with a time limit. ^[nice-iv-fluids-2017, common-practice]
 - Albumin is not first-line for resuscitation; evidence-based uses are in cirrhosis: large-volume paracentesis, SBP, and AKI or HRS-AKI (with a vasoconstrictor). ^[ictmg-albumin-2024, aasld-ascites-hrs-2021]
 - Avoid hypotonic fluids in acute brain injury. ^[esicm-neuro-fluids-2018]
@@ -42,8 +42,8 @@ related:
 - Electrolytes in mEq/L. ^[label-nacl-2024]
 
 :::compare Balanced crystalloid vs saline
-- Balanced (LR, Plasma-Lyte): Suggested over saline in sepsis; fewer major adverse kidney events in one large ICU trial; mortality differences small or absent. ^[ssc-sepsis-2021, smart-2018, plus-2022, basics-2021]
-- 0.9% saline: Large volumes cause hyperchloremic metabolic acidosis; often preferred in brain injury or raised ICP (LR is slightly hypotonic). ^[label-nacl-2024, smart-2018, common-practice]
+- Balanced (LR, Plasma-Lyte): Suggested over saline in sepsis (less new kidney replacement therapy, possibly lower mortality on meta-analysis); fewer major adverse kidney events in one large ICU trial; mortality differences small or absent in single trials. ^[ssc-sepsis-2026, smart-2018, plus-2022, basics-2021]
+- 0.9% saline: Large volumes cause hyperchloremic metabolic acidosis; suggested in sepsis with traumatic brain injury and often preferred in other brain injury or raised ICP (LR is slightly hypotonic). ^[ssc-sepsis-2026, label-nacl-2024, smart-2018, common-practice]
 :::
 
 - LR and Plasma-Lyte contain K⁺ near plasma levels; in a secondary analysis of SMART, they did not cause more severe hyperkalemia than saline in critically ill patients with hyperkalemia or AKI. ^[label-lactated-ringers-2025, toporek-hyperkalemia-2021]
@@ -51,7 +51,7 @@ related:
 - LR contains calcium: flush the line between LR and ceftriaxone (contraindicated together in neonates); don't share a line with citrated blood. ^[label-lactated-ringers-2025]
 - LR may confound serum lactate in severe metabolic acidosis; judge the patient, not lactate alone. ^[label-lactated-ringers-2025]
 - D5W and 0.45% NaCl are hypotonic in the body: free water for hypernatremia, never for resuscitation. ^[label-dextrose-5-2025, label-nacl-2024, esicm-neuro-fluids-2018]
-- Colloids: against hydroxyethyl starch and gelatin; albumin only after large crystalloid volumes in sepsis. ^[ssc-sepsis-2021]
+- Colloids: against hydroxyethyl starch and gelatin; in sepsis, crystalloid alone suggested over adding albumin (albumin may suit after large crystalloid volumes or in cirrhosis; avoid in traumatic brain injury). ^[ssc-sepsis-2026]
 - Albumin not suggested to raise serum albumin, to aid diuresis, for intradialytic hypotension, or for repeated infusions in decompensated cirrhosis. ^[ictmg-albumin-2024, attire-2021]
 
 ## Dosing and Protocol
@@ -60,11 +60,12 @@ related:
 
 {{dose:crystalloid-bolus}}
 
-- Sepsis-induced hypoperfusion or septic shock: ^[ssc-sepsis-2021]
+- Sepsis-induced hypoperfusion or septic shock: ^[ssc-sepsis-2026]
 
 {{dose:crystalloid-sepsis}}
 
-- Beyond the first boluses: dynamic measures (passive leg raise, stroke volume), capillary refill and lactate guide more fluid; vasopressors early when fluid fails. ^[ssc-sepsis-2021, clovers-2023]
+- Beyond the first boluses: dynamic measures (passive leg raise, stroke volume), capillary refill and serial lactate guide more fluid; vasopressors when hypotension persists. With persistent hypoperfusion after the initial volume, a liberal or a restrictive strategy is acceptable. ^[ssc-sepsis-2026, clovers-2023]
+- Septic shock after the acute resuscitation phase: active fluid removal suggested (diuretics first; ultrafiltration if they are not enough). ^[ssc-sepsis-2026]
 
 #### Maintenance
 {{dose:maintenance-fluid}}
@@ -120,7 +121,7 @@ related:
 
 #### Acute brain injury
 - Isotonic crystalloid for maintenance and resuscitation; avoid hypotonic and glucose-containing hypotonic fluids. ^[esicm-neuro-fluids-2018]
-- Avoid albumin for resuscitation in traumatic brain injury (higher mortality). ^[safe-tbi-2007, esicm-neuro-fluids-2018]
+- Avoid albumin for resuscitation in traumatic brain injury (higher mortality). ^[safe-tbi-2007, esicm-neuro-fluids-2018, ssc-sepsis-2026]
 
 #### Kidney transplant
 - Deceased-donor transplant: balanced crystalloid reduced delayed graft function compared with saline. ^[best-fluids-2023]
