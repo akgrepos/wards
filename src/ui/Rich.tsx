@@ -69,7 +69,7 @@ export function openSources(sheet: ShowSheet, ids: string[], forLabel?: string) 
 }
 
 // One SourcePill per named source, then the markers; all open the same citations (#8, one source style everywhere).
-export function SourcePills({ ids, onOpen }: { ids: string[]; onOpen: () => void }) {
+export function SourcePills({ ids, onOpen, expanded }: { ids: string[]; onOpen: () => void; expanded?: boolean }) {
   const named = ids.filter((id) => !isMarkerSource(id));
   const markers: ('practice' | 'verified')[] = [];
   if (ids.some((id) => src(id)?.kind === 'practice')) markers.push('practice');
@@ -77,8 +77,8 @@ export function SourcePills({ ids, onOpen }: { ids: string[]; onOpen: () => void
   if (!named.length && !markers.length) return null;
   return (
     <span className="source-pills">
-      {named.map((id) => <AKG.SourcePill key={id} label={src(id)?.short ?? id} aria-label={`Source: ${src(id)?.short ?? id}`} onClick={onOpen} />)}
-      {markers.map((m) => <AKG.SourcePill key={m} marker={m} onClick={onOpen} />)}
+      {named.map((id) => <AKG.SourcePill key={id} aria-expanded={expanded} label={src(id)?.short ?? id} aria-label={`Source: ${src(id)?.short ?? id}`} onClick={onOpen} />)}
+      {markers.map((m) => <AKG.SourcePill key={m} aria-expanded={expanded} marker={m} onClick={onOpen} />)}
     </span>
   );
 }
@@ -89,7 +89,7 @@ function SheetSources({ ids }: { ids: string[] }) {
   if (!ids.length) return null;
   return (
     <div className="sheet-sources">
-      <SourcePills ids={ids} onOpen={() => setOpen(!open)} />
+      <SourcePills ids={ids} expanded={open} onOpen={() => setOpen(!open)} />
       {open && <><SourceList ids={ids} /><MarkerNotes ids={ids} /></>}
     </div>
   );
@@ -174,7 +174,7 @@ const cap = (v: ReactNode) => (typeof v === 'string' ? v.charAt(0).toUpperCase()
 function DoseSection({ title, children }: { title: string; children: ReactNode }) {
   return (
     <section className="dose-section">
-      <h3 className="dose-section__title">{title}</h3>
+      <h3 className="ios-caption-1 dose-section__title">{title}</h3>
       {children}
     </section>
   );
@@ -199,17 +199,17 @@ function DoseSheet({ id }: { id: string }) {
     <div className="detail-sheet dose-sheet">
       <div className="dose-head">
         {who && <p className="ios-subheadline">{who}</p>}
-        <p className="dose-amount">{amountWithUnit(d.amount, d.unit)}</p>
+        <p className="ios-title-2-emphasized">{amountWithUnit(d.amount, d.unit)}</p>
         {d.frequency && <p className="ios-subheadline secondary">{d.frequency}</p>}
-        <SourcePills ids={d.sources} onOpen={() => setOpen(!open)} />
+        <SourcePills ids={d.sources} expanded={open} onOpen={() => setOpen(!open)} />
       </div>
       {open && <div className="dose-cites"><SourceList ids={d.sources} /><MarkerNotes ids={d.sources} /></div>}
+      {d.give_when && <DoseSection title="Give when"><p className="ios-body">{d.give_when}</p></DoseSection>}
       {facts.some(([, v]) => v) && (
-        <DoseSection title="Details">
-          {facts.filter(([, v]) => v).map(([k, v]) => <p key={k} className="ios-subheadline"><strong>{k}</strong> <span>{v}</span></p>)}
+        <DoseSection title="Administration">
+          {facts.filter(([, v]) => v).map(([k, v]) => <AKG.ValueRow key={k} title={k} value={v} />)}
         </DoseSection>
       )}
-      {d.give_when && <DoseSection title="Give when"><p className="ios-body">{d.give_when}</p></DoseSection>}
       {d.adjustments?.length ? (
         <DoseSection title="Adjust">
           {d.adjustments.map((a, i) => <AKG.ValueRow key={i} title={a.when} value={a.change} />)}
