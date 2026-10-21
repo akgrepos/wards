@@ -1,0 +1,4 @@
+name: Tidal volume without ARDS
+value: "6–8"
+unit: mL/kg
+sources: [ssc-sepsis-2026]

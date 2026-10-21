@@ -30,7 +30,7 @@ nodes:
     span: 5
     title: Unstable, suspected PE
     text:
-      - Bedside echo: RV dysfunction supports but does not confirm PE.
+      - "Bedside echo: RV dysfunction supports but does not confirm PE."
       - Anticoagulate unless contraindicated; PE response team.
     links: ["section:pulm-vte-diagnosis/first-steps"]
     next: unstable-ct
