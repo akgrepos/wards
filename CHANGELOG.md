@@ -2,6 +2,10 @@
 
 What changed in each version of Wards, newest first. The version is shown in Settings (gear on Home).
 
+## 2026.10.21.15
+
+**Clearer lists.** Lines that packed three or more items together with semicolons are now short bullet lists (for example the HHS and DKA presentation lines, Hyponatremia treatment, Complicated UTI regimens). Each bullet keeps its sources. Sentences with two linked clauses, table cells and numbers are unchanged; no wording, dose or number changed.
+
 ## 2026.10.21.14
 
 **Fix: Rapids pages.** The "or" marker on alternative steps is now a clean, centered "OR" ring in light and dark, and keeps its highlight ring when it is the current step in Timed Mode. The source pills at the bottom of the Do Now card now sit inside the card with room around them, so a second row is no longer cut off.

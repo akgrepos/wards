@@ -120,7 +120,10 @@ or. Mild or no symptoms: treat the cause
 
    {{dose:ns-trial-hyponatremia}}
 
-   - SIADH: fluid restriction to 0.5 L/day below the 24-h urine volume; restrict all drinks, not Na⁺ or protein; stop offending drugs. ^[verbalis-hyponatremia-2013]
+   - SIADH: ^[verbalis-hyponatremia-2013]
+     - Fluid restriction to 0.5 L/day below the 24-h urine volume ^[verbalis-hyponatremia-2013]
+     - Restrict all drinks, not Na⁺ or protein ^[verbalis-hyponatremia-2013]
+     - Stop offending drugs ^[verbalis-hyponatremia-2013]
    - Restriction likely to fail (urine osmolality >500 mOsm/kg, urine Na⁺ + K⁺ above serum Na⁺, urine output <1.5 L/day, or Na⁺ up <2 mEq/L per day on ≤1 L/day): add a drug. ^[verbalis-hyponatremia-2013]
 
    {{dose:urea-hyponatremia}}

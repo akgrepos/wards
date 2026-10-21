@@ -83,7 +83,10 @@ or. NIV or CPAP instead
 ## Diagnosis
 #### First-line tests
 - Arterial blood gas: PaO₂, PaCO₂, pH; calculate PaO₂/FiO₂ and the {{calc:aa-gradient|A–a gradient}}. ^[ssc-sepsis-2026, common-practice]
-- Chest radiograph; ECG; troponin and natriuretic peptide; CBC, BMP, lactate. ^[common-practice]
+- Chest radiograph ^[common-practice]
+- ECG ^[common-practice]
+- Troponin and natriuretic peptide ^[common-practice]
+- CBC, BMP, lactate ^[common-practice]
 - Point-of-care ultrasound: B-lines (edema, ARDS), consolidation, effusion, absent lung sliding (pneumothorax), LV and RV function, DVT. ^[common-practice]
 
 #### Interpretation
@@ -101,7 +104,9 @@ or. NIV or CPAP instead
 
 ## Treatment
 #### Common initial orders
-- Continuous pulse oximetry; oxygen titrated to target; head of bed raised. ^[bts-oxygen-2017, common-practice]
+- Continuous pulse oximetry ^[bts-oxygen-2017, common-practice]
+- Oxygen titrated to target ^[bts-oxygen-2017, common-practice]
+- Head of bed raised ^[bts-oxygen-2017, common-practice]
 - First-line tests in Diagnosis. ^[common-practice]
 
 #### Conventional oxygen
@@ -119,7 +124,10 @@ or. NIV or CPAP instead
 - NIV is strongly recommended for hypercapnic failure ([[pulm-copd-exacerbation|COPD exacerbation]]); high-flow only with mild acidemia (pH >7.25) and NIV promptly available. ^[ats-nirs-2026]
 - CPAP or NIV for cardiogenic pulmonary edema. ^[ers-ats-niv-2017]
 - Hypoxemia or cardiogenic edema: CPAP or EPAP 5–10 cm H₂O, titrated to oxygenation and work of breathing. ^[common-practice]
-- Hypercapnia: EPAP 3–5 cm H₂O; inspiratory pressure about 15, raised to 20–30 cm H₂O within 10–30 minutes; blood gas within 1 hour. ^[bts-ics-hypercapnic-2016]
+- Hypercapnia: ^[bts-ics-hypercapnic-2016]
+  - EPAP 3–5 cm H₂O ^[bts-ics-hypercapnic-2016]
+  - Inspiratory pressure about 15, raised to 20–30 cm H₂O within 10–30 minutes ^[bts-ics-hypercapnic-2016]
+  - Blood gas within 1 hour ^[bts-ics-hypercapnic-2016]
 
 #### Intubation
 - Watch for nonimproving or worsening gas exchange, persistent tachypnea, signs of muscle fatigue; have intubation criteria agreed in advance. ^[ats-nirs-2026]
@@ -128,13 +136,18 @@ or. NIV or CPAP instead
 #### Initial ventilator settings
 - Volume control. ARDS: tidal volume {{threshold:ards-tidal-volume}}; sepsis without ARDS: {{threshold:tidal-volume-no-ards}}. ^[ats-esicm-sccm-ards-2017, ssc-sepsis-2026]
 - Plateau pressure ≤30 cm H₂O. ^[ssc-sepsis-2026, ats-esicm-sccm-ards-2017]
-- Start PEEP about 5 cm H₂O and FiO₂ 1.0; set the rate to match pre-intubation minute ventilation; in ARDS, titrate to SpO₂ 88–95% with a PEEP/FiO₂ table. ^[common-practice]
+- Start PEEP about 5 cm H₂O and FiO₂ 1.0 ^[common-practice]
+- Set the rate to match pre-intubation minute ventilation ^[common-practice]
+- In ARDS, titrate to SpO₂ 88–95% with a PEEP/FiO₂ table ^[common-practice]
 - Moderate–severe ARDS: higher PEEP, no prolonged recruitment maneuvers ^[ssc-sepsis-2026, ats-ards-2024]; prone positioning more than 12 hours a day. ^[ssc-sepsis-2026, ats-esicm-sccm-ards-2017]
 - PaO₂/FiO₂ <150 with hypoxemia or ventilator targets not met despite sedation: consider neuromuscular blockade. ^[sccm-nmba-ards-2026]
 - ARDS: corticosteroids suggested; VV-ECMO in selected severe cases. ^[ats-ards-2024, sccm-corticosteroids-2024]
 
 #### Treat the cause
-- Pneumonia: [[id-cap|antibiotics]]; heart failure: [[cardio-adhf|diuresis and vasodilators]]; COPD: [[pulm-copd-exacerbation|bronchodilators, steroids, NIV]]; sepsis: [[crit-sepsis|sepsis bundle]]. ^[common-practice]
+- Pneumonia: [[id-cap|antibiotics]] ^[common-practice]
+- Heart failure: [[cardio-adhf|diuresis and vasodilators]] ^[common-practice]
+- COPD: [[pulm-copd-exacerbation|bronchodilators, steroids, NIV]] ^[common-practice]
+- Sepsis: [[crit-sepsis|sepsis bundle]] ^[common-practice]
 
 ## Monitor
 :::times {{calc:rox-index}} on high-flow, hours ^[roca-rox-2019]

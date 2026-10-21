@@ -62,7 +62,9 @@ related:
 #### Troponin
 - High-sensitivity cardiac troponin at presentation and 1–2 h (or 3–6 h with conventional assays). ^[aha-acc-chest-pain-2021]
 - Use assay-specific, sex-specific 99th percentiles (lower in women) and change thresholds; rapid-algorithm cutoffs (uniform, not sex-specific) triage, they do not diagnose MI. ^[udmi-2026, aha-acc-chest-pain-2021]
-- Rise and/or fall needed for acute injury; stable elevation (change <20%, a cutoff based on assay imprecision) suggests chronic injury (CKD, heart failure), but sampling near the peak (12–24 h) or days after onset can also look stable; very high values may not need a rise or fall. ^[udmi-2026]
+- Rise and/or fall needed for acute injury ^[udmi-2026]
+- Stable elevation (change <20%, a cutoff based on assay imprecision) suggests chronic injury (CKD, heart failure), but sampling near the peak (12–24 h) or days after onset can also look stable ^[udmi-2026]
+- Very high values may not need a rise or fall ^[udmi-2026]
 - CKD: elevated troponin is not just reduced clearance; serial values tell acute from chronic. ^[udmi-2026]
 
 #### Other tests
@@ -125,7 +127,10 @@ related:
    {{dose:atorvastatin-80}}
 
    - Oral β-blocker within 24 h unless acute heart failure, low-output state, risk of cardiogenic shock, PR >240 ms, second- or third-degree AV block without a pacemaker, severe bradycardia or active bronchospasm; reassess later if initially contraindicated. ^[acc-aha-acs-2025]
-   - ACE inhibitor or ARB: LVEF ≤40%, hypertension or diabetes; reasonable in all others; never both together. ^[acc-aha-acs-2025]
+   - ACE inhibitor or ARB: ^[acc-aha-acs-2025]
+     - LVEF ≤40%, hypertension or diabetes ^[acc-aha-acs-2025]
+     - Reasonable in all others ^[acc-aha-acs-2025]
+     - Never both together ^[acc-aha-acs-2025]
    - Mineralocorticoid receptor antagonist: LVEF ≤40% with heart failure symptoms or diabetes; avoid if creatinine >2.5 mg/dL or K⁺ >5.0 mEq/L. ^[acc-aha-acs-2025]
    - Continue aspirin. ^[acc-aha-acs-2025]
 
@@ -191,7 +196,9 @@ related:
 - REDUCE-AMI (2024): long-term β-blocker after MI with LVEF ≥50% did not reduce death or reinfarction. ^[reduce-ami-2024]
 
 ### Why the Treatment Order: Platelets, then thrombin, then the lesion
-- Aspirin and anticoagulation stop thrombus propagation immediately; P2Y12 timing depends on when angiography will happen and whether CABG may be needed; revascularization treats the culprit lesion. ^[acc-aha-acs-2025, common-practice]
+- Aspirin and anticoagulation stop thrombus propagation immediately ^[acc-aha-acs-2025, common-practice]
+- P2Y12 timing depends on when angiography will happen and whether CABG may be needed ^[acc-aha-acs-2025, common-practice]
+- Revascularization treats the culprit lesion ^[acc-aha-acs-2025, common-practice]
 
 ### Epidemiology and Pathophysiology: Plaque and supply
 - NSTE-ACS accounts for most ACS hospitalizations; mortality is lower than STEMI acutely but similar at long-term follow-up. ^[acc-aha-acs-2025]

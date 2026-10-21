@@ -1,6 +1,6 @@
 # Status
 
-Last updated 2026-10-21 (live version 2026.10.21.14). A short snapshot. Reasons are in [DECISIONS.md](DECISIONS.md) (older rows: [DECISIONS-archive.md](DECISIONS-archive.md)); what changed in each version is in [CHANGELOG.md](../CHANGELOG.md).
+Last updated 2026-10-21 (live version 2026.10.21.15 once merged). A short snapshot. Reasons are in [DECISIONS.md](DECISIONS.md) (older rows: [DECISIONS-archive.md](DECISIONS-archive.md)); what changed in each version is in [CHANGELOG.md](../CHANGELOG.md).
 
 ## Start here next time
 1. **Open a new chat and type "Start Main".** The `wards-main` skill renames it "Main", checks sessions, pull requests and branches, and delegates (at most two side sessions at a time).
@@ -25,6 +25,9 @@ Last updated 2026-10-21 (live version 2026.10.21.14). A short snapshot. Reasons 
 
 ## Done
 Everything shipped to date is listed in [CHANGELOG.md](../CHANGELOG.md) and the DECISIONS rows; older history is in [DECISIONS-archive.md](DECISIONS-archive.md). Live at https://akgrepos.github.io/wards/. Content so far: Wave 1 batches 1-5 (30-card plan), pilots Hyperkalemia, AKI, Electrolyte Repletion; Rapids pages, Timed Mode, pathways, ECG figures, MDCalc links. Process, privacy and the AKG Design System (https://claude.ai/artifact/GWFUZ6rCthpEuhMik4Jiru, copy in `vendor/akg/`) are described in CLAUDE.md. HIG text and digests: `~/Documents/Wards-reference/hig/`.
+
+## Pending check (2026.10.21.15)
+- Bullets instead of semicolon lists (swept 2026.10.21.15): look at Hyponatremia, DKA and Complicated UTI on the phone; two-item semicolon lines were deliberately left.
 
 ## Pending check (2026.10.21.14)
 - Rapids "OR" marker and Do Now source pills fixed; confirm in the pinned Simulator app after deploy (normal and Timed Mode, light and dark).

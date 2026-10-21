@@ -8,6 +8,8 @@ rate: continuous infusion
 give_when: "β-hydroxybutyrate <3.0 mmol/L, pH ≥7.3 and HCO₃⁻ ≥18 mEq/L; K⁺ >3.5 mEq/L"
 repeat: "Target glucose 200–250 mg/dL until resolution; mixed DKA/HHS (significant ketonemia or acidosis): use the DKA rate"
 cautions:
-  - "Glucose should fall no faster than 90–120 mg/dL per hour; osmolality 3–8 mOsm/kg per hour; Na⁺ no more than 10 mEq/L in 24 hours."
+  - "Glucose should fall no faster than 90–120 mg/dL per hour."
+  - "Osmolality 3–8 mOsm/kg per hour."
+  - "Na⁺ no more than 10 mEq/L in 24 hours."
   - "Fluids alone lower glucose substantially; some start insulin only once glucose stops falling with fluids (UK guideline)."
 sources: [ada-hyperglycemic-crises-2024, jbds-hhs-2022, label-humulin-r-2026]

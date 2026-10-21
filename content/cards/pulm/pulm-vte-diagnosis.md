@@ -51,7 +51,10 @@ related:
 #### Focused history
 - PE: dyspnea and pleuritic chest pain most often; hemoptysis, syncope and shock less often. ^[aha-acc-pe-2026]
 - DVT: unilateral leg swelling, pain, warmth. ^[common-practice]
-- Risk factors above; estrogen; prior VTE; current anticoagulation (lowers D-dimer reliability). ^[aha-acc-pe-2026]
+- Risk factors above ^[aha-acc-pe-2026]
+- Estrogen ^[aha-acc-pe-2026]
+- Prior VTE ^[aha-acc-pe-2026]
+- Current anticoagulation (lowers D-dimer reliability) ^[aha-acc-pe-2026]
 
 #### Focused examination
 - Tachycardia, tachypnea, hypoxemia, hypotension; JVD, loud P2, RV heave. ^[aha-acc-pe-2026]
@@ -102,7 +105,9 @@ related:
 
 ## Treatment
 #### Common initial orders
-- Oxygen to target; analgesia; telemetry for suspected PE with abnormal vital signs. ^[common-practice]
+- Oxygen to target ^[common-practice]
+- Analgesia ^[common-practice]
+- Telemetry for suspected PE with abnormal vital signs ^[common-practice]
 - First-line tests in Diagnosis. ^[common-practice]
 
 #### While awaiting imaging
@@ -138,8 +143,13 @@ related:
 :::
 
 ### Special Populations: Pregnancy, hospitalized, anticoagulated
-- Pregnancy: pregnancy-adapted YEARS; leg symptoms first to compression ultrasound (positive: treat without CTPA); normal chest radiograph: low-dose CTPA reasonable over low-dose perfusion scan. ^[aha-acc-pe-2026, artemis-2019]
-- Hospitalized or postoperative: D-dimer is usually positive; Wells performs poorly in inpatients; lower the threshold for imaging. ^[ash-vte-diagnosis-2018, silveira-wells-inpatient-2015]
+- Pregnancy: pregnancy-adapted YEARS ^[aha-acc-pe-2026, artemis-2019]
+- Leg symptoms first to compression ultrasound (positive: treat without CTPA) ^[aha-acc-pe-2026, artemis-2019]
+- Normal chest radiograph: low-dose CTPA reasonable over low-dose perfusion scan ^[aha-acc-pe-2026, artemis-2019]
+- Hospitalized or postoperative: ^[ash-vte-diagnosis-2018, silveira-wells-inpatient-2015]
+  - D-dimer is usually positive ^[ash-vte-diagnosis-2018, silveira-wells-inpatient-2015]
+  - Wells performs poorly in inpatients ^[ash-vte-diagnosis-2018, silveira-wells-inpatient-2015]
+  - Lower the threshold for imaging ^[ash-vte-diagnosis-2018, silveira-wells-inpatient-2015]
 - On therapeutic anticoagulation: D-dimer strategies were not validated; image directly when suspicion is real. ^[aha-acc-pe-2026]
 - Recurrent DVT: compare with prior imaging; a new segment or a >4 mm increase in vein diameter means recurrence. ^[ash-vte-diagnosis-2018]
 

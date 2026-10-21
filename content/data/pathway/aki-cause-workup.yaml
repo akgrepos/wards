@@ -48,7 +48,9 @@ nodes:
     span: 5
     title: Postrenal AKI
     text:
-      - "Upper tract obstruction: urology; immediately for pyonephrosis, solitary kidney, bilateral obstruction or complications; nephrostomy or stent within 12 h."
+      - "Upper tract obstruction: urology."
+      - "Immediately for pyonephrosis, solitary kidney, bilateral obstruction or complications."
+      - "Nephrostomy or stent within 12 h."
       - "Causes often coexist. Inadequate response: nephrology within 24 h."
   perfusion:
     kind: question

@@ -95,7 +95,9 @@ or. Mild to moderate
    {{dose:kcl-iv-standard}}
 
 3. Treat the cause
-   - Stop or reduce kaliuretic drugs; treat diarrhea or vomiting; control glycosuria. ^[kardalas-hypokalemia-2018]
+   - Stop or reduce kaliuretic drugs ^[kardalas-hypokalemia-2018]
+   - Treat diarrhea or vomiting ^[kardalas-hypokalemia-2018]
+   - Control glycosuria ^[kardalas-hypokalemia-2018]
    - Diuretic still needed: add a K⁺-sparing diuretic. ^[kardalas-hypokalemia-2018, asmar-hypokalemia-2012]
    - With a K⁺-sparing diuretic, ACE inhibitor or ARB: stop or reduce KCl and check K⁺ often (KCl labels contraindicate amiloride and triamterene). ^[label-klor-con-2025, label-kcl-oral-solution-2026]
    - Primary aldosteronism: mineralocorticoid receptor antagonist or surgery. ^[endocrine-aldosteronism-2025]
@@ -136,7 +138,11 @@ or. Mild to moderate
 
 {{dose:kcl-oral-prevention}}
 
-- Hypertension: screen for primary aldosteronism with aldosterone and renin; in resistant hypertension, screen even with normal K⁺ (only 20–50% of primary aldosteronism has spontaneous hypokalemia). Continue antihypertensives other than MRAs for the initial screen; β-blockers and central α₂-agonists suppress renin (false positive), while ACE inhibitors, ARBs, diuretics and MRAs raise it (false negative); repeat off the drug if the result is discordant and stopping is safe. ^[aha-acc-bp-2025, endocrine-aldosteronism-2025]
+- Hypertension: ^[aha-acc-bp-2025, endocrine-aldosteronism-2025]
+  - Screen for primary aldosteronism with aldosterone and renin ^[aha-acc-bp-2025, endocrine-aldosteronism-2025]
+  - In resistant hypertension, screen even with normal K⁺ (only 20–50% of primary aldosteronism has spontaneous hypokalemia). Continue antihypertensives other than MRAs for the initial screen ^[aha-acc-bp-2025, endocrine-aldosteronism-2025]
+  - β-blockers and central α₂-agonists suppress renin (false positive), while ACE inhibitors, ARBs, diuretics and MRAs raise it (false negative) ^[aha-acc-bp-2025, endocrine-aldosteronism-2025]
+  - Repeat off the drug if the result is discordant and stopping is safe ^[aha-acc-bp-2025, endocrine-aldosteronism-2025]
 
 ### Epidemiology and Pathophysiology: Who gets it; K⁺ handling
 - Up to 20% of hospitalized patients; clinically significant in 4–5%. ^[kardalas-hypokalemia-2018]

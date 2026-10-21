@@ -110,7 +110,9 @@ related:
    - Continue existing GDMT unless hemodynamically unstable or contraindicated; a mild creatinine or blood pressure change is not a reason to stop. ^[aha-acc-hfsa-hf-2022]
    - Cardiogenic shock or hypoperfusion: hold β-blocker; reduce or hold RAAS inhibitors with hypotension, hyperkalemia or AKI. ^[aha-acc-hfsa-hf-2022, common-practice]
    - HFrEF: start missing pillars once clinically stable: ARNI (or ACE inhibitor or ARB), evidence-based β-blocker (low dose, only once stable: near-euvolemic, diuretic dose stable, off IV vasodilators and inotropes), MRA, SGLT2 inhibitor. ^[aha-acc-hfsa-hf-2022, strong-hf-2022]
-   - SGLT2 inhibitor can be started in hospital once stable, at any LVEF; not with type 1 diabetes or ketoacidosis risk; check the label {{calc:ckd-epi}} limit. ^[empulse-2022, esc-hf-2026]
+   - SGLT2 inhibitor can be started in hospital once stable, at any LVEF ^[empulse-2022, esc-hf-2026]
+   - Not with type 1 diabetes or ketoacidosis risk ^[empulse-2022, esc-hf-2026]
+   - Check the label {{calc:ckd-epi}} limit ^[empulse-2022, esc-hf-2026]
    - Doses and titration: Wave 2 heart failure cards. ^[common-practice]
 
 7. Supportive care
@@ -121,7 +123,9 @@ related:
    - Iron deficiency (ferritin <100 ng/mL, or 100–299 ng/mL with transferrin saturation <20%) with reduced LVEF: IV iron, before discharge. ^[aha-acc-hfsa-hf-2022, esc-hf-2026]
 
 ## Monitor
-- Response at 2 h: spot urine Na⁺ {{threshold:adhf-urine-na-response}}; over 6 h: urine output {{threshold:adhf-uop-response}}; below these, intensify (ESC 2026 uses the top of the urine Na⁺ range and the bottom of the urine output range). ^[esc-hf-2026, hfa-diuretics-2019]
+- Response at 2 h: spot urine Na⁺ {{threshold:adhf-urine-na-response}} ^[esc-hf-2026, hfa-diuretics-2019]
+- Over 6 h: urine output {{threshold:adhf-uop-response}} ^[esc-hf-2026, hfa-diuretics-2019]
+- Below these, intensify (ESC 2026 uses the top of the urine Na⁺ range and the bottom of the urine output range) ^[esc-hf-2026, hfa-diuretics-2019]
 - Daily: weight, intake and output, BMP and Mg²⁺ (K⁺ and Mg²⁺ fall with diuresis), congestion signs. ^[aha-acc-hfsa-hf-2022, common-practice]
 - Goal: resolution of congestion (JVP, edema, orthopnea) before discharge; residual congestion predicts readmission. ^[aha-acc-hfsa-hf-2022]
 - Hypotension, rising lactate, worsening mentation or oliguria: reassess perfusion. ^[esc-hf-2026]
@@ -145,7 +149,10 @@ related:
 :::
 
 ### Special Populations: HFpEF, kidney disease, right heart failure
-- HFpEF: diuretics for congestion; treat hypertension, AF and ischemia; SGLT2 inhibitor. ^[aha-acc-hfsa-hf-2022, esc-hf-2026]
+- HFpEF: ^[aha-acc-hfsa-hf-2022, esc-hf-2026]
+  - Diuretics for congestion ^[aha-acc-hfsa-hf-2022, esc-hf-2026]
+  - Treat hypertension, AF and ischemia ^[aha-acc-hfsa-hf-2022, esc-hf-2026]
+  - SGLT2 inhibitor ^[aha-acc-hfsa-hf-2022, esc-hf-2026]
 - CKD: higher loop doses needed; MRA and SGLT2 inhibitor limits by {{calc:ckd-epi}}. ^[aha-acc-hfsa-hf-2022, hfa-diuretics-2019]
 - Predominant right heart failure: avoid excess preload reduction and hypotension. ^[common-practice]
 - Hypertrophic cardiomyopathy or severe aortic stenosis: avoid vasodilators and aggressive preload reduction. ^[common-practice]
@@ -160,7 +167,9 @@ related:
 - Discharge when euvolemic on an oral diuretic dose with a plan for adjustment. ^[aha-acc-hfsa-hf-2022]
 - Visit within 7 days and a phone call within 3 days; labs (K⁺, creatinine) within 1–2 weeks after starting or titrating GDMT. ^[aha-acc-hfsa-hf-2022, common-practice]
 - Education: daily weights, sodium intake, medication adherence, symptoms that should prompt a call. ^[aha-acc-hfsa-hf-2022]
-- Cardiac rehabilitation (HFrEF); influenza and pneumococcal vaccination; ICD and CRT assessment after GDMT optimization. ^[aha-acc-hfsa-hf-2022]
+- Cardiac rehabilitation (HFrEF) ^[aha-acc-hfsa-hf-2022]
+- Influenza and pneumococcal vaccination ^[aha-acc-hfsa-hf-2022]
+- ICD and CRT assessment after GDMT optimization ^[aha-acc-hfsa-hf-2022]
 
 ### Evidence: Key trials
 - DOSE (2011): bolus versus continuous and low versus high (2.5 times oral) furosemide did not differ in symptoms or creatinine at 72 h; high dose diuresed more, with more transient creatinine rise. ^[dose-2011]
@@ -168,7 +177,10 @@ related:
 - STRONG-HF (2022): rapid up-titration of GDMT with close follow-up after admission lowered 180-day death or heart failure readmission. ^[strong-hf-2022]
 
 ### Why the Treatment Order: Breathing, congestion, cause
-- Hypoxemia and pulmonary edema kill first; decongestion relieves most symptoms; perfusion problems need inotropes before diuretics work; GDMT then prevents the next admission. ^[aha-acc-hfsa-hf-2022, common-practice]
+- Hypoxemia and pulmonary edema kill first ^[aha-acc-hfsa-hf-2022, common-practice]
+- Decongestion relieves most symptoms ^[aha-acc-hfsa-hf-2022, common-practice]
+- Perfusion problems need inotropes before diuretics work ^[aha-acc-hfsa-hf-2022, common-practice]
+- GDMT then prevents the next admission ^[aha-acc-hfsa-hf-2022, common-practice]
 
 ### Epidemiology and Pathophysiology: Congestion
 - Heart failure is a leading cause of hospitalization in adults over 65; post-discharge readmission and mortality are high. ^[aha-acc-hfsa-hf-2022]
