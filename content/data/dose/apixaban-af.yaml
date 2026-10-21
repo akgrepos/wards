@@ -1,0 +1,23 @@
+drug_name: Apixaban
+brand: Eliquis
+indication: Stroke prevention in AF (not with a mechanical valve or moderate–severe mitral stenosis)
+population: Adults
+route: PO
+amount: "5"
+unit: mg
+frequency: twice daily
+boxed_warning: "Premature discontinuation raises the risk of thrombotic events; spinal or epidural hematoma with neuraxial anesthesia or spinal puncture."
+adjustments:
+  - when: "At least 2 of: age ≥80 years, weight ≤60 kg, serum creatinine ≥1.5 mg/dL"
+    change: 2.5 mg twice daily
+  - when: End-stage kidney disease on hemodialysis
+    change: "Usual dose (2.5 mg twice daily if age ≥80 years or weight ≤60 kg); outcome data limited"
+  - when: Combined strong CYP3A4 and P-gp inhibitors (ketoconazole, itraconazole, ritonavir)
+    change: Halve the dose; avoid if already on 2.5 mg twice daily
+  - when: Liver impairment
+    change: "Child-Pugh A: no change; B: no recommendation; C: not recommended"
+cautions:
+  - "The kidney criterion is serum creatinine, not CrCl."
+  - "Do not underdose: reduce only when the label criteria are met."
+  - "Procedures: hold at least 48 hours before moderate or high bleeding risk, 24 hours before low risk."
+sources: [label-eliquis-2025, acc-aha-af-2023]

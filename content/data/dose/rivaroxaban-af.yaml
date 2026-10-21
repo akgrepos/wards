@@ -1,0 +1,21 @@
+drug_name: Rivaroxaban
+brand: Xarelto
+indication: Stroke prevention in AF (not with a mechanical valve or moderate–severe mitral stenosis)
+population: Adults
+route: PO
+amount: "20"
+unit: mg
+frequency: once daily with the evening meal
+boxed_warning: "Premature discontinuation raises the risk of thrombotic events; spinal or epidural hematoma with neuraxial anesthesia or spinal puncture."
+adjustments:
+  - when: CrCl ≤50 mL/min (Cockcroft-Gault, actual body weight)
+    change: 15 mg once daily with the evening meal
+  - when: End-stage kidney disease on hemodialysis
+    change: 15 mg once daily; outcome data limited
+  - when: Liver impairment
+    change: Avoid in Child-Pugh B or C, or liver disease with coagulopathy
+cautions:
+  - "Must be taken with food for full absorption."
+  - "Avoid combined strong CYP3A and P-gp inhibitors or inducers."
+  - "Crushed tablet by mouth or gastric tube: follow with food or enteral feeding; not distal to the stomach."
+sources: [label-xarelto-2026, acc-aha-af-2023]

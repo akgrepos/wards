@@ -1,0 +1,13 @@
+drug_name: Nitroglycerin infusion
+indication: Persistent ischemia, hypertension or pulmonary edema (ACS or acute heart failure)
+population: Adults
+route: IV
+amount: "5"
+unit: mcg/min
+rate: "start 5 mcg/min; increase by 5 mcg/min every 3–5 minutes, then by 10–20 mcg/min if no response at 20 mcg/min"
+max: "200 mcg/min (heart failure guideline; no maximum in the label)"
+cautions:
+  - "Contraindicated with a phosphodiesterase-5 inhibitor or riociguat, tamponade, constrictive pericarditis or restrictive cardiomyopathy, raised intracranial pressure."
+  - "Avoid with hypotension, suspected RV infarction, severe aortic stenosis or hypertrophic obstructive cardiomyopathy."
+  - "Use non-PVC tubing and an infusion pump; tolerance develops after 24–48 hours."
+sources: [label-ntg-premix-2016, esc-hf-2021, acc-aha-acs-2025]

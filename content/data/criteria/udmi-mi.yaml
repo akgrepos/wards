@@ -1,0 +1,13 @@
+name: Fourth Universal Definition of Myocardial Infarction
+short: universal definition of MI
+logic: "Acute MI: a rise and/or fall of cardiac troponin with at least one value above the 99th percentile, plus at least one of:"
+items:
+  - "Symptoms of acute myocardial ischemia"
+  - "New ischemic ECG changes"
+  - "Development of pathological Q waves"
+  - "Imaging evidence of new loss of viable myocardium or new regional wall-motion abnormality consistent with ischemia"
+  - "Coronary thrombus on angiography or autopsy (type 1 MI)"
+notes:
+  - "Myocardial injury: troponin above the 99th percentile without ischemia; acute if values rise or fall, chronic if stable."
+  - "Unstable angina: myocardial ischemia at rest or minimal exertion without troponin elevation."
+sources: [udmi-2018]

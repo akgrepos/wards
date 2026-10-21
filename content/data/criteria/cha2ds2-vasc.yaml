@@ -1,0 +1,16 @@
+name: CHA₂DS₂-VASc score
+short: CHA₂DS₂-VASc
+columns: [Risk factor, Points]
+rows:
+  - ["Congestive heart failure (or LVEF ≤40%)", "1"]
+  - ["Hypertension", "1"]
+  - ["Age ≥75 years", "2"]
+  - ["Diabetes mellitus", "1"]
+  - ["Prior stroke, TIA or thromboembolism", "2"]
+  - ["Vascular disease (prior MI, peripheral artery disease, aortic plaque)", "1"]
+  - ["Age 65–74 years", "1"]
+  - ["Sex category: female", "1"]
+notes:
+  - "Annual stroke risk ≥2% (score ≥2 in men, ≥3 in women): anticoagulation recommended; 1–2% (1 in men, 2 in women): reasonable."
+  - "Not used for a mechanical valve, moderate–severe mitral stenosis, hypertrophic cardiomyopathy or amyloidosis: anticoagulate regardless."
+sources: [acc-aha-af-2023]

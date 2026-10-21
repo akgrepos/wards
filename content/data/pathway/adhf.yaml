@@ -1,0 +1,131 @@
+# A whole-card map of the Acute Decompensated Heart Failure card (owner's choice, 2026-10-20). Boxes link to the
+# card's sections and dose sheets; no dose is copied.
+title: Acute Decompensated Heart Failure
+card: cardio-adhf
+columns: 4
+start: start
+sources: [aha-acc-hfsa-hf-2022, esc-hf-2021, esc-hf-2023, hfa-diuretics-2019]
+nodes:
+  start:
+    kind: start
+    at: [1, 0]
+    title: Suspected acute heart failure
+    text: Dyspnea, orthopnea, edema, raised JVP.
+    links: [section:cardio-adhf/presentation, section:cardio-adhf/diagnosis]
+    next: resp
+  resp:
+    kind: question
+    at: [1, 1]
+    stage: Stabilize
+    title: Respiratory distress or SpO₂ <90%?
+    links: ["section:cardio-adhf/treatment#respiratory-support"]
+    answers:
+      - { label: "Yes", at: [0, 2], to: niv }
+      - { label: "No", at: [1, 2], to: profile }
+  niv:
+    kind: urgent
+    at: [0, 3]
+    title: Oxygen; noninvasive ventilation
+    links: ["section:cardio-adhf/treatment#respiratory-support", section:cardio-adhf/escalation]
+    next: profile
+    rejoin: true
+  profile:
+    kind: question
+    at: [1, 3]
+    title: Perfusion?
+    text: "Cold: cool extremities, narrow pulse pressure, confusion, oliguria, rising lactate."
+    links: ["section:cardio-adhf/severity#hemodynamic-profile"]
+    answers:
+      - { label: "Cold or hypotensive", at: [0, 4], to: shock }
+      - { label: "Warm", at: [1, 4], to: trigger }
+  shock:
+    kind: urgent
+    at: [0, 5]
+    title: ICU and cardiology
+    text: Inotropes; vasopressors if hypotensive; treat the cause.
+    links: ["section:cardio-adhf/treatment#hypoperfusion", section:cardio-adhf/escalation]
+    next: trigger
+    rejoin: true
+  trigger:
+    kind: do
+    at: [1, 5]
+    title: Find the trigger
+    text: ECG and troponin, arrhythmia, hypertension, infection, nonadherence, offending drugs.
+    links: [section:cardio-adhf/causes, section:cardio-adhf/diagnosis]
+    next: diuretic
+  diuretic:
+    kind: do
+    at: [1, 6]
+    stage: Decongest
+    title: IV loop diuretic
+    text: At least the home oral daily dose.
+    links: [dose:furosemide-iv-adhf, "section:cardio-adhf/treatment#iv-loop-diuretic"]
+    next: htn
+  htn:
+    kind: question
+    at: [1, 7]
+    title: Hypertensive pulmonary edema?
+    text: SBP >110 mm Hg.
+    links: ["section:cardio-adhf/treatment#vasodilator"]
+    answers:
+      - { label: "Yes", at: [2, 8], to: nitro }
+      - { label: "No", at: [1, 8], to: response }
+  nitro:
+    kind: do
+    at: [2, 9]
+    title: Add IV nitroglycerin
+    links: [dose:nitroglycerin-iv, "section:cardio-adhf/treatment#vasodilator"]
+    next: response
+    rejoin: true
+  response:
+    kind: question
+    at: [1, 9]
+    title: Adequate response?
+    text: "Urine Na⁺ {{threshold:adhf-urine-na-response}} at 2 h; urine output {{threshold:adhf-uop-response}} at 6 h."
+    links: [section:cardio-adhf/monitor]
+    answers:
+      - { label: "Yes", at: [1, 10], to: continue }
+      - { label: "No", at: [2, 10], to: double }
+  continue:
+    kind: do
+    at: [1, 11]
+    title: Continue to euvolemia
+    text: Daily weight, BMP and Mg²⁺; a modest creatinine rise is not a reason to stop.
+    links: [section:cardio-adhf/monitor]
+    next: gdmt
+  double:
+    kind: do
+    at: [2, 11]
+    title: Double the loop dose
+    links: ["section:cardio-adhf/treatment#iv-loop-diuretic"]
+    next: resistant
+  resistant:
+    kind: question
+    at: [2, 12]
+    title: Still congested?
+    links: ["section:cardio-adhf/treatment#diuretic-resistance"]
+    answers:
+      - { label: "Yes", at: [3, 13], to: add }
+      - { label: "Responding", at: [2, 13], to: gdmt, rejoin: true }
+  add:
+    kind: do
+    at: [3, 14]
+    title: Add metolazone or acetazolamide
+    text: "Refractory: cardiology for ultrafiltration or hemodynamic guidance."
+    links: [dose:metolazone-adhf, dose:acetazolamide-adhf, "section:cardio-adhf/treatment#diuretic-resistance"]
+    next: gdmt
+    rejoin: true
+  gdmt:
+    kind: do
+    at: [1, 15]
+    stage: Prevent
+    title: GDMT before discharge
+    text: Continue home GDMT unless unstable; start missing pillars once stable.
+    links: ["section:cardio-adhf/treatment#gdmt-in-hospital"]
+    next: done
+  done:
+    kind: result
+    at: [1, 16]
+    title: Discharge when euvolemic
+    text: Follow-up within 7 days.
+    links: [section:cardio-adhf/more#after-acute]
