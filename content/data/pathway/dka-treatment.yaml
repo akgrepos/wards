@@ -112,9 +112,9 @@ nodes:
     span: 4
     title: Add dextrose as glucose falls
     text:
-      - "DKA: at glucose <250 mg/dL; euglycemic DKA: from the start."
+      - "DKA or HHS: at glucose <250 mg/dL; euglycemic DKA: from the start."
       - "{{dose:dextrose-dka}}"
-      - "Halve the insulin; never stop it for falling glucose. Targets: DKA 150–200 mg/dL, HHS 200–250 mg/dL."
+      - "DKA: lower insulin to half its starting rate; HHS: keep its rate. Never stop insulin for falling glucose. Targets: DKA 150–200 mg/dL, HHS 200–250 mg/dL."
     next: ph
   ph:
     kind: question
@@ -162,6 +162,6 @@ nodes:
     span: 4
     title: Transition to SC insulin
     text:
-      - Basal insulin 1–2 hours before stopping the infusion; continue dextrose until eating.
+      - "Basal insulin at least 1–2 hours before stopping the infusion (ADA 2026: 2–4 hours); switch once able to eat."
       - "{{dose:insulin-transition-dka}}"
     links: ["section:endo-dka/treatment#resolution-and-transition-to-sc-insulin"]

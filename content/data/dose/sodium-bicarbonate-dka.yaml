@@ -4,10 +4,11 @@ population: Adults
 route: IV
 amount: "100"
 unit: mEq
-frequency: "in 400 mL sterile water (isotonic), every 2 hours until pH >7.0"
+rate: "in 400 mL sterile water (isotonic), infused over 2 hours"
+frequency: "repeated every 2 hours until pH >7.0"
 give_when: "pH <7.0 only"
 cautions:
   - "Lowers K⁺: add potassium."
   - "Risks: hypokalemia, impaired tissue oxygenation, cerebral edema, paradoxical CNS acidosis."
 notes: "Not routine: no faster resolution or discharge when pH ≥7.0."
-sources: [ada-hyperglycemic-crises-2024, label-sodium-bicarbonate-2026]
+sources: [ada-hyperglycemic-crises-2024, kitabchi-hyperglycemic-crises-2009, label-sodium-bicarbonate-2026]

@@ -1,6 +1,6 @@
 drug_name: Rapid-acting insulin (lispro or aspart)
 brand: Humalog, NovoLog
-indication: Mild or uncomplicated moderate DKA
+indication: Mild DKA (uncomplicated moderate DKA in the consensus text)
 population: Adults
 route: SC
 amount: "0.1"

@@ -10,7 +10,7 @@ give_when: "As soon as K⁺ is >3.5 mEq/L"
 repeat: "Glucose <250 mg/dL: reduce to 0.05 units/kg/h and add dextrose 5–10%; continue until DKA resolves"
 alternative:
   dose: insulin-rapid-sc-dka
-  when: "Mild or uncomplicated moderate DKA (ED or step-down unit)"
+  when: "Mild DKA (ED or step-down unit)"
 cautions:
   - "Hypoglycemia and hypokalemia: glucose every 1–2 hours, K⁺ 2 hours after starting, then every 4 hours."
   - "Do not stop the infusion for falling glucose: add dextrose."
