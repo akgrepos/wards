@@ -2,6 +2,10 @@
 
 What changed in each version of Wards, newest first. The version is shown in Settings (gear on Home).
 
+## 2026.10.21.26
+
+**Fix: Upper GI Bleeding pathway.** The risk-score step showed raw code instead of the Glasgow-Blatchford name and link; it now shows the name with its MDCalc link.
+
 ## 2026.10.21.25
 
 **New card: Upper GI Bleeding (Nonvariceal).** The first card in a new Gastroenterology system in Topics, with a Rapids "Do Now" page (including Timed Mode) and a "Risk, Resuscitation and Endoscopy Timing" pathway. It covers resuscitation, transfusion thresholds, drugs to hold, endoscopy timing, and the Forrest criteria. MDCalc links for Glasgow-Blatchford and AIMS65.

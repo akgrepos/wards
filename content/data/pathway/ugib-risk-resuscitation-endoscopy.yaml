@@ -39,8 +39,8 @@ nodes:
     kind: question
     at: [6, 3]
     span: 6
-    title: "{{calc:gbs}}"
-    text: "Very low risk at {{threshold:gbs-very-low-risk}}."
+    title: Glasgow-Blatchford score
+    text: "{{calc:gbs|Score calculator}}. Very low risk at {{threshold:gbs-very-low-risk}}."
     answers:
       - { label: "Very low risk", at: [6, 4], span: 3, to: outpatient }
       - { label: "Higher", at: [9, 4], span: 3, to: admit }
