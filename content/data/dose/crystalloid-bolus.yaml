@@ -11,5 +11,5 @@ cautions:
   - "Use a crystalloid with Na⁺ 130–154 mEq/L."
   - "Heart failure, kidney failure or frailty: smaller volumes and more frequent reassessment."
   - "Hemorrhage: blood products, not crystalloid alone."
-notes: "Balanced crystalloids (LR, Plasma-Lyte) are suggested over saline in sepsis."
-sources: [nice-iv-fluids-2017, ssc-sepsis-2021, common-practice]
+notes: "Balanced crystalloids (LR, Plasma-Lyte) are suggested over saline in sepsis, except with traumatic brain injury (0.9% saline)."
+sources: [nice-iv-fluids-2017, ssc-sepsis-2026, common-practice]

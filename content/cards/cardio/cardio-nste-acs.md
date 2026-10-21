@@ -177,7 +177,8 @@ related:
 - DAPT for at least 12 months by default after ACS unless bleeding risk is high. ^[acc-aha-acs-2025]
 - To reduce bleeding after PCI: transition to ticagrelor monotherapy after at least 1 month; high bleeding risk: single antiplatelet (aspirin or P2Y12 inhibitor) after 1 month, or de-escalate to clopidogrel. ^[acc-aha-acs-2025]
 - Proton pump inhibitor with DAPT when GI bleeding risk is high. ^[acc-aha-acs-2025]
-- LDL-C ≥70 mg/dL on maximally tolerated statin: add ezetimibe or a PCSK9 inhibitor; reasonable at 55–69 mg/dL. ^[acc-aha-acs-2025]
+- LDL-C goal <55 mg/dL (non-HDL-C <85) at very high risk, as most patients with ASCVD are (≥2 major ASCVD events, or 1 plus several high-risk conditions such as age >65, revascularization, diabetes, hypertension, smoking, heart failure); otherwise <70 mg/dL, with <55 reasonable. ^[acc-aha-dyslipidemia-2026]
+- Above goal on maximally tolerated statin: add ezetimibe or a PCSK9 monoclonal antibody (ezetimibe no longer required first); bempedoic acid with statin intolerance. ^[acc-aha-dyslipidemia-2026, acc-aha-acs-2025]
 - Cardiac rehabilitation referral, smoking cessation, blood pressure and diabetes control, annual influenza vaccination. ^[acc-aha-acs-2025]
 - SGLT2 inhibitor and full heart failure therapy when LVEF ≤40%: see [[cardio-adhf|ADHF]] for in-hospital start. ^[aha-acc-hfsa-hf-2022]
 

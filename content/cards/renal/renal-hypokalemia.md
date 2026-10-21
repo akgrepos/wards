@@ -62,7 +62,7 @@ related:
 | Metabolic alkalosis | Vomiting, prior diuretic use | Normal BP: diuretics, vomiting, Bartter or Gitelman; hypertension: mineralocorticoid excess ^[kardalas-hypokalemia-2018] |
 
 - Alkalosis with renal K⁺ loss: low urine Cl⁻ suggests vomiting; normal urine Cl⁻ suggests Bartter or Gitelman (or active diuretic). ^[kardalas-hypokalemia-2018]
-- Hypertension: aldosterone, renin and aldosterone-to-renin ratio. ^[endocrine-aldosteronism-2025, kardalas-hypokalemia-2018]
+- Hypertension: aldosterone, renin and aldosterone-to-renin ratio. ^[endocrine-aldosteronism-2025, aha-acc-bp-2025, kardalas-hypokalemia-2018]
 
 ## Treatment
 1. Severe or symptomatic
@@ -135,7 +135,7 @@ related:
 
 {{dose:kcl-oral-prevention}}
 
-- Hypertension: screen for primary aldosteronism with aldosterone and renin. ^[endocrine-aldosteronism-2025]
+- Hypertension: screen for primary aldosteronism with aldosterone and renin; in resistant hypertension, screen even with normal K⁺ (hypokalemia in only 20–50%). Most antihypertensives need not be stopped first; interpret results knowing their effects on renin and aldosterone. ^[endocrine-aldosteronism-2025, aha-acc-bp-2025]
 
 ### Epidemiology and Pathophysiology: Who gets it; K⁺ handling
 - Up to 20% of hospitalized patients; clinically significant in 4–5%. ^[kardalas-hypokalemia-2018]
