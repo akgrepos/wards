@@ -7,6 +7,12 @@ export function useAppearance() {
     const dark = matchMedia('(prefers-color-scheme: dark)');
     const apply = () => {
       document.documentElement.dataset.theme = dark.matches ? 'ios-dark' : 'ios-light';
+      // Tell iOS the new color of the strip behind the clock (the two media-based tags in index.html only apply at launch).
+      document.querySelectorAll('meta[name="theme-color"]').forEach((m) => m.remove());
+      const meta = document.createElement('meta');
+      meta.name = 'theme-color';
+      meta.content = getComputedStyle(document.documentElement).getPropertyValue('--background-grouped').trim() || (dark.matches ? '#000000' : '#f2f2f7');
+      document.head.appendChild(meta);
     };
     apply();
     dark.addEventListener('change', apply);

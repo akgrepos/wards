@@ -75,7 +75,7 @@ describe('ECG figures on cards', () => {
     expect((screen.getByRole('button', { name: 'Zoom Out' }) as HTMLButtonElement).disabled).toBe(true);
     const dlg = screen.getByRole('dialog');
     expect([...dlg.querySelectorAll('.ecg-lead')].map((n) => n.textContent)).toEqual(['II', 'V1']);
-    expect(dlg.querySelector('.ecg-mark-text')).toBeNull(); // full screen: raw, no marks
+    expect(dlg.querySelectorAll('.ecg-mark-text').length).toBeGreaterThan(0); // full screen keeps the measurement labels
     fireEvent.click(screen.getByRole('button', { name: 'Zoom In' }));
     expect((screen.getByRole('button', { name: 'Zoom Out' }) as HTMLButtonElement).disabled).toBe(false);
   });

@@ -13,9 +13,10 @@ html {
 /* Design system components follow Text Size too (see the AKG Design System README, Typography). */
 :root { --akg-text-unit: calc(1rem / 17); }
 
+/* The page behind everything (and so the strip behind the clock) matches the pages' grouped background. */
 html, body {
   margin: 0;
-  background: var(--background);
+  background: var(--background-grouped);
   color: var(--label);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
@@ -154,6 +155,8 @@ html[data-timed] .pw-zoom { bottom: calc(env(safe-area-inset-bottom) + var(--tab
 
 /* Floating tab bar: content fades out under it into the page background. */
 :root { --akg-tab-bar-fade: var(--background-grouped); }
+/* Its own graphics layer, so the bars stay put while the page scrolls under them (they shook on iPhone). */
+.akg-tab-bar--floating, .top-bar { transform: translateZ(0); will-change: transform; }
 
 /* The update banner floats just above the tab bar (and the search bar), so it never covers navigation;
    leave room so the last line can scroll above both. */

@@ -2,6 +2,17 @@
 
 What changed in each version of Wards, newest first. The version is shown in Settings (gear on Home).
 
+## 2026.10.21.7
+
+**Fixes and a simpler Library, from your phone testing.**
+- **Tab order:** Home, Topics, Rapids, Library.
+- **Status bar:** the strip behind the clock now matches the page color on topic cards, and follows light/dark when you switch while the app is open.
+- **Show Sources** is now a row in the Contents menu (next to Collapse All), freeing room in the top bar.
+- **Smoother scrolling:** the floating search and tab bar should no longer shake while you scroll (please tell me if you still see it).
+- **ECG full screen** keeps its measurement labels, and they zoom with the figure.
+- **Library:** removed Scores and Calculators (scores are MDCalc links on the cards) and Criteria and Staging (criteria and staging stay on their cards). Medications and Labs are hidden until they have cards. Old links to those pages open the Library.
+- **Also new in 2026.10.21.6, not mentioned then:** the Topics tab has a **Pulmonary** system (the three new cards), and Home's default Rapids shortcuts now show **COPD Exacerbation** instead of Hyponatremia.
+
 ## 2026.10.21.6
 
 **Three new cards.**
