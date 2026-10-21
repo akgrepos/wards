@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { AKG } from '../design/akg';
-import { cardTypeLabel, emergencyCards, getCard, getSystem, titleCase } from '../content';
+import { cardTypeLabel, emergencyCards, getCard, titleCase } from '../content';
 import type { Card } from '../content/types';
 import { href, open } from '../router';
-import { clearFavorites, clearPageMemory, clearReading, clearRecent, getFavorites, getRapidShortcuts, getReading, getRecent, RAPIDS_MAX, setRapidShortcuts, useStored } from '../storage';
+import { clearPageMemory, clearReading, clearRecent, getRapidShortcuts, getReading, getRecent, RAPIDS_MAX, setRapidShortcuts, useStored } from '../storage';
 import { useSheet } from '../ui/SheetHost';
 import { emergencyIcon } from './Emergency';
 import { iconFor, icons } from '../ui/icons';
@@ -44,10 +44,9 @@ function EditRapids() {
 }
 const kindLabel = (c: Card) => (c.system === 'library' ? cardTypeLabel(c) : 'Topic');
 
-// Home: pick up where you left off. Continue Reading, Rapids (emergency) shortcuts, Favorites and Recent (all kept on this phone).
+// Home: pick up where you left off. Continue Reading, Rapids (emergency) shortcuts and Recent (all kept on this phone).
 export function Home() {
   const reading = useStored(getReading);
-  const favorites = useStored(getFavorites).map(getCard).filter((c): c is Card => !!c);
   const recent = useStored(getRecent).filter((r) => getCard(r.id));
   const emergencies = useRapidShortcuts();
   const sheet = useSheet();
@@ -81,28 +80,6 @@ export function Home() {
         )}
       </AKG.List>
 
-      {favorites.length === 0 ? (
-        <AKG.List header="Favorites" headerStyle="prominent">
-          <AKG.ListRow title="No Favorites Yet" subtitle="Tap the star on a page to add it here." />
-        </AKG.List>
-      ) : (
-        <section className="home-group">
-          <div className="akg-list__header akg-list__header--prominent">
-            <div className="akg-list__header-title">Favorites</div>
-            <div className="akg-list__header-action"><AKG.Button variant="borderless" onClick={() => open(href.favorites())}>See All</AKG.Button></div>
-          </div>
-          <div className="tiles" role="list">
-            {favorites.map((c) => (
-              <a key={c.id} role="listitem" className="tile" href={href.card(c.id)}>
-                <AKG.IconTile tint={cardIcon(c).tint}>{cardIcon(c).icon}</AKG.IconTile>
-                <span className="ios-subheadline-emphasized">{c.title}</span>
-                <span className="ios-caption-1 secondary">{kindLabel(c)}</span>
-              </a>
-            ))}
-          </div>
-        </section>
-      )}
-
       <AKG.List
         header="Recent"
         headerStyle="prominent"
@@ -121,43 +98,26 @@ export function Home() {
   );
 }
 
-// Home › Favorites › See All.
-export function FavoritesScreen() {
-  const favorites = useStored(getFavorites).map(getCard).filter((c): c is Card => !!c);
-  return (
-    <Screen title="Favorites" back={{ label: 'Reference', fallback: href.home() }}>
-      {favorites.length === 0 ? (
-        <div className="empty"><AKG.EmptyState symbol={icons.star} title="No Favorites" description="Tap the star on a page to add it here." /></div>
-      ) : (
-        <AKG.List footer="To remove a favorite, open it and tap the star.">
-          {favorites.map((c) => <AKG.ListRow key={c.id} title={c.title} subtitle={`${kindLabel(c)} · ${getSystem(c.system)?.title ?? ''}`} icon={cardIcon(c).icon} iconTint={cardIcon(c).tint} chevron href={href.card(c.id)} />)}
-        </AKG.List>
-      )}
-    </Screen>
-  );
-}
-
 // Home › Settings: the version, and clearing what's kept on this phone.
 export function SettingsScreen() {
-  const [confirm, setConfirm] = useState<'history' | 'favorites' | null>(null);
+  const [confirm, setConfirm] = useState(false);
   return (
     <Screen title="Settings" back={{ label: 'Reference', fallback: href.home() }}>
       <AKG.List header="About">
         <AKG.ListRow title="Version" detail={APP_VERSION} />
       </AKG.List>
-      <AKG.List header="On This iPhone" footer="Favorites, Recent, Continue Reading, and where you were on each page are kept only on this iPhone. Nothing is sent anywhere.">
-        <AKG.ListRow title="Clear Recent and Continue Reading" destructive onClick={() => setConfirm('history')} />
-        <AKG.ListRow title="Clear Favorites" destructive onClick={() => setConfirm('favorites')} />
+      <AKG.List header="On This iPhone" footer="Recent, Continue Reading, and where you were on each page are kept only on this iPhone. Nothing is sent anywhere.">
+        <AKG.ListRow title="Clear Recent and Continue Reading" destructive onClick={() => setConfirm(true)} />
       </AKG.List>
       <AKG.Alert
-        open={confirm != null}
+        open={confirm}
         overlay
         fixed
-        title={confirm === 'favorites' ? 'Clear Favorites?' : 'Clear Recent and Continue Reading?'}
-        message={confirm === 'favorites' ? 'This can’t be undone.' : 'Pages also forget where you were and which sections you closed. This can’t be undone.'}
+        title="Clear Recent and Continue Reading?"
+        message="Pages also forget where you were and which sections you closed. This can’t be undone."
         actions={[
-          { label: 'Cancel', role: 'cancel', onClick: () => setConfirm(null) },
-          { label: 'Clear', role: 'destructive', onClick: () => { if (confirm === 'favorites') clearFavorites(); else { clearRecent(); clearReading(); clearPageMemory(); } setConfirm(null); } },
+          { label: 'Cancel', role: 'cancel', onClick: () => setConfirm(false) },
+          { label: 'Clear', role: 'destructive', onClick: () => { clearRecent(); clearReading(); clearPageMemory(); setConfirm(false); } },
         ]}
       />
     </Screen>

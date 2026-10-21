@@ -2,6 +2,13 @@
 
 What changed in each version of Wards, newest first. The version is shown in Settings (gear on Home).
 
+## 2026.10.20
+
+Favorites removed:
+- The star at the top right of each page is gone. That spot is left empty, so the bar holds only Show Sources and Contents (plus the red Do Now button on topics with an emergency).
+- Home no longer has a Favorites section; it shows Continue Reading, Rapids shortcuts and Recent.
+- Settings no longer has "Clear Favorites". Any favorites saved by an earlier version are erased from this iPhone the first time the new version opens.
+
 ## 2026.10.19.14
 
 Three new topics in Infectious Disease (Wave 1, second batch):

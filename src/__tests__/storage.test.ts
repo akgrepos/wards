@@ -1,19 +1,17 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import { addRecent, clearFavorites, clearReading, clearRecent, getFavorites, getReading, getRecent, RECENT_MAX, setReading, toggleFavorite } from '../storage';
+import { addRecent, clearReading, clearRecent, getReading, getRecent, RECENT_MAX, setReading } from '../storage';
 import { updateFailed } from '../UpdatePrompt';
 
 vi.mock('virtual:pwa-register/react', () => ({ useRegisterSW: () => ({ needRefresh: [false], updateServiceWorker: () => {} }) }));
 
-beforeEach(() => { localStorage.clear(); clearFavorites(); clearRecent(); clearReading(); });
+beforeEach(() => { localStorage.clear(); clearRecent(); clearReading(); });
 
 describe('stored lists (on this phone only)', () => {
-  it('favorites toggle on and off', () => {
-    toggleFavorite('a');
-    toggleFavorite('b');
-    expect(getFavorites()).toEqual(['a', 'b']);
-    toggleFavorite('a');
-    expect(getFavorites()).toEqual(['b']);
-    expect(JSON.parse(localStorage.getItem('wards:favorites')!)).toEqual(['b']);
+  it('forgets the Favorites list an earlier version saved', async () => {
+    localStorage.setItem('wards:favorites', JSON.stringify(['a']));
+    vi.resetModules();
+    await import('../storage');
+    expect(localStorage.getItem('wards:favorites')).toBeNull();
   });
 
   it('Recent keeps the last five, newest first, each once', () => {
@@ -30,9 +28,9 @@ describe('stored lists (on this phone only)', () => {
 
   it('ignores damaged saved data', () => {
     localStorage.setItem('wards:recent', '{not json');
-    localStorage.setItem('wards:favorites', JSON.stringify({ wrong: 'shape' }));
+    localStorage.setItem('wards:reading', JSON.stringify({ wrong: 'shape' }));
     expect(getRecent()).toEqual([]);
-    expect(getFavorites()).toEqual([]);
+    expect(getReading()).toBeNull();
     addRecent('x', 1);
     expect(getRecent().map((r) => r.id)).toEqual(['x']);
   });
@@ -40,8 +38,8 @@ describe('stored lists (on this phone only)', () => {
   it('keeps working when the phone refuses storage (private browsing)', () => {
     const set = vi.spyOn(Storage.prototype, 'setItem').mockImplementation(() => { throw new Error('QuotaExceeded'); });
     const get = vi.spyOn(Storage.prototype, 'getItem').mockImplementation(() => { throw new Error('SecurityError'); });
-    expect(() => toggleFavorite('a')).not.toThrow();
-    expect(getFavorites()).toEqual([]);
+    expect(() => addRecent('a', 1)).not.toThrow();
+    expect(() => getReading()).not.toThrow();
     set.mockRestore();
     get.mockRestore();
   });

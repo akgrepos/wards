@@ -2,7 +2,7 @@ import { AKG } from './design/akg';
 import { currentTab, href, open, switchTab, useRoute, type Route } from './router';
 import { CardScreen } from './screens/CardScreen';
 import { PathwayScreen } from './screens/PathwayScreen';
-import { FavoritesScreen, Home, SettingsScreen } from './screens/Home';
+import { Home, SettingsScreen } from './screens/Home';
 import { FocusProxy, SearchScreen, focusProxy } from './screens/Search';
 import { SystemScreen } from './screens/SystemScreen';
 import { LibraryList, LibraryTab, NotFoundScreen, TopicsTab } from './screens/Tabs';
@@ -33,7 +33,6 @@ function Page({ route }: { route: Route }) {
     case 'library-list': return <LibraryList key={route.id} id={route.id} />;
     case 'search': return <SearchScreen />;
     case 'settings': return <SettingsScreen />;
-    case 'favorites': return <FavoritesScreen />;
     case 'system': return <SystemScreen key={route.id} id={route.id} />;
     case 'card': return <CardScreen key={route.id} id={route.id} section={route.section} anchor={route.anchor} />;
     case 'pathway': return <PathwayScreen key={route.id} id={route.id} />;

@@ -1,11 +1,11 @@
 import { useSyncExternalStore } from 'react';
 
-// Favorites, Recent and Continue Reading, kept only on this phone (localStorage). Reading or writing can fail
+// Recent and Continue Reading, kept only on this phone (localStorage). Reading or writing can fail
 // (private browsing, storage full); the app then works without them.
 export type Recent = { id: string; t: number };
 export type Reading = { id: string; section?: string; t: number };
 
-const KEYS = { favorites: 'wards:favorites', recent: 'wards:recent', reading: 'wards:reading', scroll: 'wards:scroll', rapids: 'wards:rapids', timed: 'wards:timed' } as const;
+const KEYS = { recent: 'wards:recent', reading: 'wards:reading', scroll: 'wards:scroll', rapids: 'wards:rapids', timed: 'wards:timed' } as const;
 export const RECENT_MAX = 5;
 
 function read<T>(key: string, fallback: T, valid: (v: unknown) => boolean): T {
@@ -42,13 +42,8 @@ const subscribe = (l: () => void) => {
   return () => { listeners.delete(l); removeEventListener('storage', onStorage); };
 };
 
-export const getFavorites = () => cached<string[]>(KEYS.favorites, () => read(KEYS.favorites, [], isStrings));
-export const isFavorite = (id: string) => getFavorites().includes(id);
-export function toggleFavorite(id: string) {
-  const favs = getFavorites();
-  write(KEYS.favorites, favs.includes(id) ? favs.filter((x) => x !== id) : [...favs, id]);
-}
-export const clearFavorites = () => write(KEYS.favorites, null);
+// Favorites was removed (owner, 2026-10-20): forget the list an earlier version saved on this phone.
+try { localStorage.removeItem('wards:favorites'); } catch { /* not available */ }
 
 // The last five pages opened, newest first, each listed once.
 export const getRecent = () => cached<Recent[]>(KEYS.recent, () => read(KEYS.recent, [], isRecents));
