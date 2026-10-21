@@ -63,6 +63,7 @@ A single named cutoff that drives decisions.
 - Kept separate so the same cutoff is never written two ways
 
 ### 6. Criteria set
+Definitions, criteria and staging are always in the app, in a titled box; scores and formulas follow CONTENT-FORMAT, "Scores, criteria and formulas".
 A formal definition or diagnostic criteria with their logic.
 - Fields: name · items (major/minor or lettered) · logic (e.g. "2 major, or 1 major + 3 minor") · stages or grades · sources
 - Examples: KDIGO AKI stages, Sepsis-3, modified Duke criteria, SIRS
@@ -70,6 +71,7 @@ A formal definition or diagnostic criteria with their logic.
 - Home: the condition card it defines. Inserted elsewhere (and can power a checklist).
 
 ### 7. Score
+Which scores and formulas get an in-app version, and which only an MDCalc link: see CONTENT-FORMAT, "Scores, criteria and formulas".
 Everything a calculator needs.
 - Fields: inputs (each with options and points, or a formula) · calculation · result bands → risk → recommended action · validated population · limitations · sources
 - Home: the score card. Inserted interactively into condition and approach cards.
