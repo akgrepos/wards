@@ -8,7 +8,7 @@ frequency: once as a bolus, then an infusion
 rate: "bolus maximum 4,000 units; then 12 units/kg/h (maximum 1,000 units/h)"
 give_when: Preferred with planned early angiography or severe kidney impairment
 cautions:
-  - "Adjust by aPTT or anti-Xa per the institution's ACS nomogram (lower intensity than VTE treatment)."
+  - "Target aPTT 60–80 seconds (or anti-Xa) per the institution's nomogram."
   - "Check platelets: heparin-induced thrombocytopenia."
   - "Contraindicated with a history of heparin-induced thrombocytopenia."
 notes: "The US label has no ACS dosing (its IV regimen is fixed, for VTE); this weight-based regimen comes from ACC/AHA guidelines."

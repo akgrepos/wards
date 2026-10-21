@@ -4,7 +4,7 @@ title: Atrial Fibrillation
 card: cardio-atrial-fibrillation
 columns: 4
 start: start
-sources: [acc-aha-af-2023, esc-af-2024, aha-acls-2025]
+sources: [acc-aha-af-2023, esc-af-2024, aha-acls-2025, aha-acc-hfsa-hf-2022]
 nodes:
   start:
     kind: start
@@ -55,8 +55,8 @@ nodes:
     title: LVEF and blood pressure?
     links: ["section:cardio-atrial-fibrillation/treatment#rate-control"]
     answers:
-      - { label: "LVEF >40%, not decompensated", at: [1, 6], to: bbccb }
-      - { label: "LVEF ≤40%, decompensated, or borderline blood pressure", at: [2, 6], to: amio }
+      - { label: "Compensated", detail: "Diltiazem only if LVEF >40%", at: [1, 6], to: bbccb }
+      - { label: "Decompensated, critically ill or hypotensive", at: [2, 6], to: amio }
   bbccb:
     kind: do
     at: [1, 7]
@@ -67,7 +67,7 @@ nodes:
     kind: do
     at: [2, 7]
     title: IV amiodarone or digoxin
-    text: No nondihydropyridine calcium channel blockers in decompensated HFrEF.
+    text: No IV diltiazem or verapamil if LVEF ≤40%.
     links: [dose:amiodarone-iv-af, dose:digoxin-iv-af]
     next: precipitant
   precipitant:
@@ -119,7 +119,7 @@ nodes:
     kind: note
     at: [3, 12]
     title: No anticoagulation for stroke prevention
-    text: Except around cardioversion, or with hypertrophic cardiomyopathy or amyloidosis.
+    text: Except around cardioversion, or with hypertrophic cardiomyopathy or cardiac amyloidosis.
     links: ["section:cardio-atrial-fibrillation/treatment#anticoagulation-for-stroke-prevention"]
     next: cv
   cv:
@@ -142,8 +142,8 @@ nodes:
   cvshort:
     kind: do
     at: [2, 15]
-    title: Anticoagulate as soon as possible
-    text: If high stroke risk; at least 4 weeks after cardioversion. Wait-and-see is an option.
+    title: Anticoagulate before and 4 weeks after
+    text: Consider imaging first if CHA₂DS₂-VASc ≥2. Wait-and-see is an option.
     links: ["section:cardio-atrial-fibrillation/treatment#cardioversion-and-anticoagulation", section:cardio-atrial-fibrillation/more#guidelines-differ]
     next: rhythm
   rhythm:

@@ -4,7 +4,7 @@ title: Acute Decompensated Heart Failure
 card: cardio-adhf
 columns: 4
 start: start
-sources: [aha-acc-hfsa-hf-2022, esc-hf-2021, esc-hf-2023, hfa-diuretics-2019]
+sources: [aha-acc-hfsa-hf-2022, esc-hf-2026, esc-hf-2021, hfa-diuretics-2019]
 nodes:
   start:
     kind: start
@@ -52,31 +52,32 @@ nodes:
     title: Find the trigger
     text: ECG and troponin, arrhythmia, hypertension, infection, nonadherence, offending drugs.
     links: [section:cardio-adhf/causes, section:cardio-adhf/diagnosis]
-    next: diuretic
-  diuretic:
-    kind: do
-    at: [1, 6]
-    stage: Decongest
-    title: IV loop diuretic
-    text: At least the home oral daily dose.
-    links: [dose:furosemide-iv-adhf, "section:cardio-adhf/treatment#iv-loop-diuretic"]
     next: htn
   htn:
     kind: question
-    at: [1, 7]
-    title: Hypertensive pulmonary edema?
-    text: SBP >110 mm Hg.
+    at: [1, 6]
+    stage: Decongest
+    title: SBP >110 mm Hg?
+    text: "Hypertensive pulmonary edema: vasodilator first."
     links: ["section:cardio-adhf/treatment#vasodilator"]
     answers:
-      - { label: "Yes", at: [2, 8], to: nitro }
-      - { label: "No", at: [1, 8], to: response }
+      - { label: "Yes", at: [2, 7], to: nitro }
+      - { label: "No", at: [1, 7], to: diuretic }
   nitro:
     kind: do
-    at: [2, 9]
-    title: Add IV nitroglycerin
+    at: [2, 8]
+    title: Consider IV nitroglycerin
+    text: With the loop diuretic.
     links: [dose:nitroglycerin-iv, "section:cardio-adhf/treatment#vasodilator"]
-    next: response
+    next: diuretic
     rejoin: true
+  diuretic:
+    kind: do
+    at: [1, 8]
+    title: IV loop diuretic
+    text: At least the home oral daily dose.
+    links: [dose:furosemide-iv-adhf, "section:cardio-adhf/treatment#iv-loop-diuretic"]
+    next: response
   response:
     kind: question
     at: [1, 9]

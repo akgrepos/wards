@@ -12,5 +12,5 @@ rows:
   - ["Sex category: female", "1"]
 notes:
   - "Annual stroke risk ≥2% (score ≥2 in men, ≥3 in women): anticoagulation recommended; 1–2% (1 in men, 2 in women): reasonable."
-  - "Not used for a mechanical valve, moderate–severe mitral stenosis, hypertrophic cardiomyopathy or amyloidosis: anticoagulate regardless."
-sources: [acc-aha-af-2023]
+  - "Not used for a mechanical valve, rheumatic or moderate–severe mitral stenosis, or hypertrophic cardiomyopathy: anticoagulate regardless (cardiac amyloidosis: reasonable regardless, per the 2022 heart failure guideline)."
+sources: [acc-aha-af-2023, aha-acc-hfsa-hf-2022]
