@@ -1,0 +1,4 @@
+name: Restrictive hemoglobin threshold for transfusion in upper gastrointestinal bleeding
+value: "<7"
+unit: g/dL
+sources: [acg-ugib-2021, aabb-rbc-2023]

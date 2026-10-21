@@ -1,0 +1,4 @@
+name: Glasgow-Blatchford score identifying very-low-risk patients
+value: "0–1"
+unit: points
+sources: [acg-ugib-2021, icg-ugib-2019]

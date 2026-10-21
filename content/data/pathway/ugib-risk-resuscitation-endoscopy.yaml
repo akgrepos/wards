@@ -1,0 +1,123 @@
+# A focused pathway (owner, 2026-10-21): upper GI bleeding from first look to endoscopy timing and what follows, as a decision tree
+# that supplements the card. Text comes from the card's own lines. Format: docs/CONTENT-FORMAT.md, "Pathways".
+title: "Risk, Resuscitation and Endoscopy Timing"
+card: gi-upper-gi-bleeding
+summary: Resuscitate, score, time the endoscopy, treat by stigmata
+columns: 12
+start: suspected
+sources: [acg-ugib-2021, esge-pub-2026, icg-ugib-2019, aabb-rbc-2023, acg-cag-antithrombotic-2022]
+nodes:
+  suspected:
+    kind: start
+    at: [4, 0]
+    span: 4
+    title: Suspected upper GI bleed
+    text: "Hematemesis, coffee-ground emesis or melena. Cirrhosis or stigmata of liver disease: variceal pathway instead."
+    next: unstable
+  unstable:
+    kind: question
+    at: [4, 1]
+    span: 4
+    title: Shock or ongoing hematemesis?
+    answers:
+      - { label: "Yes", at: [0, 2], span: 6, to: resus }
+      - { label: "No", at: [6, 2], span: 6, to: risk }
+  resus:
+    kind: urgent
+    at: [0, 3]
+    span: 6
+    title: Resuscitate
+    text:
+      - Airway protection if needed; two large-bore IVs; type and crossmatch.
+      - "Hemorrhage: blood products early; crystalloid only as a small-volume bridge until blood is available."
+      - "Transfuse at {{threshold:ugib-hb-restrictive}}, or {{threshold:ugib-hb-cardiovascular}} with cardiovascular disease; unstable or massive bleeding: transfuse on clinical grounds."
+      - "{{dose:erythromycin-iv-ugib}}"
+      - "{{dose:pantoprazole-iv-ugib-infusion}}"
+      - ICU or step-down bed.
+    next: emergent
+  risk:
+    kind: question
+    at: [6, 3]
+    span: 6
+    title: "{{calc:gbs}}"
+    text: "Very low risk at {{threshold:gbs-very-low-risk}}."
+    answers:
+      - { label: "Very low risk", at: [6, 4], span: 3, to: outpatient }
+      - { label: "Higher", at: [9, 4], span: 3, to: admit }
+  emergent:
+    kind: do
+    at: [0, 5]
+    span: 6
+    title: Endoscopy after resuscitation
+    text: "Emergent endoscopy (within 6 hours) only if still unstable despite adequate resuscitation; otherwise within 24 hours."
+    next: stigmata
+  outpatient:
+    kind: result
+    at: [6, 5]
+    span: 3
+    title: Outpatient follow-up
+    text: Discharge with outpatient follow-up.
+  admit:
+    kind: do
+    at: [9, 5]
+    span: 3
+    title: Admit, prepare
+    text:
+      - "{{dose:erythromycin-iv-ugib}}"
+      - Consider high-dose IV PPI; never delay endoscopy.
+      - Endoscopy within 24 hours.
+    links: [section:gi-upper-gi-bleeding/treatment]
+    next: stigmata
+  stigmata:
+    kind: question
+    at: [4, 7]
+    span: 4
+    title: Endoscopic stigmata?
+    text: "{{criteria:forrest}}"
+    answers:
+      - { label: "Ia, Ib, IIa", at: [0, 8], span: 4, to: therapy }
+      - { label: "IIb clot", at: [4, 8], span: 4, to: clot }
+      - { label: "IIc or III", at: [8, 8], span: 4, to: lowrisk }
+  therapy:
+    kind: do
+    at: [0, 9]
+    span: 4
+    title: Endoscopic hemostasis, then PPI
+    text:
+      - "High-dose PPI for 72 hours, then twice-daily oral PPI to day 14."
+      - "{{dose:pantoprazole-iv-ugib-infusion}}"
+      - "{{dose:pantoprazole-po-ugib}}"
+    next: rebleed
+  clot:
+    kind: result
+    at: [4, 9]
+    span: 4
+    title: Remove clot if safe
+    text: "Treat what lies beneath if the endoscopist is able, then manage as a high-risk ulcer."
+  lowrisk:
+    kind: result
+    at: [8, 9]
+    span: 4
+    title: Once-daily oral PPI
+    text: "Early feeding; discharge may be considered."
+  rebleed:
+    kind: question
+    at: [0, 10]
+    span: 4
+    title: Rebleeding?
+    answers:
+      - { label: "Yes", at: [0, 11], span: 2, to: repeat }
+      - { label: "No", at: [2, 11], span: 2, to: prevent }
+  repeat:
+    kind: result
+    at: [0, 12]
+    span: 2
+    title: Repeat endoscopy
+    text: "Then embolization or surgery if bleeding persists."
+    links: [section:gi-upper-gi-bleeding/treatment]
+  prevent:
+    kind: result
+    at: [2, 12]
+    span: 2
+    title: Prevent recurrence
+    text: "H. pylori test and treatment; stop NSAIDs; PPI with aspirin or anticoagulant."

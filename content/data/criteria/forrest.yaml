@@ -1,0 +1,16 @@
+name: Forrest classification
+title: "Forrest classification of ulcer stigmata, 2026"
+short: Forrest classification
+columns: [Class, Endoscopic finding, Endoscopic therapy]
+layout: stacked
+tones: [red, red, orange, orange, yellow, yellow]
+rows:
+  - ["Ia", "Spurting bleeding", "Yes"]
+  - ["Ib", "Oozing bleeding", "Yes"]
+  - ["IIa", "Nonbleeding visible vessel", "Yes"]
+  - ["IIb", "Adherent clot", "Remove the clot and treat what lies beneath if the endoscopist is able"]
+  - ["IIc", "Flat pigmented spot", "No"]
+  - ["III", "Clean ulcer base", "No"]
+notes:
+  - "High-risk stigmata: Ia, Ib, IIa and IIb (adherent clot). Low-risk stigmata: IIc and III."
+sources: [acg-ugib-2021, esge-pub-2026]
