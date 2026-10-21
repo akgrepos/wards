@@ -44,7 +44,7 @@ emergency_hint: "Fluids, potassium, then insulin"
 
    {{dose:dextrose-dka}}
 
-   - Halve the insulin infusion rate; never stop it for falling glucose. ^[ada-hyperglycemic-crises-2024]
+   - DKA: lower the infusion to half its starting rate (the HHS rate); HHS: keep its rate. Never stop insulin for falling glucose. ^[ada-hyperglycemic-crises-2024]
 5. Find the precipitant
    - Infection, insulin omission, new diabetes, MI, stroke, pancreatitis, SGLT2 inhibitors, glucocorticoids, alcohol or drugs, pregnancy. ^[ada-hyperglycemic-crises-2024]
    - Check: ECG, cultures, lipase and pregnancy test as indicated; stop SGLT2 inhibitors. ^[ada-hyperglycemic-crises-2024]
@@ -56,9 +56,9 @@ emergency_hint: "Fluids, potassium, then insulin"
 
 ## At a Glance
 - Order: fluids, then potassium, then insulin; K⁺ must be >3.5 mEq/L before insulin. ^[ada-hyperglycemic-crises-2024]
-- DKA: glucose ≥200 mg/dL or known diabetes, β-hydroxybutyrate ≥3.0 mmol/L, and pH <7.3 or HCO₃⁻ <18 mEq/L; up to 1 in 10 is euglycemic. ^[ada-hyperglycemic-crises-2024]
+- DKA: glucose ≥200 mg/dL or known diabetes, β-hydroxybutyrate ≥3.0 mmol/L, and pH <7.3 or HCO₃⁻ <18 mEq/L; about 1 in 10 is euglycemic. ^[ada-hyperglycemic-crises-2024]
 - HHS: glucose ≥600 mg/dL and effective osmolality >300 mOsm/kg without significant ketoacidosis; correct slowly. ^[ada-hyperglycemic-crises-2024]
-- Glucose <250 mg/dL: add dextrose and halve insulin; never stop insulin to treat falling glucose. ^[ada-hyperglycemic-crises-2024]
+- Glucose <250 mg/dL: add dextrose and lower DKA insulin to half its starting rate; never stop insulin to treat falling glucose. ^[ada-hyperglycemic-crises-2024]
 - Resolution: β-hydroxybutyrate <0.6 mmol/L and pH ≥7.3 or HCO₃⁻ ≥18 mEq/L; overlap SC basal insulin before stopping the infusion. ^[ada-hyperglycemic-crises-2024]
 - Always look for the precipitant, especially infection and insulin omission. ^[ada-hyperglycemic-crises-2024]
 
@@ -121,7 +121,7 @@ emergency_hint: "Fluids, potassium, then insulin"
    {{dose:insulin-regular-dka}}
    {{dose:insulin-regular-dka-bolus}}
 
-   - Mild or uncomplicated moderate DKA: SC rapid-acting insulin every 1–2 hours is an alternative. ^[ada-hyperglycemic-crises-2024, ada-soc-hospital-2026]
+   - Mild DKA (the consensus text also allows uncomplicated moderate DKA): SC rapid-acting insulin every 1–2 hours is an alternative. ^[ada-hyperglycemic-crises-2024, ada-soc-hospital-2026]
 
    {{dose:insulin-rapid-sc-dka}}
 
@@ -154,7 +154,7 @@ emergency_hint: "Fluids, potassium, then insulin"
 7. Resolution and transition to SC insulin
    - DKA resolved: β-hydroxybutyrate <0.6 mmol/L and pH ≥7.3 or HCO₃⁻ ≥18 mEq/L; do not use the anion gap or urine ketones. ^[ada-hyperglycemic-crises-2024]
    - HHS resolved: osmolality <300 mOsm/kg, glucose <250 mg/dL, urine output >0.5 mL/kg/h, cognition improved. ^[ada-hyperglycemic-crises-2024]
-   - Give SC basal insulin 1–2 hours before stopping the infusion; continue dextrose until eating. ^[ada-hyperglycemic-crises-2024]
+   - Give SC basal insulin at least 1–2 hours before stopping the infusion (ADA 2026: 2–4 hours). Switch once able to eat; if not eating, basal plus correction insulin every 4–6 hours. ^[ada-hyperglycemic-crises-2024, ada-soc-hospital-2026]
 
    {{dose:insulin-transition-dka}}
 
@@ -200,13 +200,13 @@ emergency_hint: "Fluids, potassium, then insulin"
 :::
 
 :::compare Insulin and potassium
-- US-led consensus 2024: halve insulin at glucose <250 mg/dL with dextrose 5–10%; potassium added to fluids at K⁺ 3.5–5.0 mEq/L. ^[ada-hyperglycemic-crises-2024]
+- US-led consensus 2024: lower insulin to half the starting rate at glucose <250 mg/dL with dextrose 5–10%; potassium added to fluids at K⁺ 3.5–5.0 mEq/L. ^[ada-hyperglycemic-crises-2024]
 - UK 2023: consider halving at glucose <14 mmol/L, with 10% glucose; potassium added at K⁺ 3.5–5.5 mEq/L, at a higher fixed concentration per liter. ^[jbds-dka-2023]
 :::
 
 :::compare HHS insulin
 - US-led consensus 2024: fixed-rate insulin from the start (lower rate without ketoacidosis). ^[ada-hyperglycemic-crises-2024]
-- UK 2022: no insulin unless ketonemia, until fluids are adequate and glucose stops falling. ^[jbds-hhs-2022]
+- UK 2022: insulin from the start only with ketonemia (β-hydroxybutyrate >1.0 mmol/L); otherwise start once fluids are adequate and glucose stops falling. ^[jbds-hhs-2022]
 :::
 
 ### Special Populations: SGLT2 inhibitors, pregnancy, kidney failure
@@ -219,7 +219,7 @@ emergency_hint: "Fluids, potassium, then insulin"
 - Immune checkpoint inhibitors: autoimmune diabetes often presents as DKA. ^[ada-hyperglycemic-crises-2024]
 
 ### Complications: Hypoglycemia, hypokalemia, edema
-- Hypoglycemia in up to a quarter of patients; prevented by hourly glucose checks, halving insulin and adding dextrose. ^[ada-hyperglycemic-crises-2024]
+- Hypoglycemia in 16–28% of patients; reduce it with glucose checks every 1–2 hours, lowering insulin and adding dextrose at glucose <250 mg/dL. ^[ada-hyperglycemic-crises-2024]
 - Hypokalemia; severe hypokalemia raises mortality. ^[ada-hyperglycemic-crises-2024]
 - Cerebral edema: rare in adults but often fatal; mannitol or hypertonic saline without delaying for imaging. ^[ada-hyperglycemic-crises-2024, jbds-dka-2023]
 - Osmotic demyelination in HHS with rapid sodium shifts. ^[ada-hyperglycemic-crises-2024]
