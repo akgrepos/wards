@@ -106,7 +106,6 @@ h1, p { margin: 0; }
 .pw-answer--off { opacity: 0.6; }
 @media (prefers-reduced-motion: reduce) { .pw-cell { transition: none; } }
 .pw-foot { margin-top: 3rem; max-width: 40rem; }
-.pw-foot .akg-source-line { padding-left: 0; padding-right: 0; }
 .pw-zoom { position: fixed; left: var(--space-16); right: var(--space-16); bottom: calc(env(safe-area-inset-bottom) + var(--tab-bar-inset) + var(--tab-bar-height) + var(--space-12)); display: flex; justify-content: space-between; align-items: center; pointer-events: none; z-index: 6; }
 .pw-zoom > * { pointer-events: auto; }
 html[data-timed] .pw-zoom { bottom: calc(env(safe-area-inset-bottom) + var(--tab-bar-inset) + var(--tab-bar-height) + var(--tab-bar-accessory-height) + var(--space-20)); }
@@ -146,7 +145,6 @@ html[data-timed] .pw-zoom { bottom: calc(env(safe-area-inset-bottom) + var(--tab
 .source-item p, .detail-sheet p { margin: 0; }
 .view-citation { display: inline-flex; align-items: center; gap: var(--space-4); align-self: flex-start; min-height: var(--tap-target); }
 .sheet-sources { display: flex; flex-direction: column; gap: var(--space-12); }
-.sheet-sources .akg-source-line, .more-item .akg-source-line { padding-left: 0; padding-right: 0; }
 /* Dose sheet rows: a long value wraps on the trailing side instead of being cut off. */
 .dose-field .akg-list-row__text { flex: 0 0 auto; }
 .dose-field .akg-list-row__trailing { flex: 1 1 auto; max-width: none; justify-content: flex-end; }
@@ -270,7 +268,8 @@ html[data-timed] .timed-page .screen-body.timed-body { padding-bottom: calc(env(
 
 /* Source pills (#8): inline pills, spaced so each keeps its 44 pt tap area. */
 .source-pills { display: inline-flex; flex-wrap: wrap; align-items: center; gap: var(--space-8); }
-.pw-foot, .sheet-sources { line-height: 1; }
+.source-pills .akg-source-pill { margin-left: 0; }
+.sheet-sources > .source-pills { line-height: 1; }
 
 /* Dose sheet (#7): left aligned, hairline-separated sections. */
 .dose-sheet { gap: var(--space-16); text-align: left; }
@@ -278,10 +277,9 @@ html[data-timed] .timed-page .screen-body.timed-body { padding-bottom: calc(env(
 .dose-head p { margin: 0; color: var(--label); }
 .dose-head p.secondary { color: var(--label-secondary); }
 .dose-head .source-pills { margin-top: var(--space-4); }
-.dose-amount { font-family: var(--font-sans); font-size: 1.2941rem; line-height: 1.6471rem; font-weight: 600; }
 .dose-section { display: flex; flex-direction: column; gap: var(--space-8); border-top: 0.5px solid var(--separator); padding-top: var(--space-12); }
 .dose-section p { margin: 0; }
-.dose-section__title { margin: 0; font-family: var(--font-sans); font-size: 0.7059rem; line-height: 0.9412rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--label-secondary); }
+.dose-section__title { margin: 0; font-weight: 700; text-transform: uppercase; color: var(--label-secondary); }
 .dose-section .rich-list { margin: 0; }
-.dose-section .akg-value-row { padding-left: 0; padding-right: 0; background: none; }
+.dose-section .akg-value-row--static { padding-left: 0; padding-right: 0; min-height: 0; }
 .dose-cites { display: flex; flex-direction: column; gap: var(--space-12); }
