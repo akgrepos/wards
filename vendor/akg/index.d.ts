@@ -3,7 +3,7 @@ import type * as React from 'react';
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   /** bordered = gray fill (default) · prominent = accent fill · borderless = text only · tinted = accent label on an accent-tinted fill · toggle = stays on or off (see `pressed`) · choice = one of several equal options (see `selected`) · glass / glass-prominent = iOS Liquid Glass (macOS falls back to bordered / prominent). */
   variant?: 'bordered' | 'prominent' | 'borderless' | 'tinted' | 'toggle' | 'choice' | 'glass' | 'glass-prominent';
-  /** variant="choice" only: undefined = nothing chosen yet (tinted look) · true = this option is chosen (accent fill and a checkmark) · false = another option is chosen (gray fill, still tappable). Rendered as `aria-pressed`. */
+  /** variant="choice" only: undefined = nothing chosen yet (tinted look) · true = this option is chosen (accent fill and a checkmark) · false = another option is chosen (gray fill, still tappable). Rendered as `aria-pressed` (true only when chosen; false for both undefined and false). */
   selected?: boolean;
   /** Fill the container's width; a long label wraps onto more lines and the button grows to fit. */
   block?: boolean;

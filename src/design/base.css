@@ -101,6 +101,8 @@ h1, p { margin: 0; }
    gray buttons, so you can change your mind. */
 .pw-cell--off { opacity: 0.4; filter: grayscale(1); }
 .pw-answer .akg-button { min-height: var(--tap-target); }
+/* Answers under a ruled-out question dim a little with it, but stay readable and tappable. */
+.pw-answer--off { opacity: 0.6; }
 @media (prefers-reduced-motion: reduce) { .pw-cell { transition: none; } }
 .pw-foot { margin-top: 3rem; max-width: 40rem; }
 .pw-foot .akg-source-line { padding-left: 0; padding-right: 0; }

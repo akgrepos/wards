@@ -112,6 +112,20 @@ describe('pathways (focused decision trees)', () => {
     expect(screen.getByText('Acute Kidney Injury: Cause Workup')).toBeTruthy();
   });
 
+  it('choosing past two blocking choices drops only those; unrelated choices stay', async () => {
+    const { content } = await import('../content');
+    const { choose } = await import('../screens/PathwayScreen');
+    const p = content.data.pathway!['aki-cause-workup'];
+    const ans = (q: string, label: string) => p.nodes[q].answers!.findIndex((a) => a.label === label);
+    // Cirrhosis branch chosen, then the route above it ruled out twice (not AKI; obstruction).
+    let c: Record<string, number> = { 'cirrhosis-response': ans('cirrhosis-response', 'No'), confirm: ans('confirm', 'No'), obstruction: ans('obstruction', 'Obstruction') };
+    c = choose(p, c, 'perfusion', ans('perfusion', 'Hemorrhage'));
+    expect(c.confirm).toBeUndefined();
+    expect(c.obstruction).toBeUndefined();
+    expect(c.perfusion).toBe(ans('perfusion', 'Hemorrhage'));
+    expect(c['cirrhosis-response']).toBe(ans('cirrhosis-response', 'No'));
+  });
+
   // Lines run straight down from each box and turn only just above the box they point to, so the column under a box
   // must stay clear down to there (owner, 2026-10-21: no line runs through a box).
   it('no line has to pass through another box', async () => {

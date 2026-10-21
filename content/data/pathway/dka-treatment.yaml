@@ -6,13 +6,6 @@ card: endo-dka
 summary: Fluids, potassium, insulin, dextrose, resolve
 columns: 12
 start: confirm
-levels:
-  - { title: Fluids, row: 1 }
-  - { title: Potassium, row: 2 }
-  - { title: Insulin, row: 5 }
-  - { title: Dextrose, row: 8 }
-  - { title: Bicarbonate, row: 9 }
-  - { title: Resolve, row: 12 }
 sources: [ada-hyperglycemic-crises-2024, ada-soc-hospital-2026, jbds-hhs-2022, label-kcl-injection-2026]
 nodes:
   confirm:
