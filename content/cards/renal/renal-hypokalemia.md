@@ -43,6 +43,7 @@ related:
 - Weakness, cramps, ascending paralysis; constipation, ileus. ^[kardalas-hypokalemia-2018]
 - Severe: rhabdomyolysis, respiratory failure. ^[kardalas-hypokalemia-2018]
 - ECG: ST depression, T-wave flattening, prominent U waves (V4–V6), QT (QU) prolongation. ^[kardalas-hypokalemia-2018]
+{{media:ecg-hypokalemia}}
 - Arrhythmias: atrial and ventricular ectopy, AV block, VT, VF. ^[kardalas-hypokalemia-2018]
 - Kidney: nephrogenic diabetes insipidus (polyuria), tubulointerstitial nephritis. ^[kardalas-hypokalemia-2018]
 

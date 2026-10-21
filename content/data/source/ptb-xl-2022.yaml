@@ -1,0 +1,9 @@
+kind: dataset
+short: "PTB-XL"
+title: "PTB-XL, a large publicly available electrocardiography dataset (version 1.0.3)"
+year: 2022
+citation: "Wagner P, Strodthoff N, Bousseljot R, Samek W, Schaeffter T. PhysioNet. 2022. doi:10.13026/kfzx-aw45. Original publication: Wagner P, Strodthoff N, Bousseljot RD, et al. Sci Data. 2020;7:154. doi:10.1038/s41597-020-0495-6. License: CC BY 4.0."
+url: https://doi.org/10.13026/kfzx-aw45
+license: CC BY 4.0
+license_url: https://creativecommons.org/licenses/by/4.0/
+checked: 2026-10-21

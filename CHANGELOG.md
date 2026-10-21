@@ -2,6 +2,16 @@
 
 What changed in each version of Wards, newest first. The version is shown in Settings (gear on Home).
 
+## 2026.10.21
+
+ECG figures on four cards, drawn to true ECG scale (25 mm/s, 10 mm/mV) on a 1 mm and 5 mm grid:
+- **Atrial Fibrillation** (Diagnosis): a real lead II rhythm strip with each R-R interval measured (602, 748, 872 ms) and the stretch where P waves would be shaded.
+- **Acute Coronary Syndrome: NSTEMI and Unstable Angina** (Diagnosis › ECG, under the criteria line): a real lead V5 tracing with the PR baseline dashed, ST depression at the J point (−0.9 mm) and the inverted T wave (−4.0 mm).
+- **Hypokalemia** (Presentation): a real lead V5 tracing with a flat T wave (0.7 mm) and a taller U wave (1.4 mm).
+- **Hyperkalemia** (Presentation): four drawings of the progression (peaked T waves; flat P and long PR; wide QRS; sine wave) with the T height, PR and QRS marked. No reusable real recording exists, so these are drawn.
+- Tap a real tracing (the corner button) to see every stored lead for the whole recording, unsmoothed, on the grid: scroll sideways and zoom with − / + or a pinch.
+- The real tracings come from two open research databases (PTB-XL and a Chinese 12-lead database on PhysioNet), credited under each figure with the record number and license. Labels grow with Text Size; colors follow light and dark.
+
 ## 2026.10.20.4
 
 Guideline check of all twelve topics, with updates where a newer guideline is out:

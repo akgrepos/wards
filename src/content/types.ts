@@ -53,8 +53,28 @@ export type PathwayNode = {
 };
 export type PathwayLevel = { title: string; row: number };
 export type Pathway = { title: string; card: string; summary?: string; columns: number; start: string; levels?: PathwayLevel[]; nodes: Record<string, PathwayNode>; sources: string[] };
+// An ECG figure (docs/DATA-TYPES.md, 11. Media). Times in seconds of the recording (or panel); voltages in mV.
+export type EcgMark = {
+  kind: 'interval' | 'band' | 'baseline' | 'height' | 'text';
+  from?: number; to?: number; at?: number; low?: number; high?: number; mv?: number; from_mv?: number; to_mv?: number;
+  label?: string; place?: 'above' | 'below' | 'below2'; align?: 'start' | 'middle' | 'end';
+};
+type MediaBase = { title: string; alt: string; caption: string; illustrates: string; sources: string[] };
+// A recording from an open dataset: the leads kept (samples in 0.01 mV, as one string each) and the part the card shows.
+export type EcgRecording = MediaBase & {
+  kind: 'ecg';
+  recording: { dataset: string; record: string; rate: number; leads: Record<string, string> };
+  show: { lead: string; from: number; to: number; smooth?: number };
+  marks?: EcgMark[];
+};
+// Drawn ECGs: each panel is one or more beats made of smooth bumps, or a sine wave.
+export type EcgDrawing = MediaBase & {
+  kind: 'ecg-drawing';
+  panels: { title: string; cue?: string; seconds: number; beats?: number[]; waves?: [number, number, number][]; sine?: { mv: number; period: number; phase?: number }; marks?: EcgMark[] }[];
+};
+export type Media = EcgRecording | EcgDrawing;
 export type Content = {
   systems: System[];
   cards: Card[];
-  data: { source?: Record<string, Source>; dose?: Record<string, Dose>; threshold?: Record<string, Threshold>; criteria?: Record<string, Criteria>; regimen?: Record<string, Regimen>; pathway?: Record<string, Pathway>; [k: string]: Record<string, unknown> | undefined };
+  data: { source?: Record<string, Source>; dose?: Record<string, Dose>; threshold?: Record<string, Threshold>; criteria?: Record<string, Criteria>; regimen?: Record<string, Regimen>; pathway?: Record<string, Pathway>; media?: Record<string, Media>; [k: string]: Record<string, unknown> | undefined };
 };

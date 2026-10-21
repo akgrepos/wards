@@ -33,6 +33,11 @@ export function systemGroups(systemId: string): { title: string; cards: Card[] }
 // Sources of an inserted item (dose, threshold, pathway). A regimen's include its doses' sources.
 export function insertSources(kind: string, id: string): string[] {
   const item = content.data[kind]?.[id] as { sources?: string[]; options?: { doses: (string | string[])[] }[] } | undefined;
+  // A recording's dataset is one of its sources (credited under the figure, listed with the card's sources).
+  if (kind === 'media') {
+    const ds = (item as { recording?: { dataset?: string } } | undefined)?.recording?.dataset;
+    return [...(item?.sources ?? []), ...(ds ? [ds] : [])];
+  }
   if (kind !== 'regimen') return item?.sources ?? [];
   const doses = (item?.options ?? []).flatMap((o) => o.doses.flat());
   return [...new Set([...(item?.sources ?? []), ...doses.flatMap((d) => insertSources('dose', d))])];

@@ -122,6 +122,7 @@ emergency_hint: Calcium, insulin-dextrose, remove K⁺   # in the front matter
 - Causes in a condition card: one list, `- **Category:** causes ^[source]`; mark one with `[!cannot-miss]` after the colon.
 - `**bold**`, `*italic*`.
 - A line that is only `{{regimen:id}}` shows the regimen box (options, dose rows, duration); regimens are never inserted inside a sentence. Fields: `DATA-TYPES.md`, Regimen.
+- A line that is only `{{media:id}}` shows an ECG figure (caption, measurements, credit; tap for full screen), placed right under the line it illustrates. Its fields: `DATA-TYPES.md`, 11. Media.
 - A line that is only `{{criteria:id}}` shows the criteria in full. Cards never insert a pathway: each of a card's pathways shows as a row under its title, found through the pathway's `card` field (the content check rejects `{{pathway:…}}`).
 
 ## Pathways

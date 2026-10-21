@@ -89,6 +89,7 @@ emergency_hint: "Unstable: cardiovert; stable: IV rate control"
 ## Diagnosis
 #### Confirm
 - 12-lead ECG: irregularly irregular R-R intervals, no distinct P waves; fibrillatory waves may be seen. ^[acc-aha-af-2023]
+{{media:ecg-af}}
 - Regular rhythm in known AF: suspect atrial flutter, or AV block with a junctional or ventricular escape rhythm (digoxin toxicity). ^[common-practice]
 - Wide QRS: aberrancy, bundle branch block or pre-excitation; pre-excited AF is very fast and irregular with varying QRS width. ^[acc-aha-af-2023]
 

@@ -1,0 +1,9 @@
+kind: dataset
+short: "Zheng '22"
+title: "A large scale 12-lead electrocardiogram database for arrhythmia study (version 1.0.0)"
+year: 2022
+citation: "Zheng J, Guo H, Chu H. PhysioNet. 2022. doi:10.13026/wgex-er52. Original publication: Zheng J, Chu H, Struppa D, et al. Optimal multi-stage arrhythmia classification approach. Sci Rep. 2020;10:2898. doi:10.1038/s41598-020-59821-7. License: CC BY 4.0."
+url: https://doi.org/10.13026/wgex-er52
+license: CC BY 4.0
+license_url: https://creativecommons.org/licenses/by/4.0/
+checked: 2026-10-21

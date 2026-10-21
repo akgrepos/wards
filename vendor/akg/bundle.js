@@ -2669,26 +2669,76 @@
   AKG.Table = Table;
 })(window.AKG = window.AKG || {});
 
-/* Figure — an image with a caption and credit; tap to view it full screen and pinch to zoom. */
+/* Figure — an image or a drawing with a caption and credit; tap to view it full screen and zoom. */
 (function (AKG) {
   var R = window.React, h = R.createElement;
   var xmark = h("svg", { viewBox: "0 0 20 20", fill: "none", stroke: "currentColor", strokeWidth: 1.45, strokeLinecap: "round" }, h("path", { d: "M5 5l10 10M15 5L5 15" }));
+  var minus = h("svg", { viewBox: "0 0 20 20", fill: "none", stroke: "currentColor", strokeWidth: 1.6, strokeLinecap: "round" }, h("path", { d: "M4.5 10h11" }));
+  var plus = h("svg", { viewBox: "0 0 20 20", fill: "none", stroke: "currentColor", strokeWidth: 1.6, strokeLinecap: "round" }, h("path", { d: "M4.5 10h11M10 4.5v11" }));
+  // Stands in for arrow.up.left.and.arrow.down.right: the content opens larger.
+  var enlarge = h("svg", { viewBox: "0 0 20 20", fill: "none", stroke: "currentColor", strokeWidth: 1.5, strokeLinecap: "round", strokeLinejoin: "round" }, h("path", { d: "M12 3.5h4.5V8M8 16.5H3.5V12M16.5 3.5l-5.5 5.5M3.5 16.5L9 11" }));
+  var MIN = 1, MAX = 4, STEP = 1.5;
+  var clamp = function (v) { return Math.min(MAX, Math.max(MIN, v)); };
   function Figure(props) {
     var z = R.useState(false), zoomed = z[0];
+    var sc = R.useState(1), scale = sc[0], setScale = sc[1];
+    var stageRef = R.useRef(null), scaleRef = R.useRef(1);
+    scaleRef.current = scale;
     var zoomable = props.zoomable !== false;
-    var close = function () { z[1](false); };
+    var drawing = props.children != null;
+    var wide = !!props.fullWidth;
+    var close = function () { z[1](false); setScale(1); };
     AKG.useEscape(zoomed, close);
     R.useEffect(function () { if (zoomed) return AKG.lockScroll(); }, [zoomed]);
-    var img = h("img", { className: "akg-figure__image", src: props.src, alt: props.alt || "", width: props.width, height: props.height, loading: "lazy", decoding: "async" });
+    // Wide content: two-finger pinch changes the scale (the page itself never zooms); the center stays in place.
+    R.useEffect(function () {
+      var el = stageRef.current;
+      if (!zoomed || !wide || !el) return;
+      var start = null;
+      var dist = function (t) { return Math.hypot(t[0].clientX - t[1].clientX, t[0].clientY - t[1].clientY); };
+      var down = function (e) { if (e.touches.length === 2) start = { d: dist(e.touches), s: scaleRef.current }; };
+      var move = function (e) { if (start && e.touches.length === 2) { e.preventDefault(); setScale(clamp(start.s * dist(e.touches) / start.d)); } };
+      var up = function (e) { if (e.touches.length < 2) start = null; };
+      var stop = function (e) { e.preventDefault(); };
+      el.addEventListener("touchstart", down, { passive: true });
+      el.addEventListener("touchmove", move, { passive: false });
+      el.addEventListener("touchend", up);
+      el.addEventListener("gesturestart", stop);
+      el.addEventListener("gesturechange", stop);
+      return function () {
+        el.removeEventListener("touchstart", down); el.removeEventListener("touchmove", move); el.removeEventListener("touchend", up);
+        el.removeEventListener("gesturestart", stop); el.removeEventListener("gesturechange", stop);
+      };
+    }, [zoomed, wide]);
+    var prev = R.useRef(1);
+    R.useLayoutEffect(function () {
+      var el = stageRef.current;
+      if (el && prev.current !== scale) {
+        var k = scale / prev.current;
+        el.scrollLeft = (el.scrollLeft + el.clientWidth / 2) * k - el.clientWidth / 2;
+        el.scrollTop = (el.scrollTop + el.clientHeight / 2) * k - el.clientHeight / 2;
+      }
+      prev.current = scale;
+    }, [scale]);
+    var shown = drawing
+      ? h("div", { className: "akg-figure__drawing" }, props.children)
+      : h("img", { className: "akg-figure__image", src: props.src, alt: props.alt || "", width: props.width, height: props.height, loading: "lazy", decoding: "async" });
+    var full = props.full != null ? props.full : drawing ? props.children : null;
+    var viewer = full != null
+      ? h("div", { className: AKG.cx("akg-figure__wide", wide && "akg-figure__wide--scroll"), style: wide ? { width: props.fullWidth * scale + "px" } : null, role: "img", "aria-label": props.alt || "" }, full)
+      : h("img", { className: AKG.cx("akg-figure__full", props.paper && "akg-figure__full--paper"), src: props.src, alt: props.alt || "" });
     return h("figure", { className: AKG.cx("akg-figure", props.paper && "akg-figure--paper", props.className), style: props.style },
-      zoomable ? h("button", { type: "button", className: "akg-figure__open", "aria-label": "View full screen", onClick: function () { z[1](true); } }, img) : img,
+      zoomable ? h("button", { type: "button", className: "akg-figure__open", "aria-label": "View full screen" + (props.alt ? ": " + props.alt : ""), onClick: function () { z[1](true); } },
+        shown, h("span", { className: "akg-figure__badge", "aria-hidden": "true" }, enlarge)) : shown,
       props.caption || props.credit ? h("figcaption", { className: "akg-figure__caption" },
         props.caption ? h("span", null, props.caption) : null,
         props.credit ? h("span", { className: "akg-figure__credit" }, props.credit) : null) : null,
-      zoomed ? h("div", { className: "akg-figure__viewer", role: "dialog", "aria-modal": "true", "aria-label": props.alt || "Image" },
+      zoomed ? h("div", { className: AKG.cx("akg-figure__viewer", full != null && "akg-figure__viewer--drawing"), role: "dialog", "aria-modal": "true", "aria-label": props.alt || "Image" },
         h("button", { type: "button", className: "akg-figure__close", "aria-label": "Close", onClick: close }, h("span", { className: "akg-sym" }, xmark)),
-        h("div", { className: "akg-figure__stage", onClick: function (e) { if (e.target === e.currentTarget) close(); } },
-          h("img", { className: AKG.cx("akg-figure__full", props.paper && "akg-figure__full--paper"), src: props.src, alt: props.alt || "" }))) : null
+        h("div", { ref: stageRef, className: AKG.cx("akg-figure__stage", wide && "akg-figure__stage--wide"), onClick: function (e) { if (e.target === e.currentTarget) close(); } }, viewer),
+        wide ? h("div", { className: "akg-figure__zoom" },
+          h("button", { type: "button", "aria-label": "Zoom Out", disabled: scale <= MIN, onClick: function () { setScale(clamp(scale / STEP)); } }, h("span", { className: "akg-sym" }, minus)),
+          h("button", { type: "button", "aria-label": "Zoom In", disabled: scale >= MAX, onClick: function () { setScale(clamp(scale * STEP)); } }, h("span", { className: "akg-sym" }, plus))) : null) : null
     );
   }
   AKG.Figure = Figure;

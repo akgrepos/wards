@@ -1,0 +1,38 @@
+# Hyperkalemia: the ECG progression, drawn (no open dataset has a reusable hyperkalemia recording; owner, 2026-10-20).
+# Drawn on the same exact scale as recordings: each wave is a smooth bump [height mV, center s from the R wave, width s].
+# The numbers on the drawings are measured from these shapes (PR from P onset to QRS onset; QRS onset to end).
+kind: ecg-drawing
+title: Hyperkalemia ECG progression
+alt: "Four drawn beats as potassium rises: peaked T waves; a flat P wave with a long PR; a wide QRS; a sine wave."
+caption: "ECG progression as K⁺ rises: peaked T waves → P-wave flattening, PR prolongation, QRS widening → sine wave."
+illustrates: "Peaked T waves → P-wave flattening, PR prolongation, QRS widening → sine wave."
+sources: [kdigo-acute-hyperkalemia-2020]
+panels:
+  - title: Peaked T waves
+    cue: Tall, narrow T waves
+    seconds: 1.1
+    beats: [0.42]
+    waves: [[0.15, -0.155, 0.02], [-0.08, -0.025, 0.007], [1.0, 0, 0.01], [-0.25, 0.025, 0.009], [0.95, 0.25, 0.03]]
+    marks:
+      - { kind: band, from: 0.59, to: 0.75, low: 0, high: 1.0 }
+      - { kind: height, at: 0.77, from_mv: 0, to_mv: 0.95, label: "9.5 mm" }
+  - title: Flat P, long PR
+    cue: P flattens, PR lengthens
+    seconds: 1.1
+    beats: [0.55]
+    waves: [[0.05, -0.2, 0.032], [-0.08, -0.025, 0.007], [1.0, 0, 0.01], [-0.25, 0.025, 0.009], [0.95, 0.25, 0.03]]
+    marks:
+      - { kind: band, from: 0.25, to: 0.52, low: -0.03, high: 0.1 }
+      - { kind: interval, from: 0.293, to: 0.513, label: "220 ms", place: above, align: end }
+  - title: Wide QRS
+    cue: QRS widens
+    seconds: 1.1
+    beats: [0.42]
+    waves: [[0.03, -0.24, 0.035], [0.75, 0, 0.022], [-0.45, 0.06, 0.024], [0.85, 0.32, 0.04]]
+    marks:
+      - { kind: band, from: 0.359, to: 0.542, low: -0.5, high: 0.8 }
+      - { kind: interval, from: 0.359, to: 0.542, label: "180 ms", place: below }
+  - title: Sine wave
+    cue: QRS merges with T
+    seconds: 1.1
+    sine: { mv: 0.62, period: 0.42, phase: 0.1 }
