@@ -1,0 +1,20 @@
+drug_name: Piperacillin-tazobactam
+brand: Zosyn
+indication: Sepsis or septic shock needing antipseudomonal or anaerobic coverage
+population: Adults
+route: IV
+amount: "4.5"
+unit: g
+frequency: every 6 hours
+rate: "first dose over 30 minutes, then prolonged infusion (each dose over at least half the dosing interval, or continuous)"
+adjustments:
+  - when: CrCl 20–40 mL/min
+    change: 3.375 g every 6 hours
+  - when: CrCl <20 mL/min
+    change: 2.25 g every 6 hours
+  - when: Hemodialysis
+    change: 2.25 g every 8 hours, plus 0.75 g after each dialysis
+cautions:
+  - "Label: an independent risk factor for kidney failure in the critically ill; consider alternatives or monitor kidney function, especially with vancomycin."
+notes: "4.5 g every 6 hours is the label's nosocomial pneumonia dose (adjustments from that column); 3.375 g every 6 hours for most other infections."
+sources: [label-zosyn-2026, ssc-sepsis-2026, idsa-sepsis-hospital-2026]

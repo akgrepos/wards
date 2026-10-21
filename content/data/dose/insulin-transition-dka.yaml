@@ -1,0 +1,17 @@
+drug_name: Insulin, total daily dose
+indication: Starting SC insulin after DKA or HHS resolves (insulin-naive)
+population: Adults
+route: SC
+amount: 0.5–0.6
+unit: units/kg
+frequency: "per day: 40–60% as basal, the rest as rapid-acting before 3 meals"
+give_when: "DKA or HHS resolved and able to eat; give basal insulin 1–2 hours before stopping the infusion"
+adjustments:
+  - when: "Risk of hypoglycemia (kidney disease, frailty, older age)"
+    change: "About 0.3 units/kg per day"
+  - when: "Known diabetes on insulin"
+    change: "Resume the home regimen, adjusted for HbA1c and adherence"
+cautions:
+  - "Not eating: basal plus correction insulin every 4–6 hours."
+notes: "Doses from the IV requirement (stable hourly rates) can overestimate needs. No SGLT2 inhibitor during the admission."
+sources: [ada-hyperglycemic-crises-2024, ada-soc-hospital-2026]

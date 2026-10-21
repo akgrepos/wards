@@ -204,7 +204,7 @@ export const REGIMEN_OPTION_FIELDS = ['label', 'when', 'doses'];
 // US units accepted in data items.
 export const UNITS = [
   'mg', 'mcg', 'g', 'kg', 'mEq', 'mmol', 'units', 'mL', 'L', 'g/kg', 'mg/kg', 'mcg/kg', 'units/kg', 'mL/kg',
-  'mg/h', 'mg/kg/h', 'mmol/kg', 'mcg/min', 'mcg/kg/min', 'units/h', 'units/kg/h', 'mL/h', 'mg/dL', 'g/dL', 'mmol/L', 'mEq/L',
+  'mg/h', 'mg/kg/h', 'mmol/kg', 'mcg/min', 'units/min', 'mcg/kg/min', 'units/h', 'units/kg/h', 'mL/h', 'mg/dL', 'g/dL', 'mmol/L', 'mEq/L',
   'mOsm/kg', 'mOsm/L', 'mEq/g', 'mL/kg/h', 'ng/mL', 'pg/mL', 'mcg/mL', 'mm Hg', 'beats/min', 'breaths/min', '%', '°F', 'mL/min', 'mL/min/1.73 m²',
   'cells/µL', 'IU/L', 'U/L', 'seconds', 'minutes', 'hours', 'days', 'weeks', 'points',
 ];

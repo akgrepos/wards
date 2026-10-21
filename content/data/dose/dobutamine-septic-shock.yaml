@@ -1,0 +1,13 @@
+drug_name: Dobutamine
+indication: Septic shock with cardiac dysfunction and persistent hypoperfusion, added to norepinephrine
+population: Adults
+route: IV
+amount: 2.5–15
+unit: mcg/kg/min
+rate: continuous infusion
+give_when: "Persistent hypoperfusion despite adequate volume and MAP, with cardiac dysfunction"
+max: "Label: rarely up to 40 mcg/kg/min"
+cautions:
+  - "Tachycardia, arrhythmias and hypotension (vasodilation): add to a vasopressor, not instead of one."
+notes: "Septic shock is not a labeled indication; range from the label's inotropic-support dosing. Epinephrine alone is the alternative."
+sources: [label-dobutamine-2026, ssc-sepsis-2026]

@@ -1,0 +1,21 @@
+drug_name: Cefepime
+indication: Sepsis or septic shock needing antipseudomonal coverage
+population: Adults
+route: IV
+amount: "2"
+unit: g
+frequency: every 8 hours
+rate: "first dose over 30 minutes, then prolonged infusion (each dose over at least half the dosing interval, or continuous)"
+adjustments:
+  - when: CrCl 30–60 mL/min
+    change: 2 g every 12 hours
+  - when: CrCl 11–29 mL/min
+    change: 2 g every 24 hours
+  - when: CrCl <11 mL/min
+    change: 1 g every 24 hours
+  - when: Hemodialysis
+    change: Dose after dialysis on dialysis days
+cautions:
+  - "Neurotoxicity (encephalopathy, myoclonus, nonconvulsive status), mostly when not reduced for kidney function."
+notes: "Label: 2 g every 8 hours for empiric febrile neutropenia and Pseudomonas pneumonia. Prolonged infusion after a loading dose is recommended in sepsis; the label gives 30-minute infusions."
+sources: [label-cefepime-2026, ssc-sepsis-2026, idsa-sepsis-hospital-2026]

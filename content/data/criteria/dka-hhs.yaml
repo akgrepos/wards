@@ -1,0 +1,14 @@
+name: DKA and HHS diagnostic criteria
+short: DKA and HHS criteria
+logic: "All criteria in a column are needed:"
+columns: [Criterion, DKA, HHS]
+rows:
+  - ["Glucose", "≥200 mg/dL, or known diabetes", "≥600 mg/dL"]
+  - ["Ketones", "β-hydroxybutyrate ≥3.0 mmol/L or urine ketones ≥2+", "β-hydroxybutyrate <3.0 mmol/L or urine ketones <2+"]
+  - ["Acid–base", "pH <7.3 and/or HCO₃⁻ <18 mEq/L", "pH ≥7.3 and HCO₃⁻ ≥15 mEq/L"]
+  - ["Osmolality", "Not required", "Effective >300 mOsm/kg, or total >320 mOsm/kg"]
+notes:
+  - "Euglycemic DKA: ketosis and acidosis with glucose <200 mg/dL (SGLT2 inhibitors, pregnancy, reduced intake, alcohol)."
+  - "Mixed DKA/HHS meets both sets of criteria; over a third of hyperglycemic crises overlap."
+  - "Effective osmolality = 2 × Na⁺ + glucose/18; total adds BUN/2.8."
+sources: [ada-hyperglycemic-crises-2024, ada-soc-hospital-2026]

@@ -1,0 +1,11 @@
+drug_name: Regular insulin
+indication: DKA, only when starting the infusion will be delayed
+population: Adults
+route: IV or IM
+amount: "0.1"
+unit: units/kg
+frequency: once
+give_when: "Delay in venous access or in setting up the infusion; K⁺ >3.5 mEq/L"
+cautions:
+  - "IM injection is painful and can bleed in anticoagulated patients."
+sources: [ada-hyperglycemic-crises-2024, jbds-dka-2023]

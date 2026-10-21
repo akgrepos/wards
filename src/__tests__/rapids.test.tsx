@@ -91,7 +91,8 @@ describe('Rapids addresses', () => {
     await act(async () => { fireEvent.click(screen.getByRole('button', { name: 'Edit' })); });
     const sheet = screen.getByRole('dialog');
     await act(async () => { fireEvent.click(within(sheet).getByText('Hyperkalemia')); });
-    expect(getRapidShortcuts()).toEqual(['cardio-atrial-fibrillation', 'renal-hyponatremia']);
+    expect(getRapidShortcuts()).toEqual(['cardio-atrial-fibrillation', 'endo-dka', 'renal-hyponatremia']);
+    await act(async () => { fireEvent.click(within(sheet).getByText('Diabetic Ketoacidosis and Hyperosmolar Hyperglycemic State')); });
     await act(async () => { fireEvent.click(within(sheet).getByText('Hyponatremia')); });
     await act(async () => { fireEvent.click(within(sheet).getByText('Atrial Fibrillation')); });
     expect(getRapidShortcuts()).toEqual([]);

@@ -1,0 +1,12 @@
+drug_name: Dextrose 5–10%
+indication: DKA or HHS once glucose falls, or euglycemic DKA, so insulin can continue
+population: Adults
+route: IV
+amount: 5–10
+unit: "%"
+rate: "added to the IV fluids, at a rate that keeps glucose in the target range"
+give_when: "DKA: glucose <250 mg/dL (with the insulin infusion halved); euglycemic DKA: from the start of insulin"
+cautions:
+  - "Keep giving insulin to clear ketones; add dextrose rather than stopping insulin."
+notes: "Treatment glucose targets: DKA 150–200 mg/dL, HHS 200–250 mg/dL until resolution. UK guideline: 10% glucose at 125 mL/h once glucose is <14 mmol/L."
+sources: [ada-hyperglycemic-crises-2024, jbds-dka-2023]

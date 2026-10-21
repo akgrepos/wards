@@ -1,0 +1,14 @@
+drug_name: Insulin glargine
+brand: Lantus
+indication: DKA or HHS, low-dose basal insulin alongside the IV infusion (optional)
+population: Adults
+route: SC
+amount: 0.15–0.3
+unit: units/kg
+frequency: once daily
+give_when: "Early during the IV infusion, or continue the usual home basal dose"
+cautions:
+  - "Some clinicians avoid it for hypoglycemia and hypokalemia risk."
+  - "Label: not for treating DKA itself (IV insulin does that)."
+notes: "Shortened infusion time and length of stay and prevented rebound hyperglycemia without more hypoglycemia in several studies."
+sources: [ada-hyperglycemic-crises-2024, ada-soc-hospital-2026, label-lantus-2025]

@@ -1,0 +1,13 @@
+drug_name: Potassium chloride
+indication: DKA or HHS with K⁺ <3.5 mEq/L, before insulin
+population: Adults
+route: IV
+amount: 10–20
+unit: mEq
+rate: "per hour; hold insulin until K⁺ >3.5 mEq/L"
+give_when: "K⁺ <3.5 mEq/L"
+repeat: "Recheck K⁺ every 1–2 hours until >3.5 mEq/L"
+cautions:
+  - "Faster than 10 mEq per hour: central line and continuous ECG monitoring (the US label allows above 10 mEq per hour only for K⁺ <2.0 mEq/L with ECG changes or paralysis)."
+  - "K⁺ ≤2.5 mEq/L carries about threefold mortality."
+sources: [ada-hyperglycemic-crises-2024, label-kcl-injection-2026]
