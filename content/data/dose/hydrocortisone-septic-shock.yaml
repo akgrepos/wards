@@ -7,7 +7,7 @@ amount: "200"
 unit: mg
 frequency: "per day: 50 mg every 6 hours or a continuous infusion"
 duration: "Trial regimens: 5–7 days or until ICU discharge, with or without a taper"
-max: "Not more than 400 mg per day for less than 3 days (strong recommendation against high-dose, short courses)"
+max: "Avoid high-dose short courses (more than 400 mg per day for less than 3 days): strong recommendation against"
 cautions:
   - "Hyperglycemia and hypernatremia; possibly neuromuscular weakness."
   - "No added benefit seen above about 260 mg per day."

@@ -1,19 +1,19 @@
 # Status
 
-Last updated 2026-10-21 (live version 2026.10.21, ECG figures on four cards). A short snapshot so the next session can pick up where the last one stopped. The reasons behind each choice are in [DECISIONS.md](DECISIONS.md); what changed in each version is in [CHANGELOG.md](../CHANGELOG.md).
+Last updated 2026-10-21 (live version 2026.10.21.2, Wave 1 batch 4). A short snapshot so the next session can pick up where the last one stopped. The reasons behind each choice are in [DECISIONS.md](DECISIONS.md); what changed in each version is in [CHANGELOG.md](../CHANGELOG.md).
 
 ## Start here next time
-1. **Open a new chat and type "Start Main".** The `wards-main` skill renames it "Main", checks sessions, pull requests and branches, and runs the day by delegating to side sessions (at most three branches at a time). No open pull requests, no side sessions, only `main`. **First task: restart Wave 1 batch 4** (item 4); the owner's choices are already made, so the new session doesn't ask them again.
+1. **Open a new chat and type "Start Main".** The `wards-main` skill renames it "Main", checks sessions, pull requests and branches, and runs the day by delegating to side sessions (at most three branches at a time).
 2. **Read first:** `CLAUDE.md`, then DECISIONS.md "Card-writing process" (2026-10-19) and "Sources, updated" before any card work.
-3. **Owner checks on the phone** (version 2026.10.21; tap Reload on "Update Ready"), then say what to change (Main sends it to a fix session):
+3. **Owner checks on the phone** (version 2026.10.21.2; tap Reload on "Update Ready"), then say what to change (Main sends it to a fix session):
+   - New (2026.10.21.2): Sepsis and Septic Shock (with its Rapids page), Diabetic Ketoacidosis and Hyperosmolar Hyperglycemic State (Rapids page and the DKA: Treatment pathway), Hyperglycemia in the Hospitalized Patient (starting doses only). Try both Rapids pages in Timed Mode and the dose sheets.
    - New cardiology cards: Atrial Fibrillation (with its Rapids page: AF with RVR, Timed Mode), Acute Coronary Syndrome: NSTEMI and Unstable Angina, Acute Decompensated Heart Failure (dose sheets, US vs European comparisons under More Information).
    - New cards: Community-Acquired Pneumonia, Cellulitis and Erysipelas, Pyelonephritis and Complicated UTI (gray Regimen boxes, dose sheets); Hyponatremia (with its Rapids page), Hypokalemia, IV Fluids; Electrolyte Repletion.
    - New focused pathways: Hyperkalemia: Treatment and AKI: Cause Workup (Pathway row under each title, Library › Pathways): levels, dose rows, checkmark answers, pinch zoom, Current Step.
    - ECG figures (2026.10.21) on AF, NSTE-ACS, Hypokalemia and Hyperkalemia: measurements, tap for full screen (scroll, − / +, pinch), light/dark, large Text Size.
    - Rapids › Hyperkalemia: Timed Mode start to finish (Mark Given, minimize, reopen the app, End, summary).
 4. **Next work** (Main picks with the owner, within the three-branch limit):
-   - **Wave 1 batch 4 (parked 2026-10-21 before drafting; nothing committed):** Sepsis and Septic Shock, Diabetic Ketoacidosis, Hyperglycemia in the Hospitalized Patient. Owner's choices (pop-ups, 2026-10-21): Rapids pages for septic shock and for DKA; one focused pathway, DKA: Treatment; HHS covered in full on the DKA card (the separate Wave 2 HHS card is dropped); the inpatient hyperglycemia card gives starting insulin doses only (titration waits for the Wave 2 inpatient insulin card). Newest-guideline search, partly done: Surviving Sepsis 2026 (already a source), ADA Standards of Care 2026 hospital chapter (newer than anything cited), 2024 hyperglycemic crises consensus (still newest found); finish the search, then draft, verify, review, Simulator test, merge.
-   - **After batch 4:** the next three Wave 1 cards (one batch at a time, owner reviews each on the phone). Focused pathways for AF (e.g. rate vs rhythm, anticoagulation) and ADHF can now be built in the new format; their drafted box content is in the batch 3 pull request. Batch 2 leftovers, possible later: an aztreonam row for beta-lactam allergy, IV moxifloxacin, the newer oral carbapenem for complicated UTI.
+   - **Wave 1 batch 5:** the next three Wave 1 cards (one batch at a time, owner reviews each on the phone; batch 4 first). The Wave 2 HHS card is dropped (HHS is covered on the DKA card); the Wave 2 inpatient insulin card will add titration to the hyperglycemia card's starting doses. Focused pathways for AF (e.g. rate vs rhythm, anticoagulation) and ADHF can now be built in the new format; their drafted box content is in the batch 3 pull request. Batch 2 leftovers, possible later: an aztreonam row for beta-lactam allergy, IV moxifloxacin, the newer oral carbapenem for complicated UTI.
    - **ECG library** (follow-on to the ECG figures): Library › ECGs built on the Media data type, the same figure and full-screen view, more patterns from open datasets (only where a real, labeled recording exists; otherwise a drawing, as for hyperkalemia).
    - **Card template adjustments** from the three pilots: a short clinical-register style guide in CONTENT-FORMAT.md; whether approach cards need fewer sections; the "most common" vs "cannot miss" layout; rates and deficits in prose blocked by the typed-dose check; dose rows that need an indication lead-in; a definition line for reference cards; tall table rows on a phone; Contents menu names cut short at the largest Text Sizes.
    - **Redesign Phase 5, Library and full search** (offline search across sections, drugs and tools, including Rapids pages; possibly one file per card), then **Phase 6** (final light/dark/Text Size check and independent review).
@@ -23,7 +23,8 @@ Last updated 2026-10-21 (live version 2026.10.21, ECG figures on four cards). A 
 5. **Inputs needed from the owner:** The clinical reference is used in the owner's Chrome (Claude in Chrome, new window), where the sign-in lasts. The AI evidence checker is a last resort the owner runs by pasting batches (DECISIONS 2026-10-20); its `.card_check` DotFlow and its how-to are kept privately (`~/Documents/Wards-reference/prompts/`).
 
 ## Done
-- **App:** live at https://akgrepos.github.io/wards/ (version 2026.10.21).
+- **App:** live at https://akgrepos.github.io/wards/ (version 2026.10.21.2).
+  - Wave 1 batch 4 (2026.10.21.2): Sepsis and Septic Shock (Critical Care, Rapids page), Diabetic Ketoacidosis and Hyperosmolar Hyperglycemic State (Endocrinology, Rapids page, DKA: Treatment pathway), Hyperglycemia in the Hospitalized Patient (approach, starting doses only).
   - ECG figures (2026.10.21): AF, NSTE-ACS and Hypokalemia from open recordings (PTB-XL; Zheng 2022 database), Hyperkalemia drawn; true scale on a grid, the criteria's measurements labeled, full screen with zoom; new Media data type (DECISIONS 2026-10-21).
   - Pathways are focused, levelled flowcharts (2026-10-20): Hyperkalemia: Treatment and AKI: Cause Workup; several per card allowed; dose rows in boxes; rebuilt pinch zoom and Current Step.
   - Guideline audit (2026.10.20.4): every card searched for newer guidelines; NSTE-ACS moved to the Fifth Universal Definition of MI (2026) and 2026 US lipid goals; IV Fluids to Surviving Sepsis 2026; Complicated UTI, Hypokalemia, Hyponatremia and Hyperkalemia sources updated (DECISIONS 2026-10-20).
@@ -40,7 +41,7 @@ Last updated 2026-10-21 (live version 2026.10.21, ECG figures on four cards). A 
 - **HIG reference:** full HIG text and rule summaries kept privately in `~/Documents/Wards-reference/hig/`.
 
 ## Waiting on the owner
-- Phone review of the new cards, the focused pathways and Timed Mode (see "Start here" 3).
+- Phone review of batch 4 (sepsis, DKA/HHS, inpatient hyperglycemia), the DKA pathway and both new Rapids pages, plus the earlier items in "Start here" 3.
 - Whether to make the guideline-audit items not chosen yet (ADHF, AKI; see Watch).
 - Choices on the remaining 2026-10-17 audit findings (process next).
 
@@ -49,6 +50,7 @@ Last updated 2026-10-21 (live version 2026.10.21, ECG figures on four cards). A 
 - **KDIGO 2026 AKI/AKD guideline:** public-review draft only (March 2026). When the final is published, update the AKI card. Expected changes: cystatin C criteria, biomarker staging, AKD, glucose 140–180 mg/dL, bicarbonate before RRT at pH <7.20, deferred RRT.
 
 - **Audit items not chosen yet (2026-10-20; details in the PR):** ADHF could add the 2024 ACC inpatient heart failure pathway and the Second Universal Definition of Heart Failure (June 2026); AKI could cite Surviving Sepsis 2026 for balanced fluids and note the 2024 ADQI/ICA cirrhosis AKI consensus (albumin for 24 h vs 48 h); CAP's hydrocortisone line should be checked against Surviving Sepsis 2026 (steroids now suggested for all septic shock); dose rows for the newer β-lactams named on Complicated UTI; IDSA's MRSA (2011) and catheter UTI (2009) guidelines are now archived with no successor; the 2025 ACC/AHA ACS guideline has three published corrections to check against NSTE-ACS doses.
+- **Sepsis and diabetes (batch 4):** ADA Standards of Care 2027 (expected December 2026) replace the 2026 sections cited on the DKA and hyperglycemia cards; a future sepsis definition may adopt the SOFA-2 score (JAMA, December 2025), not yet adopted by any consensus; the SCCM/ESICM refractory septic shock criteria (2026) await validation; the international inpatient CGM and pump position statement (September 2026) could not be read in full.
 - **Upcoming guidelines:** UK hyperkalaemia guideline review (due October 2026); KDIGO 2027 CKD focused update (public review from October 2026); ACC/AHA heart failure update (2027); ESC ACS (2027); IDSA uncomplicated cystitis and pyelonephritis (in development); a lab statement (April 2026) against reporting albumin-corrected calcium (Electrolyte Repletion).
 
 ## Known limits

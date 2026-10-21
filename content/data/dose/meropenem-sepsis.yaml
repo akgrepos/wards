@@ -5,7 +5,7 @@ route: IV
 amount: "1"
 unit: g
 frequency: every 8 hours
-rate: "first dose over 15–30 minutes, then prolonged infusion (each dose over at least half the dosing interval, or continuous)"
+rate: "over 3–4 hours after a first dose over 15–30 minutes"
 adjustments:
   - when: CrCl 26–50 mL/min
     change: 1 g every 12 hours
@@ -13,8 +13,10 @@ adjustments:
     change: 500 mg every 12 hours
   - when: CrCl <10 mL/min
     change: 500 mg every 24 hours
+  - when: Hemodialysis
+    change: Not in the label; dose with the pharmacy
 cautions:
   - "Lowers valproate levels sharply: avoid together."
   - Seizure risk, mostly with kidney impairment or CNS disease.
-notes: "Label: 1 g every 8 hours for intra-abdominal infection."
+notes: "Extended infusion = each dose over at least half the dosing interval, or continuous; recommended in sepsis after a loading dose (labels give short infusions). Label: 1 g every 8 hours for intra-abdominal infection."
 sources: [label-meropenem-2024, ssc-sepsis-2026, idsa-sepsis-hospital-2026]

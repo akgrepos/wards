@@ -5,7 +5,7 @@ route: IV
 amount: "30"
 unit: mL/kg
 rate: "at least this, within the first 3 hours"
-give_when: "Sepsis with hypotension, elevated lactate or other signs of hypoperfusion"
+give_when: "Sepsis with hypotension, lactate ≥4 mmol/L or other signs of hypoperfusion (consider with lactate 2–4)"
 repeat: "Further fluid only with signs of hypoperfusion, guided by dynamic measures (passive leg raise, stroke volume), capillary refill and lactate"
 cautions:
   - "A conditional recommendation from low-certainty evidence; individualize in heart failure, kidney failure or volume overload, and reassess often."
