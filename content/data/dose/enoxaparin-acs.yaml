@@ -13,6 +13,6 @@ adjustments:
     change: 1 mg/kg once daily
 cautions:
   - "Contraindicated with heparin-induced thrombocytopenia in the past 100 days or circulating antibodies."
-  - "At PCI: no extra dose if the last dose was within 8 hours; 0.3 mg/kg IV if 8–12 hours."
+  - "At PCI: no extra dose if the last dose was within 8 hours; 0.3 mg/kg IV if 8–12 hours or only 1 SC dose given."
   - "Low body weight raises exposure: watch for bleeding."
 sources: [label-lovenox-2026, acc-aha-acs-2025]

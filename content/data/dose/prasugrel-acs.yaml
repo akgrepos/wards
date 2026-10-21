@@ -11,7 +11,7 @@ adjustments:
   - when: Weight <60 kg
     change: Consider 5 mg once daily
   - when: Age ≥75 years
-    change: Generally not recommended, except high risk (diabetes or prior MI)
+    change: Generally avoid; if used (diabetes or prior MI), 5 mg once daily
 cautions:
   - "Hold at least 7 days before surgery when possible."
   - "No kidney or mild–moderate liver adjustment."

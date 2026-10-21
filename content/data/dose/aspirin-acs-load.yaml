@@ -6,6 +6,7 @@ amount: "162–325"
 unit: mg
 frequency: once, as soon as possible
 cautions:
+  - "Give the full load even if already taking aspirin."
   - "Chew a non-enteric-coated tablet for fast effect; rectal if unable to swallow."
   - "True aspirin allergy: clopidogrel instead (with cardiology)."
 notes: "FDA professional labeling: 160–162.5 mg as soon as MI is suspected."

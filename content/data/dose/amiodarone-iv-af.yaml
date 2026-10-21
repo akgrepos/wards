@@ -3,7 +3,7 @@ brand: Nexterone
 indication: Acute rate control of AF in decompensated heart failure or hypotension
 population: Adults
 route: IV
-amount: "300"
+amount: "150–300"
 unit: mg
 rate: over 1 hour
 repeat: "Then 10–50 mg/h over 24 hours"

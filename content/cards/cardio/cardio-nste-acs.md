@@ -14,10 +14,10 @@ related:
   tools: []
 ---
 ## At a Glance
-- 12-lead ECG within 10 minutes; exclude STEMI and its equivalents (posterior MI, new ST elevation in aVR with diffuse ST depression), which follow the STEMI pathway. ^[acc-aha-acs-2025]
+- 12-lead ECG within 10 minutes; exclude STEMI and its equivalents (posterior MI), which follow the STEMI pathway; diffuse ST depression with ST elevation in aVR suggests left main or multivessel ischemia (very high risk). ^[acc-aha-acs-2025]
 - Serial high-sensitivity troponin (0 and 1–2 h) with a validated algorithm; MI needs a rise and/or fall with clinical evidence of ischemia. ^[aha-acc-chest-pain-2021, udmi-2018]
 - Aspirin plus a parenteral anticoagulant for all; a P2Y12 inhibitor (ticagrelor or prasugrel preferred with PCI). ^[acc-aha-acs-2025]
-- Invasive timing by risk: immediate (<2 h) if very high risk, early (<24 h) if high risk, otherwise during the admission or selective. ^[acc-aha-acs-2025]
+- Invasive timing by risk: immediate if very high risk, early (<24 h) if high risk, before discharge if intermediate; routine or selective if low. ^[acc-aha-acs-2025]
 - High-intensity statin for all; oral β-blocker within 24 h unless heart failure, low output or shock risk. ^[acc-aha-acs-2025]
 - DAPT for 12 months by default; shorter or P2Y12 monotherapy to reduce bleeding in selected patients. ^[acc-aha-acs-2025]
 
@@ -28,9 +28,9 @@ related:
 | Risk | Features | Timing |
 |---|---|---|
 | Very high | Hemodynamic instability or cardiogenic shock, refractory or recurrent angina, life-threatening arrhythmia, mechanical complication, acute heart failure from ischemia, recurrent dynamic ST changes | Immediate, <2 h ^[acc-aha-acs-2025, esc-acs-2023] |
-| High | NSTEMI confirmed, GRACE >140, dynamic ST or T changes, transient ST elevation | Early, <24 h ^[acc-aha-acs-2025, esc-acs-2023] |
-| Intermediate | Not high risk but ongoing concern (diabetes, CKD, LVEF <40%, prior revascularization) | During the hospitalization ^[acc-aha-acs-2025] |
-| Low | None of the above, troponin negative, no recurrence | Selective: noninvasive testing first ^[acc-aha-acs-2025] |
+| High | GRACE >140, steeply rising troponin despite medical therapy, or ongoing dynamic ST changes | Early, <24 h ^[acc-aha-acs-2025] |
+| Intermediate | GRACE 109–140, no ongoing ischemia, troponin stable or falling | Before discharge (<72 h) ^[acc-aha-acs-2025] |
+| Low | GRACE <109 or TIMI <2, troponin below the 99th percentile, no dynamic ST changes | Routine invasive before discharge, or selective (noninvasive testing first) ^[acc-aha-acs-2025] |
 
 - Risk scores: GRACE (mortality) or TIMI estimate risk and guide timing. ^[acc-aha-acs-2025]
 - Telemetry for at least 24 h in NSTEMI; CCU for very high-risk features. ^[common-practice]
@@ -38,7 +38,7 @@ related:
 ## Causes
 - **Type 1 MI:** [!most-common] atherosclerotic plaque rupture or erosion with thrombus. ^[udmi-2018]
 - **Type 2 MI:** supply–demand mismatch without acute atherothrombosis: tachyarrhythmia, severe anemia, hypotension or shock, hypoxemia, severe hypertension, coronary vasospasm or embolism. ^[udmi-2018]
-- **Nonatherosclerotic ACS:** spontaneous coronary artery dissection (young women, peripartum), vasospasm (cocaine, methamphetamine), coronary embolism. ^[acc-aha-acs-2025]
+- **Nonatherosclerotic ACS:** spontaneous coronary artery dissection (young women, peripartum), vasospasm (cocaine, methamphetamine), coronary embolism. ^[udmi-2018, aha-scad-2018, aha-cocaine-2008]
 - **Cannot-miss mimics:** [!cannot-miss] aortic dissection, pulmonary embolism, tension pneumothorax, tamponade, esophageal rupture. ^[aha-acc-chest-pain-2021]
 - **Myocardial injury without ischemia:** myocarditis, takotsubo, sepsis, heart failure, CKD, PE, stroke; troponin rises without ischemic symptoms or ECG changes. ^[udmi-2018]
 
@@ -51,7 +51,7 @@ related:
 ## Diagnosis
 #### ECG
 - Within 10 minutes of arrival; repeat at 15–30-minute intervals if nondiagnostic and symptoms persist. ^[aha-acc-chest-pain-2021]
-- NSTE-ACS changes: new horizontal or downsloping ST depression ≥0.5 mm, T-wave inversion ≥1 mm; a normal ECG does not exclude ACS. ^[udmi-2018, aha-acc-chest-pain-2021]
+- NSTE-ACS changes: new horizontal or downsloping ST depression ≥0.5 mm in 2 contiguous leads, T-wave inversion >1 mm in 2 contiguous leads with prominent R wave, transient ST elevation; a normal ECG does not exclude ACS. ^[udmi-2018, aha-acc-chest-pain-2021]
 - Posterior leads V7–V9 when ST depression is maximal in V1–V4 (posterior MI is a STEMI equivalent). ^[acc-aha-acs-2025]
 
 #### Troponin
@@ -77,25 +77,27 @@ related:
    {{dose:nitroglycerin-sl}}
    {{dose:nitroglycerin-iv}}
 
-   - No nitrates with hypotension, suspected RV infarction, or a phosphodiesterase-5 inhibitor within 24–48 h. ^[acc-aha-acs-2025, label-nitrostat-2023]
-   - Stop NSAIDs (other than aspirin). ^[acc-aha-acs-2025]
+   - No nitrates with SBP <90 mm Hg or ≥30 below baseline, suspected RV infarction, riociguat, or a phosphodiesterase-5 inhibitor (avanafil within 12 h, sildenafil or vardenafil within 24 h, tadalafil within 48 h). ^[acc-aha-acs-2025, label-nitrostat-2023]
+   - Stop NSAIDs (other than aspirin). ^[common-practice]
 
 2. Parenteral anticoagulation
-   - All patients, from diagnosis until PCI or for the hospitalization (up to 8 days) if managed medically. ^[acc-aha-acs-2025]
+   - All patients, from diagnosis until revascularization (PCI or CABG). ^[acc-aha-acs-2025]
+   - Managed medically: for the hospitalization, up to 8 days. ^[oasis-5-2006, label-lovenox-2026]
 
    {{dose:heparin-acs}}
    {{dose:enoxaparin-acs}}
    {{dose:fondaparinux-acs}}
 
    - UFH: preferred with planned early angiography or severe kidney impairment. ^[acc-aha-acs-2025, common-practice]
-   - Fondaparinux: needs additional UFH at PCI (catheter thrombosis). ^[acc-aha-acs-2025, oasis-5-2006]
+   - Enoxaparin or fondaparinux: alternatives when early angiography is not planned. ^[acc-aha-acs-2025]
+   - Fondaparinux must not be used alone for PCI (catheter thrombosis): UFH bolus at PCI. ^[acc-aha-acs-2025, oasis-5-2006]
    - On a DOAC or warfarin: discuss with cardiology before adding anticoagulation. ^[common-practice]
 
 3. P2Y12 inhibitor
-   - With PCI: ticagrelor or prasugrel preferred over clopidogrel. ^[acc-aha-acs-2025, isar-react-5-2019]
+   - With PCI: ticagrelor or prasugrel preferred over clopidogrel. ^[acc-aha-acs-2025, plato-2009, triton-timi-38-2007]
    - Prasugrel: only once coronary anatomy is known and PCI is planned; not with prior stroke or TIA. ^[acc-aha-acs-2025, label-effient-2022]
-   - Medically managed: ticagrelor, or clopidogrel when bleeding risk is high. ^[acc-aha-acs-2025]
-   - Timing before angiography (pretreatment) varies: confirm with cardiology. ^[acc-aha-acs-2025, esc-acs-2023]
+   - Medically managed: ticagrelor; clopidogrel if ticagrelor is contraindicated, not tolerated, or bleeding risk is high. ^[acc-aha-acs-2025]
+   - Angiography within 24 h: no routine pretreatment; expected ≥24 h: upstream ticagrelor or clopidogrel may be considered. Never prasugrel before the anatomy is known. ^[acc-aha-acs-2025]
 
    {{dose:ticagrelor-acs-load}}
    {{dose:ticagrelor-acs}}
@@ -116,9 +118,9 @@ related:
 
    {{dose:atorvastatin-80}}
 
-   - Oral β-blocker within 24 h unless heart failure, low-output state, risk of cardiogenic shock, PR >240 ms, high-grade AV block or reactive airway disease. ^[acc-aha-acs-2025]
-   - ACE inhibitor or ARB: LVEF ≤40%, hypertension, diabetes or CKD. ^[acc-aha-acs-2025]
-   - Mineralocorticoid receptor antagonist: LVEF ≤40% with heart failure or diabetes, on an ACE inhibitor or ARB and β-blocker. ^[acc-aha-acs-2025]
+   - Oral β-blocker within 24 h unless acute heart failure, low-output state, risk of cardiogenic shock, PR >240 ms, second- or third-degree AV block without a pacemaker, severe bradycardia or active bronchospasm; reassess later if initially contraindicated. ^[acc-aha-acs-2025]
+   - ACE inhibitor or ARB: LVEF ≤40%, hypertension or diabetes; reasonable in all others; never both together. ^[acc-aha-acs-2025]
+   - Mineralocorticoid receptor antagonist: LVEF ≤40% with heart failure symptoms or diabetes; avoid if creatinine >2.5 mg/dL or K⁺ >5.0 mEq/L. ^[acc-aha-acs-2025]
    - Continue aspirin. ^[acc-aha-acs-2025]
 
    {{dose:aspirin-81}}
@@ -139,20 +141,20 @@ related:
 ## More Information
 ### Where Guidelines Differ: P2Y12 pretreatment, choice
 :::compare P2Y12 pretreatment before angiography
-- ACC/AHA 2025: Pretreatment may be considered when angiography is delayed; prasugrel only after anatomy is known. ^[acc-aha-acs-2025]
-- ESC 2023: Routine pretreatment not recommended when early invasive angiography (<24 h) is planned; may be considered if delay is expected. ^[esc-acs-2023]
+- ACC/AHA 2025: Not routine if angiography is within 24 h; ticagrelor or clopidogrel may be considered if ≥24 h (weak); prasugrel only after anatomy is known. ^[acc-aha-acs-2025]
+- ESC 2023: Routine pretreatment not recommended when anatomy is unknown and angiography is planned within 24 h; may be considered if delayed and bleeding risk is not high. ^[esc-acs-2023]
 :::
 
 :::compare Preferred P2Y12 inhibitor with PCI
 - ACC/AHA 2025: Ticagrelor or prasugrel preferred over clopidogrel. ^[acc-aha-acs-2025]
-- ESC 2023: Prasugrel considered in preference to ticagrelor for NSTE-ACS proceeding to PCI. ^[esc-acs-2023, isar-react-5-2019]
+- ESC 2023: Prasugrel considered in preference to ticagrelor in ACS proceeding to PCI. ^[esc-acs-2023, isar-react-5-2019]
 :::
 
 ### Special Populations: AF, kidney disease, older adults
 - AF on an oral anticoagulant after PCI: DOAC plus clopidogrel; stop aspirin after 1–4 weeks (triple therapy only briefly). ^[acc-aha-acs-2025]
-- Severe kidney impairment (CrCl below 30): adjust enoxaparin; avoid fondaparinux; UFH often simplest. ^[label-lovenox-2026, label-arixtra-2024, common-practice]
-- Older adults: invasive strategy still beneficial; weigh bleeding and frailty. ^[acc-aha-acs-2025]
-- Cocaine or methamphetamine: avoid β-blockers during acute intoxication; benzodiazepines and nitrates. ^[acc-aha-acs-2025]
+- Severe kidney impairment (CrCl below 30): adjust enoxaparin; fondaparinux contraindicated; UFH often simplest. ^[label-lovenox-2026, label-arixtra-2024, common-practice]
+- Older adults: an invasive strategy is reasonable (fewer reinfarctions, no clear mortality benefit at age ≥75); individualize by frailty, comorbidity and bleeding risk. ^[senior-rita-2024]
+- Cocaine or methamphetamine: avoid β-blockers during acute intoxication; benzodiazepines and nitrates. ^[aha-cocaine-2008]
 - Type 2 MI: treat the trigger; antithrombotics and invasive testing are individualized. ^[udmi-2018, common-practice]
 
 ### Complications: Shock, arrhythmia, mechanical
@@ -162,8 +164,8 @@ related:
 - Bleeding from antithrombotic therapy; access-site complications. ^[acc-aha-acs-2025]
 
 ### After the Acute Phase: DAPT, risk factors
-- DAPT for 12 months by default after ACS. ^[acc-aha-acs-2025]
-- To reduce bleeding after PCI: transition to ticagrelor monotherapy after at least 1 month; high bleeding risk: P2Y12 monotherapy after 1 month. ^[acc-aha-acs-2025]
+- DAPT for at least 12 months by default after ACS unless bleeding risk is high. ^[acc-aha-acs-2025]
+- To reduce bleeding after PCI: transition to ticagrelor monotherapy after at least 1 month; high bleeding risk: single antiplatelet (aspirin or P2Y12 inhibitor) after 1 month, or de-escalate to clopidogrel. ^[acc-aha-acs-2025]
 - Proton pump inhibitor with DAPT when GI bleeding risk is high. ^[acc-aha-acs-2025]
 - LDL-C ≥70 mg/dL on maximally tolerated statin: add ezetimibe or a PCSK9 inhibitor; reasonable at 55–69 mg/dL. ^[acc-aha-acs-2025]
 - Cardiac rehabilitation referral, smoking cessation, blood pressure and diabetes control, annual influenza vaccination. ^[acc-aha-acs-2025]
@@ -177,7 +179,7 @@ related:
 - REDUCE-AMI (2024): long-term β-blocker after MI with LVEF ≥50% did not reduce death or reinfarction. ^[reduce-ami-2024]
 
 ### Why the Treatment Order: Platelets, then thrombin, then the lesion
-- Aspirin and anticoagulation stop thrombus propagation immediately; P2Y12 timing waits on the anatomy because CABG may be needed; revascularization treats the culprit lesion. ^[acc-aha-acs-2025, common-practice]
+- Aspirin and anticoagulation stop thrombus propagation immediately; P2Y12 timing depends on when angiography will happen and whether CABG may be needed; revascularization treats the culprit lesion. ^[acc-aha-acs-2025, common-practice]
 
 ### Epidemiology and Pathophysiology: Plaque and supply
 - NSTE-ACS accounts for most ACS hospitalizations; mortality is lower than STEMI acutely but similar at long-term follow-up. ^[acc-aha-acs-2025]

@@ -6,7 +6,7 @@ subsection: Heart Failure and Cardiomyopathy
 title: Acute Decompensated Heart Failure
 aliases: [ADHF, acute heart failure, AHF, CHF exacerbation, heart failure exacerbation, decompensated heart failure, volume overload, pulmonary edema, flash pulmonary edema, cardiogenic pulmonary edema, diuresis, diuretic resistance, HFrEF, HFpEF, GDMT]
 definition: "New or worsening symptoms and signs of heart failure, usually congestion, needing urgent evaluation and treatment. ^[aha-acc-hfsa-hf-2022, esc-hf-2021]"
-based_on: [aha-acc-hfsa-hf-2022, esc-hf-2021, esc-hf-2023, hfa-diuretics-2019]
+based_on: [aha-acc-hfsa-hf-2022, esc-hf-2026, esc-hf-2021, hfa-diuretics-2019]
 reviewed: 2026-10-20
 related:
   differential: []
@@ -32,7 +32,7 @@ related:
 
 - Cardiogenic shock (hypotension with hypoperfusion): ICU and cardiology emergently. ^[aha-acc-hfsa-hf-2022]
 - Respiratory distress or SpO₂ <90% despite oxygen: noninvasive ventilation, ICU if not improving. ^[esc-hf-2021]
-- Higher risk: SBP <100 mm Hg, rising creatinine, hyponatremia, high natriuretic peptide or troponin, LVEF ≤25%. ^[aha-acc-hfsa-hf-2022, common-practice]
+- Higher risk: SBP <100 mm Hg, high BUN, rising creatinine, hyponatremia, high natriuretic peptide or troponin. ^[aha-acc-hfsa-hf-2022, common-practice]
 
 ## Causes
 - **Ischemic:** [!cannot-miss] acute coronary syndrome; mechanical complications of MI. ^[aha-acc-hfsa-hf-2022]
@@ -78,24 +78,24 @@ related:
 
 2. IV loop diuretic
    - Start promptly when congested; IV, not oral, because of gut edema. ^[aha-acc-hfsa-hf-2022, esc-hf-2021]
-   - Bolus or continuous infusion are equivalent; a higher dose gives more diuresis with transient creatinine rise. ^[dose-2011]
+   - Bolus or continuous infusion are equivalent; a higher dose gives more diuresis, with more transient creatinine rise. ^[dose-2011]
 
    {{dose:furosemide-iv-adhf}}
 
-   - Spot urine Na⁺ at 2 h and urine output at 6 h define response (see Monitor). ^[esc-hf-2021, hfa-diuretics-2019]
+   - Urine Na⁺–guided diuresis in the first days: spot urine Na⁺ at 2 h and urine output over 6 h (see Monitor). ^[esc-hf-2021, hfa-diuretics-2019, esc-hf-2026]
    - Inadequate response: double the loop dose. ^[esc-hf-2021, hfa-diuretics-2019]
 
 3. Diuretic resistance
-   - Persistent congestion despite escalated loop dose: add a thiazide-type diuretic or acetazolamide; monitor K⁺, Mg²⁺ and Na⁺ closely. ^[aha-acc-hfsa-hf-2022, hfa-diuretics-2019]
+   - Persistent congestion despite an escalated loop dose: add a thiazide-type diuretic, or acetazolamide; monitor K⁺, Mg²⁺ and Na⁺ closely. ^[aha-acc-hfsa-hf-2022, hfa-diuretics-2019, advor-2022]
 
    {{dose:metolazone-adhf}}
    {{dose:acetazolamide-adhf}}
 
-   - Refractory: ultrafiltration or kidney replacement therapy, or inotropes guided by hemodynamics; cardiology. ^[aha-acc-hfsa-hf-2022]
+   - Refractory: consider ultrafiltration or kidney replacement therapy (limited evidence), or hemodynamic guidance; cardiology. ^[aha-acc-hfsa-hf-2022, esc-hf-2021]
    - A modest creatinine rise during effective decongestion should not stop diuresis. ^[aha-acc-hfsa-hf-2022]
 
 4. Vasodilator
-   - Hypertensive acute heart failure or pulmonary edema: IV nitroglycerin with diuretics, if SBP >110 mm Hg. ^[aha-acc-hfsa-hf-2022, esc-hf-2021]
+   - Consider IV nitroglycerin with diuretics if SBP >110 mm Hg (weak recommendation); first line in hypertensive pulmonary edema. ^[aha-acc-hfsa-hf-2022, esc-hf-2021]
 
    {{dose:nitroglycerin-iv}}
 
@@ -103,13 +103,14 @@ related:
 
 5. Hypoperfusion
    - Cold profile or cardiogenic shock: ICU, inotropes (dobutamine, milrinone) and vasopressors (norepinephrine) to maintain perfusion; mechanical support by the shock team. ^[aha-acc-hfsa-hf-2022]
+   - Inotropes only for hypoperfusion, not routinely; no routine opioids. ^[aha-acc-hfsa-hf-2022, esc-hf-2021]
    - Treat the cause: urgent revascularization for ACS, cardioversion for unstable arrhythmia, surgery for acute valve lesions. ^[aha-acc-hfsa-hf-2022]
 
 6. GDMT in hospital
    - Continue existing GDMT unless hemodynamically unstable or contraindicated; a mild creatinine or blood pressure change is not a reason to stop. ^[aha-acc-hfsa-hf-2022]
    - Cardiogenic shock or hypoperfusion: hold β-blocker; reduce or hold RAAS inhibitors with hypotension, hyperkalemia or AKI. ^[aha-acc-hfsa-hf-2022, common-practice]
-   - HFrEF: start missing pillars once stable (β-blocker after euvolemia and off IV diuretics, vasodilators and inotropes): ARNI (or ACE inhibitor or ARB), evidence-based β-blocker, MRA, SGLT2 inhibitor. ^[aha-acc-hfsa-hf-2022]
-   - SGLT2 inhibitor can be started in hospital once stable, including LVEF >40%. ^[aha-acc-hfsa-hf-2022, esc-hf-2023]
+   - HFrEF: start missing pillars once clinically stable: ARNI (or ACE inhibitor or ARB), evidence-based β-blocker (low dose, once near-euvolemic and off inotropes), MRA, SGLT2 inhibitor. ^[aha-acc-hfsa-hf-2022, strong-hf-2022]
+   - SGLT2 inhibitor can be started in hospital once stable, at any LVEF; not with type 1 diabetes or ketoacidosis risk; check the label eGFR limit. ^[empulse-2022, esc-hf-2026]
    - Doses and titration: Wave 2 heart failure cards. ^[common-practice]
 
 7. Supportive care
@@ -117,10 +118,10 @@ related:
    - Daily weights, intake and output; sodium restriction per local practice (evidence limited). ^[aha-acc-hfsa-hf-2022, common-practice]
    - Fluid restriction for hyponatremia or severe congestion. ^[aha-acc-hfsa-hf-2022]
    - Stop offending drugs (NSAIDs, nondihydropyridine calcium channel blockers in HFrEF, thiazolidinediones). ^[aha-acc-hfsa-hf-2022]
-   - Iron deficiency (ferritin <100 ng/mL, or 100–299 ng/mL with transferrin saturation <20%) in HFrEF: IV iron. ^[aha-acc-hfsa-hf-2022, esc-hf-2023]
+   - Iron deficiency (ferritin <100 ng/mL, or 100–299 ng/mL with transferrin saturation <20%) with reduced LVEF: IV iron, before discharge. ^[aha-acc-hfsa-hf-2022, esc-hf-2023]
 
 ## Monitor
-- Response at 2 h: spot urine Na⁺ {{threshold:adhf-urine-na-response}}; at 6 h: urine output {{threshold:adhf-uop-response}}; below these, intensify. ^[esc-hf-2021, hfa-diuretics-2019]
+- Response at 2 h: spot urine Na⁺ {{threshold:adhf-urine-na-response}}; over 6 h: urine output {{threshold:adhf-uop-response}}; below these, intensify. ^[esc-hf-2021, hfa-diuretics-2019, esc-hf-2026]
 - Daily: weight, intake and output, BMP and Mg²⁺ (K⁺ and Mg²⁺ fall with diuresis), congestion signs. ^[aha-acc-hfsa-hf-2022, common-practice]
 - Goal: resolution of congestion (JVP, edema, orthopnea) before discharge; residual congestion predicts readmission. ^[aha-acc-hfsa-hf-2022]
 - Hypotension, rising lactate, worsening mentation or oliguria: reassess perfusion. ^[esc-hf-2021]
@@ -134,12 +135,12 @@ related:
 ## More Information
 ### Where Guidelines Differ: SGLT2 inhibitors, up-titration
 :::compare SGLT2 inhibitor for LVEF >40%
-- AHA/ACC/HFSA 2022: Reasonable (weaker recommendation), published before the HFpEF trials. ^[aha-acc-hfsa-hf-2022]
-- ESC 2023 update: Recommended for LVEF 41–49% and ≥50% to reduce heart failure hospitalization or cardiovascular death. ^[esc-hf-2023]
+- AHA/ACC/HFSA 2022: Reasonable (weaker recommendation) for LVEF >40%; published before the DELIVER trial. ^[aha-acc-hfsa-hf-2022]
+- ESC 2026: Foundational therapy at any LVEF; heart failure is classed as LVEF <50% (reduced) or ≥50% (preserved). ^[esc-hf-2026]
 :::
 
 :::compare After a heart failure admission
-- AHA/ACC/HFSA 2022: Start GDMT in hospital once stable; follow-up within 7 days. ^[aha-acc-hfsa-hf-2022]
+- AHA/ACC/HFSA 2022: Start GDMT in hospital once stable; follow-up within 7 days; published before STRONG-HF. ^[aha-acc-hfsa-hf-2022]
 - ESC 2023 update: Rapid up-titration of GDMT with close follow-up in the first 6 weeks (strong recommendation, from STRONG-HF). ^[esc-hf-2023, strong-hf-2022]
 :::
 
@@ -148,7 +149,7 @@ related:
 - CKD: higher loop doses needed; MRA and SGLT2 inhibitor limits by eGFR. ^[aha-acc-hfsa-hf-2022, hfa-diuretics-2019]
 - Predominant right heart failure: avoid excess preload reduction and hypotension. ^[common-practice]
 - Hypertrophic cardiomyopathy or severe aortic stenosis: avoid vasodilators and aggressive preload reduction. ^[common-practice]
-- Pregnancy and peripartum: cardiology and obstetrics; ACE inhibitors, ARBs, ARNI and MRAs are contraindicated in pregnancy. ^[aha-acc-hfsa-hf-2022]
+- Pregnancy and peripartum: cardiology and obstetrics; avoid ACE inhibitors, ARBs, ARNI, MRAs, SGLT2 inhibitors, ivabradine and vericiguat (fetal harm). ^[aha-acc-hfsa-hf-2022]
 
 ### Complications: Kidney, electrolytes, arrhythmia
 - Worsening kidney function (cardiorenal), hypokalemia, hypomagnesemia, hyponatremia, contraction alkalosis. ^[aha-acc-hfsa-hf-2022, hfa-diuretics-2019]
@@ -157,12 +158,12 @@ related:
 
 ### After the Acute Phase: Discharge, follow-up
 - Discharge when euvolemic on an oral diuretic dose with a plan for adjustment. ^[aha-acc-hfsa-hf-2022]
-- Follow-up within 7 days and a call within 3 days; labs (K⁺, creatinine) within 1–2 weeks after starting or titrating GDMT. ^[aha-acc-hfsa-hf-2022, common-practice]
+- Visit within 7 days and a phone call within 3 days; labs (K⁺, creatinine) within 1–2 weeks after starting or titrating GDMT. ^[aha-acc-hfsa-hf-2022, common-practice]
 - Education: daily weights, sodium intake, medication adherence, symptoms that should prompt a call. ^[aha-acc-hfsa-hf-2022]
 - Cardiac rehabilitation (HFrEF); influenza and pneumococcal vaccination; ICD and CRT assessment after GDMT optimization. ^[aha-acc-hfsa-hf-2022]
 
 ### Evidence: Key trials
-- DOSE (2011): bolus versus continuous and low versus high (2.5 times oral) furosemide did not differ in symptoms or creatinine change; high dose diuresed more. ^[dose-2011]
+- DOSE (2011): bolus versus continuous and low versus high (2.5 times oral) furosemide did not differ in symptoms or creatinine at 72 h; high dose diuresed more, with more transient creatinine rise. ^[dose-2011]
 - ADVOR (2022): acetazolamide added to loop diuretics improved successful decongestion at 3 days. ^[advor-2022]
 - STRONG-HF (2022): rapid up-titration of GDMT with close follow-up after admission lowered 180-day death or heart failure readmission. ^[strong-hf-2022]
 

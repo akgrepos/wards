@@ -6,8 +6,8 @@ items:
   - "New ischemic ECG changes"
   - "Development of pathological Q waves"
   - "Imaging evidence of new loss of viable myocardium or new regional wall-motion abnormality consistent with ischemia"
-  - "Coronary thrombus on angiography or autopsy (type 1 MI)"
 notes:
   - "Myocardial injury: troponin above the 99th percentile without ischemia; acute if values rise or fall, chronic if stable."
+  - "Type 1 MI is also identified by coronary thrombus on angiography or autopsy."
   - "Unstable angina: myocardial ischemia at rest or minimal exertion without troponin elevation."
 sources: [udmi-2018]

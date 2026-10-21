@@ -9,5 +9,7 @@ max: "200 mcg/min (heart failure guideline; no maximum in the label)"
 cautions:
   - "Contraindicated with a phosphodiesterase-5 inhibitor or riociguat, tamponade, constrictive pericarditis or restrictive cardiomyopathy, raised intracranial pressure."
   - "Avoid with hypotension, suspected RV infarction, severe aortic stenosis or hypertrophic obstructive cardiomyopathy."
+  - "Reduce or stop for SBP <90 mm Hg or symptomatic hypotension."
   - "Use non-PVC tubing and an infusion pump; tolerance develops after 24–48 hours."
+notes: "ACS guideline start: 10 mcg/min; label start 5 mcg/min with non-PVC tubing."
 sources: [label-ntg-premix-2016, esc-hf-2021, acc-aha-acs-2025]

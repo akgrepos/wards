@@ -5,7 +5,7 @@ system: cardio
 subsection: Arrhythmias
 title: Atrial Fibrillation
 aliases: [AF, AFib, A-fib, afib, atrial fib, AF with RVR, rapid ventricular response, RVR, irregularly irregular, CHA2DS2-VASc, CHADS-VASc, CHA2DS2-VA, cardioversion, DCCV, rate control, rhythm control]
-definition: "Supraventricular tachyarrhythmia with uncoordinated atrial activation: irregularly irregular R-R intervals without distinct P waves, lasting at least 30 seconds or a full 12-lead ECG. ^[acc-aha-af-2023, esc-af-2024]"
+definition: "Supraventricular tachyarrhythmia with uncoordinated atrial activation: irregularly irregular R-R intervals without distinct P waves, documented on ECG (ESC: at least 30 seconds, or a full 12-lead ECG). ^[acc-aha-af-2023, esc-af-2024]"
 based_on: [acc-aha-af-2023, esc-af-2024]
 reviewed: 2026-10-20
 related:
@@ -18,19 +18,19 @@ emergency_hint: "Unstable: cardiovert; stable: IV rate control"
 1. Synchronized cardioversion
    - If: hemodynamically unstable from AF (hypotension, ongoing ischemia, pulmonary edema, shock) ^[acc-aha-af-2023]
    - Check: rate likely the cause (usually >150 beats/min); sedation; pads; synchronize. ^[aha-acls-2025, common-practice]
-   - Start anticoagulation without delaying cardioversion. ^[acc-aha-af-2023]
+   - Start anticoagulation as soon as feasible without delaying cardioversion; continue at least 4 weeks after. ^[acc-aha-af-2023, common-practice]
    - Biphasic: at least 200 J initially; escalate if unsuccessful. ^[aha-acls-2025]
-2. IV rate control, LVEF >40%
-   - If: stable, LVEF >40% or unknown and not decompensated ^[acc-aha-af-2023]
+2. IV rate control
+   - If: stable and not decompensated; β-blocker at any LVEF, diltiazem only if LVEF >40% ^[acc-aha-af-2023]
    - Check: pre-excitation on ECG (delta wave, wide bizarre QRS): no AV nodal blockers. ^[acc-aha-af-2023]
 
    {{dose:metoprolol-iv-af}}
    {{dose:diltiazem-iv-af}}
 
    - Warning: Hypotension ^[label-diltiazem-inj-2026, label-metoprolol-inj-2026]
-3. IV rate control, HFrEF or hypotension
-   - If: LVEF ≤40%, decompensated heart failure, or borderline blood pressure ^[acc-aha-af-2023]
-   - No nondihydropyridine calcium channel blockers in decompensated HFrEF. ^[acc-aha-af-2023]
+3. IV rate control, decompensated or hypotensive
+   - If: decompensated heart failure, critically ill, or blood pressure limiting a β-blocker or diltiazem ^[acc-aha-af-2023, common-practice]
+   - No IV diltiazem or verapamil if LVEF ≤40%, compensated or not. ^[acc-aha-af-2023]
 
    {{dose:amiodarone-iv-af}}
    {{dose:digoxin-iv-af}}
@@ -38,7 +38,7 @@ emergency_hint: "Unstable: cardiovert; stable: IV rate control"
    - Amiodarone may convert to sinus rhythm: consider thromboembolic risk if not anticoagulated. ^[acc-aha-af-2023]
 4. Treat the precipitant
    - Sepsis, hypovolemia, hypoxemia, PE, thyrotoxicosis, alcohol, ischemia, pain, electrolyte derangement. ^[acc-aha-af-2023, common-practice]
-   - Check: K⁺ and Mg²⁺. ^[common-practice]
+   - Check: K⁺ and Mg²⁺; IV magnesium as an add-on to rate control is reasonable. ^[acc-aha-af-2023, common-practice]
 5. Decide on anticoagulation
    - Stroke risk by {{criteria:cha2ds2-vasc}}; anticoagulation for cardioversion as in Treatment. ^[acc-aha-af-2023]
 
@@ -48,9 +48,9 @@ emergency_hint: "Unstable: cardiovert; stable: IV rate control"
 
 ## At a Glance
 - Unstable from AF: immediate synchronized cardioversion. ^[acc-aha-af-2023]
-- Stable RVR: IV β-blocker or diltiazem if LVEF >40%; amiodarone or digoxin in HFrEF or hypotension. ^[acc-aha-af-2023]
+- Stable RVR: IV β-blocker (any LVEF) or diltiazem (LVEF >40% only); amiodarone or digoxin if decompensated or hypotensive. ^[acc-aha-af-2023]
 - Anticoagulate by stroke risk, not by AF pattern: CHA₂DS₂-VASc {{threshold:af-anticoag-recommended}}; DOAC over warfarin except mechanical valve or moderate–severe mitral stenosis. ^[acc-aha-af-2023]
-- Cardioversion of AF ≥48 h or unknown duration: 3 weeks of anticoagulation or TEE first; anticoagulate at least 4 weeks after. ^[acc-aha-af-2023]
+- Cardioversion of AF ≥48 h or unknown duration: 3 weeks of anticoagulation or TEE first; after any cardioversion, anticoagulate at least 4 weeks. ^[acc-aha-af-2023]
 - Lenient rate target: resting HR {{threshold:af-rate-lenient}}; early rhythm control in selected patients. ^[acc-aha-af-2023, race-ii-2010, east-afnet-4-2020]
 - Look for the trigger: sepsis, thyrotoxicosis, PE, alcohol, ischemia, postoperative state. ^[acc-aha-af-2023]
 
@@ -111,8 +111,9 @@ emergency_hint: "Unstable: cardiovert; stable: IV rate control"
    {{dose:diltiazem-iv-af}}
    {{dose:diltiazem-infusion-af}}
 
-   - LVEF ≤40%: β-blocker; avoid nondihydropyridine calcium channel blockers. ^[acc-aha-af-2023]
-   - Decompensated heart failure or hypotension: IV amiodarone or digoxin. ^[acc-aha-af-2023]
+   - LVEF ≤40%: β-blocker; no nondihydropyridine calcium channel blockers, compensated or not. ^[acc-aha-af-2023]
+   - Critically ill or decompensated heart failure, or β-blocker and diltiazem ineffective or contraindicated: IV amiodarone or digoxin. ^[acc-aha-af-2023]
+   - IV magnesium as an add-on is reasonable (dosing: [[renal-electrolyte-repletion|electrolyte repletion]]). ^[acc-aha-af-2023]
 
    {{dose:amiodarone-iv-af}}
    {{dose:digoxin-iv-af}}
@@ -130,7 +131,7 @@ emergency_hint: "Unstable: cardiovert; stable: IV rate control"
    - CHA₂DS₂-VASc {{threshold:af-anticoag-recommended}} (annual stroke risk ≥2%): anticoagulation recommended. ^[acc-aha-af-2023]
    - Score 1 in men or 2 in women (annual risk 1–2%): anticoagulation reasonable. ^[acc-aha-af-2023]
    - Decide by risk, not by pattern (paroxysmal, persistent, permanent) or by sinus rhythm after conversion. ^[acc-aha-af-2023]
-   - DOAC preferred over warfarin; warfarin (INR 2.0–3.0) for a mechanical heart valve or moderate–severe rheumatic mitral stenosis. ^[acc-aha-af-2023]
+   - DOAC preferred over warfarin; warfarin (INR 2.0–3.0), regardless of score, for a mechanical heart valve or rheumatic or moderate–severe mitral stenosis. ^[acc-aha-af-2023]
    - Aspirin alone, or aspirin with clopidogrel, is not an alternative for stroke prevention. ^[acc-aha-af-2023]
    - Bleeding scores (e.g. HAS-BLED) identify modifiable risks; do not use them alone to withhold anticoagulation. ^[acc-aha-af-2023]
 
@@ -139,12 +140,14 @@ emergency_hint: "Unstable: cardiovert; stable: IV rate control"
    {{dose:dabigatran-af}}
    {{dose:edoxaban-af}}
 
-   - Hypertrophic cardiomyopathy or cardiac amyloidosis: anticoagulate regardless of score. ^[acc-aha-af-2023]
+   - Hypertrophic cardiomyopathy: anticoagulate regardless of score. ^[acc-aha-af-2023]
+   - Cardiac amyloidosis: anticoagulation reasonable regardless of score. ^[aha-acc-hfsa-hf-2022]
 
 4. Cardioversion and anticoagulation
    - AF ≥48 h or unknown duration: 3 weeks of uninterrupted therapeutic anticoagulation, or imaging to exclude left atrial thrombus, before elective cardioversion. ^[acc-aha-af-2023]
-   - AF <48 h and CHA₂DS₂-VASc {{threshold:af-anticoag-recommended}}: anticoagulate as soon as possible before cardioversion. ^[acc-aha-af-2023]
-   - After cardioversion: anticoagulation for at least 4 weeks, then by stroke risk. ^[acc-aha-af-2023]
+   - Any cardioversion: therapeutic anticoagulation established beforehand and continued at least 4 weeks after, then by stroke risk. ^[acc-aha-af-2023]
+   - AF <48 h, not anticoagulated, CHA₂DS₂-VASc ≥2: imaging to exclude thrombus may be considered. ^[acc-aha-af-2023]
+   - CHA₂DS₂-VASc 0–1 and AF <12 h: benefit of anticoagulation or imaging uncertain. ^[acc-aha-af-2023]
    - Recent onset and stable: early cardioversion or wait-and-see with rate control (most convert within 48 h). ^[race-7-2019, esc-af-2024]
 
 5. Rhythm control
@@ -171,14 +174,14 @@ emergency_hint: "Unstable: cardiovert; stable: IV rate control"
 :::
 
 :::compare Early cardioversion without prior anticoagulation
-- ACC/AHA 2023: Uses a 48-hour cutoff; under 48 h with high stroke risk, anticoagulate as soon as possible beforehand. ^[acc-aha-af-2023]
+- ACC/AHA 2023: 48-hour cutoff; under 48 h with CHA₂DS₂-VASc ≥2, pre-cardioversion imaging may be considered. ^[acc-aha-af-2023]
 - ESC 2024: Not recommended without 3 weeks of anticoagulation or TEE if AF has lasted more than 24 hours; wait-and-see within 48 hours is an option. ^[esc-af-2024]
 :::
 
 ### Special Populations: Kidney disease, valves, pregnancy
-- End-stage kidney disease or dialysis: warfarin or apixaban reasonable. ^[acc-aha-af-2023]
-- Mechanical valve or moderate–severe rheumatic mitral stenosis: warfarin; DOACs are not used. ^[acc-aha-af-2023]
-- Bioprosthetic valve beyond 3 months, other native valve disease: DOACs acceptable. ^[acc-aha-af-2023]
+- CrCl <15 or dialysis: warfarin or apixaban may be reasonable (weak evidence). ^[acc-aha-af-2023]
+- Mechanical valve, or rheumatic or moderate–severe mitral stenosis: warfarin; DOACs are not used. ^[acc-aha-af-2023]
+- Other valve disease, including bioprosthetic valves: DOAC preferred over warfarin. ^[acc-aha-af-2023]
 - Postoperative AF: rate or rhythm control; anticoagulation weighed against surgical bleeding risk. ^[acc-aha-af-2023]
 - AF with recent ACS or PCI: see the antithrombotic combination in [[cardio-nste-acs|NSTE-ACS]]. ^[acc-aha-af-2023]
 - Atrial flutter: same anticoagulation approach; rate control is harder and cavotricuspid isthmus ablation is effective. ^[acc-aha-af-2023]
@@ -203,7 +206,7 @@ emergency_hint: "Unstable: cardiovert; stable: IV rate control"
 - Instability is treated electrically because drugs act too slowly and lower blood pressure; in stable patients, rate control relieves symptoms while the trigger is treated and the stroke-risk decision is made. ^[acc-aha-af-2023, common-practice]
 
 ### Epidemiology and Pathophysiology: Triggers and substrate
-- Most common sustained arrhythmia; lifetime risk about 1 in 3 to 1 in 5 adults. ^[acc-aha-af-2023]
+- Most common sustained arrhythmia; lifetime risk about 1 in 3 to 1 in 6, varying by race and ethnicity. ^[acc-aha-af-2023]
 - Pulmonary vein ectopy triggers AF; atrial fibrosis and dilation sustain it; stasis in the left atrial appendage causes thrombus. ^[acc-aha-af-2023]
 
 ## Pearls
