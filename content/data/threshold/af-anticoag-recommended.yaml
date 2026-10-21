@@ -1,4 +1,4 @@
 name: "CHA₂DS₂-VASc at which anticoagulation is recommended"
-value: "≥2 in men or ≥3 in women"
+value: "≥2 (men) or ≥3 (women)"
 unit: points
 sources: [acc-aha-af-2023]

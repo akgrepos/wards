@@ -91,8 +91,9 @@ describe('Rapids addresses', () => {
     await act(async () => { fireEvent.click(screen.getByRole('button', { name: 'Edit' })); });
     const sheet = screen.getByRole('dialog');
     await act(async () => { fireEvent.click(within(sheet).getByText('Hyperkalemia')); });
-    expect(getRapidShortcuts()).toEqual(['renal-hyponatremia']);
+    expect(getRapidShortcuts()).toEqual(['cardio-atrial-fibrillation', 'renal-hyponatremia']);
     await act(async () => { fireEvent.click(within(sheet).getByText('Hyponatremia')); });
+    await act(async () => { fireEvent.click(within(sheet).getByText('Atrial Fibrillation')); });
     expect(getRapidShortcuts()).toEqual([]);
     expect(screen.getByText('No Shortcuts')).toBeTruthy();
   });
