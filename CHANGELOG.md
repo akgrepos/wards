@@ -2,6 +2,16 @@
 
 What changed in each version of Wards, newest first. The version is shown in Settings (gear on Home).
 
+## 2026.10.21.3
+
+Pathways are simpler decision trees (Hyperkalemia: Treatment, AKI: Cause Workup and DKA: Treatment):
+- Each **question** is a short gray heading, and its **answers are buttons** side by side under it. Each answer leads to another question or to a box with what to do and the doses.
+- **Tap any answer at any time** to choose it: it turns solid blue with a checkmark, the other answers on that level turn gray (still tappable), and everything only they lead to fades, with dashed lines. Tap it again to undo; **Clear** (top right, was Start Over) forgets every choice. Choosing an answer on a branch you'd ruled out switches you onto it.
+- **Cleaner lines**: every line leaves a box straight down, turns once just above the box it points to, and lines into the same box join at one point with one arrowhead. No line runs through a box.
+- No more numbered levels, dashed level lines, "Start", "Now" or "End of Pathway" tags; urgent boxes keep their red tint and Treat Now tag.
+- **Current Step** jumps to the next question you haven't answered.
+- AKI: Cause Workup is laid out again so every answer sits under its question; the wording and doses of all pathways are unchanged.
+
 ## 2026.10.21.2
 
 Three new topics (Wave 1, fourth batch):
