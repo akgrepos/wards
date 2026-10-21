@@ -2,6 +2,10 @@
 
 What changed in each version of Wards, newest first. The version is shown in Settings (gear on Home).
 
+## 2026.10.21.19
+
+**Fix: calculators open full height.** The change in the last update to open calculators at full height did not take effect; they now do.
+
 ## 2026.10.21.18
 
 **Calculator layout.** Every calculator now opens full height. In the number-entry calculators the result stays just above the fields, with the normal range and Reset moved below them, so all the fields and the result fit on screen with the keyboard open.
