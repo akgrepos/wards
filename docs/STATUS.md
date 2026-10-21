@@ -1,6 +1,6 @@
 # Status
 
-Last updated 2026-10-20 (live version 2026.10.20.3, focused pathways). A short snapshot so the next session can pick up where the last one stopped. The reasons behind each choice are in [DECISIONS.md](DECISIONS.md); what changed in each version is in [CHANGELOG.md](../CHANGELOG.md).
+Last updated 2026-10-20 (live version 2026.10.20.4, guideline audit of all 12 cards). A short snapshot so the next session can pick up where the last one stopped. The reasons behind each choice are in [DECISIONS.md](DECISIONS.md); what changed in each version is in [CHANGELOG.md](../CHANGELOG.md).
 
 ## Start here next time
 1. **Open a new chat and type "Start Main".** The `wards-main` skill renames it "Main", checks sessions, pull requests and branches, and runs the day by delegating to side sessions (at most three branches at a time). Nothing is parked: no open pull requests, no side sessions, only `main`.
@@ -22,6 +22,7 @@ Last updated 2026-10-20 (live version 2026.10.20.3, focused pathways). A short s
 ## Done
 - **App:** live at https://akgrepos.github.io/wards/ (version 2026.10.20.3).
   - Pathways are focused, levelled flowcharts (2026-10-20): Hyperkalemia: Treatment and AKI: Cause Workup; several per card allowed; dose rows in boxes; rebuilt pinch zoom and Current Step.
+  - Guideline audit (2026.10.20.4): every card searched for newer guidelines; NSTE-ACS moved to the Fifth Universal Definition of MI (2026) and 2026 US lipid goals; IV Fluids to Surviving Sepsis 2026; Complicated UTI, Hypokalemia, Hyponatremia and Hyperkalemia sources updated (DECISIONS 2026-10-20).
   - Wave 1 batch 3: Atrial Fibrillation (condition, Rapids page for AF with RVR), Acute Coronary Syndrome: NSTEMI and Unstable Angina, Acute Decompensated Heart Failure (condition cards, Cardiology).
   - Wave 1 batch 2: Community-Acquired Pneumonia, Cellulitis and Erysipelas, Pyelonephritis and Complicated Urinary Tract Infection (all condition cards, Infectious Disease); regimen boxes.
   - Wave 1 batch 1: Hyponatremia (condition, Rapids page for severe symptoms), Hypokalemia (condition), IV Fluids: Selection and Dosing (reference, protocol).
@@ -42,6 +43,9 @@ Last updated 2026-10-20 (live version 2026.10.20.3, focused pathways). A short s
 ## Watch
 - **US heart failure guideline:** the 2022 AHA/ACC/HFSA guideline is still the newest US edition (October 2026); when a new one is published, update the ADHF card, whose European side already follows ESC 2026.
 - **KDIGO 2026 AKI/AKD guideline:** public-review draft only (March 2026). When the final is published, update the AKI card. Expected changes: cystatin C criteria, biomarker staging, AKD, glucose 140–180 mg/dL, bicarbonate before RRT at pH <7.20, deferred RRT.
+
+- **Audit items not chosen yet (2026-10-20; details in the PR):** ADHF could add the 2024 ACC inpatient heart failure pathway and the Second Universal Definition of Heart Failure (June 2026); AKI could cite Surviving Sepsis 2026 for balanced fluids and note the 2024 ADQI/ICA cirrhosis AKI consensus (albumin for 24 h vs 48 h); CAP's hydrocortisone line should be checked against Surviving Sepsis 2026 (steroids now suggested for all septic shock); dose rows for the newer β-lactams named on Complicated UTI; IDSA's MRSA (2011) and catheter UTI (2009) guidelines are now archived with no successor; the 2025 ACC/AHA ACS guideline has three published corrections to check against NSTE-ACS doses.
+- **Upcoming guidelines:** UK hyperkalaemia guideline review (due October 2026); KDIGO 2027 CKD focused update (public review from October 2026); ACC/AHA heart failure update (2027); ESC ACS (2027); IDSA uncomplicated cystitis and pyelonephritis (in development); a lab statement (April 2026) against reporting albumin-corrected calcium (Electrolyte Repletion).
 
 ## Known limits
 - The GitHub account name is the owner's initials. (The old non-anonymous commits were removed by re-creating the repo on 2026-10-18.)
