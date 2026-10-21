@@ -89,7 +89,10 @@ export function checkPathway(id, p, content) {
   if (!card) out.push(`belongs to unknown card "${p.card}" (set "card:" to the card it supplements)`);
   // Doses come from the card: only dose items the card itself shows.
   const cardJson = card ? JSON.stringify(card) : '';
-  const onCard = (dose) => cardJson.includes(`"kind":"dose","id":"${dose}"`);
+  // A dose the card shows as another dose's alternative ("Or …" under its row) counts too.
+  const shown = (dose) => cardJson.includes(`"kind":"dose","id":"${dose}"`);
+  const onCard = (dose) => shown(dose)
+    || Object.entries(content.data.dose ?? {}).some(([id, d]) => d?.alternative?.dose === dose && shown(id));
   if (!nodes[p.start]) out.push(`start node "${p.start}" does not exist`);
   const cols = p.columns ?? 0;
   if (!Number.isInteger(cols) || cols < 1) out.push('needs "columns" (how many grid columns the pathway uses)');

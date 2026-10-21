@@ -22,11 +22,12 @@ emergency_hint: "Cultures, antibiotics, fluids, norepinephrine"
 2. Antibiotics within 1 hour
    - If: possible, probable or definite septic shock, or probable or definite sepsis ^[ssc-sepsis-2026]
    - Check: source, recent cultures and MRSA or resistant-organism risk; one β-lactam, plus vancomycin only with MRSA risk. ^[ssc-sepsis-2026, idsa-sepsis-hospital-2026]
-   - Community onset without resistance risk: ceftriaxone; Pseudomonas or multidrug-resistant risk: piperacillin-tazobactam or cefepime. ^[ssc-sepsis-2026, common-practice]
+   - Pseudomonas or multidrug-resistant risk: piperacillin-tazobactam or cefepime; community onset without resistance risk: ceftriaxone may suffice (regimen in Treatment). ^[ssc-sepsis-2026, common-practice]
 
-   {{dose:ceftriaxone-iv}}
    {{dose:piperacillin-tazobactam-sepsis}}
-   {{dose:cefepime-sepsis}}
+
+   - With MRSA risk, then: ^[ssc-sepsis-2026, idsa-sepsis-hospital-2026]
+
    {{dose:vancomycin-iv}}
 
    - Give the β-lactam before vancomycin. ^[idsa-sepsis-hospital-2026]
