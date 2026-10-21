@@ -2,6 +2,10 @@
 
 What changed in each version of Wards, newest first. The version is shown in Settings (gear on Home).
 
+## 2026.10.21.25
+
+**New card: Upper GI Bleeding (Nonvariceal).** The first card in a new Gastroenterology system in Topics, with a Rapids "Do Now" page (including Timed Mode) and a "Risk, Resuscitation and Endoscopy Timing" pathway. It covers resuscitation, transfusion thresholds, drugs to hold, endoscopy timing, and the Forrest criteria. MDCalc links for Glasgow-Blatchford and AIMS65.
+
 ## 2026.10.21.24
 
 **Wider steps on cards.** The numbered steps in a card's Treatment section (and other numbered lists in card sections) now use the full width of the section, like Rapids pages, so the text gets about 32 points more room. No wording changed.

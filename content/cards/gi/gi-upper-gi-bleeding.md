@@ -16,7 +16,9 @@ emergency_hint: Resuscitate, erythromycin, IV PPI, endoscopy
 1. Secure airway and access
    - If: shock, altered mental status or ongoing hematemesis ^[common-practice]
    - Check: Airway protection before endoscopy if mental status is depressed or hematemesis is brisk. ^[common-practice]
-   - Two large-bore IVs; type and crossmatch; CBC, chemistry with BUN and creatinine, INR, liver tests. ^[common-practice]
+   - Two large-bore IVs. ^[common-practice]
+   - Type and crossmatch. ^[common-practice]
+   - CBC, chemistry with BUN and creatinine, INR, liver tests. ^[common-practice]
 2. Resuscitate
    - Hemorrhage: blood products early; crystalloid only as a small-volume bridge until blood is available. ^[common-practice]
    - Transfuse red cells at {{threshold:ugib-hb-restrictive}}, or {{threshold:ugib-hb-cardiovascular}} with preexisting cardiovascular disease. ^[acg-ugib-2021, aabb-rbc-2023]
@@ -32,7 +34,8 @@ emergency_hint: Resuscitate, erythromycin, IV PPI, endoscopy
    {{dose:pantoprazole-iv-ugib-infusion}}
 
 5. Hold bleeding drugs
-   - Stop NSAIDs; hold anticoagulants and P2Y12 inhibitors pending endoscopy, with cardiology input for recent stents or acute coronary syndrome. ^[common-practice]
+   - Stop NSAIDs. ^[common-practice]
+   - Hold anticoagulants and P2Y12 inhibitors pending endoscopy, with cardiology input for recent stents or acute coronary syndrome. ^[common-practice]
    - Aspirin for secondary cardiovascular prevention: do not hold; if held, restart the day endoscopic hemostasis is confirmed. ^[acg-cag-antithrombotic-2022]
    - Warfarin needing reversal (life-threatening bleeding or markedly supratherapeutic INR): prothrombin complex concentrate rather than fresh frozen plasma. Other reversal agents are on a later card. ^[acg-cag-antithrombotic-2022]
 6. Call gastroenterology
