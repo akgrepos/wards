@@ -178,6 +178,9 @@ describe('remembered sections', () => {
     launch('#/card/renal-hyperkalemia');
     const scale = document.querySelector('.scale-block') as HTMLElement;
     expect(within(scale).queryAllByRole('button')).toHaveLength(0);
+    // Stacked bands (name over detail), never side by side.
+    expect(scale.querySelectorAll('.akg-grade-list--bands .akg-grade-list__band').length).toBeGreaterThanOrEqual(2);
+    expect(scale.querySelector('.akg-grade-list__name')?.textContent).toBeTruthy();
     expect(within(scale).getByText('≥6.5 mEq/L')).toBeTruthy();
     // Every Hyperkalemia cutoff's pop-up only repeated its line, so none is tappable (owner, 2026-10-19).
     for (const v of ['≥6.5 mEq/L', '≥6.0 mEq/L', '>6.5 mEq/L', '<126 mg/dL', '>200 mg/dL']) {
