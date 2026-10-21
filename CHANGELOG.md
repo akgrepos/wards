@@ -2,6 +2,22 @@
 
 What changed in each version of Wards, newest first. The version is shown in Settings (gear on Home).
 
+## 2026.10.21.19
+
+**Fix: calculators open full height.** The change in the last update to open calculators at full height did not take effect; they now do.
+
+## 2026.10.21.18
+
+**Calculator layout.** Every calculator now opens full height. In the number-entry calculators the result stays just above the fields, with the normal range and Reset moved below them, so all the fields and the result fit on screen with the keyboard open.
+
+## 2026.10.21.17
+
+**Calculator polish.** Score calculators now open full height so the total and risk level are in view; formula calculators show the result above the number fields so the keyboard doesn't hide it. Reset is a smaller button, screen readers announce only the result, and the MDCalc link starts with a capital letter.
+
+## 2026.10.21.16
+
+**Calculators.** Six scores and formulas now work inside the app, offline: CURB-65, Wells for PE, Wells for DVT (one sheet, switch at the top), serum osmolality, anion gap and corrected sodium. Tap the score's name in a card, or the Calculate button in its box. Tick the items for a running total and risk level, or type the lab values for the result as you type. Nothing is saved; Reset clears it. The MDCalc link is the last row of each calculator, with its sources.
+
 ## 2026.10.21.15
 
 **Clearer lists.** Lines that packed three or more items together with semicolons are now short bullet lists (for example the HHS and DKA presentation lines, Hyponatremia treatment, Complicated UTI regimens). Each bullet keeps its sources. Sentences with two linked clauses, table cells and numbers are unchanged; no wording, dose or number changed.

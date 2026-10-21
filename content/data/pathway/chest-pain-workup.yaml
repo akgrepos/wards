@@ -1,0 +1,97 @@
+# A focused pathway (owner, 2026-10-21): the first-hour workup of undifferentiated chest pain as a decision tree that supplements the card.
+# ECG and bedside check first, then dissection screen, then the troponin pathway. Text comes from the card's own lines.
+# Format: docs/CONTENT-FORMAT.md, "Pathways".
+title: First-Hour Workup
+card: cardio-chest-pain
+summary: ECG, dissection screen, troponin pathway
+columns: 14
+start: arrival
+sources: [aha-acc-chest-pain-2021, acc-aha-acs-2025, acc-aha-aortic-2022, esc-paad-2024, udmi-2026]
+nodes:
+  arrival:
+    kind: start
+    at: [4, 0]
+    span: 6
+    title: Acute chest pain
+    text: Monitor, intravenous access, bilateral arm blood pressure, and a 12-lead ECG within 10 minutes.
+    next: ecg
+  ecg:
+    kind: question
+    at: [4, 1]
+    span: 6
+    title: STEMI or equivalent on ECG, or unstable?
+    text: Unstable means shock, hypoxemia or ongoing arrhythmia.
+    answers:
+      - { label: "No", at: [1, 2], span: 5, to: aorta }
+      - { label: "Yes", at: [8, 2], span: 6, to: urgent }
+  urgent:
+    kind: urgent
+    at: [8, 3]
+    span: 6
+    title: Reperfusion pathway or resuscitation
+    text:
+      - "STEMI or equivalent: activate the cath lab."
+      - "Shock or hypoxemia: bedside echocardiography for tamponade, dissection and right heart strain; decompress a tension pneumothorax."
+    links: ["section:cardio-chest-pain/first-steps"]
+    next: urgent-end
+  urgent-end:
+    kind: result
+    at: [8, 4]
+    span: 6
+    title: Treat the cause found
+    text: ACS and PE care are on their own cards.
+    links: [card:cardio-nste-acs, card:pulm-vte-diagnosis]
+  aorta:
+    kind: question
+    at: [1, 3]
+    span: 5
+    title: Tearing pain, pulse or pressure difference, or ADD-RS 2–3?
+    text: "{{calc:add-rs}}"
+    links: [criteria:add-rs]
+    answers:
+      - { label: "Yes", at: [0, 4], span: 3, to: dissection }
+      - { label: "No", at: [3, 4], span: 3, to: troponin }
+  dissection:
+    kind: result
+    at: [0, 5]
+    span: 3
+    title: CT angiography of the aorta
+    text: Hold aspirin and anticoagulants; surgical consultation if confirmed.
+    links: ["section:cardio-chest-pain/diagnosis#aortic-dissection"]
+  troponin:
+    kind: do
+    at: [3, 5]
+    span: 3
+    title: High-sensitivity troponin at 0 and 1–3 h
+    text: "Consider PE, pneumothorax and tamponade in parallel."
+    links: ["section:cardio-chest-pain/diagnosis#risk-scores"]
+    next: result
+  result:
+    kind: question
+    at: [3, 6]
+    span: 3
+    title: Troponin pathway result?
+    answers:
+      - { label: Rule-out, detail: "Below the limit of detection, symptoms >3 h", at: [0, 7], span: 3, to: low }
+      - { label: Uncertain, detail: "Neither rule-out nor rule-in", at: [3, 7], span: 3, to: observe }
+      - { label: Rule-in, detail: "Rise or fall above the 99th percentile", at: [6, 7], span: 3, to: acs }
+  low:
+    kind: result
+    at: [0, 8]
+    span: 3
+    title: MI excluded
+    text: Low risk needs no further testing or outpatient testing; look for another cause.
+  observe:
+    kind: result
+    at: [3, 8]
+    span: 3
+    title: Observe and risk-stratify
+    text: "{{calc:heart-score|HEART}}; repeat troponin; coronary CT angiography if intermediate risk."
+    links: ["section:cardio-chest-pain/diagnosis#after-a-negative-troponin-pathway"]
+  acs:
+    kind: result
+    at: [6, 8]
+    span: 3
+    title: Acute coronary syndrome
+    text: Admit; antithrombotic and invasive strategy by risk.
+    links: [card:cardio-nste-acs]

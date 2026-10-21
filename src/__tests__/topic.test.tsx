@@ -268,15 +268,23 @@ describe('remembered sections', () => {
 describe('MDCalc links', () => {
   it('a score named on a card is a link that opens MDCalc outside the app, and the card says so', () => {
     launch('#/card/id-cap');
-    const curb = screen.getAllByRole('link', { name: /^CURB-65\. Opens MDCalc in Safari, needs internet\.$/ })[0];
-    expect(curb.getAttribute('href')).toBe('https://www.mdcalc.com/calc/324/curb-65-score-pneumonia-severity');
+    const curb = screen.getAllByRole('link', { name: /^PSI\. Opens MDCalc in Safari, needs internet\.$/ })[0];
+    expect(curb.getAttribute('href')).toBe('https://www.mdcalc.com/calc/33/psi-port-score-pneumonia-severity-index-cap');
     expect(curb.getAttribute('target')).toBe('_blank');
     expect(curb.getAttribute('rel')).toContain('noopener');
     expect(screen.getByText(/open MDCalc in Safari and need internet/)).toBeTruthy();
   });
   it('keeps the words the content used, such as a capital letter', () => {
     launch('#/card/endo-dka');
-    expect(screen.getAllByRole('link', { name: /^Anion gap\. Opens MDCalc/ }).length).toBeGreaterThan(0);
+    expect(screen.getAllByRole('button', { name: 'Anion gap' }).length).toBeGreaterThan(0);
+  });
+  it('a score with an in-app calculator opens it, with the MDCalc link as its last row', () => {
+    launch('#/card/id-cap');
+    fireEvent.click(screen.getAllByRole('button', { name: 'CURB-65' })[0]);
+    expect(screen.getByText('CURB-65 pneumonia severity')).toBeTruthy();
+    fireEvent.click(screen.getByText('Age ≥65 years'));
+    expect(screen.getByText('1 point')).toBeTruthy();
+    expect(screen.getByRole('link', { name: /CURB-65 on MDCalc/ }).getAttribute('href')).toContain('mdcalc.com');
   });
   it('a card without scores has no such note', () => {
     launch('#/card/renal-iv-fluids');

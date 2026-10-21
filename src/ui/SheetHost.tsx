@@ -4,7 +4,7 @@ import { AKG } from '../design/akg';
 // One sheet at a time (Apple HIG: sheets, not popovers, on iPhone; never stack sheets).
 // The sheet covers the screen wherever the page is scrolled, opens at half height and can be dragged to full height.
 // `title` is the short bar title ("Dose"); a long name goes in `heading`, which wraps.
-export type SheetContent = { title: string; heading?: ReactNode; subheading?: ReactNode; body: ReactNode } | null;
+export type SheetContent = { title: string; heading?: ReactNode; subheading?: ReactNode; body: ReactNode; detent?: 'medium' | 'large' } | null;
 export type ShowSheet = (c: SheetContent) => void;
 const Ctx = createContext<ShowSheet>(() => {});
 export const useSheet = () => useContext(Ctx);
@@ -23,7 +23,7 @@ export function SheetHost({ children }: { children: ReactNode }) {
   return (
     <Ctx.Provider value={show}>
       {children}
-      <AKG.Sheet key={n} open={!!sheet} onClose={() => setSheet(null)} title={sheet?.title} heading={sheet?.heading} subheading={sheet?.subheading} detents={['medium', 'large']} fixed cancelLabel="Close">
+      <AKG.Sheet key={n} open={!!sheet} onClose={() => setSheet(null)} title={sheet?.title} heading={sheet?.heading} subheading={sheet?.subheading} detents={sheet?.detent === 'large' ? ['large'] : ['medium', 'large']} fixed cancelLabel="Close">
         <div className="sheet-body">{sheet?.body}</div>
       </AKG.Sheet>
     </Ctx.Provider>
