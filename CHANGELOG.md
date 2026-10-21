@@ -2,6 +2,11 @@
 
 What changed in each version of Wards, newest first. The version is shown in Settings (gear on Home).
 
+## 2026.10.21.9
+
+**Steps that are choices no longer look like a sequence.**
+- Where two steps are alternatives, the second now shows an outlined **"or"** instead of the next number, and the numbering carries on after it (3, or, 4). Marked: DKA/HHS insulin (Rapids), Atrial Fibrillation (Rapids: cardioversion, rate control, decompensated rate control; Treatment: unstable vs rate control), Hypoxemic Respiratory Failure (high-flow vs NIV), Hypokalemia and Hyponatremia (by severity), Cellulitis (severe, abscess, necrotizing). Wording and doses are unchanged. Tell me if any other list should change.
+
 ## 2026.10.21.8
 
 **Design pass, step 1: tighter numbered steps and clearer Rapids text.**

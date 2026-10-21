@@ -115,6 +115,7 @@ emergency_hint: Calcium, insulin-dextrose, remove K⁺   # in the front matter
 
 ## Formatting inside sections
 - Bullets (`- `, one nesting level: indent sub-bullets two spaces under a lead-in line ending in a colon), paragraphs, tables (`| … |`; a row's sources go at the end of the row; the first column stays in place when the table scrolls), `####` subheadings.
+- Alternatives: a step written `or. Step title` (instead of a number) is a different choice for the step above it, not the next step. It shows an outlined "or" and doesn't use up a number (3, or, 4). Use it when two steps are alternatives by situation (for example DKA versus HHS insulin), never for a sequence.
 - Numbered steps: `1. Step title`, then the step's own content indented by three spaces (bullets, dose lines, tables). Blank lines inside a step are fine; content after the steps starts unindented.
 - `:::note` … `:::` (1–3 lines, each `- sentence ^[source]`): a brown box labelled Note, for notes and caveats about the content just above it.
 - `:::scale Title` (severity bands, least to most severe), `:::compare Title` (statements that differ, side by side), `:::times Title` (recheck times on a timeline), `:::onset Title` (a row that opens onset and duration side by side, fastest first), each closed by `:::`.

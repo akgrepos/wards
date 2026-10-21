@@ -29,7 +29,7 @@ export function emergencySteps(blocks, problems = []) {
   const stepsBlock = blocks.find((b) => b.t === 'steps');
   if (!stepsBlock) return [];
   return stepsBlock.items.map((it, n) => {
-    const step = { title: it.inlines, condition: null, parts: [], warnings: [] };
+    const step = { title: it.inlines, alt: !!it.alt, condition: null, parts: [], warnings: [] };
     const where = `step ${n + 1}`;
     if (!textOf(it.inlines)) problems.push(`${where} needs a short name ("1. Shift K⁺")`);
     for (const b of it.blocks) {

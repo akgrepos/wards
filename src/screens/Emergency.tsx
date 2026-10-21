@@ -5,7 +5,7 @@ import type { Card } from '../content/types';
 import { href, open } from '../router';
 import { getTimed, useStored, type TimedSession } from '../storage';
 import { actions, doNowSteps, entryFor, isDone, isRunning, progress, startTimed, when } from '../timed';
-import { AlternativeRow, Blocks, DoseRow, Inlines, lineItems, openSources, PathwayRows } from '../ui/Rich';
+import { AlternativeRow, Blocks, DoseRow, Inlines, lineItems, openSources, PathwayRows, stepNumbers } from '../ui/Rich';
 import { useSheet, type ShowSheet } from '../ui/SheetHost';
 import { iconFor, icons } from '../ui/icons';
 import type { DoNowStep } from '../../scripts/content/emergency.mjs';
@@ -95,12 +95,13 @@ export function DoNow({ card, compact }: { card: Card; compact?: boolean }) {
   const current = session ? progress(session).current : null;
   const notes = (card.emergency?.blocks ?? []).filter((b) => b.t === 'note');
   const sources = blockSources(card.emergency?.blocks ?? []);
+  const nums = stepNumbers(steps);
   const list = (
     <AKG.StepList tint="critical" density="compact" strong>
       {steps.map((st, i) => {
         const { done, line, lead } = stepCondition(st, i, session, all);
         return (
-          <AKG.Step key={i} lead={lead} condition={line} title={<Inlines xs={st.title} />} done={done} current={current?.step === i}>
+          <AKG.Step key={i} number={nums[i] as number} className={nums[i] === 'or' ? 'step-alt' : undefined} lead={lead} condition={line} title={<Inlines xs={st.title} />} done={done} current={current?.step === i}>
             <StepParts step={st} compact={compact} />
           </AKG.Step>
         );

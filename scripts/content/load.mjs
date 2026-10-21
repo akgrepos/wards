@@ -29,7 +29,8 @@ function splitSources(line) {
 const ONLY_INSERT = /^\{\{\s*([a-z-]+)\s*:\s*([a-z0-9-]+)\s*\}\}$/;
 const isTableRow = (l) => /^\s*\|.*\|\s*$/.test(l);
 const isBullet = (l) => /^\s*[-*]\s+/.test(l);
-const isStep = (l) => /^\d+\.\s+/.test(l);
+// "1. Title" is a numbered step; "or. Title" is an alternative to the step above it (shown as "or", not numbered).
+const isStep = (l) => /^(\d+|or)\.\s+/.test(l);
 const isFence = (l) => /^:::/.test(l.trim());
 
 // "Label: text" → label and the rest (for scale bands and comparison cells).
@@ -92,11 +93,12 @@ export function parseBlocks(lines) {
       // "1. Step title", then the step's content indented under it (bullets, doses, tables).
       const items = [];
       while (i < lines.length && isStep(lines[i])) {
-        const { text, sources } = splitSources(lines[i].replace(/^\d+\.\s+/, '').trimEnd());
+        const { text, sources } = splitSources(lines[i].replace(/^(\d+|or)\.\s+/, '').trimEnd());
+        const alt = lines[i].startsWith('or.');
         i++;
         const body = [];
         while (i < lines.length && (!lines[i].trim() || /^\s{2,}\S/.test(lines[i]))) { body.push(lines[i].replace(/^ {1,4}/, '')); i++; }
-        items.push({ inlines: parseInline(text), sources, blocks: parseBlocks(body) });
+        items.push({ inlines: parseInline(text), sources, blocks: parseBlocks(body), ...(alt ? { alt: true } : {}) });
         while (i < lines.length && !lines[i].trim()) i++;
       }
       blocks.push({ t: 'steps', items });
