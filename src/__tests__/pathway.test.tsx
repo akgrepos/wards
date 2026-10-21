@@ -116,7 +116,7 @@ describe('pathways (focused decision trees)', () => {
   // must stay clear down to there (owner, 2026-10-21: no line runs through a box).
   it('no line has to pass through another box', async () => {
     const { content } = await import('../content');
-    for (const id of ['hyperkalemia-treatment', 'aki-cause-workup']) {
+    for (const id of Object.keys(content.data.pathway!)) {
       const p = content.data.pathway![id];
       const cells: { k: string; at: [number, number]; span: number }[] = [];
       for (const [k, n] of Object.entries(p.nodes)) {

@@ -5,11 +5,11 @@ Last updated 2026-10-21 (live version 2026.10.21.2, Wave 1 batch 4). A short sna
 ## Start here next time
 1. **Open a new chat and type "Start Main".** The `wards-main` skill renames it "Main", checks sessions, pull requests and branches, and runs the day by delegating to side sessions (at most three branches at a time).
 2. **Read first:** `CLAUDE.md`, then DECISIONS.md "Card-writing process" (2026-10-19) and "Sources, updated" before any card work.
-3. **Owner checks on the phone** (version 2026.10.21.2; tap Reload on "Update Ready"), then say what to change (Main sends it to a fix session):
+3. **Owner checks on the phone** (version 2026.10.21.3; tap Reload on "Update Ready"), then say what to change (Main sends it to a fix session):
    - New (2026.10.21.2): Sepsis and Septic Shock (with its Rapids page), Diabetic Ketoacidosis and Hyperosmolar Hyperglycemic State (Rapids page and the DKA: Treatment pathway), Hyperglycemia in the Hospitalized Patient (starting doses only). Try both Rapids pages in Timed Mode and the dose sheets.
    - New cardiology cards: Atrial Fibrillation (with its Rapids page: AF with RVR, Timed Mode), Acute Coronary Syndrome: NSTEMI and Unstable Angina, Acute Decompensated Heart Failure (dose sheets, US vs European comparisons under More Information).
    - New cards: Community-Acquired Pneumonia, Cellulitis and Erysipelas, Pyelonephritis and Complicated UTI (gray Regimen boxes, dose sheets); Hyponatremia (with its Rapids page), Hypokalemia, IV Fluids; Electrolyte Repletion.
-   - New focused pathways: Hyperkalemia: Treatment and AKI: Cause Workup (Pathway row under each title, Library › Pathways): levels, dose rows, checkmark answers, pinch zoom, Current Step.
+   - Pathways as simple decision trees (2026.10.21.3): Hyperkalemia: Treatment, AKI: Cause Workup and DKA: Treatment. Tap answers (others gray out, ruled-out steps fade), tap again to undo, Clear, Current Step, pinch zoom, dose rows.
    - ECG figures (2026.10.21) on AF, NSTE-ACS, Hypokalemia and Hyperkalemia: measurements, tap for full screen (scroll, − / +, pinch), light/dark, large Text Size.
    - Rapids › Hyperkalemia: Timed Mode start to finish (Mark Given, minimize, reopen the app, End, summary).
 4. **Next work** (Main picks with the owner, within the three-branch limit):
@@ -26,7 +26,7 @@ Last updated 2026-10-21 (live version 2026.10.21.2, Wave 1 batch 4). A short sna
 - **App:** live at https://akgrepos.github.io/wards/ (version 2026.10.21.2).
   - Wave 1 batch 4 (2026.10.21.2): Sepsis and Septic Shock (Critical Care, Rapids page), Diabetic Ketoacidosis and Hyperosmolar Hyperglycemic State (Endocrinology, Rapids page, DKA: Treatment pathway), Hyperglycemia in the Hospitalized Patient (approach, starting doses only).
   - ECG figures (2026.10.21): AF, NSTE-ACS and Hypokalemia from open recordings (PTB-XL; Zheng 2022 database), Hyperkalemia drawn; true scale on a grid, the criteria's measurements labeled, full screen with zoom; new Media data type (DECISIONS 2026-10-21).
-  - Pathways are focused, levelled flowcharts (2026-10-20): Hyperkalemia: Treatment and AKI: Cause Workup; several per card allowed; dose rows in boxes; rebuilt pinch zoom and Current Step.
+  - Pathways are focused decision trees (2026-10-20; simplified 2026-10-21): questions as headings, answers as buttons that lead to more questions or to step boxes with dose rows; several per card allowed; pinch zoom and Current Step.
   - Guideline audit (2026.10.20.4): every card searched for newer guidelines; NSTE-ACS moved to the Fifth Universal Definition of MI (2026) and 2026 US lipid goals; IV Fluids to Surviving Sepsis 2026; Complicated UTI, Hypokalemia, Hyponatremia and Hyperkalemia sources updated (DECISIONS 2026-10-20).
   - Wave 1 batch 3: Atrial Fibrillation (condition, Rapids page for AF with RVR), Acute Coronary Syndrome: NSTEMI and Unstable Angina, Acute Decompensated Heart Failure (condition cards, Cardiology).
   - Wave 1 batch 2: Community-Acquired Pneumonia, Cellulitis and Erysipelas, Pyelonephritis and Complicated Urinary Tract Infection (all condition cards, Infectious Disease); regimen boxes.
