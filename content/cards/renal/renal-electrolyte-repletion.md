@@ -13,7 +13,7 @@ related:
 - Oral when the gut works and nothing is urgent; IV for symptoms, ECG changes, severe deficits or no oral route. ^[asmar-hypokalemia-2012, kardalas-hypokalemia-2018, label-kphos-injection-2026, cooper-hypocalcaemia-2008]
 - Check and replete Mg: hypomagnesemia makes hypokalemia and hypocalcemia refractory. ^[asmar-hypokalemia-2012, cooper-hypocalcaemia-2008, endotext-hypocalcemia-2016]
 - IV KCl: never undiluted or as a push; in saline, not dextrose; the faster rate only on continuous ECG (the US label allows it only for K⁺ <2.0 mEq/L with ECG changes or paralysis). ^[label-kcl-injection-2026, asmar-hypokalemia-2012]
-- Kidney impairment: lower doses and slower rates, more frequent levels; potassium phosphate injection contraindicated at eGFR {{threshold:gfr-severe-impairment}}. ^[asmar-hypokalemia-2012, label-mgso4-2021, label-kphos-injection-2026, label-calcium-gluconate-2026]
+- Kidney impairment: lower doses and slower rates, more frequent levels; potassium phosphate injection contraindicated at {{calc:ckd-epi}} {{threshold:gfr-severe-impairment}}. ^[asmar-hypokalemia-2012, label-mgso4-2021, label-kphos-injection-2026, label-calcium-gluconate-2026]
 - Potassium phosphate if K⁺ <4.0 mEq/L; sodium phosphate if K⁺ ≥4.0 mEq/L. ^[label-kphos-injection-2026, brown-phosphorus-2006]
 - Hypocalcemia: confirm with ionized Ca²⁺ when albumin is low or the patient is critically ill; IV calcium gluconate for symptoms. ^[cooper-hypocalcaemia-2008, endotext-hypocalcemia-2016]
 
@@ -23,10 +23,10 @@ related:
 | K⁺ | <3.5 mEq/L | <2.5 mEq/L, arrhythmia, digitalis toxicity, cardiac ischemia, neuromuscular symptoms, or no working gut ^[asmar-hypokalemia-2012, kardalas-hypokalemia-2018] |
 | Mg²⁺ | Below the reference range (ICU cutoffs in use: 1.6–2.0 mg/dL) | <1.2 mg/dL (0.5 mmol/L) or significant symptoms ^[hansen-magnesium-icu-2018, goulden-magnesium-2026] |
 | Phosphate | <2.5 mg/dL (lower reference limit) | Oral not possible or insufficient; <1.0 mg/dL with symptoms ^[label-kphos-injection-2026, miller-hypophosphatemia-2000, common-practice] |
-| Ca²⁺ | True hypocalcemia (low ionized or corrected Ca) | Paresthesias, tetany, seizures, laryngospasm or arrhythmia ^[cooper-hypocalcaemia-2008, endotext-hypocalcemia-2016] |
+| Ca²⁺ | True hypocalcemia (low ionized or {{calc:corrected-calcium}}) | Paresthesias, tetany, seizures, laryngospasm or arrhythmia ^[cooper-hypocalcaemia-2008, endotext-hypocalcemia-2016] |
 
 - Phosphorus <1.0 mg/dL can cause respiratory failure, myocardial depression or seizures. ^[miller-hypophosphatemia-2000]
-- Corrected Ca <7.6 mg/dL (1.9 mmol/L) without symptoms: consider admission; serious complications can still occur. ^[cooper-hypocalcaemia-2008]
+- {{calc:corrected-calcium|Corrected Ca}} <7.6 mg/dL (1.9 mmol/L) without symptoms: consider admission; serious complications can still occur. ^[cooper-hypocalcaemia-2008]
 - Mg supplementation at the ICU cutoffs in use hasn't been shown to prevent tachyarrhythmia. ^[goulden-magnesium-2026]
 - Heart failure or myocardial infarction: K⁺ ≥4.0 mEq/L is the long-standing advice (4.0–5.0 mEq/L in acute MI). ^[cohn-potassium-2000, goyal-potassium-ami-2012]
 - Higher is not better: in acute MI, mortality was lowest at K⁺ 3.5 to <4.5 mEq/L and about doubled at 4.5 to <5.0 (observational). ^[goyal-potassium-ami-2012]
@@ -169,7 +169,7 @@ related:
 - K⁺, GFR {{threshold:gfr-severe-impairment}}: start low and recheck K⁺ often, every 2–4 h on IV replacement (risk of life-threatening hyperkalemia; the IV KCl concentrate and premixed-bag labels list renal failure as a contraindication). ^[label-kcl-injection-2026, label-kcl-premix-2018, label-klor-con-2025, asmar-hypokalemia-2012]
 - Dialysis or severe impairment: replace K⁺ very cautiously, with nephrology involved. ^[kardalas-hypokalemia-2018]
 - Mg: generally not recommended in kidney failure; with moderately reduced GFR and severe deficiency, give a reduced dose with close monitoring. ^[hansen-magnesium-icu-2018]
-- Phosphate: potassium phosphate injection is contraindicated at eGFR {{threshold:gfr-severe-impairment}} or kidney failure; start at the low end of the dose range at eGFR 30–59. ^[label-kphos-injection-2026]
+- Phosphate: potassium phosphate injection is contraindicated at {{calc:ckd-epi}} {{threshold:gfr-severe-impairment}} or kidney failure; start at the low end of the dose range at {{calc:ckd-epi}} 30–59. ^[label-kphos-injection-2026]
 - Sodium phosphate injection: great care, if at all, with severe renal insufficiency, heart failure or edema. ^[label-naphos-injection-2021]
 - Oral phosphate tablets: contraindicated with severe kidney impairment (under 30% of normal function). ^[label-kphos-neutral-2023]
 - Calcium: start IV calcium at the lowest dose and check calcium every 4 h. ^[label-calcium-gluconate-2026, label-calcium-chloride-2026]

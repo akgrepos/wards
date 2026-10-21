@@ -1,0 +1,4 @@
+name: qSOFA score
+short: "qSOFA"
+url: https://www.mdcalc.com/calc/2654/qsofa-quick-sofa-score-sepsis
+match: ["qSOFA"]

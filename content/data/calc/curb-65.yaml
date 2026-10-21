@@ -1,0 +1,4 @@
+name: CURB-65 score
+short: "CURB-65"
+url: https://www.mdcalc.com/calc/324/curb-65-score-pneumonia-severity
+match: ["CURB-65"]

@@ -193,6 +193,9 @@ export const DATA_TYPES = {
   regimen: { required: ['name', 'options'], sourced: true },
   // A formal definition or set of criteria: optional "any of" items and/or a table (e.g. stages).
   criteria: { required: ['name', 'short'], sourced: true },
+  // A calculator or score on MDCalc, linked from every sentence that names it (docs/DATA-TYPES.md, 12b). `match` lists the
+  // words the content check looks for, so a mention can't be left without its link.
+  calc: { required: ['name', 'short', 'url', 'match'], sourced: false },
   // An ECG recording or a drawn ECG, shown as a figure (docs/DATA-TYPES.md, 11. Media).
   media: { required: ['kind', 'title', 'alt', 'caption', 'illustrates'], sourced: true },
 };
@@ -212,3 +215,7 @@ export const UNITS = [
 // Text in card prose that looks like a dose (an amount with a dosing unit). Doses must come from {{dose:…}} inserts.
 // Rates such as urine output (mL/kg/h) and concentrations (mEq/L) are not doses.
 export const DOSE_IN_TEXT = /\b\d+(?:\.\d+)?\s?(?:mg|mcg|g|mEq|mmol|units?|mL)\b(?!\s*\/\s*(?:L|dL|mL|kg\/min|kg\/h)\b)/;
+
+// Calculator pages live on MDCalc; every calculator item points at one.
+export const MDCALC_URL = /^https:\/\/www\.mdcalc\.com\/calc\/\d+\/[a-z0-9-]+$/;
+export const CALC_FIELDS = ['name', 'short', 'url', 'match'];

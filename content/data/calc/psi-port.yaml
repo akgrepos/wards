@@ -1,0 +1,4 @@
+name: "Pneumonia Severity Index (PSI/PORT)"
+short: "PSI"
+url: https://www.mdcalc.com/calc/33/psi-port-score-pneumonia-severity-index-cap
+match: ["PSI"]

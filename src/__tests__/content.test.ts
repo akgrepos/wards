@@ -209,3 +209,33 @@ describe('emergency (Do Now) sections', () => {
     expect(times('{after=first check=K color=red}')).toMatch(/unknown :::times setting "color"/);
   });
 });
+
+describe('MDCalc links', () => {
+  const withCalc = (fields: Record<string, unknown>, id = 'test-calc') => {
+    const base = JSON.parse(JSON.stringify(real));
+    base.data.calc ??= {};
+    base.data.calc[id] = { name: 'Test score', short: 'TESTSCORE', url: 'https://www.mdcalc.com/calc/1/test-score', match: ['TESTSCORE'], _file: 'test.yaml', ...fields };
+    return checkContent(base).join('\n');
+  };
+  it('a score named in a card without its link is rejected', () => {
+    expect(withCard(kp('- Use CURB-65 to choose the site of care. ^[example-guideline-a]')).join('\n')).toMatch(/names "CURB-65", a calculator; write \{\{calc:curb-65\}\}/);
+  });
+  it('accepts the link, with or without different words', () => {
+    expect(withCard(kp('- Use {{calc:curb-65}} to choose the site of care. ^[example-guideline-a]')).join('\n')).not.toMatch(/calculator/);
+    expect(withCard(kp('- {{calc:anion-gap|Anion gap}} is high. ^[example-guideline-a]')).join('\n')).not.toMatch(/calculator/);
+  });
+  it('does not mistake qSOFA for SOFA or NEWS2 for NEWS', () => {
+    expect(withCard(kp('- {{calc:qsofa}}, {{calc:news2}} and {{calc:sofa}} differ. ^[example-guideline-a]')).join('\n')).not.toMatch(/calculator/);
+  });
+  it('rejects a link to an unknown calculator and one on a line of its own', () => {
+    expect(withCard(kp('- See {{calc:no-such-score}}. ^[example-guideline-a]')).join('\n')).toMatch(/unknown calc "no-such-score"/);
+    expect(withCard(kp('{{calc:curb-65}}')).join('\n')).toMatch(/inside a sentence/);
+  });
+  it('a calculator item needs an MDCalc address and match words', () => {
+    expect(withCalc({ url: 'https://example.com/calc/1/x' })).toMatch(/MDCalc calculator page/);
+    expect(withCalc({ match: [] })).toMatch(/match/);
+    expect(withCalc({ url: 'https://www.mdcalc.com/calc/324/curb-65-score-pneumonia-severity' })).toMatch(/same url as calculator/);
+    expect(withCalc({ match: ['curb-65'] })).toMatch(/also a match word/);
+    expect(withCalc({ colour: 'blue' })).toMatch(/unknown calculator field/);
+  });
+});

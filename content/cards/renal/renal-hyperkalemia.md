@@ -223,7 +223,7 @@ emergency_hint: Calcium, insulin-dextrose, remove K⁺
 
 ### Epidemiology and Pathophysiology: Who gets it; K⁺ handling
 - Common with reduced GFR, diabetes, heart failure and RAAS inhibition. ^[kdigo-acute-hyperkalemia-2020]
-- Risk factors: lower eGFR, higher baseline K⁺, diabetes, heart failure, CAD. ^[kdigo-acute-hyperkalemia-2020]
+- Risk factors: lower {{calc:ckd-epi}}, higher baseline K⁺, diabetes, heart failure, CAD. ^[kdigo-acute-hyperkalemia-2020]
 - ICU prevalence rises with AKI stage: ~3% without AKI, ~32% at stage 3. ^[kdigo-acute-hyperkalemia-2020]
 
 #### Pathophysiology

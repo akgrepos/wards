@@ -1,0 +1,4 @@
+name: "Fractional excretion of sodium (FENa)"
+short: "FENa"
+url: https://www.mdcalc.com/calc/60/fractional-excretion-sodium-fena
+match: ["FENa"]

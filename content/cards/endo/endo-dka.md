@@ -72,7 +72,7 @@ emergency_hint: "Fluids, potassium, then insulin"
 
 - ICU: severe DKA, HHS, altered mental status, or a critical-illness precipitant (MI, GI bleeding, sepsis). ^[ada-hyperglycemic-crises-2024]
 - Mild or moderate uncomplicated DKA can be treated in the ED or a step-down unit with close nursing. ^[ada-hyperglycemic-crises-2024]
-- UK markers of severity prompting high-dependency care include β-hydroxybutyrate >6.0 mmol/L, HCO₃⁻ <5.0 mEq/L, pH <7.0, K⁺ <3.5 mEq/L on arrival, GCS <12, SBP <90 mm Hg; in HHS, osmolality >350 mOsm/kg or Na⁺ >160 mEq/L. ^[jbds-dka-2023, jbds-hhs-2022]
+- UK markers of severity prompting high-dependency care include β-hydroxybutyrate >6.0 mmol/L, HCO₃⁻ <5.0 mEq/L, pH <7.0, K⁺ <3.5 mEq/L on arrival, {{calc:gcs}} <12, SBP <90 mm Hg; in HHS, osmolality >350 mOsm/kg or Na⁺ >160 mEq/L. ^[jbds-dka-2023, jbds-hhs-2022]
 
 ## Causes
 - **Infection:** [!most-common] pneumonia, UTI; the most common precipitant worldwide. ^[ada-hyperglycemic-crises-2024]
@@ -91,13 +91,13 @@ emergency_hint: "Fluids, potassium, then insulin"
 
 ## Diagnosis
 #### Initial tests
-- Glucose, BMP with anion gap, venous blood gas, β-hydroxybutyrate, CBC, phosphate, magnesium, calculated osmolality. ^[ada-hyperglycemic-crises-2024]
+- Glucose, BMP with {{calc:anion-gap}}, venous blood gas, β-hydroxybutyrate, CBC, phosphate, magnesium, {{calc:serum-osmolality}}. ^[ada-hyperglycemic-crises-2024]
 - ECG (hyperkalemia, ischemia); cultures, chest radiograph, lipase, troponin, HbA1c and pregnancy test as indicated. ^[ada-hyperglycemic-crises-2024, common-practice]
 
 #### Interpretation
 - Measure β-hydroxybutyrate directly: urine nitroprusside tests detect acetoacetate, so they underestimate ketosis early and overestimate it during recovery. ^[ada-hyperglycemic-crises-2024]
-- Anion gap (>12 mEq/L is high) helps in mixed acid–base disorders or without ketone testing, but not to define resolution. ^[ada-hyperglycemic-crises-2024]
-- Sodium rises about 1.6 mEq/L for every 100 mg/dL fall in glucose; use measured Na⁺ for the anion gap. ^[ada-hyperglycemic-crises-2024, common-practice]
+- {{calc:anion-gap|Anion gap}} (>12 mEq/L is high) helps in mixed acid–base disorders or without ketone testing, but not to define resolution. ^[ada-hyperglycemic-crises-2024]
+- Sodium rises about 1.6 mEq/L for every 100 mg/dL fall in glucose; use measured Na⁺ for the {{calc:anion-gap}}. ^[ada-hyperglycemic-crises-2024, common-practice]
 - K⁺ is often normal or high on arrival despite a total-body deficit. ^[ada-hyperglycemic-crises-2024]
 - Venous pH is adequate; arterial gas only if oxygenation is in question. ^[common-practice]
 - Lipase can be elevated without pancreatitis. ^[common-practice]
@@ -153,7 +153,7 @@ emergency_hint: "Fluids, potassium, then insulin"
    - Usual time to correct hyperglycemia: 8–10 hours. ^[ada-hyperglycemic-crises-2024]
 
 7. Resolution and transition to SC insulin
-   - DKA resolved: β-hydroxybutyrate <0.6 mmol/L and pH ≥7.3 or HCO₃⁻ ≥18 mEq/L; do not use the anion gap or urine ketones. ^[ada-hyperglycemic-crises-2024]
+   - DKA resolved: β-hydroxybutyrate <0.6 mmol/L and pH ≥7.3 or HCO₃⁻ ≥18 mEq/L; do not use the {{calc:anion-gap}} or urine ketones. ^[ada-hyperglycemic-crises-2024]
    - HHS resolved: osmolality <300 mOsm/kg, glucose <250 mg/dL, urine output >0.5 mL/kg/h, cognition improved. ^[ada-hyperglycemic-crises-2024]
    - Give SC basal insulin at least 1–2 hours before stopping the infusion (ADA 2026: 2–4 hours). Switch once able to eat; if not eating, basal plus correction insulin every 4–6 hours. ^[ada-hyperglycemic-crises-2024, ada-soc-hospital-2026]
 
@@ -242,6 +242,6 @@ emergency_hint: "Fluids, potassium, then insulin"
 
 ## Pearls
 - A normal or high K⁺ on arrival hides a large total-body deficit. ^[ada-hyperglycemic-crises-2024]
-- Euglycemic DKA is easy to miss: check ketones in any unwell patient on an SGLT2 inhibitor with an anion gap. ^[ada-hyperglycemic-crises-2024]
-- The anion gap closing late because of hyperchloremia is not persistent DKA: follow β-hydroxybutyrate and pH. ^[ada-hyperglycemic-crises-2024]
+- Euglycemic DKA is easy to miss: check ketones in any unwell patient on an SGLT2 inhibitor with an {{calc:anion-gap}}. ^[ada-hyperglycemic-crises-2024]
+- The {{calc:anion-gap}} closing late because of hyperchloremia is not persistent DKA: follow β-hydroxybutyrate and pH. ^[ada-hyperglycemic-crises-2024]
 - Stopping the infusion without SC basal insulin overlap causes rebound DKA. ^[ada-hyperglycemic-crises-2024]

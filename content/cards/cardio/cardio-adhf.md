@@ -110,7 +110,7 @@ related:
    - Continue existing GDMT unless hemodynamically unstable or contraindicated; a mild creatinine or blood pressure change is not a reason to stop. ^[aha-acc-hfsa-hf-2022]
    - Cardiogenic shock or hypoperfusion: hold β-blocker; reduce or hold RAAS inhibitors with hypotension, hyperkalemia or AKI. ^[aha-acc-hfsa-hf-2022, common-practice]
    - HFrEF: start missing pillars once clinically stable: ARNI (or ACE inhibitor or ARB), evidence-based β-blocker (low dose, only once stable: near-euvolemic, diuretic dose stable, off IV vasodilators and inotropes), MRA, SGLT2 inhibitor. ^[aha-acc-hfsa-hf-2022, strong-hf-2022]
-   - SGLT2 inhibitor can be started in hospital once stable, at any LVEF; not with type 1 diabetes or ketoacidosis risk; check the label eGFR limit. ^[empulse-2022, esc-hf-2026]
+   - SGLT2 inhibitor can be started in hospital once stable, at any LVEF; not with type 1 diabetes or ketoacidosis risk; check the label {{calc:ckd-epi}} limit. ^[empulse-2022, esc-hf-2026]
    - Doses and titration: Wave 2 heart failure cards. ^[common-practice]
 
 7. Supportive care
@@ -146,7 +146,7 @@ related:
 
 ### Special Populations: HFpEF, kidney disease, right heart failure
 - HFpEF: diuretics for congestion; treat hypertension, AF and ischemia; SGLT2 inhibitor. ^[aha-acc-hfsa-hf-2022, esc-hf-2026]
-- CKD: higher loop doses needed; MRA and SGLT2 inhibitor limits by eGFR. ^[aha-acc-hfsa-hf-2022, hfa-diuretics-2019]
+- CKD: higher loop doses needed; MRA and SGLT2 inhibitor limits by {{calc:ckd-epi}}. ^[aha-acc-hfsa-hf-2022, hfa-diuretics-2019]
 - Predominant right heart failure: avoid excess preload reduction and hypotension. ^[common-practice]
 - Hypertrophic cardiomyopathy or severe aortic stenosis: avoid vasodilators and aggressive preload reduction. ^[common-practice]
 - Pregnancy and peripartum: cardiology and obstetrics; avoid ACE inhibitors, ARBs, ARNI, MRAs, SGLT2 inhibitors, ivabradine and vericiguat (fetal harm). ^[aha-acc-hfsa-hf-2022]

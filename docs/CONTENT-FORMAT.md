@@ -123,6 +123,7 @@ emergency_hint: Calcium, insulin-dextrose, remove K⁺   # in the front matter
 - `**bold**`, `*italic*`.
 - A line that is only `{{regimen:id}}` shows the regimen box (options, dose rows, duration); regimens are never inserted inside a sentence. Fields: `DATA-TYPES.md`, Regimen.
 - A line that is only `{{media:id}}` shows an ECG figure (caption, measurements, credit; tap for full screen), placed right under the line it illustrates. Its fields: `DATA-TYPES.md`, 11. Media.
+- **Scores and calculators link to MDCalc.** Every score, rule or calculator named in a card, Do Now step, regimen, criteria set or pathway box is written `{{calc:id}}` inside the sentence (never on a line of its own). It shows the calculator's `short` name; to keep other words, such as a capital letter, write `{{calc:anion-gap|Anion gap}}`. Each calculator is one file, `content/data/calc/<id>.yaml` (fields: `DATA-TYPES.md`, 12b), so an address is typed once. **When MDCalc has a page for a score or calculator, the card must link it:** the content check fails on any `match` word (for example `CURB-65`, `anion gap`) that appears without its `{{calc:…}}`. To link something new, add its file (open the MDCalc page first and copy its address; never guess one). Not linked: MAP and BMI, and words inside dose sheets.
 - A line that is only `{{criteria:id}}` shows the criteria in full. Cards never insert a pathway: each of a card's pathways shows as a row under its title, found through the pathway's `card` field (the content check rejects `{{pathway:…}}`).
 
 ## Pathways

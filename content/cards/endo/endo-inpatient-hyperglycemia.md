@@ -11,7 +11,7 @@ related:
   conditions: [endo-dka, crit-sepsis]
 ---
 ## At a Glance
-- Rule out DKA and HHS first: check ketones and an anion gap when glucose is high and the patient is unwell. ^[ada-soc-hospital-2026]
+- Rule out DKA and HHS first: check ketones and an {{calc:anion-gap}} when glucose is high and the patient is unwell. ^[ada-soc-hospital-2026]
 - Start or intensify insulin for glucose ≥180 mg/dL twice in 24 hours; target 100–180 mg/dL on the ward and 140–180 mg/dL in the ICU. ^[ada-soc-hospital-2026]
 - Eating: basal, prandial and correction insulin. Poor or no intake: basal plus correction. ICU: IV insulin infusion. ^[ada-soc-hospital-2026]
 - Correction ("sliding scale") insulin alone is discouraged for most; never in type 1 diabetes. ^[ada-soc-hospital-2026]
@@ -36,7 +36,7 @@ related:
 - Stress hyperglycemia: hyperglycemia during acute illness without known diabetes and a normal HbA1c. ^[ada-soc-hospital-2026, common-practice]
 
 ## First Steps
-- Glucose ≥200 mg/dL (or known diabetes) with vomiting, abdominal pain, altered mentation or illness: check β-hydroxybutyrate, venous pH and anion gap for [[endo-dka|DKA or HHS]]. ^[ada-hyperglycemic-crises-2024]
+- Glucose ≥200 mg/dL (or known diabetes) with vomiting, abdominal pain, altered mentation or illness: check β-hydroxybutyrate, venous pH and {{calc:anion-gap}} for [[endo-dka|DKA or HHS]]. ^[ada-hyperglycemic-crises-2024]
 - On an SGLT2 inhibitor: DKA can occur with glucose <200 mg/dL. ^[ada-hyperglycemic-crises-2024]
 - Type 1 diabetes: always basal insulin, even when NPO. ^[ada-soc-hospital-2026]
 - Glucose <70 mg/dL: treat now (see Treatment). ^[ada-soc-hospital-2026]
@@ -54,7 +54,7 @@ related:
 - Home regimen: insulin type, doses and timing, pump or CGM, noninsulin drugs, recent hypoglycemia. ^[ada-soc-hospital-2026, endocrine-hospital-hyperglycemia-2022]
 - Expected intake: eating, NPO, enteral or parenteral nutrition. ^[ada-soc-hospital-2026]
 - Glucocorticoid dose and timing; planned tapers. ^[ada-soc-hospital-2026]
-- Hypoglycemia risk: age ≥65 years, BMI ≤27 kg/m², high insulin doses, CKD (eGFR <60), liver failure, heart failure, stroke, infection, active cancer, pancreatic disease, prior hypoglycemia or unawareness. ^[endocrine-hospital-hyperglycemia-2022]
+- Hypoglycemia risk: age ≥65 years, BMI ≤27 kg/m², high insulin doses, CKD ({{calc:ckd-epi}} <60), liver failure, heart failure, stroke, infection, active cancer, pancreatic disease, prior hypoglycemia or unawareness. ^[endocrine-hospital-hyperglycemia-2022]
 - Symptoms of crisis: polyuria, polydipsia, vomiting, abdominal pain, confusion, dehydration. ^[ada-hyperglycemic-crises-2024]
 
 ## Diagnosis

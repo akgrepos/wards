@@ -181,7 +181,7 @@ describe('remembered sections', () => {
     }
     // AKI: the urinary indices table is plain; the contrast eGFR cutoffs add a caveat, so they open a pop-up.
     launch('#/card/renal-aki');
-    const table = screen.getByText('FEUrea (on diuretics)').closest('table') as HTMLElement;
+    const table = screen.getByText(/\(on diuretics\)/).closest('table') as HTMLElement;
     expect(within(table).queryAllByRole('button')).toHaveLength(0);
     expect(within(table).getByText('<1 %')).toBeTruthy();
     fireEvent.click(screen.getByRole('button', { name: '<30 mL/min/1.73 m²' }));
@@ -256,5 +256,24 @@ describe('remembered sections', () => {
     expect(getCardScroll('renal-aki')).toBe(812);
     clearPageMemory();
     expect(getCardScroll('renal-aki')).toBeUndefined();
+  });
+});
+
+describe('MDCalc links', () => {
+  it('a score named on a card is a link that opens MDCalc outside the app, and the card says so', () => {
+    launch('#/card/id-cap');
+    const curb = screen.getAllByRole('link', { name: /^CURB-65, CURB-65 score on MDCalc\. Opens in Safari, needs internet\.$/ })[0];
+    expect(curb.getAttribute('href')).toBe('https://www.mdcalc.com/calc/324/curb-65-score-pneumonia-severity');
+    expect(curb.getAttribute('target')).toBe('_blank');
+    expect(curb.getAttribute('rel')).toContain('noopener');
+    expect(screen.getByText(/open MDCalc in Safari\. They need internet/)).toBeTruthy();
+  });
+  it('keeps the words the content used, such as a capital letter', () => {
+    launch('#/card/endo-dka');
+    expect(screen.getAllByRole('link', { name: /^Anion gap, Serum anion gap on MDCalc/ }).length).toBeGreaterThan(0);
+  });
+  it('a card without scores has no such note', () => {
+    launch('#/card/renal-iv-fluids');
+    expect(screen.queryByText(/open MDCalc in Safari/)).toBeNull();
   });
 });

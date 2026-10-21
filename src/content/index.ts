@@ -77,6 +77,9 @@ export function cardSources(card: Card): string[] {
   return seen.filter((id) => !isMarkerSource(id));
 }
 
+// Whether a page has a link to a calculator (so it can say what the links do).
+export const usesCalc = (card: Card) => JSON.stringify([card.definition, card.sections, card.emergency]).includes('"kind":"calc"');
+
 // Title Case for headings (Apple style), keeping short joining words lowercase.
 const SMALL = new Set(['a', 'an', 'and', 'as', 'at', 'by', 'for', 'in', 'of', 'on', 'or', 'the', 'to', 'vs', 'with']);
 export function titleCase(s: string) {

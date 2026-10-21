@@ -24,12 +24,12 @@ related:
 :::scale Nonpurulent cellulitis
 - Mild: no systemic signs of infection ^[idsa-ssti-2014]
 - Moderate: systemic signs of infection ^[idsa-ssti-2014]
-- Severe: failed oral antibiotics, SIRS, immunocompromise, or signs of deeper infection (bullae, skin sloughing, hypotension, organ dysfunction) ^[idsa-ssti-2014]
+- Severe: failed oral antibiotics, {{calc:sirs}}, immunocompromise, or signs of deeper infection (bullae, skin sloughing, hypotension, organ dysfunction) ^[idsa-ssti-2014]
 :::
 
 - Systemic signs: temperature >38 °C (100.4 °F) or <36 °C (96.8 °F), heart rate >90 beats/min, respiratory rate >24 breaths/min, or WBC >12,000 or <4,000 cells/µL. ^[idsa-ssti-2014]
-- IDSA puts SIRS in the severe tier, where an agent covering MRSA and streptococci is recommended. ^[idsa-ssti-2014]
-- Outpatient treatment without SIRS, altered mental status or hemodynamic instability. ^[idsa-ssti-2014]
+- IDSA puts {{calc:sirs}} in the severe tier, where an agent covering MRSA and streptococci is recommended. ^[idsa-ssti-2014]
+- Outpatient treatment without {{calc:sirs}}, altered mental status or hemodynamic instability. ^[idsa-ssti-2014]
 - Admit: concern for deeper or necrotizing infection, severe immunocompromise, poor adherence, or failure of outpatient therapy. ^[idsa-ssti-2014]
 
 ## Causes
@@ -53,7 +53,7 @@ related:
 - Blood and skin cultures not routine; obtain blood cultures with severe systemic features (high fever, hypotension), malignancy on chemotherapy, neutropenia, severe cell-mediated immunodeficiency, immersion injury or animal bite. ^[idsa-ssti-2014]
 - Purulent: culture the drained pus. ^[idsa-ssti-2014]
 - Point-of-care ultrasound to find an occult abscess. ^[raff-cellulitis-2016]
-- Necrotizing infection: imaging must not delay surgical exploration; a LRINEC score ≥6 has a sensitivity of only about 68%. ^[idsa-ssti-2014, fernando-nsti-2019]
+- Necrotizing infection: imaging must not delay surgical exploration; a {{calc:lrinec}} score ≥6 has a sensitivity of only about 68%. ^[idsa-ssti-2014, fernando-nsti-2019]
 - Unclear diagnosis or no response: dermatology review. ^[raff-cellulitis-2016]
 
 ## Treatment
@@ -65,7 +65,7 @@ related:
    {{regimen:cellulitis-iv}}
 
 2. Add MRSA coverage with specific risks
-   - Penetrating trauma, MRSA infection elsewhere, nasal MRSA colonization, injection drug use, purulent drainage, or SIRS. ^[idsa-ssti-2014]
+   - Penetrating trauma, MRSA infection elsewhere, nasal MRSA colonization, injection drug use, purulent drainage, or {{calc:sirs}}. ^[idsa-ssti-2014]
    - Adding trimethoprim-sulfamethoxazole to cephalexin does not help in pure cellulitis. ^[idsa-ssti-2014]
 
    {{regimen:cellulitis-mrsa}}
@@ -137,4 +137,4 @@ related:
 - Bilateral leg "cellulitis" is usually stasis dermatitis or lymphedema. ^[raff-cellulitis-2016]
 - Worsening redness on day 1 of the right antibiotic is common; reassess before broadening. ^[idsa-ssti-2014]
 - Pure cellulitis without purulence does not need MRSA coverage unless a specific risk is present. ^[idsa-ssti-2014]
-- Normal LRINEC or no gas on imaging does not exclude necrotizing fasciitis. ^[fernando-nsti-2019]
+- Normal {{calc:lrinec}} or no gas on imaging does not exclude necrotizing fasciitis. ^[fernando-nsti-2019]

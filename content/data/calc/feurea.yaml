@@ -1,0 +1,4 @@
+name: "Fractional excretion of urea (FEUrea)"
+short: "FEUrea"
+url: https://www.mdcalc.com/calc/62/fractional-excretion-urea-feurea
+match: ["FEUrea"]

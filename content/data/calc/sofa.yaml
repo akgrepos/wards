@@ -1,0 +1,4 @@
+name: SOFA score
+short: "SOFA"
+url: https://www.mdcalc.com/calc/691/sequential-organ-failure-assessment-sofa-score
+match: ["SOFA"]

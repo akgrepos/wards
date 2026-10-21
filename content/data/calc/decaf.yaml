@@ -1,0 +1,4 @@
+name: DECAF score for COPD exacerbation
+short: "DECAF"
+url: https://www.mdcalc.com/calc/4018/decaf-score-acute-exacerbation-copd
+match: ["DECAF"]

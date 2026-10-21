@@ -1,0 +1,4 @@
+name: PERC rule for pulmonary embolism
+short: "PERC"
+url: https://www.mdcalc.com/calc/347/perc-rule-pulmonary-embolism
+match: ["PERC"]

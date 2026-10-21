@@ -1,0 +1,4 @@
+name: "Creatinine clearance (Cockcroft-Gault)"
+short: "CrCl"
+url: https://www.mdcalc.com/calc/43/creatinine-clearance-cockcroft-gault-equation
+match: ["CrCl"]

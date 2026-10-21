@@ -1,0 +1,4 @@
+name: "Corrected QT interval (QTc)"
+short: "QTc"
+url: https://www.mdcalc.com/calc/48/corrected-qt-interval-qtc
+match: ["QTc"]

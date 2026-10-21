@@ -1,8 +1,8 @@
 name: MRSA risk
 indication: Cellulitis
-setting: "Penetrating trauma, MRSA elsewhere or in the nose, injection drug use, purulent drainage, or SIRS"
+setting: "Penetrating trauma, MRSA elsewhere or in the nose, injection drug use, purulent drainage, or {{calc:sirs}}"
 options:
-  - label: IV, for SIRS or inpatients
+  - label: IV, for {{calc:sirs}} or inpatients
     doses: [[vancomycin-iv, linezolid-600, daptomycin-ssti, ceftaroline-iv]]
   - label: Oral, no systemic signs
     doses: [clindamycin-po-ssti]

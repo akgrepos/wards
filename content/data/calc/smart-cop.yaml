@@ -1,0 +1,4 @@
+name: SMART-COP score
+short: "SMART-COP"
+url: https://www.mdcalc.com/calc/3914/smart-cop-score-pneumonia-severity
+match: ["SMART-COP"]
