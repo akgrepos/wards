@@ -5,6 +5,7 @@ https://claude.ai/artifact/GWFUZ6rCthpEuhMik4Jiru
 
 | Copied | Artifact version | Files |
 |---|---|---|
+| 2026-10-21 | local (GradeList `layout="bands"`: full-width tinted band per grade, name over stacked label/value fields at full label color; the shared design system artifact needs the same change) | `project/components/bundle.css`, `bundle.js`, `index.d.ts` |
 | 2026-10-21 | 1792601057-be7b (design pass 1 (StepList `density="compact"` and `strong`, Step `lead`, Panel `title`, Menu item `level={1}`, `CheckRow`, Flowchart `strongDetail`: answer detail at full label color)) | `project/components/bundle.css`, `bundle.js`, `index.d.ts` |
 | 2026-10-21 | 1792593951-2b80 (Button `choice` variant with `selected`: open = tinted, chosen = accent fill with a checkmark and a bold subtitle, not chosen = gray and still tappable; `block` fills its container and wraps the label; Wards uses it for pathway decisions; README and types note `aria-pressed` and `aria-describedby`) | `project/components/bundle.css`, `bundle.js`, `index.d.ts` |
 | 2026-10-21 | 1792558283-0903 (Figure: a drawing as children instead of an image, opening full screen on the theme background with gray-filled buttons; `full` for a fuller full-screen view and `fullWidth` for wide content that scrolls sideways and zooms 1–4× with − / + buttons or a pinch; an enlarge badge on figures that open full screen) | `project/components/bundle.css`, `bundle.js`, `index.d.ts` |

@@ -268,6 +268,14 @@ export function checkContent({ systems, cards, data }) {
         }
       }
       if (kind === 'criteria' && !(item.items?.length || item.rows?.length)) err(where, 'needs items or rows');
+      if (kind === 'criteria') {
+        const lay = item.layout ?? 'columns';
+        if (!['columns', 'stacked'].includes(lay)) err(where, '"layout" is columns or stacked');
+        if (lay === 'stacked') {
+          if (!item.rows?.length) err(where, 'layout: stacked needs rows');
+          else if (!Array.isArray(item.tones) || item.tones.length !== item.rows.length || item.tones.some((t) => !['yellow', 'orange', 'red'].includes(t))) err(where, 'layout: stacked needs "tones": one of yellow, orange, red per row, in order (severity only)');
+        } else if (item.tones) err(where, '"tones" only applies with layout: stacked');
+      }
       if (kind === 'criteria' && item.rows?.some((r) => !Array.isArray(r) || r.length !== (item.columns ?? []).length)) err(where, 'every row needs one cell per column');
       // A pathway: every link resolves, every box is reachable, doses come only from the card (docs/DATA-TYPES.md, 9).
       if (kind === 'pathway') for (const m of checkPathway(id, item, { cards, data })) err(where, m.slice(id.length + 2));

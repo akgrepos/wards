@@ -1,6 +1,8 @@
 name: DKA severity
 short: DKA severity
 columns: [Severity, β-hydroxybutyrate, Acidosis, Mental status, Suggested setting]
+layout: stacked
+tones: [yellow, orange, red]
 rows:
   - ["Mild", "3.0–6.0 mmol/L", "pH >7.25 to <7.30, or HCO₃⁻ 15–18 mEq/L", "Alert", "Ward or observation unit"]
   - ["Moderate", "3.0–6.0 mmol/L", "pH 7.00–7.25, or HCO₃⁻ 10 to <15 mEq/L", "Alert or drowsy", "Step-down or intermediate care"]

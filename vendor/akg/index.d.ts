@@ -1275,6 +1275,8 @@ export interface GradeListProps extends React.HTMLAttributes<HTMLDivElement> {
   label?: React.ReactNode;
   /** The word over every grade ("Stage"). */
   gradeLabel?: React.ReactNode;
+  /** "bands": each grade is a full-width tinted band, its name over stacked label/value fields (labels as written, not uppercased) (for long text). Default: chip beside the values. */
+  layout?: 'bands';
   /** 1–5 grades, least to most severe. Default tints follow ScaleBar's severity ramp. */
   rows: GradeListRow[];
 }

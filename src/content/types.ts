@@ -45,7 +45,7 @@ export type Threshold = { name: string; value: string | number; unit: string; no
 // inside an option, parts given together ("plus"); a part that is a list means any one of those doses.
 export type RegimenOption = { label?: string; when?: string; doses: (string | string[])[] };
 export type Regimen = { name: string; indication?: string; setting?: string; options: RegimenOption[]; duration?: string; notes?: string[]; sources: string[] };
-export type Criteria = { name: string; short: string; logic?: string; items?: string[]; columns?: string[]; rows?: string[][]; notes?: string[]; sources: string[] };
+export type Criteria = { name: string; short: string; logic?: string; items?: string[]; columns?: string[]; rows?: string[][]; layout?: 'columns' | 'stacked'; tones?: ('yellow' | 'orange' | 'red')[]; notes?: string[]; sources: string[] };
 // A focused pathway (docs/DATA-TYPES.md, 9): a levelled flowchart on a grid; only questions branch; a line of text
 // that is only {{dose:…}} shows the card's dose row.
 export type PathwayAnswer = { label: string; detail?: string; at: [number, number]; span?: number; to: string };

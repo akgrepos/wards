@@ -230,8 +230,8 @@ describe('remembered sections', () => {
     launch('#/card/renal-aki');
     const crit = document.querySelector('.akg-panel--definition')!;
     expect(crit.querySelector('.akg-panel__label')!.textContent).toBe('Criteria');
-    const stages = [...document.querySelectorAll('.staging .akg-grade-list__chip')];
-    expect(stages.map((c) => c.textContent)).toEqual(['Stage1', 'Stage2', 'Stage3']);
+    const stages = [...document.querySelectorAll('.staging .akg-grade-list__band')];
+    expect(stages.map((c) => c.querySelector('.akg-grade-list__name')!.textContent)).toEqual(['Stage 1', 'Stage 2', 'Stage 3']);
     expect(stages.map((c) => [...c.classList].find((k) => k.startsWith('akg-tone--')))).toEqual(['akg-tone--mild', 'akg-tone--moderate', 'akg-tone--severe']);
     const notes = [...document.querySelectorAll('.akg-panel--note')].map((n) => n.textContent);
     expect(notes.some((t) => t!.startsWith('Note') && t!.includes('Postrenal AKI is not identified by urine indices'))).toBe(true);

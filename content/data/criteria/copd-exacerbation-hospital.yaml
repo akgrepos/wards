@@ -1,6 +1,8 @@
 name: Hospitalized COPD exacerbation severity
 short: hospital severity
 columns: [Class, Clinical, Gas exchange]
+layout: stacked
+tones: [yellow, orange, red]
 rows:
   - ["No respiratory failure", "RR ≤24 breaths/min; HR ≤95 bpm; no accessory muscle use; mental status unchanged", "Hypoxemia corrects with Venturi FiO₂ 24–35%; no rise in PaCO₂"]
   - ["Respiratory failure", "RR >24 breaths/min; HR >95 bpm; accessory muscle use; mental status unchanged", "Hypoxemia corrects with Venturi FiO₂ >35%; PaCO₂ above baseline or 50–60 mm Hg"]
