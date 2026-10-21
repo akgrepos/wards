@@ -1,0 +1,13 @@
+name: AHA/ACC acute PE clinical categories
+short: PE clinical categories
+columns: [Category, Definition]
+rows:
+  - ["A, subclinical", "Incidental, asymptomatic PE"]
+  - ["B, symptomatic, low severity score", "PESI ≤85, sPESI 0 or Hestia 0. B1 subsegmental; B2 segmental or more proximal"]
+  - ["C, symptomatic, elevated severity score", "PESI >85, sPESI ≥1 or Hestia ≥1. C1 normal RV and biomarkers; C2 abnormal RV or ≥1 abnormal biomarker (troponin, BNP); C3 abnormal RV and ≥1 abnormal biomarker"]
+  - ["D, incipient cardiopulmonary failure", "D1 transient hypotension (SBP <90 mm Hg or fall >40 mm Hg lasting <15 minutes or responding to fluids); D2 normotensive shock (lactate >2 mmol/L, AKI, urine output <0.5 mL/kg/h, altered mental status, cardiac index <2.2 L/min/m², or MAP <60 mm Hg)"]
+  - ["E, cardiopulmonary failure", "E1 recurrent or persistent hypotension with cardiogenic shock; E2 refractory shock or cardiac arrest"]
+notes:
+  - "Respiratory modifier R: in C, SpO₂ <90%, RR ≥30 or any supplemental oxygen; in D, >6 L/min nasal cannula or a nonrebreather; in E, respiratory or ventilatory failure needing NIV or intubation."
+  - "Assign the most severe feature; patients move between categories as they are reassessed."
+sources: [aha-acc-pe-2026]

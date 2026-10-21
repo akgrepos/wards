@@ -1,0 +1,20 @@
+drug_name: Amoxicillin-clavulanate
+indication: COPD exacerbation with an antibiotic indication
+population: Adults
+route: PO
+amount: 875/125
+unit: mg
+frequency: every 12 hours
+duration: 5 days
+alternative:
+  dose: doxycycline-100
+  when: Penicillin allergy, or by local resistance
+adjustments:
+  - when: GFR <30 mL/min
+    change: Not the 875 mg tablet; 500 mg or 250 mg every 12 hours (GFR 10–30) or every 24 hours (GFR <10)
+  - when: Hemodialysis
+    change: 500 mg or 250 mg every 24 hours, plus a dose during and at the end of dialysis
+cautions:
+  - "Contraindicated after cholestatic jaundice or hepatic dysfunction with amoxicillin-clavulanate."
+notes: "Label dose for severe and respiratory tract infections; exacerbation of COPD is not a labeled indication (lower respiratory tract infection is). Guideline course 5–7 days in hospital, 5 days or less as an outpatient."
+sources: [gold-copd-2026, label-amox-clav-2026]

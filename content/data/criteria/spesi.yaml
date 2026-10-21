@@ -1,0 +1,13 @@
+name: Simplified PE Severity Index (sPESI)
+short: sPESI
+logic: "1 point each:"
+items:
+  - "Age >80 years"
+  - "Cancer"
+  - "Chronic cardiopulmonary disease"
+  - "Heart rate ≥110 bpm"
+  - "Systolic blood pressure <100 mm Hg"
+  - "Arterial oxygen saturation <90%"
+notes:
+  - "0 points: low risk of 30-day mortality (category B); ≥1: elevated (category C). PESI ≤85 points and Hestia 0 are equivalent low-risk scores."
+sources: [aha-acc-pe-2026]

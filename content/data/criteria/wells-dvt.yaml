@@ -1,0 +1,17 @@
+name: Wells score for DVT (two-level)
+short: Wells DVT score
+columns: [Item, Points]
+rows:
+  - ["Active cancer (treatment ongoing, within 6 months, or palliative)", "1"]
+  - ["Paralysis, paresis or recent plaster cast of the leg", "1"]
+  - ["Bedridden ≥3 days, or major surgery within 12 weeks", "1"]
+  - ["Localized tenderness along the deep veins", "1"]
+  - ["Entire leg swollen", "1"]
+  - ["Calf swelling ≥3 cm more than the other side", "1"]
+  - ["Pitting edema confined to the symptomatic leg", "1"]
+  - ["Collateral superficial (non-varicose) veins", "1"]
+  - ["Previously documented DVT", "1"]
+  - ["Alternative diagnosis at least as likely as DVT", "−2"]
+notes:
+  - "DVT likely ≥2; unlikely ≤1. Validated mainly in outpatients; performs poorly in hospitalized patients."
+sources: [wells-dvt-2003, silveira-wells-inpatient-2015]
