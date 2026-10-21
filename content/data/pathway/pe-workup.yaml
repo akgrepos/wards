@@ -1,0 +1,113 @@
+# A focused pathway (owner, 2026-10-21): the workup of suspected PE as a decision tree that supplements the card.
+# Unstable patients branch right; stable patients go by clinical probability, PERC, D-dimer with YEARS, then imaging.
+# Text comes from the card's own lines. Grid: "at: [column, row]" and "span" (columns wide).
+# Format: docs/CONTENT-FORMAT.md, "Pathways".
+title: PE Workup
+card: pulm-vte-diagnosis
+summary: Probability, PERC, D-dimer with YEARS, CTPA
+columns: 15
+start: suspected
+sources: [aha-acc-pe-2026, esc-pe-2019, acep-vte-2018, ash-vte-diagnosis-2018]
+nodes:
+  suspected:
+    kind: start
+    at: [5, 0]
+    span: 5
+    title: Suspected PE
+    text: Targeted history and examination; check for current therapeutic anticoagulation.
+    next: stable
+  stable:
+    kind: question
+    at: [5, 1]
+    span: 5
+    title: Hypotension, shock or arrest?
+    answers:
+      - { label: "No", at: [2, 2], span: 5, to: probability }
+      - { label: "Yes", at: [10, 2], span: 5, to: unstable }
+  unstable:
+    kind: urgent
+    at: [10, 3]
+    span: 5
+    title: Unstable, suspected PE
+    text:
+      - Bedside echo: RV dysfunction supports but does not confirm PE.
+      - Anticoagulate unless contraindicated; PE response team.
+    links: ["section:pulm-vte-diagnosis/first-steps"]
+    next: unstable-ct
+  unstable-ct:
+    kind: result
+    at: [10, 4]
+    span: 5
+    title: CTPA as soon as the patient can travel
+    text: Confirmed PE with hypotension or shock is category D or E.
+    links: [criteria:pe-clinical-categories]
+  probability:
+    kind: question
+    at: [0, 3]
+    span: 9
+    title: Clinical probability?
+    text: Wells, revised Geneva or gestalt.
+    links: [criteria:wells-pe]
+    answers:
+      - { label: Low, detail: "<15% and all PERC met", at: [0, 4], span: 3, to: perc-met }
+      - { label: Low or intermediate, detail: "PERC not met, or 15–50%", at: [3, 4], span: 3, to: ddimer }
+      - { label: High, detail: ">50%", at: [6, 4], span: 3, to: imaging }
+  perc-met:
+    kind: result
+    at: [0, 5]
+    span: 3
+    title: No further testing
+    text: PE probability is very low.
+    links: [criteria:perc]
+  ddimer:
+    kind: do
+    at: [3, 5]
+    span: 3
+    title: D-dimer with YEARS items
+    text: "Or an age-adjusted cutoff: age × 10 µg/L FEU above age 50."
+    links: [criteria:years-pe]
+    next: ddimer-result
+  ddimer-result:
+    kind: question
+    at: [3, 6]
+    span: 3
+    title: Below the threshold?
+    answers:
+      - { label: Below, detail: "0 YEARS items: <1000; ≥1: <500 µg/L", at: [0, 7], span: 3, to: excluded }
+      - { label: At or above, at: [3, 7], span: 3, to: imaging }
+  excluded:
+    kind: result
+    at: [0, 8]
+    span: 3
+    title: PE excluded
+    text: Look for another cause.
+  imaging:
+    kind: do
+    at: [3, 8]
+    span: 6
+    title: CT pulmonary angiography
+    text:
+      - "V/Q SPECT when CTPA is not possible (contrast allergy, severe kidney disease); needs a normal chest radiograph."
+      - "High probability, bleeding risk low and imaging delayed: therapeutic anticoagulation reasonable."
+    next: ct-result
+  ct-result:
+    kind: question
+    at: [3, 9]
+    span: 6
+    title: PE on imaging?
+    answers:
+      - { label: Positive, at: [3, 10], span: 3, to: confirmed }
+      - { label: Negative, at: [6, 10], span: 3, to: negative }
+  confirmed:
+    kind: result
+    at: [3, 11]
+    span: 3
+    title: PE confirmed
+    text: Assign the category (sPESI, troponin or BNP, lactate, RV imaging).
+    links: [criteria:pe-clinical-categories, "section:pulm-vte-diagnosis/treatment#confirmed-pe-assign-the-category"]
+  negative:
+    kind: result
+    at: [6, 11]
+    span: 3
+    title: PE excluded
+    text: No further imaging for PE, regardless of probability; look for another cause.

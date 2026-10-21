@@ -1,5 +1,5 @@
 drug_name: Doxycycline
-indication: Community-acquired pneumonia (with a β-lactam, or alone in healthy outpatients); MRSA skin infection
+indication: Community-acquired pneumonia (with a β-lactam, or alone in healthy outpatients); MRSA skin infection; COPD exacerbation
 population: Adults
 route: PO or IV
 amount: "100"
@@ -16,3 +16,4 @@ sources:
   - idsa-mrsa-2011
   - label-doxycycline-2026
   - label-doxy-iv-2021
+  - gold-copd-2026

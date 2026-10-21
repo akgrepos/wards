@@ -1,0 +1,14 @@
+name: Wells score for PE
+short: Wells score
+columns: [Item, Points]
+rows:
+  - ["Clinical signs of DVT (leg swelling, pain on palpation of deep veins)", "3"]
+  - ["PE more likely than other diagnoses", "3"]
+  - ["Heart rate >100 bpm", "1.5"]
+  - ["Immobilization ≥3 days or surgery in the previous 4 weeks", "1.5"]
+  - ["Previous DVT or PE", "1.5"]
+  - ["Hemoptysis", "1"]
+  - ["Cancer", "1"]
+notes:
+  - "Three levels: low <2, moderate 2–6, high >6. Two levels: PE unlikely ≤4, likely >4."
+sources: [aha-acc-pe-2026]

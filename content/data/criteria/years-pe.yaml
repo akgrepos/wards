@@ -1,0 +1,14 @@
+name: YEARS algorithm
+short: YEARS
+logic: "YEARS items:"
+items:
+  - "Clinical signs of DVT"
+  - "Hemoptysis"
+  - "PE the most likely diagnosis"
+columns: [YEARS items, D-dimer that excludes PE]
+rows:
+  - ["None", "<1000 µg/L FEU"]
+  - ["One or more", "<500 µg/L FEU (or below the age-adjusted cutoff)"]
+notes:
+  - "For low or intermediate probability, in patients not on therapeutic anticoagulation. At or above the threshold: imaging. Pregnancy: pregnancy-adapted YEARS (leg symptoms first go to compression ultrasound)."
+sources: [aha-acc-pe-2026, years-2017, artemis-2019]

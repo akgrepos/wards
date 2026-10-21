@@ -1,0 +1,15 @@
+name: PE rule-out criteria (PERC)
+short: PERC
+logic: "Only when clinical probability is already low (<15%, e.g. Wells <2). All must be met:"
+items:
+  - "Age <50 years"
+  - "Heart rate <100 bpm"
+  - "SpO₂ ≥95%"
+  - "No hemoptysis"
+  - "No estrogen use"
+  - "No prior DVT or PE"
+  - "No unilateral leg swelling"
+  - "No surgery or trauma requiring hospitalization in the prior 4 weeks"
+notes:
+  - "All met: PE probability is very low and no further testing is needed."
+sources: [aha-acc-pe-2026, acep-vte-2018]

@@ -1,0 +1,15 @@
+name: Antibiotic indicated
+indication: COPD exacerbation
+setting: "Increased sputum purulence plus increased dyspnea or sputum volume (or fever), a prior positive sputum culture, or any ventilatory support"
+options:
+  - label: First line, by local resistance
+    doses: [[amoxicillin-clavulanate-copd, doxycycline-100, azithromycin-copd]]
+  - label: Fluoroquinolone
+    when: "Selected patients, e.g. failure of first-line antibiotics"
+    doses: [levofloxacin-500-copd]
+duration: "5–7 days in hospital; 5 days or less as an outpatient"
+notes:
+  - "Oral when possible; IV by clinical condition."
+  - "Sputum culture with frequent exacerbations, severe airflow obstruction or ventilation: Pseudomonas or resistant organisms are possible; choose by prior cultures."
+  - "Pneumonia on imaging: treat as community-acquired pneumonia."
+sources: [gold-copd-2026, ers-ats-copd-exacerbation-2017]

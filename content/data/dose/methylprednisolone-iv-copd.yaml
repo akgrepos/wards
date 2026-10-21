@@ -1,0 +1,15 @@
+drug_name: Methylprednisolone
+brand: Solu-Medrol
+indication: COPD exacerbation, when oral steroids are not possible
+population: Adults
+route: IV
+amount: "40"
+unit: mg
+frequency: once daily
+duration: 5 days
+give_when: Unable to take oral medication
+cautions:
+  - "Switch to oral prednisone once able; oral is as effective as IV."
+  - "40 mg vial contains lactose: contraindicated with cow's milk protein allergy."
+notes: "Methylprednisolone 32 mg equals prednisone 40 mg; 40 mg is the commonly used IV dose (label usual initial dose 10–40 mg IV over several minutes). Not a labeled COPD indication."
+sources: [gold-copd-2026, label-solu-medrol-2025, common-practice]
