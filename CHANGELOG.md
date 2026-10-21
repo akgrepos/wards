@@ -6,6 +6,8 @@ What changed in each version of Wards, newest first. The version is shown in Set
 
 **Fix: jumping to a heading inside a section.** Tapping Potassium, Magnesium, Phosphate or Calcium in Contents (and any link to a heading inside a section) now stops with the heading in view instead of tucked under the top bar.
 
+- **Severity bands** (DKA, KDIGO, COPD) show their title as a plain heading instead of an empty colored box.
+
 ## 2026.10.21.12
 
 **Design pass, step 4: titled criteria boxes and a Contents menu that lists the electrolytes.**
