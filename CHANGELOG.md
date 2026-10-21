@@ -2,6 +2,10 @@
 
 What changed in each version of Wards, newest first. The version is shown in Settings (gear on Home).
 
+## 2026.10.21.22
+
+**Scales now stack.** The colored scale boxes (for example "Triage by first-minutes findings" on Chest Pain) are stacked yellow, orange, red, with the level name over its detail, so words no longer break mid-word. No wording changed.
+
 ## 2026.10.21.21
 
 **Bullets on the new cards.** Two semicolon-joined lists on the Anticoagulant card are now bullets; no wording changed.

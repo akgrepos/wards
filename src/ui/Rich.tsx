@@ -552,7 +552,10 @@ function Container({ b }: { b: ContainerBlock }) {
     return (
       <div className="scale-block">
         {title && <p className="ios-subheadline-emphasized">{title}</p>}
-        <AKG.ScaleBar segments={items.map((it: ContainerItem) => ({ label: <Inlines xs={it.label} />, range: <><Inlines xs={it.inlines} plain /><LinePill ids={it.sources.length ? it.sources : b.sources} quote={it.text} /></> }))} />
+        <AKG.GradeList
+          layout="bands"
+          rows={items.map((it: ContainerItem, i) => ({ key: i, grade: <Inlines xs={it.label} />, values: [{ label: '', value: <><Inlines xs={it.inlines} plain /><LinePill ids={it.sources.length ? it.sources : b.sources} quote={it.text} /></> }] }))}
+        />
       </div>
     );
   }

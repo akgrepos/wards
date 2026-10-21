@@ -123,6 +123,8 @@ html[data-timed] .pw-zoom { bottom: calc(env(safe-area-inset-bottom) + var(--tab
 .step-body .rich-list { list-style: disc; }
 .step-body { color: var(--label); display: flex; flex-direction: column; gap: var(--space-8); margin-top: var(--space-4); }
 .scale-block { display: flex; flex-direction: column; gap: var(--space-8); }
+/* Scale bands show the level name over its detail: no label row. */
+.scale-block .akg-grade-list__fields dt { display: none; }
 /* More Information: one card of subsections, each a 44pt row that opens in place, separated by hairlines. */
 .more-list { display: flex; flex-direction: column; }
 .more-item { padding: var(--space-4) var(--space-16) var(--space-8); }
