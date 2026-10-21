@@ -62,13 +62,18 @@ describe('topic page', () => {
 
   it('with sources shown, a pill lists that line’s sources with View Citation links', async () => {
     launch('#/card/renal-hyperkalemia');
-    await act(async () => { fireEvent.click(screen.getByRole('button', { name: 'Show Sources' })); });
+    await showSources();
     const pill = document.querySelector('#sec-at-a-glance .line-pill') as HTMLElement;
     await act(async () => { fireEvent.click(pill); });
     expect(dialog().querySelector('.akg-panel--quote')!.textContent).toMatch(/^At a Glance · /);
     expect(within(dialog()).getAllByText('View Citation').length).toBeGreaterThan(0);
   });
 });
+
+const showSources = async () => {
+  await act(async () => { fireEvent.click(screen.getByRole('button', { name: 'Contents' })); });
+  await act(async () => { fireEvent.click(within(screen.getByRole('menu')).getByText('Show Sources')); });
+};
 
 describe('dose sheet', () => {
   it('shows the drug, its fields, the alternative, interactions and sources', async () => {
@@ -205,11 +210,12 @@ describe('remembered sections', () => {
 
   it('the quote-mark button shows one source pill per line; a pill lists that line\'s sources', async () => {
     launch('#/card/renal-aki');
-    const toggle = screen.getByRole('button', { name: 'Show Sources' });
-    expect(toggle.getAttribute('aria-pressed')).toBe('false');
     expect(document.querySelector('.line-pill')).toBeNull();
-    await act(async () => { fireEvent.click(toggle); });
-    expect(toggle.getAttribute('aria-pressed')).toBe('true');
+    await showSources();
+    expect(document.querySelector('.line-pill')).not.toBeNull();
+    await act(async () => { fireEvent.click(screen.getByRole('button', { name: 'Contents' })); });
+    expect(within(screen.getByRole('menu')).getByText('Hide Sources')).toBeTruthy();
+    await act(async () => { fireEvent.keyDown(document, { key: 'Escape' }); });
     // "First: exclude obstruction, …" cites KDIGO 2012 and NICE 2024: one pill, the first source and "+1".
     const pill = screen.getAllByRole('button', { name: "Sources: KDIGO '12, NICE '24" })[0];
     expect(pill.textContent).toBe("KDIGO '12+1");

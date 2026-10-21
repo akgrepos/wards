@@ -36,7 +36,7 @@ describe('addresses', () => {
     expect(parseRoute('#/card/renal-aki/when-to-call')).toEqual({ name: 'card', id: 'renal-aki', section: 'escalation' });
     expect(parseRoute('#/emergencies')).toEqual({ name: 'emergencies' });
     expect(parseRoute('#/library')).toEqual({ name: 'library' });
-    expect(parseRoute('#/library/criteria')).toEqual({ name: 'library-list', id: 'criteria' });
+    expect(parseRoute('#/library/pathways')).toEqual({ name: 'library-list', id: 'pathways' });
     expect(parseRoute('#/search')).toEqual({ name: 'search' });
     expect(parseRoute('#/system/renal')).toEqual({ name: 'system', id: 'renal' });
     expect(parseRoute('#/card/renal-aki')).toEqual({ name: 'card', id: 'renal-aki', section: undefined });
@@ -137,10 +137,13 @@ describe('tabs', () => {
     expect(screen.getAllByText('Coming Soon').length).toBeGreaterThan(before);
   });
 
-  it('an empty Library list shows an empty state', () => {
-    launch('#/library/medications');
+  it('hides empty Library lists, and removed pages fall back to the Library', () => {
+    launch('#/library/criteria');
     render(<App />);
-    expect(screen.getByText('Nothing Here Yet')).toBeTruthy();
+    expect(screen.getByText('Medscape Drug Interaction Checker')).toBeTruthy();
+    expect(screen.queryByText('Medications')).toBeNull();
+    expect(screen.queryByText('Criteria and Staging')).toBeNull();
+    expect(screen.queryByText('Scores and Calculators')).toBeNull();
   });
 });
 

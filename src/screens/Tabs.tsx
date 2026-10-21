@@ -1,10 +1,9 @@
 import { useState, type ReactNode } from 'react';
 import { AKG } from '../design/akg';
 import { cardTypeLabel, cardsInSystem, content, pathwayHomes } from '../content';
-import type { Card, Criteria } from '../content/types';
+import type { Card } from '../content/types';
 import { href, switchTab } from '../router';
-import { INTERACTION_CHECKER, openCriteria } from '../ui/Rich';
-import { useSheet } from '../ui/SheetHost';
+import { INTERACTION_CHECKER } from '../ui/Rich';
 import { iconFor, icons } from '../ui/icons';
 import { Empty, Screen } from './common';
 
@@ -36,24 +35,24 @@ export function TopicsTab() {
 
 // Library tab: tools and reference used across topics.
 export const LIBRARY_LISTS: Record<string, { title: string; icon: keyof typeof icons; tint: string; subtitle: string; empty: string }> = {
-  scores: { title: 'Scores and Calculators', icon: 'plusForwardslashMinus', tint: 'var(--system-indigo)', subtitle: 'Risk scores and bedside calculators', empty: 'Scores and calculators will appear here once they’re added.' },
-  criteria: { title: 'Criteria and Staging', icon: 'checklist', tint: 'var(--system-indigo)', subtitle: 'Diagnostic criteria and staging systems', empty: 'Criteria and staging systems will appear here once they’re added.' },
   medications: { title: 'Medications', icon: 'pills', tint: 'var(--system-orange)', subtitle: 'Doses, adjustments, warnings', empty: 'Medications will appear here once they’re added.' },
   pathways: { title: 'Pathways', icon: 'flowchart', tint: 'var(--accent)', subtitle: 'Short flowcharts for workups and treatment', empty: 'Pathways will appear here once they’re added.' },
   labs: { title: 'Labs and Tests', icon: 'testtube2', tint: 'var(--system-purple)', subtitle: 'Interpretation, cutoffs, accuracy', empty: 'Labs and tests will appear here once they’re added.' },
 };
+
+const ofType = (type: string) => content.cards.filter((c) => c.type === type).sort((a, b) => a.title.localeCompare(b.title));
 
 const libRow = (id: string) => {
   const l = LIBRARY_LISTS[id];
   return <AKG.ListRow key={id} title={l.title} subtitle={l.subtitle} icon={icons[l.icon]} iconTint={l.tint} chevron href={href.libraryList(id)} />;
 };
 
+const listCount = (id: string) => ofType(id === 'medications' ? 'medication' : 'test').length;
+
 export function LibraryTab() {
   return (
     <Screen title="Library">
       <AKG.List header="Tools">
-        {libRow('scores')}
-        {libRow('criteria')}
         {/* A website: opens in Safari and needs internet. */}
         <AKG.ListRow
           title="Medscape Drug Interaction Checker"
@@ -65,31 +64,24 @@ export function LibraryTab() {
         />
       </AKG.List>
       <AKG.List header="Reference">
-        {libRow('medications')}
+        {/* Medications and Labs stay hidden until they have cards. */}
         {libRow('pathways')}
-        {libRow('labs')}
+        {listCount('medications') > 0 && libRow('medications')}
+        {listCount('labs') > 0 && libRow('labs')}
       </AKG.List>
     </Screen>
   );
 }
 
-const ofType = (type: string) => content.cards.filter((c) => c.type === type).sort((a, b) => a.title.localeCompare(b.title));
-
 // Library › one list.
 export function LibraryList({ id }: { id: string }) {
-  const sheet = useSheet();
   const list = LIBRARY_LISTS[id];
-  if (!list) return <NotFoundScreen />;
+  // Removed pages (Scores, Criteria and Staging) fall back to the Library itself.
+  if (!list) return <LibraryTab />;
   const cardRows = (cards: Card[]) => cards.map((c) => <AKG.ListRow key={c.id} title={c.title} subtitle={cardTypeLabel(c)} chevron href={href.card(c.id)} />);
   let rows: ReactNode[] = [];
-  if (id === 'scores') rows = cardRows(ofType('score'));
   if (id === 'medications') rows = cardRows(ofType('medication'));
   if (id === 'labs') rows = cardRows(ofType('test'));
-  if (id === 'criteria') {
-    rows = Object.entries(content.data.criteria ?? {})
-      .sort(([, a], [, b]) => (a as Criteria).name.localeCompare((b as Criteria).name))
-      .map(([cid, c]) => <AKG.ListRow key={cid} title={(c as Criteria).name} chevron onClick={() => openCriteria(sheet, c as Criteria)} />);
-  }
   if (id === 'pathways') {
     rows = pathwayHomes().map((p) => <AKG.ListRow key={p.id} title={`${p.card.title}: ${p.title}`} subtitle={p.summary} chevron href={href.pathway(p.id)} />);
   }

@@ -19,8 +19,8 @@ import { useAppearance } from './useAppearance';
 
 const TABS = [
   { value: 'home', label: 'Home', icon: icons.house },
-  { value: 'emergencies', label: 'Rapids', icon: icons.staroflifeFill },
   { value: 'topics', label: 'Topics', icon: icons.heartTextClipboard },
+  { value: 'emergencies', label: 'Rapids', icon: icons.staroflifeFill },
   { value: 'library', label: 'Library', icon: icons.crossCase },
 ];
 

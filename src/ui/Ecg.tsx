@@ -1,7 +1,7 @@
 // ECG figures (docs/DATA-TYPES.md, 11. Media; DECISIONS 2026-10-21 "ECG figures").
 // Drawn to the true ECG scale on a 1 mm / 5 mm grid: 25 mm/s and 10 mm/mV, whatever the screen width. The card shows a
 // short, lightly smoothed excerpt with the measurements its criteria use; full screen shows every stored lead for the
-// whole recording, unsmoothed, with no marks. Labels follow Text Size; colors follow light and dark.
+// whole recording, unsmoothed, with the same measurement labels on the lead the card shows. Labels follow Text Size; colors follow light and dark.
 import { useLayoutEffect, useRef, useState, type ReactNode } from 'react';
 import { AKG } from '../design/akg';
 import { content } from '../content';
@@ -142,7 +142,8 @@ function CardStrip({ ecg }: { ecg: EcgRecording }) {
   );
 }
 
-// Full screen: every stored lead, the whole recording, raw, no marks; the Figure viewer scrolls and zooms it.
+// Full screen: every stored lead, the whole recording, raw; the measurement labels stay on the lead the card shows
+// (their times are recording times). The Figure viewer scrolls and zooms it, and the labels scale with it.
 function FullStrips({ ecg }: { ecg: EcgRecording }) {
   const { ref, probe, w, font } = useBox();
   const rate = ecg.recording.rate;
@@ -151,7 +152,7 @@ function FullStrips({ ecg }: { ecg: EcgRecording }) {
   return (
     <div ref={ref} className="ecg-box ecg-full">
       <span ref={probe} className="ecg-probe" aria-hidden="true">0</span>
-      {w > 0 && leads.map(({ L, mv }) => <Strip key={L} trace={{ mv, rate, t0: 0 }} from={0} to={secs} width={w} font={font} lead={L} />)}
+      {w > 0 && leads.map(({ L, mv }) => <Strip key={L} trace={{ mv, rate, t0: 0 }} from={0} to={secs} marks={L === ecg.show.lead ? ecg.marks : []} width={w} font={font} lead={L} />)}
     </div>
   );
 }

@@ -135,8 +135,11 @@ export function CardScreen({ id, section, anchor }: { id: string; section?: stri
       setCurrent((cur ?? els[0]?.id)?.replace(/^sec-/, ''));
     };
     update();
-    addEventListener('scroll', update, { passive: true });
-    return () => removeEventListener('scroll', update);
+    // At most once per frame: reading layout on every scroll event makes the floating bars stutter on iPhone.
+    let frame = 0;
+    const onScroll = () => { if (!frame) frame = requestAnimationFrame(() => { frame = 0; update(); }); };
+    addEventListener('scroll', onScroll, { passive: true });
+    return () => { cancelAnimationFrame(frame); removeEventListener('scroll', onScroll); };
   }, [id]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // The Contents menu takes focus when it opens and gives it back to its button when it closes.
@@ -152,6 +155,7 @@ export function CardScreen({ id, section, anchor }: { id: string; section?: stri
   const menuItems = [
     ...entries.map((e) => ({ label: e.title, checked: current === e.key, onSelect: () => { setMenu(false); jump(e.key); } })),
     { type: 'separator' as const },
+    { label: showSources ? 'Hide Sources' : 'Show Sources', icon: icons.quoteOpening, onSelect: () => { setMenu(false); setShowSources(!showSources); } },
     anyOpen
       ? { label: 'Collapse All', icon: icons.chevronUpChevronDown, onSelect: () => { setMenu(false); state.setAll([...collapsible, ...subs], false); } }
       : { label: 'Expand All', icon: icons.chevronUpChevronDown, onSelect: () => { setMenu(false); state.setAll(collapsible, true); } },
@@ -165,13 +169,6 @@ export function CardScreen({ id, section, anchor }: { id: string; section?: stri
         back={{ label: system?.title ?? 'Topics', fallback: href.system(card.system) }}
         trailing={
           <AKG.ToolbarGroup>
-            {/* A toggle-style button (HIG: outside a list, a toggle is a button that highlights while on). */}
-            <AKG.ToolbarButton
-              icon={icons.quoteOpening}
-              aria-label="Show Sources"
-              selected={showSources}
-              onClick={() => setShowSources(!showSources)}
-            />
             <AKG.ToolbarButton
               id="contents-button"
               icon={icons.listBullet}
