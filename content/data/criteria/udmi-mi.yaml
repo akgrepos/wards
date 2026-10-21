@@ -2,11 +2,12 @@ name: Fifth Universal Definition of Myocardial Infarction
 short: universal definition of MI
 logic: "MI: acute myocardial injury (a rise and/or fall of cardiac troponin, at least one value above the sex-specific 99th percentile) plus at least one of:"
 items:
-  - "Symptoms or other evidence of acute myocardial ischemia, including new ischemic ECG changes or pathological Q waves"
-  - "Imaging evidence of an acute coronary pathology"
-  - "New loss of viable myocardium or a new regional wall-motion abnormality in an ischemic pattern"
+  - "Ischemic symptoms, new ischemic ECG changes or new pathological Q waves"
+  - "Angiography or intracoronary imaging showing an acute coronary pathology"
+  - "New ischemic-pattern wall-motion abnormality or loss of viable myocardium on imaging"
 notes:
   - "Classified by setting as primary, secondary or procedure-related MI (replaces the numbered types 1–5)."
-  - "Chronic myocardial injury: two or more values above the sex-specific 99th percentile in a stable setting."
+  - "MI is likely on troponin plus symptoms or ECG changes; angiography or imaging confirms it and its cause."
+  - "Chronic myocardial injury is suggested by two or more values above the sex-specific 99th percentile in a stable setting."
   - "Unstable angina: new rest or minimal-exertion angina, or sudden worsening of chronic angina, with MI excluded by serial troponin."
 sources: [udmi-2026]
