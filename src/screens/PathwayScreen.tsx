@@ -19,6 +19,8 @@ import { NotFoundScreen } from './Tabs';
 // zoom and place are kept while the app is open; Clear forgets the choices.
 
 type Choices = Record<string, number>;
+// Glide only when Reduce Motion is off.
+const glide = (): ScrollBehavior => (typeof matchMedia !== 'undefined' && matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth');
 const asks = (n: PathwayNode) => n.kind === 'question';
 const answerKey = (q: string, j: number) => `${q}#${j}`;
 
@@ -75,11 +77,13 @@ export function choose(p: Pathway, choices: Choices, q: string, j: number): Choi
   const next: Choices = { ...choices };
   if (next[q] === j) { delete next[q]; return next; }
   next[q] = j;
+  // Drop, one at a time, an earlier choice whose removal opens up more of the chart, until q is reachable again.
+  // Choices on unrelated branches stay.
   while (!reach(p, next).has(q)) {
-    const others = Object.keys(next).filter((k) => k !== q);
-    const freeing = others.find((k) => { const t = { ...next }; delete t[k]; return reach(p, t).has(q); });
-    if (freeing) delete next[freeing];
-    else { for (const k of others) delete next[k]; break; }
+    const size = reach(p, next).size;
+    const freeing = Object.keys(next).filter((k) => k !== q).find((k) => { const t = { ...next }; delete t[k]; return reach(p, t).size > size; });
+    if (!freeing) break;
+    delete next[freeing];
   }
   return next;
 }
@@ -127,12 +131,12 @@ function Box({ id, node, state }: { id: string; node: PathwayNode; state: State 
 function Question({ id, node, current }: { id: string; node: PathwayNode; current: boolean }) {
   return (
     <section className="pw-question" data-node={id} aria-current={current ? 'step' : undefined}>
-      <h2 className="ios-subheadline-emphasized">{node.title}</h2>
+      <h2 id={`pw-q-${id}`} className="ios-subheadline-emphasized">{node.title}</h2>
       {textLines(node.text).map((t, i) => {
         const dose = doseLine(t);
-        return dose ? <DoseRow key={i} id={dose} surface="fill" /> : <p key={i} className="ios-footnote"><RichText text={t} /></p>;
+        return dose ? <DoseRow key={i} id={dose} surface="raised" /> : <p key={i} className="ios-footnote"><RichText text={t} /></p>;
       })}
-      {(node.links ?? []).map((r) => <LinkRow key={r} refText={r} surface="fill" />)}
+      {(node.links ?? []).map((r) => <LinkRow key={r} refText={r} surface="raised" />)}
     </section>
   );
 }
@@ -276,7 +280,7 @@ export function PathwayScreen({ id }: { id: string }) {
     // Center the group, but never cut off the question's own left edge.
     const qr = rs[0], qx = (qr.left - pr.left) / k0;
     const left = Math.min(box.x * s1 + sz.offsetLeft + (box.w * s1) / 2 - vp.clientWidth / 2, qx * s1 + sz.offsetLeft - 16), top = Math.max(0, box.y * s1 - 24);
-    if (smooth && vp.scrollTo) vp.scrollTo({ left, top, behavior: 'smooth' }); else { vp.scrollLeft = left; vp.scrollTop = top; }
+    if (smooth && vp.scrollTo) vp.scrollTo({ left, top, behavior: glide() }); else { vp.scrollLeft = left; vp.scrollTop = top; }
   };
 
   // First visit: the whole width if it fits at a readable size, else full size; the start box centered.
@@ -429,7 +433,7 @@ export function PathwayScreen({ id }: { id: string }) {
     const b = where(el);
     const left = b.w > vp.clientWidth ? b.x - 16 : b.x + b.w / 2 - vp.clientWidth / 2;
     selfMove.current = Date.now();
-    vp.scrollTo?.({ left, top: Math.max(0, b.y - 96), behavior: 'smooth' });
+    vp.scrollTo?.({ left, top: Math.max(0, b.y - 96), behavior: glide() });
   }, [routeKey]); // eslint-disable-line react-hooks/exhaustive-deps
 
   if (!p || !card) return <NotFoundScreen />;
@@ -438,7 +442,7 @@ export function PathwayScreen({ id }: { id: string }) {
     answered.current = choices[nid] === j ? null : nid;
     setChoices(choose(p, choices, nid, j));
   };
-  const clear = () => { setChoices({}); frame(current ?? p.start, true); };
+  const clear = () => { setChoices({}); frame(p.start, true); };
   const s = scale || 1;
   const cell = (at: [number, number], span = 1): CSSProperties => ({ gridColumn: `${at[0] + 1} / span ${span}`, gridRow: at[1] + 1 });
 
@@ -467,7 +471,7 @@ export function PathwayScreen({ id }: { id: string }) {
               ))}
             </svg>
             <div className="pw-grid" ref={grid} style={{ gridTemplateColumns: `repeat(${p.columns}, var(--pw-col))` }}>
-              {Object.entries(p.nodes).flatMap(([nid, n]) => {
+              {Object.entries(p.nodes).sort(([, a], [, b]) => a.at[1] - b.at[1] || a.at[0] - b.at[0]).flatMap(([nid, n]) => {
                 const state = stateOf(nid);
                 const box = (
                   <div key={nid} ref={reg(nid)} className={`pw-cell${asks(n) ? ' pw-cell--question' : ''}${state === 'off' ? ' pw-cell--off' : ''}`} style={cell(n.at, n.span)}>
@@ -480,8 +484,8 @@ export function PathwayScreen({ id }: { id: string }) {
                   // a checkmark. Another answer chosen, or the question ruled out: gray, still tappable.
                   const selected = choices[nid] != null ? choices[nid] === j : possible.has(nid) ? undefined : false;
                   return (
-                    <div key={answerKey(nid, j)} ref={reg(answerKey(nid, j))} className="pw-cell pw-answer" data-question={nid} style={cell(a.at, a.span)}>
-                      <AKG.Button variant="choice" block selected={selected} subtitle={a.detail ? <Plain text={a.detail} /> : undefined} onClick={() => pick(nid, j)}>
+                    <div key={answerKey(nid, j)} ref={reg(answerKey(nid, j))} className={`pw-cell pw-answer${possible.has(nid) ? '' : ' pw-answer--off'}`} data-question={nid} style={cell(a.at, a.span)}>
+                      <AKG.Button variant="choice" block selected={selected} subtitle={a.detail ? <Plain text={a.detail} /> : undefined} aria-describedby={`pw-q-${nid}`} onClick={() => pick(nid, j)}>
                         {a.label}
                       </AKG.Button>
                     </div>
