@@ -7,6 +7,9 @@ amount: "4.5"
 unit: g
 frequency: every 6 hours
 rate: "over 3–4 hours after a first dose over 30 minutes"
+alternative:
+  dose: cefepime-sepsis
+  when: "Alternative antipseudomonal β-lactam (e.g. with a non-severe penicillin allergy)"
 adjustments:
   - when: CrCl 20–40 mL/min
     change: 3.375 g every 6 hours

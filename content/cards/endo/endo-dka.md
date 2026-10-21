@@ -25,27 +25,29 @@ emergency_hint: "Fluids, potassium, then insulin"
    - If: K⁺ ≤5.0 mEq/L, once urine output is established ^[ada-hyperglycemic-crises-2024]
    - Check: K⁺ <3.5 mEq/L: replace first and hold insulin. ^[ada-hyperglycemic-crises-2024]
 
-   {{dose:kcl-dka-low}}
    {{dose:kcl-dka-maintenance}}
 
    - K⁺ >5.0 mEq/L: no potassium; recheck every 2 hours. ^[ada-hyperglycemic-crises-2024]
-3. Insulin infusion
-   - If: K⁺ >3.5 mEq/L ^[ada-hyperglycemic-crises-2024]
+3. Insulin infusion, DKA
+   - If: DKA or mixed DKA/HHS, K⁺ >3.5 mEq/L ^[ada-hyperglycemic-crises-2024]
 
    {{dose:insulin-regular-dka}}
 
    - Warning: Hypokalemia, hypoglycemia ^[ada-hyperglycemic-crises-2024]
-   - HHS without ketoacidosis: half the DKA rate. ^[ada-hyperglycemic-crises-2024]
+4. Insulin infusion, HHS
+   - If: HHS without significant ketoacidosis, K⁺ >3.5 mEq/L ^[ada-hyperglycemic-crises-2024]
 
    {{dose:insulin-regular-hhs}}
 
-4. Add dextrose, keep insulin
+   - Warning: Hypokalemia ^[ada-hyperglycemic-crises-2024]
+
+5. Add dextrose, keep insulin
    - If: glucose <250 mg/dL, or euglycemic DKA from the start ^[ada-hyperglycemic-crises-2024]
 
    {{dose:dextrose-dka}}
 
    - DKA: lower the infusion to half its starting rate (the HHS rate); HHS: keep its rate. Never stop insulin for falling glucose. ^[ada-hyperglycemic-crises-2024]
-5. Find the precipitant
+6. Find the precipitant
    - Infection, insulin omission, new diabetes, MI, stroke, pancreatitis, SGLT2 inhibitors, glucocorticoids, alcohol or drugs, pregnancy. ^[ada-hyperglycemic-crises-2024]
    - Check: ECG, cultures, lipase and pregnancy test as indicated; stop SGLT2 inhibitors. ^[ada-hyperglycemic-crises-2024]
 
@@ -110,7 +112,6 @@ emergency_hint: "Fluids, potassium, then insulin"
 2. Potassium
    - Replace before and with insulin; target K⁺ 4–5 mEq/L. ^[ada-hyperglycemic-crises-2024]
 
-   {{dose:kcl-dka-low}}
    {{dose:kcl-dka-maintenance}}
 
    - Magnesium: replace if low (dosing: [[renal-electrolyte-repletion|electrolyte repletion]]). ^[common-practice]

@@ -7,6 +7,9 @@ unit: mEq
 frequency: per liter of IV fluid
 give_when: "K⁺ 3.5–5.0 mEq/L, once urine output is established"
 repeat: "K⁺ 2 hours after starting insulin, then every 4 hours; target 4–5 mEq/L"
+alternative:
+  dose: kcl-dka-low
+  when: "K⁺ <3.5 mEq/L: replace first and hold insulin"
 cautions:
   - "K⁺ >5.0 mEq/L: no potassium; start insulin and recheck K⁺ every 2 hours."
   - "The consensus flowchart gives 10–20 mEq per liter; its text gives 20–30."
