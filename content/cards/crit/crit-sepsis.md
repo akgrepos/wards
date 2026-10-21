@@ -26,11 +26,9 @@ emergency_hint: "Cultures, antibiotics, fluids, norepinephrine"
 
    {{dose:piperacillin-tazobactam-sepsis}}
 
-   - With MRSA risk, then: ^[ssc-sepsis-2026, idsa-sepsis-hospital-2026]
-
    {{dose:vancomycin-iv}}
 
-   - Give the β-lactam before vancomycin. ^[idsa-sepsis-hospital-2026]
+   - Vancomycin only with MRSA risk, after the β-lactam. ^[ssc-sepsis-2026, idsa-sepsis-hospital-2026]
 3. Crystalloid bolus
    - If: hypotension or lactate ≥4 mmol/L (consider with 2–4) ^[ssc-sepsis-2026]
 
