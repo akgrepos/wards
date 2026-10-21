@@ -240,9 +240,6 @@ function DoseSheet({ id }: { id: string }) {
         />
         {d.drug && getCard(d.drug) && <AKG.ListRow title={`Open ${getCard(d.drug)!.title}`} chevron href={href.card(d.drug)} />}
       </AKG.List>
-      {(d.adjustments?.length || d.cautions?.length || d.notes) ? (
-        <div className="sheet-sources"><SourcePills ids={d.sources} onOpen={() => setOpen(!open)} /></div>
-      ) : null}
     </div>
   );
 }
