@@ -9,6 +9,7 @@ import { href, parseRoute } from '../router';
 import { useSheet, type ShowSheet } from './SheetHost';
 import { icons } from './icons';
 import { MediaFigure } from './Ecg';
+import { hasCalculator, openCalculator } from './Calculator';
 
 // "5–10%" without a space; every other unit after a space ("0.1 units/kg/h").
 const amountWithUnit = (amount: string | number, unit: string) => (unit === '%' ? `${amount}%` : `${amount} ${unit}`);
@@ -84,7 +85,7 @@ export function SourcePills({ ids, onOpen, expanded }: { ids: string[]; onOpen: 
 }
 
 // Inside a sheet: the pills open the citations in place (one sheet at a time).
-function SheetSources({ ids }: { ids: string[] }) {
+export function SheetSources({ ids }: { ids: string[] }) {
   const [open, setOpen] = useState(false);
   if (!ids.length) return null;
   return (
@@ -334,6 +335,7 @@ function RegimenBlock({ id }: { id: string }) {
 // any other table as a table; the notes in a brown Note box. One color per kind of information (owner, 2026-10-19).
 const TONE = { yellow: 'mild', orange: 'moderate', red: 'severe' } as const;
 function CriteriaBody({ c, id }: { c: Criteria; id?: string }) {
+  const sheet = useSheet();
   // A score or formula that has an MDCalc page ends its box with that link (a calculator file with the same id).
   const calc = id ? (content.data.calc?.[id] as Calc | undefined) : undefined;
   const stacked = !!(c.rows?.length && c.layout === 'stacked' && c.tones);
@@ -351,6 +353,7 @@ function CriteriaBody({ c, id }: { c: Criteria; id?: string }) {
         {c.items?.length ? <ul className="ios-body rich-list">{c.items.map((t, i) => <li key={i}><RichText text={t} /></li>)}</ul> : null}
         {table}
         {calc && <p className="ios-body"><CalcLink c={calc} label={`${calc.short} on MDCalc`} /></p>}
+        {calc && id && hasCalculator(id) && <AKG.Button variant="tinted" block onClick={() => openCalculator(sheet, id)}>Calculate</AKG.Button>}
       </AKG.Panel>
       )}
       {stacked ? (
@@ -386,7 +389,7 @@ export const openCriteria = (sheet: ShowSheet, c: Criteria, id?: string) => shee
 // the content check rejects notes that repeat the line).
 // A named score or calculator: the words are a link to its MDCalc page, with the same arrow mark as the other links that
 // leave the app. It opens in Safari (a Done button returns to Wards) and needs internet; offline the page simply doesn't load.
-function CalcLink({ c, label }: { c: Calc; label?: string }) {
+export function CalcLink({ c, label }: { c: Calc; label?: string }) {
   const text = label ?? c.short;
   return (
     <a className="akg-link calc-link" href={c.url} target="_blank" rel="noopener noreferrer" aria-label={`${text}${c.name.includes(c.short) ? '' : `, ${c.name}`}. Opens MDCalc in Safari, needs internet.`}>
@@ -412,6 +415,11 @@ function Insert({ kind, id, plain, label }: { kind: string; id: string; plain?: 
         {t.value} {t.unit}
       </AKG.TappableValue>
     );
+  }
+  // A score with an in-app calculator opens it; the sheet ends with the MDCalc link.
+  if (kind === 'calc' && (item as unknown as Calc).calculator) {
+    const cc = item as unknown as Calc;
+    return <AKG.TappableValue onClick={() => openCalculator(sheet, id)}>{label ?? cc.short}</AKG.TappableValue>;
   }
   if (kind === 'calc') return <CalcLink c={item as unknown as Calc} label={label} />;
   if (kind === 'criteria') {

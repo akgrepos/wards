@@ -74,6 +74,10 @@ A formal definition or diagnostic criteria with their logic.
 Which scores and formulas get an in-app version, and which only an MDCalc link: see CONTENT-FORMAT, "Scores, criteria and formulas".
 Everything a calculator needs.
 - Fields: inputs (each with options and points, or a formula) · calculation · result bands → risk → recommended action · validated population · limitations · sources
+- Built (2026-10-21): stored inside the score's calculator file (`content/data/calc/<id>.yaml`, 12b) as `sources` (required) plus a `calculator` block; the MDCalc link stays the last row. Tapping the score's name, or the "Calculate" button in its criteria box (same id), opens a bottom sheet; nothing is saved.
+  - `kind: checklist`: `items` (label, points; half points allowed, negative allowed), `bandSets` (one or more; each band has `label`, `range` text, inclusive `from`/`to` numbers, optional `risk`, `action`, `high: true` for red), optional `with` (another checklist sharing the sheet through a segmented control; must be reciprocal).
+  - `kind: formula`: `expression` (words), `inputs` (id, label, US unit, min, max, optional), `results` (`fn` from the formulas in `src/calculators.ts`, label, unit, decimals, `needs`), `reference` (normal range or caution).
+  - Both: `heading`, `notes`. The content check requires sources that exist, bands covering every possible total exactly once, and results that use known formulas and inputs.
 - Home: the score card. Inserted interactively into condition and approach cards.
 
 ### 8. Grading scale

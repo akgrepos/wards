@@ -218,4 +218,7 @@ export const DOSE_IN_TEXT = /\b\d+(?:\.\d+)?\s?(?:mg|mcg|g|mEq|mmol|units?|mL)\b
 
 // Calculator pages live on MDCalc; every calculator item points at one.
 export const MDCALC_URL = /^https:\/\/www\.mdcalc\.com\/calc\/\d+\/[a-z0-9-]+$/;
-export const CALC_FIELDS = ['name', 'short', 'url', 'match'];
+export const CALC_FIELDS = ['name', 'short', 'url', 'match', 'sources', 'calculator'];
+// The in-app calculator of a score or formula (docs/DATA-TYPES.md, 7). Formulas themselves are code (src/calculators.ts);
+// these are the names a data file may use for them.
+export const CALC_FORMULAS = ['osmolality', 'effective-osmolality', 'anion-gap', 'albumin-corrected-anion-gap', 'corrected-sodium'];

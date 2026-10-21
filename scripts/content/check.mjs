@@ -1,6 +1,6 @@
 // Content checks, run on every pull request (npm run content:check) and in the tests.
 // Each rule comes from docs/CARD-TYPES.md and docs/DATA-TYPES.md.
-import { CARD_TYPES, CALC_FIELDS, MDCALC_URL, DATA_TYPES, DOSE_FIELDS, REGIMEN_FIELDS, REGIMEN_OPTION_FIELDS, SHARED_SECTIONS, UNITS, DOSE_IN_TEXT } from './schema.mjs';
+import { CARD_TYPES, CALC_FIELDS, MDCALC_URL, DATA_TYPES, DOSE_FIELDS, CALC_FORMULAS, REGIMEN_FIELDS, REGIMEN_OPTION_FIELDS, SHARED_SECTIONS, UNITS, DOSE_IN_TEXT } from './schema.mjs';
 import { TAGS, parseInline } from './inline.mjs';
 import { onsetMinutes } from './onset.mjs';
 import { emergencySteps, offsetMinutes, stepDoses } from './emergency.mjs';
@@ -56,6 +56,61 @@ export function noteRepeats(note, visible) {
   return ws.filter((w) => seen.has(stem(w))).length / ws.length > 1 / 3;
 }
 const numbers = (v) => String(v).match(/\d+(\.\d+)?/g) ?? [];
+
+// The in-app calculator of a score or formula: its items, points, bands and formulas must be complete and sourced.
+function calcTexts(item) {
+  const c = item.calculator ?? {};
+  return [...(c.notes ?? []), ...(c.items ?? []).map((i) => i?.label), ...(c.bandSets ?? []).flatMap((b) => (b?.bands ?? []).flatMap((x) => [x?.label, x?.risk, x?.action]))];
+}
+export function checkCalculator(item, data) {
+  const out = [];
+  const c = item.calculator;
+  const nonEmpty = (v) => typeof v === 'string' && v.trim();
+  if (!c || typeof c !== 'object') return ['"calculator" must be an object'];
+  if (!Array.isArray(item.sources) || !item.sources.length) out.push('a calculator needs "sources": the primary source of its formula, points and bands');
+  for (const sid of item.sources ?? []) if (!data.source?.[sid]) out.push(`calculator source "${sid}" does not exist`);
+  if (!nonEmpty(c.heading)) out.push('calculator needs a "heading"');
+  if (c.notes !== undefined && (!Array.isArray(c.notes) || c.notes.some((n) => !nonEmpty(n)))) out.push('calculator notes are a list of sentences');
+  if (c.kind === 'checklist') {
+    if (!Array.isArray(c.items) || !c.items.length) return [...out, 'a checklist calculator needs "items"'];
+    if (c.items.length > 10) out.push('a calculator has at most ten items');
+    for (const [i, x] of c.items.entries()) if (!nonEmpty(x?.label) || typeof x?.points !== 'number' || (x.points * 2) % 1 !== 0) out.push(`item ${i + 1} needs a label and points (whole or half numbers)`);
+    if (!Array.isArray(c.bandSets) || !c.bandSets.length) return [...out, 'a checklist calculator needs "bandSets"'];
+    const pts = c.items.map((x) => x.points);
+    const lo = pts.filter((p) => p < 0).reduce((a, b) => a + b, 0), hi = pts.filter((p) => p > 0).reduce((a, b) => a + b, 0);
+    for (const [k, set] of c.bandSets.entries()) {
+      if (!Array.isArray(set?.bands) || !set.bands.length) { out.push(`band set ${k + 1} needs "bands"`); continue; }
+      for (const b of set.bands) {
+        if (!nonEmpty(b?.label) || !nonEmpty(b?.range)) out.push(`band set ${k + 1}: every band needs a label and a range`);
+        for (const f of ['from', 'to']) if (b?.[f] !== undefined && typeof b[f] !== 'number') out.push(`band set ${k + 1}: "${f}" must be a number`);
+      }
+      // Every possible total falls in exactly one band.
+      const step = pts.some((p) => p % 1 !== 0) ? 0.5 : 1;
+      for (let t = lo; t <= hi; t += step) {
+        const hits = set.bands.filter((b) => (b.from === undefined || t >= b.from) && (b.to === undefined || t <= b.to)).length;
+        if (hits !== 1) { out.push(`band set ${k + 1}: a total of ${t} falls in ${hits} bands (needs exactly one)`); break; }
+      }
+    }
+    if (c.with !== undefined) {
+      const o = data.calc?.[c.with]?.calculator;
+      if (!o || o.kind !== 'checklist') out.push(`"with" names "${c.with}", which is not a checklist calculator`);
+      else if (o.with !== item._file?.replace(/.*\//, '').replace(/\.yaml$/, '')) out.push('"with" must be reciprocal');
+    }
+  } else if (c.kind === 'formula') {
+    if (!nonEmpty(c.expression)) out.push('a formula calculator needs "expression" (the formula in words)');
+    if (!nonEmpty(c.reference)) out.push('a formula calculator needs "reference" (normal range or caution)');
+    const ids = (c.inputs ?? []).map((x) => x?.id);
+    if (!ids.length) out.push('a formula calculator needs "inputs"');
+    for (const x of c.inputs ?? []) if (!x?.id || !nonEmpty(x.label) || !nonEmpty(x.unit) || typeof x.min !== 'number' || typeof x.max !== 'number') out.push(`input "${x?.id}" needs id, label, unit, min and max`);
+    if (!Array.isArray(c.results) || !c.results.length) out.push('a formula calculator needs "results"');
+    for (const r of c.results ?? []) {
+      if (!CALC_FORMULAS.includes(r?.fn)) out.push(`unknown formula "${r?.fn}" (use ${CALC_FORMULAS.join(', ')})`);
+      if (!nonEmpty(r?.label) || !nonEmpty(r?.unit) || typeof r?.decimals !== 'number') out.push(`result "${r?.fn}" needs label, unit and decimals`);
+      if (!Array.isArray(r?.needs) || r.needs.some((n) => !ids.includes(n))) out.push(`result "${r?.fn}": "needs" must list input ids`);
+    }
+  } else out.push('calculator "kind" is checklist or formula');
+  return out;
+}
 
 // Finds the names of known calculators (their `match` words) in plain text, so a mention can't go without its link.
 const escapeRe = (t) => t.replace(/[.*+?^${}()|[\]\\\/]/g, '\\$&');
@@ -272,6 +327,7 @@ export function checkContent({ systems, cards, data }) {
           if (oid !== id) for (const term of item.match ?? []) if ((o.match ?? []).some((t) => String(t).toLowerCase() === String(term).toLowerCase())) err(where, `"${term}" is also a match word of calculator "${oid}"`);
         }
       }
+      if (kind === 'calc' && item.calculator !== undefined) for (const m of checkCalculator(item, data)) err(where, m);
       if (kind === 'criteria' && !(item.items?.length || item.rows?.length)) err(where, 'needs items or rows');
       if (kind === 'criteria') {
         // The box title says what the set defines and the source year (owner, 2026-10-21): "SIADH diagnostic criteria, 2013".
@@ -291,6 +347,7 @@ export function checkContent({ systems, cards, data }) {
       // Words in shared data that show in the app follow the same rule as a card's: a named calculator is a link.
       const shown = kind === 'regimen' ? [item.name, item.setting, item.duration, ...(item.notes ?? []), ...(item.options ?? []).flatMap((o) => [o?.label, o?.when])]
         : kind === 'criteria' ? [...(item.items ?? []), ...(item.notes ?? []), ...(item.rows ?? []).flat()]
+        : kind === 'calc' ? calcTexts(item)
         : kind === 'pathway' ? Object.values(item.nodes ?? {}).flatMap((n) => (Array.isArray(n.text) ? n.text : [n.text]))
         : [];
       for (const t of shown) if (typeof t === 'string') for (const m of calcMentions(inlineText(parseInline(t)))) err(where, `names "${m.term}", a calculator; write {{calc:${m.id}}} so it links to MDCalc ("${t.slice(0, 50)}")`);
