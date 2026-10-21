@@ -50,6 +50,20 @@
 [data-theme^="macos"] .akg-button__subtitle { font-size: 11px; line-height: 14px; }
 .akg-button--destructive.akg-button--tinted { --akg-button-tint: var(--destructive); }
 
+/* Choice: one of several equal options (an answer in a decision tree or quiz). Nothing chosen yet = the tinted look;
+   chosen (selected) = accent fill with a checkmark; another option chosen (selected=false) = gray fill with a plain
+   label, still tappable so people can change their mind. Bold subtitle on the accent fill (3:1 needs bold text). */
+.akg-button--choice { background: color-mix(in srgb, var(--accent) 15%, transparent); color: var(--tinted-label); }
+[data-theme="ios-dark"] .akg-button--choice { background: color-mix(in srgb, var(--accent) 20%, transparent); }
+[data-theme^="macos"] .akg-button--choice { background: color-mix(in srgb, var(--accent) 22%, var(--fill)); color: var(--accent); }
+.akg-button--choice.akg-button--selected { background: var(--accent); color: var(--on-accent); }
+.akg-button--choice.akg-button--selected .akg-button__subtitle { opacity: 1; font-weight: 600; }
+.akg-button--choice.akg-button--unselected { background: var(--button-bordered-fill); color: var(--label); }
+.akg-button--choice:disabled { background: var(--button-disabled-fill); color: var(--label-tertiary); }
+/* Block: fills its container's width; a long label wraps onto more lines and the button grows to fit. */
+.akg-button--block { display: flex; width: 100%; height: auto; white-space: normal; text-align: center; }
+.akg-button--block .akg-button__label { min-width: 0; overflow-wrap: break-word; }
+
 /* Toggle: a button that stays on (aria-pressed). Off = gray fill + label, on = accent label on a light accent tint. */
 .akg-button--toggle { background: var(--button-bordered-fill); color: var(--label); }
 .akg-button--toggle.akg-button--pressed { background: color-mix(in srgb, var(--accent) 15%, transparent); color: var(--accent); }

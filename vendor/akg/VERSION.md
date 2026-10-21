@@ -5,6 +5,7 @@ https://claude.ai/artifact/GWFUZ6rCthpEuhMik4Jiru
 
 | Copied | Artifact version | Files |
 |---|---|---|
+| 2026-10-21 | 1792593141-b083 (Button `choice` variant with `selected`: open = tinted, chosen = accent fill with a checkmark and a bold subtitle, not chosen = gray and still tappable; `block` fills its container and wraps the label; Wards uses it for pathway decisions) | `project/components/bundle.css`, `bundle.js`, `index.d.ts` |
 | 2026-10-21 | 1792558283-0903 (Figure: a drawing as children instead of an image, opening full screen on the theme background with gray-filled buttons; `full` for a fuller full-screen view and `fullWidth` for wide content that scrolls sideways and zooms 1–4× with − / + buttons or a pinch; an enlarge badge on figures that open full screen) | `project/components/bundle.css`, `bundle.js`, `index.d.ts` |
 | 2026-10-20 | 1792549360-bdc1 (Button `subtitle`, a second smaller line as iOS buttons have; `tinted-label` token so iOS tinted labels reach 4.5:1; Icons group: `checkmark`, `plus`, `minus`; README: every symbol comes from SF Symbols) | `project/tokens.json`, `project/components/bundle.css`, `bundle.js`, `index.d.ts` |
 | 2026-10-19 | 1792454681-dae8 (Icons group: `chevron.down` added, drawn like `chevron.backward`; Wards uses it to minimize Timed Mode) | none (icon assets only; the four copied files are unchanged) |

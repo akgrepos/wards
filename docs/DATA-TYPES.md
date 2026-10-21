@@ -81,9 +81,9 @@ Ordinal scales used in exams and documentation.
 - Home: the physical exam card. Inserted into condition cards.
 
 ### 9. Pathway (focused flowchart)
-A short, levelled flowchart for one sequential task on a card (2026-10-20): diagnostic (a workup), treatment, or mixed. Boxes may end in a diagnosis, a next test or a treatment. It supplements the card; a card may have several.
+A short decision tree for one sequential task on a card (2026-10-20; decision-tree look 2026-10-21): diagnostic (a workup), treatment, or mixed. Boxes may end in a diagnosis, a next test or a treatment. It supplements the card; a card may have several.
 - Fields: title · card · summary (one line for its rows) · columns · start · levels (numbered rows, `{ title, row }`) · nodes (kinds: start, question, do, urgent, note, result), each placed on a grid (`at: [column, row]`, `span` columns wide) · questions' answers (label, optional detail, its own grid place, next box) · text lines from the card (a line that is only `{{dose:id}}` shows the card's own dose row) · at most two links per box · sources
-- Display: its own full-screen page; equivalent answers side by side; tap an answer to trace the route (filled with a checkmark), ruled-out routes fade; pinch or − + to zoom; Current Step frames the current question. Format: CONTENT-FORMAT.md, "Pathways".
+- Display: its own full-screen page; a question is a short heading and its answers are decision buttons side by side under it, each leading to another question or to a step box; tap any answer at any time to choose it (filled with a checkmark; the other answers turn gray and everything only they lead to fades; tap again to undo; Clear forgets all); lines leave a box straight down, turn once just above the box they point to and join there; pinch or − + to zoom; Current Step frames the next unanswered question. Format: CONTENT-FORMAT.md, "Pathways".
 - Home: its own page, opened from a "Pathway" row under its card's title and from the Library's Pathways; never inserted into a card
 
 ### 10. Coverage

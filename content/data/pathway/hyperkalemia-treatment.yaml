@@ -1,5 +1,6 @@
-# A focused pathway (owner, 2026-10-20): the treatment of hyperkalemia as a levelled flowchart that supplements the
-# card. Equivalent choices sit side by side on one level, each leading to its own box. Text and doses come from the
+# A focused pathway (owner, 2026-10-20; decision-tree layout 2026-10-21): the treatment of hyperkalemia as a decision
+# tree that supplements the card. Each question's answers sit side by side in the row below it, each leading to its
+# own box or the next question. Text and doses come from the
 # card's own lines and dose items (a line that is only {{dose:…}} shows the card's dose row). Grid: "at: [column,
 # row]" and "span" (columns wide). Format: docs/CONTENT-FORMAT.md, "Pathways".
 title: Treatment
@@ -7,11 +8,6 @@ card: renal-hyperkalemia
 summary: Stabilize, shift, remove, monitor
 columns: 12
 start: ecg-first
-levels:
-  - { title: Stabilize, row: 1 }
-  - { title: Shift, row: 4 }
-  - { title: Remove, row: 7 }
-  - { title: Monitor, row: 10 }
 sources: [ukka-hyperkalaemia-2026, kdigo-acute-hyperkalemia-2020, emcreg-hyperkalemia-2025, label-lokelma-2024, label-veltassa-2025]
 nodes:
   ecg-first:
@@ -28,13 +24,13 @@ nodes:
     title: ECG changes of hyperkalemia?
     text: "Peaked T waves, P-wave flattening, PR prolongation, QRS widening, sine wave. A normal ECG does not exclude life-threatening hyperkalemia."
     answers:
-      - { label: Normal ECG, detail: IV calcium not recommended, at: [4, 2], span: 4, to: severity }
-      - { label: "Yes", at: [8, 2], span: 2, to: calcium }
-      - { label: No ECG or monitor yet, detail: "KDIGO: calcium at {{threshold:k-calcium-without-ecg}}", at: [10, 2], span: 2, to: calcium }
+      - { label: Normal ECG, detail: IV calcium not recommended, at: [0, 2], span: 4, to: severity }
+      - { label: "Yes", at: [4, 2], span: 4, to: calcium }
+      - { label: No ECG or monitor yet, detail: "KDIGO: calcium at {{threshold:k-calcium-without-ecg}}", at: [8, 2], span: 4, to: calcium }
   calcium:
     kind: urgent
-    at: [8, 3]
-    span: 4
+    at: [5, 3]
+    span: 6
     title: IV calcium
     text:
       - "{{dose:calcium-gluconate-hyperkalemia}}"
