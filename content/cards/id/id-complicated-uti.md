@@ -51,7 +51,9 @@ related:
 - Urinalysis: pyuria supports UTI but also accompanies asymptomatic bacteriuria; absent pyuria makes UTI unlikely (not reliable in neutropenia). ^[idsa-asb-2019, common-practice]
 - Urine culture with susceptibilities before antibiotics in every patient. ^[johnson-pyelonephritis-2018]
 - Catheter in place more than 2 weeks: replace it if still needed (remove it if not), and culture from the new catheter before antibiotics. ^[idsa-cauti-2009]
-- Blood cultures with sepsis or when admitted; CBC, BMP and creatinine; lactate if septic. ^[common-practice]
+- Blood cultures with sepsis or when admitted ^[common-practice]
+- CBC, BMP and creatinine ^[common-practice]
+- Lactate if septic ^[common-practice]
 - Review prior urine cultures: they guide empiric choice. ^[idsa-cuti-selection-2025]
 
 #### Imaging
@@ -83,10 +85,16 @@ related:
 
 3. Narrow to the culture result
    - Once identification and susceptibilities return, switch to a targeted effective agent rather than continuing broad therapy. ^[idsa-cuti-selection-2025]
-   - ESBL-producing Enterobacterales: oral TMP-SMX, ciprofloxacin or levofloxacin if susceptible; otherwise a carbapenem or cefepime-enmetazobactam, either preferred; once-daily aminoglycosides are alternatives. ^[idsa-amr-2026]
+   - ESBL-producing Enterobacterales: ^[idsa-amr-2026]
+     - Oral TMP-SMX, ciprofloxacin or levofloxacin if susceptible ^[idsa-amr-2026]
+     - Otherwise a carbapenem or cefepime-enmetazobactam, either preferred ^[idsa-amr-2026]
+     - Once-daily aminoglycosides are alternatives ^[idsa-amr-2026]
    - ESBL-producing Enterobacterales: avoid cefepime even if reported susceptible; piperacillin-tazobactam only as an alternative, and not with critical illness or bacteremia (IDSA 2025 keeps it a first empiric choice before the organism is known). ^[idsa-amr-2026, idsa-cuti-selection-2025]
    - *Enterobacter cloacae* complex, *Klebsiella aerogenes*, *Citrobacter freundii* (inducible AmpC): TMP-SMX, ciprofloxacin or levofloxacin if susceptible; otherwise cefepime (MIC ≤8 µg/mL, no ESBL gene). Avoid ceftriaxone and piperacillin-tazobactam for invasive infection; ceftriaxone may be continued if improving with source control. ^[idsa-amr-2026]
-   - Carbapenem-resistant Enterobacterales: a fluoroquinolone or TMP-SMX if susceptible (uncommon); otherwise ceftazidime-avibactam, meropenem-vaborbactam, imipenem-relebactam, aztreonam-avibactam or cefiderocol, especially if unstable; once-daily aminoglycosides are alternatives. ^[idsa-amr-2026]
+   - Carbapenem-resistant Enterobacterales: ^[idsa-amr-2026]
+     - A fluoroquinolone or TMP-SMX if susceptible (uncommon) ^[idsa-amr-2026]
+     - Otherwise ceftazidime-avibactam, meropenem-vaborbactam, imipenem-relebactam, aztreonam-avibactam or cefiderocol, especially if unstable ^[idsa-amr-2026]
+     - Once-daily aminoglycosides are alternatives ^[idsa-amr-2026]
    - *Pseudomonas aeruginosa* with difficult-to-treat resistance: cefiderocol, ceftazidime-avibactam, ceftolozane-tazobactam or imipenem-relebactam; once-daily amikacin or tobramycin are alternatives. ^[idsa-amr-2026]
    - Reserve ceftazidime-avibactam, meropenem-vaborbactam, imipenem-relebactam, aztreonam-avibactam, ceftolozane-tazobactam and cefiderocol for carbapenem-resistant organisms, not ESBL or AmpC producers; involve infectious diseases for any difficult-to-treat resistant organism. ^[idsa-amr-2026, idsa-cuti-selection-2025]
 
@@ -123,7 +131,11 @@ related:
 ### Special Populations: Men, pregnancy, transplant
 - The IDSA 2025 regimens and durations do not address pregnancy, kidney transplant, neutropenia or prostatitis. ^[idsa-cuti-2025]
 - Men: no separate duration; suspected prostatitis may need 10–14 days. ^[idsa-cuti-duration-2025]
-- Pregnancy: usually admit; a β-lactam such as ceftriaxone; avoid fluoroquinolones and tetracyclines, and trimethoprim-sulfamethoxazole in the first trimester and near term; treat asymptomatic bacteriuria in pregnancy. ^[idsa-asb-2019, common-practice]
+- Pregnancy: ^[idsa-asb-2019, common-practice]
+  - Usually admit ^[idsa-asb-2019, common-practice]
+  - A β-lactam such as ceftriaxone ^[idsa-asb-2019, common-practice]
+  - Avoid fluoroquinolones and tetracyclines, and trimethoprim-sulfamethoxazole in the first trimester and near term ^[idsa-asb-2019, common-practice]
+  - Treat asymptomatic bacteriuria in pregnancy ^[idsa-asb-2019, common-practice]
 - Kidney transplant: duplex Doppler ultrasound of the transplant or CT abdomen and pelvis with IV contrast; infectious diseases or transplant input early. ^[acr-pyelonephritis-2022, common-practice]
 - Kidney impairment: adjust doses by {{calc:cockcroft-gault}} (see each dose sheet). ^[common-practice]
 

@@ -208,7 +208,9 @@ or. Rate control
 
 ### Epidemiology and Pathophysiology: Triggers and substrate
 - Most common sustained arrhythmia; lifetime risk about 1 in 3 to 1 in 6, varying by race and ethnicity. ^[acc-aha-af-2023]
-- Pulmonary vein ectopy triggers AF; atrial fibrosis and dilation sustain it; stasis in the left atrial appendage causes thrombus. ^[acc-aha-af-2023]
+- Pulmonary vein ectopy triggers AF ^[acc-aha-af-2023]
+- Atrial fibrosis and dilation sustain it ^[acc-aha-af-2023]
+- Stasis in the left atrial appendage causes thrombus ^[acc-aha-af-2023]
 
 ## Pearls
 - A regularized rhythm on digoxin may be complete heart block with an escape rhythm: think toxicity. ^[common-practice]

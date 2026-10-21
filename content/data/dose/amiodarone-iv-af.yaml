@@ -11,7 +11,9 @@ give_when: LVEF ≤40%, decompensated heart failure or borderline blood pressure
 cautions:
   - "May convert AF to sinus rhythm: consider thromboembolic risk if AF ≥48 h and not anticoagulated."
   - "Hypotension and bradycardia; contraindicated in cardiogenic shock, marked sinus bradycardia and second- or third-degree AV block without a pacemaker."
-  - "Central line preferred; concentrations above 3 mg/mL cause phlebitis peripherally; use an in-line filter."
+  - "Central line preferred."
+  - "Concentrations above 3 mg/mL cause phlebitis peripherally."
+  - "Use an in-line filter."
   - "Many interactions (warfarin, digoxin, statins); QT prolongation."
 notes: "AF is not a labeled indication. Label regimen (for ventricular arrhythmias, also widely used in AF): 150 mg over 10 minutes, then 1 mg/min for 6 hours, then 0.5 mg/min for 18 hours."
 sources: [acc-aha-af-2023, label-nexterone-2024]

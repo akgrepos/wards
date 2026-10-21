@@ -111,7 +111,10 @@ emergency_hint: "Controlled O₂, nebs, steroids, NIV"
 1. Oxygen and ventilatory support
    - Controlled oxygen to SpO₂ 88–92%; high-concentration oxygen raised mortality in a prehospital trial. ^[bts-oxygen-2017, austin-oxygen-2010]
    - NIV via facemask for acute hypercapnic respiratory failure (pH ≤7.35, PaCO₂ ≥45 mm Hg), severe dyspnea with fatigue, or persistent hypoxemia. ^[ats-nirs-2026, gold-copd-2026, ers-ats-niv-2017]
-   - High-flow nasal oxygen: hypoxemia despite conventional oxygen; an alternative to NIV only with mild acidemia (pH >7.25) and NIV promptly available; about a third switch to NIV. ^[ats-nirs-2026, gold-copd-2026]
+   - High-flow nasal oxygen: ^[ats-nirs-2026, gold-copd-2026]
+     - Hypoxemia despite conventional oxygen ^[ats-nirs-2026, gold-copd-2026]
+     - An alternative to NIV only with mild acidemia (pH >7.25) and NIV promptly available ^[ats-nirs-2026, gold-copd-2026]
+     - About a third switch to NIV ^[ats-nirs-2026, gold-copd-2026]
    - NIV preferred over high-flow for hypercapnic failure; high-flow if NIV is not tolerated. ^[ers-hfnc-2022]
    - Stop NIV once the patient tolerates at least 4 hours unassisted; no weaning needed. ^[gold-copd-2026]
    - Invasive ventilation: NIV failure, intolerance of high-flow or NIV, arrest, worsening consciousness or uncontrolled agitation, massive aspiration or persistent vomiting, inability to clear secretions, refractory shock, severe arrhythmias. ^[gold-copd-2026]

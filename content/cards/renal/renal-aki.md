@@ -78,7 +78,10 @@ related:
 - Urine dipstick in all; hematuria with proteinuria without UTI or catheter trauma suggests acute nephritis. ^[nice-aki-2024]
 - Urine sediment microscopy: granular casts or tubular epithelial cells favor ATN over prerenal AKI. ^[kdigo-aki-2012, perazella-urine-microscopy-2008]
 - Urine Na, Cr, urea and osmolality: urinary indices below. ^[kdigo-aki-2012]
-- Renal ultrasound: within 24 h if no clear cause or risk of obstruction; within 6 h if pyonephrosis suspected; not routine once the cause is known. ^[nice-aki-2024]
+- Renal ultrasound: ^[nice-aki-2024]
+  - Within 24 h if no clear cause or risk of obstruction ^[nice-aki-2024]
+  - Within 6 h if pyonephrosis suspected ^[nice-aki-2024]
+  - Not routine once the cause is known ^[nice-aki-2024]
 - Ultrasound rarely shows obstruction (<1%) without a suggestive history. ^[podoll-renal-us-2013]
 
 #### Urinary indices (oliguric AKI)
@@ -156,9 +159,18 @@ related:
 - Otherwise decide on the whole clinical picture and trends, not single urea, SCr or K⁺ values. ^[kdigo-aki-2012, nice-aki-2024]
 
 ## Escalation
-- Nephrology within 24 h: possible GN, vasculitis, AIN or myeloma; no clear cause; inadequate response; complications; stage 3; kidney transplant; CKD stage 4–5. ^[nice-aki-2024]
+- Nephrology within 24 h: ^[nice-aki-2024]
+  - Possible GN, vasculitis, AIN or myeloma ^[nice-aki-2024]
+  - No clear cause ^[nice-aki-2024]
+  - Inadequate response ^[nice-aki-2024]
+  - Complications ^[nice-aki-2024]
+  - Stage 3 ^[nice-aki-2024]
+  - Kidney transplant ^[nice-aki-2024]
+  - CKD stage 4–5 ^[nice-aki-2024]
 - Not needed when the cause is clear and AKI responds promptly (unless kidney transplant). ^[nice-aki-2024]
-- Urology for upper tract obstruction; immediately for pyonephrosis, solitary kidney, bilateral obstruction or complications; nephrostomy or stent within 12 h. ^[nice-aki-2024]
+- Urology for upper tract obstruction ^[nice-aki-2024]
+- Immediately for pyonephrosis, solitary kidney, bilateral obstruction or complications ^[nice-aki-2024]
+- Nephrostomy or stent within 12 h ^[nice-aki-2024]
 
 ## More Information
 ### After the Acute Phase: CKD risk, kidney follow-up

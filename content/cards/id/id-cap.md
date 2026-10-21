@@ -57,7 +57,9 @@ related:
 - Not routine in nonsevere CAP without these risks: blood cultures, sputum culture, urinary antigens. ^[idsa-ats-cap-2019]
 
 #### Other tests
-- CBC, BMP (BUN for severity), glucose; blood gas or SpO₂; lactate if septic. ^[common-practice]
+- CBC, BMP (BUN for severity), glucose ^[common-practice]
+- Blood gas or SpO₂ ^[common-practice]
+- Lactate if septic ^[common-practice]
 - Procalcitonin: do not use it to withhold antibiotics in radiographically confirmed CAP. ^[idsa-ats-cap-2019]
 
 ## Treatment
@@ -87,7 +89,9 @@ related:
    {{dose:oseltamivir-influenza}}
 
 4. Severe CAP: systemic corticosteroids
-   - Suggested for severe CAP, best within 24 hours of meeting severe criteria; not for nonsevere CAP; not with influenza. ^[ats-cap-2025, sccm-corticosteroids-2024, cape-cod-2023]
+   - Suggested for severe CAP, best within 24 hours of meeting severe criteria ^[ats-cap-2025, sccm-corticosteroids-2024, cape-cod-2023]
+   - Not for nonsevere CAP ^[ats-cap-2025, sccm-corticosteroids-2024, cape-cod-2023]
+   - Not with influenza ^[ats-cap-2025, sccm-corticosteroids-2024, cape-cod-2023]
 
    {{dose:hydrocortisone-severe-cap}}
 
@@ -139,7 +143,9 @@ related:
 - Macrolides and fluoroquinolones prolong QT: check the ECG and interacting drugs. ^[label-zithromax-iv-2026, label-levofloxacin-2024, label-moxifloxacin-2025]
 
 ### Complications: Effusion, abscess, sepsis
-- Parapneumonic effusion and empyema; lung abscess; necrotizing pneumonia (*S. aureus*). ^[common-practice]
+- Parapneumonic effusion and empyema ^[common-practice]
+- Lung abscess ^[common-practice]
+- Necrotizing pneumonia (*S. aureus*) ^[common-practice]
 - Sepsis, respiratory failure, ARDS. ^[common-practice]
 - Bacteremia; pneumococcal meningitis. ^[common-practice]
 

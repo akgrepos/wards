@@ -59,7 +59,9 @@ related:
 
 ## Diagnosis
 #### Glucose checks
-- Eating: point-of-care glucose before meals (and at bedtime by common practice); not eating: every 4–6 hours; IV insulin: every 30 minutes to 2 hours. ^[ada-soc-hospital-2026]
+- Eating: point-of-care glucose before meals (and at bedtime by common practice) ^[ada-soc-hospital-2026]
+- Not eating: every 4–6 hours ^[ada-soc-hospital-2026]
+- IV insulin: every 30 minutes to 2 hours ^[ada-soc-hospital-2026]
 - Results that do not fit the picture: repeat, then send a laboratory sample (meters err with poor perfusion, edema, anemia and some drugs). ^[ada-soc-hospital-2026]
 - Patients without diabetes on glucocorticoids or nutrition support: check glucose; stop if <140 mg/dL for 48 hours. ^[common-practice]
 
@@ -75,7 +77,10 @@ related:
 #### Common initial orders
 - Point-of-care glucose checks matched to intake (above). ^[ada-soc-hospital-2026]
 - Hold metformin, sulfonylureas and most other noninsulin drugs when acutely ill; hold GLP-1 receptor agonists in acute illness. ^[ada-soc-hospital-2026, endocrine-hospital-hyperglycemia-2022]
-- SGLT2 inhibitors: not for glucose control in hospital; continue or start for heart failure once stable; stop with ketosis, prolonged fasting or surgery. ^[ada-soc-hospital-2026]
+- SGLT2 inhibitors: ^[ada-soc-hospital-2026]
+  - Not for glucose control in hospital ^[ada-soc-hospital-2026]
+  - Continue or start for heart failure once stable ^[ada-soc-hospital-2026]
+  - Stop with ketosis, prolonged fasting or surgery ^[ada-soc-hospital-2026]
 - Consistent-carbohydrate diet; coordinate glucose checks, meal trays and prandial insulin. ^[ada-soc-hospital-2026]
 - Nurse-initiated hypoglycemia protocol. ^[ada-soc-hospital-2026]
 - Tests: [[endo-inpatient-hyperglycemia/diagnosis|HbA1c and glucose checks in Diagnosis]]. ^[ada-soc-hospital-2026]
@@ -151,7 +156,10 @@ related:
 - Type 1 diabetes: basal insulin always; correction alone is contraindicated. ^[ada-soc-hospital-2026]
 - Insulin pump or automated insulin delivery: continue when the patient can manage it and supplies, training and protocols exist. Critical illness, DKA or HHS: IV insulin. Altered consciousness or no pump expertise: SC basal-bolus insulin. Give basal insulin 2 hours before the pump comes off. ^[ada-soc-hospital-2026, endocrine-hospital-hyperglycemia-2022]
 - U-500 insulin at home: inpatient needs may fall by up to 75%. ^[ada-soc-hospital-2026]
-- Surgery: perioperative glucose 100–180 mg/dL; evening-before basal reduced by about 25%; stop SGLT2 inhibitors 3 days before (ertugliflozin 4). ^[ada-soc-hospital-2026]
+- Surgery: ^[ada-soc-hospital-2026]
+  - Perioperative glucose 100–180 mg/dL ^[ada-soc-hospital-2026]
+  - Evening-before basal reduced by about 25% ^[ada-soc-hospital-2026]
+  - Stop SGLT2 inhibitors 3 days before (ertugliflozin 4) ^[ada-soc-hospital-2026]
 - Limited life expectancy, advanced kidney failure or high hypoglycemia risk: glucose up to 250 mg/dL may be acceptable. ^[ada-soc-hospital-2026]
 - Heart failure: continue or start an SGLT2 inhibitor when stable. ^[ada-soc-hospital-2026]
 

@@ -140,7 +140,9 @@ emergency_hint: "Cultures, antibiotics, fluids, norepinephrine"
    {{dose:crystalloid-sepsis}}
 
    - Crystalloids first; balanced crystalloids over 0.9% saline, except saline with traumatic brain injury. ^[ssc-sepsis-2026]
-   - Crystalloids alone over adding albumin; albumin may suit cirrhosis or very large volumes; avoid it in traumatic brain injury. No starches or gelatin. ^[ssc-sepsis-2026]
+   - Crystalloids alone over adding albumin ^[ssc-sepsis-2026]
+   - Albumin may suit cirrhosis or very large volumes ^[ssc-sepsis-2026]
+   - Avoid it in traumatic brain injury. No starches or gelatin ^[ssc-sepsis-2026]
    - Further fluid by dynamic measures (passive leg raise or fluid challenge with stroke volume or pulse pressure change), serial lactate and capillary refill, not until lactate normalizes. ^[ssc-sepsis-2026]
    - Persistent hypoperfusion after the initial bolus: a liberal or restrictive strategy are both acceptable. ^[ssc-sepsis-2026, clovers-2023]
    - Fluid choice and volumes: [[renal-iv-fluids|IV fluids]]. ^[common-practice]
@@ -204,7 +206,10 @@ emergency_hint: "Cultures, antibiotics, fluids, norepinephrine"
 - Expected response: lactate falls (e.g. ≥10% every 2 hours) and capillary refill normalizes (≤3 seconds). ^[ssc-sepsis-2026, andromeda-shock-2019]
 - Volume overload with fluids: oxygenation, edema, fluid balance. ^[ssc-sepsis-2026]
 - Repeat blood cultures to document clearance for *Staphylococcus aureus*, *S. lugdunensis* and *Candida*. ^[ssc-sepsis-2026]
-- Daily: antibiotic need, spectrum and duration; de-escalate once susceptibilities return; stop if a noninfectious cause is found. ^[ssc-sepsis-2026]
+- Daily: ^[ssc-sepsis-2026]
+  - Antibiotic need, spectrum and duration ^[ssc-sepsis-2026]
+  - De-escalate once susceptibilities return ^[ssc-sepsis-2026]
+  - Stop if a noninfectious cause is found ^[ssc-sepsis-2026]
 - Duration: shorter courses with adequate source control; procalcitonin with clinical evaluation may help decide when to stop. ^[ssc-sepsis-2026]
 - Kidney function and drug levels for vancomycin and other renally cleared drugs. ^[common-practice]
 

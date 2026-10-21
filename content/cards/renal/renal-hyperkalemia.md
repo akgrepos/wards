@@ -85,7 +85,9 @@ emergency_hint: Calcium, insulin-dextrose, remove K⁺
 
 ## Presentation
 - Often asymptomatic. ^[kdigo-acute-hyperkalemia-2020]
-- Ascending weakness (legs to trunk); paresthesias and fasciculations may precede; paralysis. ^[kdigo-acute-hyperkalemia-2020]
+- Ascending weakness (legs to trunk) ^[kdigo-acute-hyperkalemia-2020]
+- Paresthesias and fasciculations may precede ^[kdigo-acute-hyperkalemia-2020]
+- Paralysis ^[kdigo-acute-hyperkalemia-2020]
 - ECG progression: peaked T waves → P-wave flattening, PR prolongation, QRS widening → sine wave. ^[kdigo-acute-hyperkalemia-2020]
 {{media:ecg-hyperkalemia}}
 - ECG is insensitive: up to half have a normal ECG, even with marked hyperkalemia. ^[kdigo-acute-hyperkalemia-2020]

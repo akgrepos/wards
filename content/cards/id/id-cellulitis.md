@@ -44,7 +44,9 @@ related:
 ## Presentation
 - Cellulitis: spreading erythema, warmth, edema and tenderness with indistinct borders; usually one lower leg. ^[idsa-ssti-2014, raff-cellulitis-2016]
 - Erysipelas: raised, sharply demarcated, bright red plaque; legs or face. ^[idsa-ssti-2014]
-- Lymphangitic streaking, tender regional nodes; vesicles or bullae; fever may precede the rash. ^[idsa-ssti-2014, raff-cellulitis-2016]
+- Lymphangitic streaking, tender regional nodes ^[idsa-ssti-2014, raff-cellulitis-2016]
+- Vesicles or bullae ^[idsa-ssti-2014, raff-cellulitis-2016]
+- Fever may precede the rash ^[idsa-ssti-2014, raff-cellulitis-2016]
 - Bilateral, painless, chronic or itchy: think of a mimic first. ^[raff-cellulitis-2016]
 - Necrotizing infection red flags: pain out of proportion, woody induration, violaceous bullae, skin anesthesia, crepitus, gas, rapid progression, systemic toxicity. ^[idsa-ssti-2014]
 

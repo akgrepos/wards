@@ -85,8 +85,15 @@ or. Insulin infusion, HHS
 
 ## Presentation
 - Both: polyuria, polydipsia, weight loss, volume depletion. ^[ada-hyperglycemic-crises-2024]
-- DKA: develops over hours to days; nausea, vomiting and abdominal pain (over half); Kussmaul respirations, fruity breath; usually alert. ^[ada-hyperglycemic-crises-2024]
-- HHS: develops over days to a week; profound dehydration; confusion, lethargy, focal deficits or seizures. ^[ada-hyperglycemic-crises-2024, common-practice]
+- DKA: ^[ada-hyperglycemic-crises-2024]
+  - Develops over hours to days ^[ada-hyperglycemic-crises-2024]
+  - Nausea, vomiting and abdominal pain (over half) ^[ada-hyperglycemic-crises-2024]
+  - Kussmaul respirations, fruity breath ^[ada-hyperglycemic-crises-2024]
+  - Usually alert ^[ada-hyperglycemic-crises-2024]
+- HHS: ^[ada-hyperglycemic-crises-2024, common-practice]
+  - Develops over days to a week ^[ada-hyperglycemic-crises-2024, common-practice]
+  - Profound dehydration ^[ada-hyperglycemic-crises-2024, common-practice]
+  - Confusion, lethargy, focal deficits or seizures ^[ada-hyperglycemic-crises-2024, common-practice]
 - Abdominal pain that persists after correcting dehydration and acidosis needs its own workup. ^[ada-hyperglycemic-crises-2024]
 
 ## Diagnosis
@@ -211,7 +218,10 @@ or. Insulin infusion, HHS
 :::
 
 ### Special Populations: SGLT2 inhibitors, pregnancy, kidney failure
-- SGLT2 inhibitors: often euglycemic; start dextrose with insulin; stop the drug and do not routinely restart it in type 2 diabetes after DKA. ^[ada-hyperglycemic-crises-2024]
+- SGLT2 inhibitors: ^[ada-hyperglycemic-crises-2024]
+  - Often euglycemic ^[ada-hyperglycemic-crises-2024]
+  - Start dextrose with insulin ^[ada-hyperglycemic-crises-2024]
+  - Stop the drug and do not routinely restart it in type 2 diabetes after DKA ^[ada-hyperglycemic-crises-2024]
 - SGLT2 inhibitors are not recommended in type 1 diabetes. ^[ada-hyperglycemic-crises-2024]
 - Before scheduled surgery, stop SGLT2 inhibitors 3 days ahead (ertugliflozin 4 days). ^[ada-soc-hospital-2026]
 - Pregnancy: DKA can occur at lower glucose; immediate obstetric and medical care. ^[ada-hyperglycemic-crises-2024]
