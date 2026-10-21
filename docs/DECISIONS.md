@@ -41,3 +41,4 @@ Older rows (unchanged) live in `docs/DECISIONS-archive.md`; the rows that rules 
 
 Not decided yet. Nothing gets built for these until the owner chooses.
 
+| 2026-10-21 | **Card steps use full section width.** Numbered steps in card sections were still inset by the section padding (16) plus step padding (12), unlike Rapids. A `steps-bleed` wrapper pulls the list back by the section padding (only when directly in the section body), so the marker sits 12 from the card edge and text, dose rows and tables under a step gain 32 points of width. Tap targets and done/current markers unchanged; no design-system change. Version 2026.10.21.24. |

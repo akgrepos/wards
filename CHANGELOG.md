@@ -2,6 +2,10 @@
 
 What changed in each version of Wards, newest first. The version is shown in Settings (gear on Home).
 
+## 2026.10.21.24
+
+**Wider steps on cards.** The numbered steps in a card's Treatment section (and other numbered lists in card sections) now use the full width of the section, like Rapids pages, so the text gets about 32 points more room. No wording changed.
+
 ## 2026.10.21.23
 
 **New card: Dyspnea (Acute).** Under Pulmonary, with a "First-Hour Workup" pathway. It covers stabilization and oxygen targets, the cannot-miss causes, and the targeted tests (blood gas, natriuretic peptides, PE probability, bedside ultrasound). MDCalc links for NEWS2, Wells, Geneva, YEARS, PERC, CURB-65 and the anion gap, with built-in calculators where they exist.
