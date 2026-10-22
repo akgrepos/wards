@@ -2,6 +2,10 @@
 
 What changed in each version of Wards, newest first. The version is shown in Settings (gear on Home).
 
+## 2026.10.21.28
+
+**New card: Empiric Antimicrobials.** Under Infectious Disease: a chart of first-choice empiric regimens by source (intra-abdominal, nosocomial pneumonia, meningitis, bacteremia), with doses that open from the drug names, kidney-function and allergy cautions, and MDCalc links. The drug-by-organism coverage grid is coming in a later update.
+
 ## 2026.10.21.27
 
 **New card: Acid-Base Interpretation.** Under Renal: a stepwise method (pH, primary disorder, compensation, anion gap, delta ratio), a patterns table, worked examples and criteria boxes, with MDCalc links. **New calculator: Winter's formula** (expected PaCO₂ for metabolic acidosis), opened from its name in the card.
