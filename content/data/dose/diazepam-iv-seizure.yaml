@@ -4,7 +4,8 @@ population: Adults
 route: IV
 amount: 5–10
 unit: mg
-frequency: "repeat at 10–15 minute intervals"
+rate: "slowly, at least 1 minute per 5 mg, into a large vein"
+frequency: "repeat at 10–15 minute intervals if seizures continue"
 max: "30 mg total (label)"
 give_when: Active withdrawal seizure
 boxed_warning: "Concomitant use with opioids can cause profound sedation, respiratory depression, coma and death; abuse, misuse and addiction; dependence and withdrawal reactions."

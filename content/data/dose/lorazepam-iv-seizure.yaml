@@ -14,5 +14,6 @@ alternative:
   when: "Lorazepam unavailable"
 cautions:
   - "Prepare to support the airway."
+  - "No IV access: ASAM notes IM benzodiazepine is also effective."
 notes: "Labeled for status epilepticus; ASAM recommends a fast-acting parenteral benzodiazepine (IV preferred, IM effective) for a withdrawal seizure."
 sources: [label-ativan-inj-2026, asam-alcohol-withdrawal-2020]

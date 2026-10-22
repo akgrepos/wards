@@ -1,16 +1,18 @@
 drug_name: Lorazepam
 brand: Ativan
-indication: Alcohol withdrawal in liver disease, older adults or when a short-acting benzodiazepine is preferred (off-label)
+indication: Alcohol withdrawal in significant liver disease, or when a short-acting benzodiazepine is chosen (off-label)
 population: Adults
 route: PO or IV
 amount: 1–2
 unit: mg
-frequency: "every 1–4 hours as needed while the CIWA-Ar is 10 or higher; reassess sedation before each dose"
-give_when: CIWA-Ar ≥10 in significant liver disease or older age
+frequency: "every 1–4 hours as needed while the CIWA-Ar is 10 or higher (common practice; no guideline gives a lorazepam regimen); reassess sedation before each dose"
+give_when: CIWA-Ar ≥10 when a benzodiazepine with less hepatic metabolism is wanted
 boxed_warning: "Concomitant use with opioids can cause profound sedation, respiratory depression, coma and death; abuse, misuse and addiction; dependence and withdrawal reactions."
 cautions:
   - "Not labeled for alcohol withdrawal; the injection is labeled for status epilepticus and preanesthetic use."
-  - "Shorter-acting: breakthrough symptoms and rebound are more likely, so frequent reassessment or a fixed schedule is needed."
-  - "The injection contains propylene glycol and benzyl alcohol; with repeated high IV doses watch for hyponatremia and metabolic acidosis."
-notes: "Glucuronidated without CYP oxidation, so clearance is little changed in cirrhosis. ASAM: benzodiazepines that are not hepatically metabolized (lorazepam, oxazepam) may be more appropriate in significant liver disease."
+  - "Injection label: not recommended in hepatic or renal failure; use with caution in mild to moderate hepatic disease. Any benzodiazepine can precipitate hepatic encephalopathy."
+  - "Shorter-acting: breakthrough and rebound symptoms, including seizures, are more likely; ASAM advises frequent reassessment or a fixed-dose schedule with a gradual taper."
+  - "Requirements can be far higher: ASAM cites uncontrolled symptoms after 30–40 mg in the first 3–4 hours as resistant withdrawal."
+  - "IV: dilute 1:1 before injection and give slowly. The injection contains propylene glycol and benzyl alcohol; with repeated high IV doses watch for hyponatremia and metabolic acidosis."
+notes: "The 1–2 mg dose and interval are common practice, not a guideline or label regimen. Lorazepam is glucuronidated without CYP oxidation; in the label's study, cirrhosis did not change clearance of a single 2 mg IV dose. ASAM: benzodiazepines that are not metabolized hepatically (lorazepam, oxazepam) may be more appropriate in significant liver disease."
 sources: [asam-alcohol-withdrawal-2020, label-ativan-inj-2026, common-practice]

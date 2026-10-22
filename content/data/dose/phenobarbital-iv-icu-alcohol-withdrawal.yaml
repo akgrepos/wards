@@ -9,5 +9,6 @@ give_when: ICU patient with withdrawal not controlled by benzodiazepines, or wit
 boxed_warning: "None on the label; the injection is an unapproved drug."
 cautions:
   - "Continuous monitoring of respiration and sedation; airway equipment at the bedside."
-notes: "ASAM Appendix V sample regimen for ICU monotherapy; as an adjunct after a maximum diazepam dose, ASAM lists escalating doses of 60, 120 then 240 mg IV every 30 minutes to a RASS of 0 to −2. Observational data suggest outcomes close to benzodiazepines (Bradley 2026) but with very low certainty in the ICU (Rizwan 2026)."
+  - "Label: inject IV slowly, no faster than 60 mg per minute; peak effect can take 15 minutes or more."
+notes: "ASAM Appendix V sample regimen for ICU monotherapy; as an adjunct after a maximum diazepam dose, ASAM lists escalating doses of 60, 120 then 240 mg IV every 30 minutes to a RASS of 0 to −2. In hospitalized adults, observational data suggest outcomes close to diazepam (Bradley 2026); in the ICU, evidence is very low certainty (Rizwan 2026)."
 sources: [asam-alcohol-withdrawal-2020, bradley-phenobarbital-2026, rizwan-phenobarbital-2026, label-phenobarbital-inj-2025]
