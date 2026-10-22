@@ -2,6 +2,10 @@
 
 What changed in each version of Wards, newest first. The version is shown in Settings (gear on Home).
 
+## 2026.10.22.7
+
+**New card: Acute Pain and Opioid Conversion in the Hospitalized Adult.** Under Hospital Medicine: a stepwise approach to acute pain (non-opioid options, choosing and dosing opioids, safety and monitoring, bowel regimen, naloxone), with dose sheets opened from the drug names and an opioid conversion table. MDCalc links for the opioid conversion and morphine milligram equivalent calculators.
+
 ## 2026.10.22.6
 
 **New card: VTE Prophylaxis in the Hospitalized Adult.** Under Hematology: deciding who needs prophylaxis (medical and surgical risk, bleeding risk), choosing heparin, enoxaparin or fondaparinux with dose sheets, when to use mechanical prophylaxis, and special situations (renal impairment, obesity, stroke, critical illness). MDCalc links for Padua, IMPROVE VTE, IMPROVE bleeding and Caprini.
