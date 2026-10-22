@@ -29,6 +29,8 @@ related:
 - Give the β-lactam first when vancomycin is also ordered, and use prolonged infusions of β-lactams in sepsis after a loading dose. ^[idsa-sepsis-hospital-2026, ssc-sepsis-2026]
 
 ## Chart
+{{coverage:empiric-antimicrobials}}
+
 1. Intra-abdominal infection, lower risk
    - Community-acquired, source control possible, no recent antibiotics or ESBL risk. ^[idsa-sis-iai-2010, sis-iai-2024]
    - Source control is essential; get cultures at the procedure. ^[idsa-sis-iai-2010, idsa-iai-2024]

@@ -1336,4 +1336,33 @@ export declare function lockScroll(): () => void;
 /** Calls fn on Escape anywhere in the document while active. */
 export declare function useEscape(active: boolean, fn: (e: KeyboardEvent) => void): void;
 
-declare global { interface Window { AKG: { Button: typeof Button; Toggle: typeof Toggle; Checkbox: typeof Checkbox; RadioGroup: typeof RadioGroup; Radio: typeof Radio; SegmentedControl: typeof SegmentedControl; PopUpButton: typeof PopUpButton; Stepper: typeof Stepper; TextField: typeof TextField; SearchField: typeof SearchField; ComboBox: typeof ComboBox; Slider: typeof Slider; DatePicker: typeof DatePicker; ColorWell: typeof ColorWell; List: typeof List; ListRow: typeof ListRow; GroupBox: typeof GroupBox; DisclosureGroup: typeof DisclosureGroup; DisclosureButton: typeof DisclosureButton; ProgressIndicator: typeof ProgressIndicator; EmptyState: typeof EmptyState; Notification: typeof Notification; Tooltip: typeof Tooltip; TabBar: typeof TabBar; Toolbar: typeof Toolbar; ToolbarGroup: typeof ToolbarGroup; ToolbarButton: typeof ToolbarButton; Sidebar: typeof Sidebar; SidebarSection: typeof SidebarSection; SidebarItem: typeof SidebarItem; PageControl: typeof PageControl; Window: typeof Window; Sheet: typeof Sheet; Alert: typeof Alert; ActionSheet: typeof ActionSheet; Menu: typeof Menu; MenuItem: typeof MenuItem; MenuSeparator: typeof MenuSeparator; MenuSection: typeof MenuSection; Popover: typeof Popover; Callout: typeof Callout; SourcePill: typeof SourcePill; ContentSection: typeof ContentSection; SectionBar: typeof SectionBar; Flowchart: typeof Flowchart; TappableValue: typeof TappableValue; Table: typeof Table; Figure: typeof Figure; Banner: typeof Banner; BottomBar: typeof BottomBar; Highlight: typeof Highlight; ShareButton: typeof ShareButton; NumberField: typeof NumberField; IconTile: typeof IconTile; SourceLine: typeof SourceLine; StepList: typeof StepList; Step: typeof Step; ValueRow: typeof ValueRow; Tag: typeof Tag; ScaleBar: typeof ScaleBar; Panel: typeof Panel; CheckRow: typeof CheckRow; GradeList: typeof GradeList; ComparisonGrid: typeof ComparisonGrid; TimePoints: typeof TimePoints; TimerCapsule: typeof TimerCapsule; useSectionState: typeof useSectionState; useElapsed: typeof useElapsed; formatElapsed: typeof formatElapsed; speakElapsed: typeof speakElapsed; useScrolledPast: typeof useScrolledPast; lockScroll: typeof lockScroll; useEscape: typeof useEscape; cx(...c: any[]): string; platform(el?: Element): 'ios' | 'macos' } } }
+export type CoverageLevel = 'full' | 'partial' | 'none';
+export interface CoverageMarkProps extends React.HTMLAttributes<HTMLSpanElement> {
+  /** full (solid disc with a check) · partial (ring, left half solid) · none (ring with a minus). */
+  level: CoverageLevel;
+  /** The word beside the shape. Defaults to Full / Partial / None; pass your own ("Reliable", "Variable", "None"). */
+  label?: React.ReactNode;
+  /** Replaces the default words for every level (used when label is not set). */
+  labels?: Partial<Record<CoverageLevel, string>>;
+  /** false hides the word visually but keeps it for screen readers (use only where a legend names the shapes). Default true. */
+  showLabel?: boolean;
+}
+/** How well one thing covers another: a gray shape plus a word, never color alone. Full is the label color; partial and none are secondary. */
+export declare function CoverageMark(props: CoverageMarkProps): React.ReactElement;
+
+export interface CoverageStripItem {
+  /** Short heading under the shape (10pt): "MRSA". */
+  short: string;
+  /** Full name read by screen readers ("Pseudomonas"); defaults to short. */
+  name?: string;
+  level: CoverageLevel;
+}
+export interface CoverageStripProps extends React.HTMLAttributes<HTMLSpanElement> {
+  items: CoverageStripItem[];
+  /** Replaces the words read by screen readers. */
+  labels?: Partial<Record<CoverageLevel, string>>;
+}
+/** A row of coverage shapes with short headings under each, for a compact profile of one item across several others. Wraps to more lines at larger Text Sizes. Pair it with a legend that names the three shapes. */
+export declare function CoverageStrip(props: CoverageStripProps): React.ReactElement;
+
+declare global { interface Window { AKG: { Button: typeof Button; Toggle: typeof Toggle; Checkbox: typeof Checkbox; RadioGroup: typeof RadioGroup; Radio: typeof Radio; SegmentedControl: typeof SegmentedControl; PopUpButton: typeof PopUpButton; Stepper: typeof Stepper; TextField: typeof TextField; SearchField: typeof SearchField; ComboBox: typeof ComboBox; Slider: typeof Slider; DatePicker: typeof DatePicker; ColorWell: typeof ColorWell; List: typeof List; ListRow: typeof ListRow; GroupBox: typeof GroupBox; DisclosureGroup: typeof DisclosureGroup; DisclosureButton: typeof DisclosureButton; ProgressIndicator: typeof ProgressIndicator; EmptyState: typeof EmptyState; Notification: typeof Notification; Tooltip: typeof Tooltip; TabBar: typeof TabBar; Toolbar: typeof Toolbar; ToolbarGroup: typeof ToolbarGroup; ToolbarButton: typeof ToolbarButton; Sidebar: typeof Sidebar; SidebarSection: typeof SidebarSection; SidebarItem: typeof SidebarItem; PageControl: typeof PageControl; Window: typeof Window; Sheet: typeof Sheet; Alert: typeof Alert; ActionSheet: typeof ActionSheet; Menu: typeof Menu; MenuItem: typeof MenuItem; MenuSeparator: typeof MenuSeparator; MenuSection: typeof MenuSection; Popover: typeof Popover; Callout: typeof Callout; SourcePill: typeof SourcePill; ContentSection: typeof ContentSection; SectionBar: typeof SectionBar; Flowchart: typeof Flowchart; TappableValue: typeof TappableValue; Table: typeof Table; Figure: typeof Figure; Banner: typeof Banner; BottomBar: typeof BottomBar; Highlight: typeof Highlight; ShareButton: typeof ShareButton; NumberField: typeof NumberField; IconTile: typeof IconTile; SourceLine: typeof SourceLine; StepList: typeof StepList; Step: typeof Step; ValueRow: typeof ValueRow; Tag: typeof Tag; ScaleBar: typeof ScaleBar; Panel: typeof Panel; CheckRow: typeof CheckRow; GradeList: typeof GradeList; ComparisonGrid: typeof ComparisonGrid; TimePoints: typeof TimePoints; TimerCapsule: typeof TimerCapsule; CoverageMark: typeof CoverageMark; CoverageStrip: typeof CoverageStrip; useSectionState: typeof useSectionState; useElapsed: typeof useElapsed; formatElapsed: typeof formatElapsed; speakElapsed: typeof speakElapsed; useScrolledPast: typeof useScrolledPast; lockScroll: typeof lockScroll; useEscape: typeof useEscape; cx(...c: any[]): string; platform(el?: Element): 'ios' | 'macos' } } }

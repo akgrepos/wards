@@ -1,4 +1,4 @@
-/* @ds-bundle: {"format":4,"namespace":"AKG","components":[{"name":"Button"},{"name":"Toggle"},{"name":"Checkbox"},{"name":"RadioGroup"},{"name":"SegmentedControl"},{"name":"PopUpButton"},{"name":"Stepper"},{"name":"TextField"},{"name":"SearchField"},{"name":"ComboBox"},{"name":"Slider"},{"name":"DatePicker"},{"name":"ColorWell"},{"name":"List"},{"name":"GroupBox"},{"name":"DisclosureGroup"},{"name":"ProgressIndicator"},{"name":"EmptyState"},{"name":"Notification"},{"name":"Tooltip"},{"name":"TabBar"},{"name":"Toolbar"},{"name":"Sidebar"},{"name":"PageControl"},{"name":"Window"},{"name":"Sheet"},{"name":"Alert"},{"name":"ActionSheet"},{"name":"Menu"},{"name":"Popover"},{"name":"Callout"},{"name":"SourcePill"},{"name":"ContentSection"},{"name":"Flowchart"},{"name":"TappableValue"},{"name":"Table"},{"name":"Figure"},{"name":"Banner"},{"name":"BottomBar"},{"name":"Highlight"},{"name":"ShareButton"},{"name":"NumberField"},{"name":"SourceLine"},{"name":"StepList"},{"name":"ValueRow"},{"name":"Tag"},{"name":"ScaleBar"},{"name":"Panel"},{"name":"GradeList"},{"name":"ComparisonGrid"},{"name":"TimePoints"},{"name":"TimerCapsule"}]} */
+/* @ds-bundle: {"format":4,"namespace":"AKG","components":[{"name":"Button"},{"name":"Toggle"},{"name":"Checkbox"},{"name":"RadioGroup"},{"name":"SegmentedControl"},{"name":"PopUpButton"},{"name":"Stepper"},{"name":"TextField"},{"name":"SearchField"},{"name":"ComboBox"},{"name":"Slider"},{"name":"DatePicker"},{"name":"ColorWell"},{"name":"List"},{"name":"GroupBox"},{"name":"DisclosureGroup"},{"name":"ProgressIndicator"},{"name":"EmptyState"},{"name":"Notification"},{"name":"Tooltip"},{"name":"TabBar"},{"name":"Toolbar"},{"name":"Sidebar"},{"name":"PageControl"},{"name":"Window"},{"name":"Sheet"},{"name":"Alert"},{"name":"ActionSheet"},{"name":"Menu"},{"name":"Popover"},{"name":"Callout"},{"name":"SourcePill"},{"name":"ContentSection"},{"name":"Flowchart"},{"name":"TappableValue"},{"name":"Table"},{"name":"Figure"},{"name":"Banner"},{"name":"BottomBar"},{"name":"Highlight"},{"name":"ShareButton"},{"name":"NumberField"},{"name":"SourceLine"},{"name":"StepList"},{"name":"ValueRow"},{"name":"Tag"},{"name":"ScaleBar"},{"name":"Panel"},{"name":"GradeList"},{"name":"ComparisonGrid"},{"name":"TimePoints"},{"name":"TimerCapsule"},{"name":"CoverageMark"},{"name":"CoverageStrip"}]} */
 /* Shared helpers — used by every AKG component. */
 (function (AKG) {
   // Join class names, skipping falsy values.
@@ -3114,4 +3114,47 @@
       interactive ? h("span", { className: "akg-sym akg-timer__chevron", "aria-hidden": "true" }, up) : null);
   }
   AKG.TimerCapsule = TimerCapsule;
+})(window.AKG = window.AKG || {});
+
+/* CoverageMark / CoverageStrip — how well something covers something, as a gray shape plus a word (never color alone).
+   full: solid disc with a check · partial: ring with the left half solid · none: ring with a minus. Shapes are drawn after the
+   SF Symbols checkmark.circle.fill, circle.lefthalf.filled and minus.circle. */
+(function (AKG) {
+  var h = window.React.createElement;
+  var PATHS = {
+    full: "M18.66 9.15L18.53 8.3L18.33 7.47L18.04 6.67L17.67 5.9L17.23 5.17L16.73 4.48L16.15 3.85L15.52 3.27L14.83 2.77L14.1 2.33L13.33 1.96L12.53 1.67L11.7 1.47L10.85 1.34L10 1.3L9.15 1.34L8.3 1.47L7.47 1.67L6.67 1.96L5.9 2.33L5.17 2.77L4.48 3.27L3.85 3.85L3.27 4.48L2.77 5.17L2.33 5.9L1.96 6.67L1.67 7.47L1.47 8.3L1.34 9.15L1.3 10L1.34 10.85L1.47 11.7L1.67 12.53L1.96 13.33L2.33 14.1L2.77 14.83L3.27 15.52L3.85 16.15L4.48 16.73L5.17 17.23L5.9 17.67L6.67 18.04L7.47 18.33L8.3 18.53L9.15 18.66L10 18.7L10.85 18.66L11.7 18.53L12.53 18.33L13.33 18.04L14.1 17.67L14.83 17.23L15.52 16.73L16.15 16.15L16.73 15.52L17.23 14.83L17.67 14.1L18.04 13.33L18.33 12.53L18.53 11.7L18.66 10.85L18.7 10ZM5.35 10.95L5.23 10.79L5.13 10.5L5.15 10.2L5.23 10.01L5.43 9.79L5.6 9.68L5.9 9.62L6.2 9.68L6.45 9.85L8.93 12.34L13.66 6.35L13.91 6.18L14.11 6.13L14.31 6.13L14.51 6.19L14.68 6.29L14.82 6.44L14.92 6.61L14.97 6.81L14.97 7.01L14.91 7.21L14.81 7.38L9.61 13.98L9.47 14.12L9.29 14.22L9.1 14.27L8.9 14.27L8.7 14.22L8.53 14.11Z",
+    partial: "M18.53 8.3L18.33 7.47L18.04 6.67L17.67 5.9L17.23 5.17L16.73 4.48L16.15 3.85L15.52 3.27L14.83 2.77L14.1 2.33L13.33 1.96L12.53 1.67L11.7 1.47L10.85 1.34L10 1.3L9.15 1.34L8.3 1.47L7.47 1.67L6.67 1.96L5.9 2.33L5.17 2.77L4.48 3.27L3.85 3.85L3.27 4.48L2.77 5.17L2.33 5.9L1.96 6.67L1.67 7.47L1.47 8.3L1.34 9.15L1.3 10L1.34 10.85L1.47 11.7L1.67 12.53L1.96 13.33L2.33 14.1L2.77 14.83L3.27 15.52L3.85 16.15L4.48 16.73L5.17 17.23L5.9 17.67L6.67 18.04L7.47 18.33L8.3 18.53L9.15 18.66L10 18.7L10.85 18.66L11.7 18.53L12.53 18.33L13.33 18.04L14.1 17.67L14.83 17.23L15.52 16.73L16.15 16.15L16.73 15.52L17.23 14.83L17.67 14.1L18.04 13.33L18.33 12.53L18.53 11.7L18.66 10.85L18.7 10L18.66 9.15ZM10 2.7L10.72 2.74L11.42 2.84L12.12 3.01L12.79 3.26L13.44 3.56L14.06 3.93L14.63 4.36L15.16 4.84L15.64 5.37L16.07 5.94L16.44 6.56L16.74 7.21L16.99 7.88L17.16 8.58L17.26 9.28L17.3 10L17.26 10.72L17.16 11.42L16.99 12.12L16.74 12.79L16.44 13.44L16.07 14.06L15.64 14.63L15.16 15.16L14.63 15.64L14.06 16.07L13.44 16.44L12.79 16.74L12.12 16.99L11.42 17.16L10.72 17.26L10 17.3Z",
+    none: "M18.53 8.3L18.33 7.47L18.04 6.67L17.67 5.9L17.23 5.17L16.73 4.48L16.15 3.85L15.52 3.27L14.83 2.77L14.1 2.33L13.33 1.96L12.53 1.67L11.7 1.47L10.85 1.34L10 1.3L9.15 1.34L8.3 1.47L7.47 1.67L6.67 1.96L5.9 2.33L5.17 2.77L4.48 3.27L3.85 3.85L3.27 4.48L2.77 5.17L2.33 5.9L1.96 6.67L1.67 7.47L1.47 8.3L1.34 9.15L1.3 10L1.34 10.85L1.47 11.7L1.67 12.53L1.96 13.33L2.33 14.1L2.77 14.83L3.27 15.52L3.85 16.15L4.48 16.73L5.17 17.23L5.9 17.67L6.67 18.04L7.47 18.33L8.3 18.53L9.15 18.66L10 18.7L10.85 18.66L11.7 18.53L12.53 18.33L13.33 18.04L14.1 17.67L14.83 17.23L15.52 16.73L16.15 16.15L16.73 15.52L17.23 14.83L17.67 14.1L18.04 13.33L18.33 12.53L18.53 11.7L18.66 10.85L18.7 10L18.66 9.15ZM17.16 11.42L16.99 12.12L16.74 12.79L16.44 13.44L16.07 14.06L15.64 14.63L15.16 15.16L14.63 15.64L14.06 16.07L13.44 16.44L12.79 16.74L12.12 16.99L11.42 17.16L10.72 17.26L10 17.3L9.28 17.26L8.58 17.16L7.88 16.99L7.21 16.74L6.56 16.44L5.94 16.07L5.37 15.64L4.84 15.16L4.36 14.63L3.93 14.06L3.56 13.44L3.26 12.79L3.01 12.12L2.84 11.42L2.74 10.72L2.7 10L2.74 9.28L2.84 8.58L3.01 7.88L3.26 7.21L3.56 6.56L3.93 5.94L4.36 5.37L4.84 4.84L5.37 4.36L5.94 3.93L6.56 3.56L7.21 3.26L7.88 3.01L8.58 2.84L9.28 2.74L10 2.7L10.72 2.74L11.42 2.84L12.12 3.01L12.79 3.26L13.44 3.56L14.06 3.93L14.63 4.36L15.16 4.84L15.64 5.37L16.07 5.94L16.44 6.56L16.74 7.21L16.99 7.88L17.16 8.58L17.26 9.28L17.3 10L17.26 10.72ZM14 10.74L14.28 10.65L14.43 10.53L14.59 10.29L14.65 10L14.59 9.71L14.43 9.47L14.28 9.35L14 9.26L6 9.26L5.72 9.35L5.57 9.47L5.41 9.71L5.36 9.9L5.38 10.19L5.5 10.46L5.72 10.65L6 10.74Z"
+  };
+  var WORDS = { full: "Full", partial: "Partial", none: "None" };
+  function glyph(level) {
+    return h("span", { className: "akg-sym akg-coverage__glyph", "aria-hidden": "true" },
+      h("svg", { viewBox: "0 0 20 20", fill: "currentColor" }, h("path", { fillRule: "evenodd", d: PATHS[level] || PATHS.none })));
+  }
+  function CoverageMark(props) {
+    var level = PATHS[props.level] ? props.level : "none";
+    var word = props.label != null ? props.label : (props.labels && props.labels[level]) || WORDS[level];
+    var rest = {};
+    for (var k in props) if (["level", "label", "labels", "showLabel", "className"].indexOf(k) < 0) rest[k] = props[k];
+    rest.className = AKG.cx("akg-coverage", "akg-coverage--" + level, props.className);
+    var show = props.showLabel !== false;
+    return h("span", rest, glyph(level),
+      show ? h("span", { className: "akg-coverage__word" }, word) : h("span", { className: "akg-coverage__sr" }, word));
+  }
+  AKG.CoverageMark = CoverageMark;
+
+  function CoverageStrip(props) {
+    var rest = {};
+    for (var k in props) if (["items", "labels", "className"].indexOf(k) < 0) rest[k] = props[k];
+    rest.className = AKG.cx("akg-coverage-strip", props.className);
+    return h("span", rest, (props.items || []).map(function (it, i) {
+      var level = PATHS[it.level] ? it.level : "none";
+      var word = (props.labels && props.labels[level]) || WORDS[level];
+      return h("span", { key: i, className: AKG.cx("akg-coverage-strip__cell", "akg-coverage--" + level) },
+        glyph(level),
+        h("span", { className: "akg-coverage__sr" }, (it.name || it.short) + ": " + word),
+        h("span", { className: "akg-coverage-strip__short", "aria-hidden": "true" }, it.short));
+    }));
+  }
+  AKG.CoverageStrip = CoverageStrip;
 })(window.AKG = window.AKG || {});

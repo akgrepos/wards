@@ -93,10 +93,10 @@ A short decision tree for one sequential task on a card (2026-10-20; decision-tr
 - Home: its own page, opened from a "Pathway" row under its card's title and from the Library's Pathways; never inserted into a card
 
 ### 10. Coverage
-How well one antimicrobial covers one organism.
-- Fields: antimicrobial · organism · level (● reliable · ◐ variable, check susceptibilities · ○ not reliable) · notes (e.g. "not for CNS") · sources
-- Chart layout (decided): antimicrobials as rows, pathogens as columns, circle symbols; a small dot marks a note, shown on tap; shapes carry the meaning (works without color)
-- Powers: the coverage chart, organism cards and drug class cards, all from the same entries
+How well each drug covers each organism group; one grid per card, inserted on a line of its own with `{{coverage:id}}` (built: Empiric Antimicrobials, `content/data/coverage/`).
+- Fields: `title` · `levels` (`R`, `V`, `N`, each with a `word` and a `meaning` shown in the legend; "variable" means it depends on the isolate's susceptibility, local resistance or dose, or only some members of the class) · `columns` (1–7 organism groups: `id`, `name`, `short` of 6 characters or fewer) · `rows` (`drug`, `class`, `cells` with one R, V or N per column, `note`, `cp_cells` for cells resting on common practice or a label's in-vitro list, `sources`) · `sources` (every row's, listed once)
+- Shown as: pick up to 3 organism groups → the drugs that cover all of them (reliable only, or reliable or variable), grouped by class, with the closest options when none does; "All drugs" (a strip of shapes per drug); "Compare" up to 3 drugs. A drug opens a sheet with every group in words, the note and sources. Shapes are gray, with a word beside or under each, never color alone (design system `CoverageMark` and `CoverageStrip`).
+- `npm run content:check` enforces it (`scripts/content/coverage.mjs`)
 
 ### 11. Media
 Images, ECGs and diagrams.
