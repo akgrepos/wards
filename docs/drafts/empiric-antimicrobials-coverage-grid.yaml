@@ -1,8 +1,10 @@
 # Coverage grid data for the Empiric Antimicrobials card (draft; layout chosen later by the mock-up session).
 # Not read by the app or by `npm run content:check`. Cells: R = reliable, V = variable, N = none.
 # Rubric: R = active against most isolates in usual practice and used for that organism; V = depends on the
-# isolate's susceptibility, local resistance or dose, or only some members of the class; N = not active or not
-# recommended. A cell marked cp: true is common clinical practice rather than a guideline statement.
+# isolate's susceptibility, local resistance or dose, or only some members of the class; N = not active, not
+# reliable, or not recommended for that organism (e.g. piperacillin-tazobactam and cefepime for invasive ESBL).
+# cp_cells lists the cells that rest on common clinical practice or label in-vitro lists rather than a guideline
+# statement (verified 2026-10-21).
 # Antipseudomonal and ESBL cells still need susceptibility results for the individual patient.
 columns: [mrsa, e_faecalis, vre, pseudomonas, esbl, anaerobes, atypicals]
 rows:
@@ -10,27 +12,32 @@ rows:
     class: Glycopeptide
     cells: {mrsa: R, e_faecalis: R, vre: N, pseudomonas: N, esbl: N, anaerobes: V, atypicals: N}
     note: "Anaerobes: gram-positive only (Clostridium, Cutibacterium); no gram-negative anaerobe activity."
-    sources: [idsa-mrsa-2011, label-vancomycin-2025]
+    cp_cells: [e_faecalis, anaerobes]
+    sources: [idsa-mrsa-2011, label-vancomycin-2025, common-practice]
   - drug: Linezolid
     class: Oxazolidinone
     cells: {mrsa: R, e_faecalis: R, vre: R, pseudomonas: N, esbl: N, anaerobes: V, atypicals: N}
     note: "Anaerobes: gram-positive only. Bacteriostatic."
-    sources: [label-zyvox-2026, idsa-mrsa-2011]
+    cp_cells: [e_faecalis, anaerobes]
+    sources: [label-zyvox-2026, idsa-mrsa-2011, common-practice]
   - drug: Daptomycin
     class: Lipopeptide
     cells: {mrsa: R, e_faecalis: R, vre: V, pseudomonas: N, esbl: N, anaerobes: N, atypicals: N}
-    note: "VRE: higher doses with infectious diseases. Inactivated by lung surfactant: never for pneumonia."
-    sources: [label-cubicin-2025, idsa-amr-2026]
+    note: "VRE: off-label, higher doses with infectious diseases. Inactivated by lung surfactant: never for pneumonia."
+    cp_cells: [vre, anaerobes]
+    sources: [label-cubicin-2025, idsa-mrsa-2011, common-practice]
   - drug: Ceftriaxone
     class: Cephalosporin, third generation
     cells: {mrsa: N, e_faecalis: N, vre: N, pseudomonas: N, esbl: N, anaerobes: V, atypicals: N}
     note: "Anaerobes: oral flora only; not Bacteroides fragilis. Enterococcus is intrinsically resistant."
-    sources: [label-ceftriaxone-2026, idsa-amr-2026]
+    cp_cells: [anaerobes]
+    sources: [label-ceftriaxone-2026, idsa-amr-2026, common-practice]
   - drug: Ceftazidime
     class: Cephalosporin, third generation
     cells: {mrsa: N, e_faecalis: N, vre: N, pseudomonas: R, esbl: N, anaerobes: N, atypicals: N}
     note: "Weak against gram-positive cocci including streptococci."
-    sources: [idsa-ats-hap-vap-2016, idsa-amr-2026]
+    cp_cells: [e_faecalis, anaerobes]
+    sources: [idsa-ats-hap-vap-2016, idsa-amr-2026, common-practice]
   - drug: Cefepime
     class: Cephalosporin, fourth generation
     cells: {mrsa: N, e_faecalis: N, vre: N, pseudomonas: R, esbl: N, anaerobes: N, atypicals: N}
@@ -38,24 +45,28 @@ rows:
     sources: [label-cefepime-2026, idsa-amr-2026]
   - drug: Ceftaroline
     class: Cephalosporin, anti-MRSA
-    cells: {mrsa: R, e_faecalis: V, vre: N, pseudomonas: N, esbl: N, anaerobes: V, atypicals: N}
-    note: "E. faecalis: in vitro activity only. Anaerobes: gram-positive only."
-    sources: [idsa-ats-cap-2019, idsa-ssti-2014]
+    cells: {mrsa: R, e_faecalis: N, vre: N, pseudomonas: N, esbl: N, anaerobes: V, atypicals: N}
+    note: "E. faecalis: limited in vitro activity only; not relied on. Anaerobes: gram-positive only."
+    cp_cells: [e_faecalis, anaerobes]
+    sources: [label-teflaro-2024, idsa-ssti-2014, common-practice]
   - drug: Piperacillin-tazobactam
     class: Penicillin, antipseudomonal
-    cells: {mrsa: N, e_faecalis: R, vre: N, pseudomonas: R, esbl: V, anaerobes: R, atypicals: N}
-    note: "ESBL: not suggested for invasive infection even when susceptible (MERINO). Enterococcus faecium is resistant."
+    cells: {mrsa: N, e_faecalis: R, vre: N, pseudomonas: R, esbl: N, anaerobes: R, atypicals: N}
+    note: "ESBL: not suggested outside the urinary tract even when susceptible (MERINO). Enterococcus faecium is resistant."
+    cp_cells: [e_faecalis]
     sources: [label-zosyn-2026, idsa-amr-2026, merino-2018]
   - drug: Ampicillin-sulbactam
     class: Penicillin, with β-lactamase inhibitor
     cells: {mrsa: N, e_faecalis: R, vre: N, pseudomonas: N, esbl: N, anaerobes: R, atypicals: N}
-    note: "Escherichia coli resistance is common: do not use alone for abdominal sepsis."
-    sources: [idsa-ats-cap-2019, idsa-sis-iai-2010]
+    note: "Escherichia coli resistance is common: not recommended for intra-abdominal infection."
+    cp_cells: [e_faecalis]
+    sources: [label-unasyn-2026, idsa-sis-iai-2010, common-practice]
   - drug: Ampicillin
     class: Penicillin, aminopenicillin
     cells: {mrsa: N, e_faecalis: R, vre: N, pseudomonas: N, esbl: N, anaerobes: V, atypicals: N}
     note: "Also covers Listeria. E. faecium is usually resistant."
-    sources: [label-ampicillin-2022, idsa-meningitis-2004]
+    cp_cells: [anaerobes]
+    sources: [label-ampicillin-2022, idsa-meningitis-2004, idsa-sis-iai-2010, common-practice]
   - drug: Ertapenem
     class: Carbapenem
     cells: {mrsa: N, e_faecalis: N, vre: N, pseudomonas: N, esbl: R, anaerobes: R, atypicals: N}
@@ -63,29 +74,33 @@ rows:
     sources: [label-invanz-2026, idsa-amr-2026]
   - drug: Meropenem
     class: Carbapenem
-    cells: {mrsa: N, e_faecalis: V, vre: N, pseudomonas: R, esbl: R, anaerobes: R, atypicals: N}
-    note: "E. faecalis: imipenem is more active than meropenem."
+    cells: {mrsa: N, e_faecalis: N, vre: N, pseudomonas: R, esbl: R, anaerobes: R, atypicals: N}
+    note: "E. faecalis: not relied on (imipenem has modest activity). Pseudomonas: check susceptibility."
+    cp_cells: [e_faecalis]
     sources: [label-meropenem-2024, idsa-amr-2026]
   - drug: Aztreonam
     class: Monobactam
     cells: {mrsa: N, e_faecalis: N, vre: N, pseudomonas: V, esbl: N, anaerobes: N, atypicals: N}
     note: "Gram-negative aerobes only; for patients who cannot take other β-lactams (not with ceftazidime allergy)."
-    sources: [aaaai-drug-allergy-2022, idsa-ats-hap-vap-2016]
+    cp_cells: [pseudomonas]
+    sources: [aaaai-drug-allergy-2022, idsa-ats-hap-vap-2016, common-practice]
   - drug: Ciprofloxacin or levofloxacin
     class: Fluoroquinolone
     cells: {mrsa: N, e_faecalis: V, vre: N, pseudomonas: V, esbl: V, anaerobes: N, atypicals: R}
     note: "Ciprofloxacin is the more active against Pseudomonas; levofloxacin is the better respiratory agent. Resistance is common in E. coli."
-    sources: [idsa-ats-cap-2019, idsa-ats-hap-vap-2016, idsa-amr-2026]
+    cp_cells: [e_faecalis, pseudomonas]
+    sources: [idsa-ats-cap-2019, idsa-ats-hap-vap-2016, idsa-amr-2026, label-cipro-iv-2025, label-levofloxacin-iv-2025, common-practice]
   - drug: Doxycycline
     class: Tetracycline
     cells: {mrsa: V, e_faecalis: N, vre: N, pseudomonas: N, esbl: N, anaerobes: V, atypicals: R}
     note: "MRSA: community-associated skin infection; not for bacteremia."
-    sources: [idsa-ssti-2014, idsa-ats-cap-2019]
+    cp_cells: [anaerobes]
+    sources: [idsa-ssti-2014, idsa-ats-cap-2019, label-doxy-iv-2021, common-practice]
   - drug: Azithromycin
     class: Macrolide
     cells: {mrsa: N, e_faecalis: N, vre: N, pseudomonas: N, esbl: N, anaerobes: N, atypicals: R}
     note: "Legionella, Mycoplasma and Chlamydophila."
-    sources: [idsa-ats-cap-2019]
+    sources: [idsa-ats-cap-2019, label-zithromax-iv-2026]
   - drug: Metronidazole
     class: Nitroimidazole
     cells: {mrsa: N, e_faecalis: N, vre: N, pseudomonas: N, esbl: N, anaerobes: R, atypicals: N}
@@ -94,10 +109,11 @@ rows:
   - drug: Clindamycin
     class: Lincosamide
     cells: {mrsa: V, e_faecalis: N, vre: N, pseudomonas: N, esbl: N, anaerobes: V, atypicals: N}
-    note: "Check susceptibility and the D-test for MRSA. Bacteroides resistance is increasing."
-    sources: [idsa-ssti-2014, label-cleocin-iv-2026]
+    note: "Check susceptibility and the D-test for MRSA. Bacteroides resistance is common: not recommended for intra-abdominal infection."
+    sources: [idsa-ssti-2014, label-cleocin-iv-2026, idsa-sis-iai-2010]
   - drug: Trimethoprim-sulfamethoxazole
     class: Folate antagonist
     cells: {mrsa: R, e_faecalis: N, vre: N, pseudomonas: N, esbl: V, anaerobes: N, atypicals: N}
-    note: "MRSA: skin infection and oral step-down. ESBL: oral step-down when susceptible."
-    sources: [idsa-ssti-2014, idsa-amr-2026]
+    note: "MRSA: skin infection and oral step-down. ESBL: oral step-down when susceptible. E. faecalis: active in vitro but unreliable in vivo."
+    cp_cells: [e_faecalis]
+    sources: [idsa-ssti-2014, idsa-amr-2026, common-practice]
