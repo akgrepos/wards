@@ -1,0 +1,14 @@
+drug_name: Ceftriaxone
+indication: Suspected or proven bacterial meningitis
+population: Adults
+route: IV
+amount: "2"
+unit: g
+frequency: every 12 hours
+rate: over 30 minutes
+max: 4 g per day (label)
+cautions:
+  - Not with calcium-containing IV solutions in the same line.
+  - Does not cover Listeria, Enterococcus or MRSA.
+notes: "Meningitis uses the highest daily dose; the label's maximum is 4 g a day."
+sources: [idsa-meningitis-2004, label-ceftriaxone-2026]

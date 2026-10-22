@@ -1,0 +1,17 @@
+drug_name: Metronidazole
+indication: Anaerobic coverage in intra-abdominal infection (with a cephalosporin or fluoroquinolone)
+population: Adults
+route: IV or PO
+amount: "500"
+unit: mg
+frequency: every 8 hours
+rate: IV over 30–60 minutes
+adjustments:
+  - when: Severe liver impairment (Child-Pugh C)
+    change: Reduce the dose by 50% (label)
+cautions:
+  - Disulfiram-like reaction was reported with alcohol; avoid alcohol during and shortly after treatment.
+  - Peripheral neuropathy and encephalopathy with prolonged courses.
+  - Not needed with piperacillin-tazobactam, ertapenem or meropenem, which cover anaerobes.
+notes: "Oral and IV doses are the same. Label IV dose is 500 mg every 6 hours for anaerobic infection; 500 mg every 8 hours is the usual abdominal regimen in guidelines."
+sources: [label-metronidazole-iv-2025, idsa-sis-iai-2010]

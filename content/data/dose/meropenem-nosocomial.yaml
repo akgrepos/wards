@@ -1,0 +1,20 @@
+drug_name: Meropenem
+indication: Hospital-acquired pneumonia, intra-abdominal or bloodstream infection with ESBL or multidrug-resistant risk
+population: Adults
+route: IV
+amount: "1"
+unit: g
+frequency: every 8 hours
+rate: over 30 minutes (extended infusion over 3 hours is an option)
+adjustments:
+  - when: CrCl 26–50 mL/min
+    change: 1 g every 12 hours
+  - when: CrCl 10–25 mL/min
+    change: 500 mg every 12 hours
+  - when: CrCl <10 mL/min
+    change: 500 mg every 24 hours
+cautions:
+  - "Lowers valproate levels sharply: avoid together."
+  - Seizure risk, mostly with kidney impairment or CNS disease.
+notes: "Label: 1 g every 8 hours for intra-abdominal infection. IDSA 2026 lists 1–2 g every 8 hours, the higher dose for obesity, CNS infection, ECMO or CrCl of 130 mL/min or more."
+sources: [label-meropenem-2024, idsa-amr-2026, idsa-ats-hap-vap-2016]

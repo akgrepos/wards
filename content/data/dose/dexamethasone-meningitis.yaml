@@ -1,0 +1,15 @@
+drug_name: Dexamethasone
+indication: Suspected or proven pneumococcal meningitis
+population: Adults
+route: IV
+amount: "0.15"
+unit: mg/kg
+frequency: every 6 hours for 2–4 days
+give_when: 10–20 minutes before, or with, the first antibiotic dose
+duration: 2–4 days
+cautions:
+  - Stop if the cause is not Streptococcus pneumoniae.
+  - Not useful if given after antibiotics have already started.
+  - May lower vancomycin penetration into the cerebrospinal fluid; confirm the response.
+notes: "Off-label use of dexamethasone sodium phosphate injection; IDSA 2004 recommendation (strong, high-quality evidence)."
+sources: [idsa-meningitis-2004]
