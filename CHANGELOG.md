@@ -2,6 +2,10 @@
 
 What changed in each version of Wards, newest first. The version is shown in Settings (gear on Home).
 
+## 2026.10.22.5
+
+**New card: Delirium in the Hospitalized Adult.** Under Neurology: ICU-focused recognition (4AT, CAM-ICU, RASS), looking for the cause, non-drug prevention and treatment, when and how to use haloperidol or dexmedetomidine (doses open from the drug names), alcohol-withdrawal and QTc cautions, and MDCalc links.
+
 ## 2026.10.22.4
 
 **Fix: Anemia Workup.** The ferritin question showed a raw code fragment instead of the cutoff; it now reads "Iron deficient?" with the ferritin cutoff beneath it.
