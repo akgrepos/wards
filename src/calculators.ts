@@ -17,6 +17,8 @@ const FORMULAS: Record<string, (v: Values) => number> = {
   'anion-gap': (v) => v.na - (v.cl + v.hco3),
   // Figge: 2.5 mEq/L per 1 g/dL that albumin is below 4.0 g/dL.
   'albumin-corrected-anion-gap': (v) => v.na - (v.cl + v.hco3) + 2.5 * (4 - v.albumin),
+  // Winter's formula: expected PaCO₂ = 1.5 × HCO₃⁻ + 8 (±2) in metabolic acidosis.
+  'winters-expected-pco2': (v) => 1.5 * v.hco3 + 8,
   // Katz: sodium falls 1.6 mEq/L for each 100 mg/dL of glucose above 100; nothing is subtracted below 100.
   'corrected-sodium': (v) => v.na + (1.6 * Math.max(0, v.glucose - 100)) / 100,
 };

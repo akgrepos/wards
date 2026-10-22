@@ -22,6 +22,10 @@ describe('formula calculators', () => {
     expect(result('anion-gap', 'albumin-corrected-anion-gap', { na: 140, cl: 104, hco3: 24, albumin: null })).toBeNull();
     expect(result('anion-gap', 'anion-gap', { na: 120, cl: 100, hco3: 25 })).toBe('-5');
   });
+  it("Winter's formula: expected PaCO2 = 1.5 x HCO3 + 8", () => {
+    expect(result('winters-formula', 'winters-expected-pco2', { hco3: 8 })).toBe('20');
+    expect(result('winters-formula', 'winters-expected-pco2', { hco3: 15 })).toBe('31');
+  });
   it('corrected sodium: 1.6 per 100 mg/dL of glucose above 100, never downward', () => {
     expect(result('corrected-sodium', 'corrected-sodium', { na: 130, glucose: 600 })).toBe('138.0');
     expect(result('corrected-sodium', 'corrected-sodium', { na: 130, glucose: 100 })).toBe('130.0');
