@@ -2,6 +2,10 @@
 
 What changed in each version of Wards, newest first. The version is shown in Settings (gear on Home).
 
+## 2026.10.22.13
+
+**Fix: ECG pre-excitation figure.** The PR interval labels no longer run into the QRS complex.
+
 ## 2026.10.22.12
 
 **Fix: links inside tables.** The previous fix did not work: card links inside tables (ECG Interpretation patterns table, Acid-Base Interpretation) still showed as raw text and split the columns. The page builder now handles them, so those links open the other cards.
