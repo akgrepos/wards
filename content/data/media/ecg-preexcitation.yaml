@@ -1,0 +1,25 @@
+# Pre-excitation (Wolff-Parkinson-White pattern), drawn beside a normal beat (no open dataset has a labeled recording; DECISIONS 2026-10-17 "Images").
+# Each wave is a smooth bump [height mV, center s from the R wave, width s]; the PR is measured from P-wave onset to QRS onset.
+kind: ecg-drawing
+title: Pre-excitation (delta wave)
+alt: "Two drawn beats in a lateral lead: a normal beat with a 160 ms PR interval, and a pre-excited beat with a 105 ms PR interval and a slurred QRS upstroke (delta wave)."
+caption: "Normal PR (160 ms) vs pre-excitation: short PR (105 ms) and a delta wave, the slurred start of a wide QRS."
+illustrates: "Short PR interval with a delta wave and a wide QRS."
+sources: [surawicz-ecg-conduction-2009, acc-aha-hrs-svt-2015]
+panels:
+  - title: Normal beat
+    cue: PR 120–200 ms, sharp QRS
+    seconds: 1.1
+    beats: [0.45]
+    waves: [[0.12, -0.14, 0.028], [1.0, 0, 0.011], [-0.2, 0.03, 0.011], [0.3, 0.25, 0.05]]
+    marks:
+      - { kind: interval, from: 0.26, to: 0.421, label: "PR 160 ms", place: above }
+  - title: Pre-excited beat
+    cue: Short PR, slurred upstroke
+    seconds: 1.1
+    beats: [0.45]
+    waves: [[0.12, -0.15, 0.022], [0.35, -0.025, 0.025], [0.6, 0.02, 0.012], [-0.1, 0.058, 0.013], [-0.2, 0.27, 0.05]]
+    marks:
+      - { kind: interval, from: 0.261, to: 0.366, label: "PR 105 ms", place: above }
+      - { kind: band, from: 0.366, to: 0.445, low: 0, high: 0.8 }
+      - { kind: text, at: 0.5, mv: 0.55, label: "delta wave", place: above, align: start }

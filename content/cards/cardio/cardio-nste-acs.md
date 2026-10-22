@@ -55,7 +55,7 @@ related:
 - Within 10 minutes of arrival; repeat at 15–30-minute intervals if nondiagnostic and symptoms persist. ^[aha-acc-chest-pain-2021]
 - NSTE-ACS changes: new horizontal or downsloping ST depression ≥0.5 mm at the J point in 2 contiguous leads, new or dynamic T-wave inversion ≥1 mm in 2 contiguous leads, transient ST elevation; a normal ECG does not exclude ACS. ^[udmi-2026, aha-acc-chest-pain-2021]
 {{media:ecg-nste-acs}}
-- Patterns suggesting acute coronary occlusion without ST elevation: hyperacute T waves, de Winter pattern (upsloping ST depression with tall symmetric precordial T waves), Wellens (biphasic or deeply inverted T waves in V2–V3 while pain-free), new LBBB or RBBB with ischemia, Sgarbossa or modified Sgarbossa (ST/S ratio ≤0.25) criteria with LBBB or ventricular pacing. Up to 1 in 4 patients managed as NSTEMI have an occluded culprit: discuss immediate angiography with cardiology. ^[udmi-2026, acc-aha-acs-2025]
+- Patterns suggesting acute coronary occlusion without ST elevation: hyperacute T waves, de Winter pattern (upsloping ST depression with tall symmetric precordial T waves), Wellens (biphasic or deeply inverted T waves in V2–V3 while pain-free), new LBBB or RBBB with ischemia, {{calc:sgarbossa}} or {{calc:modified-sgarbossa}} (ST/S ratio ≤0.25) criteria with LBBB or ventricular pacing. Up to 1 in 4 patients managed as NSTEMI have an occluded culprit: discuss immediate angiography with cardiology. ^[udmi-2026, acc-aha-acs-2025]
 - Pathological Q wave: duration ≥40 ms and/or depth ≥25% of the R-wave amplitude in the same lead, in 2 contiguous leads. ^[udmi-2026]
 - Posterior leads V7–V9 when ST depression is maximal in V1–V4 (posterior MI is a STEMI equivalent). ^[acc-aha-acs-2025]
 
