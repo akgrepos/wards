@@ -2,6 +2,10 @@
 
 What changed in each version of Wards, newest first. The version is shown in Settings (gear on Home).
 
+## 2026.10.22.12
+
+**Fix: links inside tables.** The previous fix did not work: card links inside tables (ECG Interpretation patterns table, Acid-Base Interpretation) still showed as raw text and split the columns. The page builder now handles them, so those links open the other cards.
+
 ## 2026.10.22.11
 
 **Fix: ECG Interpretation.** Links to other cards inside the patterns table (hyperkalemia, hypokalemia, chest pain, VTE, atrial fibrillation) showed as raw text and broke the table columns; they now work.

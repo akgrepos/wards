@@ -75,7 +75,7 @@ export function parseBlocks(lines) {
     if (isTableRow(line)) {
       const rows = [];
       while (i < lines.length && isTableRow(lines[i])) { rows.push(lines[i].trim()); i++; }
-      const cells = (r) => r.replace(/^\||\|$/g, '').split('|').map((c) => c.trim());
+      const cells = (r) => r.replace(/^\||\|$/g, '').split(/\|(?![^\[]*\]\])/).map((c) => c.trim());
       const body = rows.filter((r) => !/^\|\s*:?-{2,}/.test(r));
       const [head, ...rest] = body;
       blocks.push({
