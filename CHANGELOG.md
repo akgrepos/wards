@@ -2,6 +2,10 @@
 
 What changed in each version of Wards, newest first. The version is shown in Settings (gear on Home).
 
+## 2026.10.22.3
+
+**New card: Anemia: Hospitalized Adult.** Under Hematology, with a Workup pathway: start from the MCV and reticulocyte response, then iron studies, B12/folate, hemolysis and bleeding checks. Covers when to give oral versus IV iron (label doses), restrictive transfusion thresholds, the can't-miss causes (bleeding, hemolysis, TTP) and when to call hematology. Calculators open from the card (Mentzer, reticulocyte production index, PLASMIC).
+
 ## 2026.10.22.2
 
 **Fix: coverage tool labels.** "Pseudomonas" no longer breaks across lines in the Compare view or the All drugs strip.
