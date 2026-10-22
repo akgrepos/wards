@@ -85,8 +85,13 @@ export type EcgDrawing = MediaBase & {
   panels: { title: string; cue?: string; seconds: number; beats?: number[]; waves?: [number, number, number][]; sine?: { mv: number; period: number; phase?: number }; marks?: EcgMark[] }[];
 };
 export type Media = EcgRecording | EcgDrawing;
+// A coverage grid (docs/DATA-TYPES.md, 10): items by organism groups; each cell is R (reliable), V (variable) or N (none).
+export type CoverageLevel = 'R' | 'V' | 'N';
+export type CoverageColumn = { id: string; name: string; short: string };
+export type CoverageRow = { drug: string; class: string; cells: Record<string, CoverageLevel>; note: string; cp_cells?: string[]; sources: string[] };
+export type CoverageGrid = { title: string; levels: Record<CoverageLevel, { word: string; meaning: string }>; columns: CoverageColumn[]; rows: CoverageRow[]; sources: string[] };
 export type Content = {
   systems: System[];
   cards: Card[];
-  data: { source?: Record<string, Source>; dose?: Record<string, Dose>; threshold?: Record<string, Threshold>; calc?: Record<string, Calc>; criteria?: Record<string, Criteria>; regimen?: Record<string, Regimen>; pathway?: Record<string, Pathway>; media?: Record<string, Media>; [k: string]: Record<string, unknown> | undefined };
+  data: { source?: Record<string, Source>; dose?: Record<string, Dose>; threshold?: Record<string, Threshold>; calc?: Record<string, Calc>; criteria?: Record<string, Criteria>; regimen?: Record<string, Regimen>; pathway?: Record<string, Pathway>; media?: Record<string, Media>; coverage?: Record<string, CoverageGrid>; [k: string]: Record<string, unknown> | undefined };
 };

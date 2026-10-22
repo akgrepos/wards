@@ -196,6 +196,8 @@ export const DATA_TYPES = {
   // A calculator or score on MDCalc, linked from every sentence that names it (docs/DATA-TYPES.md, 12b). `match` lists the
   // words the content check looks for, so a mention can't be left without its link.
   calc: { required: ['name', 'short', 'url', 'match'], sourced: false },
+  // A coverage grid: drugs by organism groups, each cell reliable, variable or none (docs/DATA-TYPES.md, 10).
+  coverage: { required: ['title', 'levels', 'columns', 'rows'], sourced: true },
   // An ECG recording or a drawn ECG, shown as a figure (docs/DATA-TYPES.md, 11. Media).
   media: { required: ['kind', 'title', 'alt', 'caption', 'illustrates'], sourced: true },
 };

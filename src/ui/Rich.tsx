@@ -9,6 +9,7 @@ import { href, parseRoute } from '../router';
 import { useSheet, type ShowSheet } from './SheetHost';
 import { icons } from './icons';
 import { MediaFigure } from './Ecg';
+import { CoverageBlock } from './Coverage';
 import { hasCalculator, openCalculator } from './Calculator';
 
 // "5–10%" without a space; every other unit after a space ("0.1 units/kg/h").
@@ -598,6 +599,7 @@ function BlockView({ b }: { b: Block }) {
   if (b.t === 'insert') {
     if (b.kind === 'criteria') return <CriteriaBlock id={b.id} />;
     if (b.kind === 'regimen') return <RegimenBlock id={b.id} />;
+    if (b.kind === 'coverage') return <CoverageBlock id={b.id} />;
     if (b.kind === 'media') return <MediaFigure id={b.id} pill={(ids, quote) => <LinePill ids={ids} quote={quote} />} />;
     return <p className="ios-body"><Insert kind={b.kind} id={b.id} /></p>;
   }

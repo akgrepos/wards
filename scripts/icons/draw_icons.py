@@ -135,6 +135,18 @@ def checkmark():  # checkmark (a short and a long stroke meeting low, as SF Symb
     return line([(4.3, 10.7), (8.2, 14.6), (15.8, 5.3)], 1.55)
 
 
+def checkmark_circle_fill():  # checkmark.circle.fill (a solid disc with the checkmark cut out)
+    return circle(10, 10, 8.7).difference(line([(5.9, 10.4), (9, 13.5), (14.2, 6.9)], 1.55))
+
+
+def circle_lefthalf_filled():  # circle.lefthalf.filled (a ring, its left half solid)
+    return U(ring(10, 10, 8.0), circle(10, 10, 8.0).intersection(box(0, 0, 10, 20)))
+
+
+def minus_circle():  # minus.circle
+    return U(ring(10, 10, 8.0), line([(6.1, 10), (13.9, 10)], 1.5))
+
+
 def plus():  # plus
     return U(line([(4.4, 10), (15.6, 10)], 1.5), line([(10, 4.4), (10, 15.6)], 1.5))
 
@@ -330,7 +342,7 @@ def quote_opening():  # quote.opening
 ICONS = {
     'house': house_fill, 'staroflifeFill': staroflife_fill, 'heartTextClipboard': heart_text_clipboard_fill,
     'crossCase': cross_case_fill, 'gearshape': gearshape,
-    'xmark': xmark, 'checkmark': checkmark, 'plus': plus, 'minus': minus, 'chevronBackward': chevron_backward, 'chevronDown': chevron_down, 'arrowUpRight': arrow_up_right,
+    'xmark': xmark, 'checkmark': checkmark, 'checkmarkCircleFill': checkmark_circle_fill, 'circleLefthalfFilled': circle_lefthalf_filled, 'minusCircle': minus_circle, 'plus': plus, 'minus': minus, 'chevronBackward': chevron_backward, 'chevronDown': chevron_down, 'arrowUpRight': arrow_up_right,
     'listBullet': list_bullet, 'chevronUpChevronDown': chevron_up_chevron_down,
     'plusForwardslashMinus': plus_forwardslash_minus, 'checklist': checklist, 'arrowLeftArrowRight': arrow_left_arrow_right,
     'pills': pills_fill, 'flowchart': flowchart_fill, 'testtube2': testtube_2,

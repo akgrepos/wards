@@ -2,6 +2,10 @@
 
 What changed in each version of Wards, newest first. The version is shown in Settings (gear on Home).
 
+## 2026.10.22
+
+**New: antibiotic coverage tool on Empiric Antimicrobials.** At the top of the Chart section: pick up to three organism groups (MRSA, *E. faecalis*, VRE, *Pseudomonas*, ESBL, anaerobes, atypicals) to see the drugs that cover all of them, grouped by class; "All drugs" shows each drug's coverage of every group at a glance; "Compare" puts up to three drugs side by side. Tap any drug for its coverage in words, a note and its sources. Coverage is a gray shape plus a word (reliable, variable, none), never color alone, and the legend says what "variable" depends on. Works offline and follows Text Size.
+
 ## 2026.10.21.29
 
 **Fix: Empiric Antimicrobials.** The metronidazole line in the chart read "IV or PO IV over 60 minutes"; it now reads "IV or PO over 60 minutes (IV)".

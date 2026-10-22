@@ -2727,3 +2727,15 @@ button.akg-link { margin: 0; padding: 0; border: 0; background: none; font: inhe
 [data-theme^="macos"] .akg-check-row__box { width: 16px; height: 16px; }
 [data-theme^="macos"] .akg-check-row__box .akg-sym { width: 11px; height: 11px; }
 .akg-check-row:disabled { color: var(--label-tertiary); cursor: default; }
+
+/* CoverageMark / CoverageStrip — gray shape plus word. Full is the label color; partial and none are secondary. Never tinted. */
+.akg-coverage { display: inline-flex; align-items: center; gap: var(--space-8); color: var(--label-secondary); font-family: var(--font-sans); font-size: calc(15 * var(--akg-t)); line-height: calc(20 * var(--akg-t)); vertical-align: middle; }
+.akg-coverage--full { color: var(--label); }
+.akg-coverage__glyph { flex: none; display: inline-flex; width: calc(22 * var(--akg-t)); height: calc(22 * var(--akg-t)); }
+.akg-coverage__glyph svg { width: 100%; height: 100%; display: block; }
+.akg-coverage__word { min-width: 0; overflow-wrap: break-word; font-weight: 500; }
+.akg-coverage__sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.akg-coverage-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(calc(34 * var(--akg-t)), 1fr)); gap: var(--space-4) var(--space-2); width: 100%; }
+.akg-coverage-strip__cell { color: var(--label-secondary); position: relative; display: flex; flex-direction: column; align-items: center; gap: var(--space-2); min-width: 0; }
+.akg-coverage-strip__cell.akg-coverage--full { color: var(--label); }
+.akg-coverage-strip__short { font-size: calc(11 * var(--akg-t)); line-height: calc(13 * var(--akg-t)); color: var(--label-secondary); text-align: center; overflow-wrap: anywhere; }

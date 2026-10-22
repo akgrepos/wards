@@ -5,6 +5,7 @@ https://claude.ai/artifact/GWFUZ6rCthpEuhMik4Jiru
 
 | Copied | Artifact version | Files |
 |---|---|---|
+| 2026-10-22 | 1792643039-8f72 (CoverageMark and CoverageStrip: how well one thing covers another as a gray shape plus a word, `full` / `partial` / `none`, and a strip of them with short headings that wraps at large Text Sizes; Icons group: `checkmark.circle.fill`, `circle.lefthalf.filled`, `minus.circle`) | `project/components/bundle.css`, `bundle.js`, `index.d.ts` |
 | 2026-10-21 | 1792604195-425b (GradeList `layout="bands"`: full-width tinted band per grade, name over stacked label/value fields at full label color, labels not uppercased) | `project/components/bundle.css`, `bundle.js`, `index.d.ts` |
 | 2026-10-21 | 1792601057-be7b (design pass 1 (StepList `density="compact"` and `strong`, Step `lead`, Panel `title`, Menu item `level={1}`, `CheckRow`, Flowchart `strongDetail`: answer detail at full label color)) | `project/components/bundle.css`, `bundle.js`, `index.d.ts` |
 | 2026-10-21 | 1792593951-2b80 (Button `choice` variant with `selected`: open = tinted, chosen = accent fill with a checkmark and a bold subtitle, not chosen = gray and still tappable; `block` fills its container and wraps the label; Wards uses it for pathway decisions; README and types note `aria-pressed` and `aria-describedby`) | `project/components/bundle.css`, `bundle.js`, `index.d.ts` |
