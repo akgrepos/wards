@@ -1,0 +1,4 @@
+name: CIWA-Ar for alcohol withdrawal
+short: "CIWA-Ar"
+url: https://www.mdcalc.com/calc/1736/ciwa-ar-alcohol-withdrawal
+match: ["CIWA-Ar", "CIWA"]

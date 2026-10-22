@@ -1,0 +1,14 @@
+name: 4AT delirium screen
+title: "4AT delirium screen, 2021"
+short: 4AT
+logic: "Add the four scores:"
+columns: [Item, Score]
+rows:
+  - ["1. Alertness: normal (including briefly sleepy on waking) / clearly abnormal", "0 / 4"]
+  - ["2. Orientation (age, date of birth, place, year): no errors / 1 error / 2 or more errors or untestable", "0 / 1 / 2"]
+  - ["3. Attention (months of the year backward): 7 months or more correct / starts but fewer than 7, or refuses / untestable (too unwell, drowsy or inattentive)", "0 / 1 / 2"]
+  - ["4. Acute change or fluctuating course in alertness, cognition or behavior within the past 2 weeks, still present in the past 24 hours: no / yes", "0 / 4"]
+notes:
+  - "4 or more: possible delirium (with or without cognitive impairment). 1–3: possible cognitive impairment. 0: delirium or severe cognitive impairment unlikely (delirium still possible if item 4 information is incomplete)."
+  - "The {{calc:4at}} is a screen; a clinician confirms the diagnosis."
+sources: [tieges-4at-2021, nice-delirium-2023]

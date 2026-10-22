@@ -1,0 +1,16 @@
+drug_name: Dexmedetomidine
+brand: Precedex
+indication: Sedation of mechanically ventilated adults with agitation, as the preferred sedative over benzodiazepines (delirium is not a labeled indication)
+population: Adults in the ICU
+route: IV infusion
+amount: 0.2–0.7
+unit: mcg/kg/h
+rate: "maintenance, titrated to the sedation target; label loading dose 1 mcg/kg over 10 minutes, which may not be needed when converting from another sedative"
+give_when: Mechanically ventilated patient with delirium-related agitation that prevents weaning or extubation
+duration: "Label: continuous infusion not to exceed 24 hours; longer use (as in the trials) is off-label"
+cautions:
+  - "Bradycardia, hypotension and sinus pause; the loading dose raises the risk."
+  - "Consider a lower dose over age 65 or with liver impairment."
+  - "A2B (2025): more agitation and severe bradycardia than propofol, no faster extubation."
+notes: "PADIS 2018 suggests it for delirium in ventilated adults when agitation prevents weaning or extubation; the 2025 PADIS update suggests it over propofol for sedation (conditional); the APA guideline prefers it in ventilated patients with delirium."
+sources: [label-precedex-2026, padis-2018, padis-2025, apa-delirium-2025, a2b-2025]
