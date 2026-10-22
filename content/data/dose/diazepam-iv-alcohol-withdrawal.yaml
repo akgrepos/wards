@@ -1,16 +1,18 @@
 drug_name: Diazepam
 indication: Alcohol withdrawal with delirium, severe agitation or inability to take oral medication
 population: Adults on a monitored unit or in the ICU
-route: IV (IM absorption is erratic)
+route: IV
 amount: 5–10
 unit: mg
-frequency: "repeat every 5–10 minutes until light somnolence; the label's first dose is 10 mg, then 5–10 mg in 3–4 hours if necessary"
+rate: "slowly, at least 1 minute per 5 mg, into a large vein"
+frequency: "repeat every 5–10 minutes until light somnolence (common practice); the label's dose is 10 mg initially, then 5–10 mg in 3–4 hours if necessary"
 give_when: Severe withdrawal, agitation or delirium that oral dosing cannot control
-max: "No fixed ceiling; very large cumulative doses may be needed. Resistant withdrawal: about 200 mg in 4 hours, or a single dose above 40 mg."
+max: "No fixed ceiling; very large cumulative doses may be needed. ASAM has no agreed threshold for resistant withdrawal; cutoffs used include about 150–200 mg in the first 3–4 hours and 40–50 mg IV within 1 hour. In one ICU protocol, 200 mg in 4 hours or a single IV dose above 40 mg triggered ICU admission."
 boxed_warning: "Concomitant use with opioids can cause profound sedation, respiratory depression, coma and death; abuse, misuse and addiction; dependence and withdrawal reactions."
 cautions:
-  - "Continuous pulse oximetry and a clinician able to manage the airway; sedation target is light somnolence, not deep sedation."
-  - "The injection contains propylene glycol: with repeated high doses watch for hyponatremia and metabolic acidosis with an osmolar gap."
-  - "Give slowly into a large vein; do not mix or dilute in the syringe."
-notes: "The label gives 10 mg IM or IV initially for acute alcohol withdrawal (including impending delirium tremens). The 5–10 mg repeat interval for titration is common ICU practice, supported by ASAM's statement that intermittent IV doses to light somnolence are acceptable."
+  - "Apnea or cardiac arrest can occur with IV use, especially in older adults, the very ill and those with limited pulmonary reserve; keep airway and resuscitation equipment at the bedside."
+  - "Continuous pulse oximetry; the sedation target is light somnolence (awake but drifting to sleep unless stimulated), not deep sedation."
+  - "The injection contains propylene glycol: with repeated high doses watch for hyponatremia and metabolic acidosis."
+  - "Do not mix or dilute with other solutions or drugs in the syringe or infusion; avoid small veins and intra-arterial injection."
+notes: "Labeled for acute alcohol withdrawal, including impending or acute delirium tremens. The 5–10 minute repeat interval for titration is common ICU practice, consistent with ASAM's endorsement of intermittent IV dosing to light somnolence and of escalating diazepam doses in resistant withdrawal."
 sources: [asam-alcohol-withdrawal-2020, label-diazepam-inj-2026, common-practice]

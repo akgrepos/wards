@@ -6,7 +6,7 @@ subsection: Altered Mental Status
 title: Alcohol Withdrawal in the Hospitalized Adult
 aliases: [alcohol withdrawal, AWS, delirium tremens, DTs, alcohol withdrawal delirium, withdrawal seizure, rum fits, CIWA, CIWA-Ar, PAWSS, phenobarbital, symptom-triggered benzodiazepines, front loading, Wernicke, thiamine, alcohol use disorder, detox, alcohol hallucinosis, benzodiazepine-resistant withdrawal]
 definition: "A syndrome of autonomic hyperactivity, tremor, anxiety and insomnia, with seizures, hallucinations or delirium in severe cases, that follows a reduction or stop in heavy, prolonged alcohol use. ^[asam-alcohol-withdrawal-2020]"
-based_on: [asam-alcohol-withdrawal-2020, maldonado-pawss-2015, saitz-1994, rosenson-2013, bradley-phenobarbital-2026]
+based_on: [asam-alcohol-withdrawal-2020, maldonado-pawss-2015, saitz-1994, rosenson-2013, bradley-phenobarbital-2026, galvin-efns-wernicke-2010]
 reviewed: 2026-10-22
 related:
   differential: []
@@ -25,17 +25,21 @@ emergency_hint: Benzodiazepines, thiamine, treat seizure
    - Phenytoin is not used for a withdrawal seizure unless there is a separate seizure disorder. ^[asam-alcohol-withdrawal-2020]
 2. Sedate to light somnolence
    - If: delirium, hallucinations or severe agitation ^[asam-alcohol-withdrawal-2020]
-   - Check: Airway support available; oxygen saturation monitored. ^[asam-alcohol-withdrawal-2020]
+   - Check: Glucose; airway support available; continuous oxygen saturation and cardiac monitoring. ^[asam-alcohol-withdrawal-2020, common-practice]
 
    {{dose:diazepam-iv-alcohol-withdrawal}}
 
    - Warning: Apnea ^[label-diazepam-inj-2026]
-   - In significant liver disease or older age, a non-oxidized agent (lorazepam) may be preferred. ^[asam-alcohol-withdrawal-2020]
+   - In significant liver disease, lorazepam (not oxidized by the liver) may be preferred; in older adults, lower doses and reassessment before each dose. ^[asam-alcohol-withdrawal-2020]
 
    {{dose:lorazepam-alcohol-withdrawal}}
 
 3. Give thiamine
-   - If: any admission for withdrawal; first, before or with glucose ^[asam-alcohol-withdrawal-2020]
+   - If: every admission for withdrawal; give in any order with glucose, never delaying glucose ^[asam-alcohol-withdrawal-2020]
+
+   {{dose:thiamine-alcohol-withdrawal}}
+
+   - Delirium, ataxia or ophthalmoplegia: treat as possible Wernicke encephalopathy with the higher dose. ^[galvin-efns-wernicke-2010, asam-alcohol-withdrawal-2020]
 
    {{dose:thiamine-wernicke-suspected}}
 
@@ -63,14 +67,14 @@ emergency_hint: Benzodiazepines, thiamine, treat seizure
 - Benzodiazepines are first line; symptom-triggered dosing by the {{calc:ciwa-ar}} gives less drug and shorter treatment than fixed dosing. ^[asam-alcohol-withdrawal-2020, saitz-1994]
 - Give thiamine to every admission; glucose need not wait. ^[asam-alcohol-withdrawal-2020]
 - Phenobarbital: experienced clinicians in monitored settings; the injection is an unapproved drug. ^[asam-alcohol-withdrawal-2020, label-phenobarbital-inj-2025]
-- Dexmedetomidine, beta-blockers and antipsychotics are adjuncts only; they do not prevent seizures or treat delirium. ^[asam-alcohol-withdrawal-2020]
+- Dexmedetomidine and beta-blockers only treat autonomic signs; they do not prevent seizures or treat delirium. Antipsychotics are adjuncts, never used alone. ^[asam-alcohol-withdrawal-2020]
 
 ## Severity
 {{criteria:asam-withdrawal-severity}}
 
 {{criteria:pawss}}
 
-- Level of care: ICU or equivalent for withdrawal delirium, a seizure with unstable course, benzodiazepine-resistant withdrawal, hemodynamic instability or parenteral phenobarbital. ^[asam-alcohol-withdrawal-2020]
+- Level of care: ICU or equivalent for withdrawal delirium, a seizure with unstable course, benzodiazepine-resistant withdrawal, hemodynamic instability or parenteral phenobarbital. ^[asam-alcohol-withdrawal-2020, common-practice]
 - Rate agitation and sedation with the {{calc:rass}} in the ICU. ^[asam-alcohol-withdrawal-2020]
 - Risk factors for a complicated course: prior withdrawal seizure or delirium, many prior withdrawal episodes, age >65, serious medical or surgical illness, head injury, long heavy use, marked autonomic hyperactivity on presentation, dependence on benzodiazepines or barbiturates. ^[asam-alcohol-withdrawal-2020]
 
@@ -109,7 +113,7 @@ emergency_hint: Benzodiazepines, thiamine, treat seizure
 
 ## Treatment
 1. Place the patient
-   - Mild with low risk: observation up to 36 hours; if no symptoms by then, severe withdrawal is unlikely. ^[asam-alcohol-withdrawal-2020]
+   - Mild with low risk: observe up to 36 hours; more severe withdrawal is unlikely after that. ^[asam-alcohol-withdrawal-2020]
    - Severe withdrawal or delirium: monitored unit or ICU, quiet and evenly lit room, one-to-one observation if agitated. ^[asam-alcohol-withdrawal-2020]
 
 2. Thiamine, then supportive care
@@ -117,11 +121,11 @@ emergency_hint: Benzodiazepines, thiamine, treat seizure
 
    {{dose:thiamine-alcohol-withdrawal}}
 
-   - Suspected Wernicke encephalopathy (confusion, ataxia, ophthalmoplegia): higher dose. ^[galvin-efns-wernicke-2010, asam-alcohol-withdrawal-2020]
+   - Suspected Wernicke encephalopathy: higher dose. In alcohol use disorder, any two of dietary deficiency, eye signs, cerebellar signs, and altered mental state or memory impairment suggest it. ^[galvin-efns-wernicke-2010, asam-alcohol-withdrawal-2020]
 
    {{dose:thiamine-wernicke-suspected}}
 
-   - Folate, and replace magnesium for documented hypomagnesemia; routine magnesium for withdrawal has no supporting evidence. ^[asam-alcohol-withdrawal-2020]
+   - Folate may be considered when critically ill. Give magnesium for hypomagnesemia (ASAM also with arrhythmia or prior withdrawal seizures); magnesium to treat withdrawal itself has no supporting evidence. ^[asam-alcohol-withdrawal-2020]
 
    {{dose:folic-acid-alcohol-withdrawal}}
    {{dose:mgso4-iv-repletion}}
@@ -139,7 +143,7 @@ emergency_hint: Benzodiazepines, thiamine, treat seizure
 
    {{dose:diazepam-iv-alcohol-withdrawal}}
 
-   - Significant liver disease or older age: prefer a benzodiazepine without hepatic oxidation, and dose carefully. ^[asam-alcohol-withdrawal-2020]
+   - Significant liver disease: reduce the dose or use a benzodiazepine with less hepatic metabolism. Older adults: long-acting metabolites accumulate, so dose carefully. ^[asam-alcohol-withdrawal-2020]
 
    {{dose:lorazepam-alcohol-withdrawal}}
    {{dose:oxazepam-po-alcohol-withdrawal}}
@@ -166,7 +170,7 @@ emergency_hint: Benzodiazepines, thiamine, treat seizure
    - Alpha-2 agonists and beta-blockers do not prevent seizures or treat delirium. ^[asam-alcohol-withdrawal-2020]
 
 6. Mild to moderate withdrawal without benzodiazepines
-   - Carbamazepine or gabapentin are alternatives when benzodiazepines are contraindicated, and adjuncts after an adequate benzodiazepine dose; not for complicated withdrawal. ^[asam-alcohol-withdrawal-2020]
+   - Mild or moderate withdrawal: carbamazepine or gabapentin are alternatives, including when benzodiazepines are contraindicated, and adjuncts after an adequate benzodiazepine dose; not for severe or complicated withdrawal. ^[asam-alcohol-withdrawal-2020]
 
    {{dose:carbamazepine-alcohol-withdrawal}}
    {{dose:gabapentin-alcohol-withdrawal}}
@@ -174,9 +178,9 @@ emergency_hint: Benzodiazepines, thiamine, treat seizure
    - Valproate is not used alone, and not in liver disease or women of childbearing potential. ^[asam-alcohol-withdrawal-2020]
 
 ## Monitor
-- Reassess every 1–4 hours for 24 hours when moderate or severe; once the {{calc:ciwa-ar}} is below 10 for 24 hours, every 4–8 hours for another 24 hours. ^[asam-alcohol-withdrawal-2020]
+- Reassess every 1–4 hours for 24 hours when moderate or severe or on medication; once the {{calc:ciwa-ar}} is below 10 for 24 hours, every 4–8 hours for another 24 hours. ^[asam-alcohol-withdrawal-2020]
 - Sedation, respiratory rate and oxygen saturation after every parenteral dose; propylene glycol toxicity (hyponatremia, metabolic acidosis) with repeated high IV lorazepam or diazepam. ^[asam-alcohol-withdrawal-2020]
-- Electrolytes daily: sodium, potassium, magnesium, phosphorus. ^[asam-alcohol-withdrawal-2020]
+- Electrolytes as indicated, usually daily: sodium, potassium, magnesium, phosphorus. ^[asam-alcohol-withdrawal-2020, common-practice]
 
 :::times{after=first check=Sedation unit=min} Sedation and vital signs after parenteral dosing, minutes ^[asam-alcohol-withdrawal-2020, common-practice]
 - 15
@@ -186,7 +190,7 @@ emergency_hint: Benzodiazepines, thiamine, treat seizure
 :::
 
 ## Escalation
-- ICU: withdrawal delirium, seizures that recur, benzodiazepine-resistant withdrawal, hemodynamic instability, airway concern, parenteral phenobarbital or dexmedetomidine. ^[asam-alcohol-withdrawal-2020]
+- ICU: withdrawal delirium, seizures that recur, benzodiazepine-resistant withdrawal, hemodynamic instability, airway concern, parenteral phenobarbital or dexmedetomidine. ^[asam-alcohol-withdrawal-2020, common-practice]
 - Addiction medicine or psychiatry: start treatment of alcohol use disorder during the admission, with a warm handoff. ^[asam-alcohol-withdrawal-2020]
 - Hepatology: alcohol-associated hepatitis or decompensated cirrhosis. ^[common-practice]
 - Neurology: new focal findings, seizure that does not fit withdrawal, suspected nonconvulsive status. ^[asam-alcohol-withdrawal-2020]
@@ -204,7 +208,8 @@ emergency_hint: Benzodiazepines, thiamine, treat seizure
 :::
 
 ### Special Populations: Liver disease, older adults, pregnancy
-- Liver disease or older age: lorazepam or oxazepam may be more appropriate than long-acting agents, which accumulate; recent expert opinion argues titrated diazepam is workable. ^[asam-alcohol-withdrawal-2020]
+- Significant liver disease: lorazepam or oxazepam, which are not oxidized by the liver, may be more appropriate; long-acting metabolites accumulate, especially in liver disease and older age. ^[asam-alcohol-withdrawal-2020]
+- A 2025 expert review argues diazepam can be titrated safely in liver disease because its peak effect is fast, while chlordiazepoxide risks dose-stacking (opinion, not guideline). ^[weintraub-hepatic-2025]
 - Pregnancy: inpatient treatment for at least moderate withdrawal; benzodiazepines are the medications of choice, avoid valproate. ^[asam-alcohol-withdrawal-2020]
 - Surgical patients: screen before elective surgery; treat withdrawal that begins after surgery or trauma immediately. ^[asam-alcohol-withdrawal-2020]
 
@@ -217,9 +222,9 @@ emergency_hint: Benzodiazepines, thiamine, treat seizure
 
 ### Evidence: Key studies
 - Saitz 1994: symptom-triggered chlordiazepoxide used about a quarter of the drug and shortened treatment from a median of 68 to 9 hours versus fixed dosing, with no difference in seizures or delirium. ^[saitz-1994]
-- Rosenson 2013: one weight-based IV phenobarbital dose with a lorazepam protocol lowered ICU admission (8% vs 25%). ^[rosenson-2013]
+- Rosenson 2013: one weight-based IV phenobarbital dose added to a lorazepam protocol in the emergency department lowered ICU admission (8% vs 25%, n=102), with no difference in adverse events. ^[rosenson-2013]
 - Mueller 2014: dexmedetomidine lowered early lorazepam use, not total use; bradycardia in 25%. ^[mueller-dexmedetomidine-2014]
-- Maldonado 2015: {{calc:pawss|PAWSS}} of 4 or more predicted complicated withdrawal (sensitivity 93%, specificity 99.5%, n=403). ^[maldonado-pawss-2015]
+- Maldonado 2015: {{calc:pawss|PAWSS}} of 4 or more predicted complicated withdrawal in medically ill inpatients (sensitivity 93%, specificity 99.5%, n=403). ^[maldonado-pawss-2015]
 - Bradley 2026: phenobarbital versus diazepam in 24,643 adults (observational): length of stay 4.1 vs 4.3 days, ventilation 3.1% vs 2.7%. ^[bradley-phenobarbital-2026]
 
 ### Why the Treatment Order: Benzodiazepine first
@@ -228,6 +233,6 @@ emergency_hint: Benzodiazepines, thiamine, treat seizure
 ## Pearls
 - A positive blood alcohol level does not exclude withdrawal. ^[asam-alcohol-withdrawal-2020]
 - Do not use the {{calc:ciwa-ar}} in a delirious patient; use the {{calc:rass}}. ^[asam-alcohol-withdrawal-2020]
-- Thiamine for every admission, and never delay it for glucose. ^[asam-alcohol-withdrawal-2020]
+- Thiamine for every admission; never delay glucose for it, as order does not matter. ^[asam-alcohol-withdrawal-2020]
 - A benzodiazepine-resistant patient needs another cause sought (infection, hypoglycemia, head injury) before more drug. ^[asam-alcohol-withdrawal-2020, common-practice]
 - Delirium that lasts beyond 72 hours: look for another GABAergic withdrawal (gabapentin, carisoprodol) or drug-induced delirium. ^[asam-alcohol-withdrawal-2020]

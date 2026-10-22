@@ -5,7 +5,7 @@ route: PO or IV
 amount: 1
 unit: mg
 frequency: once daily
-give_when: With thiamine on admission
+give_when: Critically ill or poorly nourished patients
 duration: "During the admission"
-notes: "ASAM: folate may be considered in critically ill patients; oral 1 mg daily is the usual dose."
+notes: "ASAM: folate 1 mg daily may be considered in critically ill patients (chronic alcohol use and hyperhomocysteinemia); an ICU study cited by ASAM used 400–1000 mcg IV."
 sources: [asam-alcohol-withdrawal-2020, common-practice]
