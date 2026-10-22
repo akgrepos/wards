@@ -1,0 +1,15 @@
+name: ASAM alcohol withdrawal severity
+title: "ASAM alcohol withdrawal severity, 2020"
+short: ASAM severity
+logic: "Classify by the {{calc:ciwa-ar}} and by complications; its bands vary between protocols and are guides, not rules:"
+columns: [Severity, Findings]
+layout: stacked
+tones: [yellow, orange, red, red]
+rows:
+  - ["Mild", "Score <10, no complications"]
+  - ["Moderate", "Score 10–18, no complications"]
+  - ["Severe", "Score ≥19, no seizure, delirium or hallucinations"]
+  - ["Complicated", "Withdrawal seizure, withdrawal delirium or new hallucinations"]
+notes:
+  - "Do not score the {{calc:ciwa-ar}} in a patient with delirium or who cannot report symptoms: it relies on patient report. Use the {{calc:rass}} in the ICU."
+sources: [asam-alcohol-withdrawal-2020]

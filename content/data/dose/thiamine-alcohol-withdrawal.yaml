@@ -1,0 +1,12 @@
+drug_name: Thiamine
+indication: Prevention of Wernicke encephalopathy in alcohol withdrawal
+population: Adults
+route: IV or IM (oral if able and well nourished)
+amount: 100
+unit: mg
+frequency: "daily for 3–5 days"
+give_when: Every admission for alcohol withdrawal; give before or together with glucose
+cautions:
+  - "Anaphylaxis is rare but reported with IV or IM thiamine."
+notes: "ASAM: parenteral preferred with poor nutrition, malabsorption or severe complications; thiamine and glucose may be given in any order or together. Label (Wernicke): 100 mg IV, then 50–100 mg IM daily until eating a regular diet."
+sources: [asam-alcohol-withdrawal-2020, label-thiamine-inj-2026]

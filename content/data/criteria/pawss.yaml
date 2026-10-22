@@ -1,0 +1,19 @@
+name: Prediction of Alcohol Withdrawal Severity Scale (PAWSS)
+title: "Prediction of Alcohol Withdrawal Severity Scale (PAWSS), 2015"
+short: PAWSS
+logic: "Screen only if the patient drank alcohol in the past 30 days or the admission blood alcohol level is positive. Then add 1 point for each yes (maximum 10):"
+items:
+  - "Interview: intoxicated (drunk) in the past 30 days"
+  - "Interview: ever treated for alcohol use disorder (rehabilitation, counseling, Alcoholics Anonymous)"
+  - "Interview: any previous alcohol withdrawal episode, of any severity"
+  - "Interview: ever had a blackout"
+  - "Interview: ever had a withdrawal seizure"
+  - "Interview: ever had delirium tremens"
+  - "Interview: combined alcohol with benzodiazepines or barbiturates in the past 90 days"
+  - "Interview: combined alcohol with another substance of abuse in the past 90 days"
+  - "Clinical: blood alcohol level on presentation ≥200 mg/dL"
+  - "Clinical: evidence of increased autonomic activity (for example heart rate >120/min, tremor, sweating, agitation, nausea)"
+notes:
+  - "A total of 4 or more is high risk for moderate to severe (complicated) withdrawal: prophylaxis or early treatment may be indicated. At a cutoff of 4 the validation cohort of 403 medically ill inpatients showed sensitivity 93% and specificity 99.5%."
+  - "The {{calc:pawss}} is a screen, not a diagnosis; MDCalc says not to use it with an active seizure disorder."
+sources: [maldonado-pawss-2015, maldonado-pawss-2014, asam-alcohol-withdrawal-2020]

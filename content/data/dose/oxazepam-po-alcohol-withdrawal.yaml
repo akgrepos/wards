@@ -1,0 +1,17 @@
+drug_name: Oxazepam
+brand: Serax
+indication: Alcohol withdrawal in liver disease or older adults (oral)
+population: Adults who can take oral medication
+route: PO
+amount: 15–30
+unit: mg
+frequency: "15 mg for a CIWA-Ar of 8–15, 30 mg for a CIWA-Ar above 15; reassess before each repeat dose"
+give_when: CIWA-Ar ≥8–10 in significant liver disease or older age
+boxed_warning: "Concomitant use with opioids can cause profound sedation, respiratory depression, coma and death; abuse, misuse and addiction; dependence and withdrawal reactions."
+adjustments:
+  - when: "Older adults"
+    change: "Label: 10 mg three times daily initially"
+cautions:
+  - "Slow onset by mouth: do not stack doses before the previous one has acted."
+notes: "ASAM example thresholds; the label has no alcohol-withdrawal dose, but notes that patients with acute tremulousness or anxiety associated with alcohol withdrawal respond. Not hepatically oxidized."
+sources: [asam-alcohol-withdrawal-2020, common-practice]

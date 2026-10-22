@@ -1,0 +1,13 @@
+drug_name: Phenobarbital
+indication: Alcohol withdrawal in the ICU, symptom-triggered (off-label, unapproved product)
+population: Adults in the ICU
+route: IV
+amount: 130
+unit: mg
+frequency: "every 30 minutes as needed to a RASS of 0 to −1"
+give_when: ICU patient with withdrawal not controlled by benzodiazepines, or with a contraindication to benzodiazepines
+boxed_warning: "None on the label; the injection is an unapproved drug."
+cautions:
+  - "Continuous monitoring of respiration and sedation; airway equipment at the bedside."
+notes: "ASAM Appendix V sample regimen for ICU monotherapy; as an adjunct after a maximum diazepam dose, ASAM lists escalating doses of 60, 120 then 240 mg IV every 30 minutes to a RASS of 0 to −2. Observational data suggest outcomes close to benzodiazepines (Bradley 2026) but with very low certainty in the ICU (Rizwan 2026)."
+sources: [asam-alcohol-withdrawal-2020, bradley-phenobarbital-2026, rizwan-phenobarbital-2026, label-phenobarbital-inj-2025]

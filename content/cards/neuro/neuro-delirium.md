@@ -36,7 +36,7 @@ related:
 - **Infection:** [!cannot-miss] urinary ([[id-complicated-uti|complicated UTI]]), pneumonia, bloodstream infection ([[crit-sepsis|sepsis]]), skin, meningitis or encephalitis, C. difficile. ^[nice-delirium-2023, common-practice]
 - **Hypoxemia and hypercapnia:** [[crit-hypoxemic-respiratory-failure|hypoxemic respiratory failure]], COPD exacerbation, heart failure. ^[nice-delirium-2023, common-practice]
 - **Metabolic:** [[renal-hyponatremia|hyponatremia]], hypernatremia, hypoglycemia, hyperglycemia, hypercalcemia, uremia, hepatic encephalopathy, thyroid disease, hypothermia. ^[nice-delirium-2023, common-practice]
-- **Withdrawal and intoxication:** [!cannot-miss] alcohol and benzodiazepine withdrawal (alcohol withdrawal delirium; the alcohol withdrawal card is not yet written), opioid, sedative or stimulant effects. ^[apa-delirium-2025, common-practice]
+- **Withdrawal and intoxication:** [!cannot-miss] alcohol and benzodiazepine withdrawal ([[neuro-alcohol-withdrawal|alcohol withdrawal delirium]]), opioid, sedative or stimulant effects. ^[apa-delirium-2025, common-practice]
 - **Neurologic:** [!cannot-miss] stroke, intracranial hemorrhage, seizure or postictal state, nonconvulsive status epilepticus, central nervous system infection, Wernicke encephalopathy. ^[common-practice]
 - **Physiologic and environmental:** urinary retention, fecal impaction or constipation, uncontrolled pain, dehydration, sleep deprivation, immobility, lines and restraints, sensory loss (missing glasses or hearing aids), ICU environment. ^[nice-delirium-2023, apa-delirium-2025]
 - **Postoperative and other:** anesthesia, major surgery, hip fracture, cardiac surgery. ^[esaic-pod-2024]
@@ -72,7 +72,7 @@ related:
    - Find and treat the precipitant: infection, hypoxemia, metabolic derangement, pain, retention, constipation, withdrawal. ^[apa-delirium-2025, nice-delirium-2023]
    - Medication review: stop or reduce anticholinergics, benzodiazepines, Z-drugs, opioids, H2 blockers and corticosteroids where possible; substitute safer drugs. ^[ags-beers-2023, apa-delirium-2025]
    - Treat pain, with acetaminophen and regional or opioid-sparing options before systemic opioids. ^[ags-beers-2023, padis-2018]
-   - Alcohol use: consider withdrawal in daily drinkers, and give thiamine before glucose when Wernicke encephalopathy is possible (alcohol withdrawal card not yet written). ^[common-practice]
+   - Alcohol use: consider withdrawal in daily drinkers, and give thiamine before glucose when Wernicke encephalopathy is possible (see [[neuro-alcohol-withdrawal|alcohol withdrawal]]). ^[common-practice]
 
 2. Nonpharmacologic bundle (first line for everyone)
    - Reorientation, familiar objects, clock and calendar, family presence, consistent staff. ^[nice-delirium-2023, apa-delirium-2025]

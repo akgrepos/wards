@@ -1,0 +1,13 @@
+drug_name: Thiamine
+indication: Suspected Wernicke encephalopathy (confusion, ataxia, ophthalmoplegia) or high-risk presentation
+population: Adults
+route: IV
+amount: 200–500
+unit: mg
+frequency: "every 8 hours"
+duration: "3–5 days, then oral or lower-dose parenteral thiamine"
+give_when: Any sign of Wernicke encephalopathy, or a patient who is critically ill with malnutrition; before glucose
+cautions:
+  - "Anaphylaxis is rare but reported; give over 30 minutes."
+notes: "EFNS: 200 mg three times daily IV before any carbohydrate; the higher end is used in practice. The label lists only 100 mg IV then 50–100 mg IM daily."
+sources: [galvin-efns-wernicke-2010, asam-alcohol-withdrawal-2020, label-thiamine-inj-2026]

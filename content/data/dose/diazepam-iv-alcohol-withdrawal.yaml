@@ -1,0 +1,16 @@
+drug_name: Diazepam
+indication: Alcohol withdrawal with delirium, severe agitation or inability to take oral medication
+population: Adults on a monitored unit or in the ICU
+route: IV (IM absorption is erratic)
+amount: 5–10
+unit: mg
+frequency: "repeat every 5–10 minutes until light somnolence; the label's first dose is 10 mg, then 5–10 mg in 3–4 hours if necessary"
+give_when: Severe withdrawal, agitation or delirium that oral dosing cannot control
+max: "No fixed ceiling; very large cumulative doses may be needed. Resistant withdrawal: about 200 mg in 4 hours, or a single dose above 40 mg."
+boxed_warning: "Concomitant use with opioids can cause profound sedation, respiratory depression, coma and death; abuse, misuse and addiction; dependence and withdrawal reactions."
+cautions:
+  - "Continuous pulse oximetry and a clinician able to manage the airway; sedation target is light somnolence, not deep sedation."
+  - "The injection contains propylene glycol: with repeated high doses watch for hyponatremia and metabolic acidosis with an osmolar gap."
+  - "Give slowly into a large vein; do not mix or dilute in the syringe."
+notes: "The label gives 10 mg IM or IV initially for acute alcohol withdrawal (including impending delirium tremens). The 5–10 mg repeat interval for titration is common ICU practice, supported by ASAM's statement that intermittent IV doses to light somnolence are acceptable."
+sources: [asam-alcohol-withdrawal-2020, label-diazepam-inj-2026, common-practice]
