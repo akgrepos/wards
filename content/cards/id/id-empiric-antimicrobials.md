@@ -20,7 +20,6 @@ related:
 
 ## How to Read the Chart
 - Find the source in the Chart; each regimen row shows the first choice, what to add for a specific risk and the usual duration. Doses open from the drug names. ^[common-practice]
-- The coverage grid shows which agents cover MRSA, Enterococcus faecalis, VRE, Pseudomonas, ESBL organisms, anaerobes and atypical organisms. ^[common-practice]
 - **MRSA risk (nosocomial pneumonia):** IV antibiotics in the last 90 days; for VAP, any multidrug-resistant risk factor; for HAP, septic shock or ventilatory support for the pneumonia; or a unit where more than 10–20% (VAP) or 20% (HAP) of *S. aureus* isolates are MRSA, or the rate is unknown. ^[idsa-ats-hap-vap-2016]
 - Known MRSA colonization or prior MRSA infection also counts in practice. ^[common-practice]
 - **Multidrug-resistant risk (VAP):** IV antibiotics in the last 90 days, septic shock at onset, ARDS before the VAP, 5 or more days in hospital before the VAP, or acute renal replacement therapy. Structural lung disease (bronchiectasis, cystic fibrosis) adds Pseudomonas risk, and a unit with more than 10% resistance to the planned single agent calls for two antipseudomonal agents. ^[idsa-ats-hap-vap-2016]
@@ -71,8 +70,6 @@ or. Healthcare-associated or neurosurgical meningitis
    - Skin and soft tissue, including necrotizing infection: [[id-cellulitis|Cellulitis and erysipelas]]. ^[common-practice]
    - Urinary source: [[id-complicated-uti|Pyelonephritis and complicated UTI]]. ^[common-practice]
    - Sepsis or septic shock, source unclear: [[crit-sepsis|Sepsis]]. ^[common-practice]
-
-<!-- GRID-PLACEHOLDER: coverage grid goes here. Data: docs/drafts/empiric-antimicrobials-coverage-grid.yaml --> ^[common-practice]
 
 ## Caveats
 - **De-escalate:** with a pathogen and susceptibilities, narrow to the most targeted active agent; with negative cultures, narrow or stop when the clinical picture allows. ^[ssc-sepsis-2026]
