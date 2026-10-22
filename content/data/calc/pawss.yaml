@@ -1,0 +1,4 @@
+name: Prediction of Alcohol Withdrawal Severity Scale (PAWSS)
+short: "PAWSS"
+url: https://www.mdcalc.com/calc/10102/prediction-alcohol-withdrawal-severity-scale
+match: ["PAWSS"]

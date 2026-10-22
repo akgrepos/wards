@@ -1,0 +1,16 @@
+drug_name: Phenobarbital
+indication: Severe or high-risk alcohol withdrawal as a single IV loading dose with symptom-triggered benzodiazepines (off-label, unapproved product)
+population: Adults on a monitored unit, ED or ICU
+route: IV
+amount: 10
+unit: mg/kg
+rate: "in 100 mL normal saline over 30 minutes"
+frequency: once
+give_when: Severe or high-risk withdrawal, or benzodiazepine-resistant withdrawal, with close monitoring
+boxed_warning: "None on the label; the injection is an unapproved drug."
+cautions:
+  - "ASAM: parenteral phenobarbital only where respiratory depression and over-sedation can be managed (ICU or equivalent), by clinicians experienced with it."
+  - "Avoid when a benzodiazepine was already given in large doses, with severe respiratory disease, or with marked hepatic impairment (label)."
+  - "Long half-life: effects last days and induce hepatic enzymes (warfarin, steroids)."
+notes: "ASAM sample regimen and the placebo-controlled RCT (Rosenson 2013; ICU admission 8% vs 25%). The label does not list alcohol withdrawal or a weight-based dose."
+sources: [asam-alcohol-withdrawal-2020, rosenson-2013, label-phenobarbital-inj-2025]

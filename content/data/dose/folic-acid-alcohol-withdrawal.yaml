@@ -1,0 +1,11 @@
+drug_name: Folic acid
+indication: Folate repletion in alcohol use disorder
+population: Adults
+route: PO or IV
+amount: 1
+unit: mg
+frequency: once daily
+give_when: With thiamine on admission
+duration: "During the admission"
+notes: "ASAM: folate may be considered in critically ill patients; oral 1 mg daily is the usual dose."
+sources: [asam-alcohol-withdrawal-2020, common-practice]
