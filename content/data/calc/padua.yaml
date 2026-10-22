@@ -1,0 +1,4 @@
+name: Padua Prediction Score for Risk of VTE
+short: "Padua score"
+url: https://www.mdcalc.com/calc/2023/padua-prediction-score-risk-vte
+match: ["Padua score", "Padua"]

@@ -1,0 +1,4 @@
+name: IMPROVE Risk Score for Venous Thromboembolism (VTE)
+short: "IMPROVE VTE score"
+url: https://www.mdcalc.com/calc/10349/improve-risk-score-venous-thromboembolism-vte
+match: ["IMPROVE VTE score", "IMPROVE VTE"]

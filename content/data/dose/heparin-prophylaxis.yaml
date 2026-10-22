@@ -1,0 +1,14 @@
+drug_name: Heparin (unfractionated)
+indication: VTE prophylaxis in hospitalized adults
+population: Adults
+route: SC
+amount: "5,000"
+unit: units
+frequency: every 8–12 hours
+give_when: "Preferred with kidney failure (CrCl <30 mL/min); unfractionated heparin or LMWH when no contraindication"
+boxed_warning: "None"
+cautions:
+  - "Check platelets (heparin-induced thrombocytopenia): see the Anticoagulant Selection card."
+  - "Contraindicated with a history of heparin-induced thrombocytopenia."
+notes: "The US label gives 5,000 units every 8–12 hours for postoperative prophylaxis; every 8 hours versus every 12 hours is practice-dependent, and every 12 hours is often chosen for low weight, older age or higher bleeding risk."
+sources: [label-heparin-2025, chest-prophylaxis-medical-2012]

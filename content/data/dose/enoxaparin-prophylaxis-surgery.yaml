@@ -1,0 +1,18 @@
+drug_name: Enoxaparin
+brand: Lovenox
+indication: VTE prophylaxis after abdominal surgery
+population: Adults
+route: SC
+amount: "40"
+unit: mg
+frequency: once daily
+give_when: "First dose 2 hours before abdominal surgery"
+boxed_warning: "Spinal or epidural hematoma with neuraxial anesthesia or spinal puncture."
+adjustments:
+  - when: CrCl <30 mL/min
+    change: 30 mg once daily
+cautions:
+  - "Hip or knee replacement: 30 mg every 12 hours (hip replacement: 40 mg once daily is an option); follow the label."
+  - "Neuraxial anesthesia: at least 12 hours between the last prophylactic dose and needle or catheter removal; next dose at least 4 hours after removal. With CrCl <30, consider doubling the intervals."
+notes: "Usual duration 7–10 days (up to 12 days)."
+sources: [label-lovenox-2026]
