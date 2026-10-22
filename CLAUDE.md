@@ -29,6 +29,7 @@ The owner, a physician, is the only user. No coding experience: explain steps pl
   - *Visible change:* add to the Home Screen and check light and dark only, on one representative screen per kind of page that changed (a card, a Rapids page, a pathway, a dose sheet); no Text Size checks (the owner will report any that break when they change their Text Size). Put screenshots in `docs/screenshots/<date>-<topic>/` and show them in the PR. Bump the version in `src/version.ts` (`YYYY.MM.DD`, `.2` for a second release that day) and add a plain-language `CHANGELOG.md` entry; a test enforces that the two match.
   - *Behind-the-scenes change (build, security, tools):* a quick check that the app opens, works offline and still offers updates. No screenshots or version bump.
   - *Notes only, or a Dependabot PR with nothing visible:* the automatic checks are enough. Read a Dependabot PR's changes before merging.
+- **Workflow scripts:** use the one-call scripts (`scripts/status.sh`, `wait-live.sh`, `tidy.sh`, `shots.sh`, `npm run release`, `npm run card:new`) instead of repeating those steps by hand; see README "Workflow scripts".
 - **Record decisions** in `docs/DECISIONS.md` (date, what, why) and keep `docs/STATUS.md` a short current snapshot. Move items out of "Open questions" when settled.
 - `main` publishes to the live app automatically; the owner gets it after tapping Reload on the "Update Ready" banner.
 
