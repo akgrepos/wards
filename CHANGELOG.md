@@ -2,6 +2,10 @@
 
 What changed in each version of Wards, newest first. The version is shown in Settings (gear on Home).
 
+## 2026.10.21.27
+
+**New card: Acid-Base Interpretation.** Under Renal: a stepwise method (pH, primary disorder, compensation, anion gap, delta ratio), a patterns table, worked examples and criteria boxes, with MDCalc links. **New calculator: Winter's formula** (expected PaCO₂ for metabolic acidosis), opened from its name in the card.
+
 ## 2026.10.21.26
 
 **Fix: Upper GI Bleeding pathway.** The risk-score step showed raw code instead of the Glasgow-Blatchford name and link; it now shows the name with its MDCalc link.
