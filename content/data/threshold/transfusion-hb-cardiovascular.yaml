@@ -1,0 +1,5 @@
+name: Hemoglobin threshold for red cell transfusion with preexisting cardiovascular disease or orthopedic surgery
+value: "<8"
+unit: g/dL
+note: "AABB 2023 makes no recommendation for acute myocardial infarction."
+sources: [aabb-rbc-2023]

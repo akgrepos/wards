@@ -1,0 +1,16 @@
+drug_name: Ferric derisomaltose
+brand: Monoferric
+indication: Iron deficiency anemia, intolerance of or inadequate response to oral iron
+population: "Adults, weight 50 kg or more"
+route: IV
+amount: "1,000"
+unit: mg
+frequency: once
+rate: "Over at least 20 minutes"
+duration: "Repeat only if iron deficiency anemia recurs"
+boxed_warning: "None"
+cautions:
+  - "Under 50 kg: 20 mg/kg once."
+  - "Observe for hypersensitivity for at least 30 minutes after the infusion, with resuscitation available."
+  - "Hypophosphatemia (phosphate below 2.0 mg/dL) in 3.5% in the label trials."
+sources: [label-monoferric-2025]

@@ -1,0 +1,4 @@
+name: Corrected reticulocyte percentage and reticulocyte production index
+short: "reticulocyte production index"
+url: https://www.mdcalc.com/calc/1667/absolute-reticulocyte-count-reticulocyte-index
+match: ["reticulocyte production index", "reticulocyte index", "RPI"]
