@@ -121,7 +121,7 @@ related:
 
 #### Converting between opioids
 :::note Conversion tables estimate; they do not dose. ^[cdc-opioid-2022]
-Equivalence figures are population estimates. Check with the {{calc:opiate-conversion}} or {{calc:morphine-milligram-equivalents}}, then individualize.
+Equivalence figures are population estimates. In the table, opioids are oral unless stated; the CDC factor is morphine milligram equivalents per mg, and the ratio is from MASCC-ASCO. Check with the {{calc:opiate-conversion}} or {{calc:morphine-milligram-equivalents}}, then individualize.
 :::
 
 1. Total the opioid taken over 24 hours (scheduled plus PRN), by route. ^[mascc-asco-opioid-conversion-2025]
@@ -131,7 +131,7 @@ Equivalence figures are population estimates. Check with the {{calc:opiate-conve
 5. Divide into scheduled doses and add a breakthrough dose (10–15% of the daily total). ^[mascc-asco-opioid-conversion-2025]
 6. Reassess in 24 hours and adjust to pain, sedation and function. ^[mascc-asco-opioid-conversion-2025]
 
-| Opioid (oral unless stated) | CDC factor (MME per mg) | MASCC-ASCO ratio |
+| Opioid | CDC factor | Ratio |
 |---|---|---|
 | Morphine | 1 | Reference ^[cdc-opioid-2022, mascc-asco-opioid-conversion-2025] |
 | Oxycodone | 1.5 | Morphine to oxycodone 1.5:1 ^[cdc-opioid-2022, mascc-asco-opioid-conversion-2025] |
