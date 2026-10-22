@@ -2,6 +2,10 @@
 
 What changed in each version of Wards, newest first. The version is shown in Settings (gear on Home).
 
+## 2026.10.21.29
+
+**Fix: Empiric Antimicrobials.** The metronidazole line in the chart read "IV or PO IV over 60 minutes"; it now reads "IV or PO over 60 minutes (IV)".
+
 ## 2026.10.21.28
 
 **New card: Empiric Antimicrobials.** Under Infectious Disease: a chart of first-choice empiric regimens by source (intra-abdominal, nosocomial pneumonia, meningitis, bacteremia), with doses that open from the drug names, kidney-function and allergy cautions, and MDCalc links. The drug-by-organism coverage grid is coming in a later update.
