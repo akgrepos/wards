@@ -13,7 +13,7 @@ Element.prototype.scrollIntoView ??= () => {};
 
 const { App } = await import('../App');
 const { parseRoute, reopenLastPage, resetRouterForTests, REOPEN_WITHIN_MS } = await import('../router');
-const { clearReading, clearRecent } = await import('../storage');
+const { clearReading, clearRecent, setRapidShortcuts } = await import('../storage');
 
 // Start each test as a fresh launch at the given address.
 function launch(hash: string) {
@@ -182,6 +182,7 @@ describe('search', () => {
 
 describe('Home lists', () => {
   it('a page opened shows on Home in Recent and Continue Reading; pages have no Favorites star', async () => {
+    setRapidShortcuts(['renal-hyperkalemia']);
     launch('#/card/renal-hyperkalemia');
     render(<App />);
     expect(screen.queryByRole('button', { name: /Favorites/ })).toBeNull();

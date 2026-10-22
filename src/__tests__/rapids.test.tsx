@@ -13,7 +13,7 @@ Element.prototype.scrollIntoView ??= () => {};
 
 const { App } = await import('../App');
 const { parseRoute, reopenLastPage, resetRouterForTests, tabFor } = await import('../router');
-const { getTimed, setTimed, getRapidShortcuts } = await import('../storage');
+const { getTimed, setTimed, getRapidShortcuts, setRapidShortcuts } = await import('../storage');
 const timed = await import('../timed');
 
 const HK = 'renal-hyperkalemia';
@@ -85,6 +85,7 @@ describe('Rapids addresses', () => {
   });
 
   it('Home shows the Rapids shortcut, and Edit chooses which ones', async () => {
+    setRapidShortcuts(['cardio-atrial-fibrillation', 'pulm-copd-exacerbation', 'endo-dka', HK]);
     launch('#/');
     render(<App />);
     expect(screen.getByText('Calcium, insulin-dextrose, remove K⁺').closest('a')!.getAttribute('href')).toBe(`#/emergency/${HK}`);

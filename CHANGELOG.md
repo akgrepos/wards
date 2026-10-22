@@ -2,6 +2,10 @@
 
 What changed in each version of Wards, newest first. The version is shown in Settings (gear on Home).
 
+## 2026.10.22.9
+
+**New card: Alcohol Withdrawal in the Hospitalized Adult.** Under Neurology, with a Rapids page and Timed Mode: recognizing and scoring withdrawal, symptom-triggered benzodiazepines, phenobarbital, adjuncts, thiamine and other supportive care, with dose sheets opened from the drug names. MDCalc link for the PAWSS screening tool.
+
 ## 2026.10.22.8
 
 **Fix: Acute Pain and Opioid Conversion.** The conversion table's column headings overlapped on the phone; they are now short, with the explanation in the note above the table.
