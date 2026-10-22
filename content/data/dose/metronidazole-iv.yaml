@@ -5,7 +5,7 @@ route: IV or PO
 amount: "500"
 unit: mg
 frequency: every 8 hours
-rate: IV over 60 minutes
+rate: over 60 minutes (IV)
 adjustments:
   - when: Severe liver disease
     change: Use lower doses cautiously and monitor for toxicity (label)
