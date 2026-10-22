@@ -2,6 +2,10 @@
 
 What changed in each version of Wards, newest first. The version is shown in Settings (gear on Home).
 
+## 2026.10.22.6
+
+**New card: VTE Prophylaxis in the Hospitalized Adult.** Under Hematology: deciding who needs prophylaxis (medical and surgical risk, bleeding risk), choosing heparin, enoxaparin or fondaparinux with dose sheets, when to use mechanical prophylaxis, and special situations (renal impairment, obesity, stroke, critical illness). MDCalc links for Padua, IMPROVE VTE, IMPROVE bleeding and Caprini.
+
 ## 2026.10.22.5
 
 **New card: Delirium in the Hospitalized Adult.** Under Neurology: ICU-focused recognition (4AT, CAM-ICU, RASS), looking for the cause, non-drug prevention and treatment, when and how to use haloperidol or dexmedetomidine (doses open from the drug names), alcohol-withdrawal and QTc cautions, and MDCalc links.
