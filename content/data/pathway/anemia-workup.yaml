@@ -55,8 +55,8 @@ nodes:
     kind: question
     at: [4, 5]
     span: 5
-    title: "Ferritin {{threshold:ferritin-iron-deficiency}}?"
-    text: "With inflammation: ferritin below 100 ng/mL or transferrin saturation below 20% (either)."
+    title: "Iron deficient?"
+    text: "Ferritin at {{threshold:ferritin-iron-deficiency}}. With inflammation: ferritin below 100 ng/mL or transferrin saturation below 20% (either)."
     answers:
       - { label: "Yes", at: [2, 6], span: 3, to: iron }
       - { label: "No", at: [6, 6], span: 3, to: thal }
