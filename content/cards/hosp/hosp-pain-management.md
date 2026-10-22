@@ -15,7 +15,7 @@ related:
 - Prefer oral to IV opioids when the patient can take them; avoid IM; use IV PCA when parenteral dosing is needed and the patient can operate it. ^[chou-postop-pain-2016]
 - Opioid-naive: start an immediate-release opioid at a low dose, never extended-release, and reassess sedation and respiratory rate with each dose. ^[cdc-opioid-2022, chou-postop-pain-2016]
 - Opioid-tolerant patients: continue the baseline opioid and add analgesia on top; do not abruptly stop. ^[dickerson-opioid-tolerant-2024, cdc-opioid-2022]
-- Converting between opioids: total the 24-hour dose, convert with an equivalence table, then reduce the new dose for incomplete cross-tolerance; the reduction is a clinical judgment, and no guideline fixes a percent. ^[cdc-opioid-2022, mascc-asco-opioid-conversion-2025, common-practice]
+- Converting between opioids: total the 24-hour dose, convert with an equivalence table, then individualize: CDC 2022 and labels dose the new opioid lower for incomplete cross-tolerance, while MASCC-ASCO (cancer pain) advises against an automatic cut. ^[cdc-opioid-2022, mascc-asco-opioid-conversion-2025, label-hydromorphone-injection-2026]
 - Kidney or liver impairment, older age, sleep apnea and co-prescribed sedatives raise the risk of respiratory depression: lower doses, longer intervals, closer monitoring; start a bowel regimen with the first dose and offer naloxone at discharge. ^[cdc-opioid-2022, ags-beers-2023, common-practice]
 
 ## Indications
@@ -41,14 +41,15 @@ related:
 :::
 
 - **Nonopioid options:** scheduled acetaminophen is first; add an NSAID unless contraindicated; celecoxib has less gastrointestinal bleeding risk than non-selective NSAIDs. ^[chou-postop-pain-2016, label-celecoxib-2024]
-- Ketorolac gives strong short-term analgesia but carries the highest bleeding and kidney risk of the NSAIDs; limit to 5 days and avoid in older adults. ^[label-ketorolac-injection-2024, ags-beers-2023]
+- Ketorolac gives strong short-term analgesia but carries high gastrointestinal bleeding and kidney risk; limit to 5 days and avoid in older adults. ^[label-ketorolac-injection-2024, ags-beers-2023]
 - **Gabapentinoids:** Chou 2016 suggests considering gabapentin or pregabalin within multimodal analgesia; Beers advises avoiding them with opioids except to reduce the opioid dose, and both need a dose reduction at {{calc:cockcroft-gault}} <60. ^[chou-postop-pain-2016, ags-beers-2023, label-gabapentin-2026]
 - **Ketamine and IV lidocaine:** off-label for analgesia; Chou 2016 suggests considering them in selected surgical patients; initiate with the pain or anesthesia service. ^[chou-postop-pain-2016, common-practice]
 - **Which opioid:** ^[cdc-opioid-2022, mascc-asco-opioid-conversion-2025]
   - Morphine is the reference opioid, but its active metabolites accumulate in kidney failure. ^[label-morphine-injection-2026, mascc-asco-opioid-conversion-2025]
-  - Hydromorphone and oxycodone are common alternatives; hydromorphone is about 5 times as potent as oral morphine. ^[cdc-opioid-2022, label-hydromorphone-oral-2026]
+  - Hydromorphone and oxycodone are common alternatives; oral hydromorphone is about 5 times as potent as oral morphine. ^[cdc-opioid-2022, label-hydromorphone-oral-2026]
   - Significant kidney dysfunction: consider fentanyl, buprenorphine or methadone; significant liver disease: consider hydromorphone or morphine (weakest-consensus statement). ^[mascc-asco-opioid-conversion-2025]
   - Avoid meperidine (neurotoxic metabolite) and codeine (variable CYP2D6 activation); tramadol needs a dose reduction at {{calc:cockcroft-gault}} <30 and a lower maximum. ^[ags-beers-2023, label-tramadol-2026, mascc-asco-opioid-conversion-2025]
+  - Tramadol can cause serotonin syndrome (alone or with serotonergic drugs), seizures at recommended doses and hyponatremia. ^[label-tramadol-2026]
   - Avoid combination products so each component can be titrated, and so acetaminophen is counted once. ^[cdc-opioid-2022, common-practice]
 - Fentanyl (short duration; IV) and methadone (long, variable half-life; {{calc:qtc}} prolongation) are used when morphine, hydromorphone and oxycodone are unsuitable; start methadone only with an experienced prescriber or pain or palliative care. ^[mascc-asco-opioid-conversion-2025, label-methadone-2026]
 
@@ -107,11 +108,11 @@ related:
 - Use IV PCA when parenteral analgesia is needed and the patient is alert enough to use the button; never by proxy (family or staff pressing the button). ^[chou-postop-pain-2016, common-practice]
 - In opioid-naive adults, do not routinely add a basal (continuous) infusion. ^[chou-postop-pain-2016]
 - Set the demand dose, lockout interval and hourly limit per the hospital's PCA protocol with pharmacy; use a higher-risk protocol with lower limits for older adults, sleep apnea, obesity and impaired sedation. ^[common-practice]
-- Opioid-tolerant patients usually need a basal rate and settings from the pain or palliative care service. ^[dickerson-opioid-tolerant-2024, common-practice]
+- Opioid-tolerant patients need their baseline requirement continued (orally, or as a basal infusion), with settings from the pain or palliative care service. ^[dickerson-opioid-tolerant-2024, common-practice]
 - Monitor sedation and respiratory status, with continuous pulse oximetry; add capnography if on supplemental oxygen. ^[chou-postop-pain-2016, apsf-respiratory-depression-2011]
 
 #### Opioid-tolerant patients and breakthrough pain
-- Tolerance: taking about 60 MME or more a day for at least a week (the FDA threshold for tolerance used for extended-release products). ^[common-practice]
+- Tolerance (FDA definition in extended-release opioid labeling): for at least 1 week, about 60 MME or more a day, or the label's listed equivalents of oxycodone, hydromorphone, oxymorphone, hydrocodone or transdermal fentanyl. ^[label-ms-contin-2026, cdc-opioid-2022]
 - Continue the baseline opioid (or its equivalent by another route), and add short-acting opioids and nonopioid analgesics for the new pain; omitting the baseline risks withdrawal and worse pain. ^[dickerson-opioid-tolerant-2024, cdc-opioid-2022]
 - Breakthrough: 10–15% of the 24-hour morphine-equivalent dose as an immediate-release opioid (preferably the same drug), titrated to a 30–50% pain reduction. ^[mascc-asco-opioid-conversion-2025]
 - Patients on buprenorphine for opioid use disorder: usually continue it and add short-acting full agonists as needed; ask addiction medicine or the pain service about splitting the dose. ^[kohan-buprenorphine-2021, dickerson-opioid-tolerant-2024]
@@ -126,7 +127,7 @@ Equivalence figures are population estimates. Check with the {{calc:opiate-conve
 1. Total the opioid taken over 24 hours (scheduled plus PRN), by route. ^[mascc-asco-opioid-conversion-2025]
 2. Convert to oral morphine equivalents (MME) with the table below. ^[cdc-opioid-2022, mascc-asco-opioid-conversion-2025]
 3. Convert from MME to the new drug and route. ^[mascc-asco-opioid-conversion-2025]
-4. Reduce the calculated dose of the new opioid for incomplete cross-tolerance; 25–50% is common practice, with less or no reduction when pain is severe and uncontrolled and more in older adults or with organ dysfunction. CDC 2022 says the new opioid is typically dosed substantially lower; MASCC-ASCO could not agree on a fixed percent. ^[cdc-opioid-2022, mascc-asco-opioid-conversion-2025, common-practice]
+4. Reduce the calculated dose of the new opioid for incomplete cross-tolerance: CDC 2022 says it is typically dosed substantially lower, and the injectable hydromorphone label halves it; 25–50% is common practice, with less or no reduction when pain is severe and uncontrolled and more in older adults or with organ dysfunction. MASCC-ASCO (cancer pain) did not endorse an automatic reduction and treats its ratios as the safe starting dose. ^[cdc-opioid-2022, label-hydromorphone-injection-2026, mascc-asco-opioid-conversion-2025, common-practice]
 5. Divide into scheduled doses and add a breakthrough dose (10–15% of the daily total). ^[mascc-asco-opioid-conversion-2025]
 6. Reassess in 24 hours and adjust to pain, sedation and function. ^[mascc-asco-opioid-conversion-2025]
 
@@ -143,9 +144,9 @@ Equivalence figures are population estimates. Check with the {{calc:opiate-conve
 | Methadone | 4.7 (not for switching) | No consensus ^[cdc-opioid-2022, mascc-asco-opioid-conversion-2025] |
 | Fentanyl patch (per mcg/hr) | 2.4 (not for switching) | No consensus ^[cdc-opioid-2022, mascc-asco-opioid-conversion-2025] |
 
-- Parenteral and oral routes: subcutaneous and IV doses are equal; the IV-to-oral ratio is about 1:3 for morphine and about 1:5 for hydromorphone in common practice, but MASCC-ASCO reached no consensus on an IV-to-oral morphine ratio. ^[mascc-asco-opioid-conversion-2025, common-practice]
+- Parenteral and oral routes: subcutaneous and IV doses are equal; IV-to-oral morphine is about 1:3 (the oral label allows 1:3 to 1:6); hydromorphone figures vary across references (about 1:2 to 1:5; oral bioavailability is about one-quarter), so convert conservatively. The MASCC-ASCO consensus table gives no IV-to-oral morphine or hydromorphone ratio. ^[label-morphine-tablets-2026, label-hydromorphone-oral-2026, mascc-asco-opioid-conversion-2025, common-practice]
 - Fentanyl patches take 18–24 hours to reach effect, are affected by fever and heat, and are not for opioid-naive patients or acute pain. ^[common-practice]
-- Methadone: the conversion is nonlinear and the ratio depends on the prior dose (the label gives a table by morphine-equivalent dose); the label warns that deaths have occurred during conversion from high-dose opioids, so it is safer to underestimate. Start only with an experienced prescriber, divide the daily dose 2–3 times, and titrate no faster than every 3–5 days. ^[label-methadone-2026, mascc-asco-opioid-conversion-2025]
+- Methadone: the conversion is nonlinear and the ratio depends on the prior dose (the label gives a table by morphine-equivalent dose); the label warns that deaths have occurred in opioid-tolerant patients during conversion to methadone, so it is safer to underestimate. Start only with an experienced prescriber, divide the daily dose 2–3 times, and titrate no faster than every 3–5 days. ^[label-methadone-2026, mascc-asco-opioid-conversion-2025]
 - Rotating for side effects and uncontrolled pain: reduce the new dose as in step 4 when pain is controlled; when the reason is uncontrolled pain, a smaller or no reduction may be appropriate. ^[mascc-asco-opioid-conversion-2025, common-practice]
 
 #### Opioid adverse effects
@@ -186,7 +187,7 @@ Equivalence figures are population estimates. Check with the {{calc:opiate-conve
 
 ## Special Populations
 #### Kidney impairment
-- Prefer hydromorphone, oxycodone, fentanyl or methadone to morphine (active metabolites accumulate); start at one-fourth to one-half of the usual starting dose for hydromorphone. ^[mascc-asco-opioid-conversion-2025, label-hydromorphone-oral-2026, label-morphine-injection-2026]
+- Avoid morphine (active metabolites accumulate); MASCC-ASCO favors fentanyl, buprenorphine or methadone; hydromorphone at one-fourth to one-half of the usual starting dose is a common alternative; oxycodone clearance also falls, so start lower. ^[mascc-asco-opioid-conversion-2025, label-hydromorphone-oral-2026, label-morphine-injection-2026, label-oxycodone-2026]
 - NSAIDs: avoid at {{calc:cockcroft-gault}} <30; ketorolac is contraindicated in advanced renal impairment. ^[ags-beers-2023, label-ketorolac-injection-2024]
 - Gabapentin and pregabalin: reduce the dose at {{calc:cockcroft-gault}} <60. ^[ags-beers-2023, label-gabapentin-2026]
 - Tramadol: dose interval and maximum fall at {{calc:cockcroft-gault}} <30. ^[label-tramadol-2026, ags-beers-2023]
@@ -194,9 +195,9 @@ Equivalence figures are population estimates. Check with the {{calc:opiate-conve
 
 #### Liver disease
 - Prefer hydromorphone or morphine, at reduced starting doses and longer intervals; assess with {{calc:child-pugh}}. ^[mascc-asco-opioid-conversion-2025, label-hydromorphone-oral-2026, cdc-opioid-2022]
-- Acetaminophen is not contraindicated: lower the daily maximum (see the dose sheet) and avoid with alcohol use disorder or malnutrition. ^[label-acetaminophen-iv-2026, common-practice]
+- Acetaminophen is not contraindicated: use the lower daily maximum (see the dose sheet), also with alcohol use disorder or malnutrition. ^[label-acetaminophen-iv-2026, common-practice]
 - NSAIDs: avoid in cirrhosis (bleeding, kidney injury); celecoxib needs a 50% dose reduction in moderate impairment. ^[label-celecoxib-2024, common-practice]
-- Opioids can precipitate encephalopathy: use the lowest dose and monitor mental status. ^[cdc-opioid-2022]
+- Opioids can precipitate hepatic encephalopathy: use the lowest dose and monitor mental status. ^[cdc-opioid-2022, common-practice]
 
 #### Older adults
 - Start at the low end, extend intervals, and monitor for delirium and falls; opioids are avoided in patients with delirium or fall history except for severe acute pain. ^[ags-beers-2023, cdc-opioid-2022]
@@ -211,12 +212,12 @@ Equivalence figures are population estimates. Check with the {{calc:opiate-conve
 ## More Information
 ### Evidence: Guidelines read and limits
 - CDC 2022 is the main US source for opioid prescribing, MME factors and cautions; its MME table is an estimate and the guideline says not to use it to dose a switch. ^[cdc-opioid-2022]
-- MASCC-ASCO 2025 (84 statements, 58 reached consensus) is for adults with cancer; excluded from its trials were substance use disorder and renal or hepatic impairment; no consensus on a cross-tolerance reduction, methadone, fentanyl or buprenorphine ratios. ^[mascc-asco-opioid-conversion-2025]
+- MASCC-ASCO 2025 (84 statements, 58 reached consensus) is for adults with cancer; its ratio table has no methadone, transdermal fentanyl, buprenorphine or IV-to-oral morphine ratio, and it did not endorse a routine cross-tolerance reduction. ^[mascc-asco-opioid-conversion-2025]
 - Chou 2016 (APS/ASRA/ASA) is the main US postoperative pain guideline; the 2012 ASA acute pain guideline is older. ^[chou-postop-pain-2016]
 
 ## Pearls
 - Convert to the new opioid from the total daily dose, then cut for cross-tolerance; never trust one table without looking at the patient. ^[cdc-opioid-2022, mascc-asco-opioid-conversion-2025]
-- Hydromorphone is about 5 times as potent as oral morphine; mixing up the units of the two causes dosing errors. ^[cdc-opioid-2022]
+- Oral hydromorphone is about 5 times as potent as oral morphine; confusing the two drugs causes dosing errors. ^[cdc-opioid-2022, common-practice]
 - Sedation comes before respiratory depression: treat the sedation. ^[common-practice, apsf-respiratory-depression-2011]
 - Start a bowel regimen with the first opioid dose. ^[cdc-opioid-2022, common-practice]
 - Do not stop the baseline opioid of an opioid-tolerant patient because new pain needs treatment. ^[dickerson-opioid-tolerant-2024]

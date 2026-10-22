@@ -1,6 +1,6 @@
 drug_name: Methylnaltrexone
 brand: Relistor
-indication: Opioid-induced constipation when laxatives have not worked (advanced illness)
+indication: "Opioid-induced constipation in advanced illness or pain from active cancer needing opioid dose escalation for palliative care, when laxatives have not worked"
 population: Adults with advanced illness receiving palliative care
 route: SC
 amount: "12"
@@ -12,9 +12,9 @@ adjustments:
     change: "8 mg"
   - when: "Under 38 kg or over 114 kg"
     change: "0.15 mg/kg"
-  - when: "Kidney impairment"
-    change: "Reduced dose; see the label for the kidney bands"
+  - when: "CrCl <60 (Cockcroft-Gault)"
+    change: "Halve the dose: 38 to under 62 kg 4 mg; 62–114 kg 6 mg; under 38 kg or over 114 kg 0.075 mg/kg; same every-other-day schedule"
 cautions:
   - "Contraindicated with known or suspected gastrointestinal obstruction."
-  - "Stop other laxatives before starting; stop if severe or persistent diarrhea; gastrointestinal perforation has been reported."
+  - "Stop if severe or persistent diarrhea or worsening abdominal pain; gastrointestinal perforation has been reported. Stop if the opioid is stopped."
 sources: [label-relistor-2024]

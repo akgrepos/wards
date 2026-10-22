@@ -11,7 +11,7 @@ max: "No fixed maximum; titrate to the lowest effective dose. Reassess before go
 boxed_warning: "Addiction, abuse and misuse; life-threatening respiratory depression; accidental ingestion; neonatal opioid withdrawal syndrome; risks with benzodiazepines and other CNS depressants."
 adjustments:
   - when: "Kidney impairment"
-    change: "Start low and titrate slowly; active metabolites accumulate. Prefer hydromorphone or oxycodone where available."
+    change: "Start lower than usual and titrate slowly; active metabolites accumulate. Prefer another opioid (see the card)."
   - when: "Older adults, frail patients, hepatic impairment"
     change: "Start at the low end of the range or below it."
 cautions:
