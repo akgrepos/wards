@@ -11,7 +11,7 @@ columns:
   - {id: mrsa, name: "MRSA", short: "MRSA"}
   - {id: e_faecalis, name: "E. faecalis", short: "E. fae"}
   - {id: vre, name: "VRE", short: "VRE"}
-  - {id: pseudomonas, name: "Pseudomonas", short: "Pseudo"}
+  - {id: pseudomonas, name: "Pseudomonas", short: "Pseud."}
   - {id: esbl, name: "ESBL", short: "ESBL"}
   - {id: anaerobes, name: "Anaerobes", short: "Anaer."}
   - {id: atypicals, name: "Atypicals", short: "Atyp."}

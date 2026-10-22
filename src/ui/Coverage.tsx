@@ -174,7 +174,7 @@ function Compare({ grid, picked, setPicked }: { grid: CoverageGrid } & Picks) {
         })}
       </div>
       {rows.length > 0 && (
-        <div className="cov-compare" lang="en" style={{ gridTemplateColumns: `minmax(0, 0.8fr) repeat(${rows.length}, minmax(0, 1fr))` }} role="table" aria-label="Drug comparison">
+        <div className="cov-compare" lang="en" style={{ gridTemplateColumns: `auto repeat(${rows.length}, minmax(0, 1fr))` }} role="table" aria-label="Drug comparison">
           <div role="row" className="cov-compare-row">
             <span role="columnheader" />
             {rows.map((r) => <span key={r.drug} role="columnheader" className="ios-footnote-emphasized">{r.drug}</span>)}
