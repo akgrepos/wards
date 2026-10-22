@@ -2,3 +2,15 @@ name: "Winter's formula"
 short: "Winter's formula"
 url: https://www.mdcalc.com/calc/117/winters-formula-metabolic-acidosis-compensation
 match: ["Winter's formula"]
+sources: [albert-metabolic-acidosis-1967, adrogue-madias-secondary-2010]
+calculator:
+  kind: formula
+  heading: Winter's formula
+  expression: "Expected PaCO₂ = 1.5 × HCO₃⁻ + 8 (±2)"
+  inputs:
+    - { id: hco3, label: "Bicarbonate", unit: "mEq/L", min: 1, max: 40 }
+  results:
+    - { fn: winters-expected-pco2, label: "Expected PaCO₂ (± 2)", unit: "mm Hg", decimals: 0, needs: [hco3] }
+  reference: "Measured PaCO₂ above the expected range: concurrent respiratory acidosis. Below it: concurrent respiratory alkalosis."
+  notes:
+    - "For metabolic acidosis only; use the serum HCO₃⁻ from the same sample as the gas."
