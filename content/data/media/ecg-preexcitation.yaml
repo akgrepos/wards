@@ -13,13 +13,13 @@ panels:
     beats: [0.45]
     waves: [[0.12, -0.14, 0.028], [1.0, 0, 0.011], [-0.2, 0.03, 0.011], [0.3, 0.25, 0.05]]
     marks:
-      - { kind: interval, from: 0.26, to: 0.421, label: "PR 160 ms", place: above }
+      - { kind: interval, from: 0.26, to: 0.421, label: "PR 160 ms", place: above, align: end }
   - title: Pre-excited beat
     cue: Short PR, slurred upstroke
     seconds: 1.1
     beats: [0.45]
     waves: [[0.12, -0.15, 0.022], [0.35, -0.025, 0.025], [0.6, 0.02, 0.012], [-0.1, 0.058, 0.013], [-0.2, 0.27, 0.05]]
     marks:
-      - { kind: interval, from: 0.261, to: 0.366, label: "PR 105 ms", place: above }
+      - { kind: interval, from: 0.261, to: 0.366, label: "PR 105 ms", place: above, align: end }
       - { kind: band, from: 0.366, to: 0.445, low: 0, high: 0.8 }
       - { kind: text, at: 0.5, mv: 0.55, label: "delta wave", place: above, align: start }
