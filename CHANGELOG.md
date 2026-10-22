@@ -2,6 +2,10 @@
 
 What changed in each version of Wards, newest first. The version is shown in Settings (gear on Home).
 
+## 2026.10.22.11
+
+**Fix: ECG Interpretation.** Links to other cards inside the patterns table (hyperkalemia, hypokalemia, chest pain, VTE, atrial fibrillation) showed as raw text and broke the table columns; they now work.
+
 ## 2026.10.22.10
 
 **New card: ECG Interpretation.** Under Cardiology: a step-by-step method for reading an ECG (rate, rhythm, axis, intervals, conduction, hypertrophy, ST-T changes by territory), a table of emergent and common patterns, and worked examples. Three new drawn figures: occlusion patterns (hyperacute T waves, de Winter, Wellens, posterior), pre-excitation (normal vs delta wave) and pericarditis. MDCalc links for Sgarbossa, modified Sgarbossa and QTc. The Acute Coronary Syndrome card now links its Sgarbossa mentions to MDCalc.
