@@ -5,13 +5,13 @@ options:
   - label: Vancomycin plus ceftriaxone
     doses: [vancomycin-meningitis, ceftriaxone-meningitis]
   - label: Add ampicillin for Listeria
-    when: "Age over 50, impaired cellular immunity, alcohol use disorder, or pregnancy"
+    when: "Age over 50; also commonly added for impaired cellular immunity, alcohol use disorder or pregnancy"
     doses: [ampicillin-meningitis]
   - label: Dexamethasone
     when: "Suspected pneumococcus; stop if another cause is found"
     doses: [dexamethasone-meningitis]
-duration: "By organism once known: 7 days for meningococcus or Haemophilus, 10–14 days for pneumococcus, at least 21 days for Listeria or gram-negative bacilli"
+duration: "By organism once known: 7 days for meningococcus or Haemophilus, 10–14 days for pneumococcus, 21 days for aerobic gram-negative bacilli, 21 days or more for Listeria"
 notes:
   - "Add IV acyclovir while herpes simplex encephalitis remains possible (dose with the pharmacy)."
-  - "Drop vancomycin if the organism is susceptible to the cephalosporin."
-sources: [idsa-meningitis-2004]
+  - "Drop vancomycin once the organism is known to be susceptible to the cephalosporin."
+sources: [idsa-meningitis-2004, common-practice]

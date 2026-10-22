@@ -5,13 +5,13 @@ route: IV or PO
 amount: "500"
 unit: mg
 frequency: every 8 hours
-rate: IV over 30–60 minutes
+rate: IV over 60 minutes
 adjustments:
-  - when: Severe liver impairment (Child-Pugh C)
-    change: Reduce the dose by 50% (label)
+  - when: Severe liver disease
+    change: Use lower doses cautiously and monitor for toxicity (label)
 cautions:
-  - Disulfiram-like reaction was reported with alcohol; avoid alcohol during and shortly after treatment.
+  - Avoid alcohol during and for at least 3 days after treatment; not within 2 weeks of disulfiram.
   - Peripheral neuropathy and encephalopathy with prolonged courses.
   - Not needed with piperacillin-tazobactam, ertapenem or meropenem, which cover anaerobes.
-notes: "Oral and IV doses are the same. Label IV dose is 500 mg every 6 hours for anaerobic infection; 500 mg every 8 hours is the usual abdominal regimen in guidelines."
+notes: "Oral and IV doses are the same. The IV label regimen is 15 mg/kg once, then 7.5 mg/kg every 6 hours (maximum 4 g a day); IDSA/SIS 2010 lists 500 mg every 8–12 hours for intra-abdominal infection."
 sources: [label-metronidazole-iv-2025, idsa-sis-iai-2010]
