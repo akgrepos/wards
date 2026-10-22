@@ -1,0 +1,16 @@
+drug_name: Acetaminophen
+brand: Ofirmev
+indication: Mild to moderate pain, or as part of multimodal analgesia, when oral is not possible
+population: Adults and adolescents 50 kg or more
+route: IV
+amount: "1000"
+unit: mg
+frequency: every 6 hours (or 650 mg every 4 hours)
+duration: Switch to oral as soon as the patient can take it
+max: "4,000 mg a day in 24 hours, at least 4 hours between doses. Under 50 kg: 15 mg/kg every 6 hours (12.5 mg/kg every 4 hours), maximum 75 mg/kg a day."
+boxed_warning: "Dosing errors (mg versus mL, weight-based dosing under 50 kg) can cause accidental overdose and hepatotoxicity."
+cautions:
+  - "Count every source of acetaminophen, including combination opioid products, toward the daily maximum."
+  - "Use caution in hepatic impairment or active liver disease, alcohol use disorder, chronic malnutrition, severe hypovolemia and severe renal impairment (CrCl ≤30)."
+notes: "Scheduled dosing is the usual multimodal approach; PRN dosing underuses it."
+sources: [label-acetaminophen-iv-2026, chou-postop-pain-2016]

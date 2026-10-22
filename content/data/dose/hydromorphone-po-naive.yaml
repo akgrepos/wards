@@ -1,0 +1,16 @@
+drug_name: Hydromorphone
+brand: Dilaudid
+indication: Moderate to severe acute pain, opioid-naive
+population: Opioid-naive adults
+route: PO
+amount: 2–4
+unit: mg
+frequency: every 4–6 hours as needed
+repeat: "Reassess pain, sedation and respiratory rate before each repeat dose"
+boxed_warning: "Addiction, abuse and misuse; life-threatening respiratory depression; accidental ingestion; risks with benzodiazepines and other CNS depressants."
+adjustments:
+  - when: "Kidney or hepatic impairment"
+    change: "Start at one-fourth to one-half of the usual starting dose"
+cautions:
+  - "About 5 times as potent as oral morphine (CDC conversion factor 5.0); never order it as if it were morphine."
+sources: [label-hydromorphone-oral-2026, cdc-opioid-2022]

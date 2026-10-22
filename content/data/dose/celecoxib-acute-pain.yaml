@@ -1,0 +1,19 @@
+drug_name: Celecoxib
+brand: Celebrex
+indication: Acute pain, or as part of multimodal analgesia (COX-2 selective NSAID)
+population: Adults without contraindication to NSAIDs
+route: PO
+amount: "400"
+unit: mg
+frequency: once, then 200 mg if needed on day 1; then 200 mg twice daily as needed
+boxed_warning: "Cardiovascular thrombotic events and gastrointestinal bleeding, ulceration and perforation."
+adjustments:
+  - when: "Moderate hepatic impairment (Child-Pugh B)"
+    change: "Reduce the daily dose by 50%"
+  - when: "CYP2C9 poor metabolizers"
+    change: "Consider a 50% reduction"
+cautions:
+  - "Less gastrointestinal bleeding than non-selective NSAIDs; same cardiovascular and kidney cautions."
+  - "Avoid in advanced kidney disease and in sulfonamide allergy."
+notes: "Chou 2016 suggests considering preoperative celecoxib in adults without contraindications."
+sources: [label-celecoxib-2024, chou-postop-pain-2016]

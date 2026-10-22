@@ -1,0 +1,14 @@
+drug_name: Naloxone
+brand: Narcan
+indication: Known or suspected opioid overdose with respiratory failure
+population: Adults
+route: IV
+amount: 0.4–2
+unit: mg
+frequency: every 2–3 minutes as needed
+repeat: "Reconsider the diagnosis if there is no response after a total of 10 mg"
+boxed_warning: None
+cautions:
+  - "IM or SC if no IV access."
+notes: "Overdose in a person without opioid tolerance. For inpatient respiratory depression, start with the smaller increments."
+sources: [label-naloxone-2025]

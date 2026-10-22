@@ -1,0 +1,16 @@
+drug_name: Ibuprofen
+brand: Motrin
+indication: Mild to moderate pain, or as part of multimodal analgesia
+population: Adults without contraindication to NSAIDs
+route: PO
+amount: "400"
+unit: mg
+frequency: every 4–6 hours as needed, with food
+max: "Label: 3,200 mg a day for any indication. For mild to moderate pain, doses above 400 mg were no more effective in trials."
+boxed_warning: "Cardiovascular thrombotic events (including after coronary artery bypass graft surgery) and gastrointestinal bleeding, ulceration and perforation."
+cautions:
+  - "Avoid in active peptic ulcer or gastrointestinal bleeding, heart failure decompensation, and when kidney function is falling or CrCl is <30 (Beers criteria)."
+  - "Raises blood pressure and can worsen heart failure; interacts with anticoagulants, antiplatelets, ACE inhibitors, ARBs and diuretics."
+  - "Shortest duration at the lowest effective dose."
+notes: "Other non-selective NSAIDs are used the same way; choose by formulary."
+sources: [label-ibuprofen-tablets-2025, chou-postop-pain-2016, ags-beers-2023]
