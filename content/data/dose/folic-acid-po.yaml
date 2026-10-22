@@ -1,0 +1,12 @@
+drug_name: Folic acid
+indication: Folate deficiency, after B12 deficiency is excluded or treated
+population: Adults
+route: PO
+amount: "1–5"
+unit: mg
+frequency: once daily
+duration: "About 4 months, or until the cause is corrected"
+cautions:
+  - "Check vitamin B12 first; folic acid can correct the anemia of B12 deficiency while neurologic damage progresses."
+notes: "The British guideline gives 5 mg daily for 4 months; 1 mg daily is the usual US dose and the labeled maximum usual dose."
+sources: [bsh-b12-folate-2014, common-practice]

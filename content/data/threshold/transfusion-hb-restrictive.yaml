@@ -1,0 +1,4 @@
+name: Restrictive hemoglobin threshold for red cell transfusion in hospitalized adults
+value: "<7"
+unit: g/dL
+sources: [aabb-rbc-2023]

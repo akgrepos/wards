@@ -1,0 +1,16 @@
+drug_name: Ferumoxytol
+brand: Feraheme
+indication: Iron deficiency anemia, intolerance of or inadequate response to oral iron
+population: Adults
+route: IV
+amount: "510"
+unit: mg
+frequency: "2 doses, 3–8 days apart"
+rate: "Over at least 15 minutes"
+duration: "Repeat only if iron deficiency anemia recurs"
+boxed_warning: "Fatal and serious hypersensitivity reactions including anaphylaxis. Give only when personnel and therapies are immediately available; observe for at least 30 minutes after the infusion."
+cautions:
+  - "Interferes with MRI for up to 3 months; tell radiology."
+  - "History of any drug allergy is a risk factor for anaphylaxis."
+  - "Check blood pressure and pulse during and after the infusion."
+sources: [label-feraheme-2026]

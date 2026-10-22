@@ -1,0 +1,13 @@
+name: Anemia severity by hemoglobin
+title: "Anemia severity by hemoglobin (nonpregnant adults), 2011"
+short: anemia severity
+columns: [Severity, Men, Nonpregnant women]
+layout: stacked
+tones: [yellow, orange, red]
+rows:
+  - ["Mild", "11.0–12.9 g/dL", "11.0–11.9 g/dL"]
+  - ["Moderate", "8.0–10.9 g/dL", "8.0–10.9 g/dL"]
+  - ["Severe", "<8.0 g/dL", "<8.0 g/dL"]
+notes:
+  - "Anemia is hemoglobin <13.0 g/dL in men and <12.0 g/dL in nonpregnant women (WHO 2024: ages 15–65; cutoffs unchanged from 2011). Severity grades do not set the transfusion threshold."
+sources: [who-anemia-2011, who-anemia-2024]

@@ -1,0 +1,4 @@
+name: Ferritin cutoff for iron deficiency with inflammation
+value: "<100"
+unit: ng/mL
+sources: [ash-iron-deficiency-dx-2026]

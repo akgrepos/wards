@@ -1,0 +1,21 @@
+drug_name: Ferric carboxymaltose
+brand: Injectafer
+indication: Iron deficiency anemia, intolerance of or inadequate response to oral iron
+population: "Adults, weight 50 kg or more"
+route: IV
+amount: "750"
+unit: mg
+frequency: "2 doses at least 7 days apart (1,500 mg per course)"
+rate: "Infusion over at least 15 minutes, or undiluted slow IV push"
+duration: "Repeat only if iron deficiency anemia recurs"
+max: "1,500 mg per course"
+boxed_warning: "Symptomatic hypophosphatemia, which can be severe and prolonged, can occur even with a normal baseline phosphate. Check phosphate before a repeat course in at-risk patients and before any repeat within 3 months; correct preexisting hypophosphatemia first."
+alternative:
+  dose: ferric-derisomaltose-ida
+  when: "A single-visit course is wanted, or hypophosphatemia is a concern"
+cautions:
+  - "Observe for at least 30 minutes after each dose for hypersensitivity, including anaphylaxis; hypotension and hypertension also occur."
+  - "Under 50 kg: 15 mg/kg per dose, 2 doses at least 7 days apart."
+  - "Label also allows 15 mg/kg (maximum 1,000 mg) as a single dose in adults 50 kg or more."
+  - "Risk of hypophosphatemia is highest with repeated courses, malabsorption, and low vitamin D or hyperparathyroidism."
+sources: [label-injectafer-2026]

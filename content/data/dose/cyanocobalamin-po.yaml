@@ -1,0 +1,12 @@
+drug_name: Cyanocobalamin
+indication: Vitamin B12 deficiency without neurologic symptoms, tolerating oral therapy
+population: Adults
+route: PO
+amount: "1,000–2,000"
+unit: mcg
+frequency: once daily
+duration: "Until the cause is corrected; lifelong when malabsorption persists"
+cautions:
+  - "High-dose oral therapy is effective even without intrinsic factor (about 1% absorbed passively)."
+  - "Use IM therapy for neurologic symptoms or severe deficiency."
+sources: [stabler-b12-2013, bsh-b12-folate-2014]

@@ -1,0 +1,5 @@
+name: Ferritin cutoff for iron deficiency
+value: "≤30"
+unit: ng/mL
+note: "AGA 2020 uses <45 ng/mL to prompt gastrointestinal evaluation."
+sources: [ash-iron-deficiency-dx-2026]
