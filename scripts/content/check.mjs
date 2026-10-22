@@ -140,6 +140,7 @@ export function checkContent({ systems, cards, data }) {
 
   for (const c of cards) {
     const where = c.file;
+    if (c.scaffold) err(where, 'unfinished scaffold: replace every "SCAFFOLD:" placeholder (from npm run card:new) with real, sourced content');
     if (!c.id || !/^[a-z0-9]+(-[a-z0-9]+)*$/.test(c.id)) err(where, `card id "${c.id}" must be lowercase words joined by hyphens`);
     if (cardIds.has(c.id)) err(where, `card id "${c.id}" is also used by ${cardIds.get(c.id)}`);
     cardIds.set(c.id, c.file);

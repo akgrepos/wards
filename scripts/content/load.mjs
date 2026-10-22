@@ -186,6 +186,7 @@ export function parseCard(file, root) {
   const definition = meta.definition ? splitSources(String(meta.definition)) : null;
   return {
     file: relative(root, file),
+    scaffold: src.includes('SCAFFOLD:'),
     id: meta.id ?? basename(file, '.md'),
     type: meta.type,
     variant: meta.variant ?? null,

@@ -12,7 +12,9 @@
     "test": "vitest run",
     "tokens": "node scripts/build-tokens.mjs",
     "icons": "pwa-assets-generator",
-    "content:check": "node scripts/content/cli.mjs"
+    "content:check": "node scripts/content/cli.mjs",
+    "release": "node scripts/release.mjs",
+    "card:new": "node scripts/card-new.mjs"
   },
   "dependencies": {
     "react": "^19.3.1",

@@ -23,6 +23,14 @@ See [docs/DECISIONS.md](docs/DECISIONS.md) for what has been decided and why.
 - `npm ci` once, then `npm run build` and `npx vite preview --host --port 4173` to serve the built app at `http://localhost:4173/wards/` (the simulator reaches it at the same address).
 - `npm test`, `npm run typecheck`. Updating the design system copy: see `vendor/akg/VERSION.md`. Regenerating icons after editing `public/favicon.svg`: `npm run icons`.
 
+### Workflow scripts (for Claude sessions, one call each; added 2026-10-22)
+- `scripts/status.sh`: open PRs, last 5 merged, live version, worktrees and branches (merged ones marked).
+- `scripts/wait-live.sh <pr> [version]`: waits up to 10 min for the PR's checks, merge and the live site to show the new version.
+- `npm run release -- [--card <id>] [--dry-run] "<changelog line>"`: bumps `src/version.ts` (next number for today, from origin/main), adds the CHANGELOG entry, and with `--card` lists the card in REVIEW-QUEUE "Not yet independently reviewed".
+- `scripts/tidy.sh <branch>`: the close rule; refuses if unmerged commits or uncommitted changes, else removes worktree and branch.
+- `scripts/shots.sh <outdir> <name...>`: Simulator light and dark screenshots at half size via `xcrun simctl` (navigate first with the control tool).
+- `npm run card:new -- <type> <system> <id> "<title>" [--variant <name>]`: card skeleton; `content:check` rejects it until every `SCAFFOLD:` placeholder is replaced. `content:check` problems now end with the rule and the doc to read.
+
 ## Ground rules
 
 - **No patient information, ever.** The site is public to anyone with the link.
