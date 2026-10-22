@@ -1,0 +1,17 @@
+name: Lower risk, community-acquired
+indication: Complicated intra-abdominal infection
+setting: "Adequate source control is possible, no recent antibiotics or hospitalization, no ESBL risk"
+options:
+  - label: Cephalosporin plus metronidazole
+    doses: [ceftriaxone-iv, metronidazole-iv]
+  - label: Carbapenem
+    when: "ESBL risk, or a single agent is preferred"
+    doses: [ertapenem-1g]
+  - label: Fluoroquinolone plus metronidazole
+    when: "Serious β-lactam allergy"
+    doses: [[ciprofloxacin-iv-cuti, levofloxacin-750], metronidazole-iv]
+duration: "4 days after adequate source control; reassess if sepsis persists beyond 5–7 days"
+notes:
+  - "Empiric enterococcal coverage and empiric antifungal therapy are not routine in lower-risk disease."
+  - "Moxifloxacin and tigecycline are other options but not first choices."
+sources: [idsa-sis-iai-2010, sis-iai-2024, stop-it-2015]

@@ -1,0 +1,14 @@
+name: Bloodstream infection, source unclear
+indication: Bacteremia or catheter-related bloodstream infection before cultures return
+setting: "Blood cultures before antibiotics; remove the catheter when it is a short-term line or the organism requires removal"
+options:
+  - label: Vancomycin plus a gram-negative β-lactam
+    when: "Catheter source, severe sepsis, femoral line or neutropenia"
+    doses: [vancomycin-iv, [cefepime-nosocomial, piperacillin-tazobactam-nosocomial, meropenem-nosocomial]]
+  - label: Add an echinocandin
+    when: "Candida risk: femoral line, parenteral nutrition, recent abdominal surgery or prolonged broad-spectrum therapy"
+    doses: [micafungin-candidemia]
+duration: "Staphylococcus aureus: at least 14 days from the first negative culture and longer with a deep focus; gram-negative bacilli: 7 days with source control and a good response; enterococci and coagulase-negative staphylococci after catheter removal: 5–14 days; Candida: 14 days after the first negative culture"
+notes:
+  - "Drop vancomycin by 48–72 hours if cultures show no MRSA or other organism needing it."
+sources: [idsa-crbsi-2009, idsa-esc-sab-2026, balance-2025, idsa-candida-2016]

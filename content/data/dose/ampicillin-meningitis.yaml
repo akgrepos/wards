@@ -1,0 +1,15 @@
+drug_name: Ampicillin
+indication: Bacterial meningitis with Listeria risk (age over 50 or impaired cellular immunity)
+population: Adults
+route: IV
+amount: "2"
+unit: g
+frequency: every 4 hours
+rate: over 15–30 minutes
+adjustments:
+  - when: Kidney impairment
+    change: Lengthen the interval with the pharmacy
+cautions:
+  - Rash is common; true penicillin allergy needs an alternative for Listeria (trimethoprim-sulfamethoxazole) with infectious diseases.
+notes: "IDSA 2004 lists 12 g a day in divided doses every 4 hours for meningitis; the label does not give a meningitis dose."
+sources: [idsa-meningitis-2004, label-ampicillin-2022]

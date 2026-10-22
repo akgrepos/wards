@@ -1,0 +1,17 @@
+name: Hospital-acquired or ventilator-associated pneumonia
+indication: Pneumonia starting 48 hours or more after admission or intubation
+setting: "Choose by MDR risk factors and the local antibiogram; send respiratory cultures first"
+options:
+  - label: Antipseudomonal β-lactam
+    doses: [[piperacillin-tazobactam-nosocomial, cefepime-nosocomial, meropenem-nosocomial]]
+  - label: Add MRSA coverage
+    when: "IV antibiotics in the last 90 days, septic shock or ventilatory support for HAP, or a unit MRSA rate above 10–20% or unknown"
+    doses: [[vancomycin-iv, linezolid-600]]
+  - label: Add a second antipseudomonal agent
+    when: "MDR risk factor, septic shock, or a unit with more than 10% resistance to the single agent; not an aminoglycoside alone"
+    doses: [levofloxacin-750]
+duration: "7 days, adjusted to the clinical response"
+notes:
+  - "MDR risk factors for VAP: IV antibiotics in the last 90 days, septic shock, ARDS before VAP, 5 or more days in hospital before VAP, and acute renal replacement therapy."
+  - "Narrow to the culture results; a single agent suffices once susceptibilities are known unless in shock."
+sources: [idsa-ats-hap-vap-2016, ers-hap-vap-2017]

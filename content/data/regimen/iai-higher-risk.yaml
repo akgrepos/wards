@@ -1,0 +1,20 @@
+name: Higher risk or healthcare-associated
+indication: Complicated intra-abdominal infection
+setting: "Severe illness, postoperative or healthcare-associated infection, recent antibiotics, or resistant colonization"
+options:
+  - label: Antipseudomonal β-lactam
+    doses: [[piperacillin-tazobactam-nosocomial, meropenem-nosocomial]]
+  - label: Cefepime plus metronidazole
+    doses: [cefepime-nosocomial, metronidazole-iv]
+  - label: Add MRSA coverage
+    when: "Known MRSA colonization or infection, or unstable with a high local MRSA rate"
+    doses: [vancomycin-iv]
+  - label: Add an echinocandin
+    when: "Candida isolated from the abdomen or blood, or high risk (recent abdominal surgery, anastomotic leak)"
+    doses: [micafungin-candidemia]
+duration: "4 days after adequate source control; up to 8 days only if critically ill (individualize)"
+notes:
+  - "Use meropenem when ESBL risk is high; avoid piperacillin-tazobactam and cefepime for known ESBL infection."
+  - "Add enterococcal coverage in higher-risk disease: ampicillin, or vancomycin or linezolid with prior VRE."
+  - "Obtain intra-abdominal cultures at source control and narrow to the results."
+sources: [idsa-sis-iai-2010, sis-iai-2024, idsa-amr-2026]
