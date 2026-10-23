@@ -32,17 +32,17 @@ related:
 1. Choose the agent
    | Situation | Preferred | Avoid or caution |
    |---|---|---|
-   | Acute DVT or PE, no special features | Apixaban or rivaroxaban (no lead-in). Dabigatran or edoxaban after 5–10 days of parenteral anticoagulation ^[ash-vte-treatment-2020, chest-vte-2021, aha-acc-pe-2026] | Warfarin only when a DOAC cannot be used ^[chest-vte-2021] |
-   | Nonvalvular AF | DOAC ^[acc-aha-af-2023] | Edoxaban with {{calc:cockcroft-gault}} >95 ^[label-savaysa-2025] |
-   | Cancer-associated VTE | Apixaban, rivaroxaban or edoxaban (CHEST prefers these over LMWH) or LMWH ^[chest-vte-2021, ash-vte-cancer-2021, asco-vte-cancer-2023] | Caution with all factor Xa inhibitors in GI and GU cancers (mucosal bleeding). Edoxaban and rivaroxaban had more major GI bleeding than LMWH in luminal GI cancer ^[asco-vte-cancer-2023, chest-vte-2021] |
-   | Pregnancy and postpartum | LMWH ^[ash-vte-pregnancy-2018] | Warfarin and DOACs ^[ash-vte-pregnancy-2018] |
-   | Mechanical valve | Warfarin ^[acc-aha-valvular-2020] | DOACs (dabigatran: excess thrombosis and bleeding) ^[acc-aha-valvular-2020] |
-   | Moderate–severe rheumatic mitral stenosis | Warfarin ^[acc-aha-af-2023] | DOACs ^[acc-aha-af-2023] |
-   | Antiphospholipid syndrome with thrombosis | Warfarin, INR 2–3. A DOAC is reasonable only in single-antibody venous disease ^[eular-aps-2019, chest-vte-2021, aha-acc-pe-2026] | Rivaroxaban if triple positive. Any DOAC after arterial events ^[eular-aps-2019] |
-   | Kidney failure ({{calc:cockcroft-gault}} <30) or dialysis | Unfractionated heparin acutely. Warfarin or apixaban long term ^[common-practice, label-eliquis-2025, aha-acc-pe-2026] | Fondaparinux is contraindicated. Reduce LMWH (once daily), edoxaban (reduced dose at 15–50, not recommended below 15) and dabigatran (no VTE dose at 30 or below) per label ^[label-arixtra-2024, label-lovenox-2026, label-savaysa-2025, label-pradaxa-2025] |
-   | {{calc:child-pugh}} B or C liver disease | Individualize. LMWH or specialist input ^[label-xarelto-2026, label-savaysa-2025, common-practice] | Rivaroxaban and edoxaban. Apixaban in C ^[label-xarelto-2026, label-savaysa-2025, label-eliquis-2025] |
-   | History of HIT or suspected HIT | Non-heparin agent (see Escalation) ^[ash-hit-2018] | All heparins ^[ash-hit-2018] |
-   | Unstable, high bleeding risk, or procedure planned | Unfractionated heparin ^[common-practice] | Long-acting agents ^[common-practice] |
+   | Acute DVT or PE, no special features | Apixaban or rivaroxaban (no lead-in). Dabigatran or edoxaban after 5–10 days of parenteral anticoagulation | Warfarin only when a DOAC cannot be used ^[ash-vte-treatment-2020, chest-vte-2021, aha-acc-pe-2026] |
+   | Nonvalvular AF | DOAC | Edoxaban with {{calc:cockcroft-gault}} >95 ^[acc-aha-af-2023, label-savaysa-2025] |
+   | Cancer-associated VTE | Apixaban, rivaroxaban or edoxaban (CHEST prefers these over LMWH) or LMWH | Caution with all factor Xa inhibitors in GI and GU cancers (mucosal bleeding). Edoxaban and rivaroxaban had more major GI bleeding than LMWH in luminal GI cancer ^[chest-vte-2021, ash-vte-cancer-2021, asco-vte-cancer-2023] |
+   | Pregnancy and postpartum | LMWH | Warfarin and DOACs ^[ash-vte-pregnancy-2018] |
+   | Mechanical valve | Warfarin | DOACs (dabigatran: excess thrombosis and bleeding) ^[acc-aha-valvular-2020] |
+   | Moderate–severe rheumatic mitral stenosis | Warfarin | DOACs ^[acc-aha-af-2023] |
+   | Antiphospholipid syndrome with thrombosis | Warfarin, INR 2–3. A DOAC is reasonable only in single-antibody venous disease | Rivaroxaban if triple positive. Any DOAC after arterial events ^[eular-aps-2019, chest-vte-2021, aha-acc-pe-2026] |
+   | Kidney failure ({{calc:cockcroft-gault}} <30) or dialysis | Unfractionated heparin acutely. Warfarin or apixaban long term | Fondaparinux is contraindicated. Reduce LMWH (once daily), edoxaban (reduced dose at 15–50, not recommended <15) and dabigatran (no VTE dose at ≤30) per label ^[common-practice, label-eliquis-2025, aha-acc-pe-2026, label-arixtra-2024, label-lovenox-2026, label-savaysa-2025, label-pradaxa-2025] |
+   | {{calc:child-pugh}} B or C liver disease | Individualize. LMWH or specialist input | Rivaroxaban and edoxaban. Apixaban in C ^[label-xarelto-2026, label-savaysa-2025, common-practice, label-eliquis-2025] |
+   | History of HIT or suspected HIT | Non-heparin agent (see Escalation) | All heparins ^[ash-hit-2018] |
+   | Unstable, high bleeding risk, or procedure planned | Unfractionated heparin | Long-acting agents ^[common-practice] |
 
 2. Dosing
    - Acute VTE: the DOAC doses below. Extended therapy after 6 months may use a lower apixaban or rivaroxaban dose. ^[label-eliquis-2025, label-xarelto-2026, ash-vte-treatment-2020]
@@ -87,7 +87,7 @@ related:
    | Edoxaban | Warfarin | Parenteral plus warfarin as above, or the label's oral option (halve the edoxaban dose, overlap until INR ≥2.0) ^[label-savaysa-2025] |
    | LMWH | DOAC | Start at the next scheduled LMWH dose ^[label-eliquis-2025, label-xarelto-2026, label-savaysa-2025] |
    | UFH infusion | DOAC | Start when the infusion stops (edoxaban: 4 hours after) ^[label-xarelto-2026, label-savaysa-2025] |
-   | DOAC | LMWH or UFH | Start at the next scheduled DOAC dose. Dabigatran: 12 hours after the last dose if {{calc:cockcroft-gault}} ≥30, 24 hours if below 30 ^[label-eliquis-2025, label-xarelto-2026, label-pradaxa-2025] |
+   | DOAC | LMWH or UFH | Start at the next scheduled DOAC dose. Dabigatran: 12 hours after the last dose if {{calc:cockcroft-gault}} ≥30, 24 hours if <30 ^[label-eliquis-2025, label-xarelto-2026, label-pradaxa-2025] |
 
 6. Duration
    - Provoked VTE: 3 months. Unprovoked or persistent risk factor with low to moderate bleeding risk: extended therapy, reassessed at least yearly. ^[chest-vte-2021, ash-vte-treatment-2020, aha-acc-pe-2026]
@@ -111,10 +111,10 @@ related:
 - Estimate procedural bleeding risk and patient thrombotic risk about 7 days ahead. Minor procedures (dental, dermatologic, cataract) usually need no interruption. ^[chest-periop-2022]
 | Agent | Low bleeding risk | High bleeding risk |
 |---|---|---|
-| Apixaban, rivaroxaban, edoxaban | Skip 1 day before ^[pause-2019, chest-periop-2022] | Skip 2 days before ^[pause-2019, chest-periop-2022] |
-| Dabigatran, {{calc:cockcroft-gault}} ≥50 | Skip 1 day before ^[pause-2019] | Skip 2 days before ^[pause-2019] |
-| Dabigatran, {{calc:cockcroft-gault}} <50 | Skip 2 days before ^[pause-2019] | Skip 4 days before ^[pause-2019] |
-| Warfarin | Stop 5 days before. INR the day before in selected patients ^[chest-periop-2022] | Same ^[chest-periop-2022] |
+| Apixaban, rivaroxaban, edoxaban | Skip 1 day before | Skip 2 days before ^[pause-2019, chest-periop-2022] |
+| Dabigatran, {{calc:cockcroft-gault}} ≥50 | Skip 1 day before | Skip 2 days before ^[pause-2019] |
+| Dabigatran, {{calc:cockcroft-gault}} <50 | Skip 2 days before | Skip 4 days before ^[pause-2019] |
+| Warfarin | Stop 5 days before. INR the day before in selected patients | Same ^[chest-periop-2022] |
 - Edoxaban hold times rest on CHEST 2022 (1–2 days), not PAUSE. ^[chest-periop-2022]
 - DOACs: no heparin bridging. Resume 1 day after low-risk and 2–3 days after high-risk procedures once hemostasis is secure. ^[pause-2019, chest-periop-2022]
 - Warfarin: recommend against bridging in AF. Suggest against it for VTE beyond 3 months and for mechanical valves, except for high thrombotic risk (mitral valve with stroke risk factors, caged-ball or tilting-disc valve, stroke or VTE in the past 3 months). The 2020 ACC/AHA valve guideline is more permissive and still lists any mechanical mitral valve as higher risk. Restart within 24 hours at the usual dose. ^[chest-periop-2022, acc-aha-valvular-2020]

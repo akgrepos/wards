@@ -27,7 +27,7 @@ related:
 | K⁺ | <3.5 mEq/L | <2.5 mEq/L, arrhythmia, digitalis toxicity, cardiac ischemia, neuromuscular symptoms, or no working gut ^[asmar-hypokalemia-2012, kardalas-hypokalemia-2018] |
 | Mg²⁺ | Below the reference range (ICU cutoffs in use: 1.6–2.0 mg/dL) | <1.2 mg/dL (0.5 mmol/L) or significant symptoms ^[hansen-magnesium-icu-2018, goulden-magnesium-2026] |
 | Phosphate | <2.5 mg/dL (lower reference limit) | Oral not possible or insufficient. <1.0 mg/dL with symptoms ^[label-kphos-injection-2026, miller-hypophosphatemia-2000, common-practice] |
-| Ca²⁺ | True hypocalcemia (low ionized or {{calc:corrected-calcium}}) | Paresthesias, tetany, seizures, laryngospasm or arrhythmia ^[cooper-hypocalcaemia-2008, endotext-hypocalcemia-2016] |
+| Ca²⁺ | True hypocalcemia (↓ ionized or {{calc:corrected-calcium}}) | Paresthesias, tetany, seizures, laryngospasm or arrhythmia ^[cooper-hypocalcaemia-2008, endotext-hypocalcemia-2016] |
 
 - Phosphorus <1.0 mg/dL can cause respiratory failure, myocardial depression or seizures. ^[miller-hypophosphatemia-2000]
 - {{calc:corrected-calcium|Corrected Ca}} <7.6 mg/dL (1.9 mmol/L) without symptoms: consider admission. Serious complications can still occur. ^[cooper-hypocalcaemia-2008]

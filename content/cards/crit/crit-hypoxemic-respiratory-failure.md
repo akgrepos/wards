@@ -92,9 +92,9 @@ or. NIV or CPAP instead
 #### Interpretation
 | Finding | Suggests |
 |---|---|
-| Normal {{calc:aa-gradient|A–a gradient}}, high PaCO₂ | Hypoventilation ^[common-practice] |
-| High {{calc:aa-gradient|A–a gradient}}, corrects with oxygen | V/Q mismatch ^[common-practice] |
-| High {{calc:aa-gradient|A–a gradient}}, little response to 100% oxygen | Shunt ^[common-practice] |
+| {{calc:aa-gradient|A–a gradient}} =, PaCO₂ ↑ | Hypoventilation ^[common-practice] |
+| {{calc:aa-gradient|A–a gradient}} ↑, corrects with oxygen | V/Q mismatch ^[common-practice] |
+| {{calc:aa-gradient|A–a gradient}} ↑, little response to 100% oxygen | Shunt ^[common-practice] |
 | Clear chest radiograph | PE, asthma or COPD, intracardiac shunt, early pneumonia ^[common-practice] |
 
 #### Second line, by scenario
@@ -139,7 +139,7 @@ or. NIV or CPAP instead
 - Start PEEP about 5 cm H₂O and FiO₂ 1.0 ^[common-practice]
 - Set the rate to match pre-intubation minute ventilation ^[common-practice]
 - In ARDS, titrate to SpO₂ 88–95% with a PEEP/FiO₂ table ^[common-practice]
-- Moderate–severe ARDS: higher PEEP, no prolonged recruitment maneuvers ^[ssc-sepsis-2026, ats-ards-2024]. Prone positioning more than 12 hours a day. ^[ssc-sepsis-2026, ats-esicm-sccm-ards-2017]
+- Moderate–severe ARDS: higher PEEP, no prolonged recruitment maneuvers. Prone positioning more than 12 hours a day. ^[ssc-sepsis-2026, ats-ards-2024, ats-esicm-sccm-ards-2017]
 - PaO₂/FiO₂ <150 with hypoxemia or ventilator targets not met despite sedation: consider neuromuscular blockade. ^[sccm-nmba-ards-2026]
 - ARDS: corticosteroids suggested. VV-ECMO in selected severe cases. ^[ats-ards-2024, sccm-corticosteroids-2024]
 

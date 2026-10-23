@@ -3,6 +3,7 @@ import { loadContent } from '../../scripts/content/load.mjs';
 import { checkContent, checkWarnings } from '../../scripts/content/check.mjs';
 import { parseBlocks } from '../../scripts/content/load.mjs';
 import { hasSemicolon } from '../../scripts/content/semicolons.mjs';
+import { midRowSource } from '../../scripts/content/stray-sources.mjs';
 
 const real = loadContent(process.cwd(), { includeExamples: true }) as never as Parameters<typeof checkContent>[0];
 type AnyCard = Record<string, unknown>;
@@ -350,5 +351,34 @@ describe('no semicolons', () => {
   it('ignores web addresses', () => {
     expect(hasSemicolon('https://example.com/a;b')).toBe(false);
     expect(hasSemicolon('a; b')).toBe(true);
+  });
+});
+
+describe('no source text shown', () => {
+  const withBlocks = (md: string) => {
+    const base = JSON.parse(JSON.stringify(real));
+    base.cards.push({
+      file: 'test.md', id: 'test-card', type: 'condition', variant: null, system: 'renal', group: 'condition', subsection: 'Electrolyte Disorders',
+      title: 'Test', aliases: [], related: {}, example: false, unknownSections: [], unknownSubsections: [], definition: null, basedOn: [], reviewed: null,
+      sections: [{ key: 'at-a-glance', title: 'At a Glance', blocks: parseBlocks(md.split('\n')), subsections: [] }],
+    });
+    return checkContent(base).join('\n');
+  };
+  it('rejects a source between the cells of a table row', () => {
+    expect(withBlocks('| A | B |\n|---|---|\n| one ^[example-guideline-a] | two ^[example-guideline-a] |')).toMatch(/source text shown/);
+  });
+  it('rejects a source in the middle of a bullet', () => {
+    expect(withBlocks('- First part ^[example-guideline-a]. Second part. ^[example-guideline-a]')).toMatch(/source text shown/);
+  });
+  it('allows one source at the end of a table row and of a bullet', () => {
+    const out = withBlocks('| A | B |\n|---|---|\n| one | two ^[example-guideline-a] |\n\n- Bullet. ^[example-guideline-a]');
+    expect(out).not.toMatch(/source text shown/);
+  });
+  it('detects a mid-row marker in raw markdown', () => {
+    expect(midRowSource('| a ^[x-y] | b ^[x-y] |')).toBe(true);
+    expect(midRowSource('| a | b ^[x-y] |')).toBe(false);
+  });
+  it('finds no source text in the real content', () => {
+    expect(checkContent(JSON.parse(JSON.stringify(real))).filter((e: string) => /source text shown/.test(e))).toEqual([]);
   });
 });

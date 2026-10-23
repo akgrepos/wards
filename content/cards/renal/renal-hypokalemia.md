@@ -57,7 +57,7 @@ related:
 #### Interpretation
 - Urine K⁺:creatinine {{threshold:urine-k-cr-renal-loss}}: renal loss. Lower suggests GI loss, shift or poor intake. ^[kardalas-hypokalemia-2018]
 
-| Acid–base | Low urine K⁺ | High urine K⁺ |
+| Acid–base | ↓ urine K⁺ | ↑ urine K⁺ |
 |---|---|---|
 | Metabolic acidosis | Lower GI loss (diarrhea, laxatives, villous adenoma) | DKA, RTA (proximal or distal) ^[kardalas-hypokalemia-2018] |
 | Metabolic alkalosis | Vomiting, prior diuretic use | Normal BP: diuretics, vomiting, Bartter or Gitelman. Hypertension: mineralocorticoid excess ^[kardalas-hypokalemia-2018] |

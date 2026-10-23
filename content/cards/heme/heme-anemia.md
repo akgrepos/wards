@@ -79,9 +79,9 @@ related:
 #### Pattern by MCV and reticulocytes
 | Pattern | Likely causes | Next step |
 | --- | --- | --- |
-| Microcytic (<80 fL) | Iron deficiency. Anemia of inflammation (sometimes). Thalassemia trait (high RBC count, normal ferritin). Sideroblastic anemia | Ferritin and transferrin saturation. Hemoglobin electrophoresis if iron studies are normal ^[common-practice, ash-iron-deficiency-dx-2026] |
-| Normocytic, reticulocytes low | Anemia of inflammation, CKD, early iron deficiency, marrow failure, endocrine disease, mixed deficiency | Iron studies, creatinine, TSH, smear. Hematology if other cell lines are low ^[common-practice] |
-| Normocytic, reticulocytes high | Hemolysis, recent bleeding, treatment response | LDH, haptoglobin, bilirubin, DAT, smear. Look for bleeding ^[common-practice] |
+| Microcytic (<80 fL) | Iron deficiency. Anemia of inflammation (sometimes). Thalassemia trait (RBC count ↑, ferritin =). Sideroblastic anemia | Ferritin and transferrin saturation. Hemoglobin electrophoresis if iron studies are normal ^[common-practice, ash-iron-deficiency-dx-2026] |
+| Normocytic, reticulocytes ↓ | Anemia of inflammation, CKD, early iron deficiency, marrow failure, endocrine disease, mixed deficiency | Iron studies, creatinine, TSH, smear. Hematology if other cell lines are ↓ ^[common-practice] |
+| Normocytic, reticulocytes ↑ | Hemolysis, recent bleeding, treatment response | LDH, haptoglobin, bilirubin, DAT, smear. Look for bleeding ^[common-practice] |
 | Macrocytic (>100 fL) | B12 or folate deficiency, alcohol, liver disease, hypothyroidism, medications, myelodysplastic syndrome, reticulocytosis | B12 (with methylmalonic acid if borderline), folate, TSH, liver tests, smear ^[bsh-b12-folate-2014, common-practice] |
 
 - Microcytosis with a high red cell count and normal ferritin: thalassemia trait. The {{calc:mentzer|Mentzer index}} (MCV ÷ RBC count) helps separate it from iron deficiency. ^[common-practice]
@@ -94,10 +94,10 @@ related:
 
 | Test | Iron deficiency | Anemia of inflammation | Both |
 | --- | --- | --- | --- |
-| Ferritin | Low | Normal or high | Below 100 ng/mL, or TSAT below 20% ^[ash-iron-deficiency-dx-2026] |
-| Transferrin saturation | Low | Low | Low ^[ash-iron-deficiency-dx-2026] |
-| TIBC | High | Low or normal | Normal or low ^[common-practice] |
-| MCV | Low or normal | Normal or low | Variable ^[common-practice] |
+| Ferritin | ↓ | = or ↑ | <100 ng/mL, or TSAT <20% ^[ash-iron-deficiency-dx-2026] |
+| Transferrin saturation | ↓ | ↓ | ↓ ^[ash-iron-deficiency-dx-2026] |
+| TIBC | ↑ | = or ↓ | = or ↓ ^[common-practice] |
+| MCV | = or ↓ | = or ↓ | ↕ ^[common-practice] |
 
 #### Find the source of iron deficiency
 - Asymptomatic men and postmenopausal women with iron deficiency anemia: bidirectional endoscopy (upper endoscopy and colonoscopy, strong). Premenopausal women: bidirectional endoscopy is suggested over iron alone (conditional), weighing menstrual loss and preference. ^[aga-ida-2020]
@@ -114,11 +114,11 @@ related:
 #### Hemolysis
 | Finding | Hemolysis | Notes |
 | --- | --- | --- |
-| Reticulocytes | Raised (not in early or marrow-suppressed cases) | A low count does not exclude AIHA ^[common-practice] |
-| LDH | Raised | Also raised in tissue injury and malignancy ^[common-practice] |
-| Haptoglobin | Low | Acute-phase reactant. Raised by inflammation. Low in cirrhosis ^[common-practice] |
-| Indirect bilirubin | Raised | Check total and direct ^[common-practice] |
-| Smear | Spherocytes, schistocytes, bite cells, agglutination | Schistocytes with low platelets: TMA ^[common-practice, isth-ttp-2025] |
+| Reticulocytes | ↑ (not in early or marrow-suppressed cases) | A ↓ count does not exclude AIHA ^[common-practice] |
+| LDH | ↑ | Also ↑ in tissue injury and malignancy ^[common-practice] |
+| Haptoglobin | ↓ | Acute-phase reactant. ↑ by inflammation. ↓ in cirrhosis ^[common-practice] |
+| Indirect bilirubin | ↑ | Check total and direct ^[common-practice] |
+| Smear | Spherocytes, schistocytes, bite cells, agglutination | Schistocytes with ↓ platelets: TMA ^[common-practice, isth-ttp-2025] |
 | DAT (Coombs) | Positive: immune hemolysis | Negative with schistocytes: TMA ^[common-practice] |
 
 - Second-line: G6PD level (unreliable during or just after hemolysis), flow cytometry for paroxysmal nocturnal hemoglobinuria, hemoglobin electrophoresis, cold agglutinin titer, urine hemosiderin. ^[common-practice]

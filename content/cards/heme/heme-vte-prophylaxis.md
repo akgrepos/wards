@@ -74,8 +74,8 @@ related:
    |---|---|
    | {{calc:cockcroft-gault}} <30 | Reduced once-daily enoxaparin dose (see the dose sheet) or unfractionated heparin. Fondaparinux contraindicated ^[label-lovenox-2026, label-arixtra-2024, nice-ng89-2018] |
    | Weight <50 kg | Fondaparinux contraindicated. Enoxaparin carries more bleeding below 45 kg (women) and 57 kg (men) ^[label-arixtra-2024, label-lovenox-2026] |
-   | BMI above 30 kg/m² | The label states no consensus on enoxaparin dose. Many centers double the dose to twice daily at BMI of 40 or more ^[label-lovenox-2026, common-practice] |
-   | Neuraxial anesthesia or lumbar puncture planned | Enoxaparin: leave 12 hours after the last dose. Restart at least 4 hours after catheter removal. Consider doubling the intervals if {{calc:cockcroft-gault}} <30. Fondaparinux: timing unknown on the label, use anesthesia guidance ^[label-lovenox-2026, label-arixtra-2024] |
+   | BMI >30 kg/m² | The label states no consensus on enoxaparin dose. Many centers double the dose to twice daily at BMI ≥40 ^[label-lovenox-2026, common-practice] |
+   | Neuraxial anesthesia or lumbar puncture planned | Enoxaparin: leave 12 hours after the last dose. Restart ≥4 hours after catheter removal. Consider doubling the intervals if {{calc:cockcroft-gault}} <30. Fondaparinux: timing unknown on the label, use anesthesia guidance ^[label-lovenox-2026, label-arixtra-2024] |
    | HIT history | Fondaparinux. No heparin ^[ash-hit-2018] |
 
 4. Add mechanical prophylaxis

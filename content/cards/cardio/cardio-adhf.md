@@ -62,9 +62,9 @@ related:
 | Use | BNP | NT-proBNP | Notes |
 |---|---|---|---|
 | Acute heart failure unlikely | <100 pg/mL | <300 pg/mL | ^[esc-hf-2026] |
-| Lower in | Obesity | Obesity | Values may be low despite heart failure ^[aha-acc-hfsa-hf-2022] |
-| Higher in | Age, AF, CKD, sepsis, PE | Age, AF, CKD, sepsis, PE | Interpret with the clinical picture ^[aha-acc-hfsa-hf-2022] |
-| Sacubitril-valsartan | Raised (neprilysin substrate) | Not affected | Use NT-proBNP on sacubitril-valsartan ^[aha-acc-hfsa-hf-2022] |
+| ↓ in | Obesity | Obesity | Values may be low despite heart failure ^[aha-acc-hfsa-hf-2022] |
+| ↑ in | Age, AF, CKD, sepsis, PE | Age, AF, CKD, sepsis, PE | Interpret with the clinical picture ^[aha-acc-hfsa-hf-2022] |
+| Sacubitril-valsartan | ↑ (neprilysin substrate) | Not affected | Use NT-proBNP on sacubitril-valsartan ^[aha-acc-hfsa-hf-2022] |
 
 #### Further testing
 - New heart failure: evaluate for ischemia and other cardiomyopathies (as outpatient or once stable). ^[aha-acc-hfsa-hf-2022]
