@@ -9,7 +9,7 @@ Last updated 2026-10-23 (live version 2026.10.22.13). A short snapshot. Reasons 
 4. **Owner checks on the phone** (tap Reload on "Update Ready"): the list is in [REVIEW-QUEUE.md](REVIEW-QUEUE.md), section "Owner phone-checks".
    - **Not yet independently reviewed** cards (reviewer deferred 2026-10-21; one review pass when building is done): see [REVIEW-QUEUE.md](REVIEW-QUEUE.md). New cards add themselves to that file.
 5. **Next work** (Main picks with the owner):
-   - **Wave 1 is complete: 30 of 30 cards live.** Open item: the Alcohol Withdrawal pinned-app test (card and Rapids page, normal and Timed Mode, light and dark, plus screenshots) was blocked by the app's safety filter in its ship session; until it is done the card is only checked by the automatic checks and the owner's phone.
+   - **Wave 1 is complete: 30 of 30 cards live.** Alcohol Withdrawal was verified in the pinned app (light and dark, Rapids normal and Timed Mode; screenshots in PR #105).
    - **Approved, not started:** record how each dose was verified in the dose data and make `content:check` reject unrecorded doses (memory: project-dose-verification-record). Then the independent review pass (guideline search once, dose-heavy cards first) before any clinical use.
    - **New tools (2026.10.23, PR #103):** `scripts/status.sh`, `wait-live.sh`, `tidy.sh`, `shots.sh`, `npm run release`, `npm run card:new`. `shots.sh` is untested in the Simulator. Sessions should use them.
    - More in [REVIEW-QUEUE.md](REVIEW-QUEUE.md), section "Next work".
