@@ -30,7 +30,7 @@ nodes:
     span: 3
     title: Benzodiazepine
     text:
-      - Oral if the patient accepts; IV or IM if not. Dose by symptom score; thiamine.
+      - Oral if the patient accepts, IV or IM if not. Dose by symptom score and give thiamine.
       - "{{dose:lorazepam-agitation-adult}}"
       - "{{dose:lorazepam-agitation-older}}"
     links: ["card:neuro-alcohol-withdrawal"]
@@ -41,7 +41,7 @@ nodes:
     span: 3
     title: Benzodiazepine first
     text:
-      - Oral if the patient accepts; otherwise IM or IV with monitoring.
+      - Oral if the patient accepts. Otherwise IM or IV with monitoring.
       - "{{dose:lorazepam-agitation-adult}}"
       - Add an antipsychotic only for psychosis that persists.
     next: reassess
@@ -53,7 +53,7 @@ nodes:
     text:
       - Nonpharmacologic care first. Avoid benzodiazepines.
       - "{{dose:haloperidol-delirium-low}}"
-      - "Check {{calc:qtc}}; haloperidol is contraindicated in Parkinson disease and dementia with Lewy bodies."
+      - "Check {{calc:qtc}}. Haloperidol is contraindicated in Parkinson disease and dementia with Lewy bodies."
     links: ["card:neuro-delirium"]
     next: reassess
   psychosis:
@@ -89,7 +89,7 @@ nodes:
     at: [4, 6]
     span: 4
     title: Reassess before any repeat dose
-    text: Sedation, breathing, vital signs; repeat only after the dose can act. Restraint only as a last resort, with medication.
+    text: Sedation, breathing, vital signs. Repeat only after the dose can act. Restraint only as a last resort, with medication.
     links: ["section:psych-acute-agitation/monitor"]
     next: escalate
   escalate:
@@ -97,5 +97,5 @@ nodes:
     at: [4, 7]
     span: 4
     title: No response or unsafe
-    text: Psychiatry, rapid response or ICU; severe refractory agitation may need ketamine or deeper sedation in a monitored setting.
+    text: Psychiatry, rapid response or ICU. Severe refractory agitation may need ketamine or deeper sedation in a monitored setting.
     links: ["section:psych-acute-agitation/escalation"]

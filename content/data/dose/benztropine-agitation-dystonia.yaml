@@ -5,15 +5,15 @@ population: Adults
 route: IM or IV
 amount: 1–2
 unit: mg
-frequency: once; reassess before any repeat dose
+frequency: once. Reassess before any repeat dose
 give_when: Torticollis, oculogyric crisis, trismus or other acute dystonia after an antipsychotic
-repeat: "No interval in the label; repeat if dystonia persists or recurs, within the daily range"
+repeat: "No interval in the label. Repeat if dystonia persists or recurs, within the daily range"
 max: "Label: 1–4 mg once or twice a day parenterally for drug-induced extrapyramidal disorders"
 boxed_warning: "None"
 cautions:
   - "Anticholinergic: urinary retention, tachycardia, confusion and delirium, especially in older adults and in delirium."
   - "Laryngeal dystonia is an airway emergency."
-notes: "The label states the dose as 1 to 2 mL of the 1 mg/mL injection for an acute dystonic reaction; no significant difference in onset by IV or IM."
+notes: "The label states the dose as 1 to 2 mL of the 1 mg/mL injection for an acute dystonic reaction. No significant difference in onset by IV or IM."
 sources: [label-benztropine-inj-2024, aaep-beta-psychopharm-2012]
 verification:
   source: label-benztropine-inj-2024
