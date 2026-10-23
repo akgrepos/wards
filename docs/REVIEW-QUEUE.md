@@ -5,6 +5,7 @@ Two lists moved out of STATUS.md to keep it short. New cards add themselves here
 ## Awaiting iPhone confirmation
 Added 2026-10-23 (CLAUDE.md "Test in proportion"). Windows previews cannot reproduce a real finger, the keyboard or the installed app, so each visible change lists what to tap. Tap Reload on "Update Ready" first. Main clears a line when you confirm; for touch, scroll, keyboard or install items, no further change in that area starts until it is confirmed.
 
+- **Table symbols and sources (version 2026.10.23.4):** open Anemia (Diagnosis iron studies table and the hemolysis table), Acid-Base Disorders (Patterns table) and Anticoagulation (the choosing-a-drug table). Words like high, low and normal in tables are now ↑ ↓ = and ↕. Check they look aligned and legible in light and dark, at your usual Text Size, and that no gray source text like ^[...] shows inside a table. Tell me if any symbol is hard to read or confusing.
 - **No semicolons (PR #118, version 2026.10.23.3):** open a few cards (Hyperkalemia, DKA, Alcohol Withdrawal, Empiric Antimicrobials). Lists should be bullets, table cells should show items on separate lines, and nothing should read oddly. Tell me about any line that lost meaning or looks cramped.
 - **Content split (PR #112, behind the scenes):** the app opens, a card loads, it still works offline (airplane mode) and still offers updates.
 - **Tap highlight (PR #114):** tap a calculator value and a section header; the gray press shape should match the text or row, not a larger box.

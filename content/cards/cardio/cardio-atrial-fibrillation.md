@@ -67,8 +67,8 @@ or. IV rate control, decompensated or hypotensive
 | 1. At risk | Modifiable or nonmodifiable risk factors ^[acc-aha-af-2023] |
 | 2. Pre-AF | Structural or electrical findings predisposing to AF (atrial enlargement, frequent atrial ectopy, atrial flutter) ^[acc-aha-af-2023] |
 | 3A. Paroxysmal | Terminates within 7 days of onset ^[acc-aha-af-2023] |
-| 3B. Persistent | Continuous for more than 7 days, needing intervention ^[acc-aha-af-2023] |
-| 3C. Long-standing persistent | Continuous for more than 12 months ^[acc-aha-af-2023] |
+| 3B. Persistent | Continuous for >7 days, needing intervention ^[acc-aha-af-2023] |
+| 3C. Long-standing persistent | Continuous for >12 months ^[acc-aha-af-2023] |
 | 3D. Successful ablation | Free of AF after ablation ^[acc-aha-af-2023] |
 | 4. Permanent | No further attempts at rhythm control ^[acc-aha-af-2023] |
 

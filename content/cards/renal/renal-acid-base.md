@@ -42,10 +42,10 @@ related:
 
    | pH | HCO₃⁻ | PaCO₂ | Primary disorder |
    |---|---|---|---|
-   | Low | Low | Low (compensating) | Metabolic acidosis ^[berend-acid-base-2014] |
-   | Low | High (compensating) | High | Respiratory acidosis ^[berend-acid-base-2014] |
-   | High | High | High (compensating) | Metabolic alkalosis ^[berend-acid-base-2014] |
-   | High | Low (compensating) | Low | Respiratory alkalosis ^[berend-acid-base-2014] |
+   | ↓ | ↓ | ↓ (compensating) | Metabolic acidosis ^[berend-acid-base-2014] |
+   | ↓ | ↑ (compensating) | ↑ | Respiratory acidosis ^[berend-acid-base-2014] |
+   | ↑ | ↑ | ↑ (compensating) | Metabolic alkalosis ^[berend-acid-base-2014] |
+   | ↑ | ↓ (compensating) | ↓ | Respiratory alkalosis ^[berend-acid-base-2014] |
 
 4. Check the compensation
    - Compare the measured value with the expected one. Outside the range means an additional disorder. ^[adrogue-madias-secondary-2010]
@@ -77,7 +77,7 @@ related:
    | <0.4 | Non-gap acidosis alone ^[common-practice] |
    | 0.4–1 | High-gap plus non-gap acidosis (also seen in kidney disease). Ketoacidosis often sits near 1 ^[rastegar-delta-ratio-2007, common-practice] |
    | 1–2 | Pure high-gap acidosis ^[rastegar-delta-ratio-2007] |
-   | >2 | High-gap acidosis plus metabolic alkalosis, or pre-existing high HCO₃⁻ (chronic respiratory acidosis) ^[rastegar-delta-ratio-2007] |
+   | >2 | High-gap acidosis plus metabolic alkalosis, or pre-existing ↑ HCO₃⁻ (chronic respiratory acidosis) ^[rastegar-delta-ratio-2007] |
 
    - The ratio varies widely between patients (lactic acidosis often runs about 1.6, ketoacidosis near 1 or below because ketoanions are lost in urine). Treat it as a prompt to look, not a diagnosis. ^[rastegar-delta-ratio-2007]
 
@@ -91,13 +91,13 @@ related:
 ## Patterns and What They Mean
 | Pattern | Causes | Next step |
 |---|---|---|
-| High-gap metabolic acidosis | Ketoacidosis (diabetic, alcoholic, starvation). Lactic acidosis. Kidney failure (uremia). Toxic alcohols (methanol, ethylene glycol, propylene glycol). Salicylate. 5-oxoproline (chronic acetaminophen, malnutrition). D-lactate (short bowel) ^[kraut-madias-metabolic-acidosis-2010, kraut-madias-lactic-acidosis-2014, kraut-kurtz-toxic-alcohols-2008] | β-hydroxybutyrate and glucose ([[endo-dka| DKA]]). Lactate. Creatinine ([[renal-aki | AKI]]). Osmolal gap. Salicylate level ^[kraut-madias-metabolic-acidosis-2010, kraut-kurtz-toxic-alcohols-2008] |
-| Non-gap (hyperchloremic) metabolic acidosis | Gastrointestinal bicarbonate loss (diarrhea, ileostomy, pancreatic or biliary drainage). Renal tubular acidosis. Large-volume saline ([[renal-iv-fluids | IV fluids]]). Acetazolamide and topiramate. Recovery phase of DKA (ketoanion loss). Ureteral diversion. Early kidney disease ^[kraut-madias-metabolic-acidosis-2010] | Urine AG (below). Potassium. Stool and medication history ^[kraut-madias-metabolic-acidosis-2010] |
-| Metabolic alkalosis, chloride-responsive (urine Cl⁻ <20 mEq/L) | Vomiting or nasogastric suction. Remote diuretic use. Recovery from hypercapnia. Chloride-poor intake ^[galla-metabolic-alkalosis-2000] | Isotonic saline with potassium repletion ^[galla-metabolic-alkalosis-2000] |
-| Metabolic alkalosis, chloride-resistant (urine Cl⁻ >20 mEq/L) | Current diuretic use. Primary hyperaldosteronism, Cushing syndrome, renal artery stenosis (hypertension, hypokalemia). Severe potassium depletion. Bartter and Gitelman syndromes. Alkali loads (bicarbonate, citrate, milk-alkali) ^[galla-metabolic-alkalosis-2000] | Renin, aldosterone and cortisol if hypertensive. Stop the offending agent. Replete potassium ^[galla-metabolic-alkalosis-2000] |
-| Respiratory acidosis | Hypoventilation: COPD, asthma (late), obesity hypoventilation, opioids and sedatives, neuromuscular weakness, chest wall disease, severe pulmonary edema or pneumonia ^[epstein-respiratory-acidosis-2001] | Alveolar-arterial gradient (below): normal suggests extrapulmonary hypoventilation, raised suggests lung disease ^[epstein-respiratory-acidosis-2001, common-practice] |
-| Respiratory alkalosis | Hypoxemia, pulmonary embolism, pneumonia, pain or anxiety, sepsis, salicylate, pregnancy, liver disease, central nervous system disease, mechanical ventilation settings ^[seifter-acid-base-2014, common-practice] | Look for hypoxemia and the cause ([[crit-hypoxemic-respiratory-failure|hypoxemia]]) ^[common-practice] |
-| Mixed disorder | Compensation outside the expected range. Normal pH with abnormal PaCO₂ or HCO₃⁻. Delta ratio <0.4 or >2 ^[adrogue-madias-secondary-2010, rastegar-delta-ratio-2007] | Name each process, then treat each cause ^[berend-acid-base-2014] |
+| High-gap metabolic acidosis | Ketoacidosis (diabetic, alcoholic, starvation). Lactic acidosis. Kidney failure (uremia). Toxic alcohols (methanol, ethylene glycol, propylene glycol). Salicylate. 5-oxoproline (chronic acetaminophen, malnutrition). D-lactate (short bowel) | β-hydroxybutyrate and glucose ([[endo-dka| DKA]]). Lactate. Creatinine ([[renal-aki | AKI]]). Osmolal gap. Salicylate level ^[kraut-madias-metabolic-acidosis-2010, kraut-madias-lactic-acidosis-2014, kraut-kurtz-toxic-alcohols-2008] |
+| Non-gap (hyperchloremic) metabolic acidosis | Gastrointestinal bicarbonate loss (diarrhea, ileostomy, pancreatic or biliary drainage). Renal tubular acidosis. Large-volume saline ([[renal-iv-fluids | IV fluids]]). Acetazolamide and topiramate. Recovery phase of DKA (ketoanion loss). Ureteral diversion. Early kidney disease | Urine AG (below). Potassium. Stool and medication history ^[kraut-madias-metabolic-acidosis-2010] |
+| Metabolic alkalosis, chloride-responsive (urine Cl⁻ <20 mEq/L) | Vomiting or nasogastric suction. Remote diuretic use. Recovery from hypercapnia. Chloride-poor intake | Isotonic saline with potassium repletion ^[galla-metabolic-alkalosis-2000] |
+| Metabolic alkalosis, chloride-resistant (urine Cl⁻ >20 mEq/L) | Current diuretic use. Primary hyperaldosteronism, Cushing syndrome, renal artery stenosis (hypertension, hypokalemia). Severe potassium depletion. Bartter and Gitelman syndromes. Alkali loads (bicarbonate, citrate, milk-alkali) | Renin, aldosterone and cortisol if hypertensive. Stop the offending agent. Replete potassium ^[galla-metabolic-alkalosis-2000] |
+| Respiratory acidosis | Hypoventilation: COPD, asthma (late), obesity hypoventilation, opioids and sedatives, neuromuscular weakness, chest wall disease, severe pulmonary edema or pneumonia | Alveolar-arterial gradient (below): normal suggests extrapulmonary hypoventilation, raised suggests lung disease ^[epstein-respiratory-acidosis-2001, common-practice] |
+| Respiratory alkalosis | Hypoxemia, pulmonary embolism, pneumonia, pain or anxiety, sepsis, salicylate, pregnancy, liver disease, central nervous system disease, mechanical ventilation settings | Look for hypoxemia and the cause ([[crit-hypoxemic-respiratory-failure|hypoxemia]]) ^[seifter-acid-base-2014, common-practice] |
+| Mixed disorder | Compensation outside the expected range. Normal pH with abnormal PaCO₂ or HCO₃⁻. Delta ratio <0.4 or >2 | Name each process, then treat each cause ^[adrogue-madias-secondary-2010, rastegar-delta-ratio-2007, berend-acid-base-2014] |
 
 #### Tools for the next step
 - Non-gap acidosis: {{calc:urine-anion-gap|urine anion gap}} = (urine Na⁺ + K⁺) − urine Cl⁻. Negative: gastrointestinal bicarbonate loss with intact renal ammonium excretion. Positive: low renal ammonium excretion (distal or type 4 renal tubular acidosis, chronic kidney disease). ^[kraut-madias-metabolic-acidosis-2010]

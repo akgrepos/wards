@@ -2,6 +2,10 @@
 
 What changed in each version of Wards, newest first. The version is shown in Settings (gear on Home).
 
+## 2026.10.23.4
+
+**Tables: symbols and a fix.** Tables now use symbols to save space: ↑ for high or raised, ↓ for low, = for normal, ↕ for variable, and < > ≤ ≥ for cutoffs (for example the iron studies and hemolysis tables on Anemia, and the Acid-Base tables). Also fixed: small gray source codes were showing as text in the middle of some table rows (Acid-Base Patterns, Anticoagulation Choosing a Drug). Sources now sit at the end of each row, and the content check rejects them anywhere else. Wording, doses and numbers are unchanged.
+
 ## 2026.10.23.3
 
 **Formatting: no semicolons.** Card text no longer uses semicolons. Lists are now bullets and long sentences are split in two. Nothing else changed; the wording, doses, numbers and sources are the same.

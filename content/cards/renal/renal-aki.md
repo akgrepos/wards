@@ -41,7 +41,7 @@ related:
 ## Causes
 | Category | Mechanism | Examples |
 |---|---|---|
-| Prerenal | Decreased kidney perfusion | Hypovolemia, hemorrhage, shock, heart failure, cirrhosis, NSAIDs, ACE inhibitors, ARBs, abdominal compartment syndrome ^[kdigo-aki-2012, aha-cardiorenal-2019, aasld-ascites-hrs-2021, moore-aki-core-2018] |
+| Prerenal | ↓ kidney perfusion | Hypovolemia, hemorrhage, shock, heart failure, cirrhosis, NSAIDs, ACE inhibitors, ARBs, abdominal compartment syndrome ^[kdigo-aki-2012, aha-cardiorenal-2019, aasld-ascites-hrs-2021, moore-aki-core-2018] |
 | Intrinsic: tubular | Ischemic or toxic injury | Sepsis, prolonged hypoperfusion. Aminoglycosides, amphotericin B, contrast. Pigment (myoglobin, hemoglobin) ^[kdigo-aki-2012, moore-aki-core-2018] |
 | Intrinsic: crystal, cast | Intratubular obstruction | Tumor lysis (uric acid), drugs (e.g. acyclovir, methotrexate), myeloma cast nephropathy ^[moore-aki-core-2018] |
 | Intrinsic: interstitial | Immune-mediated, mostly drug-induced | AIN ^[kdigo-aki-2012, muriithi-urine-eos-2013] |
