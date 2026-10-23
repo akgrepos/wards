@@ -6,7 +6,7 @@ Last updated 2026-10-23 (live version 2026.10.22.13). A short snapshot. Reasons 
 1. **Open a new chat and type "Start Main".** The `wards-main` skill renames it "Main", checks sessions, pull requests and branches, and delegates (at most two side sessions at a time).
 2. **Read first:** `CLAUDE.md`, then `docs/CARD-WRITING-CHEATSHEET.md`; DECISIONS "Card-writing process" and "Sources, updated" before any card work.
 3. **Design pass done** (owner's 17 phone-testing items all built, 2026.10.21.8 to .24): compact steps and Rapids text, stacked staging bands and scale boxes, dose sheets with inline sources, titled criteria, Contents subsections, six interactive calculators, full-width Treatment steps. Details in CHANGELOG.
-4. **Owner checks on the phone** (tap Reload on "Update Ready"): the list is in [REVIEW-QUEUE.md](REVIEW-QUEUE.md), section "Owner phone-checks".
+4. **Owner checks on the phone** (tap Reload on "Update Ready"): [REVIEW-QUEUE.md](REVIEW-QUEUE.md), first "Awaiting iPhone confirmation" (newest changes), then "Owner phone-checks". The owner works on Windows now (2026-10-23): Claude previews with Playwright WebKit, the owner confirms on the iPhone.
    - **Not yet independently reviewed** cards (reviewer deferred 2026-10-21; one review pass when building is done): see [REVIEW-QUEUE.md](REVIEW-QUEUE.md). New cards add themselves to that file.
 5. **Next work** (Main picks with the owner):
    - **Wave 1 is complete: 30 of 30 cards live.** Alcohol Withdrawal was verified in the pinned app (light and dark, Rapids normal and Timed Mode; screenshots in PR #105).
