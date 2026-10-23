@@ -1,0 +1,22 @@
+drug_name: Midazolam
+brand: Midazolam injection
+indication: Severe agitation needing rapid sedation in a monitored setting (off-label)
+population: Adults without respiratory compromise
+route: IM
+amount: 5
+unit: mg
+frequency: once; reassess before any repeat dose
+give_when: Severe agitation or danger where fast onset is needed, with continuous oxygen saturation monitoring and airway support at the bedside
+repeat: "Studied as a single dose; repeat only after reassessment, with airway support at the bedside"
+max: "No guideline maximum for agitation"
+boxed_warning: "IV midazolam: respiratory depression and arrest; use only with continuous respiratory and cardiac monitoring and resuscitation available; with opioids, profound sedation, respiratory depression, coma and death."
+cautions:
+  - "Continuous pulse oximetry and a clinician who can manage the airway; avoid on a general ward without that."
+  - "Older adults: ACEP made no recommendation above 65; the label reduces IM doses at 60 or older (as little as 1 mg)."
+  - "ACEP's ED combination with an atypical antipsychotic assumes ED monitoring; the olanzapine label does not recommend IM olanzapine with a parenteral benzodiazepine."
+notes: "Dose as studied in the ED trials in the ACEP policy (5 mg IM); ACEP prefers droperidol or an atypical antipsychotic plus midazolam, and an antipsychotic over midazolam alone. The label covers preoperative sedation (about 5 mg IM in adults under 60), not agitation."
+sources: [label-midazolam-inj-2026, acep-severe-agitation-2023, aaep-beta-psychopharm-2012]
+verification:
+  source: acep-severe-agitation-2023
+  read: full-text
+  date: 2026-10-23
