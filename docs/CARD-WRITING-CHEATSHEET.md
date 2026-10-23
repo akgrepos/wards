@@ -31,5 +31,12 @@ The essentials for writing or fixing a card. Read this first; open the full guid
 - Blocks closed by `:::`: `:::note` (1-3 lines), `:::scale` (2-5 bands), `:::compare` (2-3), `:::times` (1-12), `:::onset` (2-12).
 - US units; precise terms (hypoxemia, not "low oxygen"); terse clinical register; summarize, never copy.
 
+## Consistency rules (content:check; full list: CONTENT-FORMAT "Consistency rules")
+- Aliases: each alias on one card only; over 30 per card warns.
+- `subsection` must be in the system's list in `content/systems.yaml` (add the name there first).
+- `[!cannot-miss]` / `[!most-common]` only on causes in Causes; never name a category "Cannot miss" or "Most common".
+- Tables: at most 4 columns. `[[card]]` to an unwritten card is allowed (warning, shows as plain text). Related cards go both ways.
+- Warnings: unused source, `reviewed` over 12 months, a Do Now dose missing from Treatment.
+
 ## Pathways (`content/data/pathway/<id>.yaml`)
 Decision tree for one task: `title`, `card`, `summary`, `columns`, `start`, `sources`, `nodes` with `kind` (start, do, urgent, note, question, result), `at: [col, row]`, `next`; a `question` has `answers` (`label`, `at`, `to`) in the row below it. Details: CONTENT-FORMAT "Pathways".

@@ -4,7 +4,7 @@ type: condition
 system: pulm
 subsection: Obstructive Lung Disease
 title: COPD Exacerbation
-aliases: [AECOPD, acute exacerbation of COPD, COPD flare, emphysema exacerbation, chronic bronchitis exacerbation, hypercapnia, CO2 retainer, BiPAP, NIV, DuoNeb, nebs, prednisone burst, GOLD, Rome classification]
+aliases: [AECOPD, acute exacerbation of COPD, COPD flare, emphysema exacerbation, chronic bronchitis exacerbation, hypercapnia, CO2 retainer, DuoNeb, nebs, prednisone burst, GOLD, Rome classification]
 definition: "Worsening dyspnea and/or cough and sputum over up to 14 days in COPD, often with tachypnea or tachycardia, usually from infection or another airway insult. ^[gold-copd-2026]"
 based_on: [gold-copd-2026, ers-ats-copd-exacerbation-2017, ats-nirs-2026]
 reviewed: 2026-10-21

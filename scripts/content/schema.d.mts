@@ -6,3 +6,7 @@ export const DOSE_IN_TEXT: RegExp;
 export const DOSE_FIELDS: string[];
 export const REGIMEN_FIELDS: string[];
 export const REGIMEN_OPTION_FIELDS: string[];
+export const MAX_TABLE_COLUMNS: number;
+export const WIDE_TABLE_EXCEPTIONS: Record<string, string[]>;
+export const MAX_ALIASES: number;
+export const REVIEW_MAX_AGE_MONTHS: number;

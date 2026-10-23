@@ -147,5 +147,7 @@ The layouts for types 3–8 were proposed with the redesign and approved by the 
 1. No "Based on" line in the header; `based_on` stays optional in the front matter (not shown).
 2. Nested bullets (one level) for items with sub-items; links woven into the sentence.
 3. Approach cards: first-line tests live in Diagnosis with what each result means; Common initial orders holds only non-test orders plus a link to those tests.
-4. Condition cards: Causes as one grouped list; "cannot miss" as a tag.
+4. Condition cards: Causes as one grouped list; "cannot miss" as a tag (only on causes, never as a category name; CONTENT-FORMAT "Consistency rules").
 5. Onset and duration comparisons open from a row (`:::onset`), not a table on the page.
+
+- **Consistency (2026-10-23):** `subsection` comes from the system's list in `content/systems.yaml`; tables are at most four columns; every card follows CONTENT-FORMAT "Consistency rules".

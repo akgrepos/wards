@@ -179,6 +179,16 @@ export const DOSE_FIELDS = [
   'cautions', 'notes', 'sources', 'verification',
 ];
 
+// Tables are at most four columns wide so they stay readable on a phone (docs/CONTENT-FORMAT.md, "Consistency rules"). A wider one is
+// allowed only when it is listed here, by card id and section title, as a deliberate owner-approved exception.
+export const MAX_TABLE_COLUMNS = 4;
+export const WIDE_TABLE_EXCEPTIONS = { 'renal-iv-fluids': ['Choosing an Option'] };
+
+// A card with more aliases than this is probably padded (alias bloat); content:check warns.
+export const MAX_ALIASES = 30;
+// A card's "reviewed" date older than this many months is flagged for a fresh look.
+export const REVIEW_MAX_AGE_MONTHS = 12;
+
 export const CARD_GROUPS = ['approach', 'condition', 'reference'];
 
 // Data types that cards can insert with {{type:id}}. Each lives in content/data/<type>/<id>.yaml.

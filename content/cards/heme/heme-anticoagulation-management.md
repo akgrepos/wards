@@ -3,7 +3,7 @@ id: heme-anticoagulation-management
 type: approach
 system: heme
 title: Anticoagulant Selection and Management
-aliases: [anticoagulation, blood thinner, blood thinners, DOAC, NOAC, apixaban, Eliquis, rivaroxaban, Xarelto, dabigatran, Pradaxa, edoxaban, Savaysa, warfarin, Coumadin, INR, enoxaparin, Lovenox, LMWH, heparin, UFH, fondaparinux, Arixtra, argatroban, bivalirudin, HIT, heparin-induced thrombocytopenia, anti-Xa, aPTT, bridging, warfarin to DOAC, mechanical valve, anticoagulant dosing, DOAC dosing, renal dosing]
+aliases: [anticoagulation, blood thinner, blood thinners, DOAC, NOAC, apixaban, Eliquis, rivaroxaban, Xarelto, dabigatran, Pradaxa, edoxaban, Savaysa, warfarin, Coumadin, INR, enoxaparin, Lovenox, LMWH, heparin, UFH, fondaparinux, Arixtra, argatroban, bivalirudin, HIT, heparin-induced thrombocytopenia, anti-Xa, aPTT, bridging, warfarin to DOAC, mechanical valve, anticoagulant dosing, DOAC dosing]
 definition: "Choosing and dosing an anticoagulant (DOAC, warfarin, low-molecular-weight heparin, unfractionated heparin, fondaparinux or a direct thrombin inhibitor) by indication, kidney and liver function, weight, pregnancy, interacting drugs and bleeding risk, then monitoring it and changing between agents safely. ^[chest-vte-2021, ash-vte-treatment-2020, acc-aha-af-2023]"
 based_on: [chest-vte-2021, ash-vte-treatment-2020, acc-aha-af-2023, aha-acc-pe-2026, ash-hit-2018, chest-periop-2022, ash-vte-cancer-2021]
 reviewed: 2026-10-21

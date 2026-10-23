@@ -68,7 +68,7 @@ or. NIV or CPAP instead
 - **Hypoventilation:** opioids or sedatives, neuromuscular weakness, obesity hypoventilation; normal {{calc:aa-gradient|A–a gradient}}, high PaCO₂. ^[common-practice]
 - **Diffusion limitation:** interstitial lung disease, pulmonary hypertension; worse with exertion. ^[common-practice]
 - **Low inspired oxygen:** altitude; normal {{calc:aa-gradient|A–a gradient}}. ^[common-practice]
-- **Cannot miss:** [!cannot-miss] tension pneumothorax, PE, flash pulmonary edema or ACS, ARDS, aspiration, upper airway obstruction, hemothorax or massive effusion. ^[common-practice]
+- **Life-threatening causes:** [!cannot-miss] tension pneumothorax, PE, flash pulmonary edema or ACS, ARDS, aspiration, upper airway obstruction, hemothorax or massive effusion. ^[common-practice]
 
 ## Presentation
 #### Focused history

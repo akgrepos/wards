@@ -3,7 +3,7 @@ id: endo-inpatient-hyperglycemia
 type: approach
 system: endo
 title: Hyperglycemia in the Hospitalized Patient
-aliases: [inpatient hyperglycemia, hospital hyperglycemia, high blood sugar, high glucose, stress hyperglycemia, steroid-induced hyperglycemia, glucocorticoid hyperglycemia, sliding scale, SSI, correction insulin, basal-bolus, basal plus, insulin orders, inpatient diabetes, hypoglycemia, glucose targets, insulin drip, tube feeds insulin]
+aliases: [inpatient hyperglycemia, hospital hyperglycemia, high blood sugar, high glucose, stress hyperglycemia, steroid-induced hyperglycemia, glucocorticoid hyperglycemia, sliding scale, SSI, correction insulin, basal-bolus, basal plus, insulin orders, inpatient diabetes, hypoglycemia, glucose targets, tube feeds insulin]
 definition: "Any blood glucose >140 mg/dL in a hospitalized patient; insulin is started or intensified for persistent glucose ≥180 mg/dL. ^[ada-soc-hospital-2026]"
 based_on: [ada-soc-hospital-2026, endocrine-hospital-hyperglycemia-2022, sccm-glycemic-2024]
 reviewed: 2026-10-21

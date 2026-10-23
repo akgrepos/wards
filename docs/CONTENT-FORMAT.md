@@ -116,6 +116,19 @@ emergency_hint: Calcium, insulin-dextrose, remove K⁺   # in the front matter
 - Data items have their required fields, sources that exist, and US units; dose and regimen items use only the fields in `DATA-TYPES.md`; every dose and in-app calculator has a `verification` note (`DATA-TYPES.md`, "Verification note"); a regimen's options list doses that exist and its words carry no typed doses.
 - An emergency (`## Do Now`) follows the format above: topics only, a short `emergency_hint`, 2–8 steps that each do something, `If:` first and once, warnings of one to three words, only `:::note` after the steps; `:::times{…}` settings name a dose in Do Now (or `first`), what is checked, and readable times.
 
+## Consistency rules (checked by `npm run content:check`)
+These keep 150+ cards one app. **Errors** fail the check; **warnings** print but never fail it.
+- **Aliases (error).** An alias belongs to one card (case ignored); keep it on the best card or make it more specific ("PERC rule" not "PERC"). A card with over 30 aliases gets a warning (alias bloat).
+- **Subsections (error).** A condition card's `subsection` must be one of its system's names in `content/systems.yaml` (`subsections:` list). To use a new name, add it there first (one name per idea, no near-duplicates). Example cards are exempt.
+- **Causes tags (error).** `[!cannot-miss]` and `[!most-common]` go only on causes inside the Causes section, and a cause category is never named "Cannot miss" or "Most common" (name it by what the causes are, for example "Life-threatening causes").
+- **Table width (error).** A table has at most four columns. A wider one needs an owner-approved exception listed in `WIDE_TABLE_EXCEPTIONS` in `scripts/content/schema.mjs` (card id and section title). Today: IV Fluids "Choosing an Option" (six columns). The criteria `layout: stacked` is for criteria data only, not card tables.
+- **Planned links (warning).** `[[card-id]]` to a card that doesn't exist yet is allowed; the check lists it as a warning and the app shows it as plain words (no tap target) until the card is written. `related:` entries, `based_on` and section names must still exist.
+- **Related cards (warning).** If A lists B under `related`, B should list A back.
+- **Unused sources (warning).** A source file no card or data item cites; delete it if it is orphaned.
+- **Review date (warning).** `reviewed:` older than 12 months.
+- **Do Now doses (warning).** A dose in `## Do Now` that does not also appear in the card's Treatment section (as a `{{dose:…}}`, or inside a `{{regimen:…}}` there).
+- There is deliberately no length or density limit: cards keep the terse clinical register.
+
 ## Formatting inside sections
 - Bullets (`- `, one nesting level: indent sub-bullets two spaces under a lead-in line ending in a colon), paragraphs, tables (`| … |`; a row's sources go at the end of the row; the first column stays in place when the table scrolls), `####` subheadings.
 - Alternatives: a step written `or. Step title` (instead of a number) is a different choice for the step above it, not the next step. It shows an outlined "or" and doesn't use up a number (3, or, 4). Use it when two steps are alternatives by situation (for example DKA versus HHS insulin), never for a sequence.
