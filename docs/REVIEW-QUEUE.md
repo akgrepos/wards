@@ -5,6 +5,7 @@ Two lists moved out of STATUS.md to keep it short. New cards add themselves here
 ## Awaiting iPhone confirmation
 Added 2026-10-23 (CLAUDE.md "Test in proportion"). Windows previews cannot reproduce a real finger, the keyboard or the installed app, so each visible change lists what to tap. Tap Reload on "Update Ready" first. Main clears a line when you confirm; for touch, scroll, keyboard or install items, no further change in that area starts until it is confirmed.
 
+- **No semicolons (PR #118, version 2026.10.23.3):** open a few cards (Hyperkalemia, DKA, Alcohol Withdrawal, Empiric Antimicrobials). Lists should be bullets, table cells should show items on separate lines, and nothing should read oddly. Tell me about any line that lost meaning or looks cramped.
 - **Content split (PR #112, behind the scenes):** the app opens, a card loads, it still works offline (airplane mode) and still offers updates.
 - **Tap highlight (PR #114):** tap a calculator value and a section header; the gray press shape should match the text or row, not a larger box.
 - **Pop-up scroll (PR #115, version 2026.10.23.2):** open a calculator, type, and scroll inside the pop-up; the page behind should stay still and return to its place when you close it. Also check the dose sheet and a source sheet.
