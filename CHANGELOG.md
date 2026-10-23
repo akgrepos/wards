@@ -2,6 +2,10 @@
 
 What changed in each version of Wards, newest first. The version is shown in Settings (gear on Home).
 
+## 2026.10.23
+
+**Fix: press highlight.** Tapping a section title, a score link or a tappable value now shows a soft gray fill that matches what you see (the section's title row, or just the words) instead of a larger gray box. Figures dim slightly while pressed.
+
 ## 2026.10.22.13
 
 **Fix: ECG pre-excitation figure.** The PR interval labels no longer run into the QRS complex.
