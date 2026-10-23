@@ -2,6 +2,10 @@
 
 What changed in each version of Wards, newest first. The version is shown in Settings (gear on Home).
 
+## 2026.10.23.2
+
+**Fix: pop-ups keep the page still.** While a calculator, dose or source pop-up is open, the page behind it no longer scrolls when you scroll or type in the pop-up, and the page is back where you left it when you close it.
+
 ## 2026.10.23
 
 **Fix: press highlight.** Tapping a section title, a score link or a tappable value now shows a soft gray fill that matches what you see (the section's title row, or just the words) instead of a larger gray box. Figures dim slightly while pressed.
