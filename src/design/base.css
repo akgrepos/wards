@@ -338,3 +338,7 @@ html[data-timed] .timed-page .screen-body.timed-body { padding-bottom: calc(env(
 .akg-content-section__more-button:active { background: var(--fill-tertiary); }
 /* A tappable figure dims like other pressed images. */
 .akg-figure__open:active { opacity: 0.8; }
+
+/* Sheets: dragging the dimmed area or the title bar never scrolls the page behind; the sheet's own scroll stays inside it. */
+.akg-sheet__scrim, .akg-sheet__bar { touch-action: none; }
+.akg-sheet__content { overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }

@@ -20,6 +20,27 @@ export function SheetHost({ children }: { children: ReactNode }) {
     addEventListener('hashchange', close);
     return () => removeEventListener('hashchange', close);
   }, []);
+  // While a sheet is open the page behind stays put: the body is pinned where it was scrolled (restored on close), so
+  // scrolling or typing in the sheet never moves the page. A focused field is kept visible inside the sheet.
+  const open = !!sheet;
+  useEffect(() => {
+    if (!open) return;
+    const y = window.scrollY;
+    const b = document.body.style;
+    const saved = { position: b.position, top: b.top, left: b.left, right: b.right, width: b.width };
+    Object.assign(b, { position: 'fixed', top: `-${y}px`, left: '0', right: '0', width: '100%' });
+    const onFocus = (e: FocusEvent) => {
+      const t = e.target;
+      if (!(t instanceof HTMLElement) || !t.closest('.akg-sheet__content')) return;
+      setTimeout(() => { t.scrollIntoView({ block: 'nearest' }); window.scrollTo(0, 0); }, 350);
+    };
+    document.addEventListener('focusin', onFocus);
+    return () => {
+      document.removeEventListener('focusin', onFocus);
+      Object.assign(b, saved);
+      window.scrollTo(0, y);
+    };
+  }, [open]);
   return (
     <Ctx.Provider value={show}>
       {children}
