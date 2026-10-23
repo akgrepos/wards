@@ -29,6 +29,7 @@ See [docs/DECISIONS.md](docs/DECISIONS.md) for what has been decided and why.
 - `npm run release -- [--card <id>] [--dry-run] "<changelog line>"`: bumps `src/version.ts` (next number for today, from origin/main), adds the CHANGELOG entry, and with `--card` lists the card in REVIEW-QUEUE "Not yet independently reviewed".
 - `scripts/tidy.sh <branch>`: the close rule; refuses if unmerged commits or uncommitted changes, else removes worktree and branch.
 - `scripts/shots.sh <outdir> <name...>`: Simulator light and dark screenshots at half size via `xcrun simctl` (navigate first with the control tool).
+- `npm run preview:shot -- <outdir> <route...>`: Playwright WebKit screenshots (iPhone size, light and dark) of the built app, for Windows where there is no Simulator; not the pinned-app test. Needs `npm run build` first.
 - `npm run card:new -- <type> <system> <id> "<title>" [--variant <name>]`: card skeleton; `content:check` rejects it until every `SCAFFOLD:` placeholder is replaced. `content:check` problems now end with the rule and the doc to read.
 
 ## Ground rules

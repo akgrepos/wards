@@ -16,6 +16,6 @@ For the owner. Reference only; nothing here runs on its own. The Windows PC is a
 Same steps in the other direction. On the PC: `git pull`, `npm install`, and leave `core.autocrlf=false` / `core.eol=lf` as they are (the `.gitattributes` file keeps line endings the same on both machines once it is merged).
 
 ## What differs between the machines
-- **Testing:** Mac uses the iOS Simulator and the pinned app. The PC has no Simulator; the plan is a phone-size WebKit preview (Playwright) plus you confirming on your iPhone after the deploy.
+- **Testing:** Mac uses the iOS Simulator and the pinned app. The PC has no Simulator; the phone-size WebKit preview is `npm run preview:shot` (Playwright; after `npm install`, run `npx playwright install webkit` once) plus you confirming on your iPhone after the deploy.
 - **Mac-only scripts:** `scripts/shots.sh` and the `xcrun` step of the wrap-up skill. `scripts/status.sh` and `wait-live.sh` need `jq` on the PC.
 - **Never** run both machines on the same branch at once; finish and merge a PR (or note it in STATUS) before switching.

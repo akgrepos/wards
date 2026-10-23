@@ -35,6 +35,9 @@ The owner, a physician, is the only user. No coding experience: explain steps pl
 
 - **End of a chat:** when the owner says to wrap up (or is done for the day), follow the `wards-wrap-up` skill in the owner's Claude settings: finish or park work, stop servers, clean Git and files, update STATUS/DECISIONS/memory, and leave a "Start here next time" handoff.
 
+## Testing on Windows (trial)
+The owner is trialing a Windows PC (since 2026-10-23); the Mac stays the fallback. The iOS Simulator is Mac-only, so on Windows: preview with `npm run build` then `npm run preview:shot -- <outdir> <route...>` (Playwright WebKit, iPhone size, light and dark; in Git Bash prefix with `MSYS_NO_PATHCONV=1` so `/` stays a route), then the owner confirms on their iPhone after the deploy. This preview never counts as the pinned-app test. On the Mac the Simulator rules above stay as they are. `scripts/shots.sh` and the wrap-up `xcrun` step are Mac-only. See `docs/SWITCHING-MACHINES.md`.
+
 ## Hard rules
 - No patient information (PHI) anywhere: repo, app, pull requests or commit messages. The site and repo are public.
 - Nothing sensitive or institution-internal (internal protocols, phone or pager numbers).
