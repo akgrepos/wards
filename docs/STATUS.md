@@ -1,6 +1,6 @@
 # Status
 
-Last updated 2026-10-22 (live version 2026.10.22.5). A short snapshot. Reasons are in [DECISIONS.md](DECISIONS.md) (older rows: [DECISIONS-archive.md](DECISIONS-archive.md)); what changed in each version is in [CHANGELOG.md](../CHANGELOG.md).
+Last updated 2026-10-23 (live version 2026.10.22.13). A short snapshot. Reasons are in [DECISIONS.md](DECISIONS.md) (older rows: [DECISIONS-archive.md](DECISIONS-archive.md)); what changed in each version is in [CHANGELOG.md](../CHANGELOG.md).
 
 ## Start here next time
 1. **Open a new chat and type "Start Main".** The `wards-main` skill renames it "Main", checks sessions, pull requests and branches, and delegates (at most two side sessions at a time).
@@ -9,7 +9,10 @@ Last updated 2026-10-22 (live version 2026.10.22.5). A short snapshot. Reasons a
 4. **Owner checks on the phone** (tap Reload on "Update Ready"): the list is in [REVIEW-QUEUE.md](REVIEW-QUEUE.md), section "Owner phone-checks".
    - **Not yet independently reviewed** cards (reviewer deferred 2026-10-21; one review pass when building is done): see [REVIEW-QUEUE.md](REVIEW-QUEUE.md). New cards add themselves to that file.
 5. **Next work** (Main picks with the owner):
-   - Wave 1: 4 cards left (26 of 30 live): ECG interpretation, alcohol withdrawal, VTE prophylaxis, pain and opioid conversion. Full list and details: [REVIEW-QUEUE.md](REVIEW-QUEUE.md), section "Next work".
+   - **Wave 1 is complete: 30 of 30 cards live.** Open item: the Alcohol Withdrawal pinned-app test (card and Rapids page, normal and Timed Mode, light and dark, plus screenshots) was blocked by the app's safety filter in its ship session; until it is done the card is only checked by the automatic checks and the owner's phone.
+   - **Approved, not started:** record how each dose was verified in the dose data and make `content:check` reject unrecorded doses (memory: project-dose-verification-record). Then the independent review pass (guideline search once, dose-heavy cards first) before any clinical use.
+   - **New tools (2026.10.23, PR #103):** `scripts/status.sh`, `wait-live.sh`, `tidy.sh`, `shots.sh`, `npm run release`, `npm run card:new`. `shots.sh` is untested in the Simulator. Sessions should use them.
+   - More in [REVIEW-QUEUE.md](REVIEW-QUEUE.md), section "Next work".
 6. **Inputs from the owner:** the clinical reference (Clinical care mode) is used in the owner's Chrome (Claude in Chrome, new window). The app is not used clinically yet; the independent review pass happens before it is. The AI evidence checker is a last resort the owner runs (DECISIONS 2026-10-20); its DotFlow is kept privately (`~/Documents/Wards-reference/prompts/`).
 
 ## Done

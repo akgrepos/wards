@@ -44,7 +44,7 @@ Not requested yet; listed so nothing is forgotten.
 - **Known approximations:** Liquid Glass is a translucent blur plus shadow, and icons are simple SVG stand-ins for SF Symbols.
 
 ## Next work
-- **Wave 1: 3 cards left** (27 of 30 live): ECG interpretation, alcohol withdrawal, pain and opioid conversion. One card per session using `~/Documents/Wards-reference/card-session-brief-template.md` (Sonnet drafts, Opus verifies; trial so far: Opus changed 1, 0 and 3 doses on three cards, so keep the verifier), then a Sonnet ship session. Ship briefs should also add a content-check rule that every `{{calc:id}}` in pathway text exists (the Upper GI pathway once showed raw code).
+- **Wave 1 is complete (30 of 30 live).** Cards were written one per session using `~/Documents/Wards-reference/card-session-brief-template.md` (Sonnet drafts, Opus verifies; the verifier keeps finding real dose errors, e.g. 31 changes, 9 critical, on Alcohol Withdrawal).
 - Wave 2 inpatient insulin card (titration, adds to the hyperglycemia card's starting doses). Focused pathways for AF and ADHF (drafted box content is in the batch 3 PR). Batch 2 leftovers: aztreonam row for beta-lactam allergy, IV moxifloxacin, the newer oral carbapenem for complicated UTI.
 - **ECG library** (Library › ECGs on the Media data type; only real labeled recordings, otherwise a drawing).
 - **Card template adjustments:** clinical-register style guide in CONTENT-FORMAT.md; fewer sections for approach cards?; "most common" vs "cannot miss" layout; rates and deficits in prose blocked by the typed-dose check; dose rows needing an indication lead-in; definition line for reference cards; tall table rows on a phone; Contents names cut short at the largest Text Sizes.
