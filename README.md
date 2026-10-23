@@ -24,13 +24,13 @@ See [docs/DECISIONS.md](docs/DECISIONS.md) for what has been decided and why.
 - `npm test`, `npm run typecheck`. Updating the design system copy: see `vendor/akg/VERSION.md`. Regenerating icons after editing `public/favicon.svg`: `npm run icons`.
 
 ### Workflow scripts (for Claude sessions, one call each; added 2026-10-22)
-- `scripts/status.sh`: open PRs, last 5 merged, live version, worktrees and branches (merged ones marked).
+- `npm run status [-- --since YYYY-MM-DD]`: open PRs with check state, last 5 merged (or since a date), version on `origin/main` vs the live site, worktrees and branches (merged ones marked).
 - Dose and calculator files end with a `verification` note (how the numbers were checked); `npm run content:check` rejects one without it (docs/DATA-TYPES.md, "Verification note").
-- `scripts/wait-live.sh <pr> [version]`: waits up to 10 min for the PR's checks, merge and the live site to show the new version.
+- `npm run wait-live -- <pr> [version]`: run once; blocks up to 10 min until the PR's checks pass, it is merged and the live site shows the new version (exit 0 live, 1 failed, 2 timed out). Merge with `gh pr merge --rebase` yourself.
 - `npm run release -- [--card <id>] [--dry-run] "<changelog line>"`: bumps `src/version.ts` (next number for today, from origin/main), adds the CHANGELOG entry, and with `--card` lists the card in REVIEW-QUEUE "Not yet independently reviewed".
-- `scripts/tidy.sh <branch>`: the close rule; refuses if unmerged commits or uncommitted changes, else removes worktree and branch.
-- `scripts/shots.sh <outdir> <name...>`: Simulator light and dark screenshots at half size via `xcrun simctl` (navigate first with the control tool).
-- `npm run preview:shot -- <outdir> <route...>`: Playwright WebKit screenshots (iPhone size, light and dark) of the built app, for Windows where there is no Simulator; not the pinned-app test. Needs `npm run build` first.
+- `npm run tidy -- <branch> [--dry-run]`: the close rule; refuses if unmerged commits or uncommitted changes, else removes worktree and branch; says so politely if Windows has the folder locked. `--dry-run` only reports.
+- `npm run preview:shot -- <outdir> <route...> [--headless]`: Playwright WebKit screenshots (iPhone size, light and dark) of the built app; replaces the old Mac-only Simulator script. The window is visible and slow by default so the owner can watch; `--headless` for background runs and CI. Not the pinned-app test. Needs `npm run build` first (in Git Bash prefix with `MSYS_NO_PATHCONV=1` so `/` stays a route).
+- All of these are Node (no `jq`, no bash) and run the same in PowerShell, Git Bash and CI.
 - `npm run card:new -- <type> <system> <id> "<title>" [--variant <name>]`: card skeleton; `content:check` rejects it until every `SCAFFOLD:` placeholder is replaced. `content:check` problems now end with the rule and the doc to read.
 
 ## Ground rules
