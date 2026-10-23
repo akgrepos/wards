@@ -56,6 +56,11 @@ Not requested yet; listed so nothing is forgotten.
   - Each component's README lists what it skipped under Notes.
 - **Known approximations:** Liquid Glass is a translucent blur plus shadow, and icons are simple SVG stand-ins for SF Symbols.
 
+## Owner ideas
+Sent 2026-10-23; items 1 and 3 are done (table symbols and sources, 2026.10.23.5). The rest wait for the owner's go.
+- **Tappable terms (B):** more info pop-ups throughout (for example the renal tubular acidosis types in a simple pop-up); card-to-card links open a pop-up with the specific information for that reference and an option to open the full card (as Rapids connects to topic cards); in-app calculators must look different from info pop-ups (both are dotted-underlined now). Needs a mock-up first.
+- **Visual distinction (C):** more visual elements to tell card parts apart and highlight information; review how colors are used (blue links and source pills, red Rapids and Treat Now, orange Check, indigo Criteria, brown Note, yellow-orange-red severity ramp, gray tables). Mock-up, then design system, then app.
+
 ## Next work
 - **Wave 1 is complete (30 of 30 live).** Cards were written one per session using `~/Documents/Wards-reference/card-session-brief-template.md` (Sonnet drafts, Opus verifies; the verifier keeps finding real dose errors, e.g. 31 changes, 9 critical, on Alcohol Withdrawal).
 - Wave 2 inpatient insulin card (titration, adds to the hyperglycemia card's starting doses). Focused pathways for AF and ADHF (drafted box content is in the batch 3 PR). Batch 2 leftovers: aztreonam row for beta-lactam allergy, IV moxifloxacin, the newer oral carbapenem for complicated UTI.
