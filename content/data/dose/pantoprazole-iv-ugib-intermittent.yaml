@@ -13,6 +13,6 @@ cautions:
 notes: "ACG 2021 accepts intermittent high-dose PPI (40 mg 2 to 4 times daily, oral if feasible, after an optional 80 mg bolus) as an alternative to continuous infusion; the International Consensus Group 2019 recommends continuous infusion."
 sources: [acg-ugib-2021, label-pantoprazole-iv-2026]
 verification:
-  source: label-pantoprazole-iv-2026
+  source: acg-ugib-2021
   read: not-verified
   date: 2026-10-23

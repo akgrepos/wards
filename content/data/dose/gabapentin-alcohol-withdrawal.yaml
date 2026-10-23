@@ -16,6 +16,6 @@ cautions:
 notes: "Not labeled for alcohol withdrawal. ASAM Appendix V sample regimens."
 sources: [asam-alcohol-withdrawal-2020, label-gabapentin-2026]
 verification:
-  source: label-gabapentin-2026
+  source: asam-alcohol-withdrawal-2020
   read: not-verified
   date: 2026-10-23

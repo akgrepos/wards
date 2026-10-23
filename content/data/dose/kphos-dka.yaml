@@ -12,6 +12,6 @@ cautions:
 notes: "Phosphate falls with insulin; routine replacement does not improve outcomes."
 sources: [ada-hyperglycemic-crises-2024, label-kphos-injection-2026]
 verification:
-  source: label-kphos-injection-2026
+  source: ada-hyperglycemic-crises-2024
   read: not-verified
   date: 2026-10-23

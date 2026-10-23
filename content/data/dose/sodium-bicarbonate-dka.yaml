@@ -13,6 +13,6 @@ cautions:
 notes: "Not routine: no faster resolution or discharge when pH ≥7.0."
 sources: [ada-hyperglycemic-crises-2024, kitabchi-hyperglycemic-crises-2009, label-sodium-bicarbonate-2026]
 verification:
-  source: label-sodium-bicarbonate-2026
+  source: ada-hyperglycemic-crises-2024
   read: not-verified
   date: 2026-10-23

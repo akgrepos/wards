@@ -12,6 +12,6 @@ cautions:
   - "Dilute only with 0.9% saline or D5W, never sterile water (hemolysis)."
 sources: [label-flexbumin-2024, aasld-ascites-hrs-2021, ictmg-albumin-2024]
 verification:
-  source: label-flexbumin-2024
+  source: aasld-ascites-hrs-2021
   read: not-verified
   date: 2026-10-23

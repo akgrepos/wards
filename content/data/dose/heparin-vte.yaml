@@ -15,6 +15,6 @@ cautions:
 notes: "The US label gives 5,000 units IV, then 20,000–40,000 units per 24 hours adjusted to aPTT 1.5–2 times normal; this weight-based regimen and anti-Xa range follow CHEST 2012."
 sources: [chest-parenteral-2012, label-heparin-2025]
 verification:
-  source: label-heparin-2025
+  source: chest-parenteral-2012
   read: not-verified
   date: 2026-10-23

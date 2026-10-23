@@ -14,6 +14,6 @@ cautions:
 notes: "IDSA 2004 lists 12 g a day in divided doses every 4 hours for meningitis; the label lists 150–200 mg/kg a day divided every 3–4 hours."
 sources: [idsa-meningitis-2004, label-ampicillin-2022, common-practice]
 verification:
-  source: label-ampicillin-2022
+  source: idsa-meningitis-2004
   read: not-verified
   date: 2026-10-23

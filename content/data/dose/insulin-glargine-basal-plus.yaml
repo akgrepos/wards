@@ -15,6 +15,6 @@ cautions:
 notes: "Basal Plus trial dose. Label start for insulin-naive type 2 diabetes: 0.2 units/kg or up to 10 units once daily."
 sources: [basal-plus-2013, ada-soc-hospital-2026, label-lantus-2025]
 verification:
-  source: label-lantus-2025
+  source: basal-plus-2013
   read: not-verified
   date: 2026-10-23

@@ -18,6 +18,6 @@ cautions:
 notes: "AF is not a labeled indication. Label regimen (for ventricular arrhythmias, also widely used in AF): 150 mg over 10 minutes, then 1 mg/min for 6 hours, then 0.5 mg/min for 18 hours."
 sources: [acc-aha-af-2023, label-nexterone-2024]
 verification:
-  source: label-nexterone-2024
+  source: acc-aha-af-2023
   read: not-verified
   date: 2026-10-23
