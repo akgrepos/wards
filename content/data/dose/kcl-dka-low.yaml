@@ -12,6 +12,6 @@ cautions:
   - "K⁺ ≤2.5 mEq/L carries about threefold mortality."
 sources: [ada-hyperglycemic-crises-2024, label-kcl-injection-2026]
 verification:
-  source: label-kcl-injection-2026
+  source: ada-hyperglycemic-crises-2024
   read: not-verified
   date: 2026-10-23

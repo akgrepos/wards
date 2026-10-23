@@ -14,6 +14,6 @@ cautions:
 notes: "The US label has no ACS dosing (its IV regimen is fixed, for VTE); this weight-based regimen comes from ACC/AHA guidelines."
 sources: [acc-aha-acs-2025, label-heparin-2025]
 verification:
-  source: label-heparin-2025
+  source: acc-aha-acs-2025
   read: not-verified
   date: 2026-10-23

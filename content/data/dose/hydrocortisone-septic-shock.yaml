@@ -14,6 +14,6 @@ cautions:
 notes: "The 2026 guideline suggests IV corticosteroids in septic shock without naming a drug or dose; this is the SCCM 2024 regimen and the largest trial's. Septic shock is not a labeled indication."
 sources: [sccm-corticosteroids-2024, ssc-sepsis-2026, adrenal-2018, label-solu-cortef-2026]
 verification:
-  source: label-solu-cortef-2026
+  source: sccm-corticosteroids-2024
   read: not-verified
   date: 2026-10-23

@@ -18,6 +18,6 @@ cautions:
 notes: "AID-ICU regimen. The 2025 PADIS update makes no recommendation for or against antipsychotics to treat delirium; the label does not approve IV use."
 sources: [aid-icu-2022, label-haloperidol-inj-2026, padis-2025, mind-usa-2018, aha-accf-qt-2010]
 verification:
-  source: label-haloperidol-inj-2026
+  source: aid-icu-2022
   read: not-verified
   date: 2026-10-23

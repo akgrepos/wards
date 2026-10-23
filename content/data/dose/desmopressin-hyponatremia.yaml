@@ -16,6 +16,6 @@ cautions:
 notes: "Relowering after overcorrection (US panel): desmopressin every 8 hours with D5W, checking Na⁺ hourly. Evidence for proactive use is retrospective."
 sources: [rondon-berrios-hypertonic-2022, verbalis-hyponatremia-2013, hoorn-hyponatremia-guidelines-2017, label-ddavp-injection-2022]
 verification:
-  source: label-ddavp-injection-2022
+  source: verbalis-hyponatremia-2013
   read: not-verified
   date: 2026-10-23

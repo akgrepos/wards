@@ -11,6 +11,6 @@ cautions:
 notes: "Optional: no guideline recommends for or against it; SCCM 2024 lists hydrocortisone with or without fludrocortisone. Off-label (labeled for Addison disease); tablets are 0.1 mg."
 sources: [sccm-corticosteroids-2024, aprocchss-2018, label-fludrocortisone-2025]
 verification:
-  source: label-fludrocortisone-2025
+  source: aprocchss-2018
   read: not-verified
   date: 2026-10-23

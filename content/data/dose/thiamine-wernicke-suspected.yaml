@@ -12,6 +12,6 @@ cautions:
 notes: "EFNS: 200 mg three times daily, preferably IV, before any carbohydrate. ASAM (ICU discussion of one study): 200–500 mg IV every 8 hours when signs mimic or mask Wernicke; ASAM says thiamine and glucose may be given in any order. The label lists only 100 mg IV then 50–100 mg IM daily."
 sources: [galvin-efns-wernicke-2010, asam-alcohol-withdrawal-2020, label-thiamine-inj-2026, common-practice]
 verification:
-  source: label-thiamine-inj-2026
+  source: galvin-efns-wernicke-2010
   read: not-verified
   date: 2026-10-23

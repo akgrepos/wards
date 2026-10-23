@@ -16,6 +16,6 @@ cautions:
 notes: "AF is not a labeled indication; the label gives three 5 mg boluses about 2 minutes apart for acute MI. Follow with oral metoprolol once controlled."
 sources: [acc-aha-af-2023, label-metoprolol-inj-2026]
 verification:
-  source: label-metoprolol-inj-2026
+  source: acc-aha-af-2023
   read: not-verified
   date: 2026-10-23
