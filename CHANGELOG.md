@@ -2,6 +2,10 @@
 
 What changed in each version of Wards, newest first. The version is shown in Settings (gear on Home).
 
+## 2026.10.23.4
+
+New card: Acute Agitation in the Hospitalized Adult, with a Rapids page and a medication pathway
+
 ## 2026.10.23.3
 
 **Formatting: no semicolons.** Card text no longer uses semicolons. Lists are now bullets and long sentences are split in two. Nothing else changed; the wording, doses, numbers and sources are the same.
