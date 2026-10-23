@@ -8,8 +8,10 @@ import { SystemScreen } from './screens/SystemScreen';
 import { LibraryList, LibraryTab, NotFoundScreen, TopicsTab } from './screens/Tabs';
 import { EmergenciesTab, EmergencyScreen } from './screens/Emergency';
 import { TimedAccessory, TimedScreen, TimedSummary } from './screens/Timed';
-import { getCard } from './content';
+import { getCard, useCardLoad } from './content';
+import { CardGate } from './ui/CardGate';
 import { getTimed, useStored } from './storage';
+import { pathwayCard } from './content';
 import { isRunning } from './timed';
 import { useEffect } from 'react';
 import { SheetHost } from './ui/SheetHost';
@@ -25,6 +27,7 @@ const TABS = [
 ];
 
 function Page({ route }: { route: Route }) {
+  const stored = useStored(getTimed);
   switch (route.name) {
     case 'home': return <Home />;
     case 'emergencies': return <EmergenciesTab />;
@@ -34,10 +37,10 @@ function Page({ route }: { route: Route }) {
     case 'search': return <SearchScreen />;
     case 'settings': return <SettingsScreen />;
     case 'system': return <SystemScreen key={route.id} id={route.id} />;
-    case 'card': return <CardScreen key={route.id} id={route.id} section={route.section} anchor={route.anchor} />;
-    case 'pathway': return <PathwayScreen key={route.id} id={route.id} />;
-    case 'emergency': return <EmergencyScreen key={route.id} id={route.id} />;
-    case 'timed': return <TimedScreen />;
+    case 'card': return <CardGate key={route.id} id={route.id}><CardScreen id={route.id} section={route.section} anchor={route.anchor} /></CardGate>;
+    case 'pathway': return <CardGate key={route.id} id={pathwayCard(route.id)}><PathwayScreen id={route.id} /></CardGate>;
+    case 'emergency': return <CardGate key={route.id} id={route.id} back={{ label: 'Rapids', fallback: href.emergencies() }}><EmergencyScreen id={route.id} /></CardGate>;
+    case 'timed': return <CardGate id={stored?.card} back={{ label: 'Rapids', fallback: href.emergencies() }}><TimedScreen /></CardGate>;
     default: return <NotFoundScreen />;
   }
 }
@@ -48,7 +51,8 @@ export function App() {
   const tab = currentTab();
   const stored = useStored(getTimed);
   // While Timed Mode runs, its timer sits in a bar above the tab bar on every screen (except Timed Mode itself).
-  const timed = isRunning(stored) && getCard(stored.card) ? stored : null;
+  const timedLoad = useCardLoad(stored && getCard(stored.card) ? stored.card : undefined);
+  const timed = isRunning(stored) && getCard(stored.card) && timedLoad.status === 'ready' ? stored : null;
   useEffect(() => { document.documentElement.toggleAttribute('data-timed', !!timed); }, [timed]);
   return (
     <SheetHost>
@@ -69,7 +73,7 @@ export function App() {
           aria-label="Sections"
         />
       )}
-      <TimedSummary />
+      {timedLoad.status === 'ready' && <TimedSummary />}
       <FocusProxy />
       <UpdatePrompt />
     </SheetHost>
