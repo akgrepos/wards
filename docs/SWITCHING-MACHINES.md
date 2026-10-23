@@ -6,7 +6,7 @@ For the owner. Reference only; nothing here runs on its own. Since 2026-10-23 th
 1. On the PC, tell Claude "wrap up". It finishes or parks work and updates `docs/STATUS.md`.
 2. On the PC, copy these three things into the shared folder (same as when they first came over):
    - the skills folder: `C:\Users\<you>\.claude\skills` (`wards-main`, `wards-wrap-up`)
-   - the memory folder: `C:\Users\<you>\.claude\projects\C--Users-antho-Documents-Wards\memory`
+   - the memory folder: `C:\Users\<you>\.claude\projects\C--Users-<you>-Documents-Wards\memory`
    - `Documents\Wards-reference` (only if you added or changed files in it)
 3. On the Mac, copy them back to the matching places (skills to `~/.claude/skills`, memory into the Wards project's `memory` folder under `~/.claude/projects/`, reference to `~/Documents/Wards-reference`). Replace the older Mac copies.
 4. On the Mac, in the Wards folder, run `git checkout main`, `git pull`, then `npm install`.
