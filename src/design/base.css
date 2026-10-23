@@ -325,3 +325,20 @@ html[data-timed] .timed-page .screen-body.timed-body { padding-bottom: calc(env(
 .cov-compare-row > * { padding: var(--space-8) 0; border-bottom: 0.5px solid var(--separator); min-width: 0; overflow-wrap: break-word; hyphens: auto; }
 .cov-compare-row:last-child > * { border-bottom: 0; }
 .cov-compare-cell .akg-coverage { flex-direction: column; align-items: flex-start; gap: var(--space-2); font-size: calc(13 * var(--akg-t)); line-height: calc(16 * var(--akg-t)); }
+
+/* Pressed states (owner, 2026-10-23): the native gray tap box is off everywhere (it covered the whole hidden tap area),
+   and each control draws its own fill on its visible shape. The invisible 44pt hit areas stay, but never paint. */
+*, *::before, *::after { -webkit-tap-highlight-color: transparent; }
+/* A text link or value dims only around its words. */
+.akg-link:active { box-shadow: none; }
+/* A section's title row (and a More Information subsection's): the row's real edges, rounded like the cards below it. */
+.akg-content-section__header--button { border-radius: var(--radius-grouped); }
+.akg-content-section__header--button:active { background: var(--fill-tertiary); }
+.akg-content-section__more-button { border-radius: var(--radius-regular); }
+.akg-content-section__more-button:active { background: var(--fill-tertiary); }
+/* A tappable figure dims like other pressed images. */
+.akg-figure__open:active { opacity: 0.8; }
+
+/* Sheets: dragging the dimmed area or the title bar never scrolls the page behind; the sheet's own scroll stays inside it. */
+.akg-sheet__scrim, .akg-sheet__bar { touch-action: none; }
+.akg-sheet__content { overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
