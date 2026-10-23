@@ -1,7 +1,7 @@
 name: Add for MRSA risk
 indication: Community-acquired pneumonia
-setting: "Added to the standard regimen; obtain cultures and a nasal PCR to allow de-escalation"
+setting: "Added to the standard regimen. Obtain cultures and a nasal PCR to allow de-escalation"
 options:
   - doses: [[vancomycin-iv, linezolid-600]]
-duration: "7 days if MRSA is suspected or proven; stop at 48 hours if cultures and nasal PCR are negative and the patient is improving"
+duration: "7 days if MRSA is suspected or proven. Stop at 48 hours if cultures and nasal PCR are negative and the patient is improving"
 sources: [idsa-ats-cap-2019]

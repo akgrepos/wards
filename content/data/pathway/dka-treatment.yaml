@@ -15,7 +15,7 @@ nodes:
     title: Confirm DKA or HHS
     text:
       - Glucose, β-hydroxybutyrate, venous pH, BMP with {{calc:anion-gap}}, {{calc:serum-osmolality}}.
-      - Look for the precipitant; stop SGLT2 inhibitors.
+      - Look for the precipitant. Stop SGLT2 inhibitors.
     links: [criteria:dka-hhs]
     next: fluids
   fluids:
@@ -41,7 +41,7 @@ nodes:
     kind: urgent
     at: [0, 4]
     span: 4
-    title: Replace K⁺; hold insulin
+    title: Replace K⁺. Hold insulin
     text:
       - "{{dose:kcl-dka-low}}"
       - Start insulin once K⁺ is >3.5 mEq/L.
@@ -60,7 +60,7 @@ nodes:
     at: [8, 4]
     span: 4
     title: No potassium yet
-    text: Start insulin; recheck K⁺ every 2 hours and add potassium once it falls to 5.0 mEq/L or below.
+    text: Start insulin. Recheck K⁺ every 2 hours and add potassium once it falls to 5.0 mEq/L or below.
     next: crisis
   crisis:
     kind: question
@@ -97,7 +97,7 @@ nodes:
     title: Lower-rate IV insulin
     text:
       - "{{dose:insulin-regular-hhs}}"
-      - Correct slowly; Na⁺ fall no more than 10 mEq/L in 24 hours.
+      - Correct slowly. Na⁺ fall no more than 10 mEq/L in 24 hours.
     next: dextrose
   dextrose:
     kind: do
@@ -105,9 +105,9 @@ nodes:
     span: 4
     title: Add dextrose as glucose falls
     text:
-      - "DKA or HHS: at glucose <250 mg/dL; euglycemic DKA: from the start."
+      - "DKA or HHS: at glucose <250 mg/dL. Euglycemic DKA: from the start."
       - "{{dose:dextrose-dka}}"
-      - "DKA: lower insulin to half its starting rate; HHS: keep its rate. Never stop insulin for falling glucose. Targets: DKA 150–200 mg/dL, HHS 200–250 mg/dL."
+      - "DKA: lower insulin to half its starting rate. HHS: keep its rate. Never stop insulin for falling glucose. Targets: DKA 150–200 mg/dL, HHS 200–250 mg/dL."
     next: ph
   ph:
     kind: question
@@ -131,7 +131,7 @@ nodes:
     at: [4, 12]
     span: 4
     title: Monitor
-    text: "Glucose every 1–2 hours; K⁺ 2 hours after starting insulin, then every 4 hours; electrolytes, β-hydroxybutyrate and venous pH every 2–4 hours; osmolality in HHS."
+    text: "Glucose every 1–2 hours. K⁺ 2 hours after starting insulin, then every 4 hours. Electrolytes, β-hydroxybutyrate and venous pH every 2–4 hours. Osmolality in HHS."
     links: [section:endo-dka/monitor]
     next: resolved
   resolved:
@@ -148,13 +148,13 @@ nodes:
     at: [2, 15]
     span: 4
     title: Continue fluids, insulin and dextrose
-    text: Keep monitoring; recheck for an untreated precipitant if progress stalls.
+    text: Keep monitoring. Recheck for an untreated precipitant if progress stalls.
   transition:
     kind: result
     at: [6, 15]
     span: 4
     title: Transition to SC insulin
     text:
-      - "Basal insulin at least 1–2 hours before stopping the infusion (ADA 2026: 2–4 hours); switch once able to eat."
+      - "Basal insulin at least 1–2 hours before stopping the infusion (ADA 2026: 2–4 hours). Switch once able to eat."
       - "{{dose:insulin-transition-dka}}"
     links: ["section:endo-dka/treatment#resolution-and-transition-to-sc-insulin"]

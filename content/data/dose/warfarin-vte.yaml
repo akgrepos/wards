@@ -7,17 +7,17 @@ amount: "2–5"
 unit: mg
 frequency: once daily at the same time, then adjusted to INR
 give_when: Start with a parenteral agent for VTE and overlap at least 5 days and until INR is at least 2.0 for 24 hours
-boxed_warning: "Major or fatal bleeding; check INR regularly."
+boxed_warning: "Major or fatal bleeding. Check INR regularly."
 adjustments:
   - when: Age >60 years, debilitation, malnutrition, heart failure, liver disease, or interacting drugs
-    change: Start at the low end of the range or lower; check INR sooner
+    change: Start at the low end of the range or lower. Check INR sooner
   - when: Known CYP2C9 or VKORC1 variants
-    change: Lower doses; do not delay the start for genotyping
+    change: Lower doses. Do not delay the start for genotyping
 cautions:
-  - "No loading dose; INR-guided adjustment."
+  - "No loading dose. INR-guided adjustment."
   - "Contraindicated in pregnancy (except mechanical valves in selected cases)."
-  - "Skin necrosis in the first days: stop warfarin and use an alternative anticoagulant; vitamin K and heparin are usual practice."
-  - "Mechanical valve targets: see the card (aortic 2.5 without risk factors, 3.0 with risk factors; mitral 3.0)."
+  - "Skin necrosis in the first days: stop warfarin and use an alternative anticoagulant. Vitamin K and heparin are usual practice."
+  - "Mechanical valve targets: see the card (aortic 2.5 without risk factors, 3.0 with risk factors, mitral 3.0)."
 sources: [label-warfarin-2025, chest-vte-2021, acc-aha-af-2023, acc-aha-valvular-2020]
 verification:
   source: label-warfarin-2025

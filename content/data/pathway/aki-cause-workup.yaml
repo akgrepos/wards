@@ -15,7 +15,7 @@ nodes:
     span: 6
     title: Rising SCr or low urine output
     text:
-      - Compare with prior SCr values; evaluate for unrecognized CKD before labeling a rise as acute.
+      - Compare with prior SCr values. Evaluate for unrecognized CKD before labeling a rise as acute.
       - Stop nephrotoxins where possible. Urine dipstick in all.
     next: confirm
   confirm:
@@ -32,13 +32,13 @@ nodes:
     at: [13, 3]
     span: 5
     title: Not AKI by KDIGO criteria
-    text: SCr lags behind kidney injury; an early normal SCr does not exclude AKI. Repeat SCr and follow urine output.
+    text: SCr lags behind kidney injury. An early normal SCr does not exclude AKI. Repeat SCr and follow urine output.
   obstruction:
     kind: question
     at: [6, 3]
     span: 6
     title: Urinary tract obstruction?
-    text: "Anuria: exclude a blocked catheter. Bladder scan; renal ultrasound within 24 h if no clear cause or risk of obstruction, within 6 h if pyonephrosis suspected."
+    text: "Anuria: exclude a blocked catheter. Bladder scan. Renal ultrasound within 24 h if no clear cause or risk of obstruction, within 6 h if pyonephrosis suspected."
     answers:
       - { label: No obstruction, at: [7, 4], span: 4, to: perfusion }
       - { label: Obstruction, at: [13, 4], span: 4, to: postrenal }
@@ -69,21 +69,21 @@ nodes:
     at: [0, 7]
     span: 3
     title: Restore volume and perfusion
-    text: Isotonic crystalloid; balanced crystalloid in the critically ill (0.9% saline in traumatic brain injury); vasopressors with fluids in vasomotor shock.
+    text: Isotonic crystalloid. Balanced crystalloid in the critically ill (0.9% saline in traumatic brain injury). Vasopressors with fluids in vasomotor shock.
     next: response
   hemorrhage:
     kind: do
     at: [3, 7]
     span: 3
     title: Hemorrhagic shock
-    text: Blood products and hemorrhage control; crystalloid-first guidance does not apply.
+    text: Blood products and hemorrhage control. Crystalloid-first guidance does not apply.
     next: response
   cardiorenal:
     kind: do
     at: [6, 7]
     span: 3
     title: Cardiorenal
-    text: Loop diuretics for congestion; a modest SCr rise during effective decongestion is not by itself harmful.
+    text: Loop diuretics for congestion. A modest SCr rise during effective decongestion is not by itself harmful.
     next: response
   cirrhosis:
     kind: do
@@ -91,7 +91,7 @@ nodes:
     span: 4
     title: Cirrhosis with ascites
     text:
-      - Stop diuretics and nephrotoxins; give albumin.
+      - Stop diuretics and nephrotoxins. Give albumin.
       - "{{dose:albumin-aki-cirrhosis}}"
     next: cirrhosis-response
   response:
@@ -153,13 +153,13 @@ nodes:
     at: [4, 13]
     span: 3
     title: Possible acute nephritis (GN, vasculitis)
-    text: Serologies; biopsy if needed for diagnosis. Nephrology within 24 h.
+    text: Serologies. Biopsy if needed for diagnosis. Nephrology within 24 h.
   ain:
     kind: result
     at: [7, 13]
     span: 3
     title: Possible AIN
-    text: Stop nephrotoxins where possible. Urine eosinophils do not distinguish AIN; definitive diagnosis is by kidney biopsy. Nephrology within 24 h.
+    text: Stop nephrotoxins where possible. Urine eosinophils do not distinguish AIN. Definitive diagnosis is by kidney biopsy. Nephrology within 24 h.
   pigment:
     kind: result
     at: [10, 13]

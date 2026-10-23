@@ -8,7 +8,7 @@ frequency: "per liter of ascites removed, during or after the paracentesis"
 give_when: "More than 5 L of ascites removed"
 cautions:
   - "Watch for volume overload and pulmonary edema."
-  - "Label: with normal blood volume, infuse no faster than about 1 mL per minute; no more than 2 g/kg per day."
+  - "Label: with normal blood volume, infuse no faster than about 1 mL per minute. No more than 2 g/kg per day."
   - "Dilute only with 0.9% saline or D5W, never sterile water (hemolysis)."
 notes: "Prevents post-paracentesis circulatory dysfunction. Removing more than 8 L in one session may raise the risk further."
 sources: [label-flexbumin-2024, aasld-ascites-hrs-2021, ictmg-albumin-2024, label-albumin-25-2025]

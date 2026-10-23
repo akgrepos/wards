@@ -8,7 +8,7 @@ options:
     doses: [clindamycin-po-ssti]
   - label: Oral, no systemic signs, β-lactam plus MRSA agent
     doses: [[cephalexin-ssti, penicillin-vk-ssti], [tmp-smx-ssti, doxycycline-100]]
-duration: "5 days; extend if not improved"
+duration: "5 days. Extend if not improved"
 notes:
   - "Doxycycline and trimethoprim-sulfamethoxazole alone may not cover β-hemolytic streptococci."
 sources: [idsa-ssti-2014, idsa-mrsa-2011]

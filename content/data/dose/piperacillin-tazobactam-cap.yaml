@@ -14,7 +14,7 @@ adjustments:
   - when: Hemodialysis or CAPD
     change: 2.25 g every 8 hours, plus 0.75 g after each dialysis
 cautions:
-  - More AKI with vancomycin than with other β-lactams; monitor creatinine.
+  - More AKI with vancomycin than with other β-lactams. Monitor creatinine.
 notes: Adjustments are the label's nosocomial pneumonia column, which uses this dose.
 sources:
   - idsa-ats-cap-2019

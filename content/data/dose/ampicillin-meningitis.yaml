@@ -10,8 +10,8 @@ adjustments:
   - when: Kidney impairment
     change: Lengthen the interval with the pharmacy (no label adjustment)
 cautions:
-  - Rash is common; true penicillin allergy needs an alternative for Listeria (trimethoprim-sulfamethoxazole) with infectious diseases.
-notes: "IDSA 2004 lists 12 g a day in divided doses every 4 hours for meningitis; the label lists 150–200 mg/kg a day divided every 3–4 hours."
+  - Rash is common. True penicillin allergy needs an alternative for Listeria (trimethoprim-sulfamethoxazole) with infectious diseases.
+notes: "IDSA 2004 lists 12 g a day in divided doses every 4 hours for meningitis. The label lists 150–200 mg/kg a day divided every 3–4 hours."
 sources: [idsa-meningitis-2004, label-ampicillin-2022, common-practice]
 verification:
   source: idsa-meningitis-2004

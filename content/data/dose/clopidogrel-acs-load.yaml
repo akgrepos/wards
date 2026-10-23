@@ -6,13 +6,13 @@ route: PO
 amount: "300–600"
 unit: mg
 frequency: once
-boxed_warning: "Reduced effect in CYP2C19 poor metabolizers; consider another P2Y12 inhibitor."
+boxed_warning: "Reduced effect in CYP2C19 poor metabolizers. Consider another P2Y12 inhibitor."
 alternative:
   dose: clopidogrel-75
   when: Maintenance
 cautions:
   - "Avoid omeprazole and esomeprazole."
-notes: "Label: 300 mg loading dose; the guideline uses 600 mg before PCI. Skipping the load delays the effect by several days."
+notes: "Label: 300 mg loading dose. The guideline uses 600 mg before PCI. Skipping the load delays the effect by several days."
 sources: [label-plavix-2025, acc-aha-acs-2025]
 verification:
   source: label-plavix-2025

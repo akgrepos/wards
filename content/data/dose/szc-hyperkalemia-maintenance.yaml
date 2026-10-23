@@ -6,10 +6,10 @@ route: PO
 amount: 10
 unit: g
 frequency: once daily
-max: "Range 5 g every other day to 15 g daily; adjust by 5 g no more often than weekly"
+max: "Range 5 g every other day to 15 g daily. Adjust by 5 g no more often than weekly"
 adjustments:
   - when: "On hemodialysis"
-    change: "5 g once daily on non-dialysis days only (consider 10 g if potassium above 6.5 mEq/L); range 5–15 g; recheck potassium after 1 week"
+    change: "5 g once daily on non-dialysis days only (consider 10 g if potassium above 6.5 mEq/L). Range 5–15 g. Recheck potassium after 1 week"
 sources: [label-lokelma-2024]
 verification:
   source: label-lokelma-2024

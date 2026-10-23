@@ -8,10 +8,10 @@ rate: "at least this, within the first 3 hours"
 give_when: "Sepsis with hypotension, lactate ≥4 mmol/L or other signs of hypoperfusion (consider with lactate 2–4)"
 repeat: "Further fluid only with signs of hypoperfusion, guided by dynamic measures (passive leg raise, stroke volume), capillary refill and lactate"
 cautions:
-  - "A conditional recommendation from low-certainty evidence; individualize in heart failure, kidney failure or volume overload, and reassess often."
+  - "A conditional recommendation from low-certainty evidence. Individualize in heart failure, kidney failure or volume overload, and reassess often."
   - "Body mass index >30 kg/m²: adjusted or ideal body weight may be used."
-  - "Crystalloid alone is suggested over adding albumin; albumin may suit after large crystalloid volumes or in cirrhosis, not in traumatic brain injury."
-notes: "Surviving Sepsis 2026: crystalloids first line (strong); balanced over saline (conditional; 0.9% saline with traumatic brain injury); against starches (strong) and gelatin (conditional); after 30 mL/kg with persistent hypoperfusion, a liberal or restrictive strategy (conditional). CLOVERS: a restrictive, vasopressor-early strategy after 1–3 L had similar mortality to a liberal one."
+  - "Crystalloid alone is suggested over adding albumin. Albumin may suit after large crystalloid volumes or in cirrhosis, not in traumatic brain injury."
+notes: "Surviving Sepsis 2026: crystalloids first line (strong). Balanced over saline (conditional, 0.9% saline with traumatic brain injury). Against starches (strong) and gelatin (conditional). After 30 mL/kg with persistent hypoperfusion, a liberal or restrictive strategy (conditional). CLOVERS: a restrictive, vasopressor-early strategy after 1–3 L had similar mortality to a liberal one."
 sources: [ssc-sepsis-2026, clovers-2023]
 verification:
   source: ssc-sepsis-2026

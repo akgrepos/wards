@@ -5,7 +5,7 @@ route: SC
 amount: 0.5–0.6
 unit: units/kg
 frequency: "per day: 40–60% as basal, the rest as rapid-acting before 3 meals"
-give_when: "DKA or HHS resolved and able to eat; give basal insulin at least 1–2 hours before stopping the infusion (ADA 2026: 2–4 hours)"
+give_when: "DKA or HHS resolved and able to eat. Give basal insulin at least 1–2 hours before stopping the infusion (ADA 2026: 2–4 hours)"
 adjustments:
   - when: "Risk of hypoglycemia (kidney disease, frailty, older age)"
     change: "About 0.3 units/kg per day"

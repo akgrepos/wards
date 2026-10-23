@@ -8,8 +8,8 @@ frequency: every 8 hours
 rate: over 30 minutes
 adjustments:
   - when: CrCl ≤40 mL/min or dialysis
-    change: "The label table has no row for this regimen; its standard bands are CrCl 20–40: 2.25 g every 6 hours; <20: 2.25 g every 8 hours; hemodialysis: 2.25 g every 12 hours plus 0.75 g after each session. Dose with the pharmacy."
-notes: Dose used in the complicated UTI trials the guideline reviewed; the label's general adult dose is 3.375 g every 6 hours and does not list UTI.
+    change: "The label table has no row for this regimen. Its standard bands are CrCl 20–40: 2.25 g every 6 hours. <20: 2.25 g every 8 hours. Hemodialysis: 2.25 g every 12 hours plus 0.75 g after each session. Dose with the pharmacy."
+notes: Dose used in the complicated UTI trials the guideline reviewed. The label's general adult dose is 3.375 g every 6 hours and does not list UTI.
 sources:
   - idsa-cuti-selection-2025
   - label-zosyn-2026

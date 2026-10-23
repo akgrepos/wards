@@ -9,5 +9,5 @@ rows:
   - ["Moderate", "3.0–6.0 mmol/L", "pH 7.00–7.25, or HCO₃⁻ 10 to <15 mEq/L", "Alert or drowsy", "Step-down or intermediate care"]
   - ["Severe", ">6.0 mmol/L", "pH <7.00, or HCO₃⁻ <10 mEq/L", "Stupor or coma", "ICU"]
 notes:
-  - "Not every variable needs to be met; level of care is a clinical decision."
+  - "Not every variable needs to be met. Level of care is a clinical decision."
 sources: [ada-hyperglycemic-crises-2024]

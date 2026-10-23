@@ -14,7 +14,7 @@ adjustments:
   - when: Hemodialysis or CAPD
     change: 2.25 g every 12 hours, plus 0.75 g after each dialysis
 cautions:
-  - More AKI with vancomycin; monitor creatinine.
+  - More AKI with vancomycin. Monitor creatinine.
 sources:
   - label-zosyn-2026
   - idsa-ssti-2014

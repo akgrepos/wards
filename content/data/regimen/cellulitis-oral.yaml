@@ -1,9 +1,9 @@
 name: Mild, oral
 indication: Nonpurulent cellulitis or erysipelas
-setting: "No systemic signs; active against streptococci"
+setting: "No systemic signs. Active against streptococci"
 options:
   - doses: [[cephalexin-ssti, penicillin-vk-ssti, dicloxacillin-ssti, clindamycin-po-ssti]]
-duration: "5 days; extend if not improved"
+duration: "5 days. Extend if not improved"
 notes:
-  - "Clindamycin for serious β-lactam allergy; it also covers many MRSA strains."
+  - "Clindamycin for serious β-lactam allergy. It also covers many MRSA strains."
 sources: [idsa-ssti-2014]

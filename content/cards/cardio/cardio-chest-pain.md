@@ -15,8 +15,8 @@ related:
 ## At a Glance
 - Within 10 minutes: 12-lead ECG read by a clinician, vital signs, and a focused history and examination looking for the six cannot-miss causes. ^[aha-acc-chest-pain-2021]
 - ST elevation or an equivalent: reperfusion pathway at once, not a troponin wait. ^[acc-aha-acs-2025, aha-acc-chest-pain-2021]
-- Otherwise high-sensitivity troponin at presentation and again at 1–3 hours; interpret with symptom onset time and the ECG. ^[aha-acc-chest-pain-2021]
-- Estimate risk with {{calc:heart-score|HEART}} (ACS), {{calc:wells-pe|Wells}} and {{calc:perc}} (PE), and {{calc:add-rs}} (aortic dissection); a score applies only when its disease is in the differential. ^[aha-acc-chest-pain-2021, aha-acc-pe-2026, acc-aha-aortic-2022]
+- Otherwise high-sensitivity troponin at presentation and again at 1–3 hours. Interpret with symptom onset time and the ECG. ^[aha-acc-chest-pain-2021]
+- Estimate risk with {{calc:heart-score|HEART}} (ACS), {{calc:wells-pe|Wells}} and {{calc:perc}} (PE), and {{calc:add-rs}} (aortic dissection). A score applies only when its disease is in the differential. ^[aha-acc-chest-pain-2021, aha-acc-pe-2026, acc-aha-aortic-2022]
 - Pain that is tearing, or with a pulse or pressure difference: CT angiography of the aorta before any antithrombotic. ^[acc-aha-aortic-2022, esc-paad-2024]
 - Unstable, hypotensive, hypoxemic or with new regional wall-motion or right heart strain: bedside echocardiography and early senior help. ^[common-practice]
 
@@ -24,9 +24,9 @@ related:
 - Chest pain is a symptom: the first task is to find or exclude the diagnoses that are fatal within hours, not to name the most likely one. ^[aha-acc-chest-pain-2021]
 
 :::scale Triage by first-minutes findings
-- Stable: normal vital signs, nondiagnostic ECG, pain controlled; follows the troponin and risk-score pathway. ^[aha-acc-chest-pain-2021]
-- Time-critical: ECG changes of ischemia, positive troponin, or a high-risk score; admit and treat as the leading diagnosis. ^[aha-acc-chest-pain-2021, acc-aha-acs-2025]
-- Unstable: hypotension, shock, hypoxemia, ongoing arrhythmia or arrest; resuscitate while diagnosing. ^[aha-acls-2025, common-practice]
+- Stable: normal vital signs, nondiagnostic ECG, pain controlled. Follows the troponin and risk-score pathway. ^[aha-acc-chest-pain-2021]
+- Time-critical: ECG changes of ischemia, positive troponin, or a high-risk score. Admit and treat as the leading diagnosis. ^[aha-acc-chest-pain-2021, acc-aha-acs-2025]
+- Unstable: hypotension, shock, hypoxemia, ongoing arrhythmia or arrest. Resuscitate while diagnosing. ^[aha-acls-2025, common-practice]
 :::
 
 ## First Steps
@@ -34,12 +34,12 @@ related:
    - Continuous ECG monitoring, defibrillator pads nearby, intravenous access, pulse oximetry, bilateral arm blood pressure. ^[common-practice]
    - Resuscitation takes priority: airway, oxygen to target (not routine at SpO₂ ≥90%), fluids or vasopressors for shock. ^[acc-aha-acs-2025, common-practice]
 2. 12-lead ECG within 10 minutes
-   - STEMI or equivalent (posterior, new LBBB with ischemia, hyperacute T waves, de Winter): activate the cath lab; see [[cardio-nste-acs]] for ST depression and non-STEMI care. ^[acc-aha-acs-2025]
+   - STEMI or equivalent (posterior, new LBBB with ischemia, hyperacute T waves, de Winter): activate the cath lab. See [[cardio-nste-acs]] for ST depression and non-STEMI care. ^[acc-aha-acs-2025]
    - If the first ECG is nondiagnostic, repeat it with ongoing symptoms, deterioration or high suspicion. ^[aha-acc-chest-pain-2021]
 3. Rule out the immediate killers at the bedside
-   - Absent breath sounds, tracheal shift and hypotension: tension pneumothorax; decompress without waiting for imaging. ^[common-practice]
-   - Hypotension, jugular venous distension and muffled heart sounds: tamponade; bedside echocardiography. ^[common-practice]
-   - Pulse or blood pressure differential, tearing pain, or a wide mediastinum: aortic dissection; hold anticoagulants and antiplatelets until it is excluded. ^[acc-aha-aortic-2022, common-practice]
+   - Absent breath sounds, tracheal shift and hypotension: tension pneumothorax. Decompress without waiting for imaging. ^[common-practice]
+   - Hypotension, jugular venous distension and muffled heart sounds: tamponade. Bedside echocardiography. ^[common-practice]
+   - Pulse or blood pressure differential, tearing pain, or a wide mediastinum: aortic dissection. Hold anticoagulants and antiplatelets until it is excluded. ^[acc-aha-aortic-2022, common-practice]
 4. Draw troponin and a basic set
    - High-sensitivity troponin, CBC, BMP, and coagulation studies if anticoagulation is likely. ^[aha-acc-chest-pain-2021, common-practice]
    - Portable chest radiograph while awaiting the first troponin. ^[aha-acc-chest-pain-2021]
@@ -47,13 +47,13 @@ related:
    - Do not give it to a patient with tearing pain, a pulse deficit or a pressure differential until dissection is excluded. ^[acc-aha-aortic-2022, common-practice]
 
 ## Causes
-- **Acute coronary syndrome:** [!cannot-miss] STEMI, NSTEMI, unstable angina; the leading cause of fatal chest pain. See [[cardio-nste-acs]]. ^[aha-acc-chest-pain-2021]
+- **Acute coronary syndrome:** [!cannot-miss] STEMI, NSTEMI, unstable angina. The leading cause of fatal chest pain. See [[cardio-nste-acs]]. ^[aha-acc-chest-pain-2021]
 - **Pulmonary embolism:** [!cannot-miss] pleuritic pain, dyspnea, tachycardia, risk factors. See [[pulm-vte-diagnosis]]. ^[aha-acc-chest-pain-2021, aha-acc-pe-2026]
 - **Aortic dissection:** [!cannot-miss] abrupt tearing pain to the back, hypertension or hypotension, pulse deficit. ^[acc-aha-aortic-2022]
 - **Tension pneumothorax:** [!cannot-miss] hypotension, hypoxemia, unilateral absent breath sounds, tracheal deviation (late). ^[common-practice]
 - **Esophageal rupture:** [!cannot-miss] pain after forceful vomiting or instrumentation, subcutaneous emphysema, fever. ^[common-practice]
-- **Pericardial disease:** [!cannot-miss] acute pericarditis (pleuritic, positional pain, rub, diffuse ST elevation); tamponade (hypotension, jugular venous distension, pulsus paradoxus). ^[esc-myopericarditis-2025, acc-pericarditis-ccg-2025]
-- **Musculoskeletal:** [!most-common] costochondritis, chest-wall strain, rib fracture; pain reproduced by palpation or movement. ^[aha-acc-chest-pain-2021]
+- **Pericardial disease:** [!cannot-miss] acute pericarditis (pleuritic, positional pain, rub, diffuse ST elevation). Tamponade (hypotension, jugular venous distension, pulsus paradoxus). ^[esc-myopericarditis-2025, acc-pericarditis-ccg-2025]
+- **Musculoskeletal:** [!most-common] costochondritis, chest-wall strain, rib fracture. Pain reproduced by palpation or movement. ^[aha-acc-chest-pain-2021]
 - **Gastrointestinal:** [!most-common] reflux, esophageal spasm, peptic ulcer disease, biliary colic, pancreatitis. ^[aha-acc-chest-pain-2021]
 - **Other cardiac:** myocarditis, Takotsubo syndrome, heart failure, arrhythmia (see [[cardio-atrial-fibrillation]], [[cardio-adhf]]), valvular disease, hypertrophic cardiomyopathy. ^[aha-acc-chest-pain-2021]
 - **Pulmonary:** pneumonia ([[id-cap]]), pleurisy, COPD exacerbation ([[pulm-copd-exacerbation]]), simple pneumothorax. ^[common-practice]
@@ -62,43 +62,43 @@ related:
 ## Presentation
 #### Focused history
 - Character, onset (abrupt or gradual), location and radiation, duration, exertional or positional change, and associated dyspnea, diaphoresis, nausea, syncope. ^[aha-acc-chest-pain-2021]
-- Describe pain as cardiac, possibly cardiac or noncardiac; avoid "typical" and "atypical". Women, older adults and patients with diabetes more often have dyspnea, fatigue or epigastric discomfort. ^[aha-acc-chest-pain-2021]
+- Describe pain as cardiac, possibly cardiac or noncardiac. Avoid "typical" and "atypical". Women, older adults and patients with diabetes more often have dyspnea, fatigue or epigastric discomfort. ^[aha-acc-chest-pain-2021]
 - ACS risk factors, prior coronary disease, cocaine or methamphetamine use. ^[aha-acc-chest-pain-2021]
 - PE: recent immobilization, surgery, cancer, prior VTE, estrogen, unilateral leg swelling. ^[aha-acc-pe-2026]
 - Dissection: hypertension, connective tissue disease, bicuspid or other aortic valve disease, family history of aortic disease, recent aortic surgery or catheterization. ^[acc-aha-aortic-2022]
 - Esophageal rupture: vomiting or retching, endoscopy, foreign body ingestion. ^[common-practice]
 
 #### Focused examination
-- Vital signs in both arms; shock, hypoxemia, new tachypnea. ^[acc-aha-aortic-2022, common-practice]
+- Vital signs in both arms. Shock, hypoxemia, new tachypnea. ^[acc-aha-aortic-2022, common-practice]
 - Breath sounds, tracheal position, subcutaneous emphysema. ^[common-practice]
 - Heart: new murmur (aortic regurgitation, mitral regurgitation), friction rub, muffled sounds, jugular venous distension, pulsus paradoxus. ^[common-practice]
-- Pulses in all four limbs; focal neurologic deficit. ^[acc-aha-aortic-2022]
-- Chest wall palpation; reproducible pain lowers but does not exclude ACS. ^[aha-acc-chest-pain-2021]
+- Pulses in all four limbs. Focal neurologic deficit. ^[acc-aha-aortic-2022]
+- Chest wall palpation. Reproducible pain lowers but does not exclude ACS. ^[aha-acc-chest-pain-2021]
 
 ## Diagnosis
 #### ECG and troponin: ACS pathway
-- 12-lead ECG within 10 minutes; a normal ECG does not exclude ACS. ^[aha-acc-chest-pain-2021]
-- High-sensitivity troponin at presentation and again at 1–3 hours (3–6 hours with conventional assays); use the assay's validated algorithm and sex-specific 99th percentile. ^[aha-acc-chest-pain-2021, udmi-2026]
+- 12-lead ECG within 10 minutes. A normal ECG does not exclude ACS. ^[aha-acc-chest-pain-2021]
+- High-sensitivity troponin at presentation and again at 1–3 hours (3–6 hours with conventional assays). Use the assay's validated algorithm and sex-specific 99th percentile. ^[aha-acc-chest-pain-2021, udmi-2026]
 - Normal ECG, symptom onset at least 3 hours before arrival and a single troponin below the assay's limit of detection: reasonable to exclude myocardial injury. ^[aha-acc-chest-pain-2021]
-- A rise and/or fall with at least one value above the 99th percentile plus ischemic symptoms or ECG changes is MI; stable or unrelated elevations are myocardial injury. ^[udmi-2026]
+- A rise and/or fall with at least one value above the 99th percentile plus ischemic symptoms or ECG changes is MI. Stable or unrelated elevations are myocardial injury. ^[udmi-2026]
 - Diagnosis, risk and care for confirmed ACS: [[cardio-nste-acs]]. ^[acc-aha-acs-2025]
 
 #### Risk scores
 - {{calc:heart-score}}: History, ECG, Age, Risk factors, Troponin (0–2 each). ^[backus-heart-2013, aha-acc-chest-pain-2021]
 
 :::scale HEART risk bands
-- 0–3: low risk (major cardiac event about 2% at 6 weeks); early discharge reasonable after serial troponin. ^[backus-heart-2013, aha-acc-chest-pain-2021]
-- 4–6: moderate risk (about 17%); observation and further testing. ^[backus-heart-2013, aha-acc-chest-pain-2021]
-- 7–10: high risk (about 50%); admit and manage per [[cardio-nste-acs]]. ^[backus-heart-2013, aha-acc-chest-pain-2021]
+- 0–3: low risk (major cardiac event about 2% at 6 weeks). Early discharge reasonable after serial troponin. ^[backus-heart-2013, aha-acc-chest-pain-2021]
+- 4–6: moderate risk (about 17%). Observation and further testing. ^[backus-heart-2013, aha-acc-chest-pain-2021]
+- 7–10: high risk (about 50%). Admit and manage per [[cardio-nste-acs]]. ^[backus-heart-2013, aha-acc-chest-pain-2021]
 :::
 
 - Dissection: {{criteria:add-rs}} ^[acc-aha-aortic-2022, rogers-add-rs-2011]
-- PE: {{calc:wells-pe|Wells}}, then {{calc:perc}} if low; workup in [[pulm-vte-diagnosis]]. ^[aha-acc-pe-2026]
+- PE: {{calc:wells-pe|Wells}}, then {{calc:perc}} if low. Workup in [[pulm-vte-diagnosis]]. ^[aha-acc-pe-2026]
 
 #### Aortic dissection
-- {{calc:add-rs}} 2–3 (high): CT angiography of the aorta directly; a D-dimer does not change this. ^[acc-aha-aortic-2022, esc-paad-2024]
+- {{calc:add-rs}} 2–3 (high): CT angiography of the aorta directly. A D-dimer does not change this. ^[acc-aha-aortic-2022, esc-paad-2024]
 - {{calc:add-rs}} 0–1 with D-dimer below 500 ng/mL FEU: dissection is excluded without imaging (ADvISED: failure rate 0.3%). ^[acep-aortic-2025, esc-paad-2024, advised-2018]
-- {{calc:add-rs}} 1 with D-dimer at or above 500 ng/mL FEU: CT angiography; D-dimer is not used in a score of 2 or more. ^[esc-paad-2024, advised-2018]
+- {{calc:add-rs}} 1 with D-dimer at or above 500 ng/mL FEU: CT angiography. D-dimer is not used in a score of 2 or more. ^[esc-paad-2024, advised-2018]
 - Unstable patient who cannot go to CT: transesophageal echocardiography. ^[acc-aha-aortic-2022]
 
 #### Imaging
@@ -108,15 +108,15 @@ related:
 - Esophageal rupture: CT esophagram (chest CT with oral contrast) preferred over fluoroscopic esophagram. ^[sts-esophageal-2026]
 
 #### After a negative troponin pathway
-- Low risk (rapid-rule-out): no further testing, or outpatient testing; do not stress-test routinely. ^[aha-acc-chest-pain-2021]
-- Intermediate risk without known coronary disease: coronary CT angiography or stress imaging (both class 1); CT favored under age 65, stress imaging at 65 or older or with higher suspicion of obstructive disease. ^[aha-acc-chest-pain-2021]
-- Known obstructive coronary disease: stress imaging; known nonobstructive disease: coronary CT angiography is reasonable. ^[aha-acc-chest-pain-2021]
-- High risk (positive troponin, dynamic ECG, high-risk score): admit; invasive strategy per [[cardio-nste-acs]]. ^[aha-acc-chest-pain-2021, acc-aha-acs-2025]
+- Low risk (rapid-rule-out): no further testing, or outpatient testing. Do not stress-test routinely. ^[aha-acc-chest-pain-2021]
+- Intermediate risk without known coronary disease: coronary CT angiography or stress imaging (both class 1). CT favored under age 65, stress imaging at 65 or older or with higher suspicion of obstructive disease. ^[aha-acc-chest-pain-2021]
+- Known obstructive coronary disease: stress imaging. Known nonobstructive disease: coronary CT angiography is reasonable. ^[aha-acc-chest-pain-2021]
+- High risk (positive troponin, dynamic ECG, high-risk score): admit. Invasive strategy per [[cardio-nste-acs]]. ^[aha-acc-chest-pain-2021, acc-aha-acs-2025]
 
 ## Treatment
 #### Common initial orders
 - Oxygen only for SpO₂ below 90%. ^[acc-aha-acs-2025]
-- Analgesia; nitroglycerin for ongoing ischemic pain unless hypotension, right ventricular infarct or recent phosphodiesterase inhibitor use. ^[acc-aha-acs-2025]
+- Analgesia. Nitroglycerin for ongoing ischemic pain unless hypotension, right ventricular infarct or recent phosphodiesterase inhibitor use. ^[acc-aha-acs-2025]
 - Telemetry for any patient not yet risk-stratified as low. ^[common-practice]
 - First-line tests in Diagnosis. ^[common-practice]
 
@@ -125,43 +125,43 @@ related:
 - PE: anticoagulation and category-based care per [[pulm-vte-diagnosis]]. ^[aha-acc-pe-2026]
 - Aortic dissection: heart rate and blood pressure control, analgesia, immediate surgical consultation (type A) or vascular and cardiology consultation (type B). ^[acc-aha-aortic-2022]
 - Tension pneumothorax: needle or finger decompression, then chest tube. ^[common-practice]
-- Esophageal rupture: nothing by mouth, broad-spectrum antibiotics, early thoracic surgery and gastroenterology consultation; stable patients may have endoscopic stent or vacuum therapy, unstable or complex ones surgery. ^[sts-esophageal-2026, common-practice]
-- Tamponade: urgent pericardiocentesis or surgical drainage; pericardiocentesis is contraindicated when type A dissection causes it. ^[esc-myopericarditis-2025, acc-pericarditis-ccg-2025]
-- Acute pericarditis: treatment is outside this card; confirm the diagnosis (chest pain with a rub, typical ECG changes, new effusion or raised inflammatory markers). ^[acc-pericarditis-ccg-2025]
+- Esophageal rupture: nothing by mouth, broad-spectrum antibiotics, early thoracic surgery and gastroenterology consultation. Stable patients may have endoscopic stent or vacuum therapy, unstable or complex ones surgery. ^[sts-esophageal-2026, common-practice]
+- Tamponade: urgent pericardiocentesis or surgical drainage. Pericardiocentesis is contraindicated when type A dissection causes it. ^[esc-myopericarditis-2025, acc-pericarditis-ccg-2025]
+- Acute pericarditis: treatment is outside this card. Confirm the diagnosis (chest pain with a rub, typical ECG changes, new effusion or raised inflammatory markers). ^[acc-pericarditis-ccg-2025]
 
 ## Monitor
 - Repeat ECG and troponin with any new or recurrent pain, and before discharge from observation. ^[aha-acc-chest-pain-2021]
-- Reassess vital signs and symptoms; a patient whose pain changes character needs a new differential. ^[common-practice]
+- Reassess vital signs and symptoms. A patient whose pain changes character needs a new differential. ^[common-practice]
 
 ## Escalation
 - STEMI or equivalent: cath lab activation. ^[acc-aha-acs-2025]
-- Confirmed type A dissection: emergency cardiac surgery, with transfer to an aortic center if not available on site; type B: vascular and cardiology consultation. ^[acc-aha-aortic-2022]
-- PE with hypotension or shock: PE response team; see [[pulm-vte-diagnosis]]. ^[aha-acc-pe-2026]
+- Confirmed type A dissection: emergency cardiac surgery, with transfer to an aortic center if not available on site. Type B: vascular and cardiology consultation. ^[acc-aha-aortic-2022]
+- PE with hypotension or shock: PE response team. See [[pulm-vte-diagnosis]]. ^[aha-acc-pe-2026]
 - Tamponade or esophageal rupture: surgery, cardiology or thoracic surgery immediately. ^[common-practice]
 - ICU or intermediate care: shock, hypoxemia, persistent ischemia, arrhythmia. ^[common-practice]
 
 ## More Information
 ### Where Guidelines Differ: Troponin algorithms
 :::compare Rapid rule-out
-- AHA/ACC 2021: high-sensitivity troponin at presentation and 1–3 hours; validated algorithm. ^[aha-acc-chest-pain-2021]
+- AHA/ACC 2021: high-sensitivity troponin at presentation and 1–3 hours. Validated algorithm. ^[aha-acc-chest-pain-2021]
 - ESC 2023: 0/1-hour or 0/2-hour algorithm with assay-specific cutoffs. ^[esc-acs-2023]
 :::
 
 ### Special Populations: Women, older adults, diabetes
-- More often dyspnea, fatigue, epigastric pain or nausea; lower sex-specific troponin 99th percentile. ^[aha-acc-chest-pain-2021, udmi-2026]
+- More often dyspnea, fatigue, epigastric pain or nausea. Lower sex-specific troponin 99th percentile. ^[aha-acc-chest-pain-2021, udmi-2026]
 - Women under 50, pregnancy and postpartum: consider spontaneous coronary artery dissection. ^[aha-scad-2018]
-- Cocaine or methamphetamine: ACS from vasospasm; benzodiazepines early. ^[aha-cocaine-2008]
+- Cocaine or methamphetamine: ACS from vasospasm. Benzodiazepines early. ^[aha-cocaine-2008]
 
 ### Evidence: Risk scores
-- {{calc:heart-score|HEART score}} (2013): prospective validation in 2,388 patients; low-risk group (0–3) had a major cardiac event rate of about 2% in 6 weeks. ^[backus-heart-2013]
-- {{calc:add-rs}} (2011): about 4% of confirmed dissections scored 0, so the score alone cannot exclude it; combined with D-dimer it did in ADvISED (2018). ^[rogers-add-rs-2011, advised-2018]
+- {{calc:heart-score|HEART score}} (2013): prospective validation in 2,388 patients. Low-risk group (0–3) had a major cardiac event rate of about 2% in 6 weeks. ^[backus-heart-2013]
+- {{calc:add-rs}} (2011): about 4% of confirmed dissections scored 0, so the score alone cannot exclude it. Combined with D-dimer it did in ADvISED (2018). ^[rogers-add-rs-2011, advised-2018]
 
 ### Epidemiology and Pathophysiology: Where the time goes
-- Most patients with acute chest pain do not have ACS; the goal is to exclude the dangerous causes quickly and safely. ^[aha-acc-chest-pain-2021]
+- Most patients with acute chest pain do not have ACS. The goal is to exclude the dangerous causes quickly and safely. ^[aha-acc-chest-pain-2021]
 
 ## Pearls
-- ECG within 10 minutes; a normal ECG does not exclude ACS, and a normal troponin early after onset does not either. ^[aha-acc-chest-pain-2021]
-- Use a score only when its disease is on the differential; {{calc:perc}} and D-dimer do not apply when probability is high. ^[aha-acc-pe-2026]
+- ECG within 10 minutes. A normal ECG does not exclude ACS, and a normal troponin early after onset does not either. ^[aha-acc-chest-pain-2021]
+- Use a score only when its disease is on the differential. {{calc:perc}} and D-dimer do not apply when probability is high. ^[aha-acc-pe-2026]
 - Before aspirin or heparin, ask: could this be dissection? ^[acc-aha-aortic-2022, common-practice]
-- Tension pneumothorax is a bedside diagnosis; decompress first. ^[common-practice]
+- Tension pneumothorax is a bedside diagnosis. Decompress first. ^[common-practice]
 - Reproducible chest wall pain does not exclude ACS. ^[aha-acc-chest-pain-2021]

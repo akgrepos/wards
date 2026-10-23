@@ -5,12 +5,12 @@ route: IM
 amount: "1,000"
 unit: mcg
 frequency: "daily or every other day for 1–2 weeks, then weekly for 4 weeks, then monthly"
-duration: "Lifelong with pernicious anemia, bariatric surgery or ileal disease; until the cause is corrected otherwise"
+duration: "Lifelong with pernicious anemia, bariatric surgery or ileal disease. Until the cause is corrected otherwise"
 cautions:
-  - "Hypokalemia can develop in the first days of treatment of severe megaloblastic anemia; check potassium."
-  - "Give B12 before or with folic acid; folic acid alone can improve anemia while neurologic damage progresses."
-  - "Reticulocytosis in 3–7 days; hemoglobin rises over weeks."
-notes: "Regimens vary: the British guideline uses hydroxocobalamin 1 mg IM three times weekly for 2 weeks (alternate days until no further improvement if neurologic signs), then every 2–3 months; the FDA label lists a lower starting dose (100 mcg daily for 6–7 days)."
+  - "Hypokalemia can develop in the first days of treatment of severe megaloblastic anemia. Check potassium."
+  - "Give B12 before or with folic acid. Folic acid alone can improve anemia while neurologic damage progresses."
+  - "Reticulocytosis in 3–7 days. Hemoglobin rises over weeks."
+notes: "Regimens vary: the British guideline uses hydroxocobalamin 1 mg IM three times weekly for 2 weeks (alternate days until no further improvement if neurologic signs), then every 2–3 months. The FDA label lists a lower starting dose (100 mcg daily for 6–7 days)."
 sources: [stabler-b12-2013, common-practice]
 verification:
   source: stabler-b12-2013

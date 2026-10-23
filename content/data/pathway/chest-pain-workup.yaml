@@ -31,7 +31,7 @@ nodes:
     title: Reperfusion pathway or resuscitation
     text:
       - "STEMI or equivalent: activate the cath lab."
-      - "Shock or hypoxemia: bedside echocardiography for tamponade, dissection and right heart strain; decompress a tension pneumothorax."
+      - "Shock or hypoxemia: bedside echocardiography for tamponade, dissection and right heart strain. Decompress a tension pneumothorax."
     links: ["section:cardio-chest-pain/first-steps"]
     next: urgent-end
   urgent-end:
@@ -56,7 +56,7 @@ nodes:
     at: [0, 5]
     span: 3
     title: CT angiography of the aorta
-    text: Hold aspirin and anticoagulants; surgical consultation if confirmed.
+    text: Hold aspirin and anticoagulants. Surgical consultation if confirmed.
     links: ["section:cardio-chest-pain/diagnosis#aortic-dissection"]
   troponin:
     kind: do
@@ -80,18 +80,18 @@ nodes:
     at: [0, 8]
     span: 3
     title: MI excluded
-    text: Low risk needs no further testing or outpatient testing; look for another cause.
+    text: Low risk needs no further testing or outpatient testing. Look for another cause.
   observe:
     kind: result
     at: [3, 8]
     span: 3
     title: Observe and risk-stratify
-    text: "{{calc:heart-score|HEART}}; repeat troponin; coronary CT angiography if intermediate risk."
+    text: "{{calc:heart-score|HEART}}. Repeat troponin. Coronary CT angiography if intermediate risk."
     links: ["section:cardio-chest-pain/diagnosis#after-a-negative-troponin-pathway"]
   acs:
     kind: result
     at: [6, 8]
     span: 3
     title: Acute coronary syndrome
-    text: Admit; antithrombotic and invasive strategy by risk.
+    text: Admit. Antithrombotic and invasive strategy by risk.
     links: [card:cardio-nste-acs]

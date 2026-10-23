@@ -68,7 +68,7 @@ nodes:
     at: [4, 10]
     span: 4
     title: Kidney failure, high bleeding risk, or a procedure or thrombolysis planned?
-    text: "{{calc:cockcroft-gault}} <30 mL/min; unreliable SC absorption."
+    text: "{{calc:cockcroft-gault}} <30 mL/min. Unreliable SC absorption."
     answers:
       - { label: "Yes", at: [0, 11], span: 4, to: ufh-result }
       - { label: "No", at: [8, 11], span: 4, to: cancer }
@@ -78,7 +78,7 @@ nodes:
     span: 4
     title: Unfractionated heparin
     text:
-      - "Short half-life and reversible; transition to the long-term agent when stable."
+      - "Short half-life and reversible. Transition to the long-term agent when stable."
     links: ["section:heme-anticoagulation-management/treatment#parenteral-agents"]
   cancer:
     kind: question

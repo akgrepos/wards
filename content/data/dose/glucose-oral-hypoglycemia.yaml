@@ -5,7 +5,7 @@ route: PO
 amount: "15"
 unit: g
 frequency: once, then repeat as needed
-repeat: "Recheck glucose every 15 minutes; repeat until >70 mg/dL, then give a snack or meal"
+repeat: "Recheck glucose every 15 minutes. Repeat until >70 mg/dL, then give a snack or meal"
 give_when: "Glucose <70 mg/dL, alert and able to swallow, not NPO"
 notes: "Glucose tablets or gel, or juice (common practice). On automated insulin delivery, 5–10 g may suffice."
 sources: [ada-soc-hospital-2026, ada-soc-glycemic-2026]

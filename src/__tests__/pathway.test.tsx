@@ -43,7 +43,7 @@ describe('pathways (focused decision trees)', () => {
     launch('#/pathway/hyperkalemia-treatment');
     expect(screen.getByRole('group', { name: 'Hyperkalemia: Treatment pathway' })).toBeTruthy();
     expect(box('Severity?').className).toContain('pw-question');
-    for (const t of ['IV calcium', 'Shift K⁺; consider removal', 'Shift K⁺, add albuterol, remove K⁺']) expect(box(t).className).toContain('pw-box');
+    for (const t of ['IV calcium', 'Shift K⁺. Consider removal', 'Shift K⁺, add albuterol, remove K⁺']) expect(box(t).className).toContain('pw-box');
     expect(box('IV calcium').textContent).toContain('Calcium gluconate 10%');
     // Every answer is a choice button, tappable from the start; nothing is chosen yet.
     expect(answer(/^Severe/).className).toContain('akg-button--choice');
@@ -61,7 +61,7 @@ describe('pathways (focused decision trees)', () => {
     expect(answer(/^Severe/).className).toContain('akg-button--selected');
     expect(answer(/^Moderate/).className).toContain('akg-button--unselected');
     expect(answer(/^Moderate/).disabled).toBe(false);
-    expect(cellOf('Shift K⁺; consider removal').className).toContain('pw-cell--off');
+    expect(cellOf('Shift K⁺. Consider removal').className).toContain('pw-cell--off');
     expect(box('Shift K⁺, add albuterol, remove K⁺').className).toContain('pw-box--on');
     // Steps every route shares stay at full strength.
     expect(cellOf('Recheck K⁺ and glucose').className).not.toContain('pw-cell--off');
@@ -70,7 +70,7 @@ describe('pathways (focused decision trees)', () => {
     await choose(/^Severe/);
     expect(answer(/^Severe/).getAttribute('aria-pressed')).toBe('false');
     expect(answer(/^Moderate/).className).not.toContain('akg-button--unselected');
-    expect(cellOf('Shift K⁺; consider removal').className).not.toContain('pw-cell--off');
+    expect(cellOf('Shift K⁺. Consider removal').className).not.toContain('pw-cell--off');
   });
 
   it('choosing an answer on a ruled-out question drops the choice that ruled it out', async () => {

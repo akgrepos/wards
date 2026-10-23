@@ -5,9 +5,9 @@ route: IV
 amount: 10–25
 unit: g
 frequency: "once (20–50 mL), repeated as needed"
-repeat: "Recheck glucose in 15 minutes; follow with dextrose 5% or 10% to prevent rebound"
+repeat: "Recheck glucose in 15 minutes. Follow with dextrose 5% or 10% to prevent rebound"
 cautions:
-  - "Hypertonic: large or central vein; tissue injury if it extravasates."
+  - "Hypertonic: large or central vein. Tissue injury if it extravasates."
   - "Alcohol use disorder or malnutrition: give thiamine (label lists alcohol withdrawal as a contraindication)."
 sources: [label-dextrose-50-2026, ada-soc-hospital-2026]
 verification:

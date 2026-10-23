@@ -5,18 +5,18 @@ route: IV
 amount: "10"
 unit: mEq
 rate: "over 1 hour (no faster than 10 mEq per hour when K⁺ >2.5 mEq/L)"
-repeat: "As needed; recheck K⁺ no sooner than 1 hour after a dose"
+repeat: "As needed. Recheck K⁺ no sooner than 1 hour after a dose"
 max: "200 mEq per 24 hours when K⁺ >2.5 mEq/L"
 alternative:
   dose: kcl-iv-monitored
   when: "Arrhythmia, digitalis toxicity, cardiac ischemia or severe hypokalemia, on continuous ECG"
 adjustments:
   - when: "GFR <30 mL/min/1.73 m²"
-    change: "Start low and recheck K⁺ every 2–4 hours (label: risk of life-threatening hyperkalemia; contraindicated in renal failure)"
+    change: "Start low and recheck K⁺ every 2–4 hours (label: risk of life-threatening hyperkalemia, contraindicated in renal failure)"
 cautions:
   - "Never undiluted or as an IV push: direct injection of the concentrate can be instantly fatal."
   - "Give in saline, not dextrose: dextrose can lower K⁺ further."
-  - "Concentration: the concentrate label allows up to 40 mEq/L at this rate; above 40 mEq/L is painful and an expert review advises central access. The premixed-bag label prefers a central route whenever possible and requires it for 300–400 mEq/L."
+  - "Concentration: the concentrate label allows up to 40 mEq/L at this rate. Above 40 mEq/L is painful and an expert review advises central access. The premixed-bag label prefers a central route whenever possible and requires it for 300–400 mEq/L."
   - "Contraindicated in hyperkalemia, renal failure and conditions with potassium retention (US label)."
 sources: [label-kcl-injection-2026, label-kcl-premix-2018, asmar-hypokalemia-2012, kardalas-hypokalemia-2018]
 verification:

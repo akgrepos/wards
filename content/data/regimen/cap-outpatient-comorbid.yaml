@@ -1,6 +1,6 @@
 name: Outpatient, with comorbidities
 indication: Community-acquired pneumonia
-setting: "Chronic heart, lung, liver or kidney disease, diabetes, alcohol use disorder, malignancy or asplenia; no order of preference"
+setting: "Chronic heart, lung, liver or kidney disease, diabetes, alcohol use disorder, malignancy or asplenia. No order of preference"
 options:
   - label: β-lactam plus macrolide or doxycycline
     doses: [[amoxicillin-clavulanate-cap, cefpodoxime-cap], [azithromycin-po-cap, doxycycline-100]]

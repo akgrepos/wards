@@ -9,7 +9,7 @@ frequency: daily
 give_when: "SIADH when fluid restriction fails or is unlikely to work"
 repeat: "Increase by 15 g per day at weekly intervals as needed"
 cautions:
-  - "Poor palatability and gastric intolerance; dissolve in juice or another strongly flavored drink."
+  - "Poor palatability and gastric intolerance. Dissolve in juice or another strongly flavored drink."
 notes: "Second-line in both the US and European guidelines. Raises free-water excretion by osmotic diuresis."
 sources: [verbalis-hyponatremia-2013, hoorn-hyponatremia-guidelines-2017, adrogue-hyponatremia-2022]
 verification:

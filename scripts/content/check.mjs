@@ -8,6 +8,7 @@ import { emergencySteps, offsetMinutes, stepDoses } from './emergency.mjs';
 import { checkPathway } from './pathway.mjs';
 import { checkMedia } from './media.mjs';
 import { checkCoverage } from './coverage.mjs';
+import { checkSemicolons } from './semicolons.mjs';
 
 const DOSE_ONLY = /^\{\{\s*dose\s*:\s*([a-z0-9-]+)\s*\}\}$/;
 
@@ -404,6 +405,7 @@ export function checkContent({ systems, cards, data }) {
       if (noteRepeats(t.note, `${u.text} ${t.name} ${t.unit}`)) err(where, `the note mostly repeats what ${u.where} already says; remove it (the value then shows plain) or say only what the line doesn't`);
     }
   }
+  errors.push(...checkSemicolons({ cards, data }));
   return errors;
 }
 

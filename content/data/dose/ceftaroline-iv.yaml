@@ -1,5 +1,5 @@
 drug_name: Ceftaroline
-indication: Community-acquired pneumonia (inpatient β-lactam); skin infection with MRSA risk
+indication: Community-acquired pneumonia (inpatient β-lactam). Skin infection with MRSA risk
 population: Adults
 route: IV
 amount: "600"
@@ -14,7 +14,7 @@ adjustments:
   - when: CrCl <15 mL/min or hemodialysis
     change: 200 mg every 12 hours, after dialysis
 cautions:
-  - Active against MRSA; does not cover Pseudomonas.
+  - Active against MRSA. Does not cover Pseudomonas.
 sources:
   - label-teflaro-2024
   - idsa-ats-cap-2019

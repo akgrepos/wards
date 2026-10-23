@@ -4,16 +4,16 @@ population: Adults who can take oral medication
 route: PO
 amount: 15–30
 unit: mg
-frequency: "3 or 4 times daily (label); symptom-triggered example (ASAM): 15 mg for a CIWA-Ar of 8–15, 30 mg for a CIWA-Ar above 15"
+frequency: "3 or 4 times daily (label). Symptom-triggered example (ASAM): 15 mg for a CIWA-Ar of 8–15, 30 mg for a CIWA-Ar above 15"
 give_when: Withdrawal symptoms in significant liver disease, when an oral agent is suitable
-boxed_warning: "Concomitant use with opioids can cause profound sedation, respiratory depression, coma and death; abuse, misuse and addiction; dependence and withdrawal reactions."
+boxed_warning: "Concomitant use with opioids can cause profound sedation, respiratory depression, coma and death. Abuse, misuse and addiction. Dependence and withdrawal reactions."
 adjustments:
   - when: "Older adults"
     change: "Label: 10 mg three times daily initially, increasing cautiously to 15 mg 3 or 4 times daily"
 cautions:
   - "Slow onset by mouth: do not stack doses before the previous one has acted."
-  - "Shorter-acting: watch for breakthrough and rebound symptoms; taper gradually."
-notes: "Labeled for alcoholics with acute inebriation, tremulousness or anxiety on withdrawal: 15–30 mg 3 or 4 times daily. Not oxidized by the liver; ASAM: may be more appropriate than oxidized agents in significant liver disease."
+  - "Shorter-acting: watch for breakthrough and rebound symptoms. Taper gradually."
+notes: "Labeled for alcoholics with acute inebriation, tremulousness or anxiety on withdrawal: 15–30 mg 3 or 4 times daily. Not oxidized by the liver. ASAM: may be more appropriate than oxidized agents in significant liver disease."
 sources: [label-oxazepam-2023, asam-alcohol-withdrawal-2020]
 verification:
   source: label-oxazepam-2023

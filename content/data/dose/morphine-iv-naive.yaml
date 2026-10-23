@@ -5,15 +5,15 @@ route: IV
 amount: 2–4
 unit: mg
 frequency: every 3–4 hours as needed
-repeat: "Reassess in 10–15 minutes after a dose; give small repeated doses rather than one large dose"
-max: "FDA label: 0.1–0.2 mg/kg every 4 hours as needed, the lowest dose necessary; usual ward starting doses are well below that"
-boxed_warning: "Addiction, abuse and misuse; life-threatening respiratory depression; risks with benzodiazepines and other CNS depressants."
+repeat: "Reassess in 10–15 minutes after a dose. Give small repeated doses rather than one large dose"
+max: "FDA label: 0.1–0.2 mg/kg every 4 hours as needed, the lowest dose necessary. Usual ward starting doses are well below that"
+boxed_warning: "Addiction, abuse and misuse. Life-threatening respiratory depression. Risks with benzodiazepines and other CNS depressants."
 adjustments:
   - when: "Kidney impairment"
-    change: "Lower starting dose, titrate slowly (active metabolite accumulates); prefer hydromorphone or fentanyl"
+    change: "Lower starting dose, titrate slowly (active metabolite accumulates). Prefer hydromorphone or fentanyl"
 cautions:
   - "Inject slowly. Monitor sedation and respiratory status after each dose."
-notes: "The 2–4 mg ward starting range is common practice; the label is weight-based and higher."
+notes: "The 2–4 mg ward starting range is common practice. The label is weight-based and higher."
 sources: [label-morphine-injection-2026, common-practice]
 verification:
   source: label-morphine-injection-2026

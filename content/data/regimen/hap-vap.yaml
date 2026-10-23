@@ -1,18 +1,18 @@
 name: Hospital-acquired or ventilator-associated pneumonia
 indication: Pneumonia starting 48 hours or more after admission or intubation
-setting: "Choose by MDR risk factors and the local antibiogram; send respiratory cultures first"
+setting: "Choose by MDR risk factors and the local antibiogram. Send respiratory cultures first"
 options:
   - label: Antipseudomonal β-lactam
     doses: [[piperacillin-tazobactam-nosocomial, cefepime-nosocomial, meropenem-nosocomial]]
   - label: Add MRSA coverage
-    when: "IV antibiotics in the last 90 days; VAP with any MDR risk factor; HAP with septic shock or ventilatory support; or unit MRSA above 10–20% (VAP) or 20% (HAP) of S. aureus, or unknown"
+    when: "IV antibiotics in the last 90 days, VAP with any MDR risk factor, HAP with septic shock or ventilatory support, or unit MRSA above 10–20% (VAP) or 20% (HAP) of S. aureus, or unknown"
     doses: [[vancomycin-iv, linezolid-600]]
   - label: Add a second antipseudomonal agent
-    when: "VAP with an MDR risk factor or a unit with more than 10% resistance to the single agent (or unknown); HAP with IV antibiotics in the last 90 days, septic shock, ventilatory support or structural lung disease"
+    when: "VAP with an MDR risk factor or a unit with more than 10% resistance to the single agent (or unknown). HAP with IV antibiotics in the last 90 days, septic shock, ventilatory support or structural lung disease"
     doses: [levofloxacin-750]
 duration: "7 days, adjusted to the clinical response"
 notes:
   - "MDR risk factors for VAP: IV antibiotics in the last 90 days, septic shock, ARDS before VAP, 5 or more days in hospital before VAP, and acute renal replacement therapy."
   - "Avoid an aminoglycoside as the only antipseudomonal agent."
-  - "Narrow to the culture results; a single active agent once susceptibilities are known, unless still in septic shock or at high risk of death."
+  - "Narrow to the culture results. A single active agent once susceptibilities are known, unless still in septic shock or at high risk of death."
 sources: [idsa-ats-hap-vap-2016, ers-hap-vap-2017]

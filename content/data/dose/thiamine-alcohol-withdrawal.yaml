@@ -5,10 +5,10 @@ route: IV or IM (oral if able and well nourished)
 amount: 100
 unit: mg
 frequency: "daily for 3–5 days"
-give_when: Every admission for alcohol withdrawal; glucose need not wait
+give_when: Every admission for alcohol withdrawal. Glucose need not wait
 cautions:
   - "Anaphylaxis is rare but reported with IV or IM thiamine."
-notes: "ASAM: parenteral preferred with poor nutrition, malabsorption or severe complications; thiamine and glucose may be given in any order or together. Label (Wernicke): 100 mg IV, then 50–100 mg IM daily until eating a regular diet."
+notes: "ASAM: parenteral preferred with poor nutrition, malabsorption or severe complications. Thiamine and glucose may be given in any order or together. Label (Wernicke): 100 mg IV, then 50–100 mg IM daily until eating a regular diet."
 sources: [asam-alcohol-withdrawal-2020, label-thiamine-inj-2026]
 verification:
   source: label-thiamine-inj-2026

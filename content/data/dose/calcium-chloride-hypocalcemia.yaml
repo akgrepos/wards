@@ -4,7 +4,7 @@ population: Adults
 route: IV
 amount: "200–1,000"
 unit: mg
-rate: "slow infusion, no faster than 100 mg (1 mL) per minute, into a central or deep vein; never as a bolus"
+rate: "slow infusion, no faster than 100 mg (1 mL) per minute, into a central or deep vein. Never as a bolus"
 repeat: "Repeated doses may be needed (rapid calcium excretion)"
 boxed_warning: None
 adjustments:
@@ -13,8 +13,8 @@ adjustments:
 cautions:
   - "Never IM or subcutaneous (tissue necrosis)."
   - "Rapid administration can cause hypotension, bradycardia, arrhythmia and syncope."
-  - "On digoxin: avoid; if unavoidable, close ECG and calcium monitoring."
-  - "Never mix with ceftriaxone or give at the same time, even through separate lines or sites; sequential use only, with a line change or flush."
+  - "On digoxin: avoid. If unavoidable, close ECG and calcium monitoring."
+  - "Never mix with ceftriaxone or give at the same time, even through separate lines or sites. Sequential use only, with a line change or flush."
 notes: "27 mg (1.4 mEq) of elemental calcium per mL, about 3 times calcium gluconate. More local irritation than calcium gluconate."
 sources: [label-calcium-chloride-2026, endotext-hypocalcemia-2016]
 verification:

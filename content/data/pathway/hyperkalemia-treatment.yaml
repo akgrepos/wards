@@ -53,10 +53,10 @@ nodes:
     kind: do
     at: [4, 6]
     span: 4
-    title: Shift K⁺; consider removal
+    title: Shift K⁺. Consider removal
     text:
       - Continuous cardiac monitoring if unwell or K⁺ rising rapidly.
-      - "Insulin with dextrose suggested. Pre-treatment glucose {{threshold:glucose-hypoglycemia-risk}}: follow with a dextrose 10% infusion; glucose {{threshold:glucose-skip-dextrose}}: insulin may be given without dextrose."
+      - "Insulin with dextrose suggested. Pre-treatment glucose {{threshold:glucose-hypoglycemia-risk}}: follow with a dextrose 10% infusion. Glucose {{threshold:glucose-skip-dextrose}}: insulin may be given without dextrose."
       - "{{dose:insulin-regular-hyperkalemia}}"
       - "{{dose:dextrose-50-hyperkalemia}}"
       - "{{dose:dextrose-10-infusion-hyperkalemia}}"
@@ -69,8 +69,8 @@ nodes:
     span: 4
     title: Shift K⁺, add albuterol, remove K⁺
     text:
-      - Continuous cardiac monitoring; monitored bed.
-      - "Insulin with dextrose recommended. Pre-treatment glucose {{threshold:glucose-hypoglycemia-risk}}: follow with a dextrose 10% infusion; glucose {{threshold:glucose-skip-dextrose}}: insulin may be given without dextrose."
+      - Continuous cardiac monitoring. Monitored bed.
+      - "Insulin with dextrose recommended. Pre-treatment glucose {{threshold:glucose-hypoglycemia-risk}}: follow with a dextrose 10% infusion. Glucose {{threshold:glucose-skip-dextrose}}: insulin may be given without dextrose."
       - "{{dose:insulin-regular-hyperkalemia}}"
       - "{{dose:dextrose-50-hyperkalemia}}"
       - "{{dose:dextrose-10-infusion-hyperkalemia}}"
@@ -121,7 +121,7 @@ nodes:
     at: [4, 10]
     span: 4
     title: Recheck K⁺ and glucose
-    text: "K⁺ at least at 1, 2, 4, 6 and 24 h after treating moderate or severe hyperkalemia; rebound at 2–3 h if K⁺ has not been eliminated. Glucose for 6 h after insulin. Refractory hyperkalemia: nephrology to consider dialysis."
+    text: "K⁺ at least at 1, 2, 4, 6 and 24 h after treating moderate or severe hyperkalemia. Rebound at 2–3 h if K⁺ has not been eliminated. Glucose for 6 h after insulin. Refractory hyperkalemia: nephrology to consider dialysis."
     links: [section:renal-hyperkalemia/monitor]
     next: cause
   cause:

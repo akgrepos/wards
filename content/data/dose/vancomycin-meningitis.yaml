@@ -6,7 +6,7 @@ amount: "15"
 unit: mg/kg
 frequency: every 8–12 hours
 rate: over at least 60 minutes
-give_when: Actual body weight; pharmacist-led dosing
+give_when: Actual body weight. Pharmacist-led dosing
 adjustments:
   - when: Kidney impairment or dialysis
     change: Dose by levels with the pharmacy
@@ -14,7 +14,7 @@ cautions:
   - Target trough 15–20 mcg/mL in meningitis (IDSA 2004, 2017).
   - Never alone in pneumococcal meningitis.
   - Nephrotoxicity, more with piperacillin-tazobactam.
-notes: "IDSA 2004 lists 30–45 mg/kg a day in divided doses every 8–12 hours (15 mg/kg every 8–12 hours); dose by levels with the pharmacy."
+notes: "IDSA 2004 lists 30–45 mg/kg a day in divided doses every 8–12 hours (15 mg/kg every 8–12 hours). Dose by levels with the pharmacy."
 sources: [idsa-meningitis-2004, idsa-ventriculitis-2017, label-vancomycin-2025]
 verification:
   source: idsa-meningitis-2004

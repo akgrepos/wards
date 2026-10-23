@@ -6,16 +6,16 @@ route: PO
 amount: "5"
 unit: mg
 frequency: twice daily
-boxed_warning: "Premature discontinuation raises the risk of thrombotic events; spinal or epidural hematoma with neuraxial anesthesia or spinal puncture."
+boxed_warning: "Premature discontinuation raises the risk of thrombotic events. Spinal or epidural hematoma with neuraxial anesthesia or spinal puncture."
 adjustments:
   - when: "At least 2 of: age ≥80 years, weight ≤60 kg, serum creatinine ≥1.5 mg/dL"
     change: 2.5 mg twice daily
   - when: End-stage kidney disease on hemodialysis
-    change: "Usual dose (2.5 mg twice daily if age ≥80 years or weight ≤60 kg); outcome data limited"
+    change: "Usual dose (2.5 mg twice daily if age ≥80 years or weight ≤60 kg). Outcome data limited"
   - when: Combined strong CYP3A4 and P-gp inhibitors (ketoconazole, itraconazole, ritonavir)
-    change: Halve the dose; avoid if already on 2.5 mg twice daily
+    change: Halve the dose. Avoid if already on 2.5 mg twice daily
   - when: Liver impairment
-    change: "Child-Pugh A: no change; B: no recommendation; C: not recommended"
+    change: "Child-Pugh A: no change. B: no recommendation. C: not recommended"
 cautions:
   - "The kidney criterion is serum creatinine, not CrCl."
   - "Do not underdose: reduce only when the label criteria are met."

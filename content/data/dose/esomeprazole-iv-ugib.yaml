@@ -16,7 +16,7 @@ adjustments:
   - when: Severe hepatic impairment (Child-Pugh C)
     change: "80 mg over 30 minutes, then 4 mg/h for 71.5 hours"
 cautions:
-  - "IV therapy is only the acute initial management; follow it with oral acid suppression."
+  - "IV therapy is only the acute initial management. Follow it with oral acid suppression."
 notes: "Labeled regimen. ACG 2021 accepts continuous or intermittent high-dose PPI for 3 days."
 sources: [label-esomeprazole-iv-2025, acg-ugib-2021]
 verification:

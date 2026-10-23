@@ -10,6 +10,6 @@ rows:
   - ["Osmolality", "Not required", "Effective >300 mOsm/kg, or total >320 mOsm/kg"]
 notes:
   - "Euglycemic DKA: ketosis and acidosis with glucose <200 mg/dL (SGLT2 inhibitors, pregnancy, reduced intake, alcohol)."
-  - "Mixed DKA/HHS meets both sets of criteria; over a third of hyperglycemic crises overlap."
-  - "Effective osmolality = 2 × Na⁺ + glucose/18; total adds BUN/2.8."
+  - "Mixed DKA/HHS meets both sets of criteria. Over a third of hyperglycemic crises overlap."
+  - "Effective osmolality = 2 × Na⁺ + glucose/18. Total adds BUN/2.8."
 sources: [ada-hyperglycemic-crises-2024, ada-soc-hospital-2026]

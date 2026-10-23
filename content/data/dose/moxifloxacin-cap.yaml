@@ -5,10 +5,10 @@ route: PO
 amount: "400"
 unit: mg
 frequency: every 24 hours
-boxed_warning: "Fluoroquinolones: disabling and potentially irreversible tendinitis and tendon rupture, peripheral neuropathy and CNS effects, and worsening of myasthenia gravis; stop at the first sign."
+boxed_warning: "Fluoroquinolones: disabling and potentially irreversible tendinitis and tendon rupture, peripheral neuropathy and CNS effects, and worsening of myasthenia gravis. Stop at the first sign."
 cautions:
   - No dose change for kidney impairment or dialysis (label).
-  - QT prolongation; little urinary excretion, so not for UTI.
+  - QT prolongation. Little urinary excretion, so not for UTI.
   - Separate from antacids and metal cations.
 sources:
   - label-moxifloxacin-2025

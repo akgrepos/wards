@@ -10,9 +10,9 @@ max: "Label: 3,200 mg a day for any indication. For mild to moderate pain, doses
 boxed_warning: "Cardiovascular thrombotic events (including after coronary artery bypass graft surgery) and gastrointestinal bleeding, ulceration and perforation."
 cautions:
   - "Avoid in active peptic ulcer or gastrointestinal bleeding, heart failure decompensation, and when kidney function is falling or CrCl is <30 (Beers criteria)."
-  - "Raises blood pressure and can worsen heart failure; interacts with anticoagulants, antiplatelets, ACE inhibitors, ARBs and diuretics."
+  - "Raises blood pressure and can worsen heart failure. Interacts with anticoagulants, antiplatelets, ACE inhibitors, ARBs and diuretics."
   - "Shortest duration at the lowest effective dose."
-notes: "Other non-selective NSAIDs are used the same way; choose by formulary."
+notes: "Other non-selective NSAIDs are used the same way. Choose by formulary."
 sources: [label-ibuprofen-tablets-2025, chou-postop-pain-2016, ags-beers-2023]
 verification:
   source: label-ibuprofen-tablets-2025

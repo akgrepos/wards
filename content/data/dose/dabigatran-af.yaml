@@ -1,12 +1,12 @@
 drug_name: Dabigatran
 brand: Pradaxa
-indication: Stroke prevention in AF (contraindicated with a mechanical valve; not for moderate–severe mitral stenosis)
+indication: Stroke prevention in AF (contraindicated with a mechanical valve, not for moderate–severe mitral stenosis)
 population: Adults
 route: PO
 amount: "150"
 unit: mg
 frequency: twice daily
-boxed_warning: "Premature discontinuation raises the risk of thrombotic events; spinal or epidural hematoma with neuraxial anesthesia or spinal puncture."
+boxed_warning: "Premature discontinuation raises the risk of thrombotic events. Spinal or epidural hematoma with neuraxial anesthesia or spinal puncture."
 adjustments:
   - when: CrCl 15–30 mL/min
     change: 75 mg twice daily
@@ -15,9 +15,9 @@ adjustments:
   - when: CrCl <30 mL/min with a P-gp inhibitor
     change: Avoid
   - when: CrCl <15 mL/min or dialysis
-    change: No dosing recommendation; avoid
+    change: No dosing recommendation. Avoid
 cautions:
-  - "Swallow capsules whole; opening them increases absorption."
+  - "Swallow capsules whole. Opening them increases absorption."
   - "Avoid P-gp inducers such as rifampin."
   - "Reversal agent: idarucizumab."
 sources: [label-pradaxa-2025, acc-aha-af-2023]

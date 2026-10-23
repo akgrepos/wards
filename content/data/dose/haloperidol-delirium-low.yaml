@@ -1,21 +1,21 @@
 drug_name: Haloperidol
 brand: Haldol
 indication: Delirium with severe agitation or risk of harm after de-escalation has failed (off-label)
-population: Older or frail adults on the ward (the ESAIC starting suggestion for older patients); younger adults may need more
-route: Oral or IM bolus (the guideline gives no route; IV is not approved by the label)
+population: Older or frail adults on the ward (the ESAIC starting suggestion for older patients). Younger adults may need more
+route: Oral or IM bolus (the guideline gives no route, IV is not approved by the label)
 amount: 0.125–0.25
 unit: mg
 frequency: as needed, reassess before any repeat dose
 give_when: Severe distress or danger to self or others that de-escalation did not settle, after contributing causes are addressed
-max: "ESAIC guideline (older postoperative adults): under 3 mg a day, as mortality rose at 6 mg a day or more; label maximum 20 mg a day for acute agitation in schizophrenia (debilitated or geriatric patients may need less)"
-duration: "Shortest possible; stop once symptoms resolve, usually within days (NICE: 1 week or less)"
+max: "ESAIC guideline (older postoperative adults): under 3 mg a day, as mortality rose at 6 mg a day or more. Label maximum 20 mg a day for acute agitation in schizophrenia (debilitated or geriatric patients may need less)"
+duration: "Shortest possible. Stop once symptoms resolve, usually within days (NICE: 1 week or less)"
 boxed_warning: "Increased mortality in older adults with dementia-related psychosis."
 cautions:
-  - "Check {{calc:qtc}} first; QTc >500 ms raises torsades risk, and after a dose a QTc >500 ms or a rise of ≥60 ms from baseline calls for prompt action. Correct potassium and magnesium; avoid other QT-prolonging drugs."
+  - "Check {{calc:qtc}} first. QTc >500 ms raises torsades risk, and after a dose a QTc >500 ms or a rise of ≥60 ms from baseline calls for prompt action. Correct potassium and magnesium. Avoid other QT-prolonging drugs."
   - "Contraindicated in Parkinson disease and dementia with Lewy bodies."
   - "Sedation, hypotension, extrapyramidal effects, neuroleptic malignant syndrome."
   - "Prevention of delirium or shortening of delirium is not an indication."
-notes: "Delirium is not a labeled indication. The ESAIC range is its suggested starting dose for older postoperative patients, given as a single bolus and repeated only after reassessment. The label gives 2–5 mg IM for acute agitation in schizophrenia and says debilitated and geriatric patients may need less; the APA guideline advises starting delirium patients at half or less of a usual adult starting dose."
+notes: "Delirium is not a labeled indication. The ESAIC range is its suggested starting dose for older postoperative patients, given as a single bolus and repeated only after reassessment. The label gives 2–5 mg IM for acute agitation in schizophrenia and says debilitated and geriatric patients may need less. The APA guideline advises starting delirium patients at half or less of a usual adult starting dose."
 sources: [label-haloperidol-inj-2026, esaic-pod-2024, nice-delirium-2023, apa-delirium-2025, aha-accf-qt-2010]
 verification:
   source: esaic-pod-2024

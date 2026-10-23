@@ -6,7 +6,7 @@ amount: "600"
 unit: mg
 frequency: every 12 hours
 cautions:
-  - "IV: infuse over 30–120 minutes; oral and IV doses are the same."
+  - "IV: infuse over 30–120 minutes. Oral and IV doses are the same."
   - No dose change for kidney impairment (label).
   - Serotonin syndrome with SSRIs, SNRIs and other serotonergic drugs.
   - "Myelosuppression, especially beyond 2 weeks or with severe kidney impairment: weekly CBC."

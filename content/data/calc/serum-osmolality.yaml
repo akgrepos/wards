@@ -16,7 +16,7 @@ calculator:
     - { fn: effective-osmolality, label: "Effective osmolality (without BUN)", unit: "mOsm/kg", decimals: 0, needs: [na, glucose] }
   reference: "Normal 275–295 mOsm/kg. Hyperosmolar hyperglycemic state: effective osmolality >300 mOsm/kg."
   notes:
-    - "Calculated only; it does not include ethanol or other osmoles (a measured osmolality is needed for an osmolar gap)."
+    - "Calculated only. It does not include ethanol or other osmoles (a measured osmolality is needed for an osmolar gap)."
 verification:
   source: rasouli-osmolality-2016
   read: not-verified
