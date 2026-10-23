@@ -6,7 +6,7 @@ amount: "3"
 unit: mL/kg
 rate: "over 1 hour"
 give_when: "Prevent: from a rise of 6–8 mEq/L in the first 24 h (starting Na⁺ <120 mEq/L), match ongoing dilute urine losses. Re-lower: consider once Na⁺ is past the limit"
-repeat: "Recheck Na⁺ after each hour; repeat until Na⁺ is back below the limit"
+repeat: "Recheck Na⁺ after each hour. Repeat until Na⁺ is back below the limit"
 cautions:
   - "Give with desmopressin to stop the ongoing water diuresis."
   - "Re-lowering is not validated in controlled trials."

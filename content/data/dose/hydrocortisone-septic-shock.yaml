@@ -9,9 +9,9 @@ frequency: "per day: 50 mg every 6 hours or a continuous infusion"
 duration: "Trial regimens: 5–7 days or until ICU discharge, with or without a taper"
 max: "Avoid high-dose short courses (more than 400 mg per day for less than 3 days): strong recommendation against"
 cautions:
-  - "Hyperglycemia and hypernatremia; possibly neuromuscular weakness."
+  - "Hyperglycemia and hypernatremia. Possibly neuromuscular weakness."
   - "No added benefit seen above about 260 mg per day."
-notes: "The 2026 guideline suggests IV corticosteroids in septic shock without naming a drug or dose; this is the SCCM 2024 regimen and the largest trial's. Septic shock is not a labeled indication."
+notes: "The 2026 guideline suggests IV corticosteroids in septic shock without naming a drug or dose. This is the SCCM 2024 regimen and the largest trial's. Septic shock is not a labeled indication."
 sources: [sccm-corticosteroids-2024, ssc-sepsis-2026, adrenal-2018, label-solu-cortef-2026]
 verification:
   source: sccm-corticosteroids-2024

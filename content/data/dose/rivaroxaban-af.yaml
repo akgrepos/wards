@@ -6,18 +6,18 @@ route: PO
 amount: "20"
 unit: mg
 frequency: once daily with the evening meal
-boxed_warning: "Premature discontinuation raises the risk of thrombotic events; spinal or epidural hematoma with neuraxial anesthesia or spinal puncture."
+boxed_warning: "Premature discontinuation raises the risk of thrombotic events. Spinal or epidural hematoma with neuraxial anesthesia or spinal puncture."
 adjustments:
   - when: CrCl ≤50 mL/min (Cockcroft-Gault, actual body weight)
     change: 15 mg once daily with the evening meal
   - when: End-stage kidney disease on hemodialysis
-    change: 15 mg once daily; outcome data limited
+    change: 15 mg once daily. Outcome data limited
   - when: Liver impairment
     change: Avoid in Child-Pugh B or C, or liver disease with coagulopathy
 cautions:
   - "Must be taken with food for full absorption."
   - "Avoid combined strong CYP3A and P-gp inhibitors or inducers."
-  - "Crushed tablet by mouth or gastric tube: follow with food or enteral feeding; not distal to the stomach."
+  - "Crushed tablet by mouth or gastric tube: follow with food or enteral feeding. Not distal to the stomach."
 sources: [label-xarelto-2026, acc-aha-af-2023]
 verification:
   source: label-xarelto-2026

@@ -6,7 +6,7 @@ amount: "500"
 unit: mL
 rate: "over less than 15 minutes"
 give_when: "Signs of hypovolemia or hypoperfusion (e.g. SBP <100 mm Hg, HR >90, capillary refill >2 s or cold peripheries, RR >20)"
-repeat: "Reassess after each bolus (perfusion, fluid responsiveness, lungs); repeat only while the patient still responds and needs it"
+repeat: "Reassess after each bolus (perfusion, fluid responsiveness, lungs). Repeat only while the patient still responds and needs it"
 cautions:
   - "Use a crystalloid with Na⁺ 130–154 mEq/L."
   - "Heart failure, kidney failure or frailty: smaller volumes and more frequent reassessment."

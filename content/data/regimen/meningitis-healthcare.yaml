@@ -1,10 +1,10 @@
 name: Healthcare-associated or neurosurgical meningitis
 indication: Meningitis or ventriculitis after neurosurgery, a shunt or an external drain
-setting: "Remove or replace infected hardware where possible; cultures from the cerebrospinal fluid"
+setting: "Remove or replace infected hardware where possible. Cultures from the cerebrospinal fluid"
 options:
   - label: Vancomycin plus an antipseudomonal β-lactam
     doses: [vancomycin-meningitis, [cefepime-nosocomial, meropenem-meningitis]]
-duration: "Coagulase-negative staphylococci or Cutibacterium: 10 days, or 10–14 days with significant inflammation; S. aureus or gram-negative bacilli: 10–14 days (some use 21 days for gram-negative bacilli); if cultures stay positive, 10–14 days after the last positive culture"
+duration: "Coagulase-negative staphylococci or Cutibacterium: 10 days, or 10–14 days with significant inflammation. S. aureus or gram-negative bacilli: 10–14 days (some use 21 days for gram-negative bacilli). If cultures stay positive, 10–14 days after the last positive culture"
 notes:
   - "Serious β-lactam allergy: aztreonam or ciprofloxacin for gram-negative coverage, with infectious diseases."
 sources: [idsa-ventriculitis-2017, idsa-meningitis-2004]

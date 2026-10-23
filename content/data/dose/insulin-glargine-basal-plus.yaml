@@ -6,7 +6,7 @@ route: SC
 amount: "0.25"
 unit: units/kg
 frequency: "once daily, plus rapid-acting correction insulin"
-give_when: "Poor or no oral intake; or type 2 diabetes with mild hyperglycemia"
+give_when: "Poor or no oral intake. Or type 2 diabetes with mild hyperglycemia"
 adjustments:
   - when: "Age ≥70 years or creatinine ≥2.0 mg/dL"
     change: "0.15 units/kg once daily"

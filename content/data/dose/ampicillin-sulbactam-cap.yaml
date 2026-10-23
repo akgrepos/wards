@@ -12,7 +12,7 @@ adjustments:
     change: Every 12 hours
   - when: CrCl 5–14 mL/min
     change: Every 24 hours
-notes: CAP use rests on the guideline; the label lists skin, intra-abdominal and gynecologic infections.
+notes: CAP use rests on the guideline. The label lists skin, intra-abdominal and gynecologic infections.
 sources:
   - idsa-ats-cap-2019
   - label-unasyn-2026

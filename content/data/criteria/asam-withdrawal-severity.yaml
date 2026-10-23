@@ -1,7 +1,7 @@
 name: ASAM alcohol withdrawal severity
 title: "ASAM alcohol withdrawal severity, 2020"
 short: ASAM severity
-logic: "Classify by the {{calc:ciwa-ar}} and by complications; its bands vary between protocols and are guides, not rules:"
+logic: "Classify by the {{calc:ciwa-ar}} and by complications. Its bands vary between protocols and are guides, not rules:"
 columns: [Severity, Findings]
 layout: stacked
 tones: [yellow, orange, red, red]

@@ -10,7 +10,7 @@ adjustments:
   - when: CrCl ≤30 mL/min
     change: 500 mg every 24 hours
   - when: Hemodialysis
-    change: 500 mg daily; extra 150 mg after dialysis if dosed within 6 hours before it
+    change: 500 mg daily. Extra 150 mg after dialysis if dosed within 6 hours before it
 cautions:
   - No Pseudomonas or Enterococcus coverage.
   - "Lowers valproate levels: avoid together."

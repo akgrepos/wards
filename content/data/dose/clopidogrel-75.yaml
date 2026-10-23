@@ -1,12 +1,12 @@
 drug_name: Clopidogrel
 brand: Plavix
-indication: Antiplatelet maintenance (ACS, with aspirin; or with an oral anticoagulant)
+indication: Antiplatelet maintenance (ACS with aspirin. Or with an oral anticoagulant)
 population: Adults
 route: PO
 amount: "75"
 unit: mg
 frequency: once daily
-boxed_warning: "Reduced effect in CYP2C19 poor metabolizers; consider another P2Y12 inhibitor."
+boxed_warning: "Reduced effect in CYP2C19 poor metabolizers. Consider another P2Y12 inhibitor."
 cautions:
   - "Avoid omeprazole and esomeprazole."
   - "Hold 5 days before surgery with major bleeding risk when possible."

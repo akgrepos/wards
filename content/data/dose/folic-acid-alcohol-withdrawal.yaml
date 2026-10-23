@@ -7,7 +7,7 @@ unit: mg
 frequency: once daily
 give_when: Critically ill or poorly nourished patients
 duration: "During the admission"
-notes: "ASAM: folate 1 mg daily may be considered in critically ill patients (chronic alcohol use and hyperhomocysteinemia); an ICU study cited by ASAM used 400–1000 mcg IV."
+notes: "ASAM: folate 1 mg daily may be considered in critically ill patients (chronic alcohol use and hyperhomocysteinemia). An ICU study cited by ASAM used 400–1000 mcg IV."
 sources: [asam-alcohol-withdrawal-2020, common-practice]
 verification:
   source: asam-alcohol-withdrawal-2020

@@ -14,5 +14,5 @@ rows:
   - ["Previously documented DVT", "1"]
   - ["Alternative diagnosis at least as likely as DVT", "−2"]
 notes:
-  - "DVT likely ≥2; unlikely ≤1. Validated mainly in outpatients; performs poorly in hospitalized patients."
+  - "DVT likely ≥2. Unlikely ≤1. Validated mainly in outpatients. Performs poorly in hospitalized patients."
 sources: [wells-dvt-2003, silveira-wells-inpatient-2015]

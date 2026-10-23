@@ -9,7 +9,7 @@ give_when: "Persistent hypoperfusion despite adequate volume and MAP, with cardi
 max: "Label: rarely up to 40 mcg/kg/min"
 cautions:
   - "Tachycardia, arrhythmias and hypotension (vasodilation): add to a vasopressor, not instead of one."
-notes: "Septic shock is not a labeled indication; range from the label's inotropic-support dosing. Epinephrine alone is the alternative."
+notes: "Septic shock is not a labeled indication. Range from the label's inotropic-support dosing. Epinephrine alone is the alternative."
 sources: [label-dobutamine-2026, ssc-sepsis-2026]
 verification:
   source: label-dobutamine-2026

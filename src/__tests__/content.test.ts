@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { loadContent } from '../../scripts/content/load.mjs';
 import { checkContent, checkWarnings } from '../../scripts/content/check.mjs';
 import { parseBlocks } from '../../scripts/content/load.mjs';
+import { hasSemicolon } from '../../scripts/content/semicolons.mjs';
 
 const real = loadContent(process.cwd(), { includeExamples: true }) as never as Parameters<typeof checkContent>[0];
 type AnyCard = Record<string, unknown>;
@@ -317,5 +318,37 @@ describe('consistency rules', () => {
     expect(warnings(base)).toMatch(/Do Now dose not in Treatment: example-drug-standard/);
     base.cards.at(-1).sections[1].blocks = parseBlocks(['{{dose:example-drug-standard}}']);
     expect(warnings(base)).not.toMatch(/Do Now dose/);
+  });
+});
+
+describe('no semicolons', () => {
+  const clone = () => JSON.parse(JSON.stringify(real));
+  const withLine = (line: string) => {
+    const base = clone();
+    base.cards.push({
+      file: 'test.md', id: 'test-card', type: 'condition', variant: null, system: 'renal', group: 'condition', subsection: 'Electrolyte Disorders',
+      title: 'Test', aliases: [], related: {}, example: false, unknownSections: [], unknownSubsections: [], definition: null, basedOn: [], reviewed: null,
+      sections: [{ key: 'at-a-glance', title: 'At a Glance', blocks: parseBlocks(kp(line).split('\n')), subsections: [] }],
+    });
+    return checkContent(base).join('\n');
+  };
+  it('rejects a semicolon in card text', () => {
+    expect(withLine('- First clause; second clause ^[example-guideline-a]')).toMatch(/semicolon rule/);
+  });
+  it('allows entities such as &amp;', () => {
+    expect(withLine('- Salt &amp; water ^[example-guideline-a]')).not.toMatch(/semicolon rule/);
+  });
+  it('rejects a semicolon in a data item but not in a citation', () => {
+    const base = clone();
+    base.data.dose['example-drug-standard'].notes = 'One thing; another thing';
+    expect(checkContent(base).join('\n')).toMatch(/semicolon rule/);
+    const ok = clone();
+    const [id] = Object.keys(ok.data.source);
+    ok.data.source[id].citation = 'Author A. Title. J Test. 2020;12:34.';
+    expect(checkContent(ok).join('\n')).not.toMatch(/semicolon rule/);
+  });
+  it('ignores web addresses', () => {
+    expect(hasSemicolon('https://example.com/a;b')).toBe(false);
+    expect(hasSemicolon('a; b')).toBe(true);
   });
 });

@@ -5,11 +5,11 @@ route: IV
 amount: 200–500
 unit: mg
 frequency: "every 8 hours"
-duration: "Not standardized; continue while signs improve, then step down to a maintenance dose"
-give_when: Suspected Wernicke encephalopathy, or ICU signs that mimic or mask it (such as delirium); do not delay glucose
+duration: "Not standardized. Continue while signs improve, then step down to a maintenance dose"
+give_when: Suspected Wernicke encephalopathy, or ICU signs that mimic or mask it (such as delirium). Do not delay glucose
 cautions:
-  - "Anaphylaxis is rare but reported, mostly after repeated injections; often infused over about 30 minutes (practice)."
-notes: "EFNS: 200 mg three times daily, preferably IV, before any carbohydrate. ASAM (ICU discussion of one study): 200–500 mg IV every 8 hours when signs mimic or mask Wernicke; ASAM says thiamine and glucose may be given in any order. The label lists only 100 mg IV then 50–100 mg IM daily."
+  - "Anaphylaxis is rare but reported, mostly after repeated injections. Often infused over about 30 minutes (practice)."
+notes: "EFNS: 200 mg three times daily, preferably IV, before any carbohydrate. ASAM (ICU discussion of one study): 200–500 mg IV every 8 hours when signs mimic or mask Wernicke. ASAM says thiamine and glucose may be given in any order. The label lists only 100 mg IV then 50–100 mg IM daily."
 sources: [galvin-efns-wernicke-2010, asam-alcohol-withdrawal-2020, label-thiamine-inj-2026, common-practice]
 verification:
   source: galvin-efns-wernicke-2010

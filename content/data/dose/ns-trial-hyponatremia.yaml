@@ -8,10 +8,10 @@ frequency: "once, then reassess Na⁺ and volume status"
 give_when: "Hypovolemia, or equivocal volume status with urine Na⁺ <20–30 mEq/L"
 repeat: "Continue until blood pressure is restored and the patient is euvolemic"
 cautions:
-  - "Once volume is restored, a water diuresis can raise Na⁺ too fast; monitor urine output and Na⁺ closely."
+  - "Once volume is restored, a water diuresis can raise Na⁺ too fast. Monitor urine output and Na⁺ closely."
   - "In SIADH, saline can lower Na⁺ further (urine Na⁺ + K⁺ above serum Na⁺)."
   - "Not with volume overload."
-notes: "Hypovolemic hyponatremia improves without signs of volume overload; in SIADH, urine Na⁺ rises but serum Na⁺ stays the same or falls. The European guideline accepts a balanced crystalloid instead."
+notes: "Hypovolemic hyponatremia improves without signs of volume overload. In SIADH, urine Na⁺ rises but serum Na⁺ stays the same or falls. The European guideline accepts a balanced crystalloid instead."
 sources: [verbalis-hyponatremia-2013, hoorn-hyponatremia-guidelines-2017]
 verification:
   source: verbalis-hyponatremia-2013

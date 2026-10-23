@@ -6,11 +6,11 @@ route: PO
 amount: 650–1000
 unit: mg
 frequency: every 6 hours, scheduled
-max: "4,000 mg a day (the IV label's ceiling). Many hospitals cap at 3,000 mg a day; use 2,000–3,000 mg a day for older or frail patients, chronic liver disease, alcohol use disorder or malnutrition."
+max: "4,000 mg a day (the IV label's ceiling). Many hospitals cap at 3,000 mg a day. Use 2,000–3,000 mg a day for older or frail patients, chronic liver disease, alcohol use disorder or malnutrition."
 boxed_warning: None
 cautions:
   - "Count every source of acetaminophen, including combination opioid products, toward the daily maximum."
-notes: "No prescription oral label exists for acetaminophen; the daily ceiling here comes from the IV label and the lower caps are common practice."
+notes: "No prescription oral label exists for acetaminophen. The daily ceiling here comes from the IV label and the lower caps are common practice."
 sources: [label-acetaminophen-iv-2026, chou-postop-pain-2016, common-practice]
 verification:
   source: label-acetaminophen-iv-2026

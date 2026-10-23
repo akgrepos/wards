@@ -8,14 +8,14 @@ unit: mg
 rate: "slowly, at 2 mg per minute, after diluting 1:1"
 repeat: "May repeat 4 mg once after 10–15 minutes"
 give_when: Active withdrawal seizure
-boxed_warning: "Concomitant use with opioids can cause profound sedation, respiratory depression, coma and death; abuse, misuse and addiction; dependence and withdrawal reactions."
+boxed_warning: "Concomitant use with opioids can cause profound sedation, respiratory depression, coma and death. Abuse, misuse and addiction. Dependence and withdrawal reactions."
 alternative:
   dose: diazepam-iv-seizure
   when: "Lorazepam unavailable"
 cautions:
   - "Prepare to support the airway."
   - "No IV access: ASAM notes IM benzodiazepine is also effective."
-notes: "Labeled for status epilepticus; ASAM recommends a fast-acting parenteral benzodiazepine (IV preferred, IM effective) for a withdrawal seizure."
+notes: "Labeled for status epilepticus. ASAM recommends a fast-acting parenteral benzodiazepine (IV preferred, IM effective) for a withdrawal seizure."
 sources: [label-ativan-inj-2026, asam-alcohol-withdrawal-2020]
 verification:
   source: label-ativan-inj-2026

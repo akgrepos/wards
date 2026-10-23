@@ -1,15 +1,15 @@
 drug_name: Carbamazepine
 brand: Tegretol
 indication: Mild to moderate alcohol withdrawal when benzodiazepines are contraindicated, or as an adjunct (off-label)
-population: Adults without prior bone marrow depression; screen for HLA-B*1502 in patients of at-risk Asian ancestry
+population: Adults without prior bone marrow depression. Screen for HLA-B*1502 in patients of at-risk Asian ancestry
 route: PO
 amount: 200
 unit: mg
-frequency: "every 8 hours as an adjunct (400 mg every 12 hours is an alternative); monotherapy 600–800 mg a day, tapered to 200–400 mg a day over 4–9 days"
+frequency: "every 8 hours as an adjunct (400 mg every 12 hours is an alternative). Monotherapy 600–800 mg a day, tapered to 200–400 mg a day over 4–9 days"
 give_when: Mild or moderate withdrawal, including when benzodiazepines are contraindicated, or as an adjunct after an adequate benzodiazepine dose
-boxed_warning: "Serious dermatologic reactions (Stevens-Johnson syndrome and toxic epidermal necrolysis) with HLA-B*1502; aplastic anemia and agranulocytosis."
+boxed_warning: "Serious dermatologic reactions (Stevens-Johnson syndrome and toxic epidermal necrolysis) with HLA-B*1502. Aplastic anemia and agranulocytosis."
 cautions:
-  - "Many drug interactions (CYP3A4 inducer); baseline CBC (label); hyponatremia (SIADH) can occur."
+  - "Many drug interactions (CYP3A4 inducer). Baseline CBC (label). Hyponatremia (SIADH) can occur."
   - "Contraindicated with prior bone marrow depression, with nefazodone and within 14 days of an MAO inhibitor (label)."
   - "Not for patients with complicated withdrawal, seizures from withdrawal or delirium."
 notes: "Not labeled for alcohol withdrawal. ASAM Appendix V sample regimens."

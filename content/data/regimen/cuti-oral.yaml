@@ -5,9 +5,9 @@ options:
   - label: Preferred
     doses: [[ciprofloxacin-po-cuti, levofloxacin-750, tmp-smx-cuti]]
   - label: Alternatives
-    when: "Less well studied; best with a susceptible isolate, at the higher doses"
+    when: "Less well studied. Best with a susceptible isolate, at the higher doses"
     doses: [[cefpodoxime-cuti, amoxicillin-clavulanate-cuti, cephalexin-cuti]]
-duration: "Fluoroquinolone: 5–7 days in total; others: 7 days in total"
+duration: "Fluoroquinolone: 5–7 days in total. Others: 7 days in total"
 notes:
   - "Avoid low-bioavailability oral β-lactams such as cefdinir."
 sources: [idsa-cuti-selection-2025, idsa-cuti-ivpo-2025, idsa-cuti-duration-2025]

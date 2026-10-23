@@ -6,13 +6,13 @@ amount: "400"
 unit: mg
 frequency: every 12 hours
 rate: over 60 minutes
-boxed_warning: "Fluoroquinolones: disabling and potentially irreversible tendinitis and tendon rupture, peripheral neuropathy and CNS effects, and worsening of myasthenia gravis; stop at the first sign."
+boxed_warning: "Fluoroquinolones: disabling and potentially irreversible tendinitis and tendon rupture, peripheral neuropathy and CNS effects, and worsening of myasthenia gravis. Stop at the first sign."
 adjustments:
   - when: CrCl 5–29 mL/min
     change: 200–400 mg every 18–24 hours
 cautions:
   - Avoid if a fluoroquinolone was used in the last 12 months or a prior isolate was resistant.
-  - QT prolongation; raises tizanidine and theophylline levels.
+  - QT prolongation. Raises tizanidine and theophylline levels.
 sources:
   - idsa-cuti-selection-2025
   - label-cipro-iv-2025

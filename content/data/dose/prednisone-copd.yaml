@@ -12,9 +12,9 @@ alternative:
   when: Unable to take oral medication
 cautions:
   - "Oral is as effective as IV."
-  - "Longer courses add pneumonia risk without benefit; even short courses carry risks of pneumonia, sepsis and hyperglycemia."
+  - "Longer courses add pneumonia risk without benefit. Even short courses carry risks of pneumonia, sepsis and hyperglycemia."
   - "Check glucose in diabetes."
-notes: "Prednisone-equivalent dose from the guideline; COPD is not a labeled prednisone indication (label: 5–60 mg/day, individualized). No taper needed after 5 days."
+notes: "Prednisone-equivalent dose from the guideline. COPD is not a labeled prednisone indication (label: 5–60 mg/day, individualized). No taper needed after 5 days."
 sources: [gold-copd-2026, reduce-2013, ers-ats-copd-exacerbation-2017, label-prednisone-2025]
 verification:
   source: gold-copd-2026

@@ -5,11 +5,11 @@ route: IV
 amount: "150"
 unit: mL
 rate: "over 20 minutes"
-give_when: "Severe symptoms (repeat as needed); moderately severe symptoms (once)"
+give_when: "Severe symptoms (repeat as needed). Moderately severe symptoms (once)"
 repeat: "Severe symptoms: 2–3 boluses in total, rechecking Na⁺ between them, until symptoms improve or Na⁺ has risen about 5 mEq/L"
 max: "Na⁺ rise ≤10 mEq/L in the first 24 h"
 cautions:
-  - "Overcorrection is likely after a second 150 mL bolus; keep it for persisting severe symptoms."
+  - "Overcorrection is likely after a second 150 mL bolus. Keep it for persisting severe symptoms."
 notes: "The US panel uses 100 mL over 10 minutes instead."
 sources: [hoorn-hyponatremia-guidelines-2017, spasovski-hyponatraemia-2014, rondon-berrios-hypertonic-2022]
 verification:

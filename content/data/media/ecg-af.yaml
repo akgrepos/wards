@@ -3,8 +3,8 @@
 kind: ecg
 title: Atrial fibrillation
 alt: "Lead II rhythm strip in atrial fibrillation: R-R intervals of 602, 748 and 872 ms, no P waves, a fine fibrillatory baseline."
-caption: "Lead II: every R-R interval differs (rate about 81/min); no P waves, only a fine fibrillatory baseline."
-illustrates: "Irregularly irregular R-R intervals without distinct P waves; fibrillatory waves may be seen."
+caption: "Lead II: every R-R interval differs (rate about 81/min). No P waves, only a fine fibrillatory baseline."
+illustrates: "Irregularly irregular R-R intervals without distinct P waves. Fibrillatory waves may be seen."
 sources: [acc-aha-af-2023]
 show: { lead: II, from: 0.4, to: 3.4, smooth: 1.6 }
 marks:

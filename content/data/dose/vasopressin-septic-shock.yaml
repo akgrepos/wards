@@ -5,11 +5,11 @@ population: Adults
 route: IV
 amount: "0.01"
 unit: units/min
-rate: "continuous infusion; titrate by 0.005 units/min every 10–15 minutes"
+rate: "continuous infusion. Titrate by 0.005 units/min every 10–15 minutes"
 give_when: "Rising norepinephrine requirement"
 max: "Label: limited data above 0.07 units/min in septic shock"
 cautions:
-  - "Digital, mesenteric and myocardial ischemia; hyponatremia."
+  - "Digital, mesenteric and myocardial ischemia. Hyponatremia."
   - "Reversible diabetes insipidus after stopping: watch Na⁺ and urine output."
 notes: "The 2021 guideline notes it is usually given at a fixed 0.03 units/min (trials used up to 0.06). Weaning (label): once the target is held for 8 hours without catecholamines, lower by 0.005 units/min every hour."
 sources: [label-vasostrict-2026, ssc-sepsis-2026, ssc-sepsis-2021, vasst-2008]

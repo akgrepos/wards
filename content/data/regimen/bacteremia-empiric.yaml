@@ -1,14 +1,14 @@
 name: Bloodstream infection, source unclear
 indication: Bacteremia or catheter-related bloodstream infection before cultures return
-setting: "Blood cultures before antibiotics; remove the catheter when it is a short-term line or the organism requires removal"
+setting: "Blood cultures before antibiotics. Remove the catheter when it is a short-term line or the organism requires removal"
 options:
   - label: Vancomycin plus a gram-negative β-lactam
-    when: "Vancomycin where MRSA is common; gram-negative coverage by local data and severity, broader for neutropenia, severe sepsis or known resistant colonization"
+    when: "Vancomycin where MRSA is common. Gram-negative coverage by local data and severity, broader for neutropenia, severe sepsis or known resistant colonization"
     doses: [vancomycin-iv, [cefepime-nosocomial, piperacillin-tazobactam-nosocomial, meropenem-nosocomial]]
   - label: Add an echinocandin
     when: "Septic with Candida risk: femoral line, parenteral nutrition, prolonged broad-spectrum therapy, hematologic cancer or transplant, or Candida colonization at several sites"
     doses: [micafungin-candidemia]
-duration: "Staphylococcus aureus: at least 14 days from the first negative culture and longer with a deep focus; gram-negative bacilli: 7 days with source control and a good response; after catheter removal, coagulase-negative staphylococci 5–7 days and enterococci 7–14 days; Candida: 14 days after the first negative culture"
+duration: "Staphylococcus aureus: at least 14 days from the first negative culture and longer with a deep focus. Gram-negative bacilli: 7 days with source control and a good response. After catheter removal, coagulase-negative staphylococci 5–7 days and enterococci 7–14 days. Candida: 14 days after the first negative culture"
 notes:
   - "Drop vancomycin by 48–72 hours if cultures show no MRSA or other organism needing it."
 sources: [idsa-crbsi-2009, idsa-esc-sab-2026, balance-2025, idsa-candida-2016]

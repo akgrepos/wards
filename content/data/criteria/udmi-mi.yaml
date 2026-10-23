@@ -8,7 +8,7 @@ items:
   - "New ischemic-pattern wall-motion abnormality or loss of viable myocardium on imaging"
 notes:
   - "Classified by setting as primary, secondary or procedure-related MI (replaces the numbered types 1–5)."
-  - "MI is likely on troponin plus symptoms or ECG changes; angiography or imaging confirms it and its cause."
+  - "MI is likely on troponin plus symptoms or ECG changes. Angiography or imaging confirms it and its cause."
   - "Chronic myocardial injury is suggested by two or more values above the sex-specific 99th percentile in a stable setting."
   - "Unstable angina: new rest or minimal-exertion angina, or sudden worsening of chronic angina, with MI excluded by serial troponin."
 sources: [udmi-2026]

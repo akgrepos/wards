@@ -8,7 +8,7 @@ frequency: once daily, with hydrocortisone
 duration: "7 days (APROCCHSS)"
 cautions:
   - "Sodium retention, hypokalemia."
-notes: "Optional: no guideline recommends for or against it; SCCM 2024 lists hydrocortisone with or without fludrocortisone. Off-label (labeled for Addison disease); tablets are 0.1 mg."
+notes: "Optional: no guideline recommends for or against it. SCCM 2024 lists hydrocortisone with or without fludrocortisone. Off-label (labeled for Addison disease). Tablets are 0.1 mg."
 sources: [sccm-corticosteroids-2024, aprocchss-2018, label-fludrocortisone-2025]
 verification:
   source: aprocchss-2018

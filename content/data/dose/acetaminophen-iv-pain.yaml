@@ -12,7 +12,7 @@ boxed_warning: "Dosing errors (mg versus mL, weight-based dosing under 50 kg) ca
 cautions:
   - "Count every source of acetaminophen, including combination opioid products, toward the daily maximum."
   - "Use caution in hepatic impairment or active liver disease, alcohol use disorder, chronic malnutrition, severe hypovolemia and severe renal impairment (CrCl ≤30)."
-notes: "Scheduled dosing is the usual multimodal approach; PRN dosing underuses it."
+notes: "Scheduled dosing is the usual multimodal approach. PRN dosing underuses it."
 sources: [label-acetaminophen-iv-2026, chou-postop-pain-2016]
 verification:
   source: label-acetaminophen-iv-2026

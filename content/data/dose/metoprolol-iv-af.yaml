@@ -13,7 +13,7 @@ cautions:
   - "Hold for SBP <100 mm Hg, HR <45 beats/min, PR ≥0.24 s, second- or third-degree AV block, decompensated heart failure or cardiogenic shock (label contraindications)."
   - "Not with IV diltiazem within a few hours (additive AV block and hypotension)."
   - "Caution with severe bronchospasm."
-notes: "AF is not a labeled indication; the label gives three 5 mg boluses about 2 minutes apart for acute MI. Follow with oral metoprolol once controlled."
+notes: "AF is not a labeled indication. The label gives three 5 mg boluses about 2 minutes apart for acute MI. Follow with oral metoprolol once controlled."
 sources: [acc-aha-af-2023, label-metoprolol-inj-2026]
 verification:
   source: acc-aha-af-2023

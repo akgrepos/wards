@@ -6,7 +6,7 @@ items:
   - "Onset or worsening within 1 week of a known risk factor (e.g. pneumonia, sepsis, aspiration, trauma, pancreatitis) or new respiratory symptoms"
   - "Bilateral opacities on chest radiograph or CT, or bilateral B-lines and/or consolidation on lung ultrasound, not fully explained by effusions, atelectasis or nodules"
   - "Not primarily from cardiogenic pulmonary edema or fluid overload (hydrostatic edema may coexist)"
-  - "Hypoxemia: not intubated, PaO₂/FiO₂ ≤300 or SpO₂/FiO₂ ≤315 (if SpO₂ ≤97%) on high-flow oxygen ≥30 L/min or NIV/CPAP with end-expiratory pressure ≥5 cm H₂O; intubated, by severity below"
+  - "Hypoxemia: not intubated, PaO₂/FiO₂ ≤300 or SpO₂/FiO₂ ≤315 (if SpO₂ ≤97%) on high-flow oxygen ≥30 L/min or NIV/CPAP with end-expiratory pressure ≥5 cm H₂O. Intubated, by severity below"
 columns: [Severity, Intubated patients]
 rows:
   - ["Mild", "PaO₂/FiO₂ >200 and ≤300, or SpO₂/FiO₂ >235 and ≤315 (if SpO₂ ≤97%)"]

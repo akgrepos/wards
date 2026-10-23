@@ -4,14 +4,14 @@ population: Adults
 route: PO
 amount: "400"
 unit: mg
-frequency: "1–2 times daily to start; up to 3 times daily as tolerated"
+frequency: "1–2 times daily to start. Up to 3 times daily as tolerated"
 adjustments:
   - when: "Kidney failure"
-    change: "Avoid or reduce; monitor Mg (risk of hypermagnesemia)"
+    change: "Avoid or reduce. Monitor Mg (risk of hypermagnesemia)"
 cautions:
-  - "Diarrhea is the main limit; titrate as tolerated."
+  - "Diarrhea is the main limit. Titrate as tolerated."
   - "Magnesium hydroxide is a laxative: not for repletion."
-notes: "Each 400 mg tablet has 241 mg of elemental magnesium. Aim for at least about 300 mg of elemental magnesium a day in divided doses. Organic salts (e.g. citrate) may be better absorbed; evidence is weak."
+notes: "Each 400 mg tablet has 241 mg of elemental magnesium. Aim for at least about 300 mg of elemental magnesium a day in divided doses. Organic salts (e.g. citrate) may be better absorbed. Evidence is weak."
 sources: [adomako-magnesium-2024, hansen-magnesium-icu-2018]
 verification:
   source: adomako-magnesium-2024

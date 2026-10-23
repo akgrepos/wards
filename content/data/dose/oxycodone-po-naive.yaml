@@ -7,12 +7,12 @@ amount: 5–15
 unit: mg
 frequency: every 4–6 hours as needed
 repeat: "Reassess pain, sedation and respiratory rate before each repeat dose"
-boxed_warning: "Addiction, abuse and misuse; life-threatening respiratory depression; accidental ingestion; risks with benzodiazepines and other CNS depressants; CYP3A4 interactions."
+boxed_warning: "Addiction, abuse and misuse. Life-threatening respiratory depression. Accidental ingestion. Risks with benzodiazepines and other CNS depressants. CYP3A4 interactions."
 adjustments:
   - when: "Kidney or hepatic impairment"
     change: "Start lower than usual and titrate carefully"
 cautions:
-  - "CDC conversion factor 1.5 (oral oxycodone to oral morphine); start at 5 mg in older, frail or opioid-naive patients."
+  - "CDC conversion factor 1.5 (oral oxycodone to oral morphine). Start at 5 mg in older, frail or opioid-naive patients."
 sources: [label-oxycodone-2026, cdc-opioid-2022]
 verification:
   source: label-oxycodone-2026

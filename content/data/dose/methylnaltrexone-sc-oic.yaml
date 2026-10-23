@@ -13,10 +13,10 @@ adjustments:
   - when: "Under 38 kg or over 114 kg"
     change: "0.15 mg/kg"
   - when: "CrCl <60 (Cockcroft-Gault)"
-    change: "Halve the dose: 38 to under 62 kg 4 mg; 62–114 kg 6 mg; under 38 kg or over 114 kg 0.075 mg/kg; same every-other-day schedule"
+    change: "Halve the dose: 38 to under 62 kg 4 mg, 62–114 kg 6 mg, under 38 kg or over 114 kg 0.075 mg/kg. Same every-other-day schedule"
 cautions:
   - "Contraindicated with known or suspected gastrointestinal obstruction."
-  - "Stop if severe or persistent diarrhea or worsening abdominal pain; gastrointestinal perforation has been reported. Stop if the opioid is stopped."
+  - "Stop if severe or persistent diarrhea or worsening abdominal pain. Gastrointestinal perforation has been reported. Stop if the opioid is stopped."
 sources: [label-relistor-2024]
 verification:
   source: label-relistor-2024

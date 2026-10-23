@@ -5,15 +5,15 @@ route: IV
 amount: 5–10
 unit: mg
 rate: "slowly, at least 1 minute per 5 mg, into a large vein"
-frequency: "repeat every 5–10 minutes until light somnolence (common practice); the label's dose is 10 mg initially, then 5–10 mg in 3–4 hours if necessary"
+frequency: "repeat every 5–10 minutes until light somnolence (common practice). The label's dose is 10 mg initially, then 5–10 mg in 3–4 hours if necessary"
 give_when: Severe withdrawal, agitation or delirium that oral dosing cannot control
-max: "No fixed ceiling; very large cumulative doses may be needed. ASAM has no agreed threshold for resistant withdrawal; cutoffs used include about 150–200 mg in the first 3–4 hours and 40–50 mg IV within 1 hour. In one ICU protocol, 200 mg in 4 hours or a single IV dose above 40 mg triggered ICU admission."
-boxed_warning: "Concomitant use with opioids can cause profound sedation, respiratory depression, coma and death; abuse, misuse and addiction; dependence and withdrawal reactions."
+max: "No fixed ceiling. Very large cumulative doses may be needed. ASAM has no agreed threshold for resistant withdrawal. Cutoffs used include about 150–200 mg in the first 3–4 hours and 40–50 mg IV within 1 hour. In one ICU protocol, 200 mg in 4 hours or a single IV dose above 40 mg triggered ICU admission."
+boxed_warning: "Concomitant use with opioids can cause profound sedation, respiratory depression, coma and death. Abuse, misuse and addiction. Dependence and withdrawal reactions."
 cautions:
-  - "Apnea or cardiac arrest can occur with IV use, especially in older adults, the very ill and those with limited pulmonary reserve; keep airway and resuscitation equipment at the bedside."
-  - "Continuous pulse oximetry; the sedation target is light somnolence (awake but drifting to sleep unless stimulated), not deep sedation."
+  - "Apnea or cardiac arrest can occur with IV use, especially in older adults, the very ill and those with limited pulmonary reserve. Keep airway and resuscitation equipment at the bedside."
+  - "Continuous pulse oximetry. The sedation target is light somnolence (awake but drifting to sleep unless stimulated), not deep sedation."
   - "The injection contains propylene glycol: with repeated high doses watch for hyponatremia and metabolic acidosis."
-  - "Do not mix or dilute with other solutions or drugs in the syringe or infusion; avoid small veins and intra-arterial injection."
+  - "Do not mix or dilute with other solutions or drugs in the syringe or infusion. Avoid small veins and intra-arterial injection."
 notes: "Labeled for acute alcohol withdrawal, including impending or acute delirium tremens. The 5–10 minute repeat interval for titration is common ICU practice, consistent with ASAM's endorsement of intermittent IV dosing to light somnolence and of escalating diazepam doses in resistant withdrawal."
 sources: [asam-alcohol-withdrawal-2020, label-diazepam-inj-2026, common-practice]
 verification:

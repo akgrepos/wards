@@ -2,6 +2,10 @@
 
 What changed in each version of Wards, newest first. The version is shown in Settings (gear on Home).
 
+## 2026.10.23.3
+
+**Formatting: no semicolons.** Card text no longer uses semicolons. Lists are now bullets and long sentences are split in two. Nothing else changed; the wording, doses, numbers and sources are the same.
+
 ## 2026.10.23.2
 
 **Fix: pop-ups keep the page still.** While a calculator, dose or source pop-up is open, the page behind it no longer scrolls when you scroll or type in the pop-up, and the page is back where you left it when you close it.

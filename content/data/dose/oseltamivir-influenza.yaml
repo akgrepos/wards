@@ -7,7 +7,7 @@ amount: "75"
 unit: mg
 frequency: every 12 hours
 duration: 5 days
-give_when: As soon as possible; in hospitalized patients regardless of time since symptom onset
+give_when: As soon as possible. In hospitalized patients regardless of time since symptom onset
 adjustments:
   - when: CrCl >30–60 mL/min
     change: 30 mg twice daily
@@ -19,7 +19,7 @@ adjustments:
     change: A single 30 mg dose
   - when: End-stage kidney disease not on dialysis
     change: Not recommended
-notes: The label indication is treatment within 48 hours of symptoms; guidelines treat all hospitalized patients regardless of duration.
+notes: The label indication is treatment within 48 hours of symptoms. Guidelines treat all hospitalized patients regardless of duration.
 sources:
   - label-tamiflu-2025
   - idsa-ats-cap-2019

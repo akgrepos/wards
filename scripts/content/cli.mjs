@@ -10,6 +10,7 @@ const content = loadContent(root, { includeExamples: true });
 const HINTS = [
   [/duplicate alias|alias bloat/, 'Rule: an alias belongs to one card. Read docs/CONTENT-FORMAT.md "Consistency rules".'],
   [/subsection vocabulary/, `Rule: a condition card's subsection is one of its system's names in content/systems.yaml. Read docs/CONTENT-FORMAT.md "Consistency rules".`],
+  [/semicolon rule/, 'Rule: no semicolons in card text; a list becomes bullets, a clause join becomes two sentences. Read docs/CONTENT-FORMAT.md "No semicolons".'],
   [/tags rule/, 'Rule: [!cannot-miss] and [!most-common] go only on causes in the Causes section. Read docs/CONTENT-FORMAT.md "Consistency rules".'],
   [/table width/, 'Rule: tables are at most four columns. Read docs/CONTENT-FORMAT.md "Consistency rules".'],
   [/out of order|not part of a|missing required section|At a Glance should/, 'Rule: sections appear in the type\'s fixed order, exact names. Read docs/CARD-TYPES.md Part 2.'],

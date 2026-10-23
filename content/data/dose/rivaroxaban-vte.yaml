@@ -6,8 +6,8 @@ route: PO
 amount: "15"
 unit: mg
 frequency: twice daily with food for 21 days, then 20 mg once daily with food
-duration: "At least 3 months; extended therapy after 6 months: 10 mg once daily"
-boxed_warning: "Premature discontinuation raises the risk of thrombotic events; spinal or epidural hematoma with neuraxial anesthesia or spinal puncture."
+duration: "At least 3 months. Extended therapy after 6 months: 10 mg once daily"
+boxed_warning: "Premature discontinuation raises the risk of thrombotic events. Spinal or epidural hematoma with neuraxial anesthesia or spinal puncture."
 adjustments:
   - when: CrCl <15 mL/min
     change: Avoid

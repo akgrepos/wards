@@ -12,13 +12,13 @@ adjustments:
   - when: "On insulin at home"
     change: "About 80% of the home dose"
   - when: "From an IV infusion"
-    change: "About 60% of the 24-hour requirement from the last 6–8 hours of stable glucose; basal 2 hours before stopping the infusion"
+    change: "About 60% of the 24-hour requirement from the last 6–8 hours of stable glucose. Basal 2 hours before stopping the infusion"
   - when: "Not eating"
-    change: "Basal (half the total) plus correction; hold prandial doses"
+    change: "Basal (half the total) plus correction. Hold prandial doses"
 cautions:
   - "Fasting glucose <100 mg/dL predicts hypoglycemia within 24 hours: lower the basal dose."
   - "Type 1 diabetes: never hold basal insulin, even when NPO."
-notes: "Starting dose only; adjust daily to glucose. Trials started 0.4–0.5 units/kg per day and excluded ICU patients, glucocorticoid use and creatinine ≥3.0 mg/dL."
+notes: "Starting dose only. Adjust daily to glucose. Trials started 0.4–0.5 units/kg per day and excluded ICU patients, glucocorticoid use and creatinine ≥3.0 mg/dL."
 sources: [ada-soc-hospital-2026, rabbit-2-2007, rabbit-2-surgery-2011, basal-plus-2013]
 verification:
   source: ada-soc-hospital-2026

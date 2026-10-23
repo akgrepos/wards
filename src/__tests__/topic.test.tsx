@@ -33,7 +33,7 @@ describe('topic page', () => {
     launch('#/card/renal-hyperkalemia');
     expect(screen.getByText('Condition')).toBeTruthy();
     expect(screen.getAllByText('Kidney, Electrolytes and Urology').length).toBeGreaterThan(0);
-    expect(screen.getByText(/cutoffs vary by laboratory/)).toBeTruthy();
+    expect(screen.getByText(/Cutoffs vary by laboratory/)).toBeTruthy();
     expect(screen.queryByRole('button', { name: /^Based on/ })).toBeNull();
     expect(screen.getByText('Reviewed Oct 2026')).toBeTruthy();
   });

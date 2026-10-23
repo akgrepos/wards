@@ -1,11 +1,11 @@
 drug_name: Fondaparinux
 brand: Arixtra
-indication: Acute DVT or PE treatment; preferred parenteral agent with a history of HIT
+indication: Acute DVT or PE treatment. Preferred parenteral agent with a history of HIT
 population: Adults
 route: SC
 amount: "7.5"
 unit: mg
-frequency: once daily (5 mg if weight <50 kg; 10 mg if weight >100 kg)
+frequency: once daily (5 mg if weight <50 kg, 10 mg if weight >100 kg)
 duration: "At least 5 days and until INR is therapeutic if overlapped with warfarin"
 boxed_warning: "Spinal or epidural hematoma with neuraxial anesthesia or spinal puncture."
 adjustments:
