@@ -1,7 +1,7 @@
 // Content checks, run on every pull request (npm run content:check) and in the tests.
 // Each rule comes from docs/CARD-TYPES.md and docs/DATA-TYPES.md.
 import { checkVerification } from './verification.mjs';
-import { CARD_TYPES, CALC_FIELDS, MDCALC_URL, DATA_TYPES, DOSE_FIELDS, CALC_FORMULAS, REGIMEN_FIELDS, REGIMEN_OPTION_FIELDS, SHARED_SECTIONS, UNITS, DOSE_IN_TEXT } from './schema.mjs';
+import { CARD_TYPES, CALC_FIELDS, MDCALC_URL, DATA_TYPES, DOSE_FIELDS, CALC_FORMULAS, REGIMEN_FIELDS, REGIMEN_OPTION_FIELDS, SHARED_SECTIONS, UNITS, DOSE_IN_TEXT, MAX_TABLE_COLUMNS, WIDE_TABLE_EXCEPTIONS, MAX_ALIASES, REVIEW_MAX_AGE_MONTHS } from './schema.mjs';
 import { TAGS, parseInline } from './inline.mjs';
 import { onsetMinutes } from './onset.mjs';
 import { emergencySteps, offsetMinutes, stepDoses } from './emergency.mjs';
@@ -147,6 +147,12 @@ export function checkContent({ systems, cards, data }) {
     cardIds.set(c.id, c.file);
     if (!c.title) err(where, 'missing title');
     if (c.group === 'condition' && !c.subsection) err(where, 'condition cards need a subsection (e.g. "Arrhythmias")');
+    if (c.group === 'condition' && c.subsection && !c.example) {
+      // Subsection names come from a fixed list per system, so near-duplicates ("Heart Failure" and "Heart Failure and Cardiomyopathy") can't creep in.
+      const allowedSubs = systems.find((x) => x.id === c.system)?.subsections;
+      if (!allowedSubs) err(where, `subsection vocabulary: system "${c.system}" has no "subsections" list in content/systems.yaml; add the allowed names there first (docs/CONTENT-FORMAT.md, "Consistency rules")`);
+      else if (!allowedSubs.includes(c.subsection)) err(where, `subsection vocabulary: "${c.subsection}" is not an allowed subsection of "${c.system}" (use ${allowedSubs.map((x) => `"${x}"`).join(', ')}, or add the new name to content/systems.yaml first; docs/CONTENT-FORMAT.md, "Consistency rules")`);
+    }
     if (c.group !== 'condition' && c.subsection) err(where, 'only condition cards have a subsection; approach and reference cards are listed in their own groups');
     if (!systemIds.has(c.system)) err(where, `unknown system "${c.system}"`);
     const type = CARD_TYPES[c.type];
@@ -239,7 +245,8 @@ export function checkContent({ systems, cards, data }) {
           if (x.t === 'insert' && x.kind === 'media') err(where, `"${title}": put each figure on a line of its own ({{media:${x.id}}})`);
           if (x.t === 'link') {
             const target = cards.find((k) => k.id === x.id);
-            if (!target) err(where, `"${title}" links to unknown card "${x.id}"`);
+            // A link to a card that isn't written yet is allowed (a planned link: content:check warns, the app shows plain words).
+            if (!target) { /* planned link: see checkWarnings */ }
             else if (x.section && !target.sections.some((t) => t.key === x.section || t.subsections?.some((u) => u.key === x.section))) err(where, `"${title}" links to unknown section "${x.section}" of "${x.id}"`);
           }
           if (x.t === 'tag' && !TAGS[x.v]) err(where, `"${title}": unknown tag "[!${x.v}]" (use ${Object.keys(TAGS).map((k) => `[!${k}]`).join(' or ')})`);
@@ -276,9 +283,31 @@ export function checkContent({ systems, cards, data }) {
         } else if (!['paragraph', 'list', 'table', 'steps', 'insert', 'subheading'].includes(b.t)) err(where, `"${title}": unknown block ":::${b.t}" (use scale, compare, times, onset or note)`);
       }
     }
+    // Tags mark a cause, so they live only in Causes, and a cause category never repeats the tag's own words.
+    for (const sec of c.sections) {
+      for (const b of allBlocks([...sec.blocks, ...(sec.subsections ?? []).flatMap((x) => x.blocks)])) {
+        if (sec.key !== 'causes') for (const r of runs([b])) if (r.inlines.some((x) => x.t === 'tag')) err(where, `tags rule: "${sec.title}" uses a [!cannot-miss] / [!most-common] tag; tags go only on causes in the Causes section (docs/CONTENT-FORMAT.md, "Consistency rules")`);
+        if (sec.key === 'causes' && b.t === 'list') for (const it of b.items) {
+          const cat = it.inlines.find((x) => x.t === 'strong')?.v?.replace(/:\s*$/, '');
+          if (cat && /cannot[\s-]*miss|most[\s-]*common/i.test(cat)) err(where, `tags rule: the cause category "${cat}" repeats a tag; name the category by what the causes are and put [!cannot-miss] / [!most-common] on the cause (docs/CONTENT-FORMAT.md, "Consistency rules")`);
+        }
+      }
+    }
+    // Tables stay at most four columns wide (docs/CONTENT-FORMAT.md, "Consistency rules") unless listed as a deliberate exception.
+    for (const { title, blocks } of parts) for (const b of allBlocks(blocks)) {
+      if (b.t === 'table' && b.header.length > MAX_TABLE_COLUMNS && !(WIDE_TABLE_EXCEPTIONS[c.id] ?? []).includes(title)) err(where, `table width: "${title}" has a ${b.header.length}-column table; tables are at most ${MAX_TABLE_COLUMNS} columns (split it, or ask the owner for an exception; docs/CONTENT-FORMAT.md, "Consistency rules")`);
+    }
     for (const [group, ids] of Object.entries(c.related ?? {})) {
       for (const id of ids ?? []) if (!cards.some((k) => k.id === id)) err(where, `related (${group}) lists unknown card "${id}"`);
     }
+  }
+
+  // An alias belongs to one card, or search can't tell which card a word means (docs/CONTENT-FORMAT.md, "Consistency rules").
+  const aliasOwner = new Map();
+  for (const c of cards) for (const a of c.aliases ?? []) {
+    const k = String(a).trim().toLowerCase();
+    if (aliasOwner.has(k)) err(c.file, `duplicate alias: "${a}" is also an alias of ${aliasOwner.get(k)}; keep it on the best card or make it more specific (docs/CONTENT-FORMAT.md, "Consistency rules")`);
+    else aliasOwner.set(k, c.id);
   }
 
   for (const [kind, items] of Object.entries(data)) {
@@ -376,4 +405,48 @@ export function checkContent({ systems, cards, data }) {
     }
   }
   return errors;
+}
+
+// Problems that don't stop a build but should be looked at (npm run content:check prints them; they never fail it).
+export function checkWarnings({ cards, data }, { today = new Date() } = {}) {
+  const out = [];
+  const warn = (where, msg) => out.push(`${where}: ${msg}`);
+  const ids = new Set(cards.map((c) => c.id));
+  const byId = new Map(cards.map((c) => [c.id, c]));
+
+  // Sources nothing cites.
+  const cited = JSON.stringify([cards, { ...data, source: undefined }]);
+  for (const [id, s] of Object.entries(data.source ?? {})) if (!cited.includes(`"${id}"`)) warn(s._file ?? id, `unused source: "${id}" is cited by no card or data item; delete it if it is orphaned (docs/CONTENT-FORMAT.md, "Consistency rules")`);
+
+  for (const c of cards) {
+    if ((c.aliases ?? []).length > MAX_ALIASES) warn(c.file, `alias bloat: ${c.aliases.length} aliases (over ${MAX_ALIASES}); keep only the words a clinician would actually search (docs/CONTENT-FORMAT.md, "Consistency rules")`);
+    // Planned links: [[card]] to a card that doesn't exist yet. The app shows them as plain words.
+    const planned = new Set();
+    const scan = (blocks) => { for (const b of allBlocks(blocks)) for (const r of runs([b])) for (const x of r.inlines) if (x.t === 'link' && !ids.has(x.id)) planned.add(x.id); };
+    for (const sec of c.sections) scan([...sec.blocks, ...(sec.subsections ?? []).flatMap((x) => x.blocks)]);
+    if (c.emergency) scan(c.emergency.blocks);
+    for (const x of c.definition?.inlines ?? []) if (x.t === 'link' && !ids.has(x.id)) planned.add(x.id);
+    if (planned.size) warn(c.file, `planned links: [[${[...planned].join(']], [[')}]] point to cards that don't exist yet; they show as plain text until the card is written (docs/CONTENT-FORMAT.md, "Consistency rules")`);
+    // Related cards point both ways.
+    const missing = [...new Set(Object.values(c.related ?? {}).flat())].filter((id) => byId.has(id) && !Object.values(byId.get(id).related ?? {}).flat().includes(c.id));
+    if (missing.length) warn(c.file, `related not reciprocal: ${missing.join(', ')} ${missing.length === 1 ? 'does' : 'do'} not list this card back (docs/CONTENT-FORMAT.md, "Consistency rules")`);
+    if (c.reviewed && /^\d{4}-\d{2}-\d{2}$/.test(c.reviewed)) {
+      const limit = new Date(today); limit.setMonth(limit.getMonth() - REVIEW_MAX_AGE_MONTHS);
+      if (new Date(c.reviewed) < limit) warn(c.file, `reviewed ${c.reviewed} is over ${REVIEW_MAX_AGE_MONTHS} months old; re-check the card against the newest guidelines and update the date (docs/CONTENT-FORMAT.md, "Consistency rules")`);
+    }
+    // Every dose in Do Now should also be in Treatment, so the page and the emergency never disagree.
+    const treatment = c.sections.find((s) => s.key === 'treatment');
+    if (c.emergency && treatment) {
+      const have = new Set();
+      for (const b of allBlocks([...treatment.blocks, ...(treatment.subsections ?? []).flatMap((x) => x.blocks)])) {
+        if (b.t === 'insert' && b.kind === 'dose') have.add(b.id);
+        if (b.t === 'insert' && b.kind === 'regimen') for (const o of data.regimen?.[b.id]?.options ?? []) for (const p of o.doses ?? []) for (const d of Array.isArray(p) ? p : [p]) have.add(d);
+      }
+      const doNow = new Set();
+      emergencySteps(c.emergency.blocks, []).forEach((st) => stepDoses(st).forEach((d) => doNow.add(d)));
+      const absent = [...doNow].filter((d) => !have.has(d));
+      if (absent.length) warn(c.file, `Do Now dose not in Treatment: ${absent.join(', ')}; the Treatment section should list every Do Now dose (docs/CONTENT-FORMAT.md, "Consistency rules")`);
+    }
+  }
+  return out;
 }

@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { loadContent } from '../../scripts/content/load.mjs';
-import { checkContent } from '../../scripts/content/check.mjs';
+import { checkContent, checkWarnings } from '../../scripts/content/check.mjs';
 import { parseBlocks } from '../../scripts/content/load.mjs';
 
 const real = loadContent(process.cwd(), { includeExamples: true }) as never as Parameters<typeof checkContent>[0];
@@ -253,5 +253,69 @@ describe('MDCalc links', () => {
     expect(withCalc({ url: 'https://www.mdcalc.com/calc/324/curb-65-score-pneumonia-severity' })).toMatch(/same url as calculator/);
     expect(withCalc({ match: ['curb-65'] })).toMatch(/also a match word/);
     expect(withCalc({ colour: 'blue' })).toMatch(/unknown calculator field/);
+  });
+});
+
+describe('consistency rules', () => {
+  const clone = () => JSON.parse(JSON.stringify(real));
+  const warnings = (base: ReturnType<typeof clone>, today?: Date) => checkWarnings(base, { today }).join('\n');
+  const addCard = (extra: AnyCard, md = kp('')) => {
+    const base = clone();
+    base.cards.push({
+      file: 'test.md', id: 'test-card', type: 'condition', variant: null, system: 'renal', group: 'condition', subsection: 'Electrolyte Disorders',
+      title: 'Test', aliases: [], related: {}, example: false, unknownSections: [], unknownSubsections: [], definition: null, basedOn: [], reviewed: null,
+      sections: [{ key: 'at-a-glance', title: 'At a Glance', blocks: parseBlocks(md.split('\n')), subsections: [] }], ...extra,
+    });
+    return base;
+  };
+  const errorsOf = (base: ReturnType<typeof clone>) => checkContent(base).join('\n');
+
+  it('rejects an alias used by two cards (case does not matter)', () => {
+    expect(errorsOf(addCard({ aliases: ['AKI'] }))).toMatch(/duplicate alias: "AKI" is also an alias of renal-aki/);
+    expect(errorsOf(addCard({ aliases: ['a-unique-word'] }))).not.toMatch(/duplicate alias/);
+  });
+  it('warns about alias bloat', () => {
+    expect(warnings(addCard({ aliases: Array.from({ length: 31 }, (_, i) => `word${i}`) }))).toMatch(/alias bloat: 31 aliases/);
+  });
+  it('warns about a source nothing cites', () => {
+    const base = clone();
+    base.data.source['orphan-source'] = { kind: 'guideline', short: 'X', title: 'X', year: 2020, _file: 'orphan.yaml' };
+    expect(warnings(base)).toMatch(/unused source: "orphan-source"/);
+  });
+  it('allows tags only in Causes and bans a category that repeats the tag', () => {
+    expect(errorsOf(addCard({}, kp('- **Cause** [!cannot-miss]: text ^[example-guideline-a]')))).toMatch(/tags rule: "At a Glance" uses/);
+    const causes = (line: string) => addCard({ sections: [{ key: 'at-a-glance', title: 'At a Glance', blocks: parseBlocks(kp('').split('\n')), subsections: [] }, { key: 'causes', title: 'Causes', blocks: parseBlocks(line.split('\n')), subsections: [] }] });
+    expect(errorsOf(causes('- **Infection:** [!most-common] pneumonia. ^[example-guideline-a]'))).not.toMatch(/tags rule/);
+    expect(errorsOf(causes('- **Cannot miss:** [!cannot-miss] PE. ^[example-guideline-a]'))).toMatch(/category "Cannot miss" repeats a tag/);
+  });
+  it('checks a subsection against its system\'s allowed names', () => {
+    expect(errorsOf(addCard({ subsection: 'Electrolyte Disorders' }))).not.toMatch(/subsection vocabulary/);
+    expect(errorsOf(addCard({ subsection: 'Electrolytes' }))).toMatch(/subsection vocabulary: "Electrolytes" is not an allowed subsection of "renal"/);
+    expect(errorsOf(addCard({ system: 'liver' }))).toMatch(/subsection vocabulary: system "liver" has no "subsections" list/);
+  });
+  it('caps tables at four columns, with a listed exception', () => {
+    const wide = '| A | B | C | D | E |\n|---|---|---|---|---|\n| 1 | 2 | 3 | 4 | 5 | ^[example-guideline-a]';
+    expect(errorsOf(addCard({}, kp(wide)))).toMatch(/table width: "At a Glance" has a 5-column table/);
+    expect(errorsOf(addCard({}, kp('| A | B |\n|---|---|\n| 1 | 2 | ^[example-guideline-a]')))).not.toMatch(/table width/);
+  });
+  it('allows a planned link and warns about it; related links should be reciprocal', () => {
+    const planned = addCard({}, kp('- See [[not-written-yet]]. ^[example-guideline-a]'));
+    expect(errorsOf(planned)).not.toMatch(/unknown card/);
+    expect(warnings(planned)).toMatch(/planned links: \[\[not-written-yet\]\]/);
+    expect(warnings(addCard({ related: { see: ['renal-aki'] } }))).toMatch(/test.md: related not reciprocal: renal-aki/);
+  });
+  it('warns when reviewed is over 12 months old', () => {
+    const base = addCard({ reviewed: '2025-01-15' });
+    expect(warnings(base, new Date('2026-01-14'))).not.toMatch(/months old/);
+    expect(warnings(base, new Date('2026-02-01'))).toMatch(/reviewed 2025-01-15 is over 12 months old/);
+  });
+  it('warns when a Do Now dose is missing from Treatment', () => {
+    const base = addCard({
+      emergency: { hint: 'Test', blocks: parseBlocks(['1. Give it', '', '   {{dose:example-drug-standard}}']) },
+      sections: [{ key: 'at-a-glance', title: 'At a Glance', blocks: parseBlocks(kp('').split('\n')), subsections: [] }, { key: 'treatment', title: 'Treatment', blocks: parseBlocks(['- Supportive care. ^[example-guideline-a]']), subsections: [] }],
+    });
+    expect(warnings(base)).toMatch(/Do Now dose not in Treatment: example-drug-standard/);
+    base.cards.at(-1).sections[1].blocks = parseBlocks(['{{dose:example-drug-standard}}']);
+    expect(warnings(base)).not.toMatch(/Do Now dose/);
   });
 });

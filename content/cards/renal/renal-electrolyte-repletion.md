@@ -4,7 +4,7 @@ type: reference
 variant: protocol
 system: renal
 title: Electrolyte Repletion
-aliases: [electrolyte replacement, replete electrolytes, lytes, potassium repletion, magnesium repletion, phosphate repletion, phosphorus repletion, calcium repletion, KCl, potassium chloride, mag sulfate, magnesium sulfate, Mag-Ox, K-Phos, Neutra-Phos, sodium phosphate, calcium gluconate, hypokalemia, low potassium, hypomagnesemia, low magnesium, hypophosphatemia, low phosphorus, hypocalcemia, low calcium]
+aliases: [electrolyte replacement, replete electrolytes, lytes, potassium repletion, magnesium repletion, phosphate repletion, phosphorus repletion, calcium repletion, KCl, potassium chloride, mag sulfate, magnesium sulfate, Mag-Ox, K-Phos, Neutra-Phos, sodium phosphate, calcium gluconate, hypokalemia, hypomagnesemia, low magnesium, hypophosphatemia, low phosphorus, hypocalcemia, low calcium]
 reviewed: 2026-10-19
 contents_sub: [dosing]
 related:

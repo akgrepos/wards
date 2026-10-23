@@ -29,7 +29,7 @@ export type Card = {
   // The "## Do Now" section, when the topic has an emergency (its page in the Rapids tab, and Timed Mode).
   emergency: { hint: string | null; blocks: Block[] } | null;
 };
-export type System = { id: string; title: string; library?: boolean };
+export type System = { id: string; title: string; library?: boolean; subsections?: string[] };
 export type Source = { kind: string; short: string; title: string; year: number; society?: string; citation?: string; url?: string };
 export type Dose = {
   drug?: string; drug_name: string; brand?: string; indication: string; population?: string; route: string;

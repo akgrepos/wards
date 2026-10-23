@@ -4,7 +4,7 @@ type: reference
 variant: protocol
 system: renal
 title: "IV Fluids: Selection and Dosing"
-aliases: [IV fluids, IVF, fluids, maintenance fluids, mIVF, fluid bolus, resuscitation, crystalloid, normal saline, NS, 0.9% saline, half normal saline, lactated Ringer's, LR, Ringer's lactate, Plasma-Lyte, balanced crystalloid, D5W, dextrose, albumin, colloid, hypertonic saline]
+aliases: [IV fluids, IVF, fluids, maintenance fluids, mIVF, fluid bolus, resuscitation, crystalloid, normal saline, NS, 0.9% saline, half normal saline, lactated Ringer's, LR, Ringer's lactate, Plasma-Lyte, balanced crystalloid, D5W, dextrose, albumin, colloid]
 reviewed: 2026-10-19
 related:
   conditions: [renal-aki, renal-hyponatremia, renal-hypokalemia, renal-hyperkalemia]

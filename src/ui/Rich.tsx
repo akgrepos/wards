@@ -447,7 +447,9 @@ export function Inlines({ xs, plain }: { xs: Inline[]; plain?: boolean }) {
         if (x.t === 'tag') return <AKG.Tag key={i} className="inline-tag" variant={x.v === 'cannot-miss' ? 'critical' : 'neutral'}>{TAGS[x.v] ?? x.v}</AKG.Tag>;
         if (x.t !== 'link') return x.t === 'strong' ? <strong key={i}>{x.v}</strong> : x.t === 'em' ? <em key={i}>{x.v}</em> : <Fragment key={i}>{x.v}</Fragment>;
         const c = getCard(x.id);
-        return <a key={i} className="akg-link" href={href.card(x.id, x.section ?? undefined)} onClick={(e) => jumpWithin(e, x.id, x.section)}>{x.label ?? c?.title ?? x.id}</a>;
+        // A planned card (not written yet; content:check warns) shows as plain words, with no tap target.
+        if (!c) return <Fragment key={i}>{x.label ?? x.id}</Fragment>;
+        return <a key={i} className="akg-link" href={href.card(x.id, x.section ?? undefined)} onClick={(e) => jumpWithin(e, x.id, x.section)}>{x.label ?? c.title}</a>;
       })}
     </>
   );

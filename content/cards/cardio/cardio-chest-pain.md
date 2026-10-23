@@ -3,7 +3,7 @@ id: cardio-chest-pain
 type: approach
 system: cardio
 title: "Chest Pain: Undifferentiated"
-aliases: [chest pain, chest discomfort, chest tightness, chest pressure, angina, ACS, heart attack, MI, troponin, HEART, HEART score, PERC, ADD-RS, aortic dissection, pulmonary embolism, tension pneumothorax, Boerhaave, esophageal rupture, pericarditis, tamponade, costochondritis, GERD, rule out MI, rule out ACS, coronary CT angiography, stress test, cannot-miss chest pain]
+aliases: [chest pain, chest discomfort, chest tightness, chest pressure, angina, HEART, HEART score, ADD-RS, aortic dissection, tension pneumothorax, Boerhaave, esophageal rupture, pericarditis, tamponade, costochondritis, GERD, rule out MI, rule out ACS, coronary CT angiography, stress test, cannot-miss chest pain]
 definition: "Acute chest pain or equivalent discomfort needing a time-sensitive search for life-threatening causes: acute coronary syndrome, pulmonary embolism, aortic dissection, tension pneumothorax, esophageal rupture, pericardial tamponade. ^[aha-acc-chest-pain-2021]"
 based_on: [aha-acc-chest-pain-2021, acc-aha-acs-2025, udmi-2026]
 reviewed: 2026-10-21
