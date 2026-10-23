@@ -35,6 +35,9 @@ The owner, a physician, is the only user. No coding experience: explain steps pl
 
 - **End of a chat:** when the owner says to wrap up (or is done for the day), follow the `wards-wrap-up` skill in the owner's Claude settings: finish or park work, stop servers, clean Git and files, update STATUS/DECISIONS/memory, and leave a "Start here next time" handoff.
 
+## Windows shell habit
+Never write files or run scripts with heredocs (`cat > file <<'EOF'`, `python - <<'EOF'`): on Windows they can hang waiting for input and leave a stuck background task, which blocks archiving the session. Use the Write and Edit tools for files, run scripts from files (`node script.mjs`), and leave no background task running at the end of a turn.
+
 ## If the owner switches back to the Mac
 Only when the owner says so. Then the iOS 27 Simulator is the real test: the pinned Wards app in the Simulator iPhone dock, after the deploy (open the existing Home Screen app, wait about 30 seconds, tap Reload on "Update Ready"; never reinstall each test; never a Safari tab or desktop browser as the test). Follow `docs/SWITCHING-MACHINES.md` for the hand-off steps.
 
