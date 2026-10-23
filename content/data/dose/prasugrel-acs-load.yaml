@@ -14,3 +14,7 @@ alternative:
 cautions:
   - "Loading before angiography in NSTE-ACS added bleeding without benefit."
 sources: [label-effient-2022, acc-aha-acs-2025]
+verification:
+  source: label-effient-2022
+  read: not-verified
+  date: 2026-10-23

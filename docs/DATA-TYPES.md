@@ -41,6 +41,14 @@ One drug, one indication, one population. The only place a dose is written.
 - Home: the medication card. Inserted into condition, approach, protocol and pathway steps, always as its own **dose row** (one drug per row).
 - Shown as: the dose row (drug name over "amount unit route rate frequency"); tapping opens the **dose sheet**: "Dose" bar title, the drug as heading, the fields above, the alternative (tap to open it), cautions, Check Interactions (Medscape's free checker, opens in Safari) and a source line.
 
+### Verification note (doses and calculators, added 2026-10-23)
+Every dose item and every in-app calculator (a `calc` file with a `calculator` block) carries a `verification` note, so the later independent review has a searchable worklist. `npm run content:check` rejects one without it.
+- Fields: `read` (required) · `source` (the id of one of the item's own sources) · `date` (`YYYY-MM-DD`, when the note was written).
+- `read` is one of: `fda-label` (the prescribing information was read; `source` must be a prescribing-information label; the label is the authority for doses) · `full-text` or `abstract` (a guideline or study; guidelines are the authority for thresholds) · `common-practice` (a deliberate exception, the same as the stethoscope marker: the item must cite the `common-practice` source) · `not-verified` (cited, but not yet independently read; `source` names the main source to check against).
+- Never name AMBOSS, OpenEvidence or the reference handbook. Do not write `fda-label`, `full-text` or `abstract` unless the source was actually read that way; when unsure, use `not-verified`.
+- Example: `verification: { source: label-acetazolamide-inj-2025, read: fda-label, date: 2026-10-30 }` (written as a block in the files).
+- Worklist: `grep -l "read: not-verified" content/data/dose/*.yaml`. The count is in `docs/REVIEW-QUEUE.md`. New doses are written with their real `read` value; the review pass turns `not-verified` into one of the others.
+
 ### 3. Regimen
 A treatment combination for one indication and setting, built from dose items (never retyping them). Built 2026-10-19 for Wave 1 batch 2 (owner's choice over plain dose rows).
 - Fields (YAML name in brackets): name [`name`] (the setting, short: "Inpatient, not severe") · indication [`indication`] · setting [`setting`] (who it is for, one line) · options [`options`] · duration [`duration`] · notes [`notes`] (a list of short sentences) · sources [`sources`]

@@ -13,3 +13,7 @@ cautions:
   - "Prepare to support the airway."
 notes: "Label dosing for status epilepticus; ASAM recommends a fast-acting parenteral benzodiazepine for a withdrawal seizure."
 sources: [label-diazepam-inj-2026, asam-alcohol-withdrawal-2020]
+verification:
+  source: label-diazepam-inj-2026
+  read: not-verified
+  date: 2026-10-23

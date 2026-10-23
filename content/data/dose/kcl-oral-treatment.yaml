@@ -17,3 +17,7 @@ cautions:
   - "Contraindicated with triamterene or amiloride (US label)."
 notes: "Mild to moderate hypokalemia (K⁺ 3.0–3.5 mEq/L): a typical course is 60–80 mEq per day in divided doses. Serum K⁺ poorly reflects the total-body deficit; correction may take several days with ongoing losses."
 sources: [label-klor-con-2025, label-kcl-oral-solution-2026, asmar-hypokalemia-2012, kardalas-hypokalemia-2018]
+verification:
+  source: label-klor-con-2025
+  read: not-verified
+  date: 2026-10-23

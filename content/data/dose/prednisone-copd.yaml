@@ -16,3 +16,7 @@ cautions:
   - "Check glucose in diabetes."
 notes: "Prednisone-equivalent dose from the guideline; COPD is not a labeled prednisone indication (label: 5–60 mg/day, individualized). No taper needed after 5 days."
 sources: [gold-copd-2026, reduce-2013, ers-ats-copd-exacerbation-2017, label-prednisone-2025]
+verification:
+  source: label-prednisone-2025
+  read: not-verified
+  date: 2026-10-23

@@ -25,6 +25,7 @@ See [docs/DECISIONS.md](docs/DECISIONS.md) for what has been decided and why.
 
 ### Workflow scripts (for Claude sessions, one call each; added 2026-10-22)
 - `scripts/status.sh`: open PRs, last 5 merged, live version, worktrees and branches (merged ones marked).
+- Dose and calculator files end with a `verification` note (how the numbers were checked); `npm run content:check` rejects one without it (docs/DATA-TYPES.md, "Verification note").
 - `scripts/wait-live.sh <pr> [version]`: waits up to 10 min for the PR's checks, merge and the live site to show the new version.
 - `npm run release -- [--card <id>] [--dry-run] "<changelog line>"`: bumps `src/version.ts` (next number for today, from origin/main), adds the CHANGELOG entry, and with `--card` lists the card in REVIEW-QUEUE "Not yet independently reviewed".
 - `scripts/tidy.sh <branch>`: the close rule; refuses if unmerged commits or uncommitted changes, else removes worktree and branch.

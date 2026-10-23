@@ -20,3 +20,7 @@ calculator:
   notes:
     - "ATS/IDSA 2019 prefers {{calc:psi-port}} over this score to decide on hospitalization, and advises that neither tool decides ICU admission. Use with clinical judgment."
     - "Urea >7 mmol/L converted to BUN (×2.8): 19.6, written as ≥20 mg/dL. Mortality figures are from the 2003 derivation and validation cohorts."
+verification:
+  source: lim-curb65-2003
+  read: not-verified
+  date: 2026-10-23

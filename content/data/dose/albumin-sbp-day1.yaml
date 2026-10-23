@@ -15,3 +15,7 @@ cautions:
   - "Dilute only with 0.9% saline or D5W, never sterile water (hemolysis)."
 notes: "In the trial, benefit was greatest with BUN >30 mg/dL, creatinine >1.0 mg/dL or bilirubin >5 mg/dL."
 sources: [label-flexbumin-2024, aasld-ascites-hrs-2021, ictmg-albumin-2024]
+verification:
+  source: label-flexbumin-2024
+  read: not-verified
+  date: 2026-10-23

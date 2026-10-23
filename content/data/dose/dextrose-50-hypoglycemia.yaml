@@ -10,3 +10,7 @@ cautions:
   - "Hypertonic: large or central vein; tissue injury if it extravasates."
   - "Alcohol use disorder or malnutrition: give thiamine (label lists alcohol withdrawal as a contraindication)."
 sources: [label-dextrose-50-2026, ada-soc-hospital-2026]
+verification:
+  source: label-dextrose-50-2026
+  read: not-verified
+  date: 2026-10-23

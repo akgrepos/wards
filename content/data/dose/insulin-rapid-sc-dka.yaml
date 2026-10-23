@@ -12,3 +12,7 @@ cautions:
   - "Needs adequate fluids, glucose checks every 1–2 hours and nursing to match."
 notes: "Equivalent to IV insulin in trials and a 2016 Cochrane review; usable in the ED or a step-down unit."
 sources: [ada-hyperglycemic-crises-2024, ada-soc-hospital-2026, label-humalog-2026]
+verification:
+  source: label-humalog-2026
+  read: not-verified
+  date: 2026-10-23

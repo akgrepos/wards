@@ -14,3 +14,7 @@ cautions:
   - "Avoid omeprazole and esomeprazole."
 notes: "Label: 300 mg loading dose; the guideline uses 600 mg before PCI. Skipping the load delays the effect by several days."
 sources: [label-plavix-2025, acc-aha-acs-2025]
+verification:
+  source: label-plavix-2025
+  read: not-verified
+  date: 2026-10-23

@@ -15,3 +15,7 @@ cautions:
   - "The consensus flowchart gives 10–20 mEq per liter; its text gives 20–30."
 notes: "Total-body potassium deficit is typically 3–6 mEq/kg despite a normal or high K⁺ on arrival. UK guideline: 40 mEq per liter at K⁺ 3.5–5.5 mEq/L."
 sources: [ada-hyperglycemic-crises-2024, jbds-dka-2023, label-kcl-injection-2026]
+verification:
+  source: label-kcl-injection-2026
+  read: not-verified
+  date: 2026-10-23

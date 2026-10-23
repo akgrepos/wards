@@ -19,3 +19,7 @@ cautions:
   - "Label also allows 15 mg/kg (maximum 1,000 mg) as a single dose in adults 50 kg or more."
   - "Risk of hypophosphatemia is highest with repeated courses, malabsorption, and low vitamin D or hyperparathyroidism."
 sources: [label-injectafer-2026]
+verification:
+  source: label-injectafer-2026
+  read: not-verified
+  date: 2026-10-23

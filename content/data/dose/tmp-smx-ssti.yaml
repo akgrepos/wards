@@ -19,3 +19,7 @@ sources:
   - idsa-ssti-2014
   - idsa-mrsa-2011
   - label-tmp-smx-2024
+verification:
+  source: label-tmp-smx-2024
+  read: not-verified
+  date: 2026-10-23

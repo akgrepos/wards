@@ -12,3 +12,7 @@ cautions:
 notes: Weak recommendation; hastened resolution in one trial.
 sources:
   - idsa-ssti-2014
+verification:
+  source: idsa-ssti-2014
+  read: not-verified
+  date: 2026-10-23

@@ -14,3 +14,7 @@ cautions:
   - "Avoid in LVEF ≤40% or decompensated heart failure (negative inotrope)."
 notes: "Follow with an infusion (5–15 mg/h) for continued rate control."
 sources: [acc-aha-af-2023, label-diltiazem-inj-2026]
+verification:
+  source: label-diltiazem-inj-2026
+  read: not-verified
+  date: 2026-10-23

@@ -16,3 +16,7 @@ cautions:
   - Nephrotoxicity, more with piperacillin-tazobactam.
 notes: "IDSA 2004 lists 30–45 mg/kg a day in divided doses every 8–12 hours (15 mg/kg every 8–12 hours); dose by levels with the pharmacy."
 sources: [idsa-meningitis-2004, idsa-ventriculitis-2017, label-vancomycin-2025]
+verification:
+  source: label-vancomycin-2025
+  read: not-verified
+  date: 2026-10-23

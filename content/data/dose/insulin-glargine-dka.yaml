@@ -12,3 +12,7 @@ cautions:
   - "Label: not for treating DKA itself (IV insulin does that)."
 notes: "Shortened infusion time and length of stay and prevented rebound hyperglycemia without more hypoglycemia in several studies."
 sources: [ada-hyperglycemic-crises-2024, ada-soc-hospital-2026, label-lantus-2025]
+verification:
+  source: label-lantus-2025
+  read: not-verified
+  date: 2026-10-23

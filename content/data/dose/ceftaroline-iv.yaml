@@ -19,3 +19,7 @@ sources:
   - label-teflaro-2024
   - idsa-ats-cap-2019
   - idsa-ssti-2014
+verification:
+  source: label-teflaro-2024
+  read: not-verified
+  date: 2026-10-23

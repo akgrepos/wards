@@ -17,3 +17,7 @@ sources:
   - label-doxycycline-2026
   - label-doxy-iv-2021
   - gold-copd-2026
+verification:
+  source: label-doxycycline-2026
+  read: not-verified
+  date: 2026-10-23

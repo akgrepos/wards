@@ -10,3 +10,7 @@ cautions:
   - "Check vitamin B12 first; folic acid can correct the anemia of B12 deficiency while neurologic damage progresses."
 notes: "The British guideline gives 5 mg daily for 4 months; 1 mg daily is the usual US dose and the labeled maximum usual dose."
 sources: [bsh-b12-folate-2014, common-practice]
+verification:
+  source: bsh-b12-folate-2014
+  read: not-verified
+  date: 2026-10-23

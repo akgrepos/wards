@@ -14,3 +14,7 @@ cautions:
   - "Not for patients with complicated withdrawal, seizures from withdrawal or delirium."
 notes: "Not labeled for alcohol withdrawal. ASAM Appendix V sample regimens."
 sources: [asam-alcohol-withdrawal-2020, label-tegretol-2026]
+verification:
+  source: label-tegretol-2026
+  read: not-verified
+  date: 2026-10-23

@@ -18,3 +18,7 @@ cautions:
   - "Include fluid from drugs, feeds and flushes."
 notes: "Also about 1 mmol/kg per day each of Na⁺, K⁺ and Cl⁻, and 50–100 g per day of glucose to limit starvation ketosis (not nutrition). Order with a time limit."
 sources: [nice-iv-fluids-2017]
+verification:
+  source: nice-iv-fluids-2017
+  read: not-verified
+  date: 2026-10-23

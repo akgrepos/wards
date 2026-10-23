@@ -14,3 +14,7 @@ alternative:
   when: "No oral route"
 notes: "Oral replacement is preferred: lower risk of rebound hyperkalemia than IV. Arrhythmia, digitalis toxicity, ischemia, paralysis or K⁺ <2.5 mEq/L: use the monitored IV dose instead."
 sources: [asmar-hypokalemia-2012, label-klor-con-2025, label-kcl-oral-solution-2026]
+verification:
+  source: label-klor-con-2025
+  read: not-verified
+  date: 2026-10-23

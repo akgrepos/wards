@@ -8,3 +8,7 @@ frequency: every 6 hours
 sources:
   - idsa-ssti-2014
   - label-penicillin-vk-2022
+verification:
+  source: label-penicillin-vk-2022
+  read: not-verified
+  date: 2026-10-23

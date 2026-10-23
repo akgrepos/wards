@@ -176,7 +176,7 @@ export const SHARED_SECTIONS = ['more', 'pearls'];
 export const DOSE_FIELDS = [
   'drug', 'drug_name', 'brand', 'indication', 'population', 'route', 'amount', 'unit', 'frequency', 'rate',
   'give_when', 'repeat', 'onset', 'lasts', 'duration', 'max', 'boxed_warning', 'alternative', 'adjustments',
-  'cautions', 'notes', 'sources',
+  'cautions', 'notes', 'sources', 'verification',
 ];
 
 export const CARD_GROUPS = ['approach', 'condition', 'reference'];
@@ -220,7 +220,7 @@ export const DOSE_IN_TEXT = /\b\d+(?:\.\d+)?\s?(?:mg|mcg|g|mEq|mmol|units?|mL)\b
 
 // Calculator pages live on MDCalc; every calculator item points at one.
 export const MDCALC_URL = /^https:\/\/www\.mdcalc\.com\/calc\/\d+\/[a-z0-9-]+$/;
-export const CALC_FIELDS = ['name', 'short', 'url', 'match', 'sources', 'calculator'];
+export const CALC_FIELDS = ['name', 'short', 'url', 'match', 'sources', 'calculator', 'verification'];
 // The in-app calculator of a score or formula (docs/DATA-TYPES.md, 7). Formulas themselves are code (src/calculators.ts);
 // these are the names a data file may use for them.
 export const CALC_FORMULAS = ['osmolality', 'effective-osmolality', 'anion-gap', 'albumin-corrected-anion-gap', 'corrected-sodium', 'winters-expected-pco2'];

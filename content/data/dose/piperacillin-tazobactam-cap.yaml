@@ -19,3 +19,7 @@ notes: Adjustments are the label's nosocomial pneumonia column, which uses this 
 sources:
   - idsa-ats-cap-2019
   - label-zosyn-2026
+verification:
+  source: label-zosyn-2026
+  read: not-verified
+  date: 2026-10-23

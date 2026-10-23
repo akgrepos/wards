@@ -9,3 +9,7 @@ give_when: "Hyperglycemia on parenteral nutrition, especially if more than 20 un
 cautions:
   - "Avoid targeting glucose <140 mg/dL on continuous nutrition."
 sources: [ada-soc-hospital-2026]
+verification:
+  source: ada-soc-hospital-2026
+  read: not-verified
+  date: 2026-10-23

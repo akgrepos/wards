@@ -16,3 +16,7 @@ notes: Guideline dose; the label lists only uncomplicated UTI.
 sources:
   - idsa-cuti-ivpo-2025
   - label-cefpodoxime-2026
+verification:
+  source: label-cefpodoxime-2026
+  read: not-verified
+  date: 2026-10-23

@@ -18,3 +18,7 @@ cautions:
   - "Avoid combined strong CYP3A and P-gp inhibitors or inducers."
   - "No parenteral lead-in needed."
 sources: [label-xarelto-2026, ash-vte-treatment-2020, chest-vte-2021]
+verification:
+  source: label-xarelto-2026
+  read: not-verified
+  date: 2026-10-23

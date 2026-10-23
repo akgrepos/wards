@@ -17,3 +17,7 @@ cautions:
   - "Avoid in advanced kidney disease and in sulfonamide allergy."
 notes: "Chou 2016 suggests considering preoperative celecoxib in adults without contraindications."
 sources: [label-celecoxib-2024, chou-postop-pain-2016]
+verification:
+  source: label-celecoxib-2024
+  read: not-verified
+  date: 2026-10-23

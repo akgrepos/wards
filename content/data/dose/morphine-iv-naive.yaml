@@ -15,3 +15,7 @@ cautions:
   - "Inject slowly. Monitor sedation and respiratory status after each dose."
 notes: "The 2–4 mg ward starting range is common practice; the label is weight-based and higher."
 sources: [label-morphine-injection-2026, common-practice]
+verification:
+  source: label-morphine-injection-2026
+  read: not-verified
+  date: 2026-10-23

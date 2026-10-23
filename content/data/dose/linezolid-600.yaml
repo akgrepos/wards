@@ -15,3 +15,7 @@ sources:
   - label-zyvox-2026
   - idsa-ats-cap-2019
   - idsa-ssti-2014
+verification:
+  source: label-zyvox-2026
+  read: not-verified
+  date: 2026-10-23

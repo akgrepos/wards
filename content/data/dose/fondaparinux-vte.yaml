@@ -16,3 +16,7 @@ adjustments:
 cautions:
   - "Weight bands apply to treatment of DVT or PE (50–100 kg: 7.5 mg)."
 sources: [label-arixtra-2024, ash-hit-2018]
+verification:
+  source: label-arixtra-2024
+  read: not-verified
+  date: 2026-10-23

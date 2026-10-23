@@ -15,3 +15,7 @@ cautions:
   - "Long half-life: effects last days; induces hepatic enzymes (warfarin, steroids)."
 notes: "Weight basis (actual or ideal body weight) is not stated by ASAM or the trial registry; follow the local order set. ASAM sample regimen; placebo-controlled RCT in the emergency department with a lorazepam protocol (Rosenson 2013, n=102): ICU admission 8% vs 25%, no difference in adverse events. The label does not list alcohol withdrawal or a weight-based dose."
 sources: [asam-alcohol-withdrawal-2020, rosenson-2013, label-phenobarbital-inj-2025, common-practice]
+verification:
+  source: label-phenobarbital-inj-2025
+  read: not-verified
+  date: 2026-10-23

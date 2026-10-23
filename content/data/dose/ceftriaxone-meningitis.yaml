@@ -12,3 +12,7 @@ cautions:
   - Does not cover Listeria, Enterococcus or MRSA.
 notes: "Meningitis uses the highest daily dose; the label's maximum is 4 g a day."
 sources: [idsa-meningitis-2004, label-ceftriaxone-2026]
+verification:
+  source: label-ceftriaxone-2026
+  read: not-verified
+  date: 2026-10-23

@@ -14,3 +14,7 @@ notes: "Guideline alternatives: 500/125 mg every 8 hours, or 2,000/125 mg extend
 sources:
   - idsa-ats-cap-2019
   - label-amox-clav-2026
+verification:
+  source: label-amox-clav-2026
+  read: not-verified
+  date: 2026-10-23

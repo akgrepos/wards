@@ -14,3 +14,7 @@ cautions:
   - Liver enzyme elevations; check hepatic panel.
 notes: "Guideline dose for candidemia is 100 mg daily; the label lists 100 mg daily for candidemia as well."
 sources: [idsa-candida-2016, label-micafungin-2025]
+verification:
+  source: label-micafungin-2025
+  read: not-verified
+  date: 2026-10-23

@@ -14,3 +14,7 @@ cautions:
   - "Shortest duration at the lowest effective dose."
 notes: "Other non-selective NSAIDs are used the same way; choose by formulary."
 sources: [label-ibuprofen-tablets-2025, chou-postop-pain-2016, ags-beers-2023]
+verification:
+  source: label-ibuprofen-tablets-2025
+  read: not-verified
+  date: 2026-10-23

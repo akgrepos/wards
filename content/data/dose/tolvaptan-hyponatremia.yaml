@@ -21,3 +21,7 @@ cautions:
   - "Not with, or right after, hypertonic saline; not with desmopressin."
 notes: "Na⁺ every 6–8 h for the first 24–48 h (US panel), especially after starting and after each dose change. Resume fluid restriction and monitor Na⁺ when it is stopped. European guideline: not recommended at Na⁺ <130 mEq/L and recommended against at <125 mEq/L."
 sources: [label-samsca-2021, verbalis-hyponatremia-2013, hoorn-hyponatremia-guidelines-2017]
+verification:
+  source: label-samsca-2021
+  read: not-verified
+  date: 2026-10-23

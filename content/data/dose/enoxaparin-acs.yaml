@@ -16,3 +16,7 @@ cautions:
   - "At PCI: no extra dose if the last dose was within 8 hours; 0.3 mg/kg IV if 8–12 hours or only 1 SC dose given."
   - "Low body weight raises exposure: watch for bleeding."
 sources: [label-lovenox-2026, acc-aha-acs-2025]
+verification:
+  source: label-lovenox-2026
+  read: not-verified
+  date: 2026-10-23

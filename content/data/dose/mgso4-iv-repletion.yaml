@@ -19,3 +19,7 @@ cautions:
   - "Keep IV calcium available to reverse magnesium toxicity."
 notes: "1 g provides about 8 mEq (4 mmol) of magnesium. Up to 90% of an IV dose may be lost in the urine within 24 hours; slower infusion is thought to improve retention. ICU rule of thumb: each 1 g raises serum Mg by about 0.15 mEq/L over 18–30 hours."
 sources: [label-mgso4-2021, adomako-magnesium-2024, hansen-magnesium-icu-2018]
+verification:
+  source: label-mgso4-2021
+  read: not-verified
+  date: 2026-10-23

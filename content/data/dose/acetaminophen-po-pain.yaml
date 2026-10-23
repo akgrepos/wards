@@ -12,3 +12,7 @@ cautions:
   - "Count every source of acetaminophen, including combination opioid products, toward the daily maximum."
 notes: "No prescription oral label exists for acetaminophen; the daily ceiling here comes from the IV label and the lower caps are common practice."
 sources: [label-acetaminophen-iv-2026, chou-postop-pain-2016, common-practice]
+verification:
+  source: label-acetaminophen-iv-2026
+  read: not-verified
+  date: 2026-10-23

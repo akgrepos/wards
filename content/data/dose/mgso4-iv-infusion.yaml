@@ -13,3 +13,7 @@ cautions:
   - "Contraindicated in heart block or myocardial damage (US label)."
 notes: "US label alternative for severe deficiency: 5 g in 1 L of D5W or saline over 3 hours."
 sources: [hansen-magnesium-icu-2018, label-mgso4-2021]
+verification:
+  source: label-mgso4-2021
+  read: not-verified
+  date: 2026-10-23

@@ -9,3 +9,7 @@ give_when: "Delay in venous access or in setting up the infusion; K⁺ >3.5 mEq/
 cautions:
   - "IM injection is painful and can bleed in anticoagulated patients."
 sources: [ada-hyperglycemic-crises-2024, jbds-dka-2023]
+verification:
+  source: ada-hyperglycemic-crises-2024
+  read: not-verified
+  date: 2026-10-23

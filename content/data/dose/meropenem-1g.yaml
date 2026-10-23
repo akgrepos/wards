@@ -21,3 +21,7 @@ sources:
   - idsa-ats-cap-2019
   - idsa-cuti-selection-2025
   - idsa-ssti-2014
+verification:
+  source: label-meropenem-2024
+  read: not-verified
+  date: 2026-10-23

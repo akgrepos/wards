@@ -20,3 +20,7 @@ cautions:
   - "Beers criteria: avoid in older adults."
 notes: "Oral ketorolac is only a continuation after IV or IM dosing, within the same 5-day total."
 sources: [label-ketorolac-injection-2024, label-ketorolac-tablets-2024, ags-beers-2023]
+verification:
+  source: label-ketorolac-injection-2024
+  read: not-verified
+  date: 2026-10-23

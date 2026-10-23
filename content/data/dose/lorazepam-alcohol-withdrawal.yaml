@@ -16,3 +16,7 @@ cautions:
   - "IV: dilute 1:1 before injection and give slowly. The injection contains propylene glycol and benzyl alcohol; with repeated high IV doses watch for hyponatremia and metabolic acidosis."
 notes: "The 1–2 mg dose and interval are common practice, not a guideline or label regimen. Lorazepam is glucuronidated without CYP oxidation; in the label's study, cirrhosis did not change clearance of a single 2 mg IV dose. ASAM: benzodiazepines that are not metabolized hepatically (lorazepam, oxazepam) may be more appropriate in significant liver disease."
 sources: [asam-alcohol-withdrawal-2020, label-ativan-inj-2026, common-practice]
+verification:
+  source: label-ativan-inj-2026
+  read: not-verified
+  date: 2026-10-23

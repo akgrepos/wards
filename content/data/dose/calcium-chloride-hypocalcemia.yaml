@@ -17,3 +17,7 @@ cautions:
   - "Never mix with ceftriaxone or give at the same time, even through separate lines or sites; sequential use only, with a line change or flush."
 notes: "27 mg (1.4 mEq) of elemental calcium per mL, about 3 times calcium gluconate. More local irritation than calcium gluconate."
 sources: [label-calcium-chloride-2026, endotext-hypocalcemia-2016]
+verification:
+  source: label-calcium-chloride-2026
+  read: not-verified
+  date: 2026-10-23

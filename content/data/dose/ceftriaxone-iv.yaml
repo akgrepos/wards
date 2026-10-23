@@ -17,3 +17,7 @@ sources:
   - idsa-ats-cap-2019
   - idsa-ssti-2014
   - idsa-cuti-selection-2025
+verification:
+  source: label-ceftriaxone-2026
+  read: not-verified
+  date: 2026-10-23

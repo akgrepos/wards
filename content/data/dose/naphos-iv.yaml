@@ -16,3 +16,7 @@ cautions:
   - "Rapid IV phosphate can cause hypocalcemia."
 notes: "No US label repletion dose. Bands are extrapolated from the potassium phosphates label (0.16–0.31, 0.32–0.43 or 0.44–0.64 mmol/kg by serum phosphorus). One trauma ICU study gave either salt, chosen by serum K⁺, by one weight-based algorithm with higher doses (0.32, 0.64 or 1.0 mmol/kg)."
 sources: [label-naphos-injection-2021, brown-phosphorus-2006, label-kphos-injection-2026, ada-hyperglycemic-crises-2024]
+verification:
+  source: label-naphos-injection-2021
+  read: not-verified
+  date: 2026-10-23

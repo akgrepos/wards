@@ -15,3 +15,7 @@ cautions:
 sources:
   - idsa-ats-cap-2019
   - label-cefpodoxime-2026
+verification:
+  source: label-cefpodoxime-2026
+  read: not-verified
+  date: 2026-10-23

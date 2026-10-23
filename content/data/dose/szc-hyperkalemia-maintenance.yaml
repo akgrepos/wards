@@ -11,3 +11,7 @@ adjustments:
   - when: "On hemodialysis"
     change: "5 g once daily on non-dialysis days only (consider 10 g if potassium above 6.5 mEq/L); range 5–15 g; recheck potassium after 1 week"
 sources: [label-lokelma-2024]
+verification:
+  source: label-lokelma-2024
+  read: not-verified
+  date: 2026-10-23

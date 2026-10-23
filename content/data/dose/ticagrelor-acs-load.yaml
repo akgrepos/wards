@@ -15,3 +15,7 @@ cautions:
   - "Avoid strong CYP3A inhibitors and inducers; avoid in severe liver impairment."
   - "Dyspnea is common and usually mild."
 sources: [label-brilinta-2026, acc-aha-acs-2025]
+verification:
+  source: label-brilinta-2026
+  read: not-verified
+  date: 2026-10-23

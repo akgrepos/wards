@@ -14,3 +14,7 @@ alternative:
   when: Cardiac arrest or peri-arrest
 notes: "30 mL of 10% calcium gluconate gives about the same calcium (6.8 mmol) as 10 mL of 10% calcium chloride. Calcium does not lower potassium."
 sources: [ukka-hyperkalaemia-2026, kdigo-acute-hyperkalemia-2020]
+verification:
+  source: ukka-hyperkalaemia-2026
+  read: not-verified
+  date: 2026-10-23

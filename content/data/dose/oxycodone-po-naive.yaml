@@ -14,3 +14,7 @@ adjustments:
 cautions:
   - "CDC conversion factor 1.5 (oral oxycodone to oral morphine); start at 5 mg in older, frail or opioid-naive patients."
 sources: [label-oxycodone-2026, cdc-opioid-2022]
+verification:
+  source: label-oxycodone-2026
+  read: not-verified
+  date: 2026-10-23

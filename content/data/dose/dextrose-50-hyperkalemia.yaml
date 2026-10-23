@@ -9,3 +9,7 @@ cautions:
   - "Can cause tissue injury if it extravasates."
 notes: "50 mL of 50% dextrose contains 25 g of glucose."
 sources: [ukka-hyperkalaemia-2026, kdigo-acute-hyperkalemia-2020]
+verification:
+  source: ukka-hyperkalaemia-2026
+  read: not-verified
+  date: 2026-10-23

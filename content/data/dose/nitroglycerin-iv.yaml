@@ -13,3 +13,7 @@ cautions:
   - "Use non-PVC tubing and an infusion pump; tolerance develops after 24–48 hours."
 notes: "ACS guideline start: 10 mcg/min; label start 5 mcg/min with non-PVC tubing."
 sources: [label-ntg-premix-2016, esc-hf-2021, acc-aha-acs-2025]
+verification:
+  source: label-ntg-premix-2016
+  read: not-verified
+  date: 2026-10-23

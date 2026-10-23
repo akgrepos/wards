@@ -21,3 +21,7 @@ notes: Guideline dose; the label's UTI dose is 250–500 mg every 12 hours.
 sources:
   - idsa-cuti-ivpo-2025
   - label-cipro-oral-2026
+verification:
+  source: label-cipro-oral-2026
+  read: not-verified
+  date: 2026-10-23

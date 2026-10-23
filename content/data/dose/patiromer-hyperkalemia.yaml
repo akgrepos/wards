@@ -15,3 +15,7 @@ cautions:
   - "Binds magnesium: monitor magnesium."
   - "Avoid in severe constipation or bowel obstruction."
 sources: [label-veltassa-2025]
+verification:
+  source: label-veltassa-2025
+  read: not-verified
+  date: 2026-10-23

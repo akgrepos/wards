@@ -12,3 +12,7 @@ cautions:
   - "Avoid with SBP <90 mm Hg or suspected RV infarction."
   - "Give seated or lying."
 sources: [label-nitrostat-2023, acc-aha-acs-2025]
+verification:
+  source: label-nitrostat-2023
+  read: not-verified
+  date: 2026-10-23

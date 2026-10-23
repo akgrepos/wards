@@ -17,3 +17,7 @@ cautions:
   - "Swallow capsules whole; opening them increases absorption."
   - "Avoid P-gp inducers such as rifampin."
 sources: [label-pradaxa-2025, ash-vte-treatment-2020]
+verification:
+  source: label-pradaxa-2025
+  read: not-verified
+  date: 2026-10-23

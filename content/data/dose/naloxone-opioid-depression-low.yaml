@@ -14,3 +14,7 @@ cautions:
   - "Watch for renarcotization and keep monitoring after each dose."
 notes: "Call for help and support ventilation; naloxone is not a substitute for airway management."
 sources: [label-naloxone-2025]
+verification:
+  source: label-naloxone-2025
+  read: not-verified
+  date: 2026-10-23

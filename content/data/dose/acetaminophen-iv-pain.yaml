@@ -14,3 +14,7 @@ cautions:
   - "Use caution in hepatic impairment or active liver disease, alcohol use disorder, chronic malnutrition, severe hypovolemia and severe renal impairment (CrCl ≤30)."
 notes: "Scheduled dosing is the usual multimodal approach; PRN dosing underuses it."
 sources: [label-acetaminophen-iv-2026, chou-postop-pain-2016]
+verification:
+  source: label-acetaminophen-iv-2026
+  read: not-verified
+  date: 2026-10-23

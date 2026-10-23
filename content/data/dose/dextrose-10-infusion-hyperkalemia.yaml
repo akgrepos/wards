@@ -7,3 +7,7 @@ unit: mL/h
 frequency: for 5 hours (25 g)
 give_when: Pre-treatment glucose below 126 mg/dL
 sources: [ukka-hyperkalaemia-2026]
+verification:
+  source: ukka-hyperkalaemia-2026
+  read: not-verified
+  date: 2026-10-23

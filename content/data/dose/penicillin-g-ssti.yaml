@@ -17,3 +17,7 @@ cautions:
 sources:
   - idsa-ssti-2014
   - label-penicillin-g-2025
+verification:
+  source: label-penicillin-g-2025
+  read: not-verified
+  date: 2026-10-23

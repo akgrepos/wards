@@ -16,3 +16,7 @@ notes: Less well studied in complicated UTI; the more frequent dosing is preferr
 sources:
   - idsa-cuti-ivpo-2025
   - label-amox-clav-2026
+verification:
+  source: label-amox-clav-2026
+  read: not-verified
+  date: 2026-10-23

@@ -18,3 +18,7 @@ cautions:
 sources:
   - label-zosyn-2026
   - idsa-ssti-2014
+verification:
+  source: label-zosyn-2026
+  read: not-verified
+  date: 2026-10-23

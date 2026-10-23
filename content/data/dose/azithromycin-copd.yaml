@@ -10,3 +10,7 @@ cautions:
   - "Use caution at GFR <10 mL/min (higher levels); no labeled dose change."
 notes: "Labeled for mild to moderate acute bacterial exacerbations of COPD."
 sources: [label-zithromax-oral-2026, gold-copd-2026]
+verification:
+  source: label-zithromax-oral-2026
+  read: not-verified
+  date: 2026-10-23

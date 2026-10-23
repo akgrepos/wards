@@ -17,3 +17,7 @@ notes: "Dose is the trimethoprim part: 1 double-strength tablet (160 mg/800 mg).
 sources:
   - idsa-cuti-ivpo-2025
   - label-tmp-smx-2024
+verification:
+  source: label-tmp-smx-2024
+  read: not-verified
+  date: 2026-10-23

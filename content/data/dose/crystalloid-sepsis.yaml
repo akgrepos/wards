@@ -13,3 +13,7 @@ cautions:
   - "Crystalloid alone is suggested over adding albumin; albumin may suit after large crystalloid volumes or in cirrhosis, not in traumatic brain injury."
 notes: "Surviving Sepsis 2026: crystalloids first line (strong); balanced over saline (conditional; 0.9% saline with traumatic brain injury); against starches (strong) and gelatin (conditional); after 30 mL/kg with persistent hypoperfusion, a liberal or restrictive strategy (conditional). CLOVERS: a restrictive, vasopressor-early strategy after 1–3 L had similar mortality to a liberal one."
 sources: [ssc-sepsis-2026, clovers-2023]
+verification:
+  source: ssc-sepsis-2026
+  read: not-verified
+  date: 2026-10-23

@@ -11,3 +11,7 @@ cautions:
   - "If a long-acting muscarinic antagonist (e.g. tiotropium) is continued, ipratropium adds little."
 notes: "Labeled for maintenance treatment of COPD bronchospasm, 500 mcg three to four times daily, 6–8 hours apart; use in exacerbations follows the guideline. Combined vial with albuterol (0.5 mg/2.5 mg): one vial four times daily, up to two extra vials a day (label)."
 sources: [gold-copd-2026, label-ipratropium-neb-2026]
+verification:
+  source: label-ipratropium-neb-2026
+  read: not-verified
+  date: 2026-10-23

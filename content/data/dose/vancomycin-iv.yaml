@@ -19,3 +19,7 @@ sources:
   - rybak-vancomycin-2020
   - idsa-ats-cap-2019
   - label-vancomycin-2025
+verification:
+  source: label-vancomycin-2025
+  read: not-verified
+  date: 2026-10-23

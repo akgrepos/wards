@@ -12,3 +12,7 @@ cautions:
   - "Re-lowering is not validated in controlled trials."
 notes: "The European guideline uses 10 mL/kg of electrolyte-free water, with or without desmopressin 2 mcg IV, once the 10 mEq/L limit is exceeded. Starting Na⁺ ≥120 mEq/L: intervention is probably unnecessary (US panel)."
 sources: [verbalis-hyponatremia-2013, hoorn-hyponatremia-guidelines-2017]
+verification:
+  source: verbalis-hyponatremia-2013
+  read: not-verified
+  date: 2026-10-23

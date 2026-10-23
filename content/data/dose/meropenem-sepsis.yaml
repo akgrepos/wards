@@ -20,3 +20,7 @@ cautions:
   - Seizure risk, mostly with kidney impairment or CNS disease.
 notes: "Extended infusion = each dose over at least half the dosing interval, or continuous; recommended in sepsis after a loading dose (labels give short infusions). Label: 1 g every 8 hours for intra-abdominal infection."
 sources: [label-meropenem-2024, ssc-sepsis-2026, idsa-sepsis-hospital-2026]
+verification:
+  source: label-meropenem-2024
+  read: not-verified
+  date: 2026-10-23

@@ -14,3 +14,7 @@ cautions:
   - "Use for this indication is off label (the label covers infections)."
 notes: "ESGE 2026: if IV erythromycin is unavailable, IV metoclopramide may be considered in selected patients with severe or ongoing bleeding."
 sources: [acg-ugib-2021, esge-pub-2026, label-erythrocin-iv-2025]
+verification:
+  source: label-erythrocin-iv-2025
+  read: not-verified
+  date: 2026-10-23

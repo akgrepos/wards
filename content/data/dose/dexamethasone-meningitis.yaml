@@ -13,3 +13,7 @@ cautions:
   - May lower vancomycin penetration into the cerebrospinal fluid; confirm the response.
 notes: "Off-label use of dexamethasone sodium phosphate injection; IDSA 2004 recommendation (strong, high-quality evidence)."
 sources: [idsa-meningitis-2004]
+verification:
+  source: idsa-meningitis-2004
+  read: not-verified
+  date: 2026-10-23
