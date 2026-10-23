@@ -9,6 +9,7 @@ import { checkPathway } from './pathway.mjs';
 import { checkMedia } from './media.mjs';
 import { checkCoverage } from './coverage.mjs';
 import { checkSemicolons } from './semicolons.mjs';
+import { checkStraySources } from './stray-sources.mjs';
 
 const DOSE_ONLY = /^\{\{\s*dose\s*:\s*([a-z0-9-]+)\s*\}\}$/;
 
@@ -406,6 +407,7 @@ export function checkContent({ systems, cards, data }) {
     }
   }
   errors.push(...checkSemicolons({ cards, data }));
+  errors.push(...checkStraySources({ cards, data }));
   return errors;
 }
 

@@ -35,6 +35,7 @@ The essentials for writing or fixing a card. Read this first; open the full guid
 - Aliases: each alias on one card only; over 30 per card warns.
 - `subsection` must be in the system's list in `content/systems.yaml` (add the name there first).
 - `[!cannot-miss]` / `[!most-common]` only on causes in Causes; never name a category "Cannot miss" or "Most common".
+- **Table symbols:** `↑` high/raised, `↓` low, `=` normal, `↕` variable, `< > ≤ ≥` for thresholds (`<100`, not "below 100"). Tables only, never for names like "low-risk" or "high-gap". Details: CONTENT-FORMAT.
 - Tables: at most 4 columns. `[[card]]` to an unwritten card is allowed (warning, shows as plain text). Related cards go both ways.
 - **No semicolons** anywhere in card or data text (error). Clause join: two sentences (`Calcium buys time. It lowers no K⁺.`). List: lead-in with a colon plus sub-bullets, each with the source. Table cell: short sentences.
 - Warnings: unused source, `reviewed` over 12 months, a Do Now dose missing from Treatment.

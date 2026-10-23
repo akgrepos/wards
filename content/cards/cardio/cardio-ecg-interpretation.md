@@ -141,7 +141,7 @@ related:
 | Rate 145, regular narrow QRS, no visible P waves, patient stable | Regular narrow-complex tachycardia: vagal maneuver, then adenosine. Look for flutter waves with a ventricular rate near 150/min (flutter 2:1) ^[acc-aha-hrs-svt-2015, aha-acls-2025] |
 | Rate 170, wide QRS 160 ms, regular, patient hypotensive | Wide-complex tachycardia, assumed VT: synchronized cardioversion ^[aha-acls-2025, aha-acc-hrs-va-2017] |
 | ST elevation 2 mm in II, III, aVF with ST depression in I and aVL | Inferior STEMI: record V4R, reperfusion pathway, avoid nitrates if right ventricular involvement ^[acc-aha-acs-2025, wagner-ecg-ischemia-2009] |
-| LBBB with ST elevation 3 mm in V1–V2 (a lead with a negative QRS) and a deep S wave of 8 mm | ST/S ratio −0.38 (below −0.25): {{calc:modified-sgarbossa}} criteria positive, so manage as acute coronary occlusion ^[smith-modified-sgarbossa-2012, kontos-chest-pain-ecdp-2022] |
+| LBBB with ST elevation 3 mm in V1–V2 (a lead with a negative QRS) and a deep S wave of 8 mm | ST/S ratio −0.38 (< −0.25): {{calc:modified-sgarbossa}} criteria positive, so manage as acute coronary occlusion ^[smith-modified-sgarbossa-2012, kontos-chest-pain-ecdp-2022] |
 | Heart rate 110, QRS 100 ms, {{calc:qtc}} 520 ms on a macrolide, K⁺ 3.0 mEq/L | Long QT with hypokalemia: stop the macrolide, replace potassium and magnesium, monitor for torsades ^[aha-accf-qt-2010, kardalas-hypokalemia-2018] |
 | PR 90 ms, delta wave, new AF at 220/min, wide irregular QRS | Pre-excited AF: avoid AV nodal blockers and IV amiodarone. Synchronized cardioversion if unstable, procainamide or ibutilide if stable ^[acc-aha-hrs-svt-2015, acc-aha-af-2023] |
 
