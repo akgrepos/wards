@@ -5,16 +5,16 @@ population: Adults
 route: Oral or orally disintegrating tablet
 amount: 5–10
 unit: mg
-frequency: once; reassess before any repeat dose
+frequency: once. Reassess before any repeat dose
 give_when: Agitation from psychosis or delirium, or undifferentiated agitation, when the patient will take a tablet
 repeat: "May repeat after 2 hours if needed (consensus table)"
 max: "20 mg a day by mouth (label and consensus table)"
 boxed_warning: "Increased mortality in older adults with dementia-related psychosis."
 cautions:
-  - "Sedation and orthostatic hypotension add up with a benzodiazepine; reassess before adding one."
+  - "Sedation and orthostatic hypotension add up with a benzodiazepine. Reassess before adding one."
   - "Anticholinergic effects: avoid or use less in delirium and older adults when possible."
   - "Older or debilitated adults: start at a lower dose."
-notes: "Doses from the AAEP psychopharmacology consensus; the label covers the IM route for agitation."
+notes: "Doses from the AAEP psychopharmacology consensus. The label covers the IM route for agitation."
 sources: [label-zyprexa-2026, aaep-beta-psychopharm-2012, acep-severe-agitation-2023]
 verification:
   source: aaep-beta-psychopharm-2012

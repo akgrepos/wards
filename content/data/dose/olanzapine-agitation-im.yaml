@@ -1,19 +1,19 @@
 drug_name: Olanzapine
 brand: Zyprexa IntraMuscular
-indication: Agitation associated with schizophrenia or bipolar I mania; used off-label for other agitation when oral medication is refused
+indication: Agitation associated with schizophrenia or bipolar I mania. Used off-label for other agitation when oral medication is refused
 population: Adults
 route: IM
 amount: 10
 unit: mg
-frequency: once; reassess before any repeat dose
+frequency: once. Reassess before any repeat dose
 give_when: Danger or severe distress after de-escalation, and the patient refuses or cannot take oral medication
-repeat: "Label: up to 10 mg again if agitation persists; doses sooner than 2 hours after the first or 4 hours after the second were not studied"
+repeat: "Label: up to 10 mg again if agitation persists. Doses sooner than 2 hours after the first or 4 hours after the second were not studied"
 max: "Label: 30 mg a day (higher totals not studied)"
 boxed_warning: "Increased mortality in older adults with dementia-related psychosis."
 cautions:
-  - "With a parenteral benzodiazepine: not recommended by the label (excess sedation, cardiorespiratory depression); the consensus statement advises avoiding the combination."
-  - "Orthostatic hypotension, bradycardia and hypoventilation; check for orthostatic hypotension before each further dose; not for IV or SC use."
-  - "Label: consider 5 mg in older adults and 2.5 mg if debilitated; 5 or 7.5 mg when clinical factors warrant."
+  - "With a parenteral benzodiazepine: not recommended by the label (excess sedation, cardiorespiratory depression). The consensus statement advises avoiding the combination."
+  - "Orthostatic hypotension, bradycardia and hypoventilation. Check for orthostatic hypotension before each further dose. Not for IV or SC use."
+  - "Label: consider 5 mg in older adults and 2.5 mg if debilitated. 5 or 7.5 mg when clinical factors warrant."
   - "Anticholinergic effects and parkinsonism are less than with haloperidol."
 notes: "Label dosing for agitation in schizophrenia and bipolar I mania."
 sources: [label-zyprexa-2026, aaep-beta-psychopharm-2012, acep-severe-agitation-2023]
