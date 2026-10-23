@@ -66,6 +66,7 @@ React + TypeScript + Vite, Vite PWA plugin (fully offline, prompt-to-update), Gi
 
 ## Content structure
 Card types and their sections: `docs/CARD-TYPES.md`. Shared data (one home, inserted, never retyped): `docs/DATA-TYPES.md`. How to write the files: `docs/CONTENT-FORMAT.md`. Read `docs/CARD-WRITING-CHEATSHEET.md` first and the full guides only when it doesn't answer the question. Follow them exactly; `npm run content:check` enforces them.
+- **Consistency (owner, 2026-10-23):** every card uses one of the defined card types and the shared data types, with the same structure and formatting as the live cards. No one-off layouts. If a card seems to need a new card type, data type or kind of section, the session stops and asks the owner first, and the type is documented in `docs/CARD-TYPES.md` / `docs/DATA-TYPES.md` before any content is written.
 
 ## Where things stand
 See `docs/STATUS.md`.
