@@ -19,3 +19,7 @@ cautions:
   - Not suggested for invasive infection with ESBL-producing Enterobacterales or AmpC organisms such as Enterobacter.
 notes: "4.5 g every 6 hours is the label's nosocomial pneumonia dose (adjustments from that column); 3.375 g every 6 hours is the label dose for intra-abdominal infection."
 sources: [label-zosyn-2026, idsa-ats-hap-vap-2016, idsa-amr-2026]
+verification:
+  source: label-zosyn-2026
+  read: not-verified
+  date: 2026-10-23

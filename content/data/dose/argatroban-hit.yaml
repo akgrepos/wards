@@ -16,3 +16,7 @@ cautions:
   - "Raises the INR itself: use a chromogenic factor X assay or follow the label's warfarin conversion."
   - "Stop all heparin, including flushes and heparin-coated catheters."
 sources: [label-argatroban-2026, ash-hit-2018]
+verification:
+  source: label-argatroban-2026
+  read: not-verified
+  date: 2026-10-23

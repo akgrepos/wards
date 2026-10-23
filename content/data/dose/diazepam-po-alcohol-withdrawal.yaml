@@ -20,3 +20,7 @@ cautions:
   - "Contraindicated in myasthenia gravis, severe respiratory insufficiency, severe hepatic insufficiency and sleep apnea syndrome (label)."
 notes: "ASAM examples: 10 mg every hour if the CIWA-Ar is 10 or higher; 20 mg every hour until the CIWA-Ar is below 10; or 20 mg every 2 hours for 3 doses. Alcohol withdrawal is a labeled use: 10 mg 3 or 4 times in the first 24 hours, then 5 mg 3 or 4 times daily as needed."
 sources: [asam-alcohol-withdrawal-2020, label-valium-2025]
+verification:
+  source: label-valium-2025
+  read: not-verified
+  date: 2026-10-23

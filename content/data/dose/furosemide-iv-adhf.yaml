@@ -17,3 +17,7 @@ cautions:
   - "Contraindicated in anuria."
 notes: "2026 European guideline: diuretic-naive patients usually respond to 40 mg IV; on a home loop diuretic, consider twice the usual oral dose IV. Oral furosemide is about half as bioavailable as IV. Approximate equivalents: furosemide 40 mg PO = 20 mg IV = bumetanide 1 mg (PO or IV) = torsemide 10–20 mg PO."
 sources: [aha-acc-hfsa-hf-2022, esc-hf-2026, esc-hf-2021, hfa-diuretics-2019, dose-2011, label-furosemide-inj-2026]
+verification:
+  source: label-furosemide-inj-2026
+  read: not-verified
+  date: 2026-10-23

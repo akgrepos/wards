@@ -11,3 +11,7 @@ cautions:
   - "Type 1 diabetes: keep basal insulin even if feeds stop."
 notes: "Starting dose; NPH every 8–12 hours is an alternative for continuous feeds."
 sources: [ada-soc-hospital-2026]
+verification:
+  source: ada-soc-hospital-2026
+  read: not-verified
+  date: 2026-10-23

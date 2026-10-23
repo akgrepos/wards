@@ -14,3 +14,7 @@ notes: "IV label: at least 2 days IV, then oral. Total course follows the CAP du
 sources:
   - label-zithromax-iv-2026
   - idsa-ats-cap-2019
+verification:
+  source: label-zithromax-iv-2026
+  read: not-verified
+  date: 2026-10-23

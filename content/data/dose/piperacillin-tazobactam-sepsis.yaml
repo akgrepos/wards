@@ -21,3 +21,7 @@ cautions:
   - "Label: an independent risk factor for kidney failure in the critically ill; consider alternatives or monitor kidney function, especially with vancomycin."
 notes: "Extended infusion = each dose over at least half the dosing interval, or continuous; recommended in sepsis after a loading dose (labels give short infusions). 4.5 g every 6 hours is the label's nosocomial pneumonia dose (adjustments from that column); 3.375 g every 6 hours for most other infections."
 sources: [label-zosyn-2026, ssc-sepsis-2026, idsa-sepsis-hospital-2026]
+verification:
+  source: label-zosyn-2026
+  read: not-verified
+  date: 2026-10-23

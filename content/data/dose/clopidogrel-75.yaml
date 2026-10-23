@@ -11,3 +11,7 @@ cautions:
   - "Avoid omeprazole and esomeprazole."
   - "Hold 5 days before surgery with major bleeding risk when possible."
 sources: [label-plavix-2025, acc-aha-acs-2025]
+verification:
+  source: label-plavix-2025
+  read: not-verified
+  date: 2026-10-23

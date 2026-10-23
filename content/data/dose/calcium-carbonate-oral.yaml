@@ -7,3 +7,7 @@ unit: mg
 frequency: "of elemental calcium per day, in 3–4 divided doses with meals"
 notes: "Calcium carbonate is 40% elemental calcium (1,250 mg provides 500 mg of calcium). Add calcitriol if PTH is deficient or doesn't work."
 sources: [endotext-hypocalcemia-2016, cooper-hypocalcaemia-2008]
+verification:
+  source: endotext-hypocalcemia-2016
+  read: not-verified
+  date: 2026-10-23

@@ -16,3 +16,7 @@ cautions:
   - "Recent hemorrhagic stroke: weigh risk (more hemorrhagic strokes with this dose after stroke or TIA)."
 notes: "Rosuvastatin is the other high-intensity option."
 sources: [acc-aha-acs-2025, label-lipitor-2024]
+verification:
+  source: label-lipitor-2024
+  read: not-verified
+  date: 2026-10-23

@@ -13,3 +13,7 @@ cautions:
   - "Na⁺ no more than 10 mEq/L in 24 hours."
   - "Fluids alone lower glucose substantially; some start insulin only once glucose stops falling with fluids (UK guideline)."
 sources: [ada-hyperglycemic-crises-2024, jbds-hhs-2022, label-humulin-r-2026]
+verification:
+  source: label-humulin-r-2026
+  read: not-verified
+  date: 2026-10-23

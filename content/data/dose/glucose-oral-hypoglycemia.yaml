@@ -9,3 +9,7 @@ repeat: "Recheck glucose every 15 minutes; repeat until >70 mg/dL, then give a s
 give_when: "Glucose <70 mg/dL, alert and able to swallow, not NPO"
 notes: "Glucose tablets or gel, or juice (common practice). On automated insulin delivery, 5–10 g may suffice."
 sources: [ada-soc-hospital-2026, ada-soc-glycemic-2026]
+verification:
+  source: ada-soc-hospital-2026
+  read: not-verified
+  date: 2026-10-23

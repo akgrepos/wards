@@ -12,3 +12,7 @@ cautions:
   - "IM or SC if no IV access."
 notes: "Overdose in a person without opioid tolerance. For inpatient respiratory depression, start with the smaller increments."
 sources: [label-naloxone-2025]
+verification:
+  source: label-naloxone-2025
+  read: not-verified
+  date: 2026-10-23

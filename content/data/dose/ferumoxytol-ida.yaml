@@ -14,3 +14,7 @@ cautions:
   - "History of any drug allergy is a risk factor for anaphylaxis."
   - "Check blood pressure and pulse during and after the infusion."
 sources: [label-feraheme-2026]
+verification:
+  source: label-feraheme-2026
+  read: not-verified
+  date: 2026-10-23

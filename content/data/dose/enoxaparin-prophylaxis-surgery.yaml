@@ -16,3 +16,7 @@ cautions:
   - "Neuraxial anesthesia: at least 12 hours between the last prophylactic dose and needle or catheter removal; next dose at least 4 hours after removal. With CrCl <30, consider doubling the intervals."
 notes: "Usual duration 7–10 days (up to 12 days)."
 sources: [label-lovenox-2026]
+verification:
+  source: label-lovenox-2026
+  read: not-verified
+  date: 2026-10-23

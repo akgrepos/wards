@@ -15,3 +15,7 @@ cautions:
   - "At PCI, add UFH: catheter thrombosis with fondaparinux alone."
 notes: "ACS is not a US-labeled indication; dose from the ACC/AHA guideline and OASIS-5."
 sources: [acc-aha-acs-2025, oasis-5-2006, label-arixtra-2024]
+verification:
+  source: label-arixtra-2024
+  read: not-verified
+  date: 2026-10-23

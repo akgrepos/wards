@@ -12,3 +12,7 @@ cautions:
   - "Much larger dose than for bronchospasm; watch for tachycardia."
 notes: "Peak potassium lowering around 90–120 minutes."
 sources: [ukka-hyperkalaemia-2026, kdigo-acute-hyperkalemia-2020, emcreg-hyperkalemia-2025]
+verification:
+  source: ukka-hyperkalaemia-2026
+  read: not-verified
+  date: 2026-10-23

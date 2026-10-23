@@ -16,3 +16,7 @@ cautions:
   - "Hold at least 7 days before surgery when possible."
   - "No kidney or mild–moderate liver adjustment."
 sources: [label-effient-2022, acc-aha-acs-2025]
+verification:
+  source: label-effient-2022
+  read: not-verified
+  date: 2026-10-23

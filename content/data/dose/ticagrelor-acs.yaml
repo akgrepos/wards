@@ -13,3 +13,7 @@ cautions:
   - "Hold 3–5 days before CABG (at least 24 hours if urgent); 5 days before other surgery with major bleeding risk."
   - "No kidney dose adjustment."
 sources: [label-brilinta-2026, acc-aha-acs-2025]
+verification:
+  source: label-brilinta-2026
+  read: not-verified
+  date: 2026-10-23

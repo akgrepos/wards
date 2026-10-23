@@ -20,3 +20,7 @@ cautions:
   - "Avoid combined strong CYP3A4 and P-gp inducers (rifampin, carbamazepine, phenytoin, St John's wort)."
 notes: "No weight or age adjustment for VTE treatment."
 sources: [label-eliquis-2025, ash-vte-treatment-2020, chest-vte-2021]
+verification:
+  source: label-eliquis-2025
+  read: not-verified
+  date: 2026-10-23

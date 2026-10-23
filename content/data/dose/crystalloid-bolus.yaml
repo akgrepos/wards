@@ -13,3 +13,7 @@ cautions:
   - "Hemorrhage: blood products, not crystalloid alone."
 notes: "Balanced crystalloids (LR, Plasma-Lyte) are suggested over saline in sepsis, except with traumatic brain injury (0.9% saline)."
 sources: [nice-iv-fluids-2017, ssc-sepsis-2026, common-practice]
+verification:
+  source: nice-iv-fluids-2017
+  read: not-verified
+  date: 2026-10-23

@@ -12,3 +12,7 @@ cautions:
 sources:
   - label-zithromax-oral-2026
   - idsa-ats-cap-2019
+verification:
+  source: label-zithromax-oral-2026
+  read: not-verified
+  date: 2026-10-23

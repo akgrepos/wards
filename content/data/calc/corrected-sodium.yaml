@@ -15,3 +15,7 @@ calculator:
   reference: "Adds 1.6 mEq/L for each 100 mg/dL of glucose above 100; no correction at or below 100 mg/dL."
   notes:
     - "An estimate; other studies give a larger factor at very high glucose."
+verification:
+  source: katz-sodium-1973
+  read: not-verified
+  date: 2026-10-23

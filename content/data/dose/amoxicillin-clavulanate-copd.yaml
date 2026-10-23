@@ -18,3 +18,7 @@ cautions:
   - "Contraindicated after cholestatic jaundice or hepatic dysfunction with amoxicillin-clavulanate."
 notes: "Label dose for severe and respiratory tract infections; exacerbation of COPD is not a labeled indication (lower respiratory tract infection is). Guideline course 5–7 days in hospital, 5 days or less as an outpatient."
 sources: [gold-copd-2026, label-amox-clav-2026]
+verification:
+  source: label-amox-clav-2026
+  read: not-verified
+  date: 2026-10-23

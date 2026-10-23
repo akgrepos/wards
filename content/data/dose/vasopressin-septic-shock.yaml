@@ -13,3 +13,7 @@ cautions:
   - "Reversible diabetes insipidus after stopping: watch Na⁺ and urine output."
 notes: "The 2021 guideline notes it is usually given at a fixed 0.03 units/min (trials used up to 0.06). Weaning (label): once the target is held for 8 hours without catecholamines, lower by 0.005 units/min every hour."
 sources: [label-vasostrict-2026, ssc-sepsis-2026, ssc-sepsis-2021, vasst-2008]
+verification:
+  source: label-vasostrict-2026
+  read: not-verified
+  date: 2026-10-23

@@ -16,3 +16,7 @@ cautions:
   - "Do not mix or dilute with other solutions or drugs in the syringe or infusion; avoid small veins and intra-arterial injection."
 notes: "Labeled for acute alcohol withdrawal, including impending or acute delirium tremens. The 5–10 minute repeat interval for titration is common ICU practice, consistent with ASAM's endorsement of intermittent IV dosing to light somnolence and of escalating diazepam doses in resistant withdrawal."
 sources: [asam-alcohol-withdrawal-2020, label-diazepam-inj-2026, common-practice]
+verification:
+  source: label-diazepam-inj-2026
+  read: not-verified
+  date: 2026-10-23

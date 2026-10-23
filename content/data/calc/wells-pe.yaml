@@ -27,3 +27,7 @@ calculator:
         - { from: 4.5, range: ">4", label: "PE likely", action: "Imaging (CT pulmonary angiography)." }
   notes:
     - "Prevalences are from the 2001 emergency department cohort. Hospitalized patients: the score performs poorly."
+verification:
+  source: wells-pe-2001
+  read: not-verified
+  date: 2026-10-23

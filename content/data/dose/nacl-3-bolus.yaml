@@ -14,3 +14,7 @@ cautions:
   - "Overcorrection is common after a third bolus and once the cause resolves (water diuresis)."
 notes: "A rise of 4–6 mEq/L is usually enough to relieve symptoms and stop seizures. The European guideline gives 150 mL over 20 minutes, 2–3 times as needed, and the same bolus once for moderately severe symptoms."
 sources: [verbalis-hyponatremia-2013, rondon-berrios-hypertonic-2022, hoorn-hyponatremia-guidelines-2017, spasovski-hyponatraemia-2014, adrogue-hyponatremia-2022]
+verification:
+  source: verbalis-hyponatremia-2013
+  read: not-verified
+  date: 2026-10-23

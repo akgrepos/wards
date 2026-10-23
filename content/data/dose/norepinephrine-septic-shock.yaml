@@ -15,3 +15,7 @@ cautions:
   - "Arrhythmias, digital and mesenteric ischemia; raises glucose."
 notes: "Label maintenance 2–4 mcg/min (septic shock often needs more). Conversion: 0.25 mcg/kg/min is about 18 mcg/min at 70 kg. Label dilution: 4 mg in 1,000 mL 5% dextrose (4 mcg/mL). Doses are often written in mcg/kg/min; surveyed panelists add vasopressin at a median of about 0.3 mcg/kg/min of norepinephrine."
 sources: [label-levophed-2025, ssc-sepsis-2026]
+verification:
+  source: label-levophed-2025
+  read: not-verified
+  date: 2026-10-23

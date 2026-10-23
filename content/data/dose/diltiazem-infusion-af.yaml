@@ -13,3 +13,7 @@ cautions:
   - "Use with caution in kidney or liver impairment (no specific adjustment)."
 notes: "Transition to oral rate control once the rate is controlled."
 sources: [acc-aha-af-2023, label-diltiazem-inj-2026]
+verification:
+  source: label-diltiazem-inj-2026
+  read: not-verified
+  date: 2026-10-23

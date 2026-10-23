@@ -15,3 +15,7 @@ cautions:
   - "Contraindicated with heparin-induced thrombocytopenia in the past 100 days or circulating antibodies."
 notes: "Sepsis: low-molecular-weight heparin preferred over unfractionated heparin. HHS: prophylaxis for the whole admission (UK guideline)."
 sources: [label-lovenox-2026, ssc-sepsis-2026, ada-hyperglycemic-crises-2024, jbds-hhs-2022, gold-copd-2026]
+verification:
+  source: label-lovenox-2026
+  read: not-verified
+  date: 2026-10-23

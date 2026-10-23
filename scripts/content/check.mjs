@@ -1,5 +1,6 @@
 // Content checks, run on every pull request (npm run content:check) and in the tests.
 // Each rule comes from docs/CARD-TYPES.md and docs/DATA-TYPES.md.
+import { checkVerification } from './verification.mjs';
 import { CARD_TYPES, CALC_FIELDS, MDCALC_URL, DATA_TYPES, DOSE_FIELDS, CALC_FORMULAS, REGIMEN_FIELDS, REGIMEN_OPTION_FIELDS, SHARED_SECTIONS, UNITS, DOSE_IN_TEXT } from './schema.mjs';
 import { TAGS, parseInline } from './inline.mjs';
 import { onsetMinutes } from './onset.mjs';
@@ -95,7 +96,7 @@ export function checkCalculator(item, data) {
     if (c.with !== undefined) {
       const o = data.calc?.[c.with]?.calculator;
       if (!o || o.kind !== 'checklist') out.push(`"with" names "${c.with}", which is not a checklist calculator`);
-      else if (o.with !== item._file?.replace(/.*\//, '').replace(/\.yaml$/, '')) out.push('"with" must be reciprocal');
+      else if (o.with !== item._file?.replace(/.*[\\/]/, '').replace(/\.yaml$/, '')) out.push('"with" must be reciprocal');
     }
   } else if (c.kind === 'formula') {
     if (!nonEmpty(c.expression)) out.push('a formula calculator needs "expression" (the formula in words)');
@@ -299,6 +300,7 @@ export function checkContent({ systems, cards, data }) {
         if (alt !== undefined && (typeof alt !== 'object' || !alt.dose)) err(where, 'alternative needs "dose" (a dose id) and optional "when"');
         if (alt?.dose && !data.dose?.[alt.dose]) err(where, `alternative dose "${alt.dose}" does not exist`);
         if (alt?.dose === id) err(where, 'a dose cannot be its own alternative');
+        for (const m of checkVerification(item, data)) err(where, m);
         if (item.cautions !== undefined && (!Array.isArray(item.cautions) || item.cautions.some((x) => typeof x !== 'string'))) err(where, 'cautions must be a list of short sentences');
       }
       // A regimen: options joined by "or", each a list of parts given together; a part is a dose id or a list of dose
@@ -322,6 +324,7 @@ export function checkContent({ systems, cards, data }) {
         for (const t of texts) if (typeof t === 'string' && DOSE_IN_TEXT.test(t)) err(where, `has a dose typed as text ("${t.match(DOSE_IN_TEXT)[0]}"); the dose rows show the doses`);
       }
       if (kind === 'calc') {
+        if (item.calculator) for (const m of checkVerification(item, data)) err(where, m);
         for (const f of Object.keys(item)) if (f !== '_file' && !CALC_FIELDS.includes(f)) err(where, `unknown calculator field "${f}" (use ${CALC_FIELDS.join(', ')})`);
         if (typeof item.url === 'string' && !MDCALC_URL.test(item.url)) err(where, 'url must be an MDCalc calculator page: https://www.mdcalc.com/calc/<number>/<name>');
         if (!Array.isArray(item.match) || !item.match.length || item.match.some((x) => typeof x !== 'string' || !x.trim())) err(where, '"match" is a list of the words that name this calculator in the content');

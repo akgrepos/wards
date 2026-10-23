@@ -14,3 +14,7 @@ cautions:
   - "A2B (2025): more agitation and severe bradycardia than propofol, no faster extubation."
 notes: "PADIS 2018 suggests it for delirium in ventilated adults when agitation prevents weaning or extubation; the 2025 PADIS update suggests it over propofol for sedation (conditional); the APA guideline prefers it in ventilated patients with delirium."
 sources: [label-precedex-2026, padis-2018, padis-2025, apa-delirium-2025, a2b-2025]
+verification:
+  source: label-precedex-2026
+  read: not-verified
+  date: 2026-10-23

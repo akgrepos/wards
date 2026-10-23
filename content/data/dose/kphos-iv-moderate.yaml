@@ -25,3 +25,7 @@ cautions:
   - "Each mmol of phosphorus brings about 1.5 mEq of K⁺; continuous ECG and a central line above 10 mEq K⁺ per hour."
 notes: "Dose by actual body weight; consider adjusted body weight if well above ideal weight."
 sources: [label-kphos-injection-2026]
+verification:
+  source: label-kphos-injection-2026
+  read: not-verified
+  date: 2026-10-23

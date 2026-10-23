@@ -19,3 +19,7 @@ cautions:
   - "Co-prescribed benzodiazepines, gabapentinoids or other sedatives raise the risk of respiratory depression."
 notes: "Use immediate-release products for acute pain; extended-release opioids are not used for acute pain. Avoid combination pills so each drug can be titrated."
 sources: [cdc-opioid-2022, label-morphine-tablets-2026, common-practice]
+verification:
+  source: label-morphine-tablets-2026
+  read: not-verified
+  date: 2026-10-23

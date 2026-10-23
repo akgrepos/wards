@@ -15,3 +15,7 @@ cautions:
   - "Avoid in severe constipation or bowel obstruction."
   - "Separate other oral drugs by 2 hours."
 sources: [label-lokelma-2024, ukka-hyperkalaemia-2026]
+verification:
+  source: label-lokelma-2024
+  read: not-verified
+  date: 2026-10-23

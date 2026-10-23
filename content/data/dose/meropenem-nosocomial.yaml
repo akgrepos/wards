@@ -18,3 +18,7 @@ cautions:
   - Seizure risk, mostly with kidney impairment or CNS disease.
 notes: "Label: 1 g every 8 hours for intra-abdominal infection. IDSA 2026 lists 1–2 g every 8 hours, the higher dose for obesity, CNS infection, ECMO or CrCl of 130 mL/min or more."
 sources: [label-meropenem-2024, idsa-amr-2026, idsa-ats-hap-vap-2016]
+verification:
+  source: label-meropenem-2024
+  read: not-verified
+  date: 2026-10-23

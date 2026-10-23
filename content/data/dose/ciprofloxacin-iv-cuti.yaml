@@ -16,3 +16,7 @@ cautions:
 sources:
   - idsa-cuti-selection-2025
   - label-cipro-iv-2025
+verification:
+  source: label-cipro-iv-2025
+  read: not-verified
+  date: 2026-10-23

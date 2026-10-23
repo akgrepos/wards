@@ -15,3 +15,7 @@ cautions:
   - Not needed with piperacillin-tazobactam, ertapenem or meropenem, which cover anaerobes.
 notes: "Oral and IV doses are the same. The IV label regimen is 15 mg/kg once, then 7.5 mg/kg every 6 hours (maximum 4 g a day); IDSA/SIS 2010 lists 500 mg every 8–12 hours for intra-abdominal infection."
 sources: [label-metronidazole-iv-2025, idsa-sis-iai-2010]
+verification:
+  source: label-metronidazole-iv-2025
+  read: not-verified
+  date: 2026-10-23

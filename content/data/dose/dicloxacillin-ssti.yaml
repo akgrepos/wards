@@ -11,3 +11,7 @@ notes: Guideline dose; the older label lists up to 250 mg every 6 hours.
 sources:
   - idsa-ssti-2014
   - label-dicloxacillin-2022
+verification:
+  source: label-dicloxacillin-2022
+  read: not-verified
+  date: 2026-10-23

@@ -21,3 +21,7 @@ cautions:
   - "Avoid P-gp inducers such as rifampin."
   - "Reversal agent: idarucizumab."
 sources: [label-pradaxa-2025, acc-aha-af-2023]
+verification:
+  source: label-pradaxa-2025
+  read: not-verified
+  date: 2026-10-23

@@ -30,3 +30,7 @@ calculator:
         - { from: 2, range: "≥2", label: "DVT likely", action: "Proximal or whole-leg compression ultrasound." }
   notes:
     - "Three-level prevalences are from the 1997 derivation cohort. Validated mainly in outpatients; performs poorly in hospitalized patients."
+verification:
+  source: wells-dvt-2003
+  read: not-verified
+  date: 2026-10-23

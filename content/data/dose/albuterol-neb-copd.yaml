@@ -13,3 +13,7 @@ cautions:
   - "Avoid high doses: tachycardia, tremor, hypokalemia."
 notes: "Label dose 2.5 mg three to four times daily; the more frequent guideline schedule for exacerbations is beyond the label. No kidney or liver adjustment."
 sources: [gold-copd-2026, label-albuterol-neb-2026, bts-oxygen-2017]
+verification:
+  source: label-albuterol-neb-2026
+  read: not-verified
+  date: 2026-10-23

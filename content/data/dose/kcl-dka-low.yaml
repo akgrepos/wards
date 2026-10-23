@@ -11,3 +11,7 @@ cautions:
   - "The US label allows more than 10 mEq per hour only for K⁺ <2.0 mEq/L with ECG changes or paralysis; the consensus flowchart allows 10–20 mEq per hour, faster by central line."
   - "K⁺ ≤2.5 mEq/L carries about threefold mortality."
 sources: [ada-hyperglycemic-crises-2024, label-kcl-injection-2026]
+verification:
+  source: label-kcl-injection-2026
+  read: not-verified
+  date: 2026-10-23

@@ -24,3 +24,7 @@ sources:
   - label-tamiflu-2025
   - idsa-ats-cap-2019
   - idsa-influenza-2018
+verification:
+  source: label-tamiflu-2025
+  read: not-verified
+  date: 2026-10-23

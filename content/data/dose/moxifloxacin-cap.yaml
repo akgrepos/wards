@@ -13,3 +13,7 @@ cautions:
 sources:
   - label-moxifloxacin-2025
   - idsa-ats-cap-2019
+verification:
+  source: label-moxifloxacin-2025
+  read: not-verified
+  date: 2026-10-23

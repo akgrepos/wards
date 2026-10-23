@@ -5,6 +5,7 @@ The essentials for writing or fixing a card. Read this first; open the full guid
 ## Files
 - Card: `content/cards/<system>/<card-id>.md` (front matter: `id`, `type`, `variant`, `system`, `title`, `aliases`, `subsection` (condition), `definition` with source, `reviewed`, `related`).
 - Shared data: `content/data/<type>/<id>.yaml` (source, dose, threshold, criteria, regimen, pathway, calc, media). Each fact has one home; cards insert it, never retype it.
+- Every dose, and every calc with a `calculator` block, ends with a `verification:` note (`read`: fda-label, full-text, abstract, common-practice or not-verified; `source`; `date`). Say how it was really read; DATA-TYPES "Verification note".
 
 ## Types and sections (`##`, exact names, fixed order)
 - **Condition:** At a Glance (3-6 bullets) · Severity · Causes · Presentation · Diagnosis · Treatment · Monitor · Escalation · More Information · Pearls · Related · Sources.

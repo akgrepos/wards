@@ -18,3 +18,7 @@ cautions:
   - "Dose-stacking risk: reassess sedation before each repeat dose."
 notes: "Label suggested initial dose is 50–100 mg, repeated as needed until agitation is controlled. ASAM sample regimens: single dose 25–50 mg (mild), 50–100 mg (moderate), 75–100 mg (severe)."
 sources: [asam-alcohol-withdrawal-2020, label-chlordiazepoxide-2025]
+verification:
+  source: label-chlordiazepoxide-2025
+  read: not-verified
+  date: 2026-10-23

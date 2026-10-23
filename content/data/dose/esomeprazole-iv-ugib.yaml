@@ -19,3 +19,7 @@ cautions:
   - "IV therapy is only the acute initial management; follow it with oral acid suppression."
 notes: "Labeled regimen. ACG 2021 accepts continuous or intermittent high-dose PPI for 3 days."
 sources: [label-esomeprazole-iv-2025, acg-ugib-2021]
+verification:
+  source: label-esomeprazole-iv-2025
+  read: not-verified
+  date: 2026-10-23

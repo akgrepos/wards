@@ -21,3 +21,7 @@ cautions:
   - "Extravasation can cause tissue necrosis and calcinosis cutis."
 notes: "1,000 mg (10 mL of 10%) contains 93 mg (4.65 mEq) of elemental calcium. Preferred over calcium chloride for peripheral use (less local irritation)."
 sources: [label-calcium-gluconate-2026, endotext-hypocalcemia-2016, cooper-hypocalcaemia-2008]
+verification:
+  source: label-calcium-gluconate-2026
+  read: not-verified
+  date: 2026-10-23

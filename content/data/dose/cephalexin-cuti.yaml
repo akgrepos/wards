@@ -18,3 +18,7 @@ notes: Lower doses had more treatment failure; the top of the range reaches the 
 sources:
   - idsa-cuti-ivpo-2025
   - label-cephalexin-2026
+verification:
+  source: label-cephalexin-2026
+  read: not-verified
+  date: 2026-10-23

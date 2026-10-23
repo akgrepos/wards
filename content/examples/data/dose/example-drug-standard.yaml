@@ -11,3 +11,7 @@ adjustments:
   - { when: "Example kidney band", change: "Placeholder adjustment" }
 notes: Placeholder note.
 sources: [example-guideline-a]
+verification:
+  source: example-guideline-a
+  read: not-verified
+  date: 2026-10-23

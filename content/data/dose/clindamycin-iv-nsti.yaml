@@ -13,3 +13,7 @@ notes: Added to broad therapy; with confirmed group A streptococcus, given with 
 sources:
   - idsa-ssti-2014
   - label-cleocin-iv-2026
+verification:
+  source: label-cleocin-iv-2026
+  read: not-verified
+  date: 2026-10-23

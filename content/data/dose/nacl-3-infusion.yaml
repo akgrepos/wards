@@ -14,3 +14,7 @@ cautions:
   - "Chronic hyponatremia: use the slower infusion instead (about 1 mEq/L per hour here would pass the limits between checks)."
 notes: "Rough estimate: mL per hour ≈ body weight (kg) × the desired rise in mEq/L per hour (70 kg at 70 mL/h ≈ 1 mEq/L per hour)."
 sources: [verbalis-hyponatremia-2013, rondon-berrios-hypertonic-2022, salsa-2021, common-practice]
+verification:
+  source: verbalis-hyponatremia-2013
+  read: not-verified
+  date: 2026-10-23

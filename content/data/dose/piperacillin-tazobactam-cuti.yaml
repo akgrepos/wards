@@ -13,3 +13,7 @@ notes: Dose used in the complicated UTI trials the guideline reviewed; the label
 sources:
   - idsa-cuti-selection-2025
   - label-zosyn-2026
+verification:
+  source: label-zosyn-2026
+  read: not-verified
+  date: 2026-10-23

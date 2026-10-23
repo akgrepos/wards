@@ -18,3 +18,7 @@ cautions:
   - "Effect is prolonged at CrCl 30–50 mL/min."
   - "Not labeled for acutely ill medical patients."
 sources: [label-arixtra-2024, ash-vte-medical-prophylaxis-2018, artemis-2006]
+verification:
+  source: label-arixtra-2024
+  read: not-verified
+  date: 2026-10-23

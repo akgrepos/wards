@@ -14,3 +14,7 @@ cautions:
   - "Observe for hypersensitivity for at least 30 minutes after the infusion, with resuscitation available."
   - "Hypophosphatemia (phosphate below 2.0 mg/dL) in 3.5% in the label trials."
 sources: [label-monoferric-2025]
+verification:
+  source: label-monoferric-2025
+  read: not-verified
+  date: 2026-10-23

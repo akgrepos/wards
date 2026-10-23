@@ -18,3 +18,7 @@ notes: Guideline dose; the label's usual adult dose is 250 mg every 6 hours or 5
 sources:
   - idsa-ssti-2014
   - label-cephalexin-2026
+verification:
+  source: label-cephalexin-2026
+  read: not-verified
+  date: 2026-10-23

@@ -13,3 +13,7 @@ cautions:
   - "Watch urine output: a water diuresis can raise Na⁺ quickly; with hypovolemia or low solute intake, an expert review gives desmopressin alongside."
 notes: "Example: 80 kg × 1.5 mL/kg = 120 mL over 6 hours (20 mL/h). The European guideline instead gives a single 150 mL bolus for moderately severe symptoms."
 sources: [rondon-berrios-hypertonic-2022, hoorn-hyponatremia-guidelines-2017, verbalis-hyponatremia-2013]
+verification:
+  source: rondon-berrios-hypertonic-2022
+  read: not-verified
+  date: 2026-10-23

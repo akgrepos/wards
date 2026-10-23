@@ -12,3 +12,7 @@ cautions:
   - "Separate from levothyroxine, quinolones and tetracyclines by at least 2–4 hours."
 notes: "A 325 mg tablet contains 65 mg of elemental iron. Over-the-counter product; no FDA prescribing information. Dosing follows absorption studies and common practice."
 sources: [stoffel-iron-2017, common-practice]
+verification:
+  source: stoffel-iron-2017
+  read: not-verified
+  date: 2026-10-23

@@ -12,3 +12,7 @@ cautions:
   - "HHS: 0.45% saline only if osmolality is not falling despite an adequate positive fluid balance and insulin; a rise in Na⁺ as glucose falls is expected."
 notes: "Balanced crystalloids were linked to faster DKA resolution and less hyperchloremic acidosis; the consensus accepts either. The UK guideline defaults to 0.9% saline outside critical care."
 sources: [ada-hyperglycemic-crises-2024, jbds-dka-2023]
+verification:
+  source: ada-hyperglycemic-crises-2024
+  read: not-verified
+  date: 2026-10-23

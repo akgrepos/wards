@@ -21,3 +21,7 @@ cautions:
   - "Do not underdose: reduce only when the label criteria are met."
   - "Procedures: hold at least 48 hours before moderate or high bleeding risk, 24 hours before low risk."
 sources: [label-eliquis-2025, acc-aha-af-2023]
+verification:
+  source: label-eliquis-2025
+  read: not-verified
+  date: 2026-10-23

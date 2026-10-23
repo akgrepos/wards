@@ -13,3 +13,7 @@ cautions:
   - "Contraindicated with pheochromocytoma or insulinoma."
 notes: "Gvoke is SC only; the emergency kit may be given SC, IM or IV (IV under medical supervision)."
 sources: [label-glucagon-kit-2026, label-gvoke-2026, ada-soc-hospital-2026]
+verification:
+  source: label-glucagon-kit-2026
+  read: not-verified
+  date: 2026-10-23

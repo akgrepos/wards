@@ -15,3 +15,7 @@ cautions:
   - "Higher risk of hyperkalemia with reduced kidney, adrenal or pancreatic beta-cell function."
 notes: "At this rate K⁺ rises by about 0.25 mEq/L per hour on average, with mild hyperkalemia in about 2%. In a small ICU study of 1-hour central infusions at this dose, rhythm and ECG intervals were unchanged, with no new ectopy in 6 of 7 patients and a mean K⁺ rise of 0.4 mEq/L."
 sources: [asmar-hypokalemia-2012, label-kcl-injection-2026, label-kcl-premix-2018, kardalas-hypokalemia-2018, hootkins-central-kcl-2020]
+verification:
+  source: label-kcl-injection-2026
+  read: not-verified
+  date: 2026-10-23

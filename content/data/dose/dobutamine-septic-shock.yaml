@@ -11,3 +11,7 @@ cautions:
   - "Tachycardia, arrhythmias and hypotension (vasodilation): add to a vasopressor, not instead of one."
 notes: "Septic shock is not a labeled indication; range from the label's inotropic-support dosing. Epinephrine alone is the alternative."
 sources: [label-dobutamine-2026, ssc-sepsis-2026]
+verification:
+  source: label-dobutamine-2026
+  read: not-verified
+  date: 2026-10-23

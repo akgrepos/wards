@@ -19,3 +19,7 @@ cautions:
   - "Avoid combined strong CYP3A and P-gp inhibitors or inducers."
   - "Crushed tablet by mouth or gastric tube: follow with food or enteral feeding; not distal to the stomach."
 sources: [label-xarelto-2026, acc-aha-af-2023]
+verification:
+  source: label-xarelto-2026
+  read: not-verified
+  date: 2026-10-23

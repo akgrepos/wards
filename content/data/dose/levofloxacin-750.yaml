@@ -22,3 +22,7 @@ sources:
   - label-levofloxacin-iv-2025
   - idsa-ats-cap-2019
   - idsa-cuti-selection-2025
+verification:
+  source: label-levofloxacin-2024
+  read: not-verified
+  date: 2026-10-23

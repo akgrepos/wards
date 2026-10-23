@@ -10,3 +10,7 @@ boxed_warning: None
 cautions:
   - "Do not use with suspected bowel obstruction."
 sources: [label-peg3350-2026, common-practice]
+verification:
+  source: label-peg3350-2026
+  read: not-verified
+  date: 2026-10-23

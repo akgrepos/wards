@@ -12,3 +12,7 @@ cautions:
   - "Extravasation: infiltrate with phentolamine 5–10 mg in 10–15 mL saline (within 12 hours)."
 notes: "Label dilution: 1 mg in 1,000 mL 5% dextrose (1 mcg/mL). Septic shock is a labeled indication."
 sources: [label-adrenalin-2026, ssc-sepsis-2026]
+verification:
+  source: label-adrenalin-2026
+  read: not-verified
+  date: 2026-10-23

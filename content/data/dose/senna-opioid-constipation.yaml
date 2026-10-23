@@ -12,3 +12,7 @@ cautions:
   - "Start with the first opioid dose, not after constipation develops."
   - "Do not use with suspected bowel obstruction."
 sources: [label-senna-2025, cdc-opioid-2022, common-practice]
+verification:
+  source: label-senna-2025
+  read: not-verified
+  date: 2026-10-23

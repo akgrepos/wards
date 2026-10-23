@@ -20,3 +20,7 @@ cautions:
   - "Accumulates in kidney failure: prefer unfractionated heparin if CrCl <30 mL/min and unstable or high bleeding risk."
   - "Low body weight (women <45 kg, men <57 kg) raises exposure: watch for bleeding."
 sources: [label-lovenox-2026, chest-vte-2021, ash-vte-pregnancy-2018, acc-aha-valvular-2020]
+verification:
+  source: label-lovenox-2026
+  read: not-verified
+  date: 2026-10-23

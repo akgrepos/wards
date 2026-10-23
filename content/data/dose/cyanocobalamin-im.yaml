@@ -12,3 +12,7 @@ cautions:
   - "Reticulocytosis in 3–7 days; hemoglobin rises over weeks."
 notes: "Regimens vary: the British guideline uses hydroxocobalamin 1 mg IM three times weekly for 2 weeks (alternate days until no further improvement if neurologic signs), then every 2–3 months; the FDA label lists a lower starting dose (100 mcg daily for 6–7 days)."
 sources: [stabler-b12-2013, common-practice]
+verification:
+  source: stabler-b12-2013
+  read: not-verified
+  date: 2026-10-23

@@ -21,7 +21,7 @@ function withCard(md: string, extra: AnyCard = {}) {
 }
 function withDose(fields: Record<string, unknown>) {
   const base = JSON.parse(JSON.stringify(real));
-  base.data.dose['test-dose'] = { drug_name: 'Testdrug', indication: 'Test', route: 'IV', amount: 1, unit: 'mg', frequency: 'once', sources: ['example-guideline-a'], _file: 'test.yaml', ...fields };
+  base.data.dose['test-dose'] = { drug_name: 'Testdrug', indication: 'Test', route: 'IV', amount: 1, unit: 'mg', frequency: 'once', sources: ['example-guideline-a'], verification: { read: 'not-verified', date: '2026-10-23' }, _file: 'test.yaml', ...fields };
   return checkContent(base).join('\n');
 }
 const kp = (extra: string) => `- One ^[example-guideline-a]\n- Two ^[example-guideline-a]\n- Three ^[example-guideline-a]\n${extra}`;
@@ -104,6 +104,22 @@ describe('content checks', () => {
     expect(withDose({ boxed: 'x' })).toMatch(/unknown dose field "boxed"/);
     expect(withDose({ alternative: { dose: 'no-such-dose' } })).toMatch(/alternative dose "no-such-dose" does not exist/);
     expect(withDose({ cautions: 'one string' })).toMatch(/cautions must be a list/);
+  });
+  it('requires a verification note on every dose', () => {
+    expect(withDose({ verification: undefined })).toMatch(/no "verification" note[\s\S]*docs\/DATA-TYPES\.md/);
+    expect(withDose({ verification: { read: 'skimmed', date: '2026-10-23' } })).toMatch(/"read" must be one of/);
+    expect(withDose({ verification: { read: 'full-text', date: '2026-10-23' } })).toMatch(/needs the "source"/);
+    expect(withDose({ verification: { read: 'full-text', source: 'example-guideline-a', date: '23 Oct' } })).toMatch(/YYYY-MM-DD/);
+    expect(withDose({ verification: { read: 'full-text', source: 'example-trial-b', date: '2026-10-23' } })).toMatch(/must be one of the item's own sources/);
+    expect(withDose({ verification: { read: 'fda-label', source: 'example-guideline-a', date: '2026-10-23' } })).toMatch(/prescribing-information label/);
+    expect(withDose({ verification: { read: 'common-practice', date: '2026-10-23' } })).toMatch(/common-practice source/);
+    expect(withDose({ verification: { read: 'full-text', source: 'example-guideline-a', date: '2026-10-23' } })).toBe('');
+    expect(withDose({ sources: ['example-guideline-a', 'common-practice'], verification: { read: 'common-practice', date: '2026-10-23' } })).toBe('');
+  });
+  it('requires a verification note on every in-app calculator', () => {
+    const base = JSON.parse(JSON.stringify(real));
+    delete base.data.calc['curb-65'].verification;
+    expect(checkContent(base).join(' ')).toMatch(/curb-65.yaml: has no "verification" note/);
   });
 });
 

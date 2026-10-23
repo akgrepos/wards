@@ -11,3 +11,7 @@ cautions:
 sources:
   - idsa-ssti-2014
   - label-cleocin-oral-2026
+verification:
+  source: label-cleocin-oral-2026
+  read: not-verified
+  date: 2026-10-23

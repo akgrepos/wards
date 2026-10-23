@@ -10,3 +10,7 @@ cautions:
   - "Keep giving insulin to clear ketones; add dextrose rather than stopping insulin."
 notes: "Treatment glucose targets: DKA 150–200 mg/dL, HHS 200–250 mg/dL until resolution. UK guideline: 10% glucose at 125 mL/h once glucose is <14 mmol/L."
 sources: [ada-hyperglycemic-crises-2024, jbds-dka-2023]
+verification:
+  source: ada-hyperglycemic-crises-2024
+  read: not-verified
+  date: 2026-10-23

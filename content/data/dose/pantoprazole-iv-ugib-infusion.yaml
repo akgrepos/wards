@@ -16,3 +16,7 @@ sources: [acg-ugib-2021, esge-pub-2026, icg-ugib-2019, label-pantoprazole-iv-202
 alternative:
   dose: esomeprazole-iv-ugib
   when: Labeled IV regimen after therapeutic endoscopy
+verification:
+  source: label-pantoprazole-iv-2026
+  read: not-verified
+  date: 2026-10-23

@@ -15,3 +15,7 @@ cautions:
 sources:
   - idsa-ats-cap-2019
   - label-amoxicillin-2024
+verification:
+  source: label-amoxicillin-2024
+  read: not-verified
+  date: 2026-10-23

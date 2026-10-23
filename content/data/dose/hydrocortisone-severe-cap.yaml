@@ -16,3 +16,7 @@ sources:
   - cape-cod-2023
   - ats-cap-2025
   - sccm-corticosteroids-2024
+verification:
+  source: cape-cod-2023
+  read: not-verified
+  date: 2026-10-23

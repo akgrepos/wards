@@ -16,3 +16,7 @@ notes: CAP use rests on the guideline; the label lists skin, intra-abdominal and
 sources:
   - idsa-ats-cap-2019
   - label-unasyn-2026
+verification:
+  source: label-unasyn-2026
+  read: not-verified
+  date: 2026-10-23

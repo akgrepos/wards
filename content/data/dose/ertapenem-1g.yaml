@@ -17,3 +17,7 @@ cautions:
 sources:
   - label-invanz-2026
   - idsa-cuti-selection-2025
+verification:
+  source: label-invanz-2026
+  read: not-verified
+  date: 2026-10-23

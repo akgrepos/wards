@@ -11,3 +11,7 @@ alternative:
   when: All other patients
 notes: "Preferred calcium salt in resuscitation (cardiac arrest or peri-arrest). About three times the calcium of the same volume of calcium gluconate."
 sources: [ukka-hyperkalaemia-2026, kdigo-acute-hyperkalemia-2020]
+verification:
+  source: ukka-hyperkalaemia-2026
+  read: not-verified
+  date: 2026-10-23

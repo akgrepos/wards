@@ -11,3 +11,7 @@ cautions:
   - "Label: give only if K⁺ <4 mEq/L; contraindicated with eGFR <30."
 notes: "Phosphate falls with insulin; routine replacement does not improve outcomes."
 sources: [ada-hyperglycemic-crises-2024, label-kphos-injection-2026]
+verification:
+  source: label-kphos-injection-2026
+  read: not-verified
+  date: 2026-10-23

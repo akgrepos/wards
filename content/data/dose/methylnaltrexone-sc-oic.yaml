@@ -18,3 +18,7 @@ cautions:
   - "Contraindicated with known or suspected gastrointestinal obstruction."
   - "Stop if severe or persistent diarrhea or worsening abdominal pain; gastrointestinal perforation has been reported. Stop if the opioid is stopped."
 sources: [label-relistor-2024]
+verification:
+  source: label-relistor-2024
+  read: not-verified
+  date: 2026-10-23

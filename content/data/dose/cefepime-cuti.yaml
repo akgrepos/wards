@@ -15,3 +15,7 @@ notes: "Range from the guideline's trial-dose table; the label's UTI dosing is e
 sources:
   - idsa-cuti-selection-2025
   - label-cefepime-2024
+verification:
+  source: label-cefepime-2024
+  read: not-verified
+  date: 2026-10-23

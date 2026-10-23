@@ -20,3 +20,7 @@ adjustments:
 cautions:
   - "In AF there is no dose reduction for weight or P-gp inhibitors (those apply to VTE treatment)."
 sources: [label-savaysa-2025, acc-aha-af-2023]
+verification:
+  source: label-savaysa-2025
+  read: not-verified
+  date: 2026-10-23

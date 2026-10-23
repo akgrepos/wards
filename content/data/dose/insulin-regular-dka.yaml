@@ -17,3 +17,7 @@ cautions:
   - "Nurse-driven variable-rate protocols should not run below 1 unit/h while ketoacidosis persists."
 notes: "A bolus is needed only if starting the infusion will be delayed. Label: IV only under supervision, 0.1–1 unit/mL in 0.9% saline, with glucose and K⁺ monitoring."
 sources: [ada-hyperglycemic-crises-2024, ada-soc-hospital-2026, label-humulin-r-2026]
+verification:
+  source: label-humulin-r-2026
+  read: not-verified
+  date: 2026-10-23

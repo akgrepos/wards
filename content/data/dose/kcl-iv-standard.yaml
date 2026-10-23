@@ -19,3 +19,7 @@ cautions:
   - "Concentration: the concentrate label allows up to 40 mEq/L at this rate; above 40 mEq/L is painful and an expert review advises central access. The premixed-bag label prefers a central route whenever possible and requires it for 300–400 mEq/L."
   - "Contraindicated in hyperkalemia, renal failure and conditions with potassium retention (US label)."
 sources: [label-kcl-injection-2026, label-kcl-premix-2018, asmar-hypokalemia-2012, kardalas-hypokalemia-2018]
+verification:
+  source: label-kcl-injection-2026
+  read: not-verified
+  date: 2026-10-23
