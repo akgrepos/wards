@@ -4,7 +4,7 @@ What changed in each version of Wards, newest first. The version is shown in Set
 
 ## 2026.10.23.3
 
-**Formatting: no semicolons.** card text no longer uses semicolons. Lists are now bullets and long sentences are split in two. Nothing else changed; the wording, doses, numbers and sources are the same.
+**Formatting: no semicolons.** Card text no longer uses semicolons. Lists are now bullets and long sentences are split in two. Nothing else changed; the wording, doses, numbers and sources are the same.
 
 ## 2026.10.23.2
 
