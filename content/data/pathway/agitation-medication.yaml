@@ -1,0 +1,101 @@
+# A focused pathway (owner, 2026-10-23): the choice of medication and route for acute agitation, by cause. Text and doses
+# come from the card's own lines and dose items. Format: docs/CONTENT-FORMAT.md, "Pathways".
+title: Medication
+card: psych-acute-agitation
+summary: Oral versus IM, by cause
+columns: 12
+start: begin
+sources: [aaep-beta-psychopharm-2012, acep-severe-agitation-2023, apa-delirium-2025, label-zyprexa-2026, label-haloperidol-inj-2026]
+nodes:
+  begin:
+    kind: start
+    at: [4, 0]
+    span: 4
+    title: Agitation not settled by de-escalation
+    text: Vital signs and glucose done, cause treated or being treated, danger or severe distress remains.
+    next: cause
+  cause:
+    kind: question
+    at: [4, 1]
+    span: 4
+    title: Most likely cause?
+    answers:
+      - { label: Alcohol or sedative withdrawal, at: [0, 2], span: 3, to: withdrawal }
+      - { label: Stimulant intoxication, detail: Or undifferentiated without psychosis, at: [3, 2], span: 3, to: stimulant }
+      - { label: Delirium, detail: Not withdrawal, at: [6, 2], span: 3, to: delirium }
+      - { label: Psychosis, detail: Or undifferentiated with psychotic features, at: [9, 2], span: 3, to: psychosis }
+  withdrawal:
+    kind: do
+    at: [0, 3]
+    span: 3
+    title: Benzodiazepine
+    text:
+      - Oral if the patient accepts; IV or IM if not. Dose by symptom score; thiamine.
+      - "{{dose:lorazepam-agitation-adult}}"
+      - "{{dose:lorazepam-agitation-older}}"
+    links: ["card:neuro-alcohol-withdrawal"]
+    next: reassess
+  stimulant:
+    kind: do
+    at: [3, 3]
+    span: 3
+    title: Benzodiazepine first
+    text:
+      - Oral if the patient accepts; otherwise IM or IV with monitoring.
+      - "{{dose:lorazepam-agitation-adult}}"
+      - Add an antipsychotic only for psychosis that persists.
+    next: reassess
+  delirium:
+    kind: do
+    at: [6, 3]
+    span: 3
+    title: Lowest-dose antipsychotic
+    text:
+      - Nonpharmacologic care first. Avoid benzodiazepines.
+      - "{{dose:haloperidol-delirium-low}}"
+      - "Check {{calc:qtc}}; haloperidol is contraindicated in Parkinson disease and dementia with Lewy bodies."
+    links: ["card:neuro-delirium"]
+    next: reassess
+  psychosis:
+    kind: question
+    at: [9, 3]
+    span: 3
+    title: Will the patient take a tablet?
+    answers:
+      - { label: "Yes", at: [9, 4], span: 3, to: oral }
+      - { label: "No, or imminent danger", at: [6, 4], span: 3, to: im }
+  oral:
+    kind: do
+    at: [9, 5]
+    span: 3
+    title: Oral antipsychotic
+    text:
+      - "{{dose:olanzapine-agitation-po}}"
+      - If one dose is not enough, add lorazepam rather than more antipsychotic.
+    next: reassess
+  im:
+    kind: urgent
+    at: [6, 5]
+    span: 3
+    title: IM antipsychotic
+    text:
+      - "{{dose:olanzapine-agitation-im}}"
+      - Avoid a parenteral benzodiazepine with IM olanzapine.
+      - "{{dose:haloperidol-agitation-adult}}"
+      - "{{calc:qtc}}, parkinsonism and dementia cautions."
+    next: reassess
+  reassess:
+    kind: do
+    at: [4, 6]
+    span: 4
+    title: Reassess before any repeat dose
+    text: Sedation, breathing, vital signs; repeat only after the dose can act. Restraint only as a last resort, with medication.
+    links: ["section:psych-acute-agitation/monitor"]
+    next: escalate
+  escalate:
+    kind: result
+    at: [4, 7]
+    span: 4
+    title: No response or unsafe
+    text: Psychiatry, rapid response or ICU; severe refractory agitation may need ketamine or deeper sedation in a monitored setting.
+    links: ["section:psych-acute-agitation/escalation"]
