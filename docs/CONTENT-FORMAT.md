@@ -127,6 +127,7 @@ These keep 150+ cards one app. **Errors** fail the check; **warnings** print but
 - **Unused sources (warning).** A source file no card or data item cites; delete it if it is orphaned.
 - **Review date (warning).** `reviewed:` older than 12 months.
 - **Do Now doses (warning).** A dose in `## Do Now` that does not also appear in the card's Treatment section (as a `{{dose:…}}`, or inside a `{{regimen:…}}` there).
+- **No semicolons (error).** No semicolon in card or data text (an entity such as `&amp;`, a web address, a comment and a source's `citation` are not text). A list becomes a lead-in line ending in a colon with sub-bullets (each keeps the line's source), a clause join becomes two sentences. A table cell has no line break, so a list in a cell is written as short sentences. Example: `- Severe: add albuterol; never alone. ^[src]` becomes `- Severe: add albuterol. Never alone. ^[src]`.
 - There is deliberately no length or density limit: cards keep the terse clinical register.
 
 ## Formatting inside sections

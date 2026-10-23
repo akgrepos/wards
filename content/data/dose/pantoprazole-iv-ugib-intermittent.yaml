@@ -6,11 +6,11 @@ route: IV
 amount: "40"
 unit: mg
 frequency: "2 to 4 times daily (every 6–12 hours) for 72 hours, after an optional 80 mg IV bolus"
-give_when: After endoscopic hemostasis of an ulcer with high-risk stigmata; an alternative to a continuous infusion
+give_when: After endoscopic hemostasis of an ulcer with high-risk stigmata. An alternative to a continuous infusion
 duration: 72 hours
 cautions:
-  - "The US label does not establish safety and effectiveness for upper gastrointestinal bleeding; the regimen follows the guidelines and trials."
-notes: "ACG 2021 accepts intermittent high-dose PPI (40 mg 2 to 4 times daily, oral if feasible, after an optional 80 mg bolus) as an alternative to continuous infusion; the International Consensus Group 2019 recommends continuous infusion."
+  - "The US label does not establish safety and effectiveness for upper gastrointestinal bleeding. The regimen follows the guidelines and trials."
+notes: "ACG 2021 accepts intermittent high-dose PPI (40 mg 2 to 4 times daily, oral if feasible, after an optional 80 mg bolus) as an alternative to continuous infusion. The International Consensus Group 2019 recommends continuous infusion."
 sources: [acg-ugib-2021, label-pantoprazole-iv-2026]
 verification:
   source: acg-ugib-2021

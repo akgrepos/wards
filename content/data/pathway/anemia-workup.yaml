@@ -32,8 +32,8 @@ nodes:
     span: 5
     title: Treat the cause now
     text:
-      - "Bleeding: resuscitate; transfuse on clinical grounds."
-      - "Schistocytes with low platelets: treat as TTP; draw ADAMTS13, then start plasma exchange and steroids without waiting for the result."
+      - "Bleeding: resuscitate. Transfuse on clinical grounds."
+      - "Schistocytes with low platelets: treat as TTP. Draw ADAMTS13, then start plasma exchange and steroids without waiting for the result."
     links: ["card:gi-upper-gi-bleeding"]
     next: urgent-end
   urgent-end:
@@ -71,7 +71,7 @@ nodes:
     at: [6, 7]
     span: 3
     title: Not iron deficiency
-    text: "Thalassemia trait ({{calc:mentzer|Mentzer index}}), anemia of inflammation or sideroblastic anemia; hemoglobin electrophoresis."
+    text: "Thalassemia trait ({{calc:mentzer|Mentzer index}}), anemia of inflammation or sideroblastic anemia. Hemoglobin electrophoresis."
   normo:
     kind: question
     at: [9, 5]
@@ -92,7 +92,7 @@ nodes:
     at: [12, 7]
     span: 3
     title: Underproduction
-    text: "Iron studies, creatinine, TSH, B12. Anemia of inflammation or CKD; hematology if other cell lines are low."
+    text: "Iron studies, creatinine, TSH, B12. Anemia of inflammation or CKD. Hematology if other cell lines are low."
   macro:
     kind: result
     at: [14, 5]

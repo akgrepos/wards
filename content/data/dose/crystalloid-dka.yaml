@@ -5,12 +5,12 @@ route: IV
 amount: 500–1000
 unit: mL/h
 rate: "for the first 2–4 hours"
-give_when: "Without kidney or cardiac compromise; severe hypovolemia or shock: about 1 L per hour"
-repeat: "Then adjust rate and fluid to hemodynamics, urine output and corrected Na⁺; aim to replace about half the estimated deficit in 8–12 hours and the rest within 24–48 hours"
+give_when: "Without kidney or cardiac compromise. Severe hypovolemia or shock: about 1 L per hour"
+repeat: "Then adjust rate and fluid to hemodynamics, urine output and corrected Na⁺. Aim to replace about half the estimated deficit in 8–12 hours and the rest within 24–48 hours"
 cautions:
   - "Older adults, heart failure or dialysis-dependent kidney failure: smaller boluses (e.g. 250 mL) with frequent reassessment."
-  - "HHS: 0.45% saline only if osmolality is not falling despite an adequate positive fluid balance and insulin; a rise in Na⁺ as glucose falls is expected."
-notes: "Balanced crystalloids were linked to faster DKA resolution and less hyperchloremic acidosis; the consensus accepts either. The UK guideline defaults to 0.9% saline outside critical care."
+  - "HHS: 0.45% saline only if osmolality is not falling despite an adequate positive fluid balance and insulin. A rise in Na⁺ as glucose falls is expected."
+notes: "Balanced crystalloids were linked to faster DKA resolution and less hyperchloremic acidosis. The consensus accepts either. The UK guideline defaults to 0.9% saline outside critical care."
 sources: [ada-hyperglycemic-crises-2024, jbds-dka-2023]
 verification:
   source: ada-hyperglycemic-crises-2024

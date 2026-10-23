@@ -16,7 +16,7 @@ adjustments:
 cautions:
   - "Lowers valproate levels sharply: avoid together."
   - Seizure risk, mostly with kidney impairment or CNS disease.
-notes: "IDSA 2004 lists 6 g a day in divided doses every 8 hours; the label's adult dosing is for other infections and its meningitis dose is for children."
+notes: "IDSA 2004 lists 6 g a day in divided doses every 8 hours. The label's adult dosing is for other infections and its meningitis dose is for children."
 sources: [idsa-meningitis-2004, idsa-ventriculitis-2017, label-meropenem-2024]
 verification:
   source: idsa-meningitis-2004

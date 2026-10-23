@@ -26,10 +26,10 @@ calculator:
         - { from: 3, range: "≥3", label: "High", risk: "DVT prevalence 75%", high: true }
     - title: "Two levels"
       bands:
-        - { to: 1, range: "≤1", label: "DVT unlikely", action: "High-sensitivity D-dimer; a negative result excludes DVT." }
+        - { to: 1, range: "≤1", label: "DVT unlikely", action: "High-sensitivity D-dimer. A negative result excludes DVT." }
         - { from: 2, range: "≥2", label: "DVT likely", action: "Proximal or whole-leg compression ultrasound." }
   notes:
-    - "Three-level prevalences are from the 1997 derivation cohort. Validated mainly in outpatients; performs poorly in hospitalized patients."
+    - "Three-level prevalences are from the 1997 derivation cohort. Validated mainly in outpatients. Performs poorly in hospitalized patients."
 verification:
   source: wells-dvt-2003
   read: not-verified

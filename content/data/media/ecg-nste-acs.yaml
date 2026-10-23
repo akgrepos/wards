@@ -4,7 +4,7 @@
 kind: ecg
 title: ST depression and T-wave inversion
 alt: "Lead V5: ST depression of 0.9 mm at the J point below the PR baseline, running into an inverted T wave 4.0 mm deep."
-caption: "V5: ST depression at the J point below the PR baseline (dashed), into an inverted T wave. T inversion also in V4 and V6; ST depression also in V6. Counts only if new or dynamic."
+caption: "V5: ST depression at the J point below the PR baseline (dashed), into an inverted T wave. T inversion also in V4 and V6. ST depression also in V6. Counts only if new or dynamic."
 illustrates: "New horizontal or downsloping ST depression ≥0.5 mm at the J point and new or dynamic T-wave inversion ≥1 mm, in 2 contiguous leads."
 sources: [udmi-2026]
 show: { lead: V5, from: 0.3, to: 2.4, smooth: 1.6 }

@@ -11,16 +11,20 @@ related:
   tools: [renal-aki]
 ---
 ## At a Glance
-- Cultures first (blood, source), then start the empiric regimen without delay when septic; narrow at 48–72 hours to the cultures and the source. ^[ssc-sepsis-2026, common-practice]
+- Cultures first (blood, source), then start the empiric regimen without delay when septic. Narrow at 48–72 hours to the cultures and the source. ^[ssc-sepsis-2026, common-practice]
 - Choose by source, then by risk: recent IV antibiotics, prior resistant isolate, healthcare exposure and the local antibiogram decide MRSA, Pseudomonas and ESBL coverage. ^[idsa-sepsis-hospital-2026, idsa-ats-hap-vap-2016, ssc-sepsis-2026]
 - Add MRSA coverage, a second antipseudomonal agent or a carbapenem only when a specific risk is present, then drop it when cultures do not need it. ^[idsa-ats-hap-vap-2016, ssc-sepsis-2026]
 - Anaerobic coverage is suggested for intra-abdominal, deep gynecologic or obstetric, necrotizing soft-tissue, head and neck and CNS abscess or empyema sources, and not otherwise. ^[ssc-sepsis-2026]
-- A penicillin allergy label rarely excludes a cephalosporin or carbapenem; ask what happened before choosing around it. ^[aaaai-drug-allergy-2022]
+- A penicillin allergy label rarely excludes a cephalosporin or carbapenem. Ask what happened before choosing around it. ^[aaaai-drug-allergy-2022]
 - Pneumonia, cellulitis, urinary and septic shock regimens are on their own cards: [[id-cap|CAP]], [[id-cellulitis|Cellulitis]], [[id-complicated-uti|Pyelonephritis and complicated UTI]] and [[crit-sepsis|Sepsis]]. ^[common-practice]
 
 ## How to Read the Chart
-- Find the source in the Chart; each regimen row shows the first choice, what to add for a specific risk and the usual duration. Doses open from the drug names. ^[common-practice]
-- **MRSA risk (nosocomial pneumonia):** IV antibiotics in the last 90 days; for VAP, any multidrug-resistant risk factor; for HAP, septic shock or ventilatory support for the pneumonia; or a unit where more than 10–20% (VAP) or 20% (HAP) of *S. aureus* isolates are MRSA, or the rate is unknown. ^[idsa-ats-hap-vap-2016]
+- Find the source in the Chart. Each regimen row shows the first choice, what to add for a specific risk and the usual duration. Doses open from the drug names. ^[common-practice]
+- **MRSA risk (nosocomial pneumonia):** ^[idsa-ats-hap-vap-2016]
+  - IV antibiotics in the last 90 days ^[idsa-ats-hap-vap-2016]
+  - For VAP, any multidrug-resistant risk factor ^[idsa-ats-hap-vap-2016]
+  - For HAP, septic shock or ventilatory support for the pneumonia ^[idsa-ats-hap-vap-2016]
+  - A unit where more than 10–20% (VAP) or 20% (HAP) of *S. aureus* isolates are MRSA, or the rate is unknown ^[idsa-ats-hap-vap-2016]
 - Known MRSA colonization or prior MRSA infection also counts in practice. ^[common-practice]
 - **Multidrug-resistant risk (VAP):** IV antibiotics in the last 90 days, septic shock at onset, ARDS before the VAP, 5 or more days in hospital before the VAP, or acute renal replacement therapy. Structural lung disease (bronchiectasis, cystic fibrosis) adds Pseudomonas risk, and a unit with more than 10% resistance to the planned single agent calls for two antipseudomonal agents. ^[idsa-ats-hap-vap-2016]
 - **ESBL risk:** prior ESBL isolate in the last 12 months, antibiotics in the last 3 months, local prevalence, or travel to a high-prevalence area. A ceftriaxone MIC of 4 mcg/mL or higher suggests ESBL production in *E. coli* and *Klebsiella*. ^[idsa-amr-2026, common-practice]
@@ -33,20 +37,20 @@ related:
 
 1. Intra-abdominal infection, lower risk
    - Community-acquired, source control possible, no recent antibiotics or ESBL risk. ^[idsa-sis-iai-2010, sis-iai-2024]
-   - Source control is essential; get cultures at the procedure. ^[idsa-sis-iai-2010, idsa-iai-2024]
+   - Source control is essential. Get cultures at the procedure. ^[idsa-sis-iai-2010, idsa-iai-2024]
 
    {{regimen:iai-lower-risk}}
 
 2. Intra-abdominal infection, higher risk
    - Severe illness, delayed or inadequate source control, advanced age, immunosuppression, postoperative or healthcare-associated infection, or recent antibiotics. ^[idsa-sis-iai-2010, sis-iai-2024]
-   - Enterococcal coverage is suggested in higher-risk disease and not in lower-risk disease; empiric vancomycin is not recommended in either group. ^[sis-iai-2024]
+   - Enterococcal coverage is suggested in higher-risk disease and not in lower-risk disease. Empiric vancomycin is not recommended in either group. ^[sis-iai-2024]
    - Add MRSA coverage only with known MRSA colonization or treatment failure after substantial antibiotic exposure. ^[idsa-sis-iai-2010]
 
    {{regimen:iai-higher-risk}}
 
 3. Hospital-acquired or ventilator-associated pneumonia
-   - Send a lower respiratory culture before antibiotics; the choice follows the unit's antibiogram. ^[idsa-ats-hap-vap-2016]
-   - Aim for coverage of *S. aureus*, *Pseudomonas* and other gram-negative bacilli; avoid an aminoglycoside as the only antipseudomonal agent. ^[idsa-ats-hap-vap-2016]
+   - Send a lower respiratory culture before antibiotics. The choice follows the unit's antibiogram. ^[idsa-ats-hap-vap-2016]
+   - Aim for coverage of *S. aureus*, *Pseudomonas* and other gram-negative bacilli. Avoid an aminoglycoside as the only antipseudomonal agent. ^[idsa-ats-hap-vap-2016]
 
    {{regimen:hap-vap}}
 
@@ -62,7 +66,7 @@ or. Healthcare-associated or neurosurgical meningitis
    {{regimen:meningitis-healthcare}}
 
 5. Bloodstream infection or catheter-related infection
-   - Remove short-term catheters infected with *S. aureus*, gram-negative bacilli, enterococci, fungi or mycobacteria; remove long-term catheters for severe sepsis, endocarditis, suppurative thrombophlebitis, bacteremia persisting beyond 72 hours of active therapy, or *S. aureus*, *Pseudomonas*, fungi or mycobacteria. ^[idsa-crbsi-2009]
+   - Remove short-term catheters infected with *S. aureus*, gram-negative bacilli, enterococci, fungi or mycobacteria. Remove long-term catheters for severe sepsis, endocarditis, suppurative thrombophlebitis, bacteremia persisting beyond 72 hours of active therapy, or *S. aureus*, *Pseudomonas*, fungi or mycobacteria. ^[idsa-crbsi-2009]
    - *S. aureus* bacteremia: infectious diseases consultation, follow-up blood cultures at 48 hours and then until negative, transthoracic echocardiography in every adult, and 14 days from the first negative culture when no deep or metastatic focus is found. ^[idsa-esc-sab-2026]
 
    {{regimen:bacteremia-empiric}}
@@ -74,34 +78,37 @@ or. Healthcare-associated or neurosurgical meningitis
    - Sepsis or septic shock, source unclear: [[crit-sepsis|Sepsis]]. ^[common-practice]
 
 ## Caveats
-- **De-escalate:** with a pathogen and susceptibilities, narrow to the most targeted active agent; with negative cultures, narrow or stop when the clinical picture allows. ^[ssc-sepsis-2026]
+- **De-escalate:** with a pathogen and susceptibilities, narrow to the most targeted active agent. With negative cultures, narrow or stop when the clinical picture allows. ^[ssc-sepsis-2026]
 - **Antibiotic time-out at 48–72 hours:** confirm the indication, review cultures and imaging, and set a stop date. ^[common-practice]
-- **Procalcitonin** may help decide when to stop when the duration is unclear and source control is adequate; it is not suggested for deciding whether to start. ^[ssc-sepsis-2026]
-- **IV to oral:** consider once improving, afebrile, hemodynamically stable and absorbing; for *S. aureus* bacteremia, endocarditis or meningitis, only with infectious diseases. ^[common-practice]
-- **ESBL organisms:** a carbapenem is preferred for invasive infection; piperacillin-tazobactam and cefepime are not suggested even when susceptible. Oral step-down to trimethoprim-sulfamethoxazole or a fluoroquinolone when susceptible, hemodynamically stable and absorbing. ^[idsa-amr-2026]
-- **Penicillin allergy:** take a history first. Histories inconsistent with allergy need no testing; a distant, benign rash may be challenged directly with amoxicillin. ^[aaaai-drug-allergy-2022]
-- **Cephalosporins after penicillin allergy:** without anaphylaxis, any cephalosporin may be given; after anaphylaxis, use a cephalosporin with a different side chain. Cefazolin has a unique side chain and a very low cross-reactivity. ^[aaaai-drug-allergy-2022]
-- **Carbapenems and aztreonam** may be given without testing after a penicillin or cephalosporin allergy history; aztreonam shares a side chain with ceftazidime, so avoid it with ceftazidime allergy. ^[aaaai-drug-allergy-2022]
-- **Severe delayed reactions** (Stevens-Johnson syndrome, toxic epidermal necrolysis, DRESS): avoid the implicated drug and, generally, other β-lactams; involve allergy and infectious diseases. ^[aaaai-drug-allergy-2022]
-- **Kidney function:** most β-lactams, carbapenems and vancomycin need adjustment; calculate {{calc:cockcroft-gault|CrCl}} and adjust later doses from the dose sheet; the first dose is given in full. ^[label-cefepime-2026, common-practice]
-- **Nephrotoxicity:** vancomycin with piperacillin-tazobactam is associated with more acute kidney injury, and piperacillin-tazobactam alone delays renal recovery in critical illness; monitor kidney function and consider another β-lactam in the critically ill. ^[label-zosyn-2026]
+- **Procalcitonin** may help decide when to stop when the duration is unclear and source control is adequate. It is not suggested for deciding whether to start. ^[ssc-sepsis-2026]
+- **IV to oral:** consider once improving, afebrile, hemodynamically stable and absorbing. For *S. aureus* bacteremia, endocarditis or meningitis, only with infectious diseases. ^[common-practice]
+- **ESBL organisms:** a carbapenem is preferred for invasive infection. Piperacillin-tazobactam and cefepime are not suggested even when susceptible. Oral step-down to trimethoprim-sulfamethoxazole or a fluoroquinolone when susceptible, hemodynamically stable and absorbing. ^[idsa-amr-2026]
+- **Penicillin allergy:** take a history first. Histories inconsistent with allergy need no testing. A distant, benign rash may be challenged directly with amoxicillin. ^[aaaai-drug-allergy-2022]
+- **Cephalosporins after penicillin allergy:** without anaphylaxis, any cephalosporin may be given. After anaphylaxis, use a cephalosporin with a different side chain. Cefazolin has a unique side chain and a very low cross-reactivity. ^[aaaai-drug-allergy-2022]
+- **Carbapenems and aztreonam** may be given without testing after a penicillin or cephalosporin allergy history. Aztreonam shares a side chain with ceftazidime, so avoid it with ceftazidime allergy. ^[aaaai-drug-allergy-2022]
+- **Severe delayed reactions** (Stevens-Johnson syndrome, toxic epidermal necrolysis, DRESS): avoid the implicated drug and, generally, other β-lactams. Involve allergy and infectious diseases. ^[aaaai-drug-allergy-2022]
+- **Kidney function:** most β-lactams, carbapenems and vancomycin need adjustment. Calculate {{calc:cockcroft-gault|CrCl}} and adjust later doses from the dose sheet. The first dose is given in full. ^[label-cefepime-2026, common-practice]
+- **Nephrotoxicity:** vancomycin with piperacillin-tazobactam is associated with more acute kidney injury, and piperacillin-tazobactam alone delays renal recovery in critical illness. Monitor kidney function and consider another β-lactam in the critically ill. ^[label-zosyn-2026]
 - **Cefepime** can cause encephalopathy when not dose-reduced for kidney function. ^[label-cefepime-2026]
-- Cultures from sterile sites guide therapy; do not treat colonization from non-sterile sites or an asymptomatic positive urine. ^[idsa-asb-2019]
+- Cultures from sterile sites guide therapy. Do not treat colonization from non-sterile sites or an asymptomatic positive urine. ^[idsa-asb-2019]
 
 ## More Information
 ### Microbiology: Resistant gram-negative organisms
-- ESBL-producing Enterobacterales: preferred ertapenem, meropenem or imipenem; meropenem or imipenem in critical illness or hypoalbuminemia; cefepime-enmetazobactam is an alternative. ^[idsa-amr-2026]
-- AmpC-producing Enterobacterales (moderate risk): cefepime if the MIC is 8 mcg/mL or lower and no ESBL gene is identified; ceftriaxone, cefotaxime and ceftazidime are avoided for invasive infection. ^[idsa-amr-2026]
-- Difficult-to-treat resistant *Pseudomonas aeruginosa*: ceftazidime-avibactam, ceftolozane-tazobactam or imipenem-relebactam, with cefiderocol as an alternative; involve infectious diseases. ^[idsa-amr-2026]
+- ESBL-producing Enterobacterales: ^[idsa-amr-2026]
+  - Preferred ertapenem, meropenem or imipenem ^[idsa-amr-2026]
+  - Meropenem or imipenem in critical illness or hypoalbuminemia ^[idsa-amr-2026]
+  - Cefepime-enmetazobactam is an alternative ^[idsa-amr-2026]
+- AmpC-producing Enterobacterales (moderate risk): cefepime if the MIC is 8 mcg/mL or lower and no ESBL gene is identified. Ceftriaxone, cefotaxime and ceftazidime are avoided for invasive infection. ^[idsa-amr-2026]
+- Difficult-to-treat resistant *Pseudomonas aeruginosa*: ceftazidime-avibactam, ceftolozane-tazobactam or imipenem-relebactam, with cefiderocol as an alternative. Involve infectious diseases. ^[idsa-amr-2026]
 
 ### Evidence: Key trials
-- MERINO (2018): in ceftriaxone-resistant *E. coli* or *Klebsiella* bacteremia, 30-day mortality was 12.3% with piperacillin-tazobactam and 3.7% with meropenem; non-inferiority was not shown. ^[merino-2018]
+- MERINO (2018): in ceftriaxone-resistant *E. coli* or *Klebsiella* bacteremia, 30-day mortality was 12.3% with piperacillin-tazobactam and 3.7% with meropenem. Non-inferiority was not shown. ^[merino-2018]
 - STOP-IT (2015): after adequate source control, a fixed course of about 4 days gave a similar rate of surgical-site infection, recurrent infection or death at 30 days (21.8% versus 22.3%) as treatment until physiologic resolution (median 8 days). ^[stop-it-2015]
-- BALANCE (2025): 7 days was non-inferior to 14 days for bloodstream infection, with 90-day mortality 14.5% versus 16.1%; severe immunosuppression, *S. aureus* and foci needing longer treatment were excluded. ^[balance-2025]
+- BALANCE (2025): 7 days was non-inferior to 14 days for bloodstream infection, with 90-day mortality 14.5% versus 16.1%. Severe immunosuppression, *S. aureus* and foci needing longer treatment were excluded. ^[balance-2025]
 
 ## Pearls
-- The first dose of any antibiotic is full-dose regardless of kidney function; adjust from the second day. ^[common-practice]
-- A negative culture on antibiotics does not exclude the pathogen; narrow cautiously in the sickest patients. ^[common-practice]
+- The first dose of any antibiotic is full-dose regardless of kidney function. Adjust from the second day. ^[common-practice]
+- A negative culture on antibiotics does not exclude the pathogen. Narrow cautiously in the sickest patients. ^[common-practice]
 - Vancomycin is not a cure-all: it is the wrong drug for *Listeria*, VRE and most gram-negative infections. ^[common-practice]
 - Candida in blood is never a contaminant: treat, remove the line and examine the eyes. ^[idsa-candida-2016]
-- Penicillin allergy labels delay effective therapy and lead to broader, less effective drugs; clarify the label early. ^[aaaai-drug-allergy-2022]
+- Penicillin allergy labels delay effective therapy and lead to broader, less effective drugs. Clarify the label early. ^[aaaai-drug-allergy-2022]

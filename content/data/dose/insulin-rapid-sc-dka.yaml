@@ -6,11 +6,11 @@ route: SC
 amount: "0.1"
 unit: units/kg
 frequency: "first dose, then 0.1 units/kg every hour or 0.2 units/kg every 2 hours"
-give_when: "Alert, hemodynamically stable, no severe or complicated DKA and not HHS; K⁺ >3.5 mEq/L"
+give_when: "Alert, hemodynamically stable, no severe or complicated DKA and not HHS. K⁺ >3.5 mEq/L"
 repeat: "Glucose <250 mg/dL: 0.05 units/kg every hour or 0.1 units/kg every 2 hours, with dextrose 5–10%"
 cautions:
   - "Needs adequate fluids, glucose checks every 1–2 hours and nursing to match."
-notes: "Equivalent to IV insulin in trials and a 2016 Cochrane review; usable in the ED or a step-down unit."
+notes: "Equivalent to IV insulin in trials and a 2016 Cochrane review. Usable in the ED or a step-down unit."
 sources: [ada-hyperglycemic-crises-2024, ada-soc-hospital-2026, label-humalog-2026]
 verification:
   source: ada-hyperglycemic-crises-2024

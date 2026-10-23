@@ -5,9 +5,9 @@ columns: [Severity, Findings]
 layout: stacked
 tones: [yellow, orange, red]
 rows:
-  - ["Mild (default)", "Dyspnea VAS <5; RR <24 breaths/min; HR <95 bpm; resting SaO₂ ≥92% on usual oxygen and fall ≤3% (when known); CRP <10 mg/L (if obtained)"]
-  - ["Moderate", "At least 3 of: dyspnea VAS ≥5; RR ≥24 breaths/min; HR ≥95 bpm; SaO₂ <92% or fall >3%; CRP ≥10 mg/L. ABG, if obtained, may show PaO₂ 70–80 mm Hg"]
+  - ["Mild (default)", "Dyspnea VAS <5. RR <24 breaths/min. HR <95 bpm. Resting SaO₂ ≥92% on usual oxygen and fall ≤3% (when known). CRP <10 mg/L (if obtained)"]
+  - ["Moderate", "At least 3 of: dyspnea VAS ≥5. RR ≥24 breaths/min. HR ≥95 bpm. SaO₂ <92% or fall >3%. CRP ≥10 mg/L. ABG, if obtained, may show PaO₂ 70–80 mm Hg"]
   - ["Severe", "As moderate, with PaO₂ ≤60 mm Hg and/or PaCO₂ >45 mm Hg with pH <7.35"]
 notes:
-  - "Thresholds await prospective validation; use clinical judgment."
+  - "Thresholds await prospective validation. Use clinical judgment."
 sources: [gold-copd-2026, rome-proposal-2021]

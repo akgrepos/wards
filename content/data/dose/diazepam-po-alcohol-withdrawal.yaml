@@ -5,20 +5,20 @@ population: Adults who can take oral medication
 route: PO
 amount: 10–20
 unit: mg
-frequency: "front loading driven by the CIWA-Ar: 10–20 mg every 1–2 hours until the CIWA-Ar is below 10; fixed front loading: 20 mg every 2 hours for 3 doses"
+frequency: "front loading driven by the CIWA-Ar: 10–20 mg every 1–2 hours until the CIWA-Ar is below 10. Fixed front loading: 20 mg every 2 hours for 3 doses"
 give_when: CIWA-Ar ≥10, especially severe (≥19) or high-risk withdrawal
-duration: "Stop once the CIWA-Ar is below 10 and stays low; do not continue as a prescription after treatment"
-max: "No fixed ceiling in hospital; reassess sedation before each dose. ASAM (primary care): not controlled after an adequate dose, for example 80 mg, means transfer to the emergency department or inpatient care"
-boxed_warning: "Concomitant use with opioids can cause profound sedation, respiratory depression, coma and death; abuse, misuse and addiction; dependence and withdrawal reactions."
+duration: "Stop once the CIWA-Ar is below 10 and stays low. Do not continue as a prescription after treatment"
+max: "No fixed ceiling in hospital. Reassess sedation before each dose. ASAM (primary care): not controlled after an adequate dose, for example 80 mg, means transfer to the emergency department or inpatient care"
+boxed_warning: "Concomitant use with opioids can cause profound sedation, respiratory depression, coma and death. Abuse, misuse and addiction. Dependence and withdrawal reactions."
 adjustments:
   - when: "Older or debilitated adults"
-    change: "Label: 2–2.5 mg once or twice daily initially; use the low end and reassess before each dose"
+    change: "Label: 2–2.5 mg once or twice daily initially. Use the low end and reassess before each dose"
   - when: "Cirrhosis"
-    change: "Half-life prolonged 2- to 5-fold; contraindicated in severe hepatic insufficiency (label). ASAM: reduce the dose or use a benzodiazepine with less hepatic metabolism"
+    change: "Half-life prolonged 2- to 5-fold. Contraindicated in severe hepatic insufficiency (label). ASAM: reduce the dose or use a benzodiazepine with less hepatic metabolism"
 cautions:
-  - "Long-acting metabolites accumulate with repeated large doses, especially in older adults and liver disease; reassess sedation before every dose."
+  - "Long-acting metabolites accumulate with repeated large doses, especially in older adults and liver disease. Reassess sedation before every dose."
   - "Contraindicated in myasthenia gravis, severe respiratory insufficiency, severe hepatic insufficiency and sleep apnea syndrome (label)."
-notes: "ASAM examples: 10 mg every hour if the CIWA-Ar is 10 or higher; 20 mg every hour until the CIWA-Ar is below 10; or 20 mg every 2 hours for 3 doses. Alcohol withdrawal is a labeled use: 10 mg 3 or 4 times in the first 24 hours, then 5 mg 3 or 4 times daily as needed."
+notes: "ASAM examples: 10 mg every hour if the CIWA-Ar is 10 or higher, 20 mg every hour until the CIWA-Ar is below 10, or 20 mg every 2 hours for 3 doses. Alcohol withdrawal is a labeled use: 10 mg 3 or 4 times in the first 24 hours, then 5 mg 3 or 4 times daily as needed."
 sources: [asam-alcohol-withdrawal-2020, label-valium-2025]
 verification:
   source: label-valium-2025

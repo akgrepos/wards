@@ -1,6 +1,6 @@
 name: Inpatient, not severe
 indication: Community-acquired pneumonia
-setting: "No MRSA or Pseudomonas risk factors; no preference between the first two options"
+setting: "No MRSA or Pseudomonas risk factors. No preference between the first two options"
 options:
   - label: β-lactam plus macrolide
     doses: [[ceftriaxone-iv, ampicillin-sulbactam-cap, ceftaroline-iv], azithromycin-iv-cap]
@@ -12,5 +12,5 @@ options:
 duration: "3–5 days once clinically stable (7 days for MRSA or Pseudomonas)"
 notes:
   - "β-lactam monotherapy is not routinely recommended."
-  - "Clarithromycin is an oral macrolide alternative; severe β-lactam allergy: the fluoroquinolone option."
+  - "Clarithromycin is an oral macrolide alternative. Severe β-lactam allergy: the fluoroquinolone option."
 sources: [idsa-ats-cap-2019, ats-cap-2025]

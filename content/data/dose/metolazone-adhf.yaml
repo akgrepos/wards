@@ -9,10 +9,10 @@ frequency: once daily
 max: "20 mg daily (label, edema)"
 cautions:
   - "Marked K⁺, Mg²⁺ and Na⁺ losses with a loop diuretic: check electrolytes at least daily."
-  - "Use for a limited time; reassess daily."
+  - "Use for a limited time. Reassess daily."
   - "Formulations are not interchangeable (Zaroxolyn-type vs rapid-acting)."
   - "Contraindicated in anuria and hepatic coma."
-notes: "Label edema range 5–20 mg daily; heart failure practice starts at 2.5–5 mg. Absorption is slow, so timing before the loop dose matters little."
+notes: "Label edema range 5–20 mg daily. Heart failure practice starts at 2.5–5 mg. Absorption is slow, so timing before the loop dose matters little."
 sources: [aha-acc-hfsa-hf-2022, hfa-diuretics-2019, label-metolazone-2019]
 verification:
   source: label-metolazone-2019

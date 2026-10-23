@@ -10,5 +10,5 @@ rows:
   - ["4. Acute change or fluctuating course in alertness, cognition or behavior within the past 2 weeks, still present in the past 24 hours: no / yes", "0 / 4"]
 notes:
   - "4 or more: possible delirium (with or without cognitive impairment). 1–3: possible cognitive impairment. 0: delirium or severe cognitive impairment unlikely (delirium still possible if item 4 information is incomplete)."
-  - "The {{calc:4at}} is a screen; a clinician confirms the diagnosis."
+  - "The {{calc:4at}} is a screen. A clinician confirms the diagnosis."
 sources: [tieges-4at-2021, nice-delirium-2023]

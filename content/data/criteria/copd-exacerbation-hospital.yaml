@@ -5,7 +5,7 @@ columns: [Class, Clinical, Gas exchange]
 layout: stacked
 tones: [yellow, orange, red]
 rows:
-  - ["No respiratory failure", "RR ≤24 breaths/min; HR ≤95 bpm; no accessory muscle use; mental status unchanged", "Hypoxemia corrects with Venturi FiO₂ 24–35%; no rise in PaCO₂"]
-  - ["Respiratory failure", "RR >24 breaths/min; HR >95 bpm; accessory muscle use; mental status unchanged", "Hypoxemia corrects with Venturi FiO₂ >35%; PaCO₂ above baseline or 50–60 mm Hg"]
-  - ["Ventilatory failure", "RR >24 breaths/min; HR >95 bpm; accessory muscle use; acute change in mental status", "Hypoxemia not corrected by Venturi mask or needs FiO₂ >40%; PaCO₂ above baseline or >60 mm Hg, with pH ≤7.25"]
+  - ["No respiratory failure", "RR ≤24 breaths/min. HR ≤95 bpm. No accessory muscle use. Mental status unchanged", "Hypoxemia corrects with Venturi FiO₂ 24–35%. No rise in PaCO₂"]
+  - ["Respiratory failure", "RR >24 breaths/min. HR >95 bpm. Accessory muscle use. Mental status unchanged", "Hypoxemia corrects with Venturi FiO₂ >35%. PaCO₂ above baseline or 50–60 mm Hg"]
+  - ["Ventilatory failure", "RR >24 breaths/min. HR >95 bpm. Accessory muscle use. Acute change in mental status", "Hypoxemia not corrected by Venturi mask or needs FiO₂ >40%. PaCO₂ above baseline or >60 mm Hg, with pH ≤7.25"]
 sources: [gold-copd-2026]

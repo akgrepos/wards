@@ -15,5 +15,5 @@ items:
   - "Minor: core temperature <36 °C (96.8 °F)"
   - "Minor: hypotension needing aggressive fluid resuscitation"
 notes:
-  - "From the 2007 IDSA/ATS guideline, kept in 2019; one major or three minor criteria predicted ICU admission with a pooled sensitivity of 84% and specificity of 78%."
+  - "From the 2007 IDSA/ATS guideline, kept in 2019. One major or three minor criteria predicted ICU admission with a pooled sensitivity of 84% and specificity of 78%."
 sources: [idsa-ats-cap-2007, idsa-ats-cap-2019]

@@ -4,11 +4,11 @@ population: Adults
 route: IV
 amount: "10"
 unit: mEq
-rate: "per hour (up to 20 mEq per hour only by central line with continuous ECG); hold insulin until K⁺ >3.5 mEq/L"
+rate: "per hour (up to 20 mEq per hour only by central line with continuous ECG). Hold insulin until K⁺ >3.5 mEq/L"
 give_when: "K⁺ <3.5 mEq/L"
 repeat: "Recheck K⁺ every 1–2 hours until >3.5 mEq/L"
 cautions:
-  - "The US label allows more than 10 mEq per hour only for K⁺ <2.0 mEq/L with ECG changes or paralysis; the consensus flowchart allows 10–20 mEq per hour, faster by central line."
+  - "The US label allows more than 10 mEq per hour only for K⁺ <2.0 mEq/L with ECG changes or paralysis. The consensus flowchart allows 10–20 mEq per hour, faster by central line."
   - "K⁺ ≤2.5 mEq/L carries about threefold mortality."
 sources: [ada-hyperglycemic-crises-2024, label-kcl-injection-2026]
 verification:

@@ -7,7 +7,7 @@ amount: 8.4
 unit: g
 frequency: once daily
 onset: About 7 hours
-max: "25.2 g once daily; increase by 8.4 g no more often than weekly"
+max: "25.2 g once daily. Increase by 8.4 g no more often than weekly"
 boxed_warning: None
 cautions:
   - "US label: not for emergency treatment (delayed onset)."

@@ -1,5 +1,5 @@
 name: Lung-protective tidal volume in ARDS
 value: "6 (range 4–8)"
 unit: mL/kg
-note: "Per kg of predicted body weight: men 50 + 0.91 × (height in cm − 152.4); women 45.5 + 0.91 × (height in cm − 152.4). Use height, not actual weight."
+note: "Per kg of predicted body weight: men 50 + 0.91 × (height in cm − 152.4). Women 45.5 + 0.91 × (height in cm − 152.4). Use height, not actual weight."
 sources: [ats-esicm-sccm-ards-2017, ssc-sepsis-2026]

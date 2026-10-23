@@ -12,9 +12,9 @@ adjustments:
   - when: CrCl <30 mL/min
     change: 1 mg/kg once daily
   - when: Obesity
-    change: Use actual body weight; consider individualizing above 150 kg
+    change: Use actual body weight. Consider individualizing above 150 kg
   - when: Pregnancy
-    change: "1 mg/kg every 12 hours; no routine anti-Xa monitoring (mechanical valves: peak 0.8–1.2 units/mL, 4–6 hours after the dose)"
+    change: "1 mg/kg every 12 hours. No routine anti-Xa monitoring (mechanical valves: peak 0.8–1.2 units/mL, 4–6 hours after the dose)"
 cautions:
   - "Contraindicated with heparin-induced thrombocytopenia in the past 100 days or circulating antibodies."
   - "Accumulates in kidney failure: prefer unfractionated heparin if CrCl <30 mL/min and unstable or high bleeding risk."

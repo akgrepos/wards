@@ -1,16 +1,16 @@
 name: Sepsis, source not yet clear
 indication: Sepsis or septic shock, empiric therapy before cultures return
-setting: "Choose by suspected source, recent cultures, local resistance and specific-pathogen risk; switch to the source's own regimen once known"
+setting: "Choose by suspected source, recent cultures, local resistance and specific-pathogen risk. Switch to the source's own regimen once known"
 options:
   - label: Broad-spectrum β-lactam
     doses: [[ceftriaxone-iv, cefepime-sepsis, piperacillin-tazobactam-sepsis, meropenem-sepsis]]
   - label: β-lactam plus MRSA coverage
     when: "MRSA colonization, prior MRSA infection or other high MRSA risk"
     doses: [[ceftriaxone-iv, cefepime-sepsis, piperacillin-tazobactam-sepsis, meropenem-sepsis], vancomycin-iv]
-duration: "Shorter courses once the source is controlled; de-escalate when cultures and susceptibilities return"
+duration: "Shorter courses once the source is controlled. De-escalate when cultures and susceptibilities return"
 notes:
-  - "Match the spectrum to the source and resistance risk: an antipseudomonal agent (cefepime, piperacillin-tazobactam, meropenem) with Pseudomonas or multidrug-resistant risk; a carbapenem for ESBL risk."
+  - "Match the spectrum to the source and resistance risk: an antipseudomonal agent (cefepime, piperacillin-tazobactam, meropenem) with Pseudomonas or multidrug-resistant risk. A carbapenem for ESBL risk."
   - "Anaerobic coverage only with intra-abdominal, deep pelvic, necrotizing soft-tissue, head and neck or CNS sources."
-  - "No empiric antifungal for most; consider case by case with immunosuppression or an intra-abdominal source."
+  - "No empiric antifungal for most. Consider case by case with immunosuppression or an intra-abdominal source."
   - "Give the β-lactam first when vancomycin is also ordered."
 sources: [ssc-sepsis-2026, idsa-sepsis-hospital-2026]

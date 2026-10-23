@@ -12,7 +12,7 @@ adjustments:
   - when: Liver
     change: Contraindicated in acute liver failure or decompensated cirrhosis
 cautions:
-  - "No kidney adjustment; kidney impairment raises myopathy risk."
+  - "No kidney adjustment. Kidney impairment raises myopathy risk."
   - "Recent hemorrhagic stroke: weigh risk (more hemorrhagic strokes with this dose after stroke or TIA)."
 notes: "Rosuvastatin is the other high-intensity option."
 sources: [acc-aha-acs-2025, label-lipitor-2024]

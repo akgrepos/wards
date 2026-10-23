@@ -15,5 +15,5 @@ items:
   - "Clinical: evidence of increased autonomic activity (for example heart rate >120/min, tremor, sweating, agitation, nausea)"
 notes:
   - "A total of 4 or more is high risk for moderate to severe (complicated) withdrawal: prophylaxis or early treatment may be indicated. At a cutoff of 4 the validation cohort of 403 medically ill inpatients showed sensitivity 93% and specificity 99.5%."
-  - "The {{calc:pawss}} is a screen, not a diagnosis; MDCalc says not to use it with an active seizure disorder."
+  - "The {{calc:pawss}} is a screen, not a diagnosis. MDCalc says not to use it with an active seizure disorder."
 sources: [maldonado-pawss-2015, maldonado-pawss-2014, asam-alcohol-withdrawal-2020]

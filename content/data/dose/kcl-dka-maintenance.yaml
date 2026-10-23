@@ -6,13 +6,13 @@ amount: 20–30
 unit: mEq
 frequency: per liter of IV fluid
 give_when: "K⁺ 3.5–5.0 mEq/L, once urine output is established"
-repeat: "K⁺ 2 hours after starting insulin, then every 4 hours; target 4–5 mEq/L"
+repeat: "K⁺ 2 hours after starting insulin, then every 4 hours. Target 4–5 mEq/L"
 alternative:
   dose: kcl-dka-low
   when: "K⁺ <3.5 mEq/L: replace first and hold insulin"
 cautions:
-  - "K⁺ >5.0 mEq/L: no potassium; start insulin and recheck K⁺ every 2 hours."
-  - "The consensus flowchart gives 10–20 mEq per liter; its text gives 20–30."
+  - "K⁺ >5.0 mEq/L: no potassium. Start insulin and recheck K⁺ every 2 hours."
+  - "The consensus flowchart gives 10–20 mEq per liter. Its text gives 20–30."
 notes: "Total-body potassium deficit is typically 3–6 mEq/kg despite a normal or high K⁺ on arrival. UK guideline: 40 mEq per liter at K⁺ 3.5–5.5 mEq/L."
 sources: [ada-hyperglycemic-crises-2024, jbds-dka-2023, label-kcl-injection-2026]
 verification:

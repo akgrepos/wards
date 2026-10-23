@@ -19,7 +19,7 @@ rows:
   - drug: "Vancomycin"
     class: "Glycopeptide"
     cells: {mrsa: R, e_faecalis: R, vre: N, pseudomonas: N, esbl: N, anaerobes: V, atypicals: N}
-    note: "Anaerobes: gram-positive only (Clostridium, Cutibacterium); no gram-negative anaerobe activity."
+    note: "Anaerobes: gram-positive only (Clostridium, Cutibacterium). No gram-negative anaerobe activity."
     cp_cells: [e_faecalis, anaerobes]
     sources: [idsa-mrsa-2011, label-vancomycin-2025, common-practice]
   - drug: "Linezolid"
@@ -37,7 +37,7 @@ rows:
   - drug: "Ceftriaxone"
     class: "Cephalosporin, third generation"
     cells: {mrsa: N, e_faecalis: N, vre: N, pseudomonas: N, esbl: N, anaerobes: V, atypicals: N}
-    note: "Anaerobes: oral flora only; not Bacteroides fragilis. Enterococcus is intrinsically resistant."
+    note: "Anaerobes: oral flora only. Not Bacteroides fragilis. Enterococcus is intrinsically resistant."
     cp_cells: [anaerobes]
     sources: [label-ceftriaxone-2026, idsa-amr-2026, common-practice]
   - drug: "Ceftazidime"
@@ -54,7 +54,7 @@ rows:
   - drug: "Ceftaroline"
     class: "Cephalosporin, anti-MRSA"
     cells: {mrsa: R, e_faecalis: N, vre: N, pseudomonas: N, esbl: N, anaerobes: V, atypicals: N}
-    note: "E. faecalis: limited in vitro activity only; not relied on. Anaerobes: gram-positive only."
+    note: "E. faecalis: limited in vitro activity only. Not relied on. Anaerobes: gram-positive only."
     cp_cells: [e_faecalis, anaerobes]
     sources: [label-teflaro-2024, idsa-ssti-2014, common-practice]
   - drug: "Piperacillin-tazobactam"
@@ -89,19 +89,19 @@ rows:
   - drug: "Aztreonam"
     class: "Monobactam"
     cells: {mrsa: N, e_faecalis: N, vre: N, pseudomonas: V, esbl: N, anaerobes: N, atypicals: N}
-    note: "Gram-negative aerobes only; for patients who cannot take other β-lactams (not with ceftazidime allergy)."
+    note: "Gram-negative aerobes only. For patients who cannot take other β-lactams (not with ceftazidime allergy)."
     cp_cells: [pseudomonas]
     sources: [aaaai-drug-allergy-2022, idsa-ats-hap-vap-2016, common-practice]
   - drug: "Ciprofloxacin or levofloxacin"
     class: "Fluoroquinolone"
     cells: {mrsa: N, e_faecalis: V, vre: N, pseudomonas: V, esbl: V, anaerobes: N, atypicals: R}
-    note: "Ciprofloxacin is the more active against Pseudomonas; levofloxacin is the better respiratory agent. Resistance is common in E. coli."
+    note: "Ciprofloxacin is the more active against Pseudomonas. Levofloxacin is the better respiratory agent. Resistance is common in E. coli."
     cp_cells: [e_faecalis, pseudomonas]
     sources: [idsa-ats-cap-2019, idsa-ats-hap-vap-2016, idsa-amr-2026, label-cipro-iv-2025, label-levofloxacin-iv-2025, common-practice]
   - drug: "Doxycycline"
     class: "Tetracycline"
     cells: {mrsa: V, e_faecalis: N, vre: N, pseudomonas: N, esbl: N, anaerobes: V, atypicals: R}
-    note: "MRSA: community-associated skin infection; not for bacteremia."
+    note: "MRSA: community-associated skin infection. Not for bacteremia."
     cp_cells: [anaerobes]
     sources: [idsa-ssti-2014, idsa-ats-cap-2019, label-doxy-iv-2021, common-practice]
   - drug: "Azithromycin"
@@ -112,7 +112,7 @@ rows:
   - drug: "Metronidazole"
     class: "Nitroimidazole"
     cells: {mrsa: N, e_faecalis: N, vre: N, pseudomonas: N, esbl: N, anaerobes: R, atypicals: N}
-    note: "Anaerobes only; covers Bacteroides fragilis. Always paired with an aerobic agent."
+    note: "Anaerobes only. Covers Bacteroides fragilis. Always paired with an aerobic agent."
     sources: [label-metronidazole-iv-2025, idsa-sis-iai-2010]
   - drug: "Clindamycin"
     class: "Lincosamide"

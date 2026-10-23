@@ -7,7 +7,7 @@ amount: "0.1"
 unit: units/kg/h
 rate: continuous infusion
 give_when: "As soon as K⁺ is >3.5 mEq/L"
-repeat: "Glucose <250 mg/dL: reduce to 0.05 units/kg/h and add dextrose 5–10%; continue until DKA resolves"
+repeat: "Glucose <250 mg/dL: reduce to 0.05 units/kg/h and add dextrose 5–10%. Continue until DKA resolves"
 alternative:
   dose: insulin-rapid-sc-dka
   when: "Mild DKA (ED or step-down unit)"

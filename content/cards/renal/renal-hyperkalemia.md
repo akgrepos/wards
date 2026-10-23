@@ -5,7 +5,7 @@ system: renal
 subsection: Electrolyte Disorders
 title: Hyperkalemia
 aliases: [high potassium, potassium high, K high, hyperK]
-definition: "Commonly K⁺ ≥5.5 mEq/L; cutoffs vary by laboratory and by serum vs plasma. ^[kdigo-acute-hyperkalemia-2020]"
+definition: "Commonly K⁺ ≥5.5 mEq/L. Cutoffs vary by laboratory and by serum vs plasma. ^[kdigo-acute-hyperkalemia-2020]"
 based_on: [ukka-hyperkalaemia-2026, kdigo-acute-hyperkalemia-2020]
 reviewed: 2026-10-17
 related:
@@ -42,7 +42,7 @@ emergency_hint: Calcium, insulin-dextrose, remove K⁺
 
    - Never albuterol alone. ^[ukka-hyperkalaemia-2026]
 4. Remove K⁺
-   - Severe: sodium zirconium cyclosilicate (UK guideline recommends); moderate: consider. ^[ukka-hyperkalaemia-2026]
+   - Severe: sodium zirconium cyclosilicate (UK guideline recommends). Moderate: consider. ^[ukka-hyperkalaemia-2026]
 
    {{dose:szc-hyperkalemia-initial}}
 
@@ -55,16 +55,16 @@ emergency_hint: Calcium, insulin-dextrose, remove K⁺
    - Refractory hyperkalemia or oliguric AKI: nephrology to consider dialysis. ^[kdigo-acute-hyperkalemia-2020, ukka-hyperkalaemia-2026]
 
 :::note
-- Hyperkalemic cardiac arrest: IV calcium, sodium bicarbonate, and insulin-dextrose may be reasonable (weak recommendations); inhaled albuterol not recommended during arrest. ^[aha-special-circumstances-2025]
+- Hyperkalemic cardiac arrest: IV calcium, sodium bicarbonate, and insulin-dextrose may be reasonable (weak recommendations). Inhaled albuterol not recommended during arrest. ^[aha-special-circumstances-2025]
 :::
 
 ## At a Glance
 - Severity: mild {{threshold:k-mild}}, moderate {{threshold:k-moderate}}, severe {{threshold:k-severe}}. ^[ukka-hyperkalaemia-2026]
 - STAT 12-lead ECG at {{threshold:k-ecg-monitoring}}. ^[ukka-hyperkalaemia-2026]
 - A normal ECG does not exclude life-threatening hyperkalemia. ^[kdigo-acute-hyperkalemia-2020]
-- ECG changes: IV calcium first for cardiac membrane stabilization; does not lower K⁺. ^[ukka-hyperkalaemia-2026, kdigo-acute-hyperkalemia-2020]
-- Insulin-dextrose is the most effective intracellular shift; monitor for hypoglycemia for 6 h. ^[ukka-hyperkalaemia-2026]
-- Only binders, diuretics and dialysis eliminate K⁺; recheck K⁺ for rebound. ^[kdigo-acute-hyperkalemia-2020]
+- ECG changes: IV calcium first for cardiac membrane stabilization. Does not lower K⁺. ^[ukka-hyperkalaemia-2026, kdigo-acute-hyperkalemia-2020]
+- Insulin-dextrose is the most effective intracellular shift. Monitor for hypoglycemia for 6 h. ^[ukka-hyperkalaemia-2026]
+- Only binders, diuretics and dialysis eliminate K⁺. Recheck K⁺ for rebound. ^[kdigo-acute-hyperkalemia-2020]
 
 ## Severity
 :::scale K⁺
@@ -78,10 +78,10 @@ emergency_hint: Calcium, insulin-dextrose, remove K⁺
 - Severe hyperkalemia: urgent hospital assessment, monitored bed. ^[ukka-hyperkalaemia-2026]
 
 ## Causes
-- **Pseudohyperkalemia:** hemolysis, prolonged tourniquet or fist clenching, clotted sample, marked leukocytosis or thrombocytosis, delayed or cold storage; normal K⁺ on careful repeat. ^[kdigo-acute-hyperkalemia-2020, ukka-hyperkalaemia-2026]
-- **Shift out of cells:** acidosis, catabolism, rhabdomyolysis and tissue injury; β-blockers, digoxin, succinylcholine. ^[kdigo-acute-hyperkalemia-2020, emcreg-hyperkalemia-2025]
-- **Impaired excretion:** [!cannot-miss] AKI, especially oliguric; reduced GFR; K⁺-sparing diuretics, MRAs, ACE inhibitors, ARBs, direct renin inhibitors, NSAIDs, heparin, trimethoprim-sulfamethoxazole. ^[kdigo-acute-hyperkalemia-2020, emcreg-hyperkalemia-2025]
-- **Intake:** K⁺ supplements and salt substitutes; rarely the sole cause with normal renal K⁺ excretion. ^[kdigo-acute-hyperkalemia-2020]
+- **Pseudohyperkalemia:** hemolysis, prolonged tourniquet or fist clenching, clotted sample, marked leukocytosis or thrombocytosis, delayed or cold storage. Normal K⁺ on careful repeat. ^[kdigo-acute-hyperkalemia-2020, ukka-hyperkalaemia-2026]
+- **Shift out of cells:** acidosis, catabolism, rhabdomyolysis and tissue injury. β-blockers, digoxin, succinylcholine. ^[kdigo-acute-hyperkalemia-2020, emcreg-hyperkalemia-2025]
+- **Impaired excretion:** [!cannot-miss] AKI, especially oliguric. Reduced GFR. K⁺-sparing diuretics, MRAs, ACE inhibitors, ARBs, direct renin inhibitors, NSAIDs, heparin, trimethoprim-sulfamethoxazole. ^[kdigo-acute-hyperkalemia-2020, emcreg-hyperkalemia-2025]
+- **Intake:** K⁺ supplements and salt substitutes. Rarely the sole cause with normal renal K⁺ excretion. ^[kdigo-acute-hyperkalemia-2020]
 
 ## Presentation
 - Often asymptomatic. ^[kdigo-acute-hyperkalemia-2020]
@@ -97,7 +97,7 @@ emergency_hint: Calcium, insulin-dextrose, remove K⁺
 ## Diagnosis
 - Result discordant with the clinical picture: repeat from a large vein, gentle traction, prompt analysis. ^[ukka-hyperkalaemia-2026]
 - Emergency: blood gas K⁺ while awaiting the laboratory value. ^[ukka-hyperkalaemia-2026]
-- Point-of-care K⁺ differs from laboratory by ~0.1–0.5 mEq/L and does not detect hemolysis; confirm by laboratory or repeat point-of-care test. ^[kdigo-acute-hyperkalemia-2020]
+- Point-of-care K⁺ differs from laboratory by ~0.1–0.5 mEq/L and does not detect hemolysis. Confirm by laboratory or repeat point-of-care test. ^[kdigo-acute-hyperkalemia-2020]
 - STAT 12-lead ECG at {{threshold:k-ecg-monitoring}}. ^[ukka-hyperkalaemia-2026]
 - Etiology: medication review, renal function, hemolysis screen, cause of AKI if present. ^[kdigo-acute-hyperkalemia-2020]
 
@@ -124,8 +124,8 @@ emergency_hint: Calcium, insulin-dextrose, remove K⁺
 
    - KDIGO: give calcium at {{threshold:k-calcium-without-ecg}} if no ECG or monitor is yet available. ^[kdigo-acute-hyperkalemia-2020]
    - Normal ECG: IV calcium not recommended. ^[ukka-hyperkalaemia-2026]
-   - Onset 1–3 min, duration 30–60 min; repeat if ECG changes persist or recur. ^[kdigo-acute-hyperkalemia-2020]
-   - Evidence for IV calcium is weak; grade lowered in 2026 after international review. ^[ukka-hyperkalaemia-2026]
+   - Onset 1–3 min, duration 30–60 min. Repeat if ECG changes persist or recur. ^[kdigo-acute-hyperkalemia-2020]
+   - Evidence for IV calcium is weak. Grade lowered in 2026 after international review. ^[ukka-hyperkalaemia-2026]
 2. Intracellular shift
    - Insulin with dextrose: recommended in severe, suggested in moderate. ^[ukka-hyperkalaemia-2026]
 
@@ -137,13 +137,13 @@ emergency_hint: Calcium, insulin-dextrose, remove K⁺
    {{dose:dextrose-10-infusion-hyperkalemia}}
 
    - Glucose {{threshold:glucose-skip-dextrose}}: insulin may be given without dextrose. ^[kdigo-acute-hyperkalemia-2020]
-   - Severe: add nebulized albuterol; never albuterol alone. ^[ukka-hyperkalaemia-2026]
+   - Severe: add nebulized albuterol. Never albuterol alone. ^[ukka-hyperkalaemia-2026]
 
    {{dose:albuterol-neb-hyperkalemia}}
 
-   - Sodium bicarbonate: not routine; consider only with metabolic acidosis if the sodium load is tolerated. ^[ukka-hyperkalaemia-2026, kdigo-acute-hyperkalemia-2020]
+   - Sodium bicarbonate: not routine. Consider only with metabolic acidosis if the sodium load is tolerated. ^[ukka-hyperkalaemia-2026, kdigo-acute-hyperkalemia-2020]
 3. Elimination
-   - Severe: sodium zirconium cyclosilicate (UK guideline recommends); moderate: consider. ^[ukka-hyperkalaemia-2026]
+   - Severe: sodium zirconium cyclosilicate (UK guideline recommends). Moderate: consider. ^[ukka-hyperkalaemia-2026]
 
    {{dose:szc-hyperkalemia-initial}}
 
@@ -162,7 +162,7 @@ emergency_hint: Calcium, insulin-dextrose, remove K⁺
    - Refractory hyperkalemia or oliguric AKI: nephrology to consider dialysis. ^[kdigo-acute-hyperkalemia-2020, ukka-hyperkalaemia-2026]
 
 #### Hyperkalemic cardiac arrest
-- IV calcium, sodium bicarbonate, and insulin-dextrose may be reasonable (weak recommendations); inhaled albuterol not recommended during arrest. ^[aha-special-circumstances-2025]
+- IV calcium, sodium bicarbonate, and insulin-dextrose may be reasonable (weak recommendations). Inhaled albuterol not recommended during arrest. ^[aha-special-circumstances-2025]
 
 ## Monitor
 :::times{after=first check="K⁺"} K⁺ at least at these times after treating moderate or severe hyperkalemia ^[ukka-hyperkalaemia-2026]
@@ -196,7 +196,7 @@ emergency_hint: Calcium, insulin-dextrose, remove K⁺
 ### Where Guidelines Differ: Insulin dose, patiromer
 :::compare Insulin dose
 - KDIGO 2020: A lower dose gave similar K⁺ lowering with less hypoglycemia. ^[kdigo-acute-hyperkalemia-2020]
-- UK guideline 2026: The standard dose was more effective; dose reduction not recommended. ^[ukka-hyperkalaemia-2026]
+- UK guideline 2026: The standard dose was more effective. Dose reduction not recommended. ^[ukka-hyperkalaemia-2026]
 :::
 
 :::compare Patiromer for acute treatment
@@ -205,17 +205,17 @@ emergency_hint: Calcium, insulin-dextrose, remove K⁺
 :::
 
 ### Special Populations: Digoxin toxicity
-- Digoxin toxicity: historical concern about calcium; recent studies show no harm. ^[ukka-hyperkalaemia-2026]
+- Digoxin toxicity: historical concern about calcium. Recent studies show no harm. ^[ukka-hyperkalaemia-2026]
 
-### Complications: Arrhythmia; treatment side effects
+### Complications: Arrhythmia, treatment side effects
 - Arrhythmia, sudden cardiac death. ^[kdigo-acute-hyperkalemia-2020]
 - Treatment-related: hypoglycemia (insulin), rebound hyperkalemia, edema (sodium load of SZC), hypomagnesemia (patiromer). ^[ukka-hyperkalaemia-2026, label-lokelma-2024, label-veltassa-2025]
 
 ### After the Acute Phase: Medication review, binders, diet, repeat K⁺
-- Review K⁺-raising drugs during admission; weigh recurrence risk before restarting. ^[ukka-hyperkalaemia-2026]
+- Review K⁺-raising drugs during admission. Weigh recurrence risk before restarting. ^[ukka-hyperkalaemia-2026]
 - UK guideline: withhold RAAS inhibitors during acute illness (sepsis, hypovolemia, AKI) at any severity. ^[ukka-hyperkalaemia-2026]
 - Stop RAAS inhibitors at {{threshold:k-ecg-monitoring}} if a K⁺ binder cannot be used. ^[ukka-hyperkalaemia-2026]
-- KDIGO: consider temporary discontinuation; in chronic hyperkalemia, binders can enable continued RAAS inhibition. ^[kdigo-acute-hyperkalemia-2020, ukka-hyperkalaemia-2026]
+- KDIGO: consider temporary discontinuation. In chronic hyperkalemia, binders can enable continued RAAS inhibition. ^[kdigo-acute-hyperkalemia-2020, ukka-hyperkalaemia-2026]
 - Low-K⁺ diet for persistent hyperkalemia with moderate–severe CKD, after non-dietary causes are addressed. ^[kdigo-acute-hyperkalemia-2020, ukka-hyperkalaemia-2026]
 - Repeat K⁺ after discharge for all patients treated in hospital. ^[ukka-hyperkalaemia-2026]
 - Maintenance binder if needed: sodium zirconium cyclosilicate or patiromer. ^[label-lokelma-2024, label-veltassa-2025]
@@ -223,7 +223,7 @@ emergency_hint: Calcium, insulin-dextrose, remove K⁺
 {{dose:szc-hyperkalemia-maintenance}}
 {{dose:patiromer-hyperkalemia}}
 
-### Epidemiology and Pathophysiology: Who gets it; K⁺ handling
+### Epidemiology and Pathophysiology: Who gets it, K⁺ handling
 - Common with reduced GFR, diabetes, heart failure and RAAS inhibition. ^[kdigo-acute-hyperkalemia-2020]
 - Risk factors: lower {{calc:ckd-epi}}, higher baseline K⁺, diabetes, heart failure, CAD. ^[kdigo-acute-hyperkalemia-2020]
 - ICU prevalence rises with AKI stage: ~3% without AKI, ~32% at stage 3. ^[kdigo-acute-hyperkalemia-2020]
@@ -234,7 +234,7 @@ emergency_hint: Calcium, insulin-dextrose, remove K⁺
 - Myocyte depolarization causes progressive conduction delay and arrhythmia. ^[kdigo-acute-hyperkalemia-2020]
 
 ## Pearls
-- Calcium buys time but lowers no K⁺; pair with shift and elimination. ^[kdigo-acute-hyperkalemia-2020]
+- Calcium buys time but lowers no K⁺. Pair with shift and elimination. ^[kdigo-acute-hyperkalemia-2020]
 - A normal ECG is not reassuring with true hyperkalemia. ^[kdigo-acute-hyperkalemia-2020]
-- Shift therapies wear off; recheck for rebound. ^[kdigo-acute-hyperkalemia-2020]
+- Shift therapies wear off. Recheck for rebound. ^[kdigo-acute-hyperkalemia-2020]
 - Check glucose before insulin and for 6 h after. ^[ukka-hyperkalaemia-2026]

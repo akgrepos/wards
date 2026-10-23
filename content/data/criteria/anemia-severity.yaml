@@ -9,5 +9,5 @@ rows:
   - ["Moderate", "8.0–10.9 g/dL", "8.0–10.9 g/dL"]
   - ["Severe", "<8.0 g/dL", "<8.0 g/dL"]
 notes:
-  - "Anemia is hemoglobin <13.0 g/dL in men and <12.0 g/dL in nonpregnant women (WHO 2024: ages 15–65; cutoffs unchanged from 2011). Severity grades do not set the transfusion threshold."
+  - "Anemia is hemoglobin <13.0 g/dL in men and <12.0 g/dL in nonpregnant women (WHO 2024: ages 15–65, cutoffs unchanged from 2011). Severity grades do not set the transfusion threshold."
 sources: [who-anemia-2011, who-anemia-2024]

@@ -8,10 +8,10 @@ frequency: every hour for 2–3 doses, then every 2–4 hours by response
 give_when: All patients with an exacerbation
 onset: Within 5 minutes
 cautions:
-  - "Air-driven nebulizer preferred in hypercapnia risk (oxygen-driven nebulization can raise PaCO₂); give oxygen by nasal cannula during it."
-  - "A metered-dose inhaler with spacer works as well as a nebulizer; nebulizers may be easier for sicker patients."
+  - "Air-driven nebulizer preferred in hypercapnia risk (oxygen-driven nebulization can raise PaCO₂). Give oxygen by nasal cannula during it."
+  - "A metered-dose inhaler with spacer works as well as a nebulizer. Nebulizers may be easier for sicker patients."
   - "Avoid high doses: tachycardia, tremor, hypokalemia."
-notes: "Label dose 2.5 mg three to four times daily; the more frequent guideline schedule for exacerbations is beyond the label. No kidney or liver adjustment."
+notes: "Label dose 2.5 mg three to four times daily. The more frequent guideline schedule for exacerbations is beyond the label. No kidney or liver adjustment."
 sources: [gold-copd-2026, label-albuterol-neb-2026, bts-oxygen-2017]
 verification:
   source: label-albuterol-neb-2026

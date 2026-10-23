@@ -5,15 +5,15 @@ population: Adults who can take oral medication
 route: PO
 amount: 25–100
 unit: mg
-frequency: "every 4–6 hours as needed while the CIWA-Ar is 10 or higher (symptom-triggered); 50–100 mg every 1–2 hours until the CIWA-Ar is below 10 (front loading)"
+frequency: "every 4–6 hours as needed while the CIWA-Ar is 10 or higher (symptom-triggered). 50–100 mg every 1–2 hours until the CIWA-Ar is below 10 (front loading)"
 give_when: CIWA-Ar ≥10
 max: "Label: up to 300 mg a day (the ASAM front-loading example can exceed this)"
-boxed_warning: "Concomitant use with opioids can cause profound sedation, respiratory depression, coma and death; abuse, misuse and addiction; dependence and withdrawal reactions."
+boxed_warning: "Concomitant use with opioids can cause profound sedation, respiratory depression, coma and death. Abuse, misuse and addiction. Dependence and withdrawal reactions."
 adjustments:
   - when: "Older or debilitated adults"
-    change: "Label: 10 mg or less a day initially, increased gradually; metabolites accumulate with repeated doses"
+    change: "Label: 10 mg or less a day initially, increased gradually. Metabolites accumulate with repeated doses"
   - when: "Liver disease"
-    change: "ASAM: reduce the dose or use a benzodiazepine with less hepatic metabolism; slowed conversion to active metabolites risks dose-stacking"
+    change: "ASAM: reduce the dose or use a benzodiazepine with less hepatic metabolism. Slowed conversion to active metabolites risks dose-stacking"
 cautions:
   - "Dose-stacking risk: reassess sedation before each repeat dose."
 notes: "Label suggested initial dose is 50–100 mg, repeated as needed until agitation is controlled. ASAM sample regimens: single dose 25–50 mg (mild), 50–100 mg (moderate), 75–100 mg (severe)."

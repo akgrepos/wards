@@ -6,15 +6,15 @@ amount: 15–20
 unit: mg/kg
 frequency: every 8–12 hours
 rate: over at least 60 minutes
-give_when: Actual body weight; pharmacist-led dosing
+give_when: Actual body weight. Pharmacist-led dosing
 adjustments:
   - when: Kidney impairment or dialysis
-    change: Dose by levels, AUC-guided (target AUC 400–600 mg·h/L), with the pharmacy; trough-only monitoring is no longer recommended
+    change: Dose by levels, AUC-guided (target AUC 400–600 mg·h/L), with the pharmacy. Trough-only monitoring is no longer recommended
 cautions:
   - Loading dose 20–35 mg/kg (maximum 3,000 mg) may be considered in serious infection.
-  - Nephrotoxicity, more with piperacillin-tazobactam and other nephrotoxins; check creatinine.
+  - Nephrotoxicity, more with piperacillin-tazobactam and other nephrotoxins. Check creatinine.
   - "Infusion reaction (flushing) with fast infusion: slow it."
-notes: "CAP guideline: 15 mg/kg every 12 hours, adjusted by levels. Label: 2 g a day in divided doses; it predates AUC dosing."
+notes: "CAP guideline: 15 mg/kg every 12 hours, adjusted by levels. Label: 2 g a day in divided doses. It predates AUC dosing."
 sources:
   - rybak-vancomycin-2020
   - idsa-ats-cap-2019

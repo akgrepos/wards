@@ -4,12 +4,12 @@ population: Adults
 route: SC
 amount: "1"
 unit: units
-frequency: "per 10–15 g of carbohydrate in the feeds, divided to match the feeding schedule (regular every 6 hours or rapid-acting every 4 hours for continuous feeds; before each bolus feed)"
+frequency: "per 10–15 g of carbohydrate in the feeds, divided to match the feeding schedule (regular every 6 hours or rapid-acting every 4 hours for continuous feeds. Before each bolus feed)"
 give_when: "On enteral nutrition, in addition to the usual basal insulin and correction"
 cautions:
   - "Feeds interrupted: give IV dextrose for the duration of the insulin's action."
   - "Type 1 diabetes: keep basal insulin even if feeds stop."
-notes: "Starting dose; NPH every 8–12 hours is an alternative for continuous feeds."
+notes: "Starting dose. NPH every 8–12 hours is an alternative for continuous feeds."
 sources: [ada-soc-hospital-2026]
 verification:
   source: ada-soc-hospital-2026

@@ -13,7 +13,7 @@ nodes:
     at: [4, 0]
     span: 6
     title: Acute dyspnea
-    text: Airway, vital signs, monitor, intravenous access; oxygen to 94–98% (88–92% if hypercapnia risk).
+    text: Airway, vital signs, monitor, intravenous access. Oxygen to 94–98% (88–92% if hypercapnia risk).
     next: unstable
   unstable:
     kind: question
@@ -29,8 +29,8 @@ nodes:
     span: 6
     title: Resuscitate while diagnosing
     text:
-      - "Decompress a tension pneumothorax; call the airway team for upper airway obstruction."
-      - "High-flow nasal oxygen or noninvasive ventilation; ICU review; intubate early if failing."
+      - "Decompress a tension pneumothorax. Call the airway team for upper airway obstruction."
+      - "High-flow nasal oxygen or noninvasive ventilation. ICU review. Intubate early if failing."
     links: ["card:crit-hypoxemic-respiratory-failure"]
     next: urgent-end
   urgent-end:
@@ -44,7 +44,7 @@ nodes:
     at: [0, 3]
     span: 6
     title: Core tests
-    text: "Blood gas, ECG, chest radiograph, troponin, BNP or NT-proBNP, CBC, BMP; bedside ultrasound if uncertain."
+    text: "Blood gas, ECG, chest radiograph, troponin, BNP or NT-proBNP, CBC, BMP. Bedside ultrasound if uncertain."
     links: ["section:pulm-dyspnea/diagnosis#natriuretic-peptides"]
     next: cause
   cause:
@@ -75,12 +75,12 @@ nodes:
     at: [6, 6]
     span: 3
     title: Probability, PERC, D-dimer
-    text: "{{calc:wells-pe|Wells}} or gestalt first; CT pulmonary angiography if indicated."
+    text: "{{calc:wells-pe|Wells}} or gestalt first. CT pulmonary angiography if indicated."
     links: [card:pulm-vte-diagnosis]
   other:
     kind: result
     at: [9, 6]
     span: 3
     title: Widen the search
-    text: "Acute coronary syndrome, acidosis, anemia, neuromuscular weakness, effusion; chest CT or echocardiography."
+    text: "Acute coronary syndrome, acidosis, anemia, neuromuscular weakness, effusion. Chest CT or echocardiography."
     links: [card:cardio-chest-pain]

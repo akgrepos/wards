@@ -3,7 +3,7 @@
 # The numbers on the drawings are measured from these shapes (PR from P onset to QRS onset; QRS onset to end).
 kind: ecg-drawing
 title: Hyperkalemia ECG progression
-alt: "Four drawn beats as potassium rises: peaked T waves; a flat P wave with a long PR; a wide QRS; a sine wave."
+alt: "Four drawn beats as potassium rises: peaked T waves. A flat P wave with a long PR. A wide QRS. A sine wave."
 caption: "ECG progression as K⁺ rises: peaked T waves → P-wave flattening, PR prolongation, QRS widening → sine wave."
 illustrates: "Peaked T waves → P-wave flattening, PR prolongation, QRS widening → sine wave."
 sources: [kdigo-acute-hyperkalemia-2020]

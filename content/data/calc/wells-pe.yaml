@@ -23,7 +23,7 @@ calculator:
         - { from: 6.5, range: ">6", label: "High", risk: "PE prevalence 37.5%", high: true }
     - title: "Two levels"
       bands:
-        - { from: 0, to: 4, range: "≤4", label: "PE unlikely", risk: "PE prevalence 7.8%", action: "D-dimer; a negative result excludes PE." }
+        - { from: 0, to: 4, range: "≤4", label: "PE unlikely", risk: "PE prevalence 7.8%", action: "D-dimer. A negative result excludes PE." }
         - { from: 4.5, range: ">4", label: "PE likely", action: "Imaging (CT pulmonary angiography)." }
   notes:
     - "Prevalences are from the 2001 emergency department cohort. Hospitalized patients: the score performs poorly."

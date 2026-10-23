@@ -6,13 +6,13 @@ route: IV
 amount: 0.1–0.2
 unit: mg
 frequency: every 2–3 minutes, in increments, until ventilation and alertness improve
-give_when: "Respiratory depression or unarousable sedation; stop the opioid first"
-repeat: "Repeat doses are often needed; the effect lasts less than most opioids"
+give_when: "Respiratory depression or unarousable sedation. Stop the opioid first"
+repeat: "Repeat doses are often needed. The effect lasts less than most opioids"
 boxed_warning: None
 cautions:
   - "Too large a dose reverses analgesia, raises blood pressure, and causes nausea, sweating and, in opioid-tolerant patients, withdrawal."
   - "Watch for renarcotization and keep monitoring after each dose."
-notes: "Call for help and support ventilation; naloxone is not a substitute for airway management."
+notes: "Call for help and support ventilation. Naloxone is not a substitute for airway management."
 sources: [label-naloxone-2025]
 verification:
   source: label-naloxone-2025

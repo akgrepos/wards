@@ -6,13 +6,13 @@ amount: "25–30"
 unit: mL/kg
 frequency: "per day"
 give_when: "No oral or enteral route, and no resuscitation or replacement need"
-repeat: "Reassess at least daily (clinical fluid status, electrolytes, fluid balance); stop as soon as oral intake allows"
+repeat: "Reassess at least daily (clinical fluid status, electrolytes, fluid balance). Stop as soon as oral intake allows"
 max: "Rarely more than 3 L per day"
 adjustments:
   - when: "Older or frail, kidney impairment, heart failure, malnourished or at refeeding risk"
     change: "Consider 20–25 mL/kg per day"
   - when: "Obesity"
-    change: "Use ideal body weight and the lower end of the range; expert help if BMI >40"
+    change: "Use ideal body weight and the lower end of the range. Expert help if BMI >40"
 cautions:
   - "The hypotonic regimen (0.18% saline in 4% glucose with K⁺) above 2.5 L per day raises the risk of hyponatremia."
   - "Include fluid from drugs, feeds and flushes."

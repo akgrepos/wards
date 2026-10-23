@@ -8,6 +8,6 @@ items:
   - "3. Disorganized thinking: rambling or irrelevant talk, unclear or illogical flow of ideas"
   - "4. Altered level of consciousness: anything other than alert (vigilant, lethargic, stuporous, comatose)"
 notes:
-  - "Inattention is tested at the bedside, for example by reciting the months backward; the CAM is scored by a trained rater after a brief cognitive test."
+  - "Inattention is tested at the bedside, for example by reciting the months backward. The CAM is scored by a trained rater after a brief cognitive test."
   - "In ventilated patients use the {{calc:cam-icu}} (which adds a {{calc:rass}} step) rather than the CAM."
 sources: [inouye-cam-1990, ely-camicu-2001]

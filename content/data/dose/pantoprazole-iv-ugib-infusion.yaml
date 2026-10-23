@@ -6,12 +6,12 @@ route: IV
 amount: "80"
 unit: mg
 frequency: once as a bolus, then a continuous infusion of 8 mg/h for a total of 72 hours
-give_when: "Before endoscopy: may be considered, never delaying endoscopy (ESGE 2026; ACG 2021 makes no recommendation). After endoscopic hemostasis of an ulcer with high-risk stigmata: for 72 hours."
+give_when: "Before endoscopy: may be considered, never delaying endoscopy (ESGE 2026). ACG 2021 makes no recommendation. After endoscopic hemostasis of an ulcer with high-risk stigmata: for 72 hours."
 duration: 72 hours
 cautions:
-  - "The US label does not establish safety and effectiveness for upper gastrointestinal bleeding; this regimen follows the guidelines and trials."
+  - "The US label does not establish safety and effectiveness for upper gastrointestinal bleeding. This regimen follows the guidelines and trials."
   - "After the infusion, change to twice-daily oral therapy."
-notes: "After endoscopic hemostasis: continuous infusion per the International Consensus Group 2019; ACG 2021 accepts continuous or intermittent high-dose PPI for 3 days. Esomeprazole is the labeled alternative with the same regimen."
+notes: "After endoscopic hemostasis: continuous infusion per the International Consensus Group 2019. ACG 2021 accepts continuous or intermittent high-dose PPI for 3 days. Esomeprazole is the labeled alternative with the same regimen."
 sources: [acg-ugib-2021, esge-pub-2026, icg-ugib-2019, label-pantoprazole-iv-2026]
 alternative:
   dose: esomeprazole-iv-ugib
