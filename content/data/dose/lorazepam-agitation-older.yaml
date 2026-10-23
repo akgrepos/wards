@@ -1,0 +1,21 @@
+drug_name: Lorazepam
+brand: Ativan
+indication: Agitation from alcohol or benzodiazepine withdrawal or catatonia in an older or frail adult (off-label)
+population: Older or frail adults
+route: oral, IM or IV
+amount: 0.25–0.5
+unit: mg
+frequency: once. Reassess before any repeat dose
+give_when: Withdrawal, sedative withdrawal or catatonia. Not for delirium from other causes
+repeat: "May repeat after 2 hours if needed, after reassessing sedation and breathing"
+max: "No guideline maximum for older adults. Label: start at the low end of the range"
+boxed_warning: "Concomitant use with opioids can cause profound sedation, respiratory depression, coma and death. Risks of abuse, misuse and addiction, and of dependence and withdrawal reactions."
+cautions:
+  - "Benzodiazepines can cause or worsen delirium and falls. Beers criteria advise avoiding them in older adults except for withdrawal."
+  - "Reassess sedation and breathing before each dose."
+notes: "Reduced dose is common practice. No agitation guideline gives an older-adult dose. Beers lists benzodiazepines as drugs to avoid in older adults."
+sources: [label-ativan-inj-2026, ags-beers-2023, common-practice]
+verification:
+  source: common-practice
+  read: common-practice
+  date: 2026-10-23
