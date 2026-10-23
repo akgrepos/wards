@@ -7,6 +7,12 @@ interface Window {
 
 declare module '*/vendor/akg/bundle.js';
 
+// The index (small: no card text). Each card's text comes from cards/<id>.json (see src/content/index.ts).
+declare module 'virtual:wards-content-full' {
+  const content: import('./content/types').Content;
+  export default content;
+}
+
 declare module 'virtual:wards-content' {
   const content: import('./content/types').Content;
   export default content;

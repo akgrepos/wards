@@ -1,8 +1,62 @@
+import { useEffect, useState } from 'react';
 import content from 'virtual:wards-content';
 import { CARD_TYPES } from '../../scripts/content/schema.mjs';
-import type { Block, Card, Inline, ListItem, Pathway } from './types';
+import type { Block, Card, Content, Inline, ListItem, Pathway } from './types';
 
+// `content` starts as the small index: every card's title, aliases and section names, but no text, and no data (doses,
+// criteria …). A card's file (cards/<id>.json) is fetched when it opens; loadCard() puts its text and the data it uses in here,
+// so everything that reads `content` stays synchronous once the card is loaded.
 export { content };
+
+const loaded = new Set<string>();
+const pending = new Map<string, Promise<void>>();
+const merge = (data: Content['data']) => {
+  for (const [kind, items] of Object.entries(data)) content.data[kind] = { ...content.data[kind], ...items };
+};
+
+/** Tests and tools: put the whole content in at once, as if every card had been opened. */
+export function seedFullContent(full: Content) {
+  content.cards.splice(0, content.cards.length, ...full.cards);
+  merge(full.data);
+  for (const c of full.cards) loaded.add(c.id);
+}
+
+export const isCardLoaded = (id: string) => loaded.has(id);
+
+/** Fetches a card's file (the card's text and the data it uses). Saved for offline use, so this works with no signal. */
+export function loadCard(id: string): Promise<void> {
+  if (loaded.has(id)) return Promise.resolve();
+  let p = pending.get(id);
+  if (!p) {
+    p = fetch(`${import.meta.env.BASE_URL}cards/${encodeURIComponent(id)}.json`)
+      .then((r) => { if (!r.ok) throw new Error(`card ${id}: ${r.status}`); return r.json() as Promise<{ card: Card; data: Content['data'] }>; })
+      .then(({ card, data }) => {
+        merge(data);
+        const i = content.cards.findIndex((c) => c.id === id);
+        if (i >= 0) content.cards[i] = card;
+        loaded.add(id);
+      })
+      .finally(() => pending.delete(id));
+    pending.set(id, p);
+  }
+  return p;
+}
+
+/** Whether a card's text is ready ('ready'), on its way ('loading') or couldn't be fetched ('error'). */
+export function useCardLoad(id: string | undefined): { status: 'ready' | 'loading' | 'error'; retry: () => void } {
+  const [, tick] = useState(0);
+  const [failed, setFailed] = useState<string | null>(null);
+  useEffect(() => {
+    if (!id || loaded.has(id)) return;
+    let live = true;
+    setFailed(null);
+    loadCard(id).then(() => live && tick((n) => n + 1), () => live && setFailed(id));
+    return () => { live = false; };
+  }, [id, failed === null]); // eslint-disable-line react-hooks/exhaustive-deps
+  const retry = () => setFailed(null);
+  if (!id || loaded.has(id)) return { status: 'ready', retry };
+  return { status: failed === id ? 'error' : 'loading', retry };
+}
 export const cardTypeLabel = (c: Card) => (CARD_TYPES as Record<string, { label: string }>)[c.type]?.label ?? c.type;
 
 export function getCard(id: string) {
@@ -110,6 +164,8 @@ export function pathwayHomes(): { id: string; title: string; summary?: string; c
   }
   return out.sort((a, b) => a.card.title.localeCompare(b.card.title) || a.title.localeCompare(b.title));
 }
+/** The card a pathway belongs to (its page loads that card's file, which holds the pathway). */
+export const pathwayCard = (id: string): string | undefined => (content.data.pathway?.[id] as Pathway | undefined)?.card;
 export const pathwaysFor = (cardId: string) => pathwayHomes().filter((h) => h.card.id === cardId);
 
 // Basic search over card titles and aliases (full search across sections, drugs and tools comes later).

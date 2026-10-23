@@ -23,9 +23,13 @@ const sw = readFileSync(join(dist, 'sw.js'), 'utf8');
 const precached = new Set([...sw.matchAll(/url:\s*"([^"]+)"/g)].map((m) => m[1]));
 const missing = files(dist).filter((f) => !EXEMPT.some((r) => r.test(f)) && !precached.has(f));
 
+// Each card is its own file (cards/<id>.json); the app fetches it when the card opens, so every one must be saved.
+const cardFiles = files(dist).filter((f) => /^cards\/.+\.json$/.test(f));
+if (!cardFiles.length) missing.push('cards/*.json (no card files were built)');
+
 if (missing.length) {
   console.error(`These built files are not saved for offline use:\n${missing.map((f) => `  - ${f}`).join('\n')}`);
   console.error('Add their type to workbox.globPatterns or raise maximumFileSizeToCacheInBytes in vite.config.ts.');
   process.exit(1);
 }
-console.log(`Offline check passed: all ${precached.size} files are saved for offline use.`);
+console.log(`Offline check passed: all ${precached.size} files (including ${cardFiles.length} card files) are saved for offline use.`);
