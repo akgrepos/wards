@@ -1,6 +1,6 @@
 # Switching machines (Windows PC and Mac)
 
-For the owner. Reference only; nothing here runs on its own. The Windows PC is a trial (since 2026-10-23); the Mac is home and must always keep working. Everything in the repo goes through GitHub, so it travels by itself. Three things do **not**: the Claude skills, the Claude memory, and `~/Documents/Wards-reference/`.
+For the owner. Reference only; nothing here runs on its own. Since 2026-10-23 the Windows PC is the main machine; the Mac is the fallback if the owner switches back. Everything in the repo goes through GitHub, so it travels by itself. Three things do **not**: the Claude skills, the Claude memory, and `~/Documents/Wards-reference/`.
 
 ## Going from the PC back to the Mac
 1. On the PC, tell Claude "wrap up". It finishes or parks work and updates `docs/STATUS.md`.
@@ -17,5 +17,5 @@ Same steps in the other direction. On the PC: `git pull`, `npm install`, and lea
 
 ## What differs between the machines
 - **Testing:** Mac uses the iOS Simulator and the pinned app. The PC has no Simulator; the phone-size WebKit preview is `npm run preview:shot` (Playwright; after `npm install`, run `npx playwright install webkit` once) plus you confirming on your iPhone after the deploy.
-- **Mac-only scripts:** `scripts/shots.sh` and the `xcrun` step of the wrap-up skill. `scripts/status.sh` and `wait-live.sh` need `jq` on the PC.
+- **Scripts:** the workflow scripts are Node (`npm run status`, `wait-live`, `tidy`, `preview:shot`) and run the same on both machines.
 - **Never** run both machines on the same branch at once; finish and merge a PR (or note it in STATUS) before switching.
