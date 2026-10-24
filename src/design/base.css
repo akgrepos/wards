@@ -177,23 +177,10 @@ html[data-timed] .pw-zoom { bottom: calc(env(safe-area-inset-bottom) + var(--tab
 .home-section { margin-top: var(--space-8); }
 .home-section .akg-list__header { padding: var(--space-8) var(--space-16) var(--space-8); }
 .home-section .akg-list__header-title { margin: 0; }
-.home-empty { margin: 0; padding: 0 var(--space-16); color: var(--label-secondary); }
-.home-chips { display: flex; gap: var(--space-8); padding: 0 var(--space-16) var(--space-4); overflow-x: auto; scrollbar-width: none; }
-.home-chips::-webkit-scrollbar { display: none; }
-.home-chip, .home-cell, .home-tool { color: var(--label); text-decoration: none; -webkit-tap-highlight-color: transparent; }
-.home-chip { display: flex; align-items: center; flex: none; gap: var(--space-8); min-height: var(--tap-target); padding: 0 var(--space-16); border-radius: var(--radius-full); font-size: calc(15 * var(--akg-text-unit)); font-weight: 600; max-width: 85%; line-height: 1.2; padding-block: var(--space-8); background: color-mix(in srgb, var(--system-red) 15%, var(--background-grouped-secondary)); }
-.home-chip__icon { display: inline-flex; width: 1.1em; height: 1.1em; color: var(--system-red); }
-.home-chip__icon svg { width: 100%; height: 100%; }
 .home-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-8); padding: 0 var(--space-16); }
 .home-cell { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-8); min-height: var(--tap-target); padding: var(--space-12); border-radius: var(--radius-grouped); background: var(--background-grouped-secondary); }
 .home-cell .akg-icon-tile { flex: none; }
 .home-cell__title { min-width: 0; font-size: calc(15 * var(--akg-text-unit)); font-weight: 600; line-height: 1.2; overflow-wrap: break-word; }
-.home-tools { display: grid; grid-template-columns: repeat(var(--n, 3), minmax(0, 1fr)); gap: var(--space-8); padding: 0 var(--space-16); }
-.home-tool { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--space-4); min-height: var(--tap-target); padding: var(--space-12) var(--space-4); border-radius: var(--radius-grouped); background: var(--background-grouped-secondary); font-size: calc(13 * var(--akg-text-unit)); font-weight: 600; text-align: center; line-height: 1.2; }
-.home-tool__icon { display: inline-flex; width: 1.8em; height: 1.8em; }
-.home-tool__icon svg { width: 100%; height: 100%; }
-.home-tool__mark { display: inline-flex; width: 0.9em; height: 0.9em; vertical-align: -0.1em; color: var(--label-tertiary); }
-.home-tool__mark svg { width: 100%; height: 100%; }
 
 /* Topics: systems not written yet are dimmed. */
 .akg-list-row--disabled.soon .akg-icon-tile { opacity: 0.4; }
@@ -373,9 +360,3 @@ html[data-timed] .timed-page .screen-body.timed-body { padding-bottom: calc(env(
 }
 .card-link:active { background: var(--fill-tertiary); }
 .card-link::after { content: ""; position: absolute; left: 50%; top: 50%; width: max(100%, var(--tap-target)); height: var(--tap-target); transform: translate(-50%, -50%); }
-
-/* PROTOTYPE: ribbon on private previews only (VITE_PREVIEW=1). Sits in the safe area; the app's bars move down below it. */
-:root { --preview-h: calc(env(safe-area-inset-top) + 22px); }
-.preview-ribbon { position: sticky; top: 0; z-index: 30; height: var(--preview-h); box-sizing: border-box; padding-top: env(safe-area-inset-top); display: flex; align-items: center; justify-content: center; font-size: calc(11 * var(--akg-text-unit)); font-weight: 600; color: var(--label); background: color-mix(in srgb, var(--system-orange) 30%, var(--background-grouped)); }
-html:has(.preview-ribbon) .top-bar { top: var(--preview-h); padding-top: 0; }
-html:has(.preview-ribbon) .search-screen { top: var(--preview-h); height: calc(100dvh - var(--preview-h)); }

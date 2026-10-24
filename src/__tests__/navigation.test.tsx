@@ -13,7 +13,7 @@ Element.prototype.scrollIntoView ??= () => {};
 
 const { App } = await import('../App');
 const { parseRoute, reopenLastPage, resetRouterForTests, REOPEN_WITHIN_MS } = await import('../router');
-const { clearRecent, setRapidShortcuts } = await import('../storage');
+const { clearRecent } = await import('../storage');
 
 // Start each test as a fresh launch at the given address.
 function launch(hash: string) {
@@ -87,8 +87,8 @@ describe('reopening the last page', () => {
     expect(location.hash).toBe('#/system/renal');
     expect(back().getAttribute('aria-label')).toBe('Back to Topics');
     await act(async () => { fireEvent.click(back()); });
-    expect(location.hash).toBe('#/topics');
-    expect(screen.getAllByText('Systems').length).toBeGreaterThan(0);
+    expect(location.hash).toBe('#/');
+    expect(screen.getAllByText('Specialties').length).toBeGreaterThan(0);
     expect(historyBack).not.toHaveBeenCalled();
   });
 });
@@ -105,11 +105,11 @@ describe('Back', () => {
     expect(historyBack).toHaveBeenCalledOnce();
   });
 
-  it('from a card opened on Home is named for Home', async () => {
+  it('from a card opened on Topics is named for Topics', async () => {
     launch('#/');
     render(<App />);
     await go('#/card/renal-aki');
-    expect(back().getAttribute('aria-label')).toBe('Back to Reference');
+    expect(back().getAttribute('aria-label')).toBe('Back to Topics');
   });
 });
 
@@ -117,24 +117,12 @@ describe('tabs', () => {
   it('show each tab’s first page', async () => {
     launch('#/');
     render(<App />);
-    expect(screen.getAllByText('Reference').length).toBeGreaterThan(0);
-    await act(async () => { fireEvent.click(screen.getByRole('tab', { name: 'Topics' })); });
-    expect(location.hash).toBe('#/topics');
     expect(screen.getAllByText('Kidney, Electrolytes and Urology').length).toBeGreaterThan(0);
-    expect(screen.getAllByText('Coming Soon').length).toBeGreaterThan(0);
     await act(async () => { fireEvent.click(screen.getByRole('tab', { name: 'Library' })); });
     expect(screen.getByText('Medscape Drug Interaction Checker')).toBeTruthy();
     await act(async () => { fireEvent.click(screen.getByRole('tab', { name: 'Rapids' })); });
     expect(screen.getByText('Calcium, insulin-dextrose, remove K⁺')).toBeTruthy();
     expect(screen.getByRole('tab', { name: 'Rapids' }).getAttribute('aria-selected')).toBe('true');
-  });
-
-  it('Topics shows all systems on request', async () => {
-    launch('#/topics');
-    render(<App />);
-    const before = screen.getAllByText('Coming Soon').length;
-    fireEvent.click(screen.getByText(/^Show All \d+ Systems$/));
-    expect(screen.getAllByText('Coming Soon').length).toBeGreaterThan(before);
   });
 
   it('hides empty Library lists, and removed pages fall back to the Library', () => {
@@ -152,9 +140,9 @@ describe('Page Not Found', () => {
     launch('#/card/does-not-exist');
     render(<App />);
     expect(screen.getAllByText('Page Not Found').length).toBeGreaterThan(0);
-    await act(async () => { fireEvent.click(screen.getByRole('button', { name: 'Go to Home' })); });
+    await act(async () => { fireEvent.click(screen.getByRole('button', { name: 'Go to Topics' })); });
     expect(location.hash).toBe('#/');
-    expect(screen.getAllByText('Reference').length).toBeGreaterThan(0);
+    expect(screen.getAllByText('Specialties').length).toBeGreaterThan(0);
   });
 });
 
@@ -182,12 +170,11 @@ describe('search', () => {
 
 describe('Home lists', () => {
   it('a page opened shows on Home in Recent; pages have no Favorites star', async () => {
-    setRapidShortcuts(['renal-hyperkalemia']);
     launch('#/card/renal-hyperkalemia');
     render(<App />);
     expect(screen.queryByRole('button', { name: /Favorites/ })).toBeNull();
-    await act(async () => { fireEvent.click(screen.getByRole('tab', { name: 'Home' })); });
-    expect(screen.getAllByText('Hyperkalemia').length).toBe(2); // Rapids shortcut, Recent
+    await act(async () => { fireEvent.click(screen.getByRole('tab', { name: 'Topics' })); });
+    expect(screen.getAllByText('Hyperkalemia').length).toBe(1); // Recent
     expect(screen.queryByText('Favorites')).toBeNull();
     expect(screen.queryByText('Continue Reading')).toBeNull();
     await act(async () => { fireEvent.click(screen.getByRole('button', { name: 'Clear' })); });

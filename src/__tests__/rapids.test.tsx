@@ -13,7 +13,7 @@ Element.prototype.scrollIntoView ??= () => {};
 
 const { App } = await import('../App');
 const { parseRoute, reopenLastPage, resetRouterForTests, tabFor } = await import('../router');
-const { getTimed, setTimed, getRapidShortcuts, setRapidShortcuts } = await import('../storage');
+const { getTimed, setTimed } = await import('../storage');
 const timed = await import('../timed');
 
 const HK = 'renal-hyperkalemia';
@@ -82,22 +82,6 @@ describe('Rapids addresses', () => {
     await act(async () => { fireEvent.click(within(sheet).getByRole('button', { name: 'Open Full Topic' })); });
     await tick();
     expect(location.hash).toBe(`#/card/${HK}`);
-  });
-
-  it('Home shows the Rapids shortcut, and Edit chooses which ones', async () => {
-    setRapidShortcuts(['cardio-atrial-fibrillation', 'pulm-copd-exacerbation', 'endo-dka', HK]);
-    launch('#/');
-    render(<App />);
-    expect(screen.getByText('Hyperkalemia').closest('a')!.getAttribute('href')).toBe(`#/emergency/${HK}`);
-    await act(async () => { fireEvent.click(screen.getByRole('button', { name: 'Edit' })); });
-    const sheet = screen.getByRole('dialog');
-    await act(async () => { fireEvent.click(within(sheet).getByText('Hyperkalemia')); });
-    expect(getRapidShortcuts()).toEqual(['cardio-atrial-fibrillation', 'pulm-copd-exacerbation', 'endo-dka']);
-    await act(async () => { fireEvent.click(within(sheet).getByText('Diabetic Ketoacidosis and Hyperosmolar Hyperglycemic State')); });
-    await act(async () => { fireEvent.click(within(sheet).getByText('COPD Exacerbation')); });
-    await act(async () => { fireEvent.click(within(sheet).getByText('Atrial Fibrillation')); });
-    expect(getRapidShortcuts()).toEqual([]);
-    expect(screen.getByText('Tap Edit to choose up to four.')).toBeTruthy();
   });
 });
 

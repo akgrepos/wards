@@ -1,37 +1,11 @@
-import { useState, type ReactNode } from 'react';
+import { type ReactNode } from 'react';
 import { AKG } from '../design/akg';
-import { cardTypeLabel, cardsInSystem, content, pathwayHomes } from '../content';
+import { cardTypeLabel, content, pathwayHomes } from '../content';
 import type { Card } from '../content/types';
 import { href, switchTab } from '../router';
 import { INTERACTION_CHECKER } from '../ui/Rich';
-import { iconFor, icons } from '../ui/icons';
+import { icons } from '../ui/icons';
 import { Empty, Screen } from './common';
-
-// Topics tab: the systems. Systems with topics come first; the rest show as "Coming Soon" until written.
-const SOON_SHOWN = 3;
-export function TopicsTab() {
-  const [all, setAll] = useState(false);
-  const systems = content.systems.filter((s) => !s.library);
-  const count = (id: string) => cardsInSystem(id).length;
-  const ready = systems.filter((s) => count(s.id) > 0);
-  const soon = systems.filter((s) => count(s.id) === 0);
-  const shown = all ? soon : soon.slice(0, SOON_SHOWN);
-  return (
-    <Screen title="Topics">
-      <AKG.List header="Systems">
-        {ready.map((s) => (
-          <AKG.ListRow key={s.id} title={s.title} icon={iconFor(s.id).icon} iconTint={iconFor(s.id).tint} subtitle={count(s.id) === 1 ? '1 topic' : `${count(s.id)} topics`} chevron href={href.system(s.id)} />
-        ))}
-        {shown.map((s) => (
-          <AKG.ListRow key={s.id} className="soon" title={s.title} icon={iconFor(s.id).icon} iconTint={iconFor(s.id).tint} detail="Coming Soon" disabled />
-        ))}
-        {soon.length > SOON_SHOWN && (
-          <AKG.ListRow title={all ? 'Show Fewer' : `Show All ${systems.length} Systems`} action onClick={() => setAll(!all)} />
-        )}
-      </AKG.List>
-    </Screen>
-  );
-}
 
 // Library tab: tools and reference used across topics.
 export const LIBRARY_LISTS: Record<string, { title: string; icon: keyof typeof icons; tint: string; subtitle: string; empty: string }> = {
@@ -95,11 +69,11 @@ export function LibraryList({ id }: { id: string }) {
 // An address that doesn't match any page, or a card that was renamed or removed.
 export function NotFoundScreen() {
   return (
-    <Screen title="Not Found" back={{ label: 'Reference', fallback: href.home() }}>
+    <Screen title="Not Found" back={{ label: 'Topics', fallback: href.home() }}>
       <Empty
         title="Page Not Found"
         description="This page may have moved or been renamed."
-        actions={<AKG.Button variant="prominent" onClick={() => switchTab('home')}>Go to Home</AKG.Button>}
+        actions={<AKG.Button variant="prominent" onClick={() => switchTab('home')}>Go to Topics</AKG.Button>}
       />
     </Screen>
   );
