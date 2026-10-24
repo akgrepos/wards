@@ -9,7 +9,7 @@ import { iconFor, icons } from '../ui/icons';
 import { APP_VERSION } from '../version';
 import { Screen, ago } from './common';
 import { INTERACTION_CHECKER } from '../ui/Rich';
-import { LIBRARY_LISTS } from './Tabs';
+import { LIBRARY_LISTS, TopicsTab } from './Tabs';
 
 const cardIcon = (c: Card) => iconFor(c.system);
 
@@ -142,7 +142,7 @@ function HomeGrid() {
 }
 
 // PROTOTYPE: throwaway home options, chosen by ?home=1..4 in the address (none = the specialty grid). Remove before the real build.
-const RecentList = () => {
+export const RecentList = () => {
   const recent = useStored(getRecent).filter((r) => getCard(r.id));
   return (
     <AKG.List header="Recent" headerStyle="prominent" headerAction={recent.length ? <AKG.Button variant="borderless" onClick={clearRecent}>Clear</AKG.Button> : undefined}>
@@ -165,21 +165,22 @@ const RapidChips = () => {
   );
 };
 // PROTOTYPE: the chosen option, shared with the preview ribbon.
-const PROTO_NAMES: Record<number, string> = { 1: 'By task, four big buttons', 2: 'One list of specialties', 3: 'Search first', 4: 'Specialty grid' };
+const PROTO_NAMES: Record<number, string> = { 1: 'By task, four big buttons', 2: 'One list of specialties', 3: 'Search first', 4: 'Specialty grid', 5: 'Topics first, no Home tab' };
 let protoOption = Number(new URLSearchParams(window.location.search).get('home')) || 4;
+export const useProtoOption = () => useSyncExternalStore((l) => { protoListeners.add(l); return () => { protoListeners.delete(l); }; }, () => protoOption); // PROTOTYPE
 const protoListeners = new Set<() => void>();
 const setProtoOption = (n: number) => { protoOption = n; protoListeners.forEach((l) => l()); };
 export function PreviewRibbon() { // PROTOTYPE
   const n = useSyncExternalStore((l) => { protoListeners.add(l); return () => { protoListeners.delete(l); }; }, () => protoOption);
-  return <div className="preview-ribbon" role="note">PREVIEW · Option {"ABCD"[n - 1]}: {PROTO_NAMES[n]}</div>;
+  return <div className="preview-ribbon" role="note">PREVIEW · Option {"ABCDE"[n - 1]}: {PROTO_NAMES[n]}</div>;
 }
 const ProtoCtx = createContext<{ n: number; set: (n: number) => void }>({ n: 4, set: () => {} }); // PROTOTYPE
 // PROTOTYPE: tap 1 to 4 to flip between the sketches.
-const Switcher = () => {
+export const Switcher = () => {
   const { n, set } = useContext(ProtoCtx);
   return (
     <div style={{ padding: 'var(--space-8) var(--space-16)' }}>
-      <AKG.SegmentedControl options={[{ value: 1, label: 'A Task' }, { value: 2, label: 'B List' }, { value: 3, label: 'C Search' }, { value: 4, label: 'D Grid' }]} value={n} onChange={(v) => set(Number(v))} />
+      <AKG.SegmentedControl options={[{ value: 1, label: 'A Task' }, { value: 2, label: 'B List' }, { value: 3, label: 'C Search' }, { value: 4, label: 'D Grid' }, { value: 5, label: 'E Topics' }]} value={n} onChange={(v) => set(Number(v))} />
     </div>
   );
 };
@@ -243,7 +244,7 @@ export function Home() {
   const set = (v: number) => { setN(v); setProtoOption(v); };
   return (
     <ProtoCtx.Provider value={{ n, set }}>
-      {n === 1 ? <HomeTasks /> : n === 2 ? <HomeList /> : n === 3 ? <HomeSearch /> : <HomeGrid />}
+      {n === 5 ? <TopicsTab top={<Switcher />} bottom={<RecentList />} /> : n === 1 ? <HomeTasks /> : n === 2 ? <HomeList /> : n === 3 ? <HomeSearch /> : <HomeGrid />}
     </ProtoCtx.Provider>
   );
 }

@@ -2,7 +2,7 @@ import { AKG } from './design/akg';
 import { currentTab, href, open, switchTab, useRoute, type Route } from './router';
 import { CardScreen } from './screens/CardScreen';
 import { PathwayScreen } from './screens/PathwayScreen';
-import { Home, PreviewRibbon, SettingsScreen } from './screens/Home';
+import { Home, PreviewRibbon, SettingsScreen, useProtoOption } from './screens/Home';
 import { FocusProxy, SearchScreen, focusProxy } from './screens/Search';
 import { SystemScreen } from './screens/SystemScreen';
 import { LibraryList, LibraryTab, NotFoundScreen, TopicsTab } from './screens/Tabs';
@@ -49,6 +49,8 @@ export function App() {
   useAppearance();
   const route = useRoute();
   const tab = currentTab();
+  const protoOption = useProtoOption();
+  const noHome = !!import.meta.env.VITE_PREVIEW && protoOption === 5; // PROTOTYPE: option E has no Home tab; Topics is the home route
   const stored = useStored(getTimed);
   // While Timed Mode runs, its timer sits in a bar above the tab bar on every screen (except Timed Mode itself).
   const timedLoad = useCardLoad(stored && getCard(stored.card) ? stored.card : undefined);
@@ -64,8 +66,8 @@ export function App() {
         <AKG.TabBar
           floating
           accessory={timed ? <TimedAccessory s={timed} /> : undefined}
-          items={TABS}
-          value={tab === 'search' ? '' : tab}
+          items={noHome ? TABS.filter((t) => t.value !== 'home').map((t) => (t.value === 'topics' ? { ...t, value: 'home' } : t)) : TABS}
+          value={tab === 'search' ? '' : noHome && tab === 'topics' ? 'home' : tab}
           onChange={(v: string) => switchTab(v as 'home')}
           search
           searchLabel="Search"
