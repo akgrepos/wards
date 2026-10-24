@@ -33,7 +33,7 @@ if (!d.ok) {
 if (tree) {
   if (dry) console.log(`DRY RUN: would remove worktree ${tree.path}`)
   else {
-    // If the shell is sitting inside the worktree, step out first or Windows will lock it.
+    // If the shell is sitting inside the worktree, step out first so the folder can be removed.
     if (process.cwd().toLowerCase().startsWith(tree.path.toLowerCase())) process.chdir(join(tree.path, '..'))
     const ok = run('git', ['worktree', 'remove', tree.path]) !== null
     if (!ok || existsSync(tree.path)) {

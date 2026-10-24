@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest'
 import { parseWorktrees, countUnmerged, summarizeChecks, waitDecision, tidyDecision, findBundle, versionsIn, versionFromSource } from './workflow.mjs'
 
 describe('workflow helpers', () => {
-  it('parses worktrees with Windows paths and detached heads', () => {
+  it('parses worktrees with CRLF line endings and detached heads', () => {
     const t = parseWorktrees('worktree C:/Users/x/Wards\r\nHEAD abc\r\nbranch refs/heads/main\r\n\r\nworktree C:/Users/x/Wards/.claude/worktrees/a b\r\nHEAD def\r\nbranch refs/heads/feature/x\r\n\r\nworktree D:/d\r\nHEAD 1\r\ndetached\r\n')
     expect(t).toEqual([
       { path: 'C:/Users/x/Wards', branch: 'main' },

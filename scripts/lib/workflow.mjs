@@ -7,7 +7,7 @@ const VERSION_RE = /\d{4}\.\d{2}\.\d{2}(?:\.\d+)?/
 /** Runs a command without a shell; returns trimmed stdout, or null if it failed. */
 export function run(cmd, args, opts = {}) {
   try {
-    return execFileSync(cmd, args, { encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'], windowsHide: true, ...opts }).trimEnd()
+    return execFileSync(cmd, args, { encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'], ...opts }).trimEnd()
   } catch {
     return null
   }
