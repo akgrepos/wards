@@ -2,14 +2,14 @@ import { useState, type ReactNode } from 'react';
 import { AKG } from '../design/akg';
 import { cardTypeLabel, cardsInSystem, content, pathwayHomes } from '../content';
 import type { Card } from '../content/types';
-import { href, switchTab } from '../router';
+import { href, open, switchTab } from '../router';
 import { INTERACTION_CHECKER } from '../ui/Rich';
 import { iconFor, icons } from '../ui/icons';
 import { Empty, Screen } from './common';
 
 // Topics tab: the systems. Systems with topics come first; the rest show as "Coming Soon" until written.
 const SOON_SHOWN = 3;
-export function TopicsTab() {
+export function TopicsTab({ top, bottom }: { top?: ReactNode; bottom?: ReactNode } = {}) { // PROTOTYPE: top and bottom are for the home sketch only
   const [all, setAll] = useState(false);
   const systems = content.systems.filter((s) => !s.library);
   const count = (id: string) => cardsInSystem(id).length;
@@ -17,7 +17,8 @@ export function TopicsTab() {
   const soon = systems.filter((s) => count(s.id) === 0);
   const shown = all ? soon : soon.slice(0, SOON_SHOWN);
   return (
-    <Screen title="Topics">
+    <Screen title="Topics" trailing={bottom ? <AKG.ToolbarButton icon={icons.gearshape} aria-label="Settings" onClick={() => open(href.settings())} /> : undefined}>
+      {top}
       <AKG.List header="Systems">
         {ready.map((s) => (
           <AKG.ListRow key={s.id} title={s.title} icon={iconFor(s.id).icon} iconTint={iconFor(s.id).tint} subtitle={count(s.id) === 1 ? '1 topic' : `${count(s.id)} topics`} chevron href={href.system(s.id)} />
@@ -29,6 +30,7 @@ export function TopicsTab() {
           <AKG.ListRow title={all ? 'Show Fewer' : `Show All ${systems.length} Systems`} action onClick={() => setAll(!all)} />
         )}
       </AKG.List>
+      {bottom}
     </Screen>
   );
 }
