@@ -61,7 +61,7 @@ function HomeSection({ title, action, children }: { title: string; action?: Reac
 const hasCards = (type: string) => content.cards.some((c) => c.type === type);
 
 // Home: one tap to the right part of the app. Rapids chips, the specialties as a grid, the library tools, then Recent.
-export function Home() {
+function HomeGrid() {
   const recent = useStored(getRecent).filter((r) => getCard(r.id));
   const emergencies = useRapidShortcuts();
   const sheet = useSheet();
@@ -138,6 +138,93 @@ export function Home() {
       </AKG.List>
     </Screen>
   );
+}
+
+// PROTOTYPE: throwaway home options, chosen by ?home=1..4 in the address (none = the specialty grid). Remove before the real build.
+const RecentList = () => {
+  const recent = useStored(getRecent).filter((r) => getCard(r.id));
+  return (
+    <AKG.List header="Recent" headerStyle="prominent" headerAction={recent.length ? <AKG.Button variant="borderless" onClick={clearRecent}>Clear</AKG.Button> : undefined}>
+      {recent.length === 0 ? <AKG.ListRow title="Nothing Opened Yet" subtitle="The last five pages you open appear here." /> : recent.map((r) => {
+        const c = getCard(r.id)!;
+        return <AKG.ListRow key={r.id} title={c.title} subtitle={`${kindLabel(c)} · ${ago(r.t)}`} icon={cardIcon(c).icon} iconTint={cardIcon(c).tint} chevron href={href.card(c.id)} />;
+      })}
+    </AKG.List>
+  );
+};
+const RapidChips = () => {
+  const emergencies = useRapidShortcuts();
+  const sheet = useSheet();
+  return (
+    <HomeSection title="Rapids" action={<AKG.Button variant="borderless" onClick={() => sheet({ title: 'Rapids Shortcuts', body: <EditRapids /> })}>Edit</AKG.Button>}>
+      <div className="home-chips">
+        {emergencies.map((c) => <a key={c.id} className="home-chip" href={href.emergency(c.id)}><span className="home-chip__icon">{icons.staroflifeFill}</span>{c.title}</a>)}
+      </div>
+    </HomeSection>
+  );
+};
+const gear = <AKG.ToolbarButton icon={icons.gearshape} aria-label="Settings" onClick={() => open(href.settings())} />;
+const Label = ({ n, text }: { n: number; text: string }) => <p className="home-empty" style={{ fontStyle: 'italic' }}>Option {n}: {text}</p>;
+
+// Option 1: by task. Four big buttons.
+function HomeTasks() {
+  const big = [
+    { t: 'Something Is Wrong Now', s: 'Rapids', i: icons.staroflifeFill, c: 'var(--system-red)', h: href.emergencies() },
+    { t: 'Look Up a Drug', s: 'Medications', i: icons.pills, c: 'var(--system-orange)', h: href.libraryList('medications') },
+    { t: 'Work Up a Problem', s: 'Topics and pathways', i: icons.heartTextClipboard, c: 'var(--system-pink)', h: href.topics() },
+    { t: 'Check a Lab or Test', s: 'Labs and tests', i: icons.testtube2, c: 'var(--system-purple)', h: href.libraryList('labs') },
+  ];
+  return (
+    <Screen title="Reference" trailing={gear}>
+      <Label n={1} text="By task: four big buttons, then Recent." />
+      <div className="home-grid" style={{ marginTop: 'var(--space-8)' }}>
+        {big.map((b) => (
+          <a key={b.t} className="home-cell" href={b.h} style={{ minHeight: '8rem' }}>
+            <AKG.IconTile tint={b.c}>{b.i}</AKG.IconTile>
+            <span className="home-cell__title">{b.t}<br /><span style={{ fontWeight: 400, color: 'var(--label-secondary)' }}>{b.s}</span></span>
+          </a>
+        ))}
+      </div>
+      <RecentList />
+    </Screen>
+  );
+}
+
+// Option 2: one list, like Topics.
+function HomeList() {
+  const specialties = content.systems.filter((s) => !s.library && cardsInSystem(s.id).length > 0);
+  return (
+    <Screen title="Reference" trailing={gear}>
+      <Label n={2} text="One list: Rapids chips, specialties as rows, Recent." />
+      <RapidChips />
+      <AKG.List header="Specialties" headerStyle="prominent">
+        {specialties.map((s) => <AKG.ListRow key={s.id} title={s.title} icon={iconFor(s.id).icon} iconTint={iconFor(s.id).tint} subtitle={`${cardsInSystem(s.id).length} topics`} chevron href={href.system(s.id)} />)}
+      </AKG.List>
+      <RecentList />
+    </Screen>
+  );
+}
+
+// Option 3: search first. (The field opens the Search tab; the tab-bar search button stays.)
+function HomeSearch() {
+  return (
+    <Screen title="Reference" trailing={gear}>
+      <Label n={3} text="Search first: a big field on top (breaks the rule that search lives in the tab bar), Rapids, Recent." />
+      <div style={{ padding: 'var(--space-8) var(--space-16)' }}>
+        <AKG.SearchField placeholder="Search topics, drugs, labs" onFocus={() => open(href.search())} />
+      </div>
+      <RapidChips />
+      <RecentList />
+    </Screen>
+  );
+}
+
+export function Home() {
+  const n = new URLSearchParams(window.location.search).get('home');
+  if (n === '1') return <HomeTasks />;
+  if (n === '2') return <HomeList />;
+  if (n === '3') return <HomeSearch />;
+  return <HomeGrid />;
 }
 
 // Home › Settings: the version, and clearing what's kept on this phone.
