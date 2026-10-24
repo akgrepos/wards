@@ -394,7 +394,7 @@ export function CalcLink({ c, label }: { c: Calc; label?: string }) {
   const text = label ?? c.short;
   return (
     <a className="akg-inline-button calc-link" href={c.url} target="_blank" rel="noopener noreferrer" aria-label={`${text}${c.name.includes(c.short) ? '' : `, ${c.name}`}. Opens MDCalc in Safari, needs internet.`}>
-      <span className="akg-inline-button__icon" aria-hidden="true">{icons.plusForwardslashMinus}</span>{text}<span className="external-mark" aria-hidden="true">{icons.arrowUpRight}</span>
+      <span className="akg-inline-button__icon" aria-hidden="true">{icons.arrowUpRight}</span>{text}
     </a>
   );
 }
