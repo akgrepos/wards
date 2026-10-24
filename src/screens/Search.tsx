@@ -74,9 +74,9 @@ export function SearchScreen() {
                 </AKG.List>
               )}
               <section className="search-try">
-                <div className="akg-list__header"><h2 className="akg-list__header-title">Try</h2></div>
+                <div className="akg-list__header akg-list__header--default"><h2 className="akg-list__header-title">Try</h2></div>
                 <div className="search-chips">
-                  {SUGGESTIONS.map((t) => <AKG.Button key={t} size="large" onClick={() => change(t)}>{t}</AKG.Button>)}
+                  {SUGGESTIONS.map((t) => <AKG.Button key={t} variant="tinted" size="large" onClick={() => change(t)}>{t}</AKG.Button>)}
                 </div>
               </section>
               <p className="ios-footnote secondary search-hint">Search by name, abbreviation or common term.</p>
@@ -91,7 +91,7 @@ export function SearchScreen() {
                     <AKG.ListRow
                       key={c.id}
                       title={<AKG.Highlight text={c.title} query={q} />}
-                      subtitle={subtitle(c)}
+                      subtitle={g.header === 'Rapids' ? `Rapids · ${getSystem(c.system)?.title ?? ''}` : subtitle(c)}
                       chevron
                       href={g.header === 'Rapids' ? href.emergency(c.id) : href.card(c.id)}
                     />
