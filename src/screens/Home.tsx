@@ -9,7 +9,7 @@ import { iconFor, icons } from '../ui/icons';
 import { APP_VERSION } from '../version';
 import { Screen, ago } from './common';
 import { INTERACTION_CHECKER } from '../ui/Rich';
-import { LIBRARY_LISTS, TopicsTab } from './Tabs';
+import { LIBRARY_LISTS } from './Tabs';
 
 const cardIcon = (c: Card) => iconFor(c.system);
 
@@ -142,8 +142,8 @@ function HomeGrid() {
 }
 
 // PROTOTYPE: throwaway home options, chosen by ?home=1..4 in the address (none = the specialty grid). Remove before the real build.
-export const RecentList = () => {
-  const recent = useStored(getRecent).filter((r) => getCard(r.id));
+export const RecentList = ({ max = 5 }: { max?: number }) => {
+  const recent = useStored(getRecent).filter((r) => getCard(r.id)).slice(0, max);
   return (
     <AKG.List header="Recent" headerStyle="prominent" headerAction={recent.length ? <AKG.Button variant="borderless" onClick={clearRecent}>Clear</AKG.Button> : undefined}>
       {recent.length === 0 ? <AKG.ListRow title="Nothing Opened Yet" subtitle="The last five pages you open appear here." /> : recent.map((r) => {
@@ -239,12 +239,33 @@ function HomeSearch() {
   );
 }
 
+// Option E: Topics is the home screen. Recent first (last three), then the specialties as tiles.
+function HomeTopics() {
+  const specialties = content.systems.filter((s) => !s.library && cardsInSystem(s.id).length > 0);
+  return (
+    <Screen title="Topics" trailing={gear}>
+      <Switcher />
+      <RecentList max={3} />
+      <HomeSection title="Specialties">
+        <div className="home-grid">
+          {specialties.map((s) => (
+            <a key={s.id} className="home-cell" href={href.system(s.id)}>
+              <AKG.IconTile tint={iconFor(s.id).tint}>{iconFor(s.id).icon}</AKG.IconTile>
+              <span className="home-cell__title">{s.title}</span>
+            </a>
+          ))}
+        </div>
+      </HomeSection>
+    </Screen>
+  );
+}
+
 export function Home() {
   const [n, setN] = useState(protoOption);
   const set = (v: number) => { setN(v); setProtoOption(v); };
   return (
     <ProtoCtx.Provider value={{ n, set }}>
-      {n === 5 ? <TopicsTab top={<Switcher />} bottom={<RecentList />} /> : n === 1 ? <HomeTasks /> : n === 2 ? <HomeList /> : n === 3 ? <HomeSearch /> : <HomeGrid />}
+      {n === 5 ? <HomeTopics /> : n === 1 ? <HomeTasks /> : n === 2 ? <HomeList /> : n === 3 ? <HomeSearch /> : <HomeGrid />}
     </ProtoCtx.Provider>
   );
 }
