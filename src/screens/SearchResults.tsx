@@ -7,13 +7,13 @@ import { iconFor } from '../ui/icons';
 import { Empty } from './common';
 
 const SUGGESTION_COUNT = 5;
-const SHORT_ALIAS = 6;
+const ACRONYM = /^[A-Za-z]{2,5}$/;
 
-// Suggested searches come from the app's own Rapids pages: each one's shortest abbreviation, else its title.
+// Suggested searches come from the app's own Rapids pages: each one's capital-letter abbreviation (like AKI), else its title.
 function suggestions(): string[] {
   const out: string[] = [];
   for (const c of emergencyCards()) {
-    const short = c.aliases.filter((a) => a.length <= SHORT_ALIAS).sort((a, b) => a.length - b.length)[0];
+    const short = c.aliases.find((a) => ACRONYM.test(a) && a === a.toUpperCase());
     const s = short ?? c.title;
     if (!out.includes(s)) out.push(s);
     if (out.length === SUGGESTION_COUNT) break;
