@@ -17,6 +17,7 @@ The essentials for writing or fixing a card. Read this first; open the full guid
 ## Lines and sources
 - Every content line ends `^[source-id, …]` (ids from `content/data/source/`), except lines that are only an insert. Sub-bullets without their own source use the parent's.
 - Markers instead of names: `^[common-practice]` (stethoscope); the unnamed-reference check (green check) is a last resort. Never name AMBOSS, OpenEvidence or the handbook.
+- Write as if the reader sees only the final card: no process talk ("the guidance names…", "not read", review notes). Pregnancy and lactation come from LactMed.
 - Tags: `[!cannot-miss]`, `[!most-common]` (after a cause's colon).
 - Causes: `- **Category:** causes ^[source]`.
 
