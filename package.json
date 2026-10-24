@@ -18,6 +18,7 @@
     "preview:shot": "node scripts/preview-shot.mjs",
     "status": "node scripts/status.mjs",
     "wait-live": "node scripts/wait-live.mjs",
+    "sim-check": "node scripts/sim-check.mjs",
     "tidy": "node scripts/tidy.mjs"
   },
   "dependencies": {
