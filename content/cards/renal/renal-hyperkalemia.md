@@ -20,8 +20,8 @@ emergency_hint: Calcium, insulin-dextrose, remove K⁺
    {{dose:calcium-gluconate-hyperkalemia}}
 
    - Repeat if ECG changes persist or recur. ^[kdigo-acute-hyperkalemia-2020]
-   - KDIGO: give calcium at {{threshold:k-calcium-without-ecg}} if no ECG or monitor is yet available. ^[kdigo-acute-hyperkalemia-2020]
-   - Normal ECG: IV calcium not recommended. ^[ukka-hyperkalaemia-2026]
+   - KDIGO suggests: give calcium at {{threshold:k-calcium-without-ecg}} if no ECG or monitor is yet available. ^[kdigo-acute-hyperkalemia-2020]
+   - Normal ECG: IV calcium not recommended in moderate hyperkalemia. No UK consensus in severe hyperkalemia. ^[ukka-hyperkalaemia-2026]
 2. Shift K⁺ into cells
    - If: moderate {{threshold:k-moderate}} or severe {{threshold:k-severe}} ^[ukka-hyperkalaemia-2026]
    - Check: Pre-treatment glucose {{threshold:glucose-hypoglycemia-risk}}: follow with a dextrose 10% infusion. ^[ukka-hyperkalaemia-2026]
@@ -74,6 +74,7 @@ emergency_hint: Calcium, insulin-dextrose, remove K⁺
 :::
 
 - *Acute* hyperkalemia: K⁺ above the upper limit of normal, not known to be chronic. ^[kdigo-acute-hyperkalemia-2020]
+- No standard severity grading exists. KDIGO grades by K⁺ and ECG changes together. ECG changes at any K⁺ are an emergency. ^[kdigo-acute-hyperkalemia-2020]
 - Continuous cardiac monitoring: {{threshold:k-severe}}, any ECG changes, or {{threshold:k-moderate}} if unwell or rising rapidly. ^[ukka-hyperkalaemia-2026]
 - Severe hyperkalemia: urgent hospital assessment, monitored bed. ^[ukka-hyperkalaemia-2026]
 
@@ -122,10 +123,10 @@ emergency_hint: Calcium, insulin-dextrose, remove K⁺
 
    {{dose:calcium-chloride-hyperkalemia}}
 
-   - KDIGO: give calcium at {{threshold:k-calcium-without-ecg}} if no ECG or monitor is yet available. ^[kdigo-acute-hyperkalemia-2020]
-   - Normal ECG: IV calcium not recommended. ^[ukka-hyperkalaemia-2026]
+   - KDIGO suggests: give calcium at {{threshold:k-calcium-without-ecg}} if no ECG or monitor is yet available. ^[kdigo-acute-hyperkalemia-2020]
+   - Normal ECG: IV calcium not recommended in moderate hyperkalemia. No UK consensus in severe hyperkalemia. ^[ukka-hyperkalaemia-2026]
    - Onset 1–3 min, duration 30–60 min. Repeat if ECG changes persist or recur. ^[kdigo-acute-hyperkalemia-2020]
-   - Evidence for IV calcium is weak. Grade lowered in 2026 after international review. ^[ukka-hyperkalaemia-2026]
+   - Evidence for IV calcium is weak. UK grade lowered to 2C in 2026 after the 2025 ILCOR review. ^[ukka-hyperkalaemia-2026]
 2. Intracellular shift
    - Insulin with dextrose: recommended in severe, suggested in moderate. ^[ukka-hyperkalaemia-2026]
 
@@ -214,7 +215,7 @@ emergency_hint: Calcium, insulin-dextrose, remove K⁺
 ### After the Acute Phase: Medication review, binders, diet, repeat K⁺
 - Review K⁺-raising drugs during admission. Weigh recurrence risk before restarting. ^[ukka-hyperkalaemia-2026]
 - UK guideline: withhold RAAS inhibitors during acute illness (sepsis, hypovolemia, AKI) at any severity. ^[ukka-hyperkalaemia-2026]
-- Stop RAAS inhibitors at {{threshold:k-ecg-monitoring}} if a K⁺ binder cannot be used. ^[ukka-hyperkalaemia-2026]
+- Stop RAAS inhibitors at {{threshold:k-ecg-monitoring}} if criteria for a K⁺ binder are not met. ^[ukka-hyperkalaemia-2026]
 - KDIGO: consider temporary discontinuation. In chronic hyperkalemia, binders can enable continued RAAS inhibition. ^[kdigo-acute-hyperkalemia-2020, ukka-hyperkalaemia-2026]
 - Low-K⁺ diet for persistent hyperkalemia with moderate–severe CKD, after non-dietary causes are addressed. ^[kdigo-acute-hyperkalemia-2020, ukka-hyperkalaemia-2026]
 - Repeat K⁺ after discharge for all patients treated in hospital. ^[ukka-hyperkalaemia-2026]
