@@ -2,6 +2,10 @@
 
 What changed in each version of Wards, newest first. The version is shown in Settings (gear on Topics).
 
+## 2026.10.24.6
+
+Search now lists your recent searches (the last 10 you typed) instead of suggestions, with Clear.
+
 ## 2026.10.24.5
 
 Search now opens with your recent pages and suggested searches (tap one to fill the field); typed results are grouped Rapids, Topics and Drugs.
