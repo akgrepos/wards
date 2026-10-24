@@ -373,3 +373,9 @@ html[data-timed] .timed-page .screen-body.timed-body { padding-bottom: calc(env(
 }
 .card-link:active { background: var(--fill-tertiary); }
 .card-link::after { content: ""; position: absolute; left: 50%; top: 50%; width: max(100%, var(--tap-target)); height: var(--tap-target); transform: translate(-50%, -50%); }
+
+/* PROTOTYPE: ribbon on private previews only (VITE_PREVIEW=1). Sits in the safe area; the app's bars move down below it. */
+:root { --preview-h: calc(env(safe-area-inset-top) + 22px); }
+.preview-ribbon { position: sticky; top: 0; z-index: 30; height: var(--preview-h); box-sizing: border-box; padding-top: env(safe-area-inset-top); display: flex; align-items: center; justify-content: center; font-size: calc(11 * var(--akg-text-unit)); font-weight: 600; color: var(--label); background: color-mix(in srgb, var(--system-orange) 30%, var(--background-grouped)); }
+html:has(.preview-ribbon) .top-bar { top: var(--preview-h); padding-top: 0; }
+html:has(.preview-ribbon) .search-screen { top: var(--preview-h); height: calc(100dvh - var(--preview-h)); }
