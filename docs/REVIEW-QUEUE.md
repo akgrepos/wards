@@ -1,35 +1,12 @@
 # Review queue
 
-Two lists moved out of STATUS.md to keep it short. New cards add themselves here (a line under each section) when they ship.
+The owner's iPhone tap list, plus the independent-review worklists. New cards add themselves under "Not yet independently reviewed" when they ship.
 
 ## Awaiting iPhone confirmation
-Added 2026-10-23 (CLAUDE.md "Test in proportion"). Previews and the Simulator cannot fully reproduce a real finger, the keyboard or the installed app, so each visible change lists what to tap. Tap Reload on "Update Ready" first. Main clears a line when you confirm; for touch, scroll, keyboard or install items, no further change in that area starts until it is confirmed.
+Each visible PR adds a tap-list line here (version, what to tap, what should happen). Silence means approved; nothing is held on this list, and Main clears lines.
 
-- **Link pop-up title and MDCalc links (version 2026.10.24.7):** in Acute Kidney Injury > First Steps tap "Hyperkalemia": the pop-up title is "Hyperkalemia" (not "Card"). In Diagnosis, "FENa" and other score names are now body text with a blue dotted underline and a small arrow at the end; tap one: MDCalc opens in Safari. Light and dark.
-- **Search recent searches (version 2026.10.24.6):** tap the search button. With nothing typed you see "Recent Searches" (or "No Recent Searches"). Type "hyperK", press search; close and reopen Search: it is listed, tap it and its results show. Tap Clear to empty the list. Check light and dark.
-- **Medication card look (version 2026.10.24.4; confirm before the next change to card sections or dose rows):** open Medications > Ceftriaxone. Each section bar is white with a colored symbol square (a different symbol on each; red for Contraindications, Adverse Effects and Overdose, which also have a faint red tint). Under Dosing each row shows the condition in bold, the dose under it, and a gray line; tap a row and the dose sheet opens (with an Indication part when the title was shortened). Check light and dark, and a large Text Size.
-- **Home is now Topics (versions 2026.10.24.2 and .3, tile text fixed;  confirm before the next change to Home or the tab bar):** the tab bar is Topics, Rapids, Library plus the search button at the bottom right (no Home tab). The app opens on Topics: Recent (last three pages) on top, specialties as colored tiles below, gear at the top right. Open a few pages and check Recent updates and Clear works. Tap a tile (opens the specialty), Rapids and Library tabs, then search. Check the tiles read well at your Text Size, in light and dark.
-- **Links, table words, stethoscope, Home (version 2026.10.24; confirm before the next change to links or tables):** open Acute Kidney Injury > First Steps: "Hyperkalemia" is now body text with a blue dotted underline (tap it: sheet with "Open full Hyperkalemia"); calculator pills keep their pill. Open the "by scenario" table: words are whole, no hyphens, wide tables scroll sideways. The gray stethoscope marker should look like Apple's stethoscope. Home no longer has Continue Reading. Light and dark.
-- **Pill icons and no underline (version 2026.10.23.8; confirm before the next change in this area):** open Acute Kidney Injury > First Steps. MDCalc-only score pills show just an outward arrow in front (no calculator, no trailing arrow); in-app calculator pills keep the calculator and card-link pills the document. No pill has an underline. Tap one of each with a finger and check they read as buttons in light and dark.
-- **Tappable terms: three looks (version 2026.10.23.7; confirm before the next change in this area):** open Acute Kidney Injury > First Steps. Tap the blue document pill "Hyperkalemia": a sheet shows its Treatment section with "Open full Hyperkalemia" at the bottom (tap it to open the card). Tap a calculator pill (FENa; the in-app ones open the calculator, MDCalc-only ones open Safari). Tap a gray dotted term (a dose name or cutoff) to see it still opens a sheet. Check the pills are easy to hit with a finger, read as buttons, and look right in light and dark (and Increase Contrast if you use it).
-- **Ceftriaxone Medication card (new, Infectious Disease, version 2026.10.23.6):** Topics > Infectious Disease > Ceftriaxone. Check the sections open and read well, tap a dose row to open its dose sheet, and open a related card (Community-Acquired Pneumonia) to see Ceftriaxone listed under Medications. Light and dark.
-- **Table symbols and sources (version 2026.10.23.5):** open Anemia (Diagnosis iron studies table and the hemolysis table), Acid-Base Disorders (Patterns table) and Anticoagulation (the choosing-a-drug table). Words like high, low and normal in tables are now ↑ ↓ = and ↕. Check they look aligned and legible in light and dark, at your usual Text Size, and that no gray source text like ^[...] shows inside a table. Tell me if any symbol is hard to read or confusing.
-- **Acute Agitation card (new, Psychiatry, version 2026.10.23.4):** Topics > Psychiatry and Substance Use > Acute Agitation. Tap the red Rapids button and read the steps, tap Start Timed Mode and Mark Done twice (the glucose and thiamine step), then back out and tap the Medication pathway row on the card (scroll sideways to see all four causes). Tap an olanzapine dose row to open its dose sheet. Check light and dark.
-- **No semicolons (PR #118, version 2026.10.23.3):** open a few cards (Hyperkalemia, DKA, Alcohol Withdrawal, Empiric Antimicrobials). Lists should be bullets, table cells should show items on separate lines, and nothing should read oddly. Tell me about any line that lost meaning or looks cramped.
-- **Content split (PR #112, behind the scenes):** the app opens, a card loads, it still works offline (airplane mode) and still offers updates.
-- **Tap highlight (PR #114):** tap a calculator value and a section header; the gray press shape should match the text or row, not a larger box.
-- **Pop-up scroll (PR #115, version 2026.10.23.2):** open a calculator, type, and scroll inside the pop-up; the page behind should stay still and return to its place when you close it. Also check the dose sheet and a source sheet.
+- None right now.
 
-## Owner phone-checks
-Tap Reload on "Update Ready", then say what to change. Also confirm the bullets (Hyponatremia, DKA, Complicated UTI) and the Rapids "OR" marker and source pills (normal and Timed Mode, light and dark).
-
-- **Newest (2026.10.22.1 to .5):** the antibiotic coverage tool on Empiric Antimicrobials (pick up to 3 organisms, drug sheet, All drugs, compare 3 drugs; three new design-system icons), and new cards Acid-Base Interpretation (with a Winter's formula calculator), Empiric Antimicrobials, Anemia (with a Workup pathway) and Delirium. All checked in the pinned app (light and dark) by their ship sessions; the second Wards icon in the Simulator Home Screen is still a duplicate to delete.
-- **Earlier (2026.10.21.19 to .26):** the six calculators (open from a score name or the Calculate button; CURB-65, Wells DVT and PE, serum osmolality, anion gap, corrected sodium); new cards Anticoagulant Selection, Chest Pain, Dyspnea and Upper GI Bleeding (new Gastroenterology system, Rapids page in Timed Mode, pathway risk-score step); stacked scale boxes on 11 cards; Treatment steps at full card width; bullets in lists. Several of these were only partly verified in the pinned app (calculators except Wells PE and anion gap, both pathways on the new cards, dark mode).
-- MDCalc links on score and calculator names (blue with arrow; MAP, BMI and words in dose sheets deliberately not linked).
-- Batch 4 cards: Sepsis and Septic Shock, DKA and HHS (Rapids page, DKA: Treatment pathway), Hyperglycemia in the Hospitalized Patient; try both Rapids pages in Timed Mode and the dose sheets.
-- Cardiology: Atrial Fibrillation (Rapids page), NSTEMI/Unstable Angina, Acute Decompensated Heart Failure.
-- Batch 2 and 1: CAP, Cellulitis and Erysipelas, Pyelonephritis and Complicated UTI; Hyponatremia (Rapids page), Hypokalemia, IV Fluids; Electrolyte Repletion.
-- Pathways as decision trees (Hyperkalemia: Treatment, AKI: Cause Workup, DKA: Treatment); ECG figures on AF, NSTE-ACS, Hypokalemia, Hyperkalemia; Rapids › Hyperkalemia Timed Mode.
 
 ## Not yet independently reviewed
 Reviewer deferred 2026-10-21; each card had its own accuracy and dose check. Run one review pass when building is done (guideline search once; dose-heavy cards first). Verification notes per card, verbatim:
@@ -48,33 +25,3 @@ Added 2026-10-23 (DATA-TYPES "Verification note"). **220 items are `read: not-ve
 - **Sepsis and diabetes (batch 4):** ADA Standards of Care 2027 (expected December 2026) replace the 2026 sections cited on the DKA and hyperglycemia cards; a future sepsis definition may adopt the SOFA-2 score (JAMA, December 2025), not yet adopted by any consensus; the SCCM/ESICM refractory septic shock criteria (2026) await validation; the international inpatient CGM and pump position statement (September 2026) could not be read in full.
 - **Upcoming guidelines:** UK hyperkalaemia guideline review (due October 2026); KDIGO 2027 CKD focused update (public review from October 2026); ACC/AHA heart failure update (2027); ESC ACS (2027); IDSA uncomplicated cystitis and pyelonephritis (in development); a lab statement (April 2026) against reporting albumin-corrected calcium (Electrolyte Repletion).
 
-## Possible later work
-Not requested yet; listed so nothing is forgotten.
-- **App:**
-  - score calculators (NumberField is ready)
-  - subsections assigned across the private topic list
-- **Design system, from the HIG review (not chosen):**
-  - accessibility-only items (VoiceOver headings and labels, focus handling, Reduce Motion, Increase Contrast)
-  - primary/cancel roles on Button
-- **Design system, remaining kit items:**
-  - "Over-glass" and inactive-window variants
-  - iOS wheel-style date picker
-  - full color spectrum picker
-  - iPad-specific menus and popover arrows
-  - macOS toolbar pop-ups
-  - Each component's README lists what it skipped under Notes.
-- **Known approximations:** Liquid Glass is a translucent blur plus shadow, and icons are simple SVG stand-ins for SF Symbols.
-
-## Owner ideas
-Sent 2026-10-23; items 1 and 3 are done (table symbols and sources, 2026.10.23.5). The rest wait for the owner's go.
-- **Tappable terms (B):** more info pop-ups throughout (for example the renal tubular acidosis types in a simple pop-up); card-to-card links open a pop-up with the specific information for that reference and an option to open the full card (as Rapids connects to topic cards); in-app calculators must look different from info pop-ups (both are dotted-underlined now). Needs a mock-up first.
-- **Visual distinction (C):** more visual elements to tell card parts apart and highlight information; review how colors are used (blue links and source pills, red Rapids and Treat Now, orange Check, indigo Criteria, brown Note, yellow-orange-red severity ramp, gray tables). Mock-up, then design system, then app.
-
-## Next work
-- **Wave 1 is complete (30 of 30 live).** Cards were written one per session using `~/Documents/Wards-reference/card-session-brief-template.md` (Sonnet drafts, Opus verifies; the verifier keeps finding real dose errors, e.g. 31 changes, 9 critical, on Alcohol Withdrawal).
-- Wave 2 inpatient insulin card (titration, adds to the hyperglycemia card's starting doses). Focused pathways for AF and ADHF (drafted box content is in the batch 3 PR). Batch 2 leftovers: aztreonam row for beta-lactam allergy, IV moxifloxacin, the newer oral carbapenem for complicated UTI.
-- **ECG library** (Library › ECGs on the Media data type; only real labeled recordings, otherwise a drawing).
-- **Card template adjustments:** clinical-register style guide in CONTENT-FORMAT.md; fewer sections for approach cards?; "most common" vs "cannot miss" layout; rates and deficits in prose blocked by the typed-dose check; dose rows needing an indication lead-in; definition line for reference cards; tall table rows on a phone; Contents names cut short at the largest Text Sizes.
-- **Redesign Phase 5** (offline search across sections, drugs, tools, Rapids; possibly one file per card), then **Phase 6** (final light/dark/Text Size check and independent review).
-- More focused pathways (e.g. Hyponatremia: Workup and Treatment) only where sequential thinking helps.
-- **Audits** (private): process items next; clinical fixes later (terlipressin boxed warning, Hyperkalemia causes, calcium chloride arrest rate, insulin onset).

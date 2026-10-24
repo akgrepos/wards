@@ -1,9 +1,9 @@
 // npm run look [-- --no-build] [--no-sheet] [--only name,name]
-// Builds the release (no preview ribbon), serves it, opens real WebKit at iPhone size and visits the pages listed in
+// Builds the release, serves it, opens real WebKit at iPhone size and visits the pages listed in
 // scripts/look.config.mjs in light and dark. It then (1) runs style checks that fail the run, and (2) saves a contact
 // sheet (one picture of every page) OUTSIDE the repo and prints where.
 // Checks: no browser-default links, tap targets of at least 44 points, text colors and fonts only from the design tokens,
-// no leftover PROTOTYPE or preview ribbon in the built files. --no-sheet runs only the checks (used in CI, where
+// no leftover prototype code in the built files. --no-sheet runs only the checks (used in CI, where
 // Linux has no Apple fonts, so pictures would look different).
 // Exit 0 = pass, 1 = a check failed (the message names the page and the element).
 import { spawn, execFileSync } from 'node:child_process'
