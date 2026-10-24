@@ -21,7 +21,7 @@ Settled 2026-10-17. **Data types** are the shared pieces of information that eac
 
 ### 1. Source
 Every citation lives here once; cards cite by number, which points to the source.
-- Fields: kind (guideline · study · systematic review · prescribing information · dataset · AMBOSS when the rules allow) · issuing society · title · year/edition · journal, DOI, PMID or URL · date checked
+- Fields: kind (guideline · study · systematic review · prescribing information · dataset) · issuing society · title · year/edition · journal, DOI, PMID or URL · date checked
 - Shown as: one source line at the end of each section it supports (short form; tap for the full citations with View Citation links), and the numbered Sources list at the end of each card
 
 ### 2. Dose
@@ -46,7 +46,7 @@ One drug, one indication, one population. The only place a dose is written.
 Every dose item and every in-app calculator (a `calc` file with a `calculator` block) carries a `verification` note, so the later independent review has a searchable worklist. `npm run content:check` rejects one without it.
 - Fields: `read` (required) · `source` (the id of one of the item's own sources) · `date` (`YYYY-MM-DD`, when the note was written).
 - `read` is one of: `fda-label` (the prescribing information was read; `source` must be a prescribing-information label; the label is the authority for doses) · `full-text` or `abstract` (a guideline or study; guidelines are the authority for thresholds) · `common-practice` (a deliberate exception, the same as the stethoscope marker: the item must cite the `common-practice` source) · `not-verified` (cited, but not yet independently read; `source` names the source the amount and frequency come from, to be checked against).
-- Never name AMBOSS, OpenEvidence or the reference handbook. Do not write `fda-label`, `full-text` or `abstract` unless the source was actually read that way; when unsure, use `not-verified`.
+- Never name outside reference tools or the reference handbook. Do not write `fda-label`, `full-text` or `abstract` unless the source was actually read that way; when unsure, use `not-verified`.
 - Example: `verification: { source: label-acetazolamide-inj-2025, read: fda-label, date: 2026-10-30 }` (written as a block in the files).
 - Worklist: `grep -l "read: not-verified" content/data/dose/*.yaml`. The count is in the private review queue notes. New doses are written with their real `read` value; the review pass turns `not-verified` into one of the others.
 

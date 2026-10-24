@@ -1,4 +1,4 @@
-// Shared helpers for the workflow scripts (status, wait-live, tidy). Pure functions are unit-tested in workflow.test.mjs.
+// Shared helpers for the workflow scripts (status, tidy). Pure functions are unit-tested in workflow.test.mjs.
 import { execFileSync } from 'node:child_process'
 
 export const SITE = 'https://akgrepos.github.io/wards/'
@@ -63,14 +63,6 @@ export function summarizeChecks(rollup) {
   return { failed, pending, passed }
 }
 
-/** Decides what wait-live should do next for a PR. */
-export function waitDecision({ state, checks, liveMatches }) {
-  if (checks.failed > 0) return { done: true, code: 1, message: 'FAIL: the PR has a failing check' }
-  if (state === 'CLOSED') return { done: true, code: 1, message: 'FAIL: the PR was closed without merging' }
-  if (state === 'MERGED' && liveMatches) return { done: true, code: 0, message: 'LIVE' }
-  return { done: false }
-}
-
 /** Tidy's close rule. Returns { ok, reason }. */
 export function tidyDecision({ branch, unmerged, dirtyLines, isMainBranch }) {
   if (isMainBranch) return { ok: false, reason: `REFUSED: ${branch} is the main branch.` }
@@ -89,13 +81,4 @@ export async function liveVersion() {
   } catch {
     return { bundle: null, versions: [] }
   }
-}
-
-// What the version part of sim-check should do, given the screen text and the version on origin/main.
-// Returns { step: 'update' | 'open-settings' | 'ok' | 'mismatch', shown }.
-export function versionStep(plain, want) {
-  if (/Update Ready/i.test(plain)) return { step: 'update', shown: null }
-  const shown = (plain.match(/\b\d{4}\.\d{2}\.\d{2}(?:\.\d+)?\b/) ?? [null])[0]
-  if (!shown) return { step: 'open-settings', shown: null }
-  return { step: shown === want ? 'ok' : 'mismatch', shown }
 }

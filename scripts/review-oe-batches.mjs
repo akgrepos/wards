@@ -1,9 +1,9 @@
 // `npm run review:oe-batches -- <card-id>`: cuts the private review ledger into ready-to-paste batches
-// for the owner's OpenEvidence `.card_check` dotflow. Reads ~/Documents/Wards-reference/review-ledger/<card-id>.yaml
+// for the owner's `.card_check` dotflow. Reads ~/Documents/Wards-reference/review-ledger/<card-id>.yaml
 // and the current card title, and writes, outside the repo,
 // ~/Documents/Wards-reference/oe-batches/<card-id>/batch-NN.txt (about 25 statements each, riskiest first) and
 // batch-NN.map.yaml (statement number -> ledger entry id). Statements never carry source names or quotes, so the
-// check stays independent. Entries marked `owner_checked` are skipped. The script never contacts OpenEvidence:
+// check stays independent. Entries marked `owner_checked` are skipped. The script never contacts the outside check:
 // the owner pastes each file by hand. A statement can be replaced by hand in
 // oe-batches/<card-id>/statements.override.yaml (entry id -> full statement text); that file is kept between runs.
 import { readFileSync, existsSync, mkdirSync, readdirSync, rmSync, writeFileSync } from 'node:fs'
@@ -60,7 +60,7 @@ export function subjectFromWhere(where, topic) {
   return s
 }
 
-// Society and source names must not reach OpenEvidence. Returns the cleaned text and whether anything was removed.
+// Society and source names must not reach the outside check. Returns the cleaned text and whether anything was removed.
 export function scrubSources(text, sourceIds = []) {
   const names = new Set(['UKKA', 'KDIGO', 'AHA', 'EMCREG'])
   for (const id of sourceIds) {
@@ -165,7 +165,7 @@ function main() {
   console.log(`review:oe-batches ${card}: ${total} statements in ${batches.length} batch(es); ${skipped.length} owner-checked entries skipped.`)
   for (let i = 0; i < batches.length; i++) console.log(`  ${resolve(outDir, `batch-${String(i + 1).padStart(2, '0')}.txt`)}`)
   if (flagged.length) console.log('\nCheck these:\n' + flagged.map((f) => '  ' + f).join('\n'))
-  console.log('\nIn OpenEvidence use the .card_check mode (Sackett by default). Paste each batch by hand; never automate.')
+  console.log('\nIn the outside check use the .card_check mode (Sackett by default). Paste each batch by hand; never automate.')
   console.log(`Hand-written replacements go in ${overridePath} (entry id: full statement), then run this again.`)
 }
 

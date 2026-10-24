@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { parseWorktrees, countUnmerged, summarizeChecks, waitDecision, tidyDecision, findBundle, versionsIn, versionFromSource } from './workflow.mjs'
+import { parseWorktrees, countUnmerged, summarizeChecks, tidyDecision, findBundle, versionsIn, versionFromSource } from './workflow.mjs'
 
 describe('workflow helpers', () => {
   it('parses worktrees with CRLF line endings and detached heads', () => {
@@ -18,14 +18,6 @@ describe('workflow helpers', () => {
     expect(summarizeChecks([{ status: 'COMPLETED', conclusion: 'SUCCESS' }, { status: 'IN_PROGRESS' }, { status: 'COMPLETED', conclusion: 'FAILURE' }])).toEqual({ failed: 1, pending: 1, passed: 1 })
     expect(summarizeChecks(undefined)).toEqual({ failed: 0, pending: 0, passed: 0 })
   })
-  it('decides wait-live', () => {
-    const ok = { failed: 0, pending: 0, passed: 2 }
-    expect(waitDecision({ state: 'OPEN', checks: { ...ok, failed: 1 }, liveMatches: false }).code).toBe(1)
-    expect(waitDecision({ state: 'CLOSED', checks: ok, liveMatches: false }).code).toBe(1)
-    expect(waitDecision({ state: 'OPEN', checks: ok, liveMatches: false }).done).toBe(false)
-    expect(waitDecision({ state: 'MERGED', checks: ok, liveMatches: false }).done).toBe(false)
-    expect(waitDecision({ state: 'MERGED', checks: ok, liveMatches: true }).code).toBe(0)
-  })
   it('applies the tidy close rule', () => {
     const base = { branch: 'b', unmerged: 0, dirtyLines: [], isMainBranch: false }
     expect(tidyDecision(base).ok).toBe(true)
@@ -37,17 +29,5 @@ describe('workflow helpers', () => {
     expect(findBundle('<script src="/wards/assets/index-AbC.js"></script>')).toBe('assets/index-AbC.js')
     expect(versionsIn('x"2026.10.22.2"y')).toEqual(['2026.10.22.2'])
     expect(versionFromSource("export const APP_VERSION = '2026.10.23'")).toBe('2026.10.23')
-  })
-})
-
-import { versionStep } from './workflow.mjs'
-describe('versionStep', () => {
-  it('asks for Settings when no version is on screen', () => {
-    expect(versionStep('Topics\nSearch', '2026.10.24.6')).toEqual({ step: 'open-settings', shown: null })
-  })
-  it('reports ok, mismatch and a waiting update', () => {
-    expect(versionStep('Version 2026.10.24.6', '2026.10.24.6').step).toBe('ok')
-    expect(versionStep('Version 2026.10.24.5', '2026.10.24.6')).toEqual({ step: 'mismatch', shown: '2026.10.24.5' })
-    expect(versionStep('Update Ready Reload', '2026.10.24.6').step).toBe('update')
   })
 })

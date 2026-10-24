@@ -1,6 +1,6 @@
 // `npm run review:oe-read -- <card-id> <batch-NN> [file]`: reads the answer the owner pasted back from
-// OpenEvidence's `.card_check` (from a file, or from stdin when no file is given), parses its table and
-// its Conflicts / Outdated / Dose safety / Re-check lists, and writes each verdict into the private ledger
+// the owner's outside check (from a file, or from stdin when no file is given), parses its table and
+// its Conflicts / Outdated / Dose safety lists, and writes each verdict into the private ledger
 // (~/Documents/Wards-reference/review-ledger/<card-id>.yaml) as `oe: {date, verdict, says, source, note, batch}`
 // on the entry that statement came from (found through oe-batches/<card-id>/<batch-NN>.map.yaml).
 // The writer's quote and status are never touched. Then prints a plain summary. Nothing leaves this computer.
@@ -51,17 +51,6 @@ function columnsFrom(header) {
 
 const DEFAULT_COLS = { num: 0, statement: 1, verdict: 2, says: 3, source: 4, note: 5, quote: 6, edition: 7 }
 
-function parseNumbers(text) {
-  const out = new Set()
-  for (const m of text.matchAll(/#?\s*(\d+)\s*(?:[-–—]|to)\s*#?\s*(\d+)/g)) {
-    const a = Number(m[1]), b = Number(m[2])
-    if (b >= a && b - a < 200) for (let i = a; i <= b; i++) out.add(i)
-  }
-  const rest = text.replace(/#?\s*(\d+)\s*(?:[-–—]|to)\s*#?\s*(\d+)/g, ' ')
-  for (const m of rest.matchAll(/\d+/g)) out.add(Number(m[0]))
-  return [...out].sort((a, b) => a - b)
-}
-
 export function parseOeAnswer(text) {
   const lines = String(text).replace(/\r/g, '').split('\n')
   const rows = []
@@ -97,12 +86,9 @@ export function parseOeAnswer(text) {
   const lists = { conflicts: '', outdated: '', doseSafety: '' }
   const keys = [[/^conflicts?\b/i, 'conflicts'], [/^outdated\b/i, 'outdated'], [/^dose\s*safety\b/i, 'doseSafety']]
   let current = null
-  let recheckText = null
   lines.forEach((raw, i) => {
     if (tableLineIdx.has(i)) { current = null; return }
     const line = clean(raw.replace(/^[\s>*#\-•]+/, ''))
-    const rc = line.match(/^re-?check in snow\s*:?\s*(.*)$/i)
-    if (rc) { recheckText = rc[1]; current = null; return }
     const hit = keys.find(([re]) => re.test(line))
     if (hit) {
       current = hit[1]
@@ -113,8 +99,7 @@ export function parseOeAnswer(text) {
     if (!line) return
   })
   for (const k of Object.keys(lists)) lists[k] = lists[k].replace(/^[:：\-\s]+/, '')
-  const recheck = recheckText && !/^\W*none\b/i.test(recheckText) ? parseNumbers(recheckText) : []
-  return { rows, unparsed, lists, recheck, recheckFound: recheckText !== null }
+  return { rows, unparsed, lists }
 }
 
 const ymd = (d = new Date()) => d.toISOString().slice(0, 10)
@@ -147,7 +132,7 @@ export function summarize({ card, batch, parsed, applied, unmapped, map, ledger 
     out.push('', 'Not plain Supported:')
     for (const r of odd) {
       const e = entries.get(r.id) ?? {}
-      out.push(`  #${r.n} ${r.verdict} [${r.id}]`, `    card line: ${e.where ?? '?'}`, `    claim: ${e.claim ?? r.statement}`, `    OpenEvidence note: ${r.note || r.says || '(none)'}`)
+      out.push(`  #${r.n} ${r.verdict} [${r.id}]`, `    card line: ${e.where ?? '?'}`, `    claim: ${e.claim ?? r.statement}`, `    Outside check note: ${r.note || r.says || '(none)'}`)
     }
   }
   const answered = new Set(parsed.rows.map((r) => r.n))
@@ -159,7 +144,6 @@ export function summarize({ card, batch, parsed, applied, unmapped, map, ledger 
     const t = parsed.lists[key]
     out.push('', `${label}: ${t && !/^none\b/i.test(t) ? t : 'None'}`)
   }
-  out.push('', parsed.recheckFound ? `Re-check in Snow: ${parsed.recheck.length ? parsed.recheck.map((n) => '#' + n).join(', ') : 'none'}` : 'Re-check in Snow: line not found in the pasted answer')
   return out.join('\n')
 }
 
@@ -176,7 +160,7 @@ function main() {
   const ledgerText = readFileSync(ledgerPath, 'utf8')
   const { text, applied, unmapped } = applyToLedger(ledgerText, map, parsed)
   if (applied.length) writeFileSync(ledgerPath, text)
-  writeFileSync(resolve(base, 'oe-batches', card, `${batch}.lists.yaml`), stringify({ date: ymd(), ...parsed.lists, recheck: parsed.recheck }))
+  writeFileSync(resolve(base, 'oe-batches', card, `${batch}.lists.yaml`), stringify({ date: ymd(), ...parsed.lists }))
   console.log(summarize({ card, batch, parsed, applied, unmapped, map, ledger: parse(text) }))
   process.exit(applied.length ? 0 : 1)
 }
