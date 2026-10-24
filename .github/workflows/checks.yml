@@ -14,6 +14,10 @@ jobs:
       - uses: actions/checkout@v7
         with:
           fetch-depth: 0
+      - name: Sketch branches are never merged
+        # A sketch/ branch is a throwaway prototype; a fresh branch builds the chosen option properly.
+        run: |
+          case "${{ github.head_ref }}" in sketch/*) echo "Branch ${{ github.head_ref }} is a sketch and must not be merged. Build the chosen option on a feature/ branch."; exit 1;; esac
       - name: Commit authors are anonymous
         # Only GitHub no-reply addresses are allowed. Prints commit IDs, never names, because logs are public.
         run: |
@@ -37,3 +41,7 @@ jobs:
         run: npx vite build
       - name: Every built file works offline
         run: npm run check:offline
+      - name: Playwright WebKit (for the look check)
+        run: npx playwright install --with-deps webkit
+      - name: Look check (links, tap targets, design-token colors and fonts, no leftovers; no pictures)
+        run: npm run look -- --no-build --no-sheet
