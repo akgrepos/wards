@@ -1,5 +1,6 @@
+drug: ceftriaxone
 drug_name: Ceftriaxone
-indication: Community-acquired pneumonia, cellulitis, complicated UTI or pyelonephritis
+indication: Community-acquired pneumonia, cellulitis, complicated UTI or pyelonephritis, mild-to-moderate community-acquired intra-abdominal infection (with metronidazole)
 population: Adults
 route: IV
 amount: 1–2
@@ -7,17 +8,26 @@ unit: g
 frequency: every 24 hours
 rate: over 30 minutes
 max: 4 g per day (label)
+boxed_warning: None
+adjustments:
+  - when: Kidney impairment alone, any degree, or liver dysfunction alone
+    change: No change (label)
+  - when: Liver dysfunction plus significant kidney disease
+    change: Maximum 2 g per day (label)
+  - when: Hemodialysis or peritoneal dialysis
+    change: No supplemental dose after dialysis (label)
 cautions:
   - No dose change for kidney or liver impairment alone (label).
   - Not with calcium-containing IV solutions in the same line.
   - Does not cover MRSA, Enterococcus or Pseudomonas.
-notes: "CAP: 1–2 g daily. Cellulitis: commonly 1 g daily. Complicated UTI: 1–2 g daily."
+notes: "CAP: 1–2 g daily. Cellulitis: within the label range. Complicated UTI: 1–2 g daily. Intra-abdominal infection: 1–2 g daily plus metronidazole."
 sources:
   - label-ceftriaxone-2026
   - idsa-ats-cap-2019
   - idsa-ssti-2014
   - idsa-cuti-selection-2025
+  - idsa-sis-iai-2010
 verification:
   source: label-ceftriaxone-2026
-  read: not-verified
+  read: fda-label
   date: 2026-10-23

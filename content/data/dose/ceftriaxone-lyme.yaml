@@ -1,0 +1,18 @@
+drug: ceftriaxone
+drug_name: Ceftriaxone
+indication: Lyme disease with neurologic involvement (meningitis, radiculoneuropathy), hospitalized carditis, or arthritis not responding to oral therapy
+population: Adults
+route: IV
+amount: "2"
+unit: g
+frequency: every 24 hours
+duration: "Neurologic disease: 14–21 days. Carditis: IV until clinical improvement, then oral to complete 14–21 days. Refractory arthritis: 2 weeks, extended to 4 weeks if resolution is incomplete."
+boxed_warning: None
+cautions:
+  - "Oral doxycycline is an alternative for neurologic Lyme (meningitis, cranial neuropathy, radiculoneuropathy)."
+  - "Symptomatic bradycardia in carditis: temporary pacing, not a permanent pacemaker."
+sources: [idsa-lyme-2020, label-ceftriaxone-2026]
+verification:
+  source: idsa-lyme-2020
+  read: not-verified
+  date: 2026-10-23

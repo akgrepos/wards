@@ -12,6 +12,7 @@ related:
   differential: []
   conditions: [id-cap, id-cellulitis, renal-aki]
   tools: []
+  medications: [ceftriaxone]
 ---
 ## At a Glance
 - Complicated means infection beyond the bladder. Diabetes, a urologic abnormality or male sex alone do not make a UTI complicated. ^[idsa-cuti-2025]

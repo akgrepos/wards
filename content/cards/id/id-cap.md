@@ -12,6 +12,7 @@ related:
   differential: []
   conditions: [id-complicated-uti, id-cellulitis]
   tools: []
+  medications: [ceftriaxone]
 ---
 ## At a Glance
 - Diagnosis needs a new infiltrate on imaging. A positive viral test does not exclude bacterial coinfection. ^[idsa-ats-cap-2019, ats-cap-2025]

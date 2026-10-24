@@ -12,6 +12,7 @@ related:
   differential: []
   conditions: [renal-aki, id-cap, id-complicated-uti, id-cellulitis, endo-inpatient-hyperglycemia]
   tools: []
+  medications: [ceftriaxone]
 emergency_hint: "Cultures, antibiotics, fluids, norepinephrine"
 ---
 ## Do Now

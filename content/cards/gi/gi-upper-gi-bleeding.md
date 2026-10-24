@@ -10,6 +10,7 @@ based_on: [acg-ugib-2021, esge-pub-2026, icg-ugib-2019, acg-cag-antithrombotic-2
 reviewed: 2026-10-21
 related:
   conditions: [heme-anticoagulation-management, crit-sepsis, crit-hypoxemic-respiratory-failure, renal-aki, cardio-nste-acs]
+  medications: [ceftriaxone]
 emergency_hint: Resuscitate, erythromycin, IV PPI, endoscopy
 ---
 ## Do Now
