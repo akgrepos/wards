@@ -1,4 +1,4 @@
-import { useState, type CSSProperties, type ReactNode } from 'react';
+import { createContext, useContext, useState, type CSSProperties, type ReactNode } from 'react';
 import { AKG } from '../design/akg';
 import { cardsInSystem, cardTypeLabel, content, emergencyCards, getCard } from '../content';
 import type { Card } from '../content/types';
@@ -75,6 +75,7 @@ function HomeGrid() {
 
   return (
     <Screen title="Reference" trailing={<AKG.ToolbarButton icon={icons.gearshape} aria-label="Settings" onClick={() => open(href.settings())} />}>
+      <Switcher /> {/* PROTOTYPE */}
       <HomeSection
         title="Rapids"
         action={anyEmergency ? <AKG.Button variant="borderless" onClick={() => sheet({ title: 'Rapids Shortcuts', body: <EditRapids /> })}>Edit</AKG.Button> : undefined}
@@ -163,6 +164,16 @@ const RapidChips = () => {
     </HomeSection>
   );
 };
+const ProtoCtx = createContext<{ n: number; set: (n: number) => void }>({ n: 4, set: () => {} }); // PROTOTYPE
+// PROTOTYPE: tap 1 to 4 to flip between the sketches.
+const Switcher = () => {
+  const { n, set } = useContext(ProtoCtx);
+  return (
+    <div style={{ padding: 'var(--space-8) var(--space-16)' }}>
+      <AKG.SegmentedControl options={[{ value: 1, label: '1 Task' }, { value: 2, label: '2 List' }, { value: 3, label: '3 Search' }, { value: 4, label: '4 Grid' }]} value={n} onChange={(v) => set(Number(v))} />
+    </div>
+  );
+};
 const gear = <AKG.ToolbarButton icon={icons.gearshape} aria-label="Settings" onClick={() => open(href.settings())} />;
 const Label = ({ n, text }: { n: number; text: string }) => <p className="home-empty" style={{ fontStyle: 'italic' }}>Option {n}: {text}</p>;
 
@@ -176,7 +187,7 @@ function HomeTasks() {
   ];
   return (
     <Screen title="Reference" trailing={gear}>
-      <Label n={1} text="By task: four big buttons, then Recent." />
+      <Switcher /><Label n={1} text="By task: four big buttons, then Recent." />
       <div className="home-grid" style={{ marginTop: 'var(--space-8)' }}>
         {big.map((b) => (
           <a key={b.t} className="home-cell" href={b.h} style={{ minHeight: '8rem' }}>
@@ -195,7 +206,7 @@ function HomeList() {
   const specialties = content.systems.filter((s) => !s.library && cardsInSystem(s.id).length > 0);
   return (
     <Screen title="Reference" trailing={gear}>
-      <Label n={2} text="One list: Rapids chips, specialties as rows, Recent." />
+      <Switcher /><Label n={2} text="One list: Rapids chips, specialties as rows, Recent." />
       <RapidChips />
       <AKG.List header="Specialties" headerStyle="prominent">
         {specialties.map((s) => <AKG.ListRow key={s.id} title={s.title} icon={iconFor(s.id).icon} iconTint={iconFor(s.id).tint} subtitle={`${cardsInSystem(s.id).length} topics`} chevron href={href.system(s.id)} />)}
@@ -209,7 +220,7 @@ function HomeList() {
 function HomeSearch() {
   return (
     <Screen title="Reference" trailing={gear}>
-      <Label n={3} text="Search first: a big field on top (breaks the rule that search lives in the tab bar), Rapids, Recent." />
+      <Switcher /><Label n={3} text="Search first: a big field on top (breaks the rule that search lives in the tab bar), Rapids, Recent." />
       <div style={{ padding: 'var(--space-8) var(--space-16)' }}>
         <AKG.SearchField placeholder="Search topics, drugs, labs" onFocus={() => open(href.search())} />
       </div>
@@ -220,11 +231,12 @@ function HomeSearch() {
 }
 
 export function Home() {
-  const n = new URLSearchParams(window.location.search).get('home');
-  if (n === '1') return <HomeTasks />;
-  if (n === '2') return <HomeList />;
-  if (n === '3') return <HomeSearch />;
-  return <HomeGrid />;
+  const [n, set] = useState(() => Number(new URLSearchParams(window.location.search).get('home')) || 4);
+  return (
+    <ProtoCtx.Provider value={{ n, set }}>
+      {n === 1 ? <HomeTasks /> : n === 2 ? <HomeList /> : n === 3 ? <HomeSearch /> : <HomeGrid />}
+    </ProtoCtx.Provider>
+  );
 }
 
 // Home › Settings: the version, and clearing what's kept on this phone.
