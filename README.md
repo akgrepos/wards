@@ -2,7 +2,7 @@
 
 A personal internal medicine reference for iPhone, built as a web app you add to the Home Screen.
 
-**Status:** live, with 30+ cards. See [docs/STATUS.md](docs/STATUS.md) and [CHANGELOG.md](CHANGELOG.md).
+**Status:** live, with 30+ cards. See [CHANGELOG.md](CHANGELOG.md); working notes are kept outside the repo.
 
 ## How it works
 
@@ -16,7 +16,7 @@ A personal internal medicine reference for iPhone, built as a web app you add to
 - Each task gets its own short-lived branch and a pull request with a plain-language summary (and the `npm run look` contact sheet attached when something visibly new changed). It's merged once automated checks pass.
 - Your phone shows an "Update Ready" banner with a Reload button when a new version is available.
 
-See [docs/DECISIONS.md](docs/DECISIONS.md) for what has been decided and why.
+Decisions and working notes are kept outside the repo, in the owner's private notes folder.
 
 ## For Claude: running it
 

@@ -48,7 +48,7 @@ Every dose item and every in-app calculator (a `calc` file with a `calculator` b
 - `read` is one of: `fda-label` (the prescribing information was read; `source` must be a prescribing-information label; the label is the authority for doses) · `full-text` or `abstract` (a guideline or study; guidelines are the authority for thresholds) · `common-practice` (a deliberate exception, the same as the stethoscope marker: the item must cite the `common-practice` source) · `not-verified` (cited, but not yet independently read; `source` names the source the amount and frequency come from, to be checked against).
 - Never name AMBOSS, OpenEvidence or the reference handbook. Do not write `fda-label`, `full-text` or `abstract` unless the source was actually read that way; when unsure, use `not-verified`.
 - Example: `verification: { source: label-acetazolamide-inj-2025, read: fda-label, date: 2026-10-30 }` (written as a block in the files).
-- Worklist: `grep -l "read: not-verified" content/data/dose/*.yaml`. The count is in `docs/REVIEW-QUEUE.md`. New doses are written with their real `read` value; the review pass turns `not-verified` into one of the others.
+- Worklist: `grep -l "read: not-verified" content/data/dose/*.yaml`. The count is in the private review queue notes. New doses are written with their real `read` value; the review pass turns `not-verified` into one of the others.
 
 ### 3. Regimen
 A treatment combination for one indication and setting, built from dose items (never retyping them). Built 2026-10-19 for Wave 1 batch 2 (owner's choice over plain dose rows).
