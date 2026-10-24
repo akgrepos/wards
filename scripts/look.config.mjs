@@ -8,6 +8,8 @@ export const ROUTES = [
   { name: 'specialty-list', hash: '#/system/renal' },
   { name: 'condition-aki', hash: '#/card/renal-aki' },
   { name: 'condition-aki-first-steps', hash: '#/card/renal-aki/first-steps' },
+  { name: 'condition-aki-diagnosis', hash: '#/card/renal-aki/diagnosis' },
+  { name: 'condition-aki-link-sheet', hash: '#/card/renal-aki', steps: [{ click: 'Hyperkalemia' }] },
   { name: 'medication-ceftriaxone', hash: '#/card/ceftriaxone' },
   { name: 'rapids-list', hash: '#/emergencies' },
   { name: 'rapids-dka', hash: '#/emergency/endo-dka' },
@@ -37,12 +39,13 @@ export const ALLOW = {
   knownSmallTap: [
     '.akg-toolbar-button--grouped', // Contents, Zoom In/Out: 36x36
     '.card-link', // inline "Hyperkalemia"-style link in a sentence: 17 high
-    '.calc-link', // inline calculator/MDCalc pill in a sentence: 16 high
+    '.calc-link', // inline MDCalc link in a sentence (same tap area as .card-link)
     '.akg-source-pill', // source markers: 9 to 14 high
     '.akg-button--choice', // pathway decision buttons: 26 to 37 high
     '.akg-value-row--interactive', // pathway tappable rows: 30 to 40 high
     '.akg-button--borderless', // End Timed Mode: 34 high
     '.akg-tappable-value', // dotted terms inside sentences
+    '.akg-sheet__grabber', // sheet drag handle (design system part): 4 high; the whole sheet header also drags
   ],
   // Text colors allowed besides the design-token colors (any CSS color string, compared as red/green/blue).
   colors: [

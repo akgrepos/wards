@@ -66,7 +66,7 @@ describe('calculator sheet', () => {
     expect(screen.getByText('0 points')).toBeTruthy();
     fireEvent.click(screen.getByText('Wells DVT'));
     expect(screen.getByText('Entire leg swollen')).toBeTruthy();
-    expect(screen.getByText('Wells score for DVT on MDCalc')).toBeTruthy();
+    expect(screen.getByRole('link', { name: /Wells score for DVT on MDCalc/ })).toBeTruthy();
   });
   it('shows a formula result while typing', () => {
     render(<CalculatorSheet id="corrected-sodium" />);
