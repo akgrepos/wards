@@ -13,6 +13,7 @@ export const ROUTES = [
   { name: 'rapids-dka-timed', hash: '#/emergency/endo-dka', steps: [{ click: 'Start Timed Mode' }] },
   { name: 'pathway-aki-cause', hash: '#/pathway/aki-cause-workup' },
   { name: 'search', hash: '#/search' },
+  { name: 'search-typed', hash: '#/search', steps: [{ click: 'hyperK' }] },
   { name: 'library', hash: '#/library' },
   { name: 'settings', hash: '#/settings' },
 ]
@@ -27,7 +28,7 @@ export const MIN_TAP = 44
 export const ALLOW = {
   // Interactive elements allowed to be under 44 points: CSS selectors.
   smallTap: [
-    // 'selector', // why
+    '.akg-search-field__clear', // the standard iOS clear (x) inside the design-system search field; the field itself is the large target
   ],
   // Small tap targets found on 2026-10-24 when this check was added. They are printed on every run but do not fail it,
   // so new problems still do. The owner decides whether to enlarge them; remove an entry when it is fixed.

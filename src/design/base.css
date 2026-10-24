@@ -205,7 +205,7 @@ a.akg-inline-button { text-decoration: none; }
 /* Always a little taller than the box, so a drag scrolls this list (and stops here) even when the box is empty. */
 .search-scroll .screen-page { min-height: calc(100% + 1px); }
 .search-scroll .screen-body { padding-bottom: var(--space-24); }
-.search-hint { padding: 0 var(--space-4); }
+.search-hint { padding: 0 var(--space-16); }
 .search-chips { display: flex; flex-wrap: wrap; gap: var(--space-8); padding: 0 var(--space-16); }
 .akg-bottom-bar.search-bar { position: relative; }
 .search-bar .akg-search-field { flex: 1; min-width: 0; }
