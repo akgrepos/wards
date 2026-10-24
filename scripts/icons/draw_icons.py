@@ -346,6 +346,81 @@ def text_document():  # text.document (a page with a folded corner and two lines
     return U(outline, fold, line([(7.4, 11), (12.6, 11)]), line([(7.4, 14), (12.6, 14)]))
 
 
+def nosign():  # nosign (a ring with a bar from upper left to lower right)
+    r, w = 7.6, 1.55
+    bar = line([(10 - r * .7071, 10 - r * .7071), (10 + r * .7071, 10 + r * .7071)], w, 'flat')
+    return U(ring(10, 10, r, w), bar)
+
+
+def exclamationmark_triangle():  # exclamationmark.triangle (a rounded triangle, a bar and a dot)
+    w = 1.5
+    outer = poly([(10, 0.9), (19.6, 17.3), (0.4, 17.3)], 1.7)
+    tri = outer.difference(outer.buffer(-w, join_style='round'))
+    return U(tri, line([(10, 6.8), (10, 12.2)], w), circle(10, 14.0, .95))
+
+
+def slider_horizontal_3():  # slider.horizontal.3 (three tracks, each with an open stadium knob)
+    out = []
+    for y, kx in ((5.1, 12.7), (10.05, 7.25), (15.05, 12.7)):
+        knob = line([(kx - .75, y), (kx + .75, y)], 4.0)
+        hole = line([(kx - .85, y), (kx + .85, y)], 1.8)
+        out += [line([(2.8, y), (18.15, y)], 1.4).difference(knob), knob.difference(hole)]
+    return U(*out)
+
+
+def syringe():  # syringe (drawn along its axis, then turned so the needle points down and left)
+    w = 1.4
+    barrel = rrect(4.2, -2.8, 18.3, 2.8, 1.5)
+    inner = rrect(4.2 + w, -2.8 + w, 18.3 - 3.0, 2.8 - w, .5)
+    body = barrel.difference(inner)
+    ticks = [line([(u, -1.5), (u, .6)], 1.0) for u in (7.3, 9.8, 12.3, 14.8)]
+    ears = line([(17.0, -4.85), (17.0, 4.85)], w)
+    rod = line([(18.3, 0), (21.0, 0)], w)
+    thumb = line([(21.0, -2.0), (21.0, 2.0)], w)
+    needle = line([(0, 0), (4.4, 0)], 1.3)
+    g = U(body, *ticks, ears, rod, thumb, needle)
+    g = affinity.rotate(g, -45, origin=(0, 0))
+    minx, miny, maxx, maxy = g.bounds
+    return affinity.translate(g, 10 - (minx + maxx) / 2, 10 - (miny + maxy) / 2)
+
+
+def info_circle():  # info.circle (a ring around a serif i)
+    stem = U(line([(8.0, 9.25), (10.55, 9.25)], 1.2), line([(10.25, 9.25), (10.25, 13.85)], 1.5), line([(7.75, 13.85), (12.65, 13.85)], 1.2))
+    return U(ring(10, 10, 7.6, 1.55), circle(9.9, 6.2, 1.2), stem)
+
+
+def arrow_uturn_backward():  # arrow.uturn.backward
+    w = 1.5
+    turn = arc(12.3, 12.25, 4.6, -90, 90)
+    shaft = [(3.05, 7.65)] + turn + [(10.15, 16.85)]
+    head = [(8.05, 3.1), (3.05, 7.65), (8.05, 12.6)]
+    return U(line(shaft, w), line(head, w))
+
+
+def book():  # book (an open book: two pages meeting at the spine)
+    w = 1.5
+    top = bez((1.8, 5.3), (3.2, 3.0), (8.0, 2.6), (10, 4.7))
+    bottom = bez((1.8, 16.3), (3.6, 14.7), (7.8, 14.4), (10, 17.1))
+    left = U(line(top, w), line(bottom, w), line([(1.8, 5.3), (1.8, 16.3)], w))
+    return U(left, mirror(left), line([(10, 4.7), (10, 17.1)], w))
+
+
+def lightbulb():  # lightbulb
+    def P(x, y):
+        return (10 + (x - 282) * .05, 10 + (y - 242) * .05)
+    side = [P(222, 347), P(205, 290), P(178, 215), P(172, 162)]
+    left = bez(P(222, 347), P(212, 300), P(176, 230), P(172, 162))
+    right = bez(P(392, 162), P(388, 230), P(352, 300), P(342, 347))
+    top = arc(*P(282, 162), 5.5, 180, 360)
+    outer = Polygon(left + top + right).buffer(0)
+    outer = rounded(outer, .5)
+    bulb = outer.difference(outer.buffer(-1.5, join_style='round'))
+    band = line([P(232, 374), P(333, 374)], 1.0)
+    cap = Polygon([P(233, 400), P(330, 400)] + bez(P(330, 400), P(326, 420), P(305, 432), P(282, 432)) +
+                  bez(P(282, 432), P(259, 432), P(238, 420), P(233, 400)))
+    return U(bulb, band, cap)
+
+
 ICONS = {
     'house': house_fill, 'staroflifeFill': staroflife_fill, 'heartTextClipboard': heart_text_clipboard_fill,
     'crossCase': cross_case_fill, 'gearshape': gearshape,
@@ -359,6 +434,9 @@ ICONS = {
     'bubbleLeftAndBubbleRight': bubble_left_and_bubble_right_fill, 'eye': eye_fill,
     'figureAndChildHoldinghands': figure_and_child_holdinghands, 'bedDouble': bed_double_fill,
     'quoteOpening': quote_opening, 'textDocument': text_document,
+    'nosign': nosign, 'exclamationmarkTriangle': exclamationmark_triangle, 'sliderHorizontal3': slider_horizontal_3,
+    'syringe': syringe, 'infoCircle': info_circle, 'arrowUturnBackward': arrow_uturn_backward, 'book': book,
+    'lightbulb': lightbulb,
 }
 
 
