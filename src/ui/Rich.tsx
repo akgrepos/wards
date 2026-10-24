@@ -472,7 +472,7 @@ function CardLink({ card, section, label }: { card: Card; section?: string | nul
     const part = pickSection(card, section, from);
     sheet({ title: 'Card', heading: part ? titleCase(part.title) : card.title, subheading: part ? card.title : undefined, body: <CardPartSheet card={card} part={part} /> });
   };
-  return <AKG.InlineButton icon={icons.textDocument} onClick={open}>{label}</AKG.InlineButton>;
+  return <button type="button" className="card-link" onClick={open}>{label}</button>;
 }
 
 export function Inlines({ xs, plain }: { xs: Inline[]; plain?: boolean }) {

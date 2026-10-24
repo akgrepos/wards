@@ -2304,7 +2304,7 @@
   // the attribution mark is an outline (stethoscope) in the pill's secondary color. Both use the system's 2pt rounded stroke.
   var MARKERS = {
     verified: { glyph: h("svg", { viewBox: "0 0 20 20" }, h("circle", { cx: 10, cy: 10, r: 8.5, fill: "currentColor" }), h("path", { className: "akg-source-pill__check", d: "M6.2 10.4 8.8 13l5-6", fill: "none", strokeWidth: 2, strokeLinecap: "round", strokeLinejoin: "round" })), label: "Verified" },
-    practice: { glyph: svg("M4 2.5v5.5a4.5 4.5 0 0 0 9 0V2.5M8.5 12.5v1.5a4 4 0 0 0 8 0v-2.5M16.5 11.5a2 2 0 1 0 0-4 2 2 0 0 0 0 4", 2), label: "Common clinical practice" },
+    practice: { glyph: h("svg", { viewBox: "0 0 20 20", fill: "none", stroke: "currentColor", strokeWidth: 1.6, strokeLinecap: "round", strokeLinejoin: "round" }, h("path", { d: "M4.5 3.5V8a4 4 0 0 0 8 0V3.5M8.5 12v1.5a3.5 3.5 0 0 0 7 0v-1.2" }), h("circle", { cx: 4.5, cy: 2.6, r: 1.1, fill: "currentColor", stroke: "none" }), h("circle", { cx: 12.5, cy: 2.6, r: 1.1, fill: "currentColor", stroke: "none" }), h("circle", { cx: 15.5, cy: 9.8, r: 2.2, fill: "currentColor", stroke: "none" })), label: "Common clinical practice" },
   };
   // A small grey tag naming where a line's information comes from. Tapping it should open a Sheet with the full citation.
   function SourcePill(props) {

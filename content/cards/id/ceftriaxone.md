@@ -32,7 +32,7 @@ related:
 
   {{dose:ceftriaxone-variceal-bleed}}
 
-- Spontaneous bacterial peritonitis: a third-generation cephalosporin is first-line. The guidance names cefotaxime as its example. Give albumin with it. ^[aasld-ascites-hrs-2021]
+- Spontaneous bacterial peritonitis: a third-generation cephalosporin (such as cefotaxime) is first-line. Give albumin with it. ^[aasld-ascites-hrs-2021]
 - Infective endocarditis: ^[aha-ie-2026]
 
   {{dose:ceftriaxone-endocarditis}}
@@ -88,8 +88,10 @@ related:
 
 ## Adverse Effects
 #### Common
-- Diarrhea or loose stools (2.7%), rash (1.7%). Injection-site pain and phlebitis are uncommon (<1%). ^[label-ceftriaxone-2026]
-- Eosinophilia (6%), thrombocytosis (5.1%), leukopenia (2.1%), raised AST or ALT (about 3%). ^[label-ceftriaxone-2026]
+- Eosinophilia (6%), thrombocytosis (5.1%), diarrhea or loose stools (2.7%), leukopenia (2.1%), rash (1.7%), raised AST or ALT (about 3%). ^[label-ceftriaxone-2026]
+
+#### Uncommon
+- Injection-site pain and phlebitis (<1%). ^[label-ceftriaxone-2026]
 
 #### Serious
 - Anaphylaxis, severe cutaneous reactions (Stevens-Johnson syndrome, toxic epidermal necrolysis, AGEP). ^[label-ceftriaxone-2026]

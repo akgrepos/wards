@@ -27,3 +27,4 @@ https://claude.ai/artifact/GWFUZ6rCthpEuhMik4Jiru
 | 2026-10-17 | 1792284958-f879 (third pass: Text Size support; Callout, SourcePill, ContentSection + SectionBar, Flowchart) | `project/tokens.json`, `project/components/bundle.css`, `bundle.js`, `index.d.ts` |
 
 To update: read the artifact, copy the same four files here, run `npm run tokens`, update this table, and test in the simulator.
+- 2026-10-24 (app only, owner approval pending for shared DS): SourcePill 'practice' stethoscope glyph redrawn after SF Symbols stethoscope (ear tips, U tube, stem, chest piece) in vendor/akg/bundle.js

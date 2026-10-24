@@ -1,11 +1,10 @@
 import { useSyncExternalStore } from 'react';
 
-// Recent and Continue Reading, kept only on this phone (localStorage). Reading or writing can fail
+// Recent, kept only on this phone (localStorage). Reading or writing can fail
 // (private browsing, storage full); the app then works without them.
 export type Recent = { id: string; t: number };
-export type Reading = { id: string; section?: string; t: number };
 
-const KEYS = { recent: 'wards:recent', reading: 'wards:reading', scroll: 'wards:scroll', rapids: 'wards:rapids', timed: 'wards:timed' } as const;
+const KEYS = { recent: 'wards:recent', scroll: 'wards:scroll', rapids: 'wards:rapids', timed: 'wards:timed' } as const;
 export const RECENT_MAX = 5;
 
 function read<T>(key: string, fallback: T, valid: (v: unknown) => boolean): T {
@@ -25,7 +24,6 @@ function write(key: string, value: unknown) {
 
 const isStrings = (v: unknown) => Array.isArray(v) && v.every((x) => typeof x === 'string');
 const isRecents = (v: unknown) => Array.isArray(v) && v.every((x) => x && typeof x.id === 'string' && typeof x.t === 'number');
-const isReading = (v: unknown) => !!v && typeof (v as Reading).id === 'string' && typeof (v as Reading).t === 'number';
 
 // React reads these through useStored, which needs the same object back until something changes.
 const cache = new Map<string, unknown>();
@@ -42,6 +40,8 @@ const subscribe = (l: () => void) => {
   return () => { listeners.delete(l); removeEventListener('storage', onStorage); };
 };
 
+// Continue Reading was removed (owner, 2026-10-24): forget what an earlier version saved on this phone.
+try { localStorage.removeItem('wards:reading'); } catch { /* not available */ }
 // Favorites was removed (owner, 2026-10-20): forget the list an earlier version saved on this phone.
 try { localStorage.removeItem('wards:favorites'); } catch { /* not available */ }
 
@@ -51,15 +51,6 @@ export function addRecent(id: string, now = Date.now()) {
   write(KEYS.recent, [{ id, t: now }, ...getRecent().filter((r) => r.id !== id)].slice(0, RECENT_MAX));
 }
 export const clearRecent = () => write(KEYS.recent, null);
-
-// The topic being read and the section on screen, for Continue Reading on Home.
-export const getReading = () => cached<Reading | null>(KEYS.reading, () => read(KEYS.reading, null, isReading));
-export function setReading(id: string, section: string | undefined, now = Date.now()) {
-  const r = getReading();
-  if (r?.id === id && r.section === section) return;
-  write(KEYS.reading, { id, section, t: now });
-}
-export const clearReading = () => write(KEYS.reading, null);
 
 // Where each topic page was scrolled to, so opening it again returns to the same place (audit 2026-10-17).
 // The 30 most recent pages are kept. Not shared with the lists above, so no re-render on every scroll.

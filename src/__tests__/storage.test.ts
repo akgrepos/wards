@@ -1,10 +1,10 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import { addRecent, clearReading, clearRecent, getReading, getRecent, RECENT_MAX, setReading } from '../storage';
+import { addRecent, clearRecent, getRecent, RECENT_MAX } from '../storage';
 import { updateFailed } from '../UpdatePrompt';
 
 vi.mock('virtual:pwa-register/react', () => ({ useRegisterSW: () => ({ needRefresh: [false], updateServiceWorker: () => {} }) }));
 
-beforeEach(() => { localStorage.clear(); clearRecent(); clearReading(); });
+beforeEach(() => { localStorage.clear(); clearRecent(); });
 
 describe('stored lists (on this phone only)', () => {
   it('forgets the Favorites list an earlier version saved', async () => {
@@ -21,16 +21,9 @@ describe('stored lists (on this phone only)', () => {
     expect(getRecent()).toHaveLength(RECENT_MAX);
   });
 
-  it('Continue Reading remembers the card and section', () => {
-    setReading('renal-aki', 'diagnosis', 5);
-    expect(getReading()).toEqual({ id: 'renal-aki', section: 'diagnosis', t: 5 });
-  });
-
   it('ignores damaged saved data', () => {
     localStorage.setItem('wards:recent', '{not json');
-    localStorage.setItem('wards:reading', JSON.stringify({ wrong: 'shape' }));
     expect(getRecent()).toEqual([]);
-    expect(getReading()).toBeNull();
     addRecent('x', 1);
     expect(getRecent().map((r) => r.id)).toEqual(['x']);
   });
@@ -39,7 +32,6 @@ describe('stored lists (on this phone only)', () => {
     const set = vi.spyOn(Storage.prototype, 'setItem').mockImplementation(() => { throw new Error('QuotaExceeded'); });
     const get = vi.spyOn(Storage.prototype, 'getItem').mockImplementation(() => { throw new Error('SecurityError'); });
     expect(() => addRecent('a', 1)).not.toThrow();
-    expect(() => getReading()).not.toThrow();
     set.mockRestore();
     get.mockRestore();
   });

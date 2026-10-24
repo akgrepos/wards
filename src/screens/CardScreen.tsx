@@ -3,7 +3,7 @@ import { AKG } from '../design/akg';
 import { cardSources, cardTypeLabel, content, getCard, getSystem, titleCase, usesCalc } from '../content';
 import type { Card, Source } from '../content/types';
 import { forgetSection, href, isReturning, parseRoute, restoreScroll } from '../router';
-import { addRecent, getCardScroll, setCardScroll, setReading } from '../storage';
+import { addRecent, getCardScroll, setCardScroll } from '../storage';
 import { slug } from '../../scripts/content/pathway.mjs';
 import { AnchorScope, Blocks, Inlines, JUMP_EVENT, LinePill, LineSources, PathwayRows, SourceList } from '../ui/Rich';
 import { useSheet } from '../ui/SheetHost';
@@ -84,7 +84,7 @@ export function CardScreen({ id, section, anchor }: { id: string; section?: stri
     return true;
   };
 
-  // Opened at a section (#/card/<id>/<section>: Continue Reading, a pathway, a link): jump there, once, before the
+  // Opened at a section (#/card/<id>/<section>: a pathway, a link): jump there, once, before the
   // first paint (no flash of the page's top). Otherwise a page opened anew returns to where it was last read; Back and
   // Forward restore their own place.
   useLayoutEffect(() => {
@@ -124,13 +124,6 @@ export function CardScreen({ id, section, anchor }: { id: string; section?: stri
     addEventListener('scroll', onScroll, { passive: true });
     return () => { clearTimeout(settle); clearTimeout(timer); removeEventListener('scroll', onScroll); };
   }, [id]); // eslint-disable-line react-hooks/exhaustive-deps
-
-  // Topics remember the section on screen, for Continue Reading on Home.
-  useEffect(() => {
-    // Past the last section (Related, Sources), the reader is at the end of the last one.
-    const at = current === 'related' || current === 'sources' ? sections[sections.length - 1]?.key : current;
-    if (card && card.system !== 'library' && at) setReading(id, at);
-  }, [id, current]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // The section being read (checked in the Contents menu): the last one whose heading has reached the top bar.
   useEffect(() => {
