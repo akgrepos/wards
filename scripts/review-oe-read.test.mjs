@@ -1,7 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import { parse } from 'yaml'
 import { normalizeVerdict, parseOeAnswer, applyToLedger, summarize } from './review-oe-read.mjs'
-import { checkLedger, report } from './review-check.mjs'
 
 const ANSWER = `
 **Governing guidelines:** Society X, Title, 2024.
@@ -22,7 +21,6 @@ const ANSWER = `
 **Dose safety:**
 - #2 missing maximum dose
 
-Re-check in Snow: #2, #3, 5-6
 `
 
 describe('review:oe-read', () => {
@@ -34,7 +32,7 @@ describe('review:oe-read', () => {
     expect(normalizeVerdict('Contradicted')).toBe('Contradicted')
     expect(normalizeVerdict('Maybe')).toBeNull()
   })
-  it('parses the table, the three lists and the re-check line, and reports rows it cannot read', () => {
+  it('parses the table, the three lists, and reports rows it cannot read', () => {
     const p = parseOeAnswer(ANSWER)
     expect(p.rows.map((r) => [r.n, r.verdict])).toEqual([[1, 'Supported'], [2, 'Partly supported'], [3, 'Contradicted'], [4, 'Supported (practice, no guideline)'], [5, 'No evidence found']])
     expect(p.rows[1]).toMatchObject({ says: 'onset 5–10 minutes', source: 'Label 2023', note: 'Statement says 1–3 minutes' })
@@ -44,14 +42,11 @@ describe('review:oe-read', () => {
     expect(p.lists.outdated).toContain('Drug B withdrawn 2024')
     expect(p.lists.outdated).toContain('second line')
     expect(p.lists.doseSafety).toContain('missing maximum dose')
-    expect(p.recheck).toEqual([2, 3, 5, 6])
   })
-  it('tolerates a table without outer pipes or a separator row, and "Re-check in Snow: none"', () => {
-    const p = parseOeAnswer('# | Statement | Verdict | What the source says | Source | Discrepancy or note\n1. | A | Supported | s | src | n\n\nRe-check in Snow: none')
+  it('tolerates a table without outer pipes or a separator row', () => {
+    const p = parseOeAnswer('# | Statement | Verdict | What the source says | Source | Discrepancy or note\n1. | A | Supported | s | src | n')
     expect(p.rows).toHaveLength(1)
     expect(p.rows[0].n).toBe(1)
-    expect(p.recheck).toEqual([])
-    expect(p.recheckFound).toBe(true)
   })
   it('reads columns by header name when the order differs', () => {
     const p = parseOeAnswer('| # | Verdict | Statement (short) | Source | What the source says | Discrepancy or note |\n|--|--|--|--|--|--|\n| 1 | Supported | S | the source | the says | the note |')
@@ -97,21 +92,8 @@ entries:
     const out = summarize({ card: 'c', batch: 'batch-01', parsed: p, applied: r.applied, unmapped: r.unmapped, map, ledger: parse(r.text) })
     expect(out).toContain('Supported 1, Partly supported 1')
     expect(out).toContain('#2 Partly supported [b]')
-    expect(out).toContain('OpenEvidence note: Statement says 1–3 minutes')
+    expect(out).toContain('Outside check note: Statement says 1–3 minutes')
     expect(out).toContain('No row found for statement(s): #7')
     expect(out).toContain('2 table row(s) could not be parsed')
-    expect(out).toContain('Re-check in Snow: #2, #3, #5, #6')
-  })
-  it('review:check counts the OpenEvidence verdicts', () => {
-    const ledger = { entries: [
-      { id: 'a', where: 'w', claim: 'x', source: 's', status: 'match', quote: 'q', oe: { verdict: 'Supported' } },
-      { id: 'b', where: 'w', claim: 'x', source: 's', status: 'match', quote: 'q', oe: { verdict: 'Contradicted' } },
-      { id: 'c', where: 'w', claim: 'x', source: 's', status: 'match', quote: 'q' },
-    ] }
-    const res = checkLedger({ ledger, texts: { s: 'q' } })
-    expect(res.counts.oe).toMatchObject({ checked: 2, byVerdict: { Supported: 1, Contradicted: 1 } })
-    const out = report(res, 'c')
-    expect(out).toContain('OpenEvidence check: 2 of 3 entries have a verdict (Supported 1, Contradicted 1).')
-    expect(out).toContain('Not plain Supported: b (Contradicted)')
   })
 })
