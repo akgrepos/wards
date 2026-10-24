@@ -173,6 +173,28 @@ html[data-timed] .pw-zoom { bottom: calc(env(safe-area-inset-bottom) + var(--tab
 /* Home */
 .eyebrow { text-transform: uppercase; }
 
+/* Home layout: Rapids chips, a specialty grid and the library tools. Chips, cells and tools are whole 44pt+ targets. */
+.home-section { margin-top: var(--space-8); }
+.home-section .akg-list__header { padding: var(--space-8) var(--space-16) var(--space-8); }
+.home-section .akg-list__header-title { margin: 0; }
+.home-empty { margin: 0; padding: 0 var(--space-16); color: var(--label-secondary); }
+.home-chips { display: flex; gap: var(--space-8); padding: 0 var(--space-16) var(--space-4); overflow-x: auto; scrollbar-width: none; }
+.home-chips::-webkit-scrollbar { display: none; }
+.home-chip, .home-cell, .home-tool { color: var(--label); text-decoration: none; -webkit-tap-highlight-color: transparent; }
+.home-chip { display: flex; align-items: center; flex: none; gap: var(--space-8); min-height: var(--tap-target); padding: 0 var(--space-16); border-radius: var(--radius-full); font-size: calc(15 * var(--akg-text-unit)); font-weight: 600; max-width: 85%; line-height: 1.2; padding-block: var(--space-8); background: color-mix(in srgb, var(--system-red) 15%, var(--background-grouped-secondary)); }
+.home-chip__icon { display: inline-flex; width: 1.1em; height: 1.1em; color: var(--system-red); }
+.home-chip__icon svg { width: 100%; height: 100%; }
+.home-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-8); padding: 0 var(--space-16); }
+.home-cell { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-8); min-height: var(--tap-target); padding: var(--space-12); border-radius: var(--radius-grouped); background: var(--background-grouped-secondary); }
+.home-cell .akg-icon-tile { flex: none; }
+.home-cell__title { min-width: 0; font-size: calc(15 * var(--akg-text-unit)); font-weight: 600; line-height: 1.2; overflow-wrap: break-word; }
+.home-tools { display: grid; grid-template-columns: repeat(var(--n, 3), minmax(0, 1fr)); gap: var(--space-8); padding: 0 var(--space-16); }
+.home-tool { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--space-4); min-height: var(--tap-target); padding: var(--space-12) var(--space-4); border-radius: var(--radius-grouped); background: var(--background-grouped-secondary); font-size: calc(13 * var(--akg-text-unit)); font-weight: 600; text-align: center; line-height: 1.2; }
+.home-tool__icon { display: inline-flex; width: 1.8em; height: 1.8em; }
+.home-tool__icon svg { width: 100%; height: 100%; }
+.home-tool__mark { display: inline-flex; width: 0.9em; height: 0.9em; vertical-align: -0.1em; color: var(--label-tertiary); }
+.home-tool__mark svg { width: 100%; height: 100%; }
+
 /* Topics: systems not written yet are dimmed. */
 .akg-list-row--disabled.soon .akg-icon-tile { opacity: 0.4; }
 

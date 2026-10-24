@@ -1,14 +1,15 @@
-import { useState } from 'react';
+import { useState, type CSSProperties, type ReactNode } from 'react';
 import { AKG } from '../design/akg';
-import { cardTypeLabel, emergencyCards, getCard } from '../content';
+import { cardsInSystem, cardTypeLabel, content, emergencyCards, getCard } from '../content';
 import type { Card } from '../content/types';
 import { href, open } from '../router';
 import { clearPageMemory, clearRecent, getRapidShortcuts, getRecent, RAPIDS_MAX, setRapidShortcuts, useStored } from '../storage';
 import { useSheet } from '../ui/SheetHost';
-import { emergencyIcon } from './Emergency';
 import { iconFor, icons } from '../ui/icons';
 import { APP_VERSION } from '../version';
 import { Screen, ago } from './common';
+import { INTERACTION_CHECKER } from '../ui/Rich';
+import { LIBRARY_LISTS } from './Tabs';
 
 const cardIcon = (c: Card) => iconFor(c.system);
 
@@ -44,28 +45,82 @@ function EditRapids() {
 }
 const kindLabel = (c: Card) => (c.system === 'library' ? cardTypeLabel(c) : 'Topic');
 
-// Home: pick up where you left off. Rapids (emergency) shortcuts and Recent (all kept on this phone).
+// A section title in the List header style, so Home's grids read like the lists around them.
+function HomeSection({ title, action, children }: { title: string; action?: ReactNode; children: ReactNode }) {
+  return (
+    <section className="home-section">
+      <div className="akg-list__header akg-list__header--prominent">
+        <h2 className="akg-list__header-title">{title}</h2>
+        {action && <div className="akg-list__header-action">{action}</div>}
+      </div>
+      {children}
+    </section>
+  );
+}
+
+const hasCards = (type: string) => content.cards.some((c) => c.type === type);
+
+// Home: one tap to the right part of the app. Rapids chips, the specialties as a grid, the library tools, then Recent.
 export function Home() {
   const recent = useStored(getRecent).filter((r) => getCard(r.id));
   const emergencies = useRapidShortcuts();
   const sheet = useSheet();
   const anyEmergency = emergencyCards().length > 0;
+  const specialties = content.systems.filter((s) => !s.library && cardsInSystem(s.id).length > 0);
+  const tools = [
+    { id: 'pathways', show: true },
+    { id: 'medications', show: hasCards('medication') },
+    { id: 'labs', show: hasCards('test') },
+  ].filter((t) => t.show);
 
   return (
     <Screen title="Reference" trailing={<AKG.ToolbarButton icon={icons.gearshape} aria-label="Settings" onClick={() => open(href.settings())} />}>
-      <AKG.List
-        header="Rapids"
-        headerStyle="prominent"
-        headerAction={anyEmergency ? <AKG.Button variant="borderless" onClick={() => sheet({ title: 'Rapids Shortcuts', body: <EditRapids /> })}>Edit</AKG.Button> : undefined}
+      <HomeSection
+        title="Rapids"
+        action={anyEmergency ? <AKG.Button variant="borderless" onClick={() => sheet({ title: 'Rapids Shortcuts', body: <EditRapids /> })}>Edit</AKG.Button> : undefined}
       >
         {!anyEmergency ? (
-          <AKG.ListRow title="No Rapids Yet" subtitle="Shortcuts to your four main rapids will appear here." />
+          <p className="home-empty">Shortcuts to your main rapids will appear here.</p>
         ) : emergencies.length === 0 ? (
-          <AKG.ListRow title="No Shortcuts" subtitle="Tap Edit to choose up to four." />
+          <p className="home-empty">Tap Edit to choose up to four.</p>
         ) : (
-          emergencies.map((c) => <AKG.ListRow key={c.id} title={c.title} subtitle={c.emergency?.hint} icon={emergencyIcon(c).icon} iconTint={emergencyIcon(c).tint} chevron href={href.emergency(c.id)} />)
+          <div className="home-chips">
+            {emergencies.map((c) => (
+              <a key={c.id} className="home-chip" href={href.emergency(c.id)}>
+                <span className="home-chip__icon">{icons.staroflifeFill}</span>
+                {c.title}
+              </a>
+            ))}
+          </div>
         )}
-      </AKG.List>
+      </HomeSection>
+
+      <HomeSection title="Specialties" action={<AKG.Button variant="borderless" onClick={() => open(href.topics())}>{`See All ${content.systems.filter((s) => !s.library).length}`}</AKG.Button>}>
+        <div className="home-grid">
+          {specialties.map((s) => (
+            <a key={s.id} className="home-cell" href={href.system(s.id)}>
+              <AKG.IconTile tint={iconFor(s.id).tint}>{iconFor(s.id).icon}</AKG.IconTile>
+              <span className="home-cell__title">{s.title}</span>
+            </a>
+          ))}
+        </div>
+      </HomeSection>
+
+      <HomeSection title="Library">
+        <div className="home-tools" style={{ '--n': tools.length + 1 } as CSSProperties}>
+          {tools.map((t) => (
+            <a key={t.id} className="home-tool" href={href.libraryList(t.id)}>
+              <span className="home-tool__icon" style={{ color: LIBRARY_LISTS[t.id].tint }}>{icons[LIBRARY_LISTS[t.id].icon]}</span>
+              {LIBRARY_LISTS[t.id].title}
+            </a>
+          ))}
+          {/* A website: opens in Safari and needs internet. */}
+          <a className="home-tool" href={INTERACTION_CHECKER} target="_blank" rel="noopener">
+            <span className="home-tool__icon" style={{ color: 'var(--system-orange)' }}>{icons.arrowLeftArrowRight}</span>
+            <span>Interactions <span className="home-tool__mark" role="img" aria-label="Opens in Safari">{icons.arrowUpRight}</span></span>
+          </a>
+        </div>
+      </HomeSection>
 
       <AKG.List
         header="Recent"
