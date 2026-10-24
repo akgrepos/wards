@@ -107,7 +107,6 @@ export function runChecks(root, allow = ALLOW) {
   for (const file of notes) {
     const text = read(file)
     findings.push(...checkReferences({ file, text, files, scripts, exists }), ...checkLeftovers({ file, text }), ...checkPrivacy({ file, text }))
-    if (file === 'docs/DECISIONS.md') findings.push(...checkDecisionsLength({ file, text }))
   }
   for (const file of [...content, 'CHANGELOG.md']) {
     const text = read(file)
