@@ -2,6 +2,10 @@
 
 What changed in each version of Wards, newest first. The version is shown in Settings (gear on Home).
 
+## 2026.10.24.2
+
+Home is now Topics. The Home tab is gone: the app opens on Topics, with your last three pages (Recent) on top and the specialties as colored tiles below. The tabs are Topics, Rapids and Library, with search as the button at the bottom right. The Rapids shortcut chips and their Edit sheet are removed, since Rapids is one tap away.
+
 ## 2026.10.24
 
 Links to other cards inside a sentence now read as part of the sentence (blue dotted underline, no box). Table words stay whole instead of breaking mid-word. The "common clinical practice" stethoscope is redrawn to match Apple's. Ceftriaxone's Adverse Effects now lists injection-site pain under Uncommon, and its peritonitis line states the fact directly. Continue Reading is removed from Home.
