@@ -2,6 +2,10 @@
 
 What changed in each version of Wards, newest first. The version is shown in Settings (gear on Topics).
 
+## 2026.10.24.5
+
+Search now opens with your recent pages and suggested searches (tap one to fill the field); typed results are grouped Rapids, Topics and Drugs.
+
 ## 2026.10.24.4
 
 Medication cards (Ceftriaxone first) have a new look. Each section has its own symbol in a colored square: red for what can harm (contraindications, adverse effects, overdose), orange for where it goes wrong, amber for what to keep checking, teal for how to give it, brown for pearls, gray for the rest. Doses are a list: the condition in bold, then the dose, then population, rate and maximum in gray; tap a row for details. The lead-in lines above the doses are gone. Doses and sources are unchanged.
