@@ -5,12 +5,6 @@
 
 export const ALLOW = [
   {
-    rule: 'version-mention',
-    file: 'docs/STATUS.md',
-    text: '2026.10.23.8',
-    reason: 'Real fix for a notes PR: STATUS says live version 2026.10.23.8 but src/version.ts is newer.',
-  },
-  {
     rule: 'broken-reference',
     file: 'CLAUDE.md',
     text: 'project/README.md',
