@@ -3,9 +3,9 @@ import { AKG } from '../design/akg';
 import { cardTypeLabel, getCard, getSystem, searchCards } from '../content';
 import type { Card } from '../content/types';
 import { goBack, href, rememberQuery, rememberedQuery } from '../router';
-import { getRecent, useStored } from '../storage';
+import { addSearch, clearSearches, getSearches, useStored } from '../storage';
 import { icons } from '../ui/icons';
-import { Empty, Screen, ago } from './common';
+import { Empty, Screen } from './common';
 
 export const SEARCH_INPUT_ID = 'search-input';
 export const FOCUS_PROXY_ID = 'search-focus-proxy';
@@ -36,10 +36,6 @@ function useVisibleArea() {
   return area;
 }
 
-// Suggested searches: real titles and aliases of pages in the app.
-const SUGGESTIONS = ['hyperK', 'AKI', 'AFib', 'CAP', 'GI bleed', 'delirium'];
-const RECENT_SHOWN = 3;
-
 const subtitle = (c: Card) => `${cardTypeLabel(c)} · ${getSystem(c.system)?.title ?? ''}`;
 
 // Search: titles and aliases of every page. The field sits at the bottom (iOS); Close returns to the previous screen.
@@ -47,7 +43,7 @@ export function SearchScreen() {
   const [q, setQ] = useState(rememberedQuery);
   const area = useVisibleArea();
   const results = searchCards(q);
-  const recent = useStored(getRecent).filter((r) => getCard(r.id)).slice(0, RECENT_SHOWN);
+  const searches = useStored(getSearches);
   const groups = [
     { header: 'Rapids', cards: results.filter((c) => c.emergency) },
     { header: 'Topics', cards: results.filter((c) => c.type !== 'medication') },
@@ -63,24 +59,19 @@ export function SearchScreen() {
     <div className="search-screen" style={area ? { top: area.top, height: area.height } : undefined}>
       <div className="search-scroll">
         <Screen title="Search">
+          {/* Opening a result counts as a search. */}
+          <div onClickCapture={(e) => { if (q.trim() && (e.target as HTMLElement).closest('a')) addSearch(q); }}>
           {!q.trim() ? (
-            <>
-              {recent.length > 0 && (
-                <AKG.List header="Recent">
-                  {recent.map((r) => {
-                    const c = getCard(r.id)!;
-                    return <AKG.ListRow key={r.id} title={c.title} subtitle={`${subtitle(c)} · ${ago(r.t)}`} chevron href={href.card(c.id)} />;
-                  })}
-                </AKG.List>
+            <AKG.List
+              header="Recent Searches"
+              headerAction={searches.length ? <AKG.Button variant="borderless" onClick={clearSearches}>Clear</AKG.Button> : undefined}
+            >
+              {searches.length === 0 ? (
+                <AKG.ListRow title="No Recent Searches" subtitle="The searches you type appear here." />
+              ) : (
+                searches.map((t) => <AKG.ListRow key={t} title={t} onClick={() => change(t)} />)
               )}
-              <section className="search-try">
-                <div className="akg-list__header akg-list__header--default"><h2 className="akg-list__header-title">Try</h2></div>
-                <div className="search-chips">
-                  {SUGGESTIONS.map((t) => <AKG.Button key={t} variant="tinted" size="large" onClick={() => change(t)}>{t}</AKG.Button>)}
-                </div>
-              </section>
-              <p className="ios-footnote secondary search-hint">Search by name, abbreviation or common term.</p>
-            </>
+            </AKG.List>
           ) : results.length === 0 ? (
             <Empty title="No Results" description={`No pages match “${q.trim()}”. Check the spelling or try another term.`} />
           ) : (
@@ -100,6 +91,7 @@ export function SearchScreen() {
               ))}
             </>
           )}
+          </div>
         </Screen>
       </div>
       <AKG.BottomBar className="search-bar">
@@ -111,6 +103,7 @@ export function SearchScreen() {
           value={q}
           onChange={(e) => change(e.target.value)}
           enterKeyHint="search"
+          onKeyDown={(e) => { if (e.key === 'Enter') addSearch(q); }}
           autoCapitalize="none"
           autoCorrect="off"
           spellCheck={false}
