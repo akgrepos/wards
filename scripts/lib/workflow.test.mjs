@@ -39,3 +39,15 @@ describe('workflow helpers', () => {
     expect(versionFromSource("export const APP_VERSION = '2026.10.23'")).toBe('2026.10.23')
   })
 })
+
+import { versionStep } from './workflow.mjs'
+describe('versionStep', () => {
+  it('asks for Settings when no version is on screen', () => {
+    expect(versionStep('Topics\nSearch', '2026.10.24.6')).toEqual({ step: 'open-settings', shown: null })
+  })
+  it('reports ok, mismatch and a waiting update', () => {
+    expect(versionStep('Version 2026.10.24.6', '2026.10.24.6').step).toBe('ok')
+    expect(versionStep('Version 2026.10.24.5', '2026.10.24.6')).toEqual({ step: 'mismatch', shown: '2026.10.24.5' })
+    expect(versionStep('Update Ready Reload', '2026.10.24.6').step).toBe('update')
+  })
+})

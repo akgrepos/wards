@@ -1,20 +1,22 @@
 // npm run sim-check [-- --expect "text"] [--route "#/card/<id>"] [--shots [name]]
 // One-call check of the booted iOS Simulator (macOS only). It reads the screen with a screenshot and Apple's text
 // recognition (scripts/lib/ocr.swift); `xcrun simctl` cannot tap, so taps stay manual and this reports what to do.
-//  1. Version: finds the version number on screen (Home > Settings > Version) and compares it with src/version.ts on
-//     origin/main. If the "Update Ready" banner is showing, it says so (tap Reload with the control tool, run again).
-//  2. --expect "text": confirms that text is on screen (e.g. a card's title after you open it).
+//  1. Version: finds the version number on screen and compares it with src/version.ts on origin/main. If none is on
+//     screen it opens the Settings route itself (simctl openurl), reads the version there, and (with --route) goes back
+//     to that route afterwards, so one call checks both. If the "Update Ready" banner is showing, it says so.
+//  2. --expect "text": confirms that text is on screen (e.g. a card's title after you open it); checked on the screen
+//     you left open, or on the --route screen.
 //     --route "#/card/<id>": first opens that route with `simctl openurl`. That opens Safari, NOT the pinned
 //     Home Screen app, so the result is labelled that way; to test the pinned app, tap to the card and use --expect.
 //  3. --shots [name]: scaled-down (0.4) light and dark screenshots into a scratch folder outside the repo
 //     (<tmp>/wards-sim-shots), then restores the appearance. Never committed.
 // Exit 0 = ok, 1 = mismatch (wrong version, update waiting, expected text missing), 2 = a manual step is needed
-// (no Simulator booted, version not on screen).
+// (no Simulator booted, or Settings shows no version).
 import { mkdirSync, mkdtempSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { git, run, versionFromSource, SITE } from './lib/workflow.mjs'
+import { git, run, versionFromSource, versionStep, SITE } from './lib/workflow.mjs'
 
 const args = process.argv.slice(2)
 const opt = (name) => {
@@ -45,41 +47,64 @@ function screenText(label) {
   return run('swift', [join(here, 'lib', 'ocr.swift'), png]) ?? ''
 }
 
+const wait = (ms) => new Promise((r) => setTimeout(r, ms))
+async function open(r) {
+  sim(['openurl', 'booted', SITE + r.replace(/^\/?/, '')])
+  await wait(4000)
+}
+
 if (route) {
-  sim(['openurl', 'booted', SITE + route.replace(/^\/?/, '')])
-  await new Promise((r) => setTimeout(r, 4000))
+  await open(route)
   say(`opened ${route} with openurl (Safari, not the pinned app)`)
 }
 
-const text = screenText('check')
-const plain = text.split('\n').map((l) => l.replace(/^\S+ \S+ /, '')).join('\n')
+let text = screenText('check')
+let plain = text.split('\n').map((l) => l.replace(/^\S+ \S+ /, '')).join('\n')
 
-// 1. Version
-git(['fetch', 'origin', 'main', '--quiet'])
-const want = versionFromSource(git(['show', 'origin/main:src/version.ts']) ?? '')
-if (/Update Ready/i.test(plain)) {
-  const l = text.split('\n').find((x) => /Reload/.test(x))
-  say(`UPDATE WAITING: the "Update Ready" banner is showing${l ? ` (Reload at ${l.split(' ').slice(0, 2).join(', ')} of the screen, x then y)` : ''}. Tap Reload (do not reinstall), wait, run again.`)
-  bump(1)
-} else {
-  const shown = (plain.match(/\b\d{4}\.\d{2}\.\d{2}(?:\.\d+)?\b/) ?? [null])[0]
-  if (!shown) {
-    say(`MANUAL: no version on screen. Open Home > Settings (shows the version), run again. Expected ${want}.`)
-    bump(2)
-  } else if (shown === want) say(`version OK: app shows ${shown}, origin/main is ${want}`)
-  else {
-    say(`VERSION MISMATCH: app shows ${shown}, origin/main is ${want}. Wait for the deploy (npm run wait-live), reopen, tap Reload if offered.`)
-    bump(1)
-  }
-}
-
-// 2. Expected text
-if (expect) {
+// 2a. Expected text, checked on the screen as first found (before any visit to Settings)
+const checkExpect = () => {
   if (plain.toLowerCase().includes(expect.toLowerCase())) say(`text found: "${expect}"`)
   else {
     say(`TEXT MISSING: "${expect}" is not on screen`)
     bump(1)
   }
+}
+if (expect && !route) checkExpect()
+
+// 1. Version (opens Settings itself when the screen shows none)
+git(['fetch', 'origin', 'main', '--quiet'])
+const want = versionFromSource(git(['show', 'origin/main:src/version.ts']) ?? '')
+let v = versionStep(plain, want)
+let visitedSettings = false
+if (v.step === 'open-settings') {
+  await open('#/settings')
+  await wait(2000)
+  visitedSettings = true
+  text = screenText('settings')
+  plain = text.split('\n').map((l) => l.replace(/^\S+ \S+ /, '')).join('\n')
+  v = versionStep(plain, want)
+  if (v.step === 'open-settings') say(`MANUAL: no version on the Settings screen either. Open Settings by hand, check it, run again. Expected ${want}.`)
+  else say('opened Settings to read the version')
+}
+if (v.step === 'update') {
+  const l = text.split('\n').find((x) => /Reload/.test(x))
+  say(`UPDATE WAITING: the "Update Ready" banner is showing${l ? ` (Reload at ${l.split(' ').slice(0, 2).join(', ')} of the screen, x then y)` : ''}. Tap Reload (do not reinstall), wait, run again.`)
+  bump(1)
+} else if (v.step === 'open-settings') bump(2)
+else if (v.step === 'ok') say(`version OK: app shows ${v.shown}, origin/main is ${want}`)
+else {
+  say(`VERSION MISMATCH: app shows ${v.shown}, origin/main is ${want}. Wait for the deploy (npm run wait-live), reopen, tap Reload if offered.`)
+  bump(1)
+}
+
+// 2b. With --route, go back to that route and check the expected text there
+if (expect && route) {
+  if (visitedSettings) {
+    await open(route)
+    text = screenText('check2')
+    plain = text.split('\n').map((l) => l.replace(/^\S+ \S+ /, '')).join('\n')
+  }
+  checkExpect()
 }
 
 // 3. Screenshots
