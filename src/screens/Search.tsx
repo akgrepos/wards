@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react';
 import { AKG } from '../design/akg';
-import { cardTypeLabel, getSystem, searchCards } from '../content';
 import { goBack, href, rememberQuery, rememberedQuery } from '../router';
 import { icons } from '../ui/icons';
-import { Empty, Screen } from './common';
-import { SketchBody, SketchLabel, sketchOption } from './SearchSketch'; // PROTOTYPE
+import { Screen } from './common';
+import { SearchResults, SearchStart } from './SearchResults';
 
 export const SEARCH_INPUT_ID = 'search-input';
 export const FOCUS_PROXY_ID = 'search-focus-proxy';
@@ -39,9 +38,6 @@ function useVisibleArea() {
 export function SearchScreen() {
   const [q, setQ] = useState(rememberedQuery);
   const area = useVisibleArea();
-  const results = searchCards(q);
-  const opt = sketchOption(); // PROTOTYPE
-  const [chip, setChip] = useState('All'); // PROTOTYPE
   const change =(v: string) => { setQ(v); rememberQuery(v); };
   // The page behind stays still, so the bar can't ride along when there's nothing (or little) to scroll.
   useEffect(() => AKG.lockScroll(), []);
@@ -52,24 +48,7 @@ export function SearchScreen() {
     <div className="search-screen" style={area ? { top: area.top, height: area.height } : undefined}>
       <div className="search-scroll">
         <Screen title="Search">
-          {opt && <SketchLabel opt={opt} />}{/* PROTOTYPE */}
-          {opt ? <SketchBody opt={opt} q={q} setQ={change} chip={chip} setChip={setChip} /> : !q.trim() ? (
-            <p className="ios-footnote secondary search-hint">Search by name, abbreviation or common term, like “hyperK” or “AKI”.</p>
-          ) : results.length === 0 ? (
-            <Empty title="No Results" description={`No pages match “${q.trim()}”. Check the spelling or try another term.`} />
-          ) : (
-            <AKG.List header="Topics">
-              {results.map((c) => (
-                <AKG.ListRow
-                  key={c.id}
-                  title={<AKG.Highlight text={c.title} query={q} />}
-                  subtitle={`${cardTypeLabel(c)} · ${getSystem(c.system)?.title ?? ''}`}
-                  chevron
-                  href={href.card(c.id)}
-                />
-              ))}
-            </AKG.List>
-          )}
+          {q.trim() ? <SearchResults q={q} /> : <SearchStart onPick={change} />}
         </Screen>
       </div>
       <AKG.BottomBar className="search-bar">
