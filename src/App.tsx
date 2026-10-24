@@ -2,7 +2,7 @@ import { AKG } from './design/akg';
 import { currentTab, href, open, switchTab, useRoute, type Route } from './router';
 import { CardScreen } from './screens/CardScreen';
 import { PathwayScreen } from './screens/PathwayScreen';
-import { Home, SettingsScreen } from './screens/Home';
+import { Home, PreviewRibbon, SettingsScreen } from './screens/Home';
 import { FocusProxy, SearchScreen, focusProxy } from './screens/Search';
 import { SystemScreen } from './screens/SystemScreen';
 import { LibraryList, LibraryTab, NotFoundScreen, TopicsTab } from './screens/Tabs';
@@ -56,6 +56,7 @@ export function App() {
   useEffect(() => { document.documentElement.toggleAttribute('data-timed', !!timed); }, [timed]);
   return (
     <SheetHost>
+      {import.meta.env.VITE_PREVIEW && <PreviewRibbon />}{/* PROTOTYPE */}
       <Page route={route} />
       {/* The floating tab bar, on every screen except Search (which puts its field at the bottom instead) and
           Timed Mode (full screen). */}

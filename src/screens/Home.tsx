@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, type CSSProperties, type ReactNode } from 'react';
+import { createContext, useContext, useState, useSyncExternalStore, type CSSProperties, type ReactNode } from 'react';
 import { AKG } from '../design/akg';
 import { cardsInSystem, cardTypeLabel, content, emergencyCards, getCard } from '../content';
 import type { Card } from '../content/types';
@@ -164,6 +164,15 @@ const RapidChips = () => {
     </HomeSection>
   );
 };
+// PROTOTYPE: the chosen option, shared with the preview ribbon.
+const PROTO_NAMES: Record<number, string> = { 1: 'By task', 2: 'One list', 3: 'Search first', 4: 'Specialty grid' };
+let protoOption = Number(new URLSearchParams(window.location.search).get('home')) || 4;
+const protoListeners = new Set<() => void>();
+const setProtoOption = (n: number) => { protoOption = n; protoListeners.forEach((l) => l()); };
+export function PreviewRibbon() { // PROTOTYPE
+  const n = useSyncExternalStore((l) => { protoListeners.add(l); return () => { protoListeners.delete(l); }; }, () => protoOption);
+  return <div className="preview-ribbon" role="note">PREVIEW · not the live app · option {n}: {PROTO_NAMES[n]}</div>;
+}
 const ProtoCtx = createContext<{ n: number; set: (n: number) => void }>({ n: 4, set: () => {} }); // PROTOTYPE
 // PROTOTYPE: tap 1 to 4 to flip between the sketches.
 const Switcher = () => {
@@ -231,7 +240,8 @@ function HomeSearch() {
 }
 
 export function Home() {
-  const [n, set] = useState(() => Number(new URLSearchParams(window.location.search).get('home')) || 4);
+  const [n, setN] = useState(protoOption);
+  const set = (v: number) => { setN(v); setProtoOption(v); };
   return (
     <ProtoCtx.Provider value={{ n, set }}>
       {n === 1 ? <HomeTasks /> : n === 2 ? <HomeList /> : n === 3 ? <HomeSearch /> : <HomeGrid />}
