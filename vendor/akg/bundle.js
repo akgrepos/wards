@@ -1,4 +1,4 @@
-/* @ds-bundle: {"format":4,"namespace":"AKG","components":[{"name":"Button"},{"name":"Toggle"},{"name":"Checkbox"},{"name":"RadioGroup"},{"name":"SegmentedControl"},{"name":"PopUpButton"},{"name":"Stepper"},{"name":"TextField"},{"name":"SearchField"},{"name":"ComboBox"},{"name":"Slider"},{"name":"DatePicker"},{"name":"ColorWell"},{"name":"List"},{"name":"GroupBox"},{"name":"DisclosureGroup"},{"name":"ProgressIndicator"},{"name":"EmptyState"},{"name":"Notification"},{"name":"Tooltip"},{"name":"TabBar"},{"name":"Toolbar"},{"name":"Sidebar"},{"name":"PageControl"},{"name":"Window"},{"name":"Sheet"},{"name":"Alert"},{"name":"ActionSheet"},{"name":"Menu"},{"name":"Popover"},{"name":"Callout"},{"name":"SourcePill"},{"name":"ContentSection"},{"name":"Flowchart"},{"name":"TappableValue"},{"name":"Table"},{"name":"Figure"},{"name":"Banner"},{"name":"BottomBar"},{"name":"Highlight"},{"name":"ShareButton"},{"name":"NumberField"},{"name":"SourceLine"},{"name":"StepList"},{"name":"ValueRow"},{"name":"Tag"},{"name":"ScaleBar"},{"name":"Panel"},{"name":"GradeList"},{"name":"ComparisonGrid"},{"name":"TimePoints"},{"name":"TimerCapsule"},{"name":"CoverageMark"},{"name":"CoverageStrip"}]} */
+/* @ds-bundle: {"format":4,"namespace":"AKG","components":[{"name":"Button"},{"name":"Toggle"},{"name":"Checkbox"},{"name":"RadioGroup"},{"name":"SegmentedControl"},{"name":"PopUpButton"},{"name":"Stepper"},{"name":"TextField"},{"name":"SearchField"},{"name":"ComboBox"},{"name":"Slider"},{"name":"DatePicker"},{"name":"ColorWell"},{"name":"List"},{"name":"GroupBox"},{"name":"DisclosureGroup"},{"name":"ProgressIndicator"},{"name":"EmptyState"},{"name":"Notification"},{"name":"Tooltip"},{"name":"TabBar"},{"name":"Toolbar"},{"name":"Sidebar"},{"name":"PageControl"},{"name":"Window"},{"name":"Sheet"},{"name":"Alert"},{"name":"ActionSheet"},{"name":"Menu"},{"name":"Popover"},{"name":"Callout"},{"name":"SourcePill"},{"name":"ContentSection"},{"name":"Flowchart"},{"name":"TappableValue"},{"name":"InlineButton"},{"name":"Table"},{"name":"Figure"},{"name":"Banner"},{"name":"BottomBar"},{"name":"Highlight"},{"name":"ShareButton"},{"name":"NumberField"},{"name":"SourceLine"},{"name":"StepList"},{"name":"ValueRow"},{"name":"Tag"},{"name":"ScaleBar"},{"name":"Panel"},{"name":"GradeList"},{"name":"ComparisonGrid"},{"name":"TimePoints"},{"name":"TimerCapsule"},{"name":"CoverageMark"},{"name":"CoverageStrip"}]} */
 /* Shared helpers — used by every AKG component. */
 (function (AKG) {
   // Join class names, skipping falsy values.
@@ -2625,6 +2625,26 @@
     return h("span", rest, props.children);
   }
   AKG.TappableValue = TappableValue;
+})(window.AKG = window.AKG || {});
+
+/* InlineButton — a tinted capsule button inside running text, with an optional symbol before the label. */
+(function (AKG) {
+  var h = window.React.createElement;
+  // A span with the button role, not a <button>, so a long label can wrap across lines like the words around it.
+  function InlineButton(props) {
+    var rest = {};
+    for (var k in props) if (k !== "className" && k !== "children" && k !== "icon" && k !== "disabled") rest[k] = props[k];
+    rest.role = "button";
+    rest.tabIndex = props.disabled ? -1 : 0;
+    if (props.disabled) { rest["aria-disabled"] = "true"; rest.onClick = undefined; }
+    rest.className = AKG.cx("akg-inline-button", props.className);
+    rest.onKeyDown = function (e) {
+      if (props.onKeyDown) props.onKeyDown(e);
+      if (!props.disabled && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); e.currentTarget.click(); }
+    };
+    return h("span", rest, props.icon ? h("span", { className: "akg-inline-button__icon", "aria-hidden": "true" }, props.icon) : null, props.children);
+  }
+  AKG.InlineButton = InlineButton;
 })(window.AKG = window.AKG || {});
 
 /* Table — a data table for reading content: header row, first column that stays put while the rest scrolls sideways, edge fade when more columns are hidden. */

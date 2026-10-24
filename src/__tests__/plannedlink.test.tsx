@@ -10,6 +10,6 @@ describe('planned links', () => {
     render(<p><Inlines xs={parseInline('See [[not-written-yet|Future card]] and [[renal-aki|AKI]].')} /></p>);
     expect(screen.queryByRole('link', { name: 'Future card' })).toBeNull();
     expect(screen.getByText(/Future card/)).toBeTruthy();
-    expect(screen.getByRole('link', { name: 'AKI' })).toBeTruthy();
+    expect(screen.getByRole('button', { name: 'AKI' })).toBeTruthy();
   });
 });

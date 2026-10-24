@@ -1,7 +1,7 @@
-import { createContext, Fragment, useContext, useState, type MouseEvent, type ReactNode } from 'react';
+import { createContext, Fragment, useContext, useState, type ReactNode } from 'react';
 import { AKG } from '../design/akg';
-import { content, getCard, isMarkerSource, pathwaysFor } from '../content';
-import type { Block, Calc, ContainerItem, Criteria, Dose, Inline, ListItem, Regimen, Source, Threshold } from '../content/types';
+import { content, getCard, titleCase, isMarkerSource, pathwaysFor, useCardLoad } from '../content';
+import type { Block, Calc, Card, ContainerItem, Criteria, Dose, Inline, ListItem, Regimen, Section, Source, Threshold } from '../content/types';
 import { parseInline, TAGS } from '../../scripts/content/inline.mjs';
 import { onsetRows } from '../../scripts/content/onset.mjs';
 import { slug } from '../../scripts/content/pathway.mjs';
@@ -393,8 +393,8 @@ export const openCriteria = (sheet: ShowSheet, c: Criteria, id?: string) => shee
 export function CalcLink({ c, label }: { c: Calc; label?: string }) {
   const text = label ?? c.short;
   return (
-    <a className="akg-link calc-link" href={c.url} target="_blank" rel="noopener noreferrer" aria-label={`${text}${c.name.includes(c.short) ? '' : `, ${c.name}`}. Opens MDCalc in Safari, needs internet.`}>
-      {text}<span className="external-mark" aria-hidden="true">{icons.arrowUpRight}</span>
+    <a className="akg-inline-button calc-link" href={c.url} target="_blank" rel="noopener noreferrer" aria-label={`${text}${c.name.includes(c.short) ? '' : `, ${c.name}`}. Opens MDCalc in Safari, needs internet.`}>
+      <span className="akg-inline-button__icon" aria-hidden="true">{icons.plusForwardslashMinus}</span>{text}<span className="external-mark" aria-hidden="true">{icons.arrowUpRight}</span>
     </a>
   );
 }
@@ -420,7 +420,7 @@ function Insert({ kind, id, plain, label }: { kind: string; id: string; plain?: 
   // A score with an in-app calculator opens it; the sheet ends with the MDCalc link.
   if (kind === 'calc' && (item as unknown as Calc).calculator) {
     const cc = item as unknown as Calc;
-    return <AKG.TappableValue onClick={() => openCalculator(sheet, id)}>{label ?? cc.short}</AKG.TappableValue>;
+    return <AKG.InlineButton icon={icons.plusForwardslashMinus} onClick={() => openCalculator(sheet, id)}>{label ?? cc.short}</AKG.InlineButton>;
   }
   if (kind === 'calc') return <CalcLink c={item as unknown as Calc} label={label} />;
   if (kind === 'criteria') {
@@ -432,11 +432,47 @@ function Insert({ kind, id, plain, label }: { kind: string; id: string; plain?: 
 
 // A link to a section of the page on screen scrolls there instead of opening the page again (CardScreen listens).
 export const JUMP_EVENT = 'wards:jump';
-function jumpWithin(e: MouseEvent, id: string, section?: string | null) {
-  const r = parseRoute(location.hash);
-  if (!section || r.name !== 'card' || r.id !== id) return;
-  e.preventDefault();
-  dispatchEvent(new CustomEvent(JUMP_EVENT, { detail: section }));
+// ---- Card links ----
+
+// A link to another card opens a sheet with the part of it that fits where the link sits (the section the link names,
+// else one chosen from the section the link is in), and a row that opens the full card. Plain navigation stays a link
+// only inside a pathway box and Related. On the same page, a link to a section scrolls there.
+const TREAT_FROM = ['treatment', 'first-steps', 'monitor', 'escalation', 'do-now'];
+const TREAT_TARGET = ['treatment', 'dosing', 'dosing-and-protocol', 'indications'];
+export function pickSection(card: Card, named?: string | null, from?: string): Section | undefined {
+  const by = (keys: string[]) => keys.map((k) => card.sections.find((s) => s.key === k)).find(Boolean);
+  if (named) return by([named]);
+  if (from && TREAT_FROM.includes(from)) return by(TREAT_TARGET) ?? by(['at-a-glance']);
+  if (from === 'diagnosis') return by(['diagnosis']) ?? by(['at-a-glance']);
+  return by(['at-a-glance']) ?? card.sections[0];
+}
+
+function CardPartSheet({ card, part }: { card: Card; part?: Section }) {
+  const { status, retry } = useCardLoad(card.id);
+  const live = getCard(card.id) ?? card;
+  const sec = live.sections.find((s) => s.key === part?.key);
+  return (
+    <div className="detail-sheet card-part">
+      {status === 'loading' && <p className="ios-subheadline secondary">Loading…</p>}
+      {status === 'error' && <AKG.Button variant="tinted" onClick={retry}>Try Again</AKG.Button>}
+      {status === 'ready' && sec && <Blocks blocks={sec.blocks} />}
+      <AKG.List className="card-part-open">
+        <AKG.ListRow title={`Open full ${card.title}`} href={href.card(card.id, part?.key)} />
+      </AKG.List>
+    </div>
+  );
+}
+
+function CardLink({ card, section, label }: { card: Card; section?: string | null; label: string }) {
+  const sheet = useSheet();
+  const from = useContext(AnchorCtx);
+  const open = () => {
+    const r = parseRoute(location.hash);
+    if (section && r.name === 'card' && r.id === card.id) { dispatchEvent(new CustomEvent(JUMP_EVENT, { detail: section })); return; }
+    const part = pickSection(card, section, from);
+    sheet({ title: 'Card', heading: part ? titleCase(part.title) : card.title, subheading: part ? card.title : undefined, body: <CardPartSheet card={card} part={part} /> });
+  };
+  return <AKG.InlineButton icon={icons.textDocument} onClick={open}>{label}</AKG.InlineButton>;
 }
 
 export function Inlines({ xs, plain }: { xs: Inline[]; plain?: boolean }) {
@@ -449,7 +485,7 @@ export function Inlines({ xs, plain }: { xs: Inline[]; plain?: boolean }) {
         const c = getCard(x.id);
         // A planned card (not written yet; content:check warns) shows as plain words, with no tap target.
         if (!c) return <Fragment key={i}>{x.label ?? x.id}</Fragment>;
-        return <a key={i} className="akg-link" href={href.card(x.id, x.section ?? undefined)} onClick={(e) => jumpWithin(e, x.id, x.section)}>{x.label ?? c.title}</a>;
+        return <CardLink key={i} card={c} section={x.section} label={x.label ?? c.title} />;
       })}
     </>
   );

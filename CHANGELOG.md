@@ -2,6 +2,10 @@
 
 What changed in each version of Wards, newest first. The version is shown in Settings (gear on Home).
 
+## 2026.10.23.7
+
+**Three kinds of tappable text, three looks.** Information terms keep the gray dotted underline and open a sheet. Calculators are now a blue pill with a calculator symbol (scores that only link to MDCalc get the same pill with an outward arrow). Links to other cards are a blue pill with a document symbol; tapping one opens a sheet with the part of that card that fits where the link sits (for example Treatment from a treatment step) and a row to open the full card. Clinical wording is unchanged.
+
 ## 2026.10.23.6
 
 New Medication card: Ceftriaxone, with doses by indication, kidney and liver adjustments, administration, allergy guidance, adverse effects, interactions and monitoring.

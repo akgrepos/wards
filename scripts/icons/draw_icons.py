@@ -339,6 +339,13 @@ def quote_opening():  # quote.opening
     return U(mark(0), mark(8.2)).buffer(.2).buffer(-.2)
 
 
+def text_document():  # text.document (a page with a folded corner and two lines of text)
+    page = poly([(4.3, 2.6), (11.2, 2.6), (15.7, 7.1), (15.7, 17.4), (4.3, 17.4)], 1.5)
+    outline = page.difference(page.buffer(-W))
+    fold = line([(11.2, 3.4), (11.2, 7.1), (14.9, 7.1)])
+    return U(outline, fold, line([(7.4, 11), (12.6, 11)]), line([(7.4, 14), (12.6, 14)]))
+
+
 ICONS = {
     'house': house_fill, 'staroflifeFill': staroflife_fill, 'heartTextClipboard': heart_text_clipboard_fill,
     'crossCase': cross_case_fill, 'gearshape': gearshape,
@@ -351,7 +358,7 @@ ICONS = {
     'figureWalk': figure_walk, 'brainHeadProfile': brain_head_profile_fill,
     'bubbleLeftAndBubbleRight': bubble_left_and_bubble_right_fill, 'eye': eye_fill,
     'figureAndChildHoldinghands': figure_and_child_holdinghands, 'bedDouble': bed_double_fill,
-    'quoteOpening': quote_opening,
+    'quoteOpening': quote_opening, 'textDocument': text_document,
 }
 
 
