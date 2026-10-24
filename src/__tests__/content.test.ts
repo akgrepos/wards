@@ -14,7 +14,7 @@ function withCard(md: string, extra: AnyCard = {}) {
   const card = {
     file: 'test.md', id: 'test-card', type: 'condition', variant: null, system: 'renal', group: 'condition', subsection: 'Test Disorders',
     title: 'Test', aliases: [], related: {}, example: true, unknownSections: [], unknownSubsections: [],
-    definition: null, basedOn: [], reviewed: null,
+    definition: null, basedOn: [], reviewed: null, checked: null,
     sections: [{ key: 'at-a-glance', title: 'At a Glance', blocks: blocks(md), subsections: [] }],
     ...extra,
   };
@@ -139,7 +139,7 @@ describe('tappable cutoffs', () => {
     base.data.threshold['test-cut'] = { name: 'Potassium needing an urgent ECG', value: '≥6.0', unit: 'mEq/L', sources: ['example-guideline-a'], _file: 'test-cut.yaml', ...(note === undefined ? {} : { [field]: note }) };
     base.cards.push({
       file: 'test.md', id: 'test-card', type: 'condition', variant: null, system: 'renal', group: 'condition', subsection: 'Test Disorders',
-      title: 'Test', aliases: [], related: {}, example: true, unknownSections: [], unknownSubsections: [], definition: null, basedOn: [], reviewed: null,
+      title: 'Test', aliases: [], related: {}, example: true, unknownSections: [], unknownSubsections: [], definition: null, basedOn: [], reviewed: null, checked: null,
       sections: [{ key: 'at-a-glance', title: 'At a Glance', blocks: parseBlocks(kp(md).split('\n')), subsections: [] }],
     });
     return checkContent(base).join('\n');
@@ -189,7 +189,7 @@ describe('emergency (Do Now) sections', () => {
     const base = JSON.parse(JSON.stringify(real));
     base.cards.push({
       file: 'test.md', id: 'test-card', type: 'condition', variant: null, system: 'renal', group: 'condition', subsection: 'Test Disorders',
-      title: 'Test', aliases: [], related: {}, example: true, unknownSections: [], unknownSubsections: [], definition: null, basedOn: [], reviewed: null,
+      title: 'Test', aliases: [], related: {}, example: true, unknownSections: [], unknownSubsections: [], definition: null, basedOn: [], reviewed: null, checked: null,
       sections: [{ key: 'at-a-glance', title: 'At a Glance', blocks: steps(kp('')), subsections: [] }],
       emergency: { hint, blocks: steps(md) },
       ...extra,
@@ -273,7 +273,7 @@ describe('consistency rules', () => {
     const base = clone();
     base.cards.push({
       file: 'test.md', id: 'test-card', type: 'condition', variant: null, system: 'renal', group: 'condition', subsection: 'Electrolyte Disorders',
-      title: 'Test', aliases: [], related: {}, example: false, unknownSections: [], unknownSubsections: [], definition: null, basedOn: [], reviewed: null,
+      title: 'Test', aliases: [], related: {}, example: false, unknownSections: [], unknownSubsections: [], definition: null, basedOn: [], reviewed: null, checked: null,
       sections: [{ key: 'at-a-glance', title: 'At a Glance', blocks: parseBlocks(md.split('\n')), subsections: [] }], ...extra,
     });
     return base;
@@ -314,10 +314,29 @@ describe('consistency rules', () => {
     expect(warnings(planned)).toMatch(/planned links: \[\[not-written-yet\]\]/);
     expect(warnings(addCard({ related: { see: ['renal-aki'] } }))).toMatch(/test.md: related not reciprocal: renal-aki/);
   });
-  it('warns when reviewed is over 12 months old', () => {
-    const base = addCard({ reviewed: '2025-01-15' });
+  it('warns when checked is over 12 months old', () => {
+    const base = addCard({ checked: { date: '2025-01-15', by: 'owner', scope: 'owner review' } });
     expect(warnings(base, new Date('2026-01-14'))).not.toMatch(/months old/);
-    expect(warnings(base, new Date('2026-02-01'))).toMatch(/reviewed 2025-01-15 is over 12 months old/);
+    expect(warnings(base, new Date('2026-02-01'))).toMatch(/checked 2025-01-15 is over 12 months old/);
+  });
+  it('does not warn about age from the old reviewed date', () => {
+    expect(warnings(addCard({ reviewed: '2025-01-15' }), new Date('2026-06-01'))).not.toMatch(/months old/);
+  });
+  it('needs a checked stamp unless the draft is listed in unchecked.txt', () => {
+    const stamp = { date: '2026-10-24', by: 'opus', scope: 'doses and numbers' };
+    const withList = (extra: AnyCard, unchecked: string[] = []) => { const b = addCard(extra); b.unchecked = unchecked; return errorsOf(b); };
+    expect(withList({})).toMatch(/test.md: has no "checked" stamp/);
+    expect(withList({}, ['test-card'])).not.toMatch(/"checked" stamp/);
+    expect(withList({ checked: stamp })).not.toMatch(/checked/);
+    expect(withList({ checked: stamp }, ['test-card'])).toMatch(/listed in content\/unchecked.txt/);
+    expect(withList({ checked: { ...stamp, by: 'someone' } })).toMatch(/"by" must be one of opus, owner/);
+    expect(withList({ checked: { ...stamp, date: '24 Oct' } })).toMatch(/checked needs a date/);
+    expect(withList({ checked: { ...stamp, scope: null } })).toMatch(/needs a short "scope"/);
+  });
+  it('every real card has a checked stamp or is listed as a draft', () => {
+    const unchecked = (real as unknown as { unchecked: string[] }).unchecked;
+    const missing = real.cards.filter((c) => { const k = c as unknown as AnyCard; return !k.example && !k.checked && !unchecked.includes(k.id as string); });
+    expect(missing).toEqual([]);
   });
   it('warns when a Do Now dose is missing from Treatment', () => {
     const base = addCard({
@@ -336,7 +355,7 @@ describe('no semicolons', () => {
     const base = clone();
     base.cards.push({
       file: 'test.md', id: 'test-card', type: 'condition', variant: null, system: 'renal', group: 'condition', subsection: 'Electrolyte Disorders',
-      title: 'Test', aliases: [], related: {}, example: false, unknownSections: [], unknownSubsections: [], definition: null, basedOn: [], reviewed: null,
+      title: 'Test', aliases: [], related: {}, example: false, unknownSections: [], unknownSubsections: [], definition: null, basedOn: [], reviewed: null, checked: null,
       sections: [{ key: 'at-a-glance', title: 'At a Glance', blocks: parseBlocks(kp(line).split('\n')), subsections: [] }],
     });
     return checkContent(base).join('\n');
@@ -367,7 +386,7 @@ describe('no source text shown', () => {
     const base = JSON.parse(JSON.stringify(real));
     base.cards.push({
       file: 'test.md', id: 'test-card', type: 'condition', variant: null, system: 'renal', group: 'condition', subsection: 'Electrolyte Disorders',
-      title: 'Test', aliases: [], related: {}, example: false, unknownSections: [], unknownSubsections: [], definition: null, basedOn: [], reviewed: null,
+      title: 'Test', aliases: [], related: {}, example: false, unknownSections: [], unknownSubsections: [], definition: null, basedOn: [], reviewed: null, checked: null,
       sections: [{ key: 'at-a-glance', title: 'At a Glance', blocks: parseBlocks(md.split('\n')), subsections: [] }],
     });
     return checkContent(base).join('\n');

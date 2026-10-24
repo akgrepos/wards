@@ -202,6 +202,7 @@ export function parseCard(file, root) {
     basedOn: meta.based_on ?? [],
     emergency: emergencyLines ? { hint: meta.emergency_hint ?? null, blocks: parseBlocks(emergencyLines) } : null,
     emergencyHintOnly: !emergencyLines && meta.emergency_hint != null,
+    checked: parseChecked(meta.checked),
     reviewed: meta.reviewed ? String(meta.reviewed instanceof Date ? meta.reviewed.toISOString().slice(0, 10) : meta.reviewed) : null,
     unknownSections: unknown,
     unknownSubsections: unknownSub,
@@ -210,6 +211,20 @@ export function parseCard(file, root) {
       subsections: s.subsections.map((x) => ({ key: x.key, title: x.title, description: x.description, blocks: parseBlocks(x.lines) })),
     })),
   };
+}
+
+// The front matter "checked" stamp: { date, by, scope }. The date may arrive as a Date or a string; the checker validates the rest.
+function parseChecked(c) {
+  if (!c || typeof c !== 'object') return null;
+  const d = c.date instanceof Date ? c.date.toISOString().slice(0, 10) : c.date == null ? null : String(c.date);
+  return { date: d, by: c.by == null ? null : String(c.by), scope: c.scope == null ? null : String(c.scope) };
+}
+
+// content/unchecked.txt: ids of draft cards that may ship without a "checked" stamp (one per line, # for comments).
+function loadUnchecked(dir) {
+  const f = join(dir, 'unchecked.txt');
+  if (!existsSync(f)) return [];
+  return readFileSync(f, 'utf8').split('\n').map((l) => l.replace(/#.*/, '').trim()).filter(Boolean);
 }
 
 // Loads everything. includeExamples adds content/examples (development only; never shipped).
@@ -231,5 +246,5 @@ export function loadContent(root, { includeExamples = false } = {}) {
       }
     }
   }
-  return { systems, cards, data };
+  return { systems, cards, data, unchecked: loadUnchecked(dir) };
 }

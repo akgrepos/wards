@@ -15,7 +15,7 @@ import { NotFoundScreen } from './Tabs';
 
 const RELATED: [string, string][] = [['differential', 'Differential'], ['conditions', 'Conditions'], ['tools', 'Tools'], ['medications', 'Medications']];
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-const reviewedLabel = (d: string) => `Reviewed ${MONTHS[Number(d.slice(5, 7)) - 1]} ${d.slice(0, 4)}`;
+const checkedLabel = (d: string) => `Checked ${MONTHS[Number(d.slice(5, 7)) - 1]} ${Number(d.slice(8, 10))}, ${d.slice(0, 4)}`;
 
 // Each More Information subsection is remembered under its own name.
 const subKey = (key: string) => `more:${key}`;
@@ -199,7 +199,7 @@ export function CardScreen({ id, section, anchor }: { id: string; section?: stri
             <h1 ref={titleRef} className="ios-large-title-emphasized">{card.title}</h1>
             {card.definition && <p className="ios-callout secondary"><Inlines xs={card.definition.inlines} /><LinePill ids={card.definition.sources} quote={card.definition.inlines} /></p>}
             {/* No "Based on" line (owner, 2026-10-18): each section's source line and All Sources name the guidelines. */}
-            {card.reviewed && <p className="ios-caption-1 secondary">{reviewedLabel(card.reviewed)}</p>}
+            {card.checked && <p className="ios-caption-1 secondary">{checkedLabel(card.checked.date)}</p>}
             {/* The card's pathways (focused flowcharts that supplement it) open from under the title, one row each
                 (owner, 2026-10-20). */}
             <PathwayRows cardId={card.id} />

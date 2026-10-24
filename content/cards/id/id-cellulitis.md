@@ -8,6 +8,7 @@ aliases: [cellulitis, erysipelas, SSTI, skin and soft tissue infection, skin inf
 definition: "Acute bacterial infection of the dermis and subcutaneous tissue (cellulitis) or the upper dermis and superficial lymphatics (erysipelas), without abscess. ^[idsa-ssti-2014]"
 based_on: [idsa-ssti-2014]
 reviewed: 2026-10-19
+checked: { date: 2026-10-19, by: owner, scope: owner review }
 related:
   differential: []
   conditions: [id-cap, id-complicated-uti]

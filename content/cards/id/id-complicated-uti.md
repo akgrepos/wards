@@ -8,6 +8,7 @@ aliases: [pyelonephritis, pyelo, complicated UTI, cUTI, febrile UTI, upper UTI, 
 definition: "UTI extending beyond the bladder: fever, bacteremia or other systemic illness, flank pain or costovertebral angle tenderness. Includes pyelonephritis, catheter-associated UTI with systemic symptoms, and symptomatic UTI with a long-term catheter, stent or nephrostomy. ^[idsa-cuti-2025]"
 based_on: [idsa-cuti-selection-2025, idsa-cuti-ivpo-2025, idsa-cuti-duration-2025]
 reviewed: 2026-10-19
+checked: { date: 2026-10-19, by: owner, scope: owner review }
 related:
   differential: []
   conditions: [id-cap, id-cellulitis, renal-aki]

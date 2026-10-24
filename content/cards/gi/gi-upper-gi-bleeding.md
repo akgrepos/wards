@@ -8,6 +8,7 @@ aliases: [UGIB, upper GI bleed, GI bleed, GI bleeding, hematemesis, melena, coff
 definition: "Bleeding from a source proximal to the ligament of Treitz that is not from esophageal or gastric varices. Peptic ulcer disease is the most common cause. ^[acg-ugib-2021, esge-pub-2026]"
 based_on: [acg-ugib-2021, esge-pub-2026, icg-ugib-2019, acg-cag-antithrombotic-2022, aabb-rbc-2023]
 reviewed: 2026-10-21
+checked: { date: 2026-10-21, by: opus, scope: doses and numbers }
 related:
   conditions: [heme-anticoagulation-management, crit-sepsis, crit-hypoxemic-respiratory-failure, renal-aki, cardio-nste-acs]
   medications: [ceftriaxone]

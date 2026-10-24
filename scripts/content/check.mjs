@@ -1,7 +1,7 @@
 // Content checks, run on every pull request (npm run content:check) and in the tests.
 // Each rule comes from docs/CARD-TYPES.md and docs/DATA-TYPES.md.
 import { checkVerification } from './verification.mjs';
-import { CARD_TYPES, CALC_FIELDS, MDCALC_URL, DATA_TYPES, DOSE_FIELDS, CALC_FORMULAS, REGIMEN_FIELDS, REGIMEN_OPTION_FIELDS, SHARED_SECTIONS, UNITS, DOSE_IN_TEXT, MAX_TABLE_COLUMNS, WIDE_TABLE_EXCEPTIONS, MAX_ALIASES, REVIEW_MAX_AGE_MONTHS, MAX_INDICATION_LENGTH } from './schema.mjs';
+import { CARD_TYPES, CALC_FIELDS, MDCALC_URL, DATA_TYPES, DOSE_FIELDS, CALC_FORMULAS, REGIMEN_FIELDS, REGIMEN_OPTION_FIELDS, SHARED_SECTIONS, UNITS, DOSE_IN_TEXT, MAX_TABLE_COLUMNS, WIDE_TABLE_EXCEPTIONS, MAX_ALIASES, REVIEW_MAX_AGE_MONTHS, CHECKED_BY, MAX_INDICATION_LENGTH } from './schema.mjs';
 import { TAGS, parseInline } from './inline.mjs';
 import { onsetMinutes } from './onset.mjs';
 import { emergencySteps, offsetMinutes, stepDoses } from './emergency.mjs';
@@ -125,7 +125,7 @@ export function calcMatcher(calcs) {
 
 const CONTAINERS = { scale: [2, 5], compare: [2, 3], times: [1, 12], onset: [2, 12], note: [1, 3] };
 
-export function checkContent({ systems, cards, data }) {
+export function checkContent({ systems, cards, data, unchecked = [] }) {
   const errors = [];
   const err = (where, msg) => errors.push(`${where}: ${msg}`);
   const systemIds = new Set(systems.map((s) => s.id));
@@ -198,6 +198,15 @@ export function checkContent({ systems, cards, data }) {
       if (!c.reviewed) err(where, 'topic pages need a "reviewed" date (YYYY-MM-DD) in the front matter');
     }
     if (c.reviewed && !/^\d{4}-\d{2}-\d{2}$/.test(c.reviewed)) err(where, `reviewed date "${c.reviewed}" must be YYYY-MM-DD`);
+    // The "checked" stamp: who verified the card's doses, numbers and care-changing claims, when, and on what scope.
+    if (c.checked) {
+      if (!c.checked.date || !/^\d{4}-\d{2}-\d{2}$/.test(c.checked.date)) err(where, 'checked needs a date (YYYY-MM-DD)');
+      if (!CHECKED_BY.includes(c.checked.by)) err(where, `checked "by" must be one of ${CHECKED_BY.join(', ')}`);
+      if (!c.checked.scope) err(where, 'checked needs a short "scope", for example "doses and numbers"');
+    } else if (!c.example && !unchecked.includes(c.id)) {
+      err(where, 'has no "checked" stamp in the front matter; get the Opus check, or list the draft in content/unchecked.txt until then (docs/CARD-WRITING-CHEATSHEET.md, "Checked")');
+    }
+    if (c.checked && unchecked.includes(c.id)) err(where, 'is listed in content/unchecked.txt but has a "checked" stamp; remove it from the list');
     if (c.definition) {
       if (!c.definition.sources.length) err(where, 'the definition has no source');
       for (const id of c.definition.sources) if (!data.source?.[id]) err(where, `the definition cites unknown source "${id}"`);
@@ -439,9 +448,9 @@ export function checkWarnings({ cards, data }, { today = new Date() } = {}) {
     // Related cards point both ways.
     const missing = [...new Set(Object.values(c.related ?? {}).flat())].filter((id) => byId.has(id) && !Object.values(byId.get(id).related ?? {}).flat().includes(c.id));
     if (missing.length) warn(c.file, `related not reciprocal: ${missing.join(', ')} ${missing.length === 1 ? 'does' : 'do'} not list this card back (docs/CONTENT-FORMAT.md, "Consistency rules")`);
-    if (c.reviewed && /^\d{4}-\d{2}-\d{2}$/.test(c.reviewed)) {
+    if (c.checked?.date && /^\d{4}-\d{2}-\d{2}$/.test(c.checked.date)) {
       const limit = new Date(today); limit.setMonth(limit.getMonth() - REVIEW_MAX_AGE_MONTHS);
-      if (new Date(c.reviewed) < limit) warn(c.file, `reviewed ${c.reviewed} is over ${REVIEW_MAX_AGE_MONTHS} months old; re-check the card against the newest guidelines and update the date (docs/CONTENT-FORMAT.md, "Consistency rules")`);
+      if (new Date(c.checked.date) < limit) warn(c.file, `checked ${c.checked.date} is over ${REVIEW_MAX_AGE_MONTHS} months old; re-check the card against the newest guidelines and update the date (docs/CONTENT-FORMAT.md, "Consistency rules")`);
     }
     // Every dose in Do Now should also be in Treatment, so the page and the emergency never disagree.
     const treatment = c.sections.find((s) => s.key === 'treatment');

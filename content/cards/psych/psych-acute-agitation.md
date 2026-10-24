@@ -8,6 +8,7 @@ definition: "A state of heightened psychomotor arousal, from restlessness to thr
 emergency_hint: Safety, glucose and oxygen, de-escalate, medicate
 based_on: [aaep-beta-medical-2012, aaep-beta-deescalation-2012, aaep-beta-psychopharm-2012, aaep-beta-restraint-2012, acep-severe-agitation-2023, apa-delirium-2025, cms-restraint-482-13]
 reviewed: 2026-10-23
+checked: { date: 2026-10-23, by: opus, scope: doses and numbers }
 related:
   differential: [neuro-delirium, neuro-alcohol-withdrawal]
   conditions: [crit-hypoxemic-respiratory-failure, renal-hyponatremia, crit-sepsis, id-complicated-uti, hosp-pain-management]

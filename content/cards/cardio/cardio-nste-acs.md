@@ -8,6 +8,7 @@ aliases: [NSTE-ACS, NSTEMI, non-ST-elevation myocardial infarction, unstable ang
 definition: "Acute myocardial ischemia without persistent ST-segment elevation: NSTEMI with acute myocardial injury (a rise and/or fall of cardiac troponin, at least one value above the sex-specific 99th percentile), unstable angina without it. ^[acc-aha-acs-2025, udmi-2026]"
 based_on: [acc-aha-acs-2025, esc-acs-2023]
 reviewed: 2026-10-20
+checked: { date: 2026-10-20, by: owner, scope: owner review }
 related:
   differential: []
   conditions: [cardio-atrial-fibrillation, cardio-adhf]

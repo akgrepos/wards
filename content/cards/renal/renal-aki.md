@@ -7,6 +7,7 @@ aliases: [AKI, acute renal failure, ARF, rising creatinine, creatinine up, oligu
 definition: "Abrupt decrease in kidney function, defined and staged by {{criteria:kdigo-aki}}. ^[kdigo-aki-2012]"
 based_on: [kdigo-aki-2012, nice-aki-2024]
 reviewed: 2026-10-17
+checked: { date: 2026-10-17, by: owner, scope: owner review }
 related:
   conditions: [renal-hyperkalemia]
 ---

@@ -189,7 +189,9 @@ export const WIDE_TABLE_EXCEPTIONS = { 'renal-iv-fluids': ['Choosing an Option']
 
 // A card with more aliases than this is probably padded (alias bloat); content:check warns.
 export const MAX_ALIASES = 30;
-// A card's "reviewed" date older than this many months is flagged for a fresh look.
+// Who may be named in a card's "checked" stamp: an independent Opus helper, or the owner.
+export const CHECKED_BY = ['opus', 'owner'];
+// A card's "checked" date older than this many months is flagged for a fresh look.
 export const REVIEW_MAX_AGE_MONTHS = 12;
 
 export const CARD_GROUPS = ['approach', 'condition', 'reference'];

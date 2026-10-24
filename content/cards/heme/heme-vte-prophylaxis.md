@@ -7,6 +7,7 @@ aliases: [VTE prophylaxis, DVT prophylaxis, thromboprophylaxis, DVT ppx, blood c
 definition: "Preventing deep vein thrombosis and pulmonary embolism in hospitalized medical and surgical patients by assessing thrombotic and bleeding risk on admission, then choosing pharmacologic prophylaxis (low-molecular-weight heparin, unfractionated heparin or fondaparinux), mechanical prophylaxis, or neither. ^[ash-vte-medical-prophylaxis-2018, ash-vte-surgical-2019, nice-ng89-2018]"
 based_on: [ash-vte-medical-prophylaxis-2018, ash-vte-surgical-2019, chest-prophylaxis-medical-2012, chest-prophylaxis-surgical-2012, nice-ng89-2018, label-lovenox-2026]
 reviewed: 2026-10-22
+checked: { date: 2026-10-22, by: opus, scope: doses and numbers }
 related:
   conditions: [heme-anticoagulation-management, pulm-vte-diagnosis, crit-sepsis, cardio-atrial-fibrillation]
 ---

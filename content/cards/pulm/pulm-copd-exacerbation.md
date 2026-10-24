@@ -8,6 +8,7 @@ aliases: [AECOPD, acute exacerbation of COPD, COPD flare, emphysema exacerbation
 definition: "Worsening dyspnea and/or cough and sputum over up to 14 days in COPD, often with tachypnea or tachycardia, usually from infection or another airway insult. ^[gold-copd-2026]"
 based_on: [gold-copd-2026, ers-ats-copd-exacerbation-2017, ats-nirs-2026]
 reviewed: 2026-10-21
+checked: { date: 2026-10-21, by: owner, scope: owner review }
 related:
   differential: [id-cap, cardio-adhf, pulm-vte-diagnosis]
   conditions: [crit-hypoxemic-respiratory-failure, cardio-atrial-fibrillation, cardio-nste-acs]

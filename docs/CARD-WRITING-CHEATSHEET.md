@@ -3,7 +3,7 @@
 The essentials for writing or fixing a card. Read this first; open the full guides only when this doesn't answer it: [CARD-TYPES.md](CARD-TYPES.md) (sections per type), [DATA-TYPES.md](DATA-TYPES.md) (data fields), [CONTENT-FORMAT.md](CONTENT-FORMAT.md) (file syntax). `npm run content:check` enforces all of it.
 
 ## Files
-- Card: `content/cards/<system>/<card-id>.md` (front matter: `id`, `type`, `variant`, `system`, `title`, `aliases`, `subsection` (condition), `definition` with source, `reviewed`, `related`).
+- Card: `content/cards/<system>/<card-id>.md` (front matter: `id`, `type`, `variant`, `system`, `title`, `aliases`, `subsection` (condition), `definition` with source, `reviewed`, `checked`, `related`).
 - Shared data: `content/data/<type>/<id>.yaml` (source, dose, threshold, criteria, regimen, pathway, calc, media). Each fact has one home; cards insert it, never retype it.
 - Every dose, and every calc with a `calculator` block, ends with a `verification:` note (`read`: fda-label, full-text, abstract, common-practice or not-verified; `source`; `date`). Say how it was really read; DATA-TYPES "Verification note".
 
@@ -37,9 +37,11 @@ The essentials for writing or fixing a card. Read this first; open the full guid
 - `subsection` must be in the system's list in `content/systems.yaml` (add the name there first).
 - `[!cannot-miss]` / `[!most-common]` only on causes in Causes; never name a category "Cannot miss" or "Most common".
 - **Table symbols:** `↑` high/raised, `↓` low, `=` normal, `↕` variable, `< > ≤ ≥` for thresholds (`<100`, not "below 100"). Tables only, never for names like "low-risk" or "high-gap". Details: CONTENT-FORMAT.
+- **Checked.** A card is Checked when the owner or an independent Opus helper verified its doses, numbers and care-changing claims against sources. The Opus step adds `checked: { date: <today>, by: opus, scope: "doses and numbers" }` to the front matter; the header then reads "Checked <date>". Never stamp a card nobody checked.
+- A draft that is not yet checked has its id in `content/unchecked.txt` (`npm run card:new` adds it). The Opus step removes the line and adds the stamp; `content:check` fails a card with neither.
 - Tables: at most 4 columns. `[[card]]` to an unwritten card is allowed (warning, shows as plain text). Related cards go both ways.
 - **No semicolons** anywhere in card or data text (error). Clause join: two sentences (`Calcium buys time. It lowers no K⁺.`). List: lead-in with a colon plus sub-bullets, each with the source. Table cell: short sentences.
-- Warnings: unused source, `reviewed` over 12 months, a Do Now dose missing from Treatment.
+- Warnings: unused source, `checked` over 12 months, a Do Now dose missing from Treatment.
 
 ## Pathways (`content/data/pathway/<id>.yaml`)
 Decision tree for one task: `title`, `card`, `summary`, `columns`, `start`, `sources`, `nodes` with `kind` (start, do, urgent, note, question, result), `at: [col, row]`, `next`; a `question` has `answers` (`label`, `at`, `to`) in the row below it. Details: CONTENT-FORMAT "Pathways".

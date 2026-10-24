@@ -8,6 +8,7 @@ aliases: [high potassium, potassium high, K high, hyperK]
 definition: "Commonly K⁺ ≥5.5 mEq/L. Cutoffs vary by laboratory and by serum vs plasma. ^[kdigo-acute-hyperkalemia-2020]"
 based_on: [ukka-hyperkalaemia-2026, kdigo-acute-hyperkalemia-2020]
 reviewed: 2026-10-17
+checked: { date: 2026-10-24, by: opus, scope: doses and numbers }
 related:
   conditions: [renal-aki]
 emergency_hint: Calcium, insulin-dextrose, remove K⁺

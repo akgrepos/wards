@@ -8,6 +8,7 @@ aliases: [low potassium, potassium low, K low, hypoK, hypokalaemia]
 definition: "K⁺ <3.5 mEq/L. ^[kardalas-hypokalemia-2018]"
 based_on: [kardalas-hypokalemia-2018, asmar-hypokalemia-2012]
 reviewed: 2026-10-19
+checked: { date: 2026-10-19, by: owner, scope: owner review }
 related:
   differential: []
   conditions: [renal-hyperkalemia, renal-hyponatremia]

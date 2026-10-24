@@ -8,6 +8,7 @@ aliases: [AF, AFib, A-fib, atrial fib, AF with RVR, rapid ventricular response, 
 definition: "Supraventricular tachyarrhythmia with uncoordinated atrial activation: irregularly irregular R-R intervals without distinct P waves, documented on ECG (ESC: at least 30 seconds, or a full 12-lead ECG). ^[acc-aha-af-2023, esc-af-2024]"
 based_on: [acc-aha-af-2023, esc-af-2024]
 reviewed: 2026-10-20
+checked: { date: 2026-10-20, by: owner, scope: owner review }
 related:
   differential: []
   conditions: [cardio-adhf, cardio-nste-acs]
