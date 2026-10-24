@@ -2,6 +2,10 @@
 
 What changed in each version of Wards, newest first. The version is shown in Settings (gear on Home).
 
+## 2026.10.23.6
+
+New Medication card: Ceftriaxone, with doses by indication, kidney and liver adjustments, administration, allergy guidance, adverse effects, interactions and monitoring.
+
 ## 2026.10.23.5
 
 **Tables: symbols and a fix.** Tables now use symbols to save space: ↑ for high or raised, ↓ for low, = for normal, ↕ for variable, and < > ≤ ≥ for cutoffs (for example the iron studies and hemolysis tables on Anemia, and the Acid-Base tables). Also fixed: small gray source codes were showing as text in the middle of some table rows (Acid-Base Patterns, Anticoagulation Choosing a Drug). Sources now sit at the end of each row, and the content check rejects them anywhere else. Wording, doses and numbers are unchanged.
