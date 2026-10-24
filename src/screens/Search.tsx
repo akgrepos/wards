@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { AKG } from '../design/akg';
-import { cardTypeLabel, getCard, getSystem, searchCards } from '../content';
+import { cardTypeLabel, getSystem, searchCards } from '../content';
 import type { Card } from '../content/types';
 import { goBack, href, rememberQuery, rememberedQuery } from '../router';
 import { addSearch, clearSearches, getSearches, useStored } from '../storage';
@@ -64,6 +64,7 @@ export function SearchScreen() {
           {!q.trim() ? (
             <AKG.List
               header="Recent Searches"
+              headerStyle="prominent"
               headerAction={searches.length ? <AKG.Button variant="borderless" onClick={clearSearches}>Clear</AKG.Button> : undefined}
             >
               {searches.length === 0 ? (
