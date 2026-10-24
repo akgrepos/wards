@@ -15,7 +15,6 @@
     "content:check": "node scripts/content/cli.mjs",
     "release": "node scripts/release.mjs",
     "card:new": "node scripts/card-new.mjs",
-    "preview:shot": "node scripts/preview-shot.mjs",
     "status": "node scripts/status.mjs",
     "wait-live": "node scripts/wait-live.mjs",
     "sim-check": "node scripts/sim-check.mjs",
