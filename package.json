@@ -22,7 +22,9 @@
     "tidy": "node scripts/tidy.mjs",
     "docs:check": "node scripts/docs-check.mjs",
     "review:check": "node scripts/review-check.mjs",
-    "review:packets": "node scripts/review-packets.mjs"
+    "review:packets": "node scripts/review-packets.mjs",
+    "review:oe-batches": "node scripts/review-oe-batches.mjs",
+    "review:oe-read": "node scripts/review-oe-read.mjs"
   },
   "dependencies": {
     "react": "^19.3.1",
