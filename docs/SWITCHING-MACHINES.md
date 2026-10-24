@@ -1,6 +1,6 @@
 # Switching machines (Windows PC and Mac)
 
-For the owner. Reference only; nothing here runs on its own. Since 2026-10-23 the Windows PC is the main machine; the Mac is the fallback if the owner switches back. Everything in the repo goes through GitHub, so it travels by itself. Three things do **not**: the Claude skills, the Claude memory, and `~/Documents/Wards-reference/`.
+For the owner. Reference only; nothing here runs on its own. The owner returned to the Mac permanently on 2026-10-24 and will not use Windows again; this file is kept as the one-time hand-off steps. Everything in the repo goes through GitHub, so it travels by itself. Three things do **not**: the Claude skills, the Claude memory, and `~/Documents/Wards-reference/`.
 
 ## Going from the PC back to the Mac
 1. On the PC, tell Claude "wrap up". It finishes or parks work and updates `docs/STATUS.md`.
