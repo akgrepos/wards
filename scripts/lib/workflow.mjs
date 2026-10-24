@@ -90,3 +90,12 @@ export async function liveVersion() {
     return { bundle: null, versions: [] }
   }
 }
+
+// What the version part of sim-check should do, given the screen text and the version on origin/main.
+// Returns { step: 'update' | 'open-settings' | 'ok' | 'mismatch', shown }.
+export function versionStep(plain, want) {
+  if (/Update Ready/i.test(plain)) return { step: 'update', shown: null }
+  const shown = (plain.match(/\b\d{4}\.\d{2}\.\d{2}(?:\.\d+)?\b/) ?? [null])[0]
+  if (!shown) return { step: 'open-settings', shown: null }
+  return { step: shown === want ? 'ok' : 'mismatch', shown }
+}
