@@ -9,6 +9,7 @@ reviewed: 2026-10-21
 related:
   conditions: [id-cap, id-cellulitis, id-complicated-uti, crit-sepsis]
   tools: [renal-aki]
+  medications: [ceftriaxone]
 ---
 ## At a Glance
 - Cultures first (blood, source), then start the empiric regimen without delay when septic. Narrow at 48–72 hours to the cultures and the source. ^[ssc-sepsis-2026, common-practice]

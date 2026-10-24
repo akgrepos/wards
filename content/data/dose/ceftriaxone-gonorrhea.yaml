@@ -1,0 +1,21 @@
+drug: ceftriaxone
+drug_name: Ceftriaxone
+indication: Uncomplicated gonorrhea (urethral, cervical, rectal or pharyngeal)
+population: Adults under 150 kg
+route: IM
+amount: "500"
+unit: mg
+frequency: once
+boxed_warning: None
+adjustments:
+  - when: Weight ≥150 kg
+    change: 1 g IM once
+cautions:
+  - Add doxycycline for 7 days if chlamydia is not excluded.
+  - Ceftriaxone has no activity against Chlamydia trachomatis.
+notes: "No reliable alternative exists for pharyngeal gonorrhea. For cephalosporin allergy, the guideline offers gentamicin plus azithromycin."
+sources: [cdc-sti-2021, label-ceftriaxone-2026]
+verification:
+  source: cdc-sti-2021
+  read: full-text
+  date: 2026-10-23

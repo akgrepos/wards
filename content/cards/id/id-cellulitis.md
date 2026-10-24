@@ -12,6 +12,7 @@ related:
   differential: []
   conditions: [id-cap, id-complicated-uti]
   tools: []
+  medications: [ceftriaxone]
 ---
 ## At a Glance
 - Clinical diagnosis. About 1 in 3 leg cellulitis admissions is a mimic (bilateral leg redness is rarely cellulitis). ^[weng-misdiagnosed-cellulitis-2017, raff-cellulitis-2016]

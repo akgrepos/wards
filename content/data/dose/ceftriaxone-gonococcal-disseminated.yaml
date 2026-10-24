@@ -1,0 +1,18 @@
+drug: ceftriaxone
+drug_name: Ceftriaxone
+indication: Disseminated gonococcal infection (arthritis and dermatitis syndrome)
+population: Adults
+route: IV or IM
+amount: "1"
+unit: g
+frequency: every 24 hours
+duration: At least 7 days in total. May switch to an oral agent 24–48 hours after substantial improvement, guided by susceptibility testing.
+boxed_warning: None
+cautions:
+  - Add doxycycline if chlamydia is not excluded.
+  - "Gonococcal meningitis or endocarditis: 1–2 g IV every 24 hours, 10–14 days for meningitis and more than 4 weeks for endocarditis, set with infectious diseases."
+sources: [cdc-sti-2021, label-ceftriaxone-2026]
+verification:
+  source: cdc-sti-2021
+  read: full-text
+  date: 2026-10-23

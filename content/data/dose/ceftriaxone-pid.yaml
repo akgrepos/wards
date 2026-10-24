@@ -1,0 +1,18 @@
+drug: ceftriaxone
+drug_name: Ceftriaxone
+indication: Pelvic inflammatory disease needing parenteral therapy (with doxycycline and metronidazole)
+population: Adults
+route: IV
+amount: "1"
+unit: g
+frequency: every 24 hours
+duration: Switch to oral therapy after clinical improvement. Complete 14 days in total.
+boxed_warning: None
+cautions:
+  - Ceftriaxone has no activity against Chlamydia trachomatis. Doxycycline and metronidazole are part of the regimen.
+notes: "Outpatient regimen: 500 mg IM once (1 g if ≥150 kg), plus doxycycline and metronidazole for 14 days."
+sources: [cdc-sti-2021, label-ceftriaxone-2026]
+verification:
+  source: cdc-sti-2021
+  read: full-text
+  date: 2026-10-23

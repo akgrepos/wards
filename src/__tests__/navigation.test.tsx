@@ -141,7 +141,7 @@ describe('tabs', () => {
     launch('#/library/criteria');
     render(<App />);
     expect(screen.getByText('Medscape Drug Interaction Checker')).toBeTruthy();
-    expect(screen.queryByText('Medications')).toBeNull();
+    expect(screen.getByText('Medications')).toBeTruthy(); // shown now that the Ceftriaxone medication card exists
     expect(screen.queryByText('Criteria and Staging')).toBeNull();
     expect(screen.queryByText('Scores and Calculators')).toBeNull();
   });
