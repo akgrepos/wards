@@ -88,7 +88,7 @@ describe('Rapids addresses', () => {
     setRapidShortcuts(['cardio-atrial-fibrillation', 'pulm-copd-exacerbation', 'endo-dka', HK]);
     launch('#/');
     render(<App />);
-    expect(screen.getByText('Calcium, insulin-dextrose, remove K⁺').closest('a')!.getAttribute('href')).toBe(`#/emergency/${HK}`);
+    expect(screen.getByText('Hyperkalemia').closest('a')!.getAttribute('href')).toBe(`#/emergency/${HK}`);
     await act(async () => { fireEvent.click(screen.getByRole('button', { name: 'Edit' })); });
     const sheet = screen.getByRole('dialog');
     await act(async () => { fireEvent.click(within(sheet).getByText('Hyperkalemia')); });
@@ -97,7 +97,7 @@ describe('Rapids addresses', () => {
     await act(async () => { fireEvent.click(within(sheet).getByText('COPD Exacerbation')); });
     await act(async () => { fireEvent.click(within(sheet).getByText('Atrial Fibrillation')); });
     expect(getRapidShortcuts()).toEqual([]);
-    expect(screen.getByText('No Shortcuts')).toBeTruthy();
+    expect(screen.getByText('Tap Edit to choose up to four.')).toBeTruthy();
   });
 });
 
