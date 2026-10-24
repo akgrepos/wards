@@ -3,14 +3,7 @@
 // `text` a piece of the problem message (usually the quoted text), `reason` why it is allowed.
 // Remove an entry once the notes are fixed; the check tells you when an entry no longer matches anything.
 
-export const ALLOW = [
-  {
-    rule: 'broken-reference',
-    file: 'CLAUDE.md',
-    text: 'project/README.md',
-    reason: 'A file inside the design system artifact (not in this repo).',
-  },
-]
+export const ALLOW = []
 
 // DECISIONS rows dated before this day are never flagged for length.
 export const DECISIONS_LENGTH_FROM = '2026-10-24'
