@@ -201,7 +201,6 @@ function DoseSection({ title, children }: { title: string; children: ReactNode }
 
 function DoseSheet({ id }: { id: string }) {
   const sheet = useSheet();
-  const [open, setOpen] = useState(false);
   const d = doseItem(id);
   if (!d) return null;
   const alt = d.alternative ? doseItem(d.alternative.dose) : undefined;
@@ -220,9 +219,7 @@ function DoseSheet({ id }: { id: string }) {
         {who && <p className="ios-subheadline">{who}</p>}
         <p className="ios-title-2-emphasized">{amountWithUnit(d.amount, d.unit)}</p>
         {d.frequency && <p className="ios-subheadline secondary">{d.frequency}</p>}
-        <SourcePills ids={d.sources} expanded={open} onOpen={() => setOpen(!open)} />
       </div>
-      {open && <div className="dose-cites"><SourceList ids={d.sources} /><MarkerNotes ids={d.sources} /></div>}
       {d.indication_detail && <DoseSection title="Indication"><p className="ios-body">{d.indication_detail}</p></DoseSection>}
       {d.give_when && <DoseSection title="Give when"><p className="ios-body">{d.give_when}</p></DoseSection>}
       {facts.some(([, v]) => v) && (
@@ -260,6 +257,7 @@ function DoseSheet({ id }: { id: string }) {
         />
         {d.drug && getCard(d.drug) && <AKG.ListRow title={`Open ${getCard(d.drug)!.title}`} chevron href={href.card(d.drug)} />}
       </AKG.List>
+      <SheetSources ids={d.sources} />
     </div>
   );
 }
