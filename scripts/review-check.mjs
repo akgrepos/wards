@@ -77,9 +77,15 @@ function isWord(u) { return !KNOWN_UNITS.has(u) }
 export function checkLedger({ ledger, texts }) {
   const failures = []
   const counts = { total: 0, match: 0, mismatch: 0, partial: 0, 'no-support': 0, ownerChecked: 0 }
+  counts.oe = { checked: 0, byVerdict: {}, flagged: [] }
   const fail = (e, rule, message) => failures.push({ id: e.id, where: e.where, claim: e.claim, quote: e.quote, rule, message })
   for (const e of ledger.entries ?? []) {
     counts.total++
+    if (e.oe?.verdict) {
+      counts.oe.checked++
+      counts.oe.byVerdict[e.oe.verdict] = (counts.oe.byVerdict[e.oe.verdict] ?? 0) + 1
+      if (e.oe.verdict !== 'Supported') counts.oe.flagged.push({ id: e.id, verdict: e.oe.verdict })
+    }
     if (!STATUSES.includes(e.status)) { fail(e, 'bad-status', `status must be one of ${STATUSES.join(', ')}`); continue }
     counts[e.status]++
     if (e.status !== 'match' && !String(e.note ?? '').trim()) fail(e, 'missing-note', `a ${e.status} entry needs a note`)
@@ -111,6 +117,12 @@ export function loadTexts(libDir, ledger) {
 
 export function report({ counts, failures }, card) {
   const lines = [`review:check ${card}: ${counts.total} entries (match ${counts.match}, partial ${counts.partial}, mismatch ${counts.mismatch}, no-support ${counts['no-support']}; owner-checked, no quote ${counts.ownerChecked}).`]
+  const oe = counts.oe
+  if (oe) {
+    const parts = Object.entries(oe.byVerdict).map(([v, n]) => `${v} ${n}`)
+    lines.push(`OpenEvidence check: ${oe.checked} of ${counts.total} entries have a verdict${parts.length ? ` (${parts.join(', ')})` : ''}.`)
+    if (oe.flagged.length) lines.push(`  Not plain Supported: ${oe.flagged.map((f) => `${f.id} (${f.verdict})`).join(', ')}`)
+  }
   for (const f of failures) {
     lines.push('', `FAIL [${f.rule}] ${f.id}`, `  where: ${f.where}`, `  claim: ${f.claim}`, `  quote: ${f.quote || '(none)'}`, `  ${f.message}`)
   }
