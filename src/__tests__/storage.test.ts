@@ -1,10 +1,10 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import { addRecent, clearRecent, getRecent, RECENT_MAX } from '../storage';
+import { addRecent, addSearch, clearRecent, clearSearches, getRecent, getSearches, RECENT_MAX, SEARCHES_MAX } from '../storage';
 import { updateFailed } from '../UpdatePrompt';
 
 vi.mock('virtual:pwa-register/react', () => ({ useRegisterSW: () => ({ needRefresh: [false], updateServiceWorker: () => {} }) }));
 
-beforeEach(() => { localStorage.clear(); clearRecent(); });
+beforeEach(() => { localStorage.clear(); clearRecent(); clearSearches(); });
 
 describe('stored lists (on this phone only)', () => {
   it('forgets the Favorites list an earlier version saved', async () => {
@@ -19,6 +19,18 @@ describe('stored lists (on this phone only)', () => {
     addRecent('card-5', 100);
     expect(getRecent().map((r) => r.id)).toEqual(['card-5', 'card-7', 'card-6', 'card-4', 'card-3']);
     expect(getRecent()).toHaveLength(RECENT_MAX);
+  });
+
+  it('Recent Searches keeps the last ten typed, newest first, each once', () => {
+    for (let i = 1; i <= 12; i++) addSearch(`query ${i}`);
+    addSearch('Query 5');
+    expect(getSearches()).toHaveLength(SEARCHES_MAX);
+    expect(getSearches().slice(0, 3)).toEqual(['Query 5', 'query 12', 'query 11']);
+    addSearch('a');
+    addSearch('  ');
+    expect(getSearches()).not.toContain('a');
+    clearSearches();
+    expect(getSearches()).toEqual([]);
   });
 
   it('ignores damaged saved data', () => {

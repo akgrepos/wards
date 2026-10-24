@@ -1,5 +1,6 @@
 // Settings for `npm run look` (scripts/look.mjs). Add a page by adding one line to ROUTES.
 // A route is { name, hash, steps? }. hash is the part after the address, e.g. '#/card/renal-aki'.
+// storage (optional) is saved lists to set before looking, e.g. { 'wards:searches': ['AKI'] }.
 // steps (optional) are taps to do after the page opens: { click: 'button text' } waits for a button with that text.
 
 export const ROUTES = [
@@ -13,7 +14,8 @@ export const ROUTES = [
   { name: 'rapids-dka-timed', hash: '#/emergency/endo-dka', steps: [{ click: 'Start Timed Mode' }] },
   { name: 'pathway-aki-cause', hash: '#/pathway/aki-cause-workup' },
   { name: 'search', hash: '#/search' },
-  { name: 'search-typed', hash: '#/search', steps: [{ click: 'hyperK' }] },
+  { name: 'search-recent', hash: '#/search', storage: { 'wards:searches': ['hyperK', 'AKI', 'GI bleed'] } },
+  { name: 'search-typed', hash: '#/search', storage: { 'wards:searches': ['hyperK'] }, steps: [{ click: 'hyperK' }] },
   { name: 'library', hash: '#/library' },
   { name: 'settings', hash: '#/settings' },
 ]

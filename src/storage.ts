@@ -4,8 +4,9 @@ import { useSyncExternalStore } from 'react';
 // (private browsing, storage full); the app then works without them.
 export type Recent = { id: string; t: number };
 
-const KEYS = { recent: 'wards:recent', scroll: 'wards:scroll', rapids: 'wards:rapids', timed: 'wards:timed' } as const;
+const KEYS = { recent: 'wards:recent', searches: 'wards:searches', scroll: 'wards:scroll', rapids: 'wards:rapids', timed: 'wards:timed' } as const;
 export const RECENT_MAX = 5;
+export const SEARCHES_MAX = 10;
 
 function read<T>(key: string, fallback: T, valid: (v: unknown) => boolean): T {
   try {
@@ -51,6 +52,15 @@ export function addRecent(id: string, now = Date.now()) {
   write(KEYS.recent, [{ id, t: now }, ...getRecent().filter((r) => r.id !== id)].slice(0, RECENT_MAX));
 }
 export const clearRecent = () => write(KEYS.recent, null);
+
+// The last ten searches typed, newest first, each once (compared without regard to case). Only the typed text is kept.
+export const getSearches = () => cached<string[]>(KEYS.searches, () => read(KEYS.searches, [], isStrings));
+export function addSearch(query: string) {
+  const q = query.trim().replace(/\s+/g, ' ');
+  if (q.length < 2) return;
+  write(KEYS.searches, [q, ...getSearches().filter((s) => s.toLowerCase() !== q.toLowerCase())].slice(0, SEARCHES_MAX));
+}
+export const clearSearches = () => write(KEYS.searches, null);
 
 // Where each topic page was scrolled to, so opening it again returns to the same place (audit 2026-10-17).
 // The 30 most recent pages are kept. Not shared with the lists above, so no re-render on every scroll.
