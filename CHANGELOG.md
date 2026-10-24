@@ -2,6 +2,10 @@
 
 What changed in each version of Wards, newest first. The version is shown in Settings (gear on Topics).
 
+## 2026.10.24.7
+
+Card link pop-ups now show the linked card's title, and MDCalc links inside sentences look like card links with a small outward arrow.
+
 ## 2026.10.24.6
 
 Search now lists your recent searches (the last 10 you typed) instead of suggestions, with Clear.
