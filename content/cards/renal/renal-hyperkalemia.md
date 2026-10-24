@@ -154,7 +154,7 @@ emergency_hint: Calcium, insulin-dextrose, remove K⁺
    {{dose:patiromer-hyperkalemia}}
 
    - Calcium polystyrene sulfonate: no longer routine for acute hyperkalemia (UK guideline). ^[ukka-hyperkalaemia-2026]
-   - Never sodium polystyrene sulfonate with sorbitol. ^[kdigo-acute-hyperkalemia-2020]
+   - Do not give sodium polystyrene sulfonate with sorbitol (intestinal necrosis). ^[kdigo-acute-hyperkalemia-2020]
    - Non-oliguric, especially with volume overload: IV furosemide. ^[kdigo-acute-hyperkalemia-2020, emcreg-hyperkalemia-2025]
 
    {{dose:furosemide-hyperkalemia}}
@@ -191,7 +191,7 @@ emergency_hint: Calcium, insulin-dextrose, remove K⁺
 ## Escalation
 - Severe hyperkalemia: urgent renal or critical care opinion, guided by the clinical picture. ^[ukka-hyperkalaemia-2026]
 - Nephrology: maintenance dialysis, refractory hyperkalemia, hyperkalemia with AKI. ^[ukka-hyperkalaemia-2026, kdigo-acute-hyperkalemia-2020]
-- Critical care: airway, breathing, circulation or consciousness compromise, or need for escalation. ^[ukka-hyperkalaemia-2026]
+- Critical care: severe hyperkalemia with airway, breathing, circulation or consciousness compromise. Also if escalation is needed or initial treatment fails. ^[ukka-hyperkalaemia-2026]
 
 ## More Information
 ### Where Guidelines Differ: Insulin dose, patiromer
@@ -217,7 +217,7 @@ emergency_hint: Calcium, insulin-dextrose, remove K⁺
 - UK guideline: withhold RAAS inhibitors during acute illness (sepsis, hypovolemia, AKI) at any severity. ^[ukka-hyperkalaemia-2026]
 - Stop RAAS inhibitors at {{threshold:k-ecg-monitoring}} if criteria for a K⁺ binder are not met. ^[ukka-hyperkalaemia-2026]
 - KDIGO: consider temporary discontinuation. In chronic hyperkalemia, binders can enable continued RAAS inhibition. ^[kdigo-acute-hyperkalemia-2020, ukka-hyperkalaemia-2026]
-- Low-K⁺ diet for persistent hyperkalemia with moderate–severe CKD, after non-dietary causes are addressed. ^[kdigo-acute-hyperkalemia-2020, ukka-hyperkalaemia-2026]
+- K⁺ dietary advice for ongoing hyperkalemia with moderate–severe CKD, after non-dietary causes are addressed. Limit processed-food K⁺ additives. Involve a renal dietitian. ^[kdigo-acute-hyperkalemia-2020, ukka-hyperkalaemia-2026]
 - Repeat K⁺ after discharge for all patients treated in hospital. ^[ukka-hyperkalaemia-2026]
 - Maintenance binder if needed: sodium zirconium cyclosilicate or patiromer. ^[label-lokelma-2024, label-veltassa-2025]
 
