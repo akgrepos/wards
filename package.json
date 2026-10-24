@@ -20,7 +20,8 @@
     "sim-check": "node scripts/sim-check.mjs",
     "look": "node scripts/look.mjs",
     "tidy": "node scripts/tidy.mjs",
-    "docs:check": "node scripts/docs-check.mjs"
+    "docs:check": "node scripts/docs-check.mjs",
+    "review:check": "node scripts/review-check.mjs"
   },
   "dependencies": {
     "react": "^19.3.1",
