@@ -1,6 +1,7 @@
 drug: ceftriaxone
 drug_name: Ceftriaxone
-indication: Suspected or proven bacterial meningitis
+indication: Bacterial meningitis
+indication_detail: Suspected or proven bacterial meningitis
 population: Adults
 route: IV
 amount: "2"

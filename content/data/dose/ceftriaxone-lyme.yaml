@@ -1,6 +1,6 @@
 drug: ceftriaxone
 drug_name: Ceftriaxone
-indication: "Lyme disease: neurologic, hospitalized carditis, refractory arthritis"
+indication: Lyme disease
 indication_detail: Lyme disease with neurologic involvement (meningitis, radiculoneuropathy), hospitalized carditis, or arthritis not responding to oral therapy
 population: Adults
 route: IV

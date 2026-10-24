@@ -1,6 +1,7 @@
 drug: ceftriaxone
 drug_name: Ceftriaxone
-indication: Disseminated gonococcal infection (arthritis and dermatitis syndrome)
+indication: Disseminated gonococcal infection
+indication_detail: Disseminated gonococcal infection (arthritis and dermatitis syndrome)
 population: Adults
 route: IV or IM
 amount: "1"
