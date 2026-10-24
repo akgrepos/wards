@@ -2,10 +2,10 @@ import { AKG } from './design/akg';
 import { currentTab, href, open, switchTab, useRoute, type Route } from './router';
 import { CardScreen } from './screens/CardScreen';
 import { PathwayScreen } from './screens/PathwayScreen';
-import { Home, PreviewRibbon, SettingsScreen, useProtoOption } from './screens/Home';
+import { Home, SettingsScreen } from './screens/Home';
 import { FocusProxy, SearchScreen, focusProxy } from './screens/Search';
 import { SystemScreen } from './screens/SystemScreen';
-import { LibraryList, LibraryTab, NotFoundScreen, TopicsTab } from './screens/Tabs';
+import { LibraryList, LibraryTab, NotFoundScreen } from './screens/Tabs';
 import { EmergenciesTab, EmergencyScreen } from './screens/Emergency';
 import { TimedAccessory, TimedScreen, TimedSummary } from './screens/Timed';
 import { getCard, useCardLoad } from './content';
@@ -20,8 +20,7 @@ import { UpdatePrompt } from './UpdatePrompt';
 import { useAppearance } from './useAppearance';
 
 const TABS = [
-  { value: 'home', label: 'Home', icon: icons.house },
-  { value: 'topics', label: 'Topics', icon: icons.heartTextClipboard },
+  { value: 'home', label: 'Topics', icon: icons.heartTextClipboard },
   { value: 'emergencies', label: 'Rapids', icon: icons.staroflifeFill },
   { value: 'library', label: 'Library', icon: icons.crossCase },
 ];
@@ -31,7 +30,7 @@ function Page({ route }: { route: Route }) {
   switch (route.name) {
     case 'home': return <Home />;
     case 'emergencies': return <EmergenciesTab />;
-    case 'topics': return <TopicsTab />;
+    case 'topics': return <Home />;
     case 'library': return <LibraryTab />;
     case 'library-list': return <LibraryList key={route.id} id={route.id} />;
     case 'search': return <SearchScreen />;
@@ -49,8 +48,6 @@ export function App() {
   useAppearance();
   const route = useRoute();
   const tab = currentTab();
-  const protoOption = useProtoOption();
-  const noHome = !!import.meta.env.VITE_PREVIEW && protoOption === 5; // PROTOTYPE: option E has no Home tab; Topics is the home route
   const stored = useStored(getTimed);
   // While Timed Mode runs, its timer sits in a bar above the tab bar on every screen (except Timed Mode itself).
   const timedLoad = useCardLoad(stored && getCard(stored.card) ? stored.card : undefined);
@@ -58,7 +55,6 @@ export function App() {
   useEffect(() => { document.documentElement.toggleAttribute('data-timed', !!timed); }, [timed]);
   return (
     <SheetHost>
-      {import.meta.env.VITE_PREVIEW && <PreviewRibbon />}{/* PROTOTYPE */}
       <Page route={route} />
       {/* The floating tab bar, on every screen except Search (which puts its field at the bottom instead) and
           Timed Mode (full screen). */}
@@ -66,8 +62,8 @@ export function App() {
         <AKG.TabBar
           floating
           accessory={timed ? <TimedAccessory s={timed} /> : undefined}
-          items={noHome ? TABS.filter((t) => t.value !== 'home').map((t) => (t.value === 'topics' ? { ...t, value: 'home' } : t)) : TABS}
-          value={tab === 'search' ? '' : noHome && tab === 'topics' ? 'home' : tab}
+          items={TABS}
+          value={tab === 'search' ? '' : tab}
           onChange={(v: string) => switchTab(v as 'home')}
           search
           searchLabel="Search"

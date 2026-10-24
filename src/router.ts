@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react';
 import { getCard, getSystem, hasEmergency } from './content';
 
 // Hash-based addresses (#/card/<id>) so every page has its own link that works offline and on direct visits.
-export type Tab = 'home' | 'emergencies' | 'topics' | 'library' | 'search';
+// 'home' is the Topics tab (Home and Topics are one screen).
+export type Tab = 'home' | 'emergencies' | 'library' | 'search';
 export type Route =
   | { name: 'home' }
   | { name: 'emergencies' }
@@ -45,7 +46,7 @@ export function parseRoute(hash: string): Route {
 export const href = {
   home: () => '#/',
   emergencies: () => '#/emergencies',
-  topics: () => '#/topics',
+  topics: () => '#/',
   library: () => '#/library',
   libraryList: (id: string) => `#/library/${encodeURIComponent(id)}`,
   search: () => '#/search',
@@ -58,18 +59,17 @@ export const href = {
 };
 
 export const TAB_ROOT: Record<Exclude<Tab, 'search'>, string> = {
-  home: href.home(), emergencies: href.emergencies(), topics: href.topics(), library: href.library(),
+  home: href.home(), emergencies: href.emergencies(), library: href.library(),
 };
 
 // The tab a page belongs to when we don't know how it was reached (a direct link or a reopen).
 export function tabFor(route: Route): Tab {
   switch (route.name) {
     case 'emergencies': case 'emergency': case 'timed': return 'emergencies';
-    case 'topics': return 'topics';
     case 'library': case 'library-list': return 'library';
     case 'search': return 'search';
-    case 'system': return route.id === 'library' ? 'library' : 'topics';
-    case 'card': return getCard(route.id)?.system === 'library' ? 'library' : 'topics';
+    case 'system': return route.id === 'library' ? 'library' : 'home';
+    case 'card': return getCard(route.id)?.system === 'library' ? 'library' : 'home';
     case 'pathway': return 'library';
     default: return 'home';
   }
@@ -87,7 +87,7 @@ let lastKey = '';
 // Scroll position of each page in the back stack, so Back returns to the same place (Apple HIG: keep people's place).
 const scrollAt: number[] = [];
 // The title of the page on screen, set by Screen; becomes the Back name of the next page opened.
-let pageTitle = 'Reference';
+let pageTitle = 'Topics';
 export const setPageTitle = (t: string) => { pageTitle = t; };
 
 /** The current tab (for the tab bar). */
@@ -250,5 +250,5 @@ export function forgetSection(id: string) {
 
 /** For tests: forget everything, as if the app had just launched. */
 export function resetRouterForTests() {
-  depth = 0; tab = 'home'; lastKey = ''; pageTitle = 'Reference'; restoreY = null; scrollAt.length = 0; returning = false;
+  depth = 0; tab = 'home'; lastKey = ''; pageTitle = 'Topics'; restoreY = null; scrollAt.length = 0; returning = false;
 }

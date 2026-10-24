@@ -17,9 +17,10 @@ describe('App', () => {
   it('home has its sections and the tab bar; Settings shows the version', async () => {
     location.hash = '#/';
     render(<App />);
-    expect(screen.getAllByText('Reference').length).toBeGreaterThan(0);
-    expect(screen.getByText('Rapids', { selector: '.akg-list__header-title' })).toBeTruthy();
-    for (const tab of ['Home', 'Rapids', 'Topics', 'Library']) expect(screen.getByRole('tab', { name: tab })).toBeTruthy();
+    expect(screen.getAllByText('Topics').length).toBeGreaterThan(0);
+    expect(screen.getByText('Specialties', { selector: '.akg-list__header-title' })).toBeTruthy();
+    expect(screen.queryByRole('tab', { name: 'Home' })).toBeNull();
+    for (const tab of ['Rapids', 'Topics', 'Library']) expect(screen.getByRole('tab', { name: tab })).toBeTruthy();
     expect(screen.getByRole('button', { name: 'Search' })).toBeTruthy();
     await act(async () => { location.hash = '#/settings'; });
     await act(() => new Promise((r) => setTimeout(r, 20)));
