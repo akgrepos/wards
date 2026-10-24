@@ -161,16 +161,24 @@ describe('remembered sections', () => {
     act(() => { fireEvent.click(screen.getByRole('button', { name: 'Diagnosis' })); });
     expect(isOpen('Diagnosis')).toBe(false);
     const link = screen.getByText('first-line tests in Diagnosis');
-    expect(link.getAttribute('href')).toBe('#/card/renal-aki/diagnosis');
     await act(async () => { fireEvent.click(link); });
     await tick();
     expect(isOpen('Diagnosis')).toBe(true);
     expect(location.hash).toBe('#/card/renal-aki');
   });
 
+  it('a card link opens a sheet with part of the other card and a row that opens the full card', async () => {
+    launch('#/card/renal-aki');
+    const btn = screen.getAllByRole('button', { name: 'Hyperkalemia' }).find((b) => b.closest('ul ul'))!;
+    await act(async () => { fireEvent.click(btn); });
+    await tick();
+    const row = within(dialog()).getByText(/^Open full /);
+    expect(row).toBeTruthy();
+  });
+
   it('nested bullets and links woven into the sentence', () => {
     launch('#/card/renal-aki');
-    expect(screen.getAllByRole('link', { name: 'Hyperkalemia' }).some((l) => l.closest('ul ul'))).toBe(true);
+    expect(screen.getAllByRole('button', { name: 'Hyperkalemia' }).some((l) => l.closest('ul ul'))).toBe(true);
     expect(screen.queryByText(/\(Hyperkalemia\)/)).toBeNull();
   });
 
