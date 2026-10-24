@@ -167,6 +167,23 @@ export function doseValue(d: Dose) {
 export function doseLine(d: Dose) {
   return `${d.drug_name} ${doseValue(d)}`;
 }
+// How a dose row names itself. A medication card's drug is already its title, so there the row is titled by the
+// condition (the dose's short `indication`); everywhere else the drug name is the title.
+export type DoseDisplayMode = 'drug' | 'indication';
+const DoseDisplayContext = createContext<DoseDisplayMode>('drug');
+export function DoseDisplay({ mode, children }: { mode: DoseDisplayMode; children: ReactNode }) {
+  return <DoseDisplayContext.Provider value={mode}>{children}</DoseDisplayContext.Provider>;
+}
+
+// The dose on a medication card's row: amount, route and frequency; the rate, maximum and duration go on the gray line.
+const doseLineWithoutDrug = (d: Dose) => [`${amountWithUnit(d.amount, d.unit)} ${d.route}`, d.frequency].filter(Boolean).join(' ');
+const MAX_DURATION_ON_ROW = 60;
+// Population, rate, maximum and duration on one gray line. A long duration (several conditions in one sentence) is
+// left to the dose sheet.
+const doseDetail = (d: Dose) =>
+  [d.population, d.rate, d.max && `max ${d.max.replace(/ \(label\)$/, '')}`, d.duration && d.duration.length <= MAX_DURATION_ON_ROW ? d.duration : undefined]
+    .filter(Boolean)
+    .join(' · ');
 const drugTitle = (d: Dose) => (d.brand ? `${d.drug_name} (${d.brand})` : d.drug_name);
 const hasBoxedWarning = (d: Dose) => !!d.boxed_warning && d.boxed_warning.toLowerCase() !== 'none';
 
@@ -206,6 +223,7 @@ function DoseSheet({ id }: { id: string }) {
         <SourcePills ids={d.sources} expanded={open} onOpen={() => setOpen(!open)} />
       </div>
       {open && <div className="dose-cites"><SourceList ids={d.sources} /><MarkerNotes ids={d.sources} /></div>}
+      {d.indication_detail && <DoseSection title="Indication"><p className="ios-body">{d.indication_detail}</p></DoseSection>}
       {d.give_when && <DoseSection title="Give when"><p className="ios-body">{d.give_when}</p></DoseSection>}
       {facts.some(([, v]) => v) && (
         <DoseSection title="Administration">
@@ -257,8 +275,22 @@ export function openDose(sheet: ShowSheet, id: string) {
 // Do Now steps); `large` shows the dose at Title 2 size (Timed Mode); `surface="raised"` sets it apart on a tinted box.
 export function DoseRow({ id, warnings, large, surface, children }: { id: string; warnings?: string[]; large?: boolean; surface?: 'fill' | 'raised'; children?: ReactNode }) {
   const sheet = useSheet();
+  const mode = useContext(DoseDisplayContext);
   const d = doseItem(id);
   if (!d) return <span className="missing">[missing dose: {id}]</span>;
+  if (mode === 'indication' && !large && !surface && !warnings?.length) {
+    return (
+      <AKG.ValueRow
+        layout="list"
+        title={d.indication}
+        value={doseLineWithoutDrug(d)}
+        onClick={() => openDose(sheet, id)}
+        aria-label={`${d.indication}: ${doseLine(d)}. Opens dose details.`}
+      >
+        {doseDetail(d)}
+      </AKG.ValueRow>
+    );
+  }
   const tags = [
     ...(hasBoxedWarning(d) ? [<AKG.Tag key="boxed" variant="critical">Boxed warning</AKG.Tag>] : []),
     ...(warnings ?? []).map((w) => <AKG.Tag key={w} variant="warning">{w}</AKG.Tag>),

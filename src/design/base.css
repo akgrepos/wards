@@ -362,3 +362,5 @@ html[data-timed] .timed-page .screen-body.timed-body { padding-bottom: calc(env(
 }
 .card-link:active { background: var(--fill-tertiary); }
 .card-link::after { content: ""; position: absolute; left: 50%; top: 50%; width: max(100%, var(--tap-target)); height: var(--tap-target); transform: translate(-50%, -50%); }
+/* Dose rows titled by condition (medication cards): a flat list inside the card, hairlines between rows. */
+.dose-rows:has(.akg-value-row--list) { gap: 0; }

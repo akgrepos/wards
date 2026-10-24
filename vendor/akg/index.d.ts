@@ -957,6 +957,10 @@ export interface ContentSectionProps {
   inset?: boolean;
   /** card: a node at the bottom of the card, usually a SourceLine. */
   footer?: React.ReactNode;
+  /** What this section answers (one color, one question): danger (red, what can harm or kill) · caution (orange, where it goes wrong) · watch (yellow, what to keep checking) · technique (teal, how to carry it out) · note (brown, pearls and caveats) · neutral (gray, everything else). Draws a colored symbol square before the title, the only color on a white bar; danger also tints the bar faintly (card variant). The same section name keeps the same tone on every card type. Without it the heading is unchanged. */
+  tone?: 'danger' | 'caution' | 'watch' | 'technique' | 'note' | 'neutral';
+  /** The symbol in the square, so each section has its own (tone's default when left out): list.bullet, pills, slider.horizontal.3, syringe, nosign, exclamationmark.triangle, arrow.left.arrow.right, eye, info.circle, figure.and.child.holdinghands, arrow.uturn.backward, book, lightbulb, quote.opening. Drawn after the SF Symbol of that name. */
+  symbol?: string;
   className?: string;
   style?: React.CSSProperties;
   children?: React.ReactNode;
@@ -1204,6 +1208,8 @@ export interface ValueRowProps extends Omit<React.HTMLAttributes<HTMLElement>, '
   surface?: 'fill' | 'raised';
   /** An extra 13pt secondary line under the value. */
   children?: React.ReactNode;
+  /** list: a flat row with no fill and a hairline above each following row, for a list of items inside a card. The title is the item's name (semibold), the value is the line to act on (semibold, label color), the children are a gray detail line; the whole row is tappable when it has onClick or href. */
+  layout?: 'list';
 }
 /** A name over a value, with optional tags. Tappable rows are filled and show a chevron; rows without onClick/href have no fill and no chevron, so they don't look tappable. */
 export declare function ValueRow(props: ValueRowProps): React.ReactElement;

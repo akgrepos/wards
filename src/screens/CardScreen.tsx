@@ -3,9 +3,10 @@ import { AKG } from '../design/akg';
 import { cardSources, cardTypeLabel, content, getCard, getSystem, titleCase, usesCalc } from '../content';
 import type { Card, Source } from '../content/types';
 import { forgetSection, href, isReturning, parseRoute, restoreScroll } from '../router';
+import { sectionSymbol, sectionTone, TONED_CARD_TYPES } from '../content/section-tones';
 import { addRecent, getCardScroll, setCardScroll } from '../storage';
 import { slug } from '../../scripts/content/pathway.mjs';
-import { AnchorScope, Blocks, Inlines, JUMP_EVENT, LinePill, LineSources, PathwayRows, SourceList } from '../ui/Rich';
+import { AnchorScope, Blocks, DoseDisplay, Inlines, JUMP_EVENT, LinePill, LineSources, PathwayRows, SourceList } from '../ui/Rich';
 import { useSheet } from '../ui/SheetHost';
 import { icons } from '../ui/icons';
 import { Screen } from './common';
@@ -45,6 +46,9 @@ export function CardScreen({ id, section, anchor }: { id: string; section?: stri
   const titleRef = useRef<HTMLHeadingElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
   const sections = card?.sections ?? [];
+  const toned = !!card && TONED_CARD_TYPES.includes(card.type);
+  const symbolOf = (key: string) => (toned ? sectionSymbol(key) : undefined);
+  const toneOf = (key: string) => (toned ? sectionTone(key) : undefined);
   const entries = card ? pageEntries(card) : [];
   const collapsible = sections.map((s) => s.key);
   const subs = sections.flatMap((s) => s.subsections.map((x) => subKey(x.key)));
@@ -210,12 +214,15 @@ export function CardScreen({ id, section, anchor }: { id: string; section?: stri
             </div>
           </div>
         )}
+        <DoseDisplay mode={card.type === 'medication' ? 'indication' : 'drug'}>
         {sections.map((s) =>
           s.key === 'more' ? (
             <AKG.ContentSection
               key={s.key}
               id="sec-more"
               variant="card"
+              tone={toned ? 'neutral' : undefined}
+              symbol={symbolOf('more')}
               inset={false}
               title={titleCase(s.title)}
               collapsible
@@ -228,6 +235,8 @@ export function CardScreen({ id, section, anchor }: { id: string; section?: stri
                     key={x.key}
                     id={`sub-${x.key}`}
                     className="more-item"
+                    tone={toneOf(x.key)}
+                    symbol={symbolOf(x.key)}
                     title={x.title}
                     summary={x.description ?? undefined}
                     collapsible
@@ -244,6 +253,8 @@ export function CardScreen({ id, section, anchor }: { id: string; section?: stri
               key={s.key}
               id={`sec-${s.key}`}
               variant="card"
+              tone={toneOf(s.key)}
+              symbol={symbolOf(s.key)}
               title={titleCase(s.title)}
               collapsible
               expanded={state.isOpen(s.key, true)}
@@ -253,6 +264,7 @@ export function CardScreen({ id, section, anchor }: { id: string; section?: stri
             </AKG.ContentSection>
           ),
         )}
+        </DoseDisplay>
         {related.length > 0 && (
           <AKG.ContentSection id="sec-related" title="Related">
             {related.map(([k, label]) => (

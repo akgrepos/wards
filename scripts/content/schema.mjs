@@ -174,10 +174,13 @@ export const SHARED_SECTIONS = ['more', 'pearls'];
 
 // Every field a dose item can have, so a misspelled field is caught. The sheet shows them in this order.
 export const DOSE_FIELDS = [
-  'drug', 'drug_name', 'brand', 'indication', 'population', 'route', 'amount', 'unit', 'frequency', 'rate',
+  'drug', 'drug_name', 'brand', 'indication', 'indication_detail', 'population', 'route', 'amount', 'unit', 'frequency', 'rate',
   'give_when', 'repeat', 'onset', 'lasts', 'duration', 'max', 'boxed_warning', 'alternative', 'adjustments',
   'cautions', 'notes', 'sources', 'verification',
 ];
+
+// The title of a dose row on a medication card (the dose's `indication`) is at most this many characters; longer wording goes in `indication_detail`.
+export const MAX_INDICATION_LENGTH = 70;
 
 // Tables are at most four columns wide so they stay readable on a phone (docs/CONTENT-FORMAT.md, "Consistency rules"). A wider one is
 // allowed only when it is listed here, by card id and section title, as a deliberate owner-approved exception.

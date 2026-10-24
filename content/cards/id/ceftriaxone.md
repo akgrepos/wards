@@ -20,38 +20,23 @@ related:
 - A penicillin allergy label alone rarely rules it out. Check the reaction history, not the label. ^[aaaai-drug-allergy-2022]
 
 ## Dosing
-- Pneumonia, cellulitis, complicated UTI and mild-to-moderate community-acquired intra-abdominal infection: ^[label-ceftriaxone-2026, idsa-ats-cap-2019, idsa-cuti-selection-2025, idsa-sis-iai-2010]
+{{dose:ceftriaxone-iv}}
 
-  {{dose:ceftriaxone-iv}}
+{{dose:ceftriaxone-meningitis}}
 
-- Bacterial meningitis: ^[idsa-meningitis-2004, label-ceftriaxone-2026]
+{{dose:ceftriaxone-variceal-bleed}}
 
-  {{dose:ceftriaxone-meningitis}}
+{{dose:ceftriaxone-endocarditis}}
 
-- Cirrhosis with acute variceal bleeding: ^[aasld-portal-htn-2024, aasld-ascites-hrs-2021]
+{{dose:ceftriaxone-lyme}}
 
-  {{dose:ceftriaxone-variceal-bleed}}
+{{dose:ceftriaxone-gonorrhea}}
+
+{{dose:ceftriaxone-gonococcal-disseminated}}
+
+{{dose:ceftriaxone-pid}}
 
 - Spontaneous bacterial peritonitis: a third-generation cephalosporin (such as cefotaxime) is first-line. Give albumin with it. ^[aasld-ascites-hrs-2021]
-- Infective endocarditis: ^[aha-ie-2026]
-
-  {{dose:ceftriaxone-endocarditis}}
-
-- Lyme disease: ^[idsa-lyme-2020]
-
-  {{dose:ceftriaxone-lyme}}
-
-- Gonorrhea, uncomplicated: ^[cdc-sti-2021]
-
-  {{dose:ceftriaxone-gonorrhea}}
-
-- Gonorrhea, disseminated: ^[cdc-sti-2021]
-
-  {{dose:ceftriaxone-gonococcal-disseminated}}
-
-- Pelvic inflammatory disease needing parenteral therapy: ^[cdc-sti-2021]
-
-  {{dose:ceftriaxone-pid}}
 
 ## Dose Adjustment
 - Kidney impairment: ceftriaxone leaves by both the kidney and the bile, so usual doses need no change, including in dialysis. Neurotoxicity still occurs in severe kidney impairment (see Adverse Effects). ^[label-ceftriaxone-2026]

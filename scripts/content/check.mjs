@@ -1,7 +1,7 @@
 // Content checks, run on every pull request (npm run content:check) and in the tests.
 // Each rule comes from docs/CARD-TYPES.md and docs/DATA-TYPES.md.
 import { checkVerification } from './verification.mjs';
-import { CARD_TYPES, CALC_FIELDS, MDCALC_URL, DATA_TYPES, DOSE_FIELDS, CALC_FORMULAS, REGIMEN_FIELDS, REGIMEN_OPTION_FIELDS, SHARED_SECTIONS, UNITS, DOSE_IN_TEXT, MAX_TABLE_COLUMNS, WIDE_TABLE_EXCEPTIONS, MAX_ALIASES, REVIEW_MAX_AGE_MONTHS } from './schema.mjs';
+import { CARD_TYPES, CALC_FIELDS, MDCALC_URL, DATA_TYPES, DOSE_FIELDS, CALC_FORMULAS, REGIMEN_FIELDS, REGIMEN_OPTION_FIELDS, SHARED_SECTIONS, UNITS, DOSE_IN_TEXT, MAX_TABLE_COLUMNS, WIDE_TABLE_EXCEPTIONS, MAX_ALIASES, REVIEW_MAX_AGE_MONTHS, MAX_INDICATION_LENGTH } from './schema.mjs';
 import { TAGS, parseInline } from './inline.mjs';
 import { onsetMinutes } from './onset.mjs';
 import { emergencySteps, offsetMinutes, stepDoses } from './emergency.mjs';
@@ -141,6 +141,8 @@ export function checkContent({ systems, cards, data }) {
     }
   };
 
+  // Doses a medication card inserts: their `indication` is the title of the dose row, so it must be short (docs/DATA-TYPES.md, Dose).
+  const medicationDoses = new Set();
   for (const c of cards) {
     const where = c.file;
     if (c.scaffold) err(where, 'unfinished scaffold: replace every "SCAFFOLD:" placeholder (from npm run card:new) with real, sourced content');
@@ -231,6 +233,7 @@ export function checkContent({ systems, cards, data }) {
       steps.forEach((st) => stepDoses(st).forEach((d) => doNowDoses.add(d)));
     }
     for (const { title, blocks } of parts) {
+      if (c.type === 'medication') for (const b of blocks) if (b.t === 'insert' && b.kind === 'dose') medicationDoses.add(b.id);
       for (const r of runs(blocks)) {
         useAt(r.inlines, `${where} "${title}"`, r.plain);
         const text = inlineText(r.inlines);
@@ -331,6 +334,8 @@ export function checkContent({ systems, cards, data }) {
         if (alt !== undefined && (typeof alt !== 'object' || !alt.dose)) err(where, 'alternative needs "dose" (a dose id) and optional "when"');
         if (alt?.dose && !data.dose?.[alt.dose]) err(where, `alternative dose "${alt.dose}" does not exist`);
         if (alt?.dose === id) err(where, 'a dose cannot be its own alternative');
+        if (item.indication_detail !== undefined && (typeof item.indication_detail !== 'string' || !item.indication_detail.trim())) err(where, 'indication_detail must be text (the longer wording of the indication, shown on the dose sheet)');
+        if (medicationDoses.has(id) && typeof item.indication === 'string' && item.indication.length > MAX_INDICATION_LENGTH) err(where, `indication is the title of a dose row on a medication card, so keep it to ${MAX_INDICATION_LENGTH} characters (it has ${item.indication.length}); move the long wording to "indication_detail"`);
         for (const m of checkVerification(item, data)) err(where, m);
         if (item.cautions !== undefined && (!Array.isArray(item.cautions) || item.cautions.some((x) => typeof x !== 'string'))) err(where, 'cautions must be a list of short sentences');
       }
