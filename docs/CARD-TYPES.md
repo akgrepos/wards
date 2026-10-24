@@ -46,7 +46,7 @@ Settled 2026-10-17; page layout updated 2026-10-18 for the approved redesign (to
 - Guideline recommendation grades (e.g. "Class I, Level A") are not shown (decided)
 
 **Emergency page (Rapids)** (2026-10-19, Phase 4)
-- For a topic with a `## Do Now` section (`CONTENT-FORMAT.md`). Listed in the Rapids tab by system, with its one-line hint; Home shows up to four as shortcuts (Edit chooses them).
+- For a topic with a `## Do Now` section (`CONTENT-FORMAT.md`). Listed in the Rapids tab by system, with its one-line hint.
 - Red "Rapids" tag, title, **Start Timed Mode** (accent color, not red), then **Do Now**: red numbered steps, each with its "If …" condition line, a Check box for what to check first, one drug per dose row (each opens its dose sheet; an alternative shows under it), warnings as tags, short notes; Note boxes after the steps; one source line for the section (Sources UKKA '26 · KDIGO '20 …).
 - Top right: the Topics tab's symbol opens the topic pop-up (At a Glance, then Open Full Topic). One pop-up at a time.
 - **Timed Mode** (full screen, no tab bar): the elapsed time in a red timer capsule at the top; Minimize (chevron down) keeps it running in a bar above the tab bar on every screen, which returns to the same step; progress, the current step's condition, Check box and large doses ("Give", "Then Give"), Skip and Mark Given (accent), "Mark … Given Instead" for an alternative; Due Next (from the topic's recheck times) and a log with clock time and time since start, with Undo. End Timed Mode (red text) asks first, then shows a summary: what was given and when, what's due next, Copy Summary and Done. Kept only on the phone, cleared on Done; the timer survives the app closing.

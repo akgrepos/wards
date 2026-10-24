@@ -6,8 +6,8 @@
 //     to that route afterwards, so one call checks both. If the "Update Ready" banner is showing, it says so.
 //  2. --expect "text": confirms that text is on screen (e.g. a card's title after you open it); checked on the screen
 //     you left open, or on the --route screen.
-//     --route "#/card/<id>": first opens that route with `simctl openurl`. That opens Safari, NOT the pinned
-//     Home Screen app, so the result is labelled that way; to test the pinned app, tap to the card and use --expect.
+//     --route "#/card/<id>": first opens that route with `simctl openurl`. That opens Safari in the Simulator, NOT an installed app
+//     app, so the result is labelled that way; to test further, tap to the card in Safari and use --expect.
 //  3. --shots [name]: scaled-down (0.4) light and dark screenshots into a scratch folder outside the repo
 //     (<tmp>/wards-sim-shots), then restores the appearance. Never committed.
 // Exit 0 = ok, 1 = mismatch (wrong version, update waiting, expected text missing), 2 = a manual step is needed
@@ -37,7 +37,7 @@ const bump = (c) => { code = Math.max(code, c) } // 1 (mismatch) outranks nothin
 
 const sim = (a) => run('xcrun', ['simctl', ...a])
 if (!/\(Booted\)/.test(sim(['list', 'devices', 'booted']) ?? '')) {
-  console.log('MANUAL: no Simulator is booted. Boot the iPhone Simulator, open the pinned Wards app, run again.')
+  console.log('MANUAL: no Simulator is booted. Boot the iPhone Simulator, open Wards in Safari, run again.')
   process.exit(2)
 }
 
@@ -55,7 +55,7 @@ async function open(r) {
 
 if (route) {
   await open(route)
-  say(`opened ${route} with openurl (Safari, not the pinned app)`)
+  say(`opened ${route} with openurl (Safari in the Simulator)`)
 }
 
 let text = screenText('check')

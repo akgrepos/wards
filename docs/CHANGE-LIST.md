@@ -3,7 +3,7 @@
 The one list of changes the owner has asked for or that are outstanding. Main adds each owner request here the moment it arrives (with the date), groups and prioritizes them when the owner says the list is complete, moves an item to "In progress" when a session starts it, and to "Done" with the version and PR when it is live. Details and reasons stay in [DECISIONS.md](DECISIONS.md); iPhone checks in [REVIEW-QUEUE.md](REVIEW-QUEUE.md) (silence on a check means approved).
 
 ## In progress
-- **Links:** card-link pop-up shows the linked card's title (not "Card"); MDCalc links inside sentences become inline text with a blue dotted underline and an end arrow (PR 159).
+- Nothing running right now.
 
 ## To do: owner list of 2026-10-24 (not yet prioritized; Main organizes when the owner says the list is done)
 1. **Home specialty cards:** vertical layout, shorter names so all fit on one screen, proper medical terms (Nephrology and Urology, not "Kidney, Electrolytes and Urology"; Pulmonology, not "Pulmonary").
@@ -27,7 +27,14 @@ The one list of changes the owner has asked for or that are outstanding. Main ad
 17. **Foundation (Fable audit 2026-10-23):** pilots for the untested card types (procedure, score, exam, test), planned-link rendering check, table scroll cue, banned-words CI check, Increase Contrast, Rapids A to Z.
 18. **Psychiatry cards** (after the foundation): Suicide risk assessment, Serotonin syndrome and NMS, Lithium and psychotropic safety, antidepressant comparison grid (new data type, documented first).
 19. **Independent clinical review pass** (on hold; required before any clinical use; 220 doses marked `not-verified`).
-20. **Cleanup:** the app still contains the preview-ribbon code (harmless, preview builds only); "Awaiting iPhone confirmation" lines in REVIEW-QUEUE can be cleared (silence is approval).
+20. **Cleanup:** the app still contains the preview-ribbon code (harmless, preview builds only).
+21. **ECG interpretation:** one comprehensive pathway covering the whole read (owner’s choice; note: the stepwise read is a checklist, so the card writer should keep it focused).
+22. **Card template adjustments:** clinical-register style guide in CONTENT-FORMAT.md; fewer sections for approach cards?; "most common" vs "cannot miss" layout; rates and deficits in prose blocked by the typed-dose check; dose rows needing an indication lead-in; definition line for reference cards; tall table rows on a phone; Contents names cut short at the largest Text Sizes.
+23. **Search, full (old Phase 5):** offline search across sections, drugs, tools and Rapids (possibly one file per card); then a final light/dark/Text Size check and independent review (old Phase 6).
+24. **More cards and content:** inpatient insulin card (titration; adds to the hyperglycemia card’s starting doses); focused pathways for AF and ADHF (drafted box content is in the batch 3 PR) and others only where sequential thinking helps; batch 2 leftovers (aztreonam row for beta-lactam allergy, IV moxifloxacin, the newer oral carbapenem for complicated UTI); ECG library (Library > ECGs on the Media data type; only real labeled recordings, otherwise a drawing); more info pop-ups on terms (for example renal tubular acidosis types).
+25. **Audit clinical fixes (private audits):** terlipressin boxed warning, Hyperkalemia causes, calcium chloride arrest rate, insulin onset.
+26. **Design system, not chosen:** accessibility items (VoiceOver headings and labels, focus handling, Reduce Motion, Increase Contrast), primary/cancel roles on Button, remaining kit items (each component README lists what it skipped under Notes).
 
 ## Done (newest first)
+- 2026.10.24.7 Links: card-link pop-up shows the linked card’s title; MDCalc links inline with a blue dotted underline and end arrow (PR 159).
 - 2026.10.24.6 Search: recent searches list (PR 156). 2026.10.24.5 Search: recents and suggestions from the template mock-up (PR 153). 2026.10.24.4 Medication card look: Quiet colors, own symbols, condition-titled doses (PR 150). 2026.10.24.3 Home tile fix (PR 147). 2026.10.24.2 Home is Topics, no Home tab (PR 146). 2026.10.24 Quick fixes: inline card links, table widths, ceftriaxone wording, Continue reading removed, stethoscope icon (PR 138). Tooling: `npm run look` (PR 149), `sim-check` finds the version itself (PR 158).
