@@ -124,7 +124,7 @@ The layouts for types 3–8 were proposed with the redesign and approved by the 
 - **At a Glance** · **Severity** (scale mild / moderate / severe; monitoring) · **Causes** (one grouped list: pseudohyperkalemia, shift out of cells, impaired excretion (cannot miss), intake) · **Presentation** (symptoms; ECG progression) · **Diagnosis**
 - **Treatment:** numbered steps: membrane stabilization · intracellular shift · elimination, each with its dose rows; Compare Onset and Duration row; hyperkalemic cardiac arrest
 - **Monitor:** K⁺ recheck times; glucose times after insulin (timelines) · **Escalation**
-- **More Information:** Where Guidelines Differ (insulin dose, patiromer) · Special Populations (digoxin toxicity) · Complications · After the Acute Phase · Epidemiology and Pathophysiology
+- **More Information:** Where Guidelines Differ (insulin dose, patiromer) · Special Populations (digoxin toxicity, hemodialysis) · Complications · After the Acute Phase · Epidemiology and Pathophysiology
 - Pearls · Related (Acute Kidney Injury) · Sources
 
 ---

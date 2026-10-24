@@ -8,6 +8,8 @@ frequency: once
 give_when: Non-oliguric, especially with volume overload
 onset: About 15 minutes
 lasts: 2–3 hours
+cautions:
+  - "Avoid in hypovolemia or oliguria."
 notes: "Efficacy for acute hyperkalemia hasn't been studied. Most useful with volume overload."
 sources: [emcreg-hyperkalemia-2025, kdigo-acute-hyperkalemia-2020]
 verification:

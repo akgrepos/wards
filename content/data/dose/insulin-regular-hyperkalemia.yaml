@@ -10,6 +10,7 @@ adjustments:
     change: "May be given without additional dextrose"
 cautions:
   - "Hypoglycemia: monitor glucose for 6 hours."
+  - "Highest risk with low pre-treatment glucose, AKI, CKD stage 4–5 or kidney failure (up to 33% on dialysis), low body weight, older age, no diabetes."
 notes: "Recheck potassium at 60 minutes."
 sources: [ukka-hyperkalaemia-2026, kdigo-acute-hyperkalemia-2020]
 verification:

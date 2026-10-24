@@ -10,10 +10,13 @@ onset: About 7 hours
 max: "25.2 g once daily. Increase by 8.4 g no more often than weekly"
 boxed_warning: None
 cautions:
+  - "Contraindicated after hypersensitivity to patiromer or its components."
   - "US label: not for emergency treatment (delayed onset)."
   - "Separate other oral drugs by 3 hours."
   - "Binds magnesium: monitor magnesium."
   - "Avoid in severe constipation or bowel obstruction."
+  - "Not absorbed. No dose change for kidney impairment (label)."
+  - "Pregnancy: not absorbed, no fetal risk expected (label)."
 sources: [label-veltassa-2025]
 verification:
   source: label-veltassa-2025
