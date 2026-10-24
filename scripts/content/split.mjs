@@ -61,7 +61,7 @@ export function splitContent(content) {
   const lite = content.cards.map((c) => ({
     id: c.id, type: c.type, variant: c.variant, system: c.system, group: c.group, subsection: c.subsection,
     title: c.title, aliases: c.aliases, related: c.related, example: c.example, contentsSub: c.contentsSub,
-    definition: null, basedOn: [], reviewed: c.reviewed,
+    definition: null, basedOn: [], checked: c.checked, reviewed: c.reviewed,
     // Section names only (Continue Reading), and the Rapids hint; the text comes with the card's file.
     sections: c.sections.map((s) => ({ key: s.key, title: s.title, blocks: [], subsections: [] })),
     emergency: c.emergency ? { hint: c.emergency.hint, blocks: [] } : null,

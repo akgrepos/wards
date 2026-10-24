@@ -7,6 +7,7 @@ aliases: [chest pain, chest discomfort, chest tightness, chest pressure, angina,
 definition: "Acute chest pain or equivalent discomfort needing a time-sensitive search for life-threatening causes: acute coronary syndrome, pulmonary embolism, aortic dissection, tension pneumothorax, esophageal rupture, pericardial tamponade. ^[aha-acc-chest-pain-2021]"
 based_on: [aha-acc-chest-pain-2021, acc-aha-acs-2025, udmi-2026]
 reviewed: 2026-10-21
+checked: { date: 2026-10-21, by: opus, scope: doses and numbers }
 related:
   differential: [cardio-nste-acs, pulm-vte-diagnosis, cardio-adhf, cardio-atrial-fibrillation, id-cap, pulm-copd-exacerbation]
   conditions: [crit-hypoxemic-respiratory-failure, crit-sepsis]

@@ -8,6 +8,7 @@ aliases: [ADHF, acute heart failure, AHF, CHF exacerbation, heart failure exacer
 definition: "New or worsening symptoms and signs of heart failure, usually congestion, needing urgent evaluation and treatment. ^[aha-acc-hfsa-hf-2022, esc-hf-2026]"
 based_on: [aha-acc-hfsa-hf-2022, esc-hf-2026, hfa-diuretics-2019]
 reviewed: 2026-10-20
+checked: { date: 2026-10-20, by: owner, scope: owner review }
 related:
   differential: []
   conditions: [cardio-atrial-fibrillation, cardio-nste-acs, renal-aki, renal-hyponatremia, renal-hypokalemia]

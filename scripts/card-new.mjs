@@ -2,6 +2,7 @@
 // Writes content/cards/<system>/<id>.md with the type's sections. Every placeholder says "SCAFFOLD:",
 // and npm run content:check rejects any card still containing one, so an unfinished scaffold cannot ship.
 import { writeFileSync, existsSync, mkdirSync, readFileSync } from 'node:fs';
+import { appendFileSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import YAML from 'yaml';
@@ -33,4 +34,7 @@ const file = join(root, 'content/cards', system, `${id}.md`);
 if (existsSync(file)) die(`${file} already exists.`);
 mkdirSync(dirname(file), { recursive: true });
 writeFileSync(file, out.join('\n'));
-console.log(`Wrote content/cards/${system}/${id}.md (${sections.length} sections). content:check fails until every "SCAFFOLD:" is replaced.`);
+// A new card is a draft until the Opus check stamps it (front matter `checked`); content/unchecked.txt lists it meanwhile.
+const uncheckedFile = join(root, 'content/unchecked.txt');
+appendFileSync(uncheckedFile, `${existsSync(uncheckedFile) && !readFileSync(uncheckedFile, 'utf8').endsWith('\n') ? '\n' : ''}${id}\n`);
+console.log(`Wrote content/cards/${system}/${id}.md (${sections.length} sections). content:check fails until every "SCAFFOLD:" is replaced. Added to content/unchecked.txt; the Opus check removes it and adds the \`checked\` stamp.`);

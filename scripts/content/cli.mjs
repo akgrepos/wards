@@ -19,7 +19,7 @@ const HINTS = [
   [/dose|\bmg\b|unit/i, 'Rule: doses are only ever {{dose:id}} inserts, one per line, never typed. Read docs/DATA-TYPES.md.'],
   [/calculator|MDCalc|calc/i, 'Rule: every named score or calculator is {{calc:id}} with a verified MDCalc link. Read docs/DATA-TYPES.md "calc".'],
   [/pathway/i, 'Rule: pathways are standalone decision trees. Read docs/CONTENT-FORMAT.md "Pathways".'],
-  [/definition|reviewed|front matter|subsection|system|title/i, 'Rule: front matter fields are required per type. Read docs/CONTENT-FORMAT.md.'],
+  [/definition|reviewed|checked|front matter|subsection|system|title/i, 'Rule: front matter fields are required per type. Read docs/CONTENT-FORMAT.md.'],
 ];
 const hint = (m) => HINTS.find(([re]) => re.test(m))?.[1];
 const errors = checkContent(content).map((m) => { const h = hint(m); return h ? `${m}\n    ${h}` : m; });

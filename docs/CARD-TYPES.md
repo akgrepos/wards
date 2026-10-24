@@ -9,7 +9,7 @@ Settled 2026-10-17; page layout updated 2026-10-18 for the approved redesign (to
 **Header**
 - Type and system tags · title (precise medical term)
 - One-line definition, with its source
-- "Reviewed" month and year. No "Based on" line (removed 2026-10-18, owner): the per-line source tags and All Sources name the guidelines
+- "Checked" date (from the front matter `checked.date`; nothing is shown for a draft). No "Based on" line (removed 2026-10-18, owner): the per-line source tags and All Sources name the guidelines
 - Search aliases (hidden; used by search)
 - Top right: the **quote-mark** button (Show Sources: off when a page opens; while on it is highlighted and every line ends in one source pill), the **Contents** button (a menu of the page's sections, the one being read checked, plus Collapse All / Expand All), in one group. Topics with an emergency also get a red **Rapids** button (the Rapids tab's symbol, `staroflife.fill`) that opens the Do Now pop-up: the steps and doses, Start Timed Mode and Open Full Emergency; it is hidden when there is none. No row of section buttons.
 
@@ -120,7 +120,7 @@ The layouts for types 3–8 were proposed with the redesign and approved by the 
 ## Part 3 — Worked example: Hyperkalemia (condition card)
 *(Headings only, to show the shape.)*
 
-- Header: Condition · Kidney, Electrolytes and Urology · definition · reviewed
+- Header: Condition · Kidney, Electrolytes and Urology · definition · checked date
 - **At a Glance** · **Severity** (scale mild / moderate / severe; monitoring) · **Causes** (one grouped list: pseudohyperkalemia, shift out of cells, impaired excretion (cannot miss), intake) · **Presentation** (symptoms; ECG progression) · **Diagnosis**
 - **Treatment:** numbered steps: membrane stabilization · intracellular shift · elimination, each with its dose rows; Compare Onset and Duration row; hyperkalemic cardiac arrest
 - **Monitor:** K⁺ recheck times; glucose times after insulin (timelines) · **Escalation**
@@ -139,7 +139,7 @@ The layouts for types 3–8 were proposed with the redesign and approved by the 
 
 
 ## Decisions (2026-10-18)
-1. Topic page layout from the approved redesign: header with definition, based-on line and reviewed date; Contents menu instead of the section bar; collapsible, remembered sections; one source line per section (removed 2026-10-19 for per-line tags); More Information for deeper material.
+1. Topic page layout from the approved redesign: header with definition, based-on line and checked date; Contents menu instead of the section bar; collapsible, remembered sections; one source line per section (removed 2026-10-19 for per-line tags); More Information for deeper material.
 2. Approach cards use the condition page's section names where they fit (owner's choice).
 3. The other card types follow the same pattern with their own sections (owner approved the proposal); adjust when each type's first card is written.
 

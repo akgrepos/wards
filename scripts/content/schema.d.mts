@@ -10,3 +10,4 @@ export const MAX_TABLE_COLUMNS: number;
 export const WIDE_TABLE_EXCEPTIONS: Record<string, string[]>;
 export const MAX_ALIASES: number;
 export const REVIEW_MAX_AGE_MONTHS: number;
+export const CHECKED_BY: string[];

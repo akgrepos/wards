@@ -7,6 +7,7 @@ aliases: [inpatient hyperglycemia, hospital hyperglycemia, high blood sugar, hig
 definition: "Any blood glucose >140 mg/dL in a hospitalized patient. Insulin is started or intensified for persistent glucose ≥180 mg/dL. ^[ada-soc-hospital-2026]"
 based_on: [ada-soc-hospital-2026, endocrine-hospital-hyperglycemia-2022, sccm-glycemic-2024]
 reviewed: 2026-10-21
+checked: { date: 2026-10-21, by: owner, scope: owner review }
 related:
   conditions: [endo-dka, crit-sepsis]
 ---

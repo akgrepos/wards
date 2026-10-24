@@ -8,6 +8,7 @@ aliases: [low sodium, sodium low, Na low, hypoNa, hyponatraemia, SIADH, SIAD, sy
 definition: "Serum Na⁺ <135 mEq/L. Usually hypotonic, from water retention. ^[verbalis-hyponatremia-2013, adrogue-hyponatremia-2022]"
 based_on: [verbalis-hyponatremia-2013, spasovski-hyponatraemia-2014]
 reviewed: 2026-10-19
+checked: { date: 2026-10-19, by: owner, scope: owner review }
 related:
   conditions: [renal-hypokalemia]
   tools: [renal-iv-fluids]

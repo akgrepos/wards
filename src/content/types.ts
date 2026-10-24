@@ -26,6 +26,8 @@ export type Card = {
   id: string; type: string; variant: string | null; system: string; group: string; subsection: string | null;
   title: string; aliases: string[]; related: Record<string, string[]>; example: boolean; contentsSub: string[]; sections: Section[];
   definition: { inlines: Inline[]; sources: string[] } | null; basedOn: string[]; reviewed: string | null;
+  // Who verified the card's doses, numbers and care-changing claims, when, and on what scope (shown as "Checked <date>"). Null until checked.
+  checked: { date: string; by: 'opus' | 'owner'; scope: string } | null;
   // The "## Do Now" section, when the topic has an emergency (its page in the Rapids tab, and Timed Mode).
   emergency: { hint: string | null; blocks: Block[] } | null;
 };

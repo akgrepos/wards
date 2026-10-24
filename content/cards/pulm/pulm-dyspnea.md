@@ -7,6 +7,7 @@ aliases: [dyspnea, shortness of breath, SOB, breathlessness, short of breath, di
 definition: "Subjective breathing discomfort of acute onset or acute worsening in an adult, needing a time-sensitive search for life-threatening cardiac, pulmonary, airway and vascular causes. ^[common-practice]"
 based_on: [acp-pocus-2021, esc-hf-2026, aha-acc-pe-2026, ats-nirs-2026, bts-oxygen-2017]
 reviewed: 2026-10-21
+checked: { date: 2026-10-21, by: opus, scope: doses and numbers }
 related:
   differential: [crit-hypoxemic-respiratory-failure, cardio-adhf, pulm-copd-exacerbation, pulm-vte-diagnosis, id-cap, cardio-chest-pain, cardio-atrial-fibrillation]
   conditions: [crit-sepsis, endo-dka, renal-aki]

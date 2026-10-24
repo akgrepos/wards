@@ -8,6 +8,7 @@ aliases: [CAP, pneumonia, PNA, community acquired pneumonia, lobar pneumonia, lo
 definition: "Pneumonia acquired outside the hospital: compatible symptoms with a new infiltrate on chest imaging. ^[idsa-ats-cap-2019]"
 based_on: [ats-cap-2025, idsa-ats-cap-2019]
 reviewed: 2026-10-19
+checked: { date: 2026-10-19, by: owner, scope: owner review }
 related:
   differential: []
   conditions: [id-complicated-uti, id-cellulitis]

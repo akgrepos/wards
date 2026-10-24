@@ -29,13 +29,19 @@ beforeEach(() => { localStorage.clear(); });
 afterEach(() => { cleanup(); vi.restoreAllMocks(); });
 
 describe('topic page', () => {
-  it('has the header: type and system tags, definition and reviewed date (no based-on line)', () => {
+  it('has the header: type and system tags, definition and checked date (no based-on line)', () => {
     launch('#/card/renal-hyperkalemia');
     expect(screen.getByText('Condition')).toBeTruthy();
     expect(screen.getAllByText('Kidney, Electrolytes and Urology').length).toBeGreaterThan(0);
     expect(screen.getByText(/Cutoffs vary by laboratory/)).toBeTruthy();
     expect(screen.queryByRole('button', { name: /^Based on/ })).toBeNull();
-    expect(screen.getByText('Reviewed Oct 2026')).toBeTruthy();
+    expect(screen.getByText('Checked Oct 24, 2026')).toBeTruthy();
+  });
+
+  it('shows Checked with the stamp date and no Reviewed label on a medication card', () => {
+    launch('#/card/ceftriaxone');
+    expect(screen.getByText('Checked Oct 23, 2026')).toBeTruthy();
+    expect(screen.queryByText(/^Reviewed/)).toBeNull();
   });
 
   it('shows the sections in order, with severity bands, time chips, steps and comparisons', () => {

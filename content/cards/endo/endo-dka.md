@@ -8,6 +8,7 @@ aliases: [DKA, diabetic ketoacidosis, HHS, hyperosmolar hyperglycemic state, HHN
 definition: "Hyperglycemic crises: DKA is hyperglycemia (or known diabetes) with ketosis and metabolic acidosis. HHS is severe hyperglycemia with hyperosmolality without significant ketoacidosis. ^[ada-hyperglycemic-crises-2024]"
 based_on: [ada-hyperglycemic-crises-2024, ada-soc-hospital-2026]
 reviewed: 2026-10-21
+checked: { date: 2026-10-21, by: owner, scope: owner review }
 related:
   differential: []
   conditions: [endo-inpatient-hyperglycemia, crit-sepsis, renal-hypokalemia, renal-iv-fluids, renal-electrolyte-repletion]
