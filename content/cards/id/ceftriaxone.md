@@ -35,7 +35,7 @@ related:
 
 {{dose:ceftriaxone-pid}}
 
-- Spontaneous bacterial peritonitis: a third-generation cephalosporin (such as cefotaxime) is first-line. Give albumin with it. ^[aasld-ascites-hrs-2021]
+{{dose:ceftriaxone-sbp}}
 
 ## Dose Adjustment
 - Kidney impairment: ceftriaxone leaves by both the kidney and the bile, so usual doses need no change, including in dialysis. Neurotoxicity still occurs in severe kidney impairment (see Adverse Effects). ^[label-ceftriaxone-2026]
@@ -106,8 +106,8 @@ related:
 
 ## More Information
 ### Pregnancy and Lactation: Use when needed
-- Pregnancy: animal studies showed no harm. Human data are limited, so use it when clearly needed. It is the recommended agent for gonorrhea in pregnancy. ^[label-ceftriaxone-2026, cdc-sti-2021]
-- Lactation: low concentrations pass into milk. The label advises caution. ^[label-ceftriaxone-2026]
+- Pregnancy: no harm in animal studies (mice, rats, primates). No adequate controlled human studies, so use it when clearly needed. It is the recommended agent for gonorrhea in pregnancy. ^[label-ceftriaxone-2026, cdc-sti-2021]
+- Lactation: low milk levels, not expected to harm the breastfed infant. Acceptable while breastfeeding. Watch the infant for diarrhea or thrush. ^[lactmed-ceftriaxone-2024]
 
 ### Overdose and Reversal: No antidote
 - Overdose has caused encephalopathy and seizures in severe kidney impairment. Stop the drug and give supportive care. Dialysis does not remove it, and there is no specific antidote. ^[label-ceftriaxone-2026]

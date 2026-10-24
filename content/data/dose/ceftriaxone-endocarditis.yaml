@@ -1,6 +1,6 @@
 drug: ceftriaxone
 drug_name: Ceftriaxone
-indication: Native-valve endocarditis (streptococci or HACEK organisms)
+indication: Native-valve endocarditis
 indication_detail: Native-valve endocarditis from penicillin-susceptible viridans group streptococci or Streptococcus gallolyticus, or from HACEK organisms
 population: Adults
 route: IV

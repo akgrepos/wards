@@ -1,6 +1,6 @@
 drug: ceftriaxone
 drug_name: Ceftriaxone
-indication: Pneumonia, cellulitis, complicated UTI, intra-abdominal infection
+indication: Pneumonia, cellulitis, UTI, intra-abdominal infection
 indication_detail: Community-acquired pneumonia, cellulitis, complicated UTI or pyelonephritis, mild-to-moderate community-acquired intra-abdominal infection (with metronidazole)
 population: Adults
 route: IV

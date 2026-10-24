@@ -1,0 +1,28 @@
+drug: ceftriaxone
+drug_name: Ceftriaxone
+indication: Spontaneous bacterial peritonitis
+indication_detail: Community-acquired spontaneous bacterial peritonitis (ascitic neutrophils >250/mm³)
+population: Adults
+route: IV
+amount: "2"
+unit: g
+frequency: every 24 hours
+rate: over 30 minutes
+duration: 5–7 days
+max: 4 g per day (label)
+boxed_warning: None
+adjustments:
+  - when: Liver dysfunction plus significant kidney disease
+    change: Maximum 2 g per day (label)
+cautions:
+  - Community-acquired infection only. For nosocomial or health care–associated infection, recent broad-spectrum antibiotics, or sepsis, use piperacillin-tazobactam or meropenem per local resistance.
+  - Inoculate ascitic fluid into blood-culture bottles at the bedside before the first dose. Narrow to the culture result.
+  - Repeat paracentesis at 2 days. A neutrophil fall under 25% means no response, so broaden coverage and look for secondary peritonitis.
+  - Give albumin with it (see Albumin 25%).
+  - This is not the 1 g dose used for variceal-bleed prophylaxis.
+notes: "The AASLD guidance names a third-generation cephalosporin as first line and gives no ceftriaxone dose for treatment. 2 g every 24 hours sits inside the label range of 1–2 g daily."
+sources: [aasld-ascites-hrs-2021, label-ceftriaxone-2026]
+verification:
+  source: aasld-ascites-hrs-2021
+  read: full-text
+  date: 2026-10-24

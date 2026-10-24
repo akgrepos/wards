@@ -1,6 +1,7 @@
 drug: ceftriaxone
 drug_name: Ceftriaxone
-indication: Uncomplicated gonorrhea (urethral, cervical, rectal or pharyngeal)
+indication: Uncomplicated gonorrhea
+indication_detail: Uncomplicated gonorrhea (urethral, cervical, rectal or pharyngeal)
 population: Adults under 150 kg
 route: IM
 amount: "500"

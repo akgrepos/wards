@@ -1,6 +1,7 @@
 drug: ceftriaxone
 drug_name: Ceftriaxone
-indication: Antibiotic prophylaxis in cirrhosis with acute variceal bleeding
+indication: Variceal bleeding prophylaxis
+indication_detail: Antibiotic prophylaxis in cirrhosis with acute variceal bleeding
 population: Adults
 route: IV
 amount: "1"
