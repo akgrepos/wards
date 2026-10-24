@@ -43,11 +43,13 @@ function columnsFrom(header) {
     says: find(/(source|what).*says|says/i),
     source: find(/^\W*source\W*$|^source\b(?!.*says)/i),
     note: find(/discrepancy|note/i),
+    quote: find(/quote/i),
+    edition: find(/edition|date checked/i),
   }
   return cols
 }
 
-const DEFAULT_COLS = { num: 0, statement: 1, verdict: 2, says: 3, source: 4, note: 5 }
+const DEFAULT_COLS = { num: 0, statement: 1, verdict: 2, says: 3, source: 4, note: 5, quote: 6, edition: 7 }
 
 function parseNumbers(text) {
   const out = new Set()
@@ -75,7 +77,7 @@ export function parseOeAnswer(text) {
     if (lower.some((c) => /^verdict$/i.test(c)) || (lower.some((c) => /statement/i.test(c)) && lower.some((c) => /verdict/i.test(c)))) { cols = columnsFrom(cells); return }
     const c = { ...DEFAULT_COLS, ...(cols ? Object.fromEntries(Object.entries(cols).filter(([, v]) => v >= 0)) : {}) }
     let cs = cells
-    const width = cols ? Math.max(...Object.values(c)) + 1 : 6
+    const width = cols ? Math.max(...Object.values(c)) + 1 : 8
     if (cs.length > width) cs = [...cs.slice(0, width - 1), cs.slice(width - 1).join(' | ')]
     const numMatch = clean(cs[c.num]).match(/^\D{0,3}(\d+)\b/)
     const verdict = normalizeVerdict(cs[c.verdict])
@@ -87,6 +89,8 @@ export function parseOeAnswer(text) {
       says: clean(cs[c.says]),
       source: clean(cs[c.source]),
       note: clean(cs[c.note]),
+      quote: clean(cs[c.quote]),
+      edition: clean(cs[c.edition]),
     })
   })
 
@@ -126,7 +130,7 @@ export function applyToLedger(ledgerText, map, parsed, date = ymd()) {
     const id = map.entries?.[r.n]
     const item = id ? byId.get(String(id)) : null
     if (!item) { unmapped.push(r.n); continue }
-    item.set('oe', doc.createNode({ date, verdict: r.verdict, says: r.says, source: r.source, note: r.note, batch: map.batch }))
+    item.set('oe', doc.createNode({ date, verdict: r.verdict, says: r.says, source: r.source, note: r.note, ...(r.quote ? { quote: r.quote } : {}), ...(r.edition ? { edition: r.edition } : {}), batch: map.batch }))
     applied.push({ ...r, id: String(id) })
   }
   return { text: String(doc), applied, unmapped }

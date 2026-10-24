@@ -57,6 +57,14 @@ describe('review:oe-read', () => {
     const p = parseOeAnswer('| # | Verdict | Statement (short) | Source | What the source says | Discrepancy or note |\n|--|--|--|--|--|--|\n| 1 | Supported | S | the source | the says | the note |')
     expect(p.rows[0]).toMatchObject({ statement: 'S', source: 'the source', says: 'the says', note: 'the note' })
   })
+  it('reads the two extra trailing columns (quote, edition) and still reads six columns', () => {
+    const p = parseOeAnswer('| # | Statement (short) | Verdict | What the source says | Source | Discrepancy or note | Quote (<=30 words) | Edition/date checked |\n|--|--|--|--|--|--|--|--|\n| 1 | A | Supported | s | src | n | "exact words" | 2024 ed. |\n| 2 | B | Supported | s | src | n | | |')
+    expect(p.rows[0]).toMatchObject({ note: 'n', quote: '"exact words"', edition: '2024 ed.' })
+    expect(p.rows[1]).toMatchObject({ quote: '', edition: '' })
+    expect(parseOeAnswer('| 1 | A | Supported | s | src | n | q | e |').rows[0]).toMatchObject({ note: 'n', quote: 'q', edition: 'e' })
+    const r = applyToLedger('entries:\n  - id: a\n    claim: x\n', { batch: 'b', entries: { 1: 'a' } }, p, '2026-01-02')
+    expect(parse(r.text).entries[0].oe).toMatchObject({ quote: '"exact words"', edition: '2024 ed.' })
+  })
   const LEDGER = `# top comment
 card: c
 entries:
