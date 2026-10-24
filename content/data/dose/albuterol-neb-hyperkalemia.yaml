@@ -5,12 +5,13 @@ route: nebulized
 amount: 10–20
 unit: mg
 frequency: once
-onset: About 30 minutes
-lasts: About 2 hours
+onset: Within 30 minutes
+lasts: At least 2 hours
 cautions:
   - "Use with insulin-glucose. Never alone for severe hyperkalemia."
-  - "Much larger dose than for bronchospasm. Watch for tachycardia."
-notes: "Peak potassium lowering around 90–120 minutes."
+  - "Much larger dose than for bronchospasm. Watch for tachycardia and tremor."
+  - "Cardiac disease: use the lower dose with monitoring."
+notes: "Peak potassium lowering at about 120 minutes (10 mg) and 90 minutes (20 mg)."
 sources: [ukka-hyperkalaemia-2026, kdigo-acute-hyperkalemia-2020, emcreg-hyperkalemia-2025]
 verification:
   source: ukka-hyperkalaemia-2026
