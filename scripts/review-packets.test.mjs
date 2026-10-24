@@ -3,7 +3,7 @@ import { mkdtempSync, mkdirSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { resolve } from 'node:path'
 import { normalize } from './review-check.mjs'
-import { pickBlind, windowAround, anchorsOf, otherOccurrences, candidatePassages, cardLines, cardExtract, buildAll, summary } from './review-packets.mjs'
+import { blindCandidates, buildPacket, renderPacket, pickBlind, windowAround, anchorsOf, otherOccurrences, candidatePassages, cardLines, cardExtract, buildAll, summary } from './review-packets.mjs'
 
 // Synthetic text only: no real guideline wording in the repo.
 const filler = (n, tag) => Array.from({ length: n }, (_, i) => `${tag}${i}`).join(' ')
@@ -46,6 +46,35 @@ describe('review:packets', () => {
     mkdirSync(resolve(root, 'content/data/dose'), { recursive: true })
     writeFileSync(resolve(root, 'content/data/dose/d.yaml'), 'amount: 10\nunit: g\n')
     expect(cardExtract({ root, cardId: 'c', where: 'data/dose/d.yaml amount', claim: '' })).toContain('amount: 10')
+  })
+  it('blind candidates cover every number passage, shuffle, and never mark the quote', () => {
+    const c = blindCandidates(source, 'Potassium chloride 20 mEq', 3)
+    expect(c).toHaveLength(2)
+    expect(c.some((t) => t.includes('over 1 hour'))).toBe(true)
+    expect(c.some((t) => t.includes('children'))).toBe(true)
+    expect(c.every((t) => t.split(' ').length <= 152)).toBe(true)
+    const many = Array.from({ length: 40 }, (_, i) => `${filler(200, 'z' + i)} dose 7 mEq here`).join(' ')
+    expect(blindCandidates(normalize(many), '7 mEq', 1)).toHaveLength(12)
+    expect([...blindCandidates(source, 'Potassium chloride 20 mEq', 3)]).toEqual(c)
+    const order = new Set(Array.from({ length: 12 }, (_, s) => blindCandidates(source, 'Potassium chloride 20 mEq', s)[0].includes('children')))
+    expect(order.size).toBe(2)
+  })
+  it('uses keyword overlap for claims without numbers', () => {
+    const t = normalize(`${filler(200, 'q')} avoid sorbitol with polystyrene resin ${filler(200, 'r')} unrelated words only ${filler(100, 's')}`)
+    const c = blindCandidates(t, 'Never give polystyrene resin with sorbitol', 1)
+    expect(c.length).toBeLessThanOrEqual(3)
+    expect(c[0]).toContain('sorbitol')
+  })
+  it('blind packets show shuffled passages, not the window, location or flags', () => {
+    const p = buildPacket({ entry: { id: 'b', claim: 'Potassium chloride 20 mEq', source: 'src', quote: 'Give 20 mEq of potassium chloride over 1 hour.', location: 'SECRETLOC' }, text: source, cardText: 'card', check: 'match' })
+    p.blindCandidates = blindCandidates(source, p.claim, 1)
+    const out = renderPacket(p, 1, true)
+    expect(out).toContain('(BLIND)')
+    expect(out).toContain('Passage A')
+    expect(out).not.toContain('SECRETLOC')
+    expect(out).not.toContain('Writer’s quote**')
+    expect(out).not.toContain('around the quote')
+    expect(out).not.toContain('review:check result')
   })
   it('builds batches, hides blind quotes until the end, and measures', () => {
     const root = mkdtempSync(resolve(tmpdir(), 'pk-'))
