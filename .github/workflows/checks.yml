@@ -33,6 +33,8 @@ jobs:
         run: npm run tokens && git diff --exit-code src/design/tokens.css
       - name: Content rules (sources, inserts, sections, units, no typed doses)
         run: npm run content:check
+      - name: Notes are consistent (broken references, stale versions, leftovers)
+        run: npm run docs:check
       - name: Type-check
         run: npm run typecheck
       - name: Tests
