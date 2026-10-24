@@ -17,3 +17,5 @@ declare module 'virtual:wards-content' {
   const content: import('./content/types').Content;
   export default content;
 }
+
+declare const __APP_VERSION__: string;

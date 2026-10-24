@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { checkReferences, checkDecisionsLength, checkVersionMentions, checkLeftovers, checkPrivacy, checkForbiddenWords, applyAllowlist, runChecks } from './docs-check.mjs'
+import { checkReferences, checkDecisionsLength, checkLeftovers, checkPrivacy, checkForbiddenWords, applyAllowlist, runChecks } from './docs-check.mjs'
 import { fileURLToPath } from 'node:url'
 import { dirname, resolve } from 'node:path'
 
@@ -21,11 +21,6 @@ describe('docs:check', () => {
     const r = checkDecisionsLength({ file: 'docs/DECISIONS.md', text })
     expect(r).toHaveLength(1)
     expect(r[0]).toMatchObject({ line: 2, level: 'warning' })
-  })
-  it('flags STATUS versions that differ from src/version.ts', () => {
-    const r = checkVersionMentions({ file: 'docs/STATUS.md', text: 'live version 2026.10.23.8\nversion 2026.10.24.7 ok', current: '2026.10.24.7' })
-    expect(r).toHaveLength(1)
-    expect(r[0].line).toBe(1)
   })
   it('flags docs/screenshots as a place for files, not as a ban', () => {
     expect(checkLeftovers({ file: 'a.md', text: 'save to docs/screenshots/' })).toHaveLength(1)

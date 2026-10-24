@@ -2,7 +2,8 @@
 // Run once; it blocks (up to 10 min) until the PR's checks pass, the PR is merged, and the live site shows the version in
 // src/version.ts on origin/main (or the expected one). Exit 0 = live, 1 = failed or closed, 2 = timed out. It does not
 // merge the PR: merge it yourself with `gh pr merge --rebase` once checks pass (this waits for the merge too).
-import { git, ghJson, summarizeChecks, versionFromSource, waitDecision, liveVersion, SITE } from './lib/workflow.mjs'
+import { git, ghJson, summarizeChecks, waitDecision, liveVersion, SITE } from './lib/workflow.mjs'
+import { computeVersion } from './lib/version.mjs'
 
 const [pr, want] = process.argv.slice(2)
 if (!pr) {
@@ -23,7 +24,7 @@ while (Date.now() < end) {
   let v = want
   if (state === 'MERGED') {
     git(['fetch', 'origin', 'main', '--quiet'])
-    v = want ?? versionFromSource(git(['show', 'origin/main:src/version.ts']) ?? '')
+    v = want ?? computeVersion('origin/main')
     liveMatches = (await liveVersion()).versions.includes(v)
   }
   const d = waitDecision({ state, checks, liveMatches })

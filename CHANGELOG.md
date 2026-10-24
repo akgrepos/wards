@@ -1,6 +1,10 @@
 # Changelog
 
-What changed in each version of Wards, newest first. The version is shown in Settings (gear on Topics).
+What changed in each version of Wards, newest first. The version is shown in Settings (gear on Topics). Both the version and this list are automatic: the version comes from the date and the number of changes that day, and the list below comes from the titles of merged pull requests (`npm run changelog`). Entries after the line below this one were written by hand, before that.
+
+<!-- auto-from: 2026-10-24T20:36:41Z -->
+<!-- auto:start -->
+<!-- auto:end -->
 
 ## 2026.10.24.7
 

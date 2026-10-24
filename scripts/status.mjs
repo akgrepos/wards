@@ -1,7 +1,8 @@
 // npm run status [-- --since YYYY-MM-DD]: one-call check-in: open PRs with check state, merged PRs (last 5, or since a date),
 // version on origin/main vs the live site, worktrees and local branches (merged ones marked).
 import { homedir } from 'node:os'
-import { git, ghJson, parseWorktrees, countUnmerged, summarizeChecks, versionFromSource, liveVersion } from './lib/workflow.mjs'
+import { git, ghJson, parseWorktrees, countUnmerged, summarizeChecks, liveVersion } from './lib/workflow.mjs'
+import { computeVersion } from './lib/version.mjs'
 
 const si = process.argv.indexOf('--since')
 const since = si >= 0 ? process.argv[si + 1] : null
@@ -26,7 +27,7 @@ console.log(since ? `== Merged PRs since ${since}` : '== Last 5 merged PRs')
 const merged = ghJson(['pr', 'list', '--state', 'merged', '--limit', since ? '100' : '5', '--json', 'number,title,mergedAt']) ?? []
 for (const p of merged.filter((p) => !since || p.mergedAt.slice(0, 10) >= since)) console.log(`  #${p.number} ${p.mergedAt.slice(0, 16)} ${p.title}`)
 
-const src = versionFromSource(git(['show', 'origin/main:src/version.ts']) ?? '')
+const src = computeVersion('origin/main')
 const live = await liveVersion()
 const liveNote = !live.bundle
   ? 'could not read the live site'

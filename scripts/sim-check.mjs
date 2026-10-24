@@ -16,7 +16,8 @@ import { mkdirSync, mkdtempSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { git, run, versionFromSource, versionStep, SITE } from './lib/workflow.mjs'
+import { git, run, versionStep, SITE } from './lib/workflow.mjs'
+import { computeVersion } from './lib/version.mjs'
 
 const args = process.argv.slice(2)
 const opt = (name) => {
@@ -73,7 +74,7 @@ if (expect && !route) checkExpect()
 
 // 1. Version (opens Settings itself when the screen shows none)
 git(['fetch', 'origin', 'main', '--quiet'])
-const want = versionFromSource(git(['show', 'origin/main:src/version.ts']) ?? '')
+const want = computeVersion('origin/main')
 let v = versionStep(plain, want)
 let visitedSettings = false
 if (v.step === 'open-settings') {

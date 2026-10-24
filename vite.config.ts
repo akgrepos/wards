@@ -5,6 +5,7 @@ import { VitePWA } from 'vite-plugin-pwa';
 import { resolve } from 'node:path';
 import { loadContent } from './scripts/content/load.mjs';
 import { splitContent } from './scripts/content/split.mjs';
+import { computeVersion } from './scripts/lib/version.mjs';
 
 // Turns content/ into a small index, the module "virtual:wards-content", plus one file per card (cards/<id>.json) that the app
 // fetches when a card opens and the service worker saves for offline use. Tests use "virtual:wards-content-full" (everything).
@@ -64,6 +65,8 @@ function wardsContent(includeExamples: boolean) {
 // The live app is served from https://akgrepos.github.io/wards/
 export default defineConfig(({ command }) => ({
   base: '/wards/',
+  // Stamped from git (date + commit count that day), so nobody edits a version by hand.
+  define: { __APP_VERSION__: JSON.stringify(computeVersion()) },
   plugins: [
     wardsContent(command === 'serve'),
     react(),
