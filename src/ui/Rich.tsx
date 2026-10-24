@@ -425,7 +425,7 @@ export function CalcLink({ c, label }: { c: Calc; label?: string }) {
   const text = label ?? c.short;
   return (
     <a className="card-link calc-link" href={c.url} target="_blank" rel="noopener noreferrer" aria-label={`${text}${c.name.includes(c.short) ? '' : `, ${c.name}`}. Opens MDCalc in Safari, needs internet.`}>
-      {text}<span className="calc-link__mark" aria-hidden="true">{icons.arrowUpRight}</span>
+      {text.replace(/\S+$/, '')}<span className="calc-link__tail">{text.match(/\S+$/)?.[0]}<span className="calc-link__mark" aria-hidden="true">{icons.arrowUpRight}</span></span>
     </a>
   );
 }
@@ -501,7 +501,7 @@ function CardLink({ card, section, label }: { card: Card; section?: string | nul
     const r = parseRoute(location.hash);
     if (section && r.name === 'card' && r.id === card.id) { dispatchEvent(new CustomEvent(JUMP_EVENT, { detail: section })); return; }
     const part = pickSection(card, section, from);
-    sheet({ title: card.title, heading: part ? titleCase(part.title) : card.title, subheading: part ? card.title : undefined, body: <CardPartSheet card={card} part={part} /> });
+    sheet({ title: card.title, heading: part ? titleCase(part.title) : card.title, body: <CardPartSheet card={card} part={part} /> });
   };
   return <button type="button" className="card-link" onClick={open}>{label}</button>;
 }
