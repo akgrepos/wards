@@ -31,7 +31,7 @@ export function mulberry32(seed) {
   }
 }
 
-export function pickBlind(count, seed) {
+export function pickBlind(count, seed, excluded = new Set()) {
   const n = Math.min(count, Math.max(5, Math.round(count * 0.1)))
   const rand = mulberry32(seed)
   const idx = [...Array(count).keys()]
@@ -39,7 +39,7 @@ export function pickBlind(count, seed) {
     const j = Math.floor(rand() * (i + 1))
     ;[idx[i], idx[j]] = [idx[j], idx[i]]
   }
-  return new Set(idx.slice(0, n))
+  return new Set(idx.filter((i) => !excluded.has(i)).slice(0, n))
 }
 
 // ---- source text: words and positions -------------------------------------------------------------
@@ -238,9 +238,12 @@ export function blindCandidates(text, claim, seed) {
 
 // ---- packets ---------------------------------------------------------------------------------------
 
+const ownerDate = (d) => (d instanceof Date ? d.toISOString().slice(0, 10) : String(d))
+
 export function buildPacket({ entry, text, cardText, check }) {
   const quote = normalize(String(entry.quote ?? ''))
   const p = { id: entry.id, flags: [], window: null, candidates: [], others: [], cardText, checkText: check, quote: String(entry.quote ?? '').trim(), location: entry.location ?? '', source: entry.source, claim: String(entry.claim ?? '') }
+  if (!quote && entry.owner_checked && entry.status === 'match') { p.flags.push('owner-checked'); p.ownerChecked = ownerDate(entry.owner_checked); return p }
   if (text === undefined) { p.flags.push('source-missing'); return p }
   if (!quote) p.flags.push('no-quote')
   else {
@@ -275,7 +278,8 @@ export function renderPacket(p, n, blind) {
   else if (p.candidates.length) {
     out.push(p.flags.includes('source-missing') ? '' : '**Best candidate passages** (the quote could not be placed, so these were found by the claim’s numbers):', '')
     p.candidates.forEach((c, i) => out.push(`Candidate ${i + 1} (${c.why}):`, '', `> ${c.text}`, ''))
-  } else if (p.flags.includes('source-missing')) out.push('No saved source text is available for this entry.', '')
+  } else if (p.flags.includes('owner-checked')) out.push(`Checked by the owner on ${p.ownerChecked}; no verbatim quote was obtained, so there is no source passage to show. Mark this packet "owner-checked" and judge only whether the card line is internally consistent with the claim above.`, '')
+  else if (p.flags.includes('source-missing')) out.push('No saved source text is available for this entry.', '')
   else out.push('No candidate passage found in the source for this claim’s numbers.', '')
   if (p.others.length) {
     out.push('**Same numbers elsewhere in this source** (look for anything that disagrees):', '')
@@ -289,13 +293,15 @@ export function renderPacket(p, n, blind) {
 export function checkText(entry, texts) {
   const { failures } = checkLedger({ ledger: { entries: [entry] }, texts })
   const status = entry.status
+  if (entry.owner_checked && !String(entry.quote ?? '').trim() && status === 'match') return `match, owner-checked ${ownerDate(entry.owner_checked)} (no quote)`
   if (!failures.length) return `${status}, quote and numbers agree`
   return `${status}; ${failures.map((f) => `${f.rule === 'number-mismatch' ? 'number mismatch' : f.rule}: ${f.message}`).join(' | ')}`
 }
 
 export function buildAll({ ledger, texts, root, card, seed }) {
   const entries = ledger.entries ?? []
-  const blindSet = pickBlind(entries.length, seed)
+  const ownerSet = new Set(entries.flatMap((e, i) => (e.owner_checked && !String(e.quote ?? '').trim() && e.status === 'match' ? [i] : [])))
+  const blindSet = pickBlind(entries.length, seed, ownerSet)
   const packets = entries.map((entry) => {
     const text = texts[entry.source]
     const cardText = cardExtract({ root, cardId: card, where: String(entry.where ?? ''), claim: String(entry.claim ?? '') })
@@ -324,6 +330,7 @@ export function buildAll({ ledger, texts, root, card, seed }) {
     totalWords: words.reduce((a, b) => a + b, 0),
     blindMeanWords: blindSet.size ? Math.round(rendered.filter((r) => r.blind).reduce((a, r) => a + r.words, 0) / blindSet.size) : 0,
     blindMaxWords: Math.max(0, ...rendered.filter((r) => r.blind).map((r) => r.words)),
+    ownerChecked: ownerSet.size,
     entriesSourceMissing: entries.filter((e) => texts[e.source] === undefined).length,
     sourcesCited: sources.size,
     sourcesMissing: sourcesMissing.length,
@@ -359,6 +366,7 @@ export function summary(card, outDir, { files, stats }) {
   return [
     `review:packets ${card}: ${stats.packets} packets in ${files.length} file(s) in ${outDir}`,
     `  blind sample: ${stats.blind} packets, seed ${stats.seed}; words per blind packet: mean ${stats.blindMeanWords}, max ${stats.blindMaxWords}`,
+    `  owner-checked entries (no quote, no window): ${stats.ownerChecked}`,
     `  quotes found verbatim without help: ${pct(stats.foundShare)} (${stats.found} of ${stats.withQuote} entries that have a quote and a saved source)`,
     `  words per packet: mean ${stats.meanWords}, max ${stats.maxWords}; total ${stats.totalWords}`,
     `  ledger entries whose source text is missing: ${pct(stats.packets ? stats.entriesSourceMissing / stats.packets : 0)} (${stats.entriesSourceMissing} of ${stats.packets})`,

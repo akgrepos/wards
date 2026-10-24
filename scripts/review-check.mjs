@@ -2,7 +2,8 @@
 // Reads ~/Documents/Wards-reference/review-ledger/<card-id>.yaml and the saved source texts in
 // ~/Documents/Wards-reference/source-library/<source-id>.txt (both stay outside the repo).
 // Fails when a quote is not verbatim in its saved source text, when a number or unit in a claim
-// disagrees with its quote, or when a non-match entry has no note.
+// disagrees with its quote, or when a non-match entry has no note. A match entry with `owner_checked: <date>`
+// and no quote counts as verified by the owner (its own count, not a failure).
 import { readFileSync, existsSync } from 'node:fs'
 import { homedir } from 'node:os'
 import { resolve } from 'node:path'
@@ -75,7 +76,7 @@ function isWord(u) { return !KNOWN_UNITS.has(u) }
 
 export function checkLedger({ ledger, texts }) {
   const failures = []
-  const counts = { total: 0, match: 0, mismatch: 0, partial: 0, 'no-support': 0 }
+  const counts = { total: 0, match: 0, mismatch: 0, partial: 0, 'no-support': 0, ownerChecked: 0 }
   const fail = (e, rule, message) => failures.push({ id: e.id, where: e.where, claim: e.claim, quote: e.quote, rule, message })
   for (const e of ledger.entries ?? []) {
     counts.total++
@@ -84,6 +85,8 @@ export function checkLedger({ ledger, texts }) {
     if (e.status !== 'match' && !String(e.note ?? '').trim()) fail(e, 'missing-note', `a ${e.status} entry needs a note`)
     const quote = normalize(String(e.quote ?? ''))
     if (!quote) {
+      // The owner verified this entry themselves; there is no verbatim quote to check.
+      if (e.status === 'match' && e.owner_checked) { counts.ownerChecked++; continue }
       if (e.status === 'match') fail(e, 'empty-quote', 'a match entry needs an exact quote')
       continue
     }
@@ -107,7 +110,7 @@ export function loadTexts(libDir, ledger) {
 }
 
 export function report({ counts, failures }, card) {
-  const lines = [`review:check ${card}: ${counts.total} entries (match ${counts.match}, partial ${counts.partial}, mismatch ${counts.mismatch}, no-support ${counts['no-support']}).`]
+  const lines = [`review:check ${card}: ${counts.total} entries (match ${counts.match}, partial ${counts.partial}, mismatch ${counts.mismatch}, no-support ${counts['no-support']}; owner-checked, no quote ${counts.ownerChecked}).`]
   for (const f of failures) {
     lines.push('', `FAIL [${f.rule}] ${f.id}`, `  where: ${f.where}`, `  claim: ${f.claim}`, `  quote: ${f.quote || '(none)'}`, `  ${f.message}`)
   }
