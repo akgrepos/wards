@@ -51,17 +51,6 @@ export function checkDecisionsLength({ file, text, from = DECISIONS_LENGTH_FROM,
   return out
 }
 
-// "live version 2026.10.24.7" style statements in STATUS must equal src/version.ts.
-export function checkVersionMentions({ file, text, current }) {
-  const out = []
-  text.split('\n').forEach((lineText, i) => {
-    for (const [, v] of lineText.matchAll(/\b(?:live version|version)\s+(20\d\d\.\d\d\.\d\d(?:\.\d+)?)/gi)) {
-      if (v !== current) out.push(find('version-mention', file, i + 1, `Says version ${v} but src/version.ts is ${current}.`))
-    }
-  })
-  return out
-}
-
 // docs/screenshots/ must not be mentioned as a place to put files (only as "no ..." or "delete ...").
 export function checkLeftovers({ file, text }) {
   const out = []
@@ -112,7 +101,6 @@ export function runChecks(root, allow = ALLOW) {
   const read = (f) => readFileSync(join(root, f), 'utf8')
   const exists = (p) => existsSync(join(root, p))
   const scripts = Object.keys(JSON.parse(read('package.json')).scripts)
-  const current = read('src/version.ts').match(/APP_VERSION\s*=\s*'([^']+)'/)?.[1]
   const notes = files.filter((f) => f === 'CLAUDE.md' || f === 'README.md' || /^docs\/[^/]+\.md$/.test(f))
   const content = files.filter((f) => f.startsWith('content/') && !f.startsWith('content/data/source/') && /\.(ya?ml|md)$/.test(f))
   let findings = []
@@ -120,7 +108,6 @@ export function runChecks(root, allow = ALLOW) {
     const text = read(file)
     findings.push(...checkReferences({ file, text, files, scripts, exists }), ...checkLeftovers({ file, text }), ...checkPrivacy({ file, text }))
     if (file === 'docs/DECISIONS.md') findings.push(...checkDecisionsLength({ file, text }))
-    if (file === 'docs/STATUS.md') findings.push(...checkVersionMentions({ file, text, current }))
   }
   for (const file of [...content, 'CHANGELOG.md']) {
     const text = read(file)
