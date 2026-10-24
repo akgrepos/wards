@@ -29,6 +29,8 @@ jobs:
         run: npm run tokens && git diff --exit-code src/design/tokens.css
       - name: Content rules (sources, inserts, sections, units, no typed doses)
         run: npm run content:check
+      - name: No private details in repo files (emails, home paths, outside source names)
+        run: npm run privacy:check
       - name: Type-check
         run: npm run typecheck
       - name: Tests
