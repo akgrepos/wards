@@ -2754,3 +2754,32 @@ button.akg-link { margin: 0; padding: 0; border: 0; background: none; font: inhe
 .akg-coverage-strip__cell { color: var(--label-secondary); position: relative; display: flex; flex-direction: column; align-items: center; gap: var(--space-2); min-width: 0; }
 .akg-coverage-strip__cell.akg-coverage--full { color: var(--label); }
 .akg-coverage-strip__short { font-size: calc(11 * var(--akg-t)); line-height: calc(13 * var(--akg-t)); color: var(--label-secondary); text-align: center; overflow-wrap: anywhere; }
+
+/* ContentSection tone — "Quiet": white bars, the colored symbol square is the only color signal; danger bars also get a faint tint. */
+.akg-content-section--tone { --tone: var(--system-gray); --sq-bg: var(--tone); --sq-ink: #fff; }
+.akg-content-section--tone-danger { --tone: var(--system-red); }
+.akg-content-section--tone-caution { --tone: var(--system-orange); }
+.akg-content-section--tone-watch { --tone: #e5a800; }
+.akg-content-section--tone-technique { --tone: var(--system-teal); }
+.akg-content-section--tone-note { --tone: var(--system-brown); }
+.akg-content-section__sq { flex: none; display: grid; place-items: center; width: calc(28 * var(--akg-t)); height: calc(28 * var(--akg-t)); border-radius: 8px; background: var(--sq-bg); color: var(--sq-ink); }
+.akg-content-section__sq svg { width: calc(18 * var(--akg-t)); height: calc(18 * var(--akg-t)); }
+.akg-content-section--tone-neutral { --sq-bg: color-mix(in srgb, var(--system-gray) 20%, transparent); --sq-ink: var(--label-secondary); }
+.akg-content-section--tone .akg-content-section__header { gap: var(--space-10); }
+.akg-content-section--tone .akg-content-section__title { flex: 1; }
+/* Card variant: the header is the bar; the body card continues under it. */
+.akg-content-section--tone.akg-content-section--card { gap: 0; }
+.akg-content-section--tone.akg-content-section--card .akg-content-section__header { padding: var(--space-8) var(--space-4) var(--space-8) var(--space-12); background: var(--background-grouped-secondary); border-radius: var(--radius-grouped); }
+.akg-content-section--tone.akg-content-section--card .akg-content-section__header[aria-expanded="true"] { border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
+.akg-content-section--tone.akg-content-section--card .akg-content-section__title { font-size: calc(17 * var(--akg-t)); line-height: calc(22 * var(--akg-t)); font-weight: 600; letter-spacing: 0; }
+.akg-content-section--tone-danger.akg-content-section--card .akg-content-section__header { background: color-mix(in srgb, var(--tone) 9%, var(--background-grouped-secondary)); }
+.akg-content-section--tone.akg-content-section--card .akg-content-section__card { border-top-left-radius: 0; border-top-right-radius: 0; border-top: 0.5px solid var(--separator); }
+.akg-content-section--tone.akg-content-section--card .akg-content-section__card[hidden] { display: none !important; }
+/* Plain variant (a subsection): just the symbol square, smaller. */
+.akg-content-section--tone:not(.akg-content-section--card) .akg-content-section__sq { width: calc(22 * var(--akg-t)); height: calc(22 * var(--akg-t)); border-radius: 7px; }
+.akg-content-section--tone:not(.akg-content-section--card) .akg-content-section__sq svg { width: calc(14 * var(--akg-t)); height: calc(14 * var(--akg-t)); }
+/* ValueRow layout="list": a flat item in a list inside a card. */
+.akg-value-row--list { background: transparent; border-radius: 0; padding: var(--space-10) 0; min-height: var(--tap-target); }
+.akg-value-row--list + .akg-value-row--list { border-top: 0.5px solid var(--separator); }
+.akg-value-row--list.akg-value-row--interactive:active { background: var(--fill-tertiary); }
+.akg-value-row--list .akg-value-row__value { font-weight: 600; }

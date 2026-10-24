@@ -1,6 +1,7 @@
 drug: ceftriaxone
 drug_name: Ceftriaxone
-indication: Pelvic inflammatory disease needing parenteral therapy (with doxycycline and metronidazole)
+indication: Pelvic inflammatory disease needing parenteral therapy
+indication_detail: Pelvic inflammatory disease needing parenteral therapy (with doxycycline and metronidazole)
 population: Adults
 route: IV
 amount: "1"

@@ -27,7 +27,8 @@ Every citation lives here once; cards cite by number, which points to the source
 ### 2. Dose
 One drug, one indication, one population. The only place a dose is written.
 - Fields (YAML name in brackets; fill a field only from the item's cited sources, and leave it out rather than guess):
-  - drug name [`drug_name`] · brand [`brand`] · drug card [`drug`] · indication [`indication`] · population [`population`]
+  - drug name [`drug_name`] · brand [`brand`] · drug card [`drug`] · indication [`indication`] · longer indication [`indication_detail`] · population [`population`]
+  - `indication` is the **title of the dose row** on a medication card (the condition, about 70 characters at most; `npm run content:check` fails a longer one on a dose a medication card inserts). Long wording (organisms, combinations, qualifiers) goes in the optional `indication_detail`, shown on the dose sheet under "Indication". Keep the clinical meaning in one or the other; never drop a qualifier to fit.
   - route [`route`] · amount and unit [`amount`, `unit`] (or per kg) · frequency [`frequency`] and/or rate [`rate`, e.g. "over 10 minutes"]: one of the two is required
   - give when [`give_when`]: the trigger, short ("ECG changes")
   - repeat [`repeat`]: when to give it again
@@ -39,7 +40,7 @@ One drug, one indication, one population. The only place a dose is written.
   - cautions [`cautions`]: a list of short sentences
   - notes [`notes`] · sources [`sources`]
 - Home: the medication card. Inserted into condition, approach, protocol and pathway steps, always as its own **dose row** (one drug per row).
-- Shown as: the dose row (drug name over "amount unit route rate frequency"); tapping opens the **dose sheet**: "Dose" bar title, the drug as heading, the fields above, the alternative (tap to open it), cautions, Check Interactions (Medscape's free checker, opens in Safari) and a source line.
+- Shown as: the dose row (on a condition, approach or protocol card: drug name over "amount unit route rate frequency"; on a **medication card**: the `indication` as the bold title, "amount unit route frequency" in semibold under it, then one gray line of population, rate, maximum and a short duration; a duration over 60 characters appears only on the sheet); tapping opens the **dose sheet**: "Dose" bar title, the drug as heading, the fields above, the alternative (tap to open it), cautions, Check Interactions (Medscape's free checker, opens in Safari) and a source line.
 
 ### Verification note (doses and calculators, added 2026-10-23)
 Every dose item and every in-app calculator (a `calc` file with a `calculator` block) carries a `verification` note, so the later independent review has a searchable worklist. `npm run content:check` rejects one without it.

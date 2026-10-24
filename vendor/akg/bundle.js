@@ -2367,8 +2367,39 @@
 
   // A titled block of reading content. collapsible + summary = shows one line until opened. more = an extra "More" expander for detail.
   // variant="card": the title sits above a rounded card that holds the body (and an optional footer, such as a SourceLine).
+  // Tone symbols (stroke drawings on a 20pt grid after the SF Symbols nosign, exclamationmark.triangle, eye, syringe, quote.opening and list.bullet).
+  var TONE_SYMBOLS = {
+    danger: '<circle cx="10" cy="10" r="7"/><path d="M5 5l10 10"/>',
+    caution: '<path d="M10 3.2L17.5 16.2H2.5z"/><path d="M10 8v4M10 14.2v.1"/>',
+    watch: '<path d="M2 10s3-5.5 8-5.5S18 10 18 10s-3 5.5-8 5.5S2 10 2 10z"/><circle cx="10" cy="10" r="2.4"/>',
+    technique: '<path d="M12.5 3.5l4 4M11 5l4 4-6 6-4-4zM5 15l-2 2M9 7l4 4"/>',
+    note: '<path d="M8.6 5.2C6 5.9 4.4 7.6 4.4 10.4v4.4h4.4v-4.4H6.7c0-1.8.9-2.8 2.5-3.2zM15.4 5.2c-2.6.7-4.2 2.4-4.2 5.2v4.4h4.4v-4.4h-2.1c0-1.8.9-2.8 2.5-3.2z"/>',
+    neutral: '<path d="M7 5.5h9M7 10h9M7 14.5h9M3.6 5.5h.1M3.6 10h.1M3.6 14.5h.1"/>'
+  };
+  // Symbols a section can name with `symbol` (each section its own, after the SF Symbol of that name; the tone's symbol is the default).
+  var SECTION_SYMBOLS = {
+    "list.bullet": TONE_SYMBOLS.neutral,
+    "pills": '<rect x="2.6" y="6.4" width="14.8" height="7.2" rx="3.6"/><path d="M10 6.4v7.2"/>',
+    "slider.horizontal.3": '<path d="M3 5h4M11 5h6M3 10h8M15 10h2M3 15h2M9 15h8"/><circle cx="9" cy="5" r="2"/><circle cx="13" cy="10" r="2"/><circle cx="7" cy="15" r="2"/>',
+    "syringe": TONE_SYMBOLS.technique,
+    "nosign": TONE_SYMBOLS.danger,
+    "exclamationmark.triangle": TONE_SYMBOLS.caution,
+    "arrow.left.arrow.right": '<path d="M3.5 7h13M13.5 4l3 3-3 3M16.5 13h-13M6.5 10l-3 3 3 3"/>',
+    "eye": TONE_SYMBOLS.watch,
+    "info.circle": '<circle cx="10" cy="10" r="7"/><path d="M10 9v4.5M10 6.6v.1"/>',
+    "figure.and.child.holdinghands": '<circle cx="7" cy="4.6" r="1.6"/><path d="M7 7.6v5M7 12.6l-1.8 4M7 12.6l1.8 4M7 9.6l4.4 1.4"/><circle cx="13.6" cy="9.2" r="1.2"/><path d="M13.6 11.2v3M13.6 14.2l-1 2.6M13.6 14.2l1 2.6"/>',
+    "arrow.uturn.backward": '<path d="M7 4L3.5 7.5 7 11M3.5 7.5H12a4.5 4.5 0 010 9H8"/>',
+    "book": '<path d="M10 5.5C8.5 4.3 6 4 3.5 4.3v10.5c2.5-.3 5 0 6.5 1.2 1.5-1.2 4-1.5 6.5-1.2V4.3C14 4 11.5 4.3 10 5.5zM10 5.5V16"/>',
+    "lightbulb": '<path d="M7.2 13.3c-1.3-1-2-2.3-2-3.9a4.8 4.8 0 019.6 0c0 1.6-.7 2.9-2 3.9v1.4H7.2zM8 17h4"/>',
+    "quote.opening": TONE_SYMBOLS.note
+  };
+  function toneSymbol(tone, symbol) {
+    return window.React.createElement("span", { className: "akg-content-section__sq", "aria-hidden": "true" },
+      window.React.createElement("svg", { viewBox: "0 0 20 20", fill: "none", stroke: "currentColor", strokeWidth: 1.5, strokeLinecap: "round", strokeLinejoin: "round", dangerouslySetInnerHTML: { __html: SECTION_SYMBOLS[symbol] || TONE_SYMBOLS[tone] } }));
+  }
   function ContentSection(props) {
     var React = window.React;
+    var tone = props.tone && TONE_SYMBOLS[props.tone] ? props.tone : null;
     var st = React.useState(props.defaultExpanded !== undefined ? !!props.defaultExpanded : !props.collapsible);
     var controlled = props.expanded !== undefined;
     var open = controlled ? !!props.expanded : st[0];
@@ -2382,9 +2413,10 @@
     var title = props.collapsible
       ? h(card ? "h2" : React.Fragment, card ? { className: "akg-content-section__heading" } : null,
           h("button", { type: "button", className: "akg-content-section__header akg-content-section__header--button", "aria-expanded": open, "aria-controls": bodyId, onClick: toggle },
+            tone ? toneSymbol(tone, props.symbol) : null,
             h("span", { className: "akg-content-section__title" }, props.title),
             h("span", { className: AKG.cx("akg-sym akg-content-section__chevron", open && "akg-content-section__chevron--open"), "aria-hidden": "true" }, chevron)))
-      : h("div", { className: "akg-content-section__header" }, h("h2", { className: "akg-content-section__title" }, props.title), props.accessory || null);
+      : h("div", { className: "akg-content-section__header" }, tone ? toneSymbol(tone, props.symbol) : null, h("h2", { className: "akg-content-section__title" }, props.title), props.accessory || null);
     var moreBlock = props.more ? h("div", { className: "akg-content-section__more", hidden: !open },
         h("button", { type: "button", className: "akg-content-section__more-button", "aria-expanded": more[0], onClick: function () { more[1](!more[0]); } },
           more[0] ? (props.lessLabel || lessFor(props.moreLabel)) : (props.moreLabel || "Show More Detail"),
@@ -2393,7 +2425,7 @@
     var summary = !open && props.summary ? h("p", { className: "akg-content-section__summary" }, props.summary) : null;
     // Collapsed content stays mounted (hidden), so anything inside keeps its state, such as a flowchart's answers.
     var body = h("div", { id: bodyId, className: "akg-content-section__body", hidden: !open }, props.children);
-    return h("section", { id: props.id, className: AKG.cx("akg-content-section", card && "akg-content-section--card", props.className), style: props.style },
+    return h("section", { id: props.id, className: AKG.cx("akg-content-section", card && "akg-content-section--card", tone && "akg-content-section--tone akg-content-section--tone-" + tone, props.className), style: props.style },
       title,
       card
         ? h(React.Fragment, null,
@@ -2943,9 +2975,9 @@
   function ValueRow(props) {
     var interactive = !!(props.onClick || props.href);
     var rest = {};
-    for (var k in props) if (["title", "value", "tags", "surface", "className", "children"].indexOf(k) < 0) rest[k] = props[k];
+    for (var k in props) if (["title", "value", "tags", "surface", "layout", "className", "children"].indexOf(k) < 0) rest[k] = props[k];
     rest.className = AKG.cx("akg-value-row", interactive ? "akg-value-row--interactive" : "akg-value-row--static",
-      props.surface === "raised" && "akg-value-row--raised", props.className);
+      props.surface === "raised" && "akg-value-row--raised", props.layout === "list" && "akg-value-row--list", props.className);
     var tag = "div";
     if (interactive) {
       if (props.href) tag = "a";

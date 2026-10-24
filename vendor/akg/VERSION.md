@@ -5,6 +5,7 @@ https://claude.ai/artifact/GWFUZ6rCthpEuhMik4Jiru
 
 | Copied | Artifact version | Files |
 |---|---|---|
+| 2026-10-24 | 1792860498-a869 (ContentSection `tone`: danger, caution, watch, technique, note, neutral, in the Quiet look (white bars, colored symbol square, faint tint and Danger tag for danger); ValueRow `layout="list"`; README "One color, one job" rewritten as "a color answers one question"; also includes the earlier app-only SourcePill stethoscope redraw) | `project/components/bundle.css`, `bundle.js`, `index.d.ts` |
 | 2026-10-23 | 1792809462-5c26 (InlineButton: a tinted capsule button inside running text with an optional symbol before the label, 44pt hit area, outline under Increase Contrast; Wards uses it for calculators and card links) | `project/components/bundle.css`, `bundle.js`, `index.d.ts` |
 | 2026-10-22 | 1792643039-8f72 (CoverageMark and CoverageStrip: how well one thing covers another as a gray shape plus a word, `full` / `partial` / `none`, and a strip of them with short headings that wraps at large Text Sizes; Icons group: `checkmark.circle.fill`, `circle.lefthalf.filled`, `minus.circle`) | `project/components/bundle.css`, `bundle.js`, `index.d.ts` |
 | 2026-10-21 | 1792604195-425b (GradeList `layout="bands"`: full-width tinted band per grade, name over stacked label/value fields at full label color, labels not uppercased) | `project/components/bundle.css`, `bundle.js`, `index.d.ts` |
@@ -27,4 +28,3 @@ https://claude.ai/artifact/GWFUZ6rCthpEuhMik4Jiru
 | 2026-10-17 | 1792284958-f879 (third pass: Text Size support; Callout, SourcePill, ContentSection + SectionBar, Flowchart) | `project/tokens.json`, `project/components/bundle.css`, `bundle.js`, `index.d.ts` |
 
 To update: read the artifact, copy the same four files here, run `npm run tokens`, update this table, and test in the simulator.
-- 2026-10-24 (app only, owner approval pending for shared DS): SourcePill 'practice' stethoscope glyph redrawn after SF Symbols stethoscope (ear tips, U tube, stem, chest piece) in vendor/akg/bundle.js
