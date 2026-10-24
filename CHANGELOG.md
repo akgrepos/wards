@@ -1,6 +1,6 @@
 # Changelog
 
-What changed in each version of Wards, newest first. The version is shown in Settings (gear on Home).
+What changed in each version of Wards, newest first. The version is shown in Settings (gear on Topics).
 
 ## 2026.10.24.2
 
@@ -480,7 +480,7 @@ Changes from your review of the Acute Kidney Injury and Hyperkalemia pages:
 - Back always has somewhere to go, and is named for the page it returns to. The app reopens on the last page only if it was open in the last 30 minutes.
 - "Page Not Found" has a Go to Home button.
 - The "Update Ready" banner sits above the tab bar, and says so if an update didn't finish installing.
-- Settings (gear on Home) shows the version and can clear what's kept on this iPhone.
+- Settings (gear on Topics) shows the version and can clear what's kept on this iPhone.
 
 ## 2026.10.17.7
 
