@@ -88,7 +88,7 @@ Card types and their sections: `docs/CARD-TYPES.md`. Shared data (one home, inse
 - **Consistency (owner, 2026-10-23):** every card uses one of the defined card types and the shared data types, with the same structure and formatting as the live cards. No one-off layouts. If a card seems to need a new card type, data type or kind of section, the session stops and asks the owner first, and the type is documented in `docs/CARD-TYPES.md` / `docs/DATA-TYPES.md` before any content is written.
 
 ## Where things stand
-See `docs/STATUS.md`.
+See `docs/STATUS.md` and the running list of owner requests in `docs/CHANGE-LIST.md` (Main adds each request there when it arrives).
 
 ## Accounts
 - GitHub: `akgrepos`. Repo: https://github.com/akgrepos/wards. Live address: https://akgrepos.github.io/wards/
