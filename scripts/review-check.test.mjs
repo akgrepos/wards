@@ -43,6 +43,12 @@ describe('review:check', () => {
     expect(r.failures.map((f) => [f.id, f.rule])).toEqual([['e1', 'missing-note'], ['e2', 'empty-quote'], ['e3', 'missing-note']])
     expect(r.counts).toMatchObject({ total: 3, partial: 1, match: 1, 'no-support': 1 })
   })
+  it('accepts an owner-checked match without a quote, in its own count', () => {
+    const r = run(entry({ source: 'nope', quote: '', owner_checked: '2026-10-24' }), entry({ id: 'e2', quote: '' }))
+    expect(r.failures.map((f) => [f.id, f.rule])).toEqual([['e2', 'empty-quote']])
+    expect(r.counts.ownerChecked).toBe(1)
+    expect(report(r, 'c')).toContain('owner-checked, no quote 1')
+  })
   it('reports a missing source text and a bad status', () => {
     const r = run(entry({ source: 'nope', quote: 'x' }), entry({ id: 'e2', status: 'ok' }))
     expect(r.failures.map((f) => f.rule)).toEqual(['source-missing', 'bad-status'])

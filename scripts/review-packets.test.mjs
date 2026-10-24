@@ -3,7 +3,7 @@ import { mkdtempSync, mkdirSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { resolve } from 'node:path'
 import { normalize } from './review-check.mjs'
-import { blindCandidates, buildPacket, renderPacket, pickBlind, windowAround, anchorsOf, otherOccurrences, candidatePassages, cardLines, cardExtract, buildAll, summary } from './review-packets.mjs'
+import { checkText, blindCandidates, buildPacket, renderPacket, pickBlind, windowAround, anchorsOf, otherOccurrences, candidatePassages, cardLines, cardExtract, buildAll, summary } from './review-packets.mjs'
 
 // Synthetic text only: no real guideline wording in the repo.
 const filler = (n, tag) => Array.from({ length: n }, (_, i) => `${tag}${i}`).join(' ')
@@ -75,6 +75,17 @@ describe('review:packets', () => {
     expect(out).not.toContain('Writer’s quote**')
     expect(out).not.toContain('around the quote')
     expect(out).not.toContain('review:check result')
+  })
+  it('marks owner-checked entries without a window and keeps them out of the blind sample', () => {
+    const entry = { id: 'o', claim: 'Rated 2b', source: 'gone', status: 'match', quote: '', owner_checked: new Date('2026-10-24'), where: 'card x' }
+    const p = buildPacket({ entry, text: undefined, cardText: 'card', check: checkText(entry, {}) })
+    const out = renderPacket(p, 1, false)
+    expect(out).toContain('[owner-checked]')
+    expect(out).toContain('Checked by the owner on 2026-10-24')
+    expect(out).toContain('owner-checked 2026-10-24 (no quote)')
+    expect(out).not.toContain('source-missing')
+    expect([...pickBlind(10, 3, new Set([0, 1, 2, 3, 4]))].every((i) => i > 4)).toBe(true)
+    expect(pickBlind(92, 7, new Set()).size).toBe(9)
   })
   it('builds batches, hides blind quotes until the end, and measures', () => {
     const root = mkdtempSync(resolve(tmpdir(), 'pk-'))
