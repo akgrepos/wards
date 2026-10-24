@@ -2,6 +2,10 @@
 
 What changed in each version of Wards, newest first. The version is shown in Settings (gear on Home).
 
+## 2026.10.24
+
+Links to other cards inside a sentence now read as part of the sentence (blue dotted underline, no box). Table words stay whole instead of breaking mid-word. The "common clinical practice" stethoscope is redrawn to match Apple's. Ceftriaxone's Adverse Effects now lists injection-site pain under Uncommon, and its peritonitis line states the fact directly. Continue Reading is removed from Home.
+
 ## 2026.10.23.8
 
 MDCalc score pills show only the outward arrow in front, and pills no longer have an underline

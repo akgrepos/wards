@@ -13,7 +13,7 @@ Element.prototype.scrollIntoView ??= () => {};
 
 const { App } = await import('../App');
 const { parseRoute, reopenLastPage, resetRouterForTests, REOPEN_WITHIN_MS } = await import('../router');
-const { clearReading, clearRecent, setRapidShortcuts } = await import('../storage');
+const { clearRecent, setRapidShortcuts } = await import('../storage');
 
 // Start each test as a fresh launch at the given address.
 function launch(hash: string) {
@@ -25,7 +25,7 @@ const tick = () => act(() => new Promise((r) => setTimeout(r, 20)));
 const go = async (hash: string) => { await act(async () => { location.hash = hash; }); await tick(); };
 const back = () => screen.getAllByRole('button', { name: /^Back to/ })[0];
 
-beforeEach(() => { localStorage.clear(); clearRecent(); clearReading(); });
+beforeEach(() => { localStorage.clear(); clearRecent(); });
 afterEach(() => { cleanup(); vi.restoreAllMocks(); });
 
 describe('addresses', () => {
@@ -181,15 +181,15 @@ describe('search', () => {
 });
 
 describe('Home lists', () => {
-  it('a page opened shows on Home in Recent and Continue Reading; pages have no Favorites star', async () => {
+  it('a page opened shows on Home in Recent; pages have no Favorites star', async () => {
     setRapidShortcuts(['renal-hyperkalemia']);
     launch('#/card/renal-hyperkalemia');
     render(<App />);
     expect(screen.queryByRole('button', { name: /Favorites/ })).toBeNull();
     await act(async () => { fireEvent.click(screen.getByRole('tab', { name: 'Home' })); });
-    expect(screen.getAllByText('Hyperkalemia').length).toBe(3); // Continue Reading, Rapids shortcut, Recent
+    expect(screen.getAllByText('Hyperkalemia').length).toBe(2); // Rapids shortcut, Recent
     expect(screen.queryByText('Favorites')).toBeNull();
-    expect(screen.getByText('Continue Reading')).toBeTruthy();
+    expect(screen.queryByText('Continue Reading')).toBeNull();
     await act(async () => { fireEvent.click(screen.getByRole('button', { name: 'Clear' })); });
     expect(screen.getByText('Nothing Opened Yet')).toBeTruthy();
   });

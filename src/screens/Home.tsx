@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { AKG } from '../design/akg';
-import { cardTypeLabel, emergencyCards, getCard, titleCase } from '../content';
+import { cardTypeLabel, emergencyCards, getCard } from '../content';
 import type { Card } from '../content/types';
 import { href, open } from '../router';
-import { clearPageMemory, clearReading, clearRecent, getRapidShortcuts, getReading, getRecent, RAPIDS_MAX, setRapidShortcuts, useStored } from '../storage';
+import { clearPageMemory, clearRecent, getRapidShortcuts, getRecent, RAPIDS_MAX, setRapidShortcuts, useStored } from '../storage';
 import { useSheet } from '../ui/SheetHost';
 import { emergencyIcon } from './Emergency';
 import { iconFor, icons } from '../ui/icons';
@@ -44,28 +44,15 @@ function EditRapids() {
 }
 const kindLabel = (c: Card) => (c.system === 'library' ? cardTypeLabel(c) : 'Topic');
 
-// Home: pick up where you left off. Continue Reading, Rapids (emergency) shortcuts and Recent (all kept on this phone).
+// Home: pick up where you left off. Rapids (emergency) shortcuts and Recent (all kept on this phone).
 export function Home() {
-  const reading = useStored(getReading);
   const recent = useStored(getRecent).filter((r) => getCard(r.id));
   const emergencies = useRapidShortcuts();
   const sheet = useSheet();
   const anyEmergency = emergencyCards().length > 0;
-  const readCard = reading ? getCard(reading.id) : undefined;
-  const sections = readCard?.sections ?? [];
-  const at = Math.max(0, sections.findIndex((s) => s.key === reading?.section));
 
   return (
     <Screen title="Reference" trailing={<AKG.ToolbarButton icon={icons.gearshape} aria-label="Settings" onClick={() => open(href.settings())} />}>
-      {readCard && (
-        <a className="continue" href={href.card(readCard.id, reading?.section)}>
-          <span className="ios-footnote-emphasized secondary eyebrow">Continue Reading</span>
-          <span className="ios-headline">{readCard.title}</span>
-          {sections[at] && <span className="ios-subheadline secondary">{titleCase(sections[at].title)}</span>}
-          {sections.length > 1 && <AKG.ProgressIndicator value={at + 1} max={sections.length} aria-label={`Section ${at + 1} of ${sections.length}`} />}
-        </a>
-      )}
-
       <AKG.List
         header="Rapids"
         headerStyle="prominent"
@@ -106,18 +93,18 @@ export function SettingsScreen() {
       <AKG.List header="About">
         <AKG.ListRow title="Version" detail={APP_VERSION} />
       </AKG.List>
-      <AKG.List header="On This iPhone" footer="Recent, Continue Reading, and where you were on each page are kept only on this iPhone. Nothing is sent anywhere.">
-        <AKG.ListRow title="Clear Recent and Continue Reading" destructive onClick={() => setConfirm(true)} />
+      <AKG.List header="On This iPhone" footer="Recent and where you were on each page are kept only on this iPhone. Nothing is sent anywhere.">
+        <AKG.ListRow title="Clear Recent and Page Memory" destructive onClick={() => setConfirm(true)} />
       </AKG.List>
       <AKG.Alert
         open={confirm}
         overlay
         fixed
-        title="Clear Recent and Continue Reading?"
+        title="Clear Recent and Page Memory?"
         message="Pages also forget where you were and which sections you closed. This can’t be undone."
         actions={[
           { label: 'Cancel', role: 'cancel', onClick: () => setConfirm(false) },
-          { label: 'Clear', role: 'destructive', onClick: () => { clearRecent(); clearReading(); clearPageMemory(); setConfirm(false); } },
+          { label: 'Clear', role: 'destructive', onClick: () => { clearRecent(); clearPageMemory(); setConfirm(false); } },
         ]}
       />
     </Screen>
