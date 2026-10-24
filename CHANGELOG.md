@@ -2,6 +2,10 @@
 
 What changed in each version of Wards, newest first. The version is shown in Settings (gear on Topics).
 
+## 2026.10.24.3
+
+Fix: the specialty tiles on Topics showed as blue underlined links. They now use the normal label color with no underline, a pressed state and a focus ring, and the title uses the iOS callout text style.
+
 ## 2026.10.24.2
 
 Home is now Topics. The Home tab is gone: the app opens on Topics, with your last three pages (Recent) on top and the specialties as colored tiles below. The tabs are Topics, Rapids and Library, with search as the button at the bottom right. The Rapids shortcut chips and their Edit sheet are removed, since Rapids is one tap away.
