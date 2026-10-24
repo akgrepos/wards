@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { expandAbbreviations, subjectFromWhere, scrubSources, buildStatement, riskTier, orderEntries, chunk, renderBatch, planBatches, INTRO } from './review-oe-batches.mjs'
+import { expandAbbreviations, subjectFromWhere, scrubSources, buildStatement, riskTier, orderEntries, chunk, renderBatch, planBatches } from './review-oe-batches.mjs'
 
 const e = (o) => ({ id: 'e1', where: 'card X', claim: 'c', source: 'zzsrc-2020', status: 'match', ...o })
 
@@ -39,9 +39,9 @@ describe('review:oe-batches', () => {
     expect(chunk(Array.from({ length: 25 }, (_, i) => i)).map((g) => g.length)).toEqual([25])
     expect(chunk([])).toEqual([])
   })
-  it('writes the intro, the topic and a numbered list', () => {
+  it('writes only the topic and a numbered list', () => {
     const out = renderBatch('Topic name', ['One.', 'Two.'])
-    expect(out.split('\n')[0]).toBe(INTRO)
+    expect(out.split('\n')[0]).toBe('Topic: Topic name')
     expect(out).toContain('Topic: Topic name')
     expect(out).toContain('1. One.\n2. Two.')
   })
