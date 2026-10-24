@@ -13,7 +13,6 @@ import { fileURLToPath } from 'node:url'
 import { parse, stringify } from 'yaml'
 
 export const PER_BATCH = 25
-export const INTRO = 'Type .card_check in OpenEvidence, then paste everything below (Sackett). Paste by hand, at a normal pace; never automate.'
 
 const ABBREVIATIONS = [
   [/K⁺|K\+/g, 'potassium'],
@@ -113,7 +112,7 @@ export function chunk(items, per = PER_BATCH) {
 }
 
 export function renderBatch(topic, statements) {
-  return [INTRO, '', `Topic: ${topic}`, '', ...statements.map((s, i) => `${i + 1}. ${s}`), ''].join('\n')
+  return [`Topic: ${topic}`, '', ...statements.map((s, i) => `${i + 1}. ${s}`), ''].join('\n')
 }
 
 export function cardTitle(root, cardId) {
@@ -166,7 +165,8 @@ function main() {
   console.log(`review:oe-batches ${card}: ${total} statements in ${batches.length} batch(es); ${skipped.length} owner-checked entries skipped.`)
   for (let i = 0; i < batches.length; i++) console.log(`  ${resolve(outDir, `batch-${String(i + 1).padStart(2, '0')}.txt`)}`)
   if (flagged.length) console.log('\nCheck these:\n' + flagged.map((f) => '  ' + f).join('\n'))
-  console.log(`\nHand-written replacements go in ${overridePath} (entry id: full statement), then run this again.`)
+  console.log('\nIn OpenEvidence use the .card_check mode (Sackett by default). Paste each batch by hand; never automate.')
+  console.log(`Hand-written replacements go in ${overridePath} (entry id: full statement), then run this again.`)
 }
 
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) main()
