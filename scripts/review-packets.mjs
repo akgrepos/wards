@@ -191,6 +191,51 @@ export function cardExtract({ root, cardId, where, claim }) {
   return parts.join('\n\n')
 }
 
+// ---- blind packets: candidates that do not point at the writer's quote -------------------------------
+
+export const BLIND_CONTEXT_WORDS = 150
+export const BLIND_MAX_CANDIDATES = 12
+const STOP = new Set('with that this from have been were when than then into over under after before only also more most such each other their there which while about between should would could does not and the for are may can use used'.split(' '))
+
+// Every passage holding a claim number-with-unit (merged when they overlap, strongest first, at most 12);
+// for a claim without such numbers, the 3 passages sharing the most keywords with it. Order is shuffled
+// with the seed, and nothing shown says where the writer's quote is.
+export function blindCandidates(text, claim, seed) {
+  const words = text.split(' ')
+  const half = BLIND_CONTEXT_WORDS / 2
+  const anchors = anchorsOf(claim)
+  let spans = []
+  if (anchors.length) {
+    const hits = []
+    for (const [k, a] of anchors.entries()) for (const m of text.matchAll(anchorRegex(a))) hits.push({ k, wi: wordIndexAt(text, m.index) })
+    hits.sort((x, y) => x.wi - y.wi)
+    for (const h of hits) {
+      const s = Math.max(0, h.wi - half)
+      const e = Math.min(words.length, h.wi + half)
+      const last = spans.at(-1)
+      if (last && s <= last.end) { last.end = Math.max(last.end, e); last.keys.add(h.k) } else spans.push({ start: s, end: e, keys: new Set([h.k]) })
+    }
+    spans = spans.sort((a, b) => b.keys.size - a.keys.size || a.start - b.start).slice(0, BLIND_MAX_CANDIDATES)
+  } else {
+    const want = new Set((claim.toLowerCase().match(/[a-z]{4,}/g) ?? []).filter((w) => !STOP.has(w)))
+    const scored = []
+    for (let s = 0; s < words.length; s += 25) {
+      const seen = new Set()
+      for (const w of words.slice(s, s + BLIND_CONTEXT_WORDS)) { const t = w.toLowerCase().replace(/[^a-z]/g, ''); if (want.has(t)) seen.add(t) }
+      if (seen.size) scored.push({ start: s, end: Math.min(words.length, s + BLIND_CONTEXT_WORDS), score: seen.size })
+    }
+    scored.sort((a, b) => b.score - a.score || a.start - b.start)
+    for (const c of scored) if (spans.length < 3 && !spans.some((o) => c.start < o.end && c.end > o.start)) spans.push(c)
+  }
+  const out = spans.map((s) => words.slice(s.start, s.end).join(' '))
+  const rand = mulberry32(seed)
+  for (let i = out.length - 1; i > 0; i--) {
+    const j = Math.floor(rand() * (i + 1))
+    ;[out[i], out[j]] = [out[j], out[i]]
+  }
+  return out
+}
+
 // ---- packets ---------------------------------------------------------------------------------------
 
 export function buildPacket({ entry, text, cardText, check }) {
@@ -208,12 +253,25 @@ export function buildPacket({ entry, text, cardText, check }) {
   return p
 }
 
-export function renderPacket(p, n, blind) {
-  const out = [`## Packet ${n}: ${p.id}${blind ? ' (BLIND)' : ''}${p.flags.length ? ` [${p.flags.join(', ')}]` : ''}`, '']
+function renderBlind(p, n) {
+  const out = [`## Packet ${n}: ${p.id} (BLIND)${p.flags.includes('source-missing') ? ' [source-missing]' : ''}`, '']
   out.push('**Card claim (as written now)**', '', '```', p.cardText, '```', '', `Claim in short: ${p.claim}`, '', `Source: ${p.source}`, '')
-  if (blind) out.push('The writer’s quote is hidden. Find the support in the passage below first; the quote is in the last section of this file.', '')
-  else out.push(`**Writer’s quote** (location: ${p.location || 'not given'}):`, '', p.quote ? `> ${p.quote}` : '> (none given)', '')
-  if (p.window) out.push(`**Source text around the quote** (about ${WINDOW_WORDS} words each side${blind ? '; the writer’s quote is somewhere inside it' : ''}):`, '', `> ${p.window.text}`, '')
+  if (p.flags.includes('source-missing')) out.push('No saved source text is available for this entry.', '')
+  else {
+    out.push('The writer’s quote and its location are hidden. The passages below come from the source in shuffled order, chosen by the claim’s numbers or key words; the supporting sentence may be in none of them. Name which passage (if any) supports the claim before reading the last section of this file.', '')
+    const c = p.blindCandidates ?? []
+    if (!c.length) out.push('No passage in the source matched the claim’s numbers or key words.', '')
+    c.forEach((t, i) => out.push(`Passage ${String.fromCharCode(65 + i % 26)}${i >= 26 ? Math.floor(i / 26) : ''}:`, '', `> ${t}`, ''))
+  }
+  return out.join('\n')
+}
+
+export function renderPacket(p, n, blind) {
+  if (blind) return renderBlind(p, n)
+  const out = [`## Packet ${n}: ${p.id}${p.flags.length ? ` [${p.flags.join(', ')}]` : ''}`, '']
+  out.push('**Card claim (as written now)**', '', '```', p.cardText, '```', '', `Claim in short: ${p.claim}`, '', `Source: ${p.source}`, '')
+  out.push(`**Writer’s quote** (location: ${p.location || 'not given'}):`, '', p.quote ? `> ${p.quote}` : '> (none given)', '')
+  if (p.window) out.push(`**Source text around the quote** (about ${WINDOW_WORDS} words each side):`, '', `> ${p.window.text}`, '')
   else if (p.candidates.length) {
     out.push(p.flags.includes('source-missing') ? '' : '**Best candidate passages** (the quote could not be placed, so these were found by the claim’s numbers):', '')
     p.candidates.forEach((c, i) => out.push(`Candidate ${i + 1} (${c.why}):`, '', `> ${c.text}`, ''))
@@ -243,6 +301,9 @@ export function buildAll({ ledger, texts, root, card, seed }) {
     const cardText = cardExtract({ root, cardId: card, where: String(entry.where ?? ''), claim: String(entry.claim ?? '') })
     return buildPacket({ entry, text, cardText, check: checkText(entry, texts) })
   })
+  packets.forEach((p, i) => {
+    if (blindSet.has(i) && texts[p.source] !== undefined) p.blindCandidates = blindCandidates(texts[p.source], p.claim, seed + i)
+  })
   const rendered = packets.map((p, i) => ({ p, blind: blindSet.has(i), body: renderPacket(p, i + 1, blindSet.has(i)), n: i + 1 }))
   rendered.forEach((r) => { r.words = wordCount(r.body) })
 
@@ -261,6 +322,8 @@ export function buildAll({ ledger, texts, root, card, seed }) {
     meanWords: words.length ? Math.round(words.reduce((a, b) => a + b, 0) / words.length) : 0,
     maxWords: Math.max(0, ...words),
     totalWords: words.reduce((a, b) => a + b, 0),
+    blindMeanWords: blindSet.size ? Math.round(rendered.filter((r) => r.blind).reduce((a, r) => a + r.words, 0) / blindSet.size) : 0,
+    blindMaxWords: Math.max(0, ...rendered.filter((r) => r.blind).map((r) => r.words)),
     entriesSourceMissing: entries.filter((e) => texts[e.source] === undefined).length,
     sourcesCited: sources.size,
     sourcesMissing: sourcesMissing.length,
@@ -295,7 +358,7 @@ export function summary(card, outDir, { files, stats }) {
   const pct = (x) => `${Math.round(x * 100)}%`
   return [
     `review:packets ${card}: ${stats.packets} packets in ${files.length} file(s) in ${outDir}`,
-    `  blind sample: ${stats.blind} packets, seed ${stats.seed}`,
+    `  blind sample: ${stats.blind} packets, seed ${stats.seed}; words per blind packet: mean ${stats.blindMeanWords}, max ${stats.blindMaxWords}`,
     `  quotes found verbatim without help: ${pct(stats.foundShare)} (${stats.found} of ${stats.withQuote} entries that have a quote and a saved source)`,
     `  words per packet: mean ${stats.meanWords}, max ${stats.maxWords}; total ${stats.totalWords}`,
     `  ledger entries whose source text is missing: ${pct(stats.packets ? stats.entriesSourceMissing / stats.packets : 0)} (${stats.entriesSourceMissing} of ${stats.packets})`,
