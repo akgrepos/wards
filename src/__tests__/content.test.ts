@@ -107,6 +107,14 @@ describe('content checks', () => {
     expect(withDose({ alternative: { dose: 'no-such-dose' } })).toMatch(/alternative dose "no-such-dose" does not exist/);
     expect(withDose({ cautions: 'one string' })).toMatch(/cautions must be a list/);
   });
+  it('keeps the indication of a medication card dose short, with long wording in indication_detail', () => {
+    const base = JSON.parse(JSON.stringify(real));
+    base.data.dose['ceftriaxone-iv'].indication = 'x'.repeat(80);
+    expect(checkContent(base).join('\n')).toMatch(/ceftriaxone-iv[\s\S]*keep it to 70 characters/);
+    base.data.dose['ceftriaxone-iv'].indication = 'Short title';
+    base.data.dose['ceftriaxone-iv'].indication_detail = '';
+    expect(checkContent(base).join('\n')).toMatch(/indication_detail must be text/);
+  });
   it('requires a verification note on every dose', () => {
     expect(withDose({ verification: undefined })).toMatch(/no "verification" note[\s\S]*docs\/DATA-TYPES\.md/);
     expect(withDose({ verification: { read: 'skimmed', date: '2026-10-23' } })).toMatch(/"read" must be one of/);
