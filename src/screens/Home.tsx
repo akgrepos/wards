@@ -42,7 +42,7 @@ export function Home() {
           {specialties.map((s) => (
             <a key={s.id} className="home-cell" href={href.system(s.id)}>
               <AKG.IconTile tint={iconFor(s.id).tint}>{iconFor(s.id).icon}</AKG.IconTile>
-              <span className="home-cell__title">{s.title}</span>
+              <span className="home-cell__title ios-callout-emphasized">{s.title}</span>
             </a>
           ))}
         </div>
