@@ -420,13 +420,12 @@ export const openCriteria = (sheet: ShowSheet, c: Criteria, id?: string) => shee
 // `plain`: show the value as text, never tappable (in table cells and scale bands, where the row or band says what it means).
 // A cutoff is tappable only when its pop-up adds something the line doesn't show: a `note` (owner's rule, 2026-10-19;
 // the content check rejects notes that repeat the line).
-// A named score or calculator: the words are a link to its MDCalc page, with the same arrow mark as the other links that
-// leave the app. It opens in Safari (a Done button returns to Wards) and needs internet; offline the page simply doesn't load.
+// A named score or calculator: the words are a link to its MDCalc page, in the card-link look (dotted blue underline) with a small outward arrow at the end. It opens in Safari (a Done button returns to Wards) and needs internet; offline the page simply doesn't load.
 export function CalcLink({ c, label }: { c: Calc; label?: string }) {
   const text = label ?? c.short;
   return (
-    <a className="akg-inline-button calc-link" href={c.url} target="_blank" rel="noopener noreferrer" aria-label={`${text}${c.name.includes(c.short) ? '' : `, ${c.name}`}. Opens MDCalc in Safari, needs internet.`}>
-      <span className="akg-inline-button__icon" aria-hidden="true">{icons.arrowUpRight}</span>{text}
+    <a className="card-link calc-link" href={c.url} target="_blank" rel="noopener noreferrer" aria-label={`${text}${c.name.includes(c.short) ? '' : `, ${c.name}`}. Opens MDCalc in Safari, needs internet.`}>
+      {text}<span className="calc-link__mark" aria-hidden="true">{icons.arrowUpRight}</span>
     </a>
   );
 }
@@ -502,7 +501,7 @@ function CardLink({ card, section, label }: { card: Card; section?: string | nul
     const r = parseRoute(location.hash);
     if (section && r.name === 'card' && r.id === card.id) { dispatchEvent(new CustomEvent(JUMP_EVENT, { detail: section })); return; }
     const part = pickSection(card, section, from);
-    sheet({ title: 'Card', heading: part ? titleCase(part.title) : card.title, subheading: part ? card.title : undefined, body: <CardPartSheet card={card} part={part} /> });
+    sheet({ title: card.title, heading: part ? titleCase(part.title) : card.title, subheading: part ? card.title : undefined, body: <CardPartSheet card={card} part={part} /> });
   };
   return <button type="button" className="card-link" onClick={open}>{label}</button>;
 }
