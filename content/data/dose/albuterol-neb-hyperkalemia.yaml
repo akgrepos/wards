@@ -11,7 +11,7 @@ cautions:
   - "Use with insulin-glucose. Never alone for severe hyperkalemia."
   - "Much larger dose than for bronchospasm. Watch for tachycardia and tremor."
   - "Cardiac disease: use the lower dose with monitoring."
-notes: "Peak potassium lowering at about 120 minutes (10 mg) and 90 minutes (20 mg)."
+notes: "Peak potassium lowering at about 120 minutes (10 mg) and 90 minutes (20 mg). Response varies: 20–40% of patients drop K⁺ by less than 0.5 mEq/L."
 sources: [ukka-hyperkalaemia-2026, kdigo-acute-hyperkalemia-2020, emcreg-hyperkalemia-2025]
 verification:
   source: ukka-hyperkalaemia-2026

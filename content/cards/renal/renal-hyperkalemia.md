@@ -55,7 +55,7 @@ emergency_hint: Calcium, insulin-dextrose, remove K⁺
    - Refractory hyperkalemia or hyperkalemia with AKI: nephrology to consider dialysis. ^[kdigo-acute-hyperkalemia-2020, ukka-hyperkalaemia-2026]
 
 :::note
-- Hyperkalemic cardiac arrest: IV calcium, sodium bicarbonate, and insulin-dextrose may be reasonable (weak recommendations). Inhaled albuterol not recommended during arrest. ^[aha-special-circumstances-2025]
+- Cardiac arrest from suspected hyperkalemia. IV calcium, sodium bicarbonate, and insulin-dextrose: effectiveness not well established (weak recommendations). Inhaled β₂-agonists such as albuterol: not recommended (no benefit). ^[aha-special-circumstances-2025]
 :::
 
 ## At a Glance
@@ -123,6 +123,7 @@ emergency_hint: Calcium, insulin-dextrose, remove K⁺
 
    {{dose:calcium-chloride-hyperkalemia}}
 
+   - On hemodialysis with {{threshold:k-severe}} and ECG changes: IV calcium even if dialysis is immediately available. ^[ukka-hyperkalaemia-2026]
    - KDIGO suggests: give calcium at {{threshold:k-calcium-without-ecg}} if no ECG or monitor is yet available. ^[kdigo-acute-hyperkalemia-2020]
    - Normal ECG: IV calcium not recommended in moderate hyperkalemia. No UK consensus in severe hyperkalemia. ^[ukka-hyperkalaemia-2026]
    - Onset 1–3 min, duration 30–60 min. Repeat if ECG changes persist or recur. ^[kdigo-acute-hyperkalemia-2020]
@@ -154,7 +155,7 @@ emergency_hint: Calcium, insulin-dextrose, remove K⁺
    {{dose:patiromer-hyperkalemia}}
 
    - Calcium polystyrene sulfonate: no longer routine for acute hyperkalemia (UK guideline). ^[ukka-hyperkalaemia-2026]
-   - Do not give sodium polystyrene sulfonate with sorbitol (intestinal necrosis). ^[kdigo-acute-hyperkalemia-2020]
+   - Sodium polystyrene sulfonate: slow onset (>4 h), unpredictable effect, intestinal necrosis reported. Not for emergencies. Never with sorbitol. ^[ukka-hyperkalaemia-2026, kdigo-acute-hyperkalemia-2020]
    - Non-oliguric, especially with volume overload: IV furosemide. ^[kdigo-acute-hyperkalemia-2020, emcreg-hyperkalemia-2025]
 
    {{dose:furosemide-hyperkalemia}}
@@ -163,7 +164,7 @@ emergency_hint: Calcium, insulin-dextrose, remove K⁺
    - Refractory hyperkalemia or hyperkalemia with AKI: nephrology to consider dialysis. ^[kdigo-acute-hyperkalemia-2020, ukka-hyperkalaemia-2026]
 
 #### Hyperkalemic cardiac arrest
-- IV calcium, sodium bicarbonate, and insulin-dextrose may be reasonable (weak recommendations). Inhaled albuterol not recommended during arrest. ^[aha-special-circumstances-2025]
+- IV calcium, sodium bicarbonate, and insulin-dextrose: effectiveness not well established (weak recommendations). Inhaled β₂-agonists such as albuterol: not recommended (no benefit). ^[aha-special-circumstances-2025]
 
 ## Monitor
 :::times{after=first check="K⁺"} K⁺ at least at these times after treating moderate or severe hyperkalemia ^[ukka-hyperkalaemia-2026]
@@ -205,8 +206,9 @@ emergency_hint: Calcium, insulin-dextrose, remove K⁺
 - KDIGO 2020: Not advised for emergency use (onset ~7 h). ^[kdigo-acute-hyperkalemia-2020]
 :::
 
-### Special Populations: Digoxin toxicity
+### Special Populations: Digoxin toxicity, hemodialysis
 - Digoxin toxicity: concern about calcium comes from case reports. Limited retrospective data show no clear harm. ^[ukka-hyperkalaemia-2026]
+- Hemodialysis: 1 mEq/L K⁺ bath only if pre-dialysis K⁺ >8.0 mEq/L, with telemetry and K⁺ every 30 min. Switch to 2 mEq/L once K⁺ <7.0 mEq/L. ^[ukka-hyperkalaemia-2026]
 
 ### Complications: Arrhythmia, treatment side effects
 - Arrhythmia, sudden cardiac death. ^[kdigo-acute-hyperkalemia-2020]

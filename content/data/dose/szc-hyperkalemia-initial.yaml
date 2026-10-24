@@ -13,7 +13,9 @@ cautions:
   - "US label: not for emergency treatment of life-threatening hyperkalemia (delayed onset)."
   - "Each 5 g contains about 400 mg sodium. Watch for edema."
   - "Avoid in severe constipation or bowel obstruction."
-  - "Separate other oral drugs by 2 hours."
+  - "Separate other oral drugs by 2 hours. Raises gastric pH: lowers tacrolimus and dabigatran exposure, raises furosemide and atorvastatin exposure."
+  - "Radio-opaque: may look like contrast on abdominal X-ray."
+  - "Pregnancy: fetal exposure not expected (label)."
 sources: [label-lokelma-2024, ukka-hyperkalaemia-2026]
 verification:
   source: label-lokelma-2024

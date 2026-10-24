@@ -24,9 +24,9 @@ nodes:
     title: ECG changes of hyperkalemia?
     text: "Peaked T waves, P-wave flattening, PR prolongation, QRS widening, sine wave. A normal ECG does not exclude life-threatening hyperkalemia."
     answers:
-      - { label: Normal ECG, detail: IV calcium not recommended, at: [0, 2], span: 4, to: severity }
+      - { label: Normal ECG, detail: Not recommended in moderate. No UK consensus in severe, at: [0, 2], span: 4, to: severity }
       - { label: "Yes", at: [4, 2], span: 4, to: calcium }
-      - { label: No ECG or monitor yet, detail: "KDIGO: calcium at {{threshold:k-calcium-without-ecg}}", at: [8, 2], span: 4, to: calcium }
+      - { label: No ECG or monitor yet, detail: "KDIGO suggests calcium at {{threshold:k-calcium-without-ecg}}", at: [8, 2], span: 4, to: calcium }
   calcium:
     kind: urgent
     at: [5, 3]
@@ -121,7 +121,7 @@ nodes:
     at: [4, 10]
     span: 4
     title: Recheck K⁺ and glucose
-    text: "K⁺ at least at 1, 2, 4, 6 and 24 h after treating moderate or severe hyperkalemia. Rebound at 2–3 h if K⁺ has not been eliminated. Glucose for 6 h after insulin. Refractory hyperkalemia: nephrology to consider dialysis."
+    text: "K⁺ at least at 1, 2, 4, 6 and 24 h after treating moderate or severe hyperkalemia. Rebound at 2–3 h if K⁺ has not been eliminated. Glucose for at least 6 h after insulin. Refractory hyperkalemia or hyperkalemia with AKI: nephrology to consider dialysis."
     links: [section:renal-hyperkalemia/monitor]
     next: cause
   cause:

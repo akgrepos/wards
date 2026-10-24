@@ -9,6 +9,8 @@ give_when: ECG changes in cardiac arrest or peri-arrest
 alternative:
   dose: calcium-gluconate-hyperkalemia
   when: All other patients
+cautions:
+  - "Too-rapid infusion: hypotension, vasodilation, bradycardia."
 notes: "Preferred calcium salt in resuscitation (cardiac arrest or peri-arrest). About three times the calcium of the same volume of calcium gluconate. UK guideline rate: faster than the US label (up to 1 mL/min). Large vein or central line preferred (tissue necrosis if extravasated)."
 sources: [ukka-hyperkalaemia-2026, kdigo-acute-hyperkalemia-2020]
 verification:
