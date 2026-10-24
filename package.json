@@ -21,7 +21,8 @@
     "look": "node scripts/look.mjs",
     "tidy": "node scripts/tidy.mjs",
     "docs:check": "node scripts/docs-check.mjs",
-    "review:check": "node scripts/review-check.mjs"
+    "review:check": "node scripts/review-check.mjs",
+    "review:packets": "node scripts/review-packets.mjs"
   },
   "dependencies": {
     "react": "^19.3.1",
