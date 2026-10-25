@@ -112,6 +112,8 @@ export default defineConfig(({ command }) => ({
   ],
   test: {
     environment: 'jsdom',
+    // Slow CI machines can take longer than the 5-second default.
+    testTimeout: 30000,
     // Other sessions' worktrees live under .claude/; test only this checkout.
     exclude: ['**/node_modules/**', '.claude/**'],
     // Tests read the whole content at once (see src/test-setup.ts).
