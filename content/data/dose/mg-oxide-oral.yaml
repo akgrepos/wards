@@ -1,6 +1,7 @@
 drug: magnesium-oxide
 drug_name: Magnesium oxide
-indication: Hypomagnesemia, mild or asymptomatic, or maintenance after IV
+indication: Mild or asymptomatic hypomagnesemia
+indication_detail: Hypomagnesemia that is mild or asymptomatic, or maintenance after IV.
 population: Adults
 route: PO
 amount: "400"

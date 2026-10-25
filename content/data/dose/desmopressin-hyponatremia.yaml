@@ -1,7 +1,8 @@
 drug: desmopressin
 drug_name: Desmopressin
 brand: DDAVP
-indication: Preventing or reversing overcorrection of chronic hyponatremia (off-label)
+indication: Overcorrection of chronic hyponatremia
+indication_detail: Off-label for preventing or reversing overcorrection of chronic hyponatremia.
 population: Adults
 route: IV or SC
 amount: "2–4"

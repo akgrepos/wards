@@ -1,7 +1,8 @@
 drug: midazolam
 drug_name: Midazolam
 brand: Midazolam injection
-indication: Severe agitation needing rapid sedation in a monitored setting (off-label)
+indication: Severe agitation needing rapid sedation
+indication_detail: Off-label for severe agitation needing rapid sedation in a monitored setting.
 population: Adults without respiratory compromise
 route: IM
 amount: 5

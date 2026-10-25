@@ -1,7 +1,8 @@
 drug: diltiazem
 drug_name: Diltiazem infusion
 brand: Cardizem
-indication: Continued rate control of AF or atrial flutter after an IV bolus
+indication: Continued rate control of AF or flutter
+indication_detail: Continued rate control of AF or atrial flutter after an IV bolus.
 population: Adults
 route: IV
 amount: "5–15"

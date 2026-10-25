@@ -1,7 +1,8 @@
 drug: norepinephrine
 drug_name: Norepinephrine
 brand: Levophed
-indication: Septic shock, first-line vasopressor
+indication: Septic shock
+indication_detail: Septic shock, as the first-line vasopressor.
 population: Adults
 route: IV
 amount: 8–12

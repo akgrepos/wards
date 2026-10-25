@@ -1,7 +1,8 @@
 drug: chlordiazepoxide
 drug_name: Chlordiazepoxide
 brand: Librium
-indication: Alcohol withdrawal, symptom-triggered, front-loaded or fixed taper (oral)
+indication: Alcohol withdrawal
+indication_detail: Alcohol withdrawal, oral, given as symptom-triggered, front-loaded or fixed taper dosing.
 population: Adults who can take oral medication
 route: PO
 amount: 25–100

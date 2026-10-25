@@ -1,7 +1,8 @@
 drug: piperacillin-tazobactam
 drug_name: Piperacillin-tazobactam
 brand: Zosyn
-indication: Sepsis or septic shock needing antipseudomonal or anaerobic coverage
+indication: Sepsis or septic shock
+indication_detail: Sepsis or septic shock needing antipseudomonal or anaerobic coverage.
 population: Adults
 route: IV
 amount: "4.5"

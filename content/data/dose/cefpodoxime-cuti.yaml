@@ -1,6 +1,7 @@
 drug: cefpodoxime
 drug_name: Cefpodoxime
-indication: Complicated UTI or pyelonephritis, oral step-down
+indication: Complicated UTI or pyelonephritis
+indication_detail: Complicated UTI or pyelonephritis, oral step-down.
 population: Adults
 route: PO
 amount: 200–400

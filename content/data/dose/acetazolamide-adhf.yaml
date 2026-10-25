@@ -1,7 +1,8 @@
 drug: acetazolamide
 drug_name: Acetazolamide
 brand: Diamox
-indication: Added to a loop diuretic for congestion in acute decompensated heart failure
+indication: Congestion in acute decompensated heart failure
+indication_detail: Added to a loop diuretic for congestion in acute decompensated heart failure.
 population: Adults
 route: IV
 amount: "500"

@@ -1,7 +1,8 @@
 drug: lorazepam
 drug_name: Lorazepam
 brand: Ativan
-indication: Alcohol withdrawal in significant liver disease, or when a short-acting benzodiazepine is chosen (off-label)
+indication: Alcohol withdrawal
+indication_detail: Off-label for alcohol withdrawal in significant liver disease, or when a short-acting benzodiazepine is chosen.
 population: Adults
 route: PO or IV
 amount: 1–2

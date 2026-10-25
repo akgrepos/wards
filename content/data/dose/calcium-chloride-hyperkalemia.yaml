@@ -1,6 +1,7 @@
 drug: calcium-chloride
 drug_name: Calcium chloride 10%
-indication: Hyperkalemia with ECG changes in cardiac arrest or peri-arrest
+indication: Hyperkalemia with ECG changes
+indication_detail: Hyperkalemia with ECG changes in cardiac arrest or peri-arrest.
 population: Adults
 route: IV
 amount: 10

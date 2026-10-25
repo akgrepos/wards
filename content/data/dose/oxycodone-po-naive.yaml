@@ -1,7 +1,8 @@
 drug: oxycodone
 drug_name: Oxycodone (immediate-release)
 brand: Roxicodone
-indication: Moderate to severe acute pain, opioid-naive
+indication: Moderate to severe acute pain
+indication_detail: Moderate to severe acute pain in opioid-naive patients.
 population: Opioid-naive adults
 route: PO
 amount: 5–15

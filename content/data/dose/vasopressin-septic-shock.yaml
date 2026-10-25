@@ -1,7 +1,8 @@
 drug: vasopressin
 drug_name: Vasopressin
 brand: Vasostrict
-indication: Septic shock, added to norepinephrine
+indication: Septic shock
+indication_detail: Septic shock, added to norepinephrine.
 population: Adults
 route: IV
 amount: "0.01"

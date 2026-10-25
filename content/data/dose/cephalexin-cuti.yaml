@@ -1,6 +1,7 @@
 drug: cephalexin
 drug_name: Cephalexin
-indication: Complicated UTI, oral, susceptible isolate
+indication: Complicated UTI
+indication_detail: Complicated UTI, oral therapy for a susceptible isolate.
 population: Adults
 route: PO
 amount: 500–1,000

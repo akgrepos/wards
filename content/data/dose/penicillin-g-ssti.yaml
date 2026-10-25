@@ -1,6 +1,7 @@
 drug: penicillin-g-potassium
 drug_name: Penicillin G potassium
-indication: Moderate cellulitis or erysipelas. Streptococcal necrotizing infection (with clindamycin)
+indication: Moderate cellulitis, streptococcal necrotizing infection
+indication_detail: Moderate cellulitis or erysipelas, and streptococcal necrotizing infection given with clindamycin.
 population: Adults
 route: IV
 amount: 2–4 million

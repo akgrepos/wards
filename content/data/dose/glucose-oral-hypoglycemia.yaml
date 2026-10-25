@@ -1,6 +1,7 @@
 drug: glucose
 drug_name: Glucose (fast-acting carbohydrate)
-indication: Hypoglycemia (glucose <70 mg/dL), able to swallow
+indication: Hypoglycemia, able to swallow
+indication_detail: Hypoglycemia (glucose <70 mg/dL) in a patient able to swallow.
 population: Adults
 route: PO
 amount: "15"

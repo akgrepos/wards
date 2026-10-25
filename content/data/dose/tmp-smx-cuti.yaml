@@ -1,6 +1,7 @@
 drug: trimethoprim-sulfamethoxazole
 drug_name: Trimethoprim-sulfamethoxazole
-indication: Complicated UTI or pyelonephritis, oral, susceptible isolate
+indication: Complicated UTI or pyelonephritis
+indication_detail: Complicated UTI or pyelonephritis, oral therapy for a susceptible isolate.
 population: Adults
 route: PO
 amount: "160"

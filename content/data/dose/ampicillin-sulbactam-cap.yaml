@@ -1,6 +1,7 @@
 drug: ampicillin-sulbactam
 drug_name: Ampicillin-sulbactam
-indication: Community-acquired pneumonia, inpatient (with a macrolide)
+indication: Community-acquired pneumonia, inpatient
+indication_detail: Community-acquired pneumonia in inpatients, given with a macrolide.
 population: Adults
 route: IV
 amount: 1.5–3

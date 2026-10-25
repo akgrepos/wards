@@ -1,6 +1,7 @@
 drug: clindamycin
 drug_name: Clindamycin
-indication: Cellulitis with serious β-lactam allergy or MRSA risk
+indication: Cellulitis
+indication_detail: Cellulitis with serious β-lactam allergy or MRSA risk.
 population: Adults
 route: PO
 amount: 300–450

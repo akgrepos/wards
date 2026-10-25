@@ -1,6 +1,7 @@
 drug: amoxicillin-clavulanate
 drug_name: Amoxicillin-clavulanate
-indication: COPD exacerbation with an antibiotic indication
+indication: COPD exacerbation
+indication_detail: COPD exacerbation with an antibiotic indication.
 population: Adults
 route: PO
 amount: 875/125

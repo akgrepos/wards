@@ -1,7 +1,8 @@
 drug: pantoprazole
 drug_name: Pantoprazole
 brand: Protonix IV
-indication: Acute upper gastrointestinal bleeding, high-dose acid suppression before endoscopy and for 72 hours after endoscopic hemostasis (continuous option)
+indication: Upper gastrointestinal bleeding, infusion
+indication_detail: Acute upper gastrointestinal bleeding, high-dose acid suppression before endoscopy and for 72 hours after endoscopic hemostasis, as the continuous option.
 population: Adults
 route: IV
 amount: "80"

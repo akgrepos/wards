@@ -1,7 +1,8 @@
 drug: benztropine
 drug_name: Benztropine
 brand: Cogentin
-indication: Acute dystonic reaction after an antipsychotic
+indication: Acute dystonic reaction
+indication_detail: Acute dystonic reaction after an antipsychotic.
 population: Adults
 route: IM or IV
 amount: 1–2

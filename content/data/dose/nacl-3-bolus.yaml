@@ -1,6 +1,7 @@
 drug: sodium-chloride-3
 drug_name: Sodium chloride 3% (hypertonic saline)
-indication: Hyponatremia with severe symptoms (seizures, obtundation, coma, cardiorespiratory distress), or acute hyponatremia or intracranial pathology with symptoms (high risk of herniation)
+indication: Severe symptomatic hyponatremia, bolus
+indication_detail: Hyponatremia with severe symptoms (seizures, obtundation, coma, cardiorespiratory distress), or acute hyponatremia or intracranial pathology with symptoms at high risk of herniation.
 population: Adults
 route: IV
 amount: "100"

@@ -1,6 +1,7 @@
 drug: sodium-chloride-0-9
 drug_name: Sodium chloride 0.9% (normal saline)
-indication: Hyponatremia with hypovolemia, or a diagnostic trial when volume status is unclear or urine Na⁺ is low
+indication: Hyponatremia, hypovolemic or diagnostic trial
+indication_detail: Hyponatremia with hypovolemia, or as a diagnostic trial when volume status is unclear or urine Na⁺ is low.
 population: Adults
 route: IV
 amount: "0.5–1"

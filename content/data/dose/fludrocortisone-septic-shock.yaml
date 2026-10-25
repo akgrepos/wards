@@ -1,6 +1,7 @@
 drug: fludrocortisone
 drug_name: Fludrocortisone
-indication: Septic shock, optionally added to hydrocortisone
+indication: Septic shock
+indication_detail: Septic shock, optionally added to hydrocortisone.
 population: Adults
 route: PO or by tube
 amount: "50"

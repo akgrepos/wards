@@ -1,6 +1,7 @@
 drug: crystalloid
 drug_name: Crystalloid (balanced crystalloid preferred)
-indication: Sepsis-induced hypoperfusion or septic shock, initial resuscitation
+indication: Sepsis-induced hypoperfusion or septic shock
+indication_detail: Initial resuscitation for sepsis-induced hypoperfusion or septic shock.
 population: Adults
 route: IV
 amount: "30"

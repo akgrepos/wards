@@ -1,6 +1,7 @@
 drug: calcium-gluconate
 drug_name: Calcium gluconate
-indication: Hypocalcemia persisting or recurring after IV boluses
+indication: Persistent or recurrent hypocalcemia
+indication_detail: Hypocalcemia persisting or recurring after IV boluses.
 population: Adults
 route: IV
 amount: "5.4–21.5"

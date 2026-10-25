@@ -1,6 +1,7 @@
 drug: meropenem
 drug_name: Meropenem
-indication: Hospital-acquired pneumonia, intra-abdominal or bloodstream infection with ESBL or multidrug-resistant risk
+indication: Pneumonia, intra-abdominal, bloodstream infection
+indication_detail: Hospital-acquired pneumonia, intra-abdominal or bloodstream infection with ESBL or multidrug-resistant risk.
 population: Adults
 route: IV
 amount: "1"

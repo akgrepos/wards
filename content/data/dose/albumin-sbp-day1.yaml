@@ -1,6 +1,7 @@
 drug: albumin
 drug_name: Albumin 25%
-indication: Spontaneous bacterial peritonitis, with antibiotics (day 1)
+indication: Spontaneous bacterial peritonitis, day 1
+indication_detail: Spontaneous bacterial peritonitis on day 1, given with antibiotics.
 population: Adults
 route: IV
 amount: "1.5"

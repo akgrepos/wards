@@ -1,7 +1,8 @@
 drug: rivaroxaban
 drug_name: Rivaroxaban
 brand: Xarelto
-indication: Stroke prevention in AF (not with a mechanical valve or moderate–severe mitral stenosis)
+indication: Stroke prevention in AF
+indication_detail: Stroke prevention in AF, not with a mechanical valve or moderate–severe mitral stenosis.
 population: Adults
 route: PO
 amount: "20"

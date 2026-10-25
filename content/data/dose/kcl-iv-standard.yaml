@@ -1,6 +1,7 @@
 drug: potassium-chloride
 drug_name: Potassium chloride
-indication: Hypokalemia when oral replacement is not feasible
+indication: Hypokalemia, standard IV replacement
+indication_detail: Hypokalemia when oral replacement is not feasible.
 population: Adults
 route: IV
 amount: "10"

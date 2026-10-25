@@ -1,6 +1,7 @@
 drug: azithromycin
 drug_name: Azithromycin
-indication: Community-acquired pneumonia, inpatient (with a β-lactam)
+indication: Community-acquired pneumonia, inpatient
+indication_detail: Community-acquired pneumonia in inpatients, given with a β-lactam.
 population: Adults
 route: IV or PO
 amount: "500"

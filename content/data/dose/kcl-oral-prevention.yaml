@@ -1,6 +1,7 @@
 drug: potassium-chloride
 drug_name: Potassium chloride
-indication: Prevention of hypokalemia (e.g. on loop or thiazide diuretics)
+indication: Prevention of hypokalemia
+indication_detail: Prevention of hypokalemia, for example on loop or thiazide diuretics.
 population: Adults
 route: PO
 amount: "20"

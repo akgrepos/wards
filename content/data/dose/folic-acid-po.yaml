@@ -1,6 +1,7 @@
 drug: folic-acid
 drug_name: Folic acid
-indication: Folate deficiency, after B12 deficiency is excluded or treated
+indication: Folate deficiency
+indication_detail: Folate deficiency, after B12 deficiency is excluded or treated.
 population: Adults
 route: PO
 amount: "1–5"

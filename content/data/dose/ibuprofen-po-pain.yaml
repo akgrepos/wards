@@ -1,7 +1,8 @@
 drug: ibuprofen
 drug_name: Ibuprofen
 brand: Motrin
-indication: Mild to moderate pain, or as part of multimodal analgesia
+indication: Mild to moderate pain
+indication_detail: Mild to moderate pain, or as part of multimodal analgesia.
 population: Adults without contraindication to NSAIDs
 route: PO
 amount: "400"

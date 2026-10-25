@@ -1,7 +1,8 @@
 drug: glucagon
 drug_name: Glucagon
 brand: Gvoke, glucagon emergency kit
-indication: Severe hypoglycemia without IV access
+indication: Severe hypoglycemia
+indication_detail: Severe hypoglycemia without IV access.
 population: Adults
 route: SC or IM
 amount: "1"

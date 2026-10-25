@@ -1,7 +1,8 @@
 drug: dabigatran
 drug_name: Dabigatran
 brand: Pradaxa
-indication: Stroke prevention in AF (contraindicated with a mechanical valve, not for moderate–severe mitral stenosis)
+indication: Stroke prevention in AF
+indication_detail: Stroke prevention in AF. Contraindicated with a mechanical valve, and not for moderate–severe mitral stenosis.
 population: Adults
 route: PO
 amount: "150"

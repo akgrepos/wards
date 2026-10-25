@@ -1,6 +1,7 @@
 drug: clindamycin
 drug_name: Clindamycin
-indication: Necrotizing soft tissue infection (toxin suppression)
+indication: Necrotizing soft tissue infection
+indication_detail: Necrotizing soft tissue infection, for toxin suppression.
 population: Adults
 route: IV
 amount: 600–900

@@ -1,7 +1,8 @@
 drug: carbamazepine
 drug_name: Carbamazepine
 brand: Tegretol
-indication: Mild to moderate alcohol withdrawal when benzodiazepines are contraindicated, or as an adjunct (off-label)
+indication: Mild to moderate alcohol withdrawal
+indication_detail: Off-label for mild to moderate alcohol withdrawal when benzodiazepines are contraindicated, or as an adjunct.
 population: Adults without prior bone marrow depression. Screen for HLA-B*1502 in patients of at-risk Asian ancestry
 route: PO
 amount: 200

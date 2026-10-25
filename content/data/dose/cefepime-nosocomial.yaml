@@ -1,6 +1,7 @@
 drug: cefepime
 drug_name: Cefepime
-indication: Hospital-acquired pneumonia, intra-abdominal, bloodstream or CNS infection needing antipseudomonal coverage
+indication: Pneumonia, intra-abdominal, bloodstream, CNS infection
+indication_detail: Hospital-acquired pneumonia, intra-abdominal, bloodstream or CNS infection needing antipseudomonal coverage.
 population: Adults
 route: IV
 amount: "2"

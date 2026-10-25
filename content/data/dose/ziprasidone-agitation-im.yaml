@@ -1,7 +1,8 @@
 drug: ziprasidone
 drug_name: Ziprasidone
 brand: Geodon for injection
-indication: Acute agitation in schizophrenia (labeled). Used off-label for other acute agitation
+indication: Acute agitation in schizophrenia
+indication_detail: Acute agitation in schizophrenia (labeled), and off-label for other acute agitation.
 population: Adults with a normal QTc and no cardiac disease
 route: IM
 amount: 10–20

@@ -1,6 +1,7 @@
 drug: insulin-regular
 drug_name: Regular insulin
-indication: DKA, only when starting the infusion will be delayed
+indication: DKA, bolus
+indication_detail: DKA, only when starting the infusion will be delayed.
 population: Adults
 route: IV or IM
 amount: "0.1"

@@ -1,7 +1,8 @@
 drug: pantoprazole
 drug_name: Pantoprazole
 brand: Protonix IV
-indication: Acute upper gastrointestinal bleeding after endoscopic hemostasis, intermittent high-dose option
+indication: Upper gastrointestinal bleeding, intermittent
+indication_detail: Acute upper gastrointestinal bleeding after endoscopic hemostasis, as the intermittent high-dose option.
 population: Adults
 route: IV
 amount: "40"

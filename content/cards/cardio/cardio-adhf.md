@@ -7,7 +7,7 @@ title: Acute Decompensated Heart Failure
 aliases: [ADHF, acute heart failure, AHF, CHF exacerbation, heart failure exacerbation, decompensated heart failure, volume overload, pulmonary edema, flash pulmonary edema, cardiogenic pulmonary edema, diuresis, diuretic resistance, HFrEF, HFpEF, GDMT]
 definition: "New or worsening symptoms and signs of heart failure, usually congestion, needing urgent evaluation and treatment. ^[aha-acc-hfsa-hf-2022, esc-hf-2026]"
 based_on: [aha-acc-hfsa-hf-2022, esc-hf-2026, hfa-diuretics-2019]
-checked: { date: 2026-10-20, by: owner, scope: "owner review", fingerprint: "f2641388ce46752c", carried: "2026-10-24: Dose sheets now take the drug-wide warnings from drug records (stage 4b). Doses and numbers on the card are unchanged." }
+checked: { date: 2026-10-20, by: owner, scope: "owner review", fingerprint: "a0f101aa6a19a21a", carried: "2026-10-24: Dose row titles shortened to the indication only. Doses and numbers unchanged, the removed wording is kept in the longer indication text." }
 related:
   differential: []
   conditions: [cardio-atrial-fibrillation, cardio-nste-acs, renal-aki, renal-hyponatremia, renal-hypokalemia]

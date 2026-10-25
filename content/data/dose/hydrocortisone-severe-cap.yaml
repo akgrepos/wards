@@ -1,6 +1,7 @@
 drug: hydrocortisone
 drug_name: Hydrocortisone
-indication: Severe community-acquired pneumonia in the ICU, without septic shock or influenza
+indication: Severe community-acquired pneumonia
+indication_detail: Severe community-acquired pneumonia in the ICU, without septic shock or influenza.
 population: Adults
 route: IV
 amount: "200"

@@ -1,7 +1,8 @@
 drug: gabapentin
 drug_name: Gabapentin
 brand: Neurontin
-indication: Mild to moderate alcohol withdrawal when benzodiazepines are contraindicated, or as an adjunct (off-label)
+indication: Mild to moderate alcohol withdrawal
+indication_detail: Off-label for mild to moderate alcohol withdrawal when benzodiazepines are contraindicated, or as an adjunct.
 population: Adults with adequate kidney function
 route: PO
 amount: 400

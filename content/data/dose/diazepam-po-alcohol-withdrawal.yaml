@@ -1,7 +1,8 @@
 drug: diazepam
 drug_name: Diazepam
 brand: Valium
-indication: Alcohol withdrawal, symptom-triggered or front-loaded (oral)
+indication: Alcohol withdrawal, oral
+indication_detail: Alcohol withdrawal, oral, given as symptom-triggered or front-loaded dosing.
 population: Adults who can take oral medication
 route: PO
 amount: 10–20

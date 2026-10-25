@@ -1,7 +1,8 @@
 drug: dexmedetomidine
 drug_name: Dexmedetomidine
 brand: Precedex
-indication: Autonomic hyperactivity or benzodiazepine-resistant withdrawal in the ICU, as an adjunct only (off-label)
+indication: Autonomic hyperactivity or resistant withdrawal
+indication_detail: Off-label, as an adjunct only, for autonomic hyperactivity or benzodiazepine-resistant withdrawal in the ICU.
 population: Adults in the ICU with continuous monitoring
 route: IV infusion
 amount: 0.4–1.2

@@ -1,6 +1,7 @@
 drug: dexamethasone
 drug_name: Dexamethasone
-indication: Suspected or proven pneumococcal meningitis
+indication: Pneumococcal meningitis
+indication_detail: Suspected or proven pneumococcal meningitis.
 population: Adults
 route: IV
 amount: "0.15"

@@ -7,7 +7,7 @@ title: "Upper Gastrointestinal Bleeding"
 aliases: [UGIB, upper GI bleed, GI bleed, GI bleeding, hematemesis, melena, coffee-ground emesis, black stool, bleeding ulcer, peptic ulcer bleeding, Forrest, Glasgow-Blatchford, AIMS65, PPI drip, pantoprazole drip, erythromycin before EGD, EGD timing, nonvariceal]
 definition: "Bleeding from a source proximal to the ligament of Treitz that is not from esophageal or gastric varices. Peptic ulcer disease is the most common cause. ^[acg-ugib-2021, esge-pub-2026]"
 based_on: [acg-ugib-2021, esge-pub-2026, icg-ugib-2019, acg-cag-antithrombotic-2022, aabb-rbc-2023]
-checked: { date: 2026-10-21, by: opus, scope: "doses and numbers", fingerprint: "aec8445c8f00d14c", carried: "2026-10-24: Dose sheets now take the drug-wide warnings from drug records (stage 4b). Doses and numbers on the card are unchanged." }
+checked: { date: 2026-10-21, by: opus, scope: "doses and numbers", fingerprint: "6b7f31e3d57e38e4", carried: "2026-10-24: Dose row titles shortened to the indication only. Doses and numbers unchanged, the removed wording is kept in the longer indication text." }
 related:
   conditions: [heme-anticoagulation-management, crit-sepsis, crit-hypoxemic-respiratory-failure, renal-aki, cardio-nste-acs]
   medications: [ceftriaxone]

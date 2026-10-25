@@ -1,6 +1,7 @@
 drug: amoxicillin
 drug_name: Amoxicillin
-indication: Community-acquired pneumonia, outpatient without comorbidities
+indication: Community-acquired pneumonia, no comorbidities
+indication_detail: Community-acquired pneumonia, outpatient, without comorbidities.
 population: Adults
 route: PO
 amount: "1"

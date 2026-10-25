@@ -1,6 +1,7 @@
 drug: sodium-phosphates
 drug_name: Sodium phosphates
-indication: Hypophosphatemia when serum K⁺ ≥4.0 mEq/L
+indication: Hypophosphatemia
+indication_detail: Hypophosphatemia when serum K⁺ ≥4.0 mEq/L.
 population: Adults
 route: IV
 amount: "0.16–0.64"

@@ -1,7 +1,8 @@
 drug: warfarin
 drug_name: Warfarin
 brand: Coumadin, Jantoven
-indication: VTE treatment or nonvalvular AF (target INR 2.0–3.0)
+indication: VTE treatment or nonvalvular AF
+indication_detail: VTE treatment or nonvalvular AF, with a target INR of 2.0–3.0.
 population: Adults
 route: PO
 amount: "2–5"

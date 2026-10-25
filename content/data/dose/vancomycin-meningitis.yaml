@@ -1,6 +1,7 @@
 drug: vancomycin
 drug_name: Vancomycin
-indication: Bacterial meningitis or healthcare-associated ventriculitis and meningitis
+indication: Meningitis or ventriculitis
+indication_detail: Bacterial meningitis or healthcare-associated ventriculitis and meningitis.
 population: Adults
 route: IV
 amount: "15"

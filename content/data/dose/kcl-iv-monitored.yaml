@@ -1,6 +1,7 @@
 drug: potassium-chloride
 drug_name: Potassium chloride
-indication: Hypokalemia needing faster IV replacement (arrhythmia, digitalis toxicity, cardiac ischemia, K⁺ <2.5 mEq/L)
+indication: Hypokalemia needing faster IV replacement
+indication_detail: Hypokalemia needing faster IV replacement, as with arrhythmia, digitalis toxicity, cardiac ischemia or K⁺ <2.5 mEq/L.
 population: Adults
 route: IV
 amount: "20"

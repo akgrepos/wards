@@ -1,5 +1,5 @@
 // The Checked stamp and its fingerprint (docs/CARD-WRITING-CHEATSHEET.md, "Checked").
-//   npm run checked:stamp -- <card-id> [--scope "doses and numbers"] [--read <dose-id>=<read>[@<source-id>] …]
+//   npm run checked:stamp -- <card-id> [--scope "doses and numbers"] [--read <dose-id>=<read>[@<source-id>] …]  [--open <dose-id>,…]
 //       The Opus check's last step. Writes `checked: { date: today, by: opus, scope, fingerprint }`, removes the card from
 //       content/unchecked.txt, and for each --read updates that dose's `verification` to what Opus read.
 //   npm run checked:carry -- <card-id> "<reason>"
@@ -59,17 +59,25 @@ export function setVerification(src, v) {
   return re.test(withNl) ? withNl.replace(re, () => block) : withNl + block;
 }
 
+// The card's doses that still say `not-verified` and that this stamp neither updates (--read with a real state) nor names as left
+// open (--open). A stamp must not sit on top of doses nobody read.
+export function unsettledDoses(doses, reads, open) {
+  const settled = new Set([...reads.filter((r) => !/^[a-z0-9-]+=not-verified\b/.test(r)).map((r) => r.split('=')[0]), ...open]);
+  return Object.entries(doses ?? {}).filter(([id, d]) => d.verification?.read === 'not-verified' && !settled.has(id)).map(([id]) => id).sort();
+}
+
 function die(msg) { console.error(msg); process.exit(1); }
 
 function parseArgs(argv) {
-  const pos = [], reads = [];
+  const pos = [], reads = [], open = [];
   let scope;
   for (let i = 0; i < argv.length; i++) {
     if (argv[i] === '--scope') scope = argv[++i];
     else if (argv[i] === '--read') reads.push(argv[++i]);
+    else if (argv[i] === '--open') open.push(...argv[++i].split(',').filter(Boolean));
     else pos.push(argv[i]);
   }
-  return { pos, reads, scope };
+  return { pos, reads, scope, open };
 }
 
 function load(id) {
@@ -88,8 +96,12 @@ function removeFromUnchecked(id) {
   if (kept.length !== lines.length) writeFileSync(f, kept.join('\n'));
 }
 
-export function stamp(id, { scope = 'doses and numbers', reads = [] } = {}) {
+export function stamp(id, { scope = 'doses and numbers', reads = [], open = [] } = {}) {
   const { content, card, payload, fp } = load(id);
+  for (const o of open) if (!payload.data.dose?.[o]) die(`--open: the card does not use a dose called "${o}".`);
+  const unsettled = unsettledDoses(payload.data.dose, reads, open);
+  if (unsettled.length) die(`Not stamped: ${unsettled.length} of this card's doses still say "not-verified": ${unsettled.join(', ')}.\nPass what Opus really read for each: --read <dose-id>=<read>@<source-id>, or name the ones left open on purpose: --open <dose-id>,<dose-id> (they stay not-verified and the stamp scope says so).`);
+  if (open.length) scope = `${scope}. Doses left not-verified: ${open.join(", ")}`;
   const file = join(root, card.file);
   // Dose verification upkeep: the doses Opus read now say so (checked before anything is written).
   const edits = [];
@@ -124,8 +136,8 @@ export function carry(id, reason) {
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   const [cmd, ...rest] = process.argv.slice(2);
-  const { pos, reads, scope } = parseArgs(rest);
-  if (cmd === 'stamp' && pos[0]) stamp(pos[0], { scope, reads });
+  const { pos, reads, scope, open } = parseArgs(rest);
+  if (cmd === 'stamp' && pos[0]) stamp(pos[0], { scope, reads, open });
   else if (cmd === 'carry' && pos[0]) carry(pos[0], pos[1]);
-  else die('Usage:\n  npm run checked:stamp -- <card-id> [--scope "doses and numbers"] [--read dose-id=full-text@source-id …]\n  npm run checked:carry -- <card-id> "<reason>"');
+  else die('Usage:\n  npm run checked:stamp -- <card-id> [--scope "doses and numbers"] [--read dose-id=full-text@source-id …] [--open dose-id,dose-id]\n  npm run checked:carry -- <card-id> "<reason>"');
 }

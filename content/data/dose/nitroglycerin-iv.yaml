@@ -1,6 +1,7 @@
 drug: nitroglycerin
 drug_name: Nitroglycerin infusion
-indication: Persistent ischemia, hypertension or pulmonary edema (ACS or acute heart failure)
+indication: Persistent ischemia, hypertension or pulmonary edema
+indication_detail: Persistent ischemia, hypertension or pulmonary edema in ACS or acute heart failure.
 population: Adults
 route: IV
 amount: "5"

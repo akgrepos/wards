@@ -1,7 +1,8 @@
 drug: enoxaparin
 drug_name: Enoxaparin
 brand: Lovenox
-indication: VTE prophylaxis in acutely ill medical patients (sepsis, DKA, HHS, COPD exacerbation)
+indication: VTE prophylaxis in acutely ill medical patients
+indication_detail: VTE prophylaxis in acutely ill medical patients, such as sepsis, DKA, HHS or COPD exacerbation.
 population: Adults
 route: SC
 amount: "40"

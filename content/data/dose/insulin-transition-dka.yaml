@@ -1,6 +1,7 @@
 drug: insulin-total-daily-dose
 drug_name: Insulin, total daily dose
-indication: Starting SC insulin after DKA or HHS resolves (insulin-naive)
+indication: Transition to SC insulin after DKA or HHS
+indication_detail: Starting SC insulin after DKA or HHS resolves, in insulin-naive patients.
 population: Adults
 route: SC
 amount: 0.5–0.6

@@ -7,7 +7,7 @@ aliases: [agitated patient, combative patient, violent patient, aggression, acut
 definition: "A state of heightened psychomotor arousal, from restlessness to threats or violence, that is a symptom of a medical, substance-related or psychiatric cause and needs a safe, stepwise response that treats the cause first. ^[aaep-beta-medical-2012, acep-severe-agitation-2023]"
 emergency_hint: Safety, glucose and oxygen, de-escalate, medicate
 based_on: [aaep-beta-medical-2012, aaep-beta-deescalation-2012, aaep-beta-psychopharm-2012, aaep-beta-restraint-2012, acep-severe-agitation-2023, apa-delirium-2025, cms-restraint-482-13]
-checked: { date: 2026-10-23, by: opus, scope: "doses and numbers", fingerprint: "e8ea7c1ff58542a4", carried: "2026-10-24: Dose sheets now take the drug-wide warnings from drug records (stage 4b). Doses and numbers on the card are unchanged." }
+checked: { date: 2026-10-23, by: opus, scope: "doses and numbers", fingerprint: "44be5841e7f1fbd4", carried: "2026-10-24: Dose row titles shortened to the indication only. Doses and numbers unchanged, the removed wording is kept in the longer indication text." }
 related:
   differential: [neuro-delirium, neuro-alcohol-withdrawal]
   conditions: [crit-hypoxemic-respiratory-failure, renal-hyponatremia, crit-sepsis, id-complicated-uti, hosp-pain-management]

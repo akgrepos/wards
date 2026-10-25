@@ -1,6 +1,7 @@
 drug: dextrose
 drug_name: Dextrose 50%
-indication: Given with IV insulin for hyperkalemia
+indication: Hyperkalemia
+indication_detail: Given with IV insulin for hyperkalemia.
 population: Adults
 route: IV
 amount: 50

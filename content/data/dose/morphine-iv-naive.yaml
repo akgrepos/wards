@@ -1,6 +1,7 @@
 drug: morphine
 drug_name: Morphine sulfate
-indication: Severe acute pain, opioid-naive, when oral is not possible or pain needs rapid control
+indication: Severe acute pain
+indication_detail: Severe acute pain in opioid-naive patients, when oral is not possible or pain needs rapid control.
 population: Opioid-naive adults
 route: IV
 amount: 2–4

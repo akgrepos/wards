@@ -1,7 +1,8 @@
 drug: oseltamivir
 drug_name: Oseltamivir
 brand: Tamiflu
-indication: Influenza with pneumonia, hospitalized
+indication: Influenza with pneumonia
+indication_detail: Influenza with pneumonia, in hospitalized patients.
 population: Adults
 route: PO
 amount: "75"

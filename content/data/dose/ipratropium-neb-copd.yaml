@@ -1,6 +1,7 @@
 drug: ipratropium
 drug_name: Ipratropium (nebulized)
-indication: COPD exacerbation, added to albuterol
+indication: COPD exacerbation
+indication_detail: COPD exacerbation, added to albuterol.
 population: Adults
 route: nebulized
 amount: "0.5"

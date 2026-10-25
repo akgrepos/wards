@@ -1,6 +1,7 @@
 drug: cefazolin
 drug_name: Cefazolin
-indication: Moderate cellulitis or erysipelas. MSSA
+indication: Moderate cellulitis or erysipelas
+indication_detail: Moderate cellulitis or erysipelas, MSSA.
 population: Adults
 route: IV
 amount: "1"

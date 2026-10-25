@@ -1,7 +1,8 @@
 drug: ketorolac
 drug_name: Ketorolac
 brand: Toradol
-indication: Moderately severe acute pain, as part of multimodal analgesia
+indication: Moderately severe acute pain
+indication_detail: Moderately severe acute pain, as part of multimodal analgesia.
 population: Adults under 65 years, 50 kg or more, normal kidney function
 route: IV
 amount: "30"

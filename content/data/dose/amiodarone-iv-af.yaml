@@ -1,7 +1,8 @@
 drug: amiodarone
 drug_name: Amiodarone
 brand: Nexterone
-indication: Acute rate control of AF in decompensated heart failure or hypotension
+indication: Acute rate control of AF
+indication_detail: Acute rate control of AF in decompensated heart failure or hypotension.
 population: Adults
 route: IV
 amount: "150–300"

@@ -1,6 +1,7 @@
 drug: meropenem
 drug_name: Meropenem
-indication: Pseudomonas-risk pneumonia, complicated UTI with sepsis or resistant organisms, severe or necrotizing skin infection
+indication: Pneumonia, complicated UTI, severe skin infection
+indication_detail: Pneumonia with Pseudomonas risk, complicated UTI with sepsis or resistant organisms, and severe or necrotizing skin infection.
 population: Adults
 route: IV
 amount: "1"

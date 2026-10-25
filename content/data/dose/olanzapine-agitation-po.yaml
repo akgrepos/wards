@@ -1,7 +1,8 @@
 drug: olanzapine
 drug_name: Olanzapine
 brand: Zyprexa, Zyprexa Zydis
-indication: Mild to moderate agitation in a patient who accepts oral medication (off-label except agitation in schizophrenia or bipolar I mania, which is IM)
+indication: Mild to moderate agitation
+indication_detail: Mild to moderate agitation in a patient who accepts oral medication. Off-label, except agitation in schizophrenia or bipolar I mania, which is IM.
 population: Adults
 route: oral or orally disintegrating tablet
 amount: 5–10
