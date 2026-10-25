@@ -7,7 +7,7 @@ title: Community-Acquired Pneumonia
 aliases: [CAP, pneumonia, PNA, community acquired pneumonia, lobar pneumonia, lower respiratory tract infection, LRTI, severe CAP]
 definition: "Pneumonia acquired outside the hospital: compatible symptoms with a new infiltrate on chest imaging. ^[idsa-ats-cap-2019]"
 based_on: [ats-cap-2025, idsa-ats-cap-2019]
-checked: { date: 2026-10-24, by: opus, scope: "CURB-65 lines and the corrected dialysis rows of piperacillin-tazobactam and cefepime checked against NICE NG250, Lim 2003 and the labels. Doses left not-verified: amoxicillin-cap, amoxicillin-clavulanate-cap, ampicillin-sulbactam-cap, azithromycin-iv-cap, azithromycin-po-cap, cefepime-cap, cefpodoxime-cap, ceftaroline-iv, doxycycline-100, hydrocortisone-severe-cap, levofloxacin-750, linezolid-600, meropenem-1g, moxifloxacin-cap, oseltamivir-influenza, piperacillin-tazobactam-cap, vancomycin-iv", fingerprint: "5b17d04a4ea4e340" }
+checked: { date: 2026-10-24, by: opus, scope: "CURB-65 lines and the corrected dialysis rows of piperacillin-tazobactam and cefepime checked against NICE NG250, Lim 2003 and the labels. Doses left not-verified: amoxicillin-cap, amoxicillin-clavulanate-cap, ampicillin-sulbactam-cap, azithromycin-iv-cap, azithromycin-po-cap, cefepime-cap, cefpodoxime-cap, ceftaroline-iv, doxycycline-100, hydrocortisone-severe-cap, levofloxacin-750, linezolid-600, meropenem-1g, moxifloxacin-cap, oseltamivir-influenza, piperacillin-tazobactam-cap, vancomycin-iv", fingerprint: "80915cfd1e4cc437" }
 related:
   differential: []
   conditions: [id-complicated-uti, id-cellulitis]
