@@ -7,7 +7,7 @@ title: Hypokalemia
 aliases: [low potassium, potassium low, K low, hypoK, hypokalaemia]
 definition: "K⁺ <3.5 mEq/L. ^[kardalas-hypokalemia-2018]"
 based_on: [kardalas-hypokalemia-2018, asmar-hypokalemia-2012]
-checked: { date: 2026-10-19, by: owner, scope: "owner review", fingerprint: "d9a6bb167d2de606", carried: "2026-10-24: Dose row titles shortened to the indication only. Doses and numbers unchanged, the removed wording is kept in the longer indication text." }
+checked: { date: 2026-10-19, by: owner, scope: "owner review", fingerprint: "4bc4bab25f13a9e6", carried: "2026-10-25: Shared Mg repletion dose: max-rate wording corrected to the label (150 mg/min, only exception severe eclampsia). Opus checked that line against the label 2026-10-25. The rest of the card was not re-reviewed." }
 related:
   differential: []
   conditions: [renal-hyperkalemia, renal-hyponatremia, cardio-adhf, cardio-ecg-interpretation, endo-dka, renal-iv-fluids, cardio-qt-prolongation]
