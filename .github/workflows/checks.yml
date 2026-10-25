@@ -39,6 +39,8 @@ jobs:
         run: npx vite build
       - name: Every built file works offline
         run: npm run check:offline
+      - name: Cards whose content changed (job summary)
+        run: node scripts/content/compose-diff.mjs origin/${{ github.event.pull_request.base.ref }}
       - name: Playwright WebKit (for the look check)
         run: npx playwright install --with-deps webkit
       - name: Look check (links, tap targets, design-token colors and fonts, no leftovers; no pictures)

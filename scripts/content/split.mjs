@@ -44,7 +44,8 @@ export function splitContent(content) {
     while (todo.length) {
       const key = todo.pop();
       const item = items.get(key);
-      if (!item) { found.delete(key); continue; }
+      // A pointer to an item that doesn't exist must stop the build, never be dropped quietly.
+      if (!item) throw new Error(`Card "${card.id}" uses ${key}, but no such data item exists.`);
       const more = new Set();
       refs(item, byId, more);
       for (const k of more) if (!found.has(k) && items.has(k)) { found.add(k); todo.push(k); }

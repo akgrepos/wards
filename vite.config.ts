@@ -4,13 +4,14 @@ import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';
 import { resolve } from 'node:path';
 import { loadContent } from './scripts/content/load.mjs';
+import { checkContent } from './scripts/content/check.mjs';
 import { splitContent } from './scripts/content/split.mjs';
 import { computeVersion } from './scripts/lib/version.mjs';
 
 // Turns content/ into a small index, the module "virtual:wards-content", plus one file per card (cards/<id>.json) that the app
 // fetches when a card opens and the service worker saves for offline use. Tests use "virtual:wards-content-full" (everything).
 // Example cards (content/examples) are only included while developing, never in the published app.
-function wardsContent(includeExamples: boolean) {
+function wardsContent(includeExamples: boolean, refuseBadContent: boolean) {
   const id = 'virtual:wards-content';
   const fullId = 'virtual:wards-content-full';
   let all: ReturnType<typeof loadContent> | null = null;
@@ -22,7 +23,13 @@ function wardsContent(includeExamples: boolean) {
   type Res = { setHeader(k: string, v: string): void; end(b: string): void; statusCode: number };
   return {
     name: 'wards-content',
-    buildStart() { build(); },
+    buildStart() {
+      build();
+      // The build refuses bad references (and every other content rule), so a broken card can never be published.
+      if (!refuseBadContent) return;
+      const errors = checkContent(loadContent(process.cwd(), { includeExamples: true }) as never);
+      if (errors.length) throw new Error(`Content problems (${errors.length}):\n- ` + errors.join('\n- '));
+    },
     resolveId: (s: string) => (s === id || s === fullId ? '\0' + s : null),
     load(s: string) {
       if (s !== '\0' + id && s !== '\0' + fullId) return null;
@@ -68,7 +75,7 @@ export default defineConfig(({ command }) => ({
   // Stamped from git (date + commit count that day), so nobody edits a version by hand.
   define: { __APP_VERSION__: JSON.stringify(computeVersion()) },
   plugins: [
-    wardsContent(command === 'serve'),
+    wardsContent(command === 'serve', command === 'build' && !process.env.VITEST),
     react(),
     VitePWA({
       // Wait for a tap on "Reload" before switching to a new version.
