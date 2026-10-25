@@ -1,3 +1,4 @@
+drug: vancomycin
 drug_name: Vancomycin
 indication: Bacterial meningitis or healthcare-associated ventriculitis and meningitis
 population: Adults
@@ -13,7 +14,6 @@ adjustments:
 cautions:
   - Target trough 15–20 mcg/mL in meningitis (IDSA 2004, 2017).
   - Never alone in pneumococcal meningitis.
-  - Nephrotoxicity, more with piperacillin-tazobactam.
 notes: "IDSA 2004 lists 30–45 mg/kg a day in divided doses every 8–12 hours (15 mg/kg every 8–12 hours). Dose by levels with the pharmacy."
 sources: [idsa-meningitis-2004, idsa-ventriculitis-2017, label-vancomycin-2025]
 verification:

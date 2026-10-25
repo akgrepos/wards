@@ -1,0 +1,15 @@
+name: Nitroglycerin
+class: Nitrate vasodilator
+brands: [Nitrostat]
+aliases: [NTG, Glyceryl trinitrate, GTN]
+boxed_warning: None
+cautions:
+  - text: "Contraindicated with a phosphodiesterase-5 inhibitor (avanafil within 12 hours, sildenafil or vardenafil within 24 hours, tadalafil within 48 hours) or riociguat, raised intracranial pressure, shock or acute circulatory failure, and severe anemia."
+    sources: [label-nitrostat-2023, label-ntg-premix-2016, acc-aha-acs-2025]
+  - text: "Preload-dependent states: contraindicated IV in tamponade, constrictive pericarditis and restrictive cardiomyopathy. Avoid with SBP below 90 mm Hg, suspected RV infarction, severe aortic stenosis or hypertrophic obstructive cardiomyopathy."
+    sources: [label-ntg-premix-2016, label-nitrostat-2023, acc-aha-acs-2025]
+  - text: "Severe hypotension, sometimes with paradoxical bradycardia, can follow small doses, especially when volume depleted. Headache is common. Additive hypotension with other vasodilators and antihypertensives."
+    sources: [label-nitrostat-2023, label-ntg-premix-2016]
+kidney_liver: "The labels give no dose change for kidney or liver impairment."
+label_source: label-nitrostat-2023
+sources: [label-nitrostat-2023, label-ntg-premix-2016, acc-aha-acs-2025]

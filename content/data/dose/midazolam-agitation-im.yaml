@@ -1,3 +1,4 @@
+drug: midazolam
 drug_name: Midazolam
 brand: Midazolam injection
 indication: Severe agitation needing rapid sedation in a monitored setting (off-label)
@@ -9,7 +10,6 @@ frequency: once. Reassess before any repeat dose
 give_when: Severe agitation or danger where fast onset is needed, with continuous oxygen saturation monitoring and airway support at the bedside
 repeat: "Studied as a single dose. Repeat only after reassessment, with airway support at the bedside"
 max: "No guideline maximum for agitation"
-boxed_warning: "IV midazolam: respiratory depression and arrest. Use only with continuous respiratory and cardiac monitoring and resuscitation available. With opioids, profound sedation, respiratory depression, coma and death."
 cautions:
   - "Continuous pulse oximetry and a clinician who can manage the airway. Avoid on a general ward without that."
   - "Older adults: ACEP made no recommendation above 65. The label reduces IM doses at 60 or older (as little as 1 mg)."

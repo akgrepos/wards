@@ -1,3 +1,4 @@
+drug: hydrocortisone
 drug_name: Hydrocortisone
 indication: Severe community-acquired pneumonia in the ICU, without septic shock or influenza
 population: Adults
@@ -10,7 +11,6 @@ duration: "4 days (7 if not improved by day 4), then tapered: 8 or 14 days in to
 cautions:
   - "Septic shock was excluded from the trial: use sepsis dosing instead."
   - "Influenza: not recommended."
-  - "Hyperglycemia: monitor glucose."
 notes: CAPE COD regimen. Taper as in the trial. ICU protocols vary.
 sources:
   - cape-cod-2023

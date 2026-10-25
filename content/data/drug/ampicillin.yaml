@@ -1,0 +1,17 @@
+name: Ampicillin
+class: Aminopenicillin
+boxed_warning: None
+cautions:
+  - text: Contraindicated with a history of hypersensitivity to any penicillin. Severe reactions have occurred with cephalosporins in penicillin-allergic patients. Treat anaphylaxis at once with epinephrine.
+    sources: [label-ampicillin-2022]
+  - text: Give a direct IV injection slowly, over at least 10–15 minutes for the larger vials. Faster injection can cause seizures.
+    sources: [label-ampicillin-2022]
+  - text: Not recommended in infectious mononucleosis (rash in most patients).
+    sources: [label-ampicillin-2022]
+  - text: Allopurinol substantially increases the rate of rash.
+    sources: [label-ampicillin-2022]
+  - text: C. difficile diarrhea (mild to fatal colitis) can occur, even more than 2 months after use. Evaluate any new diarrhea.
+    sources: [label-ampicillin-2022]
+kidney_liver: The label gives no kidney or liver dose table. Hemodialysis removes it, peritoneal dialysis does not. Adjustments by use are on each dose.
+label_source: label-ampicillin-2022
+sources: [label-ampicillin-2022]

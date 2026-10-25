@@ -1,3 +1,4 @@
+drug: lorazepam
 drug_name: Lorazepam
 brand: Ativan
 indication: Alcohol withdrawal seizure (status epilepticus dosing)
@@ -8,7 +9,6 @@ unit: mg
 rate: "slowly, at 2 mg per minute, after diluting 1:1"
 repeat: "May repeat 4 mg once after 10–15 minutes"
 give_when: Active withdrawal seizure
-boxed_warning: "Concomitant use with opioids can cause profound sedation, respiratory depression, coma and death. Abuse, misuse and addiction. Dependence and withdrawal reactions."
 alternative:
   dose: diazepam-iv-seizure
   when: "Lorazepam unavailable"

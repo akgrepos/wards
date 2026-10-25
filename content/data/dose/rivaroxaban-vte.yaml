@@ -1,3 +1,4 @@
+drug: rivaroxaban
 drug_name: Rivaroxaban
 brand: Xarelto
 indication: Acute DVT or PE treatment
@@ -7,7 +8,6 @@ amount: "15"
 unit: mg
 frequency: twice daily with food for 21 days, then 20 mg once daily with food
 duration: "At least 3 months. Extended therapy after 6 months: 10 mg once daily"
-boxed_warning: "Premature discontinuation raises the risk of thrombotic events. Spinal or epidural hematoma with neuraxial anesthesia or spinal puncture."
 adjustments:
   - when: CrCl <15 mL/min
     change: Avoid
@@ -15,7 +15,6 @@ adjustments:
     change: Avoid in Child-Pugh B or C, or liver disease with coagulopathy
 cautions:
   - "Take the 15 mg and 20 mg doses with food."
-  - "Avoid combined strong CYP3A and P-gp inhibitors or inducers."
   - "No parenteral lead-in needed."
 sources: [label-xarelto-2026, ash-vte-treatment-2020, chest-vte-2021]
 verification:

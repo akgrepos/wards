@@ -1,3 +1,4 @@
+drug: micafungin
 drug_name: Micafungin
 brand: Mycamine
 indication: Candidemia and invasive candidiasis
@@ -11,7 +12,6 @@ duration: 14 days after the first negative blood culture, if no metastatic focus
 cautions:
   - Echinocandins are the first choice for non-neutropenic candidemia.
   - Does not reach the urine, eyes or CNS well.
-  - Liver enzyme elevations. Check hepatic panel.
 notes: "Guideline dose for candidemia is 100 mg daily. The label lists 100 mg daily for candidemia as well."
 sources: [idsa-candida-2016, label-micafungin-2025]
 verification:

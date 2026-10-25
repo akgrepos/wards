@@ -1,3 +1,4 @@
+drug: digoxin
 drug_name: Digoxin
 brand: Lanoxin
 indication: Acute rate control of AF in heart failure or hypotension
@@ -14,8 +15,6 @@ adjustments:
     change: Smaller maintenance doses by CrCl and lean body weight. Check levels (not removed by dialysis)
 cautions:
   - "Slow onset. Ineffective when adrenergic tone is high."
-  - "Contraindicated in ventricular fibrillation. Avoid in pre-excited AF."
-  - "Toxicity more likely with hypokalemia, hypomagnesemia, hypercalcemia, kidney impairment and amiodarone."
 notes: "Label loading: 8–12 mcg/kg lean body weight in total, half first, then a quarter every 6–8 hours twice. Levels above 2 ng/mL add toxicity without benefit, and the AF guideline notes higher mortality above 1.2 ng/mL: aim lower. Draw at least 6 hours after a dose."
 sources: [acc-aha-af-2023, label-lanoxin-inj-2025]
 verification:

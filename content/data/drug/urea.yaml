@@ -1,0 +1,9 @@
+name: Urea
+class: Osmotic agent (oral, medical food)
+brands: [ure-Na]
+boxed_warning: None
+cautions:
+  - text: Poor palatability and gastric intolerance. Dissolve in juice or another strongly flavored drink.
+    sources: [verbalis-hyponatremia-2013]
+kidney_liver: No FDA prescribing information exists for oral urea (it is a medical food). Kidney and liver effects are not established beyond the hyponatremia guidance.
+sources: [verbalis-hyponatremia-2013]

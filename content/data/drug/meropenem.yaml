@@ -1,0 +1,20 @@
+name: Meropenem
+class: Carbapenem
+brands: [Merrem]
+boxed_warning: None
+cautions:
+  - text: Contraindicated with hypersensitivity to meropenem or another carbapenem, or after anaphylaxis to any β-lactam. Severe skin reactions (SJS, TEN, DRESS, AGEP) can occur. Stop it at once if suspected.
+    sources: [label-meropenem-2024]
+  - text: Lowers valproate levels below the therapeutic range (breakthrough seizures), and raising the valproate dose may not overcome it. Avoid together and choose a non-carbapenem.
+    sources: [label-meropenem-2024]
+  - text: Seizures can occur, mostly with CNS disease, bacterial meningitis or kidney impairment. Reduce for kidney function and continue antiseizure drugs.
+    sources: [label-meropenem-2024]
+  - text: Thrombocytopenia has occurred in kidney impairment (no bleeding reported).
+    sources: [label-meropenem-2024]
+  - text: Probenecid raises levels and is not recommended with it.
+    sources: [label-meropenem-2024]
+  - text: C. difficile diarrhea (mild to fatal colitis) can occur, even more than 2 months after use. Evaluate any new diarrhea.
+    sources: [label-meropenem-2024]
+kidney_liver: Reduce for CrCl 50 mL/min or below (adjustments are on each dose). The label has no dialysis dosing. No change for liver impairment.
+label_source: label-meropenem-2024
+sources: [label-meropenem-2024]

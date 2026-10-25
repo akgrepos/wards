@@ -1,0 +1,21 @@
+name: Edoxaban
+class: Direct factor Xa inhibitor (DOAC)
+brands: [Savaysa]
+aliases: [DOAC]
+boxed_warning:
+  text: "Reduced efficacy in nonvalvular AF with CrCl above 95 (more ischemic strokes than with warfarin): do not use, choose another anticoagulant. Premature discontinuation of any oral anticoagulant raises the risk of ischemic events. If stopped for a reason other than pathological bleeding or completion of therapy, cover with another anticoagulant. Spinal or epidural hematoma, which can cause permanent paralysis, can occur with neuraxial anesthesia or spinal puncture. Monitor neurologic status often and treat compromise urgently."
+  sources: [label-savaysa-2025]
+cautions:
+  - text: Contraindicated with active pathological bleeding.
+    sources: [label-savaysa-2025]
+  - text: Not recommended with mechanical heart valves, moderate to severe mitral stenosis, or triple-positive antiphospholipid syndrome.
+    sources: [label-savaysa-2025]
+  - text: Avoid rifampin. Avoid long-term use with other anticoagulants. Bleeding risk rises with aspirin, other antiplatelets, fibrinolytics, NSAIDs, SSRIs and SNRIs.
+    sources: [label-savaysa-2025]
+  - text: No specific reversal agent. Hemodialysis does not remove it. The effect lasts about 24 hours after the last dose.
+    sources: [label-savaysa-2025]
+  - text: Remove a neuraxial catheter no earlier than 12 hours after the last dose, and give the next dose no earlier than 2 hours after removal.
+    sources: [label-savaysa-2025]
+kidney_liver: About half is cleared by the kidneys. Kidney thresholds differ by use (see Adjust on each dose), and not recommended with CrCl below 15. Child-Pugh A no change, Child-Pugh B or C not recommended.
+label_source: label-savaysa-2025
+sources: [label-savaysa-2025]

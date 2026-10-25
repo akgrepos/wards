@@ -1,3 +1,4 @@
+drug: levofloxacin
 drug_name: Levofloxacin
 indication: COPD exacerbation, selected patients (e.g. failure of first-line antibiotics)
 population: Adults
@@ -6,15 +7,11 @@ amount: "500"
 unit: mg
 frequency: every 24 hours
 duration: 7 days
-boxed_warning: "Fluoroquinolones: disabling and potentially irreversible tendinitis and tendon rupture, peripheral neuropathy and CNS effects, and worsening of myasthenia gravis. For exacerbations of chronic bronchitis, reserve for patients with no alternative treatment options."
 adjustments:
   - when: CrCl 20–49 mL/min
     change: 500 mg once, then 250 mg every 24 hours
   - when: CrCl 10–19 mL/min, hemodialysis or CAPD
     change: 500 mg once, then 250 mg every 48 hours
-cautions:
-  - "QT prolongation, dysglycemia, aortic aneurysm risk. Avoid in myasthenia gravis."
-  - "Separate oral doses by 2 hours from antacids, iron, zinc, sucralfate and multivitamins."
 notes: "Label dose for acute bacterial exacerbation of chronic bronchitis. Pseudomonas risk: choose by prior sputum cultures (750 mg dose, as for pneumonia)."
 sources: [label-levofloxacin-2024, gold-copd-2026]
 verification:

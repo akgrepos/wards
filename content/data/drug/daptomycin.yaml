@@ -1,0 +1,21 @@
+name: Daptomycin
+class: Cyclic lipopeptide
+brands: [Cubicin RF]
+aliases: [dapto]
+boxed_warning: None
+cautions:
+  - text: Not for pneumonia or for left-sided S. aureus endocarditis.
+    sources: [label-cubicin-2025]
+  - text: Myopathy and rhabdomyolysis. Check CK weekly, more often with a recent or current statin, with kidney impairment or if CK rises. Consider pausing statins during treatment.
+    sources: [label-cubicin-2025]
+  - text: Eosinophilic pneumonia (stop and consider systemic steroids), DRESS and tubulointerstitial nephritis. Stop if any occurs.
+    sources: [label-cubicin-2025]
+  - text: Peripheral neuropathy. Monitor and consider stopping.
+    sources: [label-cubicin-2025]
+  - text: Can falsely prolong the PT and raise the INR with some reagents. Draw just before a dose if this is a concern.
+    sources: [label-cubicin-2025]
+  - text: Contraindicated with daptomycin hypersensitivity. Anaphylaxis can be life-threatening.
+    sources: [label-cubicin-2025]
+kidney_liver: Longer dosing interval for CrCl below 30 and in dialysis (on each dose). Efficacy was lower with moderate kidney impairment. Monitor kidney function and CK more than weekly in kidney impairment. No change for mild to moderate liver impairment. Severe liver impairment has not been studied.
+label_source: label-cubicin-2025
+sources: [label-cubicin-2025]

@@ -1,3 +1,4 @@
+drug: sodium-chloride-3
 drug_name: Sodium chloride 3% (hypertonic saline)
 indication: Acute hyponatremia (<48 h) with mild to moderate symptoms and low risk of herniation
 population: Adults
@@ -9,7 +10,6 @@ give_when: "Known acute onset (e.g. postoperative, self-induced water intoxicati
 repeat: "Check Na⁺ every 1–2 hours at these rates. Stop once Na⁺ is up 4–6 mEq/L or symptoms resolve"
 max: "True acute hyponatremia needs no correction limit. If onset is uncertain, keep to the chronic limits (≤10–12 mEq/L in 24 h, ≤8 at high risk)"
 cautions:
-  - "Correction formulas are often inaccurate. Follow measured Na⁺."
   - "Overcorrection is as common with continuous infusion as with boluses."
   - "Chronic hyponatremia: use the slower infusion instead (about 1 mEq/L per hour here would pass the limits between checks)."
 notes: "Rough estimate: mL per hour ≈ body weight (kg) × the desired rise in mEq/L per hour (70 kg at 70 mL/h ≈ 1 mEq/L per hour)."

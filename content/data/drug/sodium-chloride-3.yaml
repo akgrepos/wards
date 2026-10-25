@@ -1,0 +1,18 @@
+name: Sodium Chloride 3%
+class: Hypertonic crystalloid
+aliases: [hypertonic saline, 3% saline, HTS]
+boxed_warning: None
+cautions:
+  - text: Overly rapid correction of chronic hyponatremia can cause osmotic demyelination. Keep to each dose's correction limit and follow measured serum Na⁺, not correction formulas. Highest risk with Na⁺ 105 mEq/L or less, hypokalemia, alcohol use disorder, malnutrition or advanced liver disease. If the limit is passed, consider relowering Na⁺ with electrolyte-free water or desmopressin.
+    sources: [label-nacl-hypertonic-2018, verbalis-hyponatremia-2013]
+  - text: Hypertonic. The label advises a large vein to limit vein damage. An expert review finds a peripheral IV acceptable, with rare phlebitis.
+    sources: [label-nacl-hypertonic-2018, rondon-berrios-hypertonic-2022]
+  - text: Can cause fluid overload, pulmonary edema, hypernatremia and hyperchloremic acidosis. Particular caution in heart failure, cirrhosis, kidney disease or other sodium-retaining states, and with corticosteroids.
+    sources: [label-nacl-hypertonic-2018]
+  - text: Can lower lithium levels by increasing its renal clearance.
+    sources: [label-nacl-hypertonic-2018]
+  - text: Do not give through the same set as blood products. Stop the infusion for a hypersensitivity or infusion reaction.
+    sources: [label-nacl-hypertonic-2018]
+kidney_liver: No label dose change. Particular caution in severe kidney impairment (sodium retention) and in liver disease (fluid overload). Correction limits by use are on each dose.
+label_source: label-nacl-hypertonic-2018
+sources: [label-nacl-hypertonic-2018, verbalis-hyponatremia-2013, rondon-berrios-hypertonic-2022]

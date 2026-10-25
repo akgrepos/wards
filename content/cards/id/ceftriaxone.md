@@ -4,7 +4,7 @@ type: medication
 system: id
 title: "Ceftriaxone"
 aliases: [Rocephin, third-generation cephalosporin, 3rd generation cephalosporin, CTX]
-checked: { date: 2026-10-24, by: opus, scope: "doses and numbers", fingerprint: "6f73d0c401ee8167" }
+checked: { date: 2026-10-24, by: opus, scope: "doses and numbers", fingerprint: "d9bac79e0f9944fa", carried: "2026-10-24: Dose sheets now take the drug-wide warnings from drug records (stage 4b). Doses and numbers on the card are unchanged." }
 related:
   differential: []
   conditions: [id-cap, id-cellulitis, id-complicated-uti, crit-sepsis, gi-upper-gi-bleeding]

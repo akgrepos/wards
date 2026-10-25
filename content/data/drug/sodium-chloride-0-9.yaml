@@ -1,0 +1,16 @@
+name: Sodium Chloride 0.9%
+class: IV fluid (isotonic crystalloid)
+aliases: [normal saline, NS, 0.9% saline]
+boxed_warning: None
+cautions:
+  - text: Avoid with volume overload or a high risk of it. If unavoidable, monitor fluid balance and electrolytes.
+    sources: [label-nacl-2024]
+  - text: Can cause hospital-acquired hyponatremia, especially with SIADH or other non-osmotic vasopressin release given large volumes. Monitor sodium.
+    sources: [label-nacl-2024]
+  - text: Large volumes can cause hyperchloremic metabolic acidosis.
+    sources: [label-nacl-2024]
+  - text: Sodium-retaining drugs such as corticosteroids raise the risk of hypernatremia and volume overload. It increases lithium clearance, so monitor lithium levels.
+    sources: [label-nacl-2024]
+kidney_liver: No label dose change. Severe kidney impairment raises the risk of hypernatremia and fluid overload, so the label advises avoiding it or monitoring closely.
+label_source: label-nacl-2024
+sources: [label-nacl-2024]

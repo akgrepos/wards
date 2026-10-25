@@ -184,9 +184,9 @@ export const CARD_GROUPS = ['approach', 'condition', 'reference'];
 export const DATA_TYPES = {
   source: { required: ['kind', 'short', 'title', 'year'], sourced: false },
   // A dose needs a frequency or a rate (e.g. "over 10 minutes"); the dose sheet fields are listed in DOSE_FIELDS.
-  dose: { required: ['drug_name', 'indication', 'route', 'amount', 'unit'], sourced: true },
+  dose: { required: ['drug', 'drug_name', 'indication', 'route', 'amount', 'unit'], sourced: true },
   // A drug record (docs/DATA-TYPES.md, 2b): the facts that hold for the drug whatever it is given for. Doses point to it with `drug:`.
-  drug: { required: ['name', 'class', 'boxed_warning', 'kidney_liver', 'label_source'], sourced: true },
+  drug: { required: ['name', 'class', 'boxed_warning', 'kidney_liver'], sourced: true },
   threshold: { required: ['name', 'value', 'unit'], sourced: true },
   // A focused pathway (docs/DATA-TYPES.md, 9): a levelled flowchart on a grid that supplements its card.
   pathway: { required: ['title', 'card', 'columns', 'start', 'nodes'], sourced: true },
@@ -217,7 +217,7 @@ export const UNITS = [
 
 // Text in card prose that looks like a dose (an amount with a dosing unit). Doses must come from {{dose:…}} inserts.
 // Rates such as urine output (mL/kg/h) and concentrations (mEq/L) are not doses.
-export const DOSE_IN_TEXT = /\b\d+(?:\.\d+)?\s?(?:mg|mcg|g|mEq|mmol|units?|mL)\b(?!\s*\/\s*(?:L|dL|mL|kg\/min|kg\/h)\b)/;
+export const DOSE_IN_TEXT = /\b\d+(?:\.\d+)?\s?(?:mg|mcg|g|mEq|mmol|units?|mL)\b(?!\s*\/\s*(?:L|dL|mL|kg\/min|kg\/h|min|1\.73)\b)/;
 
 // Calculator pages live on MDCalc; every calculator item points at one.
 export const MDCALC_URL = /^https:\/\/www\.mdcalc\.com\/calc\/\d+\/[a-z0-9-]+$/;

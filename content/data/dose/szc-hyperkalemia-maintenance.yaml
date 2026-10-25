@@ -1,3 +1,4 @@
+drug: sodium-zirconium-cyclosilicate
 drug_name: Sodium zirconium cyclosilicate
 brand: Lokelma
 indication: Hyperkalemia (maintenance)
@@ -7,8 +8,6 @@ amount: 10
 unit: g
 frequency: once daily
 max: "Range 5 g every other day to 15 g daily. Increase by 5 g no more often than weekly. Decrease or stop at any time if potassium is below target"
-cautions:
-  - "Radio-opaque: may look like contrast on abdominal X-ray."
 adjustments:
   - when: "On hemodialysis"
     change: "5 g once daily on non-dialysis days only (consider 10 g if potassium above 6.5 mEq/L). Range 5–15 g. Recheck potassium after 1 week. Hypokalemia risk with poor intake or diarrhea: adjust dose"

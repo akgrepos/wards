@@ -1,3 +1,4 @@
+drug: ertapenem
 drug_name: Ertapenem
 indication: Complicated UTI or pyelonephritis with an ESBL-producing or other resistant organism
 population: Adults
@@ -13,7 +14,6 @@ adjustments:
     change: 500 mg daily. Extra 150 mg after dialysis if dosed within 6 hours before it
 cautions:
   - No Pseudomonas or Enterococcus coverage.
-  - "Lowers valproate levels: avoid together."
 sources:
   - label-invanz-2026
   - idsa-cuti-selection-2025

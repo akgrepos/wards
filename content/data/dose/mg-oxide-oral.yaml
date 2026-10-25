@@ -1,3 +1,4 @@
+drug: magnesium-oxide
 drug_name: Magnesium oxide
 indication: Hypomagnesemia, mild or asymptomatic, or maintenance after IV
 population: Adults
@@ -9,7 +10,6 @@ adjustments:
   - when: "Kidney failure"
     change: "Avoid or reduce. Monitor Mg (risk of hypermagnesemia)"
 cautions:
-  - "Diarrhea is the main limit. Titrate as tolerated."
   - "Magnesium hydroxide is a laxative: not for repletion."
 notes: "Each 400 mg tablet has 241 mg of elemental magnesium. Aim for at least about 300 mg of elemental magnesium a day in divided doses. Organic salts (e.g. citrate) may be better absorbed. Evidence is weak."
 sources: [adomako-magnesium-2024, hansen-magnesium-icu-2018]

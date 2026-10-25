@@ -1,0 +1,6 @@
+# Placeholder drug record for testing the app. Not clinical guidance.
+name: Exampledrug
+class: Example class
+boxed_warning: None
+kidney_liver: Example statement about kidney and liver impairment.
+sources: [example-guideline-a]

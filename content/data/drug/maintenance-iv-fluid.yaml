@@ -1,0 +1,16 @@
+name: Maintenance IV Fluid
+class: IV fluid (water, glucose and electrolytes)
+aliases: [maintenance fluids, mIVF]
+boxed_warning: None
+cautions:
+  - text: Glucose-containing fluids become hypotonic once the glucose is used, so hospital-acquired hyponatremia is the main risk. Higher risk after surgery, in older adults, and with SIADH, diuretics or some antiepileptic and psychotropic drugs. Check sodium at least daily.
+    sources: [label-dextrose-5-2025, nice-iv-fluids-2017]
+  - text: Dextrose is contraindicated in clinically significant hyperglycemia. Monitor glucose.
+    sources: [label-dextrose-5-2025]
+  - text: Fluid overload and pulmonary edema, depending on volume and rate.
+    sources: [label-dextrose-5-2025]
+  - text: In severe undernutrition, glucose can trigger refeeding syndrome (low potassium, phosphate and magnesium, thiamine deficiency).
+    sources: [label-dextrose-5-2025]
+kidney_liver: No label dose change for kidney or liver impairment. Kidney impairment raises the risk of fluid overload and electrolyte disturbance. Adjustments are on the dose.
+label_source: label-dextrose-5-2025
+sources: [label-dextrose-5-2025, nice-iv-fluids-2017]

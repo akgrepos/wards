@@ -5,7 +5,7 @@ variant: protocol
 system: renal
 title: Electrolyte Repletion
 aliases: [electrolyte replacement, replete electrolytes, lytes, potassium repletion, magnesium repletion, phosphate repletion, phosphorus repletion, calcium repletion, KCl, potassium chloride, mag sulfate, magnesium sulfate, Mag-Ox, K-Phos, Neutra-Phos, sodium phosphate, calcium gluconate, hypokalemia, hypomagnesemia, low magnesium, hypophosphatemia, low phosphorus, hypocalcemia, low calcium]
-checked: { date: 2026-10-19, by: owner, scope: "owner review", fingerprint: "4eda28681372a257" }
+checked: { date: 2026-10-19, by: owner, scope: "owner review", fingerprint: "8fc053fb2e6d8743", carried: "2026-10-24: Dose sheets now take the drug-wide warnings from drug records (stage 4b). Doses and numbers on the card are unchanged." }
 contents_sub: [dosing]
 related:
   conditions: [renal-hyperkalemia, renal-aki]

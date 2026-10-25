@@ -1,0 +1,21 @@
+name: Trimethoprim-sulfamethoxazole
+class: Sulfonamide and folate antagonist combination
+brands: [Bactrim]
+aliases: [TMP-SMX, co-trimoxazole, SMX-TMP]
+boxed_warning: None
+cautions:
+  - text: Contraindicated with sulfonamide or trimethoprim hypersensitivity, prior drug-induced immune thrombocytopenia from either, megaloblastic anemia from folate deficiency, infants under 2 months, marked liver damage, severe kidney insufficiency when kidney function cannot be monitored, and with dofetilide.
+    sources: [label-tmp-smx-2024]
+  - text: Severe, sometimes fatal reactions including SJS, TEN, DRESS, fulminant hepatic necrosis, agranulocytosis, aplastic anemia, severe thrombocytopenia, acute lung injury and respiratory failure, circulatory shock on rechallenge, and HLH. Stop at the first rash or sign of a serious reaction.
+    sources: [label-tmp-smx-2024]
+  - text: Hyperkalemia from trimethoprim, even at usual doses with kidney impairment or other drugs that raise potassium (the label says avoid ACE inhibitors). Monitor potassium. Hyponatremia, creatinine rise, interstitial nephritis and crystalluria also occur.
+    sources: [label-tmp-smx-2024]
+  - text: Raises warfarin effect (monitor the INR), phenytoin and digoxin levels. Hypoglycemia with sulfonylureas, repaglinide, pioglitazone or metformin. Avoid with methotrexate, cyclosporine, amantadine, and thiazides in older adults (thrombocytopenia).
+    sources: [label-tmp-smx-2024]
+  - text: Not for group A streptococcal infections (does not eradicate them).
+    sources: [label-tmp-smx-2024]
+  - text: Possible rise in congenital malformations (including neural tube defects) with use in pregnancy. Hemolysis in G6PD deficiency. Can precipitate porphyria and hypothyroidism.
+    sources: [label-tmp-smx-2024]
+kidney_liver: Reduce at CrCl 30 or below and avoid below 15 (adjustments on each dose). Contraindicated with marked liver damage. Avoid in kidney or liver impairment when folate deficiency is possible.
+label_source: label-tmp-smx-2024
+sources: [label-tmp-smx-2024]

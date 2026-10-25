@@ -1,0 +1,12 @@
+name: Magnesium Oxide
+class: Oral magnesium salt
+aliases: [Mag-Ox, MgO]
+boxed_warning: None
+cautions:
+  - text: Diarrhea is the main limit (it has a laxative effect). Titrate as tolerated.
+    sources: [label-magnesium-oxide-2026, adomako-magnesium-2024]
+  - text: Binds oral fluoroquinolones and tetracyclines and lowers their absorption. Give ciprofloxacin at least 2 hours before or 6 hours after it, and separate it from doxycycline.
+    sources: [label-cipro-oral-2026, label-doxycycline-2026]
+kidney_liver: Magnesium accumulates in kidney failure (risk of hypermagnesemia), so check levels. The adjustment is on the dose.
+label_source: label-magnesium-oxide-2026
+sources: [label-magnesium-oxide-2026, adomako-magnesium-2024, label-cipro-oral-2026, label-doxycycline-2026]

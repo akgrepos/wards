@@ -1,0 +1,14 @@
+name: Naloxone
+class: Opioid antagonist
+brands: [Narcan]
+boxed_warning: None
+cautions:
+  - text: "Abrupt reversal precipitates acute withdrawal in opioid-dependent patients. Abrupt postoperative reversal can cause hypertension, tachycardia, seizures, ventricular tachycardia or fibrillation, pulmonary edema and cardiac arrest. Use caution in cardiac disease or with cardiotoxic drugs."
+    sources: [label-naloxone-2025]
+  - text: "Many opioids outlast naloxone. Keep monitoring after a response, watch for renarcotization and repeat doses as needed."
+    sources: [label-naloxone-2025]
+  - text: "Not effective for respiratory depression from non-opioid drugs. Reversal of buprenorphine may be incomplete or need larger doses. Support ventilation if the response is incomplete."
+    sources: [label-naloxone-2025]
+kidney_liver: "Safety in kidney or liver disease has not been established. Use with caution."
+label_source: label-naloxone-2025
+sources: [label-naloxone-2025]

@@ -1,0 +1,17 @@
+name: Calcium Gluconate
+class: Electrolyte (IV calcium salt)
+boxed_warning: None
+cautions:
+  - text: Contraindicated in hypercalcemia, and in neonates up to 28 days who are receiving ceftriaxone.
+    sources: [label-calcium-gluconate-2026]
+  - text: Never mix with ceftriaxone or give them together through a Y-site. After 28 days of age give them one after the other with a thorough line flush. Do not mix with bicarbonate or phosphate (precipitates) or with minocycline.
+    sources: [label-calcium-gluconate-2026]
+  - text: Rapid injection can cause vasodilation, hypotension, bradycardia, arrhythmias, syncope and cardiac arrest. Monitor ECG during boluses.
+    sources: [label-calcium-gluconate-2026]
+  - text: On digoxin, avoid. If needed, give slowly in small amounts with close ECG monitoring (hypercalcemia raises the risk of digoxin toxicity).
+    sources: [label-calcium-gluconate-2026]
+  - text: Extravasation can cause tissue necrosis and calcinosis cutis. Use a secure IV line and stop at that site at once if it infiltrates.
+    sources: [label-calcium-gluconate-2026]
+kidney_liver: Kidney impairment, start at the lowest dose and check calcium every 4 hours. No dose change for liver impairment. Adjustments by use are on each dose.
+label_source: label-calcium-gluconate-2026
+sources: [label-calcium-gluconate-2026]

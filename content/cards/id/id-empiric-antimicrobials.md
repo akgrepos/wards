@@ -5,7 +5,7 @@ variant: chart
 system: id
 title: "Empiric Antimicrobials"
 aliases: [empiric antibiotics, empiric antimicrobials, antibiotic selection, antibiotic choice, antibiotic coverage, coverage chart, antibiogram, de-escalation, antibiotic time-out, MRSA coverage, Pseudomonas coverage, ESBL, VRE, anaerobic coverage, intra-abdominal infection, IAI, peritonitis, diverticulitis, cholangitis, HAP, VAP, hospital-acquired pneumonia, ventilator-associated pneumonia, nosocomial pneumonia, meningitis, bacterial meningitis, bacteremia, bloodstream infection, line infection, CLABSI, catheter infection, candidemia, penicillin allergy, beta-lactam allergy, cephalosporin allergy, renal dosing, vancomycin, piperacillin-tazobactam, cefepime, meropenem]
-checked: { date: 2026-10-21, by: opus, scope: "doses and numbers", fingerprint: "1990a9ab2621fe32", carried: "2026-10-24: ceftriaxone dose rows: short title, per-dose calcium line moved to the drug record, no clinical change" }
+checked: { date: 2026-10-21, by: opus, scope: "doses and numbers", fingerprint: "deb62358258d8646", carried: "2026-10-24: Dose sheets now take the drug-wide warnings from drug records (stage 4b). Doses and numbers on the card are unchanged." }
 related:
   conditions: [id-cap, id-cellulitis, id-complicated-uti, crit-sepsis]
   tools: [renal-aki]

@@ -1,0 +1,20 @@
+name: Tolvaptan
+class: Vasopressin V2-receptor antagonist (vaptan)
+brands: [Samsca]
+boxed_warning:
+  text: Start and restart only in hospital where serum Na⁺ can be monitored closely. Too-rapid correction of hyponatremia (for example more than 12 mEq/L in 24 hours) can cause osmotic demyelination (dysarthria, dysphagia, quadriparesis, seizures, coma, death). Slower correction may be advisable in severe malnutrition, alcoholism or advanced liver disease. Not for autosomal dominant polycystic kidney disease outside its REMS program, because of liver injury.
+  sources: [label-samsca-2021]
+cautions:
+  - text: Contraindicated in hypovolemic hyponatremia, inability to sense or respond to thirst, anuria, and with strong CYP3A inhibitors. Avoid moderate CYP3A inhibitors, strong CYP3A inducers and grapefruit juice. Do not give with uncorrected urinary outflow obstruction.
+    sources: [label-samsca-2021]
+  - text: Can cause serious, potentially fatal liver injury. Limit treatment to 30 days. Stop if fatigue, anorexia, right upper abdominal pain, dark urine or jaundice develop.
+    sources: [label-samsca-2021]
+  - text: Copious aquaresis can cause dehydration and hypovolemia, especially with diuretics or fluid restriction. Monitor Na⁺ and neurologic status, especially after starting and after each dose change.
+    sources: [label-samsca-2021]
+  - text: Monitor K⁺ if K⁺ is above 5 mEq/L or with drugs that raise K⁺ (ACE inhibitors, ARBs, potassium-sparing diuretics).
+    sources: [label-samsca-2021]
+  - text: Not recommended with hypertonic saline. Avoid with desmopressin (it blocks the effect).
+    sources: [label-samsca-2021]
+kidney_liver: No dose change for kidney impairment, but not recommended at CrCl below 10 (mL/min) and no benefit in anuria. Avoid in underlying liver disease, including cirrhosis, because recovery from liver injury may be impaired.
+label_source: label-samsca-2021
+sources: [label-samsca-2021]

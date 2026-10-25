@@ -1,0 +1,18 @@
+name: Prasugrel
+class: P2Y12 inhibitor (thienopyridine)
+brands: [Effient]
+boxed_warning:
+  text: "Significant, sometimes fatal bleeding. Contraindicated with active pathological bleeding or prior TIA or stroke. Generally not recommended at age 75 years or older (fatal and intracranial bleeding, uncertain benefit) except high-risk patients with diabetes or prior MI. Do not start if urgent CABG is likely, and when possible stop at least 7 days before any surgery. Other bleeding risks: weight below 60 kg, bleeding tendency, and drugs such as warfarin, heparin, fibrinolytics or chronic NSAIDs. Suspect bleeding in a hypotensive patient after angiography, PCI, CABG or other surgery. Manage bleeding without stopping if possible, since stopping raises cardiovascular events."
+  sources: [label-effient-2022]
+cautions:
+  - text: Contraindicated with hypersensitivity to prasugrel. Hypersensitivity, including angioedema, has occurred in patients with prior reactions to other thienopyridines.
+    sources: [label-effient-2022]
+  - text: Stop if a stroke or TIA occurs.
+    sources: [label-effient-2022]
+  - text: Thrombotic thrombocytopenic purpura can occur even after short exposure. It needs urgent plasma exchange.
+    sources: [label-effient-2022]
+  - text: Opioids delay and reduce absorption.
+    sources: [label-effient-2022]
+kidney_liver: No adjustment for kidney impairment or mild to moderate liver impairment (Child-Pugh A or B). End-stage kidney disease and severe liver disease carry higher bleeding risk and are little studied.
+label_source: label-effient-2022
+sources: [label-effient-2022]

@@ -1,0 +1,20 @@
+name: Sodium bicarbonate
+class: Alkalinizing agent
+aliases: [bicarb, NaHCO3]
+boxed_warning: None
+cautions:
+  - text: Contraindicated with chloride loss from vomiting or continuous GI suction, and with diuretics that cause hypochloremic alkalosis.
+    sources: [label-sodium-bicarbonate-2026]
+  - text: Large sodium load. Use with great care, if at all, in heart failure, oliguria or anuria, and edematous or sodium-retaining states.
+    sources: [label-sodium-bicarbonate-2026]
+  - text: Alkalinization lowers potassium and ionized calcium. Correct hypokalemia and hypocalcemia before or during the infusion (risk of tetany and carpopedal spasm).
+    sources: [label-sodium-bicarbonate-2026, ada-hyperglycemic-crises-2024]
+  - text: Overly aggressive therapy causes metabolic alkalosis and hypernatremia. Give in fractions and monitor pH, bicarbonate and sodium.
+    sources: [label-sodium-bicarbonate-2026]
+  - text: Do not mix with calcium-containing solutions (precipitate), norepinephrine or dobutamine.
+    sources: [label-sodium-bicarbonate-2026]
+  - text: Extravasation of hypertonic solution causes chemical cellulitis with tissue necrosis.
+    sources: [label-sodium-bicarbonate-2026]
+kidney_liver: Kidney impairment raises the risk of sodium retention and fluid overload. Use with great care. No liver adjustment.
+label_source: label-sodium-bicarbonate-2026
+sources: [label-sodium-bicarbonate-2026, ada-hyperglycemic-crises-2024]

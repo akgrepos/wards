@@ -6,7 +6,7 @@ title: Acute Kidney Injury
 aliases: [AKI, acute renal failure, ARF, rising creatinine, creatinine up, oliguria]
 definition: "Abrupt decrease in kidney function, defined and staged by {{criteria:kdigo-aki}}. ^[kdigo-aki-2012]"
 based_on: [kdigo-aki-2012, nice-aki-2024]
-checked: { date: 2026-10-17, by: owner, scope: "owner review", fingerprint: "27a78c7df1e280a3" }
+checked: { date: 2026-10-17, by: owner, scope: "owner review", fingerprint: "5061d4c8f4556051", carried: "2026-10-24: Dose sheets now take the drug-wide warnings from drug records (stage 4b). Doses and numbers on the card are unchanged." }
 related:
   conditions: [renal-hyperkalemia]
 ---

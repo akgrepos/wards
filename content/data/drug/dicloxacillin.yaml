@@ -1,0 +1,19 @@
+name: Dicloxacillin
+class: Antistaphylococcal (penicillinase-resistant) penicillin
+boxed_warning: None
+cautions:
+  - text: Contraindicated with hypersensitivity to any penicillin. Allergic reactions can also occur with cephalosporins in penicillin-allergic patients.
+    sources: [label-dicloxacillin-2022]
+  - text: Take on an empty stomach (at least 1 hour before or 2 hours after meals) with a full glass of water, not lying down or right before bed.
+    sources: [label-dicloxacillin-2022]
+  - text: Reduces the effect of warfarin. Monitor the INR and adjust warfarin.
+    sources: [label-dicloxacillin-2022]
+  - text: Not for initial therapy of serious infections. Oral absorption is unreliable with severe illness or vomiting.
+    sources: [label-dicloxacillin-2022]
+  - text: Check blood counts, kidney function and liver tests periodically during prolonged therapy.
+    sources: [label-dicloxacillin-2022]
+  - text: C. difficile diarrhea (mild to fatal colitis) can occur, even more than 2 months after use. Evaluate any new diarrhea.
+    sources: [label-dicloxacillin-2022]
+kidney_liver: The label gives no specific kidney or liver adjustment. Consider a lower total dose in kidney impairment (neurotoxicity risk).
+label_source: label-dicloxacillin-2022
+sources: [label-dicloxacillin-2022]

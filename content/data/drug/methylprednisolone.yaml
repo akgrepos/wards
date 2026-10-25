@@ -1,0 +1,21 @@
+name: Methylprednisolone
+class: Systemic corticosteroid (glucocorticoid)
+brands: [Solu-Medrol]
+aliases: [Methylpred, MP]
+boxed_warning: None
+cautions:
+  - text: Contraindicated in systemic fungal infection and for intrathecal use. The vial presentation that contains lactose from cow's milk is contraindicated with known or suspected cow's milk allergy. Check the vial.
+    sources: [label-solu-medrol-2025]
+  - text: Raises the risk of any infection and can mask its signs. Can reactivate latent tuberculosis and hepatitis B. Screen for hepatitis B before prolonged immunosuppressive use. Known or suspected Strongyloides can progress to fatal hyperinfection.
+    sources: [label-solu-medrol-2025]
+  - text: Hyperglycemia, hypertension, fluid retention and hypokalemia. Use with caution in heart failure. Check glucose, especially in diabetes.
+    sources: [label-solu-medrol-2025]
+  - text: High doses can cause acute myopathy, most often with myasthenia gravis or neuromuscular blockers. Psychiatric effects range from insomnia to psychosis. Do not use high doses for traumatic brain injury (higher mortality).
+    sources: [label-solu-medrol-2025]
+  - text: CYP3A4 inhibitors (ketoconazole, macrolides) raise levels and inducers (phenytoin, carbamazepine, rifampin) lower them. Monitor INR on warfarin.
+    sources: [label-solu-medrol-2025]
+  - text: After prolonged use, stopping abruptly can cause adrenal insufficiency for months. Taper and give stress dosing during illness or surgery.
+    sources: [label-solu-medrol-2025]
+kidney_liver: The label gives no dose change for kidney or liver impairment. The effect is enhanced in cirrhosis. Use with caution in kidney insufficiency (fluid and sodium retention). High-dose pulsed IV courses can rarely cause toxic hepatitis. Stop if it occurs.
+label_source: label-solu-medrol-2025
+sources: [label-solu-medrol-2025]

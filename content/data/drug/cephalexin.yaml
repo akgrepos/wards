@@ -1,0 +1,20 @@
+name: Cephalexin
+class: First-generation cephalosporin (oral)
+brands: [Keflex]
+boxed_warning: None
+cautions:
+  - text: Contraindicated with known hypersensitivity to cephalexin or another cephalosporin. Ask about penicillin and other β-lactam reactions first.
+    sources: [label-cephalexin-2026]
+  - text: Seizures can occur, mostly in kidney impairment when the dose is not reduced. Stop it if seizures occur.
+    sources: [label-cephalexin-2026]
+  - text: Raises metformin levels. Monitor and adjust metformin.
+    sources: [label-cephalexin-2026]
+  - text: Positive Coombs tests and acute intravascular hemolysis have occurred. If anemia develops, work up hemolysis and stop it.
+    sources: [label-cephalexin-2026]
+  - text: Can prolong the PT (risk with kidney or liver impairment, poor nutrition, long courses or anticoagulants). Monitor the PT in those at risk.
+    sources: [label-cephalexin-2026]
+  - text: C. difficile diarrhea (mild to fatal colitis) can occur, even more than 2 months after use. Evaluate any new diarrhea.
+    sources: [label-cephalexin-2026]
+kidney_liver: No change at CrCl 60 mL/min or above. Lower doses below that (adjustments are on each dose). The label has no hemodialysis dosing and no liver adjustment.
+label_source: label-cephalexin-2026
+sources: [label-cephalexin-2026]

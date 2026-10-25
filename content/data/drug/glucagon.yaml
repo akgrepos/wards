@@ -1,0 +1,16 @@
+name: Glucagon
+class: Antihypoglycemic hormone
+brands: [Gvoke]
+boxed_warning: None
+cautions:
+  - text: "Contraindicated with pheochromocytoma (catecholamine release, severe hypertension), insulinoma (rebound hypoglycemia) and known hypersensitivity to glucagon."
+    sources: [label-glucagon-kit-2026, label-gvoke-2026]
+  - text: "Ineffective when liver glycogen is depleted (starvation, adrenal insufficiency, chronic hypoglycemia). Give glucose instead."
+    sources: [label-glucagon-kit-2026, label-gvoke-2026]
+  - text: "Nausea and vomiting are common. Turn an unconscious patient on their side to prevent choking."
+    sources: [label-glucagon-kit-2026, label-gvoke-2026]
+  - text: "On beta-blockers, pulse and blood pressure can rise transiently. On indomethacin, glucagon may fail to raise glucose or may cause hypoglycemia. Can increase the effect of warfarin."
+    sources: [label-glucagon-kit-2026]
+kidney_liver: "The labels give no kidney or liver adjustment."
+label_source: label-glucagon-kit-2026
+sources: [label-glucagon-kit-2026, label-gvoke-2026]

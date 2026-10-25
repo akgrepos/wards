@@ -1,0 +1,13 @@
+name: Fludrocortisone
+class: Mineralocorticoid
+boxed_warning: None
+cautions:
+  - text: "Contraindicated in systemic fungal infection."
+    sources: [label-fludrocortisone-2025]
+  - text: "Potent sodium and water retention: hypertension, edema and weight gain. Hypokalemia, worse with loop or thiazide diuretics or amphotericin B, raises digoxin toxicity risk. Check blood pressure and electrolytes."
+    sources: [label-fludrocortisone-2025]
+  - text: "Masks signs of infection and can reactivate latent tuberculosis. Rifampin, phenytoin and barbiturates lower its effect."
+    sources: [label-fludrocortisone-2025]
+kidney_liver: "The label gives no dose change. Use with caution in kidney insufficiency. The effect is enhanced in cirrhosis."
+label_source: label-fludrocortisone-2025
+sources: [label-fludrocortisone-2025]

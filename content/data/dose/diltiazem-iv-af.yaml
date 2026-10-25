@@ -1,3 +1,4 @@
+drug: diltiazem
 drug_name: Diltiazem
 brand: Cardizem
 indication: Acute rate control of AF or atrial flutter with rapid ventricular response, LVEF >40%
@@ -10,8 +11,6 @@ repeat: "If response inadequate after 15 minutes: 0.35 mg/kg over 2 minutes"
 give_when: Stable, LVEF >40%, no pre-excitation
 cautions:
   - "Actual body weight. About 20 mg for an average adult (second bolus about 25 mg)."
-  - "Contraindicated: severe hypotension or cardiogenic shock, sick sinus or second- or third-degree AV block without a pacemaker, pre-excited AF or flutter, wide-complex (ventricular) tachycardia, IV β-blocker within a few hours."
-  - "Avoid in LVEF ≤40% or decompensated heart failure (negative inotrope)."
 notes: "Follow with an infusion (5–15 mg/h) for continued rate control."
 sources: [acc-aha-af-2023, label-diltiazem-inj-2026]
 verification:

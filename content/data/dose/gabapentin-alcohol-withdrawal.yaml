@@ -1,3 +1,4 @@
+drug: gabapentin
 drug_name: Gabapentin
 brand: Neurontin
 indication: Mild to moderate alcohol withdrawal when benzodiazepines are contraindicated, or as an adjunct (off-label)
@@ -11,7 +12,6 @@ adjustments:
   - when: "Reduced creatinine clearance"
     change: "Reduce the dose according to the label's renal table"
 cautions:
-  - "Respiratory depression with other CNS depressants (benzodiazepines, opioids) or underlying respiratory impairment (label)."
   - "Not for complicated withdrawal, seizures from withdrawal or delirium."
 notes: "Not labeled for alcohol withdrawal. ASAM Appendix V sample regimens."
 sources: [asam-alcohol-withdrawal-2020, label-gabapentin-2026]

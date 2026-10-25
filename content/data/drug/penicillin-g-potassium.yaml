@@ -1,0 +1,19 @@
+name: Penicillin G potassium
+class: Natural penicillin
+brands: [Pfizerpen]
+aliases: [Penicillin G, PCN G, Aqueous penicillin G]
+boxed_warning: None
+cautions:
+  - text: Contraindicated after a hypersensitivity (anaphylactic) reaction to any penicillin. Severe reactions have occurred with cephalosporins in penicillin-allergic patients.
+    sources: [label-penicillin-g-2025]
+  - text: Each million units carries potassium (and some sodium). Large IV doses can cause serious, even fatal, hyperkalemia. Give high doses slowly and monitor electrolytes, especially in kidney impairment.
+    sources: [label-penicillin-g-2025]
+  - text: Massive IV doses can cause neurotoxicity (myoclonus, seizures, coma), more likely in kidney impairment. Large IV doses can also cause interstitial nephritis.
+    sources: [label-penicillin-g-2025]
+  - text: Severe skin reactions (SJS, TEN, DRESS, AGEP) can occur. Stop it at once if suspected.
+    sources: [label-penicillin-g-2025]
+  - text: C. difficile diarrhea (mild to fatal colitis) can occur, even more than 2 months after use. Evaluate any new diarrhea.
+    sources: [label-penicillin-g-2025]
+kidney_liver: Adjust only in severe kidney impairment, with a full loading dose first (adjustments are on each dose). Reduce further when liver and kidney disease coexist.
+label_source: label-penicillin-g-2025
+sources: [label-penicillin-g-2025]

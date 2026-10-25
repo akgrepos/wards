@@ -1,0 +1,16 @@
+name: Sodium and Potassium Phosphates
+class: Oral phosphate supplement
+brands: [K-Phos Neutral, Phospha 250 Neutral]
+boxed_warning: None
+cautions:
+  - text: Contraindicated in hyperphosphatemia and infected phosphate stones.
+    sources: [label-kphos-neutral-2023]
+  - text: Antacids containing aluminum, magnesium or calcium bind phosphate and block its absorption.
+    sources: [label-kphos-neutral-2023]
+  - text: Contains sodium and potassium. Hyperkalemia with potassium-containing drugs or potassium-sparing diuretics. Hypernatremia with corticosteroids or some antihypertensives. Use caution in heart disease (especially on digoxin), heart failure, edema, hypertension, adrenal insufficiency, hypoparathyroidism or acute pancreatitis.
+    sources: [label-kphos-neutral-2023]
+  - text: May cause mild diarrhea in the first few days. Reduce the dose if it persists. Monitor kidney function, calcium, phosphorus, potassium and sodium.
+    sources: [label-kphos-neutral-2023]
+kidney_liver: Contraindicated with severe kidney impairment (under 30% of normal function). Use with caution in milder kidney disease and in cirrhosis or severe liver disease.
+label_source: label-kphos-neutral-2023
+sources: [label-kphos-neutral-2023]

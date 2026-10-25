@@ -1,3 +1,4 @@
+drug: morphine
 drug_name: Morphine sulfate (immediate-release)
 indication: Moderate to severe acute pain, opioid-naive
 population: Opioid-naive adults
@@ -8,7 +9,6 @@ frequency: every 4 hours as needed
 give_when: "Pain not controlled by nonopioid options, or severe pain"
 repeat: "Reassess pain, sedation and respiratory rate before each repeat dose"
 max: "No fixed maximum. Titrate to the lowest effective dose. Reassess before going above 50 morphine milligram equivalents a day."
-boxed_warning: "Addiction, abuse and misuse. Life-threatening respiratory depression. Accidental ingestion. Neonatal opioid withdrawal syndrome. Risks with benzodiazepines and other CNS depressants."
 adjustments:
   - when: "Kidney impairment"
     change: "Start lower than usual and titrate slowly. Active metabolites accumulate. Prefer another opioid (see the card)."
@@ -16,7 +16,6 @@ adjustments:
     change: "Start at the low end of the range or below it."
 cautions:
   - "CDC 2022: lowest effective dose, often 5–10 morphine milligram equivalents per dose for opioid-naive patients. The FDA label lists 15–30 mg every 4 hours. Start lower in the groups above."
-  - "Co-prescribed benzodiazepines, gabapentinoids or other sedatives raise the risk of respiratory depression."
 notes: "Use immediate-release products for acute pain. Extended-release opioids are not used for acute pain. Avoid combination pills so each drug can be titrated."
 sources: [cdc-opioid-2022, label-morphine-tablets-2026, common-practice]
 verification:

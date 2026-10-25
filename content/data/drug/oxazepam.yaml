@@ -1,0 +1,17 @@
+name: Oxazepam
+class: Benzodiazepine (short-acting)
+boxed_warning:
+  text: "Concomitant use with opioids can cause profound sedation, respiratory depression, coma and death. Reserve the combination for patients without adequate alternatives, at the lowest doses for the shortest time, and monitor for respiratory depression and sedation. Abuse, misuse and addiction can lead to overdose or death. Continued use can cause physical dependence, and abrupt stopping or rapid dose reduction can cause life-threatening withdrawal, so taper gradually."
+  sources: [label-oxazepam-2023]
+cautions:
+  - text: "Contraindicated with prior hypersensitivity to oxazepam. Not indicated in psychoses."
+    sources: [label-oxazepam-2023]
+  - text: "Additive CNS depression with alcohol and other CNS depressants."
+    sources: [label-oxazepam-2023]
+  - text: "Flumazenil, or abrupt stopping after continued use, can precipitate life-threatening withdrawal, including seizures."
+    sources: [label-oxazepam-2023]
+  - text: "Hypotension is rare, but use caution where a fall in blood pressure could cause cardiac complications, especially in older adults."
+    sources: [label-oxazepam-2023]
+kidney_liver: "Converted to an inactive glucuronide that is excreted in the urine. The label gives no kidney or liver adjustment. Half-life is longer above age 80. Adjustments by use are on each dose."
+label_source: label-oxazepam-2023
+sources: [label-oxazepam-2023]

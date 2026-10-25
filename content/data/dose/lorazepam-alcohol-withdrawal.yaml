@@ -1,3 +1,4 @@
+drug: lorazepam
 drug_name: Lorazepam
 brand: Ativan
 indication: Alcohol withdrawal in significant liver disease, or when a short-acting benzodiazepine is chosen (off-label)
@@ -7,7 +8,6 @@ amount: 1–2
 unit: mg
 frequency: "every 1–4 hours as needed while the CIWA-Ar is 10 or higher (common practice, no guideline gives a lorazepam regimen). Reassess sedation before each dose"
 give_when: CIWA-Ar ≥10 when a benzodiazepine with less hepatic metabolism is wanted
-boxed_warning: "Concomitant use with opioids can cause profound sedation, respiratory depression, coma and death. Abuse, misuse and addiction. Dependence and withdrawal reactions."
 cautions:
   - "Not labeled for alcohol withdrawal. The injection is labeled for status epilepticus and preanesthetic use."
   - "Injection label: not recommended in hepatic or renal failure. Use with caution in mild to moderate hepatic disease. Any benzodiazepine can precipitate hepatic encephalopathy."

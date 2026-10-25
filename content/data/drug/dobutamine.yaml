@@ -1,0 +1,13 @@
+name: Dobutamine
+class: β1-adrenergic agonist (inotrope)
+boxed_warning: None
+cautions:
+  - text: "Contraindicated in hypertrophic obstructive cardiomyopathy (idiopathic hypertrophic subaortic stenosis). Contains a sulfite."
+    sources: [label-dobutamine-2026]
+  - text: "Tachycardia, marked blood pressure rise, ventricular ectopy and myocardial ischemia. It speeds AV conduction, so AF can develop a rapid ventricular response. Vasodilation can cause hypotension."
+    sources: [label-dobutamine-2026]
+  - text: "Correct hypovolemia first. Monitor ECG and blood pressure continuously. Can lower potassium. May be ineffective after recent β-blockade."
+    sources: [label-dobutamine-2026]
+kidney_liver: "The label gives no dose change for kidney or liver impairment. Titrate to effect (half-life about 2 minutes)."
+label_source: label-dobutamine-2026
+sources: [label-dobutamine-2026]

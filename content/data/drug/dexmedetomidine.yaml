@@ -1,0 +1,19 @@
+name: Dexmedetomidine
+class: Central alpha-2 adrenergic agonist (sedative)
+brands: [Precedex]
+aliases: [dex]
+boxed_warning: None
+cautions:
+  - text: "Hypotension, bradycardia and sinus arrest, sometimes fatal. Risk is higher with a loading dose or rapid bolus, high vagal tone, advanced heart block, severe ventricular dysfunction, hypovolemia, diabetes, chronic hypertension and older age. Slow or stop the infusion, give fluids, raise the legs, use pressors, and give atropine or glycopyrrolate for bradycardia."
+    sources: [label-precedex-2026]
+  - text: "Only by clinicians skilled in ICU or operating-room care, with continuous monitoring. Patients may be arousable and alert when stimulated, which alone does not mean it is failing."
+    sources: [label-precedex-2026]
+  - text: "Additive effects with anesthetics, sedatives, hypnotics and opioids: the dose of one or both may need to come down."
+    sources: [label-precedex-2026]
+  - text: "Use beyond 24 hours brings tolerance, tachyphylaxis and more adverse effects. Withdrawal (nausea, vomiting, agitation, tachycardia, hypertension) can follow stopping."
+    sources: [label-precedex-2026]
+  - text: "Diabetes insipidus (polyuria, dilute urine, hypernatremia) can occur: watch urine output and sodium, and consider stopping. Stop it for drug-related hyperthermia, which may resist cooling."
+    sources: [label-precedex-2026]
+kidney_liver: "Clearance falls as liver impairment worsens, so consider a lower dose. Consider a lower dose over age 65 (more bradycardia and hypotension). Severe kidney impairment does not change its pharmacokinetics."
+label_source: label-precedex-2026
+sources: [label-precedex-2026]

@@ -1,0 +1,15 @@
+name: Ferric derisomaltose
+class: IV iron
+brands: [Monoferric]
+aliases: [iron isomaltoside, IV iron]
+boxed_warning: None
+cautions:
+  - text: Serious hypersensitivity, including fatal anaphylaxis (shock, hypotension, collapse). Contraindicated after prior serious hypersensitivity to it. Give only with treatment immediately available, and observe for at least 30 minutes and until stable after the infusion.
+    sources: [label-monoferric-2025]
+  - text: Do not give with iron overload. Monitor hemoglobin, ferritin and transferrin saturation.
+    sources: [label-monoferric-2025]
+  - text: Hypophosphatemia (phosphate below 2.0 mg/dL) occurred in 3.5% in the label trials.
+    sources: [label-monoferric-2025]
+kidney_liver: The label gives no dose change for kidney or liver impairment.
+label_source: label-monoferric-2025
+sources: [label-monoferric-2025]

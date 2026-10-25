@@ -1,0 +1,23 @@
+name: Enoxaparin
+class: Low-molecular-weight heparin
+brands: [Lovenox]
+aliases: [LMWH]
+boxed_warning:
+  text: "Spinal or epidural hematoma, which can cause permanent paralysis, can occur with neuraxial anesthesia or spinal puncture. Risk is higher with indwelling epidural catheters, other drugs affecting hemostasis (NSAIDs, platelet inhibitors, other anticoagulants), traumatic or repeated punctures, or spinal deformity or surgery. Optimal timing is not known. Monitor neurologic status often and treat compromise urgently."
+  sources: [label-lovenox-2026]
+cautions:
+  - text: Contraindicated with heparin-induced thrombocytopenia in the past 100 days or with circulating antibodies, active major bleeding, or hypersensitivity to enoxaparin, heparin or pork products.
+    sources: [label-lovenox-2026]
+  - text: Check platelets. Stop if the count falls below 100,000/mm3.
+    sources: [label-lovenox-2026]
+  - text: Not interchangeable unit for unit with unfractionated heparin or other low-molecular-weight heparins.
+    sources: [label-lovenox-2026]
+  - text: Bleeding risk rises with antiplatelets (including aspirin), NSAIDs and other anticoagulants. Stop them first when possible, or monitor closely.
+    sources: [label-lovenox-2026]
+  - text: Low body weight (women below 45 kg, men below 57 kg) raises exposure at fixed prophylactic doses. Watch for bleeding.
+    sources: [label-lovenox-2026]
+  - text: Pregnant women with mechanical heart valves have had valve thrombosis. Monitor peak and trough anti-Xa levels.
+    sources: [label-lovenox-2026]
+kidney_liver: Exposure rises with kidney impairment. CrCl below 30 needs a dose change (see Adjust on each dose). Hyperkalemia has occurred in kidney failure. Not studied in liver impairment.
+label_source: label-lovenox-2026
+sources: [label-lovenox-2026]

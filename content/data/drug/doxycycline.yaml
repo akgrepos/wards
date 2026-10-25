@@ -1,0 +1,21 @@
+name: Doxycycline
+class: Tetracycline
+brands: [Doxy 100]
+aliases: [doxy]
+boxed_warning: None
+cautions:
+  - text: Contraindicated with hypersensitivity to any tetracycline.
+    sources: [label-doxycycline-2026]
+  - text: Oral doses with plenty of fluid to avoid esophageal irritation and ulceration. Antacids with aluminum, calcium or magnesium, iron products and bismuth subsalicylate reduce absorption, so separate them.
+    sources: [label-doxycycline-2026]
+  - text: Use during tooth development (second half of pregnancy, infancy and childhood up to 8 years) can permanently discolor teeth. Tetracyclines cross the placenta and harm the fetus in animals. Prefer an alternative in pregnancy.
+    sources: [label-doxycycline-2026]
+  - text: Intracranial hypertension (pseudotumor cerebri), with a risk of permanent vision loss. Avoid with isotretinoin. Prompt eye exam for visual symptoms.
+    sources: [label-doxycycline-2026]
+  - text: Photosensitivity (stop at the first skin erythema). Severe skin reactions including SJS, TEN and DRESS. Stop at once if they occur.
+    sources: [label-doxycycline-2026]
+  - text: May lower prothrombin activity, so anticoagulant doses may need lowering. Barbiturates, carbamazepine and phenytoin shorten its half-life.
+    sources: [label-doxycycline-2026]
+kidney_liver: No dose change for kidney impairment (it does not accumulate, and hemodialysis does not change the half-life). Hepatotoxicity is rare. Check liver, kidney and blood counts on long courses.
+label_source: label-doxycycline-2026
+sources: [label-doxycycline-2026, label-doxy-iv-2021]

@@ -1,4 +1,5 @@
 # Placeholder dose for testing the app. Not clinical guidance.
+drug: example-drug
 drug_name: Exampledrug
 brand: Placebrand
 indication: Example indication

@@ -1,3 +1,4 @@
+drug: fondaparinux
 drug_name: Fondaparinux
 brand: Arixtra
 indication: NSTE-ACS anticoagulation, especially when managed medically
@@ -7,7 +8,6 @@ amount: "2.5"
 unit: mg
 frequency: once daily
 duration: "For the hospitalization, up to 8 days, or until PCI"
-boxed_warning: "Spinal or epidural hematoma with neuraxial anesthesia or spinal puncture."
 adjustments:
   - when: CrCl <30 mL/min
     change: Contraindicated

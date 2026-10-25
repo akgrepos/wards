@@ -1,3 +1,4 @@
+drug: potassium-chloride
 drug_name: Potassium chloride
 indication: Prevention of hypokalemia (e.g. on loop or thiazide diuretics)
 population: Adults
@@ -5,7 +6,6 @@ route: PO
 amount: "20"
 unit: mEq
 frequency: once daily
-boxed_warning: None
 notes: "The label's typical dose. Individualize to serum K⁺. A potassium-sparing diuretic is an alternative to supplements."
 sources: [label-klor-con-2025, label-kcl-oral-solution-2026, asmar-hypokalemia-2012]
 verification:

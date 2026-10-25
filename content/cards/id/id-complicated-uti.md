@@ -7,7 +7,7 @@ title: "Pyelonephritis"
 aliases: [pyelonephritis, pyelo, complicated UTI, cUTI, febrile UTI, upper UTI, urosepsis, kidney infection, CAUTI, catheter-associated UTI, UTI, Pyelonephritis and Complicated Urinary Tract Infection, complicated urinary tract infection]
 definition: "UTI extending beyond the bladder: fever, bacteremia or other systemic illness, flank pain or costovertebral angle tenderness. Includes pyelonephritis, catheter-associated UTI with systemic symptoms, and symptomatic UTI with a long-term catheter, stent or nephrostomy. ^[idsa-cuti-2025]"
 based_on: [idsa-cuti-selection-2025, idsa-cuti-ivpo-2025, idsa-cuti-duration-2025]
-checked: { date: 2026-10-19, by: owner, scope: "owner review", fingerprint: "0c813a47c7b21965", carried: "2026-10-24: ceftriaxone dose rows: short title, per-dose calcium line moved to the drug record, no clinical change" }
+checked: { date: 2026-10-19, by: owner, scope: "owner review", fingerprint: "040df106c33e808b", carried: "2026-10-24: Dose sheets now take the drug-wide warnings from drug records (stage 4b). Doses and numbers on the card are unchanged." }
 related:
   differential: []
   conditions: [id-cap, id-cellulitis, renal-aki]

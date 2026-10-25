@@ -1,0 +1,20 @@
+name: Fondaparinux
+class: Factor Xa inhibitor (indirect, synthetic pentasaccharide)
+brands: [Arixtra]
+boxed_warning:
+  text: "Spinal or epidural hematoma, which can cause permanent paralysis, can occur with neuraxial anesthesia or spinal puncture. Risk is higher with indwelling epidural catheters, other drugs affecting hemostasis (NSAIDs, platelet inhibitors, other anticoagulants), traumatic or repeated punctures, or spinal deformity or surgery. Monitor neurologic status often and treat compromise urgently."
+  sources: [label-arixtra-2024]
+cautions:
+  - text: Contraindicated with active major bleeding, bacterial endocarditis, thrombocytopenia with a positive in vitro antiplatelet antibody test in the presence of fondaparinux, or serious hypersensitivity to it.
+    sources: [label-arixtra-2024]
+  - text: Check platelets, creatinine and a blood count periodically. Stop if platelets fall below 100,000/mm3.
+    sources: [label-arixtra-2024]
+  - text: Avoid other drugs that raise bleeding risk unless essential (such as warfarin for VTE). Monitor closely if combined.
+    sources: [label-arixtra-2024]
+  - text: PT and aPTT do not measure its effect. Anti-Xa needs a fondaparinux calibrator.
+    sources: [label-arixtra-2024]
+  - text: The prefilled syringe needle guard contains natural latex rubber.
+    sources: [label-arixtra-2024]
+kidney_liver: Cleared by the kidneys. Contraindicated with CrCl below 30 for VTE prophylaxis or treatment, and its effect is prolonged at CrCl 30 to 50. Stop if severe kidney impairment develops. The effect lasts 2 to 4 days after stopping, longer with kidney impairment. Moderate liver impairment raised bleeding.
+label_source: label-arixtra-2024
+sources: [label-arixtra-2024]

@@ -7,7 +7,6 @@ route: IM
 amount: "500"
 unit: mg
 frequency: once
-boxed_warning: None
 adjustments:
   - when: Weight ≥150 kg
     change: 1 g IM once

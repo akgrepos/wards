@@ -1,0 +1,16 @@
+name: Ziprasidone
+class: Second-generation (atypical) antipsychotic
+brands: [Geodon]
+boxed_warning:
+  text: "Older adults with dementia-related psychosis treated with antipsychotics have an increased risk of death, mostly cardiovascular (heart failure, sudden death) or infectious (pneumonia). Ziprasidone is not approved for dementia-related psychosis."
+  sources: [label-geodon-im-2026]
+cautions:
+  - text: "Dose-related QTc prolongation. Contraindicated with a history of QT prolongation (including congenital long QT syndrome), recent acute myocardial infarction or uncompensated heart failure, and with other QT-prolonging drugs (class Ia and III antiarrhythmics, thioridazine, chlorpromazine, droperidol, pimozide, moxifloxacin and others). Avoid with a history of arrhythmias. Correct low potassium and magnesium before starting."
+    sources: [label-geodon-im-2026]
+  - text: "Contraindicated with an MAO inhibitor now or within 14 days, including linezolid and IV methylene blue (serotonin syndrome). Watch for serotonin syndrome with other serotonergic drugs."
+    sources: [label-geodon-im-2026]
+  - text: "Neuroleptic malignant syndrome, tardive dyskinesia, DRESS and Stevens-Johnson syndrome, orthostatic hypotension and seizures."
+    sources: [label-geodon-im-2026]
+kidney_liver: "No dose change for kidney impairment with the capsules, but the IM injection's cyclodextrin excipient is cleared by the kidney, so give IM with caution in kidney impairment. Liver impairment raises exposure modestly. IM use has not been studied in kidney or liver impairment or in older adults."
+label_source: label-geodon-im-2026
+sources: [label-geodon-im-2026]

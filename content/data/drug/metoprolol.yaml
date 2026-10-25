@@ -1,0 +1,19 @@
+name: Metoprolol
+class: Cardioselective β1-blocker
+brands: [Lopressor]
+aliases: [Metoprolol tartrate]
+boxed_warning: None
+cautions:
+  - text: "Contraindicated in severe bradycardia, second- or third-degree AV block or sick sinus syndrome without a pacemaker, cardiogenic shock, decompensated heart failure and SBP below 100 mm Hg. The injection label also lists heart rate below 45 beats/min and PR interval 0.24 s or longer."
+    sources: [label-lopressor-2023, label-metoprolol-inj-2026]
+  - text: "Do not stop abruptly after chronic use: angina, MI and thyroid storm can follow. Taper over 1–2 weeks."
+    sources: [label-lopressor-2023]
+  - text: "Bronchospastic disease: generally avoid β-blockers. If needed, use the lowest dose with a bronchodilator at hand (β1-selectivity is not absolute)."
+    sources: [label-lopressor-2023, label-metoprolol-inj-2026]
+  - text: "Additive bradycardia and AV block with digoxin, diltiazem, verapamil and clonidine. Strong CYP2D6 inhibitors (fluoxetine, paroxetine, quinidine, propafenone) double levels."
+    sources: [label-lopressor-2023, label-metoprolol-inj-2026]
+  - text: "Masks tachycardia of hypoglycemia and hyperthyroidism. Anaphylaxis may resist usual epinephrine doses. In pheochromocytoma give only after an α-blocker is started."
+    sources: [label-lopressor-2023]
+kidney_liver: "No dose change for kidney impairment. Liver impairment raises levels substantially: start low and titrate gradually."
+label_source: label-lopressor-2023
+sources: [label-lopressor-2023, label-metoprolol-inj-2026]

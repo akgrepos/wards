@@ -1,3 +1,4 @@
+drug: cefepime
 drug_name: Cefepime
 indication: Sepsis or septic shock needing antipseudomonal coverage
 population: Adults
@@ -17,8 +18,6 @@ adjustments:
     change: 1 g every 24 hours, after dialysis on dialysis days
   - when: Peritoneal dialysis (CAPD)
     change: 2 g every 48 hours
-cautions:
-  - "Neurotoxicity (encephalopathy, myoclonus, nonconvulsive status), mostly when not reduced for kidney function."
 notes: "Extended infusion = each dose over at least half the dosing interval, or continuous. Recommended in sepsis after a loading dose (labels give short infusions). Label: 2 g every 8 hours for empiric febrile neutropenia and Pseudomonas pneumonia."
 sources: [label-cefepime-2026, ssc-sepsis-2026, idsa-sepsis-hospital-2026]
 verification:

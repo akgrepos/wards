@@ -1,3 +1,4 @@
+drug: furosemide
 drug_name: Furosemide
 brand: Lasix
 indication: Congestion in acute decompensated heart failure
@@ -13,8 +14,6 @@ rate: "bolus over 1–2 minutes. Infusion: the same total daily dose spread over
 onset: About 5 minutes
 cautions:
   - "Hypokalemia, hypomagnesemia, hyponatremia, contraction alkalosis. Check BMP and Mg²⁺ daily."
-  - "Ototoxicity with rapid injection, high doses or severe kidney impairment."
-  - "Contraindicated in anuria."
 notes: "2026 European guideline: diuretic-naive patients usually respond to 40 mg IV. On a home loop diuretic, consider twice the usual oral dose IV. Oral furosemide is about half as bioavailable as IV. Approximate equivalents: furosemide 40 mg PO = 20 mg IV = bumetanide 1 mg (PO or IV) = torsemide 10–20 mg PO."
 sources: [aha-acc-hfsa-hf-2022, esc-hf-2026, esc-hf-2021, hfa-diuretics-2019, dose-2011, label-furosemide-inj-2026]
 verification:

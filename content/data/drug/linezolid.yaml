@@ -1,0 +1,20 @@
+name: Linezolid
+class: Oxazolidinone
+brands: [Zyvox]
+boxed_warning: None
+cautions:
+  - text: Contraindicated with any MAO inhibitor or within 2 weeks of one, because linezolid is itself a reversible MAO inhibitor.
+    sources: [label-zyvox-2026]
+  - text: Serotonin syndrome, including fatal cases, with SSRIs, SNRIs, tricyclics, buspirone, triptans and opioids including meperidine, and in carcinoid syndrome. Monitor and stop linezolid or the other drug if signs appear.
+    sources: [label-zyvox-2026]
+  - text: Can raise blood pressure. Without blood pressure monitoring, avoid with uncontrolled hypertension, pheochromocytoma, thyrotoxicosis, sympathomimetics such as pseudoephedrine, vasopressors or dopaminergic drugs such as dopamine and dobutamine. Avoid large amounts of tyramine-rich foods.
+    sources: [label-zyvox-2026]
+  - text: Myelosuppression, especially thrombocytopenia. Weekly CBC, especially beyond 2 weeks, with existing myelosuppression, severe kidney or moderate to severe liver impairment, or other marrow-suppressing drugs.
+    sources: [label-zyvox-2026]
+  - text: Peripheral and optic neuropathy, mainly beyond 28 days. Prompt eye exam for any visual symptom. Lactic acidosis (recurrent nausea or vomiting, low bicarbonate). Seizures and rhabdomyolysis also occur.
+    sources: [label-zyvox-2026]
+  - text: Hypoglycemia in diabetes on insulin or oral agents. Hyponatremia and SIADH, so check sodium in those at risk.
+    sources: [label-zyvox-2026]
+kidney_liver: No dose change for kidney impairment or mild to moderate liver impairment. Give after hemodialysis on dialysis days. Its metabolites accumulate in kidney impairment. Severe liver impairment has not been studied.
+label_source: label-zyvox-2026
+sources: [label-zyvox-2026]

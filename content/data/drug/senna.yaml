@@ -1,0 +1,11 @@
+name: Senna
+class: Stimulant laxative
+brands: [Senokot]
+aliases: [sennosides]
+boxed_warning: None
+cautions:
+  - text: "Assess before use with abdominal pain, nausea or vomiting. Stop and reassess for rectal bleeding or no bowel movement after use."
+    sources: [label-senna-2025]
+kidney_liver: "The label gives no kidney or liver guidance."
+label_source: label-senna-2025
+sources: [label-senna-2025]

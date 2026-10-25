@@ -1,0 +1,16 @@
+name: Oseltamivir
+class: Neuraminidase inhibitor
+brands: [Tamiflu]
+boxed_warning: None
+cautions:
+  - text: Contraindicated with serious hypersensitivity to oseltamivir. Serious skin reactions (SJS, TEN, erythema multiforme) and anaphylaxis occur. Stop if they occur.
+    sources: [label-tamiflu-2025]
+  - text: Delirium and abnormal behavior, sometimes fatal, have been reported, mostly in children. Influenza itself can cause them. Monitor for abnormal behavior.
+    sources: [label-tamiflu-2025]
+  - text: Does not treat bacterial infection. Serious bacterial infections can mimic or complicate influenza.
+    sources: [label-tamiflu-2025]
+  - text: Avoid live intranasal influenza vaccine from 2 weeks before to 48 hours after oseltamivir, unless medically indicated. Inactivated vaccine can be given at any time.
+    sources: [label-tamiflu-2025]
+kidney_liver: Reduce for CrCl 60 or below and in dialysis (adjustments on each dose). Not recommended in end-stage kidney disease not on dialysis. No change for mild to moderate liver impairment. Severe liver impairment has not been studied.
+label_source: label-tamiflu-2025
+sources: [label-tamiflu-2025]

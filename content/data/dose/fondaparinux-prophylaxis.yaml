@@ -1,3 +1,4 @@
+drug: fondaparinux
 drug_name: Fondaparinux
 brand: Arixtra
 indication: VTE prophylaxis in hospitalized adults (off-label in medical patients, labeled after surgery)
@@ -7,15 +8,12 @@ amount: "2.5"
 unit: mg
 frequency: once daily
 give_when: "Alternative to low-molecular-weight heparin, notably with a history of heparin-induced thrombocytopenia"
-boxed_warning: "Spinal or epidural hematoma with neuraxial anesthesia or spinal puncture."
 adjustments:
   - when: CrCl <30 mL/min
     change: Contraindicated
 cautions:
   - "Contraindicated with weight <50 kg."
   - "After surgery, first dose no earlier than 6–8 hours, once hemostasis is established."
-  - "Contraindicated with active major bleeding, bacterial endocarditis, and thrombocytopenia with a positive antiplatelet antibody test in the presence of fondaparinux."
-  - "Effect is prolonged at CrCl 30–50 mL/min."
   - "Not labeled for acutely ill medical patients."
 sources: [label-arixtra-2024, ash-vte-medical-prophylaxis-2018, artemis-2006]
 verification:

@@ -1,0 +1,16 @@
+name: Ceftaroline
+class: Cephalosporin with MRSA activity
+brands: [Teflaro]
+boxed_warning: None
+cautions:
+  - text: Contraindicated with known serious hypersensitivity to ceftaroline or another cephalosporin. Use caution with a penicillin or other β-lactam allergy (cross-sensitivity is established).
+    sources: [label-teflaro-2024]
+  - text: Encephalopathy and seizures have occurred, mostly in kidney impairment without a dose reduction. Stop it or correct the dose if they occur (reversible).
+    sources: [label-teflaro-2024]
+  - text: The direct Coombs test often turns positive (about 1 in 10 adults). If anemia develops, work up drug-induced hemolytic anemia and consider stopping it.
+    sources: [label-teflaro-2024]
+  - text: C. difficile diarrhea (mild to fatal colitis) can occur, even more than 2 months after use. Evaluate any new diarrhea.
+    sources: [label-teflaro-2024]
+kidney_liver: Reduce for CrCl 50 mL/min or below and give after hemodialysis on dialysis days (adjustments are on the dose). Not studied in liver impairment, but it has little liver metabolism.
+label_source: label-teflaro-2024
+sources: [label-teflaro-2024]
