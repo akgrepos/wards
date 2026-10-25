@@ -25,6 +25,7 @@ jobs:
           node-version-file: .nvmrc
           cache: npm
       - run: npm ci
+      - run: npm run content:check
       - run: npx vite build
       - run: npm run check:offline
       - uses: actions/upload-pages-artifact@v5

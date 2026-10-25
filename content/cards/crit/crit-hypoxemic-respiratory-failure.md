@@ -93,9 +93,9 @@ or. NIV or CPAP instead
 #### Interpretation
 | Finding | Suggests |
 |---|---|
-| {{calc:aa-gradient|A–a gradient}} =, PaCO₂ ↑ | Hypoventilation ^[common-practice] |
-| {{calc:aa-gradient|A–a gradient}} ↑, corrects with oxygen | V/Q mismatch ^[common-practice] |
-| {{calc:aa-gradient|A–a gradient}} ↑, little response to 100% oxygen | Shunt ^[common-practice] |
+| {{calc:aa-gradient}} =, PaCO₂ ↑ | Hypoventilation ^[common-practice] |
+| {{calc:aa-gradient}} ↑, corrects with oxygen | V/Q mismatch ^[common-practice] |
+| {{calc:aa-gradient}} ↑, little response to 100% oxygen | Shunt ^[common-practice] |
 | Clear chest radiograph | PE, asthma or COPD, intracardiac shunt, early pneumonia ^[common-practice] |
 
 #### Second line, by scenario

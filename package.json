@@ -13,6 +13,8 @@
     "tokens": "node scripts/build-tokens.mjs",
     "icons": "pwa-assets-generator",
     "content:check": "node scripts/content/cli.mjs",
+    "content:uses": "node scripts/content/uses.mjs",
+    "content:diff": "node scripts/content/compose-diff.mjs",
     "privacy:check": "node scripts/privacy-check.mjs",
     "changelog": "node scripts/changelog.mjs",
     "card:new": "node scripts/card-new.mjs",
