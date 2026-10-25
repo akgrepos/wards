@@ -8,6 +8,11 @@ permissions:
   contents: read
   pull-requests: write # only to put the tier label on the PR
 
+# A newer push to the same PR cancels the older run.
+concurrency:
+  group: checks-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
 jobs:
   checks:
     runs-on: ubuntu-latest
@@ -21,6 +26,11 @@ jobs:
           bad=$(git log --format='%h %ae %ce' ${{ github.event.pull_request.base.sha }}..${{ github.event.pull_request.head.sha }} \
             | awk '{ for (i = 2; i <= 3; i++) if ($i !~ /@users\.noreply\.github\.com$/ && $i != "noreply@github.com") { print $1; break } }')
           if [ -n "$bad" ]; then echo "These commits have a non-anonymous author or committer:"; echo "$bad"; exit 1; fi
+      - name: Only card and docs files changed? (then the screenshot-free look check is skipped; every other check still runs)
+        id: scope
+        run: |
+          other=$(git diff --name-only ${{ github.event.pull_request.base.sha }}..${{ github.event.pull_request.head.sha }} | grep -v -E '^(content|docs)/' || true)
+          if [ -z "$other" ]; then echo "content_only=true" >> "$GITHUB_OUTPUT"; else echo "content_only=false" >> "$GITHUB_OUTPUT"; fi
       - uses: actions/setup-node@v7
         with:
           node-version-file: .nvmrc
@@ -47,7 +57,15 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
+      - name: Browser cache (WebKit for the look check)
+        if: steps.scope.outputs.content_only != 'true'
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-webkit-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
       - name: Playwright WebKit (for the look check)
+        if: steps.scope.outputs.content_only != 'true'
         run: npx playwright install --with-deps webkit
       - name: Look check (links, tap targets, design-token colors and fonts, no leftovers; no pictures)
+        if: steps.scope.outputs.content_only != 'true'
         run: npm run look -- --no-build --no-sheet
