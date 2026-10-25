@@ -10,7 +10,7 @@ based_on: [kardalas-hypokalemia-2018, asmar-hypokalemia-2012]
 checked: { date: 2026-10-19, by: owner, scope: "owner review", fingerprint: "d9a6bb167d2de606", carried: "2026-10-24: Dose row titles shortened to the indication only. Doses and numbers unchanged, the removed wording is kept in the longer indication text." }
 related:
   differential: []
-  conditions: [renal-hyperkalemia, renal-hyponatremia, cardio-adhf, cardio-ecg-interpretation]
+  conditions: [renal-hyperkalemia, renal-hyponatremia, cardio-adhf, cardio-ecg-interpretation, endo-dka, renal-iv-fluids]
   tools: [renal-electrolyte-repletion]
 ---
 ## At a Glance
@@ -35,8 +35,15 @@ related:
 - **Pseudohypokalemia:** marked leukocytosis with delayed processing (cells take up K⁺ in the tube). Repeat promptly or check a blood gas K⁺. ^[common-practice]
 - **Shift into cells:** insulin, β₂-agonists, refeeding, thyrotoxic or familial periodic paralysis. ^[kardalas-hypokalemia-2018, aspen-refeeding-2020]
 - **GI losses:** diarrhea, laxatives, villous adenoma. Vomiting and NG suction (mostly renal loss from alkalosis). ^[kardalas-hypokalemia-2018, common-practice]
-- **Renal losses, normal BP:** [!most-common] loop and thiazide diuretics. Hypomagnesemia. RTA, DKA. Bartter and Gitelman syndromes. Amphotericin B, high-dose penicillins. ^[kardalas-hypokalemia-2018]
-- **Renal losses with hypertension:** [!cannot-miss] primary aldosteronism. Diuretics in a hypertensive patient. Renovascular disease, renin-secreting tumor. Cushing syndrome. Licorice, apparent mineralocorticoid excess. Congenital adrenal hyperplasia. Liddle syndrome. ^[kardalas-hypokalemia-2018, endocrine-aldosteronism-2025]
+- **Renal losses, normal BP:** [!most-common] ^[kardalas-hypokalemia-2018]
+  - Loop and thiazide diuretics. Hypomagnesemia.
+  - RTA, DKA. Bartter and Gitelman syndromes.
+  - Amphotericin B, high-dose penicillins.
+- **Renal losses with hypertension:** [!cannot-miss] ^[kardalas-hypokalemia-2018, endocrine-aldosteronism-2025]
+  - Primary aldosteronism. Diuretics in a hypertensive patient.
+  - Renovascular disease, renin-secreting tumor. Cushing syndrome.
+  - Licorice, apparent mineralocorticoid excess.
+  - Congenital adrenal hyperplasia. Liddle syndrome.
 - **Poor intake:** rarely the sole cause. Usually adds to another. ^[common-practice]
 
 ## Presentation
@@ -57,10 +64,13 @@ related:
 #### Interpretation
 - Urine K⁺:creatinine {{threshold:urine-k-cr-renal-loss}}: renal loss. Lower suggests GI loss, shift or poor intake. ^[kardalas-hypokalemia-2018]
 
-| Acid–base | ↓ urine K⁺ | ↑ urine K⁺ |
-|---|---|---|
-| Metabolic acidosis | Lower GI loss (diarrhea, laxatives, villous adenoma) | DKA, RTA (proximal or distal) ^[kardalas-hypokalemia-2018] |
-| Metabolic alkalosis | Vomiting, prior diuretic use | Normal BP: diuretics, vomiting, Bartter or Gitelman. Hypertension: mineralocorticoid excess ^[kardalas-hypokalemia-2018] |
+- **Metabolic acidosis:** ^[kardalas-hypokalemia-2018]
+  - ↓ urine K⁺: lower GI loss (diarrhea, laxatives, villous adenoma)
+  - ↑ urine K⁺: DKA, RTA (proximal or distal)
+- **Metabolic alkalosis:** ^[kardalas-hypokalemia-2018]
+  - ↓ urine K⁺: vomiting, prior diuretic use
+  - ↑ urine K⁺, normal BP: diuretics, vomiting, Bartter or Gitelman
+  - ↑ urine K⁺, hypertension: mineralocorticoid excess
 
 - Alkalosis with renal K⁺ loss: low urine Cl⁻ suggests vomiting. Normal urine Cl⁻ suggests Bartter or Gitelman (or active diuretic). ^[kardalas-hypokalemia-2018]
 - Hypertension: aldosterone, renin and aldosterone-to-renin ratio. ^[endocrine-aldosteronism-2025, aha-acc-bp-2025, kardalas-hypokalemia-2018]
@@ -99,10 +109,12 @@ or. Mild to moderate
    - Treat diarrhea or vomiting ^[kardalas-hypokalemia-2018]
    - Control glycosuria ^[kardalas-hypokalemia-2018]
    - Diuretic still needed: add a K⁺-sparing diuretic. ^[kardalas-hypokalemia-2018, asmar-hypokalemia-2012]
-   - With a K⁺-sparing diuretic, ACE inhibitor or ARB: stop or reduce KCl and check K⁺ often (KCl labels contraindicate amiloride and triamterene). ^[label-klor-con-2025, label-kcl-oral-solution-2026]
+   - With a K⁺-sparing diuretic, ACE inhibitor or ARB: stop or reduce KCl and check K⁺ often. ^[label-klor-con-2025, label-kcl-oral-solution-2026]
+   - KCl labels contraindicate amiloride and triamterene. ^[label-klor-con-2025, label-kcl-oral-solution-2026]
    - Primary aldosteronism: mineralocorticoid receptor antagonist or surgery. ^[endocrine-aldosteronism-2025]
 
-- KCl is the preferred salt. Potassium phosphate with concurrent hypophosphatemia, bicarbonate or citrate with metabolic acidosis. See [[renal-electrolyte-repletion/choosing|Electrolyte Repletion]]. ^[asmar-hypokalemia-2012]
+- KCl is the preferred salt. ^[asmar-hypokalemia-2012]
+- Potassium phosphate with concurrent hypophosphatemia, bicarbonate or citrate with metabolic acidosis. See [[renal-electrolyte-repletion/choosing|Electrolyte Repletion]]. ^[asmar-hypokalemia-2012]
 
 ## Monitor
 :::times Recheck K⁺ no sooner than ^[asmar-hypokalemia-2012]
@@ -123,7 +135,8 @@ or. Mild to moderate
 ## More Information
 ### Special Populations: Kidney disease, heart disease, DKA
 - Severe kidney impairment or dialysis: replace very cautiously with nephrology. ^[kardalas-hypokalemia-2018]
-- GFR {{threshold:gfr-severe-impairment}}: start low and recheck K⁺ often, every 2–4 h on IV replacement (risk of life-threatening hyperkalemia, the IV KCl concentrate and premixed-bag labels list renal failure as a contraindication). ^[label-kcl-injection-2026, label-kcl-premix-2018, label-klor-con-2025, asmar-hypokalemia-2012]
+- GFR {{threshold:gfr-severe-impairment}}: start low and recheck K⁺ often, every 2–4 h on IV replacement. ^[label-kcl-injection-2026, label-kcl-premix-2018, label-klor-con-2025, asmar-hypokalemia-2012]
+- Risk of life-threatening hyperkalemia: the IV KCl concentrate and premixed-bag labels list renal failure as a contraindication. ^[label-kcl-injection-2026, label-kcl-premix-2018, label-klor-con-2025, asmar-hypokalemia-2012]
 - Heart failure or myocardial infarction: K⁺ ≥4.0 mEq/L is the long-standing advice. See [[renal-electrolyte-repletion/indications|Electrolyte Repletion]] for the evidence. ^[cohn-potassium-2000, goyal-potassium-ami-2012]
 - DKA: K⁺ <3.5 mEq/L: replete first and delay insulin until K⁺ is >3.5 mEq/L. ^[ada-hyperglycemic-crises-2024]
 
@@ -140,7 +153,8 @@ or. Mild to moderate
 
 - Hypertension: ^[aha-acc-bp-2025, endocrine-aldosteronism-2025]
   - Screen for primary aldosteronism with aldosterone and renin ^[aha-acc-bp-2025, endocrine-aldosteronism-2025]
-  - In resistant hypertension, screen even with normal K⁺ (only 20–50% of primary aldosteronism has spontaneous hypokalemia). Continue antihypertensives other than MRAs for the initial screen ^[aha-acc-bp-2025, endocrine-aldosteronism-2025]
+  - In resistant hypertension, screen even with normal K⁺ (only 20–50% of primary aldosteronism has spontaneous hypokalemia) ^[aha-acc-bp-2025, endocrine-aldosteronism-2025]
+  - Continue antihypertensives other than MRAs for the initial screen ^[aha-acc-bp-2025, endocrine-aldosteronism-2025]
   - β-blockers and central α₂-agonists suppress renin (false positive), while ACE inhibitors, ARBs, diuretics and MRAs raise it (false negative) ^[aha-acc-bp-2025, endocrine-aldosteronism-2025]
   - Repeat off the drug if the result is discordant and stopping is safe ^[aha-acc-bp-2025, endocrine-aldosteronism-2025]
 

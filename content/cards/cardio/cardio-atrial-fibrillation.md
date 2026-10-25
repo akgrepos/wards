@@ -10,7 +10,7 @@ based_on: [acc-aha-af-2023, esc-af-2024]
 checked: { date: 2026-10-20, by: owner, scope: "owner review", fingerprint: "ab1cbaa9b118180c", carried: "2026-10-24: Dose row titles shortened to the indication only. Doses and numbers unchanged, the removed wording is kept in the longer indication text." }
 related:
   differential: [cardio-chest-pain, pulm-dyspnea]
-  conditions: [cardio-adhf, cardio-nste-acs, cardio-ecg-interpretation, pulm-copd-exacerbation]
+  conditions: [cardio-adhf, cardio-nste-acs, cardio-ecg-interpretation, pulm-copd-exacerbation, heme-anticoagulation-management, heme-vte-prophylaxis]
   tools: []
 emergency_hint: "Unstable: cardiovert. Stable: IV rate control"
 ---

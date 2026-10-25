@@ -9,7 +9,7 @@ definition: "New or worsening symptoms and signs of heart failure, usually conge
 based_on: [aha-acc-hfsa-hf-2022, esc-hf-2026, hfa-diuretics-2019]
 checked: { date: 2026-10-20, by: owner, scope: "owner review", fingerprint: "9662c20a0dd43dd6", carried: "2026-10-25: Format sweep (bullets split, tables to bullets or scale, society names out of text). Numbers, doses, drugs and sources unchanged." }
 related:
-  differential: [cardio-chest-pain, crit-hypoxemic-respiratory-failure, pulm-copd-exacerbation, pulm-dyspnea, pulm-vte-diagnosis]
+  differential: [cardio-chest-pain, crit-hypoxemic-respiratory-failure, pulm-copd-exacerbation, pulm-dyspnea, pulm-vte-diagnosis, heme-anemia]
   conditions: [cardio-atrial-fibrillation, cardio-nste-acs, renal-aki, renal-hyponatremia, renal-hypokalemia]
   tools: []
 ---

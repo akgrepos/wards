@@ -10,7 +10,7 @@ based_on: [ssc-sepsis-2026, sepsis-3-2016]
 checked: { date: 2026-10-21, by: owner, scope: "owner review", fingerprint: "e02ac9625c895829", carried: "2026-10-24: Dose row titles shortened to the indication only. Doses and numbers unchanged, the removed wording is kept in the longer indication text." }
 related:
   differential: []
-  conditions: [renal-aki, id-cap, id-complicated-uti, id-cellulitis, endo-inpatient-hyperglycemia, psych-acute-agitation, psych-serotonin-syndrome-nms, cardio-chest-pain, crit-hypoxemic-respiratory-failure, pulm-dyspnea, pulm-vte-diagnosis]
+  conditions: [renal-aki, id-cap, id-complicated-uti, id-cellulitis, endo-inpatient-hyperglycemia, psych-acute-agitation, psych-serotonin-syndrome-nms, cardio-chest-pain, crit-hypoxemic-respiratory-failure, pulm-dyspnea, pulm-vte-diagnosis, endo-dka, gi-upper-gi-bleeding, heme-vte-prophylaxis]
   tools: []
   medications: [ceftriaxone]
 emergency_hint: "Cultures, antibiotics, fluids, norepinephrine"

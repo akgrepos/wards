@@ -7,10 +7,10 @@ title: "DKA and HHS"
 aliases: [DKA, diabetic ketoacidosis, HHS, hyperosmolar hyperglycemic state, HHNK, hyperosmolar nonketotic, hyperglycemic crisis, euglycemic DKA, euDKA, SGLT2 inhibitor DKA, ketoacidosis, insulin drip, insulin infusion, two-bag, beta-hydroxybutyrate, BHB, Diabetic Ketoacidosis and Hyperosmolar Hyperglycemic State, hyperosmolar]
 definition: "Hyperglycemic crises: DKA is hyperglycemia (or known diabetes) with ketosis and metabolic acidosis. HHS is severe hyperglycemia with hyperosmolality without significant ketoacidosis. ^[ada-hyperglycemic-crises-2024]"
 based_on: [ada-hyperglycemic-crises-2024, ada-soc-hospital-2026]
-checked: { date: 2026-10-25, by: opus, scope: "doses and numbers, with an independent full check of the card against the 2024 consensus text and figures and the 2026 hospital chapter. Doses left not-verified: enoxaparin-prophylaxis", fingerprint: "fcc890f08eb37692" }
+checked: { date: 2026-10-25, by: opus, scope: "doses and numbers, with an independent full check of the card against the 2024 consensus text and figures and the 2026 hospital chapter. Doses left not-verified: enoxaparin-prophylaxis", fingerprint: "6e43327f321ef4d5", carried: "2026-10-25: Format sweep (bullets split, tables to bullets or scale, society names out of text). Numbers, doses, drugs and sources unchanged." }
 related:
   differential: []
-  conditions: [endo-inpatient-hyperglycemia, crit-sepsis, renal-hypokalemia, renal-iv-fluids, renal-electrolyte-repletion, pulm-dyspnea]
+  conditions: [endo-inpatient-hyperglycemia, crit-sepsis, renal-hypokalemia, renal-iv-fluids, renal-electrolyte-repletion, pulm-dyspnea, renal-acid-base]
   tools: []
 emergency_hint: "Fluids, potassium, then insulin"
 ---
@@ -72,7 +72,9 @@ or. Insulin infusion, HHS
 
 - ICU: severe DKA, HHS, altered mental status, or a critical-illness precipitant (MI, GI bleeding, sepsis). ^[ada-hyperglycemic-crises-2024]
 - Mild or moderate uncomplicated DKA can be treated in the ED or a step-down unit with close nursing. ^[ada-hyperglycemic-crises-2024]
-- UK markers of severity prompting high-dependency care include β-hydroxybutyrate >6.0 mmol/L, HCO₃⁻ <5.0 mEq/L, pH <7.0, K⁺ <3.5 mEq/L on arrival, {{calc:gcs}} <12, SBP <90 mm Hg. In HHS, osmolality >350 mOsm/kg or Na⁺ >160 mEq/L. ^[jbds-dka-2023, jbds-hhs-2022]
+- UK markers of severity prompting high-dependency care: ^[jbds-dka-2023, jbds-hhs-2022]
+  - DKA: β-hydroxybutyrate >6.0 mmol/L, HCO₃⁻ <5.0 mEq/L, pH <7.0, K⁺ <3.5 mEq/L on arrival, {{calc:gcs}} <12, SBP <90 mm Hg ^[jbds-dka-2023]
+  - HHS: osmolality >350 mOsm/kg or Na⁺ >160 mEq/L ^[jbds-hhs-2022]
 
 ## Causes
 - **Infection:** [!most-common] pneumonia, UTI. The most common precipitant worldwide. ^[ada-hyperglycemic-crises-2024]
@@ -162,7 +164,8 @@ or. Insulin infusion, HHS
 7. Resolution and transition to SC insulin
    - DKA resolved: β-hydroxybutyrate <0.6 mmol/L and pH ≥7.3 or HCO₃⁻ ≥18 mEq/L. Do not use the {{calc:anion-gap}} or urine ketones. ^[ada-hyperglycemic-crises-2024]
    - HHS resolved: osmolality <300 mOsm/kg, glucose <250 mg/dL, urine output >0.5 mL/kg/h, cognition improved. ^[ada-hyperglycemic-crises-2024]
-   - Give SC basal insulin at least 1–2 hours before stopping the infusion (ADA 2026: 2–4 hours). Switch once able to eat. If not eating, basal plus correction insulin every 4–6 hours. ^[ada-hyperglycemic-crises-2024, ada-soc-hospital-2026]
+   - Give SC basal insulin at least 1–2 hours before stopping the infusion (2026 update: 2–4 hours). ^[ada-hyperglycemic-crises-2024, ada-soc-hospital-2026]
+   - Switch once able to eat. If not eating, basal plus correction insulin every 4–6 hours. ^[ada-hyperglycemic-crises-2024, ada-soc-hospital-2026]
 
    {{dose:insulin-transition-dka}}
 
@@ -214,7 +217,8 @@ or. Insulin infusion, HHS
 
 :::compare HHS insulin
 - US-led consensus 2024: fixed-rate insulin from the start (lower rate without ketoacidosis). ^[ada-hyperglycemic-crises-2024]
-- UK 2022: insulin from the start only with significant ketonemia (β-hydroxybutyrate >3.0 mmol/L or urine ketones >2+). Otherwise start once fluids are adequate and glucose stops falling. ^[jbds-hhs-2022]
+- UK 2022: insulin from the start only with significant ketonemia (β-hydroxybutyrate >3.0 mmol/L or urine ketones >2+). ^[jbds-hhs-2022]
+- UK, without significant ketonemia: start once fluids are adequate and glucose stops falling. ^[jbds-hhs-2022]
 :::
 
 ### Special Populations: SGLT2 inhibitors, pregnancy, kidney failure
@@ -232,7 +236,8 @@ or. Insulin infusion, HHS
 ### Complications: Hypoglycemia, hypokalemia, edema
 - Hypoglycemia in 16–28% of patients. Reduce it with glucose checks every 1–2 hours, lowering insulin and adding dextrose at glucose <250 mg/dL. ^[ada-hyperglycemic-crises-2024]
 - Hypokalemia. Severe hypokalemia raises mortality. ^[ada-hyperglycemic-crises-2024]
-- Cerebral edema: rare in adults but often fatal. Keep a low threshold for brain imaging. Mannitol or hypertonic saline without delaying for imaging. ^[ada-hyperglycemic-crises-2024, jbds-dka-2023]
+- Cerebral edema: rare in adults but often fatal. Keep a low threshold for brain imaging. ^[ada-hyperglycemic-crises-2024, jbds-dka-2023]
+- Cerebral edema: mannitol or hypertonic saline without delaying for imaging. ^[ada-hyperglycemic-crises-2024, jbds-dka-2023]
 - Osmotic demyelination in HHS with rapid sodium shifts. ^[ada-hyperglycemic-crises-2024]
 - Arterial and venous thrombosis, AKI (about half), rhabdomyolysis. ^[ada-hyperglycemic-crises-2024, jbds-dka-2023]
 
@@ -244,10 +249,13 @@ or. Insulin infusion, HHS
 - New ketosis-prone diabetes: antibody and C-peptide testing to guide long-term insulin. ^[ada-hyperglycemic-crises-2024, common-practice]
 
 ### Why the Treatment Order: Fluids, potassium, insulin
-- Fluids restore perfusion and lower glucose on their own. Insulin drives potassium into cells, so starting it with K⁺ <3.5 mEq/L risks arrhythmia. Insulin, not dextrose withdrawal, clears ketones. ^[ada-hyperglycemic-crises-2024]
+- Fluids restore perfusion and lower glucose on their own. ^[ada-hyperglycemic-crises-2024]
+- Insulin drives potassium into cells, so starting it with K⁺ <3.5 mEq/L risks arrhythmia. ^[ada-hyperglycemic-crises-2024]
+- Insulin, not dextrose withdrawal, clears ketones. ^[ada-hyperglycemic-crises-2024]
 
 ### Epidemiology and Pathophysiology: Insulin deficiency
-- DKA: absolute insulin deficiency and counterregulatory hormones drive lipolysis and ketogenesis. HHS: residual insulin prevents ketosis while osmotic diuresis causes severe dehydration. ^[ada-hyperglycemic-crises-2024]
+- DKA: absolute insulin deficiency and counterregulatory hormones drive lipolysis and ketogenesis. ^[ada-hyperglycemic-crises-2024]
+- HHS: residual insulin prevents ketosis while osmotic diuresis causes severe dehydration. ^[ada-hyperglycemic-crises-2024]
 - About a third of crises are mixed DKA/HHS. Inpatient mortality is higher in HHS and highest in mixed DKA/HHS (about 5% and 8%, versus 3% in DKA). ^[ada-hyperglycemic-crises-2024]
 
 ## Pearls

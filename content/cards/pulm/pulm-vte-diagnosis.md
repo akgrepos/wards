@@ -9,7 +9,7 @@ based_on: [aha-acc-pe-2026, ash-vte-diagnosis-2018, esc-pe-2019]
 checked: { date: 2026-10-21, by: owner, scope: "owner review", fingerprint: "c970d48eeef0708a", carried: "2026-10-25: Format sweep (bullets split, tables to bullets or scale, society names out of text). Numbers, doses, drugs and sources unchanged." }
 related:
   differential: [cardio-nste-acs, id-cap, cardio-adhf, pulm-copd-exacerbation, cardio-chest-pain, pulm-dyspnea]
-  conditions: [crit-hypoxemic-respiratory-failure, crit-sepsis, cardio-ecg-interpretation]
+  conditions: [crit-hypoxemic-respiratory-failure, crit-sepsis, cardio-ecg-interpretation, heme-anticoagulation-management, heme-vte-prophylaxis]
   tools: []
 ---
 ## At a Glance
