@@ -1,0 +1,22 @@
+drug: cyproheptadine
+drug_name: Cyproheptadine
+brand: Periactin
+indication: Serotonin syndrome
+indication_detail: Moderate serotonin syndrome when benzodiazepines are not enough. Off-label.
+population: Adults
+route: oral or nasogastric tube
+amount: 12
+unit: mg
+frequency: "then 2 mg every 2 hours while symptoms continue, then 8 mg every 6 hours"
+give_when: Moderate serotonin syndrome not controlled with benzodiazepines
+max: "32 mg in 24 hours"
+cautions:
+  - "Oral only. Crush for a nasogastric tube."
+  - "Sedation is expected and helps. Benefit is not proven."
+  - "Do not use in NMS."
+notes: "Dose from the 2005 review. The 2025 review notes that larger doses may be needed to block 5-HT2A receptors, that case reports start at 4 to 12 mg, and that benefit is unproven."
+sources: [boyer-ss-2005, chiew-ss-2025, label-cyproheptadine-2026]
+verification:
+  source: boyer-ss-2005
+  read: not-verified
+  date: 2026-10-25

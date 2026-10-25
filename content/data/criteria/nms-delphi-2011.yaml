@@ -1,0 +1,17 @@
+name: Neuroleptic malignant syndrome consensus criteria
+title: "NMS international consensus criteria, 2011"
+short: NMS criteria
+logic: "Priority points from the Delphi consensus (maximum 100):"
+columns: [Criterion, Points]
+rows:
+  - ["Exposure to a dopamine antagonist within 72 hours, or dopamine agonist withdrawal within 24 hours", "20"]
+  - ["Hyperthermia: temperature >100.4°F (38.0°C) on at least 2 occasions, oral", "18"]
+  - ["Rigidity", "17"]
+  - ["Altered mental status (reduced or fluctuating consciousness)", "13"]
+  - ["Creatine kinase at least 4 times the upper limit of normal", "10"]
+  - ["Sympathetic lability: blood pressure ≥25% above baseline, blood pressure swings (diastolic ≥20 or systolic ≥25 mmHg in 24 hours), diaphoresis or urinary incontinence", "10"]
+  - ["Hypermetabolism: heart rate ≥25% above baseline and respiratory rate ≥50% above baseline", "5"]
+  - ["Negative workup for infectious, toxic, metabolic and neurologic causes", "7"]
+notes:
+  - "The panel did not set a diagnostic cutoff. A higher total means higher likelihood. The authors advise validating the criteria before clinical use."
+sources: [gurrera-nms-2011]

@@ -1,0 +1,13 @@
+name: Hunter serotonin toxicity criteria
+title: "Hunter serotonin toxicity criteria, 2003"
+short: Hunter criteria
+logic: "A serotonergic drug taken, and any one of:"
+items:
+  - "Spontaneous clonus"
+  - "Inducible clonus with agitation or diaphoresis"
+  - "Ocular clonus with agitation or diaphoresis"
+  - "Tremor with hyperreflexia"
+  - "Hypertonia with temperature >38°C, and ocular clonus or inducible clonus"
+notes:
+  - "Validated in overdose against a toxicologist's diagnosis. Clonus is the key finding. Rule out other causes first. A neuroleptic started or increased shortly before onset points to NMS."
+sources: [dunkley-hunter-2003, chiew-ss-2025]

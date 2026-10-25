@@ -1,0 +1,12 @@
+name: Cyproheptadine
+class: First-generation antihistamine with 5-HT2A antagonist activity
+brands: [Periactin]
+boxed_warning: None
+cautions:
+  - text: "Sedation and anticholinergic effects (dry mouth, urinary retention, blurred vision, constipation). Additive with other CNS depressants and anticholinergic drugs."
+    sources: [label-cyproheptadine-2026]
+  - text: "Contraindicated with MAO inhibitor therapy, narrow-angle glaucoma, symptomatic prostatic hypertrophy, bladder neck obstruction, stenosing peptic ulcer, and in older, debilitated patients per the label."
+    sources: [label-cyproheptadine-2026]
+kidney_liver: "The label gives no kidney or liver dose adjustment."
+label_source: label-cyproheptadine-2026
+sources: [label-cyproheptadine-2026]

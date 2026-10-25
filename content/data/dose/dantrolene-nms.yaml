@@ -1,0 +1,22 @@
+drug: dantrolene
+drug_name: Dantrolene
+brand: Dantrium
+indication: Neuroleptic malignant syndrome
+indication_detail: Severe NMS with rigidity and hyperthermia despite supportive care. Off-label.
+population: Adults
+route: IV
+amount: 1–2.5
+unit: mg/kg
+frequency: "then 1 mg/kg every 6 hours as needed"
+give_when: Severe rigidity and hyperthermia not controlled by supportive care and benzodiazepines
+max: "10 mg/kg in 24 hours"
+cautions:
+  - "Muscle weakness and respiratory depression can occur. Support the airway."
+  - "Check liver tests with repeated doses."
+  - "A 2026 national cohort linked dantrolene to higher mortality, probably because it went to the sickest patients."
+notes: "Dose follows the NMS reviews. The label dose is for malignant hyperthermia (1 mg/kg minimum, to a cumulative 10 mg/kg). Not used in serotonin syndrome."
+sources: [label-dantrium-iv-2026, pileggi-nms-2016, suekane-dantrolene-nms-2026]
+verification:
+  source: label-dantrium-iv-2026
+  read: not-verified
+  date: 2026-10-25
