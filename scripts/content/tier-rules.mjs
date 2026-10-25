@@ -76,9 +76,9 @@ export function classifyCard(before, after) {
 }
 
 // The gate. A tier-2 card passes when its stamp's fingerprint equals its current one (the stamp or carry command wrote it),
-// or when it is a draft listed in content/unchecked.txt. Returns { ok, note }.
-export function gateCard(card, currentFingerprint, unchecked) {
+// or when it is a draft already listed in content/unchecked.txt on the base branch (a card newly added to the list in this PR must be stamped first). Returns { ok, note }.
+export function gateCard(card, currentFingerprint, baseUnchecked) {
   if (card.checked?.fingerprint === currentFingerprint) return { ok: true, note: card.checked.carried ? `carried (${card.checked.carried})` : `stamped ${card.checked.by} ${card.checked.date}` };
-  if (!card.checked && unchecked.includes(card.id)) return { ok: true, note: 'draft listed in content/unchecked.txt, not checked yet' };
-  return { ok: false, note: card.checked ? 'stamp does not match: run checked:stamp (after the Opus check) or checked:carry' : 'no stamp: needs the Opus check and checked:stamp' };
+  if (!card.checked && baseUnchecked.includes(card.id)) return { ok: true, note: 'draft already on main\'s content/unchecked.txt, not checked yet' };
+  return { ok: false, note: card.checked ? 'stamp does not match: run checked:stamp (after the Opus check) or checked:carry' : 'no stamp: a new card needs the Opus check and checked:stamp before it merges' };
 }
