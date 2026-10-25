@@ -6,6 +6,7 @@ import { join, relative, basename } from 'node:path';
 import YAML from 'yaml';
 import { CARD_TYPES } from './schema.mjs';
 import { parseInline } from './inline.mjs';
+import { severityLadderLines } from './severity.mjs';
 
 export { parseInline };
 
@@ -187,6 +188,7 @@ export function parseCard(file, root) {
   return {
     file: relative(root, file),
     scaffold: src.includes('SCAFFOLD:'),
+    severityLines: severityLadderLines(src),
     id: meta.id ?? basename(file, '.md'),
     type: meta.type,
     variant: meta.variant ?? null,
