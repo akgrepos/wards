@@ -26,15 +26,19 @@ related:
 
 {{criteria:nms-delphi-2011}}
 
-- Serotonin syndrome severity: ^[isbister-ss-2007, chiew-ss-2025]
-  - Mild: features that may or may not concern the patient ^[isbister-ss-2007]
-  - Moderate: significant distress that deserves treatment but is not life-threatening ^[isbister-ss-2007]
-  - Severe: a medical emergency with a rapidly rising temperature >40°C, muscle rigidity and multiple organ failure ^[isbister-ss-2007, chiew-ss-2025]
+:::scale Serotonin syndrome severity
+- Mild: features that may or may not concern the patient ^[isbister-ss-2007]
+- Moderate: significant distress that deserves treatment but is not life-threatening ^[isbister-ss-2007]
+- Severe: a medical emergency with a rapidly rising temperature >40°C, muscle rigidity and multiple organ failure ^[isbister-ss-2007, chiew-ss-2025]
+:::
+
 - The Hunter criteria were derived in single-SSRI overdoses and tested in 2,222 serotonergic overdoses. In patients on stable therapeutic doses they justify only holding or reducing the drug, not specific treatment. ^[chiew-ss-2025]
-- NMS severity (staging used for level of care): ^[wadoo-nms-2021]
-  - Mild: mild rigidity, catatonia or confusion, temperature ≤38°C, heart rate ≤100 ^[wadoo-nms-2021]
-  - Moderate: moderate rigidity, catatonia or confusion, temperature 38–40°C, heart rate 100–120 ^[wadoo-nms-2021]
-  - Severe: severe rigidity, catatonia or coma, temperature ≥40°C, heart rate ≥120 ^[wadoo-nms-2021]
+:::scale NMS severity (staging used for level of care)
+- Mild: mild rigidity, catatonia or confusion, temperature ≤38°C, heart rate ≤100 ^[wadoo-nms-2021]
+- Moderate: moderate rigidity, catatonia or confusion, temperature 38–40°C, heart rate 100–120 ^[wadoo-nms-2021]
+- Severe: severe rigidity, catatonia or coma, temperature ≥40°C, heart rate ≥120 ^[wadoo-nms-2021]
+:::
+
 - Level of care: ^[chiew-ss-2025, wadoo-nms-2021]
   - ICU for severe serotonin syndrome and for moderate or severe NMS ^[chiew-ss-2025, wadoo-nms-2021]
   - Medical unit with continuous monitoring of blood pressure, cardiac rhythm and oxygen saturation for mild NMS ^[wadoo-nms-2021]
