@@ -3,7 +3,7 @@ import { AKG } from '../design/akg';
 import { cardsInSystem, cardTypeLabel, content, getCard } from '../content';
 import type { Card } from '../content/types';
 import { href, open } from '../router';
-import { clearPageMemory, clearRecent, getRecent, useStored } from '../storage';
+import { clearMisses, clearPageMemory, clearRecent, getMisses, getRecent, missesThisWeek, pagesOpenedThisWeek, useStored } from '../storage';
 import { iconFor, icons } from '../ui/icons';
 import { APP_VERSION } from '../version';
 import { Screen, ago } from './common';
@@ -46,12 +46,18 @@ export function Home() {
 // Home › Settings: the version, and clearing what's kept on this phone.
 export function SettingsScreen() {
   const [confirm, setConfirm] = useState(false);
+  useStored(getRecent);
+  useStored(getMisses);
   return (
     <Screen title="Settings" back={{ label: 'Topics', fallback: href.home() }}>
       <AKG.List header="About" footer="A personal reference written for its owner. Not medical advice. Cards are checked against their cited sources by an automated clinical review on the date shown and are not individually reviewed by the owner. Check doses against the current label and guideline before use.">
         <AKG.ListRow title="Version" detail={APP_VERSION} />
       </AKG.List>
-      <AKG.List header="On This iPhone" footer="Recent and where you were on each page are kept only on this iPhone. Nothing is sent anywhere.">
+      <AKG.List header="Last 7 Days" footer="Two counts that help you see what Wards is missing. They are kept only on this iPhone. Nothing is sent anywhere.">
+        <AKG.ListRow title="Pages Opened" detail={String(pagesOpenedThisWeek(Date.now(), (id) => !!getCard(id)))} />
+        <AKG.ListRow title="Searches With No Result" detail={String(missesThisWeek())} />
+      </AKG.List>
+      <AKG.List header="On This iPhone" footer="Recent, the counts above and where you were on each page are kept only on this iPhone. Nothing is sent anywhere.">
         <AKG.ListRow title="Clear Recent and Page Memory" destructive onClick={() => setConfirm(true)} />
       </AKG.List>
       <AKG.Alert
@@ -59,10 +65,10 @@ export function SettingsScreen() {
         overlay
         fixed
         title="Clear Recent and Page Memory?"
-        message="Pages also forget where you were and which sections you closed. This can’t be undone."
+        message="Pages also forget where you were and which sections you closed, and the two counts start again from zero. This can’t be undone."
         actions={[
           { label: 'Cancel', role: 'cancel', onClick: () => setConfirm(false) },
-          { label: 'Clear', role: 'destructive', onClick: () => { clearRecent(); clearPageMemory(); setConfirm(false); } },
+          { label: 'Clear', role: 'destructive', onClick: () => { clearRecent(); clearMisses(); clearPageMemory(); setConfirm(false); } },
         ]}
       />
     </Screen>

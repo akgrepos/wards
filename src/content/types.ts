@@ -99,6 +99,8 @@ export type CoverageGrid = { title: string; levels: Record<CoverageLevel, { word
 // Rows for search, built with the content (scripts/content/search-index.mjs); card indexes point into Content.cards.
 export type SearchIndex = {
   sections: [cardIndex: number, key: string, title: string, parentTitle: string][];
+  /** Smaller names inside a section: scale and comparison names and bands, criteria titles, bold bullet labels, calculator short names. */
+  labels?: [cardIndex: number, key: string, text: string][];
   drugs: [name: string, brands: string, cardIndex: number, key: string, title: string, drugId: string][];
   tools: [id: string, name: string, short: string, others: string, cardIndexes: number[]][];
 };

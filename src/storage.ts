@@ -4,8 +4,8 @@ import { useSyncExternalStore } from 'react';
 // (private browsing, storage full); the app then works without them.
 export type Recent = { id: string; t: number };
 
-const KEYS = { recent: 'wards:recent', searches: 'wards:searches', scroll: 'wards:scroll', rapids: 'wards:rapids', timed: 'wards:timed' } as const;
-export const RECENT_MAX = 5;
+const KEYS = { recent: 'wards:recent', searches: 'wards:searches', misses: 'wards:misses', scroll: 'wards:scroll', rapids: 'wards:rapids', timed: 'wards:timed' } as const;
+export const RECENT_MAX = 30;
 export const SEARCHES_MAX = 10;
 
 function read<T>(key: string, fallback: T, valid: (v: unknown) => boolean): T {
@@ -46,12 +46,28 @@ try { localStorage.removeItem('wards:reading'); } catch { /* not available */ }
 // Favorites was removed (owner, 2026-10-20): forget the list an earlier version saved on this phone.
 try { localStorage.removeItem('wards:favorites'); } catch { /* not available */ }
 
-// The last five pages opened, newest first, each listed once.
+// The last 30 pages opened, newest first, each listed once (Home shows the first few; Settings counts the week's).
 export const getRecent = () => cached<Recent[]>(KEYS.recent, () => read(KEYS.recent, [], isRecents));
 export function addRecent(id: string, now = Date.now()) {
   write(KEYS.recent, [{ id, t: now }, ...getRecent().filter((r) => r.id !== id)].slice(0, RECENT_MAX));
 }
 export const clearRecent = () => write(KEYS.recent, null);
+
+export const WEEK_MS = 7 * 24 * 3600 * 1000;
+/** How many different pages were opened in the last seven days (`isPage` leaves out ids that are no longer pages). */
+export const pagesOpenedThisWeek = (now = Date.now(), isPage: (id: string) => boolean = () => true) =>
+  getRecent().filter((r) => r.t > now - WEEK_MS && isPage(r.id)).length;
+
+// Searches that found nothing: only the time of each is kept (never the words typed), for seven days, so Settings can
+// say how often Wards came up empty.
+const MISSES_MAX = 200;
+const isTimes = (v: unknown) => Array.isArray(v) && v.every((x) => typeof x === 'number');
+export const getMisses = () => cached<number[]>(KEYS.misses, () => read(KEYS.misses, [], isTimes));
+export function addMiss(now = Date.now()) {
+  write(KEYS.misses, [...getMisses().filter((t) => t > now - WEEK_MS), now].slice(-MISSES_MAX));
+}
+export const missesThisWeek = (now = Date.now()) => getMisses().filter((t) => t > now - WEEK_MS).length;
+export const clearMisses = () => write(KEYS.misses, null);
 
 // The last ten searches typed, newest first, each once (compared without regard to case). Only the typed text is kept.
 export const getSearches = () => cached<string[]>(KEYS.searches, () => read(KEYS.searches, [], isStrings));

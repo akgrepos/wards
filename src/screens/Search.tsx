@@ -3,7 +3,7 @@ import { AKG } from '../design/akg';
 import { content, loadCard } from '../content';
 import { search, type GroupKey, type Hit } from '../content/search';
 import { goBack, href, parseRoute, rememberQuery, rememberedQuery, requestFlash } from '../router';
-import { addSearch, clearSearches, getSearches, useStored } from '../storage';
+import { addMiss, addSearch, clearSearches, getSearches, useStored } from '../storage';
 import { openCalculator } from '../ui/Calculator';
 import { icons } from '../ui/icons';
 import { useSheet } from '../ui/SheetHost';
@@ -19,6 +19,9 @@ export function FocusProxy() {
   return <input id={FOCUS_PROXY_ID} className="focus-proxy" aria-hidden="true" tabIndex={-1} readOnly />;
 }
 export const focusProxy = () => document.getElementById(FOCUS_PROXY_ID)?.focus();
+
+// A search that finds nothing counts once Enter is pressed, or when the words have stood still for this long.
+const MISS_AFTER_MS = 2000;
 
 // How many results a group shows before its Show More row.
 const SHOWN = 3;
@@ -36,6 +39,19 @@ export function SearchScreen() {
   const sheet = useSheet();
   const results = useMemo(() => search(q, content), [q]);
   const searches = useStored(getSearches);
+  // The words standing still with nothing found count as one miss (kept on this phone, only the time).
+  const counted = useRef('');
+  const countMiss = () => {
+    const t = q.trim().toLowerCase();
+    if (t.length < 2 || results.groups.length > 0 || counted.current === t) return;
+    counted.current = t;
+    addMiss();
+  };
+  useEffect(() => {
+    const timer = setTimeout(countMiss, MISS_AFTER_MS);
+    return () => clearTimeout(timer);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [q, results]);
   const change = (v: string) => { setQ(v); rememberQuery(v); setExpanded(new Set()); };
   const openTool = (h: Hit) => { loadCard(h.cardId).then(() => openCalculator(sheet, h.tool!), () => {}); };
   const row = (h: Hit) => (
@@ -112,7 +128,7 @@ export function SearchScreen() {
           value={q}
           onChange={(e) => change(e.target.value)}
           enterKeyHint="search"
-          onKeyDown={(e) => { if (e.key === 'Enter') addSearch(q); }}
+          onKeyDown={(e) => { if (e.key === 'Enter') { addSearch(q); countMiss(); } }}
           autoCapitalize="none"
           autoCorrect="off"
           spellCheck={false}
