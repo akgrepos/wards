@@ -1,6 +1,6 @@
 ---
 id: neuro-alcohol-withdrawal
-type: condition
+type: topic
 system: neuro
 subsection: Altered Mental Status
 title: Alcohol Withdrawal in the Hospitalized Adult

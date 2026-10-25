@@ -1,6 +1,6 @@
 ---
 id: cardio-adhf
-type: condition
+type: topic
 system: cardio
 subsection: Heart Failure and Cardiomyopathy
 title: Acute Decompensated Heart Failure

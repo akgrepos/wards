@@ -1,4 +1,5 @@
-// npm run card:new -- <type> <system> <id> "<title>" [--variant <name>]
+// npm run card:new -- <type> <system> <id> "<title>" [--variant <name>] [--no-subsection]
+// A topic card gets a subsection (its group in the system list); --no-subsection lists it under "Approach" instead.
 // Writes content/cards/<system>/<id>.md with the type's sections. Every placeholder says "SCAFFOLD:",
 // and npm run content:check rejects any card still containing one, so an unfinished scaffold cannot ship.
 import { writeFileSync, existsSync, mkdirSync, readFileSync } from 'node:fs';
@@ -14,7 +15,7 @@ const vi = args.indexOf('--variant');
 const variant = vi >= 0 ? args.splice(vi, 2)[1] : null;
 const [type, system, id, title] = args;
 const die = (m) => { console.error(m); process.exit(1); };
-if (!title) die('Usage: npm run card:new -- <type> <system> <id> "<title>" [--variant <name>]');
+if (!title) die('Usage: npm run card:new -- <type> <system> <id> "<title>" [--variant <name>] [--no-subsection]');
 const def = CARD_TYPES[type];
 if (!def) die(`Unknown type "${type}". Types: ${Object.keys(CARD_TYPES).join(', ')}`);
 if (!/^[a-z0-9]+(-[a-z0-9]+)*$/.test(id)) die('The id must be lowercase words joined by hyphens.');
@@ -25,7 +26,7 @@ if (variant && !def.variants?.[variant]) die(`Unknown ${type} variant "${variant
 const keys = variant ? new Set(def.variants[variant]) : null;
 const sections = def.sections.filter((s) => s.key === 'pearls' || (keys ? keys.has(s.key) : s.key !== 'more'));
 const out = [`---`, `id: ${id}`, `type: ${type}`, ...(variant ? [`variant: ${variant}`] : []), `system: ${system}`];
-if (type === 'condition') out.push('subsection: "SCAFFOLD: subsection name"');
+if (type === 'topic' && !args.includes('--no-subsection')) out.push('subsection: "SCAFFOLD: subsection name"');
 out.push(`title: ${JSON.stringify(title)}`, 'aliases: []');
 if (def.topic) out.push('definition: "SCAFFOLD: one-line definition. ^[source-id]"');
 out.push('related:', '  differential: []', '  conditions: []', '  tools: []', '---');

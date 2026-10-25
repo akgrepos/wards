@@ -1,6 +1,6 @@
 ---
 id: cardio-chest-pain
-type: approach
+type: topic
 system: cardio
 title: "Chest Pain: Undifferentiated"
 aliases: [chest pain, chest discomfort, chest tightness, chest pressure, angina, HEART, HEART score, ADD-RS, aortic dissection, tension pneumothorax, Boerhaave, esophageal rupture, pericarditis, tamponade, costochondritis, GERD, rule out MI, rule out ACS, coronary CT angiography, stress test, cannot-miss chest pain]

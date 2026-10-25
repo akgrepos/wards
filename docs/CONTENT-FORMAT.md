@@ -12,12 +12,12 @@ How cards and shared data are written. The rules behind it are in `CARD-TYPES.md
 ```markdown
 ---
 id: renal-hyperkalemia          # permanent, from the topic list
-type: condition                 # condition · approach · reference · procedure · medication · score · exam · test
+type: topic                     # topic · reference · medication (in use); procedure · score · exam · test are reserved
 variant: protocol               # only for types with variants (reference, medication)
 system: renal
 title: Hyperkalemia
 aliases: [high potassium]       # search only
-subsection: Electrolyte Disorders # condition cards only: the topic group within the system
+subsection: Electrolyte Disorders # topic cards: the group within the system; a topic without one is listed under Approach
 definition: "Commonly K⁺ ≥5.5 mEq/L. ^[kdigo-acute-hyperkalemia-2020]"  # one line under the title, with its source
 based_on: [ukka-hyperkalaemia-2026]   # optional: the guidelines the page rests on (not shown in the app)
 checked: { date: 2026-10-24, by: opus, scope: "doses and numbers", fingerprint: "0123456789abcdef" }   # written by npm run checked:stamp (shown as "Checked Oct 24, 2026"); never typed by hand
@@ -65,14 +65,14 @@ related:
 - A sourced pearl. ^[source-id]
 ```
 
-- Condition and approach cards need `definition`. Every card needs `checked` (`date` YYYY-MM-DD, `by` `opus` or `owner`, short `scope`, `fingerprint`), unless its id is listed in `content/unchecked.txt` (drafts). Only the date is shown; the rest stays in the data. The old `reviewed` field is gone. `based_on` is optional and not shown (the "Based on" line was removed 2026-10-18); All Sources includes it and the definition's sources.
+- Topic cards need `definition`. Every card needs `checked` (`date` YYYY-MM-DD, `by` `opus` or `owner`, short `scope`, `fingerprint`), unless its id is listed in `content/unchecked.txt` (drafts). Only the date is shown; the rest stays in the data. The old `reviewed` field is gone. `based_on` is optional and not shown (the "Based on" line was removed 2026-10-18); All Sources includes it and the definition's sources.
 - Related and Sources are added by the app; don't write them as sections.
 
 ## Contents sub-level (optional)
 A card can list the `####` subheadings of a section in its Contents menu, one level down, always shown (no expand or collapse): add `contents_sub: [dosing]` to the front matter (the section keys; the content check rejects an unknown section or one with no subheadings). Each row jumps to its heading and opens the section if it was closed. Electrolyte Repletion uses it for Dosing and Protocol (Potassium, Magnesium, Phosphate, Calcium). Other cards are unchanged.
 
 ## An emergency (Do Now)
-A condition or approach topic that is also an emergency has a `## Do Now` section, written **before** At a Glance, and a one-line `emergency_hint` in the front matter (50 characters at most, shown under its name in Rapids). It lives in the topic's file (one home) and uses the topic's own dose items; it is not one of the page's sections. It becomes the emergency's page in the Rapids tab, the pop-up behind the topic page's red Rapids button, and the steps of Timed Mode.
+A topic that is also an emergency has a `## Do Now` section, written **before** At a Glance, and a one-line `emergency_hint` in the front matter (50 characters at most, shown under its name in Rapids). It lives in the topic's file (one home) and uses the topic's own dose items; it is not one of the page's sections. It becomes the emergency's page in the Rapids tab, the pop-up behind the topic page's red Rapids button, and the steps of Timed Mode.
 
 ```markdown
 emergency_hint: Calcium, insulin-dextrose, remove K⁺   # in the front matter
@@ -117,10 +117,14 @@ emergency_hint: Calcium, insulin-dextrose, remove K⁺   # in the front matter
 - Data items have their required fields, sources that exist, and US units; dose and regimen items use only the fields in `DATA-TYPES.md`; every dose and in-app calculator has a `verification` note (`DATA-TYPES.md`, "Verification note"); a regimen's options list doses that exist and its words carry no typed doses.
 - An emergency (`## Do Now`) follows the format above: topics only, a short `emergency_hint`, 2–8 steps that each do something, `If:` first and once, warnings of one to three words, only `:::note` after the steps; `:::times{…}` settings name a dose in Do Now (or `first`), what is checked, and readable times.
 
+## Where shared items live
+- A new threshold, criteria set or regimen used by one card is written inside that card; it becomes a shared file only when a second card needs it.
+- Exception: criteria that back an in-app calculator stay shared files. Existing shared items stay where they are.
+
 ## Consistency rules (checked by `npm run content:check`)
 These keep 150+ cards one app. **Errors** fail the check; **warnings** print but never fail it.
 - **Aliases (error).** An alias belongs to one card (case ignored); keep it on the best card or make it more specific ("PERC rule" not "PERC"). A card with over 30 aliases gets a warning (alias bloat).
-- **Subsections (error).** A condition card's `subsection` must be one of its system's names in `content/systems.yaml` (`subsections:` list). To use a new name, add it there first (one name per idea, no near-duplicates). Example cards are exempt.
+- **Subsections (error).** A topic card's `subsection` must be one of its system's names in `content/systems.yaml` (`subsections:` list). To use a new name, add it there first (one name per idea, no near-duplicates). Example cards are exempt.
 - **Causes tags (error).** `[!cannot-miss]` and `[!most-common]` go only on causes inside the Causes section, and a cause category is never named "Cannot miss" or "Most common" (name it by what the causes are, for example "Life-threatening causes").
 - **Table width (error).** A table has at most four columns. A wider one needs an owner-approved exception listed in `WIDE_TABLE_EXCEPTIONS` in `scripts/content/schema.mjs` (card id and section title). Today: IV Fluids "Choosing an Option" (six columns). The criteria `layout: stacked` is for criteria data only, not card tables.
 - **Planned links (warning).** `[[card-id]]` to a card that doesn't exist yet is allowed; the check lists it as a warning and the app shows it as plain words (no tap target) until the card is written. `related:` entries, `based_on` and section names must still exist.
@@ -142,7 +146,7 @@ These keep 150+ cards one app. **Errors** fail the check; **warnings** print but
 - `:::note` … `:::` (1–3 lines, each `- sentence ^[source]`): a brown box labelled Note, for notes and caveats about the content just above it.
 - `:::scale Title` (severity bands, least to most severe; always stacked, level name over its detail), `:::compare Title` (statements that differ, side by side), `:::times Title` (recheck times on a timeline), `:::onset Title` (a row that opens onset and duration side by side, fastest first), each closed by `:::`.
 - Links go inside the sentence: `[[renal-hyperkalemia|hyperkalemia]]`, not "hyperkalemia ([[renal-hyperkalemia]])". `[[card-id/section|label]]` opens a page at a section; on the same page it just scrolls there.
-- Causes in a condition card: one list, `- **Category:** causes ^[source]`; mark one with `[!cannot-miss]` after the colon.
+- Causes in a topic card: one list, `- **Category:** causes ^[source]`; mark one with `[!cannot-miss]` after the colon.
 - `**bold**`, `*italic*`.
 - A line that is only `{{regimen:id}}` shows the regimen box (options, dose rows, duration); regimens are never inserted inside a sentence. Fields: `DATA-TYPES.md`, Regimen.
 - A line that is only `{{media:id}}` shows an ECG figure (caption, measurements, credit; tap for full screen), placed right under the line it illustrates. Its fields: `DATA-TYPES.md`, 11. Media.

@@ -1,6 +1,6 @@
 ---
 id: id-cap
-type: condition
+type: topic
 system: id
 subsection: Respiratory Infections
 title: Community-Acquired Pneumonia

@@ -1,6 +1,6 @@
 # Card types
 
-Settled 2026-10-17; page layout updated 2026-10-18 for the approved redesign (topic pages), and 2026-10-19 for the AKI card redesign (sources per line, one color per job, pathways as their own pages). Defines **8 card types**, each with a fixed set of sections in a fixed order. Shared data (doses, lab values, scores, criteria and similar) appears as **⟨inserted⟩** blocks: content that lives elsewhere and is shown in place, never retyped. How to write the files: `CONTENT-FORMAT.md`.
+Settled 2026-10-17; page layout updated 2026-10-18 for the approved redesign (topic pages), and 2026-10-19 for the AKI card redesign (sources per line, one color per job, pathways as their own pages). Defines **3 card types in use (Topic, Reference, Medication)**, each with a fixed set of sections in a fixed order; five more types are reserved (below). Condition and Approach were merged into one Topic type on 2026-10-24. Shared data (doses, lab values, scores, criteria and similar) appears as **⟨inserted⟩** blocks: content that lives elsewhere and is shown in place, never retyped. How to write the files: `CONTENT-FORMAT.md`.
 
 ---
 
@@ -53,40 +53,29 @@ Settled 2026-10-17; page layout updated 2026-10-18 for the approved redesign (to
 
 ---
 
-## Part 2 — The 8 card types
+## Part 2 — The card types
+
+**In use:** Topic, Reference, Medication. **Reserved: build when the first card needs it:** Procedure, Score, Physical exam, Diagnostic test, and the Organism and Communication variants of Reference. Their layouts below were approved in principle; adjust them when the first card of each is written. The score calculator is already covered by shared `calc` items, and a score or test is a Reference card until a first one proves otherwise.
 
 Each type lists its sections in order (after At a Glance), then its More Information subsections. Pearls, Related and Sources end every card. The substructure under each section is guidance for what goes there.
 
-### 1. Condition card [C]
-A disease or syndrome. The main card type.
+### 1. Topic card [T]
+A disease or syndrome (a **condition**), or a symptom, sign or abnormal result (an **approach**). One type, one shared section table, one fixed order. A card lists only the sections it uses; the rest are left out, so the order of the remaining ones never changes. A topic with a `subsection` is listed under that group in its system; one without is listed under Approach.
 
-1. **At a Glance**
-2. **Severity**: grades as a scale; diagnostic criteria ⟨inserted⟩ when formal criteria exist; what makes it an emergency (monitoring, level of care, scores ⟨inserted, interactive⟩)
-3. **Causes**: categories as one grouped list (bold category name, then its causes), with "cannot miss" marked by a tag; pseudo-conditions and mimics (the differential: diagnosis · distinguishing features · link)
-4. **Presentation**: symptoms, atypical presentations, examination findings (grading scales ⟨inserted⟩ from the exam cards)
-5. **Diagnosis**: initial tests and why; interpretation and thresholds; further testing; low-value tests to avoid
-6. **Treatment**: numbered steps (immediate, then definitive, by severity or subtype); dose rows ⟨inserted⟩
-7. **Monitor**: what to trend and when (timelines of recheck times), targets, expected response, triggers to escalate
-8. **Escalation**: which specialty and when (general criteria, never institution-specific)
-9. **More Information**: Where Guidelines Differ · Special Populations (kidney or liver disease, pregnancy, older adults, immunocompromised, drug-specific) · Complications · After the Acute Phase (discharge, follow-up, long-term management, prevention) · Evidence (key studies, one line each) · Why the Treatment Order · Epidemiology and Pathophysiology
-10. Pearls · Related · Sources
+1. **At a Glance** (always)
+2. **Definition and Staging**: what counts as abnormal, with thresholds and staging (e.g. the AKI criteria ⟨inserted⟩). Used by symptom and abnormal-result topics.
+3. **First Steps**: red flags, signs of instability, what to do first. Used by symptom and abnormal-result topics.
+4. **Severity**: grades as a scale; diagnostic criteria ⟨inserted⟩ when formal criteria exist; what makes it an emergency (monitoring, level of care, scores ⟨inserted, interactive⟩)
+5. **Causes**: a framework or one grouped list (bold category name, then its causes), with "cannot miss" marked by a tag, each cause linking to its card; pseudo-conditions and mimics (the differential: diagnosis · distinguishing features · link)
+6. **Presentation**: symptoms, atypical presentations; for symptoms, the focused history and examination that discriminate between causes
+7. **Diagnosis**: initial tests and why; interpretation and thresholds (result → likely causes tables, with their limits in a Note box); further testing; low-value tests to avoid
+8. **Treatment**: numbered steps (immediate, then definitive, by severity or subtype); dose rows ⟨inserted⟩. For a symptom: common initial orders (orders only, not tests; one line links to the first-line tests in Diagnosis), then initial management while the cause is being found.
+9. **Monitor**: what to trend and when (timelines of recheck times), targets, expected response, triggers to escalate
+10. **Escalation**: which specialty and when (general criteria, never institution-specific)
+11. **More Information**: Where Guidelines Differ · Special Populations (kidney or liver disease, pregnancy, older adults, immunocompromised, drug-specific) · Complications · After the Acute Phase (discharge, follow-up, long-term management, prevention) · Evidence (key studies, one line each) · Why the Treatment Order · Epidemiology and Pathophysiology
+12. Pearls · Related · Sources
 
-### 2. Approach card [A]
-A symptom, sign or abnormal result. Uses the condition page's names where they fit (owner's choice, 2026-10-18).
-
-1. **At a Glance**
-2. **Definition and Staging**: what counts as abnormal, with thresholds and staging (e.g. the AKI criteria ⟨inserted⟩)
-3. **First Steps**: red flags, signs of instability, what to do first
-4. **Causes**: a framework (by mechanism, organ, location or acuity), with "cannot miss" and "most common", each linking to its condition card
-5. **Presentation**: focused history and focused examination that discriminate between causes
-6. **Diagnosis**: first-line tests, then second-line by scenario; interpretation tables (result → likely causes), notes on their limits ⟨Note box⟩
-7. **Treatment**: common initial orders (checklist of orders only, not tests; one line links to the first-line tests in Diagnosis), then initial management while the cause is being found
-8. **Monitor**
-9. **Escalation**
-10. **More Information**: Where Guidelines Differ · Special Populations · Complications · After the Acute Phase · Evidence · Epidemiology and Pathophysiology
-11. Pearls · Related · Sources
-
-### 3. Reference card [R]
+### 2. Reference card [R]
 Interpretation guides, protocols and principles, in fixed variants so they still feel familiar. More Information: Microbiology (organism variant) · Evidence.
 
 - **Interpretation variant** (ECG, acid–base, PFTs, urinalysis, chest x-ray, fluid analysis): Normal Values ⟨inserted⟩ · Stepwise Method (numbered) · Patterns and What They Mean (table) · Worked Examples (ECGs and images ⟨inserted⟩)
@@ -95,32 +84,32 @@ Interpretation guides, protocols and principles, in fixed variants so they still
 - **Chart variant** (antimicrobial coverage, empiric therapy by infection, glucocorticoid equivalents, opioid conversions): How to Read the Chart · Chart (a matrix generated from shared data, never typed by hand) · Caveats
 - **Communication variant** (goals of care, code status, capacity): When It Applies · Framework (steps) · Suggested Phrasing · Legal and Ethical Points (general, not state-specific)
 
-### 4. Procedure card [P]
+### 3. Procedure card [P] (reserved)
 1. **At a Glance** · 2. **Indications** · 3. **Contraindications** (absolute · relative) · 4. **Preparation** (consent points, equipment checklist, positioning, landmarks and ultrasound views) · 5. **Technique** (numbered steps, one action per step, with images) · 6. **After the Procedure** (care; samples and how to interpret them) · 7. **Complications** (frequency · recognition · management) · 8. **Troubleshooting** · 9. **Procedure Note Checklist** (indication, consent, time-out, site and laterality, technique and ultrasound use, samples sent, estimated blood loss, complications, plan) · More Information: Evidence · Pearls · Related · Sources
 
-### 5. Medication card [M]
+### 4. Medication card [M]
 The **only home** for doses. Each indication's dose is a dose item that other cards insert as a dose row.
 
 - **Single drug:** At a Glance · **Dosing** (one dose row per indication) · **Dose Adjustment** (kidney function by CrCl or eGFR band, liver function, dialysis, weight) · **Administration** (IV rates, dilution, timing, oral notes) · **Contraindications and Boxed Warnings** · **Adverse Effects** (common · serious) · **Interactions** (major only, plus Check Interactions) · **Monitor** (what · when · target) · More Information: Pregnancy and Lactation · Overdose and Reversal · Evidence. Header extras: generic name (common brand names) · class. Sources: guideline and official prescribing information.
 - **Drug class variant** (e.g. beta-lactams, DOACs, loop diuretics, SGLT2 inhibitors): At a Glance · Mechanism and Shared Effects · Members Compared (table, links to each drug card) · Class-Wide Cautions · Choosing Within the Class. **No doses on class cards.**
 
-### 6. Score / calculator card [S]
+### 5. Score / calculator card [S] (reserved)
 At a Glance (what it estimates and for whom) · **When to Use** (the population it was validated in) · **Calculator** (interactive; MDCalc link) · **Interpretation** (score → risk → action) · More Information: Limitations · Evidence (derivation and validation studies, and the guideline that recommends it)
 
-### 7. Physical exam card [E]
+### 6. Physical exam card [E] (reserved)
 Supports documentation wording. At a Glance · **Technique** · **Normal Findings** (documentation-ready wording) · **Abnormal Findings** (finding · wording · what it suggests, likelihood ratios where studied · link) · **Grading Scales** ⟨inserted⟩ · **Special Maneuvers** (how · positive finding · accuracy) · More Information: Evidence
 
-### 8. Diagnostic test card [T]
+### 7. Diagnostic test card [D] (reserved)
 How to use a test; lives in Library › Labs. At a Glance · **When to Order** (and when not to) · **Interpretation** (cutoffs and reference values ⟨inserted⟩; adjusted thresholds) · **Test Accuracy** (sensitivity, specificity, likelihood ratios, by setting) · **False Positives and False Negatives** · **Practical Notes** (sample, timing, turnaround, repeat testing) · More Information: What It Measures · Evidence
 
-The layouts for types 3–8 were proposed with the redesign and approved by the owner (2026-10-18); adjust them when the first card of each type is written.
+The layouts for the reserved types were proposed with the redesign and approved by the owner (2026-10-18); adjust them when the first card of each type is written. The Organism and Communication variants of Reference are reserved the same way.
 
 ---
 
-## Part 3 — Worked example: Hyperkalemia (condition card)
+## Part 3 — Worked example: Hyperkalemia (topic card)
 *(Headings only, to show the shape.)*
 
-- Header: Condition · Nephrology and Urology · definition · checked date
+- Header: Topic · Nephrology and Urology · definition · checked date
 - **At a Glance** · **Severity** (scale mild / moderate / severe; monitoring) · **Causes** (one grouped list: pseudohyperkalemia, shift out of cells, impaired excretion (cannot miss), intake) · **Presentation** (symptoms; ECG progression) · **Diagnosis**
 - **Treatment:** numbered steps: membrane stabilization · intracellular shift · elimination, each with its dose rows; Compare Onset and Duration row; hyperkalemic cardiac arrest
 - **Monitor:** K⁺ recheck times; glucose times after insulin (timelines) · **Escalation**
@@ -131,7 +120,7 @@ The layouts for types 3–8 were proposed with the redesign and approved by the 
 
 ## Decisions (2026-10-17)
 1. Recommendation grades: **not shown**; source number only.
-2. Procedure cards: **include a short procedure-note checklist**.
+2. Procedure cards (reserved): **include a short procedure-note checklist**.
 3. Key points (now At a Glance): **3–6 bullets**.
 4. Epidemiology and pathophysiology: **collapsed by default** (now under More Information).
 5. Additions: **"Common initial orders" in approach cards**; no discharge checklist for now.
@@ -140,7 +129,7 @@ The layouts for types 3–8 were proposed with the redesign and approved by the 
 
 ## Decisions (2026-10-18)
 1. Topic page layout from the approved redesign: header with definition, based-on line and checked date; Contents menu instead of the section bar; collapsible, remembered sections; one source line per section (removed 2026-10-19 for per-line tags); More Information for deeper material.
-2. Approach cards use the condition page's section names where they fit (owner's choice).
+2. Approach cards use the condition page's section names where they fit (owner's choice). Merged with Condition into one Topic type on 2026-10-24 (no change for the reader).
 3. The other card types follow the same pattern with their own sections (owner approved the proposal); adjust when each type's first card is written.
 
 ## Decisions (2026-10-18, owner's review of the first two cards)

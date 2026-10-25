@@ -51,7 +51,7 @@ describe('search index', () => {
   });
 
   it('finds the section that shows a dose, also through a regimen, and the brand names', () => {
-    const card = (id: string, sections: unknown[]) => ({ file: `${id}.md`, id, type: 'condition', variant: null, system: 's', group: 'condition', subsection: null, title: id, aliases: [], related: {}, example: false, contentsSub: [], definition: null, basedOn: [], checked: null, reviewed: null, emergency: null, sections });
+    const card = (id: string, sections: unknown[]) => ({ file: `${id}.md`, id, type: 'topic', variant: null, system: 's', group: 'condition', subsection: null, title: id, aliases: [], related: {}, example: false, contentsSub: [], definition: null, basedOn: [], checked: null, reviewed: null, emergency: null, sections });
     const sec = (key: string, blocks: unknown[], subsections: unknown[] = []) => ({ key, title: key, blocks, subsections });
     const doc = {
       systems: [],

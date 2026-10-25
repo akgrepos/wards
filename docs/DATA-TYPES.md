@@ -19,6 +19,10 @@ Settled 2026-10-17. **Data types** are the shared pieces of information that eac
 
 ## The 16 data types
 
+**Built:** source, dose, drug record, regimen, threshold, criteria set, pathway, coverage, media, calculator link. **Reserved: build when the first card needs it:** reference value, score (calculators use `calc`), grading scale, term, clinical finding, test accuracy, interaction, recommendation.
+
+**Where a new item lives.** A threshold, criteria set or regimen used by one card is written inside that card and shared only when a second card uses it. Exception: criteria that back an in-app calculator stay shared files. Existing shared items do not move.
+
 ### 1. Source
 Every citation lives here once; cards cite by number, which points to the source.
 - Fields: kind (guideline · study · systematic review · prescribing information · dataset) · issuing society · title · year/edition · journal, DOI, PMID or URL · date checked
@@ -39,8 +43,8 @@ One drug, one indication, one population. The only place a dose is written.
   - adjustments [`adjustments`]: kidney-function bands, liver, dialysis (`when`, `change`)
   - cautions [`cautions`]: a list of short sentences
   - notes [`notes`] · sources [`sources`]
-- Home: the medication card. Inserted into condition, approach, protocol and pathway steps, always as its own **dose row** (one drug per row).
-- Shown as: the dose row (on a condition, approach or protocol card: drug name over "amount unit route rate frequency"; on a **medication card**: the `indication` as the bold title, "amount unit route frequency" in semibold under it, then one gray line of population, rate, maximum and a short duration; a duration over 60 characters appears only on the sheet); tapping opens the **dose sheet**: "Dose" bar title, the drug as heading, the fields above, the alternative (tap to open it), cautions, Check Interactions (Medscape's free checker, opens in Safari) and a source line.
+- Home: the medication card. Inserted into topic, protocol and pathway steps, always as its own **dose row** (one drug per row).
+- Shown as: the dose row (on a topic or protocol card: drug name over "amount unit route rate frequency"; on a **medication card**: the `indication` as the bold title, "amount unit route frequency" in semibold under it, then one gray line of population, rate, maximum and a short duration; a duration over 60 characters appears only on the sheet); tapping opens the **dose sheet**: "Dose" bar title, the drug as heading, the fields above, the alternative (tap to open it), cautions, Check Interactions (Medscape's free checker, opens in Safari) and a source line.
 
 ### 2b. Drug record (added 2026-10-24)
 The one home for facts that hold for a drug whatever it is given for. Indication-specific facts (a dose, its kidney adjustment for one use, a caution that applies to one indication) stay on the dose. Lives in `content/data/drug/<id>.yaml`; a dose points to it with the optional `drug: <id>` (the id is usually the drug's medication card id, which also gives the "Open <card>" row). `npm run content:uses -- drug:<id>` lists its doses and the cards that show them.
@@ -63,14 +67,14 @@ A treatment combination for one indication and setting, built from dose items (n
 - Fields (YAML name in brackets): name [`name`] (the setting, short: "Inpatient, not severe") · indication [`indication`] · setting [`setting`] (who it is for, one line) · options [`options`] · duration [`duration`] · notes [`notes`] (a list of short sentences) · sources [`sources`]
 - Each option: label [`label`] (optional, e.g. "β-lactam plus macrolide") · when [`when`] (optional condition, e.g. allergy) · doses [`doses`]: the parts given together; a part is a dose id, or a list of dose ids meaning any one of them. Example: `doses: [[ceftriaxone-iv, ampicillin-sulbactam-cap], azithromycin-iv-cap]` = one of the β-lactams plus azithromycin.
 - Its words never carry a dose (the content check rejects typed doses); every drug shows as its own dose row.
-- Home: `content/data/regimen/<id>.yaml`. Inserted on a line of its own (`{{regimen:id}}`) in condition cards, and later in the "Empiric therapy by infection" chart.
+- Home: `content/data/regimen/<id>.yaml`. Inserted on a line of its own (`{{regimen:id}}`) in topic cards, and later in the "Empiric therapy by infection" chart.
 - Shown as: a gray box labelled "Regimen": the name and setting, then the options joined by "Or"; inside an option, parts joined by "Plus" and "One of:" above a choice of drugs; then the duration and notes. All Sources includes the regimen's sources and its doses' sources.
 - Dose items used by regimens are shared: the same dose (e.g. ceftriaxone 1–2 g IV every 24 hours) is one item reused by every card and regimen that gives it.
 
 ### 4. Reference value
 A lab test's typical US range and critical values.
 - Fields: test · unit (US) · typical range · critical low/high · ranges by sex, age or pregnancy where they differ · sources
-- Home: the diagnostic test card. Inserted into condition/approach cards and the lab reference chart.
+- Home: the diagnostic test card. Inserted into topic cards and the lab reference chart.
 
 ### 5. Threshold
 A single named cutoff that drives decisions.
@@ -85,7 +89,7 @@ A formal definition or diagnostic criteria with their logic.
 - Fields: name · **title** (required; what it defines + source year, e.g. "SIADH diagnostic criteria, 2013"; the year must be a cited source's) · items (major/minor or lettered) · logic (e.g. "2 major, or 1 major + 3 minor") · stages or grades · sources
 - Examples: KDIGO AKI stages, Sepsis-3, modified Duke criteria, SIRS
 - Display (2026-10-19): the items in an indigo "Criteria" box; a table with `layout: stacked` and `tones` (one of yellow, orange, red per row, in order; severity only, nothing else) as full-width tinted bands, the first cell as the band name and the other columns as labeled fields (same on the card and in the sheet); any other table (`layout: columns`, the default) as a gray table; the notes in a brown "Note" box.
-- Home: the condition card it defines. Inserted elsewhere (and can power a checklist).
+- Home: the topic card it defines. Inserted elsewhere (and can power a checklist).
 
 ### 7. Score
 Which scores and formulas get an in-app version, and which only an MDCalc link: see CONTENT-FORMAT, "Scores, criteria and formulas".
@@ -95,13 +99,13 @@ Everything a calculator needs.
   - `kind: checklist`: `items` (label, points; half points allowed, negative allowed), `bandSets` (one or more; each band has `label`, `range` text, inclusive `from`/`to` numbers, optional `risk`, `action`, `high: true` for red), optional `with` (another checklist sharing the sheet through a segmented control; must be reciprocal).
   - `kind: formula`: `expression` (words), `inputs` (id, label, US unit, min, max, optional), `results` (`fn` from the formulas in `src/calculators.ts`, label, unit, decimals, `needs`), `reference` (normal range or caution).
   - Both: `heading`, `notes`. The content check requires sources that exist, bands covering every possible total exactly once, and results that use known formulas and inputs.
-- Home: the score card. Inserted interactively into condition and approach cards.
+- Home: the score card. Inserted interactively into topic cards.
 
 ### 8. Grading scale
 Ordinal scales used in exams and documentation.
 - Fields: name · levels (grade → description → documentation wording) · sources
 - Examples: murmur grade I–VI, edema 0–4+, strength 0–5, reflexes 0–4+, RASS
-- Home: the physical exam card. Inserted into condition cards.
+- Home: the physical exam card. Inserted into topic cards.
 
 ### 9. Pathway (focused flowchart)
 A short decision tree for one sequential task on a card (2026-10-20; decision-tree look 2026-10-21): diagnostic (a workup), treatment, or mixed. Boxes may end in a diagnosis, a next test or a treatment. It supplements the card; a card may have several.
@@ -140,12 +144,12 @@ A score, rule or calculator that has a page on MDCalc (added 2026-10-21). One fi
 ### 13. Clinical finding
 A sign, symptom or exam finding.
 - Fields: name · how elicited (link to exam card) · documentation wording · accuracy for specific diagnoses (sensitivity, specificity, LR+, LR−) · sources
-- Home: the physical exam card. Inserted into condition and approach cards.
+- Home: the physical exam card. Inserted into topic cards.
 
 ### 14. Test accuracy
 How well a test performs for one condition in one setting.
 - Fields: test · condition · setting/population · sensitivity · specificity · LR+ · LR− · sources
-- Home: the diagnostic test card. Inserted into condition and approach cards.
+- Home: the diagnostic test card. Inserted into topic cards.
 
 ### 15. Interaction (clinically major only)
 - Fields: drug or class A · drug or class B · effect · severity · management · sources

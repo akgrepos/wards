@@ -1,6 +1,6 @@
 ---
 id: example-condition
-type: condition
+type: topic
 system: renal
 subsection: Example Disorders
 title: Example Condition

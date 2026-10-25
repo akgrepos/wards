@@ -191,7 +191,7 @@ export function parseCard(file, root) {
     type: meta.type,
     variant: meta.variant ?? null,
     system: meta.system,
-    group: meta.group ?? (meta.type === 'approach' ? 'approach' : meta.type === 'condition' ? 'condition' : 'reference'),
+    group: meta.group ?? (meta.type === 'topic' ? (meta.subsection ? 'condition' : 'approach') : 'reference'),
     subsection: meta.subsection ?? null,
     title: meta.title,
     aliases: meta.aliases ?? [],

@@ -58,7 +58,8 @@ export function useCardLoad(id: string | undefined): { status: 'ready' | 'loadin
   if (!id || loaded.has(id)) return { status: 'ready', retry };
   return { status: failed === id ? 'error' : 'loading', retry };
 }
-export const cardTypeLabel = (c: Card) => (CARD_TYPES as Record<string, { label: string }>)[c.type]?.label ?? c.type;
+// A topic keeps the tag it always had: Condition when it is listed under a subsection, Approach when it is not.
+export const cardTypeLabel = (c: Card) => c.type === 'topic' ? (c.group === 'condition' ? 'Condition' : 'Approach') : (CARD_TYPES as Record<string, { label: string }>)[c.type]?.label ?? c.type;
 
 export function getCard(id: string) {
   return content.cards.find((c) => c.id === id);

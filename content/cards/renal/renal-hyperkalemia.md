@@ -1,6 +1,6 @@
 ---
 id: renal-hyperkalemia
-type: condition
+type: topic
 system: renal
 subsection: Electrolyte Disorders
 title: Hyperkalemia

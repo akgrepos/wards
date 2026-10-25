@@ -1,6 +1,6 @@
 ---
 id: renal-aki
-type: approach
+type: topic
 system: renal
 title: Acute Kidney Injury
 aliases: [AKI, acute renal failure, ARF, rising creatinine, creatinine up, oliguria]

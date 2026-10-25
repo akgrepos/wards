@@ -1,6 +1,6 @@
 ---
 id: endo-inpatient-hyperglycemia
-type: approach
+type: topic
 system: endo
 title: Hyperglycemia in the Hospitalized Patient
 aliases: [inpatient hyperglycemia, hospital hyperglycemia, high blood sugar, high glucose, stress hyperglycemia, steroid-induced hyperglycemia, glucocorticoid hyperglycemia, sliding scale, SSI, correction insulin, basal-bolus, basal plus, insulin orders, inpatient diabetes, hypoglycemia, glucose targets, tube feeds insulin]

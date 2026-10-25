@@ -1,6 +1,6 @@
 ---
 id: cardio-atrial-fibrillation
-type: condition
+type: topic
 system: cardio
 subsection: Arrhythmias
 title: Atrial Fibrillation

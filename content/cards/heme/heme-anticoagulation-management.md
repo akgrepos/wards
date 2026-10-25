@@ -1,6 +1,6 @@
 ---
 id: heme-anticoagulation-management
-type: approach
+type: topic
 system: heme
 title: Anticoagulant Selection and Management
 aliases: [anticoagulation, blood thinner, blood thinners, DOAC, NOAC, apixaban, Eliquis, rivaroxaban, Xarelto, dabigatran, Pradaxa, edoxaban, Savaysa, warfarin, Coumadin, INR, enoxaparin, Lovenox, LMWH, heparin, UFH, fondaparinux, Arixtra, argatroban, bivalirudin, HIT, heparin-induced thrombocytopenia, anti-Xa, aPTT, bridging, warfarin to DOAC, mechanical valve, anticoagulant dosing, DOAC dosing]

@@ -12,7 +12,7 @@ function withCard(md: string, extra: AnyCard = {}) {
   const blocks = (lines: string) => parseBlocks(lines.split('\n'));
   const base = JSON.parse(JSON.stringify(real));
   const card = {
-    file: 'test.md', id: 'test-card', type: 'condition', variant: null, system: 'renal', group: 'condition', subsection: 'Test Disorders',
+    file: 'test.md', id: 'test-card', type: 'topic', variant: null, system: 'renal', group: 'condition', subsection: 'Test Disorders',
     title: 'Test', aliases: [], related: {}, example: true, unknownSections: [], unknownSubsections: [],
     definition: null, basedOn: [], checked: null,
     sections: [{ key: 'at-a-glance', title: 'At a Glance', blocks: blocks(md), subsections: [] }],
@@ -137,7 +137,7 @@ describe('tappable cutoffs', () => {
     const base = JSON.parse(JSON.stringify(real));
     base.data.threshold['test-cut'] = { name: 'Potassium needing an urgent ECG', value: '≥6.0', unit: 'mEq/L', sources: ['example-guideline-a'], _file: 'test-cut.yaml', ...(note === undefined ? {} : { [field]: note }) };
     base.cards.push({
-      file: 'test.md', id: 'test-card', type: 'condition', variant: null, system: 'renal', group: 'condition', subsection: 'Test Disorders',
+      file: 'test.md', id: 'test-card', type: 'topic', variant: null, system: 'renal', group: 'condition', subsection: 'Test Disorders',
       title: 'Test', aliases: [], related: {}, example: true, unknownSections: [], unknownSubsections: [], definition: null, basedOn: [], checked: null,
       sections: [{ key: 'at-a-glance', title: 'At a Glance', blocks: parseBlocks(kp(md).split('\n')), subsections: [] }],
     });
@@ -187,7 +187,7 @@ describe('emergency (Do Now) sections', () => {
   function withEmergency(md: string, extra: AnyCard = {}, hint: string | null = 'Stabilize, then remove') {
     const base = JSON.parse(JSON.stringify(real));
     base.cards.push({
-      file: 'test.md', id: 'test-card', type: 'condition', variant: null, system: 'renal', group: 'condition', subsection: 'Test Disorders',
+      file: 'test.md', id: 'test-card', type: 'topic', variant: null, system: 'renal', group: 'condition', subsection: 'Test Disorders',
       title: 'Test', aliases: [], related: {}, example: true, unknownSections: [], unknownSubsections: [], definition: null, basedOn: [], checked: null,
       sections: [{ key: 'at-a-glance', title: 'At a Glance', blocks: steps(kp('')), subsections: [] }],
       emergency: { hint, blocks: steps(md) },
@@ -271,7 +271,7 @@ describe('consistency rules', () => {
   const addCard = (extra: AnyCard, md = kp('')) => {
     const base = clone();
     base.cards.push({
-      file: 'test.md', id: 'test-card', type: 'condition', variant: null, system: 'renal', group: 'condition', subsection: 'Electrolyte Disorders',
+      file: 'test.md', id: 'test-card', type: 'topic', variant: null, system: 'renal', group: 'condition', subsection: 'Electrolyte Disorders',
       title: 'Test', aliases: [], related: {}, example: false, unknownSections: [], unknownSubsections: [], definition: null, basedOn: [], checked: null,
       sections: [{ key: 'at-a-glance', title: 'At a Glance', blocks: parseBlocks(md.split('\n')), subsections: [] }], ...extra,
     });
@@ -350,7 +350,7 @@ describe('no semicolons', () => {
   const withLine = (line: string) => {
     const base = clone();
     base.cards.push({
-      file: 'test.md', id: 'test-card', type: 'condition', variant: null, system: 'renal', group: 'condition', subsection: 'Electrolyte Disorders',
+      file: 'test.md', id: 'test-card', type: 'topic', variant: null, system: 'renal', group: 'condition', subsection: 'Electrolyte Disorders',
       title: 'Test', aliases: [], related: {}, example: false, unknownSections: [], unknownSubsections: [], definition: null, basedOn: [], checked: null,
       sections: [{ key: 'at-a-glance', title: 'At a Glance', blocks: parseBlocks(kp(line).split('\n')), subsections: [] }],
     });
@@ -381,7 +381,7 @@ describe('no source text shown', () => {
   const withBlocks = (md: string) => {
     const base = JSON.parse(JSON.stringify(real));
     base.cards.push({
-      file: 'test.md', id: 'test-card', type: 'condition', variant: null, system: 'renal', group: 'condition', subsection: 'Electrolyte Disorders',
+      file: 'test.md', id: 'test-card', type: 'topic', variant: null, system: 'renal', group: 'condition', subsection: 'Electrolyte Disorders',
       title: 'Test', aliases: [], related: {}, example: false, unknownSections: [], unknownSubsections: [], definition: null, basedOn: [], checked: null,
       sections: [{ key: 'at-a-glance', title: 'At a Glance', blocks: parseBlocks(md.split('\n')), subsections: [] }],
     });

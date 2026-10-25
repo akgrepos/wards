@@ -1,6 +1,6 @@
 ---
 id: neuro-delirium
-type: condition
+type: topic
 system: neuro
 subsection: Altered Mental Status
 title: Delirium in the Hospitalized Adult

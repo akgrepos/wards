@@ -1,6 +1,6 @@
 ---
 id: renal-hyponatremia
-type: condition
+type: topic
 system: renal
 subsection: Electrolyte Disorders
 title: Hyponatremia
