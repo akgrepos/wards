@@ -13,7 +13,10 @@ The essentials for writing or fixing a card. Read this first; open the full guid
 - `###` headings only inside More Information (fixed subsections; `### Title: short description`, at most 60 characters).
 - Emergencies: a `## Do Now` page (2-8 steps, `If:` first and once); see CONTENT-FORMAT.
 
-## Writing style (content:check warns, never fails)
+## Writing style (content:check: errors for a new card, warnings for existing cards until the sweep)
+- A bullet is one idea: at most two sentences and about 160 characters. Longer: split it, or a lead-in with sub-bullets.
+- Tables: at most 3 columns, every cell under about 25 characters. A wider comparison is a `:::compare` block.
+- Titles are at most 32 characters. A `related` link goes both ways. An alias that is a number is written in quotes.
 - Parallel items each get their own bullet in the same shape (for example every cause is `- **Category:** causes`; every criterion has the same pattern).
 - No several cases joined in one bullet ("X in A; Y in B; Z in C"): one bullet per case.
 - One idea per bullet.

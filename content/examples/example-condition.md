@@ -34,10 +34,10 @@ related:
 
 {{dose:example-drug-standard}}
 
-| Grade | Placeholder criterion | Third column |
+| Result | Placeholder criterion | Third column |
 |---|---|---|
-| Mild | Below the cutoff | Placeholder ^[example-guideline-a] |
-| Severe | At or above {{threshold:example-cutoff}} | Placeholder ^[example-guideline-a] |
+| Below cutoff | Below the cutoff | Placeholder ^[example-guideline-a] |
+| Over cutoff | At or above {{threshold:example-cutoff}} | Placeholder ^[example-guideline-a] |
 
 ## Monitor
 :::times Placeholder recheck times ^[example-guideline-a]

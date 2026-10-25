@@ -4,11 +4,16 @@ import { dirname, join } from 'node:path';
 import { loadContent } from './load.mjs';
 import { checkContent, checkWarnings } from './check.mjs';
 import { checkFingerprints } from './checked.mjs';
+import { ruleFindings, ruleSummary, RULES } from './rules.mjs';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
 const content = loadContent(root, { includeExamples: true });
 // Each problem gets a one-line pointer to the rule it enforces and the doc to read (first matching hint).
 const HINTS = [
+  [/bullet rule|parallel rule/, 'Rule: a bullet is one idea, at most two sentences and about 160 characters; parallel items share one shape. Read docs/CARD-WRITING-CHEATSHEET.md "Writing style".'],
+  [/table rule/, 'Rule: a table has at most 3 columns and short cells; a wider comparison is a :::compare block. Read docs/CARD-WRITING-CHEATSHEET.md "Writing style".'],
+  [/scale rule/, 'Rule: a severity ladder or risk-level table is a :::scale block. Read docs/CARD-WRITING-CHEATSHEET.md "Writing style".'],
+  [/names rule|title rule|related rule|alias rule/, 'Rule: no society, guideline or study names in card text; titles up to 32 characters; related cards link both ways; aliases are words, not bare numbers. Read docs/CARD-WRITING-CHEATSHEET.md "Writing style".'],
   [/duplicate alias|alias bloat/, 'Rule: an alias belongs to one card. Read docs/CONTENT-FORMAT.md "Consistency rules".'],
   [/subsection vocabulary/, `Rule: a condition card's subsection is one of its system's names in content/systems.yaml. Read docs/CONTENT-FORMAT.md "Consistency rules".`],
   [/semicolon rule/, 'Rule: no semicolons in card text; a list becomes bullets, a clause join becomes two sentences. Read docs/CONTENT-FORMAT.md "No semicolons".'],
@@ -28,6 +33,9 @@ const errors = checkContent(content).map((m) => { const h = hint(m); return h ? 
 if (!errors.length) errors.push(...checkFingerprints(content));
 const warnings = checkWarnings(content);
 if (warnings.length) console.warn(`Content warnings (${warnings.length}, these do not fail the check):\n- ` + warnings.join('\n- ') + '\n');
+// How many existing cards each format rule flags: the to-do list for the sweep. Cards in unchecked.txt get errors instead.
+const summary = ruleSummary(ruleFindings(content)).filter((r) => r.cards);
+if (summary.length) console.warn('Format rules, existing cards flagged until the sweep:\n' + summary.map((r) => `- ${RULES[r.rule].padEnd(14)} ${String(r.cards).padStart(2)} cards, ${r.places} places`).join('\n') + '\n');
 if (errors.length) {
   console.error(`Content problems (${errors.length}):\n- ` + errors.join('\n- '));
   process.exit(1);

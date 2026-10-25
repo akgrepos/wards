@@ -9,44 +9,11 @@ import { checkPathway } from './pathway.mjs';
 import { checkMedia } from './media.mjs';
 import { checkCoverage } from './coverage.mjs';
 import { checkSemicolons } from './semicolons.mjs';
-import { checkStyle } from './style.mjs';
-import { checkSeverityLadder } from './severity.mjs';
-import { checkNumericAliases } from './aliases.mjs';
+import { ruleFindings } from './rules.mjs';
+import { inlineText, runs, allBlocks } from './walk.mjs';
 import { checkStraySources } from './stray-sources.mjs';
 
 const DOSE_ONLY = /^\{\{\s*dose\s*:\s*([a-z0-9-]+)\s*\}\}$/;
-
-function inlineText(inlines) {
-  return inlines.filter((x) => x.t !== 'insert' && x.t !== 'link').map((x) => x.v ?? '').join('');
-}
-
-// Every block's inline runs, with the sources attached to it (steps and containers included).
-function* runs(blocks) {
-  for (const b of blocks) {
-    if (b.t === 'paragraph') yield { inlines: b.inlines, sources: b.sources };
-    // A sub-bullet without its own source uses its parent's.
-    if (b.t === 'list') for (const it of b.items) { yield { inlines: it.inlines, sources: it.sources }; for (const c of it.children) yield { inlines: c.inlines, sources: c.sources.length ? c.sources : it.sources }; }
-    // Values in table cells and scale bands show as plain text (the row or band already says what they mean).
-    if (b.t === 'table') { for (const h of b.header) yield { inlines: h, sources: [], header: true }; for (const r of b.rows) for (const c of r.cells) yield { inlines: c, sources: r.sources, plain: true }; }
-    if (b.t === 'steps') for (const it of b.items) { yield { inlines: it.inlines, sources: it.sources, header: true }; yield* runs(it.blocks); }
-    if (b.t === 'note') for (const it of b.items) yield { inlines: it.inlines, sources: it.sources.length ? it.sources : b.sources };
-    if (b.t === 'scale' || b.t === 'compare') {
-      yield { inlines: b.title, sources: b.sources, header: true };
-      for (const it of b.items) yield { inlines: [...it.label, ...it.inlines], sources: it.sources.length ? it.sources : b.sources, plain: b.t === 'scale' };
-    }
-    if (b.t === 'times') yield { inlines: b.title, sources: b.sources, timesTitle: true };
-    if (b.t === 'onset') {
-      yield { inlines: b.title, sources: b.sources, header: true };
-      // Dose items carry their own onset and sources; the others are "Name: onset | lasts ^[source]".
-      for (const it of b.items) if (!DOSE_ONLY.test(it.text.trim())) yield { inlines: [...it.label, ...it.inlines], sources: it.sources.length ? it.sources : b.sources };
-    }
-  }
-}
-
-// Every block, steps' contents included.
-function* allBlocks(blocks) {
-  for (const b of blocks) { yield b; if (b.t === 'steps') for (const it of b.items) yield* allBlocks(it.blocks); }
-}
 
 // A drug record: the drug-wide facts a dose sheet shows once for every dose that points at it (docs/DATA-TYPES.md, 2b).
 export function checkDrug(item, data) {
@@ -421,16 +388,16 @@ export function checkContent({ systems, cards, data, unchecked = [] }) {
   }
   errors.push(...checkSemicolons({ cards, data }));
   errors.push(...checkStraySources({ cards, data }));
+  // Format rules: errors for a new card (listed in unchecked.txt), warnings for the rest (checkWarnings).
+  errors.push(...ruleFindings({ cards, data, unchecked }).filter((f) => f.isNew).map((f) => f.message));
   return errors;
 }
 
 // Problems that don't stop a build but should be looked at (npm run content:check prints them; they never fail it).
-export function checkWarnings({ cards, data }, { today = new Date() } = {}) {
+export function checkWarnings({ cards, data, unchecked = [] }, { today = new Date() } = {}) {
   const out = [];
   const warn = (where, msg) => out.push(`${where}: ${msg}`);
-  out.push(...checkStyle({ cards }));
-  out.push(...checkSeverityLadder({ cards }));
-  out.push(...checkNumericAliases({ cards }));
+  out.push(...ruleFindings({ cards, data, unchecked }).filter((f) => !f.isNew).map((f) => f.message));
   const ids = new Set(cards.map((c) => c.id));
   const byId = new Map(cards.map((c) => [c.id, c]));
 
@@ -451,9 +418,6 @@ export function checkWarnings({ cards, data }, { today = new Date() } = {}) {
     if (c.emergency) scan(c.emergency.blocks);
     for (const x of c.definition?.inlines ?? []) if (x.t === 'link' && !ids.has(x.id)) planned.add(x.id);
     if (planned.size) warn(c.file, `planned links: [[${[...planned].join(']], [[')}]] point to cards that don't exist yet; they show as plain text until the card is written (docs/CONTENT-FORMAT.md, "Consistency rules")`);
-    // Related cards point both ways.
-    const missing = [...new Set(Object.values(c.related ?? {}).flat())].filter((id) => byId.has(id) && !Object.values(byId.get(id).related ?? {}).flat().includes(c.id));
-    if (missing.length) warn(c.file, `related not reciprocal: ${missing.join(', ')} ${missing.length === 1 ? 'does' : 'do'} not list this card back (docs/CONTENT-FORMAT.md, "Consistency rules")`);
     if (c.checked?.date && /^\d{4}-\d{2}-\d{2}$/.test(c.checked.date)) {
       const limit = new Date(today); limit.setMonth(limit.getMonth() - REVIEW_MAX_AGE_MONTHS);
       if (new Date(c.checked.date) < limit) warn(c.file, `checked ${c.checked.date} is over ${REVIEW_MAX_AGE_MONTHS} months old; re-check the card against the newest guidelines and update the date (docs/CONTENT-FORMAT.md, "Consistency rules")`);
