@@ -2,7 +2,7 @@
 id: psych-serotonin-syndrome-nms
 type: topic
 system: psych
-title: "Serotonin Syndrome and Neuroleptic Malignant Syndrome"
+title: "Serotonin Syndrome and NMS"
 aliases: [serotonin syndrome, serotonin toxicity, serotonin storm, SS, neuroleptic malignant syndrome, NMS, Hunter criteria, hyperthermia with rigidity, clonus, lead-pipe rigidity, drug-induced hyperthermia, cyproheptadine, dantrolene, bromocriptine, antipsychotic rechallenge, linezolid toxicity, methylene blue toxicity, malignant catatonia, anticholinergic toxicity, malignant hyperthermia]
 definition: "Two drug-induced hyperthermic emergencies: serotonin syndrome, from excess serotonergic activity (clonus, hyperreflexia, tremor, agitation, diaphoresis), and neuroleptic malignant syndrome, from dopamine blockade or dopamine agonist withdrawal (lead-pipe rigidity, fever, altered mental status, autonomic instability, raised creatine kinase). ^[chiew-ss-2025, gurrera-nms-2011, wadoo-nms-2021]"
 based_on: [chiew-ss-2025, isbister-ss-2007, scotton-ss-2019, gurrera-nms-2011, wadoo-nms-2021, kuhlwilm-nms-2020]
