@@ -324,7 +324,7 @@ describe('consistency rules', () => {
   });
   it('needs a checked stamp unless the draft is listed in unchecked.txt', () => {
     const stamp = { date: '2026-10-24', by: 'opus', scope: 'doses and numbers' };
-    const withList = (extra: AnyCard, unchecked: string[] = []) => { const b = addCard(extra); b.unchecked = unchecked; return errorsOf(b); };
+    const withList = (extra: AnyCard, unchecked: string[] = []) => { const b = addCard(extra); b.unchecked = [...b.unchecked, ...unchecked]; return errorsOf(b); };
     expect(withList({})).toMatch(/test.md: has no "checked" stamp/);
     expect(withList({}, ['test-card'])).not.toMatch(/"checked" stamp/);
     expect(withList({ checked: stamp })).not.toMatch(/checked/);
