@@ -388,7 +388,7 @@ export function checkContent({ systems, cards, data, unchecked = [] }) {
   }
   errors.push(...checkSemicolons({ cards, data }));
   errors.push(...checkStraySources({ cards, data }));
-  // Format rules: errors for a new card (listed in unchecked.txt), warnings for the rest (checkWarnings).
+  // Format rules: errors for every card (rules.mjs).
   errors.push(...ruleFindings({ cards, data, unchecked }).filter((f) => f.isNew).map((f) => f.message));
   return errors;
 }

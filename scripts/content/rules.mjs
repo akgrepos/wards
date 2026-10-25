@@ -1,8 +1,8 @@
 // Format rules for card text (docs/CARD-WRITING-CHEATSHEET.md, "Writing style"). Each rule finds what a reader on a phone
 // trips over: a bullet that is a paragraph, a table that runs off the screen, a severity ladder without its color bands.
 //
-// A finding is an error for a card that is new (listed in content/unchecked.txt, or the example card) and a warning for the
-// rest, until the sweep of the existing cards is done. content:check prints the warnings with a count per rule.
+// A finding is an error for every card (the sweep of the existing cards is done). `isNew` stays on each finding so the
+// warning path in check.mjs and the summary in cli.mjs keep working if a rule is ever eased for old cards again.
 import { allBlocks, runs } from './walk.mjs';
 
 export const MAX_BULLET_CHARS = 160;
@@ -140,7 +140,7 @@ function cardFindings(c, { data, byId }) {
 // All findings, each with the card it belongs to and whether that card is new (so the finding is an error).
 export function ruleFindings({ cards, data, unchecked = [] }) {
   const byId = new Map(cards.map((c) => [c.id, c]));
-  return cards.flatMap((c) => cardFindings(c, { data, byId }).map((f) => ({ ...f, card: c.id, isNew: unchecked.includes(c.id) || !!c.example })));
+  return cards.flatMap((c) => cardFindings(c, { data, byId }).map((f) => ({ ...f, card: c.id, isNew: true })));
 }
 
 // How many existing cards (and how many places) each rule flags: the sweep's to-do list.

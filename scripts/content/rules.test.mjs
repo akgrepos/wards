@@ -116,15 +116,14 @@ describe('alias rule', () => {
 
 describe('levels', () => {
   const bad = '- Give fluids. Then recheck. Then call renal.';
-  it('makes a finding an error for a card in unchecked.txt, and a warning for an existing card', () => {
+  it('makes a finding an error for every card, new or existing', () => {
     const base = { systems: [], data: {} };
     expect(find(card(bad), { unchecked: ['c'] })[0].isNew).toBe(true);
-    expect(find(card(bad))[0].isNew).toBe(false);
-    expect(checkWarnings({ ...base, cards: [card(bad)] }).join()).toMatch(/bullet rule/);
-    expect(checkWarnings({ ...base, cards: [card(bad)], unchecked: ['c'] }).join()).not.toMatch(/bullet rule/);
+    expect(find(card(bad))[0].isNew).toBe(true);
+    expect(checkWarnings({ ...base, cards: [card(bad)] }).join()).not.toMatch(/bullet rule/);
   });
-  it('summarizes the existing cards each rule flags', () => {
-    const s = ruleSummary(ruleFindings({ cards: [card(bad), card(bad, { id: 'd' })], data: {}, unchecked: ['d'] }));
-    expect(s.find((r) => r.rule === 'bullet')).toEqual({ rule: 'bullet', cards: 1, places: 1 });
+  it('has nothing left in the sweep summary', () => {
+    const s = ruleSummary(ruleFindings({ cards: [card(bad)], data: {}, unchecked: [] }));
+    expect(s.every((r) => r.cards === 0 && r.places === 0)).toBe(true);
   });
 });
