@@ -217,6 +217,15 @@ describe('remembered sections', () => {
     expect(screen.getByText('Cannot miss')).toBeTruthy();
   });
 
+  it('a Cannot miss or Most common tag is the last thing in its bullet, before the source pill', () => {
+    launch('#/card/renal-hyperkalemia');
+    const li = screen.getByText('Cannot miss').closest('li') as HTMLElement;
+    const kids = Array.from(li.childNodes);
+    const tagAt = kids.findIndex((n) => n.textContent === 'Cannot miss');
+    expect(kids.slice(0, tagAt).map((n) => n.textContent).join('').length).toBeGreaterThan(20);
+    expect(kids.slice(tagAt + 1).every((n) => n.nodeType === 1 && !/[a-z]{4}/i.test(n.textContent?.replace(/\d+/g, '') ?? ''))).toBe(true);
+  });
+
   it('Compare Onset and Duration opens all agents, fastest first', async () => {
     launch('#/card/renal-hyperkalemia');
     expect(screen.queryByText('Onset and duration')).toBeNull();

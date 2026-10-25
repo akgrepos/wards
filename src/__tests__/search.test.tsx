@@ -125,6 +125,15 @@ describe('search ranking and groups', () => {
     expect(hit.markSubtitle).toBe(true);
   });
 
+  it('a heading is found together with its card name or alias ("SIADH severity" for the Severity heading of a card with that alias)', () => {
+    const card = content.cards.find((c) => c.sections.some((s) => s.key === 'severity') && c.aliases.some((a) => /^[a-z0-9]+$/i.test(a) && !/severity/i.test(a)))!;
+    const alias = card.aliases.find((a) => /^[a-z0-9]+$/i.test(a) && !/severity/i.test(a))!;
+    const hits = group(`${alias} severity`, 'sections');
+    expect(hits.some((h) => h.cardId === card.id && h.title === 'Severity')).toBe(true);
+    // A word that is neither in the heading nor in the card finds nothing.
+    expect(group(`${alias} qzxv`, 'sections')).toEqual([]);
+  });
+
   it('a title that starts with what was typed ranks before one that only contains it', () => {
     const hits = group('hyperkalemia', 'cards');
     expect(hits[0].title.toLowerCase().startsWith('hyperkalemia')).toBe(true);

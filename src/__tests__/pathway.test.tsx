@@ -31,9 +31,10 @@ beforeEach(() => { localStorage.clear(); forgetPathways(); });
 afterEach(() => { cleanup(); vi.restoreAllMocks(); });
 
 describe('pathways (focused decision trees)', () => {
-  it('a card lists its pathways as rows under the title, not inside a section', () => {
+  it('a card lists its pathways as rows right after At a Glance, not inside a section', () => {
     launch('#/card/renal-aki');
-    const row = document.querySelector('.card-head .pathway-row a') as HTMLElement;
+    const row = document.querySelector('.pathway-row a') as HTMLElement;
+    expect(document.querySelector('#sec-at-a-glance')!.nextElementSibling!.classList.contains('pathway-row')).toBe(true);
     expect(row.getAttribute('href')).toBe('#/pathway/aki-cause-workup');
     expect(row.textContent).toContain('Cause Workup');
     expect(document.querySelectorAll('.akg-content-section .pathway-row').length).toBe(0);
