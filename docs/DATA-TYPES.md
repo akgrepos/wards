@@ -89,16 +89,17 @@ A formal definition or diagnostic criteria with their logic.
 - Fields: name · **title** (required; what it defines + source year, e.g. "SIADH diagnostic criteria, 2013"; the year must be a cited source's) · items (major/minor or lettered) · logic (e.g. "2 major, or 1 major + 3 minor") · stages or grades · sources
 - Examples: KDIGO AKI stages, Sepsis-3, modified Duke criteria, SIRS
 - Display (2026-10-19): the items in an indigo "Criteria" box; a table with `layout: stacked` and `tones` (one of yellow, orange, red per row, in order; severity only, nothing else) as full-width tinted bands, the first cell as the band name and the other columns as labeled fields (same on the card and in the sheet); any other table (`layout: columns`, the default) as a gray table; the notes in a brown "Note" box.
-- Home: the topic card it defines. Inserted elsewhere (and can power a checklist).
+- Home: the topic card it defines. Inserted elsewhere.
 
 ### 7. Score
 Which scores and formulas get an in-app version, and which only an MDCalc link: see CONTENT-FORMAT, "Scores, criteria and formulas".
 Everything a calculator needs.
-- Fields: inputs (each with options and points, or a formula) · calculation · result bands → risk → recommended action · validated population · limitations · sources
+- Fields: inputs · calculation · result · validated population · limitations · sources
 - Built (2026-10-21): stored inside the score's calculator file (`content/data/calc/<id>.yaml`, 12b) as `sources` (required) plus a `calculator` block; the MDCalc link stays the last row. Tapping the score's name, or the "Calculate" button in its criteria box (same id), opens a bottom sheet; nothing is saved.
-  - `kind: checklist`: `items` (label, points; half points allowed, negative allowed), `bandSets` (one or more; each band has `label`, `range` text, inclusive `from`/`to` numbers, optional `risk`, `action`, `high: true` for red), optional `with` (another checklist sharing the sheet through a segmented control; must be reciprocal).
+  - Only simple formulas get an in-app calculator (serum osmolality, anion gap, corrected sodium, Winter's formula; later FeNa, FeUrea, A-a gradient).
+  - Scores whose result is a percentage or risk (Wells, CURB-65) link out to MDCalc and have no `calculator` block.
   - `kind: formula`: `expression` (words), `inputs` (id, label, US unit, min, max, optional), `results` (`fn` from the formulas in `src/calculators.ts`, label, unit, decimals, `needs`), `reference` (normal range or caution).
-  - Both: `heading`, `notes`. The content check requires sources that exist, bands covering every possible total exactly once, and results that use known formulas and inputs.
+  - Also: `heading`, `notes`. The content check requires sources that exist and results that use known formulas and inputs.
 - Home: the score card. Inserted interactively into topic cards.
 
 ### 8. Grading scale

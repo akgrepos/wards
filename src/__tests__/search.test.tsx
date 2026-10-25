@@ -27,7 +27,7 @@ describe('search index', () => {
     expect(idx.sections.length).toBeGreaterThan(100);
     expect(idx.sections.some(([, , , parent]) => parent === 'More Information')).toBe(true);
     expect(idx.drugs.length).toBeGreaterThan(50);
-    expect(idx.tools.map((t) => t[0])).toContain('curb-65');
+    expect(idx.tools.map((t) => t[0])).toContain('anion-gap');
   });
 
   it('only lists calculators that open inside the app, each with the cards that use it', () => {
@@ -62,7 +62,7 @@ describe('search index', () => {
       data: {
         regimen: { r1: { name: 'R', options: [{ doses: ['d1'] }], sources: [] } },
         dose: { d1: { drug_name: 'Testdrug', brand: 'Testbrand' }, d2: { drug_name: 'Otherdrug' } },
-        calc: { k1: { name: 'Plain link', short: 'link', match: [] }, k2: { name: 'Score', short: 'score', match: ['sc'], calculator: { kind: 'checklist' } } },
+        calc: { k1: { name: 'Plain link', short: 'link', match: [] }, k2: { name: 'Score', short: 'score', match: ['sc'], calculator: { kind: 'formula' } } },
       },
     };
     (doc.cards[0].sections[1] as { blocks: unknown[] }).blocks.push({ t: 'paragraph', inlines: [{ t: 'insert', kind: 'calc', id: 'k1' }, { t: 'insert', kind: 'calc', id: 'k2' }], sources: [] });
@@ -138,20 +138,20 @@ describe('search ranking and groups', () => {
   });
 
   it('calculators: opens the calculator itself, and the subtitle names a card that uses it', () => {
-    const hits = group('wells', 'tools');
-    expect(hits.map((h) => h.tool).sort()).toEqual(['wells-dvt', 'wells-pe']);
+    const hits = group('osmolality', 'tools');
+    expect(hits.map((h) => h.tool)).toEqual(['serum-osmolality']);
     expect(hits[0].subtitle).toMatch(/^Calculator · used in /);
-    const byShortName = group('curb', 'tools');
-    expect(byShortName[0].tool).toBe('curb-65');
+    expect(group('wells', 'tools')).toEqual([]);
+    expect(group('curb', 'tools')).toEqual([]);
   });
 
   it('groups come in the order Cards, Drugs, Sections, Tools and only when they have matches', () => {
     const all: GroupKey[] = ['cards', 'drugs', 'sections', 'tools'];
-    for (const q of ['treatment', 'ceftriaxone', 'wells', 'sepsis']) {
+    for (const q of ['treatment', 'ceftriaxone', 'anion', 'sepsis']) {
       const got = keys(q);
       expect(got).toEqual(all.filter((k) => got.includes(k)));
     }
-    expect(keys('wells')).toContain('tools');
+    expect(keys('anion')).toContain('tools');
   });
 
   it('every word typed must start a word', () => {
@@ -161,7 +161,7 @@ describe('search ranking and groups', () => {
   });
 
   it('ignores accents, case and punctuation', () => {
-    expect(group('CURB—65', 'tools')[0]?.tool).toBe('curb-65');
+    expect(group('Winter’s', 'tools')[0]?.tool).toBe('winters-formula');
   });
 });
 
@@ -223,8 +223,8 @@ describe('Search screen', () => {
 
   it('tapping a calculator result opens the calculator', async () => {
     render(<App />);
-    type('curb');
-    await act(async () => { fireEvent.click(screen.getByRole('button', { name: /CURB-65/ })); });
+    type('osmolality');
+    await act(async () => { fireEvent.click(screen.getByRole('button', { name: /osmolality/i })); });
     await act(async () => { await new Promise((r) => setTimeout(r, 0)); });
     await waitFor(() => expect(document.querySelector(".calc-sheet")).toBeTruthy());
   });

@@ -304,10 +304,8 @@ html[data-timed] .timed-page .screen-body.timed-body { padding-bottom: calc(env(
 /* Calculators (bottom sheet) */
 .calc-sheet { display: flex; flex-direction: column; gap: var(--space-12); }
 .calc-sheet p { margin: 0; }
-.calc-rows, .calc-inputs { display: flex; flex-direction: column; }
+.calc-inputs { display: flex; flex-direction: column; }
 .calc-result { display: flex; flex-direction: column; gap: var(--space-8); }
-.calc-band { display: flex; flex-direction: column; gap: var(--space-4); }
-.calc-high { color: var(--system-red); }
 
 /* Coverage tool (Empiric Antimicrobials): organism chips, drug rows, comparison, legend. Coverage is gray: shape plus word. */
 .coverage { display: flex; flex-direction: column; gap: var(--space-12); }

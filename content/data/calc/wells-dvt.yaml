@@ -3,33 +3,6 @@ short: "Wells score for DVT"
 url: https://www.mdcalc.com/calc/362/wells-criteria-dvt
 match: ["Wells score for DVT"]
 sources: [wells-dvt-2003, wells-dvt-1997, ash-vte-diagnosis-2018, silveira-wells-inpatient-2015]
-calculator:
-  kind: checklist
-  heading: Wells score for DVT
-  with: wells-pe
-  items:
-    - { label: "Active cancer (treatment ongoing, within 6 months, or palliative)", points: 1 }
-    - { label: "Paralysis, paresis or recent plaster cast of the leg", points: 1 }
-    - { label: "Bedridden ≥3 days, or major surgery within 12 weeks", points: 1 }
-    - { label: "Localized tenderness along the deep veins", points: 1 }
-    - { label: "Entire leg swollen", points: 1 }
-    - { label: "Calf swelling ≥3 cm more than the other side (10 cm below the tibial tuberosity)", points: 1 }
-    - { label: "Pitting edema confined to the symptomatic leg", points: 1 }
-    - { label: "Collateral superficial (non-varicose) veins", points: 1 }
-    - { label: "Previously documented DVT", points: 1 }
-    - { label: "Alternative diagnosis at least as likely as DVT", points: -2 }
-  bandSets:
-    - title: "Three levels"
-      bands:
-        - { to: 0, range: "≤0", label: "Low", risk: "DVT prevalence 3%" }
-        - { from: 1, to: 2, range: "1–2", label: "Moderate", risk: "DVT prevalence 17%" }
-        - { from: 3, range: "≥3", label: "High", risk: "DVT prevalence 75%", high: true }
-    - title: "Two levels"
-      bands:
-        - { to: 1, range: "≤1", label: "DVT unlikely", action: "High-sensitivity D-dimer. A negative result excludes DVT." }
-        - { from: 2, range: "≥2", label: "DVT likely", action: "Proximal or whole-leg compression ultrasound." }
-  notes:
-    - "Three-level prevalences are from the 1997 derivation cohort. Validated mainly in outpatients. Performs poorly in hospitalized patients."
 verification:
   source: wells-dvt-2003
   read: not-verified
