@@ -9,8 +9,10 @@ unit: mcg/kg/min
 frequency: continuous infusion, titrated to aPTT 1.5–3 times baseline (not above 100 seconds)
 max: "10 mcg/kg/min"
 adjustments:
-  - when: Moderate or severe liver impairment, heart failure, multiorgan failure, severe anasarca, or after cardiac surgery
+  - when: Moderate or severe liver impairment
     change: Start at 0.5 mcg/kg/min
+  - when: Heart failure, severe anasarca, or after cardiac surgery
+    change: Start at 0.5–1.2 mcg/kg/min
   - when: Kidney impairment
     change: No adjustment
 cautions:
@@ -19,5 +21,5 @@ cautions:
 sources: [label-argatroban-2026, ash-hit-2018]
 verification:
   source: label-argatroban-2026
-  read: not-verified
-  date: 2026-10-23
+  read: fda-label
+  date: 2026-10-25

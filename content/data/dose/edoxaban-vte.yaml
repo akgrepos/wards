@@ -9,7 +9,7 @@ amount: "60"
 unit: mg
 frequency: once daily
 adjustments:
-  - when: CrCl 15–50 mL/min, weight ≤60 kg, or certain P-gp inhibitors (verapamil, quinidine, azithromycin, clarithromycin, erythromycin, oral ketoconazole, oral itraconazole)
+  - when: CrCl 15–50 mL/min, weight ≤60 kg, or certain P-gp inhibitors (verapamil, quinidine, or short-term azithromycin, clarithromycin, erythromycin, oral ketoconazole or oral itraconazole)
     change: 30 mg once daily
   - when: CrCl <15 mL/min
     change: Not recommended
@@ -20,5 +20,5 @@ cautions:
 sources: [label-savaysa-2025, ash-vte-treatment-2020]
 verification:
   source: label-savaysa-2025
-  read: not-verified
-  date: 2026-10-23
+  read: fda-label
+  date: 2026-10-25

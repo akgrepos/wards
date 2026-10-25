@@ -20,5 +20,5 @@ adjustments:
 sources: [label-pradaxa-2025, acc-aha-af-2023]
 verification:
   source: label-pradaxa-2025
-  read: not-verified
-  date: 2026-10-23
+  read: fda-label
+  date: 2026-10-25

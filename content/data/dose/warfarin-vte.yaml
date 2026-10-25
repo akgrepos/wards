@@ -17,8 +17,8 @@ adjustments:
 cautions:
   - "No loading dose. INR-guided adjustment."
   - "Mechanical valve targets: see the card (aortic 2.5 without risk factors, 3.0 with risk factors, mitral 3.0)."
-sources: [label-warfarin-2025, chest-vte-2021, acc-aha-af-2023, acc-aha-valvular-2020]
+sources: [label-warfarin-2025, chest-vte-2021, chest-vte-2012, acc-aha-af-2023, acc-aha-valvular-2020]
 verification:
   source: label-warfarin-2025
-  read: not-verified
-  date: 2026-10-23
+  read: fda-label
+  date: 2026-10-25

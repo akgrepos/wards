@@ -20,5 +20,5 @@ cautions:
 sources: [label-lovenox-2026, chest-vte-2021, ash-vte-pregnancy-2018, acc-aha-valvular-2020]
 verification:
   source: label-lovenox-2026
-  read: not-verified
-  date: 2026-10-23
+  read: fda-label
+  date: 2026-10-25
