@@ -1,6 +1,7 @@
 drug: metronidazole
 drug_name: Metronidazole
-indication: Anaerobic coverage in intra-abdominal infection (with a cephalosporin or fluoroquinolone)
+indication: Anaerobic coverage in intra-abdominal infection
+indication_detail: Anaerobic coverage in intra-abdominal infection, given with a cephalosporin or fluoroquinolone.
 population: Adults
 route: IV or PO
 amount: "500"

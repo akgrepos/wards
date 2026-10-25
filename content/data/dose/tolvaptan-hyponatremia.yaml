@@ -1,7 +1,8 @@
 drug: tolvaptan
 drug_name: Tolvaptan
 brand: Samsca
-indication: Euvolemic or hypervolemic hyponatremia (SIADH, heart failure) with Na⁺ <125 mEq/L, or symptomatic and not corrected by fluid restriction
+indication: Euvolemic or hypervolemic hyponatremia
+indication_detail: Euvolemic or hypervolemic hyponatremia (SIADH, heart failure) with Na⁺ <125 mEq/L, or symptomatic and not corrected by fluid restriction.
 population: Adults
 route: PO
 amount: "15"

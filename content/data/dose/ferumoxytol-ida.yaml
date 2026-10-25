@@ -1,7 +1,8 @@
 drug: ferumoxytol
 drug_name: Ferumoxytol
 brand: Feraheme
-indication: Iron deficiency anemia, intolerance of or inadequate response to oral iron
+indication: Iron deficiency anemia
+indication_detail: Iron deficiency anemia with intolerance of or inadequate response to oral iron.
 population: Adults
 route: IV
 amount: "510"

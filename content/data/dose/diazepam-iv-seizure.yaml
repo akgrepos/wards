@@ -1,6 +1,7 @@
 drug: diazepam
 drug_name: Diazepam
-indication: Alcohol withdrawal seizure (status epilepticus dosing)
+indication: Alcohol withdrawal seizure
+indication_detail: Alcohol withdrawal seizure, at status epilepticus dosing.
 population: Adults
 route: IV
 amount: 5–10

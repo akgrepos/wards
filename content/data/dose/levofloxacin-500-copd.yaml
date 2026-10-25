@@ -1,6 +1,7 @@
 drug: levofloxacin
 drug_name: Levofloxacin
-indication: COPD exacerbation, selected patients (e.g. failure of first-line antibiotics)
+indication: COPD exacerbation
+indication_detail: COPD exacerbation in selected patients, for example failure of first-line antibiotics.
 population: Adults
 route: PO or IV
 amount: "500"

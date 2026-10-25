@@ -1,7 +1,8 @@
 drug: methylnaltrexone
 drug_name: Methylnaltrexone
 brand: Relistor
-indication: "Opioid-induced constipation in advanced illness or pain from active cancer needing opioid dose escalation for palliative care, when laxatives have not worked"
+indication: "Opioid-induced constipation"
+indication_detail: Opioid-induced constipation in advanced illness or pain from active cancer needing opioid dose escalation for palliative care, when laxatives have not worked.
 population: Adults with advanced illness receiving palliative care
 route: SC
 amount: "12"

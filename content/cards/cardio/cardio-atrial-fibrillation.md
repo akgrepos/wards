@@ -7,7 +7,7 @@ title: Atrial Fibrillation
 aliases: [AF, AFib, A-fib, atrial fib, AF with RVR, rapid ventricular response, RVR, irregularly irregular, CHA2DS2-VASc, CHADS-VASc, CHA2DS2-VA, cardioversion, DCCV, rate control, rhythm control]
 definition: "Supraventricular tachyarrhythmia with uncoordinated atrial activation: irregularly irregular R-R intervals without distinct P waves, documented on ECG (ESC: at least 30 seconds, or a full 12-lead ECG). ^[acc-aha-af-2023, esc-af-2024]"
 based_on: [acc-aha-af-2023, esc-af-2024]
-checked: { date: 2026-10-20, by: owner, scope: "owner review", fingerprint: "0ba6060ed5964f58", carried: "2026-10-24: Dose sheets now take the drug-wide warnings from drug records (stage 4b). Doses and numbers on the card are unchanged." }
+checked: { date: 2026-10-20, by: owner, scope: "owner review", fingerprint: "ab1cbaa9b118180c", carried: "2026-10-24: Dose row titles shortened to the indication only. Doses and numbers unchanged, the removed wording is kept in the longer indication text." }
 related:
   differential: []
   conditions: [cardio-adhf, cardio-nste-acs]

@@ -1,7 +1,8 @@
 drug: hydromorphone
 drug_name: Hydromorphone
 brand: Dilaudid
-indication: Moderate to severe acute pain, opioid-naive
+indication: Moderate to severe acute pain
+indication_detail: Moderate to severe acute pain in opioid-naive patients.
 population: Opioid-naive adults
 route: PO
 amount: 2–4

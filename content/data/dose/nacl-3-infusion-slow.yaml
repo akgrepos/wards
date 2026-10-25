@@ -1,6 +1,7 @@
 drug: sodium-chloride-3
 drug_name: Sodium chloride 3% (hypertonic saline)
-indication: Chronic hyponatremia with moderate symptoms (e.g. nausea, confusion), continuous infusion
+indication: Chronic symptomatic hyponatremia, infusion
+indication_detail: Chronic hyponatremia with moderate symptoms (for example nausea or confusion), given as a continuous infusion.
 population: Adults
 route: IV
 amount: "1–1.5"

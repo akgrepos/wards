@@ -1,6 +1,7 @@
 drug: vancomycin
 drug_name: Vancomycin
-indication: Suspected or proven MRSA infection (pneumonia, skin infection, urinary or bloodstream source)
+indication: Suspected or proven MRSA infection
+indication_detail: Suspected or proven MRSA infection, including pneumonia, skin infection, urinary or bloodstream source.
 population: Adults
 route: IV
 amount: 15–20

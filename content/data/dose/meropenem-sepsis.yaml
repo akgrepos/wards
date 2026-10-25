@@ -1,6 +1,7 @@
 drug: meropenem
 drug_name: Meropenem
-indication: Sepsis or septic shock with risk of resistant gram-negative organisms (e.g. ESBL)
+indication: Sepsis or septic shock
+indication_detail: Sepsis or septic shock with risk of resistant gram-negative organisms, for example ESBL.
 population: Adults
 route: IV
 amount: "1"

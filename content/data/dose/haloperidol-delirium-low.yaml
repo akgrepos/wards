@@ -1,7 +1,8 @@
 drug: haloperidol
 drug_name: Haloperidol
 brand: Haldol
-indication: Delirium with severe agitation or risk of harm after de-escalation has failed (off-label)
+indication: Delirium with severe agitation
+indication_detail: Off-label for delirium with severe agitation or risk of harm after de-escalation has failed.
 population: Older or frail adults on the ward (the ESAIC starting suggestion for older patients). Younger adults may need more
 route: Oral or IM bolus (the guideline gives no route, IV is not approved by the label)
 amount: 0.125–0.25

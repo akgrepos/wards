@@ -7,7 +7,7 @@ title: "DKA and HHS"
 aliases: [DKA, diabetic ketoacidosis, HHS, hyperosmolar hyperglycemic state, HHNK, hyperosmolar nonketotic, hyperglycemic crisis, euglycemic DKA, euDKA, SGLT2 inhibitor DKA, ketoacidosis, insulin drip, insulin infusion, two-bag, beta-hydroxybutyrate, BHB, Diabetic Ketoacidosis and Hyperosmolar Hyperglycemic State, hyperosmolar]
 definition: "Hyperglycemic crises: DKA is hyperglycemia (or known diabetes) with ketosis and metabolic acidosis. HHS is severe hyperglycemia with hyperosmolality without significant ketoacidosis. ^[ada-hyperglycemic-crises-2024]"
 based_on: [ada-hyperglycemic-crises-2024, ada-soc-hospital-2026]
-checked: { date: 2026-10-21, by: owner, scope: "owner review", fingerprint: "33f17c189b658501", carried: "2026-10-24: Dose sheets now take the drug-wide warnings from drug records (stage 4b). Doses and numbers on the card are unchanged." }
+checked: { date: 2026-10-21, by: owner, scope: "owner review", fingerprint: "765160443e66dbba", carried: "2026-10-24: Dose row titles shortened to the indication only. Doses and numbers unchanged, the removed wording is kept in the longer indication text." }
 related:
   differential: []
   conditions: [endo-inpatient-hyperglycemia, crit-sepsis, renal-hypokalemia, renal-iv-fluids, renal-electrolyte-repletion]

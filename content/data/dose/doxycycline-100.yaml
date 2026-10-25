@@ -1,6 +1,7 @@
 drug: doxycycline
 drug_name: Doxycycline
-indication: Community-acquired pneumonia (with a β-lactam, or alone in healthy outpatients). MRSA skin infection. COPD exacerbation
+indication: CAP, MRSA skin infection, COPD exacerbation
+indication_detail: Community-acquired pneumonia, given with a β-lactam or alone in healthy outpatients. Also MRSA skin infection and COPD exacerbation.
 population: Adults
 route: PO or IV
 amount: "100"

@@ -1,7 +1,8 @@
 drug: olanzapine
 drug_name: Olanzapine
 brand: Zyprexa IntraMuscular
-indication: Agitation associated with schizophrenia or bipolar I mania. Used off-label for other agitation when oral medication is refused
+indication: Agitation in schizophrenia or bipolar I mania
+indication_detail: Agitation associated with schizophrenia or bipolar I mania. Also used off-label for other agitation when oral medication is refused.
 population: Adults
 route: IM
 amount: 10

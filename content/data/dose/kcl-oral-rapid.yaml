@@ -1,6 +1,7 @@
 drug: potassium-chloride
 drug_name: Potassium chloride
-indication: Hypokalemia with K⁺ <3.0 mEq/L, gut working
+indication: Hypokalemia, rapid oral replacement
+indication_detail: Hypokalemia with K⁺ <3.0 mEq/L and a working gut.
 population: Adults
 route: PO
 amount: "40"

@@ -1,7 +1,8 @@
 drug: esomeprazole
 drug_name: Esomeprazole
 brand: Nexium IV
-indication: Risk reduction of rebleeding of gastric or duodenal ulcers after therapeutic endoscopy
+indication: Ulcer rebleeding risk reduction
+indication_detail: Risk reduction of rebleeding of gastric or duodenal ulcers after therapeutic endoscopy.
 population: Adults
 route: IV
 amount: "80"

@@ -1,6 +1,7 @@
 drug: potassium-phosphates
 drug_name: Potassium phosphates
-indication: "Hypophosphatemia, serum phosphorus 1.8–2.4 mg/dL"
+indication: "Mild hypophosphatemia"
+indication_detail: Hypophosphatemia, serum phosphorus 1.8–2.4 mg/dL.
 population: Adults
 route: IV
 amount: "0.16–0.31"

@@ -1,7 +1,8 @@
 drug: erythromycin
 drug_name: Erythromycin
 brand: Erythrocin lactobionate
-indication: Before endoscopy for suspected upper gastrointestinal bleeding (prokinetic to clear blood and clot from the stomach)
+indication: Upper gastrointestinal bleeding, pre-endoscopy
+indication_detail: Before endoscopy for suspected upper gastrointestinal bleeding, as a prokinetic to clear blood and clot from the stomach.
 population: Adults
 route: IV
 amount: "250"

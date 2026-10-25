@@ -1,7 +1,8 @@
 drug: acetaminophen
 drug_name: Acetaminophen
 brand: Tylenol
-indication: Mild to moderate pain, or as part of multimodal analgesia
+indication: Mild to moderate pain
+indication_detail: Mild to moderate pain, or as part of multimodal analgesia.
 population: Adults
 route: PO
 amount: 650–1000

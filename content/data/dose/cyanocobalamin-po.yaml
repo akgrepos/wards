@@ -1,6 +1,7 @@
 drug: cyanocobalamin
 drug_name: Cyanocobalamin
-indication: Vitamin B12 deficiency without neurologic symptoms, tolerating oral therapy
+indication: Vitamin B12 deficiency without neurologic symptoms
+indication_detail: Vitamin B12 deficiency without neurologic symptoms, when oral therapy is tolerated.
 population: Adults
 route: PO
 amount: "1,000–2,000"

@@ -5,7 +5,7 @@ variant: protocol
 system: hosp
 title: "Acute Pain"
 aliases: [pain management, acute pain, analgesia, multimodal analgesia, opioid conversion, opioid equivalents, equianalgesic, morphine milligram equivalents, MME, opioid rotation, opioid switching, opioid-naive, opioid-tolerant, PCA, patient-controlled analgesia, morphine, hydromorphone, Dilaudid, oxycodone, fentanyl, methadone, ketorolac, Toradol, acetaminophen, Tylenol, ibuprofen, celecoxib, NSAID, naloxone, Narcan, opioid-induced constipation, bowel regimen, senna, MiraLAX, methylnaltrexone, respiratory depression, sedation scale, POSS, breakthrough pain, postoperative pain, cross-tolerance]
-checked: { date: 2026-10-22, by: opus, scope: "doses and numbers", fingerprint: "1e6547d03ed4b0f4", carried: "2026-10-24: Dose sheets now take the drug-wide warnings from drug records (stage 4b). Doses and numbers on the card are unchanged." }
+checked: { date: 2026-10-22, by: opus, scope: "doses and numbers", fingerprint: "6a697a4718c2a8e6", carried: "2026-10-24: Dose row titles shortened to the indication only. Doses and numbers unchanged, the removed wording is kept in the longer indication text." }
 contents_sub: [dosing]
 related:
   conditions: [neuro-delirium, renal-aki, gi-upper-gi-bleeding, heme-anticoagulation-management]

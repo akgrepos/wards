@@ -1,6 +1,7 @@
 drug: ceftaroline
 drug_name: Ceftaroline
-indication: Community-acquired pneumonia (inpatient β-lactam). Skin infection with MRSA risk
+indication: Community-acquired pneumonia, skin infection
+indication_detail: Community-acquired pneumonia in inpatients, as the β-lactam, and skin infection with MRSA risk.
 population: Adults
 route: IV
 amount: "600"

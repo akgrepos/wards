@@ -1,7 +1,8 @@
 drug: metoprolol
 drug_name: Metoprolol tartrate
 brand: Lopressor
-indication: Acute rate control of AF with rapid ventricular response, LVEF >40%
+indication: Acute rate control of AF
+indication_detail: Acute rate control of AF with rapid ventricular response, LVEF >40%.
 population: Adults
 route: IV
 amount: "2.5–5"

@@ -1,7 +1,8 @@
 drug: methylprednisolone
 drug_name: Methylprednisolone
 brand: Solu-Medrol
-indication: COPD exacerbation, when oral steroids are not possible
+indication: COPD exacerbation
+indication_detail: COPD exacerbation, when oral steroids are not possible.
 population: Adults
 route: IV
 amount: "40"

@@ -1,7 +1,8 @@
 drug: celecoxib
 drug_name: Celecoxib
 brand: Celebrex
-indication: Acute pain, or as part of multimodal analgesia (COX-2 selective NSAID)
+indication: Acute pain
+indication_detail: Acute pain, or as part of multimodal analgesia, using a COX-2 selective NSAID.
 population: Adults without contraindication to NSAIDs
 route: PO
 amount: "400"

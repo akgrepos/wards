@@ -1,7 +1,8 @@
 drug: fondaparinux
 drug_name: Fondaparinux
 brand: Arixtra
-indication: NSTE-ACS anticoagulation, especially when managed medically
+indication: NSTE-ACS anticoagulation
+indication_detail: NSTE-ACS anticoagulation, especially when managed medically.
 population: Adults
 route: SC
 amount: "2.5"

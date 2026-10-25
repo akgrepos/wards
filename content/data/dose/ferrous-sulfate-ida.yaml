@@ -1,6 +1,7 @@
 drug: ferrous-sulfate
 drug_name: Ferrous sulfate
-indication: Iron deficiency anemia, oral replacement
+indication: Iron deficiency anemia
+indication_detail: Oral replacement for iron deficiency anemia.
 population: Adults
 route: PO
 amount: "325"

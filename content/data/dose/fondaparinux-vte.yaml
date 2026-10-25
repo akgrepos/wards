@@ -1,7 +1,8 @@
 drug: fondaparinux
 drug_name: Fondaparinux
 brand: Arixtra
-indication: Acute DVT or PE treatment. Preferred parenteral agent with a history of HIT
+indication: Acute DVT or PE treatment
+indication_detail: Acute DVT or PE treatment. Preferred parenteral agent with a history of HIT.
 population: Adults
 route: SC
 amount: "7.5"

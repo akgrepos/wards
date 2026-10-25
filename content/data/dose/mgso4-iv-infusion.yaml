@@ -1,6 +1,7 @@
 drug: magnesium-sulfate
 drug_name: Magnesium sulfate
-indication: Severe symptomatic hypomagnesemia, hemodynamically stable, after the initial dose
+indication: Severe symptomatic hypomagnesemia
+indication_detail: Severe symptomatic hypomagnesemia in a hemodynamically stable patient, after the initial dose.
 population: Adults
 route: IV
 amount: "4–8"

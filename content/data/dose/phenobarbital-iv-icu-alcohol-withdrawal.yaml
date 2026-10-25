@@ -1,6 +1,7 @@
 drug: phenobarbital
 drug_name: Phenobarbital
-indication: Alcohol withdrawal in the ICU, symptom-triggered (off-label, unapproved product)
+indication: Alcohol withdrawal in the ICU
+indication_detail: Off-label, unapproved product, for symptom-triggered treatment of alcohol withdrawal in the ICU.
 population: Adults in the ICU
 route: IV
 amount: 130

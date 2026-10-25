@@ -7,7 +7,7 @@ title: Hypokalemia
 aliases: [low potassium, potassium low, K low, hypoK, hypokalaemia]
 definition: "K⁺ <3.5 mEq/L. ^[kardalas-hypokalemia-2018]"
 based_on: [kardalas-hypokalemia-2018, asmar-hypokalemia-2012]
-checked: { date: 2026-10-19, by: owner, scope: "owner review", fingerprint: "5306c414584c280a", carried: "2026-10-24: Dose sheets now take the drug-wide warnings from drug records (stage 4b). Doses and numbers on the card are unchanged." }
+checked: { date: 2026-10-19, by: owner, scope: "owner review", fingerprint: "d9a6bb167d2de606", carried: "2026-10-24: Dose row titles shortened to the indication only. Doses and numbers unchanged, the removed wording is kept in the longer indication text." }
 related:
   differential: []
   conditions: [renal-hyperkalemia, renal-hyponatremia]

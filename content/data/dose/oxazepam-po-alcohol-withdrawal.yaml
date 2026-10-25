@@ -1,6 +1,7 @@
 drug: oxazepam
 drug_name: Oxazepam
-indication: Alcohol withdrawal, especially in significant liver disease (oral)
+indication: Alcohol withdrawal
+indication_detail: Alcohol withdrawal, oral, especially in significant liver disease.
 population: Adults who can take oral medication
 route: PO
 amount: 15–30

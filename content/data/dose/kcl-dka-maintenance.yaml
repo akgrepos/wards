@@ -1,6 +1,7 @@
 drug: potassium-chloride
 drug_name: Potassium chloride
-indication: DKA or HHS with K⁺ 3.5–5.0 mEq/L
+indication: DKA or HHS, potassium maintenance
+indication_detail: DKA or HHS with K⁺ 3.5–5.0 mEq/L.
 population: Adults
 route: IV
 amount: 20–30

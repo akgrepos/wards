@@ -1,7 +1,8 @@
 drug: dexmedetomidine
 drug_name: Dexmedetomidine
 brand: Precedex
-indication: Sedation of mechanically ventilated adults with agitation, as the preferred sedative over benzodiazepines (delirium is not a labeled indication)
+indication: Sedation of ventilated adults with agitation
+indication_detail: Sedation of mechanically ventilated adults with agitation, as the preferred sedative over benzodiazepines. Delirium is not a labeled indication.
 population: Adults in the ICU
 route: IV infusion
 amount: 0.2–0.7

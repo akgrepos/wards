@@ -1,7 +1,8 @@
 drug: metolazone
 drug_name: Metolazone
 brand: Zaroxolyn
-indication: Diuretic resistance in acute decompensated heart failure, added to a loop diuretic
+indication: Diuretic resistance in acute decompensated heart failure
+indication_detail: Diuretic resistance in acute decompensated heart failure, added to a loop diuretic.
 population: Adults
 route: PO
 amount: "2.5–5"

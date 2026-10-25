@@ -1,6 +1,7 @@
 drug: piperacillin-tazobactam
 drug_name: Piperacillin-tazobactam
-indication: Severe or necrotizing skin and soft tissue infection (with vancomycin)
+indication: Severe or necrotizing skin and soft tissue infection
+indication_detail: Severe or necrotizing skin and soft tissue infection, given with vancomycin.
 population: Adults
 route: IV
 amount: "3.375"

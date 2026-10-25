@@ -1,6 +1,7 @@
 drug: dextrose
 drug_name: Dextrose 5% in water (D5W)
-indication: Overcorrection of chronic hyponatremia (re-lowering serum Na⁺)
+indication: Overcorrection of chronic hyponatremia
+indication_detail: Overcorrection of chronic hyponatremia, to re-lower serum Na⁺.
 population: Adults
 route: IV
 amount: "3"

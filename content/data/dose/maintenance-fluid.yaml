@@ -1,6 +1,7 @@
 drug: maintenance-iv-fluid
 drug_name: Maintenance IV fluid (water)
-indication: Routine maintenance when oral or enteral intake is inadequate
+indication: Routine maintenance
+indication_detail: Routine maintenance when oral or enteral intake is inadequate.
 population: Adults
 route: IV
 amount: "25–30"

@@ -1,6 +1,7 @@
 drug: cefepime
 drug_name: Cefepime
-indication: Sepsis or septic shock needing antipseudomonal coverage
+indication: Sepsis or septic shock
+indication_detail: Sepsis or septic shock needing antipseudomonal coverage.
 population: Adults
 route: IV
 amount: "2"

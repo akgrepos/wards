@@ -1,7 +1,8 @@
 drug: clopidogrel
 drug_name: Clopidogrel
 brand: Plavix
-indication: Antiplatelet maintenance (ACS with aspirin. Or with an oral anticoagulant)
+indication: Antiplatelet maintenance
+indication_detail: Antiplatelet maintenance in ACS with aspirin, or with an oral anticoagulant.
 population: Adults
 route: PO
 amount: "75"

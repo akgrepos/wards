@@ -1,6 +1,7 @@
 drug: dicloxacillin
 drug_name: Dicloxacillin
-indication: Mild cellulitis (streptococci and MSSA)
+indication: Mild cellulitis
+indication_detail: Mild cellulitis, streptococci and MSSA.
 population: Adults
 route: PO
 amount: "500"

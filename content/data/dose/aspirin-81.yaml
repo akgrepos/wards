@@ -1,6 +1,7 @@
 drug: aspirin
 drug_name: Aspirin
-indication: Antiplatelet maintenance after ACS, with a P2Y12 inhibitor
+indication: Antiplatelet maintenance after ACS
+indication_detail: Antiplatelet maintenance after ACS, given with a P2Y12 inhibitor.
 population: Adults
 route: PO
 amount: "81"

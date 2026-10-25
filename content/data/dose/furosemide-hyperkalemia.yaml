@@ -1,6 +1,7 @@
 drug: furosemide
 drug_name: Furosemide
-indication: Hyperkalemia in patients who make urine, especially with volume overload
+indication: Hyperkalemia
+indication_detail: Hyperkalemia in patients who make urine, especially with volume overload.
 population: Adults
 route: IV
 amount: 40–80

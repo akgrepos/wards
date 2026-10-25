@@ -1,7 +1,8 @@
 drug: ferric-derisomaltose
 drug_name: Ferric derisomaltose
 brand: Monoferric
-indication: Iron deficiency anemia, intolerance of or inadequate response to oral iron
+indication: Iron deficiency anemia
+indication_detail: Iron deficiency anemia with intolerance of or inadequate response to oral iron.
 population: "Adults, weight 50 kg or more"
 route: IV
 amount: "1,000"

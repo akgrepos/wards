@@ -1,6 +1,7 @@
 drug: meropenem
 drug_name: Meropenem
-indication: Healthcare-associated meningitis, or meningitis with a resistant gram-negative organism
+indication: Healthcare-associated or resistant meningitis
+indication_detail: Healthcare-associated meningitis, or meningitis with a resistant gram-negative organism.
 population: Adults
 route: IV
 amount: "2"

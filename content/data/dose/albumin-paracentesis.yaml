@@ -1,6 +1,7 @@
 drug: albumin
 drug_name: Albumin 25%
-indication: Large-volume paracentesis in cirrhosis (more than 5 L removed)
+indication: Large-volume paracentesis in cirrhosis
+indication_detail: Large-volume paracentesis in cirrhosis, with more than 5 L removed.
 population: Adults
 route: IV
 amount: "6–8"

@@ -1,6 +1,7 @@
 drug: albuterol
 drug_name: Albuterol (nebulized)
-indication: Adjunct for moderate or severe hyperkalemia
+indication: Moderate or severe hyperkalemia
+indication_detail: Adjunct for moderate or severe hyperkalemia.
 population: Adults
 route: nebulized
 amount: 10–20

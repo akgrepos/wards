@@ -1,6 +1,7 @@
 drug: ampicillin
 drug_name: Ampicillin
-indication: Bacterial meningitis with Listeria risk (age over 50 or impaired cellular immunity)
+indication: Bacterial meningitis with Listeria risk
+indication_detail: Bacterial meningitis with Listeria risk, meaning age over 50 or impaired cellular immunity.
 population: Adults
 route: IV
 amount: "2"

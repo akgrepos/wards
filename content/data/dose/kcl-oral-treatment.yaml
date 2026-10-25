@@ -1,7 +1,7 @@
 drug: potassium-chloride
 drug_name: Potassium chloride
 brand: "Klor-Con, K-Tab (extended-release tablets). Oral solution or powder"
-indication: Hypokalemia (treatment)
+indication: Hypokalemia, treatment
 population: Adults
 route: PO
 amount: "20–40"

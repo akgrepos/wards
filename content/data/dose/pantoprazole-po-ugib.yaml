@@ -1,7 +1,8 @@
 drug: pantoprazole
 drug_name: Pantoprazole
 brand: Protonix
-indication: After the 72-hour high-dose phase for a bleeding ulcer with high-risk stigmata treated endoscopically
+indication: Bleeding ulcer after the 72-hour phase
+indication_detail: After the 72-hour high-dose phase for a bleeding ulcer with high-risk stigmata treated endoscopically.
 population: Adults
 route: PO
 amount: "40"

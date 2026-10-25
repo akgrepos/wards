@@ -1,6 +1,7 @@
 drug: argatroban
 drug_name: Argatroban
-indication: Heparin-induced thrombocytopenia (with or without thrombosis)
+indication: Heparin-induced thrombocytopenia
+indication_detail: Heparin-induced thrombocytopenia, with or without thrombosis.
 population: Adults
 route: IV
 amount: "2"

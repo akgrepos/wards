@@ -1,6 +1,7 @@
 drug: insulin-regular
 drug_name: Regular insulin
-indication: Moderate or severe hyperkalemia (shift potassium into cells)
+indication: Moderate or severe hyperkalemia
+indication_detail: Moderate or severe hyperkalemia, to shift potassium into cells.
 population: Adults
 route: IV
 amount: 10

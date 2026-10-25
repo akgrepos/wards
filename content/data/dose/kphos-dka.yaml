@@ -1,6 +1,7 @@
 drug: potassium-phosphates
 drug_name: Potassium phosphate
-indication: DKA or HHS with severe hypophosphatemia and muscle weakness or respiratory or cardiac compromise
+indication: DKA or HHS with severe hypophosphatemia
+indication_detail: DKA or HHS with severe hypophosphatemia and muscle weakness or respiratory or cardiac compromise.
 population: Adults
 route: IV
 amount: 20–30

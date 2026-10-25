@@ -1,6 +1,7 @@
 drug: potassium-chloride
 drug_name: Potassium chloride
-indication: DKA or HHS with K⁺ <3.5 mEq/L, before insulin
+indication: DKA or HHS with hypokalemia
+indication_detail: DKA or HHS with K⁺ <3.5 mEq/L, given before insulin.
 population: Adults
 route: IV
 amount: "10"

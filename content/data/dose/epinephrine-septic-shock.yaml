@@ -1,7 +1,8 @@
 drug: epinephrine
 drug_name: Epinephrine
 brand: Adrenalin
-indication: Septic shock, added when MAP is inadequate on norepinephrine plus vasopressin
+indication: Septic shock
+indication_detail: Septic shock, added when MAP is inadequate on norepinephrine plus vasopressin.
 population: Adults
 route: IV
 amount: 0.05–2

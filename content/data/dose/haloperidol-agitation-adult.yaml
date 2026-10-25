@@ -1,7 +1,8 @@
 drug: haloperidol
 drug_name: Haloperidol
 brand: Haldol
-indication: Acute agitation with danger or severe distress after de-escalation has failed (labeled only for acutely agitated schizophrenia, otherwise off-label)
+indication: Acute agitation
+indication_detail: Acute agitation with danger or severe distress after de-escalation has failed. Labeled only for acutely agitated schizophrenia, otherwise off-label.
 population: Adults without dementia, parkinsonism or QTc prolongation
 route: IM or oral
 amount: 2–5

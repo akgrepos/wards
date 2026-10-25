@@ -1,6 +1,7 @@
 drug: insulin-total-daily-dose
 drug_name: Insulin, total daily dose (basal-bolus)
-indication: Starting scheduled insulin in hospitalized adults who are eating (noncritical care)
+indication: Starting scheduled insulin, eating patients
+indication_detail: Starting scheduled insulin in hospitalized adults who are eating, in noncritical care.
 population: Adults
 route: SC
 amount: 0.3–0.6

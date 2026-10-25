@@ -1,6 +1,7 @@
 drug: albuterol
 drug_name: Albuterol (nebulized)
-indication: COPD exacerbation, initial bronchodilator (with or without ipratropium)
+indication: COPD exacerbation
+indication_detail: Initial bronchodilator for a COPD exacerbation, with or without ipratropium.
 population: Adults
 route: nebulized
 amount: "2.5"

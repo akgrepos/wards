@@ -1,6 +1,7 @@
 drug: dextrose
 drug_name: Dextrose 50%
-indication: Hypoglycemia, unable to take oral glucose, with IV access
+indication: Hypoglycemia, unable to take oral glucose
+indication_detail: Hypoglycemia in a patient unable to take oral glucose, with IV access.
 population: Adults
 route: IV
 amount: 10–25

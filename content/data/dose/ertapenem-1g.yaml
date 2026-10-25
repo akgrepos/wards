@@ -1,6 +1,7 @@
 drug: ertapenem
 drug_name: Ertapenem
-indication: Complicated UTI or pyelonephritis with an ESBL-producing or other resistant organism
+indication: Complicated UTI or pyelonephritis
+indication_detail: Complicated UTI or pyelonephritis with an ESBL-producing or other resistant organism.
 population: Adults
 route: IV
 amount: "1"

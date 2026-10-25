@@ -1,6 +1,7 @@
 drug: cefpodoxime
 drug_name: Cefpodoxime
-indication: Community-acquired pneumonia, outpatient with comorbidities (with a macrolide or doxycycline)
+indication: Community-acquired pneumonia with comorbidities
+indication_detail: Community-acquired pneumonia, outpatient, with comorbidities, given with a macrolide or doxycycline.
 population: Adults
 route: PO
 amount: "200"

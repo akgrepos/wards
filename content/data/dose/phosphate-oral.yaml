@@ -1,7 +1,8 @@
 drug: sodium-potassium-phosphates
 drug_name: Sodium and potassium phosphates
 brand: "K-Phos Neutral, Phospha 250 Neutral"
-indication: Hypophosphatemia, able to take oral
+indication: Hypophosphatemia, oral
+indication_detail: Hypophosphatemia in a patient able to take oral.
 population: Adults
 route: PO
 amount: "250–500"

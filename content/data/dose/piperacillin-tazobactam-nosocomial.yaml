@@ -1,7 +1,8 @@
 drug: piperacillin-tazobactam
 drug_name: Piperacillin-tazobactam
 brand: Zosyn
-indication: Hospital-acquired pneumonia, severe or healthcare-associated intra-abdominal infection
+indication: Hospital-acquired pneumonia, intra-abdominal infection
+indication_detail: Hospital-acquired pneumonia, severe or healthcare-associated intra-abdominal infection.
 population: Adults
 route: IV
 amount: "4.5"

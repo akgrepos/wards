@@ -1,6 +1,7 @@
 drug: levofloxacin
 drug_name: Levofloxacin
-indication: Community-acquired pneumonia. Complicated UTI or pyelonephritis
+indication: Community-acquired pneumonia, complicated UTI
+indication_detail: Community-acquired pneumonia, and complicated UTI or pyelonephritis.
 population: Adults
 route: PO or IV
 amount: "750"

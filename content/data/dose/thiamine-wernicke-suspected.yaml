@@ -1,6 +1,7 @@
 drug: thiamine
 drug_name: Thiamine
-indication: Suspected Wernicke encephalopathy (confusion, ataxia, ophthalmoplegia) or high-risk presentation
+indication: Suspected Wernicke encephalopathy
+indication_detail: Suspected Wernicke encephalopathy (confusion, ataxia, ophthalmoplegia) or high-risk presentation.
 population: Adults
 route: IV
 amount: 200–500

@@ -1,7 +1,8 @@
 drug: lorazepam
 drug_name: Lorazepam
 brand: Ativan
-indication: Alcohol withdrawal seizure (status epilepticus dosing)
+indication: Alcohol withdrawal seizure
+indication_detail: Alcohol withdrawal seizure, at status epilepticus dosing.
 population: Adults
 route: IV
 amount: 4

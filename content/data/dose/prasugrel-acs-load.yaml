@@ -1,7 +1,8 @@
 drug: prasugrel
 drug_name: Prasugrel
 brand: Effient
-indication: Acute coronary syndrome managed with PCI, loading dose
+indication: Acute coronary syndrome, loading dose
+indication_detail: Acute coronary syndrome managed with PCI, loading dose.
 population: Adults
 route: PO
 amount: "60"

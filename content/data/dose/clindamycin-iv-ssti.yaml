@@ -1,6 +1,7 @@
 drug: clindamycin
 drug_name: Clindamycin
-indication: Moderate cellulitis with serious β-lactam allergy
+indication: Moderate cellulitis
+indication_detail: Moderate cellulitis with serious β-lactam allergy.
 population: Adults
 route: IV
 amount: "600"

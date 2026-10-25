@@ -1,6 +1,7 @@
 drug: phenobarbital
 drug_name: Phenobarbital
-indication: Severe or high-risk alcohol withdrawal as a single IV dose added to symptom-triggered benzodiazepines (off-label, unapproved product)
+indication: Severe or high-risk alcohol withdrawal, load
+indication_detail: Off-label, unapproved product, as a single IV dose for severe or high-risk alcohol withdrawal, added to symptom-triggered benzodiazepines.
 population: Adults in a closely monitored setting (ICU or equivalent). The trial enrolled ages 18–65
 route: IV
 amount: 10

@@ -1,6 +1,7 @@
 drug: prednisone
 drug_name: Prednisone
-indication: Cellulitis, adjunct to antibiotics, adults without diabetes
+indication: Cellulitis
+indication_detail: Cellulitis, as an adjunct to antibiotics, in adults without diabetes.
 population: Adults
 route: PO
 amount: "40"

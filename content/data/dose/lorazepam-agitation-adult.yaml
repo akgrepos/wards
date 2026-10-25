@@ -1,7 +1,8 @@
 drug: lorazepam
 drug_name: Lorazepam
 brand: Ativan
-indication: Agitation from alcohol or benzodiazepine withdrawal, stimulant intoxication or undifferentiated agitation. Added to an antipsychotic when it is not enough (off-label)
+indication: Agitation
+indication_detail: Off-label for agitation from alcohol or benzodiazepine withdrawal, stimulant intoxication or undifferentiated agitation, and as an addition to an antipsychotic when it is not enough.
 population: Adults
 route: oral, IM or IV
 amount: 1–2

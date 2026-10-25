@@ -1,6 +1,7 @@
 drug: sodium-bicarbonate
 drug_name: Sodium bicarbonate 8.4%
-indication: DKA with pH <7.0
+indication: DKA with severe acidosis
+indication_detail: DKA with pH <7.0.
 population: Adults
 route: IV
 amount: "100"

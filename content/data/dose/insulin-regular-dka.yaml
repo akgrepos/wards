@@ -1,7 +1,8 @@
 drug: insulin-regular
 drug_name: Regular insulin
 brand: Humulin R, Novolin R
-indication: DKA or mixed DKA/HHS
+indication: DKA or mixed DKA/HHS, infusion
+indication_detail: DKA or mixed DKA/HHS.
 population: Adults
 route: IV
 amount: "0.1"

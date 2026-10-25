@@ -1,7 +1,8 @@
 drug: naloxone
 drug_name: Naloxone
 brand: Narcan
-indication: Known or suspected opioid overdose with respiratory failure
+indication: Opioid overdose with respiratory failure
+indication_detail: Known or suspected opioid overdose with respiratory failure.
 population: Adults
 route: IV
 amount: 0.4–2

@@ -1,7 +1,8 @@
 drug: fondaparinux
 drug_name: Fondaparinux
 brand: Arixtra
-indication: VTE prophylaxis in hospitalized adults (off-label in medical patients, labeled after surgery)
+indication: VTE prophylaxis in hospitalized adults
+indication_detail: VTE prophylaxis in hospitalized adults, off-label in medical patients and labeled after surgery.
 population: Adults
 route: SC
 amount: "2.5"

@@ -1,7 +1,8 @@
 drug: dabigatran
 drug_name: Dabigatran
 brand: Pradaxa
-indication: Acute DVT or PE treatment, after 5–10 days of parenteral anticoagulation
+indication: Acute DVT or PE treatment
+indication_detail: Acute DVT or PE treatment, after 5–10 days of parenteral anticoagulation.
 population: Adults
 route: PO
 amount: "150"

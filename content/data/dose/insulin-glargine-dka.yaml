@@ -1,7 +1,8 @@
 drug: insulin-glargine
 drug_name: Insulin glargine
 brand: Lantus
-indication: DKA or HHS, low-dose basal insulin alongside the IV infusion (optional)
+indication: DKA or HHS, basal insulin
+indication_detail: Optional low-dose basal insulin alongside the IV infusion in DKA or HHS.
 population: Adults
 route: SC
 amount: 0.15–0.3

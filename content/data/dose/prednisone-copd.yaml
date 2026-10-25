@@ -1,6 +1,7 @@
 drug: prednisone
 drug_name: Prednisone
-indication: COPD exacerbation, moderate or severe
+indication: COPD exacerbation
+indication_detail: Moderate or severe COPD exacerbation.
 population: Adults
 route: PO
 amount: "40"

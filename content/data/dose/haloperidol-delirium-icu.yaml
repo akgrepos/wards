@@ -1,7 +1,8 @@
 drug: haloperidol
 drug_name: Haloperidol
 brand: Haldol
-indication: Delirium with distressing agitation in the ICU (off-label, trial dose)
+indication: Delirium with agitation in the ICU
+indication_detail: Off-label trial dose for delirium with distressing agitation in the ICU.
 population: Adults in the ICU with ECG monitoring
 route: IV (not approved by the label, monitor the ECG)
 amount: "2.5"

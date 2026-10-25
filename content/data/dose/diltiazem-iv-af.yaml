@@ -1,7 +1,8 @@
 drug: diltiazem
 drug_name: Diltiazem
 brand: Cardizem
-indication: Acute rate control of AF or atrial flutter with rapid ventricular response, LVEF >40%
+indication: Acute rate control of AF or flutter
+indication_detail: Acute rate control of AF or atrial flutter with rapid ventricular response, LVEF >40%.
 population: Adults
 route: IV
 amount: "0.25"

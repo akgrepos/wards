@@ -1,7 +1,8 @@
 drug: edoxaban
 drug_name: Edoxaban
 brand: Savaysa
-indication: Acute DVT or PE treatment, after 5–10 days of parenteral anticoagulation
+indication: Acute DVT or PE treatment
+indication_detail: Acute DVT or PE treatment, after 5–10 days of parenteral anticoagulation.
 population: Adults
 route: PO
 amount: "60"

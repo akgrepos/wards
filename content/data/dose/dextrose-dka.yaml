@@ -1,6 +1,7 @@
 drug: dextrose
 drug_name: Dextrose 5–10%
-indication: DKA or HHS once glucose falls, or euglycemic DKA, so insulin can continue
+indication: DKA or HHS
+indication_detail: DKA or HHS once glucose falls, or euglycemic DKA, so insulin can continue.
 population: Adults
 route: IV
 amount: 5–10

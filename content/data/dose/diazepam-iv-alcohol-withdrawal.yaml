@@ -1,6 +1,7 @@
 drug: diazepam
 drug_name: Diazepam
-indication: Alcohol withdrawal with delirium, severe agitation or inability to take oral medication
+indication: Alcohol withdrawal, IV
+indication_detail: IV use for alcohol withdrawal with delirium, severe agitation or inability to take oral medication.
 population: Adults on a monitored unit or in the ICU
 route: IV
 amount: 5–10

@@ -7,7 +7,7 @@ title: COPD Exacerbation
 aliases: [AECOPD, acute exacerbation of COPD, COPD flare, emphysema exacerbation, chronic bronchitis exacerbation, hypercapnia, CO2 retainer, DuoNeb, nebs, prednisone burst, GOLD, Rome classification]
 definition: "Worsening dyspnea and/or cough and sputum over up to 14 days in COPD, often with tachypnea or tachycardia, usually from infection or another airway insult. ^[gold-copd-2026]"
 based_on: [gold-copd-2026, ers-ats-copd-exacerbation-2017, ats-nirs-2026]
-checked: { date: 2026-10-21, by: owner, scope: "owner review", fingerprint: "c9eb8f78b3b76ea1", carried: "2026-10-24: Dose sheets now take the drug-wide warnings from drug records (stage 4b). Doses and numbers on the card are unchanged." }
+checked: { date: 2026-10-21, by: owner, scope: "owner review", fingerprint: "cbc1221c08bc4389", carried: "2026-10-24: Dose row titles shortened to the indication only. Doses and numbers unchanged, the removed wording is kept in the longer indication text." }
 related:
   differential: [id-cap, cardio-adhf, pulm-vte-diagnosis]
   conditions: [crit-hypoxemic-respiratory-failure, cardio-atrial-fibrillation, cardio-nste-acs]

@@ -7,7 +7,7 @@ title: Hyperkalemia
 aliases: [high potassium, potassium high, K high, hyperK]
 definition: "Commonly K⁺ ≥5.5 mEq/L. Cutoffs vary by laboratory and by serum vs plasma. ^[kdigo-acute-hyperkalemia-2020]"
 based_on: [ukka-hyperkalaemia-2026, kdigo-acute-hyperkalemia-2020]
-checked: { date: 2026-10-24, by: opus, scope: "doses and numbers", fingerprint: "edb0d97a73aa22e4", carried: "2026-10-24: Dose sheets now take the drug-wide warnings from drug records (stage 4b). Doses and numbers on the card are unchanged." }
+checked: { date: 2026-10-24, by: opus, scope: "Sodium polystyrene sulfonate US label lines and lactation line. Doses left not-verified: albuterol-neb-hyperkalemia, calcium-chloride-hyperkalemia, calcium-gluconate-hyperkalemia, dextrose-10-infusion-hyperkalemia, dextrose-50-hyperkalemia, furosemide-hyperkalemia, insulin-regular-hyperkalemia, patiromer-hyperkalemia, szc-hyperkalemia-initial, szc-hyperkalemia-maintenance", fingerprint: "1ecc7b00af65354f" }
 related:
   conditions: [renal-aki]
 emergency_hint: Calcium, insulin-dextrose, remove K⁺
@@ -156,6 +156,10 @@ emergency_hint: Calcium, insulin-dextrose, remove K⁺
 
    - Calcium polystyrene sulfonate: no longer routine for acute hyperkalemia (UK guideline). ^[ukka-hyperkalaemia-2026]
    - Sodium polystyrene sulfonate: slow onset (>4 h), unpredictable effect, intestinal necrosis reported. Not for emergencies. Never with sorbitol. ^[ukka-hyperkalaemia-2026, kdigo-acute-hyperkalemia-2020]
+   - Sodium polystyrene sulfonate, US label: lowers K⁺ over hours to days. Alone it may not correct severe or emergency hyperkalemia. Consider dialysis. ^[label-sodium-polystyrene-sulfonate-2025]
+   - Sodium polystyrene sulfonate, US label: contraindicated with hypokalemia, obstructive bowel disease and in neonates. Use only with normal bowel function. Stop if constipation develops. ^[label-sodium-polystyrene-sulfonate-2025]
+   - Sodium polystyrene sulfonate, US label: GI risk factors are intestinal disease or surgery, hypovolemia, renal failure and prematurity. Caution with sodium load in severe heart failure, severe hypertension or marked edema. ^[label-sodium-polystyrene-sulfonate-2025]
+   - Sodium polystyrene sulfonate, US label: give other oral drugs ≥3 h before or after (6 h with gastroparesis). Give upright (aspiration risk). Never with magnesium hydroxide. Monitor K⁺, Ca²⁺ and Mg²⁺. ^[label-sodium-polystyrene-sulfonate-2025]
    - Non-oliguric, especially with volume overload: IV furosemide. ^[kdigo-acute-hyperkalemia-2020, emcreg-hyperkalemia-2025]
 
    {{dose:furosemide-hyperkalemia}}
@@ -206,9 +210,10 @@ emergency_hint: Calcium, insulin-dextrose, remove K⁺
 - KDIGO 2020: Not advised for emergency use (onset ~7 h). ^[kdigo-acute-hyperkalemia-2020]
 :::
 
-### Special Populations: Digoxin toxicity, hemodialysis
+### Special Populations: Digoxin, hemodialysis, lactation
 - Digoxin toxicity: concern about calcium comes from case reports. Limited retrospective data show no clear harm. ^[ukka-hyperkalaemia-2026]
 - Hemodialysis: 1 mEq/L K⁺ bath only if pre-dialysis K⁺ >8.0 mEq/L, with telemetry and K⁺ every 30 min. Switch to 2 mEq/L once K⁺ <7.0 mEq/L. ^[ukka-hyperkalaemia-2026]
+- Lactation: sodium zirconium cyclosilicate, patiromer and sodium polystyrene sulfonate are not orally absorbed. Unlikely to reach breast milk or harm the breastfed infant. No special precautions. ^[lactmed-sodium-zirconium-cyclosilicate-2023, lactmed-patiromer-2018, lactmed-sodium-polystyrene-sulfonate-2021]
 
 ### Complications: Arrhythmia, treatment side effects
 - Arrhythmia, sudden cardiac death. ^[kdigo-acute-hyperkalemia-2020]

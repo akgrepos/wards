@@ -1,6 +1,7 @@
 drug: calcium-gluconate
 drug_name: Calcium gluconate 10%
-indication: Hyperkalemia with ECG changes (membrane stabilization)
+indication: Hyperkalemia with ECG changes
+indication_detail: Hyperkalemia with ECG changes, for membrane stabilization.
 population: Adults
 route: IV
 amount: 30
