@@ -7,15 +7,19 @@ title: "Acute Coronary Syndrome"
 aliases: [NSTE-ACS, NSTEMI, non-ST-elevation myocardial infarction, unstable angina, UA, ACS, acute coronary syndrome, heart attack, MI, myocardial infarction, type 1 MI, type 2 MI, primary MI, secondary MI, procedure-related MI, myocardial injury, MINOCA, troponin, DAPT, dual antiplatelet therapy, GRACE]
 definition: "Acute myocardial ischemia without persistent ST-segment elevation: NSTEMI with acute myocardial injury (a rise and/or fall of cardiac troponin, at least one value above the sex-specific 99th percentile), unstable angina without it. ^[acc-aha-acs-2025, udmi-2026]"
 based_on: [acc-aha-acs-2025, esc-acs-2023]
-checked: { date: 2026-10-20, by: owner, scope: "owner review", fingerprint: "2196ba08ad25aa54", carried: "2026-10-24: Dose row titles shortened to the indication only. Doses and numbers unchanged, the removed wording is kept in the longer indication text." }
+checked: { date: 2026-10-20, by: owner, scope: "owner review", fingerprint: "c76be1c0791e00f8", carried: "2026-10-25: Format sweep (bullets split, tables to bullets or scale, society names out of text). Numbers, doses, drugs and sources unchanged." }
 related:
-  differential: []
-  conditions: [cardio-atrial-fibrillation, cardio-adhf]
+  differential: [cardio-chest-pain, pulm-vte-diagnosis]
+  conditions: [cardio-atrial-fibrillation, cardio-adhf, cardio-ecg-interpretation, pulm-copd-exacerbation]
   tools: []
 ---
 ## At a Glance
-- 12-lead ECG within 10 minutes. Exclude STEMI and its equivalents (posterior MI), which follow the STEMI pathway. Diffuse ST depression with ST elevation in aVR suggests left main or multivessel ischemia (very high risk). ^[acc-aha-acs-2025, udmi-2026]
-- Serial high-sensitivity troponin (0 and 1–2 h) with a validated algorithm. MI needs a rise and/or fall with at least one value above the sex-specific 99th percentile, plus ischemic symptoms, ECG changes or imaging evidence. ^[aha-acc-chest-pain-2021, udmi-2026]
+- 12-lead ECG within 10 minutes: ^[acc-aha-acs-2025, udmi-2026]
+  - Exclude STEMI and its equivalents (posterior MI), which follow the STEMI pathway.
+  - Diffuse ST depression with ST elevation in aVR suggests left main or multivessel ischemia (very high risk).
+- Serial high-sensitivity troponin (0 and 1–2 h) with a validated algorithm: ^[aha-acc-chest-pain-2021, udmi-2026]
+  - MI needs a rise and/or fall with at least one value above the sex-specific 99th percentile.
+  - Plus ischemic symptoms, ECG changes or imaging evidence.
 - Aspirin plus a parenteral anticoagulant for all. A P2Y12 inhibitor (ticagrelor or prasugrel preferred with PCI). ^[acc-aha-acs-2025]
 - Invasive timing by risk: immediate if very high risk, early (<24 h) if high risk, before discharge if intermediate. Routine or selective if low. ^[acc-aha-acs-2025]
 - High-intensity statin for all. Oral β-blocker within 24 h unless heart failure, low output or shock risk. ^[acc-aha-acs-2025]
@@ -25,45 +29,81 @@ related:
 {{criteria:udmi-mi}}
 
 #### Timing of invasive angiography
-| Risk | Features | Timing |
-|---|---|---|
-| Very high | Instability or shock, refractory angina, life-threatening arrhythmia, mechanical complication, ischemic acute heart failure, recurrent dynamic ST changes | Immediate, <2 h ^[acc-aha-acs-2025, esc-acs-2023] |
-| High | {{calc:grace}} >140, steeply rising troponin despite medical therapy, or ongoing dynamic ST changes | Early, <24 h ^[acc-aha-acs-2025] |
-| Intermediate | {{calc:grace}} 109–140, no ongoing ischemia, troponin stable or falling | Before discharge (<72 h) ^[acc-aha-acs-2025] |
-| Low | {{calc:grace}} <109 or {{calc:timi-nstemi}} <2, troponin below the sex-specific 99th percentile, no dynamic ST changes | Routine invasive before discharge, or selective (noninvasive testing first) ^[acc-aha-acs-2025] |
+:::scale Risk and timing of invasive angiography
+- Low: {{calc:grace}} <109 or {{calc:timi-nstemi}} <2, troponin below the sex-specific 99th percentile, no dynamic ST changes. Routine invasive before discharge, or selective (noninvasive testing first). ^[acc-aha-acs-2025]
+- Intermediate: {{calc:grace}} 109–140, no ongoing ischemia, troponin stable or falling. Before discharge (<72 h). ^[acc-aha-acs-2025]
+- High: {{calc:grace}} >140, steeply rising troponin despite medical therapy, or ongoing dynamic ST changes. Early, <24 h. ^[acc-aha-acs-2025]
+- Very high: instability or shock, refractory angina, life-threatening arrhythmia, mechanical complication, ischemic acute heart failure, recurrent dynamic ST changes. Immediate, <2 h. ^[acc-aha-acs-2025, esc-acs-2023]
+:::
 
 - Risk scores: {{calc:grace}} (mortality) or {{calc:timi-nstemi}} estimate risk and guide timing. ^[acc-aha-acs-2025]
 - Telemetry for at least 24 h in NSTEMI. CCU for very high-risk features. ^[common-practice]
 
 ## Causes
-- **Primary MI** (previously type 1): [!most-common] spontaneous, from an acute coronary pathology, usually atherothrombosis (plaque rupture or erosion with thrombus). Also the nonatherosclerotic causes below, and restenosis, stent thrombosis or graft failure >30 days after revascularization. Confirmed by angiography or intracoronary imaging showing the pathology, or by a new wall-motion abnormality or loss of viable myocardium in an ischemic pattern. Without access to angiography or imaging, a clinical diagnosis stands. ^[udmi-2026]
-- **Nonatherosclerotic primary MI:** spontaneous coronary artery dissection (women <50 years, pregnancy, postpartum), vasospasm (cocaine, methamphetamine), coronary embolism. ^[udmi-2026, aha-scad-2018, aha-cocaine-2008]
-- **Secondary MI** (previously type 2): supply–demand mismatch from another acute condition: tachyarrhythmia (most common), severe anemia, hypotension or shock, hypoxemia, severe hypertension. When imaging is feasible, confirmed by obstructive CAD (≥70% stenosis, or ≥50% and flow-limiting) without an acute coronary pathology, or by a new ischemic-pattern wall-motion abnormality or loss of viable myocardium. Otherwise known CAD or marked ischemic ECG or troponin changes support a clinical diagnosis. Most such patients have myocardial injury without MI. Sepsis or bleeding can also trigger primary MI. ^[udmi-2026]
-- **Procedure-related MI:** a coronary complication within 30 days of a cardiac procedure (PCI, CABG, structural intervention, ablation), confirmed by angiography showing the complication or by imaging showing a new ischemic-pattern wall-motion abnormality or loss of viable myocardium. Both are needed if it arose during the procedure or the procedure treated an acute MI. Troponin multiples (e.g. >5× the upper reference limit after PCI) only select patients for imaging. ^[udmi-2026]
+- **Primary MI** (previously type 1): [!most-common] ^[udmi-2026]
+  - Spontaneous, from an acute coronary pathology, usually atherothrombosis (plaque rupture or erosion with thrombus).
+  - Also the nonatherosclerotic causes below, and restenosis, stent thrombosis or graft failure >30 days after revascularization.
+  - Confirmed by angiography or intracoronary imaging showing the pathology.
+  - Or confirmed by a new wall-motion abnormality or loss of viable myocardium in an ischemic pattern.
+  - Without access to angiography or imaging, a clinical diagnosis stands.
+- **Nonatherosclerotic primary MI:** ^[udmi-2026, aha-scad-2018, aha-cocaine-2008]
+  - Spontaneous coronary artery dissection (women <50 years, pregnancy, postpartum).
+  - Vasospasm (cocaine, methamphetamine).
+  - Coronary embolism.
+- **Secondary MI** (previously type 2): ^[udmi-2026]
+  - Supply–demand mismatch from another acute condition: tachyarrhythmia (most common), severe anemia, hypotension or shock, hypoxemia, severe hypertension.
+  - When imaging is feasible, confirmed by obstructive CAD (≥70% stenosis, or ≥50% and flow-limiting) without an acute coronary pathology.
+  - Or confirmed by a new ischemic-pattern wall-motion abnormality or loss of viable myocardium.
+  - Otherwise known CAD or marked ischemic ECG or troponin changes support a clinical diagnosis.
+  - Most such patients have myocardial injury without MI.
+  - Sepsis or bleeding can also trigger primary MI.
+- **Procedure-related MI:** ^[udmi-2026]
+  - A coronary complication within 30 days of a cardiac procedure (PCI, CABG, structural intervention, ablation).
+  - Confirmed by angiography showing the complication or by imaging showing a new ischemic-pattern wall-motion abnormality or loss of viable myocardium.
+  - Both are needed if it arose during the procedure or the procedure treated an acute MI.
+  - Troponin multiples (e.g. >5× the upper reference limit after PCI) only select patients for imaging.
 - **Life-threatening mimics:** [!cannot-miss] aortic dissection, pulmonary embolism, tension pneumothorax, tamponade, esophageal rupture. ^[aha-acc-chest-pain-2021]
-- **Myocardial injury without MI:** acute (rise and/or fall): myocarditis, Takotsubo syndrome, sepsis, acute heart failure, PE, stroke, cardiotoxic drugs. Chronic (stable): CKD, chronic heart failure, cardiomyopathy, LVH. Erratic values that do not fit the clinical picture: suspect assay interference (heterophile antibodies, macrotroponin) and retest on another assay. ^[udmi-2026]
-- **MINOCA** (now myocardial injury with non-obstructive coronary arteries, no stenosis ≥50%): a working diagnosis, not a final one. CMR, ideally within 2 weeks, usually finds the cause (MI in about a quarter, myocarditis or Takotsubo syndrome more often). Intravascular imaging and spasm testing can show a coronary cause. ^[udmi-2026]
+- **Myocardial injury without MI:** ^[udmi-2026]
+  - Acute (rise and/or fall): myocarditis, Takotsubo syndrome, sepsis, acute heart failure, PE, stroke, cardiotoxic drugs.
+  - Chronic (stable): CKD, chronic heart failure, cardiomyopathy, LVH.
+  - Erratic values that do not fit the clinical picture: suspect assay interference (heterophile antibodies, macrotroponin) and retest on another assay.
+- **MINOCA** (now myocardial injury with non-obstructive coronary arteries, no stenosis ≥50%): a working diagnosis, not a final one. ^[udmi-2026]
+  - CMR, ideally within 2 weeks, usually finds the cause (MI in about a quarter, myocarditis or Takotsubo syndrome more often).
+  - Intravascular imaging and spasm testing can show a coronary cause.
 
 ## Presentation
 - Chest pressure, tightness or heaviness, at rest or with minimal exertion, radiating to the arm, neck or jaw. With dyspnea, diaphoresis or nausea. ^[aha-acc-chest-pain-2021]
 - Unstable angina: rest angina, new-onset severe angina, or crescendo angina, with MI excluded by serial troponin. ^[acc-aha-acs-2025, udmi-2026]
-- Atypical (women, older adults, diabetes): dyspnea, fatigue, epigastric discomfort. Avoid the word "atypical"—describe as cardiac, possibly cardiac or noncardiac. ^[aha-acc-chest-pain-2021]
+- Atypical (women, older adults, diabetes): dyspnea, fatigue, epigastric discomfort. ^[aha-acc-chest-pain-2021]
+- Avoid the word "atypical": describe as cardiac, possibly cardiac or noncardiac. ^[aha-acc-chest-pain-2021]
 - Exam: often normal. Look for heart failure, new murmur (mitral regurgitation), hypotension and signs of mimics (pulse differential). ^[common-practice]
 
 ## Diagnosis
 #### ECG
 - Within 10 minutes of arrival. Repeat at 15–30-minute intervals if nondiagnostic and symptoms persist. ^[aha-acc-chest-pain-2021]
-- NSTE-ACS changes: new horizontal or downsloping ST depression ≥0.5 mm at the J point in 2 contiguous leads, new or dynamic T-wave inversion ≥1 mm in 2 contiguous leads, transient ST elevation. A normal ECG does not exclude ACS. ^[udmi-2026, aha-acc-chest-pain-2021]
+- NSTE-ACS changes: ^[udmi-2026, aha-acc-chest-pain-2021]
+  - New horizontal or downsloping ST depression ≥0.5 mm at the J point in 2 contiguous leads.
+  - New or dynamic T-wave inversion ≥1 mm in 2 contiguous leads.
+  - Transient ST elevation.
+- A normal ECG does not exclude ACS. ^[udmi-2026, aha-acc-chest-pain-2021]
 {{media:ecg-nste-acs}}
-- Patterns suggesting acute coronary occlusion without ST elevation: hyperacute T waves, de Winter pattern (upsloping ST depression with tall symmetric precordial T waves), Wellens (biphasic or deeply inverted T waves in V2–V3 while pain-free), new LBBB or RBBB with ischemia, {{calc:sgarbossa}} or {{calc:modified-sgarbossa}} (ST/S ratio ≤0.25) criteria with LBBB or ventricular pacing. Up to 1 in 4 patients managed as NSTEMI have an occluded culprit: discuss immediate angiography with cardiology. ^[udmi-2026, acc-aha-acs-2025]
+- Patterns suggesting acute coronary occlusion without ST elevation: ^[udmi-2026, acc-aha-acs-2025]
+  - Hyperacute T waves.
+  - De Winter pattern (upsloping ST depression with tall symmetric precordial T waves).
+  - Wellens (biphasic or deeply inverted T waves in V2–V3 while pain-free).
+  - New LBBB or RBBB with ischemia.
+  - {{calc:sgarbossa}} or {{calc:modified-sgarbossa}} (ST/S ratio ≤0.25) criteria with LBBB or ventricular pacing.
+- Up to 1 in 4 patients managed as NSTEMI have an occluded culprit: discuss immediate angiography with cardiology. ^[udmi-2026, acc-aha-acs-2025]
 - Pathological Q wave: duration ≥40 ms and/or depth ≥25% of the R-wave amplitude in the same lead, in 2 contiguous leads. ^[udmi-2026]
 - Posterior leads V7–V9 when ST depression is maximal in V1–V4 (posterior MI is a STEMI equivalent). ^[acc-aha-acs-2025]
 
 #### Troponin
 - High-sensitivity cardiac troponin at presentation and 1–2 h (or 3–6 h with conventional assays). ^[aha-acc-chest-pain-2021]
-- Use assay-specific, sex-specific 99th percentiles (lower in women) and change thresholds. Rapid-algorithm cutoffs (uniform, not sex-specific) triage, they do not diagnose MI. ^[udmi-2026, aha-acc-chest-pain-2021]
+- Use assay-specific, sex-specific 99th percentiles (lower in women) and change thresholds. ^[udmi-2026, aha-acc-chest-pain-2021]
+- Rapid-algorithm cutoffs (uniform, not sex-specific) triage, they do not diagnose MI. ^[udmi-2026, aha-acc-chest-pain-2021]
 - Rise and/or fall needed for acute injury ^[udmi-2026]
-- Stable elevation (change <20%, a cutoff based on assay imprecision) suggests chronic injury (CKD, heart failure), but sampling near the peak (12–24 h) or days after onset can also look stable ^[udmi-2026]
+- Stable elevation (change <20%, a cutoff based on assay imprecision) suggests chronic injury (CKD, heart failure) ^[udmi-2026]
+- Sampling near the peak (12–24 h) or days after onset can also look stable ^[udmi-2026]
 - Very high values may not need a rise or fall ^[udmi-2026]
 - CKD: elevated troponin is not just reduced clearance. Serial values tell acute from chronic. ^[udmi-2026]
 
@@ -85,7 +125,10 @@ related:
    {{dose:nitroglycerin-sl}}
    {{dose:nitroglycerin-iv}}
 
-   - No nitrates with SBP <90 mm Hg or ≥30 below baseline, suspected RV infarction, riociguat, or a phosphodiesterase-5 inhibitor (avanafil within 12 h, sildenafil or vardenafil within 24 h, tadalafil within 48 h). ^[acc-aha-acs-2025, label-nitrostat-2023]
+   - No nitrates with SBP <90 mm Hg or ≥30 below baseline, suspected RV infarction, riociguat, or a phosphodiesterase-5 inhibitor: ^[acc-aha-acs-2025, label-nitrostat-2023]
+     - Avanafil within 12 h.
+     - Sildenafil or vardenafil within 24 h.
+     - Tadalafil within 48 h.
    - Stop NSAIDs (other than aspirin). ^[common-practice]
 
 2. Parenteral anticoagulation
@@ -105,7 +148,9 @@ related:
    - With PCI: ticagrelor or prasugrel preferred over clopidogrel. ^[acc-aha-acs-2025, plato-2009, triton-timi-38-2007]
    - Prasugrel: only once coronary anatomy is known and PCI is planned. Not with prior stroke or TIA. ^[acc-aha-acs-2025, label-effient-2022]
    - Medically managed: ticagrelor. Clopidogrel if ticagrelor is contraindicated, not tolerated, or bleeding risk is high. ^[acc-aha-acs-2025]
-   - Angiography within 24 h: no routine pretreatment. Expected ≥24 h: upstream ticagrelor or clopidogrel may be considered. Never prasugrel before the anatomy is known. ^[acc-aha-acs-2025]
+   - Angiography within 24 h: no routine pretreatment. ^[acc-aha-acs-2025]
+   - Angiography expected ≥24 h: upstream ticagrelor or clopidogrel may be considered. ^[acc-aha-acs-2025]
+   - Never prasugrel before the anatomy is known. ^[acc-aha-acs-2025]
 
    {{dose:ticagrelor-acs-load}}
    {{dose:ticagrelor-acs}}
@@ -126,7 +171,11 @@ related:
 
    {{dose:atorvastatin-80}}
 
-   - Oral β-blocker within 24 h unless acute heart failure, low-output state, risk of cardiogenic shock, PR >240 ms, second- or third-degree AV block without a pacemaker, severe bradycardia or active bronchospasm. Reassess later if initially contraindicated. ^[acc-aha-acs-2025]
+   - Oral β-blocker within 24 h unless: ^[acc-aha-acs-2025]
+     - Acute heart failure, low-output state or risk of cardiogenic shock.
+     - PR >240 ms, second- or third-degree AV block without a pacemaker, or severe bradycardia.
+     - Active bronchospasm.
+   - Reassess the β-blocker later if initially contraindicated. ^[acc-aha-acs-2025]
    - ACE inhibitor or ARB: ^[acc-aha-acs-2025]
      - LVEF ≤40%, hypertension or diabetes ^[acc-aha-acs-2025]
      - Reasonable in all others ^[acc-aha-acs-2025]
@@ -168,8 +217,12 @@ related:
 
 ### Special Populations: AF, kidney disease, older adults
 - AF on an oral anticoagulant after PCI: DOAC plus clopidogrel. Stop aspirin after 1–4 weeks (triple therapy only briefly). ^[acc-aha-acs-2025]
-- Severe kidney impairment ({{calc:cockcroft-gault}} below 30): adjust enoxaparin. Fondaparinux contraindicated. UFH often simplest. ^[label-lovenox-2026, label-arixtra-2024, common-practice]
-- Older adults: an invasive strategy is reasonable (fewer reinfarctions, no clear mortality benefit at age ≥75). Individualize by frailty, comorbidity and bleeding risk. ^[senior-rita-2024]
+- Severe kidney impairment ({{calc:cockcroft-gault}} below 30): ^[label-lovenox-2026, label-arixtra-2024, common-practice]
+  - Adjust enoxaparin.
+  - Fondaparinux contraindicated.
+  - UFH often simplest.
+- Older adults: an invasive strategy is reasonable (fewer reinfarctions, no clear mortality benefit at age ≥75). ^[senior-rita-2024]
+- Individualize by frailty, comorbidity and bleeding risk. ^[senior-rita-2024]
 - Cocaine or methamphetamine: avoid β-blockers during acute intoxication. Benzodiazepines and nitrates. ^[aha-cocaine-2008]
 - Secondary (type 2) MI: ^[udmi-2026, common-practice]
   - Treat the trigger ^[udmi-2026, common-practice]
@@ -184,10 +237,15 @@ related:
 
 ### After the Acute Phase: DAPT, risk factors
 - DAPT for at least 12 months by default after ACS unless bleeding risk is high. ^[acc-aha-acs-2025]
-- To reduce bleeding after PCI: transition to ticagrelor monotherapy after at least 1 month. High bleeding risk: single antiplatelet (aspirin or P2Y12 inhibitor) after 1 month, or de-escalate to clopidogrel. ^[acc-aha-acs-2025]
+- To reduce bleeding after PCI: transition to ticagrelor monotherapy after at least 1 month. ^[acc-aha-acs-2025]
+- High bleeding risk: single antiplatelet (aspirin or P2Y12 inhibitor) after 1 month, or de-escalate to clopidogrel. ^[acc-aha-acs-2025]
 - Proton pump inhibitor with DAPT when GI bleeding risk is high. ^[acc-aha-acs-2025]
-- LDL-C goal <55 mg/dL (non-HDL-C <85) at very high risk, which includes most patients after ACS: any other major ASCVD event (prior MI, ischemic stroke, symptomatic PAD) or multiple high-risk conditions (e.g. age >65, prior revascularization, diabetes, hypertension, current smoking, heart failure). Otherwise <70 mg/dL (non-HDL-C <100), with <55 reasonable. ^[acc-aha-dyslipidemia-2026]
-- Above goal on maximally tolerated statin: add ezetimibe or a PCSK9 monoclonal antibody (ezetimibe no longer required first). Bempedoic acid is an alternative add-on, with outcome benefit shown in statin intolerance. ^[acc-aha-dyslipidemia-2026, acc-aha-acs-2025]
+- LDL-C goal <55 mg/dL (non-HDL-C <85) at very high risk, which includes most patients after ACS: ^[acc-aha-dyslipidemia-2026]
+  - Any other major ASCVD event (prior MI, ischemic stroke, symptomatic PAD).
+  - Or multiple high-risk conditions (e.g. age >65, prior revascularization, diabetes, hypertension, current smoking, heart failure).
+- Otherwise LDL-C goal <70 mg/dL (non-HDL-C <100), with <55 reasonable. ^[acc-aha-dyslipidemia-2026]
+- Above goal on maximally tolerated statin: add ezetimibe or a PCSK9 monoclonal antibody (ezetimibe no longer required first). ^[acc-aha-dyslipidemia-2026, acc-aha-acs-2025]
+- Bempedoic acid is an alternative add-on, with outcome benefit shown in statin intolerance. ^[acc-aha-dyslipidemia-2026, acc-aha-acs-2025]
 - Cardiac rehabilitation referral, smoking cessation, blood pressure and diabetes control, annual influenza vaccination. ^[acc-aha-acs-2025]
 - SGLT2 inhibitor and full heart failure therapy when LVEF ≤40%: see [[cardio-adhf|ADHF]] for in-hospital start. ^[aha-acc-hfsa-hf-2022]
 
@@ -208,7 +266,8 @@ related:
 - Usually a non-occlusive thrombus or occlusion with collaterals. Subendocardial ischemia causes ST depression. ^[esc-acs-2023]
 
 ## Pearls
-- Troponin elevation is myocardial injury, not MI: MI also needs ischemic symptoms, ischemic ECG changes or imaging evidence. Secondary MI is confirmed by imaging when feasible. ^[udmi-2026]
+- Troponin elevation is myocardial injury, not MI: MI also needs ischemic symptoms, ischemic ECG changes or imaging evidence. ^[udmi-2026]
+- Secondary MI is confirmed by imaging when feasible. ^[udmi-2026]
 - Normal initial ECG and troponin do not exclude ACS early after symptom onset: repeat both. ^[aha-acc-chest-pain-2021]
 - Hold prasugrel until anatomy is known: it raised bleeding without benefit when given routinely before angiography. ^[acc-aha-acs-2025]
 - Higher-dose aspirin maintenance blunts the benefit of ticagrelor: use low-dose aspirin. ^[label-brilinta-2026, plato-2009]

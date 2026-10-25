@@ -28,9 +28,13 @@ const textOf = (inlines) => (inlines ?? []).map((x) => (x.t === 'link' ? x.label
 const sentences = (t) => t.replace(ABBR, (m) => m.replace('.', '')).split(/[.!?]\s+(?=[A-Z(])/).filter((s) => s.trim());
 const show = (t) => `"${t.slice(0, 60)}${t.length > 60 ? '…' : ''}"`;
 
+// The More Information subsections that exist to compare guidelines and studies, so they may name them.
+const NAMING_SUBSECTION = /^(Where Guidelines Differ|Evidence)\b/;
+
 // Every block of the card's page (sections and More Information; the Do Now page has its own format).
-function pageBlocks(c) {
-  return c.sections.flatMap((s) => [...allBlocks(s.blocks), ...(s.subsections ?? []).flatMap((x) => [...allBlocks(x.blocks)])]);
+// With `forNames`, the blocks of the subsections allowed to name guidelines and studies are left out.
+function pageBlocks(c, { forNames = false } = {}) {
+  return c.sections.flatMap((s) => [...allBlocks(s.blocks), ...(s.subsections ?? []).filter((x) => !(forNames && NAMING_SUBSECTION.test(x.title ?? ''))).flatMap((x) => [...allBlocks(x.blocks)])]);
 }
 
 // A severity or risk level in the first column of a table: Mild, Moderate, Severe, Low, Intermediate, High, Stage 1 to 4.
@@ -116,7 +120,7 @@ function cardFindings(c, { data, byId }) {
   const named = [];
   const scan = (text) => { for (const n of namesIn(text, allowed)) named.push(n); };
   if (c.definition) scan(textOf(c.definition.inlines));
-  for (const b of blocks) for (const r of runs([b])) scan(textOf(r.inlines));
+  for (const b of pageBlocks(c, { forNames: true })) for (const r of runs([b])) scan(textOf(r.inlines));
   const uniq = [...new Set(named)];
   add('names', named, () => `names a society, guideline or study in the text (${uniq.slice(0, 4).join(', ')}${uniq.length > 4 ? ', …' : ''}); the source marker carries the attribution ${DOC}`);
 

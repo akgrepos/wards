@@ -24,7 +24,8 @@
     "brief": "node scripts/brief.mjs",
     "look": "node scripts/look.mjs",
     "tidy": "node scripts/tidy.mjs",
-    "review:precheck": "node scripts/review-precheck.mjs"
+    "review:precheck": "node scripts/review-precheck.mjs",
+    "card:proof": "node scripts/card/format-proof.mjs"
   },
   "dependencies": {
     "react": "^19.3.1",

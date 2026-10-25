@@ -10,7 +10,7 @@ based_on: [idsa-ssti-2014]
 checked: { date: 2026-10-19, by: owner, scope: "owner review", fingerprint: "21278180595e1918", carried: "2026-10-24: Dose corrections (stage 4b PR C): the changed dose and drug-record lines were checked against the labels and guidelines by an Opus helper. The rest of the card is unchanged." }
 related:
   differential: []
-  conditions: [id-cap, id-complicated-uti]
+  conditions: [id-cap, id-complicated-uti, crit-sepsis]
   tools: []
   medications: [ceftriaxone]
 ---

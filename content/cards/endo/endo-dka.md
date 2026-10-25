@@ -10,7 +10,7 @@ based_on: [ada-hyperglycemic-crises-2024, ada-soc-hospital-2026]
 checked: { date: 2026-10-25, by: opus, scope: "doses and numbers, with an independent full check of the card against the 2024 consensus text and figures and the 2026 hospital chapter. Doses left not-verified: enoxaparin-prophylaxis", fingerprint: "fcc890f08eb37692" }
 related:
   differential: []
-  conditions: [endo-inpatient-hyperglycemia, crit-sepsis, renal-hypokalemia, renal-iv-fluids, renal-electrolyte-repletion]
+  conditions: [endo-inpatient-hyperglycemia, crit-sepsis, renal-hypokalemia, renal-iv-fluids, renal-electrolyte-repletion, pulm-dyspnea]
   tools: []
 emergency_hint: "Fluids, potassium, then insulin"
 ---

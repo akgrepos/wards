@@ -8,7 +8,7 @@ definition: "Abrupt decrease in kidney function, defined and staged by {{criteri
 based_on: [kdigo-aki-2012, nice-aki-2024]
 checked: { date: 2026-10-17, by: owner, scope: "owner review", fingerprint: "bc4a32b8ac688e42", carried: "2026-10-24: Dose row titles shortened to the indication only. Doses and numbers unchanged, the removed wording is kept in the longer indication text." }
 related:
-  conditions: [renal-hyperkalemia, psych-lithium-psychotropic-safety]
+  conditions: [renal-hyperkalemia, psych-lithium-psychotropic-safety, cardio-adhf, crit-sepsis, pulm-dyspnea]
 ---
 ## At a Glance
 - Diagnose and stage by {{criteria:kdigo-aki}}. Stage by whichever of SCr or UOP is higher. ^[kdigo-aki-2012]

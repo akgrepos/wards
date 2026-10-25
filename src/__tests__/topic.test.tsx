@@ -40,7 +40,7 @@ describe('topic page', () => {
 
   it('shows Updated with the later of the stamp and carried dates, no Reviewed label on a card', () => {
     launch('#/card/cardio-chest-pain');
-    expect(screen.getByText('Updated Oct 24, 2026')).toBeTruthy();
+    expect(screen.getByText('Updated Oct 25, 2026')).toBeTruthy();
     expect(screen.queryByText(/^Reviewed/)).toBeNull();
   });
 
