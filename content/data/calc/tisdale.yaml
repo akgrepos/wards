@@ -1,0 +1,9 @@
+name: "Tisdale risk score for QT prolongation"
+short: "Tisdale score"
+url: https://www.mdcalc.com/calc/10293/tisdale-risk-score-qt-prolongation
+match: ["Tisdale"]
+sources: [tisdale-qt-risk-2013]
+verification:
+  source: tisdale-qt-risk-2013
+  read: full-text
+  date: 2026-10-25

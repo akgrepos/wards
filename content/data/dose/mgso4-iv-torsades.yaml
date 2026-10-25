@@ -1,0 +1,25 @@
+drug: magnesium-sulfate
+drug_name: Magnesium sulfate
+indication: Torsades de pointes
+indication_detail: Torsades de pointes, or ECG signs of impending torsades, whatever the serum magnesium level.
+population: Adults
+route: IV
+amount: 2
+unit: g
+rate: "over 5–20 minutes with a pulse. As an IV push diluted in 10 mL in pulseless arrest, alongside defibrillation"
+give_when: Torsades or ECG signs of impending torsades
+repeat: "Repeat 2 g if torsades recurs. Then keep magnesium normal"
+max: "US label: generally no faster than 150 mg per minute. The label does not cover torsades, so the faster rate rests on resuscitation guidance"
+adjustments:
+  - when: "Kidney failure"
+    change: "Same first dose. Check the Mg level before any repeat. Label maximum 20 g in 48 hours in severe renal insufficiency"
+cautions:
+  - "Rapid infusion can cause hypotension. Watch blood pressure."
+  - "The label lists heart block as a contraindication. Torsades with heart block or long pauses needs pacing ready."
+  - "Repeated doses: check patellar reflexes and breathing. IV calcium reverses magnesium toxicity."
+notes: "2 g IV is first-line for torsades whatever the serum magnesium, repeated if torsades persists. The rate is resuscitation practice, not on the label."
+sources: [aha-torsades-2010, label-mgso4-2021, aha-acls-2025]
+verification:
+  source: aha-torsades-2010
+  read: full-text
+  date: 2026-10-25

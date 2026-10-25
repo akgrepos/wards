@@ -4,10 +4,10 @@ type: reference
 variant: interpretation
 system: cardio
 title: "ECG Interpretation"
-aliases: [ECG, EKG, electrocardiogram, 12-lead, 12 lead, rhythm strip, ECG interpretation, how to read an ECG, rate, rhythm, axis, PR interval, QRS, QT, QTc, ST elevation, ST depression, T wave inversion, Q waves, bundle branch block, LBBB, RBBB, left bundle branch block, right bundle branch block, fascicular block, AV block, heart block, first degree AV block, Mobitz, second degree, third degree, complete heart block, LVH, left ventricular hypertrophy, RVH, STEMI equivalent, occlusion MI, OMI, posterior MI, de Winter, Wellens, hyperacute T waves, Sgarbossa, modified Sgarbossa, WPW, Wolff-Parkinson-White, pre-excitation, delta wave, long QT, torsades, torsades de pointes, PR depression, S1Q3T3, wide complex tachycardia, narrow complex tachycardia, SVT, bradycardia, tachycardia, hyperkalemia ECG, peaked T waves, U waves, electrical alternans, low voltage]
+aliases: [ECG, EKG, electrocardiogram, 12-lead, 12 lead, rhythm strip, ECG interpretation, how to read an ECG, rate, rhythm, axis, PR interval, QRS, QT, QTc, ST elevation, ST depression, T wave inversion, Q waves, bundle branch block, LBBB, RBBB, left bundle branch block, right bundle branch block, fascicular block, AV block, heart block, first degree AV block, Mobitz, second degree, third degree, complete heart block, LVH, left ventricular hypertrophy, RVH, STEMI equivalent, occlusion MI, OMI, posterior MI, de Winter, Wellens, hyperacute T waves, Sgarbossa, modified Sgarbossa, WPW, Wolff-Parkinson-White, pre-excitation, delta wave, PR depression, S1Q3T3, wide complex tachycardia, narrow complex tachycardia, SVT, bradycardia, tachycardia, hyperkalemia ECG, peaked T waves, U waves, electrical alternans, low voltage]
 checked: { date: 2026-10-22, by: opus, scope: "doses and numbers", fingerprint: "582d2c53088e29eb", carried: "2026-10-25: Format sweep (bullets split, tables to bullets or scale, society names out of text). Numbers, doses, drugs and sources unchanged." }
 related:
-  conditions: [cardio-nste-acs, cardio-chest-pain, cardio-atrial-fibrillation, renal-hyperkalemia, renal-hypokalemia, pulm-vte-diagnosis]
+  conditions: [cardio-nste-acs, cardio-chest-pain, cardio-atrial-fibrillation, renal-hyperkalemia, renal-hypokalemia, pulm-vte-diagnosis, cardio-qt-prolongation]
   tools: [psych-lithium-psychotropic-safety]
 ---
 ## At a Glance

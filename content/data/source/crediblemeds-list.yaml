@@ -1,0 +1,6 @@
+kind: dataset
+short: "QT drug list"
+title: "CredibleMeds QTdrugs List (maintained list of drugs that prolong the QT interval or cause torsades de pointes)"
+year: 2026
+url: https://crediblemeds.org/
+checked: 2026-10-25
