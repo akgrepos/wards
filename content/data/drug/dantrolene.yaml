@@ -1,0 +1,14 @@
+name: Dantrolene
+class: Skeletal muscle relaxant (ryanodine receptor antagonist)
+brands: [Dantrium, Revonto, Ryanodex]
+boxed_warning: None
+cautions:
+  - text: "Muscle weakness and respiratory depression can follow a dose. Be ready to support the airway and breathing."
+    sources: [label-dantrium-iv-2026]
+  - text: "Extravasation causes tissue injury and the solution is alkaline. Use a large vein and avoid infiltration."
+    sources: [label-dantrium-iv-2026]
+  - text: "Hepatotoxicity is a known risk of oral dantrolene. Check liver tests during repeated use."
+    sources: [label-dantrium-iv-2026]
+kidney_liver: "The label gives no kidney dose adjustment. Watch liver tests with repeated use."
+label_source: label-dantrium-iv-2026
+sources: [label-dantrium-iv-2026]

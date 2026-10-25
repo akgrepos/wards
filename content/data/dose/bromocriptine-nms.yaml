@@ -1,0 +1,22 @@
+drug: bromocriptine
+drug_name: Bromocriptine
+brand: Parlodel
+indication: Neuroleptic malignant syndrome
+indication_detail: Moderate to severe NMS, with supportive care. Off-label.
+population: Adults
+route: oral or nasogastric tube
+amount: 2.5
+unit: mg
+frequency: "every 8 hours, titrated up to 40 mg a day in divided doses"
+give_when: Moderate to severe NMS not controlled by supportive care and benzodiazepines
+duration: "Continue until the syndrome resolves, then taper over days"
+max: "40 mg a day"
+cautions:
+  - "Do not use if serotonin syndrome is possible. It can worsen it."
+  - "May worsen psychosis and cause hypotension."
+notes: "Case-report and case-series evidence only. Doses follow the NMS reviews. The label does not cover NMS."
+sources: [pileggi-nms-2016, kuhlwilm-nms-2020, label-bromocriptine-2026]
+verification:
+  source: pileggi-nms-2016
+  read: not-verified
+  date: 2026-10-25

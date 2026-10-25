@@ -1,0 +1,14 @@
+name: Bromocriptine
+class: Dopamine agonist (ergot derivative)
+brands: [Parlodel, Cycloset]
+boxed_warning: None
+cautions:
+  - text: "Hypotension and syncope, especially with the first doses. Check blood pressure."
+    sources: [label-bromocriptine-2026]
+  - text: "Psychosis, hallucinations and sudden sleep onset can occur. Use caution in major psychotic disorders."
+    sources: [label-bromocriptine-2026]
+  - text: "CYP3A4 inhibitors raise levels, and dopamine antagonists oppose its effect."
+    sources: [label-bromocriptine-2026]
+kidney_liver: "The label gives no kidney dose adjustment. Use caution in severe liver disease."
+label_source: label-bromocriptine-2026
+sources: [label-bromocriptine-2026]
