@@ -13,7 +13,6 @@ cautions:
   - "Penicillin-intermediate streptococci: ceftriaxone alone only if the strain is ceftriaxone-susceptible. Fully resistant: add gentamicin for the first 2 weeks."
   - "Enterococcus faecalis is a different regimen: ampicillin plus ceftriaxone 2 g every 12 hours for 6 weeks, native or prosthetic valve."
   - Duration and agent are set with infectious diseases and cardiology.
-  - Not with calcium-containing IV solutions in the same line.
 sources: [aha-ie-2026, label-ceftriaxone-2026]
 verification:
   source: aha-ie-2026
