@@ -24,7 +24,7 @@ Decisions and working notes are kept outside the repo, in the owner's private no
 - `npm test`, `npm run typecheck`. Updating the design system copy: see `vendor/akg/VERSION.md`. Regenerating icons after editing `public/favicon.svg`: `npm run icons`.
 
 ### Workflow scripts (for Claude sessions, one call each)
-- `npm run status [-- --since YYYY-MM-DD]`: open PRs with check state, last 5 merged (or since a date), version on `origin/main` vs the live site, worktrees and branches (merged ones marked).
+- `npm run brief [-- --since YYYY-MM-DD]`: the start-of-chat summary: card index, open PRs with check state and auto-merge flag, last 5 merged (or since a date), top of BACKLOG and what the owner owes, last metrics row, sources due, version on `origin/main` vs the live site, worktrees and branches.
 - `npm run changelog [-- --dry-run]`: rebuilds the automatic part of `CHANGELOG.md` from the titles of merged pull requests (needs `gh`). Write a clear, plain-language PR title; that is the changelog entry.
 - Version: stamped by the build from git as `YYYY.MM.DD.N` (the commit's date, and N = how many changes landed that day). Nobody edits it; `scripts/lib/version.mjs` computes it and `status` reads it from `origin/main`.
 - `npm run tidy -- <branch> [--dry-run]`: the close rule; refuses if unmerged commits or uncommitted changes, else removes worktree and branch. `--dry-run` only reports.

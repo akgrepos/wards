@@ -21,7 +21,7 @@
     "privacy:check": "node scripts/privacy-check.mjs",
     "changelog": "node scripts/changelog.mjs",
     "card:new": "node scripts/card-new.mjs",
-    "status": "node scripts/status.mjs",
+    "brief": "node scripts/brief.mjs",
     "look": "node scripts/look.mjs",
     "tidy": "node scripts/tidy.mjs",
     "review:precheck": "node scripts/review-precheck.mjs"
