@@ -7,7 +7,7 @@ title: Community-Acquired Pneumonia
 aliases: [CAP, pneumonia, PNA, community acquired pneumonia, lobar pneumonia, lower respiratory tract infection, LRTI, severe CAP]
 definition: "Pneumonia acquired outside the hospital: compatible symptoms with a new infiltrate on chest imaging. ^[idsa-ats-cap-2019]"
 based_on: [ats-cap-2025, idsa-ats-cap-2019]
-checked: { date: 2026-10-19, by: owner, scope: "owner review", fingerprint: "97d27227ddcabff0", carried: "2026-10-24: No card text changed. The Wells and CURB-65 point lists and bands were removed from their calc files, which now only link to MDCalc. Every dose and number on the card is unchanged." }
+checked: { date: 2026-10-24, by: opus, scope: "CURB-65 lines and the corrected dialysis rows of piperacillin-tazobactam and cefepime checked against NICE NG250, Lim 2003 and the labels. Doses left not-verified: amoxicillin-cap, amoxicillin-clavulanate-cap, ampicillin-sulbactam-cap, azithromycin-iv-cap, azithromycin-po-cap, cefepime-cap, cefpodoxime-cap, ceftaroline-iv, doxycycline-100, hydrocortisone-severe-cap, levofloxacin-750, linezolid-600, meropenem-1g, moxifloxacin-cap, oseltamivir-influenza, piperacillin-tazobactam-cap, vancomycin-iv", fingerprint: "5b17d04a4ea4e340" }
 related:
   differential: []
   conditions: [id-complicated-uti, id-cellulitis]
@@ -27,6 +27,16 @@ related:
 
 - Hospitalization: a validated prognostic rule plus clinical judgment. Pneumonia Severity Index ({{calc:psi-port}}) preferred over {{calc:curb-65}}. ^[idsa-ats-cap-2019]
 - {{calc:psi-port}} and {{calc:curb-65}} predict 30-day mortality. They were not designed to choose ICU versus ward. ^[idsa-ats-cap-2019]
+- {{calc:curb-65}} gives 1 point for each of: ^[lim-curb65-2003, nice-ng250-2025]
+  - Confusion (new disorientation in person, place or time) ^[lim-curb65-2003, nice-ng250-2025]
+  - Urea >7 mmol/L (BUN >19 mg/dL) ^[lim-curb65-2003, nice-ng250-2025]
+  - Respiratory rate ≥30/min ^[lim-curb65-2003, nice-ng250-2025]
+  - Systolic BP <90 mm Hg or diastolic BP ≤60 mm Hg ^[lim-curb65-2003, nice-ng250-2025]
+  - Age ≥65 years ^[lim-curb65-2003, nice-ng250-2025]
+- {{calc:curb-65}} risk of death, with 30-day mortality in the 2003 derivation study: ^[nice-ng250-2025, lim-curb65-2003]
+  - 0–1: low risk (under 3%). Mortality 0.7% at 0 and 3.2% at 1. ^[nice-ng250-2025, lim-curb65-2003]
+  - 2: intermediate risk (3–15%). Mortality 3%. ^[nice-ng250-2025, lim-curb65-2003]
+  - 3–5: high risk (over 15%). Mortality 17% at 3, 41.5% at 4 and 57% at 5. ^[nice-ng250-2025, lim-curb65-2003]
 - Direct ICU admission: hypotension needing vasopressors or respiratory failure needing mechanical ventilation. ^[idsa-ats-cap-2019]
 - Otherwise, use the minor criteria with judgment to decide on ICU, step-down or telemetry. Ward patients later transferred to the ICU do worse than those admitted there directly. ^[idsa-ats-cap-2019]
 

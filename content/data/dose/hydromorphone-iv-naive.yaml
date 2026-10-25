@@ -16,9 +16,9 @@ adjustments:
   - when: "Kidney or hepatic impairment"
     change: "Start at one-fourth to one-half of the usual starting dose"
 cautions:
-  - "Check the product concentration before drawing up. High-potency formulations are for opioid-tolerant patients only."
+  - "Check the concentration before drawing up. The 10 mg/mL high potency formulation (HPF) is only for opioid-tolerant patients. Mistaking it for a standard strength can cause fatal overdose."
 notes: "Prefer the low end of the range in opioid-naive patients."
-sources: [label-hydromorphone-injection-2026]
+sources: [label-hydromorphone-injection-2026, label-hydromorphone-hpf-2026]
 verification:
   source: label-hydromorphone-injection-2026
   read: not-verified

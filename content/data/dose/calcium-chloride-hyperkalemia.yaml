@@ -1,19 +1,19 @@
 drug: calcium-chloride
 drug_name: Calcium chloride 10%
 indication: Hyperkalemia with ECG changes
-indication_detail: Hyperkalemia with ECG changes in cardiac arrest or peri-arrest.
+indication_detail: Hyperkalemia with ECG changes in peri-arrest, or cardiac arrest from known or suspected hyperkalemia.
 population: Adults
 route: IV
 amount: 10
 unit: mL
 rate: over 5 minutes
-give_when: ECG changes in cardiac arrest or peri-arrest
+give_when: ECG changes in peri-arrest, or cardiac arrest from known or suspected hyperkalemia
 alternative:
   dose: calcium-gluconate-hyperkalemia
   when: All other patients
-notes: "Preferred calcium salt in resuscitation (cardiac arrest or peri-arrest). About three times the calcium of the same volume of calcium gluconate. UK guideline rate: faster than the US label (up to 1 mL/min). Large vein or central line preferred (tissue necrosis if extravasated)."
-sources: [ukka-hyperkalaemia-2026, kdigo-acute-hyperkalemia-2020]
+notes: "Preferred calcium salt in peri-arrest and cardiac arrest (UK guideline, strong recommendation, 1C). Giving it in cardiac arrest from known or suspected hyperkalemia is a weak UK suggestion (2C). AHA 2025: effectiveness in hyperkalemic arrest not well established (2b). Not for routine use in other cardiac arrests. The US label contraindicates calcium chloride in ventricular fibrillation, asystole and electromechanical dissociation, and caps the rate at 1 mL (100 mg) per minute with no bolus. The UK guideline rate (10 mL over 5 minutes) is 2 mL per minute. About three times the calcium of the same volume of calcium gluconate. Large vein or central line preferred (tissue necrosis if extravasated). On digoxin: the label says avoid. In hyperkalemia with ECG changes the UK guideline notes the concern rests on case reports, and KDIGO advises caution, not avoidance."
+sources: [ukka-hyperkalaemia-2026, kdigo-acute-hyperkalemia-2020, label-calcium-chloride-2026, aha-special-circumstances-2025, aha-acls-2025]
 verification:
   source: ukka-hyperkalaemia-2026
-  read: not-verified
-  date: 2026-10-23
+  read: full-text
+  date: 2026-10-24

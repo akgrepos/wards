@@ -14,6 +14,7 @@ adjustments:
     change: Half the usual dose every 12 hours
   - when: CrCl ≤10 mL/min
     change: Half the usual dose every 18–24 hours
+notes: Renal reductions apply after a full first dose.
 sources:
   - idsa-ssti-2014
   - label-cefazolin-2024

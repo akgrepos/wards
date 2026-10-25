@@ -13,10 +13,10 @@ onset: 1–3 minutes
 lasts: 30–60 minutes
 alternative:
   dose: calcium-chloride-hyperkalemia
-  when: Cardiac arrest or peri-arrest
-notes: "30 mL of 10% calcium gluconate gives about the same calcium (6.8 mmol) as 10 mL of 10% calcium chloride. Calcium does not lower potassium. UK guideline rate: faster than the US label (up to 200 mg/min)."
-sources: [ukka-hyperkalaemia-2026, kdigo-acute-hyperkalemia-2020]
+  when: Peri-arrest, or cardiac arrest from known or suspected hyperkalemia
+notes: "30 mL of 10% calcium gluconate gives about the same calcium (6.8 mmol) as 10 mL of 10% calcium chloride. Calcium does not lower potassium. The UK guideline rate (30 mL over 10 minutes) is about 300 mg/min. The US label maximum is 200 mg/min (at least 15 minutes for 30 mL). On digoxin: the label says avoid. In hyperkalemia with ECG changes the UK guideline notes the concern rests on case reports, and KDIGO advises caution, not avoidance."
+sources: [ukka-hyperkalaemia-2026, kdigo-acute-hyperkalemia-2020, label-calcium-gluconate-2026]
 verification:
   source: ukka-hyperkalaemia-2026
-  read: not-verified
-  date: 2026-10-23
+  read: full-text
+  date: 2026-10-24

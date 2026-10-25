@@ -7,7 +7,7 @@ amount: "400"
 unit: mg
 frequency: every 24 hours
 cautions:
-  - QT prolongation. Little urinary excretion, so not for UTI.
+  - "Not labeled for UTI: only about 20% reaches the urine unchanged."
 sources:
   - label-moxifloxacin-2025
   - idsa-ats-cap-2019

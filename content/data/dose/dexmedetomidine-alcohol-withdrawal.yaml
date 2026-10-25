@@ -9,11 +9,11 @@ amount: 0.4–1.2
 unit: mcg/kg/h
 rate: "fixed doses in the trial (no titration protocol). In practice titrated to the sedation target without a loading dose"
 give_when: Autonomic hyperactivity not controlled by benzodiazepines, never as the only agent
-duration: "Label (ICU sedation): not to exceed 24 hours. The trial infused up to 5 days"
+duration: "Label (ICU sedation): not indicated beyond 24 hours. The trial infused up to 5 days."
 cautions:
-  - "Bradycardia, hypotension and sinus pause. It does not prevent seizures or treat delirium."
+  - "It does not prevent seizures or treat delirium."
   - "Masks signs of withdrawal, so keep giving benzodiazepines as needed."
-  - "Label ICU sedation maintenance is 0.2–0.7 mcg/kg/h. Consider lower doses in older adults and hepatic impairment (label). Bradycardia was mostly at 1.2 mcg/kg/h in the trial."
+  - "Label ICU sedation maintenance is 0.2–0.7 mcg/kg/h. In the trial, bradycardia was mostly at 1.2 mcg/kg/h."
 notes: "RCT of 24 ICU patients with a CIWA-Ar of 15 or more despite 16 mg or more of lorazepam over 4 hours (Mueller 2014): less lorazepam in the first 24 hours, no difference over 7 days, bradycardia in 25% vs 0%. ASAM allows alpha-2 agonists only for autonomic hyperactivity and says they should not be used alone."
 sources: [asam-alcohol-withdrawal-2020, mueller-dexmedetomidine-2014, label-precedex-2026, common-practice]
 verification:

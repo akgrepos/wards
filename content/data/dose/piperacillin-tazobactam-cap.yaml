@@ -12,8 +12,10 @@ adjustments:
     change: 3.375 g every 6 hours
   - when: CrCl <20 mL/min
     change: 2.25 g every 6 hours
-  - when: Hemodialysis or CAPD
-    change: 2.25 g every 8 hours, plus 0.75 g after each dialysis
+  - when: Hemodialysis
+    change: 2.25 g every 8 hours, plus 0.75 g after each hemodialysis session
+  - when: Peritoneal dialysis (CAPD)
+    change: 2.25 g every 8 hours. No extra dose
 notes: Adjustments are the label's nosocomial pneumonia column, which uses this dose.
 sources:
   - idsa-ats-cap-2019

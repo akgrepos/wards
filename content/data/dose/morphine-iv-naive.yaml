@@ -11,7 +11,7 @@ repeat: "Reassess in 10–15 minutes after a dose. Give small repeated doses rat
 max: "FDA label: 0.1–0.2 mg/kg every 4 hours as needed, the lowest dose necessary. Usual ward starting doses are well below that"
 adjustments:
   - when: "Kidney impairment"
-    change: "Lower starting dose, titrate slowly (active metabolite accumulates). Prefer hydromorphone or fentanyl"
+    change: "Lower starting dose, titrate slowly (active metabolite accumulates). Many clinicians prefer hydromorphone or fentanyl (common practice)"
 cautions:
   - "Inject slowly. Monitor sedation and respiratory status after each dose."
 notes: "The 2–4 mg ward starting range is common practice. The label is weight-based and higher."
