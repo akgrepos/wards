@@ -6,8 +6,7 @@ title: "Venous Thromboembolism: Diagnosis"
 aliases: [VTE, PE, pulmonary embolism, DVT, deep vein thrombosis, blood clot, clot in lung, leg clot, D-dimer, Wells, PERC, YEARS, Geneva, CTPA, CT angiogram, PE protocol CT, V/Q scan, LENI, lower extremity duplex, compression ultrasound, sPESI, PESI, Hestia, submassive, massive PE, PERT, RV strain]
 definition: "Thrombosis in the deep veins (DVT) or embolism to the pulmonary arteries (PE). Diagnosed by pretest probability, D-dimer and imaging. ^[aha-acc-pe-2026, ash-vte-diagnosis-2018]"
 based_on: [aha-acc-pe-2026, ash-vte-diagnosis-2018, esc-pe-2019]
-reviewed: 2026-10-21
-checked: { date: 2026-10-21, by: owner, scope: owner review }
+checked: { date: 2026-10-21, by: owner, scope: "owner review", fingerprint: "b8d47acfb7070625" }
 related:
   differential: [cardio-nste-acs, id-cap, cardio-adhf, pulm-copd-exacerbation]
   conditions: [crit-hypoxemic-respiratory-failure, crit-sepsis]

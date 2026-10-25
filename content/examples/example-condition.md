@@ -8,7 +8,6 @@ aliases: [sample card, test card]
 example: true
 definition: "Placeholder one-line definition. ^[example-guideline-a]"
 based_on: [example-guideline-a]
-reviewed: 2026-10-18
 related:
   conditions: []
 ---

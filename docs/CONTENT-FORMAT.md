@@ -20,8 +20,7 @@ aliases: [high potassium]       # search only
 subsection: Electrolyte Disorders # condition cards only: the topic group within the system
 definition: "Commonly K⁺ ≥5.5 mEq/L. ^[kdigo-acute-hyperkalemia-2020]"  # one line under the title, with its source
 based_on: [ukka-hyperkalaemia-2026]   # optional: the guidelines the page rests on (not shown in the app)
-reviewed: 2026-10-17            # older field, no longer shown; the app and the 12-month warning use checked.date
-checked: { date: 2026-10-24, by: opus, scope: doses and numbers }   # who verified the card, when, on what (shown as "Checked Oct 24, 2026")
+checked: { date: 2026-10-24, by: opus, scope: "doses and numbers", fingerprint: "0123456789abcdef" }   # written by npm run checked:stamp (shown as "Checked Oct 24, 2026"); never typed by hand
 related:
   differential: [renal-pseudohyperkalemia]
   conditions: [renal-aki]
@@ -66,7 +65,7 @@ related:
 - A sourced pearl. ^[source-id]
 ```
 
-- Condition and approach cards need `definition` and `reviewed`. Every card needs `checked` (`date` YYYY-MM-DD, `by` `opus` or `owner`, short `scope`), unless its id is listed in `content/unchecked.txt` (drafts). Only the date is shown; `by` and `scope` stay in the data. `based_on` is optional and not shown (the "Based on" line was removed 2026-10-18); All Sources includes it and the definition's sources.
+- Condition and approach cards need `definition`. Every card needs `checked` (`date` YYYY-MM-DD, `by` `opus` or `owner`, short `scope`, `fingerprint`), unless its id is listed in `content/unchecked.txt` (drafts). Only the date is shown; the rest stays in the data. The old `reviewed` field is gone. `based_on` is optional and not shown (the "Based on" line was removed 2026-10-18); All Sources includes it and the definition's sources.
 - Related and Sources are added by the app; don't write them as sections.
 
 ## Contents sub-level (optional)
@@ -128,6 +127,7 @@ These keep 150+ cards one app. **Errors** fail the check; **warnings** print but
 - **Related cards (warning).** If A lists B under `related`, B should list A back.
 - **Unused sources (warning).** A source file no card or data item cites; delete it if it is orphaned.
 - **Checked stamp (error).** A card without `checked:` fails unless its id is in `content/unchecked.txt`; a card with the stamp must not be listed there. `by` is `opus` or `owner`.
+- **Fingerprint (error).** `checked.fingerprint` is a hash of the card's clinical content: every dose, regimen, threshold, criteria and calculator it uses, its numbers and inserts, and the sources cited on lines with a number or dose. It ignores prose wording. If it no longer matches, `content:check` fails: after the Opus check run `npm run checked:stamp -- <card-id>`; for a change that needs no re-check run `npm run checked:carry -- <card-id> "<reason>"`. `npm run pr:tier` labels each PR tier-0, tier-1, tier-2 or app and fails a tier-2 card with no matching stamp or carry.
 - **Checked date (warning).** `checked.date` older than 12 months.
 - **Do Now doses (warning).** A dose in `## Do Now` that does not also appear in the card's Treatment section (as a `{{dose:…}}`, or inside a `{{regimen:…}}` there).
 - **No semicolons (error).** No semicolon in card or data text (an entity such as `&amp;`, a web address, a comment and a source's `citation` are not text). A list becomes a lead-in line ending in a colon with sub-bullets (each keeps the line's source), a clause join becomes two sentences. A table cell has no line break, so a list in a cell is written as short sentences. Example: `- Severe: add albuterol; never alone. ^[src]` becomes `- Severe: add albuterol. Never alone. ^[src]`.

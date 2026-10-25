@@ -6,8 +6,7 @@ title: Hypoxemic Respiratory Failure
 aliases: [acute hypoxemic respiratory failure, AHRF, type 1 respiratory failure, hypoxia, low oxygen, desaturation, desat, hypoxemia, high-flow nasal cannula, HFNC, high-flow, Optiflow, Airvo, NIV, BiPAP, CPAP, ROX index, ARDS, A-a gradient, intubation, proning, P/F ratio, S/F ratio]
 definition: "Failure of oxygenation, usually PaO₂ <60 mm Hg (SpO₂ about 90%) on room air, with normal or low PaCO₂. ^[common-practice]"
 based_on: [ats-nirs-2026, ssc-sepsis-2026, ards-global-definition-2024, ats-ards-2024]
-reviewed: 2026-10-21
-checked: { date: 2026-10-21, by: owner, scope: owner review }
+checked: { date: 2026-10-21, by: owner, scope: "owner review", fingerprint: "b012f3540d16d8aa" }
 related:
   differential: [pulm-copd-exacerbation, pulm-vte-diagnosis, id-cap, cardio-adhf]
   conditions: [crit-sepsis]

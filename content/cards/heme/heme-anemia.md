@@ -6,8 +6,7 @@ title: "Anemia: Hospitalized Adult"
 aliases: [anemia, low hemoglobin, low hematocrit, low Hb, microcytic anemia, normocytic anemia, macrocytic anemia, MCV, reticulocyte count, retic, reticulocyte production index, iron deficiency, iron deficiency anemia, IDA, ferritin, transferrin saturation, TSAT, TIBC, anemia of chronic disease, anemia of inflammation, B12 deficiency, vitamin B12, folate deficiency, megaloblastic anemia, pernicious anemia, hemolysis, hemolytic anemia, LDH, haptoglobin, Coombs, DAT, schistocytes, TTP, thrombotic thrombocytopenic purpura, TMA, HUS, ADAMTS13, PLASMIC, transfusion, blood transfusion, packed red blood cells, PRBC, restrictive transfusion, IV iron, Injectafer, Monoferric, Feraheme, ferric carboxymaltose, ferumoxytol, ferric derisomaltose, ferrous sulfate, pancytopenia, thalassemia, Mentzer index, hospital-acquired anemia]
 definition: "Hemoglobin below 13.0 g/dL in men and 12.0 g/dL in nonpregnant women, evaluated in the hospitalized adult by red cell size (MCV) and reticulocyte response to find bleeding, hemolysis, marrow failure or a deficiency. ^[who-anemia-2024]"
 based_on: [who-anemia-2024, aabb-rbc-2023, ash-iron-deficiency-dx-2026, aga-ida-2020, kdigo-anemia-ckd-2026, isth-ttp-2025, bsh-b12-folate-2014]
-reviewed: 2026-10-22
-checked: { date: 2026-10-22, by: opus, scope: doses and numbers }
+checked: { date: 2026-10-22, by: opus, scope: "doses and numbers", fingerprint: "06183211fe1c18fb" }
 related:
   differential: [gi-upper-gi-bleeding, renal-aki, cardio-adhf]
   conditions: [heme-anticoagulation-management, cardio-nste-acs]

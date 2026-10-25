@@ -3,6 +3,7 @@ import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { loadContent } from './load.mjs';
 import { checkContent, checkWarnings } from './check.mjs';
+import { checkFingerprints } from './checked.mjs';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
 const content = loadContent(root, { includeExamples: true });
@@ -19,10 +20,12 @@ const HINTS = [
   [/dose|\bmg\b|unit/i, 'Rule: doses are only ever {{dose:id}} inserts, one per line, never typed. Read docs/DATA-TYPES.md.'],
   [/calculator|MDCalc|calc/i, 'Rule: every named score or calculator is {{calc:id}} with a verified MDCalc link. Read docs/DATA-TYPES.md "calc".'],
   [/pathway/i, 'Rule: pathways are standalone decision trees. Read docs/CONTENT-FORMAT.md "Pathways".'],
-  [/definition|reviewed|checked|front matter|subsection|system|title/i, 'Rule: front matter fields are required per type. Read docs/CONTENT-FORMAT.md.'],
+  [/definition|checked|front matter|subsection|system|title/i, 'Rule: front matter fields are required per type. Read docs/CONTENT-FORMAT.md.'],
 ];
 const hint = (m) => HINTS.find(([re]) => re.test(m))?.[1];
 const errors = checkContent(content).map((m) => { const h = hint(m); return h ? `${m}\n    ${h}` : m; });
+// Fingerprints need every reference to resolve, so they are checked only once the rest passes.
+if (!errors.length) errors.push(...checkFingerprints(content));
 const warnings = checkWarnings(content);
 if (warnings.length) console.warn(`Content warnings (${warnings.length}, these do not fail the check):\n- ` + warnings.join('\n- ') + '\n');
 if (errors.length) {

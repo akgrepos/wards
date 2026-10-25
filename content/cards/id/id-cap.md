@@ -7,8 +7,7 @@ title: Community-Acquired Pneumonia
 aliases: [CAP, pneumonia, PNA, community acquired pneumonia, lobar pneumonia, lower respiratory tract infection, LRTI, severe CAP]
 definition: "Pneumonia acquired outside the hospital: compatible symptoms with a new infiltrate on chest imaging. ^[idsa-ats-cap-2019]"
 based_on: [ats-cap-2025, idsa-ats-cap-2019]
-reviewed: 2026-10-19
-checked: { date: 2026-10-19, by: owner, scope: owner review }
+checked: { date: 2026-10-19, by: owner, scope: "owner review", fingerprint: "43100258a058e2f3" }
 related:
   differential: []
   conditions: [id-complicated-uti, id-cellulitis]

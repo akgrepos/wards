@@ -7,8 +7,7 @@ title: Delirium in the Hospitalized Adult
 aliases: [delirium, acute confusion, acute encephalopathy, altered mental status, agitation, ICU delirium, hypoactive delirium, hyperactive delirium, sundowning, CAM, CAM-ICU, 4AT, RASS, haloperidol, HELP, postoperative delirium, toxic metabolic encephalopathy]
 definition: "An acute, fluctuating disturbance of attention, awareness and cognition that is a direct physiologic consequence of another medical condition, medication, substance or toxin, and is not explained by a preexisting neurocognitive disorder. ^[apa-delirium-2025, nice-delirium-2023]"
 based_on: [apa-delirium-2025, padis-2025, nice-delirium-2023, ags-beers-2023]
-reviewed: 2026-10-22
-checked: { date: 2026-10-22, by: opus, scope: doses and numbers }
+checked: { date: 2026-10-22, by: opus, scope: "doses and numbers", fingerprint: "98a577bcef79d85f" }
 related:
   differential: []
   conditions: [crit-hypoxemic-respiratory-failure, renal-hyponatremia, id-complicated-uti, crit-sepsis]

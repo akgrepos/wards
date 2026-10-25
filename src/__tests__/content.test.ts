@@ -14,7 +14,7 @@ function withCard(md: string, extra: AnyCard = {}) {
   const card = {
     file: 'test.md', id: 'test-card', type: 'condition', variant: null, system: 'renal', group: 'condition', subsection: 'Test Disorders',
     title: 'Test', aliases: [], related: {}, example: true, unknownSections: [], unknownSubsections: [],
-    definition: null, basedOn: [], reviewed: null, checked: null,
+    definition: null, basedOn: [], checked: null,
     sections: [{ key: 'at-a-glance', title: 'At a Glance', blocks: blocks(md), subsections: [] }],
     ...extra,
   };
@@ -92,10 +92,9 @@ describe('content checks', () => {
     expect(withCard(kp(':::onset Compare\n- {{dose:calcium-gluconate-hyperkalemia}}\n- Dialysis: soon ^[example-guideline-a]\n:::')).join()).toMatch(/each :::onset item/);
     expect(withCard(kp(':::onset Compare\n- {{dose:calcium-gluconate-hyperkalemia}}\n- Dialysis: Immediate\n:::')).join()).toMatch(/has no source/);
   });
-  it('needs a definition and a reviewed date on topic pages', () => {
+  it('needs a definition on topic pages', () => {
     const e = withCard(kp(''), { example: false }).join();
     expect(e).toMatch(/one-line "definition"/);
-    expect(e).toMatch(/"reviewed" date/);
   });
   it('allows ### only inside More Information', () => {
     expect(withCard(kp(''), { unknownSubsections: ['At a Glance › Extra'] }).join()).toMatch(/not a More Information subsection/);
@@ -139,7 +138,7 @@ describe('tappable cutoffs', () => {
     base.data.threshold['test-cut'] = { name: 'Potassium needing an urgent ECG', value: '≥6.0', unit: 'mEq/L', sources: ['example-guideline-a'], _file: 'test-cut.yaml', ...(note === undefined ? {} : { [field]: note }) };
     base.cards.push({
       file: 'test.md', id: 'test-card', type: 'condition', variant: null, system: 'renal', group: 'condition', subsection: 'Test Disorders',
-      title: 'Test', aliases: [], related: {}, example: true, unknownSections: [], unknownSubsections: [], definition: null, basedOn: [], reviewed: null, checked: null,
+      title: 'Test', aliases: [], related: {}, example: true, unknownSections: [], unknownSubsections: [], definition: null, basedOn: [], checked: null,
       sections: [{ key: 'at-a-glance', title: 'At a Glance', blocks: parseBlocks(kp(md).split('\n')), subsections: [] }],
     });
     return checkContent(base).join('\n');
@@ -189,7 +188,7 @@ describe('emergency (Do Now) sections', () => {
     const base = JSON.parse(JSON.stringify(real));
     base.cards.push({
       file: 'test.md', id: 'test-card', type: 'condition', variant: null, system: 'renal', group: 'condition', subsection: 'Test Disorders',
-      title: 'Test', aliases: [], related: {}, example: true, unknownSections: [], unknownSubsections: [], definition: null, basedOn: [], reviewed: null, checked: null,
+      title: 'Test', aliases: [], related: {}, example: true, unknownSections: [], unknownSubsections: [], definition: null, basedOn: [], checked: null,
       sections: [{ key: 'at-a-glance', title: 'At a Glance', blocks: steps(kp('')), subsections: [] }],
       emergency: { hint, blocks: steps(md) },
       ...extra,
@@ -273,7 +272,7 @@ describe('consistency rules', () => {
     const base = clone();
     base.cards.push({
       file: 'test.md', id: 'test-card', type: 'condition', variant: null, system: 'renal', group: 'condition', subsection: 'Electrolyte Disorders',
-      title: 'Test', aliases: [], related: {}, example: false, unknownSections: [], unknownSubsections: [], definition: null, basedOn: [], reviewed: null, checked: null,
+      title: 'Test', aliases: [], related: {}, example: false, unknownSections: [], unknownSubsections: [], definition: null, basedOn: [], checked: null,
       sections: [{ key: 'at-a-glance', title: 'At a Glance', blocks: parseBlocks(md.split('\n')), subsections: [] }], ...extra,
     });
     return base;
@@ -319,9 +318,6 @@ describe('consistency rules', () => {
     expect(warnings(base, new Date('2026-01-14'))).not.toMatch(/months old/);
     expect(warnings(base, new Date('2026-02-01'))).toMatch(/checked 2025-01-15 is over 12 months old/);
   });
-  it('does not warn about age from the old reviewed date', () => {
-    expect(warnings(addCard({ reviewed: '2025-01-15' }), new Date('2026-06-01'))).not.toMatch(/months old/);
-  });
   it('needs a checked stamp unless the draft is listed in unchecked.txt', () => {
     const stamp = { date: '2026-10-24', by: 'opus', scope: 'doses and numbers' };
     const withList = (extra: AnyCard, unchecked: string[] = []) => { const b = addCard(extra); b.unchecked = [...b.unchecked, ...unchecked]; return errorsOf(b); };
@@ -355,7 +351,7 @@ describe('no semicolons', () => {
     const base = clone();
     base.cards.push({
       file: 'test.md', id: 'test-card', type: 'condition', variant: null, system: 'renal', group: 'condition', subsection: 'Electrolyte Disorders',
-      title: 'Test', aliases: [], related: {}, example: false, unknownSections: [], unknownSubsections: [], definition: null, basedOn: [], reviewed: null, checked: null,
+      title: 'Test', aliases: [], related: {}, example: false, unknownSections: [], unknownSubsections: [], definition: null, basedOn: [], checked: null,
       sections: [{ key: 'at-a-glance', title: 'At a Glance', blocks: parseBlocks(kp(line).split('\n')), subsections: [] }],
     });
     return checkContent(base).join('\n');
@@ -386,7 +382,7 @@ describe('no source text shown', () => {
     const base = JSON.parse(JSON.stringify(real));
     base.cards.push({
       file: 'test.md', id: 'test-card', type: 'condition', variant: null, system: 'renal', group: 'condition', subsection: 'Electrolyte Disorders',
-      title: 'Test', aliases: [], related: {}, example: false, unknownSections: [], unknownSubsections: [], definition: null, basedOn: [], reviewed: null, checked: null,
+      title: 'Test', aliases: [], related: {}, example: false, unknownSections: [], unknownSubsections: [], definition: null, basedOn: [], checked: null,
       sections: [{ key: 'at-a-glance', title: 'At a Glance', blocks: parseBlocks(md.split('\n')), subsections: [] }],
     });
     return checkContent(base).join('\n');
