@@ -11,9 +11,10 @@ duration: At least 7 days in total. May switch to an oral agent 24–48 hours af
 boxed_warning: None
 cautions:
   - Add doxycycline if chlamydia is not excluded.
-  - "Gonococcal meningitis or endocarditis: 1–2 g IV every 24 hours, 10–14 days for meningitis and more than 4 weeks for endocarditis, set with infectious diseases."
+  - "Gonococcal meningitis or endocarditis: 1–2 g IV every 12–24 hours, 10–14 days for meningitis and more than 4 weeks for endocarditis, set with infectious diseases."
+  - Not with calcium-containing IV solutions in the same line.
 sources: [cdc-sti-2021, label-ceftriaxone-2026]
 verification:
   source: cdc-sti-2021
   read: full-text
-  date: 2026-10-23
+  date: 2026-10-24

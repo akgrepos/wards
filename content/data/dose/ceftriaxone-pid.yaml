@@ -11,9 +11,10 @@ duration: Switch to oral therapy after clinical improvement. Complete 14 days in
 boxed_warning: None
 cautions:
   - Ceftriaxone has no activity against Chlamydia trachomatis. Doxycycline and metronidazole are part of the regimen.
-notes: "Outpatient regimen: 500 mg IM once (1 g if ≥150 kg), plus doxycycline and metronidazole for 14 days."
+  - Not with calcium-containing IV solutions in the same line.
+notes: "Outpatient regimen: 500 mg IM once (1 g if over 150 kg with documented gonorrhea), plus doxycycline and metronidazole for 14 days."
 sources: [cdc-sti-2021, label-ceftriaxone-2026]
 verification:
   source: cdc-sti-2021
   read: full-text
-  date: 2026-10-23
+  date: 2026-10-24
