@@ -5,8 +5,7 @@ variant: chart
 system: id
 title: "Empiric Antimicrobials"
 aliases: [empiric antibiotics, empiric antimicrobials, antibiotic selection, antibiotic choice, antibiotic coverage, coverage chart, antibiogram, de-escalation, antibiotic time-out, MRSA coverage, Pseudomonas coverage, ESBL, VRE, anaerobic coverage, intra-abdominal infection, IAI, peritonitis, diverticulitis, cholangitis, HAP, VAP, hospital-acquired pneumonia, ventilator-associated pneumonia, nosocomial pneumonia, meningitis, bacterial meningitis, bacteremia, bloodstream infection, line infection, CLABSI, catheter infection, candidemia, penicillin allergy, beta-lactam allergy, cephalosporin allergy, renal dosing, vancomycin, piperacillin-tazobactam, cefepime, meropenem]
-reviewed: 2026-10-21
-checked: { date: 2026-10-21, by: opus, scope: doses and numbers }
+checked: { date: 2026-10-21, by: opus, scope: "doses and numbers", fingerprint: "c139b1f689ece21f" }
 related:
   conditions: [id-cap, id-cellulitis, id-complicated-uti, crit-sepsis]
   tools: [renal-aki]

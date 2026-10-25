@@ -7,8 +7,7 @@ title: Sepsis and Septic Shock
 aliases: [sepsis, septic shock, severe sepsis, SIRS, qSOFA, SOFA, NEWS, Sepsis-3, distributive shock, vasopressors, pressors, norepinephrine, levophed, vasopressin, stress-dose steroids, hydrocortisone, lactate, hour-1 bundle, SEP-1, code sepsis, refractory septic shock]
 definition: "Life-threatening organ dysfunction caused by a dysregulated host response to infection. Septic shock adds a vasopressor requirement for MAP ≥65 mm Hg and lactate >2 mmol/L despite adequate fluids. ^[sepsis-3-2016]"
 based_on: [ssc-sepsis-2026, sepsis-3-2016]
-reviewed: 2026-10-21
-checked: { date: 2026-10-21, by: owner, scope: owner review }
+checked: { date: 2026-10-21, by: owner, scope: "owner review", fingerprint: "7d94b3fcfc8ec4b8" }
 related:
   differential: []
   conditions: [renal-aki, id-cap, id-complicated-uti, id-cellulitis, endo-inpatient-hyperglycemia]

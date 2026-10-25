@@ -192,17 +192,14 @@ export function checkContent({ systems, cards, data, unchecked = [] }) {
       const n = kp.blocks.filter((b) => b.t === 'list').reduce((a, b) => a + b.items.length, 0);
       if (n < 3 || n > 6) err(where, `At a Glance should have 3–6 bullets (has ${n})`);
     }
-    // The page header: a one-line definition, the guidelines it is based on, and the date it was last reviewed.
-    if (type.topic && !c.example) {
-      if (!c.definition) err(where, 'topic pages need a one-line "definition" in the front matter');
-      if (!c.reviewed) err(where, 'topic pages need a "reviewed" date (YYYY-MM-DD) in the front matter');
-    }
-    if (c.reviewed && !/^\d{4}-\d{2}-\d{2}$/.test(c.reviewed)) err(where, `reviewed date "${c.reviewed}" must be YYYY-MM-DD`);
+    // The page header: a one-line definition (the checked date comes from the "checked" stamp below).
+    if (type.topic && !c.example && !c.definition) err(where, 'topic pages need a one-line "definition" in the front matter');
     // The "checked" stamp: who verified the card's doses, numbers and care-changing claims, when, and on what scope.
     if (c.checked) {
       if (!c.checked.date || !/^\d{4}-\d{2}-\d{2}$/.test(c.checked.date)) err(where, 'checked needs a date (YYYY-MM-DD)');
       if (!CHECKED_BY.includes(c.checked.by)) err(where, `checked "by" must be one of ${CHECKED_BY.join(', ')}`);
       if (!c.checked.scope) err(where, 'checked needs a short "scope", for example "doses and numbers"');
+      if (c.checked.fingerprint != null && !/^[0-9a-f]{16}$/.test(c.checked.fingerprint)) err(where, 'checked "fingerprint" must be 16 hex characters; let npm run checked:stamp or checked:carry write it');
     } else if (!c.example && !unchecked.includes(c.id)) {
       err(where, 'has no "checked" stamp in the front matter; get the Opus check, or list the draft in content/unchecked.txt until then (docs/CARD-WRITING-CHEATSHEET.md, "Checked")');
     }

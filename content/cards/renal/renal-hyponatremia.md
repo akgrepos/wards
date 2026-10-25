@@ -7,8 +7,7 @@ title: Hyponatremia
 aliases: [low sodium, sodium low, Na low, hypoNa, hyponatraemia, SIADH, SIAD, syndrome of inappropriate antidiuretic hormone, osmotic demyelination, ODS, hypertonic saline, 3% saline, tolvaptan]
 definition: "Serum Na⁺ <135 mEq/L. Usually hypotonic, from water retention. ^[verbalis-hyponatremia-2013, adrogue-hyponatremia-2022]"
 based_on: [verbalis-hyponatremia-2013, spasovski-hyponatraemia-2014]
-reviewed: 2026-10-19
-checked: { date: 2026-10-19, by: owner, scope: owner review }
+checked: { date: 2026-10-19, by: owner, scope: "owner review", fingerprint: "6c2cb3d8780ef7eb" }
 related:
   conditions: [renal-hypokalemia]
   tools: [renal-iv-fluids]

@@ -7,8 +7,7 @@ title: Alcohol Withdrawal in the Hospitalized Adult
 aliases: [alcohol withdrawal, AWS, delirium tremens, DTs, alcohol withdrawal delirium, withdrawal seizure, rum fits, CIWA, CIWA-Ar, PAWSS, phenobarbital, symptom-triggered benzodiazepines, front loading, Wernicke, thiamine, alcohol use disorder, detox, alcohol hallucinosis, benzodiazepine-resistant withdrawal]
 definition: "A syndrome of autonomic hyperactivity, tremor, anxiety and insomnia, with seizures, hallucinations or delirium in severe cases, that follows a reduction or stop in heavy, prolonged alcohol use. ^[asam-alcohol-withdrawal-2020]"
 based_on: [asam-alcohol-withdrawal-2020, maldonado-pawss-2015, saitz-1994, rosenson-2013, bradley-phenobarbital-2026, galvin-efns-wernicke-2010]
-reviewed: 2026-10-22
-checked: { date: 2026-10-22, by: opus, scope: doses and numbers }
+checked: { date: 2026-10-22, by: opus, scope: "doses and numbers", fingerprint: "41e172969e3a7dc6" }
 related:
   differential: []
   conditions: [neuro-delirium, renal-electrolyte-repletion, renal-hyponatremia]

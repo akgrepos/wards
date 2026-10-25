@@ -27,7 +27,7 @@ const sections = def.sections.filter((s) => s.key === 'pearls' || (keys ? keys.h
 const out = [`---`, `id: ${id}`, `type: ${type}`, ...(variant ? [`variant: ${variant}`] : []), `system: ${system}`];
 if (type === 'condition') out.push('subsection: "SCAFFOLD: subsection name"');
 out.push(`title: ${JSON.stringify(title)}`, 'aliases: []');
-if (def.topic) out.push('definition: "SCAFFOLD: one-line definition. ^[source-id]"', `reviewed: ${new Date().toISOString().slice(0, 10)}`);
+if (def.topic) out.push('definition: "SCAFFOLD: one-line definition. ^[source-id]"');
 out.push('related:', '  differential: []', '  conditions: []', '  tools: []', '---');
 for (const s of sections) out.push(`## ${s.title}`, `- SCAFFOLD: replace with sourced content. ^[source-id]`, '');
 const file = join(root, 'content/cards', system, `${id}.md`);

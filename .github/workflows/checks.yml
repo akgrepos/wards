@@ -6,6 +6,7 @@ on:
 
 permissions:
   contents: read
+  pull-requests: write # only to put the tier label on the PR
 
 jobs:
   checks:
@@ -41,6 +42,11 @@ jobs:
         run: npm run check:offline
       - name: Cards whose content changed (job summary)
         run: node scripts/content/compose-diff.mjs origin/${{ github.event.pull_request.base.ref }}
+      - name: Release tier (label and reasons; fails if a clinical change has no matching Checked stamp)
+        run: npm run pr:tier -- --base origin/${{ github.event.pull_request.base.ref }} --label
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
       - name: Playwright WebKit (for the look check)
         run: npx playwright install --with-deps webkit
       - name: Look check (links, tap targets, design-token colors and fonts, no leftovers; no pictures)

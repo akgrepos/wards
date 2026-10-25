@@ -7,8 +7,7 @@ title: Pyelonephritis and Complicated Urinary Tract Infection
 aliases: [pyelonephritis, pyelo, complicated UTI, cUTI, febrile UTI, upper UTI, urosepsis, kidney infection, CAUTI, catheter-associated UTI, UTI]
 definition: "UTI extending beyond the bladder: fever, bacteremia or other systemic illness, flank pain or costovertebral angle tenderness. Includes pyelonephritis, catheter-associated UTI with systemic symptoms, and symptomatic UTI with a long-term catheter, stent or nephrostomy. ^[idsa-cuti-2025]"
 based_on: [idsa-cuti-selection-2025, idsa-cuti-ivpo-2025, idsa-cuti-duration-2025]
-reviewed: 2026-10-19
-checked: { date: 2026-10-19, by: owner, scope: owner review }
+checked: { date: 2026-10-19, by: owner, scope: "owner review", fingerprint: "470e254809804759" }
 related:
   differential: []
   conditions: [id-cap, id-cellulitis, renal-aki]
