@@ -9,7 +9,7 @@ based_on: [chiew-ss-2025, isbister-ss-2007, scotton-ss-2019, gurrera-nms-2011, w
 checked: { date: 2026-10-25, by: opus, scope: "Doses, Hunter and NMS consensus criteria, NMS staging, ICU triggers and care-changing claims checked against Chiew 2025, Isbister 2007, Scotton 2019, Wadoo 2021, the Gurrera 2011 table and 2017 validation, Kuhlwilm 2020, Suekane 2026 and the labels. Boyer 2005 and the Dunkley and Gurrera full texts not read.", fingerprint: "7ca904fb7fae3925" }
 related:
   differential: [neuro-delirium, psych-acute-agitation]
-  conditions: [crit-sepsis]
+  conditions: [crit-sepsis, psych-lithium-psychotropic-safety]
   tools: []
   medications: []
 ---

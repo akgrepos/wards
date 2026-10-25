@@ -10,7 +10,7 @@ based_on: [aaep-beta-medical-2012, aaep-beta-deescalation-2012, aaep-beta-psycho
 checked: { date: 2026-10-23, by: opus, scope: "doses and numbers", fingerprint: "ba85d4081fbb6c36", carried: "2026-10-24: Dose corrections (stage 4b PR C): the changed dose and drug-record lines were checked against the labels and guidelines by an Opus helper. The rest of the card is unchanged." }
 related:
   differential: [neuro-delirium, neuro-alcohol-withdrawal]
-  conditions: [crit-hypoxemic-respiratory-failure, renal-hyponatremia, crit-sepsis, id-complicated-uti, hosp-pain-management]
+  conditions: [crit-hypoxemic-respiratory-failure, renal-hyponatremia, crit-sepsis, id-complicated-uti, hosp-pain-management, psych-serotonin-syndrome-nms, psych-suicide-risk-assessment, psych-lithium-psychotropic-safety]
   tools: []
 ---
 ## Do Now

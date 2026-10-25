@@ -9,7 +9,7 @@ definition: "An acute, fluctuating disturbance of attention, awareness and cogni
 based_on: [apa-delirium-2025, padis-2025, nice-delirium-2023, ags-beers-2023]
 checked: { date: 2026-10-22, by: opus, scope: "doses and numbers", fingerprint: "a202bd62fb897758", carried: "2026-10-24: Dose row titles shortened to the indication only. Doses and numbers unchanged, the removed wording is kept in the longer indication text." }
 related:
-  differential: []
+  differential: [psych-acute-agitation, psych-serotonin-syndrome-nms, psych-suicide-risk-assessment]
   conditions: [crit-hypoxemic-respiratory-failure, renal-hyponatremia, id-complicated-uti, crit-sepsis]
   tools: []
   medications: []

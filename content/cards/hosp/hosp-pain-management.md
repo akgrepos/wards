@@ -8,7 +8,7 @@ aliases: [pain management, acute pain, analgesia, multimodal analgesia, opioid c
 checked: { date: 2026-10-22, by: opus, scope: "doses and numbers", fingerprint: "05431b1d6ec5393a", carried: "2026-10-24: Dose corrections (stage 4b PR C): the changed dose and drug-record lines were checked against the labels and guidelines by an Opus helper. The rest of the card is unchanged." }
 contents_sub: [dosing]
 related:
-  conditions: [neuro-delirium, renal-aki, gi-upper-gi-bleeding, heme-anticoagulation-management]
+  conditions: [neuro-delirium, renal-aki, gi-upper-gi-bleeding, heme-anticoagulation-management, psych-acute-agitation]
 ---
 ## At a Glance
 - Treat pain multimodally: scheduled acetaminophen, an NSAID when safe, and nonpharmacologic measures, with opioids added only when needed and at the lowest effective dose. ^[chou-postop-pain-2016, cdc-opioid-2022]

@@ -19,6 +19,8 @@ The essentials for writing or fixing a card. Read this first; open the full guid
 - One idea per bullet.
 - The same wording for the same kind of item across cards (the same phrase for a monitoring line, a contraindication, a when-to-escalate line).
 - Titles name the condition only ("Acute Coronary Syndrome"); the other names are search aliases.
+- A severity ladder or risk-level table is always a `:::scale` block (least to most severe, one band per level). Never nested bullets or a gray table. Tones (`layout: stacked`) exist only in shared criteria files.
+- Card text never names a guideline, society or study (for example "per ACEP" or "NICE says"). The `^[id]` source markers carry the attribution. Criteria and score names stay (Hunter criteria, Sepsis-3, CURB-65).
 
 ## Lines and sources
 - Every content line ends `^[source-id, …]` (ids from `content/data/source/`), except lines that are only an insert. Sub-bullets without their own source use the parent's.

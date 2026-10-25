@@ -10,7 +10,7 @@ based_on: [asam-alcohol-withdrawal-2020, maldonado-pawss-2015, saitz-1994, rosen
 checked: { date: 2026-10-22, by: opus, scope: "doses and numbers", fingerprint: "2d24933c5172be66", carried: "2026-10-24: Dose corrections (stage 4b PR C): the changed dose and drug-record lines were checked against the labels and guidelines by an Opus helper. The rest of the card is unchanged." }
 related:
   differential: []
-  conditions: [neuro-delirium, renal-electrolyte-repletion, renal-hyponatremia]
+  conditions: [neuro-delirium, renal-electrolyte-repletion, renal-hyponatremia, psych-acute-agitation]
   tools: []
   medications: []
 emergency_hint: Benzodiazepines, thiamine, treat seizure
