@@ -24,6 +24,11 @@ export const ROUTES = [
   { name: 'search-sections', hash: '#/search', storage: { 'wards:searches': ['antibiotic'] }, steps: [{ click: 'antibiotic' }] },
   { name: 'search-more', hash: '#/search', storage: { 'wards:searches': ['treatment'] }, steps: [{ click: 'treatment' }, { click: 'Show' }] },
   { name: 'search-tools', hash: '#/search', storage: { 'wards:searches': ['wells'] }, steps: [{ click: 'wells' }] },
+  // Questions typed as a sentence: the heading is found with the card's name or alias, and smaller names inside sections.
+  { name: 'search-pe-severity', hash: '#/search', storage: { 'wards:searches': ['PE severity'] }, steps: [{ click: 'PE severity' }] },
+  { name: 'search-hyponatremia-labs', hash: '#/search', storage: { 'wards:searches': ['hyponatremia labs'] }, steps: [{ click: 'hyponatremia labs' }] },
+  { name: 'search-ciwa', hash: '#/search', storage: { 'wards:searches': ['CIWA'] }, steps: [{ click: 'CIWA' }] },
+  { name: 'search-severity', hash: '#/search', storage: { 'wards:searches': ['severity'] }, steps: [{ click: 'severity' }] },
   { name: 'search-none', hash: '#/search', storage: { 'wards:searches': ['cefalexin'] }, steps: [{ click: 'cefalexin' }] },
   { name: 'library', hash: '#/library' },
   { name: 'settings', hash: '#/settings' },

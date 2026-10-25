@@ -5,6 +5,7 @@ import { splitContent } from '../../scripts/content/split.mjs';
 import { search, type GroupKey } from '../content/search';
 import { content } from '../content';
 import { resetRouterForTests } from '../router';
+import { missesThisWeek } from '../storage';
 
 // The offline/update service worker doesn't exist in tests; pretend no update is waiting.
 vi.mock('virtual:pwa-register/react', () => ({
@@ -47,7 +48,20 @@ describe('search index', () => {
   });
 
   it('has no card text: staying small keeps the app quick to start', () => {
-    expect(JSON.stringify(idx).length).toBeLessThan(60_000);
+    expect(JSON.stringify(idx).length).toBeLessThan(70_000);
+  });
+
+  it('holds the smaller names: scale and comparison names, bands, criteria titles, bold bullet labels, calculator short names', () => {
+    const labels = idx.labels!;
+    const text = (id: string) => labels.filter(([ci]) => content.cards[ci].id === id).map(([, , t]) => t);
+    expect(labels.length).toBeGreaterThan(300);
+    expect(text('pulm-vte-diagnosis')).toEqual(expect.arrayContaining(['PE severity', 'Acute PE clinical category', 'Simplified PE Severity Index (sPESI)', 'Wells score for PE']));
+    expect(text('renal-hyponatremia')).toEqual(expect.arrayContaining(['Hypovolemic', 'Symptoms by severity']));
+    // never repeats a heading of the same card, and every row points at a real section
+    for (const [ci, key, t] of labels) {
+      expect(content.cards[ci].sections.some((x) => x.key === key) || idx.sections.some((r) => r[0] === ci && r[1] === key)).toBe(true);
+      expect(idx.sections.some((r) => r[0] === ci && r[1] === key && r[2] === t)).toBe(false);
+    }
   });
 
   it('finds the section that shows a dose, also through a regimen, and the brand names', () => {
@@ -174,6 +188,46 @@ describe('search ranking and groups', () => {
   });
 });
 
+describe('questions typed as the owner would', () => {
+  const titles = (q: string) => group(q, 'sections').map((h) => `${h.title} | ${h.subtitle}`);
+
+  it('"PE severity" finds the PE severity table and the sPESI criteria of the VTE card, not other cards', () => {
+    const hits = group('PE severity', 'sections');
+    expect(hits[0].cardId).toBe('pulm-vte-diagnosis');
+    expect(hits[0].title).toBe('PE severity');
+    expect(hits.some((h) => h.title.startsWith('Simplified PE Severity Index'))).toBe(true);
+    expect(hits.every((h) => h.cardId === 'pulm-vte-diagnosis')).toBe(true);
+  });
+
+  it('"hyponatremia labs" finds the Diagnosis section of Hyponatremia', () => {
+    const hits = group('hyponatremia labs', 'sections');
+    expect(hits).toHaveLength(1);
+    expect([hits[0].cardId, hits[0].title, hits[0].section]).toEqual(['renal-hyponatremia', 'Diagnosis', 'diagnosis']);
+  });
+
+  it('"alcohol withdrawal CIWA" finds the Alcohol Withdrawal severity, and "CIWA" its score and the card', () => {
+    expect(titles('alcohol withdrawal CIWA').every((t) => t.endsWith('Alcohol Withdrawal'))).toBe(true);
+    expect(titles('alcohol withdrawal CIWA').length).toBeGreaterThan(0);
+    expect(keys('CIWA')).toContain('cards');
+    expect(group('CIWA', 'sections').some((h) => h.title === 'CIWA-Ar')).toBe(true);
+  });
+
+  it('one word (severity) lists headings first, then smaller names, with the card the word names ranked first', () => {
+    const hits = group('severity', 'sections');
+    expect(hits.slice(0, 3).every((h) => h.title === 'Severity')).toBe(true);
+    expect(hits.some((h) => h.title !== 'Severity')).toBe(true);
+  });
+
+  it('a short word is a whole word with the card ("PE" is not "Pearls")', () => {
+    expect(group('PE severity', 'sections').some((h) => h.title === 'Pearls')).toBe(false);
+  });
+
+  it('a smaller name opens its own section', () => {
+    const hit = group('Wells', 'sections').find((h) => h.cardId === 'pulm-vte-diagnosis')!;
+    expect(hit.section).toBeTruthy();
+  });
+});
+
 describe('Search screen', () => {
   beforeEach(() => { localStorage.clear(); resetRouterForTests(); history.replaceState(null, '', '#/search'); });
   afterEach(() => cleanup());
@@ -236,6 +290,29 @@ describe('Search screen', () => {
     await act(async () => { fireEvent.click(screen.getByRole('button', { name: /osmolality/i })); });
     await act(async () => { await new Promise((r) => setTimeout(r, 0)); });
     await waitFor(() => expect(document.querySelector(".calc-sheet")).toBeTruthy());
+  });
+
+  it('counts a search with no result once, after the words stand still or on Enter; a search with results is not counted', async () => {
+    vi.useFakeTimers();
+    try {
+      render(<App />);
+      const field = screen.getByPlaceholderText('Search cards, drugs, calculators');
+      type('zzzqx');
+      expect(missesThisWeek()).toBe(0);
+      act(() => { vi.advanceTimersByTime(2100); });
+      expect(missesThisWeek()).toBe(1);
+      fireEvent.keyDown(field, { key: 'Enter' }); // same words again: not counted twice
+      expect(missesThisWeek()).toBe(1);
+      type('zzzqy');
+      fireEvent.keyDown(field, { key: 'Enter' });
+      expect(missesThisWeek()).toBe(2);
+      type('ceftriaxone');
+      act(() => { vi.advanceTimersByTime(5000); });
+      expect(missesThisWeek()).toBe(2);
+      type('z'); // one letter is never counted
+      act(() => { vi.advanceTimersByTime(5000); });
+      expect(missesThisWeek()).toBe(2);
+    } finally { vi.useRealTimers(); }
   });
 
   it('no results says what to try', () => {

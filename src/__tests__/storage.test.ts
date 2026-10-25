@@ -1,10 +1,10 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import { addRecent, addSearch, clearRecent, clearSearches, getRecent, getSearches, RECENT_MAX, SEARCHES_MAX } from '../storage';
+import { addMiss, addRecent, addSearch, clearMisses, clearRecent, clearSearches, getMisses, getRecent, getSearches, missesThisWeek, pagesOpenedThisWeek, RECENT_MAX, SEARCHES_MAX, WEEK_MS } from '../storage';
 import { updateFailed } from '../UpdatePrompt';
 
 vi.mock('virtual:pwa-register/react', () => ({ useRegisterSW: () => ({ needRefresh: [false], updateServiceWorker: () => {} }) }));
 
-beforeEach(() => { localStorage.clear(); clearRecent(); clearSearches(); });
+beforeEach(() => { localStorage.clear(); clearRecent(); clearSearches(); clearMisses(); });
 
 describe('stored lists (on this phone only)', () => {
   it('forgets the Favorites list an earlier version saved', async () => {
@@ -14,11 +14,39 @@ describe('stored lists (on this phone only)', () => {
     expect(localStorage.getItem('wards:favorites')).toBeNull();
   });
 
-  it('Recent keeps the last five, newest first, each once', () => {
-    for (let i = 1; i <= 7; i++) addRecent(`card-${i}`, i);
+  it('Recent keeps the last 30, newest first, each once', () => {
+    for (let i = 1; i <= 33; i++) addRecent(`card-${i}`, i);
     addRecent('card-5', 100);
-    expect(getRecent().map((r) => r.id)).toEqual(['card-5', 'card-7', 'card-6', 'card-4', 'card-3']);
+    expect(RECENT_MAX).toBe(30);
+    expect(getRecent().slice(0, 3).map((r) => r.id)).toEqual(['card-5', 'card-33', 'card-32']);
     expect(getRecent()).toHaveLength(RECENT_MAX);
+    expect(getRecent().map((r) => r.id)).not.toContain('card-3');
+  });
+
+  it('counts the different pages opened in the last seven days', () => {
+    const now = 10 * WEEK_MS;
+    addRecent('old', now - WEEK_MS - 1);
+    addRecent('a', now - 3 * 24 * 3600 * 1000);
+    addRecent('b', now - 1000);
+    addRecent('a', now - 500);
+    addRecent('gone', now - 100);
+    expect(pagesOpenedThisWeek(now)).toBe(3);
+    expect(pagesOpenedThisWeek(now, (id) => id !== 'gone')).toBe(2);
+    expect(pagesOpenedThisWeek(now + WEEK_MS)).toBe(0);
+  });
+
+  it('counts searches with no result in the last seven days, keeping only the time', () => {
+    const now = 10 * WEEK_MS;
+    addMiss(now - WEEK_MS - 5);
+    addMiss(now - 2000);
+    addMiss(now - 1000);
+    expect(missesThisWeek(now)).toBe(2);
+    addMiss(now);
+    expect(getMisses().every((t) => typeof t === 'number')).toBe(true);
+    expect(getMisses()).toHaveLength(3); // the old one was dropped when this was added
+    expect(missesThisWeek(now + WEEK_MS + 1)).toBe(0);
+    clearMisses();
+    expect(missesThisWeek(now)).toBe(0);
   });
 
   it('Recent Searches keeps the last ten typed, newest first, each once', () => {

@@ -8,6 +8,33 @@
 //   sections: [cardIndex, key, title, parentTitle]            parentTitle is '' for a top-level section
 //   drugs:    [drugName, brandNames, cardIndex, key, title, drugId]   key/title: the section holding the dose ('' if none)
 //   tools:    [calcId, name, short, otherNames, cardIndexes]
+//   labels:   [cardIndex, key, text]   smaller names inside a section (key/title as in sections): the names of scale and
+//             comparison blocks and their bands, criteria titles, bold bullet labels, calculator short names
+
+const plain = (inlines) => (inlines ?? []).map((i) => (i.t === 'text' || i.t === 'strong' || i.t === 'em' ? i.v : i.t === 'insert' ? i.label ?? '' : '')).join('').trim();
+const fold = (t) => t.toLowerCase().normalize('NFKD').replace(/[^a-z0-9]+/g, ' ').trim();
+const CONTAINER_TITLES = new Set(['scale', 'compare', 'times', 'onset']);
+const LABEL_MAX = 48;
+
+// The short names a block (and what it holds) offers to search, in page order.
+function blockLabels(blocks, out) {
+  for (const b of blocks ?? []) {
+    if (b.t === 'list') listLabels(b.items, out);
+    else if (b.t === 'steps') for (const it of b.items) blockLabels(it.blocks, out);
+    else if (CONTAINER_TITLES.has(b.t)) {
+      out.push(plain(b.title));
+      if (b.t === 'scale') for (const it of b.items) out.push(plain(it.label));
+    }
+  }
+}
+function listLabels(items, out) {
+  for (const it of items) {
+    const first = it.inlines?.[0];
+    // "**Label:** text": the bold words at the start of a bullet.
+    if (first?.t === 'strong') out.push(first.v.replace(/[:\s]+$/, ''));
+    listLabels(it.children ?? [], out);
+  }
+}
 
 export function buildSearchIndex(content, { refs, byId, items }) {
   const reach = (value) => {
@@ -25,6 +52,7 @@ export function buildSearchIndex(content, { refs, byId, items }) {
   };
 
   const sections = [];
+  const labels = [];
   const drugs = [];
   const toolCards = new Map(); // calc id → card indexes
 
@@ -46,11 +74,33 @@ export function buildSearchIndex(content, { refs, byId, items }) {
       }
     };
     const passes = [];
+    const seenLabels = new Set(); // folded text, once per card
+    const addLabels = (key, title, blocks) => {
+      const found = new Set();
+      refs(blocks, byId, found);
+      const out = [];
+      blockLabels(blocks, out);
+      for (const k of found) {
+        const item = items.get(k);
+        if (k.startsWith('criteria/') && item?.title) out.push(item.title.replace(/,\s*\d{4}$/, ''));
+        if (k.startsWith('calc/') && item?.short) out.push(item.short);
+      }
+      for (const text of out) {
+        const f = fold(text);
+        if (f.length < 2 || text.length > LABEL_MAX || /^\d+$/.test(f) || f === fold(title) || seenLabels.has(f)) continue;
+        seenLabels.add(f);
+        labels.push([ci, key, text]);
+      }
+    };
+    for (const s of card.sections) seenLabels.add(fold(s.title));
+    for (const s of card.sections) for (const x of s.subsections) seenLabels.add(fold(x.title));
     for (const s of card.sections) {
       sections.push([ci, s.key, s.title, '']);
+      addLabels(s.key, s.title, s.blocks);
       passes.push([reach(s.blocks), s.key, s.title]);
       for (const x of s.subsections) {
         sections.push([ci, x.key, x.title, s.title]);
+        addLabels(x.key, x.title, x.blocks);
         passes.push([reach(x.blocks), x.key, x.title]);
       }
     }
@@ -73,5 +123,5 @@ export function buildSearchIndex(content, { refs, byId, items }) {
     return [id, c.name, c.short, (c.match ?? []).join('|'), cardIndexes];
   });
 
-  return { sections, drugs, tools };
+  return { sections, labels, drugs, tools };
 }

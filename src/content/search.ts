@@ -1,7 +1,7 @@
 import { cardTypeLabel, norm } from './index';
 import type { Card, Content } from './types';
 
-// Search over card titles and aliases, section headings, drug names (with the cards whose doses use them) and calculators.
+// Search over card titles and aliases, section headings and the smaller names inside sections, drug names (with the cards whose doses use them) and calculators.
 // The rows come from the index built with the content (scripts/content/search-index.mjs); no card text is searched.
 // Every word typed must match the start of a word; a match at the start of the text ranks first.
 
@@ -23,6 +23,14 @@ export type Hit = {
   tool?: string;
 };
 export type Results = { oneLetter: boolean; groups: { key: GroupKey; label: string; hits: Hit[] }[] };
+
+/** Other words for the fixed section headings, so a question like "hyponatremia labs" finds Diagnosis. Searched, never shown. */
+const HEADING_WORDS: Record<string, string> = {
+  diagnosis: 'labs lab tests testing workup work up imaging',
+  treatment: 'management therapy',
+  presentation: 'symptoms signs',
+  causes: 'etiology',
+};
 
 type Scored = { hit: Hit; score: number; tie: string };
 const byScore = (a: Scored, b: Scored) => b.score - a.score || a.tie.localeCompare(b.tie);
@@ -48,14 +56,31 @@ export function search(query: string, content: Content): Results {
     return t.startsWith(q) ? 3 : 2;
   };
 
-  /** Several words typed: at least one starts a word in the heading, and each of the others starts a word in the heading, the card's title or one of its aliases. */
-  const hasViaCard = (heading: string, card: Card) => {
-    if (words.length < 2) return false;
-    const h = ' ' + norm(heading);
-    const ctx = [card.title, ...card.aliases].map((t) => ' ' + norm(t));
-    const inHeading = words.filter((w) => h.includes(' ' + w));
-    if (!inHeading.length) return false;
-    return words.every((w) => h.includes(' ' + w) || ctx.some((t) => t.includes(' ' + w)));
+  /** What a section row is read together with: the card's title and aliases (and, for a smaller name, its section heading). */
+  const contexts = new Map<Card, string[]>();
+  const contextOf = (card: Card) => {
+    let c = contexts.get(card);
+    if (!c) contexts.set(card, c = [card.title, ...card.aliases].map((t) => ' ' + norm(t)));
+    return c;
+  };
+  /**
+   * A row is read as "card title + aliases + the row's own text" (so "PE severity" finds the PE severity table of the
+   * card whose alias is PE). Every typed word must start a word in the row or in that context, and the row must hold
+   * at least half of the words. A word of one or two letters must be a whole word in the context (so "PE" is not "Pearls").
+   * `hidden` is extra wording the row answers to ("labs" for Diagnosis); it is searched but never shown.
+   * Returns 3 (the row starts with what was typed), 2 (every word is in the row), 1 (found with the card), 0 (no).
+   */
+  const rankWithCard = (text: string, card: Card, heading = '', hidden = '') => {
+    const own = rank(hidden ? `${text} ${hidden}` : text);
+    if (own) return own;
+    if (words.length < 2) return 0;
+    const h = ' ' + norm(hidden ? `${text} ${hidden}` : text);
+    const more = heading ? ' ' + norm(heading) : '';
+    const ctx = contextOf(card);
+    const starts = (t: string, w: string) => (w.length <= 2 ? (t + ' ').includes(' ' + w + ' ') : t.includes(' ' + w));
+    const inRow = words.filter((w) => h.includes(' ' + w) && (w.length > 2 || starts(h, w)));
+    if (inRow.length < Math.ceil(words.length / 2)) return 0;
+    return words.every((w) => inRow.includes(w) || starts(more, w) || ctx.some((t) => starts(t, w))) ? 1 : 0;
   };
 
   const cardHits: Scored[] = [];
@@ -75,6 +100,7 @@ export function search(query: string, content: Content): Results {
   }
 
   const idx = content.search;
+  const inCard = (card: Card) => (words.some((w) => contextOf(card).some((t) => t.includes(' ' + w))) ? 0.25 : 0);
   const cardAt = (i: number) => cards[i];
   const doseHits: Scored[] = [];
   const sectionHits: Scored[] = [];
@@ -94,14 +120,24 @@ export function search(query: string, content: Content): Results {
     doseHits.push({ score, tie: `${name}\0${card.title}`, hit: { id: `dose:${name}:${card.id}`, title: name, subtitle: brand ? `${brand} · ${where}` : where, markSubtitle: !!brand, cardId: card.id, section: key || undefined } });
   }
 
+  const where = new Map<string, [title: string, parent: string]>();
   for (const [ci, key, title, parent] of idx?.sections ?? []) {
+    where.set(`${ci}:${key}`, [title, parent]);
     const card = cardAt(ci);
     if (!card) continue;
-    // A heading alone, or a heading with its card: "PE severity" finds Severity in the card whose alias is "PE".
-    const score = rank(title) || (hasViaCard(title, card) ? 1 : 0);
+    const score = rankWithCard(title, card, '', parent ? '' : HEADING_WORDS[norm(title)]);
     if (!score) continue;
-    sectionHits.push({ score, tie: `${title}\0${card.title}`, hit: { id: `section:${card.id}:${key}`, title, subtitle: parent ? `${parent} · ${card.title}` : card.title, cardId: card.id, section: key } });
+    sectionHits.push({ score: score + inCard(card), tie: `${title}\0${card.title}`, hit: { id: `section:${card.id}:${key}`, title, subtitle: parent ? `${parent} · ${card.title}` : card.title, cardId: card.id, section: key } });
   }
+  // Smaller names inside a section rank below section headings.
+  (idx?.labels ?? []).forEach(([ci, key, text], n) => {
+    const card = cardAt(ci);
+    const [heading, parent] = where.get(`${ci}:${key}`) ?? ['', ''];
+    if (!card || !heading) return;
+    const score = rankWithCard(text, card, heading);
+    if (!score) return;
+    sectionHits.push({ score: score - 0.5 + inCard(card), tie: `${text}\0${card.title}`, hit: { id: `label:${card.id}:${key}:${n}`, title: text, subtitle: `${parent ? `${parent} · ` : ''}${heading} · ${card.title}`, cardId: card.id, section: key } });
+  });
 
   for (const [id, name, short, others, cardIdx] of idx?.tools ?? []) {
     const score = Math.max(rank(name), rank(short), ...others.split('|').filter(Boolean).map(rank));
