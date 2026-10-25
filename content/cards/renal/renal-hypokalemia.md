@@ -1,6 +1,6 @@
 ---
 id: renal-hypokalemia
-type: condition
+type: topic
 system: renal
 subsection: Electrolyte Disorders
 title: Hypokalemia

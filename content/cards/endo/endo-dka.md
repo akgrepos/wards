@@ -1,6 +1,6 @@
 ---
 id: endo-dka
-type: condition
+type: topic
 system: endo
 subsection: Diabetes and Glucose
 title: Diabetic Ketoacidosis and Hyperosmolar Hyperglycemic State

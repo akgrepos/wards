@@ -1,6 +1,6 @@
 ---
 id: id-complicated-uti
-type: condition
+type: topic
 system: id
 subsection: Urinary Tract Infections
 title: Pyelonephritis and Complicated Urinary Tract Infection

@@ -1,6 +1,6 @@
 ---
 id: psych-acute-agitation
-type: approach
+type: topic
 system: psych
 title: "Acute Agitation in the Hospitalized Adult"
 aliases: [agitated patient, combative patient, violent patient, aggression, acute agitation, behavioral emergency, rapid tranquilization, chemical restraint, physical restraint, restraints, verbal de-escalation, code gray, security, olanzapine, ziprasidone, lorazepam, midazolam, droperidol, ketamine, Haldol, Zyprexa, Geodon, Ativan, B52, BARS, akathisia, acute dystonia, sitter, one-to-one observation]

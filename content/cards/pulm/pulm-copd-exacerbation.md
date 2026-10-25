@@ -1,6 +1,6 @@
 ---
 id: pulm-copd-exacerbation
-type: condition
+type: topic
 system: pulm
 subsection: Obstructive Lung Disease
 title: COPD Exacerbation

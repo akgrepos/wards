@@ -1,6 +1,6 @@
 ---
 id: heme-vte-prophylaxis
-type: approach
+type: topic
 system: heme
 title: VTE Prophylaxis in the Hospitalized Adult
 aliases: [VTE prophylaxis, DVT prophylaxis, thromboprophylaxis, DVT ppx, blood clot prevention, Padua, IMPROVE, Caprini, enoxaparin prophylaxis, heparin subcutaneous, SQ heparin, SCDs, sequential compression devices, intermittent pneumatic compression, compression stockings, TED hose, extended prophylaxis, mechanical prophylaxis, hospital-acquired VTE]

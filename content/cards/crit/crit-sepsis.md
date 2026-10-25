@@ -1,6 +1,6 @@
 ---
 id: crit-sepsis
-type: condition
+type: topic
 system: crit
 subsection: Shock and Sepsis
 title: Sepsis and Septic Shock

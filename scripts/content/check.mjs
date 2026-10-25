@@ -174,14 +174,13 @@ export function checkContent({ systems, cards, data, unchecked = [] }) {
     if (cardIds.has(c.id)) err(where, `card id "${c.id}" is also used by ${cardIds.get(c.id)}`);
     cardIds.set(c.id, c.file);
     if (!c.title) err(where, 'missing title');
-    if (c.group === 'condition' && !c.subsection) err(where, 'condition cards need a subsection (e.g. "Arrhythmias")');
     if (c.group === 'condition' && c.subsection && !c.example) {
       // Subsection names come from a fixed list per system, so near-duplicates ("Heart Failure" and "Heart Failure and Cardiomyopathy") can't creep in.
       const allowedSubs = systems.find((x) => x.id === c.system)?.subsections;
       if (!allowedSubs) err(where, `subsection vocabulary: system "${c.system}" has no "subsections" list in content/systems.yaml; add the allowed names there first (docs/CONTENT-FORMAT.md, "Consistency rules")`);
       else if (!allowedSubs.includes(c.subsection)) err(where, `subsection vocabulary: "${c.subsection}" is not an allowed subsection of "${c.system}" (use ${allowedSubs.map((x) => `"${x}"`).join(', ')}, or add the new name to content/systems.yaml first; docs/CONTENT-FORMAT.md, "Consistency rules")`);
     }
-    if (c.group !== 'condition' && c.subsection) err(where, 'only condition cards have a subsection; approach and reference cards are listed in their own groups');
+    if (c.group !== 'condition' && c.subsection) err(where, 'only topic cards have a subsection; reference and medication cards are listed in their own groups');
     if (!systemIds.has(c.system)) err(where, `unknown system "${c.system}"`);
     const type = CARD_TYPES[c.type];
     if (!type) { err(where, `unknown card type "${c.type}"`); continue; }
@@ -249,7 +248,7 @@ export function checkContent({ systems, cards, data, unchecked = [] }) {
     const doNowDoses = new Set();
     if (c.emergency) {
       parts.push({ title: 'Do Now', blocks: c.emergency.blocks });
-      if (!type.topic) err(where, `a ${c.type} card can't have an emergency (## Do Now); only condition and approach topics can`);
+      if (!type.topic) err(where, `a ${c.type} card can't have an emergency (## Do Now); only topic cards can`);
       const hint = c.emergency.hint;
       if (!hint) err(where, 'an emergency needs "emergency_hint" in the front matter: one short line for the Rapids list ("Calcium, insulin-dextrose, remove K⁺")');
       else if (String(hint).length > 50) err(where, `"emergency_hint" is over 50 characters`);

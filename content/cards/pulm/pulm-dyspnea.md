@@ -1,6 +1,6 @@
 ---
 id: pulm-dyspnea
-type: approach
+type: topic
 system: pulm
 title: "Dyspnea: Acute"
 aliases: [dyspnea, shortness of breath, SOB, breathlessness, short of breath, difficulty breathing, respiratory distress, tachypnea, acute dyspnea, acute-on-chronic dyspnea, increased work of breathing, BNP, NT-proBNP, natriuretic peptide, point-of-care ultrasound, POCUS, lung ultrasound, B-lines]

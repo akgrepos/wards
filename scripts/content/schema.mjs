@@ -9,11 +9,15 @@ const FOOTER = [S('more', 'More Information'), S('pearls', 'Pearls')];
 const EVIDENCE = S('evidence', 'Evidence');
 
 export const CARD_TYPES = {
-  condition: {
-    label: 'Condition',
+  // One topic type for diseases, syndromes, symptoms and abnormal results (merged from Condition and Approach, 2026-10-24).
+  // A card lists the sections it uses; the section table is shared and keeps one fixed order.
+  topic: {
+    label: 'Topic',
     topic: true,
     sections: [
       AT_A_GLANCE,
+      S('definition', 'Definition and Staging'),
+      S('first-steps', 'First Steps'),
       S('severity', 'Severity'),
       S('causes', 'Causes'),
       S('presentation', 'Presentation'),
@@ -30,31 +34,6 @@ export const CARD_TYPES = {
       S('after-acute', 'After the Acute Phase'),
       EVIDENCE,
       S('why-order', 'Why the Treatment Order'),
-      S('epi-patho', 'Epidemiology and Pathophysiology'),
-    ],
-  },
-  // Owner's choice 2026-10-18: approach pages use the condition page's names where they fit.
-  approach: {
-    label: 'Approach',
-    topic: true,
-    sections: [
-      AT_A_GLANCE,
-      S('definition', 'Definition and Staging'),
-      S('first-steps', 'First Steps'),
-      S('causes', 'Causes'),
-      S('presentation', 'Presentation'),
-      S('diagnosis', 'Diagnosis'),
-      S('treatment', 'Treatment'),
-      S('monitor', 'Monitor'),
-      S('escalation', 'Escalation'),
-      ...FOOTER,
-    ],
-    more: [
-      S('guidelines-differ', 'Where Guidelines Differ'),
-      S('special-populations', 'Special Populations'),
-      S('complications', 'Complications'),
-      S('after-acute', 'After the Acute Phase'),
-      EVIDENCE,
       S('epi-patho', 'Epidemiology and Pathophysiology'),
     ],
   },
@@ -94,6 +73,8 @@ export const CARD_TYPES = {
     ],
     more: [S('microbiology', 'Microbiology'), EVIDENCE],
   },
+  // Reserved: procedure, score, exam and test (and the organism and communication variants above) have no cards yet.
+  // Build when the first card needs it (docs/CARD-TYPES.md); content:check still accepts them so a first card is a content change only.
   procedure: {
     label: 'Procedure',
     sections: [

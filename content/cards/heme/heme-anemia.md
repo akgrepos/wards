@@ -1,6 +1,6 @@
 ---
 id: heme-anemia
-type: approach
+type: topic
 system: heme
 title: "Anemia: Hospitalized Adult"
 aliases: [anemia, low hemoglobin, low hematocrit, low Hb, microcytic anemia, normocytic anemia, macrocytic anemia, MCV, reticulocyte count, retic, reticulocyte production index, iron deficiency, iron deficiency anemia, IDA, ferritin, transferrin saturation, TSAT, TIBC, anemia of chronic disease, anemia of inflammation, B12 deficiency, vitamin B12, folate deficiency, megaloblastic anemia, pernicious anemia, hemolysis, hemolytic anemia, LDH, haptoglobin, Coombs, DAT, schistocytes, TTP, thrombotic thrombocytopenic purpura, TMA, HUS, ADAMTS13, PLASMIC, transfusion, blood transfusion, packed red blood cells, PRBC, restrictive transfusion, IV iron, Injectafer, Monoferric, Feraheme, ferric carboxymaltose, ferumoxytol, ferric derisomaltose, ferrous sulfate, pancytopenia, thalassemia, Mentzer index, hospital-acquired anemia]

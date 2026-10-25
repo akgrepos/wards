@@ -3,14 +3,13 @@
 The essentials for writing or fixing a card. Read this first; open the full guides only when this doesn't answer it: [CARD-TYPES.md](CARD-TYPES.md) (sections per type), [DATA-TYPES.md](DATA-TYPES.md) (data fields), [CONTENT-FORMAT.md](CONTENT-FORMAT.md) (file syntax). `npm run content:check` enforces all of it.
 
 ## Files
-- Card: `content/cards/<system>/<card-id>.md` (front matter: `id`, `type`, `variant`, `system`, `title`, `aliases`, `subsection` (condition), `definition` with source, `checked`, `related`).
+- Card: `content/cards/<system>/<card-id>.md` (front matter: `id`, `type`, `variant`, `system`, `title`, `aliases`, `subsection` (topic), `definition` with source, `checked`, `related`).
 - Shared data: `content/data/<type>/<id>.yaml` (source, dose, threshold, criteria, regimen, pathway, calc, media). Each fact has one home; cards insert it, never retype it.
 - Every dose, and every calc with a `calculator` block, ends with a `verification:` note (`read`: fda-label, full-text, abstract, common-practice or not-verified; `source`; `date`). Say how it was really read; DATA-TYPES "Verification note".
 
 ## Types and sections (`##`, exact names, fixed order)
-- **Condition:** At a Glance (3-6 bullets) · Severity · Causes · Presentation · Diagnosis · Treatment · Monitor · Escalation · More Information · Pearls · Related · Sources.
-- **Approach:** At a Glance · Definition and Staging · First Steps · Causes · Presentation · Diagnosis · Treatment · Monitor · Escalation · More Information · Pearls · Related · Sources.
-- **Reference** (variants: interpretation, protocol, organism, chart, communication), **procedure**, **medication** (single drug or class; class cards have no doses), **score**, **exam**, **test:** see CARD-TYPES Part 2.
+- **Topic** (a condition, or a symptom or abnormal result): At a Glance (3-6 bullets) · Definition and Staging · First Steps (symptom or result topics) · Severity · Causes · Presentation · Diagnosis · Treatment · Monitor · Escalation · More Information · Pearls · Related · Sources. Use only the sections the card needs; the order never changes. Give it a `subsection` to list it under that group; without one it is listed under Approach.
+- **Reference** (variants: interpretation, protocol, organism, chart, communication), **medication** (single drug or class; class cards have no doses): see CARD-TYPES Part 2. Procedure, score, exam and test cards are reserved: build when the first card needs it (stop and ask the owner).
 - `###` headings only inside More Information (fixed subsections; `### Title: short description`, at most 60 characters).
 - Emergencies: a `## Do Now` page (2-8 steps, `If:` first and once); see CONTENT-FORMAT.
 
@@ -20,6 +19,8 @@ The essentials for writing or fixing a card. Read this first; open the full guid
 - Write as if the reader sees only the final card: no process talk ("the guidance names…", "not read", review notes). Pregnancy and lactation come from LactMed.
 - Tags: `[!cannot-miss]`, `[!most-common]` (after a cause's colon).
 - Causes: `- **Category:** causes ^[source]`.
+
+- Single-use thresholds, criteria and regimens are written inside the card and shared only on a second use. Exception: criteria that back an in-app calculator stay shared files.
 
 ## Inserts and links
 - `{{dose:id}}` alone on a line (never a typed dose such as "40 mg"). `{{regimen:id}}`, `{{criteria:id}}`, `{{media:id}}` alone on a line. Thresholds and `{{calc:id}}` go inside sentences.

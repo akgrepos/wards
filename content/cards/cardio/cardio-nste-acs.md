@@ -1,6 +1,6 @@
 ---
 id: cardio-nste-acs
-type: condition
+type: topic
 system: cardio
 subsection: Ischemic Heart Disease
 title: "Acute Coronary Syndrome: NSTEMI and Unstable Angina"

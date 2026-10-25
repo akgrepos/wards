@@ -1,6 +1,6 @@
 ---
 id: gi-upper-gi-bleeding
-type: condition
+type: topic
 system: gi
 subsection: Gastrointestinal Bleeding
 title: Upper Gastrointestinal Bleeding (Nonvariceal)

@@ -1,6 +1,6 @@
 ---
 id: pulm-vte-diagnosis
-type: approach
+type: topic
 system: pulm
 title: "Venous Thromboembolism: Diagnosis"
 aliases: [VTE, PE, pulmonary embolism, DVT, deep vein thrombosis, blood clot, clot in lung, leg clot, D-dimer, Wells, PERC, YEARS, Geneva, CTPA, CT angiogram, PE protocol CT, V/Q scan, LENI, lower extremity duplex, compression ultrasound, sPESI, PESI, Hestia, submassive, massive PE, PERT, RV strain]

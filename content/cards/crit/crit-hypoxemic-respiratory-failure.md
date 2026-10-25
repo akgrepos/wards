@@ -1,6 +1,6 @@
 ---
 id: crit-hypoxemic-respiratory-failure
-type: approach
+type: topic
 system: crit
 title: Hypoxemic Respiratory Failure
 aliases: [acute hypoxemic respiratory failure, AHRF, type 1 respiratory failure, hypoxia, low oxygen, desaturation, desat, hypoxemia, high-flow nasal cannula, HFNC, high-flow, Optiflow, Airvo, NIV, BiPAP, CPAP, ROX index, ARDS, A-a gradient, intubation, proning, P/F ratio, S/F ratio]

@@ -1,6 +1,6 @@
 ---
 id: id-cellulitis
-type: condition
+type: topic
 system: id
 subsection: Skin and Soft Tissue Infections
 title: Cellulitis and Erysipelas
