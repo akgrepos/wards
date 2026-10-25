@@ -11,6 +11,7 @@ import { checkCoverage } from './coverage.mjs';
 import { checkSemicolons } from './semicolons.mjs';
 import { checkStyle } from './style.mjs';
 import { checkSeverityLadder } from './severity.mjs';
+import { checkNumericAliases } from './aliases.mjs';
 import { checkStraySources } from './stray-sources.mjs';
 
 const DOSE_ONLY = /^\{\{\s*dose\s*:\s*([a-z0-9-]+)\s*\}\}$/;
@@ -429,6 +430,7 @@ export function checkWarnings({ cards, data }, { today = new Date() } = {}) {
   const warn = (where, msg) => out.push(`${where}: ${msg}`);
   out.push(...checkStyle({ cards }));
   out.push(...checkSeverityLadder({ cards }));
+  out.push(...checkNumericAliases({ cards }));
   const ids = new Set(cards.map((c) => c.id));
   const byId = new Map(cards.map((c) => [c.id, c]));
 
