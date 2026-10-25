@@ -42,15 +42,18 @@ related:
 | Haloperidol | Caution with low potassium or magnesium, QT-prolonging drugs or heart disease. ECG monitoring if given IV | {{calc:qtc}} >500 ms raises torsades risk ^[label-haloperidol-inj-2026] |
 
 ## Dosing and Protocol
+:::scale Lithium toxicity severity
+- Mild: fine tremor, lightheadedness, lack of coordination, weakness. ^[label-lithium-2025]
+- Moderate: giddiness, apathy, drowsiness, hyperreflexia, muscle twitching, ataxia, blurred vision, tinnitus, slurred speech. ^[label-lithium-2025]
+- Severe: clonus, confusion, seizure, coma, death. ^[label-lithium-2025]
+:::
+
 1. Lithium level and target
    - Obtain a level after 3 days, drawn 12 hours after the last oral dose, and regularly until stable. ^[label-lithium-2025]
    - Target: 0.8 to 1.2 mEq/L in acute manic or mixed episodes, 0.8 to 1 mEq/L for maintenance. ^[label-lithium-2025]
    - CANMAT: acute target 0.8 to 1.2 mEq/L (0.4 to 0.8 mEq/L in older adults). 0.6 to 1 mEq/L may suffice for maintenance. Obtain levels about 5 days after a dose change. ^[canmat-isbd-2018]
    - SGLT2 inhibitors may lower lithium levels. Check levels more often when one starts or its dose changes. ^[label-lithium-2025]
-2. Recognize lithium toxicity
-   - Mild: fine tremor, lightheadedness, lack of coordination, weakness. ^[label-lithium-2025]
-   - Moderate: giddiness, apathy, drowsiness, hyperreflexia, muscle twitching, ataxia, blurred vision, tinnitus, slurred speech. ^[label-lithium-2025]
-   - Severe: clonus, confusion, seizure, coma, death. ^[label-lithium-2025]
+2. Recognize lithium toxicity (severity bands above)
    - Chronic toxicity can be prominent at concentrations as low as 1.5 mEq/L. ^[extrip-lithium-2015]
    - Causes: overdose, or anything that changes salt and water balance (new interacting drugs, dehydration, infection with fever). ^[gitlin-lithium-2016]
 3. Treat lithium toxicity
