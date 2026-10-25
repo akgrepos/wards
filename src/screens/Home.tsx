@@ -12,7 +12,7 @@ const cardIcon = (c: Card) => iconFor(c.system);
 const kindLabel = (c: Card) => (c.system === 'library' ? cardTypeLabel(c) : 'Topic');
 const RECENT_SHOWN = 3;
 
-// Home is Topics: the last pages you opened, then every specialty that has topics as a grid of tiles.
+// Home is Topics: the last pages you opened, then every specialty that has topics as one list, so they all fit on a screen.
 export function Home() {
   const recent = useStored(getRecent).filter((r) => getCard(r.id)).slice(0, RECENT_SHOWN);
   const specialties = content.systems.filter((s) => !s.library && cardsInSystem(s.id).length > 0);
@@ -34,19 +34,11 @@ export function Home() {
         )}
       </AKG.List>
 
-      <section className="home-section">
-        <div className="akg-list__header akg-list__header--prominent">
-          <h2 className="akg-list__header-title">Specialties</h2>
-        </div>
-        <div className="home-grid">
-          {specialties.map((s) => (
-            <a key={s.id} className="home-cell" href={href.system(s.id)}>
-              <AKG.IconTile tint={iconFor(s.id).tint}>{iconFor(s.id).icon}</AKG.IconTile>
-              <span className="home-cell__title ios-callout-emphasized">{s.title}</span>
-            </a>
-          ))}
-        </div>
-      </section>
+      <AKG.List header="Specialties" headerStyle="prominent">
+        {specialties.map((s) => (
+          <AKG.ListRow key={s.id} title={s.title} icon={iconFor(s.id).icon} iconTint={iconFor(s.id).tint} chevron href={href.system(s.id)} />
+        ))}
+      </AKG.List>
     </Screen>
   );
 }
