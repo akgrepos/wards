@@ -1,0 +1,31 @@
+drug: lofexidine
+drug_name: Lofexidine
+brand: Lucemyra
+indication: Opioid withdrawal symptoms
+indication_detail: Mitigates withdrawal symptoms to allow abrupt opioid discontinuation in adults. Not a treatment for opioid use disorder.
+population: Adults
+route: PO
+amount: 0.54
+unit: mg
+frequency: "(three 0.18 mg tablets) 4 times daily, with 5 to 6 hours between doses, during peak withdrawal (generally the first 5 to 7 days)"
+duration: "Up to 14 days, guided by symptoms. Taper over 2 to 4 days."
+max: "2.88 mg a day (16 tablets). No single dose above 0.72 mg (4 tablets)."
+adjustments:
+  - when: "Mild hepatic impairment (Child-Pugh 5 to 6)"
+    change: "3 tablets 4 times daily (2.16 mg a day)"
+  - when: "Moderate hepatic impairment (Child-Pugh 7 to 9)"
+    change: "2 tablets 4 times daily (1.44 mg a day)"
+  - when: "Severe hepatic impairment (Child-Pugh above 9)"
+    change: "1 tablet 4 times daily (0.72 mg a day)"
+  - when: "Moderate kidney impairment (eGFR 30 to 89.9)"
+    change: "2 tablets 4 times daily (1.44 mg a day)"
+  - when: "Severe kidney impairment (eGFR below 30, ESRD or dialysis)"
+    change: "1 tablet 4 times daily (0.72 mg a day)"
+cautions:
+  - "Check blood pressure and pulse before each dose. Hold or reduce for hypotension, bradycardia or sedation."
+notes: "Reduce by 1 tablet per dose every 1 to 2 days when stopping."
+sources: [label-lucemyra-2026, asam-oud-2020]
+verification:
+  source: label-lucemyra-2026
+  read: fda-label
+  date: 2026-10-25

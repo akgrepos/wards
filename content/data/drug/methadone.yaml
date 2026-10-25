@@ -1,0 +1,16 @@
+name: Methadone
+class: Full opioid agonist
+brands: [Dolophine, Methadose, Diskets]
+boxed_warning:
+  text: "Life-threatening QT interval prolongation and torsades de pointes. Respiratory depression, especially at the start and after dose increases. Profound sedation and death with benzodiazepines or other CNS depressants. Neonatal opioid withdrawal syndrome with prolonged use in pregnancy."
+  sources: [label-methadone-2026]
+cautions:
+  - text: "Inhibitors of CYP3A4, 2B6, 2C19, 2C9 or 2D6 raise methadone levels and can cause a fatal overdose. Inducers lower levels and can cause withdrawal."
+    sources: [label-methadone-2026]
+  - text: "The peak respiratory depressant effect comes later and lasts longer than the peak analgesic effect, especially early in treatment."
+    sources: [label-methadone-2026]
+  - text: "Partial agonists and mixed agonist-antagonists can reduce the effect and precipitate withdrawal."
+    sources: [label-methadone-2026]
+kidney_liver: "Start with lower doses and longer dosing intervals in kidney or liver impairment and titrate slowly."
+label_source: label-methadone-2026
+sources: [label-methadone-2026]

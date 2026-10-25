@@ -1,0 +1,14 @@
+name: Buprenorphine
+class: Partial opioid agonist
+brands: [Suboxone, Subutex, Zubsolv, Sublocade, Brixadi]
+boxed_warning: None
+cautions:
+  - text: "Can precipitate withdrawal in a person dependent on a full agonist if given before the agonist effect has subsided."
+    sources: [label-suboxone-film-2026]
+  - text: "Life-threatening respiratory depression and death. Benzodiazepines, gabapentinoids and other sedatives add to the risk."
+    sources: [label-suboxone-film-2026]
+  - text: "Thorough QT studies show QT prolongation of 15 msec or less. The risk with other QT-prolonging drugs is not known."
+    sources: [label-suboxone-film-2026]
+kidney_liver: "Avoid the buprenorphine and naloxone combination in severe hepatic impairment. It may not suit moderate impairment. Check liver tests before and during treatment."
+label_source: label-suboxone-film-2026
+sources: [label-suboxone-film-2026]

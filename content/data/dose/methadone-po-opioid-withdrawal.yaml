@@ -1,0 +1,26 @@
+drug: methadone
+drug_name: Methadone
+indication: Opioid withdrawal in the hospital, starting dose
+indication_detail: Starting dose to suppress withdrawal in an opioid-dependent patient with no verified methadone dose. Not the dose for a patient already on methadone treatment.
+population: Adults
+route: PO
+amount: 10–30
+unit: mg
+frequency: "single starting dose, given when withdrawal is present and there is no sedation. Reassess in 2 to 4 hours and give 5 to 10 mg more if withdrawal persists"
+give_when: "Withdrawal in a patient who is not already on methadone and is not started on buprenorphine"
+max: "Starting dose not above 30 mg. First-day total not ordinarily above 40 mg."
+adjustments:
+  - when: "No or low opioid tolerance"
+    change: "Start with 2.5 to 10 mg"
+  - when: "Reported program dose cannot be confirmed (program closed)"
+    change: "Up to 20 mg a day for withdrawal. If no sedation at 3 to 4 hours and withdrawal persists, 5 to 10 mg more may be given"
+cautions:
+  - "Never give a full reported program dose from self-report alone. Doses above 30 mg can be lethal if tolerance has been lost."
+  - "Methadone started for opioid use disorder is dispensed by an opioid treatment program. During inpatient care for another condition and for up to 3 days while definitive care is sought, a hospital may give it."
+  - "Peak respiratory depression comes late and methadone accumulates over several days. Raise the dose slowly, usually no more than 10 mg about every 5 days."
+notes: "A patient already on methadone treatment continues the verified daily dose instead. See the card."
+sources: [asam-oud-2020, label-methadone-2026, samhsa-tip63-2020]
+verification:
+  source: label-methadone-2026
+  read: fda-label
+  date: 2026-10-25

@@ -10,7 +10,7 @@ based_on: [asam-alcohol-withdrawal-2020, maldonado-pawss-2015, saitz-1994, rosen
 checked: { date: 2026-10-22, by: opus, scope: "doses and numbers", fingerprint: "8f9b471d8da1ec3e", carried: "2026-10-25: Shared Mg repletion dose: max-rate wording corrected to the label (150 mg/min, only exception severe eclampsia). Opus checked that line against the label 2026-10-25. The rest of the card was not re-reviewed." }
 related:
   differential: []
-  conditions: [neuro-delirium, renal-electrolyte-repletion, renal-hyponatremia, psych-acute-agitation]
+  conditions: [neuro-delirium, renal-electrolyte-repletion, renal-hyponatremia, psych-acute-agitation, psych-opioid-withdrawal]
   tools: []
   medications: []
 emergency_hint: Benzodiazepines, thiamine, treat seizure
