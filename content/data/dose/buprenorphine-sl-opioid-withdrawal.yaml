@@ -1,0 +1,21 @@
+drug: buprenorphine
+drug_name: Buprenorphine and naloxone
+brand: Suboxone
+indication: Opioid withdrawal, standard buprenorphine induction
+indication_detail: Standard induction in a patient in objective withdrawal. Day 1 and day 2 doses of the sublingual film.
+population: Adults
+route: SL
+amount: 2–4
+unit: mg
+frequency: "initial dose. May repeat in 2 or 4 mg increments about every 2 hours under supervision, to 8 mg on day 1"
+give_when: "Objective signs of moderate withdrawal, at least 6 hours after the last opioid use"
+max: "Day 1 up to 8 mg of buprenorphine. Day 2 a single daily dose up to 16 mg. Usual maintenance 4 to 24 mg a day."
+cautions:
+  - "Giving it too early can precipitate withdrawal. Time since last use is unreliable, so confirm with signs and the COWS."
+  - "In a patient dependent on methadone or another long-acting opioid, the label recommends buprenorphine alone (without naloxone) on days 1 and 2."
+notes: "Doses are of buprenorphine in the buprenorphine and naloxone film. Total day 1 dose of 8 mg buprenorphine with 2 mg naloxone."
+sources: [label-suboxone-film-2026, asam-oud-2020]
+verification:
+  source: label-suboxone-film-2026
+  read: fda-label
+  date: 2026-10-25

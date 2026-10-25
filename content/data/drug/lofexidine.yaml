@@ -1,0 +1,16 @@
+name: Lofexidine
+class: Central alpha-2 adrenergic agonist
+brands: [Lucemyra]
+boxed_warning: None
+cautions:
+  - text: "Lowers blood pressure and pulse and can cause syncope. Check vital signs before each dose."
+    sources: [label-lucemyra-2026]
+  - text: "Prolongs the QT interval. ECG monitoring is recommended with methadone."
+    sources: [label-lucemyra-2026]
+  - text: "Stopping abruptly can raise blood pressure sharply, so taper over 2 to 4 days."
+    sources: [label-lucemyra-2026]
+  - text: "Adds to the sedation of benzodiazepines, alcohol, barbiturates and other sedatives."
+    sources: [label-lucemyra-2026]
+kidney_liver: "Reduce the dose in hepatic impairment by Child-Pugh class and in kidney impairment by eGFR. Details are on the dose."
+label_source: label-lucemyra-2026
+sources: [label-lucemyra-2026]

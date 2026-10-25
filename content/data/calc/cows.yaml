@@ -1,0 +1,4 @@
+name: COWS for opiate withdrawal
+short: "COWS"
+url: https://www.mdcalc.com/calc/1985/cows-score-opiate-withdrawal
+match: ["COWS", "Clinical Opiate Withdrawal Scale", "Clinical Opioid Withdrawal Scale"]
