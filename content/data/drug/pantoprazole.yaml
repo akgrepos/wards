@@ -1,0 +1,19 @@
+name: Pantoprazole
+class: Proton pump inhibitor
+brands: [Protonix IV, Protonix]
+aliases: [PPI]
+boxed_warning: None
+cautions:
+  - text: Contraindicated with hypersensitivity to substituted benzimidazoles and with rilpivirine-containing products. Avoid with nelfinavir.
+    sources: [label-pantoprazole-iv-2026]
+  - text: Monitor INR on warfarin (bleeding has occurred). Consider holding it during high-dose methotrexate. It reduces absorption of drugs that need gastric acid, such as iron salts, ketoconazole and mycophenolate.
+    sources: [label-pantoprazole-iv-2026]
+  - text: Acute tubulointerstitial nephritis can occur at any time. Stop and evaluate if suspected. Raises the risk of Clostridioides difficile diarrhea, especially in hospital.
+    sources: [label-pantoprazole-iv-2026]
+  - text: Severe cutaneous reactions (SJS, TEN, DRESS, AGEP) and cutaneous or systemic lupus can occur. Stop at the first sign. Hypomagnesemia with prolonged use.
+    sources: [label-pantoprazole-iv-2026]
+  - text: The IV form can cause thrombophlebitis at the site and contains EDTA, so consider zinc in patients prone to zinc deficiency.
+    sources: [label-pantoprazole-iv-2026]
+kidney_liver: The label gives no dose change for kidney or liver impairment. Not removed by hemodialysis.
+label_source: label-pantoprazole-iv-2026
+sources: [label-pantoprazole-iv-2026]

@@ -1,3 +1,4 @@
+drug: esomeprazole
 drug_name: Esomeprazole
 brand: Nexium IV
 indication: Risk reduction of rebleeding of gastric or duodenal ulcers after therapeutic endoscopy
@@ -9,7 +10,6 @@ frequency: once over 30 minutes, then a continuous infusion of 8 mg/h so the tot
 rate: "80 mg over 30 minutes, then 8 mg/h for 71.5 hours"
 give_when: After therapeutic endoscopy for an acutely bleeding gastric or duodenal ulcer
 duration: 72 hours
-boxed_warning: "None"
 adjustments:
   - when: Mild to moderate hepatic impairment (Child-Pugh A or B)
     change: "80 mg over 30 minutes, then 6 mg/h for 71.5 hours"

@@ -1,3 +1,4 @@
+drug: edoxaban
 drug_name: Edoxaban
 brand: Savaysa
 indication: Stroke prevention in AF (not with a mechanical valve or moderate–severe mitral stenosis)
@@ -7,7 +8,6 @@ amount: "60"
 unit: mg
 frequency: once daily
 give_when: CrCl >50 to ≤95 mL/min
-boxed_warning: "Reduced efficacy (more ischemic strokes than warfarin) when CrCl >95 mL/min. Premature discontinuation raises ischemic risk. Spinal or epidural hematoma."
 adjustments:
   - when: CrCl 15–50 mL/min
     change: 30 mg once daily

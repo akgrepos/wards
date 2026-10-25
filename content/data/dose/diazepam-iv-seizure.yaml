@@ -1,3 +1,4 @@
+drug: diazepam
 drug_name: Diazepam
 indication: Alcohol withdrawal seizure (status epilepticus dosing)
 population: Adults
@@ -8,7 +9,6 @@ rate: "slowly, at least 1 minute per 5 mg, into a large vein"
 frequency: "repeat at 10–15 minute intervals if seizures continue"
 max: "30 mg total (label)"
 give_when: Active withdrawal seizure
-boxed_warning: "Concomitant use with opioids can cause profound sedation, respiratory depression, coma and death. Abuse, misuse and addiction. Dependence and withdrawal reactions."
 cautions:
   - "Prepare to support the airway."
 notes: "Label dosing for status epilepticus. ASAM recommends a fast-acting parenteral benzodiazepine for a withdrawal seizure."

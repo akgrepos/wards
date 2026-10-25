@@ -5,7 +5,7 @@ variant: protocol
 system: renal
 title: "IV Fluids"
 aliases: [IV fluids, IVF, fluids, maintenance fluids, mIVF, fluid bolus, resuscitation, crystalloid, normal saline, NS, 0.9% saline, half normal saline, lactated Ringer's, LR, Ringer's lactate, Plasma-Lyte, balanced crystalloid, D5W, dextrose, albumin, colloid, fluid selection]
-checked: { date: 2026-10-19, by: owner, scope: "owner review", fingerprint: "697bf6e6c1ee7c9b" }
+checked: { date: 2026-10-19, by: owner, scope: "owner review", fingerprint: "026b6da72713d64d", carried: "2026-10-24: Dose sheets now take the drug-wide warnings from drug records (stage 4b). Doses and numbers on the card are unchanged." }
 related:
   conditions: [renal-aki, renal-hyponatremia, renal-hypokalemia, renal-hyperkalemia]
   tools: [renal-electrolyte-repletion]

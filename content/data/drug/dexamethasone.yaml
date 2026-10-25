@@ -1,0 +1,18 @@
+name: Dexamethasone
+class: Systemic corticosteroid (glucocorticoid)
+aliases: [Dex, Decadron]
+boxed_warning: None
+cautions:
+  - text: Contraindicated in systemic fungal infection. Raises the risk of any infection and can mask its signs.
+    sources: [label-dexamethasone-2026]
+  - text: Can reactivate latent tuberculosis and hepatitis B. Screen for hepatitis B before prolonged immunosuppressive use. Known or suspected Strongyloides can progress to fatal hyperinfection. Avoid in cerebral malaria.
+    sources: [label-dexamethasone-2026]
+  - text: Hyperglycemia, hypertension, fluid retention and hypokalemia. Check glucose, especially in diabetes.
+    sources: [label-dexamethasone-2026]
+  - text: Psychiatric effects range from insomnia and mood swings to psychosis. Use with caution in peptic ulcer, diverticulitis, fresh bowel anastomosis and myasthenia gravis.
+    sources: [label-dexamethasone-2026]
+  - text: After prolonged use, stopping abruptly can cause adrenal insufficiency for months. Taper and give stress dosing during illness or surgery.
+    sources: [label-dexamethasone-2026]
+kidney_liver: The label gives no dose change for kidney or liver impairment. The effect is enhanced in cirrhosis and hypothyroidism. Use with caution in kidney insufficiency (fluid and sodium retention).
+label_source: label-dexamethasone-2026
+sources: [label-dexamethasone-2026]

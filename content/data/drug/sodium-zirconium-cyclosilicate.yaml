@@ -1,0 +1,21 @@
+name: Sodium Zirconium Cyclosilicate
+class: Potassium binder (non-absorbed zirconium silicate)
+brands: [Lokelma]
+aliases: [SZC]
+boxed_warning: None
+cautions:
+  - text: Not for emergency treatment of life-threatening hyperkalemia because its onset is delayed.
+    sources: [label-lokelma-2024]
+  - text: Contains sodium. Edema occurs, more often at higher doses. Watch for edema in heart failure, kidney disease or sodium restriction, and increase diuretics as needed.
+    sources: [label-lokelma-2024]
+  - text: Avoid in severe constipation, bowel obstruction or impaction, including abnormal postoperative bowel motility. It may be ineffective and worsen the bowel condition.
+    sources: [label-lokelma-2024]
+  - text: Separate other oral drugs by 2 hours. Raises gastric pH, which lowers tacrolimus and dabigatran exposure and raises furosemide and atorvastatin exposure.
+    sources: [label-lokelma-2024]
+  - text: Radio-opaque. May look like contrast on abdominal X-ray.
+    sources: [label-lokelma-2024]
+  - text: Not absorbed. No fetal exposure expected in pregnancy.
+    sources: [label-lokelma-2024]
+kidney_liver: Not absorbed. No label dose change for kidney or liver impairment except on hemodialysis, where dosing differs (see the dose).
+label_source: label-lokelma-2024
+sources: [label-lokelma-2024]

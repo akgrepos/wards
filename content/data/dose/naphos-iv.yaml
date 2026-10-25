@@ -1,3 +1,4 @@
+drug: sodium-phosphates
 drug_name: Sodium phosphates
 indication: Hypophosphatemia when serum K⁺ ≥4.0 mEq/L
 population: Adults
@@ -9,11 +10,8 @@ give_when: "Serum K⁺ ≥4.0 mEq/L, and oral replacement not possible or insuff
 max: "45 mmol phosphorus per dose (by analogy with the potassium phosphates label)"
 repeat: "Further doses only after rechecking phosphorus and calcium"
 cautions:
-  - "Great care, if at all, in heart failure, severe renal insufficiency or edema with sodium retention (US label)."
   - "Single IV phosphate doses of 50 mmol or more, or infusion over only 1–3 hours, have caused cardiac arrest and death (potassium phosphates label)."
-  - "Contraindicated with hyperphosphatemia, hypocalcemia or hypernatremia (US label)."
   - "Each 3 mmol of phosphorus brings 4 mEq of sodium."
-  - "Rapid IV phosphate can cause hypocalcemia."
 notes: "No US label repletion dose. Bands are extrapolated from the potassium phosphates label (0.16–0.31, 0.32–0.43 or 0.44–0.64 mmol/kg by serum phosphorus). One trauma ICU study gave either salt, chosen by serum K⁺, by one weight-based algorithm with higher doses (0.32, 0.64 or 1.0 mmol/kg)."
 sources: [label-naphos-injection-2021, brown-phosphorus-2006, label-kphos-injection-2026, ada-hyperglycemic-crises-2024]
 verification:

@@ -1,0 +1,21 @@
+name: Amoxicillin-clavulanate
+class: Aminopenicillin with β-lactamase inhibitor
+brands: [Augmentin]
+aliases: [Amox-clav, Co-amoxiclav]
+boxed_warning: None
+cautions:
+  - text: Contraindicated after a serious hypersensitivity reaction (anaphylaxis, Stevens-Johnson syndrome) to amoxicillin, clavulanate or another β-lactam (penicillins, cephalosporins). Stop it for anaphylaxis or a progressing rash (SJS, TEN, DRESS, AGEP).
+    sources: [label-amox-clav-2026]
+  - text: Contraindicated after cholestatic jaundice or hepatic dysfunction with amoxicillin-clavulanate. Hepatitis and cholestatic jaundice can occur (usually reversible, deaths reported mostly with serious illness). Stop it if hepatitis develops.
+    sources: [label-amox-clav-2026]
+  - text: Avoid in infectious mononucleosis (a high percentage develop a rash).
+    sources: [label-amox-clav-2026]
+  - text: Raises the INR with warfarin and other oral anticoagulants. Monitor the INR and adjust the anticoagulant.
+    sources: [label-amox-clav-2026]
+  - text: Allopurinol increases the rate of rash (stop allopurinol at the first rash). Probenecid raises amoxicillin levels and is not recommended with it.
+    sources: [label-amox-clav-2026]
+  - text: C. difficile diarrhea (mild to fatal colitis) can occur, even more than 2 months after use. Evaluate any new diarrhea.
+    sources: [label-amox-clav-2026]
+kidney_liver: No change for mild to moderate kidney impairment. Reduce for GFR below 30 mL/min and avoid the highest-strength twice-daily tablet there (adjustments are on each dose). Monitor liver tests in liver impairment.
+label_source: label-amox-clav-2026
+sources: [label-amox-clav-2026]

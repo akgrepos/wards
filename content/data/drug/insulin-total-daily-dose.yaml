@@ -1,0 +1,20 @@
+name: Insulin
+class: Insulin (basal-bolus regimens)
+aliases: [basal-bolus insulin, total daily dose, TDD]
+boxed_warning: None
+cautions:
+  - text: Contraindicated during hypoglycemia and with hypersensitivity to the insulin or its excipients. Severe generalized allergy, including anaphylaxis, can occur.
+    sources: [label-lantus-2025, label-humalog-2026]
+  - text: Hypoglycemia is the most common adverse effect of all insulins and can be fatal. Risk rises with changes in meal pattern (such as NPO), activity or other glucose-lowering drugs. Beta-blockers and clonidine can blunt warning signs.
+    sources: [label-lantus-2025, label-humalog-2026]
+  - text: All insulins shift potassium into cells and can cause life-threatening hypokalemia. Monitor potassium when at risk (for example on potassium-lowering drugs).
+    sources: [label-lantus-2025, label-humalog-2026]
+  - text: Glucocorticoids, sympathomimetics (such as epinephrine and albuterol) and atypical antipsychotics raise insulin needs. Monitor glucose more often when such drugs are started or changed.
+    sources: [label-lantus-2025, label-humalog-2026]
+  - text: Mix-ups between insulin products cause hypoglycemia. Check the insulin label before each injection. Never share pens or syringes between patients.
+    sources: [label-lantus-2025, label-humalog-2026]
+  - text: With a thiazolidinedione (such as pioglitazone), watch for fluid retention and heart failure.
+    sources: [label-lantus-2025, label-humalog-2026]
+kidney_liver: Kidney or liver impairment raises the risk of hypoglycemia. Monitor glucose more often and lower the dose as needed. Adjustments by use are on each dose.
+label_source: label-lantus-2025
+sources: [label-lantus-2025, label-humalog-2026]

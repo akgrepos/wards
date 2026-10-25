@@ -8,7 +8,6 @@ amount: "2"
 unit: g
 frequency: every 24 hours
 duration: 4 weeks, counted from clearance of bacteremia. Prosthetic valve (streptococcal or HACEK) 6 weeks.
-boxed_warning: None
 cautions:
   - "Penicillin-intermediate streptococci: ceftriaxone alone only if the strain is ceftriaxone-susceptible. Fully resistant: add gentamicin for the first 2 weeks."
   - "Enterococcus faecalis is a different regimen: ampicillin plus ceftriaxone 2 g every 12 hours for 6 weeks, native or prosthetic valve."

@@ -9,7 +9,6 @@ unit: g
 frequency: every 24 hours
 rate: over 30 minutes
 duration: Up to 5 days, or until discharge if sooner
-boxed_warning: None
 cautions:
   - Start at presentation with the bleed. Stop once bleeding is controlled if there is no active infection.
 notes: "The 2021 guidance set a maximum of 7 days."

@@ -1,3 +1,4 @@
+drug: oxazepam
 drug_name: Oxazepam
 indication: Alcohol withdrawal, especially in significant liver disease (oral)
 population: Adults who can take oral medication
@@ -6,7 +7,6 @@ amount: 15–30
 unit: mg
 frequency: "3 or 4 times daily (label). Symptom-triggered example (ASAM): 15 mg for a CIWA-Ar of 8–15, 30 mg for a CIWA-Ar above 15"
 give_when: Withdrawal symptoms in significant liver disease, when an oral agent is suitable
-boxed_warning: "Concomitant use with opioids can cause profound sedation, respiratory depression, coma and death. Abuse, misuse and addiction. Dependence and withdrawal reactions."
 adjustments:
   - when: "Older adults"
     change: "Label: 10 mg three times daily initially, increasing cautiously to 15 mg 3 or 4 times daily"

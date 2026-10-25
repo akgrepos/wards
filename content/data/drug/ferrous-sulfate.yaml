@@ -1,0 +1,14 @@
+name: Ferrous sulfate
+class: Oral iron
+aliases: [oral iron, iron tablets, FeSO4]
+boxed_warning: None
+cautions:
+  - text: Accidental iron overdose is a leading cause of fatal poisoning in children under 6. Keep out of reach of children.
+    sources: [label-ferrous-sulfate-2025]
+  - text: Absorption falls with proton pump inhibitors, H2 blockers, antacids, and during inflammation (hepcidin).
+    sources: [stoffel-iron-2017, common-practice]
+  - text: Separate from levothyroxine, quinolones and tetracyclines by at least 2–4 hours.
+    sources: [label-ferrous-sulfate-2025, common-practice]
+kidney_liver: No dose change for kidney or liver impairment.
+label_source: label-ferrous-sulfate-2025
+sources: [label-ferrous-sulfate-2025, stoffel-iron-2017, common-practice]

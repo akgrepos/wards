@@ -6,7 +6,7 @@ title: "Dyspnea"
 aliases: [dyspnea, shortness of breath, SOB, breathlessness, short of breath, difficulty breathing, respiratory distress, tachypnea, acute dyspnea, acute-on-chronic dyspnea, increased work of breathing, BNP, NT-proBNP, natriuretic peptide, point-of-care ultrasound, POCUS, lung ultrasound, B-lines]
 definition: "Subjective breathing discomfort of acute onset or acute worsening in an adult, needing a time-sensitive search for life-threatening cardiac, pulmonary, airway and vascular causes. ^[common-practice]"
 based_on: [acp-pocus-2021, esc-hf-2026, aha-acc-pe-2026, ats-nirs-2026, bts-oxygen-2017]
-checked: { date: 2026-10-21, by: opus, scope: "doses and numbers", fingerprint: "53ece5cf8219650d", carried: "2026-10-24: No card text changed. The Wells and CURB-65 point lists and bands were removed from their calc files, which now only link to MDCalc. Every dose and number on the card is unchanged." }
+checked: { date: 2026-10-21, by: opus, scope: "doses and numbers", fingerprint: "b0b285bcd290b6eb", carried: "2026-10-24: Dose sheets now take the drug-wide warnings from drug records (stage 4b). Doses and numbers on the card are unchanged." }
 related:
   differential: [crit-hypoxemic-respiratory-failure, cardio-adhf, pulm-copd-exacerbation, pulm-vte-diagnosis, id-cap, cardio-chest-pain, cardio-atrial-fibrillation]
   conditions: [crit-sepsis, endo-dka, renal-aki]

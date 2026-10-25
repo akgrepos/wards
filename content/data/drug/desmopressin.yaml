@@ -1,0 +1,21 @@
+name: Desmopressin
+class: Vasopressin V2-receptor agonist (synthetic vasopressin analog)
+brands: [DDAVP]
+aliases: [dDAVP]
+boxed_warning:
+  text: Can cause hyponatremia, which can be life-threatening (seizures, coma, respiratory arrest, death). Contraindicated in patients at increased risk of severe hyponatremia, such as those with excessive fluid intake, illnesses that cause fluid or electrolyte imbalance, or who take loop diuretics or systemic or inhaled glucocorticoids. Ensure serum Na⁺ is normal before starting or resuming. Measure Na⁺ within 7 days and about 1 month after starting, then periodically, and more often at 65 years and older or at increased risk. Stop it temporarily or permanently if hyponatremia occurs.
+  sources: [label-ddavp-injection-2022]
+cautions:
+  - text: Contraindicated in hyponatremia or a history of it, known or suspected SIADH, polydipsia, heart failure and uncontrolled hypertension, and with loop diuretics or systemic or inhaled glucocorticoids.
+    sources: [label-ddavp-injection-2022]
+  - text: Restrict fluid intake from 1 hour before until 8 hours after each dose. Without fluid restriction it causes water retention and hyponatremia.
+    sources: [label-ddavp-injection-2022]
+  - text: SSRIs, tricyclics, NSAIDs, opioids, thiazides, carbamazepine, lamotrigine, chlorpromazine and chlorpropamide raise the risk of hyponatremia. Check Na⁺ more often.
+    sources: [label-ddavp-injection-2022]
+  - text: Can cause hypotension with reflex tachycardia or hypertension. Monitor blood pressure, especially with coronary disease.
+    sources: [label-ddavp-injection-2022]
+  - text: Anaphylaxis, including fatal cases with IV use, has occurred. Can cause platelet aggregation, thrombocytopenia and thrombosis in type 2B von Willebrand disease. Not recommended with raised intracranial pressure risk or a history of urinary retention.
+    sources: [label-ddavp-injection-2022]
+kidney_liver: Contraindicated at Cockcroft-Gault CrCl below 50 (mL/min), because it is cleared by the kidney. The label gives no liver adjustment.
+label_source: label-ddavp-injection-2022
+sources: [label-ddavp-injection-2022]

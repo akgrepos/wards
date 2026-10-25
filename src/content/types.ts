@@ -45,7 +45,7 @@ export type Dose = {
 export type CitedLine = { text: string; sources: string[] };
 export type Drug = {
   name: string; class: string; brands?: string[]; aliases?: string[]; boxed_warning: 'None' | CitedLine; cautions?: CitedLine[];
-  kidney_liver: string; label_source: string; sources: string[];
+  kidney_liver: string; label_source?: string; sources: string[];
 };
 // A calculator or score on MDCalc (docs/DATA-TYPES.md, 12b), linked from every sentence that names it.
 export type CalcInput = { id: string; label: string; unit: string; min: number; max: number; optional?: boolean };

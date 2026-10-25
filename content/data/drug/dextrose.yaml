@@ -1,0 +1,18 @@
+name: Dextrose
+class: Carbohydrate (IV glucose)
+aliases: [D5W, D10, D50, IV glucose]
+boxed_warning: None
+cautions:
+  - text: Concentrations above 5% are hypertonic and can cause phlebitis, thrombosis and tissue injury if they extravasate. Give 50% slowly into a large or, when possible, central vein. Never SC or IM.
+    sources: [label-dextrose-50-2026, label-dextrose-5-2025]
+  - text: Alcohol use disorder or malnutrition (thiamine deficiency) can tip into Wernicke encephalopathy with dextrose. Give thiamine, without delaying dextrose for hypoglycemia. The 50% label lists alcohol withdrawal as a contraindication.
+    sources: [label-dextrose-50-2026, asam-alcohol-withdrawal-2020]
+  - text: The 50% label also lists intracranial or intraspinal hemorrhage and severe dehydration as contraindications.
+    sources: [label-dextrose-50-2026]
+  - text: Too rapid or excess infusion causes hyperglycemia and hyperosmolar states. Monitor glucose. When 50% is stopped abruptly, follow with 5% or 10% to avoid rebound hypoglycemia.
+    sources: [label-dextrose-50-2026, label-dextrose-5-2025]
+  - text: Adds free water. Can cause hyponatremia and fluid overload, and prolonged use lowers potassium and phosphate. Monitor sodium, electrolytes and fluid balance.
+    sources: [label-dextrose-50-2026, label-dextrose-5-2025]
+kidney_liver: No dose change for kidney or liver impairment. Kidney impairment raises the risk of fluid overload and, with prolonged use, of aluminum accumulation.
+label_source: label-dextrose-50-2026
+sources: [label-dextrose-50-2026, label-dextrose-5-2025, asam-alcohol-withdrawal-2020]

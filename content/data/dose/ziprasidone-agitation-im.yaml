@@ -1,3 +1,4 @@
+drug: ziprasidone
 drug_name: Ziprasidone
 brand: Geodon for injection
 indication: Acute agitation in schizophrenia (labeled). Used off-label for other acute agitation
@@ -8,10 +9,7 @@ unit: mg
 frequency: "10 mg every 2 hours or 20 mg every 4 hours as needed. Reassess before any repeat dose"
 give_when: Danger or severe distress with an acceptable ECG and electrolytes, when oral medication is refused
 max: "Label: 40 mg a day. IM use beyond 3 consecutive days not studied"
-boxed_warning: "Increased mortality in older adults with dementia-related psychosis."
 cautions:
-  - "Contraindicated with a history of QT prolongation, recent acute myocardial infarction, uncompensated heart failure, or other drugs that prolong the QT. Dose-related QTc prolongation."
-  - "Contraindicated with an MAO inhibitor now or within 14 days, including linezolid and IV methylene blue."
   - "Check {{calc:qtc}}, potassium and magnesium first. Avoid when no ECG is possible."
   - "Not for IV use."
 notes: "Label dosing. Needs the ECG before it is chosen, so it is often not the first IM choice on the ward."

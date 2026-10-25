@@ -1,0 +1,20 @@
+name: Hydrocortisone
+class: Systemic corticosteroid (glucocorticoid with mineralocorticoid activity)
+brands: [Solu-Cortef]
+boxed_warning: None
+cautions:
+  - text: "Contraindicated in systemic fungal infection and for intrathecal use."
+    sources: [label-solu-cortef-2026]
+  - text: "Raises the risk of any infection and can mask its signs. Can reactivate latent tuberculosis and hepatitis B. Known or suspected Strongyloides can progress to fatal hyperinfection."
+    sources: [label-solu-cortef-2026]
+  - text: "Hyperglycemia, sodium and fluid retention (hypernatremia, edema, hypertension) and hypokalemia. Check glucose and electrolytes."
+    sources: [label-solu-cortef-2026, adrenal-2018]
+  - text: "Acute myopathy, most often with neuromuscular blockers or myasthenia gravis. Psychiatric effects range from insomnia to psychosis. Pheochromocytoma crisis has occurred."
+    sources: [label-solu-cortef-2026]
+  - text: "CYP3A4 inhibitors (ketoconazole, macrolides) raise levels and inducers (phenytoin, carbamazepine, rifampin) lower them. Monitor INR on warfarin. NSAIDs add GI bleeding and perforation risk."
+    sources: [label-solu-cortef-2026]
+  - text: "After prolonged use, stopping abruptly can cause adrenal insufficiency for months. Taper and give stress dosing during illness or surgery."
+    sources: [label-solu-cortef-2026]
+kidney_liver: "The label gives no dose change for kidney or liver impairment. The effect is enhanced in cirrhosis. Use with caution in kidney insufficiency (fluid and sodium retention)."
+label_source: label-solu-cortef-2026
+sources: [label-solu-cortef-2026, adrenal-2018]

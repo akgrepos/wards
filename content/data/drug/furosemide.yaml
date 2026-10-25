@@ -1,0 +1,18 @@
+name: Furosemide
+class: Loop diuretic
+brands: [Lasix]
+boxed_warning: None
+cautions:
+  - text: Contraindicated in anuria and with hypersensitivity to furosemide.
+    sources: [label-furosemide-inj-2026]
+  - text: Can cause hypovolemia, hypokalemia, hyponatremia, hypomagnesemia, hypocalcemia, hypochloremic alkalosis, hyperglycemia and hyperuricemia. Monitor electrolytes, bicarbonate, BUN, creatinine and glucose frequently.
+    sources: [label-furosemide-inj-2026]
+  - text: Ototoxicity (tinnitus, hearing loss) with rapid injection, high doses, severe kidney impairment, hypoproteinemia or other ototoxic drugs such as aminoglycosides.
+    sources: [label-furosemide-inj-2026]
+  - text: Avoid with lithium (toxicity). With ACE inhibitors or ARBs it can cause severe hypotension and worsening kidney function. Monitor blood pressure and creatinine.
+    sources: [label-furosemide-inj-2026]
+  - text: Can cause acute urinary retention with bladder outlet obstruction such as prostatic hyperplasia. Monitor closely early on.
+    sources: [label-furosemide-inj-2026]
+kidney_liver: In cirrhosis with ascites, abrupt fluid and electrolyte shifts can precipitate hepatic encephalopathy, so start in hospital with careful monitoring. Stop if azotemia and oliguria increase in severe progressive kidney disease. Adjustments by use are on each dose.
+label_source: label-furosemide-inj-2026
+sources: [label-furosemide-inj-2026]

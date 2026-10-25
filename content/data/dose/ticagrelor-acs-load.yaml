@@ -1,3 +1,4 @@
+drug: ticagrelor
 drug_name: Ticagrelor
 brand: Brilinta
 indication: Acute coronary syndrome, loading dose
@@ -6,14 +7,9 @@ route: PO
 amount: "180"
 unit: mg
 frequency: once
-boxed_warning: "Significant, sometimes fatal bleeding: not with active bleeding or prior intracranial hemorrhage, not before urgent CABG. Premature discontinuation raises cardiovascular events."
 alternative:
   dose: ticagrelor-acs
   when: "Maintenance, starting 6–12 hours after the load"
-cautions:
-  - "Can be crushed and given in water or by nasogastric tube."
-  - "Avoid strong CYP3A inhibitors and inducers. Avoid in severe liver impairment."
-  - "Dyspnea is common and usually mild."
 sources: [label-brilinta-2026, acc-aha-acs-2025]
 verification:
   source: label-brilinta-2026

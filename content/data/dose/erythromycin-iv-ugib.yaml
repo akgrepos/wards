@@ -1,3 +1,4 @@
+drug: erythromycin
 drug_name: Erythromycin
 brand: Erythrocin lactobionate
 indication: Before endoscopy for suspected upper gastrointestinal bleeding (prokinetic to clear blood and clot from the stomach)
@@ -9,8 +10,6 @@ frequency: once
 rate: over 20–30 minutes
 give_when: "20–90 minutes before endoscopy, unless QT prolongation or an interacting drug"
 cautions:
-  - "QT prolongation and torsades de pointes: check the QTc, potassium and magnesium. Avoid with other QT-prolonging drugs."
-  - "Strong CYP3A4 interactions (for example some statins, azole antifungals, colchicine, calcium channel blockers)."
   - "Use for this indication is off label (the label covers infections)."
 notes: "ESGE 2026: if IV erythromycin is unavailable, IV metoclopramide may be considered in selected patients with severe or ongoing bleeding."
 sources: [acg-ugib-2021, esge-pub-2026, label-erythrocin-iv-2025]

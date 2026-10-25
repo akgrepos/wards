@@ -1,0 +1,14 @@
+name: Ipratropium
+class: Short-acting muscarinic antagonist
+aliases: [SAMA, Atrovent]
+boxed_warning: None
+cautions:
+  - text: Contraindicated with hypersensitivity to ipratropium, atropine or its derivatives.
+    sources: [label-ipratropium-neb-2026]
+  - text: Use with caution in narrow-angle glaucoma, prostatic hypertrophy or bladder neck obstruction. Keep the mist out of the eyes (mydriasis, blurred vision, angle-closure glaucoma). A mouthpiece is preferable to a face mask.
+    sources: [label-ipratropium-neb-2026]
+  - text: Immediate hypersensitivity reactions (urticaria, angioedema, bronchospasm, oropharyngeal edema) can occur.
+    sources: [label-ipratropium-neb-2026]
+kidney_liver: The label gives no kidney or liver dose adjustment.
+label_source: label-ipratropium-neb-2026
+sources: [label-ipratropium-neb-2026]

@@ -1,0 +1,18 @@
+name: Cefazolin
+class: First-generation cephalosporin
+aliases: [Ancef]
+boxed_warning: None
+cautions:
+  - text: Contraindicated after an immediate hypersensitivity reaction (anaphylaxis, serious skin reaction) to cefazolin, another cephalosporin, a penicillin or another β-lactam. Ask about prior reactions before the first dose.
+    sources: [label-cefazolin-2024]
+  - text: Seizures can occur, mostly in kidney impairment when the dose is not reduced. Stop it if seizures occur and continue antiseizure drugs in known epilepsy.
+    sources: [label-cefazolin-2024]
+  - text: Can lower prothrombin activity (risk with kidney or liver impairment, poor nutrition, long courses or anticoagulants). Check the PT in those at risk and give vitamin K as needed.
+    sources: [label-cefazolin-2024]
+  - text: Probenecid inhibits its renal excretion and is not recommended with it.
+    sources: [label-cefazolin-2024]
+  - text: C. difficile diarrhea (mild to fatal colitis) can occur, even more than 2 months after use. Evaluate any new diarrhea.
+    sources: [label-cefazolin-2024]
+kidney_liver: Reduce for CrCl below 55 mL/min after a full first dose (adjustments are on each dose). The label gives no liver adjustment.
+label_source: label-cefazolin-2024
+sources: [label-cefazolin-2024]

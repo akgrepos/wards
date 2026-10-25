@@ -7,7 +7,7 @@ title: "Acute Coronary Syndrome"
 aliases: [NSTE-ACS, NSTEMI, non-ST-elevation myocardial infarction, unstable angina, UA, ACS, acute coronary syndrome, heart attack, MI, myocardial infarction, type 1 MI, type 2 MI, primary MI, secondary MI, procedure-related MI, myocardial injury, MINOCA, troponin, DAPT, dual antiplatelet therapy, GRACE]
 definition: "Acute myocardial ischemia without persistent ST-segment elevation: NSTEMI with acute myocardial injury (a rise and/or fall of cardiac troponin, at least one value above the sex-specific 99th percentile), unstable angina without it. ^[acc-aha-acs-2025, udmi-2026]"
 based_on: [acc-aha-acs-2025, esc-acs-2023]
-checked: { date: 2026-10-20, by: owner, scope: "owner review", fingerprint: "fa6fc5273ad79423" }
+checked: { date: 2026-10-20, by: owner, scope: "owner review", fingerprint: "78e5471aecd0d2b0", carried: "2026-10-24: Dose sheets now take the drug-wide warnings from drug records (stage 4b). Doses and numbers on the card are unchanged." }
 related:
   differential: []
   conditions: [cardio-atrial-fibrillation, cardio-adhf]

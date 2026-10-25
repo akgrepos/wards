@@ -1,0 +1,23 @@
+name: Warfarin
+class: Vitamin K antagonist
+brands: [Jantoven]
+aliases: [Coumadin, VKA]
+boxed_warning:
+  text: Can cause major or fatal bleeding. Monitor INR regularly in every patient. Drugs, diet changes and other factors affect the INR. Teach patients how to lower bleeding risk and to report bleeding.
+  sources: [label-warfarin-2025]
+cautions:
+  - text: Contraindicated in pregnancy (embryopathy, fetal hemorrhage, fetal loss), except selected pregnant women with mechanical heart valves at high thromboembolic risk. Check pregnancy status before starting.
+    sources: [label-warfarin-2025]
+  - text: Other contraindications include active bleeding or bleeding tendency, recent or planned CNS or eye surgery, CNS hemorrhage, malignant hypertension, and spinal puncture or major regional anesthesia.
+    sources: [label-warfarin-2025]
+  - text: Do not start as initial therapy in heparin-induced thrombocytopenia (limb ischemia, gangrene). Start only after the platelet count has normalized.
+    sources: [label-warfarin-2025]
+  - text: Skin or tissue necrosis, usually within the first days and more likely with protein C or S deficiency. Stop warfarin and use another anticoagulant if needed. Calciphylaxis can also occur.
+    sources: [label-warfarin-2025]
+  - text: Many interactions (CYP2C9, 1A2 and 3A4 inhibitors and inducers, antibiotics, antifungals, herbal products). Check INR more often when any drug is started, stopped or changed. Keep vitamin K intake steady.
+    sources: [label-warfarin-2025]
+  - text: Bleeding risk rises with other anticoagulants, antiplatelets, NSAIDs, SSRIs and SNRIs.
+    sources: [label-warfarin-2025]
+kidney_liver: No dose change for kidney impairment, but check INR more often. Liver impairment strengthens the effect, so monitor closely.
+label_source: label-warfarin-2025
+sources: [label-warfarin-2025]

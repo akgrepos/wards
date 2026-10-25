@@ -1,3 +1,4 @@
+drug: dabigatran
 drug_name: Dabigatran
 brand: Pradaxa
 indication: Acute DVT or PE treatment, after 5–10 days of parenteral anticoagulation
@@ -6,7 +7,6 @@ route: PO
 amount: "150"
 unit: mg
 frequency: twice daily
-boxed_warning: "Premature discontinuation raises the risk of thrombotic events. Spinal or epidural hematoma with neuraxial anesthesia or spinal puncture."
 adjustments:
   - when: CrCl ≤30 mL/min or dialysis
     change: No dosing recommendation. Avoid
@@ -14,8 +14,6 @@ adjustments:
     change: Avoid
 cautions:
   - "Needs 5–10 days of parenteral anticoagulation first."
-  - "Swallow capsules whole. Opening them increases absorption."
-  - "Avoid P-gp inducers such as rifampin."
 sources: [label-pradaxa-2025, ash-vte-treatment-2020]
 verification:
   source: label-pradaxa-2025

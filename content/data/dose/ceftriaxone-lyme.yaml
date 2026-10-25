@@ -8,7 +8,6 @@ amount: "2"
 unit: g
 frequency: every 24 hours
 duration: "Neurologic disease: 14–21 days. Carditis: IV until clinical improvement, then oral to complete 14–21 days. Refractory arthritis: 2 weeks, extended to 4 weeks if resolution is incomplete."
-boxed_warning: None
 cautions:
   - "Oral doxycycline is an alternative for neurologic Lyme (meningitis, cranial neuropathy, radiculoneuropathy)."
   - "Symptomatic bradycardia in carditis: temporary pacing, not a permanent pacemaker."

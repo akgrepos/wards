@@ -1,0 +1,20 @@
+name: Haloperidol
+class: First-generation (butyrophenone) antipsychotic
+brands: [Haldol]
+boxed_warning:
+  text: "Older adults with dementia-related psychosis treated with antipsychotics have an increased risk of death, mostly cardiovascular (heart failure, sudden death) or infectious (pneumonia). Haloperidol is not approved for dementia-related psychosis."
+  sources: [label-haloperidol-inj-2026]
+cautions:
+  - text: "Contraindicated in Parkinson disease, dementia with Lewy bodies, and severe toxic CNS depression or coma."
+    sources: [label-haloperidol-inj-2026]
+  - text: "Sudden death, QTc prolongation and torsades de pointes. Risk is higher with IV use and above recommended doses, and a QTc above 500 ms raises torsades risk. Use caution with hypokalemia, hypomagnesemia, other QT-prolonging drugs, heart disease, hypothyroidism or long QT syndrome. Not approved for IV use: if given IV, monitor the ECG."
+    sources: [label-haloperidol-inj-2026]
+  - text: "Neuroleptic malignant syndrome, extrapyramidal effects (acute dystonia, akathisia, parkinsonism), tardive dyskinesia, sedation, orthostatic hypotension and falls."
+    sources: [label-haloperidol-inj-2026]
+  - text: "If hypotension needs a vasopressor, do not use epinephrine (blood pressure can fall further). Use phenylephrine or norepinephrine."
+    sources: [label-haloperidol-inj-2026]
+  - text: "Lowers the seizure threshold. CYP3A4 or CYP2D6 inhibitors raise levels and QT risk, and inducers (carbamazepine, phenytoin, rifampin) lower them. Watch closely for neurotoxicity with lithium."
+    sources: [label-haloperidol-inj-2026]
+kidney_liver: "Not studied in liver impairment. Levels may rise because the liver clears it, so use caution. The label gives no kidney adjustment. Older adults generally need lower doses."
+label_source: label-haloperidol-inj-2026
+sources: [label-haloperidol-inj-2026]

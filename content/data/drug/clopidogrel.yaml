@@ -1,0 +1,20 @@
+name: Clopidogrel
+class: P2Y12 inhibitor (thienopyridine)
+brands: [Plavix]
+boxed_warning:
+  text: Diminished antiplatelet effect in CYP2C19 poor metabolizers (two loss-of-function alleles), because it is a prodrug activated mainly by CYP2C19. Tests can identify them. Consider another P2Y12 inhibitor in known poor metabolizers.
+  sources: [label-plavix-2025]
+cautions:
+  - text: Contraindicated with active pathological bleeding (such as peptic ulcer or intracranial hemorrhage) or hypersensitivity to clopidogrel.
+    sources: [label-plavix-2025]
+  - text: Avoid omeprazole and esomeprazole (they reduce its effect). Avoid strong CYP2C19 inducers such as rifampin (more bleeding). Avoid repaglinide.
+    sources: [label-plavix-2025]
+  - text: Bleeding risk rises with anticoagulants, other antiplatelets, NSAIDs, SSRIs and SNRIs. Opioids delay and reduce absorption.
+    sources: [label-plavix-2025]
+  - text: Stopping early raises cardiovascular events. When possible hold 5 days before surgery with major bleeding risk, and restart once hemostasis is achieved.
+    sources: [label-plavix-2025]
+  - text: Thrombotic thrombocytopenic purpura, sometimes fatal, can occur even after short exposure. It needs urgent plasma exchange.
+    sources: [label-plavix-2025]
+kidney_liver: No liver adjustment. Limited experience in moderate or severe kidney impairment, no adjustment given.
+label_source: label-plavix-2025
+sources: [label-plavix-2025]

@@ -1,3 +1,4 @@
+drug: hydromorphone
 drug_name: Hydromorphone
 brand: Dilaudid
 indication: Moderate to severe acute pain, opioid-naive
@@ -7,7 +8,6 @@ amount: 2–4
 unit: mg
 frequency: every 4–6 hours as needed
 repeat: "Reassess pain, sedation and respiratory rate before each repeat dose"
-boxed_warning: "Addiction, abuse and misuse. Life-threatening respiratory depression. Accidental ingestion. Risks with benzodiazepines and other CNS depressants."
 adjustments:
   - when: "Kidney or hepatic impairment"
     change: "Start at one-fourth to one-half of the usual starting dose"

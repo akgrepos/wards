@@ -1,3 +1,4 @@
+drug: argatroban
 drug_name: Argatroban
 indication: Heparin-induced thrombocytopenia (with or without thrombosis)
 population: Adults
@@ -6,7 +7,6 @@ amount: "2"
 unit: mcg/kg/min
 frequency: continuous infusion, titrated to aPTT 1.5–3 times baseline (not above 100 seconds)
 max: "10 mcg/kg/min"
-boxed_warning: "None"
 adjustments:
   - when: Moderate or severe liver impairment, heart failure, multiorgan failure, severe anasarca, or after cardiac surgery
     change: Start at 0.5 mcg/kg/min

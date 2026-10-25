@@ -1,0 +1,16 @@
+name: Ketorolac
+class: Non-selective NSAID
+brands: [Toradol]
+boxed_warning:
+  text: "Short-term use only, 5 days or less in total across IV, IM and oral, with oral only as continuation. Not for minor or chronic pain or for children. Gastrointestinal bleeding, ulceration and perforation, which can be fatal. Cardiovascular thrombotic events, and contraindicated in the setting of CABG surgery. Contraindicated with active or past peptic ulcer or gastrointestinal bleeding, advanced renal impairment or volume depletion, suspected or confirmed cerebrovascular bleeding, hemorrhagic diathesis, incomplete hemostasis or high bleeding risk, as prophylaxis before major surgery, in labor and delivery, for epidural or intrathecal use, after allergic reactions to aspirin or NSAIDs, and with current aspirin or other NSAIDs. Hypersensitivity reactions can occur with the first dose. Lower the dose for age 65 years or older, weight under 50 kg, or moderately raised creatinine."
+  sources: [label-ketorolac-injection-2024, label-ketorolac-tablets-2024]
+cautions:
+  - text: "Also contraindicated with probenecid or pentoxifylline."
+    sources: [label-ketorolac-injection-2024]
+  - text: "Bleeding risk rises with anticoagulants and SSRIs. Raises lithium and methotrexate levels. Acute kidney injury risk rises with ACE inhibitors, ARBs and diuretics."
+    sources: [label-ketorolac-injection-2024]
+  - text: "Beers criteria: avoid in older adults."
+    sources: [ags-beers-2023]
+kidney_liver: "Contraindicated in advanced renal impairment or when volume depletion puts the kidneys at risk. Correct volume depletion first. The lower dose for impaired kidney function is on the dose. Stop if signs of liver disease develop."
+label_source: label-ketorolac-injection-2024
+sources: [label-ketorolac-injection-2024, label-ketorolac-tablets-2024, ags-beers-2023]

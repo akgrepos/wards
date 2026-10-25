@@ -23,7 +23,7 @@ function withCard(md: string, extra: AnyCard = {}) {
 }
 function withDose(fields: Record<string, unknown>) {
   const base = JSON.parse(JSON.stringify(real));
-  base.data.dose['test-dose'] = { drug_name: 'Testdrug', indication: 'Test', route: 'IV', amount: 1, unit: 'mg', frequency: 'once', sources: ['example-guideline-a'], verification: { read: 'not-verified', date: '2026-10-23' }, _file: 'test.yaml', ...fields };
+  base.data.dose['test-dose'] = { drug: 'ceftriaxone', drug_name: 'Testdrug', indication: 'Test', route: 'IV', amount: 1, unit: 'mg', frequency: 'once', sources: ['example-guideline-a'], verification: { read: 'not-verified', date: '2026-10-23' }, _file: 'test.yaml', ...fields };
   return checkContent(base).join('\n');
 }
 const kp = (extra: string) => `- One ^[example-guideline-a]\n- Two ^[example-guideline-a]\n- Three ^[example-guideline-a]\n${extra}`;
@@ -103,6 +103,8 @@ describe('content checks', () => {
     expect(withDose({ frequency: undefined })).toMatch(/needs a "frequency" or a "rate"/);
     expect(withDose({ frequency: undefined, rate: 'over 10 minutes' })).toBe('');
     expect(withDose({ boxed: 'x' })).toMatch(/unknown dose field "boxed"/);
+    expect(withDose({ drug: undefined })).toMatch(/missing "drug"/);
+    expect(withDose({ drug: 'nosuchdrug' })).toMatch(/drug "nosuchdrug" does not exist/);
     expect(withDose({ alternative: { dose: 'no-such-dose' } })).toMatch(/alternative dose "no-such-dose" does not exist/);
     expect(withDose({ cautions: 'one string' })).toMatch(/cautions must be a list/);
   });

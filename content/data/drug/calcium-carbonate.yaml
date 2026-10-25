@@ -1,0 +1,11 @@
+name: Calcium Carbonate
+class: Oral calcium salt
+brands: [Tums]
+aliases: [CaCO3]
+boxed_warning: None
+cautions:
+  - text: Binds oral fluoroquinolones and tetracyclines and lowers their absorption. Give ciprofloxacin at least 2 hours before or 6 hours after it, and separate it from doxycycline.
+    sources: [label-cipro-oral-2026, label-doxycycline-2026]
+kidney_liver: The label gives no kidney or liver adjustment.
+label_source: label-calcium-carbonate-2026
+sources: [label-calcium-carbonate-2026, label-cipro-oral-2026, label-doxycycline-2026]

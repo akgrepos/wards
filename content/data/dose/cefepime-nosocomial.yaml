@@ -1,3 +1,4 @@
+drug: cefepime
 drug_name: Cefepime
 indication: Hospital-acquired pneumonia, intra-abdominal, bloodstream or CNS infection needing antipseudomonal coverage
 population: Adults
@@ -16,7 +17,6 @@ adjustments:
   - when: Hemodialysis
     change: 1 g every 24 hours, after dialysis on dialysis days
 cautions:
-  - "Neurotoxicity (encephalopathy, myoclonus, nonconvulsive status), mostly when not reduced for kidney function."
   - Does not cover anaerobes (add metronidazole for an abdominal source), MRSA or Enterococcus.
 notes: "Label: 2 g every 8 hours for empiric febrile neutropenia and for Pseudomonas pneumonia or intra-abdominal infection. The first dose is not reduced for kidney function. IDSA 2004 lists 6 g a day every 8 hours for meningitis."
 sources: [label-cefepime-2026, idsa-ats-hap-vap-2016, idsa-ventriculitis-2017, idsa-meningitis-2004]

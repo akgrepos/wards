@@ -1,0 +1,21 @@
+name: Piperacillin-tazobactam
+class: Antipseudomonal penicillin with β-lactamase inhibitor
+brands: [Zosyn]
+aliases: [Pip-tazo, PTZ]
+boxed_warning: None
+cautions:
+  - text: Contraindicated with a history of allergic reaction to any penicillin, cephalosporin or β-lactamase inhibitor. Severe skin reactions (SJS, TEN, DRESS, AGEP) and hemophagocytic lymphohistiocytosis have occurred. Stop it for a progressing rash or suspected HLH.
+    sources: [label-zosyn-2026]
+  - text: An independent risk factor for kidney failure, with slower recovery, in critically ill patients. Consider alternatives in that group, otherwise monitor kidney function. Acute kidney injury is more frequent with vancomycin, so monitor creatinine on the combination.
+    sources: [label-zosyn-2026]
+  - text: Neuromuscular excitability or seizures, more likely at higher doses and in kidney impairment or seizure disorders.
+    sources: [label-zosyn-2026]
+  - text: Bleeding with abnormal coagulation tests (more likely in kidney failure) and reversible leukopenia with long courses. Check blood counts on courses of 21 days or more, and coagulation tests with heparin or oral anticoagulants.
+    sources: [label-zosyn-2026]
+  - text: Prolongs non-depolarizing neuromuscular blockade (vecuronium). Lowers tobramycin levels in hemodialysis. May raise methotrexate levels. Give separately from aminoglycosides.
+    sources: [label-zosyn-2026]
+  - text: C. difficile diarrhea (mild to fatal colitis) can occur, even more than 2 months after use. Evaluate any new diarrhea.
+    sources: [label-zosyn-2026]
+kidney_liver: Reduce for CrCl 40 mL/min or below and in dialysis (adjustments by use are on each dose). No change for cirrhosis.
+label_source: label-zosyn-2026
+sources: [label-zosyn-2026]

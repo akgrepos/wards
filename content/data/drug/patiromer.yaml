@@ -1,0 +1,20 @@
+name: Patiromer
+class: Potassium binder (non-absorbed cation-exchange polymer)
+brands: [Veltassa]
+boxed_warning: None
+cautions:
+  - text: Not for emergency treatment of life-threatening hyperkalemia because its onset is delayed.
+    sources: [label-veltassa-2025]
+  - text: Contraindicated after a hypersensitivity reaction to patiromer or any of its components.
+    sources: [label-veltassa-2025]
+  - text: Binds other oral drugs and can lower their absorption. Give other oral drugs at least 3 hours before or after.
+    sources: [label-veltassa-2025]
+  - text: Binds magnesium in the colon and can cause hypomagnesemia. Monitor magnesium and supplement if low. Excess dosing can cause hypokalemia.
+    sources: [label-veltassa-2025]
+  - text: Avoid in severe constipation, bowel obstruction or impaction, including abnormal postoperative bowel motility. It may be ineffective and worsen the bowel condition.
+    sources: [label-veltassa-2025]
+  - text: Not absorbed. No fetal risk expected in pregnancy.
+    sources: [label-veltassa-2025]
+kidney_liver: Not absorbed. No dose change for kidney impairment. The label gives no liver guidance.
+label_source: label-veltassa-2025
+sources: [label-veltassa-2025]

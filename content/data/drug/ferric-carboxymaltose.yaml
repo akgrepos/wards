@@ -1,0 +1,19 @@
+name: Ferric carboxymaltose
+class: IV iron
+brands: [Injectafer]
+aliases: [FCM, IV iron]
+boxed_warning:
+  text: Symptomatic hypophosphatemia, which can be severe and prolonged with serious outcomes (hospitalization, osteomalacia, fractures). It occurs even with a normal baseline phosphate and no risk factors. Check phosphate before a repeat course in at-risk patients and before any repeat course within 3 months. Correct preexisting hypophosphatemia first. Tell patients to report fatigue, muscle weakness, or bone and joint pain.
+  sources: [label-injectafer-2026]
+cautions:
+  - text: Serious hypersensitivity, including fatal anaphylaxis (shock, hypotension, collapse). Contraindicated after prior hypersensitivity to it. Give only with treatment immediately available, and observe for at least 30 minutes and until stable after each dose.
+    sources: [label-injectafer-2026]
+  - text: Hypertension and transient blood pressure rises (sometimes with flushing, dizziness or nausea) right after dosing. Monitor blood pressure.
+    sources: [label-injectafer-2026]
+  - text: Hypophosphatemia risk factors include repeat courses, malabsorption or inflammatory bowel disease, drugs that affect the proximal tubule, hyperparathyroidism, vitamin D deficiency, malnutrition and hereditary hemorrhagic telangiectasia. Consider stopping for severe or persistent hypophosphatemia.
+    sources: [label-injectafer-2026]
+  - text: Serum iron and transferrin-bound iron read falsely high for 24 hours after a dose.
+    sources: [label-injectafer-2026]
+kidney_liver: The label gives no dose change for kidney or liver impairment.
+label_source: label-injectafer-2026
+sources: [label-injectafer-2026]

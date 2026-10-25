@@ -1,0 +1,21 @@
+name: Clindamycin
+class: Lincosamide
+brands: [Cleocin]
+aliases: [clinda]
+boxed_warning:
+  text: Clostridioides difficile–associated diarrhea, from mild diarrhea to fatal colitis, and it can start more than two months after treatment. Reserve for serious infections where less toxic agents are inappropriate. Not for nonbacterial infections such as most upper respiratory infections.
+  sources: [label-cleocin-iv-2026, label-cleocin-oral-2026]
+cautions:
+  - text: Contraindicated with hypersensitivity to clindamycin or lincomycin. Anaphylaxis and severe skin reactions (SJS, TEN, DRESS) occur. Stop permanently if they do.
+    sources: [label-cleocin-iv-2026]
+  - text: Can cause acute kidney injury. Monitor kidney function with kidney disease or other nephrotoxic drugs. Stop if no other cause is found.
+    sources: [label-cleocin-iv-2026]
+  - text: Not for meningitis (poor CSF penetration).
+    sources: [label-cleocin-iv-2026]
+  - text: Enhances neuromuscular blocking agents. Strong CYP3A4 inhibitors raise its levels and inducers such as rifampin lower them.
+    sources: [label-cleocin-iv-2026]
+  - text: IV never as an undiluted bolus. Infuse at the labeled rate.
+    sources: [label-cleocin-iv-2026]
+kidney_liver: No dose change for kidney or liver impairment, and dialysis does not remove it. Check liver enzymes periodically in severe liver disease.
+label_source: label-cleocin-iv-2026
+sources: [label-cleocin-iv-2026, label-cleocin-oral-2026]

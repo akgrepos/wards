@@ -1,0 +1,14 @@
+name: Folic acid
+class: Vitamin B9 (folate)
+aliases: [folate, vitamin B9]
+boxed_warning: None
+cautions:
+  - text: Folic acid alone is improper therapy for vitamin B12 deficiency. It can correct the anemia while neurologic damage progresses. Exclude or treat B12 deficiency first.
+    sources: [label-folic-acid-2026]
+  - text: Can lower phenytoin levels and antagonize its anticonvulsant effect. Seizures have increased with phenytoin, phenobarbital or primidone. Monitor levels and seizure control.
+    sources: [label-folic-acid-2026]
+  - text: Contraindicated after previous intolerance. Allergic reactions are rare (rash, bronchospasm, and anaphylaxis after injection).
+    sources: [label-folic-acid-2026]
+kidney_liver: No dose change for kidney or liver impairment. Dialysis increases folate loss.
+label_source: label-folic-acid-2026
+sources: [label-folic-acid-2026]

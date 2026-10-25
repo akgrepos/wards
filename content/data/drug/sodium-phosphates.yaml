@@ -1,0 +1,14 @@
+name: Sodium Phosphates
+class: Phosphate and sodium salt (electrolyte replacement)
+aliases: [Na phos, NaPhos]
+boxed_warning: None
+cautions:
+  - text: Contraindicated with hyperphosphatemia, hypocalcemia or hypernatremia.
+    sources: [label-naphos-injection-2021]
+  - text: Must be diluted and mixed before IV use. Infuse slowly. High phosphorus concentrations lower calcium and can cause hypocalcemic tetany. Monitor phosphorus, calcium and sodium.
+    sources: [label-naphos-injection-2021]
+  - text: The sodium load needs great care, if at all, in heart failure or edema with sodium retention, and caution in cirrhosis or with corticosteroids.
+    sources: [label-naphos-injection-2021]
+kidney_liver: Sodium and phosphorus are cleared by the kidney. Use with great care, if at all, in severe kidney impairment (phosphate and sodium retention). Use with caution in cirrhosis. Adjustments by use are on each dose.
+label_source: label-naphos-injection-2021
+sources: [label-naphos-injection-2021]

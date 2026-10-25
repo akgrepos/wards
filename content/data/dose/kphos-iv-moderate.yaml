@@ -1,3 +1,4 @@
+drug: potassium-phosphates
 drug_name: Potassium phosphates
 indication: "Hypophosphatemia, serum phosphorus 1.0–1.7 mg/dL"
 population: Adults
@@ -8,7 +9,6 @@ rate: "up to 6.8 mmol per hour peripheral, 15 mmol per hour central"
 give_when: "Serum K⁺ <4.0 mEq/L, and oral replacement not possible or insufficient"
 repeat: "Further doses only after rechecking phosphorus, calcium and K⁺"
 max: "45 mmol phosphorus (66 mEq K⁺) per dose"
-boxed_warning: None
 alternative:
   dose: naphos-iv
   when: "Serum K⁺ ≥4.0 mEq/L"
@@ -19,8 +19,6 @@ adjustments:
     change: "Contraindicated"
 cautions:
   - "Single doses of 50 mmol or more, or infusion over only 1–3 hours, have caused cardiac arrest and death."
-  - "Contraindicated in hyperkalemia, hyperphosphatemia, hypercalcemia or significant hypocalcemia."
-  - "Correct calcium first. Never infuse with calcium-containing fluids."
   - "Dilute in 100–250 mL of saline or D5W. Peripheral concentration up to 6.8 mmol per 100 mL."
   - "Each mmol of phosphorus brings about 1.5 mEq of K⁺. Continuous ECG and a central line above 10 mEq K⁺ per hour."
 notes: "Dose by actual body weight. Consider adjusted body weight if well above ideal weight."

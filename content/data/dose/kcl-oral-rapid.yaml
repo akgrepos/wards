@@ -1,3 +1,4 @@
+drug: potassium-chloride
 drug_name: Potassium chloride
 indication: Hypokalemia with K⁺ <3.0 mEq/L, gut working
 population: Adults
@@ -8,7 +9,6 @@ frequency: "every 3–4 hours for 3 doses"
 give_when: "K⁺ <3.0 mEq/L without an indication for IV"
 repeat: "Recheck K⁺ (no sooner than 2 hours after a dose) before giving more"
 max: "40 mEq per dose. 200 mEq per day (oral solution label)"
-boxed_warning: None
 alternative:
   dose: kcl-iv-standard
   when: "No oral route"

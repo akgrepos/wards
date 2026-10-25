@@ -1,3 +1,4 @@
+drug: calcium-gluconate
 drug_name: Calcium gluconate
 indication: Hypocalcemia persisting or recurring after IV boluses
 population: Adults
@@ -6,7 +7,6 @@ amount: "5.4–21.5"
 unit: mg/kg/h
 rate: "continuous infusion, adjusted to serum calcium"
 give_when: "Hypocalcemia persists or recurs after boluses"
-boxed_warning: None
 adjustments:
   - when: "Renal impairment"
     change: "Start at the lowest dose"

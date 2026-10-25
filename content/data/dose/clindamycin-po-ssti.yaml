@@ -1,3 +1,4 @@
+drug: clindamycin
 drug_name: Clindamycin
 indication: Cellulitis with serious β-lactam allergy or MRSA risk
 population: Adults
@@ -5,7 +6,6 @@ route: PO
 amount: 300–450
 unit: mg
 frequency: every 6 hours
-boxed_warning: Clostridioides difficile–associated diarrhea, including fatal colitis. Reserve for infections where less toxic agents are inappropriate.
 cautions:
   - Streptococcal and MRSA resistance is increasing. Check local rates.
 sources:

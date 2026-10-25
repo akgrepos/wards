@@ -1,0 +1,16 @@
+name: Atorvastatin
+class: HMG-CoA reductase inhibitor (statin)
+brands: [Lipitor]
+boxed_warning: None
+cautions:
+  - text: Contraindicated in acute liver failure or decompensated cirrhosis, and with hypersensitivity to atorvastatin.
+    sources: [label-lipitor-2024]
+  - text: Myopathy and rhabdomyolysis. Risk rises with age 65 years or older, uncontrolled hypothyroidism, kidney impairment, interacting drugs and higher doses. Stop if CK is markedly raised or myopathy is suspected, and pause during acute illness at high risk of rhabdomyolysis-related kidney failure (sepsis, shock, major surgery).
+    sources: [label-lipitor-2024]
+  - text: Not recommended with cyclosporine, gemfibrozil, tipranavir plus ritonavir, or glecaprevir plus pibrentasvir. Some azoles, macrolides and HIV or hepatitis C antivirals cap the dose (see Adjust on the dose). Fibrates, niacin and colchicine add myopathy risk.
+    sources: [label-lipitor-2024]
+  - text: Rising transaminases and rare liver failure. Check liver enzymes before starting and when indicated. Stop for serious liver injury.
+    sources: [label-lipitor-2024]
+kidney_liver: No kidney adjustment, but kidney impairment raises myopathy risk. Liver disease markedly raises levels, and acute liver failure or decompensated cirrhosis is a contraindication.
+label_source: label-lipitor-2024
+sources: [label-lipitor-2024]

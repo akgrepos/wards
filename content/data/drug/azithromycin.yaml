@@ -1,0 +1,21 @@
+name: Azithromycin
+class: Macrolide
+brands: [Zithromax]
+aliases: [Z-Pak, azithro]
+boxed_warning: None
+cautions:
+  - text: QT prolongation and torsades de pointes, which can be fatal. Avoid with known QT prolongation or torsades, bradyarrhythmia, uncompensated heart failure, uncorrected hypokalemia or hypomagnesemia, other QT-prolonging drugs, or class IA or III antiarrhythmics. Older adults are more susceptible.
+    sources: [label-zithromax-oral-2026]
+  - text: Observational studies show about a two-fold short-term rise in cardiovascular death compared with amoxicillin. Weigh this against the benefit.
+    sources: [label-zithromax-oral-2026]
+  - text: Contraindicated with hypersensitivity to any macrolide or ketolide, and after cholestatic jaundice or hepatic dysfunction with prior azithromycin. Severe, sometimes fatal hepatotoxicity occurs. Stop at the first sign of hepatitis.
+    sources: [label-zithromax-oral-2026]
+  - text: Serious, sometimes fatal allergic and skin reactions (including SJS, TEN, DRESS and AGEP). Stop if they occur.
+    sources: [label-zithromax-oral-2026]
+  - text: May raise the INR with warfarin. Monitor the prothrombin time. Monitor closely with digoxin, colchicine or phenytoin.
+    sources: [label-zithromax-oral-2026]
+  - text: May worsen weakness in myasthenia gravis.
+    sources: [label-zithromax-oral-2026]
+kidney_liver: No labeled dose change for kidney or liver impairment. Peak levels are about 61% higher at GFR below 10, so watch for adverse effects there. Liver impairment has not been studied.
+label_source: label-zithromax-oral-2026
+sources: [label-zithromax-oral-2026, label-zithromax-iv-2026]

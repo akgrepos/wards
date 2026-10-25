@@ -1,0 +1,20 @@
+name: Amiodarone
+class: Class III antiarrhythmic
+brands: [Nexterone]
+boxed_warning: None
+cautions:
+  - text: "Contraindicated in cardiogenic shock, marked sinus bradycardia, second- or third-degree AV block without a functioning pacemaker, and iodine hypersensitivity."
+    sources: [label-nexterone-2024]
+  - text: "Hypotension is the most common effect of the IV form and is rate-related: slow the infusion. Bradycardia and AV block may need a slower rate, stopping, or a pacemaker."
+    sources: [label-nexterone-2024]
+  - text: "QT prolongation and torsades de pointes. Correct potassium, magnesium and calcium first. Avoid other QT-prolonging drugs and CYP3A inhibitors (azoles, some macrolides and fluoroquinolones, grapefruit juice)."
+    sources: [label-nexterone-2024]
+  - text: "Raises digoxin levels (halve the digoxin dose or stop it) and warfarin effect (cut warfarin by one-third to one-half and check INR). Raises simvastatin and lovastatin levels (dose limits apply). Additive bradycardia and AV block with β-blockers, diltiazem, verapamil and clonidine. Severe bradycardia with sofosbuvir."
+    sources: [label-nexterone-2024]
+  - text: "Acute liver injury (sometimes fatal), early lung injury including ARDS, optic neuropathy and thyroid dysfunction. Check liver and thyroid tests and evaluate new respiratory symptoms."
+    sources: [label-nexterone-2024]
+  - text: "Very long half-life (weeks): adverse effects and interactions persist after stopping."
+    sources: [label-nexterone-2024]
+kidney_liver: "No dose change for kidney impairment (kidney disease does not change its kinetics) and none defined for liver impairment. Slow or stop the infusion if liver injury develops."
+label_source: label-nexterone-2024
+sources: [label-nexterone-2024]

@@ -1,0 +1,22 @@
+name: Ticagrelor
+class: P2Y12 inhibitor (reversible)
+brands: [Brilinta]
+boxed_warning:
+  text: Like other antiplatelets, can cause significant, sometimes fatal bleeding. Do not use with active pathological bleeding or a history of intracranial hemorrhage. Do not start before urgent CABG. If possible, manage bleeding without stopping it, since stopping raises cardiovascular events.
+  sources: [label-brilinta-2026]
+cautions:
+  - text: Contraindicated with hypersensitivity (such as angioedema) to ticagrelor.
+    sources: [label-brilinta-2026]
+  - text: Avoid strong CYP3A inhibitors (more bleeding and dyspnea) and strong CYP3A inducers (less effect). Opioids delay and reduce absorption.
+    sources: [label-brilinta-2026]
+  - text: Raises simvastatin and lovastatin levels (avoid their higher doses) and rosuvastatin levels. Check digoxin levels when starting or changing it.
+    sources: [label-brilinta-2026]
+  - text: Dyspnea is common, usually mild, and often resolves while continuing.
+    sources: [label-brilinta-2026]
+  - text: Can cause ventricular pauses and bradyarrhythmias, including AV block. Central sleep apnea has been reported.
+    sources: [label-brilinta-2026]
+  - text: Tablets can be crushed, mixed with water and swallowed or given by nasogastric tube.
+    sources: [label-brilinta-2026]
+kidney_liver: No kidney adjustment. Avoid in severe liver impairment. Moderate liver impairment raises exposure, so weigh risk and benefit.
+label_source: label-brilinta-2026
+sources: [label-brilinta-2026]

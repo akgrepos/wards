@@ -1,0 +1,17 @@
+name: Norepinephrine
+class: Catecholamine (α1- and β1-adrenergic agonist)
+brands: [Levophed]
+aliases: [Noradrenaline, Norepi, Levarterenol]
+boxed_warning: None
+cautions:
+  - text: "No contraindications in the label. Correct hypovolemia first: otherwise severe peripheral and visceral vasoconstriction. Avoid in mesenteric or peripheral vascular thrombosis."
+    sources: [label-levophed-2025]
+  - text: "Arrhythmias (worse with hypoxia or hypercarbia), digital gangrene and mesenteric ischemia. Raises glucose."
+    sources: [label-levophed-2025]
+  - text: "Severe, prolonged hypertension with MAO inhibitors (including linezolid) or tricyclic antidepressants: avoid, or monitor closely if unavoidable. Ventricular arrhythmias with halogenated anesthetics."
+    sources: [label-levophed-2025]
+  - text: "Do not stop abruptly (marked hypotension): taper the rate. Contains a sulfite."
+    sources: [label-levophed-2025]
+kidney_liver: "The label gives no dose change for kidney or liver impairment."
+label_source: label-levophed-2025
+sources: [label-levophed-2025]

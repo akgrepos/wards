@@ -1,0 +1,18 @@
+name: Aspirin
+class: Antiplatelet (irreversible COX inhibitor), salicylate NSAID
+aliases: [ASA, acetylsalicylic acid]
+boxed_warning: None
+cautions:
+  - text: Contraindicated with known NSAID allergy or the syndrome of asthma, rhinitis and nasal polyps (urticaria, angioedema, bronchospasm).
+    sources: [label-aspirin-professional-1999]
+  - text: Avoid with active peptic ulcer disease. Watch for GI ulceration and bleeding even without prior GI symptoms.
+    sources: [label-aspirin-professional-1999]
+  - text: Bleeding risk rises with heparin and warfarin. Avoid other NSAIDs (more bleeding, worse kidney function). Heavy daily alcohol use adds bleeding risk.
+    sources: [label-aspirin-professional-1999]
+  - text: Even low doses prolong bleeding time, which matters with hemophilia, liver disease or vitamin K deficiency.
+    sources: [label-aspirin-professional-1999]
+  - text: Do not use in children or teenagers with viral illness (Reye syndrome).
+    sources: [label-aspirin-professional-1999]
+kidney_liver: The professional labeling advises avoiding aspirin in severe kidney failure (GFR below 10) and severe liver insufficiency.
+label_source: label-aspirin-professional-1999
+sources: [label-aspirin-professional-1999]

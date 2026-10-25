@@ -6,7 +6,7 @@ title: "Anticoagulation"
 aliases: [anticoagulation, blood thinner, blood thinners, DOAC, NOAC, apixaban, Eliquis, rivaroxaban, Xarelto, dabigatran, Pradaxa, edoxaban, Savaysa, warfarin, Coumadin, INR, enoxaparin, Lovenox, LMWH, heparin, UFH, fondaparinux, Arixtra, argatroban, bivalirudin, HIT, heparin-induced thrombocytopenia, anti-Xa, aPTT, bridging, warfarin to DOAC, mechanical valve, anticoagulant dosing, DOAC dosing, Anticoagulant Selection and Management, anticoagulant selection, anticoagulant management]
 definition: "Choosing and dosing an anticoagulant (DOAC, warfarin, low-molecular-weight heparin, unfractionated heparin, fondaparinux or a direct thrombin inhibitor) by indication, kidney and liver function, weight, pregnancy, interacting drugs and bleeding risk, then monitoring it and changing between agents safely. ^[chest-vte-2021, ash-vte-treatment-2020, acc-aha-af-2023]"
 based_on: [chest-vte-2021, ash-vte-treatment-2020, acc-aha-af-2023, aha-acc-pe-2026, ash-hit-2018, chest-periop-2022, ash-vte-cancer-2021]
-checked: { date: 2026-10-21, by: opus, scope: "doses and numbers", fingerprint: "5c7bf732ffbb1c99" }
+checked: { date: 2026-10-21, by: opus, scope: "doses and numbers", fingerprint: "6ade4295456e1f22", carried: "2026-10-24: Dose sheets now take the drug-wide warnings from drug records (stage 4b). Doses and numbers on the card are unchanged." }
 related:
   conditions: [cardio-atrial-fibrillation, pulm-vte-diagnosis, cardio-nste-acs]
 ---

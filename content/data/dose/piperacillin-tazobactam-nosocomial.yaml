@@ -1,3 +1,4 @@
+drug: piperacillin-tazobactam
 drug_name: Piperacillin-tazobactam
 brand: Zosyn
 indication: Hospital-acquired pneumonia, severe or healthcare-associated intra-abdominal infection
@@ -15,7 +16,6 @@ adjustments:
   - when: Hemodialysis
     change: 2.25 g every 8 hours, plus 0.75 g after each dialysis
 cautions:
-  - "Label: an independent risk factor for kidney failure in the critically ill. Monitor kidney function, especially with vancomycin."
   - Not suggested for invasive infection with ESBL-producing Enterobacterales or AmpC organisms such as Enterobacter.
 notes: "4.5 g every 6 hours is the label's nosocomial pneumonia dose (adjustments from that column). 3.375 g every 6 hours is the label dose for intra-abdominal infection."
 sources: [label-zosyn-2026, idsa-ats-hap-vap-2016, idsa-amr-2026]

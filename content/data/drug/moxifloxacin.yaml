@@ -1,0 +1,22 @@
+name: Moxifloxacin
+class: Fluoroquinolone
+aliases: [moxi, Avelox]
+boxed_warning:
+  text: Disabling and potentially irreversible serious reactions that can occur together, including tendinitis and tendon rupture, peripheral neuropathy and CNS effects. Stop at once and avoid all fluoroquinolones after any of these. May worsen myasthenia gravis, so avoid with a history of it. Reserve for patients with no alternative in acute bacterial sinusitis and acute bacterial exacerbation of chronic bronchitis.
+  sources: [label-moxifloxacin-2025]
+cautions:
+  - text: QT prolongation and torsades. Avoid with known QT prolongation, clinically significant bradycardia, acute myocardial ischemia, hypokalemia, hypomagnesemia, other QT-prolonging drugs, and class IA or III antiarrhythmics. Older adults are more susceptible.
+    sources: [label-moxifloxacin-2025]
+  - text: Higher rate of aortic aneurysm and dissection in the two months after use, mostly in older adults. With a known aneurysm or high risk, use only when no alternative exists.
+    sources: [label-moxifloxacin-2025]
+  - text: Severe hypoglycemia (including coma and death) and hyperglycemia, mostly in diabetes on insulin or oral agents. Monitor glucose. Enhances warfarin, so monitor the INR.
+    sources: [label-moxifloxacin-2025]
+  - text: Tendon rupture risk is higher in older adults and with corticosteroids. CNS effects include seizures, raised intracranial pressure, delirium and psychiatric reactions.
+    sources: [label-moxifloxacin-2025]
+  - text: Contraindicated with hypersensitivity to any quinolone. Stop at the first rash, jaundice or other sign of hypersensitivity.
+    sources: [label-moxifloxacin-2025]
+  - text: Take at least 4 hours before or 8 hours after antacids, sucralfate, multivitamins and other products with magnesium, aluminum, iron or zinc.
+    sources: [label-moxifloxacin-2025]
+kidney_liver: No dose change for kidney impairment, including hemodialysis and CAPD, or for liver impairment of any severity. Use caution in liver impairment because it may add to QT prolongation.
+label_source: label-moxifloxacin-2025
+sources: [label-moxifloxacin-2025]

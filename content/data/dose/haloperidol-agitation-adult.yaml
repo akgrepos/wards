@@ -1,3 +1,4 @@
+drug: haloperidol
 drug_name: Haloperidol
 brand: Haldol
 indication: Acute agitation with danger or severe distress after de-escalation has failed (labeled only for acutely agitated schizophrenia, otherwise off-label)
@@ -9,11 +10,9 @@ frequency: once. Reassess before any repeat dose
 give_when: Psychosis, intoxication with a central nervous system depressant, or agitation that needs an antipsychotic and no ECG or heart-rhythm contraindication is present
 repeat: "Reassess after 30–60 minutes. The label allows repeat IM doses, as often as hourly if needed (4–8 hour intervals may suffice)"
 max: "Label: 20 mg a day. Use the lowest effective dose"
-boxed_warning: "Increased mortality in older adults with dementia-related psychosis."
 cautions:
   - "Check {{calc:qtc}} first when possible. Avoid with a QTc >500 ms, torsades risk factors or other QT-prolonging drugs. Correct potassium and magnesium."
   - "Contraindicated in Parkinson disease and dementia with Lewy bodies. Acute dystonia and akathisia are common (see the benztropine row)."
-  - "Not for IV use (the label does not approve it). If given IV, monitor the ECG."
   - "Older adults and debilitated patients need much less. See the delirium dose."
 notes: "IM dose, interval and maximum from the haloperidol injection label (2 to 5 mg IM). The consensus statement gives 5 mg by mouth or IM. The QTc thresholds are the AHA/ACCF statement's."
 sources: [label-haloperidol-inj-2026, aaep-beta-psychopharm-2012, acep-severe-agitation-2023, aha-accf-qt-2010]

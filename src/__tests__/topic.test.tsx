@@ -100,13 +100,13 @@ describe('dose sheet', () => {
     expect(within(dialog()).getByText('Calcium chloride 10%', { selector: '[class*="heading"], h2, h1' })).toBeTruthy();
   });
 
-  it('shows cautions, and a boxed warning only when the label is cited', async () => {
+  it('shows the drug record\'s cautions, and a boxed warning only when the drug has one', async () => {
     launch('#/card/renal-hyperkalemia');
     await act(async () => { fireEvent.click(screen.getAllByRole('button', { name: /^Patiromer 8.4 g PO/ })[0]); });
     const d = within(dialog());
-    expect(d.getByText('Cautions')).toBeTruthy();
+    expect(d.getByText('Patiromer warnings')).toBeTruthy();
     expect(d.getByText(/Binds magnesium/)).toBeTruthy();
-    expect(d.getByText('Boxed warning')).toBeTruthy();
+    expect(d.queryByText('Boxed warning')).toBeNull();
     await act(async () => { fireEvent.click(d.getByRole('button', { name: /^Source: Veltassa/ })); });
     expect(d.getByText('View Citation')).toBeTruthy();
   });

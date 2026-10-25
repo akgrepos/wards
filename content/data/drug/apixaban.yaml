@@ -1,0 +1,23 @@
+name: Apixaban
+class: Direct factor Xa inhibitor (DOAC)
+brands: [Eliquis]
+aliases: [DOAC]
+boxed_warning:
+  text: "Premature discontinuation of any oral anticoagulant raises the risk of thrombotic events. If stopped for a reason other than pathological bleeding or completion of therapy, cover with another anticoagulant. Spinal or epidural hematoma, which can cause permanent paralysis, can occur with neuraxial anesthesia or spinal puncture. Risk is higher with indwelling epidural catheters, other drugs affecting hemostasis, traumatic or repeated punctures, or spinal deformity or surgery. Monitor neurologic status often and treat compromise urgently."
+  sources: [label-eliquis-2025]
+cautions:
+  - text: Contraindicated with active pathological bleeding or severe hypersensitivity to apixaban.
+    sources: [label-eliquis-2025]
+  - text: Avoid combined P-gp and strong CYP3A4 inducers (rifampin, carbamazepine, phenytoin, St John's wort). Combined P-gp and strong CYP3A4 inhibitors need a dose change (see Adjust on the dose).
+    sources: [label-eliquis-2025]
+  - text: Bleeding risk rises with aspirin and other antiplatelets, other anticoagulants, fibrinolytics, NSAIDs, SSRIs and SNRIs.
+    sources: [label-eliquis-2025]
+  - text: Not recommended with prosthetic heart valves or triple-positive antiphospholipid syndrome.
+    sources: [label-eliquis-2025]
+  - text: "Procedures: stop at least 48 hours before moderate or high bleeding risk, at least 24 hours before low risk. Bridging is generally not needed."
+    sources: [label-eliquis-2025]
+  - text: Remove a neuraxial catheter no earlier than 24 hours after the last dose, and give the next dose no earlier than 5 hours after removal. After a traumatic puncture, delay apixaban 48 hours.
+    sources: [label-eliquis-2025]
+kidney_liver: Kidney adjustments differ by use (see Adjust on each dose). Hemodialysis removes little drug. Child-Pugh A no change, Child-Pugh B no dosing recommendation, Child-Pugh C not recommended.
+label_source: label-eliquis-2025
+sources: [label-eliquis-2025]

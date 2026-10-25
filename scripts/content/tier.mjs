@@ -48,6 +48,7 @@ export function tierReport(baseRef) {
     const ids = new Set([...Object.keys(before.split.cards), ...Object.keys(after.split.cards)]);
     const byId = Object.fromEntries(after.content.cards.map((c) => [c.id, c]));
     for (const id of [...ids].sort()) {
+      if (byId[id]?.example) continue; // sample cards for tests are never gated
       const r = classifyCard(before.split.cards[id], after.split.cards[id]);
       if (!r) continue;
       tiers.push(r.tier);

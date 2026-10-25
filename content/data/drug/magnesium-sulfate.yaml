@@ -1,0 +1,20 @@
+name: Magnesium Sulfate
+class: Electrolyte (IV magnesium salt)
+aliases: [MgSO4]
+boxed_warning: None
+cautions:
+  - text: Contraindicated (parenteral use) in heart block or myocardial damage.
+    sources: [label-mgso4-2021]
+  - text: Magnesium toxicity (loss of patellar reflexes, respiratory depression, hypotension, circulatory collapse). Keep IV calcium available to reverse it.
+    sources: [label-mgso4-2021]
+  - text: Additive CNS depression with opioids, barbiturates and other sedatives or anesthetics. Potentiates neuromuscular blockers.
+    sources: [label-mgso4-2021]
+  - text: On digoxin, use with extreme caution. Heart block can occur if IV calcium is needed to treat magnesium toxicity.
+    sources: [label-mgso4-2021]
+  - text: In pregnancy, continuous use beyond 5 to 7 days can cause fetal hypocalcemia and bone abnormalities.
+    sources: [label-mgso4-2021]
+  - text: Dilute to a concentration of 20% or less before IV infusion.
+    sources: [label-mgso4-2021]
+kidney_liver: Cleared only by the kidneys. Kidney impairment can cause magnesium toxicity, so give less and check levels often. The label gives no liver adjustment. Adjustments by use are on each dose.
+label_source: label-mgso4-2021
+sources: [label-mgso4-2021]

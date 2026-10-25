@@ -1,3 +1,4 @@
+drug: cefpodoxime
 drug_name: Cefpodoxime
 indication: Community-acquired pneumonia, outpatient with comorbidities (with a macrolide or doxycycline)
 population: Adults
@@ -10,8 +11,6 @@ adjustments:
     change: Every 24 hours
   - when: Hemodialysis
     change: 3 times a week after dialysis
-cautions:
-  - Take with food.
 sources:
   - idsa-ats-cap-2019
   - label-cefpodoxime-2026

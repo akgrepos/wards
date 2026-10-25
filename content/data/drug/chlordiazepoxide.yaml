@@ -1,0 +1,18 @@
+name: Chlordiazepoxide
+class: Benzodiazepine (long-acting)
+brands: [Librium]
+boxed_warning:
+  text: "Concomitant use with opioids can cause profound sedation, respiratory depression, coma and death. Reserve the combination for patients without adequate alternatives, at the lowest doses for the shortest time, and monitor for respiratory depression and sedation. Abuse, misuse and addiction can lead to overdose or death. Continued use can cause physical dependence, and abrupt stopping or rapid dose reduction can cause life-threatening withdrawal, so taper gradually."
+  sources: [label-chlordiazepoxide-2025]
+cautions:
+  - text: "Additive CNS depression with alcohol and other CNS depressants. Combining it with other psychotropic drugs, especially MAO inhibitors and phenothiazines, is generally not recommended."
+    sources: [label-chlordiazepoxide-2025]
+  - text: "Flumazenil, or abrupt stopping after continued use, can precipitate life-threatening withdrawal, including seizures."
+    sources: [label-chlordiazepoxide-2025]
+  - text: "Paradoxical excitement, stimulation or rage can occur. Use caution in porphyria."
+    sources: [label-chlordiazepoxide-2025]
+  - text: "Use late in pregnancy can cause neonatal sedation and withdrawal."
+    sources: [label-chlordiazepoxide-2025]
+kidney_liver: "The label gives no specific kidney or liver adjustment, only the usual precautions in kidney or liver impairment. Older or debilitated adults start low. Adjustments by use are on each dose."
+label_source: label-chlordiazepoxide-2025
+sources: [label-chlordiazepoxide-2025]

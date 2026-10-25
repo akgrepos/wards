@@ -1,3 +1,4 @@
+drug: meropenem
 drug_name: Meropenem
 indication: Healthcare-associated meningitis, or meningitis with a resistant gram-negative organism
 population: Adults
@@ -13,9 +14,6 @@ adjustments:
     change: Give half the dose every 12 hours
   - when: CrCl <10 mL/min
     change: Give half the dose every 24 hours
-cautions:
-  - "Lowers valproate levels sharply: avoid together."
-  - Seizure risk, mostly with kidney impairment or CNS disease.
 notes: "IDSA 2004 lists 6 g a day in divided doses every 8 hours. The label's adult dosing is for other infections and its meningitis dose is for children."
 sources: [idsa-meningitis-2004, idsa-ventriculitis-2017, label-meropenem-2024]
 verification:

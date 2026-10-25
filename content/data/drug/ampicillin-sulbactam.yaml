@@ -1,0 +1,21 @@
+name: Ampicillin-sulbactam
+class: Aminopenicillin with β-lactamase inhibitor
+brands: [Unasyn]
+aliases: [Amp-sulbactam, Amp-sulb]
+boxed_warning: None
+cautions:
+  - text: Contraindicated after a serious hypersensitivity reaction (anaphylaxis, Stevens-Johnson syndrome) to ampicillin, sulbactam or another β-lactam (penicillins, cephalosporins).
+    sources: [label-unasyn-2026]
+  - text: Contraindicated after cholestatic jaundice or hepatic dysfunction with ampicillin-sulbactam. Hepatitis and cholestatic jaundice can occur (usually reversible, deaths reported).
+    sources: [label-unasyn-2026]
+  - text: Severe skin reactions (SJS, TEN, DRESS, AGEP, exfoliative dermatitis) can occur. Watch any rash closely and stop it if lesions progress.
+    sources: [label-unasyn-2026]
+  - text: Not for infectious mononucleosis (a high percentage develop a rash).
+    sources: [label-unasyn-2026]
+  - text: Do not reconstitute or mix with aminoglycosides (ampicillin inactivates them). Probenecid raises and prolongs levels.
+    sources: [label-unasyn-2026]
+  - text: C. difficile diarrhea (mild to fatal colitis) can occur, even more than 2 months after use. Evaluate any new diarrhea.
+    sources: [label-unasyn-2026]
+kidney_liver: Lengthen the interval for CrCl below 30 mL/min (adjustments are on each dose). Monitor liver function at regular intervals in liver impairment.
+label_source: label-unasyn-2026
+sources: [label-unasyn-2026]

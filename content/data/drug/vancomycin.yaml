@@ -1,0 +1,18 @@
+name: Vancomycin
+class: Glycopeptide
+aliases: [vanc, vanco]
+boxed_warning: None
+cautions:
+  - text: Acute kidney injury, mainly interstitial nephritis. Risk rises with higher levels, longer courses, other nephrotoxins, piperacillin-tazobactam, volume depletion, existing kidney impairment and critical illness. Monitor levels and kidney function with every IV course.
+    sources: [label-vancomycin-2025]
+  - text: Infusion reaction (pruritus and erythema of the face, neck and upper torso) and hypotension, including shock, with rapid infusion. Dilute and infuse over at least 60 minutes, and finish before anesthetic induction.
+    sources: [label-vancomycin-2025]
+  - text: Ototoxicity (tinnitus, hearing loss, vertigo), transient or permanent. Risk is higher with older age, higher doses, existing hearing loss, aminoglycosides and kidney impairment. Stop if it occurs.
+    sources: [label-vancomycin-2025]
+  - text: Severe skin reactions including SJS, TEN, DRESS, AGEP and linear IgA bullous dermatosis. Stop at the first rash, mucosal lesion or blister. Contraindicated with vancomycin hypersensitivity.
+    sources: [label-vancomycin-2025]
+  - text: Reversible neutropenia. Check the white count on long courses or with other drugs that cause neutropenia.
+    sources: [label-vancomycin-2025]
+kidney_liver: Kidney impairment needs dose changes guided by serum levels, with the pharmacy (on each dose). The label has no liver adjustment.
+label_source: label-vancomycin-2025
+sources: [label-vancomycin-2025]

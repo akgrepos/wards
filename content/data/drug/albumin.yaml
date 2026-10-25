@@ -1,0 +1,17 @@
+name: Albumin (Human) 25%
+class: Plasma-derived colloid (volume expander)
+brands: [Flexbumin, Albutein]
+aliases: [albumin 25%, salt-poor albumin]
+boxed_warning: None
+cautions:
+  - text: Contraindicated with hypersensitivity to albumin or its excipients, and in severe anemia or heart failure with normal or increased intravascular volume. Stop at once if anaphylaxis or another hypersensitivity reaction is suspected.
+    sources: [label-flexbumin-2024, label-albumin-25-2025]
+  - text: Volume overload and pulmonary edema. Stop at the first sign of circulatory overload (headache, dyspnea, jugular venous distention, rales, rising blood or venous pressure). Higher risk with heart failure, hypertension, esophageal varices, severe anemia and kidney failure.
+    sources: [label-flexbumin-2024, label-albumin-25-2025]
+  - text: Dilute only with 0.9% saline or D5W, never sterile water (potentially fatal hemolysis and acute kidney failure).
+    sources: [label-flexbumin-2024, label-albumin-25-2025]
+  - text: Large volumes dilute coagulation factors, platelets and red cells. Monitor coagulation, blood counts and electrolytes and replace other blood components as needed.
+    sources: [label-flexbumin-2024, label-albumin-25-2025]
+kidney_liver: The label gives no dose change for kidney or liver impairment. Kidney failure and anuria raise the risk of volume overload. Adjustments by use are on each dose.
+label_source: label-flexbumin-2024
+sources: [label-flexbumin-2024, label-albumin-25-2025]

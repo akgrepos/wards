@@ -1,3 +1,4 @@
+drug: edoxaban
 drug_name: Edoxaban
 brand: Savaysa
 indication: Acute DVT or PE treatment, after 5–10 days of parenteral anticoagulation
@@ -6,7 +7,6 @@ route: PO
 amount: "60"
 unit: mg
 frequency: once daily
-boxed_warning: "Reduced efficacy in nonvalvular AF with CrCl >95 mL/min. Premature discontinuation raises ischemic risk. Spinal or epidural hematoma."
 adjustments:
   - when: CrCl 15–50 mL/min, weight ≤60 kg, or certain P-gp inhibitors (verapamil, quinidine, azithromycin, clarithromycin, erythromycin, oral ketoconazole, oral itraconazole)
     change: 30 mg once daily

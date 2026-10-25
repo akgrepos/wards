@@ -1,0 +1,17 @@
+name: Epinephrine
+class: Catecholamine (α- and β-adrenergic agonist)
+brands: [Adrenalin]
+aliases: [Adrenaline, Epi]
+boxed_warning: None
+cautions:
+  - text: "No contraindications in the label. Tachyarrhythmias and myocardial ischemia, especially with coronary disease or cardiomyopathy. Raises glucose and lowers potassium."
+    sources: [label-adrenalin-2026]
+  - text: "Severe, prolonged hypertension with MAO inhibitors or tricyclic antidepressants. β-blockers, digoxin, thyroid hormone and halogenated anesthetics add arrhythmia risk. Rapid blood pressure rises can cause cerebral hemorrhage."
+    sources: [label-adrenalin-2026]
+  - text: "Can cause pulmonary edema and renal vasoconstriction with oliguria."
+    sources: [label-adrenalin-2026]
+  - text: "Contains a sulfite, which should not stop its use in an emergency such as anaphylaxis."
+    sources: [label-adrenalin-2026]
+kidney_liver: "The label gives no dose change for kidney or liver impairment."
+label_source: label-adrenalin-2026
+sources: [label-adrenalin-2026]

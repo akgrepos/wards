@@ -8,10 +8,20 @@ cautions:
     sources: [label-ceftriaxone-2026]
   - text: Contraindicated in premature neonates up to a postmenstrual age of 41 weeks and in hyperbilirubinemic neonates (it displaces bilirubin from albumin).
     sources: [label-ceftriaxone-2026]
-  - text: Contraindicated with IV solutions containing lidocaine. Lidocaine as the solvent is allowed only for IM use.
+  - text: Never give a lidocaine-containing ceftriaxone solution IV (contraindicated). Lidocaine as the solvent is for IM injection only.
     sources: [label-ceftriaxone-2026]
   - text: Contraindicated with hypersensitivity to any cephalosporin. A penicillin allergy label alone rarely rules it out, so check the reaction history.
     sources: [label-ceftriaxone-2026, aaaai-drug-allergy-2022]
-kidney_liver: No dose change for kidney or liver impairment alone, including in dialysis. The maximum is lower when liver dysfunction and significant kidney disease coexist (see Adjust on the dose). Neurotoxicity (encephalopathy, seizures) has occurred in severe kidney impairment. Monitor closely and stop if it occurs.
+  - text: Clostridioides difficile-associated diarrhea, from mild to fatal colitis, can occur. Consider it in any diarrhea after antibiotics, even more than two months later.
+    sources: [label-ceftriaxone-2026]
+  - text: Immune-mediated hemolytic anemia, sometimes fatal, can occur. If anemia develops, stop ceftriaxone until the cause is found.
+    sources: [label-ceftriaxone-2026]
+  - text: Ceftriaxone-calcium can precipitate in the gallbladder (sludge or pseudolithiasis that can mimic gallstones on ultrasound) and the urinary tract (stones, obstruction, post-renal acute kidney injury). Keep the patient hydrated and stop it if gallbladder or urinary symptoms or these findings appear.
+    sources: [label-ceftriaxone-2026]
+  - text: Pancreatitis, possibly from biliary obstruction by these precipitates, has been reported, mostly with risk factors for biliary stasis (severe illness, parenteral nutrition).
+    sources: [label-ceftriaxone-2026]
+  - text: Can prolong prothrombin time and cause bleeding. Monitor PT when vitamin K stores are low (chronic liver disease, malnutrition) and give vitamin K if prolonged. With warfarin or another vitamin K antagonist, check INR often during and after treatment.
+    sources: [label-ceftriaxone-2026]
+kidney_liver: No dose change for kidney or liver impairment alone, including in dialysis. The maximum is lower when liver dysfunction and significant kidney disease coexist (see Adjust on the dose). Neurotoxicity (encephalopathy, seizures) has occurred, some cases in severe kidney impairment. Monitor closely and stop it if it occurs.
 label_source: label-ceftriaxone-2026
 sources: [label-ceftriaxone-2026, aaaai-drug-allergy-2022]

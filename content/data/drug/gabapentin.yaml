@@ -1,0 +1,18 @@
+name: Gabapentin
+class: Gabapentinoid (antiepileptic)
+brands: [Neurontin]
+boxed_warning: None
+cautions:
+  - text: "Serious, sometimes fatal respiratory depression with opioids or other CNS depressants (including benzodiazepines), or with underlying respiratory impairment. Start low and monitor for sedation and respiratory depression."
+    sources: [label-gabapentin-2026]
+  - text: "Somnolence, dizziness and ataxia are common and add to other sedating drugs."
+    sources: [label-gabapentin-2026]
+  - text: "DRESS, anaphylaxis and angioedema can occur. Stop it if no other cause is found."
+    sources: [label-gabapentin-2026]
+  - text: "Taper over at least a week. Abrupt stopping can raise seizure frequency and cause withdrawal symptoms."
+    sources: [label-gabapentin-2026]
+  - text: "Aluminum and magnesium antacids reduce absorption: give gabapentin at least 2 hours after them."
+    sources: [label-gabapentin-2026]
+kidney_liver: "Cleared almost entirely by the kidney: adjust the dose to creatinine clearance using the label's table, including in hemodialysis and in older adults. Not metabolized, so liver impairment is not expected to matter (not studied)."
+label_source: label-gabapentin-2026
+sources: [label-gabapentin-2026]

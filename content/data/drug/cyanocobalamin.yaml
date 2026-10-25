@@ -1,0 +1,20 @@
+name: Cyanocobalamin
+class: Vitamin B12
+aliases: [vitamin B12, B12]
+boxed_warning: None
+cautions:
+  - text: Contraindicated with sensitivity to cobalt or vitamin B12. Anaphylactic shock and death have followed injection. Give an intradermal test dose if sensitivity is suspected.
+    sources: [label-cyanocobalamin-inj-2026]
+  - text: Intensive treatment of severe megaloblastic anemia can cause hypokalemia and sudden death. Monitor potassium closely for the first 48 hours and replace as needed.
+    sources: [label-cyanocobalamin-inj-2026]
+  - text: Folic acid alone can correct the anemia of B12 deficiency while neurologic damage progresses. Give B12 before or with folic acid.
+    sources: [label-cyanocobalamin-inj-2026]
+  - text: Pulmonary edema and heart failure can occur early in treatment.
+    sources: [label-cyanocobalamin-inj-2026]
+  - text: Early Leber disease (hereditary optic neuropathy) has progressed to severe, rapid optic atrophy with cyanocobalamin.
+    sources: [label-cyanocobalamin-inj-2026]
+  - text: Avoid IV use. Almost all of an IV dose is lost in the urine.
+    sources: [label-cyanocobalamin-inj-2026]
+kidney_liver: No dose change for kidney or liver impairment. The injection contains aluminum, which can accumulate with prolonged parenteral use in kidney impairment.
+label_source: label-cyanocobalamin-inj-2026
+sources: [label-cyanocobalamin-inj-2026]

@@ -1,3 +1,4 @@
+drug: morphine
 drug_name: Morphine sulfate
 indication: Severe acute pain, opioid-naive, when oral is not possible or pain needs rapid control
 population: Opioid-naive adults
@@ -7,7 +8,6 @@ unit: mg
 frequency: every 3–4 hours as needed
 repeat: "Reassess in 10–15 minutes after a dose. Give small repeated doses rather than one large dose"
 max: "FDA label: 0.1–0.2 mg/kg every 4 hours as needed, the lowest dose necessary. Usual ward starting doses are well below that"
-boxed_warning: "Addiction, abuse and misuse. Life-threatening respiratory depression. Risks with benzodiazepines and other CNS depressants."
 adjustments:
   - when: "Kidney impairment"
     change: "Lower starting dose, titrate slowly (active metabolite accumulates). Prefer hydromorphone or fentanyl"

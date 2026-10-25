@@ -1,3 +1,4 @@
+drug: calcium-gluconate
 drug_name: Calcium gluconate 10%
 indication: Hyperkalemia with ECG changes (membrane stabilization)
 population: Adults
@@ -12,9 +13,6 @@ lasts: 30–60 minutes
 alternative:
   dose: calcium-chloride-hyperkalemia
   when: Cardiac arrest or peri-arrest
-cautions:
-  - "Too-rapid infusion: hypotension, vasodilation, bradycardia."
-  - "Extravasation can cause tissue necrosis."
 notes: "30 mL of 10% calcium gluconate gives about the same calcium (6.8 mmol) as 10 mL of 10% calcium chloride. Calcium does not lower potassium. UK guideline rate: faster than the US label (up to 200 mg/min)."
 sources: [ukka-hyperkalaemia-2026, kdigo-acute-hyperkalemia-2020]
 verification:

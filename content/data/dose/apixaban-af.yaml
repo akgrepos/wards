@@ -1,3 +1,4 @@
+drug: apixaban
 drug_name: Apixaban
 brand: Eliquis
 indication: Stroke prevention in AF (not with a mechanical valve or moderate–severe mitral stenosis)
@@ -6,7 +7,6 @@ route: PO
 amount: "5"
 unit: mg
 frequency: twice daily
-boxed_warning: "Premature discontinuation raises the risk of thrombotic events. Spinal or epidural hematoma with neuraxial anesthesia or spinal puncture."
 adjustments:
   - when: "At least 2 of: age ≥80 years, weight ≤60 kg, serum creatinine ≥1.5 mg/dL"
     change: 2.5 mg twice daily
@@ -19,7 +19,6 @@ adjustments:
 cautions:
   - "The kidney criterion is serum creatinine, not CrCl."
   - "Do not underdose: reduce only when the label criteria are met."
-  - "Procedures: hold at least 48 hours before moderate or high bleeding risk, 24 hours before low risk."
 sources: [label-eliquis-2025, acc-aha-af-2023]
 verification:
   source: label-eliquis-2025
