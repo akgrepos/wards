@@ -1,7 +1,7 @@
 // Settings for `npm run look` (scripts/look.mjs). Add a page by adding one line to ROUTES.
 // A route is { name, hash, steps? }. hash is the part after the address, e.g. '#/card/renal-aki'.
 // storage (optional) is saved lists to set before looking, e.g. { 'wards:searches': ['AKI'] }.
-// steps (optional) are taps to do after the page opens: { click: 'button text' } waits for a button with that text.
+// steps (optional) are taps to do after the page opens: { click: 'button text' } waits for a button with that text
 
 export const ROUTES = [
   { name: 'topics-home', hash: '#/' },
@@ -18,6 +18,12 @@ export const ROUTES = [
   { name: 'search', hash: '#/search' },
   { name: 'search-recent', hash: '#/search', storage: { 'wards:searches': ['hyperK', 'AKI', 'GI bleed'] } },
   { name: 'search-typed', hash: '#/search', storage: { 'wards:searches': ['hyperK'] }, steps: [{ click: 'hyperK' }] },
+  // Search results: a recent search is tapped to type it.
+  { name: 'search-drug', hash: '#/search', storage: { 'wards:searches': ['ceftriaxone'] }, steps: [{ click: 'ceftriaxone' }] },
+  { name: 'search-sections', hash: '#/search', storage: { 'wards:searches': ['antibiotic'] }, steps: [{ click: 'antibiotic' }] },
+  { name: 'search-more', hash: '#/search', storage: { 'wards:searches': ['treatment'] }, steps: [{ click: 'treatment' }, { click: 'Show' }] },
+  { name: 'search-tools', hash: '#/search', storage: { 'wards:searches': ['wells'] }, steps: [{ click: 'wells' }] },
+  { name: 'search-none', hash: '#/search', storage: { 'wards:searches': ['cefalexin'] }, steps: [{ click: 'cefalexin' }] },
   { name: 'library', hash: '#/library' },
   { name: 'settings', hash: '#/settings' },
 ]

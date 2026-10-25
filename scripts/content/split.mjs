@@ -3,6 +3,8 @@
 // pathway (Library and card lists). A card file: the whole card plus every data item it uses (doses, criteria, calculators,
 // pathways, coverage, sources, media …), so opening a card is one fetch. Shared data appears in every card file that uses it.
 
+import { buildSearchIndex } from './search-index.mjs';
+
 const INSERT = /\{\{\s*([a-z-]+)\s*:\s*([a-z0-9-]+)\s*\}\}/g;
 
 // Every data item a piece of JSON points to: a string that is an item's id, or a {{kind:id}} insert inside text.
@@ -70,5 +72,7 @@ export function splitContent(content) {
   const pathways = {};
   for (const [id, p] of Object.entries(content.data.pathway ?? {})) pathways[id] = { title: p.title, summary: p.summary, card: p.card };
 
-  return { index: { systems: content.systems, cards: lite, data: { pathway: pathways } }, cards, files: content.cards.map((c) => c.file) };
+  const search = buildSearchIndex(content, { refs, byId, items });
+
+  return { index: { systems: content.systems, cards: lite, data: { pathway: pathways }, search }, cards, files: content.cards.map((c) => c.file) };
 }

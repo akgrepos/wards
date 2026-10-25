@@ -93,8 +93,15 @@ export type CoverageLevel = 'R' | 'V' | 'N';
 export type CoverageColumn = { id: string; name: string; short: string };
 export type CoverageRow = { drug: string; class: string; cells: Record<string, CoverageLevel>; note: string; cp_cells?: string[]; sources: string[] };
 export type CoverageGrid = { title: string; levels: Record<CoverageLevel, { word: string; meaning: string }>; columns: CoverageColumn[]; rows: CoverageRow[]; sources: string[] };
+// Rows for search, built with the content (scripts/content/search-index.mjs); card indexes point into Content.cards.
+export type SearchIndex = {
+  sections: [cardIndex: number, key: string, title: string, parentTitle: string][];
+  drugs: [name: string, brands: string, cardIndex: number, key: string, title: string, drugId: string][];
+  tools: [id: string, name: string, short: string, others: string, cardIndexes: number[]][];
+};
 export type Content = {
   systems: System[];
   cards: Card[];
+  search?: SearchIndex;
   data: { source?: Record<string, Source>; dose?: Record<string, Dose>; threshold?: Record<string, Threshold>; calc?: Record<string, Calc>; criteria?: Record<string, Criteria>; regimen?: Record<string, Regimen>; pathway?: Record<string, Pathway>; media?: Record<string, Media>; coverage?: Record<string, CoverageGrid>; [k: string]: Record<string, unknown> | undefined };
 };
