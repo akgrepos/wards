@@ -7,10 +7,10 @@ title: "Cellulitis"
 aliases: [cellulitis, erysipelas, SSTI, skin and soft tissue infection, skin infection, nonpurulent cellulitis, purulent cellulitis, leg cellulitis, abscess, necrotizing fasciitis, nec fasc]
 definition: "Acute bacterial infection of the dermis and subcutaneous tissue (cellulitis) or the upper dermis and superficial lymphatics (erysipelas), without abscess. ^[idsa-ssti-2014]"
 based_on: [idsa-ssti-2014]
-checked: { date: 2026-10-19, by: owner, scope: "owner review", fingerprint: "21278180595e1918", carried: "2026-10-24: Dose corrections (stage 4b PR C): the changed dose and drug-record lines were checked against the labels and guidelines by an Opus helper. The rest of the card is unchanged." }
+checked: { date: 2026-10-19, by: owner, scope: "owner review", fingerprint: "2fc4c4531a410e47", carried: "2026-10-25: Format sweep (bullets split, tables to bullets or scale, society names out of text). Numbers, doses, drugs and sources unchanged." }
 related:
   differential: []
-  conditions: [id-cap, id-complicated-uti, crit-sepsis]
+  conditions: [id-cap, id-complicated-uti, crit-sepsis, id-empiric-antimicrobials]
   tools: []
   medications: [ceftriaxone]
 ---
@@ -28,17 +28,22 @@ related:
 - Severe: failed oral antibiotics, {{calc:sirs}}, immunocompromise, or signs of deeper infection (bullae, skin sloughing, hypotension, organ dysfunction) ^[idsa-ssti-2014]
 :::
 
-- Systemic signs: temperature >38 °C (100.4 °F) or <36 °C (96.8 °F), heart rate >90 beats/min, respiratory rate >24 breaths/min, or WBC >12,000 or <4,000 cells/µL. ^[idsa-ssti-2014]
-- IDSA puts {{calc:sirs}} in the severe tier, where an agent covering MRSA and streptococci is recommended. ^[idsa-ssti-2014]
+- Systemic signs: any of the following. ^[idsa-ssti-2014]
+  - Temperature >38 °C (100.4 °F) or <36 °C (96.8 °F)
+  - Heart rate >90 beats/min
+  - Respiratory rate >24 breaths/min
+  - WBC >12,000 or <4,000 cells/µL
+- {{calc:sirs}} is placed in the severe tier, where an agent covering MRSA and streptococci is recommended. ^[idsa-ssti-2014]
 - Outpatient treatment without {{calc:sirs}}, altered mental status or hemodynamic instability. ^[idsa-ssti-2014]
 - Admit: concern for deeper or necrotizing infection, severe immunocompromise, poor adherence, or failure of outpatient therapy. ^[idsa-ssti-2014]
 
 ## Causes
 - **β-hemolytic streptococci:** [!most-common] group A most often, also groups B, C and G. The usual cause of nonpurulent cellulitis and erysipelas. ^[idsa-ssti-2014]
-- ***Staphylococcus aureus*, including MRSA:** purulent infection, abscess, penetrating trauma, injection drug use. ^[idsa-ssti-2014]
+- **_Staphylococcus aureus_, including MRSA:** purulent infection, abscess, penetrating trauma, injection drug use. ^[idsa-ssti-2014]
 - **Exposures:** animal bites (*Pasteurella*, *Capnocytophaga*), fresh water (*Aeromonas*), salt water (*Vibrio vulnificus*, especially with cirrhosis). ^[idsa-ssti-2014]
 - **Immunocompromised hosts:** gram-negative bacilli, fungi and mycobacteria are possible. ^[idsa-ssti-2014]
-- **Necrotizing fasciitis:** [!cannot-miss] polymicrobial (mixed aerobes and anaerobes) or monomicrobial (group A streptococcus, less often MRSA, *Vibrio*, *Aeromonas*). *Clostridium* causes gas gangrene. ^[idsa-ssti-2014]
+- **Necrotizing fasciitis:** [!cannot-miss] polymicrobial (mixed aerobes and anaerobes) or monomicrobial (group A streptococcus, less often MRSA, *Vibrio*, *Aeromonas*). ^[idsa-ssti-2014]
+  - *Clostridium* causes gas gangrene. ^[idsa-ssti-2014]
 - **Risk factors:** lymphedema or chronic edema, venous insufficiency, toe-web fissuring or tinea, obesity, prior cellulitis, skin breaks. ^[idsa-ssti-2014, raff-cellulitis-2016]
 - **Mimics:** stasis dermatitis, lipodermatosclerosis, contact dermatitis, lymphedema, gout, DVT, superficial thrombophlebitis, panniculitis, drug eruption. ^[raff-cellulitis-2016]
 
@@ -49,11 +54,18 @@ related:
 - Vesicles or bullae ^[idsa-ssti-2014, raff-cellulitis-2016]
 - Fever may precede the rash ^[idsa-ssti-2014, raff-cellulitis-2016]
 - Bilateral, painless, chronic or itchy: think of a mimic first. ^[raff-cellulitis-2016]
-- Necrotizing infection red flags: pain out of proportion, woody induration, violaceous bullae, skin anesthesia, crepitus, gas, rapid progression, systemic toxicity. ^[idsa-ssti-2014]
+- Necrotizing infection red flags: ^[idsa-ssti-2014]
+  - Pain out of proportion, woody induration, violaceous bullae
+  - Skin anesthesia, crepitus, gas
+  - Rapid progression, systemic toxicity
 
 ## Diagnosis
 - Clinical. Examine the toe webs for fissures, scaling or maceration. ^[idsa-ssti-2014]
-- Blood and skin cultures not routine. Obtain blood cultures with severe systemic features (high fever, hypotension), malignancy on chemotherapy, neutropenia, severe cell-mediated immunodeficiency, immersion injury or animal bite. ^[idsa-ssti-2014]
+- Blood and skin cultures not routine. ^[idsa-ssti-2014]
+- Obtain blood cultures with any of these: ^[idsa-ssti-2014]
+  - Severe systemic features (high fever, hypotension)
+  - Malignancy on chemotherapy, neutropenia, severe cell-mediated immunodeficiency
+  - Immersion injury or animal bite
 - Purulent: culture the drained pus. ^[idsa-ssti-2014]
 - Point-of-care ultrasound to find an occult abscess. ^[raff-cellulitis-2016]
 - Necrotizing infection: imaging must not delay surgical exploration. A {{calc:lrinec}} score ≥6 has a sensitivity of only about 68%. ^[idsa-ssti-2014, fernando-nsti-2019]
@@ -85,7 +97,8 @@ or. Abscess
 
 or. Suspected necrotizing infection
    - Emergency surgical exploration and debridement, with broad empiric therapy. ^[idsa-ssti-2014]
-   - Add clindamycin for toxin suppression when group A streptococcus or toxic shock is possible. Penicillin plus clindamycin once group A streptococcus is confirmed. ^[idsa-ssti-2014, common-practice]
+   - Add clindamycin for toxin suppression when group A streptococcus or toxic shock is possible. ^[idsa-ssti-2014, common-practice]
+   - Penicillin plus clindamycin once group A streptococcus is confirmed. ^[idsa-ssti-2014, common-practice]
 
    {{regimen:nsti-empiric}}
 
