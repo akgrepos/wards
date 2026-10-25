@@ -5,32 +5,55 @@ variant: interpretation
 system: cardio
 title: "ECG Interpretation"
 aliases: [ECG, EKG, electrocardiogram, 12-lead, 12 lead, rhythm strip, ECG interpretation, how to read an ECG, rate, rhythm, axis, PR interval, QRS, QT, QTc, ST elevation, ST depression, T wave inversion, Q waves, bundle branch block, LBBB, RBBB, left bundle branch block, right bundle branch block, fascicular block, AV block, heart block, first degree AV block, Mobitz, second degree, third degree, complete heart block, LVH, left ventricular hypertrophy, RVH, STEMI equivalent, occlusion MI, OMI, posterior MI, de Winter, Wellens, hyperacute T waves, Sgarbossa, modified Sgarbossa, WPW, Wolff-Parkinson-White, pre-excitation, delta wave, long QT, torsades, torsades de pointes, PR depression, S1Q3T3, wide complex tachycardia, narrow complex tachycardia, SVT, bradycardia, tachycardia, hyperkalemia ECG, peaked T waves, U waves, electrical alternans, low voltage]
-checked: { date: 2026-10-22, by: opus, scope: "doses and numbers", fingerprint: "e42d087db90b6bc6" }
+checked: { date: 2026-10-22, by: opus, scope: "doses and numbers", fingerprint: "582d2c53088e29eb", carried: "2026-10-25: Format sweep (bullets split, tables to bullets or scale, society names out of text). Numbers, doses, drugs and sources unchanged." }
 related:
   conditions: [cardio-nste-acs, cardio-chest-pain, cardio-atrial-fibrillation, renal-hyperkalemia, renal-hypokalemia, pulm-vte-diagnosis]
   tools: [psych-lithium-psychotropic-safety]
 ---
 ## At a Glance
-- Read every ECG in the same order: rate, rhythm, axis, intervals (PR, QRS, QT), conduction, chamber hypertrophy, then ST-T changes and Q waves by territory. Compare with a prior tracing. ^[common-practice]
+- Read every ECG in the same order: rate, rhythm, axis, intervals (PR, QRS, QT), conduction, chamber hypertrophy, then ST-T changes and Q waves by territory. ^[common-practice]
+  - Compare with a prior tracing. ^[common-practice]
 - Standard calibration is 25 mm/s and 10 mm/mV: one small box is 40 ms and 0.1 mV, one large box 200 ms and 0.5 mV. ^[kligfield-ecg-i-2007]
-- ST elevation or a STEMI equivalent (posterior MI, de Winter pattern, hyperacute T waves, left bundle branch block or paced rhythm meeting {{calc:sgarbossa}} criteria) with symptoms of ischemia: emergency reperfusion pathway, not a troponin wait. ^[kontos-chest-pain-ecdp-2022, acc-aha-acs-2025]
+- ST elevation or a STEMI equivalent with symptoms of ischemia: emergency reperfusion pathway, not a troponin wait. ^[kontos-chest-pain-ecdp-2022, acc-aha-acs-2025]
+  - STEMI equivalents are posterior MI, de Winter pattern, hyperacute T waves, and left bundle branch block or paced rhythm meeting {{calc:sgarbossa}} criteria. ^[kontos-chest-pain-ecdp-2022, acc-aha-acs-2025]
 - Wide-complex tachycardia is ventricular tachycardia until proven otherwise. Pre-excitation with atrial fibrillation excludes AV nodal blockers. ^[aha-acls-2025, acc-aha-hrs-svt-2015]
-- {{calc:qtc}} >500 ms, or a rise of 60 ms or more on a QT-prolonging drug, marks high torsades risk: stop the offending drugs and correct potassium and magnesium. ^[aha-accf-qt-2010]
+- {{calc:qtc}} >500 ms, or a rise of 60 ms or more on a QT-prolonging drug, marks high torsades risk. ^[aha-accf-qt-2010]
+  - With high torsades risk, stop the offending drugs and correct potassium and magnesium. ^[aha-accf-qt-2010]
 - A normal ECG does not exclude acute coronary syndrome or pulmonary embolism. Repeat when symptoms persist. ^[aha-acc-chest-pain-2021, esc-pe-2019]
 
 ## Normal Values
-| Measure | Normal adult value | Abnormal |
-|---|---|---|
-| Heart rate | 60–100/min | Tachycardia >100. Bradycardia <60 by convention (the bradycardia guideline defines sinus bradycardia as <50) ^[acc-aha-hrs-bradycardia-2018, acc-aha-hrs-svt-2015] |
-| Axis (frontal QRS) | −30° to +90° | Left axis deviation beyond −30°. Right axis deviation beyond +90° ^[surawicz-ecg-conduction-2009] |
-| PR interval | 120–200 ms | >200 ms: first-degree AV block. <120 ms: short PR (pre-excitation, junctional rhythm) ^[surawicz-ecg-conduction-2009, acc-aha-hrs-bradycardia-2018] |
-| QRS duration | ≤110 ms | >110 ms abnormal: 110–119 ms incomplete and ≥120 ms complete bundle branch block (adults) ^[surawicz-ecg-conduction-2009] |
-| {{calc:qtc}} | Men ≤470 ms, women ≤480 ms (99th percentile) | Above these values is prolonged. >500 ms is highly abnormal and high risk for torsades de pointes ^[aha-accf-qt-2010] |
+- **Heart rate:** ^[acc-aha-hrs-bradycardia-2018, acc-aha-hrs-svt-2015]
+  - Normal: 60–100/min. ^[acc-aha-hrs-bradycardia-2018, acc-aha-hrs-svt-2015]
+  - Abnormal: tachycardia >100. Bradycardia <60 by convention. ^[acc-aha-hrs-bradycardia-2018, acc-aha-hrs-svt-2015]
+  - The bradycardia guideline defines sinus bradycardia as <50. ^[acc-aha-hrs-bradycardia-2018, acc-aha-hrs-svt-2015]
+- **Axis (frontal QRS):** ^[surawicz-ecg-conduction-2009]
+  - Normal: −30° to +90°. ^[surawicz-ecg-conduction-2009]
+  - Abnormal: left axis deviation beyond −30°. Right axis deviation beyond +90°. ^[surawicz-ecg-conduction-2009]
+- **PR interval:** ^[surawicz-ecg-conduction-2009, acc-aha-hrs-bradycardia-2018]
+  - Normal: 120–200 ms. ^[surawicz-ecg-conduction-2009, acc-aha-hrs-bradycardia-2018]
+  - Abnormal: >200 ms is first-degree AV block. ^[surawicz-ecg-conduction-2009, acc-aha-hrs-bradycardia-2018]
+  - Abnormal: <120 ms is short PR (pre-excitation, junctional rhythm). ^[surawicz-ecg-conduction-2009, acc-aha-hrs-bradycardia-2018]
+- **QRS duration:** ^[surawicz-ecg-conduction-2009]
+  - Normal: ≤110 ms. ^[surawicz-ecg-conduction-2009]
+  - Abnormal: >110 ms. ^[surawicz-ecg-conduction-2009]
+  - Adults: 110–119 ms is incomplete and ≥120 ms is complete bundle branch block. ^[surawicz-ecg-conduction-2009]
+- **QT interval (corrected):** ^[aha-accf-qt-2010]
+  - Normal: {{calc:qtc}} in men ≤470 ms, women ≤480 ms (99th percentile). ^[aha-accf-qt-2010]
+  - Abnormal: above these values is prolonged. ^[aha-accf-qt-2010]
+  - >500 ms is highly abnormal and high risk for torsades de pointes. ^[aha-accf-qt-2010]
 
-- Correct the QT for rate with {{calc:qtc|Bazett, Fridericia or Framingham}}. Bazett gives overlong values above about 85/min, so use a linear formula (Framingham) or Fridericia at fast rates. The ECG standardization statement uses lower cutoffs (>450 ms men, ≥460 ms women). ^[rautaharju-ecg-st-t-qt-2009, aha-accf-qt-2010]
-- ST-segment elevation criteria at the J point: ≥1 mm (0.1 mV) in 2 contiguous leads, except V2–V3, where it is ≥2 mm in men 40 years or older, ≥2.5 mm in men younger than 40 years and ≥1.5 mm in women. ≥0.5 mm in V7–V9 (posterior leads, ≥1 mm in men younger than 40 years in the 2018 definition, the 2026 definition gives no cutoff). ^[thygesen-udmi-2018, udmi-2026, wagner-ecg-ischemia-2009]
-- ST depression: new horizontal or downsloping ≥0.5 mm at the J point in 2 contiguous leads. T-wave inversion ≥1 mm in 2 contiguous leads with a prominent R wave or R/S ratio >1. ^[thygesen-udmi-2018, udmi-2026]
-- Pathological Q wave: ≥40 ms and/or ≥25% of the R-wave amplitude in 2 contiguous leads (2026 definition). The 2018 definition used >20 ms or a QS complex in V2–V3, and ≥30 ms and ≥1 mm deep in other leads. ^[udmi-2026, thygesen-udmi-2018]
+- Correct the QT for rate with {{calc:qtc|Bazett, Fridericia or Framingham}}. ^[rautaharju-ecg-st-t-qt-2009, aha-accf-qt-2010]
+- Bazett gives overlong values above about 85/min, so use a linear formula (Framingham) or Fridericia at fast rates. ^[rautaharju-ecg-st-t-qt-2009, aha-accf-qt-2010]
+- The ECG standardization statement uses lower cutoffs (>450 ms men, ≥460 ms women). ^[rautaharju-ecg-st-t-qt-2009, aha-accf-qt-2010]
+- ST-segment elevation criteria at the J point: ^[thygesen-udmi-2018, udmi-2026, wagner-ecg-ischemia-2009]
+  - ≥1 mm (0.1 mV) in 2 contiguous leads, except V2–V3, where it differs. ^[thygesen-udmi-2018, udmi-2026, wagner-ecg-ischemia-2009]
+  - In those leads: ≥2 mm in men 40 years or older, ≥2.5 mm in men younger than 40 years and ≥1.5 mm in women. ^[thygesen-udmi-2018, udmi-2026, wagner-ecg-ischemia-2009]
+  - V7–V9 (posterior leads): ≥0.5 mm. ^[thygesen-udmi-2018, udmi-2026, wagner-ecg-ischemia-2009]
+  - Posterior leads: ≥1 mm in men younger than 40 years in the 2018 definition. The 2026 definition gives no cutoff. ^[thygesen-udmi-2018, udmi-2026, wagner-ecg-ischemia-2009]
+- ST depression: new horizontal or downsloping ≥0.5 mm at the J point in 2 contiguous leads. ^[thygesen-udmi-2018, udmi-2026]
+- T-wave inversion ≥1 mm in 2 contiguous leads with a prominent R wave or R/S ratio >1. ^[thygesen-udmi-2018, udmi-2026]
+- Pathological Q wave: ≥40 ms and/or ≥25% of the R-wave amplitude in 2 contiguous leads (2026 definition). ^[udmi-2026, thygesen-udmi-2018]
+- The 2018 definition used >20 ms or a QS complex in V2–V3, and ≥30 ms and ≥1 mm deep in other leads. ^[udmi-2026, thygesen-udmi-2018]
 
 ## Stepwise Method
 1. Check the tracing
@@ -41,120 +64,241 @@ related:
    - Regular rhythm: 300 ÷ large boxes between R waves (300, 150, 100, 75, 60, 50). Irregular rhythm: count QRS complexes in 6 seconds × 10. ^[common-practice]
 
 3. Rhythm
-   - Is there a P wave before every QRS, and a QRS after every P wave? Regular or irregular? Narrow or wide QRS? ^[common-practice]
-   - Sinus rhythm: upright P waves in I, II and aVF, negative in aVR, one before each QRS. Irregularly irregular without distinct P waves: atrial fibrillation ([[cardio-atrial-fibrillation|AF]]). ^[acc-aha-af-2023, common-practice]
+   - Is there a P wave before every QRS, and a QRS after every P wave? ^[common-practice]
+   - Is the rhythm regular or irregular? Is the QRS narrow or wide? ^[common-practice]
+   - Sinus rhythm: upright P waves in I, II and aVF, negative in aVR, one before each QRS. ^[acc-aha-af-2023, common-practice]
+   - Irregularly irregular without distinct P waves: atrial fibrillation ([[cardio-atrial-fibrillation|AF]]). ^[acc-aha-af-2023, common-practice]
 
 4. Axis
-   - Lead I and aVF both positive: normal. Lead I positive, aVF negative: left axis (a lead II that is also negative means beyond −30°). Lead I negative, aVF positive: right axis. Both negative: extreme (northwest) axis. ^[common-practice]
-   - Left axis: left anterior fascicular block, inferior MI, LVH, pre-excitation, hyperkalemia. Right axis: right ventricular hypertrophy or strain (PE, chronic lung disease), left posterior fascicular block, lateral MI, limb-lead reversal. ^[surawicz-ecg-conduction-2009, hancock-ecg-hypertrophy-2009, common-practice]
+   - Read lead I and aVF together: ^[common-practice]
+     - Both positive: normal. ^[common-practice]
+     - Lead I positive, aVF negative: left axis (a lead II that is also negative means beyond −30°). ^[common-practice]
+     - Lead I negative, aVF positive: right axis. ^[common-practice]
+     - Both negative: extreme (northwest) axis. ^[common-practice]
+   - Left axis: left anterior fascicular block, inferior MI, LVH, pre-excitation, hyperkalemia. ^[surawicz-ecg-conduction-2009, hancock-ecg-hypertrophy-2009, common-practice]
+   - Right axis: right ventricular hypertrophy or strain (PE, chronic lung disease), left posterior fascicular block, lateral MI, limb-lead reversal. ^[surawicz-ecg-conduction-2009, hancock-ecg-hypertrophy-2009, common-practice]
 
 5. Intervals
    - PR: P-wave onset to QRS onset. >200 ms is first-degree AV block. ^[acc-aha-hrs-bradycardia-2018]
    - QRS: ≥120 ms is a wide QRS (bundle branch block, ventricular rhythm, pre-excitation, paced, hyperkalemia, sodium-channel blockade). ^[surawicz-ecg-conduction-2009, common-practice]
-   - QT: from QRS onset to the end of the T wave, measured in the lead with the longest QT (usually V2 or V3). If T and U waves merge, use leads without U waves (often aVR and aVL). Correct for rate. In atrial fibrillation average several beats. ^[rautaharju-ecg-st-t-qt-2009, common-practice]
+   - QT: from QRS onset to the end of the T wave, measured in the lead with the longest QT (usually V2 or V3). ^[rautaharju-ecg-st-t-qt-2009, common-practice]
+   - If T and U waves merge, use leads without U waves (often aVR and aVL). ^[rautaharju-ecg-st-t-qt-2009, common-practice]
+   - Correct the QT for rate. In atrial fibrillation average several beats. ^[rautaharju-ecg-st-t-qt-2009, common-practice]
 
 6. Conduction
-   - Bundle branch and fascicular blocks (table below). AV block by relation of P waves to QRS complexes. ^[surawicz-ecg-conduction-2009, acc-aha-hrs-bradycardia-2018]
-
-   | Finding | ECG | Notes |
-   |---|---|---|
-   | Right bundle branch block (RBBB) | QRS ≥120 ms, rsR′ in V1–V2, wide S wave in I and V6 | A new RBBB can occur in PE and with MI ^[surawicz-ecg-conduction-2009] |
-   | Left bundle branch block (LBBB) | QRS ≥120 ms, broad notched or slurred R in I, aVL, V5–V6, no septal q wave in V5–V6, QS or rS in V1–V2 | ST-T changes are normally opposite to the QRS (discordant). Apply {{calc:sgarbossa}} criteria for ischemia ^[surawicz-ecg-conduction-2009, sgarbossa-1996] |
-   | Left anterior fascicular block | Left axis −45° to −90°, qR in aVL, QRS <120 ms | Common. Not itself an emergency ^[surawicz-ecg-conduction-2009] |
-   | Left posterior fascicular block | Right axis >90°, rS in I and aVL, qR in III and aVF, QRS <120 ms | Other causes of right axis deviation must be excluded first (right ventricular hypertrophy, lateral MI) ^[surawicz-ecg-conduction-2009] |
-   | First-degree AV block | PR >200 ms, every P conducted | Usually benign ^[acc-aha-hrs-bradycardia-2018] |
-   | Second-degree, Mobitz I (Wenckebach) | PR lengthens until one P wave fails to conduct. Grouped beating | Usually AV nodal. Often benign, may be vagal or drug related ^[acc-aha-hrs-bradycardia-2018] |
-   | Second-degree, Mobitz II | Fixed PR interval, then a sudden non-conducted P wave | Infranodal. High risk of progressing to complete block ^[acc-aha-hrs-bradycardia-2018] |
-   | 2:1 AV block | Every second P wave is blocked | Mobitz I or II: a wide QRS or a normal PR on conducted beats favors Mobitz II ^[acc-aha-hrs-bradycardia-2018] |
-   | Third-degree (complete) AV block | P waves and QRS complexes independent. P rate faster than ventricular rate | Escape rhythm narrow (junctional) or wide (ventricular) ^[acc-aha-hrs-bradycardia-2018] |
+   - **Approach:** bundle branch and fascicular blocks first, then AV block by relation of P waves to QRS complexes. ^[surawicz-ecg-conduction-2009, acc-aha-hrs-bradycardia-2018]
+   - **Right bundle branch block (RBBB):** ^[surawicz-ecg-conduction-2009]
+     - ECG: QRS ≥120 ms, rsR′ in V1–V2, wide S wave in I and V6. ^[surawicz-ecg-conduction-2009]
+     - Notes: a new RBBB can occur in PE and with MI. ^[surawicz-ecg-conduction-2009]
+   - **Left bundle branch block (LBBB):** ^[surawicz-ecg-conduction-2009, sgarbossa-1996]
+     - ECG: QRS ≥120 ms, broad notched or slurred R in I, aVL, V5–V6, no septal q wave in V5–V6, QS or rS in V1–V2. ^[surawicz-ecg-conduction-2009, sgarbossa-1996]
+     - Notes: ST-T changes are normally opposite to the QRS (discordant). ^[surawicz-ecg-conduction-2009, sgarbossa-1996]
+     - Notes: apply {{calc:sgarbossa}} criteria for ischemia. ^[surawicz-ecg-conduction-2009, sgarbossa-1996]
+   - **Left anterior fascicular block:** ^[surawicz-ecg-conduction-2009]
+     - ECG: left axis −45° to −90°, qR in aVL, QRS <120 ms. ^[surawicz-ecg-conduction-2009]
+     - Notes: common. Not itself an emergency. ^[surawicz-ecg-conduction-2009]
+   - **Left posterior fascicular block:** ^[surawicz-ecg-conduction-2009]
+     - ECG: right axis >90°, rS in I and aVL, qR in III and aVF, QRS <120 ms. ^[surawicz-ecg-conduction-2009]
+     - Notes: other causes of right axis deviation must be excluded first (right ventricular hypertrophy, lateral MI). ^[surawicz-ecg-conduction-2009]
+   - **First-degree AV block:** ^[acc-aha-hrs-bradycardia-2018]
+     - ECG: PR >200 ms, every P conducted. ^[acc-aha-hrs-bradycardia-2018]
+     - Notes: usually benign. ^[acc-aha-hrs-bradycardia-2018]
+   - **Second-degree, Mobitz I (Wenckebach):** ^[acc-aha-hrs-bradycardia-2018]
+     - ECG: PR lengthens until one P wave fails to conduct. Grouped beating. ^[acc-aha-hrs-bradycardia-2018]
+     - Notes: usually AV nodal. Often benign, may be vagal or drug related. ^[acc-aha-hrs-bradycardia-2018]
+   - **Second-degree, Mobitz II:** ^[acc-aha-hrs-bradycardia-2018]
+     - ECG: fixed PR interval, then a sudden non-conducted P wave. ^[acc-aha-hrs-bradycardia-2018]
+     - Notes: infranodal. High risk of progressing to complete block. ^[acc-aha-hrs-bradycardia-2018]
+   - **2:1 AV block:** ^[acc-aha-hrs-bradycardia-2018]
+     - ECG: every second P wave is blocked. ^[acc-aha-hrs-bradycardia-2018]
+     - Notes: Mobitz I or II: a wide QRS or a normal PR on conducted beats favors Mobitz II. ^[acc-aha-hrs-bradycardia-2018]
+   - **Third-degree (complete) AV block:** ^[acc-aha-hrs-bradycardia-2018]
+     - ECG: P waves and QRS complexes independent. P rate faster than ventricular rate. ^[acc-aha-hrs-bradycardia-2018]
+     - Notes: escape rhythm narrow (junctional) or wide (ventricular). ^[acc-aha-hrs-bradycardia-2018]
 
 7. Chamber hypertrophy
-   - Left ventricular hypertrophy (LVH): Sokolow-Lyon SV1 + RV5 or RV6 >35 mm. Cornell voltage RaVL + SV3 >28 mm in men or >20 mm in women. Voltage criteria are specific but insensitive (usually <50%). Secondary ST-T abnormalities (formerly "strain": ST depression with asymmetric T inversion in V5–V6) strongly support the diagnosis. Diagnose LVH with caution in LBBB. ^[hancock-ecg-hypertrophy-2009]
-   - Right ventricular hypertrophy: right axis deviation with prominent anterior forces (R/S >1 or R >6 mm in V1), often with right atrial abnormality and secondary ST depression and T inversion in V1–V3. Insensitive. ^[hancock-ecg-hypertrophy-2009]
-   - Left atrial abnormality (enlargement): P wave ≥120 ms, notched with peaks ≥40 ms apart, or a large terminal negative P wave in V1. Right atrial abnormality: tall peaked P wave >2.5 mm in II, or initial P positivity ≥1.5 mm in V1–V2. ^[hancock-ecg-hypertrophy-2009]
+   - Left ventricular hypertrophy (LVH): ^[hancock-ecg-hypertrophy-2009]
+     - Sokolow-Lyon SV1 + RV5 or RV6 >35 mm. ^[hancock-ecg-hypertrophy-2009]
+     - Cornell voltage RaVL + SV3 >28 mm in men or >20 mm in women. ^[hancock-ecg-hypertrophy-2009]
+     - Voltage criteria are specific but insensitive (usually <50%). ^[hancock-ecg-hypertrophy-2009]
+     - Secondary ST-T abnormalities (formerly "strain": ST depression with asymmetric T inversion in V5–V6) strongly support the diagnosis. ^[hancock-ecg-hypertrophy-2009]
+     - Diagnose LVH with caution in LBBB. ^[hancock-ecg-hypertrophy-2009]
+   - Right ventricular hypertrophy: ^[hancock-ecg-hypertrophy-2009]
+     - Right axis deviation with prominent anterior forces (R/S >1 or R >6 mm in V1). ^[hancock-ecg-hypertrophy-2009]
+     - Often with right atrial abnormality and secondary ST depression and T inversion in V1–V3. ^[hancock-ecg-hypertrophy-2009]
+     - Insensitive. ^[hancock-ecg-hypertrophy-2009]
+   - Left atrial abnormality (enlargement): P wave ≥120 ms, notched with peaks ≥40 ms apart, or a large terminal negative P wave in V1. ^[hancock-ecg-hypertrophy-2009]
+   - Right atrial abnormality: tall peaked P wave >2.5 mm in II, or initial P positivity ≥1.5 mm in V1–V2. ^[hancock-ecg-hypertrophy-2009]
 
 8. ST segments, T waves and Q waves
-   - Look lead by lead and group by territory (next table). ST elevation with reciprocal ST depression in opposite leads supports ischemia. ^[wagner-ecg-ischemia-2009]
-   - Dynamic changes over minutes, or a change from a prior ECG, strengthen the diagnosis. Repeat serial ECGs when the first is nondiagnostic, sooner if pain recurs or the patient changes. ^[aha-acc-chest-pain-2021, acc-aha-acs-2025]
-
-   | Territory | Leads | Usual culprit artery |
-   |---|---|---|
-   | Anterior or septal | V1–V4 | Left anterior descending ^[wagner-ecg-ischemia-2009] |
-   | Lateral | I, aVL, V5–V6 | Left circumflex or diagonal branch ^[wagner-ecg-ischemia-2009] |
-   | Inferior | II, III, aVF | Right coronary (most often), left circumflex ^[wagner-ecg-ischemia-2009] |
-   | Posterior | ST depression and tall R in V1–V3. ST elevation ≥0.5 mm in V7–V9 | Left circumflex or right coronary ^[acc-aha-acs-2025, wagner-ecg-ischemia-2009, thygesen-udmi-2018] |
-   | Right ventricle | ST elevation ≥0.5 mm in V3R–V4R (≥1 mm in men younger than 30 years), often with inferior STEMI | Proximal right coronary ^[acc-aha-acs-2025, wagner-ecg-ischemia-2009, udmi-2026] |
-   | Left main or multivessel | ST elevation in aVR and/or V1 with ST depression ≥1 mm in many leads (8 or more) | Left main or severe multivessel disease: treat as very high risk ^[wagner-ecg-ischemia-2009, kontos-chest-pain-ecdp-2022, udmi-2026] |
-
-   - Inferior STEMI: record right-sided leads. Right ventricular involvement makes the patient preload dependent, so avoid nitrates when right ventricular infarction is suspected. ^[acc-aha-acs-2025]
-   - ST elevation that is the same shape in many territories without reciprocal changes suggests pericarditis, early repolarization or a left ventricular aneurysm. Clinical context decides. ^[wagner-ecg-ischemia-2009, acc-pericarditis-ccg-2025]
+   - **Approach:** look lead by lead and group by territory. ST elevation with reciprocal ST depression in opposite leads supports ischemia. ^[wagner-ecg-ischemia-2009]
+   - **Dynamic changes:** changes over minutes, or a change from a prior ECG, strengthen the diagnosis. ^[aha-acc-chest-pain-2021, acc-aha-acs-2025]
+   - **Serial ECGs:** repeat when the first is nondiagnostic, sooner if pain recurs or the patient changes. ^[aha-acc-chest-pain-2021, acc-aha-acs-2025]
+   - **Anterior or septal (V1–V4):** ^[wagner-ecg-ischemia-2009]
+     - Usual culprit artery: left anterior descending. ^[wagner-ecg-ischemia-2009]
+   - **Lateral (I, aVL, V5–V6):** ^[wagner-ecg-ischemia-2009]
+     - Usual culprit artery: left circumflex or diagonal branch. ^[wagner-ecg-ischemia-2009]
+   - **Inferior (II, III, aVF):** ^[wagner-ecg-ischemia-2009]
+     - Usual culprit artery: right coronary (most often), left circumflex. ^[wagner-ecg-ischemia-2009]
+   - **Posterior:** ^[acc-aha-acs-2025, wagner-ecg-ischemia-2009, thygesen-udmi-2018]
+     - Leads: ST depression and tall R in V1–V3. ST elevation ≥0.5 mm in V7–V9. ^[acc-aha-acs-2025, wagner-ecg-ischemia-2009, thygesen-udmi-2018]
+     - Usual culprit artery: left circumflex or right coronary. ^[acc-aha-acs-2025, wagner-ecg-ischemia-2009, thygesen-udmi-2018]
+   - **Right ventricle:** ^[acc-aha-acs-2025, wagner-ecg-ischemia-2009, udmi-2026]
+     - Leads: ST elevation ≥0.5 mm in V3R–V4R (≥1 mm in men younger than 30 years), often with inferior STEMI. ^[acc-aha-acs-2025, wagner-ecg-ischemia-2009, udmi-2026]
+     - Usual culprit artery: proximal right coronary. ^[acc-aha-acs-2025, wagner-ecg-ischemia-2009, udmi-2026]
+   - **Left main or multivessel:** ^[wagner-ecg-ischemia-2009, kontos-chest-pain-ecdp-2022, udmi-2026]
+     - Leads: ST elevation in aVR and/or V1 with ST depression ≥1 mm in many leads (8 or more). ^[wagner-ecg-ischemia-2009, kontos-chest-pain-ecdp-2022, udmi-2026]
+     - Usual culprit: left main or severe multivessel disease. Treat as very high risk. ^[wagner-ecg-ischemia-2009, kontos-chest-pain-ecdp-2022, udmi-2026]
+   - **Inferior STEMI:** record right-sided leads. ^[acc-aha-acs-2025]
+   - **Right ventricular involvement:** it makes the patient preload dependent, so avoid nitrates when right ventricular infarction is suspected. ^[acc-aha-acs-2025]
+   - **Diffuse ST elevation:** the same shape in many territories without reciprocal changes suggests pericarditis, early repolarization or a left ventricular aneurysm. ^[wagner-ecg-ischemia-2009, acc-pericarditis-ccg-2025]
+   - **Context:** clinical context decides. ^[wagner-ecg-ischemia-2009, acc-pericarditis-ccg-2025]
 
 ## Patterns and What They Mean
-| Pattern | ECG features | Meaning and action |
-|---|---|---|
-| STEMI | ST elevation by the criteria in Normal Values in 2 contiguous leads with reciprocal changes | Emergency reperfusion. Call the catheterization laboratory ^[acc-aha-acs-2025, thygesen-udmi-2018] |
-| STEMI equivalents | Posterior MI. De Winter pattern. Hyperacute T waves. LBBB or paced rhythm meeting {{calc:sgarbossa}} or {{calc:modified-sgarbossa}} criteria. New LBBB or RBBB only with other signs of ischemia | Prompt evaluation for emergency angiography and manage as STEMI when ischemic symptoms persist. Wellens while pain-free is a warning pattern ^[udmi-2026, kontos-chest-pain-ecdp-2022, acc-aha-acs-2025] |
-| Hyperkalemia | Peaked T waves, then flat P waves, long PR, wide QRS, sine wave | Treat urgently ([[renal-hyperkalemia|hyperkalemia]]). The ECG can be normal at any potassium level, so treat by the value and clinical picture ^[kdigo-acute-hyperkalemia-2020, common-practice] |
-| Hypokalemia | ST depression, flat T waves, prominent U waves, long apparent QT | [[renal-hypokalemia|Hypokalemia]]. Check magnesium ^[kardalas-hypokalemia-2018] |
-| Wolff-Parkinson-White pattern (pre-excitation) | PR <120 ms, delta wave (slurred QRS upstroke), QRS >120 ms, secondary ST-T changes | With AF or flutter and a rapid irregular wide-complex rhythm: avoid AV nodal blockers (adenosine, β-blockers, diltiazem or verapamil, digoxin) and IV amiodarone. Synchronized cardioversion if unstable, procainamide or ibutilide if stable ^[surawicz-ecg-conduction-2009, acc-aha-hrs-svt-2015, acc-aha-af-2023] |
-| Long QT and torsades | {{calc:qtc}} >500 ms. Polymorphic VT with twisting QRS axis, often after a pause | Stop QT-prolonging drugs. Correct potassium and magnesium. IV magnesium for torsades. Defibrillate if pulseless or unstable ^[aha-accf-qt-2010, aha-acls-2025, esc-va-2022] |
-| Acute pericarditis | Diffuse concave ST elevation and PR depression (ST depression and PR elevation in aVR and V1), no reciprocal ST depression | [[cardio-chest-pain|Chest pain]] differential. Cardiology if myopericarditis, effusion or high-risk features ^[acc-pericarditis-ccg-2025, esc-myopericarditis-2025] |
-| Pulmonary embolism | Sinus tachycardia most often. Right ventricular strain (more severe PE): T-wave inversion in V1–V4, QR pattern in V1, S1Q3T3, incomplete or complete RBBB. Atrial fibrillation | Insensitive and nonspecific. For differential diagnosis, not confirmation or exclusion ([[pulm-vte-diagnosis|VTE: Diagnosis]]) ^[esc-pe-2019] |
-| Regular narrow-complex tachycardia | Rate about 150/min: atrial flutter 2:1 (flutter waves, atrial rate about 300/min). AV nodal reentry, AV reentry or atrial tachycardia | Vagal maneuver, then adenosine if stable. Cardiovert if unstable ^[acc-aha-hrs-svt-2015, aha-acls-2025] |
-| Wide-complex tachycardia | QRS ≥120 ms, regular | Treat as ventricular tachycardia unless proven otherwise. Unstable: synchronized cardioversion ^[aha-acls-2025, aha-acc-hrs-va-2017] |
-| Bradyarrhythmias | Sinus bradycardia, sinus pauses, AV block (Conduction table) | Treat if symptomatic or unstable. Look for reversible causes (drugs, ischemia, hyperkalemia) ^[acc-aha-hrs-bradycardia-2018, aha-acls-2025] |
-| Atrial fibrillation or flutter | Irregularly irregular rhythm without P waves (AF). Sawtooth waves in II, III, aVF (flutter) | [[cardio-atrial-fibrillation|AF]] ^[acc-aha-af-2023] |
+- **STEMI:** ^[acc-aha-acs-2025, thygesen-udmi-2018]
+  - ECG: ST elevation by the criteria in Normal Values in 2 contiguous leads with reciprocal changes. ^[acc-aha-acs-2025, thygesen-udmi-2018]
+  - Action: emergency reperfusion. Call the catheterization laboratory. ^[acc-aha-acs-2025, thygesen-udmi-2018]
+- **STEMI equivalents:** ^[udmi-2026, kontos-chest-pain-ecdp-2022, acc-aha-acs-2025]
+  - ECG: posterior MI, de Winter pattern, hyperacute T waves. ^[udmi-2026, kontos-chest-pain-ecdp-2022, acc-aha-acs-2025]
+  - ECG: LBBB or paced rhythm meeting {{calc:sgarbossa}} or {{calc:modified-sgarbossa}} criteria. ^[udmi-2026, kontos-chest-pain-ecdp-2022, acc-aha-acs-2025]
+  - ECG: new LBBB or RBBB only with other signs of ischemia. ^[udmi-2026, kontos-chest-pain-ecdp-2022, acc-aha-acs-2025]
+  - Action: prompt evaluation for emergency angiography and manage as STEMI when ischemic symptoms persist. ^[udmi-2026, kontos-chest-pain-ecdp-2022, acc-aha-acs-2025]
+  - Action: Wellens while pain-free is a warning pattern. ^[udmi-2026, kontos-chest-pain-ecdp-2022, acc-aha-acs-2025]
+- **Hyperkalemia:** ^[kdigo-acute-hyperkalemia-2020, common-practice]
+  - ECG: peaked T waves, then flat P waves, long PR, wide QRS, sine wave. ^[kdigo-acute-hyperkalemia-2020, common-practice]
+  - Action: treat urgently ([[renal-hyperkalemia|hyperkalemia]]). ^[kdigo-acute-hyperkalemia-2020, common-practice]
+  - Action: the ECG can be normal at any potassium level, so treat by the value and clinical picture. ^[kdigo-acute-hyperkalemia-2020, common-practice]
+- **Hypokalemia:** ^[kardalas-hypokalemia-2018]
+  - ECG: ST depression, flat T waves, prominent U waves, long apparent QT. ^[kardalas-hypokalemia-2018]
+  - Action: [[renal-hypokalemia|Hypokalemia]]. Check magnesium. ^[kardalas-hypokalemia-2018]
+- **Wolff-Parkinson-White pattern (pre-excitation):** ^[surawicz-ecg-conduction-2009, acc-aha-hrs-svt-2015, acc-aha-af-2023]
+  - ECG: PR <120 ms, delta wave (slurred QRS upstroke), QRS >120 ms, secondary ST-T changes. ^[surawicz-ecg-conduction-2009, acc-aha-hrs-svt-2015, acc-aha-af-2023]
+  - Action: with AF or flutter and a rapid irregular wide-complex rhythm, avoid AV nodal blockers and IV amiodarone.
+  - AV nodal blockers include adenosine, β-blockers, diltiazem or verapamil, digoxin. ^[surawicz-ecg-conduction-2009, acc-aha-hrs-svt-2015, acc-aha-af-2023]
+  - Action: synchronized cardioversion if unstable, procainamide or ibutilide if stable. ^[surawicz-ecg-conduction-2009, acc-aha-hrs-svt-2015, acc-aha-af-2023]
+- **Long QT and torsades:** ^[aha-accf-qt-2010, aha-acls-2025, esc-va-2022]
+  - ECG: {{calc:qtc}} >500 ms. ^[aha-accf-qt-2010, aha-acls-2025, esc-va-2022]
+  - ECG: polymorphic VT with twisting QRS axis, often after a pause. ^[aha-accf-qt-2010, aha-acls-2025, esc-va-2022]
+  - Action: stop QT-prolonging drugs. Correct potassium and magnesium. ^[aha-accf-qt-2010, aha-acls-2025, esc-va-2022]
+  - Action: IV magnesium for torsades. Defibrillate if pulseless or unstable. ^[aha-accf-qt-2010, aha-acls-2025, esc-va-2022]
+- **Acute pericarditis:** ^[acc-pericarditis-ccg-2025, esc-myopericarditis-2025]
+  - ECG: diffuse concave ST elevation and PR depression (ST depression and PR elevation in aVR and V1), no reciprocal ST depression. ^[acc-pericarditis-ccg-2025, esc-myopericarditis-2025]
+  - Action: [[cardio-chest-pain|Chest pain]] differential. Cardiology if myopericarditis, effusion or high-risk features. ^[acc-pericarditis-ccg-2025, esc-myopericarditis-2025]
+- **Pulmonary embolism:** ^[esc-pe-2019]
+  - ECG: sinus tachycardia most often. Atrial fibrillation. ^[esc-pe-2019]
+  - ECG: right ventricular strain (more severe PE): T-wave inversion in V1–V4, QR pattern in V1, S1Q3T3, incomplete or complete RBBB. ^[esc-pe-2019]
+  - Action: insensitive and nonspecific. For differential diagnosis, not confirmation or exclusion ([[pulm-vte-diagnosis|VTE: Diagnosis]]). ^[esc-pe-2019]
+- **Regular narrow-complex tachycardia:** ^[acc-aha-hrs-svt-2015, aha-acls-2025]
+  - ECG: rate about 150/min: atrial flutter 2:1 (flutter waves, atrial rate about 300/min). ^[acc-aha-hrs-svt-2015, aha-acls-2025]
+  - ECG: AV nodal reentry, AV reentry or atrial tachycardia. ^[acc-aha-hrs-svt-2015, aha-acls-2025]
+  - Action: vagal maneuver, then adenosine if stable. Cardiovert if unstable. ^[acc-aha-hrs-svt-2015, aha-acls-2025]
+- **Wide-complex tachycardia:** ^[aha-acls-2025, aha-acc-hrs-va-2017]
+  - ECG: QRS ≥120 ms, regular. ^[aha-acls-2025, aha-acc-hrs-va-2017]
+  - Action: treat as ventricular tachycardia unless proven otherwise. Unstable: synchronized cardioversion. ^[aha-acls-2025, aha-acc-hrs-va-2017]
+- **Bradyarrhythmias:** ^[acc-aha-hrs-bradycardia-2018, aha-acls-2025]
+  - ECG: sinus bradycardia, sinus pauses, AV block (Conduction step). ^[acc-aha-hrs-bradycardia-2018, aha-acls-2025]
+  - Action: treat if symptomatic or unstable. Look for reversible causes (drugs, ischemia, hyperkalemia). ^[acc-aha-hrs-bradycardia-2018, aha-acls-2025]
+- **Atrial fibrillation or flutter:** ^[acc-aha-af-2023]
+  - ECG: irregularly irregular rhythm without P waves (AF). Sawtooth waves in II, III, aVF (flutter). ^[acc-aha-af-2023]
+  - Action: [[cardio-atrial-fibrillation|AF]]. ^[acc-aha-af-2023]
 
 #### Ischemia patterns without classic ST elevation
-- Hyperacute T waves: broad, symmetric T waves disproportionately large compared with the preceding QRS in 2 contiguous leads. May precede ST elevation, so repeat the ECG within minutes. ^[udmi-2026, kontos-chest-pain-ecdp-2022]
-- de Winter pattern: upsloping ST depression of more than 1 mm at the J point in the precordial leads with tall, symmetric, upright T waves, ST elevation in aVR may be seen. Proximal left anterior descending occlusion. ^[dewinter-2008, kontos-chest-pain-ecdp-2022, udmi-2026]
-- Wellens pattern: biphasic (type A) or deeply inverted (type B) T waves in V2–V3 with minimal or no ST elevation, no pathological Q waves and preserved R-wave progression, found while pain-free. Critical proximal left anterior descending stenosis, so arrange urgent cardiology evaluation. ^[dezwaan-wellens-1982, udmi-2026]
-- Posterior MI: ST depression of ≥1 mm in V1–V3, especially with a dominant R wave in V1–V2. Record V7–V9 (indicated for isolated ST depression ≥0.5 mm in V1–V3) and treat as STEMI when ST elevation ≥0.5 mm is present there. ^[udmi-2026, kontos-chest-pain-ecdp-2022, acc-aha-acs-2025]
+- Hyperacute T waves: broad, symmetric T waves disproportionately large compared with the preceding QRS in 2 contiguous leads. ^[udmi-2026, kontos-chest-pain-ecdp-2022]
+- Hyperacute T waves may precede ST elevation, so repeat the ECG within minutes. ^[udmi-2026, kontos-chest-pain-ecdp-2022]
+- de Winter pattern: upsloping ST depression of more than 1 mm at the J point in the precordial leads with tall, symmetric, upright T waves. ^[dewinter-2008, kontos-chest-pain-ecdp-2022, udmi-2026]
+- ST elevation in aVR may be seen. Proximal left anterior descending occlusion. ^[dewinter-2008, kontos-chest-pain-ecdp-2022, udmi-2026]
+- Wellens pattern, found while pain-free: ^[dezwaan-wellens-1982, udmi-2026]
+  - Biphasic (type A) or deeply inverted (type B) T waves in V2–V3. ^[dezwaan-wellens-1982, udmi-2026]
+  - Minimal or no ST elevation, no pathological Q waves and preserved R-wave progression. ^[dezwaan-wellens-1982, udmi-2026]
+  - Critical proximal left anterior descending stenosis, so arrange urgent cardiology evaluation. ^[dezwaan-wellens-1982, udmi-2026]
+- Posterior MI: ST depression of ≥1 mm in V1–V3, especially with a dominant R wave in V1–V2. ^[udmi-2026, kontos-chest-pain-ecdp-2022, acc-aha-acs-2025]
+- Posterior MI: record V7–V9 (indicated for isolated ST depression ≥0.5 mm in V1–V3) and treat as STEMI when ST elevation ≥0.5 mm is present there. ^[udmi-2026, kontos-chest-pain-ecdp-2022, acc-aha-acs-2025]
 
 {{media:ecg-occlusion-patterns}}
 
 #### Ischemia in left bundle branch block or paced rhythm
-- Original {{calc:sgarbossa}} criteria: concordant ST elevation ≥1 mm in a lead with a positive QRS (5 points). Concordant ST depression ≥1 mm in V1–V3 (3 points). Excessive discordant ST elevation ≥5 mm in a lead with a negative QRS (2 points). A score of 3 or more is specific for MI. ^[sgarbossa-1996]
-- The {{calc:modified-sgarbossa|modified (Smith) criteria}} replace the third item with discordant ST elevation of at least 25% of the preceding S-wave depth (ST/S ratio ≤ −0.25), with ST elevation of at least 1 mm. This raises sensitivity with similar or slightly lower specificity. ^[smith-modified-sgarbossa-2012, kontos-chest-pain-ecdp-2022]
+- Original {{calc:sgarbossa}} criteria: ^[sgarbossa-1996]
+  - Concordant ST elevation ≥1 mm in a lead with a positive QRS (5 points). ^[sgarbossa-1996]
+  - Concordant ST depression ≥1 mm in V1–V3 (3 points). ^[sgarbossa-1996]
+  - Excessive discordant ST elevation ≥5 mm in a lead with a negative QRS (2 points). ^[sgarbossa-1996]
+- A score of 3 or more is specific for MI. ^[sgarbossa-1996]
+- The {{calc:modified-sgarbossa|modified (Smith) criteria}} replace the third item with: ^[smith-modified-sgarbossa-2012, kontos-chest-pain-ecdp-2022]
+  - Discordant ST elevation of at least 25% of the preceding S-wave depth (ST/S ratio ≤ −0.25). ^[smith-modified-sgarbossa-2012, kontos-chest-pain-ecdp-2022]
+  - With ST elevation of at least 1 mm. ^[smith-modified-sgarbossa-2012, kontos-chest-pain-ecdp-2022]
+- The modified criteria raise sensitivity with similar or slightly lower specificity. ^[smith-modified-sgarbossa-2012, kontos-chest-pain-ecdp-2022]
 - A new or presumably new LBBB or RBBB counts as a possible equivalent only with other signs of ischemia. New LBBB alone is not a STEMI equivalent. ^[udmi-2026, acc-aha-acs-2025]
 
 #### Pre-excitation
-- Pre-excitation: short PR interval (<120 ms) with a delta wave from early ventricular activation over an accessory pathway. The QRS is wider than normal (>120 ms) and the ST-T changes are secondary. ^[surawicz-ecg-conduction-2009, acc-aha-hrs-svt-2015]
-- AF with pre-excitation can conduct extremely fast over the accessory pathway (irregular wide-complex tachycardia with varying QRS width) and degenerate to ventricular fibrillation. AV nodal blockers and IV amiodarone can accelerate it. ^[acc-aha-hrs-svt-2015, acc-aha-af-2023]
+- Pre-excitation: short PR interval (<120 ms) with a delta wave from early ventricular activation over an accessory pathway. ^[surawicz-ecg-conduction-2009, acc-aha-hrs-svt-2015]
+- The QRS is wider than normal (>120 ms) and the ST-T changes are secondary. ^[surawicz-ecg-conduction-2009, acc-aha-hrs-svt-2015]
+- AF with pre-excitation can conduct extremely fast over the accessory pathway (irregular wide-complex tachycardia with varying QRS width). ^[acc-aha-hrs-svt-2015, acc-aha-af-2023]
+- AF with pre-excitation can degenerate to ventricular fibrillation. ^[acc-aha-hrs-svt-2015, acc-aha-af-2023]
+- AV nodal blockers and IV amiodarone can accelerate it. ^[acc-aha-hrs-svt-2015, acc-aha-af-2023]
 
 {{media:ecg-preexcitation}}
 
 #### Pericarditis
-- Acute pericarditis: diffuse concave-upward ST elevation with PR depression in most leads, with ST depression and PR elevation in aVR and V1. The changes are dynamic over hours to days and typically resolve. ^[acc-pericarditis-ccg-2025, esc-myopericarditis-2025]
+- Acute pericarditis: diffuse concave-upward ST elevation with PR depression in most leads, with ST depression and PR elevation in aVR and V1. ^[acc-pericarditis-ccg-2025, esc-myopericarditis-2025]
+- The changes are dynamic over hours to days and typically resolve. ^[acc-pericarditis-ccg-2025, esc-myopericarditis-2025]
 - Unlike STEMI, the changes are not limited to a coronary territory and there is no reciprocal ST depression except in aVR and V1. ^[acc-pericarditis-ccg-2025, wagner-ecg-ischemia-2009]
 
 {{media:ecg-pericarditis}}
 
 #### Tools for the next step
-- QT: recheck with {{calc:qtc|QTc}} using a second formula when the heart rate is fast (above about 85/min) or slow, where single formulas err most. ^[aha-accf-qt-2010, rautaharju-ecg-st-t-qt-2009]
-- Wide-complex tachycardia with doubt about ventricular tachycardia: favor VT with AV dissociation, fusion or capture beats, concordance across the precordial leads, extreme axis, or a QRS wider than about 140 ms. Hemodynamic stability does not imply a supraventricular rhythm. ^[aha-acc-hrs-va-2017, common-practice]
+- QT: recheck with {{calc:qtc|QTc}} using a second formula when the heart rate is fast (above about 85/min) or slow. ^[aha-accf-qt-2010, rautaharju-ecg-st-t-qt-2009]
+- Single formulas err most at fast or slow heart rates. ^[aha-accf-qt-2010, rautaharju-ecg-st-t-qt-2009]
+- Wide-complex tachycardia with doubt about ventricular tachycardia: favor VT with: ^[aha-acc-hrs-va-2017, common-practice]
+  - AV dissociation, fusion or capture beats. ^[aha-acc-hrs-va-2017, common-practice]
+  - Concordance across the precordial leads. ^[aha-acc-hrs-va-2017, common-practice]
+  - Extreme axis, or a QRS wider than about 140 ms. ^[aha-acc-hrs-va-2017, common-practice]
+- Hemodynamic stability does not imply a supraventricular rhythm. ^[aha-acc-hrs-va-2017, common-practice]
 
 ## Worked Examples
-| Findings | Interpretation |
-|---|---|
-| Rate 78, P before every QRS, PR 160 ms, QRS 90 ms, axis +60°, {{calc:qtc}} 430 ms, no ST-T changes | Normal sinus rhythm. Normal ECG ^[common-practice] |
-| Rate 145, regular narrow QRS, no visible P waves, patient stable | Regular narrow-complex tachycardia: vagal maneuver, then adenosine. Look for flutter waves with a ventricular rate near 150/min (flutter 2:1) ^[acc-aha-hrs-svt-2015, aha-acls-2025] |
-| Rate 170, wide QRS 160 ms, regular, patient hypotensive | Wide-complex tachycardia, assumed VT: synchronized cardioversion ^[aha-acls-2025, aha-acc-hrs-va-2017] |
-| ST elevation 2 mm in II, III, aVF with ST depression in I and aVL | Inferior STEMI: record V4R, reperfusion pathway, avoid nitrates if right ventricular involvement ^[acc-aha-acs-2025, wagner-ecg-ischemia-2009] |
-| LBBB with ST elevation 3 mm in V1–V2 (a lead with a negative QRS) and a deep S wave of 8 mm | ST/S ratio −0.38 (< −0.25): {{calc:modified-sgarbossa}} criteria positive, so manage as acute coronary occlusion ^[smith-modified-sgarbossa-2012, kontos-chest-pain-ecdp-2022] |
-| Heart rate 110, QRS 100 ms, {{calc:qtc}} 520 ms on a macrolide, K⁺ 3.0 mEq/L | Long QT with hypokalemia: stop the macrolide, replace potassium and magnesium, monitor for torsades ^[aha-accf-qt-2010, kardalas-hypokalemia-2018] |
-| PR 90 ms, delta wave, new AF at 220/min, wide irregular QRS | Pre-excited AF: avoid AV nodal blockers and IV amiodarone. Synchronized cardioversion if unstable, procainamide or ibutilide if stable ^[acc-aha-hrs-svt-2015, acc-aha-af-2023] |
+- **Normal ECG:** ^[common-practice]
+  - Findings: rate 78, P before every QRS, PR 160 ms, QRS 90 ms, axis +60°, {{calc:qtc}} 430 ms, no ST-T changes. ^[common-practice]
+  - Interpretation: normal sinus rhythm. Normal ECG. ^[common-practice]
+- **Regular narrow-complex tachycardia:** ^[acc-aha-hrs-svt-2015, aha-acls-2025]
+  - Findings: rate 145, regular narrow QRS, no visible P waves, patient stable. ^[acc-aha-hrs-svt-2015, aha-acls-2025]
+  - Interpretation: regular narrow-complex tachycardia: vagal maneuver, then adenosine. ^[acc-aha-hrs-svt-2015, aha-acls-2025]
+  - Interpretation: look for flutter waves with a ventricular rate near 150/min (flutter 2:1). ^[acc-aha-hrs-svt-2015, aha-acls-2025]
+- **Wide-complex tachycardia:** ^[aha-acls-2025, aha-acc-hrs-va-2017]
+  - Findings: rate 170, wide QRS 160 ms, regular, patient hypotensive. ^[aha-acls-2025, aha-acc-hrs-va-2017]
+  - Interpretation: wide-complex tachycardia, assumed VT: synchronized cardioversion. ^[aha-acls-2025, aha-acc-hrs-va-2017]
+- **Inferior STEMI:** ^[acc-aha-acs-2025, wagner-ecg-ischemia-2009]
+  - Findings: ST elevation 2 mm in II, III, aVF with ST depression in I and aVL. ^[acc-aha-acs-2025, wagner-ecg-ischemia-2009]
+  - Interpretation: inferior STEMI: record V4R, reperfusion pathway, avoid nitrates if right ventricular involvement. ^[acc-aha-acs-2025, wagner-ecg-ischemia-2009]
+- **LBBB with ST elevation:** ^[smith-modified-sgarbossa-2012, kontos-chest-pain-ecdp-2022]
+  - Findings: LBBB with ST elevation 3 mm in V1–V2 (a lead with a negative QRS) and a deep S wave of 8 mm. ^[smith-modified-sgarbossa-2012, kontos-chest-pain-ecdp-2022]
+  - Interpretation: ST/S ratio −0.38 (< −0.25): {{calc:modified-sgarbossa}} criteria positive, so manage as acute coronary occlusion. ^[smith-modified-sgarbossa-2012, kontos-chest-pain-ecdp-2022]
+- **Long QT with hypokalemia:** ^[aha-accf-qt-2010, kardalas-hypokalemia-2018]
+  - Findings: heart rate 110, QRS 100 ms, {{calc:qtc}} 520 ms on a macrolide, K⁺ 3.0 mEq/L. ^[aha-accf-qt-2010, kardalas-hypokalemia-2018]
+  - Interpretation: long QT with hypokalemia: stop the macrolide, replace potassium and magnesium, monitor for torsades. ^[aha-accf-qt-2010, kardalas-hypokalemia-2018]
+- **Pre-excited AF:** ^[acc-aha-hrs-svt-2015, acc-aha-af-2023]
+  - Findings: PR 90 ms, delta wave, new AF at 220/min, wide irregular QRS. ^[acc-aha-hrs-svt-2015, acc-aha-af-2023]
+  - Interpretation: pre-excited AF: avoid AV nodal blockers and IV amiodarone. Synchronized cardioversion if unstable, procainamide or ibutilide if stable. ^[acc-aha-hrs-svt-2015, acc-aha-af-2023]
 
 ## More Information
 ### Evidence: occlusion without ST elevation
-- Up to 1 in 4 patients managed as NSTEMI have an acutely occluded culprit artery. The 2026 universal definition lists de Winter, Wellens, {{calc:sgarbossa}} and {{calc:modified-sgarbossa}} patterns and bundle branch block with ischemic signs as possible STEMI equivalents, while keeping STEMI and NSTEMI as categories. ^[udmi-2026]
-- The 2025 Australian guideline goes further and adopts "acute coronary occlusion MI" as a diagnosis (high lateral, posterior and right ventricular MI, de Winter T waves, LBBB with {{calc:modified-sgarbossa}} criteria). US guidelines have not. ^[brieger-acs-2025]
+- Up to 1 in 4 patients managed as NSTEMI have an acutely occluded culprit artery. ^[udmi-2026]
+- The 2026 universal definition lists these as possible STEMI equivalents: ^[udmi-2026]
+  - de Winter pattern. ^[udmi-2026]
+  - Wellens pattern. ^[udmi-2026]
+  - {{calc:sgarbossa}} and {{calc:modified-sgarbossa}} patterns. ^[udmi-2026]
+  - Bundle branch block with ischemic signs. ^[udmi-2026]
+- The same definition keeps STEMI and NSTEMI as categories. ^[udmi-2026]
+- The 2025 Australian guideline goes further and adopts "acute coronary occlusion MI" as a diagnosis, covering: ^[brieger-acs-2025]
+  - High lateral, posterior and right ventricular MI. ^[brieger-acs-2025]
+  - de Winter T waves. ^[brieger-acs-2025]
+  - LBBB with {{calc:modified-sgarbossa}} criteria. ^[brieger-acs-2025]
+- US guidelines have not. ^[brieger-acs-2025]
 - The evidence for each equivalent is mostly observational. ^[kontos-chest-pain-ecdp-2022, udmi-2026]
 
 ## Pearls
 - The same ECG read in the same order every time catches the second abnormality after the first. ^[common-practice]
 - Compare with a prior tracing before calling anything new. ^[common-practice]
-- Do not wait for ST elevation in a patient with ongoing ischemic pain and a de Winter pattern, hyperacute T waves, posterior changes or positive {{calc:sgarbossa}} criteria. ^[kontos-chest-pain-ecdp-2022, acc-aha-acs-2025]
+- Do not wait for ST elevation in a patient with ongoing ischemic pain and any of these: ^[kontos-chest-pain-ecdp-2022, acc-aha-acs-2025]
+  - de Winter pattern, hyperacute T waves or posterior changes. ^[kontos-chest-pain-ecdp-2022, acc-aha-acs-2025]
+  - Positive {{calc:sgarbossa}} criteria. ^[kontos-chest-pain-ecdp-2022, acc-aha-acs-2025]
 - {{calc:qtc}} >500 ms on an inpatient ECG: review every QT-prolonging drug and electrolytes the same day. ^[aha-accf-qt-2010]
 - In wide-complex tachycardia, treat as VT first. Adenosine and calcium-channel blockers can be harmful in VT and in pre-excited AF. ^[aha-acls-2025, acc-aha-hrs-svt-2015]
 - A normal ECG never excludes ACS or PE: serial ECGs and the clinical picture decide. ^[aha-acc-chest-pain-2021, esc-pe-2019]

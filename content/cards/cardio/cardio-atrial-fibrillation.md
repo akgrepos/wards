@@ -5,12 +5,12 @@ system: cardio
 subsection: Arrhythmias
 title: Atrial Fibrillation
 aliases: [AF, AFib, A-fib, atrial fib, AF with RVR, rapid ventricular response, RVR, irregularly irregular, CHA2DS2-VASc, CHADS-VASc, CHA2DS2-VA, cardioversion, DCCV, rate control, rhythm control]
-definition: "Supraventricular tachyarrhythmia with uncoordinated atrial activation: irregularly irregular R-R intervals without distinct P waves, documented on ECG (ESC: at least 30 seconds, or a full 12-lead ECG). ^[acc-aha-af-2023, esc-af-2024]"
+definition: "Supraventricular tachyarrhythmia with uncoordinated atrial activation: irregularly irregular R-R intervals without distinct P waves, documented on ECG (at least 30 seconds, or a full 12-lead ECG). ^[acc-aha-af-2023, esc-af-2024]"
 based_on: [acc-aha-af-2023, esc-af-2024]
 checked: { date: 2026-10-20, by: owner, scope: "owner review", fingerprint: "ab1cbaa9b118180c", carried: "2026-10-24: Dose row titles shortened to the indication only. Doses and numbers unchanged, the removed wording is kept in the longer indication text." }
 related:
-  differential: []
-  conditions: [cardio-adhf, cardio-nste-acs]
+  differential: [cardio-chest-pain, pulm-dyspnea]
+  conditions: [cardio-adhf, cardio-nste-acs, cardio-ecg-interpretation, pulm-copd-exacerbation]
   tools: []
 emergency_hint: "Unstable: cardiovert. Stable: IV rate control"
 ---
@@ -62,15 +62,13 @@ or. IV rate control, decompensated or hypotensive
 :::
 
 #### Stages and patterns
-| Stage | Description |
-|---|---|
-| 1. At risk | Modifiable or nonmodifiable risk factors ^[acc-aha-af-2023] |
-| 2. Pre-AF | Structural or electrical findings predisposing to AF (atrial enlargement, frequent atrial ectopy, atrial flutter) ^[acc-aha-af-2023] |
-| 3A. Paroxysmal | Terminates within 7 days of onset ^[acc-aha-af-2023] |
-| 3B. Persistent | Continuous for >7 days, needing intervention ^[acc-aha-af-2023] |
-| 3C. Long-standing persistent | Continuous for >12 months ^[acc-aha-af-2023] |
-| 3D. Successful ablation | Free of AF after ablation ^[acc-aha-af-2023] |
-| 4. Permanent | No further attempts at rhythm control ^[acc-aha-af-2023] |
+- **1. At risk:** Modifiable or nonmodifiable risk factors ^[acc-aha-af-2023]
+- **2. Pre-AF:** Structural or electrical findings predisposing to AF (atrial enlargement, frequent atrial ectopy, atrial flutter) ^[acc-aha-af-2023]
+- **3A. Paroxysmal:** Terminates within 7 days of onset ^[acc-aha-af-2023]
+- **3B. Persistent:** Continuous for >7 days, needing intervention ^[acc-aha-af-2023]
+- **3C. Long-standing persistent:** Continuous for >12 months ^[acc-aha-af-2023]
+- **3D. Successful ablation:** Free of AF after ablation ^[acc-aha-af-2023]
+- **4. Permanent:** No further attempts at rhythm control ^[acc-aha-af-2023]
 
 - Telemetry for RVR, IV rate-control infusions or antiarrhythmic loading. ICU for instability or refractory RVR. ^[common-practice]
 
@@ -204,7 +202,8 @@ or. Rate control
 - ARISTOTLE (2011): apixaban lowered stroke or systemic embolism, major bleeding and mortality versus warfarin. ^[aristotle-2011]
 
 ### Why the Treatment Order: Stability first
-- Instability is treated electrically because drugs act too slowly and lower blood pressure. In stable patients, rate control relieves symptoms while the trigger is treated and the stroke-risk decision is made. ^[acc-aha-af-2023, common-practice]
+- Instability is treated electrically because drugs act too slowly and lower blood pressure. ^[acc-aha-af-2023, common-practice]
+- In stable patients, rate control relieves symptoms while the trigger is treated and the stroke-risk decision is made. ^[acc-aha-af-2023, common-practice]
 
 ### Epidemiology and Pathophysiology: Triggers and substrate
 - Most common sustained arrhythmia. Lifetime risk about 1 in 3 to 1 in 6, varying by race and ethnicity. ^[acc-aha-af-2023]

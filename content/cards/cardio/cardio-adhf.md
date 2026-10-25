@@ -3,13 +3,13 @@ id: cardio-adhf
 type: topic
 system: cardio
 subsection: Heart Failure and Cardiomyopathy
-title: Acute Decompensated Heart Failure
-aliases: [ADHF, acute heart failure, AHF, CHF exacerbation, heart failure exacerbation, decompensated heart failure, volume overload, pulmonary edema, flash pulmonary edema, cardiogenic pulmonary edema, diuresis, diuretic resistance, HFrEF, HFpEF, GDMT]
+title: Decompensated Heart Failure
+aliases: [ADHF, acute decompensated heart failure, acute heart failure, AHF, CHF exacerbation, heart failure exacerbation, decompensated heart failure, volume overload, pulmonary edema, flash pulmonary edema, cardiogenic pulmonary edema, diuresis, diuretic resistance, HFrEF, HFpEF, GDMT]
 definition: "New or worsening symptoms and signs of heart failure, usually congestion, needing urgent evaluation and treatment. ^[aha-acc-hfsa-hf-2022, esc-hf-2026]"
 based_on: [aha-acc-hfsa-hf-2022, esc-hf-2026, hfa-diuretics-2019]
-checked: { date: 2026-10-20, by: owner, scope: "owner review", fingerprint: "a0f101aa6a19a21a", carried: "2026-10-24: Dose row titles shortened to the indication only. Doses and numbers unchanged, the removed wording is kept in the longer indication text." }
+checked: { date: 2026-10-20, by: owner, scope: "owner review", fingerprint: "9662c20a0dd43dd6", carried: "2026-10-25: Format sweep (bullets split, tables to bullets or scale, society names out of text). Numbers, doses, drugs and sources unchanged." }
 related:
-  differential: []
+  differential: [cardio-chest-pain, crit-hypoxemic-respiratory-failure, pulm-copd-exacerbation, pulm-dyspnea, pulm-vte-diagnosis]
   conditions: [cardio-atrial-fibrillation, cardio-nste-acs, renal-aki, renal-hyponatremia, renal-hypokalemia]
   tools: []
 ---
@@ -19,16 +19,25 @@ related:
 - Congestion: prompt IV loop diuretic, dose at least equal to the home oral daily dose. Check response within hours. ^[aha-acc-hfsa-hf-2022, esc-hf-2026]
 - Poor response: double the loop dose, then add a thiazide-type diuretic or acetazolamide. ^[esc-hf-2026, hfa-diuretics-2019, advor-2022]
 - Hypoperfusion or hypotension: ICU and cardiology for inotropes or vasopressors. ^[aha-acc-hfsa-hf-2022]
-- Continue GDMT unless unstable. Start missing pillars before discharge. Decongest fully. Follow up within 7 days. ^[aha-acc-hfsa-hf-2022, strong-hf-2022]
+- GDMT and discharge: ^[aha-acc-hfsa-hf-2022, strong-hf-2022]
+  - Continue GDMT unless unstable. Start missing pillars before discharge.
+  - Decongest fully. Follow up within 7 days.
 
 ## Severity
 #### Hemodynamic profile
-| Profile | Findings | Approach |
-|---|---|---|
-| Warm and wet | Congestion, adequate perfusion (most common) | Diuretics. Vasodilator if hypertensive ^[aha-acc-hfsa-hf-2022, esc-hf-2026] |
-| Cold and wet | Congestion with hypoperfusion: cool extremities, narrow pulse pressure, altered mentation, oliguria, rising lactate | ICU. Inotropes, vasopressors if hypotensive. Diuretics once perfused ^[aha-acc-hfsa-hf-2022, esc-hf-2026] |
-| Cold and dry | Hypoperfusion without congestion | Cautious fluid if preload-dependent. Inotropes ^[esc-hf-2026] |
-| Warm and dry | Compensated | Look for another cause of symptoms ^[esc-hf-2026] |
+- **Warm and wet:** ^[aha-acc-hfsa-hf-2022, esc-hf-2026]
+  - Findings: congestion, adequate perfusion (most common)
+  - Approach: diuretics. Vasodilator if hypertensive
+- **Cold and wet:** ^[aha-acc-hfsa-hf-2022, esc-hf-2026]
+  - Findings: congestion with hypoperfusion: cool extremities, narrow pulse pressure, altered mentation, oliguria, rising lactate
+  - Approach: ICU. Inotropes, vasopressors if hypotensive.
+  - Diuretics once perfused
+- **Cold and dry:** ^[esc-hf-2026]
+  - Findings: hypoperfusion without congestion
+  - Approach: cautious fluid if preload-dependent. Inotropes
+- **Warm and dry:** ^[esc-hf-2026]
+  - Findings: compensated
+  - Approach: look for another cause of symptoms
 
 - Cardiogenic shock (hypotension with hypoperfusion): ICU and cardiology emergently. ^[aha-acc-hfsa-hf-2022]
 - Respiratory distress or SpO₂ <90% despite oxygen: noninvasive ventilation, ICU if not improving. ^[esc-hf-2026]
@@ -59,12 +68,19 @@ related:
 - Transthoracic echocardiogram if new heart failure or a change in clinical status. ^[aha-acc-hfsa-hf-2022]
 
 #### Natriuretic peptides
-| Use | BNP | NT-proBNP | Notes |
-|---|---|---|---|
-| Acute heart failure unlikely | <100 pg/mL | <300 pg/mL | ^[esc-hf-2026] |
-| ↓ in | Obesity | Obesity | Values may be low despite heart failure ^[aha-acc-hfsa-hf-2022] |
-| ↑ in | Age, AF, CKD, sepsis, PE | Age, AF, CKD, sepsis, PE | Interpret with the clinical picture ^[aha-acc-hfsa-hf-2022] |
-| Sacubitril-valsartan | ↑ (neprilysin substrate) | Not affected | Use NT-proBNP on sacubitril-valsartan ^[aha-acc-hfsa-hf-2022] |
+- **Acute heart failure unlikely:** ^[esc-hf-2026]
+  - BNP <100 pg/mL
+  - NT-proBNP <300 pg/mL
+- **Lower in:** ^[aha-acc-hfsa-hf-2022]
+  - Obesity (BNP and NT-proBNP)
+  - Values may be low despite heart failure
+- **Higher in:** ^[aha-acc-hfsa-hf-2022]
+  - Age, AF, CKD, sepsis, PE (BNP and NT-proBNP)
+  - Interpret with the clinical picture
+- **Sacubitril-valsartan:** ^[aha-acc-hfsa-hf-2022]
+  - BNP: ↑ (neprilysin substrate)
+  - NT-proBNP: not affected
+  - Use NT-proBNP on sacubitril-valsartan
 
 #### Further testing
 - New heart failure: evaluate for ischemia and other cardiomyopathies (as outpatient or once stable). ^[aha-acc-hfsa-hf-2022]
@@ -86,7 +102,8 @@ related:
    - Inadequate response: double the loop dose. ^[esc-hf-2026, hfa-diuretics-2019]
 
 3. Diuretic resistance
-   - Persistent congestion despite an escalated loop dose: add a thiazide-type diuretic (metolazone, hydrochlorothiazide) or acetazolamide. Monitor K⁺, Mg²⁺ and Na⁺ closely. ^[aha-acc-hfsa-hf-2022, hfa-diuretics-2019, advor-2022]
+   - Persistent congestion despite an escalated loop dose: add a thiazide-type diuretic (metolazone, hydrochlorothiazide) or acetazolamide. ^[aha-acc-hfsa-hf-2022, hfa-diuretics-2019, advor-2022]
+   - Monitor K⁺, Mg²⁺ and Na⁺ closely. ^[aha-acc-hfsa-hf-2022, hfa-diuretics-2019, advor-2022]
 
    {{dose:metolazone-adhf}}
    {{dose:acetazolamide-adhf}}
@@ -102,14 +119,17 @@ related:
    - Avoid with hypotension, severe aortic stenosis, hypertrophic obstructive cardiomyopathy, or phosphodiesterase-5 inhibitor use. ^[common-practice, label-ntg-premix-2016]
 
 5. Hypoperfusion
-   - Cold profile or cardiogenic shock: ICU, inotropes (dobutamine, milrinone) and vasopressors (norepinephrine) to maintain perfusion. Mechanical support by the shock team. ^[aha-acc-hfsa-hf-2022]
+   - Cold profile or cardiogenic shock: ICU, inotropes (dobutamine, milrinone) and vasopressors (norepinephrine) to maintain perfusion. ^[aha-acc-hfsa-hf-2022]
+   - Mechanical support by the shock team. ^[aha-acc-hfsa-hf-2022]
    - Inotropes only for hypoperfusion, not routinely. No routine opioids. ^[aha-acc-hfsa-hf-2022, esc-hf-2026]
    - Treat the cause: urgent revascularization for ACS, cardioversion for unstable arrhythmia, surgery for acute valve lesions. ^[aha-acc-hfsa-hf-2022]
 
 6. GDMT in hospital
-   - Continue existing GDMT unless hemodynamically unstable or contraindicated. A mild creatinine or blood pressure change is not a reason to stop. ^[aha-acc-hfsa-hf-2022]
+   - Continue existing GDMT unless hemodynamically unstable or contraindicated. ^[aha-acc-hfsa-hf-2022]
+   - A mild creatinine or blood pressure change is not a reason to stop. ^[aha-acc-hfsa-hf-2022]
    - Cardiogenic shock or hypoperfusion: hold β-blocker. Reduce or hold RAAS inhibitors with hypotension, hyperkalemia or AKI. ^[aha-acc-hfsa-hf-2022, common-practice]
-   - HFrEF: start missing pillars once clinically stable: ARNI (or ACE inhibitor or ARB), evidence-based β-blocker (low dose, only once stable: near-euvolemic, diuretic dose stable, off IV vasodilators and inotropes), MRA, SGLT2 inhibitor. ^[aha-acc-hfsa-hf-2022, strong-hf-2022]
+   - HFrEF: start missing pillars once clinically stable: ARNI (or ACE inhibitor or ARB), evidence-based β-blocker, MRA, SGLT2 inhibitor. ^[aha-acc-hfsa-hf-2022, strong-hf-2022]
+   - β-blocker: low dose, only once stable (near-euvolemic, diuretic dose stable, off IV vasodilators and inotropes). ^[aha-acc-hfsa-hf-2022, strong-hf-2022]
    - SGLT2 inhibitor can be started in hospital once stable, at any LVEF ^[empulse-2022, esc-hf-2026]
    - Not with type 1 diabetes or ketoacidosis risk ^[empulse-2022, esc-hf-2026]
    - Check the label {{calc:ckd-epi}} limit ^[empulse-2022, esc-hf-2026]
@@ -125,7 +145,7 @@ related:
 ## Monitor
 - Response at 2 h: spot urine Na⁺ {{threshold:adhf-urine-na-response}} ^[esc-hf-2026, hfa-diuretics-2019]
 - Over 6 h: urine output {{threshold:adhf-uop-response}} ^[esc-hf-2026, hfa-diuretics-2019]
-- Below these, intensify (ESC 2026 uses the top of the urine Na⁺ range and the bottom of the urine output range) ^[esc-hf-2026, hfa-diuretics-2019]
+- Below these, intensify. The 2026 cutoffs are the top of the urine Na⁺ range and the bottom of the urine output range. ^[esc-hf-2026, hfa-diuretics-2019]
 - Daily: weight, intake and output, BMP and Mg²⁺ (K⁺ and Mg²⁺ fall with diuresis), congestion signs. ^[aha-acc-hfsa-hf-2022, common-practice]
 - Goal: resolution of congestion (JVP, edema, orthopnea) before discharge. Residual congestion predicts readmission. ^[aha-acc-hfsa-hf-2022]
 - Hypotension, rising lactate, worsening mentation or oliguria: reassess perfusion. ^[esc-hf-2026]
@@ -172,7 +192,8 @@ related:
 - ICD and CRT assessment after GDMT optimization ^[aha-acc-hfsa-hf-2022]
 
 ### Evidence: Key trials
-- DOSE (2011): bolus versus continuous and low versus high (2.5 times oral) furosemide did not differ in symptoms or creatinine at 72 h. High dose diuresed more, with more transient creatinine rise. ^[dose-2011]
+- DOSE (2011): bolus versus continuous and low versus high (2.5 times oral) furosemide did not differ in symptoms or creatinine at 72 h. ^[dose-2011]
+- DOSE: high dose diuresed more, with more transient creatinine rise. ^[dose-2011]
 - ADVOR (2022): acetazolamide added to loop diuretics improved successful decongestion at 3 days. ^[advor-2022]
 - STRONG-HF (2022): rapid up-titration of GDMT with close follow-up after admission lowered 180-day death or heart failure readmission. ^[strong-hf-2022]
 

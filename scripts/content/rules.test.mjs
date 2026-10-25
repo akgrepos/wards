@@ -82,6 +82,12 @@ describe('names rule', () => {
     expect(rules(card('- Per ACEP, sedate early.'), { data })).toEqual(['names']);
     expect(rules(card('- Sedate early.'), { data })).toEqual([]);
   });
+  it('lets "Where Guidelines Differ" and "Evidence" in More Information name guidelines and studies', () => {
+    const more = (title) => ({ file: 'c.md', id: 'c', title: 'Card', aliases: [], related: {}, sections: [{ key: 'more', title: 'More Information', blocks: [], subsections: [{ key: 'x', title, blocks: parseBlocks(['- ACC and ESC differ. The DELIVER trial agreed.']) }] }] });
+    expect(rules(more('Where Guidelines Differ'), { data })).toEqual([]);
+    expect(rules(more('Evidence'), { data })).toEqual([]);
+    expect(rules(more('Pathophysiology'), { data })).toEqual(['names']);
+  });
 });
 
 describe('title rule', () => {

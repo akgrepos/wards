@@ -10,7 +10,7 @@ based_on: [ssc-sepsis-2026, sepsis-3-2016]
 checked: { date: 2026-10-21, by: owner, scope: "owner review", fingerprint: "e02ac9625c895829", carried: "2026-10-24: Dose row titles shortened to the indication only. Doses and numbers unchanged, the removed wording is kept in the longer indication text." }
 related:
   differential: []
-  conditions: [renal-aki, id-cap, id-complicated-uti, id-cellulitis, endo-inpatient-hyperglycemia, psych-acute-agitation, psych-serotonin-syndrome-nms]
+  conditions: [renal-aki, id-cap, id-complicated-uti, id-cellulitis, endo-inpatient-hyperglycemia, psych-acute-agitation, psych-serotonin-syndrome-nms, cardio-chest-pain, crit-hypoxemic-respiratory-failure, pulm-dyspnea, pulm-vte-diagnosis]
   tools: []
   medications: [ceftriaxone]
 emergency_hint: "Cultures, antibiotics, fluids, norepinephrine"
@@ -60,7 +60,8 @@ emergency_hint: "Cultures, antibiotics, fluids, norepinephrine"
    - ICU within 6 hours when ICU care is needed. ^[ssc-sepsis-2026]
 
 :::note
-- Possible sepsis without shock: rapid workup. Antibiotics within 3 hours if concern persists. Low likelihood of infection without shock: defer antibiotics and monitor closely. ^[ssc-sepsis-2026]
+- Possible sepsis without shock: rapid workup. Antibiotics within 3 hours if concern persists. ^[ssc-sepsis-2026]
+- Low likelihood of infection without shock: defer antibiotics and monitor closely. ^[ssc-sepsis-2026]
 :::
 
 ## At a Glance
@@ -91,8 +92,11 @@ emergency_hint: "Cultures, antibiotics, fluids, norepinephrine"
 - **Skin and soft tissue:** cellulitis, abscess, necrotizing soft-tissue infection. ^[common-practice]
 - **Devices and bloodstream:** central lines, ports, prosthetic material, endocarditis. ^[common-practice]
 - **CNS:** meningitis, brain abscess. ^[common-practice]
-- **Needs source control:** [!cannot-miss] necrotizing soft-tissue infection, abscess, cholangitis, GI perforation or ischemia, obstructed pyelonephritis, empyema, septic arthritis, infected devices. ^[ssc-sepsis-2026, common-practice]
-- **Mimics (noninfectious):** pancreatitis, PE, adrenal crisis, DKA, cardiogenic or hemorrhagic shock, anaphylaxis, drug reaction, thyroid storm. 10–30% of patients first treated for sepsis have another diagnosis. ^[ssc-sepsis-2026, common-practice]
+- **Needs source control:** [!cannot-miss] ^[ssc-sepsis-2026, common-practice]
+  - Necrotizing soft-tissue infection, abscess, cholangitis, GI perforation or ischemia. ^[ssc-sepsis-2026, common-practice]
+  - Obstructed pyelonephritis, empyema, septic arthritis, infected devices. ^[ssc-sepsis-2026, common-practice]
+- **Mimics (noninfectious):** pancreatitis, PE, adrenal crisis, DKA, cardiogenic or hemorrhagic shock, anaphylaxis, drug reaction, thyroid storm. ^[ssc-sepsis-2026, common-practice]
+- **Mimic frequency:** 10–30% of patients first treated for sepsis have another diagnosis. ^[ssc-sepsis-2026, common-practice]
 
 ## Presentation
 - Fever or hypothermia, tachycardia, tachypnea, altered mentation, hypotension. ^[sepsis-3-2016, common-practice]
@@ -125,7 +129,8 @@ emergency_hint: "Cultures, antibiotics, fluids, norepinephrine"
 
    {{regimen:sepsis-empiric}}
 
-   - Cover a specific multidrug-resistant pathogen only when its risk is high (colonization or infection with it in the past year, prolonged broad-spectrum antibiotics, a long stay in a unit where it is common). ^[ssc-sepsis-2026]
+   - Cover a specific multidrug-resistant pathogen only when its risk is high. ^[ssc-sepsis-2026]
+   - High risk: colonization or infection with it in the past year, prolonged broad-spectrum antibiotics, a long stay in a unit where it is common. ^[ssc-sepsis-2026]
    - Prolonged β-lactam infusion after a loading dose is recommended. ^[ssc-sepsis-2026]
    - Shock: order to infusion start within 30 minutes. β-lactam before vancomycin. ^[idsa-sepsis-hospital-2026]
    - Reported penicillin allergy: most are not true allergies, and most patients can receive cefepime. ^[idsa-sepsis-hospital-2026]
@@ -144,12 +149,14 @@ emergency_hint: "Cultures, antibiotics, fluids, norepinephrine"
    - Crystalloids alone over adding albumin ^[ssc-sepsis-2026]
    - Albumin may suit cirrhosis or very large volumes ^[ssc-sepsis-2026]
    - Avoid it in traumatic brain injury. No starches or gelatin ^[ssc-sepsis-2026]
-   - Further fluid by dynamic measures (passive leg raise or fluid challenge with stroke volume or pulse pressure change), serial lactate and capillary refill, not until lactate normalizes. ^[ssc-sepsis-2026]
+   - Further fluid by dynamic measures (passive leg raise or fluid challenge with stroke volume or pulse pressure change), serial lactate and capillary refill, ^[ssc-sepsis-2026]
+   - Not until lactate normalizes. ^[ssc-sepsis-2026]
    - Persistent hypoperfusion after the initial bolus: a liberal or restrictive strategy are both acceptable. ^[ssc-sepsis-2026, clovers-2023]
    - Fluid choice and volumes: [[renal-iv-fluids|IV fluids]]. ^[common-practice]
 
 4. Vasopressors
-   - Initial crystalloid bolus, then a vasopressor if hypotension persists. In unstable shock (profound hypotension, mottling, altered mentation), consider starting both together. ^[ssc-sepsis-2026]
+   - Initial crystalloid bolus, then a vasopressor if hypotension persists. ^[ssc-sepsis-2026]
+   - Unstable shock (profound hypotension, mottling, altered mentation): consider starting both together. ^[ssc-sepsis-2026]
    - Target MAP 65 mm Hg as a range (within about 5 mm Hg). 60–65 mm Hg if ≥65 years. ^[ssc-sepsis-2026]
    - Norepinephrine first line. Start peripherally rather than delay. ^[ssc-sepsis-2026]
 
@@ -168,10 +175,12 @@ emergency_hint: "Cultures, antibiotics, fluids, norepinephrine"
 
    {{dose:dobutamine-septic-shock}}
 
-   - Not recommended: dopamine, terlipressin, levosimendan, β-blockers (esmolol, landiolol). Angiotensin II is not preferred first line. Methylene blue lacks evidence of survival benefit. ^[ssc-sepsis-2026]
+   - Not recommended: dopamine, terlipressin, levosimendan, β-blockers (esmolol, landiolol). ^[ssc-sepsis-2026]
+   - Angiotensin II is not preferred first line. Methylene blue lacks evidence of survival benefit. ^[ssc-sepsis-2026]
 
 5. Corticosteroids
-   - Septic shock: IV corticosteroids suggested, regardless of vasopressor dose. No recommendation for sepsis without shock (no benefit seen). ^[ssc-sepsis-2026, sccm-corticosteroids-2024]
+   - Septic shock: IV corticosteroids suggested, regardless of vasopressor dose. ^[ssc-sepsis-2026, sccm-corticosteroids-2024]
+   - Sepsis without shock: no recommendation (no benefit seen). ^[ssc-sepsis-2026, sccm-corticosteroids-2024]
 
    {{dose:hydrocortisone-septic-shock}}
    {{dose:fludrocortisone-septic-shock}}
@@ -188,7 +197,8 @@ emergency_hint: "Cultures, antibiotics, fluids, norepinephrine"
    - Stress ulcer prophylaxis with a PPI when GI bleeding risk factors are present (coagulopathy, shock, chronic liver disease, AKI). ^[ssc-sepsis-2026]
    - Septic shock with pH ≤7.2 and AKI stage 2–3: sodium bicarbonate suggested. Not to raise blood pressure in lactic acidemia. ^[ssc-sepsis-2026]
    - No RRT for AKI without a definitive indication. ^[ssc-sepsis-2026]
-   - Hypoxemia: high-flow nasal oxygen over conventional oxygen ({{calc:pf-ratio}} <200) and over noninvasive ventilation as initial support. Consider awake proning. ^[ssc-sepsis-2026]
+   - Hypoxemia: high-flow nasal oxygen over conventional oxygen ({{calc:pf-ratio}} <200) and over noninvasive ventilation as initial support. ^[ssc-sepsis-2026]
+   - Consider awake proning. ^[ssc-sepsis-2026]
    - Early enteral nutrition, within 72 hours. ^[ssc-sepsis-2026]
    - After the acute phase, active fluid removal (diuretics first). ^[ssc-sepsis-2026]
    - Not recommended: IV vitamin C, antipyretics to improve outcomes, IVIG, blood purification, vitamin D, probiotics. ^[ssc-sepsis-2026]
@@ -258,15 +268,19 @@ emergency_hint: "Cultures, antibiotics, fluids, norepinephrine"
 - 65 trial (2020): permissive hypotension in patients ≥65 years did not raise mortality. ^[sixty-five-2020]
 - CLOVERS (2023): restrictive (early vasopressor) and liberal fluid strategies had similar mortality. ^[clovers-2023]
 - ANDROMEDA-SHOCK (2019): capillary refill–targeted resuscitation was at least as good as lactate-targeted. ^[andromeda-shock-2019]
-- BLING III (2024): continuous β-lactam infusion did not significantly lower 90-day mortality on its own. Meta-analyses including it show lower mortality with prolonged infusion. ^[bling-iii-2024, ssc-sepsis-2026]
+- BLING III (2024): continuous β-lactam infusion did not significantly lower 90-day mortality on its own. ^[bling-iii-2024, ssc-sepsis-2026]
+- Meta-analyses including BLING III show lower mortality with prolonged infusion. ^[bling-iii-2024, ssc-sepsis-2026]
 
 ### Why the Treatment Order: Antibiotics and perfusion first
-- Mortality rises with each hour of delay to antibiotics in septic shock, so antibiotics and perfusion come before a full workup. The diagnosis is then reconsidered daily. ^[idsa-sepsis-hospital-2026, ssc-sepsis-2026]
+- Mortality rises with each hour of delay to antibiotics in septic shock. ^[idsa-sepsis-hospital-2026, ssc-sepsis-2026]
+- So antibiotics and perfusion come before a full workup. The diagnosis is then reconsidered daily. ^[idsa-sepsis-hospital-2026, ssc-sepsis-2026]
 
 ### Epidemiology and Pathophysiology: Dysregulated host response
 - Mortality exceeds 10% with sepsis and 40% with septic shock. ^[sepsis-3-2016]
 - Vasodilation, capillary leak, microvascular thrombosis and myocardial depression cause hypoperfusion and organ dysfunction. ^[common-practice]
-- Proposed definition of refractory septic shock: high lactate or prolonged capillary refill, fluid-unresponsive, norepinephrine >0.5 mcg/kg/min, other shock excluded by ultrasound. Not yet validated. ^[sccm-esicm-refractory-shock-2026]
+- Proposed definition of refractory septic shock: high lactate or prolonged capillary refill, fluid-unresponsive. ^[sccm-esicm-refractory-shock-2026]
+- It also requires norepinephrine >0.5 mcg/kg/min, with other shock excluded by ultrasound. ^[sccm-esicm-refractory-shock-2026]
+- The proposed definition is not yet validated. ^[sccm-esicm-refractory-shock-2026]
 
 ## Pearls
 - Don't wait for cultures to give antibiotics in shock. ^[ssc-sepsis-2026]

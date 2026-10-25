@@ -6,24 +6,28 @@ title: "Venous Thromboembolism"
 aliases: [VTE, PE, pulmonary embolism, DVT, deep vein thrombosis, blood clot, clot in lung, leg clot, D-dimer, Wells, PERC, YEARS, Geneva, CTPA, CT angiogram, PE protocol CT, V/Q scan, LENI, lower extremity duplex, compression ultrasound, sPESI, PESI, Hestia, submassive, massive PE, PERT, RV strain, "Venous Thromboembolism: Diagnosis", diagnosis]
 definition: "Thrombosis in the deep veins (DVT) or embolism to the pulmonary arteries (PE). Diagnosed by pretest probability, D-dimer and imaging. ^[aha-acc-pe-2026, ash-vte-diagnosis-2018]"
 based_on: [aha-acc-pe-2026, ash-vte-diagnosis-2018, esc-pe-2019]
-checked: { date: 2026-10-21, by: owner, scope: "owner review", fingerprint: "495eed4c2f645dff", carried: "2026-10-24: No card text changed. The Wells and CURB-65 point lists and bands were removed from their calc files, which now only link to MDCalc. Every dose and number on the card is unchanged." }
+checked: { date: 2026-10-21, by: owner, scope: "owner review", fingerprint: "c970d48eeef0708a", carried: "2026-10-25: Format sweep (bullets split, tables to bullets or scale, society names out of text). Numbers, doses, drugs and sources unchanged." }
 related:
-  differential: [cardio-nste-acs, id-cap, cardio-adhf, pulm-copd-exacerbation]
-  conditions: [crit-hypoxemic-respiratory-failure, crit-sepsis]
+  differential: [cardio-nste-acs, id-cap, cardio-adhf, pulm-copd-exacerbation, cardio-chest-pain, pulm-dyspnea]
+  conditions: [crit-hypoxemic-respiratory-failure, crit-sepsis, cardio-ecg-interpretation]
   tools: []
 ---
 ## At a Glance
 - Estimate clinical probability first ({{calc:wells-pe|Wells}}, {{calc:geneva-pe|Geneva}} or gestalt). It decides the next test. ^[aha-acc-pe-2026]
-- Low probability with all {{calc:perc}} criteria met: no testing. Low or intermediate: D-dimer with {{calc:years-pe|YEARS}} or an {{calc:age-adjusted-d-dimer|age-adjusted cutoff}}. High: imaging directly. ^[aha-acc-pe-2026]
+- Testing by probability: ^[aha-acc-pe-2026]
+  - Low with all {{calc:perc}} criteria met: no testing. ^[aha-acc-pe-2026]
+  - Low or intermediate: D-dimer with {{calc:years-pe|YEARS}} or an {{calc:age-adjusted-d-dimer|age-adjusted cutoff}}. ^[aha-acc-pe-2026]
+  - High: imaging directly. ^[aha-acc-pe-2026]
 - CT pulmonary angiography is the test of choice. V/Q (SPECT) when CT is not possible. ^[aha-acc-pe-2026]
 - Suspected DVT: D-dimer first when unlikely. Compression ultrasound first when likely. ^[ash-vte-diagnosis-2018]
-- Confirmed PE: assign the AHA/ACC category (A–E) by symptoms, severity score, RV and biomarkers, and hemodynamics. It sets the level of care. ^[aha-acc-pe-2026]
+- Confirmed PE: assign the category (A–E) by symptoms, severity score, RV and biomarkers, and hemodynamics. It sets the level of care. ^[aha-acc-pe-2026]
 - Unstable with suspected PE: bedside echo, anticoagulate unless contraindicated, call the PE response team. ^[esc-pe-2019, aha-acc-pe-2026]
 
 ## Definition and Staging
-- VTE includes DVT and PE. Proximal DVT: popliteal vein or above. Distal DVT: calf veins. ^[common-practice]
+- VTE includes DVT and PE. ^[common-practice]
+- Proximal DVT: popliteal vein or above. Distal DVT: calf veins. ^[common-practice]
 
-:::scale AHA/ACC acute PE clinical category
+:::scale Acute PE clinical category
 - A: subclinical, incidental and asymptomatic. ^[aha-acc-pe-2026]
 - B: symptomatic, low severity score. ^[aha-acc-pe-2026]
 - C: symptomatic, elevated severity score (C1–C3 by RV and biomarkers). ^[aha-acc-pe-2026]
@@ -34,14 +38,19 @@ related:
 {{criteria:pe-clinical-categories}}
 
 ## First Steps
-- Hypotension, shock or arrest with suspected PE: bedside echo for RV dilation and other causes of shock. RV dysfunction supports but does not confirm PE. ^[esc-pe-2019, aha-acc-pe-2026]
+- Hypotension, shock or arrest with suspected PE: bedside echo for RV dilation and other causes of shock. ^[esc-pe-2019, aha-acc-pe-2026]
+- RV dysfunction supports but does not confirm PE. ^[esc-pe-2019, aha-acc-pe-2026]
 - Start anticoagulation without waiting when probability is high, bleeding risk is low and imaging is delayed. ^[aha-acc-pe-2026, esc-pe-2019]
 - CT pulmonary angiography as soon as the patient can travel. PE response team for categories C–E. ^[aha-acc-pe-2026]
 - Oxygen to target. Avoid large fluid boluses in RV failure. ^[esc-pe-2019, common-practice]
 
 ## Causes
-- **Strong provoking factors:** [!most-common] major surgery or trauma, hip or knee replacement, lower limb fracture, spinal cord injury, hospitalization (heart failure, AF, MI in the prior 3 months). ^[esc-pe-2019]
-- **Moderate:** cancer and chemotherapy, central venous catheters, estrogen therapy, pregnancy and postpartum, prior VTE, thrombophilia, inflammatory disease, infection, paralytic stroke, heart or respiratory failure. ^[esc-pe-2019, aha-acc-pe-2026]
+- **Strong provoking factors:** [!most-common] ^[esc-pe-2019]
+  - Major surgery or trauma, hip or knee replacement, lower limb fracture, spinal cord injury
+  - Hospitalization (heart failure, AF, MI in the prior 3 months)
+- **Moderate:** ^[esc-pe-2019, aha-acc-pe-2026]
+  - Cancer and chemotherapy, central venous catheters, estrogen therapy, pregnancy and postpartum
+  - Prior VTE, thrombophilia, inflammatory disease, infection, paralytic stroke, heart or respiratory failure
 - **Weak:** bed rest >3 days, prolonged travel, older age, obesity, varicose veins, laparoscopic surgery. ^[esc-pe-2019]
 - **Upper-extremity DVT:** central venous catheters (most), pacemaker leads, cancer, venous thoracic outlet compression. ^[ash-vte-diagnosis-2018, common-practice]
 - **PE mimics:** [!cannot-miss] acute coronary syndrome, aortic dissection, pneumothorax, tamponade, pneumonia, heart failure. ^[common-practice]
@@ -90,13 +99,17 @@ related:
 #### DVT: lower extremity
 {{criteria:wells-dvt}}
 
-- Unlikely by {{calc:wells-dvt|Wells}} (low probability): D-dimer first. Negative excludes DVT. Positive: proximal compression or whole-leg ultrasound. ^[ash-vte-diagnosis-2018]
-- Intermediate: whole-leg ultrasound (negative excludes), or proximal compression ultrasound repeated in 1 week if negative. ^[ash-vte-diagnosis-2018]
-- Likely (high probability): ultrasound directly. Negative proximal scan with no other diagnosis: repeat in 1 week. ^[ash-vte-diagnosis-2018]
+- Unlikely by {{calc:wells-dvt|Wells}} (low probability): D-dimer first. Negative excludes DVT. ^[ash-vte-diagnosis-2018]
+- Unlikely with a positive D-dimer: proximal compression or whole-leg ultrasound. ^[ash-vte-diagnosis-2018]
+- Intermediate: whole-leg ultrasound (negative excludes). ^[ash-vte-diagnosis-2018]
+- Intermediate, alternative: proximal compression ultrasound, repeated in 1 week if negative. ^[ash-vte-diagnosis-2018]
+- Likely (high probability): ultrasound directly. ^[ash-vte-diagnosis-2018]
+- Likely with a negative proximal scan and no other diagnosis: repeat in 1 week. ^[ash-vte-diagnosis-2018]
 - {{calc:age-adjusted-d-dimer|Age-adjusted D-dimer}} also safely excludes DVT when DVT is unlikely. ^[le-gal-ddimer-dvt-2026]
 
 #### DVT: upper extremity
-- Unlikely: D-dimer, then duplex ultrasound if positive. Likely: duplex ultrasound directly, repeated if suspicion stays high. ^[ash-vte-diagnosis-2018]
+- Unlikely: D-dimer, then duplex ultrasound if positive. ^[ash-vte-diagnosis-2018]
+- Likely: duplex ultrasound directly, repeated if suspicion stays high. ^[ash-vte-diagnosis-2018]
 
 #### Avoid
 - Echocardiography alone to confirm or exclude PE. ^[aha-acc-pe-2026]

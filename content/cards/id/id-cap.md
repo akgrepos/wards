@@ -9,8 +9,8 @@ definition: "Pneumonia acquired outside the hospital: compatible symptoms with a
 based_on: [ats-cap-2025, idsa-ats-cap-2019]
 checked: { date: 2026-10-24, by: opus, scope: "CURB-65 lines and the corrected dialysis rows of piperacillin-tazobactam and cefepime checked against NICE NG250, Lim 2003 and the labels. Doses left not-verified: amoxicillin-cap, amoxicillin-clavulanate-cap, ampicillin-sulbactam-cap, azithromycin-iv-cap, azithromycin-po-cap, cefepime-cap, cefpodoxime-cap, ceftaroline-iv, doxycycline-100, hydrocortisone-severe-cap, levofloxacin-750, linezolid-600, meropenem-1g, moxifloxacin-cap, oseltamivir-influenza, piperacillin-tazobactam-cap, vancomycin-iv", fingerprint: "80915cfd1e4cc437" }
 related:
-  differential: []
-  conditions: [id-complicated-uti, id-cellulitis]
+  differential: [cardio-chest-pain, crit-hypoxemic-respiratory-failure, pulm-copd-exacerbation, pulm-dyspnea, pulm-vte-diagnosis]
+  conditions: [id-complicated-uti, id-cellulitis, crit-sepsis]
   tools: []
   medications: [ceftriaxone]
 ---

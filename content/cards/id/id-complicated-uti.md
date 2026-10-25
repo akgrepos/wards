@@ -10,7 +10,7 @@ based_on: [idsa-cuti-selection-2025, idsa-cuti-ivpo-2025, idsa-cuti-duration-202
 checked: { date: 2026-10-19, by: owner, scope: "owner review", fingerprint: "95fc3a1bb8316275", carried: "2026-10-24: Dose corrections (stage 4b PR C): the changed dose and drug-record lines were checked against the labels and guidelines by an Opus helper. The rest of the card is unchanged." }
 related:
   differential: []
-  conditions: [id-cap, id-cellulitis, renal-aki, psych-acute-agitation]
+  conditions: [id-cap, id-cellulitis, renal-aki, psych-acute-agitation, crit-sepsis]
   tools: []
   medications: [ceftriaxone]
 ---

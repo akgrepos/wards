@@ -6,10 +6,10 @@ title: Hypoxemic Respiratory Failure
 aliases: [acute hypoxemic respiratory failure, AHRF, type 1 respiratory failure, hypoxia, low oxygen, desaturation, desat, hypoxemia, high-flow nasal cannula, HFNC, high-flow, Optiflow, Airvo, NIV, BiPAP, CPAP, ROX index, ARDS, A-a gradient, intubation, proning, P/F ratio, S/F ratio]
 definition: "Failure of oxygenation, usually PaO₂ <60 mm Hg (SpO₂ about 90%) on room air, with normal or low PaCO₂. ^[common-practice]"
 based_on: [ats-nirs-2026, ssc-sepsis-2026, ards-global-definition-2024, ats-ards-2024]
-checked: { date: 2026-10-21, by: owner, scope: "owner review", fingerprint: "b012f3540d16d8aa" }
+checked: { date: 2026-10-21, by: owner, scope: "owner review", fingerprint: "e9f6db329b36ad90", carried: "2026-10-25: Format sweep (bullets split, tables to bullets or scale, society names out of text). Numbers, doses, drugs and sources unchanged." }
 related:
-  differential: [pulm-copd-exacerbation, pulm-vte-diagnosis, id-cap, cardio-adhf]
-  conditions: [crit-sepsis, psych-acute-agitation]
+  differential: [pulm-copd-exacerbation, pulm-vte-diagnosis, id-cap, cardio-adhf, pulm-dyspnea]
+  conditions: [crit-sepsis, psych-acute-agitation, cardio-chest-pain]
   tools: []
 emergency_hint: "Airway, O₂, find the cause, HFNC, intubate early"
 ---
@@ -50,7 +50,8 @@ or. NIV or CPAP instead
 - Intubated with ARDS: low tidal volume, plateau ≤30 cm H₂O. Prone positioning for moderate–severe ARDS. ^[ssc-sepsis-2026, ats-esicm-sccm-ards-2017]
 
 ## Definition and Staging
-- Hypoxemic (type 1): PaO₂ <60 mm Hg with normal or low PaCO₂. Hypercapnic (type 2): PaCO₂ >45 mm Hg, acute when pH <7.35. Both can coexist. ^[common-practice]
+- Hypoxemic (type 1): PaO₂ <60 mm Hg with normal or low PaCO₂. ^[common-practice]
+- Hypercapnic (type 2): PaCO₂ >45 mm Hg, acute when pH <7.35. Both can coexist. ^[common-practice]
 - PaO₂/FiO₂ (or SpO₂/FiO₂ when SpO₂ ≤97%) tracks severity. Formal grades apply to ARDS (below). ^[ards-global-definition-2024]
 
 {{criteria:ards-global-2024}}
@@ -58,7 +59,9 @@ or. NIV or CPAP instead
 - {{calc:aa-gradient|A–a gradient}} = [FiO₂ × (760 − 47) − PaCO₂/0.8] − PaO₂. Normal about age/4 + 4 mm Hg on room air. ^[common-practice]
 
 ## First Steps
-- Red flags for immediate help (rapid response, ICU, anesthesia): SpO₂ <80% or PaO₂ <55 mm Hg despite oxygen, RR >35, rising PaCO₂, exhaustion, altered mentation, unable to protect airway, shock. ^[common-practice]
+- Red flags for immediate help (rapid response, ICU, anesthesia): ^[common-practice]
+  - SpO₂ <80% or PaO₂ <55 mm Hg despite oxygen, RR >35, rising PaCO₂
+  - Exhaustion, altered mentation, unable to protect airway, shock
 - Look for an immediately reversible cause before anything else (tension pneumothorax, airway obstruction, opioid overdose). ^[common-practice]
 - Confirm code status and goals early. ^[common-practice]
 
@@ -68,11 +71,14 @@ or. NIV or CPAP instead
 - **Hypoventilation:** opioids or sedatives, neuromuscular weakness, obesity hypoventilation. Normal {{calc:aa-gradient|A–a gradient}}, high PaCO₂. ^[common-practice]
 - **Diffusion limitation:** interstitial lung disease, pulmonary hypertension. Worse with exertion. ^[common-practice]
 - **Low inspired oxygen:** altitude. Normal {{calc:aa-gradient|A–a gradient}}. ^[common-practice]
-- **Life-threatening causes:** [!cannot-miss] tension pneumothorax, PE, flash pulmonary edema or ACS, ARDS, aspiration, upper airway obstruction, hemothorax or massive effusion. ^[common-practice]
+- **Life-threatening causes:** [!cannot-miss] ^[common-practice]
+  - Tension pneumothorax, PE, flash pulmonary edema or ACS, ARDS
+  - Aspiration, upper airway obstruction, hemothorax or massive effusion
 
 ## Presentation
 #### Focused history
-- Onset (sudden: PE, pneumothorax, aspiration, flash edema, over hours to days: pneumonia, ARDS), fever, sputum, chest pain, orthopnea, leg swelling. ^[common-practice]
+- Onset: sudden (PE, pneumothorax, aspiration, flash edema) or over hours to days (pneumonia, ARDS). ^[common-practice]
+- Fever, sputum, chest pain, orthopnea, leg swelling. ^[common-practice]
 - Opioids, sedatives, transfusion, fluids given, recent surgery or immobility, known COPD or heart failure. ^[common-practice]
 
 #### Focused examination
@@ -90,12 +96,10 @@ or. NIV or CPAP instead
 - Point-of-care ultrasound: B-lines (edema, ARDS), consolidation, effusion, absent lung sliding (pneumothorax), LV and RV function, DVT. ^[common-practice]
 
 #### Interpretation
-| Finding | Suggests |
-|---|---|
-| {{calc:aa-gradient}} =, PaCO₂ ↑ | Hypoventilation ^[common-practice] |
-| {{calc:aa-gradient}} ↑, corrects with oxygen | V/Q mismatch ^[common-practice] |
-| {{calc:aa-gradient}} ↑, little response to 100% oxygen | Shunt ^[common-practice] |
-| Clear chest radiograph | PE, asthma or COPD, intracardiac shunt, early pneumonia ^[common-practice] |
+- **Hypoventilation:** {{calc:aa-gradient|A–a gradient}} =, PaCO₂ ↑. ^[common-practice]
+- **V/Q mismatch:** {{calc:aa-gradient|A–a gradient}} ↑, corrects with oxygen. ^[common-practice]
+- **Shunt:** {{calc:aa-gradient|A–a gradient}} ↑, little response to 100% oxygen. ^[common-practice]
+- **Clear chest radiograph:** PE, asthma or COPD, intracardiac shunt, early pneumonia. ^[common-practice]
 
 #### Second line, by scenario
 - Suspected PE: [[pulm-vte-diagnosis|VTE diagnosis]] workup, CT pulmonary angiography. ^[aha-acc-pe-2026]
@@ -121,7 +125,8 @@ or. NIV or CPAP instead
 
 #### NIV and CPAP
 - NIV or CPAP (facemask or helmet) is a suggested alternative to conventional oxygen. No recommendation between high-flow and NIV. ^[ats-nirs-2026]
-- NIV is strongly recommended for hypercapnic failure ([[pulm-copd-exacerbation|COPD exacerbation]]). High-flow only with mild acidemia (pH >7.25) and NIV promptly available. ^[ats-nirs-2026]
+- NIV is strongly recommended for hypercapnic failure ([[pulm-copd-exacerbation|COPD exacerbation]]). ^[ats-nirs-2026]
+- High-flow only with mild acidemia (pH >7.25) and NIV promptly available. ^[ats-nirs-2026]
 - CPAP or NIV for cardiogenic pulmonary edema. ^[ers-ats-niv-2017]
 - Hypoxemia or cardiogenic edema: CPAP or EPAP 5–10 cm H₂O, titrated to oxygenation and work of breathing. ^[common-practice]
 - Hypercapnia: ^[bts-ics-hypercapnic-2016]
@@ -134,7 +139,9 @@ or. NIV or CPAP instead
 - Preoxygenate with high-flow or NIV rather than conventional oxygen. ^[ats-nirs-2026]
 
 #### Initial ventilator settings
-- Volume control. ARDS: tidal volume {{threshold:ards-tidal-volume}}. Sepsis without ARDS: {{threshold:tidal-volume-no-ards}}. ^[ats-esicm-sccm-ards-2017, ssc-sepsis-2026]
+- Volume control. ^[ats-esicm-sccm-ards-2017, ssc-sepsis-2026]
+- ARDS: tidal volume {{threshold:ards-tidal-volume}}. ^[ats-esicm-sccm-ards-2017, ssc-sepsis-2026]
+- Sepsis without ARDS: {{threshold:tidal-volume-no-ards}}. ^[ats-esicm-sccm-ards-2017, ssc-sepsis-2026]
 - Plateau pressure ≤30 cm H₂O. ^[ssc-sepsis-2026, ats-esicm-sccm-ards-2017]
 - Start PEEP about 5 cm H₂O and FiO₂ 1.0 ^[common-practice]
 - Set the rate to match pre-intubation minute ventilation ^[common-practice]
@@ -156,7 +163,9 @@ or. NIV or CPAP instead
 - 12
 :::
 
-- ROX = (SpO₂/FiO₂)/RR (validated in pneumonia). ≥4.88 at 2, 6 or 12 hours predicts success. <2.85, <3.47 and <3.85 at 2, 6 and 12 hours predict failure. ^[roca-rox-2019]
+- ROX = (SpO₂/FiO₂)/RR (validated in pneumonia). ^[roca-rox-2019]
+- ≥4.88 at 2, 6 or 12 hours predicts success. ^[roca-rox-2019]
+- <2.85, <3.47 and <3.85 at 2, 6 and 12 hours predict failure. ^[roca-rox-2019]
 - Continuous pulse oximetry, RR, work of breathing and mental status. A monitored bed for high-flow at high flow or FiO₂, and for NIV. ^[ats-nirs-2026]
 - Blood gas after starting or changing support. ^[bts-oxygen-2017, bts-ics-hypercapnic-2016]
 
@@ -186,7 +195,9 @@ or. NIV or CPAP instead
 - Invasive ventilation: ventilator-induced lung injury, ventilator-associated pneumonia, hemodynamic compromise. ^[common-practice]
 
 ### Evidence: Key trials
-- FLORALI (2015): high-flow oxygen did not lower intubation overall versus standard oxygen or NIV. 90-day mortality was lower (secondary outcome) and intubation lower with PaO₂/FiO₂ ≤200. Excluded hypercapnia and cardiogenic edema. ^[florali-2015]
+- FLORALI (2015): high-flow oxygen did not lower intubation overall versus standard oxygen or NIV. ^[florali-2015]
+  - 90-day mortality was lower (secondary outcome) and intubation lower with PaO₂/FiO₂ ≤200.
+  - Excluded hypercapnia and cardiogenic edema.
 - UK-ROX (2025): a conservative SpO₂ target of 90% (88–92%) did not change 90-day mortality in ventilated ICU adults. ^[uk-rox-2025]
 
 ### Epidemiology and Pathophysiology: Five mechanisms

@@ -9,7 +9,7 @@ definition: "Serum Na⁺ <135 mEq/L. Usually hypotonic, from water retention. ^[
 based_on: [verbalis-hyponatremia-2013, spasovski-hyponatraemia-2014]
 checked: { date: 2026-10-19, by: owner, scope: "owner review", fingerprint: "88824cc445409e16", carried: "2026-10-24: Dose row titles shortened to the indication only. Doses and numbers unchanged, the removed wording is kept in the longer indication text." }
 related:
-  conditions: [renal-hypokalemia, psych-acute-agitation, psych-lithium-psychotropic-safety]
+  conditions: [renal-hypokalemia, psych-acute-agitation, psych-lithium-psychotropic-safety, cardio-adhf]
   tools: [renal-iv-fluids]
 emergency_hint: 3% saline bolus, limit the 24-h rise
 ---

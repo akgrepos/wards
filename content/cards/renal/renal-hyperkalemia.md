@@ -9,7 +9,7 @@ definition: "Commonly K⁺ ≥5.5 mEq/L. Cutoffs vary by laboratory and by serum
 based_on: [ukka-hyperkalaemia-2026, kdigo-acute-hyperkalemia-2020]
 checked: { date: 2026-10-24, by: opus, scope: "Calcium gluconate and chloride doses (rates, label limits, evidence grades, digoxin line) checked against the labels and the UK guideline. Doses left not-verified: albuterol-neb-hyperkalemia, dextrose-10-infusion-hyperkalemia, dextrose-50-hyperkalemia, furosemide-hyperkalemia, insulin-regular-hyperkalemia, patiromer-hyperkalemia, szc-hyperkalemia-initial, szc-hyperkalemia-maintenance", fingerprint: "feca3a25f1c59752" }
 related:
-  conditions: [renal-aki]
+  conditions: [renal-aki, cardio-ecg-interpretation]
 emergency_hint: Calcium, insulin-dextrose, remove K⁺
 ---
 ## Do Now

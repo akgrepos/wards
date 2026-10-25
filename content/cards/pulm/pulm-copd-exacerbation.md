@@ -9,7 +9,7 @@ definition: "Worsening dyspnea and/or cough and sputum over up to 14 days in COP
 based_on: [gold-copd-2026, ers-ats-copd-exacerbation-2017, ats-nirs-2026]
 checked: { date: 2026-10-21, by: owner, scope: "owner review", fingerprint: "b5312cc142bfc7a9", carried: "2026-10-24: Dose corrections (stage 4b PR C): the changed dose and drug-record lines were checked against the labels and guidelines by an Opus helper. The rest of the card is unchanged." }
 related:
-  differential: [id-cap, cardio-adhf, pulm-vte-diagnosis]
+  differential: [id-cap, cardio-adhf, pulm-vte-diagnosis, cardio-chest-pain, pulm-dyspnea]
   conditions: [crit-hypoxemic-respiratory-failure, cardio-atrial-fibrillation, cardio-nste-acs]
   tools: []
 emergency_hint: "Controlled O₂, nebs, steroids, NIV"
@@ -70,12 +70,17 @@ emergency_hint: "Controlled O₂, nebs, steroids, NIV"
 
 {{criteria:copd-exacerbation-hospital}}
 
-- Admit: respiratory failure signs (rising RR, accessory muscles, worsening gas exchange, mental status change), no response to initial treatment, serious comorbidity, insufficient home support. ^[gold-copd-2026]
+- Admit for any of: ^[gold-copd-2026]
+  - Respiratory failure signs (rising RR, accessory muscles, worsening gas exchange, mental status change)
+  - No response to initial treatment
+  - Serious comorbidity
+  - Insufficient home support
 - ICU: hypoxemia or hypercapnia worsening despite ventilatory support, worsening mental status, need for invasive ventilation, hemodynamic instability. ^[gold-copd-2026]
 - NIV and high-flow oxygen belong where staff can monitor closely and intubate quickly (ICU or intermediate care). ^[ats-nirs-2026, gold-copd-2026]
 
 ## Causes
-- **Infection:** [!most-common] respiratory viruses (rhinovirus, influenza, RSV, SARS-CoV-2). Bacteria (*Haemophilus influenzae*, *Moraxella catarrhalis*, *Streptococcus pneumoniae*). ^[gold-copd-2026, common-practice]
+- **Viral infection:** [!most-common] respiratory viruses (rhinovirus, influenza, RSV, SARS-CoV-2). ^[gold-copd-2026, common-practice]
+- **Bacterial infection:** *Haemophilus influenzae*, *Moraxella catarrhalis*, *Streptococcus pneumoniae*. ^[gold-copd-2026, common-practice]
 - **Pseudomonas risk:** frequent exacerbations, severe airflow obstruction, mechanical ventilation, prior isolation. ^[gold-copd-2026]
 - **Environmental:** air pollution, smoke exposure. ^[gold-copd-2026]
 - **Medications and adherence:** stopping maintenance inhalers, poor inhaler technique, sedatives or opioids (hypoventilation). ^[common-practice]
@@ -117,7 +122,12 @@ emergency_hint: "Controlled O₂, nebs, steroids, NIV"
      - About a third switch to NIV ^[ats-nirs-2026, gold-copd-2026]
    - NIV preferred over high-flow for hypercapnic failure. High-flow if NIV is not tolerated. ^[ers-hfnc-2022]
    - Stop NIV once the patient tolerates at least 4 hours unassisted. No weaning needed. ^[gold-copd-2026]
-   - Invasive ventilation: NIV failure, intolerance of high-flow or NIV, arrest, worsening consciousness or uncontrolled agitation, massive aspiration or persistent vomiting, inability to clear secretions, refractory shock, severe arrhythmias. ^[gold-copd-2026]
+   - Invasive ventilation for any of: ^[gold-copd-2026]
+     - NIV failure, or intolerance of high-flow or NIV
+     - Arrest, refractory shock, severe arrhythmias
+     - Worsening consciousness or uncontrolled agitation
+     - Massive aspiration or persistent vomiting
+     - Inability to clear secretions
    - Settings and devices: [[crit-hypoxemic-respiratory-failure/treatment|hypoxemic respiratory failure]]. ^[common-practice]
 
 2. Bronchodilators
@@ -140,7 +150,10 @@ emergency_hint: "Controlled O₂, nebs, steroids, NIV"
    - Eosinophil-guided steroids are safe in primary care. Not yet validated in hospitalized patients. ^[gold-copd-2026, starr2-2024]
 
 4. Antibiotics
-   - Give when at least two of more dyspnea, fever, more sputum and purulent sputum (purulence one of them), a prior positive sputum culture, or any ventilatory support. ^[gold-copd-2026]
+   - Give for any of: ^[gold-copd-2026]
+     - At least two of more dyspnea, fever, more sputum and purulent sputum (purulence one of them)
+     - A prior positive sputum culture
+     - Any ventilatory support
 
    {{regimen:copd-exacerbation}}
 
