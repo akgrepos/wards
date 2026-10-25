@@ -1,5 +1,5 @@
 // Severity-ladder lint (docs/CONTENT-FORMAT.md, "Severity"). A ladder written as bullets ("- Mild: …", "- Severe: …") loses its
-// color codes; it should be a :::scale block. Warnings only: they print with the other content warnings and never fail the check.
+// color codes; it should be a :::scale block. rules.mjs turns these lines into findings.
 const LEVEL = /^\s*[-*]\s+(mild|moderate|severe)\s*:/i;
 const OPEN = /^:::scale\b/;
 const CLOSE = /^:::\s*$/;
@@ -24,12 +24,4 @@ export function severityLadderLines(src) {
     runLength = 0;
   });
   return found;
-}
-
-export function checkSeverityLadder({ cards }) {
-  const out = [];
-  for (const c of cards) {
-    for (const line of c.severityLines ?? []) out.push(`${c.file}, line ${line}: severity ladder should be a :::scale block (docs/CONTENT-FORMAT.md, "Severity")`);
-  }
-  return out;
 }

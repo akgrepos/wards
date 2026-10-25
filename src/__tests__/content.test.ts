@@ -313,7 +313,7 @@ describe('consistency rules', () => {
     const planned = addCard({}, kp('- See [[not-written-yet]]. ^[example-guideline-a]'));
     expect(errorsOf(planned)).not.toMatch(/unknown card/);
     expect(warnings(planned)).toMatch(/planned links: \[\[not-written-yet\]\]/);
-    expect(warnings(addCard({ related: { see: ['renal-aki'] } }))).toMatch(/test.md: related not reciprocal: renal-aki/);
+    expect(warnings(addCard({ related: { see: ['renal-aki'] } }))).toMatch(/test.md: related rule, renal-aki/);
   });
   it('warns when checked is over 12 months old', () => {
     const base = addCard({ checked: { date: '2025-01-15', by: 'owner', scope: 'owner review' } });
