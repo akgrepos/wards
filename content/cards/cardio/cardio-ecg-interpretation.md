@@ -8,7 +8,7 @@ aliases: [ECG, EKG, electrocardiogram, 12-lead, 12 lead, rhythm strip, ECG inter
 checked: { date: 2026-10-22, by: opus, scope: "doses and numbers", fingerprint: "e42d087db90b6bc6" }
 related:
   conditions: [cardio-nste-acs, cardio-chest-pain, cardio-atrial-fibrillation, renal-hyperkalemia, renal-hypokalemia, pulm-vte-diagnosis]
-  tools: []
+  tools: [psych-lithium-psychotropic-safety]
 ---
 ## At a Glance
 - Read every ECG in the same order: rate, rhythm, axis, intervals (PR, QRS, QT), conduction, chamber hypertrophy, then ST-T changes and Q waves by territory. Compare with a prior tracing. ^[common-practice]

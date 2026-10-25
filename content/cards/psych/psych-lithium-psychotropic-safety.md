@@ -8,7 +8,7 @@ aliases: [lithium, lithium carbonate, Lithobid, lithium level, lithium toxicity,
 based_on: [label-lithium-2025, extrip-lithium-2015, canmat-isbd-2018, nice-cg185-2025, aha-torsades-2010, label-divalproex-2026, label-clozapine-2026, fda-clozapine-rems-2025, label-tegretol-2026, label-ziprasidone-2026, label-haloperidol-inj-2026, periop-lithium-2026, gitlin-lithium-2016, lactmed-lithium-2026, lactmed-valproic-acid-2026, lactmed-carbamazepine-2024]
 checked: { date: 2026-10-25, by: opus, scope: "doses and numbers, Opus check of tier A claims against label and guideline text", fingerprint: "0d2fbd19b10f85d8" }
 related:
-  conditions: [psych-serotonin-syndrome-nms, psych-acute-agitation, renal-aki, renal-hyponatremia]
+  conditions: [psych-serotonin-syndrome-nms, psych-acute-agitation, renal-aki, renal-hyponatremia, psych-suicide-risk-assessment]
   tools: [cardio-ecg-interpretation]
 ---
 ## At a Glance

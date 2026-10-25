@@ -9,7 +9,7 @@ based_on: [ats-nirs-2026, ssc-sepsis-2026, ards-global-definition-2024, ats-ards
 checked: { date: 2026-10-21, by: owner, scope: "owner review", fingerprint: "b012f3540d16d8aa" }
 related:
   differential: [pulm-copd-exacerbation, pulm-vte-diagnosis, id-cap, cardio-adhf]
-  conditions: [crit-sepsis]
+  conditions: [crit-sepsis, psych-acute-agitation]
   tools: []
 emergency_hint: "Airway, O₂, find the cause, HFNC, intubate early"
 ---
