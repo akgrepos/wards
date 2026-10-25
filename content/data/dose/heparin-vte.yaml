@@ -14,5 +14,5 @@ notes: "The US label gives 5,000 units IV, then 20,000–40,000 units per 24 hou
 sources: [chest-parenteral-2012, label-heparin-2025]
 verification:
   source: chest-parenteral-2012
-  read: not-verified
-  date: 2026-10-23
+  read: full-text
+  date: 2026-10-25

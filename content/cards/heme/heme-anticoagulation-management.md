@@ -6,7 +6,7 @@ title: "Anticoagulation"
 aliases: [anticoagulation, blood thinner, blood thinners, DOAC, NOAC, apixaban, Eliquis, rivaroxaban, Xarelto, dabigatran, Pradaxa, edoxaban, Savaysa, warfarin, Coumadin, INR, enoxaparin, Lovenox, LMWH, heparin, UFH, fondaparinux, Arixtra, argatroban, bivalirudin, HIT, heparin-induced thrombocytopenia, anti-Xa, aPTT, bridging, warfarin to DOAC, mechanical valve, anticoagulant dosing, DOAC dosing, Anticoagulant Selection and Management, anticoagulant selection, anticoagulant management]
 definition: "Choosing and dosing an anticoagulant (DOAC, warfarin, low-molecular-weight heparin, unfractionated heparin, fondaparinux or a direct thrombin inhibitor) by indication, kidney and liver function, weight, pregnancy, interacting drugs and bleeding risk, then monitoring it and changing between agents safely. ^[chest-vte-2021, ash-vte-treatment-2020, acc-aha-af-2023]"
 based_on: [chest-vte-2021, ash-vte-treatment-2020, acc-aha-af-2023, aha-acc-pe-2026, ash-hit-2018, chest-periop-2022, ash-vte-cancer-2021]
-checked: { date: 2026-10-21, by: opus, scope: "doses and numbers", fingerprint: "cd06a3863a56ef23", carried: "2026-10-24: Dose row titles shortened to the indication only. Doses and numbers unchanged, the removed wording is kept in the longer indication text." }
+checked: { date: 2026-10-25, by: opus, scope: "doses and numbers, re-read against label and guideline text", fingerprint: "86b41fb9a1cbb270" }
 related:
   conditions: [cardio-atrial-fibrillation, pulm-vte-diagnosis, cardio-nste-acs]
 ---
@@ -38,7 +38,7 @@ related:
    | Pregnancy and postpartum | LMWH | Warfarin and DOACs ^[ash-vte-pregnancy-2018] |
    | Mechanical valve | Warfarin | DOACs (dabigatran: excess thrombosis and bleeding) ^[acc-aha-valvular-2020] |
    | Moderate–severe rheumatic mitral stenosis | Warfarin | DOACs ^[acc-aha-af-2023] |
-   | Antiphospholipid syndrome with thrombosis | Warfarin, INR 2–3. A DOAC is reasonable only in single-antibody venous disease | Rivaroxaban if triple positive. Any DOAC after arterial events ^[eular-aps-2019, chest-vte-2021, aha-acc-pe-2026] |
+   | Antiphospholipid syndrome with thrombosis | Warfarin, INR 2–3. A DOAC is reasonable only in single-antibody venous disease | Any DOAC if triple positive (the apixaban, rivaroxaban, dabigatran and edoxaban labels advise against it). Any DOAC after arterial events ^[eular-aps-2019, chest-vte-2021, aha-acc-pe-2026, label-eliquis-2025, label-xarelto-2026, label-pradaxa-2025, label-savaysa-2025] |
    | Kidney failure ({{calc:cockcroft-gault}} <30) or dialysis | Unfractionated heparin acutely. Warfarin or apixaban long term | Fondaparinux is contraindicated. Reduce LMWH (once daily), edoxaban (reduced dose at 15–50, not recommended <15) and dabigatran (no VTE dose at ≤30) per label ^[common-practice, label-eliquis-2025, aha-acc-pe-2026, label-arixtra-2024, label-lovenox-2026, label-savaysa-2025, label-pradaxa-2025] |
    | {{calc:child-pugh}} B or C liver disease | Individualize. LMWH or specialist input | Rivaroxaban and edoxaban. Apixaban in C ^[label-xarelto-2026, label-savaysa-2025, common-practice, label-eliquis-2025] |
    | History of HIT or suspected HIT | Non-heparin agent (see Escalation) | All heparins ^[ash-hit-2018] |
@@ -97,7 +97,7 @@ related:
 #### Interactions
 - Bleeding risk rises with NSAIDs, aspirin and other antiplatelets, and SSRIs or SNRIs. ^[label-eliquis-2025, label-warfarin-2025]
 - Apixaban: halve the dose with combined strong CYP3A4 and P-gp inhibitors (ketoconazole, itraconazole, ritonavir), avoid them if already on the lowest dose. Avoid strong inducers (rifampin, carbamazepine, phenytoin, St John's wort). ^[label-eliquis-2025]
-- Rivaroxaban: avoid combined P-gp and strong CYP3A4 inhibitors and strong inducers. ^[label-xarelto-2026]
+- Rivaroxaban: avoid combined P-gp and strong CYP3A4 inhibitors and strong inducers. With {{calc:cockcroft-gault}} 15 to <80, do not combine with a P-gp and moderate CYP3A inhibitor (erythromycin) unless the benefit justifies the risk. ^[label-xarelto-2026]
 - Dabigatran: ^[label-pradaxa-2025, label-savaysa-2025]
    - Dronedarone or ketoconazole with reduced kidney function lowers the AF dose or means avoidance. ^[label-pradaxa-2025, label-savaysa-2025]
    - Edoxaban reduces the dose for some P-gp inhibitors in VTE only. ^[label-pradaxa-2025, label-savaysa-2025]
@@ -108,7 +108,7 @@ related:
 - Use the interaction checker linked in each dose sheet. ^[common-practice]
 
 #### Periprocedural management
-- Estimate procedural bleeding risk and patient thrombotic risk about 7 days ahead. Minor procedures (dental, dermatologic, cataract) usually need no interruption. ^[chest-periop-2022]
+- Estimate procedural bleeding risk and patient thrombotic risk well before the procedure. Minor procedures (dental, dermatologic, cataract) usually need no interruption. ^[chest-periop-2022]
 | Agent | Low bleeding risk | High bleeding risk |
 |---|---|---|
 | Apixaban, rivaroxaban, edoxaban | Skip 1 day before | Skip 2 days before ^[pause-2019, chest-periop-2022] |
@@ -117,14 +117,14 @@ related:
 | Warfarin | Stop 5 days before. INR the day before in selected patients | Same ^[chest-periop-2022] |
 - Edoxaban hold times rest on CHEST 2022 (1–2 days), not PAUSE. ^[chest-periop-2022]
 - DOACs: no heparin bridging. Resume 1 day after low-risk and 2–3 days after high-risk procedures once hemostasis is secure. ^[pause-2019, chest-periop-2022]
-- Warfarin: recommend against bridging in AF. Suggest against it for VTE beyond 3 months and for mechanical valves, except for high thrombotic risk (mitral valve with stroke risk factors, caged-ball or tilting-disc valve, stroke or VTE in the past 3 months). The 2020 ACC/AHA valve guideline is more permissive and still lists any mechanical mitral valve as higher risk. Restart within 24 hours at the usual dose. ^[chest-periop-2022, acc-aha-valvular-2020]
+- Warfarin: recommend against bridging in AF. Suggest against it for VTE beyond 3 months and for mechanical valves, except for high thrombotic risk (mitral valve with stroke risk factors, caged-ball or tilting-disc valve, stroke or VTE in the past 3 months, severe thrombophilia or antiphospholipid antibodies). The 2020 ACC/AHA valve guideline is more permissive and still lists any mechanical mitral valve as higher risk. Restart within 24 hours at the usual dose. ^[chest-periop-2022, acc-aha-valvular-2020]
 - Neuraxial anesthesia: follow the label hold times and timing rules for each agent. ^[label-eliquis-2025, label-xarelto-2026, label-lovenox-2026]
 
 ## Monitor
 - **Warfarin:** INR daily to every few days at the start, then every 1–4 weeks once stable. ^[label-warfarin-2025]
 - **DOACs:** no routine coagulation tests. Creatinine, CBC and liver tests at baseline and at least yearly, sooner with a change in kidney function. ^[acc-aha-af-2023, label-eliquis-2025]
 - **Unfractionated heparin:** aPTT or anti-Xa every 4–6 hours after the start or a dose change until therapeutic, then daily. ^[label-heparin-2025, common-practice]
-- **Platelets on heparin:** every 2–3 days from day 4 to day 14 (every other day after surgery or trauma, from day 0 if heparin was given in the past 30 days). ^[ash-hit-2018]
+- **Platelets on heparin:** every 2–3 days from day 4 to day 14 (at least every other day on unfractionated heparin after surgery or trauma, and from day 0 if heparin was given in the past 30 days). Not needed for medical patients on LMWH or for fondaparinux. ^[ash-hit-2018]
 - **LMWH:** no routine anti-Xa, including in pregnancy. Consider a peak level (4 hours after the third dose) with {{calc:cockcroft-gault}} below 30, weight above 150 kg or a mechanical valve in pregnancy. ^[ash-vte-pregnancy-2018, aha-acc-pe-2026, acc-aha-valvular-2020, common-practice]
 - Every anticoagulant: bleeding signs, adherence, new interacting drugs, falls, and a yearly review of the indication. ^[acc-aha-af-2023, common-practice]
 
@@ -132,7 +132,7 @@ related:
 #### Heparin-induced thrombocytopenia
 - Suspect when platelets fall by more than 50% (or to below 50% of baseline), usually 5–10 days after heparin starts (sooner with exposure in the past 30–100 days), or with new thrombosis. ^[ash-hit-2018]
 - Score with the {{calc:4ts}}: 0–3 low (HIT unlikely, continue heparin), 4–5 intermediate, 6–8 high. ^[ash-hit-2018]
-- Intermediate or high: stop all heparin (including flushes and heparin-coated catheters, and LMWH), start a non-heparin anticoagulant and send a PF4/heparin immunoassay. Confirm a positive result with a functional assay (serotonin release). ^[ash-hit-2018]
+- Intermediate or high: stop all heparin (including flushes and heparin-coated catheters, and LMWH), start a non-heparin anticoagulant and send a PF4/heparin immunoassay. Confirm a positive result with a functional assay (serotonin release). ^[ash-hit-2018, common-practice]
 - Do not wait for the assay in intermediate or high probability. Compression ultrasound of the legs to look for thrombosis. ^[ash-hit-2018, common-practice]
 - Agent: ^[ash-hit-2018]
   - Argatroban or bivalirudin (critically ill, high bleeding risk, possible procedure) ^[ash-hit-2018]
@@ -165,15 +165,15 @@ related:
 #### Weight and obesity
 - Apixaban and rivaroxaban at standard doses for VTE regardless of weight or BMI. ISTH suggests not using dabigatran or edoxaban at BMI >40 kg/m² or weight >120 kg, and no DOACs for at least 4 weeks after bariatric surgery. ^[isth-obesity-doac-2021, aha-acc-pe-2026]
 - Enoxaparin uses actual body weight. Individualize above 150 kg. ^[aha-acc-pe-2026, label-lovenox-2026]
-- Weight ≤60 kg lowers the edoxaban dose for VTE. LMWH bleeding risk rises in women <45 kg and men <57 kg. ^[label-savaysa-2025, label-lovenox-2026]
+- Weight ≤60 kg lowers the edoxaban dose for VTE. Exposure to fixed prophylactic LMWH doses rises, with more bleeding, in women <45 kg and men <57 kg. ^[label-savaysa-2025, label-lovenox-2026]
 
 #### Age
 - Older age raises bleeding risk with every agent. Reduce doses only by label criteria, not by judgment alone. ^[label-eliquis-2025, acc-aha-af-2023]
 
 #### Pregnancy and lactation
-- Treatment: LMWH throughout pregnancy and for at least 6 weeks postpartum (minimum total 3 months). Warfarin and DOACs are avoided in pregnancy. ^[ash-vte-pregnancy-2018, acog-pb-196-2018]
+- Treatment: LMWH throughout pregnancy and for at least 6 weeks postpartum (minimum total 3 months). Warfarin and DOACs are avoided in pregnancy. ^[ash-vte-pregnancy-2018, chest-pregnancy-2012]
 - Around delivery: ASH suggests scheduled delivery with LMWH stopped beforehand. Allow at least 24 hours after a treatment dose before neuraxial anesthesia. ^[ash-vte-pregnancy-2018, label-lovenox-2026]
-- Breastfeeding: warfarin, LMWH, unfractionated heparin and fondaparinux are compatible. Avoid DOACs. ^[ash-vte-pregnancy-2018]
+- Breastfeeding: warfarin, LMWH, unfractionated heparin and fondaparinux are compatible. ASH advises against DOACs: apixaban and edoxaban pass into milk at higher levels (use an alternative), while rivaroxaban and dabigatran reach low levels and are not a reason to stop breastfeeding. ^[ash-vte-pregnancy-2018, lactmed-warfarin-2024, lactmed-enoxaparin-2025, lactmed-heparin-2024, lactmed-fondaparinux-2020, lactmed-apixaban-2026, lactmed-edoxaban-2026, lactmed-rivaroxaban-2026, lactmed-dabigatran-2026]
 - Mechanical valves in pregnancy need specialist input (valve thrombosis risk). ^[acc-aha-valvular-2020]
 
 #### Cancer

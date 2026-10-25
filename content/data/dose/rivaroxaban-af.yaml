@@ -21,5 +21,5 @@ cautions:
 sources: [label-xarelto-2026, acc-aha-af-2023]
 verification:
   source: label-xarelto-2026
-  read: not-verified
-  date: 2026-10-23
+  read: fda-label
+  date: 2026-10-25
