@@ -63,7 +63,7 @@ describe('tier rules', () => {
 });
 
 describe('gate', () => {
-  it('passes a matching stamp, a carry, or a listed draft; fails the rest', () => {
+  it('passes a matching stamp, a carry, or a draft already on the base list; fails the rest', () => {
     const fp = 'f'.repeat(16);
     expect(gateCard({ id: 'c', checked: { fingerprint: fp, by: 'opus', date: 'd' } }, fp, []).ok).toBe(true);
     expect(gateCard({ id: 'c', checked: { fingerprint: fp, carried: 'why' } }, fp, []).note).toMatch(/carried/);

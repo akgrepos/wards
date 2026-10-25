@@ -53,7 +53,7 @@ export function tierReport(baseRef) {
       tiers.push(r.tier);
       let gate = '';
       if (r.tier === 'tier-2') {
-        const g = gateCard(byId[id], fingerprint(after.split.cards[id]), after.content.unchecked);
+        const g = gateCard(byId[id], fingerprint(after.split.cards[id]), before.content.unchecked);
         gate = g.ok ? ` — ok: ${g.note}` : ` — **MISSING EVIDENCE: ${g.note}**`;
         if (!g.ok) failures.push(id);
       }
