@@ -5,7 +5,6 @@ system: id
 title: "Ceftriaxone"
 aliases: [Rocephin, third-generation cephalosporin, 3rd generation cephalosporin, CTX]
 reviewed: 2026-10-23
-checked: { date: 2026-10-23, by: opus, scope: doses and numbers }
 related:
   differential: []
   conditions: [id-cap, id-cellulitis, id-complicated-uti, crit-sepsis, gi-upper-gi-bleeding]
