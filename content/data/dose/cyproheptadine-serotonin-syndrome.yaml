@@ -2,21 +2,23 @@ drug: cyproheptadine
 drug_name: Cyproheptadine
 brand: Periactin
 indication: Serotonin syndrome
-indication_detail: Moderate serotonin syndrome when benzodiazepines are not enough. Off-label.
+indication_detail: Mild to moderate serotonin syndrome when benzodiazepines and supportive care are not enough. Off-label.
 population: Adults
-route: oral or nasogastric tube
+route: oral or crushed by nasogastric tube
 amount: 12
 unit: mg
-frequency: "then 2 mg every 2 hours while symptoms continue, then 8 mg every 6 hours"
-give_when: Moderate serotonin syndrome not controlled with benzodiazepines
-max: "32 mg in 24 hours"
+frequency: "loading dose, then 2 mg every 2 hours until clinical improvement"
+give_when: Serotonin syndrome not controlled with benzodiazepines and supportive care
+repeat: "Once symptoms are controlled, an alternative is 8 mg every 6 hours"
+max: "32 mg a day (label maximum for any use, not more than 0.5 mg/kg a day)"
 cautions:
-  - "Oral only. Crush for a nasogastric tube."
-  - "Sedation is expected and helps. Benefit is not proven."
-  - "Do not use in NMS."
-notes: "Dose from the 2005 review. The 2025 review notes that larger doses may be needed to block 5-HT2A receptors, that case reports start at 4 to 12 mg, and that benefit is unproven."
-sources: [boyer-ss-2005, chiew-ss-2025, label-cyproheptadine-2026]
+  - "Oral only, so of limited use in severe toxicity. Paralysis, intubation and cooling come first."
+  - "Sedation is expected and usually helps. Benefit over supportive care is not proven."
+  - "The 12 mg starting dose may be too low. About 30 mg may be needed to block 5-HT2A receptors."
+  - "Not for NMS."
+notes: "Regimen from the 2019 review. The 2007 review gives 4 to 12 mg for moderate toxicity. The label covers allergic conditions, not serotonin syndrome, and its maximum is the ceiling here."
+sources: [scotton-ss-2019, chiew-ss-2025, isbister-ss-2007, label-cyproheptadine-2026]
 verification:
-  source: boyer-ss-2005
-  read: not-verified
+  source: scotton-ss-2019
+  read: full-text
   date: 2026-10-25

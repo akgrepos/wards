@@ -9,5 +9,6 @@ items:
   - "Tremor with hyperreflexia"
   - "Hypertonia with temperature >38°C, and ocular clonus or inducible clonus"
 notes:
-  - "Validated in overdose against a toxicologist's diagnosis. Clonus is the key finding. Rule out other causes first. A neuroleptic started or increased shortly before onset points to NMS."
+  - "Clonus is the key finding. Derived in overdose: 84% sensitive and 97% specific against a toxicologist's diagnosis."
+  - "The 2022 modified criteria add lower-limb rigidity with temperature >38°C, require other causes to be ruled out, and exclude cases where a neuroleptic was started or increased before onset."
 sources: [dunkley-hunter-2003, chiew-ss-2025]

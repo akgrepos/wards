@@ -1,0 +1,21 @@
+drug: lorazepam
+drug_name: Lorazepam
+brand: Ativan
+indication: Neuroleptic malignant syndrome
+indication_detail: First-line drug for NMS, for agitation, rigidity and catatonic features. Off-label.
+population: Adults
+route: oral or IV
+amount: 1–2
+unit: mg
+frequency: "every 4 to 6 hours"
+give_when: Suspected NMS, after stopping the antipsychotic
+max: "8 mg a day (review staging table)"
+cautions:
+  - "Avoid IM when possible. Injections raise creatine kinase and confuse monitoring."
+  - "Watch sedation, airway and oxygen saturation."
+notes: "Dose and frequency from the 2021 NMS review. The injection label covers preanesthetic sedation and status epilepticus, not NMS."
+sources: [wadoo-nms-2021, label-ativan-inj-2026]
+verification:
+  source: wadoo-nms-2021
+  read: full-text
+  date: 2026-10-25

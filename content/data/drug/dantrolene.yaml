@@ -7,7 +7,9 @@ cautions:
     sources: [label-dantrium-iv-2026]
   - text: "Extravasation causes tissue injury and the solution is alkaline. Use a large vein and avoid infiltration."
     sources: [label-dantrium-iv-2026]
-  - text: "Hepatotoxicity is a known risk of oral dantrolene. Check liver tests during repeated use."
+  - text: "Hepatotoxicity has been reported after intravenous dantrolene. Check liver tests during repeated use."
+    sources: [label-dantrium-iv-2026]
+  - text: "Cardiovascular collapse with marked hyperkalemia has been reported in patients receiving dantrolene with calcium channel blockers. Do not combine IV dantrolene with a calcium channel blocker such as verapamil."
     sources: [label-dantrium-iv-2026]
 kidney_liver: "The label gives no kidney dose adjustment. Watch liver tests with repeated use."
 label_source: label-dantrium-iv-2026
