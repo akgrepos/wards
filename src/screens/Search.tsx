@@ -47,6 +47,8 @@ export function SearchScreen() {
   const [q, setQ] = useState(rememberedQuery);
   const [expanded, setExpanded] = useState<ReadonlySet<GroupKey>>(new Set());
   const area = useVisibleArea();
+  // The keyboard covers the home-indicator strip, so the bar stops reserving room for it (see .search-keyboard).
+  const keyboardOpen = !!area && window.innerHeight - area.height > 120;
   const sheet = useSheet();
   const results = useMemo(() => search(q, content), [q]);
   const searches = useStored(getSearches);
@@ -75,7 +77,7 @@ export function SearchScreen() {
     if (document.activeElement?.id === FOCUS_PROXY_ID) document.getElementById(SEARCH_INPUT_ID)?.focus();
   }, []);
   return (
-    <div className="search-screen" style={area ? { top: area.top, height: area.height } : undefined}>
+    <div className={`search-screen${keyboardOpen ? ' search-keyboard' : ''}`} style={area ? { top: area.top, height: area.height } : undefined}>
       <div className="search-scroll">
         <Screen title="Search">
           <div onClickCapture={(e) => openedResult(e.target as HTMLElement)}>

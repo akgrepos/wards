@@ -216,6 +216,8 @@ html[data-timed] .pw-zoom { bottom: calc(env(safe-area-inset-bottom) + var(--tab
 .search-scroll .screen-page { min-height: calc(100% + 1px); }
 .search-scroll .screen-body { padding-bottom: var(--space-24); }
 .akg-bottom-bar.search-bar { position: relative; }
+/* With the keyboard open the home-indicator inset is covered; keeping it left an empty band above the keyboard. */
+.search-keyboard .akg-bottom-bar.search-bar { padding-bottom: var(--space-8); }
 .search-bar .akg-search-field { flex: 1; min-width: 0; }
 .akg-bottom-bar.search-bar::before { background: linear-gradient(transparent, var(--background-grouped) 70%); }
 /* The hidden field the search button focuses first (16px so iOS doesn't zoom). */
