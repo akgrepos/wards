@@ -1,3 +1,4 @@
+drug: haloperidol
 drug_name: Haloperidol
 brand: Haldol
 indication: Delirium with distressing agitation in the ICU (off-label, trial dose)
@@ -9,11 +10,9 @@ frequency: three times a day, plus 2.5 mg as needed
 give_when: Delirium that distresses the patient or endangers the patient or staff after nonpharmacologic measures
 max: "20 mg a day (trial maximum)"
 duration: Reassess daily. Stop when delirium resolves
-boxed_warning: "Increased mortality in older adults with dementia-related psychosis."
 cautions:
   - "Continuous ECG monitoring. {{calc:qtc}} before the first dose and after dose changes. QTc >500 ms raises torsades risk."
   - "QTc >500 ms or a rise of ≥60 ms from baseline calls for prompt action: stop or switch the drug, correct potassium and magnesium."
-  - "Contraindicated in Parkinson disease and dementia with Lewy bodies."
   - "Trials found no benefit over placebo in days alive without delirium or coma (MIND-USA). AID-ICU showed no significant difference in days alive and out of hospital."
 notes: "AID-ICU regimen. The 2025 PADIS update makes no recommendation for or against antipsychotics to treat delirium. The label does not approve IV use."
 sources: [aid-icu-2022, label-haloperidol-inj-2026, padis-2025, mind-usa-2018, aha-accf-qt-2010]

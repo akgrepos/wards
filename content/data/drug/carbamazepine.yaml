@@ -1,0 +1,21 @@
+name: Carbamazepine
+class: Antiepileptic (dibenzazepine)
+brands: [Tegretol, Tegretol-XR]
+aliases: [CBZ]
+boxed_warning:
+  text: "Serious and sometimes fatal skin reactions (Stevens-Johnson syndrome, toxic epidermal necrolysis), strongly linked to HLA-B*1502, which is found almost only in people of Asian ancestry. Screen patients with at-risk ancestry before starting, and do not use it in allele-positive patients unless the benefit clearly outweighs the risk. Aplastic anemia and agranulocytosis: get a complete blood count at baseline, monitor closely if white cell or platelet counts fall, and consider stopping for significant bone marrow depression."
+  sources: [label-tegretol-2026]
+cautions:
+  - text: "Contraindicated with prior bone marrow depression, hypersensitivity to carbamazepine or to tricyclic compounds, and with nefazodone. Not recommended with an MAO inhibitor: stop the MAO inhibitor at least 14 days before."
+    sources: [label-tegretol-2026]
+  - text: "Potent CYP3A4 inducer (also CYP1A2, 2B6 and 2C): lowers levels of many drugs, including hormonal contraceptives, direct oral anticoagulants (avoid the combination), haloperidol, olanzapine, midazolam, methadone, tacrolimus and corticosteroids. CYP3A4 inhibitors (macrolides, azole antifungals, diltiazem, verapamil, grapefruit juice) raise carbamazepine levels."
+    sources: [label-tegretol-2026]
+  - text: "Hyponatremia, usually from SIADH, is dose-related and more likely in older adults and with diuretics. Consider stopping it for symptomatic hyponatremia."
+    sources: [label-tegretol-2026]
+  - text: "Stop at the first sign of a rash unless it is clearly unrelated. DRESS, anaphylaxis and angioedema can occur, and HLA-A*3101 also raises hypersensitivity risk. About a third of patients who react to carbamazepine also react to oxcarbazepine."
+    sources: [label-tegretol-2026]
+  - text: "Second- and third-degree AV block can occur, mainly with existing conduction disease. Avoid in hepatic porphyria. Can cause fetal harm, including spina bifida."
+    sources: [label-tegretol-2026]
+kidney_liver: "Liver injury ranges from enzyme rises to rare hepatic failure. Check liver tests at baseline and periodically, and stop it for new or worsening liver dysfunction or active liver disease. In kidney or liver damage use it only after weighing the risk (the label gives no specific dose change). Adjustments by use are on each dose."
+label_source: label-tegretol-2026
+sources: [label-tegretol-2026]

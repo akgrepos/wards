@@ -1,0 +1,18 @@
+name: Amoxicillin
+class: Aminopenicillin
+aliases: [Amox]
+boxed_warning: None
+cautions:
+  - text: Contraindicated after a serious hypersensitivity reaction (anaphylaxis, Stevens-Johnson syndrome) to amoxicillin or another β-lactam (penicillins, cephalosporins). Stop it for anaphylaxis or a progressing rash (SJS, TEN, DRESS, AGEP).
+    sources: [label-amoxicillin-2024]
+  - text: Avoid in infectious mononucleosis (a high percentage develop a rash).
+    sources: [label-amoxicillin-2024]
+  - text: Raises the INR with warfarin and other oral anticoagulants. Monitor the INR and adjust the anticoagulant.
+    sources: [label-amoxicillin-2024]
+  - text: Allopurinol increases the rate of rash. Probenecid raises and prolongs amoxicillin levels and is not recommended with it.
+    sources: [label-amoxicillin-2024]
+  - text: C. difficile diarrhea (mild to fatal colitis) can occur, even more than 2 months after use. Evaluate any new diarrhea.
+    sources: [label-amoxicillin-2024]
+kidney_liver: No change for mild to moderate kidney impairment. Reduce for GFR below 30 mL/min and avoid the highest-strength twice-daily tablet there (adjustments are on each dose). The label gives no liver adjustment.
+label_source: label-amoxicillin-2024
+sources: [label-amoxicillin-2024]

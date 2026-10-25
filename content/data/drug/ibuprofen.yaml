@@ -1,0 +1,20 @@
+name: Ibuprofen
+class: Non-selective NSAID
+brands: [Motrin]
+boxed_warning:
+  text: "Cardiovascular thrombotic events (myocardial infarction, stroke), which can be fatal, can occur early in treatment and rise with duration of use. Contraindicated in the setting of CABG surgery. Gastrointestinal bleeding, ulceration and perforation, which can be fatal, can occur at any time without warning symptoms. Older adults are at greater risk."
+  sources: [label-ibuprofen-tablets-2025]
+cautions:
+  - text: "Contraindicated after asthma, urticaria or allergic-type reactions to aspirin or other NSAIDs."
+    sources: [label-ibuprofen-tablets-2025]
+  - text: "Can raise blood pressure, cause fluid retention and worsen heart failure. Can cause acute kidney injury, especially with volume depletion, heart failure, kidney or liver impairment, older age, or ACE inhibitors, ARBs or diuretics, and blunts their effect."
+    sources: [label-ibuprofen-tablets-2025]
+  - text: "Bleeding risk rises with anticoagulants and antiplatelets. Can blunt the antiplatelet effect of low-dose aspirin. Raises lithium and methotrexate levels."
+    sources: [label-ibuprofen-tablets-2025]
+  - text: "Use the lowest effective dose for the shortest duration."
+    sources: [label-ibuprofen-tablets-2025]
+  - text: "Pregnancy: avoid from about 20 weeks (fetal kidney dysfunction, oligohydramnios) and from about 30 weeks (premature closure of the ductus arteriosus)."
+    sources: [label-ibuprofen-tablets-2025]
+kidney_liver: "Not recommended in advanced kidney disease. If it must be used, monitor kidney function closely. Stop if signs of liver disease develop."
+label_source: label-ibuprofen-tablets-2025
+sources: [label-ibuprofen-tablets-2025]

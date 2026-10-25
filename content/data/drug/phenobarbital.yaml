@@ -1,0 +1,19 @@
+name: Phenobarbital
+class: Barbiturate (long-acting)
+boxed_warning: None
+cautions:
+  - text: "The injection is an unapproved drug: FDA has not found it safe and effective, and its labeling is not FDA-approved."
+    sources: [label-phenobarbital-inj-2025]
+  - text: "Contraindicated in barbiturate sensitivity, manifest or latent porphyria, marked liver impairment, and severe respiratory distress with dyspnea or obstruction. Do not give to people with prior sedative-hypnotic addiction."
+    sources: [label-phenobarbital-inj-2025]
+  - text: "Rapid IV injection can cause severe respiratory depression, apnea, laryngospasm and hypotension. Use a large vein. The solution is highly alkaline: avoid extravasation, and intra-arterial injection can cause gangrene."
+    sources: [label-phenobarbital-inj-2025]
+  - text: "Additive CNS depression with alcohol, benzodiazepines and other sedatives. MAO inhibitors and valproate prolong its effect."
+    sources: [label-phenobarbital-inj-2025]
+  - text: "Longest-acting barbiturate and a hepatic enzyme inducer: it lowers the effect of warfarin, corticosteroids, doxycycline and hormonal contraceptives, which may need adjusting when it is started or stopped."
+    sources: [label-phenobarbital-inj-2025]
+  - text: "Stevens-Johnson syndrome and exfoliative dermatitis: stop it at any skin reaction. Can cause fetal harm. Contains benzyl alcohol and is not recommended in neonates."
+    sources: [label-phenobarbital-inj-2025]
+kidney_liver: "Reduce the dose in kidney impairment or liver disease, and in older or debilitated patients. Contraindicated with marked liver impairment, and do not give it with signs of impending hepatic coma. Large doses are contraindicated in nephritis."
+label_source: label-phenobarbital-inj-2025
+sources: [label-phenobarbital-inj-2025]

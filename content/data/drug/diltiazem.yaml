@@ -1,0 +1,16 @@
+name: Diltiazem
+class: Nondihydropyridine calcium channel blocker
+brands: [Cardizem]
+boxed_warning: None
+cautions:
+  - text: "IV contraindications: severe hypotension or cardiogenic shock, sick sinus syndrome or second- or third-degree AV block without a functioning pacemaker, AF or flutter with an accessory pathway (Wolff-Parkinson-White, pre-excitation), ventricular or wide-complex tachycardia of unclear origin, and an IV β-blocker given together or within a few hours."
+    sources: [label-diltiazem-inj-2026]
+  - text: "Hypotension, bradycardia and AV block. Monitor blood pressure and heart rate, and hold or stop for hypotension, bradycardia or high-degree AV block. Additive with β-blockers, digoxin and clonidine. Avoid with ivabradine."
+    sources: [label-diltiazem-inj-2026]
+  - text: "Avoid in LVEF ≤40% or decompensated heart failure (negative inotrope)."
+    sources: [acc-aha-af-2023, label-diltiazem-inj-2026]
+  - text: "Inhibits CYP3A4: raises simvastatin and lovastatin (myopathy), midazolam, cyclosporine, carbamazepine and buspirone levels. Rifampin and other CYP3A4 inducers make it ineffective (avoid)."
+    sources: [label-diltiazem-inj-2026]
+kidney_liver: "Metabolized by the liver and excreted in urine and bile: use with caution in kidney or liver impairment (no specific dose change). Cirrhosis prolongs its half-life."
+label_source: label-diltiazem-inj-2026
+sources: [label-diltiazem-inj-2026, acc-aha-af-2023]

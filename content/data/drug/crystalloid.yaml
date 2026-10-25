@@ -1,0 +1,19 @@
+name: Isotonic Crystalloid
+class: IV fluid (isotonic crystalloid)
+brands: [Plasma-Lyte A]
+aliases: [lactated Ringer's, LR, normal saline, balanced crystalloid]
+boxed_warning: None
+cautions:
+  - text: Fluid overload and pulmonary edema, depending on volume and rate. Higher risk with heart failure or severe kidney impairment. Monitor fluid balance and electrolytes.
+    sources: [label-lactated-ringers-2025, label-nacl-2024, label-plasmalyte-2019]
+  - text: Lactated Ringer's contains calcium. Never in the same line at the same time as ceftriaxone or citrated blood. Saline and Plasma-Lyte A contain no calcium and are compatible with blood.
+    sources: [label-lactated-ringers-2025, label-plasmalyte-2019]
+  - text: Can cause hospital-acquired hyponatremia. Higher risk with SIADH, heart failure, diuretics, after surgery and in older adults. Monitor sodium.
+    sources: [label-lactated-ringers-2025, label-nacl-2024, label-plasmalyte-2019]
+  - text: Lactated Ringer's and Plasma-Lyte A contain potassium. The labels advise avoiding them with hyperkalemia or severe kidney impairment, or monitoring potassium closely if used.
+    sources: [label-lactated-ringers-2025, label-plasmalyte-2019]
+  - text: Large volumes of 0.9% saline can cause hyperchloremic metabolic acidosis.
+    sources: [label-nacl-2024]
+kidney_liver: No label dose change. Severe kidney impairment raises the risk of fluid overload and of sodium or potassium retention. In severe liver impairment the lactate in lactated Ringer's may not be metabolized and acidosis can worsen. Adjustments by use are on each dose.
+label_source: label-lactated-ringers-2025
+sources: [label-lactated-ringers-2025, label-nacl-2024, label-plasmalyte-2019]

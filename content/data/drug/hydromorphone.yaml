@@ -1,0 +1,16 @@
+name: Hydromorphone
+class: Opioid agonist
+brands: [Dilaudid]
+boxed_warning:
+  text: "Addiction, abuse and misuse, which can lead to overdose and death. Life-threatening respiratory depression, especially at the start and after a dose increase. Benzodiazepines and other CNS depressants, including alcohol, can cause profound sedation, respiratory depression, coma and death. Neonatal opioid withdrawal syndrome with prolonged use in pregnancy. Oral forms also: accidental ingestion, especially by children, can be fatal, oral solution dosing errors (mg and mL, different concentrations) can cause fatal overdose, and the opioid analgesic REMS applies."
+  sources: [label-hydromorphone-injection-2026, label-hydromorphone-oral-2026]
+cautions:
+  - text: "Contraindicated with significant respiratory depression, acute or severe asthma without monitoring or resuscitation equipment, known or suspected gastrointestinal obstruction including paralytic ileus, and hypersensitivity to hydromorphone or to sulfite-containing medications."
+    sources: [label-hydromorphone-injection-2026, label-hydromorphone-oral-2026]
+  - text: "CNS depressants that add to respiratory depression include benzodiazepines, gabapentinoids, other sedatives, antipsychotics, muscle relaxants and other opioids. Avoid with MAOIs or within 14 days of stopping them. Serotonergic drugs can cause serotonin syndrome."
+    sources: [label-hydromorphone-injection-2026, label-hydromorphone-oral-2026]
+  - text: "Higher risk of respiratory depression in chronic lung disease and in older, cachectic or debilitated patients. Can cause severe hypotension and adrenal insufficiency. Avoid in raised intracranial pressure, head injury or impaired consciousness."
+    sources: [label-hydromorphone-injection-2026, label-hydromorphone-oral-2026]
+kidney_liver: "Exposure rises in kidney and liver impairment. Start at one-fourth to one-half of the usual starting dose and titrate carefully. Severe hepatic impairment has not been studied. Adjustments by use are on each dose."
+label_source: label-hydromorphone-injection-2026
+sources: [label-hydromorphone-injection-2026, label-hydromorphone-oral-2026]

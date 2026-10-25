@@ -1,3 +1,4 @@
+drug: cefpodoxime
 drug_name: Cefpodoxime
 indication: Complicated UTI or pyelonephritis, oral step-down
 population: Adults
@@ -10,8 +11,6 @@ adjustments:
     change: Every 24 hours
   - when: Hemodialysis
     change: 3 times a week after dialysis
-cautions:
-  - Take with food.
 notes: Guideline dose. The label lists only uncomplicated UTI.
 sources:
   - idsa-cuti-ivpo-2025

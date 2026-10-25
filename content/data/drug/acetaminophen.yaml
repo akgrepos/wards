@@ -1,0 +1,19 @@
+name: Acetaminophen
+class: Non-opioid analgesic and antipyretic
+brands: [Ofirmev, Tylenol]
+aliases: [APAP, paracetamol]
+boxed_warning:
+  text: "Injection: dosing errors (mg and mL confused, weight-based dosing not used under 50 kg, infusion pump wrongly programmed) can cause accidental overdose and death. Hepatotoxicity: acute liver failure, at times needing transplant or fatal, mostly with doses above the daily maximum and often with more than one acetaminophen product. Count acetaminophen from all routes and all products, including combination opioid products, toward the daily maximum."
+  sources: [label-acetaminophen-iv-2026]
+cautions:
+  - text: "Contraindicated with hypersensitivity to acetaminophen. Anaphylaxis has occurred. Stop at the first sign of allergy."
+    sources: [label-acetaminophen-iv-2026]
+  - text: "Higher risk of liver injury with alcohol use disorder, chronic malnutrition or severe hypovolemia. Use with caution."
+    sources: [label-acetaminophen-iv-2026]
+  - text: "Serious skin reactions (AGEP, Stevens-Johnson syndrome, toxic epidermal necrolysis) can be fatal. Stop at the first rash."
+    sources: [label-acetaminophen-iv-2026]
+  - text: "Regular use can raise the INR on warfarin. Check the INR more often."
+    sources: [label-acetaminophen-iv-2026]
+kidney_liver: "Contraindicated in severe hepatic impairment or severe active liver disease. Use with caution and consider a lower daily total in other liver disease. In severe kidney impairment (CrCl of 30 or less), longer intervals and a lower daily total may be needed. Adjustments by use are on each dose."
+label_source: label-acetaminophen-iv-2026
+sources: [label-acetaminophen-iv-2026]

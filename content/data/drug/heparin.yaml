@@ -1,0 +1,20 @@
+name: Heparin (unfractionated)
+class: Unfractionated heparin
+aliases: [UFH, heparin sodium]
+boxed_warning: None
+cautions:
+  - text: Contraindicated with a history of heparin-induced thrombocytopenia (with or without thrombosis), thrombocytopenia with pentosan polysulfate, hypersensitivity to heparin or pork products, or uncontrollable bleeding (except from DIC).
+    sources: [label-heparin-2025]
+  - text: Check platelets before and during therapy. If the count falls below 100,000/mm3 or new thrombosis occurs, stop heparin, test for heparin-induced thrombocytopenia, and use another anticoagulant. It can appear weeks after stopping.
+    sources: [label-heparin-2025]
+  - text: Fatal medication errors have occurred. Confirm the vial strength before giving. Not for catheter lock flush.
+    sources: [label-heparin-2025]
+  - text: Hyperkalemia (aldosterone suppression), more likely with diabetes, chronic kidney failure, acidosis or potassium-sparing drugs. Check potassium in those at risk and in anyone treated more than 5 days.
+    sources: [label-heparin-2025]
+  - text: Avoid after andexanet alfa (unresponsiveness to heparin and thrombosis). Use another anticoagulant.
+    sources: [label-heparin-2025]
+  - text: Bleeding risk rises with antiplatelets and NSAIDs. Bleeding is more common over 60 years, especially in women.
+    sources: [label-heparin-2025]
+kidney_liver: No dose change in the label. Bleeding risk is higher with severe kidney disease or liver disease with impaired hemostasis.
+label_source: label-heparin-2025
+sources: [label-heparin-2025]

@@ -201,7 +201,7 @@ function DoseSection({ title, children }: { title: string; children: ReactNode }
 }
 
 // Every source the drug's lines on a dose sheet cite, so the sheet's source pills cover them.
-const drugSources = (g: Drug) => [...(g.boxed_warning === 'None' ? [] : g.boxed_warning.sources), ...(g.cautions ?? []).flatMap((c) => c.sources), g.label_source];
+const drugSources = (g: Drug) => [...(g.boxed_warning === 'None' ? [] : g.boxed_warning.sources), ...(g.cautions ?? []).flatMap((c) => c.sources), ...(g.label_source ? [g.label_source] : [])];
 
 function DoseSheet({ id }: { id: string }) {
   const sheet = useSheet();
@@ -304,7 +304,7 @@ export function DoseRow({ id, warnings, large, surface, children }: { id: string
     );
   }
   const tags = [
-    ...(hasBoxedWarning(d) ? [<AKG.Tag key="boxed" variant="critical">Boxed warning</AKG.Tag>] : []),
+    ...(hasBoxedWarning(d) || (drugRecord(d.drug) && drugRecord(d.drug)!.boxed_warning !== 'None') ? [<AKG.Tag key="boxed" variant="critical">Boxed warning</AKG.Tag>] : []),
     ...(warnings ?? []).map((w) => <AKG.Tag key={w} variant="warning">{w}</AKG.Tag>),
   ];
   return (

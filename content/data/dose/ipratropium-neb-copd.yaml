@@ -1,3 +1,4 @@
+drug: ipratropium
 drug_name: Ipratropium (nebulized)
 indication: COPD exacerbation, added to albuterol
 population: Adults
@@ -7,7 +8,6 @@ unit: mg
 frequency: every 6–8 hours
 give_when: With albuterol at the start of an exacerbation
 cautions:
-  - "Avoid spraying into the eyes (acute angle-closure glaucoma). Caution with urinary retention."
   - "If a long-acting muscarinic antagonist (e.g. tiotropium) is continued, ipratropium adds little."
 notes: "Labeled for maintenance treatment of COPD bronchospasm, 500 mcg three to four times daily, 6–8 hours apart. Use in exacerbations follows the guideline. Combined vial with albuterol (0.5 mg/2.5 mg): one vial four times daily, up to two extra vials a day (label)."
 sources: [gold-copd-2026, label-ipratropium-neb-2026]

@@ -1,0 +1,18 @@
+name: Acetazolamide
+class: Carbonic anhydrase inhibitor
+brands: [Diamox]
+boxed_warning: None
+cautions:
+  - text: Contraindicated with low Na⁺ or K⁺, adrenal insufficiency and hyperchloremic acidosis.
+    sources: [label-acetazolamide-inj-2025]
+  - text: A sulfonamide derivative. Contraindicated with hypersensitivity, and cross-sensitivity with sulfonamides is possible. Rare fatal reactions include Stevens-Johnson syndrome, toxic epidermal necrolysis, fulminant hepatic necrosis and agranulocytosis or aplastic anemia. Stop at the first sign.
+    sources: [label-acetazolamide-inj-2025]
+  - text: Check a baseline CBC with platelets, then periodically, and monitor electrolytes.
+    sources: [label-acetazolamide-inj-2025]
+  - text: Use with caution in COPD or impaired ventilation, because it can precipitate or worsen acidosis.
+    sources: [label-acetazolamide-inj-2025]
+  - text: High-dose aspirin with acetazolamide has caused anorexia, tachypnea, lethargy, coma and death.
+    sources: [label-acetazolamide-inj-2025]
+kidney_liver: Contraindicated in marked kidney or liver disease or dysfunction, and in cirrhosis (risk of hepatic encephalopathy).
+label_source: label-acetazolamide-inj-2025
+sources: [label-acetazolamide-inj-2025]

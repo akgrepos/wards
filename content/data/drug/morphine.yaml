@@ -1,0 +1,15 @@
+name: Morphine
+class: Opioid agonist
+boxed_warning:
+  text: "Addiction, abuse and misuse, which can lead to overdose and death. Life-threatening respiratory depression, especially at the start and after a dose increase. Accidental ingestion of oral forms, especially by children, can be fatal. Benzodiazepines and other CNS depressants, including alcohol, can cause profound sedation, respiratory depression, coma and death. Neonatal opioid withdrawal syndrome with prolonged use in pregnancy. Oral forms fall under the opioid analgesic REMS."
+  sources: [label-morphine-injection-2026, label-morphine-tablets-2026]
+cautions:
+  - text: "Contraindicated with significant respiratory depression, acute or severe asthma without monitoring or resuscitation equipment, known or suspected gastrointestinal obstruction including paralytic ileus, and MAOI use now or within 14 days."
+    sources: [label-morphine-injection-2026, label-morphine-tablets-2026]
+  - text: "CNS depressants that add to respiratory depression include benzodiazepines, gabapentinoids, other sedatives, antipsychotics, muscle relaxants and other opioids. Serotonergic drugs can cause serotonin syndrome."
+    sources: [label-morphine-injection-2026, label-morphine-tablets-2026]
+  - text: "Higher risk of respiratory depression in chronic lung disease and in older, cachectic or debilitated patients. Can cause severe hypotension and adrenal insufficiency. Avoid in raised intracranial pressure, head injury or impaired consciousness."
+    sources: [label-morphine-injection-2026, label-morphine-tablets-2026]
+kidney_liver: "Pharmacokinetics are altered in kidney failure and in cirrhosis. Start lower and titrate slowly while watching for respiratory depression, sedation and hypotension. Adjustments by use are on each dose."
+label_source: label-morphine-injection-2026
+sources: [label-morphine-injection-2026, label-morphine-tablets-2026]

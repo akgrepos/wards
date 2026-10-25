@@ -1,0 +1,21 @@
+name: Ferumoxytol
+class: IV iron
+brands: [Feraheme]
+aliases: [IV iron]
+boxed_warning:
+  text: Fatal and serious hypersensitivity reactions, including anaphylaxis, presenting as hypotension, syncope, unresponsiveness or cardiorespiratory arrest. Give only as an IV infusion over at least 15 minutes, with personnel and therapies for anaphylaxis immediately available. Monitor blood pressure and pulse during and after the infusion and observe for at least 30 minutes. Reactions occur even when a previous dose was tolerated.
+  sources: [label-feraheme-2026]
+cautions:
+  - text: Contraindicated with hypersensitivity to ferumoxytol or a history of allergic reaction to any IV iron.
+    sources: [label-feraheme-2026]
+  - text: Multiple drug allergies raise the risk of anaphylaxis. Weigh risks and benefits. Older patients with serious comorbidities may have worse outcomes from a reaction.
+    sources: [label-feraheme-2026]
+  - text: Can cause clinically significant hypotension. Monitor after each dose.
+    sources: [label-feraheme-2026]
+  - text: Alters MRI for up to 3 months. Do planned MRI first and tell radiology. No effect on X-ray, CT, PET, SPECT, ultrasound or nuclear imaging.
+    sources: [label-feraheme-2026]
+  - text: Do not give with iron overload. Serum iron and transferrin-bound iron read falsely high for 24 hours. May reduce absorption of oral iron.
+    sources: [label-feraheme-2026]
+kidney_liver: The label gives no dose change for kidney or liver impairment.
+label_source: label-feraheme-2026
+sources: [label-feraheme-2026]

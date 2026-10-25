@@ -1,3 +1,4 @@
+drug: prasugrel
 drug_name: Prasugrel
 brand: Effient
 indication: Acute coronary syndrome managed with PCI, loading dose
@@ -7,7 +8,6 @@ amount: "60"
 unit: mg
 frequency: once
 give_when: Coronary anatomy known and PCI planned
-boxed_warning: "Significant, sometimes fatal bleeding: contraindicated with active bleeding or prior TIA or stroke. Generally not recommended at age ≥75 years. Do not start if urgent CABG is likely."
 alternative:
   dose: prasugrel-acs
   when: Maintenance

@@ -1,3 +1,4 @@
+drug: enoxaparin
 drug_name: Enoxaparin
 brand: Lovenox
 indication: VTE prophylaxis after abdominal surgery
@@ -7,7 +8,6 @@ amount: "40"
 unit: mg
 frequency: once daily
 give_when: "First dose 2 hours before abdominal surgery"
-boxed_warning: "Spinal or epidural hematoma with neuraxial anesthesia or spinal puncture."
 adjustments:
   - when: CrCl <30 mL/min
     change: 30 mg once daily

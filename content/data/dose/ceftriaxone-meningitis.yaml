@@ -9,7 +9,6 @@ unit: g
 frequency: every 12 hours
 rate: over 30 minutes
 max: 4 g per day (label)
-boxed_warning: None
 cautions:
   - "Empiric therapy is vancomycin plus ceftriaxone, plus ampicillin if over 50 years or immunocompromised (Listeria)."
   - "Dexamethasone 0.15 mg/kg every 6 hours for 2–4 days, started before or with the first antibiotic dose."

@@ -1,0 +1,14 @@
+name: Penicillin V potassium
+class: Natural penicillin (oral)
+aliases: [Penicillin VK, Pen VK, PCN VK]
+boxed_warning: None
+cautions:
+  - text: Contraindicated after a hypersensitivity reaction to any penicillin. Severe reactions have occurred with cephalosporins in penicillin-allergic patients.
+    sources: [label-penicillin-vk-2022]
+  - text: Do not rely on the oral route in severe illness or with vomiting, gastric dilatation or intestinal hypermotility (absorption is unreliable).
+    sources: [label-penicillin-vk-2022]
+  - text: C. difficile diarrhea (mild to fatal colitis) can occur, even more than 2 months after use. Evaluate any new diarrhea.
+    sources: [label-penicillin-vk-2022]
+kidney_liver: The label gives no kidney or liver adjustment.
+label_source: label-penicillin-vk-2022
+sources: [label-penicillin-vk-2022]

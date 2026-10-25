@@ -1,0 +1,20 @@
+name: Metronidazole
+class: Nitroimidazole
+aliases: [Flagyl]
+boxed_warning:
+  text: Carcinogenic in mice and rats. Reserve for the labeled indications and avoid unnecessary use.
+  sources: [label-metronidazole-iv-2025]
+cautions:
+  - text: Contraindicated with hypersensitivity to any nitroimidazole, with disulfiram in the last 2 weeks (psychotic reactions), and in Cockayne syndrome (fatal acute liver failure).
+    sources: [label-metronidazole-iv-2025]
+  - text: Disulfiram-like reaction. No alcohol or propylene glycol products during treatment and for at least 3 days after.
+    sources: [label-metronidazole-iv-2025]
+  - text: Seizures, encephalopathy, aseptic meningitis, and optic and peripheral neuropathy. Persistent neuropathy with prolonged courses. Reassess promptly if neurologic signs appear.
+    sources: [label-metronidazole-iv-2025]
+  - text: Severe skin reactions including SJS, TEN, DRESS and AGEP. Stop at once if they occur.
+    sources: [label-metronidazole-iv-2025]
+  - text: Enhances warfarin (longer prothrombin time). QT prolongation, mainly with other QT-prolonging drugs. Phenytoin and phenobarbital lower its levels.
+    sources: [label-metronidazole-iv-2025]
+kidney_liver: No labeled dose change for kidney impairment. Accumulates in severe liver disease, so use lower doses cautiously there.
+label_source: label-metronidazole-iv-2025
+sources: [label-metronidazole-iv-2025]

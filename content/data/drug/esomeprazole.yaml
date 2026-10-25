@@ -1,0 +1,19 @@
+name: Esomeprazole
+class: Proton pump inhibitor
+brands: [Nexium IV, Nexium]
+aliases: [PPI]
+boxed_warning: None
+cautions:
+  - text: Contraindicated with hypersensitivity to substituted benzimidazoles and with rilpivirine-containing products. Avoid with nelfinavir.
+    sources: [label-esomeprazole-iv-2025]
+  - text: Avoid with clopidogrel (CYP2C19 inhibition reduces its antiplatelet effect). Consider another antiplatelet drug.
+    sources: [label-esomeprazole-iv-2025]
+  - text: Avoid with rifampin or St. John's wort (much lower esomeprazole levels). Monitor INR on warfarin and levels of digoxin and high-dose methotrexate.
+    sources: [label-esomeprazole-iv-2025]
+  - text: Acute tubulointerstitial nephritis can occur at any time. Stop and evaluate if suspected. Raises the risk of Clostridioides difficile diarrhea, especially in hospital.
+    sources: [label-esomeprazole-iv-2025]
+  - text: Severe cutaneous reactions (SJS, TEN, DRESS, AGEP) and cutaneous or systemic lupus can occur. Stop at the first sign. Hypomagnesemia with prolonged use.
+    sources: [label-esomeprazole-iv-2025]
+kidney_liver: No dose change for kidney impairment. Exposure rises in liver impairment, so the IV infusion rate is reduced by Child-Pugh class (see Adjust on the dose).
+label_source: label-esomeprazole-iv-2025
+sources: [label-esomeprazole-iv-2025]

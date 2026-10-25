@@ -9,7 +9,6 @@ unit: g
 frequency: every 24 hours
 rate: over 30 minutes
 max: 4 g per day (label)
-boxed_warning: None
 adjustments:
   - when: Kidney impairment alone, any degree, or liver dysfunction alone
     change: No change (label)

@@ -1,3 +1,4 @@
+drug: ciprofloxacin
 drug_name: Ciprofloxacin
 indication: Complicated UTI or pyelonephritis, oral
 population: Adults
@@ -5,7 +6,6 @@ route: PO
 amount: 500–750
 unit: mg
 frequency: every 12 hours
-boxed_warning: "Fluoroquinolones: disabling and potentially irreversible tendinitis and tendon rupture, peripheral neuropathy and CNS effects, and worsening of myasthenia gravis. Stop at the first sign."
 adjustments:
   - when: CrCl 30–50 mL/min
     change: 250–500 mg every 12 hours
@@ -15,8 +15,6 @@ adjustments:
     change: 250–500 mg every 24 hours, after dialysis
   - when: Severe infection with severe kidney impairment
     change: Label allows 750 mg at the reduced intervals
-cautions:
-  - Separate from antacids, calcium, iron and zinc (2 hours before or 6 hours after).
 notes: Guideline dose. The label's UTI dose is 250–500 mg every 12 hours.
 sources:
   - idsa-cuti-ivpo-2025

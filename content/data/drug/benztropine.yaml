@@ -1,0 +1,14 @@
+name: Benztropine
+class: Anticholinergic antiparkinsonian agent
+brands: [Cogentin]
+boxed_warning: None
+cautions:
+  - text: "Anticholinergic effects: urinary retention, tachycardia, and confusion, excitement or visual hallucinations in susceptible patients such as older adults and those with delirium. Observe closely with prostatic hypertrophy or a tendency to tachycardia."
+    sources: [label-benztropine-inj-2024]
+  - text: "Anhidrosis with hyperthermia and heat stroke, sometimes fatal, especially in hot weather and with antipsychotics, tricyclic antidepressants or other anticholinergic drugs. Paralytic ileus has occurred with these combinations. Ask about fever, heat intolerance and abdominal complaints."
+    sources: [label-benztropine-inj-2024]
+  - text: "Avoid in angle-closure glaucoma. Not recommended in tardive dyskinesia, which it can worsen. Contraindicated under age 3."
+    sources: [label-benztropine-inj-2024]
+kidney_liver: "The label gives no kidney or liver dose adjustment. In older adults start at the low end of the range."
+label_source: label-benztropine-inj-2024
+sources: [label-benztropine-inj-2024]

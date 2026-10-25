@@ -1,3 +1,4 @@
+drug: potassium-chloride
 drug_name: Potassium chloride
 indication: Hypokalemia when oral replacement is not feasible
 population: Adults
@@ -14,10 +15,8 @@ adjustments:
   - when: "GFR <30 mL/min/1.73 m²"
     change: "Start low and recheck K⁺ every 2–4 hours (label: risk of life-threatening hyperkalemia, contraindicated in renal failure)"
 cautions:
-  - "Never undiluted or as an IV push: direct injection of the concentrate can be instantly fatal."
   - "Give in saline, not dextrose: dextrose can lower K⁺ further."
   - "Concentration: the concentrate label allows up to 40 mEq/L at this rate. Above 40 mEq/L is painful and an expert review advises central access. The premixed-bag label prefers a central route whenever possible and requires it for 300–400 mEq/L."
-  - "Contraindicated in hyperkalemia, renal failure and conditions with potassium retention (US label)."
 sources: [label-kcl-injection-2026, label-kcl-premix-2018, asmar-hypokalemia-2012, kardalas-hypokalemia-2018]
 verification:
   source: label-kcl-injection-2026

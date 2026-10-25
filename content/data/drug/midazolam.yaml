@@ -1,0 +1,20 @@
+name: Midazolam
+class: Benzodiazepine (short-acting)
+aliases: [Versed]
+boxed_warning:
+  text: "IV midazolam has caused respiratory depression and arrest, with death or hypoxic brain injury when not recognized and treated promptly. Give it IV only where continuous respiratory and cardiac monitoring (such as pulse oximetry), resuscitation drugs, airway equipment and staff skilled in airway management are immediately available. Concomitant use with opioids can cause profound sedation, respiratory depression, coma and death. Individualize every dose: titrate IV doses slowly, with lower doses over age 60, in debilitated patients and with opioids or other CNS depressants. Never give it by rapid injection to neonates (severe hypotension and seizures)."
+  sources: [label-midazolam-inj-2026]
+cautions:
+  - text: "Contraindicated in acute narrow-angle glaucoma (open-angle glaucoma only with treatment). Give only IM or IV, and avoid intra-arterial injection and extravasation."
+    sources: [label-midazolam-inj-2026]
+  - text: "Serious cardiorespiratory events (respiratory depression, airway obstruction, apnea, cardiac arrest), sometimes fatal. Risk is higher with opioids, alcohol and other CNS depressants, in COPD, and in older or debilitated patients. Keep oxygen, airway equipment and flumazenil immediately available."
+    sources: [label-midazolam-inj-2026]
+  - text: "CYP3A4 inhibitors (erythromycin, diltiazem, verapamil, ketoconazole, itraconazole, cimetidine, saquinavir) slow its clearance and prolong sedation."
+    sources: [label-midazolam-inj-2026]
+  - text: "Agitation, involuntary movements and combativeness can occur (paradoxical reaction or cerebral hypoxia). Amnesia for several hours is common."
+    sources: [label-midazolam-inj-2026]
+  - text: "Withdrawal can follow abrupt stopping after a prolonged ICU infusion."
+    sources: [label-midazolam-inj-2026]
+kidney_liver: "Half-life is longer in cirrhosis, kidney failure, heart failure and older age, and its active metabolite accumulates in kidney failure, so recovery can be slower. Use lower doses in older or debilitated patients."
+label_source: label-midazolam-inj-2026
+sources: [label-midazolam-inj-2026]

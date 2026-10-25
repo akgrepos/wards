@@ -1,3 +1,4 @@
+drug: ketorolac
 drug_name: Ketorolac
 brand: Toradol
 indication: Moderately severe acute pain, as part of multimodal analgesia
@@ -8,16 +9,13 @@ unit: mg
 frequency: every 6 hours as needed
 duration: "5 days or less in total across IV, IM and oral doses"
 max: "120 mg a day"
-boxed_warning: "Gastrointestinal bleeding and perforation, cardiovascular thrombotic events, acute kidney injury, bleeding risk. Not for prophylaxis before major surgery."
 adjustments:
   - when: "Age 65 years or older, renal impairment, or under 50 kg"
     change: "15 mg every 6 hours, maximum 60 mg a day"
   - when: "Single dose, same groups"
     change: "30 mg once (under 65 years) or 15 mg once (the groups above)"
 cautions:
-  - "Contraindicated with advanced renal impairment or volume depletion, active or past peptic ulcer or gastrointestinal bleeding, cerebrovascular bleeding or high bleeding risk, aspirin or NSAID allergy, and with aspirin, other NSAIDs or probenecid."
   - "Correct volume depletion first. Give the IV bolus over at least 15 seconds."
-  - "Beers criteria: avoid in older adults."
 notes: "Oral ketorolac is only a continuation after IV or IM dosing, within the same 5-day total."
 sources: [label-ketorolac-injection-2024, label-ketorolac-tablets-2024, ags-beers-2023]
 verification:

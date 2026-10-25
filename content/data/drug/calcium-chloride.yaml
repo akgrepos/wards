@@ -1,0 +1,18 @@
+name: Calcium Chloride
+class: Electrolyte (IV calcium salt)
+aliases: [CaCl2]
+boxed_warning: None
+cautions:
+  - text: Label contraindications are ventricular fibrillation, asystole and electromechanical dissociation. Resuscitation guidelines still give IV calcium in cardiac arrest caused by hyperkalemia.
+    sources: [label-calcium-chloride-2026, ukka-hyperkalaemia-2026]
+  - text: Never IM or subcutaneous. Give slowly into a central or deep vein. Extravasation causes tissue necrosis, ulceration and calcinosis cutis. Stop at that site at once if it infiltrates.
+    sources: [label-calcium-chloride-2026]
+  - text: Rapid injection can cause vasodilation, hypotension, bradycardia, arrhythmias, syncope and cardiac arrest.
+    sources: [label-calcium-chloride-2026]
+  - text: On digoxin, avoid. If unavoidable, monitor ECG and calcium closely (hypercalcemia raises the risk of digoxin toxicity).
+    sources: [label-calcium-chloride-2026]
+  - text: Never mix with ceftriaxone or give at the same time, even through separate lines or sites. After 28 days of age give them one after the other, with a line change or a thorough flush. Contraindicated in neonates up to 28 days who need ceftriaxone.
+    sources: [label-calcium-chloride-2026]
+kidney_liver: Kidney impairment raises the risk of a high calcium-phosphate product. Start at the lowest dose and check calcium often (for example every 4 hours). The label has no liver data. Adjustments by use are on each dose.
+label_source: label-calcium-chloride-2026
+sources: [label-calcium-chloride-2026, ukka-hyperkalaemia-2026]

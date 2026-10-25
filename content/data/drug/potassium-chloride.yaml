@@ -1,0 +1,19 @@
+name: Potassium Chloride
+class: Potassium salt (electrolyte replacement)
+brands: [Klor-Con, K-Tab]
+aliases: [KCl]
+boxed_warning: None
+cautions:
+  - text: "IV: never undiluted or as an IV push. Direct injection of the concentrate can be instantly fatal (cardiac arrest). Do not infuse rapidly."
+    sources: [label-kcl-injection-2026]
+  - text: "IV: contraindicated in hyperkalemia, renal failure and conditions with potassium retention."
+    sources: [label-kcl-injection-2026, label-kcl-premix-2018]
+  - text: "IV: guide therapy by ECG and serial K⁺, especially on digoxin or with heart or kidney disease, where cardiac monitoring is recommended. Serum K⁺ does not reflect tissue stores."
+    sources: [label-kcl-injection-2026, label-kcl-premix-2018]
+  - text: Contraindicated with triamterene or amiloride (severe hyperkalemia). Monitor K⁺ closely with ACE inhibitors, ARBs, spironolactone, eplerenone, aliskiren or NSAIDs.
+    sources: [label-klor-con-2025, label-kcl-oral-solution-2026]
+  - text: "Oral: take with meals and a full glass of water. Swallow extended-release tablets whole without crushing or chewing, and dilute the oral solution in water. Solid forms can cause GI ulceration, stricture, bleeding or perforation. Use liquid with dysphagia or slow gut motility. Stop for severe vomiting, abdominal pain, distention or GI bleeding."
+    sources: [label-klor-con-2025, label-kcl-oral-solution-2026]
+kidney_liver: Kidney impairment raises the risk of life-threatening hyperkalemia. The IV labels contraindicate it in renal failure, and the oral labels advise starting low with frequent K⁺ checks. In cirrhosis, start oral potassium low and check K⁺ often. Adjustments by use are on each dose.
+label_source: label-kcl-injection-2026
+sources: [label-kcl-injection-2026, label-kcl-premix-2018, label-klor-con-2025, label-kcl-oral-solution-2026]

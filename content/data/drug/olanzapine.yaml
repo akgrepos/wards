@@ -1,0 +1,20 @@
+name: Olanzapine
+class: Second-generation (atypical) antipsychotic
+brands: [Zyprexa, Zyprexa Zydis, Zyprexa IntraMuscular]
+boxed_warning:
+  text: "Older adults with dementia-related psychosis treated with antipsychotics have an increased risk of death, mostly cardiovascular (heart failure, sudden death) or infectious (pneumonia). Olanzapine is not approved for dementia-related psychosis."
+  sources: [label-zyprexa-2026]
+cautions:
+  - text: "Orthostatic hypotension, bradycardia and syncope, mostly early in treatment. Use particular caution in cardiovascular or cerebrovascular disease and with dehydration, hypovolemia or antihypertensives. Alcohol and diazepam add to the orthostatic hypotension."
+    sources: [label-zyprexa-2026]
+  - text: "Anticholinergic effects (constipation, urinary retention, tachycardia). Use caution with urinary retention, prostatic hypertrophy or a history of paralytic ileus. Severe, sometimes fatal hypomotility is more likely with other anticholinergic drugs."
+    sources: [label-zyprexa-2026]
+  - text: "Neuroleptic malignant syndrome, tardive dyskinesia, DRESS, seizures (use caution with a seizure history) and impaired body temperature regulation."
+    sources: [label-zyprexa-2026]
+  - text: "Hyperglycemia, dyslipidemia and weight gain. Check fasting glucose and lipids at the start and periodically."
+    sources: [label-zyprexa-2026]
+  - text: "Fluvoxamine raises levels (consider a lower dose). Carbamazepine, omeprazole and rifampin increase clearance. Do not mix IM olanzapine in a syringe with diazepam or haloperidol injection."
+    sources: [label-zyprexa-2026]
+kidney_liver: "No dose change for kidney impairment, and it is not removed by dialysis. Cirrhosis (Child-Pugh A or B) had little effect on its pharmacokinetics, but use caution in liver disease because transaminase rises occur."
+label_source: label-zyprexa-2026
+sources: [label-zyprexa-2026]

@@ -1,3 +1,4 @@
+drug: olanzapine
 drug_name: Olanzapine
 brand: Zyprexa IntraMuscular
 indication: Agitation associated with schizophrenia or bipolar I mania. Used off-label for other agitation when oral medication is refused
@@ -9,7 +10,6 @@ frequency: once. Reassess before any repeat dose
 give_when: Danger or severe distress after de-escalation, and the patient refuses or cannot take oral medication
 repeat: "Label: up to 10 mg again if agitation persists. Doses sooner than 2 hours after the first or 4 hours after the second were not studied"
 max: "Label: 30 mg a day (higher totals not studied)"
-boxed_warning: "Increased mortality in older adults with dementia-related psychosis."
 cautions:
   - "With a parenteral benzodiazepine: not recommended by the label (excess sedation, cardiorespiratory depression). The consensus statement advises avoiding the combination."
   - "Orthostatic hypotension, bradycardia and hypoventilation. Check for orthostatic hypotension before each further dose. Not for IV or SC use."

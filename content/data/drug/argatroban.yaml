@@ -1,0 +1,13 @@
+name: Argatroban
+class: Direct thrombin inhibitor (parenteral)
+boxed_warning: None
+cautions:
+  - text: Contraindicated with major bleeding or a history of hypersensitivity to argatroban.
+    sources: [label-argatroban-2026]
+  - text: Bleeding can occur at any site. An unexplained fall in hematocrit or blood pressure may mean hemorrhage. Risk rises with antiplatelets, thrombolytics and other anticoagulants.
+    sources: [label-argatroban-2026]
+  - text: After stopping heparin, let its effect on the aPTT wane before starting argatroban.
+    sources: [label-argatroban-2026]
+kidney_liver: No adjustment for kidney impairment. Liver impairment slows clearance, so start lower, titrate carefully, and expect full reversal to take longer than 4 hours after stopping.
+label_source: label-argatroban-2026
+sources: [label-argatroban-2026]

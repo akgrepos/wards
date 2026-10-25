@@ -1,0 +1,14 @@
+name: Thiamine
+class: Vitamin B1
+aliases: [vitamin B1]
+boxed_warning: None
+cautions:
+  - text: Serious hypersensitivity and anaphylaxis can occur with IV or IM thiamine, especially after repeated injections. Deaths have been reported. Be ready to treat anaphylaxis.
+    sources: [label-thiamine-inj-2026]
+  - text: Contraindicated with prior sensitivity to thiamine or any ingredient. If thiamine allergy is suspected, the label advises an intradermal test dose (one-hundredth of the dose) first.
+    sources: [label-thiamine-inj-2026]
+  - text: Isolated thiamine deficiency is rare. Look for other vitamin deficiencies.
+    sources: [label-thiamine-inj-2026]
+kidney_liver: No dose change stated for kidney or liver impairment. The injection contains aluminum, which can accumulate with prolonged parenteral use in kidney impairment.
+label_source: label-thiamine-inj-2026
+sources: [label-thiamine-inj-2026]

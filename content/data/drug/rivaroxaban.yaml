@@ -1,0 +1,21 @@
+name: Rivaroxaban
+class: Direct factor Xa inhibitor (DOAC)
+brands: [Xarelto]
+aliases: [DOAC]
+boxed_warning:
+  text: "Premature discontinuation of any oral anticoagulant raises the risk of thrombotic events. If stopped for a reason other than pathological bleeding or completion of therapy, cover with another anticoagulant. Spinal or epidural hematoma, which can cause permanent paralysis, has occurred with neuraxial anesthesia or spinal puncture. Risk is higher with indwelling epidural catheters, other drugs affecting hemostasis, traumatic or repeated punctures, or spinal deformity or surgery. Monitor neurologic status often and treat compromise urgently."
+  sources: [label-xarelto-2026]
+cautions:
+  - text: Contraindicated with active pathological bleeding or severe hypersensitivity to rivaroxaban.
+    sources: [label-xarelto-2026]
+  - text: Avoid combined P-gp and strong CYP3A inhibitors (ketoconazole, ritonavir) and combined P-gp and strong CYP3A inducers (carbamazepine, phenytoin, rifampin, St John's wort). Clarithromycin needs no precaution.
+    sources: [label-xarelto-2026]
+  - text: Bleeding risk rises with aspirin, P2Y12 inhibitors, other anticoagulants, fibrinolytics, NSAIDs, SSRIs and SNRIs. Avoid other anticoagulants unless benefit outweighs risk.
+    sources: [label-xarelto-2026]
+  - text: Not recommended with prosthetic heart valves (including after TAVR) or triple-positive antiphospholipid syndrome.
+    sources: [label-xarelto-2026]
+  - text: Remove a neuraxial catheter no earlier than 2 half-lives after the last dose (about 18 hours in younger and 26 hours in older adults), and give the next dose no earlier than 6 hours after removal.
+    sources: [label-xarelto-2026]
+kidney_liver: Kidney thresholds differ by use (see Adjust on each dose). Stop if acute kidney failure develops. Not dialyzable. Avoid in Child-Pugh B or C, or any liver disease with coagulopathy.
+label_source: label-xarelto-2026
+sources: [label-xarelto-2026]

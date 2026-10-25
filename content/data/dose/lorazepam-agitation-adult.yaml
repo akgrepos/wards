@@ -1,3 +1,4 @@
+drug: lorazepam
 drug_name: Lorazepam
 brand: Ativan
 indication: Agitation from alcohol or benzodiazepine withdrawal, stimulant intoxication or undifferentiated agitation. Added to an antipsychotic when it is not enough (off-label)
@@ -9,7 +10,6 @@ frequency: once. Reassess before any repeat dose
 give_when: Withdrawal or sedative-hypnotic withdrawal, stimulant intoxication, or severe agitation with an antipsychotic
 repeat: "May repeat after 2 hours if needed (consensus table). IV acts within minutes"
 max: "Consensus table: 12 mg in 24 hours. Lower with other sedatives. Alcohol withdrawal is dosed by symptom score"
-boxed_warning: "Concomitant use with opioids can cause profound sedation, respiratory depression, coma and death. Risks of abuse, misuse and addiction, and of dependence and withdrawal reactions."
 cautions:
   - "Avoid in delirium unless the cause is alcohol or sedative withdrawal, catatonia or seizure."
   - "Avoid when a central nervous system depressant (including alcohol) is the cause. Respiratory depression."

@@ -1,3 +1,4 @@
+drug: azithromycin
 drug_name: Azithromycin
 indication: COPD exacerbation with an antibiotic indication
 population: Adults
@@ -5,9 +6,6 @@ route: PO
 amount: "500"
 unit: mg
 frequency: once daily for 3 days, or 500 mg on day 1 then 250 mg once daily on days 2–5
-cautions:
-  - "QT prolongation: avoid with a long QTc or other QT-prolonging drugs."
-  - "Use caution at GFR <10 mL/min (higher levels). No labeled dose change."
 notes: "Labeled for mild to moderate acute bacterial exacerbations of COPD."
 sources: [label-zithromax-oral-2026, gold-copd-2026]
 verification:

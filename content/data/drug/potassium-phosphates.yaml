@@ -1,0 +1,20 @@
+name: Potassium Phosphates
+class: Phosphate and potassium salt (electrolyte replacement)
+aliases: [KPhos]
+boxed_warning: None
+cautions:
+  - text: Contraindicated in hyperkalemia, hyperphosphatemia, hypercalcemia or significant hypocalcemia.
+    sources: [label-kphos-injection-2026]
+  - text: IV infusion only after dilution or admixing. Undiluted or rapid IV push has caused cardiac arrest, arrhythmias, hypotension and death.
+    sources: [label-kphos-injection-2026]
+  - text: Give for hypophosphatemia only when serum K⁺ is below 4 mEq/L. Otherwise use another phosphate source.
+    sources: [label-kphos-injection-2026]
+  - text: Check and correct calcium first. Never infuse with calcium-containing IV fluids. Calcium phosphate precipitates have caused fatal pulmonary emboli. Stop the infusion for respiratory distress.
+    sources: [label-kphos-injection-2026]
+  - text: Can cause hyperphosphatemia with hypocalcemia, tetany and kidney injury from calcium phosphate deposition, and hypomagnesemia (reported in DKA). Monitor phosphorus, K⁺, calcium and magnesium.
+    sources: [label-kphos-injection-2026]
+  - text: Avoid with other drugs that raise K⁺ (potassium-sparing diuretics, ACE inhibitors, ARBs, digoxin, tacrolimus, cyclosporine). If unavoidable, monitor K⁺ closely. Severe adrenal insufficiency and heart disease also raise the risk.
+    sources: [label-kphos-injection-2026]
+kidney_liver: Contraindicated with eGFR below 30 or end-stage kidney disease. With eGFR 30–59, start at the low end of the range. No liver guidance in the label. Adjustments by use are on each dose.
+label_source: label-kphos-injection-2026
+sources: [label-kphos-injection-2026]

@@ -1,0 +1,15 @@
+name: Cefpodoxime
+class: Third-generation cephalosporin (oral)
+boxed_warning: None
+cautions:
+  - text: Contraindicated with allergy to cefpodoxime or any cephalosporin. Use caution with a penicillin allergy history (cross-reactivity is documented).
+    sources: [label-cefpodoxime-2026]
+  - text: Give the tablets with food (better absorption). High-dose antacids and H2 blockers reduce absorption.
+    sources: [label-cefpodoxime-2026]
+  - text: Use caution with potent diuretics, and monitor kidney function with other nephrotoxic drugs.
+    sources: [label-cefpodoxime-2026]
+  - text: C. difficile diarrhea (mild to fatal colitis) can occur, even more than 2 months after use. Evaluate any new diarrhea.
+    sources: [label-cefpodoxime-2026]
+kidney_liver: Lengthen the interval for CrCl below 30 mL/min and in hemodialysis (adjustments are on each dose). No change for cirrhosis.
+label_source: label-cefpodoxime-2026
+sources: [label-cefpodoxime-2026]

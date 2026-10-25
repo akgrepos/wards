@@ -1,3 +1,4 @@
+drug: naloxone
 drug_name: Naloxone
 brand: Narcan
 indication: Opioid-induced respiratory depression in a patient who needs continued analgesia (postoperative or inpatient)
@@ -8,10 +9,8 @@ unit: mg
 frequency: every 2–3 minutes, in increments, until ventilation and alertness improve
 give_when: "Respiratory depression or unarousable sedation. Stop the opioid first"
 repeat: "Repeat doses are often needed. The effect lasts less than most opioids"
-boxed_warning: None
 cautions:
   - "Too large a dose reverses analgesia, raises blood pressure, and causes nausea, sweating and, in opioid-tolerant patients, withdrawal."
-  - "Watch for renarcotization and keep monitoring after each dose."
 notes: "Call for help and support ventilation. Naloxone is not a substitute for airway management."
 sources: [label-naloxone-2025]
 verification:

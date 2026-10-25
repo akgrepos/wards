@@ -1,0 +1,15 @@
+name: Vasopressin
+class: Vasopressin receptor agonist (antidiuretic hormone)
+brands: [Vasostrict]
+aliases: [AVP, ADH, Antidiuretic hormone]
+boxed_warning: None
+cautions:
+  - text: "Digital, mesenteric and myocardial ischemia. Hyponatremia. Can lower cardiac index."
+    sources: [label-vasostrict-2026]
+  - text: "Reversible diabetes insipidus after stopping (polyuria, dilute urine, hypernatremia): watch Na⁺, fluid status and urine output."
+    sources: [label-vasostrict-2026]
+  - text: "Additive with catecholamines. Drugs that cause SIADH (SSRIs, tricyclics, haloperidol) increase its effect and drugs that cause diabetes insipidus (lithium, demeclocycline, clozapine) decrease it."
+    sources: [label-vasostrict-2026]
+kidney_liver: "The label gives no dose change for kidney or liver impairment. It is broken down by tissue peptidases, with little excreted unchanged in urine."
+label_source: label-vasostrict-2026
+sources: [label-vasostrict-2026]

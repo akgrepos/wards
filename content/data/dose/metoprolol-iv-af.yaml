@@ -1,3 +1,4 @@
+drug: metoprolol
 drug_name: Metoprolol tartrate
 brand: Lopressor
 indication: Acute rate control of AF with rapid ventricular response, LVEF >40%
@@ -10,9 +11,7 @@ repeat: "Every 5 minutes as needed, up to 3 doses"
 max: "15 mg"
 give_when: Stable, no decompensated heart failure, no pre-excitation
 cautions:
-  - "Hold for SBP <100 mm Hg, HR <45 beats/min, PR ≥0.24 s, second- or third-degree AV block, decompensated heart failure or cardiogenic shock (label contraindications)."
   - "Not with IV diltiazem within a few hours (additive AV block and hypotension)."
-  - "Caution with severe bronchospasm."
 notes: "AF is not a labeled indication. The label gives three 5 mg boluses about 2 minutes apart for acute MI. Follow with oral metoprolol once controlled."
 sources: [acc-aha-af-2023, label-metoprolol-inj-2026]
 verification:

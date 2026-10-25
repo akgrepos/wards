@@ -1,0 +1,18 @@
+name: Digoxin
+class: Cardiac glycoside
+brands: [Lanoxin]
+boxed_warning: None
+cautions:
+  - text: "Contraindicated in ventricular fibrillation. Avoid in AF or flutter with an accessory pathway (Wolff-Parkinson-White, pre-excitation): rapid conduction down the pathway can cause ventricular fibrillation."
+    sources: [label-lanoxin-inj-2025]
+  - text: "Narrow therapeutic index. Toxicity (nausea, vomiting, visual changes, any arrhythmia or heart block) is more likely with hypokalemia, hypomagnesemia, hypercalcemia, kidney impairment, low body weight and older age. Check potassium, magnesium and kidney function. Hypocalcemia blunts its effect."
+    sources: [label-lanoxin-inj-2025]
+  - text: "Amiodarone, quinidine, ritonavir, propafenone, spironolactone and verapamil raise levels: check a level and lower the dose. β-blockers, calcium channel blockers and ivabradine add bradycardia and AV block. Rapid IV calcium can cause serious arrhythmias."
+    sources: [label-lanoxin-inj-2025]
+  - text: "Can cause severe sinus bradycardia, sinoatrial block or complete heart block in preexisting conduction disease. Not recommended in acute MI or myocarditis. Generally avoid in amyloid heart disease, restrictive cardiomyopathy, constrictive pericarditis and hypertrophic obstructive cardiomyopathy."
+    sources: [label-lanoxin-inj-2025]
+  - text: "Draw levels just before the next dose or at least 6 hours after the last. Levels above 2 ng/mL add toxicity without benefit. Consider reducing or holding before elective cardioversion, and delay it if toxicity is suspected. Digoxin immune Fab treats life-threatening toxicity."
+    sources: [label-lanoxin-inj-2025]
+kidney_liver: "Cleared mainly by the kidneys: kidney impairment needs smaller maintenance doses (see Adjust on the dose), takes longer to reach steady state and prolongs toxicity. Not removed by dialysis. No change for liver impairment."
+label_source: label-lanoxin-inj-2025
+sources: [label-lanoxin-inj-2025]

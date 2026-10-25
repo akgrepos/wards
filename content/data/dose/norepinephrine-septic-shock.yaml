@@ -1,3 +1,4 @@
+drug: norepinephrine
 drug_name: Norepinephrine
 brand: Levophed
 indication: Septic shock, first-line vasopressor
@@ -11,8 +12,6 @@ max: "No labeled maximum"
 cautions:
   - "Start through a peripheral IV rather than delay for central access. Move to a central line if needs persist."
   - "Extravasation: infiltrate the area with phentolamine 5–10 mg in 10–15 mL 0.9% saline as soon as possible (within 12 hours)."
-  - "Avoid with MAO inhibitors, linezolid or tricyclic antidepressants (severe, prolonged hypertension)."
-  - "Arrhythmias, digital and mesenteric ischemia. Raises glucose."
 notes: "Label maintenance 2–4 mcg/min (septic shock often needs more). Conversion: 0.25 mcg/kg/min is about 18 mcg/min at 70 kg. Label dilution: 4 mg in 1,000 mL 5% dextrose (4 mcg/mL). Doses are often written in mcg/kg/min. Surveyed panelists add vasopressin at a median of about 0.3 mcg/kg/min of norepinephrine."
 sources: [label-levophed-2025, ssc-sepsis-2026]
 verification:

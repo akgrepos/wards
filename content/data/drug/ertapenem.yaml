@@ -1,0 +1,18 @@
+name: Ertapenem
+class: Carbapenem
+brands: [Invanz]
+boxed_warning: None
+cautions:
+  - text: Contraindicated with hypersensitivity to ertapenem or another carbapenem, or after anaphylaxis to any β-lactam. IM use (lidocaine diluent) is contraindicated with an amide local anesthetic allergy.
+    sources: [label-invanz-2026]
+  - text: Lowers valproate levels below the therapeutic range (breakthrough seizures), and raising the valproate dose may not overcome it. Avoid together and choose a non-carbapenem.
+    sources: [label-invanz-2026]
+  - text: Seizures can occur, mostly with CNS disease (brain lesions, prior seizures) or kidney impairment. Keep to the labeled dose and continue antiseizure drugs.
+    sources: [label-invanz-2026]
+  - text: Probenecid raises levels and is not recommended with it.
+    sources: [label-invanz-2026]
+  - text: C. difficile diarrhea (mild to fatal colitis) can occur, even more than 2 months after use. Evaluate any new diarrhea.
+    sources: [label-invanz-2026]
+kidney_liver: Reduce for CrCl 30 mL/min or below, with a supplement after hemodialysis when dosed shortly before it (on the dose). No liver adjustment can be recommended (not established).
+label_source: label-invanz-2026
+sources: [label-invanz-2026]

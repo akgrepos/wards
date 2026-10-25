@@ -10,7 +10,6 @@ frequency: every 24 hours
 rate: over 30 minutes
 duration: 5–7 days
 max: 4 g per day (label)
-boxed_warning: None
 adjustments:
   - when: Liver dysfunction plus significant kidney disease
     change: Maximum 2 g per day (label)

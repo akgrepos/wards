@@ -1,3 +1,4 @@
+drug: senna
 drug_name: Senna (sennosides)
 brand: Senokot
 indication: Prevention and treatment of opioid-induced constipation
@@ -7,7 +8,6 @@ amount: "17.2"
 unit: mg
 frequency: once daily, preferably at bedtime (2 tablets of 8.6 mg)
 max: "4 tablets (34.4 mg) twice daily"
-boxed_warning: None
 cautions:
   - "Start with the first opioid dose, not after constipation develops."
   - "Do not use with suspected bowel obstruction."

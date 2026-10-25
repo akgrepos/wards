@@ -1,3 +1,4 @@
+drug: sodium-potassium-phosphates
 drug_name: Sodium and potassium phosphates
 brand: "K-Phos Neutral, Phospha 250 Neutral"
 indication: Hypophosphatemia, able to take oral
@@ -10,9 +11,7 @@ adjustments:
   - when: "Severe kidney impairment (under 30% of normal function)"
     change: "Contraindicated"
 cautions:
-  - "Contraindicated in hyperphosphatemia and infected phosphate stones (US label)."
   - "Each tablet contains 13 mEq of sodium and 1.1 mEq of K⁺."
-  - "May cause mild diarrhea in the first few days."
 notes: "Take with a full glass of water. Each tablet supplies 250 mg of phosphorus (about 8 mmol)."
 sources: [label-kphos-neutral-2023]
 verification:

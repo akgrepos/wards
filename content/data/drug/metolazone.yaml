@@ -1,0 +1,20 @@
+name: Metolazone
+class: Thiazide-like (quinazoline) diuretic
+brands: [Zaroxolyn]
+boxed_warning:
+  text: Do not interchange Zaroxolyn and other slowly and incompletely absorbed metolazone tablets with Mykrox-type rapidly and completely absorbed tablets. They are not therapeutically equivalent at the same doses.
+  sources: [label-metolazone-2019]
+cautions:
+  - text: Contraindicated in anuria and with hypersensitivity to metolazone. Cross-allergy with sulfonamide-derived drugs and thiazides is possible.
+    sources: [label-metolazone-2019]
+  - text: Rapid-onset severe hyponatremia or hypokalemia can follow the first doses. Stop it and treat if this occurs. It can also cause hypomagnesemia.
+    sources: [label-metolazone-2019]
+  - text: Hypokalemia is especially dangerous with digoxin or a history of ventricular arrhythmia. Check K⁺ regularly.
+    sources: [label-metolazone-2019]
+  - text: With furosemide or another loop diuretic, fluid and electrolyte losses can be unusually large or prolonged.
+    sources: [label-metolazone-2019]
+  - text: Avoid with lithium (toxicity). Can raise glucose and uric acid.
+    sources: [label-metolazone-2019]
+kidney_liver: Contraindicated in hepatic coma or precoma. Use caution in severe kidney impairment (it can accumulate) and stop if azotemia and oliguria worsen. Unlike thiazides it can still work at GFR below 20 (mL/min).
+label_source: label-metolazone-2019
+sources: [label-metolazone-2019]

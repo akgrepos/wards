@@ -1,0 +1,21 @@
+name: Regular insulin
+class: Short-acting human insulin
+brands: [Humulin R, Novolin R]
+aliases: [insulin human, regular human insulin]
+boxed_warning: None
+cautions:
+  - text: Contraindicated during hypoglycemia and with hypersensitivity to the insulin or its excipients. Severe generalized allergy, including anaphylaxis, can occur.
+    sources: [label-humulin-r-2026]
+  - text: Hypoglycemia is the most common adverse effect and can be fatal. Risk rises with changes in meal pattern (such as NPO), activity or other glucose-lowering drugs. Beta-blockers and clonidine can blunt warning signs.
+    sources: [label-humulin-r-2026]
+  - text: All insulins shift potassium into cells and can cause life-threatening hypokalemia. Monitor potassium when at risk (for example on potassium-lowering drugs).
+    sources: [label-humulin-r-2026]
+  - text: IV use only under medical supervision, diluted in 0.9% saline, with close monitoring of glucose and potassium.
+    sources: [label-humulin-r-2026]
+  - text: Glucocorticoids, sympathomimetics (such as epinephrine and albuterol) and atypical antipsychotics raise insulin needs. Monitor glucose more often when such drugs are started or changed.
+    sources: [label-humulin-r-2026]
+  - text: With a thiazolidinedione (such as pioglitazone), watch for fluid retention and heart failure. Never share needles or syringes between patients.
+    sources: [label-humulin-r-2026]
+kidney_liver: Kidney or liver impairment raises the risk of hypoglycemia. Monitor glucose more often and lower the dose as needed. Adjustments by use are on each dose.
+label_source: label-humulin-r-2026
+sources: [label-humulin-r-2026]

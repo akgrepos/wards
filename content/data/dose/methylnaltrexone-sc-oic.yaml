@@ -1,3 +1,4 @@
+drug: methylnaltrexone
 drug_name: Methylnaltrexone
 brand: Relistor
 indication: "Opioid-induced constipation in advanced illness or pain from active cancer needing opioid dose escalation for palliative care, when laxatives have not worked"
@@ -6,7 +7,6 @@ route: SC
 amount: "12"
 unit: mg
 frequency: every other day as needed, no more than one dose in 24 hours (62–114 kg)
-boxed_warning: None
 adjustments:
   - when: "38 to under 62 kg"
     change: "8 mg"
@@ -14,9 +14,6 @@ adjustments:
     change: "0.15 mg/kg"
   - when: "CrCl <60 (Cockcroft-Gault)"
     change: "Halve the dose: 38 to under 62 kg 4 mg, 62–114 kg 6 mg, under 38 kg or over 114 kg 0.075 mg/kg. Same every-other-day schedule"
-cautions:
-  - "Contraindicated with known or suspected gastrointestinal obstruction."
-  - "Stop if severe or persistent diarrhea or worsening abdominal pain. Gastrointestinal perforation has been reported. Stop if the opioid is stopped."
 sources: [label-relistor-2024]
 verification:
   source: label-relistor-2024

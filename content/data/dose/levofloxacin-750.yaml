@@ -1,3 +1,4 @@
+drug: levofloxacin
 drug_name: Levofloxacin
 indication: Community-acquired pneumonia. Complicated UTI or pyelonephritis
 population: Adults
@@ -5,7 +6,6 @@ route: PO or IV
 amount: "750"
 unit: mg
 frequency: every 24 hours
-boxed_warning: "Fluoroquinolones: disabling and potentially irreversible tendinitis and tendon rupture, peripheral neuropathy and CNS effects, and worsening of myasthenia gravis. Stop at the first sign."
 adjustments:
   - when: CrCl 20–49 mL/min
     change: 750 mg every 48 hours
@@ -13,8 +13,6 @@ adjustments:
     change: 750 mg once, then 500 mg every 48 hours
 cautions:
   - "IV: infuse over 90 minutes."
-  - QT prolongation, dysglycemia, aortic aneurysm risk. Avoid in myasthenia gravis.
-  - Separate oral doses by 2 hours from antacids, iron, zinc, sucralfate and multivitamins.
   - "Complicated UTI: avoid if a fluoroquinolone was used in the last 12 months."
 notes: "Label durations: CAP 5 days. Complicated UTI or pyelonephritis 5 days."
 sources:

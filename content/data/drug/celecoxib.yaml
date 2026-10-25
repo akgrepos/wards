@@ -1,0 +1,18 @@
+name: Celecoxib
+class: COX-2 selective NSAID
+brands: [Celebrex]
+boxed_warning:
+  text: "Cardiovascular thrombotic events (myocardial infarction, stroke), which can be fatal, can occur early in treatment and rise with duration of use. Contraindicated in the setting of CABG surgery. Gastrointestinal bleeding, ulceration and perforation, which can be fatal, can occur at any time without warning symptoms. Risk is higher in older adults and with prior peptic ulcer disease or gastrointestinal bleeding."
+  sources: [label-celecoxib-2024]
+cautions:
+  - text: "Contraindicated after allergic-type reactions to sulfonamides, and after asthma, urticaria or other allergic-type reactions to aspirin or other NSAIDs."
+    sources: [label-celecoxib-2024]
+  - text: "Can raise blood pressure, cause fluid retention and worsen heart failure. Can cause acute kidney injury and hyperkalemia, especially with volume depletion, heart failure, kidney or liver impairment, older age, or ACE inhibitors, ARBs or diuretics."
+    sources: [label-celecoxib-2024]
+  - text: "Bleeding risk rises with anticoagulants, antiplatelets including aspirin, SSRIs and SNRIs. Raises lithium and methotrexate levels. CYP2C9 inhibitors such as fluconazole raise celecoxib levels."
+    sources: [label-celecoxib-2024]
+  - text: "Pregnancy: avoid from about 20 weeks (fetal kidney dysfunction, oligohydramnios) and from about 30 weeks (premature closure of the ductus arteriosus)."
+    sources: [label-celecoxib-2024]
+kidney_liver: "Not recommended in severe kidney impairment or severe hepatic impairment. Correct volume depletion first and monitor kidney function in kidney or liver impairment. The hepatic and CYP2C9 adjustments are on the dose."
+label_source: label-celecoxib-2024
+sources: [label-celecoxib-2024]

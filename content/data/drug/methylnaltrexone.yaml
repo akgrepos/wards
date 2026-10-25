@@ -1,0 +1,14 @@
+name: Methylnaltrexone
+class: Peripherally acting mu-opioid receptor antagonist
+brands: [Relistor]
+boxed_warning: None
+cautions:
+  - text: "Contraindicated with known or suspected gastrointestinal obstruction, or increased risk of recurrent obstruction, because of the risk of perforation."
+    sources: [label-relistor-2024]
+  - text: "Gastrointestinal perforation has occurred, mostly with reduced bowel wall integrity (peptic ulcer, Ogilvie syndrome, diverticular disease, gastrointestinal malignancy or peritoneal metastases). Stop for severe, persistent or worsening abdominal pain or severe or persistent diarrhea. Stop if the opioid is stopped."
+    sources: [label-relistor-2024]
+  - text: "Opioid withdrawal symptoms can occur, more likely when the blood-brain barrier is disrupted. Avoid other opioid antagonists."
+    sources: [label-relistor-2024]
+kidney_liver: "Halve the dose when Cockcroft-Gault CrCl is below 60 (on the dose). No injection adjustment for mild or moderate hepatic impairment. Severe hepatic impairment has not been studied, so monitor for adverse reactions."
+label_source: label-relistor-2024
+sources: [label-relistor-2024]

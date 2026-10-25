@@ -1,0 +1,21 @@
+name: Dabigatran
+class: Direct thrombin inhibitor (DOAC)
+brands: [Pradaxa]
+aliases: [DOAC, dabigatran etexilate]
+boxed_warning:
+  text: "Premature discontinuation of any oral anticoagulant raises the risk of thrombotic events. If stopped for a reason other than pathological bleeding or completion of therapy, cover with another anticoagulant. Spinal or epidural hematoma, which can cause permanent paralysis, can occur with neuraxial anesthesia or spinal puncture. Risk is higher with indwelling epidural catheters, other drugs affecting hemostasis, traumatic or repeated punctures, or spinal deformity or surgery. Monitor neurologic status often and treat compromise urgently."
+  sources: [label-pradaxa-2025]
+cautions:
+  - text: Contraindicated with active pathological bleeding, a mechanical prosthetic heart valve, or serious hypersensitivity to dabigatran. Not recommended with a bioprosthetic valve or triple-positive antiphospholipid syndrome.
+    sources: [label-pradaxa-2025]
+  - text: Swallow capsules whole. Breaking, chewing or opening them increases exposure.
+    sources: [label-pradaxa-2025]
+  - text: Avoid P-gp inducers such as rifampin. P-gp inhibitors raise levels, most with kidney impairment (see Adjust on the dose).
+    sources: [label-pradaxa-2025]
+  - text: Bleeding risk rises with antiplatelets, heparin, fibrinolytics and chronic NSAIDs.
+    sources: [label-pradaxa-2025]
+  - text: "Reversal agent: idarucizumab, for emergency surgery or life-threatening bleeding. Hemodialysis also removes dabigatran."
+    sources: [label-pradaxa-2025]
+kidney_liver: Effect and half-life rise with kidney impairment. Kidney thresholds differ by use (see Adjust on each dose). No dosing recommendation on dialysis. No liver adjustment in the label (no consistent change in exposure in Child-Pugh B).
+label_source: label-pradaxa-2025
+sources: [label-pradaxa-2025]

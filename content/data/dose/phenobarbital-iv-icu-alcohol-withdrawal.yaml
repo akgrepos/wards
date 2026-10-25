@@ -1,3 +1,4 @@
+drug: phenobarbital
 drug_name: Phenobarbital
 indication: Alcohol withdrawal in the ICU, symptom-triggered (off-label, unapproved product)
 population: Adults in the ICU
@@ -6,7 +7,6 @@ amount: 130
 unit: mg
 frequency: "every 30 minutes as needed to a RASS of 0 to −1"
 give_when: ICU patient with withdrawal not controlled by benzodiazepines, or with a contraindication to benzodiazepines
-boxed_warning: "None on the label. The injection is an unapproved drug."
 cautions:
   - "Continuous monitoring of respiration and sedation. Airway equipment at the bedside."
   - "Label: inject IV slowly, no faster than 60 mg per minute. Peak effect can take 15 minutes or more."

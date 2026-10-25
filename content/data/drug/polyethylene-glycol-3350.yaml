@@ -1,0 +1,15 @@
+name: Polyethylene glycol 3350
+class: Osmotic laxative
+brands: [MiraLAX]
+aliases: [PEG, PEG 3350]
+boxed_warning: None
+cautions:
+  - text: "Do not use with polyethylene glycol allergy."
+    sources: [label-peg3350-2026]
+  - text: "Do not mix with starch-based thickeners used for dysphagia."
+    sources: [label-peg3350-2026]
+  - text: "Assess before use with nausea, vomiting or abdominal pain. Stop and reassess for rectal bleeding, worsening nausea, bloating, cramping or abdominal pain, or diarrhea."
+    sources: [label-peg3350-2026]
+kidney_liver: "The label advises use in kidney disease only under medical supervision. It gives no liver guidance."
+label_source: label-peg3350-2026
+sources: [label-peg3350-2026]

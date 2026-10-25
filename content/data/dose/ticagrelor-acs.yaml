@@ -1,3 +1,4 @@
+drug: ticagrelor
 drug_name: Ticagrelor
 brand: Brilinta
 indication: Acute coronary syndrome, maintenance
@@ -7,11 +8,9 @@ amount: "90"
 unit: mg
 frequency: twice daily
 duration: "First year after ACS. Then 60 mg twice daily if continued"
-boxed_warning: "Significant, sometimes fatal bleeding: not with active bleeding or prior intracranial hemorrhage, not before urgent CABG. Premature discontinuation raises cardiovascular events."
 cautions:
   - "With aspirin 75–100 mg daily only."
   - "Hold 3–5 days before CABG (at least 24 hours if urgent). 5 days before other surgery with major bleeding risk."
-  - "No kidney dose adjustment."
 sources: [label-brilinta-2026, acc-aha-acs-2025]
 verification:
   source: label-brilinta-2026

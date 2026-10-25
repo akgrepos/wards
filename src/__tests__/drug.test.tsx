@@ -40,12 +40,12 @@ describe('drug record on the dose sheet', () => {
     expect(d.getAllByRole('button', { name: /^Source: /i }).length).toBeGreaterThan(0);
   });
 
-  it('a dose with no drug record shows no drug section', async () => {
+  it('a drug with no boxed warning shows its cautions and the kidney and liver line, but no boxed warning', async () => {
     launch('#/card/renal-hyperkalemia');
     await act(async () => { fireEvent.click(screen.getAllByRole('button', { name: /^Patiromer 8.4 g PO/ })[0]); });
     const d = within(dialog());
-    expect(d.getByText('Cautions')).toBeTruthy();
-    expect(d.queryByText(/ warnings$/)).toBeNull();
-    expect(d.queryByText('Kidney and liver')).toBeNull();
+    expect(d.getByText('Patiromer warnings')).toBeTruthy();
+    expect(d.getByText('Kidney and liver')).toBeTruthy();
+    expect(d.queryByText('Boxed warning')).toBeNull();
   });
 });

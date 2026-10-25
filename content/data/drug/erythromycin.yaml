@@ -1,0 +1,18 @@
+name: Erythromycin
+class: Macrolide
+brands: [Erythrocin]
+boxed_warning: None
+cautions:
+  - text: Contraindicated with terfenadine, astemizole, cisapride, pimozide, ergotamine or dihydroergotamine, and with lovastatin or simvastatin (rhabdomyolysis). Contraindicated with erythromycin hypersensitivity.
+    sources: [label-erythrocin-iv-2025]
+  - text: QT prolongation and torsades de pointes after IV use. Risk rises with electrolyte imbalance, liver dysfunction, myocardial ischemia, left ventricular dysfunction, QT prolongation and antiarrhythmics. Check the QTc, potassium and magnesium, and avoid other QT-prolonging drugs.
+    sources: [label-erythrocin-iv-2025]
+  - text: CYP3A4 inhibitor. Raises levels of colchicine (lower its dose), carbamazepine, cyclosporine, theophylline, digoxin, midazolam, triazolam and sildenafil. Enhances warfarin. Hypotension, bradyarrhythmia and lactic acidosis with verapamil.
+    sources: [label-erythrocin-iv-2025]
+  - text: May worsen weakness in myasthenia gravis.
+    sources: [label-erythrocin-iv-2025]
+  - text: Hearing loss, usually reversible, mainly with high doses and kidney impairment. Older adults with reduced kidney or liver function are at higher risk.
+    sources: [label-erythrocin-iv-2025]
+kidney_liver: No labeled dose change for kidney impairment. Cleared mainly by the liver, so monitor for hepatotoxicity in liver impairment.
+label_source: label-erythrocin-iv-2025
+sources: [label-erythrocin-iv-2025]

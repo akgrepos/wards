@@ -1,3 +1,4 @@
+drug: meropenem
 drug_name: Meropenem
 indication: Sepsis or septic shock with risk of resistant gram-negative organisms (e.g. ESBL)
 population: Adults
@@ -15,9 +16,6 @@ adjustments:
     change: 500 mg every 24 hours
   - when: Hemodialysis
     change: Not in the label. Dose with the pharmacy
-cautions:
-  - "Lowers valproate levels sharply: avoid together."
-  - Seizure risk, mostly with kidney impairment or CNS disease.
 notes: "Extended infusion = each dose over at least half the dosing interval, or continuous. Recommended in sepsis after a loading dose (labels give short infusions). Label: 1 g every 8 hours for intra-abdominal infection."
 sources: [label-meropenem-2024, ssc-sepsis-2026, idsa-sepsis-hospital-2026]
 verification:

@@ -1,0 +1,20 @@
+name: Micafungin
+class: Echinocandin antifungal
+brands: [Mycamine]
+boxed_warning: None
+cautions:
+  - text: Contraindicated with hypersensitivity to micafungin or any echinocandin. Stop for anaphylaxis.
+    sources: [label-micafungin-2025]
+  - text: Liver test abnormalities, and rarely hepatitis or hepatic failure. Check liver tests and reassess if they worsen.
+    sources: [label-micafungin-2025]
+  - text: Hemolysis and hemolytic anemia. Monitor and reassess if they occur.
+    sources: [label-micafungin-2025]
+  - text: Rises in BUN and creatinine and rare acute kidney injury. Monitor kidney function.
+    sources: [label-micafungin-2025]
+  - text: Raises sirolimus, nifedipine and itraconazole levels. Watch for their toxicity and lower their dose if needed.
+    sources: [label-micafungin-2025]
+  - text: Infusion reactions (rash, pruritus, facial swelling, vasodilation). Slow the infusion if needed.
+    sources: [label-micafungin-2025]
+kidney_liver: No dose change for kidney impairment (no extra dose after hemodialysis) or for liver impairment of any severity.
+label_source: label-micafungin-2025
+sources: [label-micafungin-2025]

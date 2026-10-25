@@ -1,3 +1,4 @@
+drug: penicillin-g-potassium
 drug_name: Penicillin G potassium
 indication: Moderate cellulitis or erysipelas. Streptococcal necrotizing infection (with clindamycin)
 population: Adults
@@ -12,8 +13,6 @@ adjustments:
     change: Full loading dose, then half the loading dose every 8–10 hours
   - when: Liver and kidney disease together
     change: Further reduction may be needed (label)
-cautions:
-  - High doses carry a potassium load.
 sources:
   - idsa-ssti-2014
   - label-penicillin-g-2025

@@ -8,7 +8,6 @@ amount: "1"
 unit: g
 frequency: every 24 hours
 duration: At least 7 days in total. May switch to an oral agent 24–48 hours after substantial improvement, guided by susceptibility testing.
-boxed_warning: None
 cautions:
   - Add doxycycline if chlamydia is not excluded.
   - "Gonococcal meningitis or endocarditis: 1–2 g IV every 12–24 hours, 10–14 days for meningitis and more than 4 weeks for endocarditis, set with infectious diseases."

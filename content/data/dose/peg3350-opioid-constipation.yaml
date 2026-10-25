@@ -1,3 +1,4 @@
+drug: polyethylene-glycol-3350
 drug_name: Polyethylene glycol 3350
 brand: MiraLAX
 indication: Opioid-induced constipation (add or substitute for senna)
@@ -6,7 +7,6 @@ route: PO
 amount: "17"
 unit: g
 frequency: once daily, dissolved in 4–8 oz of liquid
-boxed_warning: None
 cautions:
   - "Do not use with suspected bowel obstruction."
 sources: [label-peg3350-2026, common-practice]

@@ -1,0 +1,14 @@
+name: Albuterol
+class: Short-acting beta-2 agonist
+aliases: [Salbutamol, SABA]
+boxed_warning: None
+cautions:
+  - text: Can cause paradoxical bronchospasm, which can be life-threatening. Stop it at once if it occurs.
+    sources: [label-albuterol-neb-2026]
+  - text: Tachycardia, tremor and hypokalemia, more with high doses. Use with caution in coronary disease, arrhythmias, hypertension, seizure disorders, hyperthyroidism and diabetes.
+    sources: [label-albuterol-neb-2026]
+  - text: Beta-blockers and albuterol block each other. Use extreme caution with MAO inhibitors or tricyclic antidepressants (vascular effects potentiated).
+    sources: [label-albuterol-neb-2026]
+kidney_liver: The label gives no kidney or liver dose adjustment.
+label_source: label-albuterol-neb-2026
+sources: [label-albuterol-neb-2026]

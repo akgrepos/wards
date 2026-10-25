@@ -1,0 +1,17 @@
+name: Cefepime
+class: Fourth-generation cephalosporin
+boxed_warning: None
+cautions:
+  - text: Contraindicated after an immediate hypersensitivity reaction to cefepime, another cephalosporin, a penicillin or another β-lactam.
+    sources: [label-cefepime-2026]
+  - text: Neurotoxicity (encephalopathy, aphasia, myoclonus, seizures, nonconvulsive status epilepticus), sometimes fatal. Most cases were in kidney impairment without a dose reduction, some despite one. Stop it if this occurs (usually reversible, hemodialysis helps).
+    sources: [label-cefepime-2026]
+  - text: With high-dose aminoglycosides, monitor kidney function (nephrotoxicity and ototoxicity). Nephrotoxicity has occurred when other cephalosporins were given with potent diuretics such as furosemide.
+    sources: [label-cefepime-2026]
+  - text: Can lower prothrombin activity (risk with kidney or liver impairment, poor nutrition or long courses). Check the PT in those at risk and give vitamin K as needed.
+    sources: [label-cefepime-2026]
+  - text: C. difficile diarrhea (mild to fatal colitis) can occur, even more than 2 months after use. Evaluate any new diarrhea.
+    sources: [label-cefepime-2026]
+kidney_liver: Reduce for CrCl 60 mL/min or below, keeping the first dose unchanged except in hemodialysis (adjustments by use are on each dose). No change for liver impairment.
+label_source: label-cefepime-2026
+sources: [label-cefepime-2026]
