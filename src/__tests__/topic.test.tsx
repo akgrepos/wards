@@ -38,9 +38,9 @@ describe('topic page', () => {
     expect(screen.getByText('Checked Oct 24, 2026')).toBeTruthy();
   });
 
-  it('shows Checked with the stamp date and no Reviewed label on a medication card', () => {
-    launch('#/card/ceftriaxone');
-    expect(screen.getByText('Checked Oct 23, 2026')).toBeTruthy();
+  it('shows Checked with the stamp date and no Reviewed label on a card', () => {
+    launch('#/card/cardio-chest-pain');
+    expect(screen.getByText('Checked Oct 21, 2026')).toBeTruthy();
     expect(screen.queryByText(/^Reviewed/)).toBeNull();
   });
 
