@@ -5,10 +5,11 @@ variant: protocol
 system: renal
 title: Electrolyte Repletion
 aliases: [electrolyte replacement, replete electrolytes, lytes, potassium repletion, magnesium repletion, phosphate repletion, phosphorus repletion, calcium repletion, KCl, potassium chloride, mag sulfate, magnesium sulfate, Mag-Ox, K-Phos, Neutra-Phos, sodium phosphate, calcium gluconate, hypokalemia, hypomagnesemia, low magnesium, hypophosphatemia, low phosphorus, hypocalcemia, low calcium]
-checked: { date: 2026-10-19, by: owner, scope: "owner review", fingerprint: "b53172af8ba450f4", carried: "2026-10-24: Dose row titles shortened to the indication only. Doses and numbers unchanged, the removed wording is kept in the longer indication text." }
+checked: { date: 2026-10-19, by: owner, scope: "owner review", fingerprint: "dbe74e5427dd589a", carried: "2026-10-25: Format sweep (bullets split, tables to bullets or scale, society names out of text). Numbers, doses, drugs and sources unchanged." }
 contents_sub: [dosing]
 related:
-  conditions: [renal-hyperkalemia, renal-aki]
+  conditions: [renal-hyperkalemia, renal-aki, endo-dka]
+  tools: [renal-hypokalemia, renal-iv-fluids]
 ---
 ## At a Glance
 - Oral when the gut works and nothing is urgent. IV for symptoms, ECG changes, severe deficits or no oral route. ^[asmar-hypokalemia-2012, kardalas-hypokalemia-2018, label-kphos-injection-2026, cooper-hypocalcaemia-2008]
@@ -22,12 +23,18 @@ related:
 - Hypocalcemia: confirm with ionized Ca²⁺ when albumin is low or the patient is critically ill. IV calcium gluconate for symptoms. ^[cooper-hypocalcaemia-2008, endotext-hypocalcemia-2016]
 
 ## Indications
-| Electrolyte | Replete when | IV rather than oral when |
-|---|---|---|
-| K⁺ | <3.5 mEq/L | <2.5 mEq/L, arrhythmia, digitalis toxicity, cardiac ischemia, neuromuscular symptoms, or no working gut ^[asmar-hypokalemia-2012, kardalas-hypokalemia-2018] |
-| Mg²⁺ | Below the reference range (ICU cutoffs in use: 1.6–2.0 mg/dL) | <1.2 mg/dL (0.5 mmol/L) or significant symptoms ^[hansen-magnesium-icu-2018, goulden-magnesium-2026] |
-| Phosphate | <2.5 mg/dL (lower reference limit) | Oral not possible or insufficient. <1.0 mg/dL with symptoms ^[label-kphos-injection-2026, miller-hypophosphatemia-2000, common-practice] |
-| Ca²⁺ | True hypocalcemia (↓ ionized or {{calc:corrected-calcium}}) | Paresthesias, tetany, seizures, laryngospasm or arrhythmia ^[cooper-hypocalcaemia-2008, endotext-hypocalcemia-2016] |
+- **K⁺:** ^[asmar-hypokalemia-2012, kardalas-hypokalemia-2018]
+  - Replete when: <3.5 mEq/L
+  - IV rather than oral when: <2.5 mEq/L, arrhythmia, digitalis toxicity, cardiac ischemia, neuromuscular symptoms, or no working gut
+- **Mg²⁺:** ^[hansen-magnesium-icu-2018, goulden-magnesium-2026]
+  - Replete when: below the reference range (ICU cutoffs in use: 1.6–2.0 mg/dL)
+  - IV rather than oral when: <1.2 mg/dL (0.5 mmol/L) or significant symptoms
+- **Phosphate:** ^[label-kphos-injection-2026, miller-hypophosphatemia-2000, common-practice]
+  - Replete when: <2.5 mg/dL (lower reference limit)
+  - IV rather than oral when: oral not possible or insufficient. <1.0 mg/dL with symptoms
+- **Ca²⁺:** ^[cooper-hypocalcaemia-2008, endotext-hypocalcemia-2016]
+  - Replete when: true hypocalcemia (↓ ionized or {{calc:corrected-calcium}})
+  - IV rather than oral when: paresthesias, tetany, seizures, laryngospasm or arrhythmia
 
 - Phosphorus <1.0 mg/dL can cause respiratory failure, myocardial depression or seizures. ^[miller-hypophosphatemia-2000]
 - {{calc:corrected-calcium|Corrected Ca}} <7.6 mg/dL (1.9 mmol/L) without symptoms: consider admission. Serious complications can still occur. ^[cooper-hypocalcaemia-2008]
@@ -39,7 +46,9 @@ related:
 - Even mild chronic hypokalemia is linked to CKD progression, hypertension and higher mortality. Evaluate and treat it. ^[asmar-hypokalemia-2012]
 
 #### When not to replete, or replete with care
-- Hypokalemia from a transcellular shift (e.g. insulin, β-agonists, periodic paralysis): total-body K⁺ is normal. Replete cautiously and monitor for rebound hyperkalemia. ^[asmar-hypokalemia-2012]
+- Hypokalemia from a transcellular shift (e.g. insulin, β-agonists, periodic paralysis): ^[asmar-hypokalemia-2012]
+  - Total-body K⁺ is normal
+  - Replete cautiously and monitor for rebound hyperkalemia
 - Low total Ca with low albumin and normal ionized Ca²⁺ ("factitious" hypocalcemia): no treatment. ^[endotext-hypocalcemia-2016]
 - CKD: mild, asymptomatic hypocalcemia can be tolerated to avoid calcium loading. ^[kdigo-ckd-mbd-2017]
 - Hyperphosphatemia (e.g. tumor lysis): IV calcium risks calcium phosphate deposition in tissues. ^[endotext-hypocalcemia-2016]
@@ -56,12 +65,12 @@ related:
 - **Potassium:** KCl is the preferred salt, since most hypokalemia comes with metabolic alkalosis and chloride depletion. ^[asmar-hypokalemia-2012]
   - Metabolic acidosis: potassium bicarbonate or citrate.
   - Concurrent hypophosphatemia (e.g. DKA, Fanconi syndrome): potassium phosphate.
-- IV KCl in saline: dextrose stimulates insulin release and shifts K⁺ into cells. ^[asmar-hypokalemia-2012, kardalas-hypokalemia-2018, label-kcl-injection-2026]
+- **IV KCl:** in saline, since dextrose stimulates insulin release and shifts K⁺ into cells. ^[asmar-hypokalemia-2012, kardalas-hypokalemia-2018, label-kcl-injection-2026]
 - **Magnesium:** oral for mild or asymptomatic deficiency. IV for severe deficiency or significant symptoms. ^[hansen-magnesium-icu-2018]
-- Oral Mg is limited by diarrhea. Organic salts (e.g. citrate) may be better absorbed than oxide, but evidence is weak. ^[adomako-magnesium-2024]
+- **Oral Mg:** limited by diarrhea. Organic salts (e.g. citrate) may be better absorbed than oxide, but evidence is weak. ^[adomako-magnesium-2024]
 - **Phosphate:** IV salt by serum K⁺ (potassium phosphate if K⁺ <4.0 mEq/L, sodium phosphate if ≥4.0 mEq/L). ^[label-kphos-injection-2026, brown-phosphorus-2006]
 - **Calcium:** calcium gluconate is the preferred IV salt. Calcium chloride (about 3 times the calcium per mL) irritates veins and goes into a central or deep vein. ^[endotext-hypocalcemia-2016, cooper-hypocalcaemia-2008, label-calcium-chloride-2026]
-- Oral calcium carbonate is 40% elemental calcium and inexpensive. Take it with meals. ^[endotext-hypocalcemia-2016]
+- **Oral calcium:** calcium carbonate is 40% elemental calcium and inexpensive. Take it with meals. ^[endotext-hypocalcemia-2016]
 
 ## Dosing and Protocol
 #### Potassium
@@ -170,10 +179,15 @@ related:
 
 ## Special Populations
 #### Kidney impairment
-- K⁺, GFR {{threshold:gfr-severe-impairment}}: start low and recheck K⁺ often, every 2–4 h on IV replacement (risk of life-threatening hyperkalemia, the IV KCl concentrate and premixed-bag labels list renal failure as a contraindication). ^[label-kcl-injection-2026, label-kcl-premix-2018, label-klor-con-2025, asmar-hypokalemia-2012]
+- K⁺, GFR {{threshold:gfr-severe-impairment}}: ^[label-kcl-injection-2026, label-kcl-premix-2018, label-klor-con-2025, asmar-hypokalemia-2012]
+  - Start low and recheck K⁺ often, every 2–4 h on IV replacement
+  - Risk of life-threatening hyperkalemia
+  - The IV KCl concentrate and premixed-bag labels list renal failure as a contraindication
 - Dialysis or severe impairment: replace K⁺ very cautiously, with nephrology involved. ^[kardalas-hypokalemia-2018]
 - Mg: generally not recommended in kidney failure. With moderately reduced GFR and severe deficiency, give a reduced dose with close monitoring. ^[hansen-magnesium-icu-2018]
-- Phosphate: potassium phosphate injection is contraindicated at {{calc:ckd-epi}} {{threshold:gfr-severe-impairment}} or kidney failure. Start at the low end of the dose range at {{calc:ckd-epi}} 30–59. ^[label-kphos-injection-2026]
+- Phosphate: ^[label-kphos-injection-2026]
+  - Potassium phosphate injection is contraindicated at {{calc:ckd-epi}} {{threshold:gfr-severe-impairment}} or kidney failure
+  - Start at the low end of the dose range at {{calc:ckd-epi}} 30–59
 - Sodium phosphate injection: great care, if at all, with severe renal insufficiency, heart failure or edema. ^[label-naphos-injection-2021]
 - Oral phosphate tablets: contraindicated with severe kidney impairment (under 30% of normal function). ^[label-kphos-neutral-2023]
 - Calcium: start IV calcium at the lowest dose and check calcium every 4 h. ^[label-calcium-gluconate-2026, label-calcium-chloride-2026]
@@ -195,7 +209,8 @@ related:
 
 ## More Information
 ### Evidence: Targets, central KCl, phosphate dosing
-- TIGHT-K: after CABG, supplementing only below K⁺ 3.6 mEq/L was noninferior to keeping K⁺ ≥4.5 mEq/L for atrial fibrillation (27.8% vs 26.2%), with no more arrhythmias and lower cost. ^[tight-k-2024]
+- TIGHT-K: after CABG, supplementing only below K⁺ 3.6 mEq/L was noninferior to keeping K⁺ ≥4.5 mEq/L for atrial fibrillation (27.8% vs 26.2%). ^[tight-k-2024]
+- TIGHT-K: no more arrhythmias and lower cost. ^[tight-k-2024]
 - ICU patients near Mg cutoffs of 1.6–2.0 mg/dL: supplementation did not reduce tachyarrhythmia, hypotension or death (nonrandomized, regression discontinuity). ^[goulden-magnesium-2026]
 - Central KCl over 1 hour in 7 ICU patients: rhythm and ECG intervals unchanged, no new ectopy in 6 of 7. Mean K⁺ rise 0.4 mEq/L. ^[hootkins-central-kcl-2020]
 - Weight-based IV phosphorus by serum level was safe in critically ill trauma patients on nutrition support. ^[brown-phosphorus-2006]

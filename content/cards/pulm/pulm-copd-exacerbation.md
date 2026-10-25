@@ -10,7 +10,7 @@ based_on: [gold-copd-2026, ers-ats-copd-exacerbation-2017, ats-nirs-2026]
 checked: { date: 2026-10-21, by: owner, scope: "owner review", fingerprint: "b5312cc142bfc7a9", carried: "2026-10-24: Dose corrections (stage 4b PR C): the changed dose and drug-record lines were checked against the labels and guidelines by an Opus helper. The rest of the card is unchanged." }
 related:
   differential: [id-cap, cardio-adhf, pulm-vte-diagnosis, cardio-chest-pain, pulm-dyspnea]
-  conditions: [crit-hypoxemic-respiratory-failure, cardio-atrial-fibrillation, cardio-nste-acs]
+  conditions: [crit-hypoxemic-respiratory-failure, cardio-atrial-fibrillation, cardio-nste-acs, renal-acid-base]
   tools: []
 emergency_hint: "Controlled O₂, nebs, steroids, NIV"
 ---

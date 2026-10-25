@@ -6,14 +6,17 @@ title: "Hyperglycemia"
 aliases: [inpatient hyperglycemia, hospital hyperglycemia, high blood sugar, high glucose, stress hyperglycemia, steroid-induced hyperglycemia, glucocorticoid hyperglycemia, sliding scale, SSI, correction insulin, basal-bolus, basal plus, insulin orders, inpatient diabetes, hypoglycemia, glucose targets, tube feeds insulin]
 definition: "Any blood glucose >140 mg/dL in a hospitalized patient. Insulin is started or intensified for persistent glucose ≥180 mg/dL. ^[ada-soc-hospital-2026]"
 based_on: [ada-soc-hospital-2026, endocrine-hospital-hyperglycemia-2022, sccm-glycemic-2024]
-checked: { date: 2026-10-21, by: owner, scope: "owner review", fingerprint: "ec7428adaec3678a", carried: "2026-10-24: Dose corrections (stage 4b PR C): the changed dose and drug-record lines were checked against the labels and guidelines by an Opus helper. The rest of the card is unchanged." }
+checked: { date: 2026-10-21, by: owner, scope: "owner review", fingerprint: "618160ca027301f4", carried: "2026-10-25: Format sweep (bullets split, tables to bullets or scale, society names out of text). Numbers, doses, drugs and sources unchanged." }
 related:
   conditions: [endo-dka, crit-sepsis]
 ---
 ## At a Glance
 - Rule out DKA and HHS first: check ketones and an {{calc:anion-gap}} when glucose is high and the patient is unwell. ^[ada-soc-hospital-2026]
 - Start or intensify insulin for glucose ≥180 mg/dL twice in 24 hours. Target 100–180 mg/dL on the ward and 140–180 mg/dL in the ICU. ^[ada-soc-hospital-2026]
-- Eating: basal, prandial and correction insulin. Poor or no intake: basal plus correction. ICU: IV insulin infusion. ^[ada-soc-hospital-2026]
+- Insulin by setting: ^[ada-soc-hospital-2026]
+  - Eating: basal, prandial and correction insulin
+  - Poor or no intake: basal plus correction
+  - ICU: IV insulin infusion
 - Correction ("sliding scale") insulin alone is discouraged for most. Never in type 1 diabetes. ^[ada-soc-hospital-2026]
 - HbA1c on admission if none in the past 3 months. ^[ada-soc-hospital-2026]
 - Every glucose <70 mg/dL: treat, recheck in 15 minutes and change the regimen. ^[ada-soc-hospital-2026]
@@ -26,17 +29,18 @@ related:
 :::
 
 #### Hypoglycemia levels
-| Level | Glucose | Meaning |
-|---|---|---|
-| 1 | <70 mg/dL and ≥54 mg/dL | Alert value. Treat to prevent progression ^[ada-soc-glycemic-2026] |
-| 2 | <54 mg/dL | Clinically significant. Neuroglycopenic symptoms begin ^[ada-soc-glycemic-2026] |
-| 3 | Any | Altered mental or physical function needing another person's help ^[ada-soc-glycemic-2026] |
+:::scale Hypoglycemia levels
+- Level 1: <70 mg/dL and ≥54 mg/dL. Alert value. Treat to prevent progression. ^[ada-soc-glycemic-2026]
+- Level 2: <54 mg/dL. Clinically significant. Neuroglycopenic symptoms begin. ^[ada-soc-glycemic-2026]
+- Level 3: any glucose. Altered mental or physical function needing another person's help. ^[ada-soc-glycemic-2026]
+:::
 
 - Admission HbA1c ≥6.5% suggests diabetes preceded the admission. ^[ada-soc-hospital-2026]
 - Stress hyperglycemia: hyperglycemia during acute illness without known diabetes and a normal HbA1c. ^[ada-soc-hospital-2026, common-practice]
 
 ## First Steps
-- Glucose ≥200 mg/dL (or known diabetes) with vomiting, abdominal pain, altered mentation or illness: check β-hydroxybutyrate, venous pH and {{calc:anion-gap}} for [[endo-dka|DKA or HHS]]. ^[ada-hyperglycemic-crises-2024]
+- Glucose ≥200 mg/dL (or known diabetes) with vomiting, abdominal pain, altered mentation or illness: ^[ada-hyperglycemic-crises-2024]
+  - Check β-hydroxybutyrate, venous pH and {{calc:anion-gap}} for [[endo-dka|DKA or HHS]]
 - On an SGLT2 inhibitor: DKA can occur with glucose <200 mg/dL. ^[ada-hyperglycemic-crises-2024]
 - Type 1 diabetes: always basal insulin, even when NPO. ^[ada-soc-hospital-2026]
 - Glucose <70 mg/dL: treat now (see Treatment). ^[ada-soc-hospital-2026]
@@ -45,7 +49,8 @@ related:
 - **Known diabetes:** [!most-common] type 2 or type 1 diabetes, often with home regimen changes or held medications. ^[ada-soc-hospital-2026]
 - **Undiagnosed diabetes:** admission HbA1c ≥6.5%. ^[ada-soc-hospital-2026]
 - **Stress:** infection and sepsis, surgery, trauma, MI, stroke. ^[ada-soc-hospital-2026, common-practice]
-- **Drugs:** glucocorticoids (most common), calcineurin inhibitors, vasopressors, some antipsychotics, thiazides, cancer therapies (PI3K inhibitors, immune checkpoint inhibitors). ^[ada-soc-hospital-2026, common-practice]
+- **Drugs:** glucocorticoids (most common), calcineurin inhibitors, vasopressors, some antipsychotics, thiazides. ^[ada-soc-hospital-2026, common-practice]
+- **Cancer therapies:** PI3K inhibitors, immune checkpoint inhibitors. ^[ada-soc-hospital-2026, common-practice]
 - **Nutrition:** enteral or parenteral nutrition, dextrose-containing fluids. ^[ada-soc-hospital-2026]
 - **Crises:** [!cannot-miss] DKA and HHS. ^[ada-hyperglycemic-crises-2024]
 - **Pancreatic and endocrine:** pancreatitis, Cushing syndrome, pheochromocytoma, acromegaly. ^[common-practice]
@@ -54,7 +59,11 @@ related:
 - Home regimen: insulin type, doses and timing, pump or CGM, noninsulin drugs, recent hypoglycemia. ^[ada-soc-hospital-2026, endocrine-hospital-hyperglycemia-2022]
 - Expected intake: eating, NPO, enteral or parenteral nutrition. ^[ada-soc-hospital-2026]
 - Glucocorticoid dose and timing. Planned tapers. ^[ada-soc-hospital-2026]
-- Hypoglycemia risk: age ≥65 years, BMI ≤27 kg/m², high insulin doses, CKD ({{calc:ckd-epi}} <60), liver failure, heart failure, stroke, infection, active cancer, pancreatic disease, prior hypoglycemia or unawareness. ^[endocrine-hospital-hyperglycemia-2022]
+- Hypoglycemia risk: ^[endocrine-hospital-hyperglycemia-2022]
+  - Age ≥65 years, BMI ≤27 kg/m², high insulin doses
+  - CKD ({{calc:ckd-epi}} <60), liver failure, heart failure, stroke
+  - Infection, active cancer, pancreatic disease
+  - Prior hypoglycemia or unawareness
 - Symptoms of crisis: polyuria, polydipsia, vomiting, abdominal pain, confusion, dehydration. ^[ada-hyperglycemic-crises-2024]
 
 ## Diagnosis
@@ -71,7 +80,8 @@ related:
 
 #### CGM
 - Continue a personal CGM when appropriate, with point-of-care confirmation for insulin dosing and suspected hypoglycemia. ^[ada-soc-hospital-2026]
-- CGM may be inaccurate with poor perfusion, hypovolemia, vasopressors, extensive skin infection, high-dose acetaminophen (above the usual daily maximum), vitamin C, hydroxyurea or dopamine. ^[endocrine-hospital-hyperglycemia-2022]
+- CGM may be inaccurate with poor perfusion, hypovolemia, vasopressors or extensive skin infection. ^[endocrine-hospital-hyperglycemia-2022]
+- CGM may also be inaccurate with high-dose acetaminophen (above the usual daily maximum), vitamin C, hydroxyurea or dopamine. ^[endocrine-hospital-hyperglycemia-2022]
 
 ## Treatment
 #### Common initial orders
@@ -107,11 +117,16 @@ related:
 - Transition to SC insulin: basal 2 hours before stopping the infusion (see the dose row for the starting dose). ^[ada-soc-hospital-2026]
 
 #### Glucocorticoids
-- Morning prednisone or prednisolone: glucose peaks in the afternoon and evening. Give NPH insulin with the steroid dose, or use basal-bolus insulin. ^[ada-soc-hospital-2026, endocrine-hospital-hyperglycemia-2022]
+- Morning prednisone or prednisolone: glucose peaks in the afternoon and evening. ^[ada-soc-hospital-2026, endocrine-hospital-hyperglycemia-2022]
+- Give NPH insulin with the steroid dose, or use basal-bolus insulin. ^[ada-soc-hospital-2026, endocrine-hospital-hyperglycemia-2022]
 - Dexamethasone or continuous steroids: long-acting basal insulin may be needed. Adjust daily, and lower insulin as the steroid tapers. ^[ada-soc-hospital-2026]
 
 #### Enteral and parenteral nutrition
-- Continue the usual basal dose. Cover the feeds with scheduled regular insulin every 6 hours, rapid-acting every 4 hours or NPH every 8–12 hours, plus correction. ^[ada-soc-hospital-2026]
+- Continue the usual basal dose. ^[ada-soc-hospital-2026]
+- Cover the feeds with scheduled insulin, plus correction: ^[ada-soc-hospital-2026]
+  - Regular insulin every 6 hours
+  - Rapid-acting insulin every 4 hours
+  - NPH every 8–12 hours
 
 {{dose:insulin-enteral-nutrition}}
 
@@ -142,7 +157,10 @@ related:
 - Most episodes of glucose <40 mg/dL follow an earlier glucose <70 mg/dL in the same admission. ^[ada-soc-hospital-2026]
 
 ## Escalation
-- Inpatient diabetes or glucose management team: hard-to-control glucose, recurrent hypoglycemia, insulin pumps or automated insulin delivery, new insulin start, U-500 insulin. ^[ada-soc-hospital-2026]
+- Inpatient diabetes or glucose management team for: ^[ada-soc-hospital-2026]
+  - Hard-to-control glucose or recurrent hypoglycemia
+  - Insulin pumps or automated insulin delivery
+  - New insulin start or U-500 insulin
 - DKA or HHS: [[endo-dka|IV fluids and insulin]], ICU if severe. ^[ada-hyperglycemic-crises-2024]
 
 ## More Information
@@ -154,7 +172,11 @@ related:
 
 ### Special Populations: Type 1, pumps, surgery, end of life
 - Type 1 diabetes: basal insulin always. Correction alone is contraindicated. ^[ada-soc-hospital-2026]
-- Insulin pump or automated insulin delivery: continue when the patient can manage it and supplies, training and protocols exist. Critical illness, DKA or HHS: IV insulin. Altered consciousness or no pump expertise: SC basal-bolus insulin. Give basal insulin 2 hours before the pump comes off. ^[ada-soc-hospital-2026, endocrine-hospital-hyperglycemia-2022]
+- Insulin pump or automated insulin delivery: ^[ada-soc-hospital-2026, endocrine-hospital-hyperglycemia-2022]
+  - Continue when the patient can manage it and supplies, training and protocols exist
+  - Critical illness, DKA or HHS: IV insulin
+  - Altered consciousness or no pump expertise: SC basal-bolus insulin
+  - Give basal insulin 2 hours before the pump comes off
 - U-500 insulin at home: inpatient needs may fall by up to 75%. ^[ada-soc-hospital-2026]
 - Surgery: ^[ada-soc-hospital-2026]
   - Perioperative glucose 100–180 mg/dL ^[ada-soc-hospital-2026]
@@ -175,7 +197,8 @@ related:
 ### Evidence: Key trials
 - RABBIT 2 (2007): basal-bolus insulin reached target more often than sliding scale alone in type 2 diabetes on the ward. ^[rabbit-2-2007]
 - RABBIT 2 Surgery (2011): basal-bolus insulin lowered postoperative complications, with more mild hypoglycemia. ^[rabbit-2-surgery-2011]
-- Basal Plus (2013): in medical and surgical patients with type 2 diabetes, basal plus correction gave similar control to basal-bolus. Sliding scale alone failed more often. ^[basal-plus-2013]
+- Basal Plus (2013): in medical and surgical patients with type 2 diabetes, basal plus correction gave similar control to basal-bolus. ^[basal-plus-2013]
+- Same trial: sliding scale alone failed more often. ^[basal-plus-2013]
 - NICE-SUGAR (2009): intensive ICU control (81–108 mg/dL) raised 90-day mortality and severe hypoglycemia. ^[nice-sugar-2009]
 
 ## Pearls

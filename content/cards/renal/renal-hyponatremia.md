@@ -7,7 +7,7 @@ title: Hyponatremia
 aliases: [low sodium, sodium low, Na low, hypoNa, hyponatraemia, SIADH, SIAD, syndrome of inappropriate antidiuretic hormone, osmotic demyelination, ODS, hypertonic saline, 3% saline, tolvaptan]
 definition: "Serum Na⁺ <135 mEq/L. Usually hypotonic, from water retention. ^[verbalis-hyponatremia-2013, adrogue-hyponatremia-2022]"
 based_on: [verbalis-hyponatremia-2013, spasovski-hyponatraemia-2014]
-checked: { date: 2026-10-19, by: owner, scope: "owner review", fingerprint: "88824cc445409e16", carried: "2026-10-24: Dose row titles shortened to the indication only. Doses and numbers unchanged, the removed wording is kept in the longer indication text." }
+checked: { date: 2026-10-19, by: owner, scope: "owner review", fingerprint: "d1d12ebe418bc03d", carried: "2026-10-25: Format sweep (bullets split, tables to bullets or scale, society names out of text). Numbers, doses, drugs and sources unchanged." }
 related:
   conditions: [renal-hypokalemia, psych-acute-agitation, psych-lithium-psychotropic-safety, cardio-adhf]
   tools: [renal-iv-fluids]
@@ -55,7 +55,8 @@ emergency_hint: 3% saline bolus, limit the 24-h rise
 :::
 
 - Symptoms matter more than the number: they depend on how fast and how low Na⁺ fell. ^[adrogue-hyponatremia-2022]
-- Acute (<48 h): risk of cerebral edema and herniation. Chronic (≥48 h): brain adapts. Herniation is rare, but rapid correction risks osmotic demyelination. ^[verbalis-hyponatremia-2013]
+- Acute (<48 h): risk of cerebral edema and herniation. ^[verbalis-hyponatremia-2013]
+- Chronic (≥48 h): brain adapts. Herniation is rare, but rapid correction risks osmotic demyelination. ^[verbalis-hyponatremia-2013]
 - High risk of osmotic demyelination: Na⁺ {{threshold:na-ods-high-risk}}, hypokalemia, alcohol use disorder, malnutrition, advanced liver disease. ^[verbalis-hyponatremia-2013]
 - Emergency: severe symptoms at any Na⁺. ^[adrogue-hyponatremia-2022]
 - Na⁺ ≤120 mEq/L: frequent Na⁺ checks and measures against overcorrection, in a monitored bed. ^[verbalis-hyponatremia-2013, common-practice]
@@ -63,9 +64,16 @@ emergency_hint: 3% saline bolus, limit the 24-h rise
 ## Causes
 - **Not hypotonic:** hyperglycemia, mannitol (normal or high osmolality). Pseudohyponatremia from severe hyperlipidemia or hyperproteinemia (normal osmolality). ^[verbalis-hyponatremia-2013, hoorn-hyponatremia-guidelines-2017]
 - **Hypovolemic:** GI losses, diuretics (mainly thiazides), mineralocorticoid deficiency, cerebral salt wasting (rare). ^[verbalis-hyponatremia-2013]
-- **Euvolemic:** [!most-common] SIADH (CNS disease, pulmonary disease, malignancy, drugs, pain, nausea, postoperative). [!cannot-miss] glucocorticoid deficiency. Severe hypothyroidism only (myxedema or TSH >50 mIU/L). Primary polydipsia. Low solute intake (beer potomania, "tea and toast"). ^[verbalis-hyponatremia-2013, adrogue-hyponatremia-2022]
+- **Euvolemic:** ^[verbalis-hyponatremia-2013, adrogue-hyponatremia-2022]
+  - [!most-common] SIADH (CNS disease, pulmonary disease, malignancy, drugs, pain, nausea, postoperative).
+  - [!cannot-miss] glucocorticoid deficiency.
+  - Severe hypothyroidism only (myxedema or TSH >50 mIU/L).
+  - Primary polydipsia.
+  - Low solute intake (beer potomania, "tea and toast").
 - **Hypervolemic:** heart failure, cirrhosis, nephrotic syndrome, advanced kidney disease. ^[verbalis-hyponatremia-2013]
-- **Acute:** postoperative, MDMA, endurance exercise, psychogenic polydipsia, thiazides, desmopressin, oxytocin, IV cyclophosphamide. Glycine or sorbitol irrigants (TURP, hysteroscopy, measure osmolality). ^[hoorn-hyponatremia-guidelines-2017, verbalis-hyponatremia-2013]
+- **Acute:** ^[hoorn-hyponatremia-guidelines-2017, verbalis-hyponatremia-2013]
+  - Postoperative, MDMA, endurance exercise, psychogenic polydipsia, thiazides, desmopressin, oxytocin, IV cyclophosphamide.
+  - Glycine or sorbitol irrigants (TURP, hysteroscopy, measure osmolality).
 
 ## Presentation
 - Often asymptomatic when mild and chronic. ^[adrogue-hyponatremia-2022]
@@ -74,14 +82,16 @@ emergency_hint: 3% saline bolus, limit the 24-h rise
 - Severe: vomiting, somnolence, obtundation, seizures, coma, cardiorespiratory distress. ^[adrogue-hyponatremia-2022]
 :::
 - Mild chronic hyponatremia: attention deficits, gait instability, falls and fractures. ^[verbalis-hyponatremia-2013, adrogue-hyponatremia-2022]
-- Volume status on examination: orthostasis, dry mucous membranes (hypovolemia). Edema, ascites (hypervolemia). Clinical assessment is often inaccurate. ^[verbalis-hyponatremia-2013, hoorn-hyponatremia-guidelines-2017]
+- Volume status on examination: orthostasis, dry mucous membranes (hypovolemia). Edema, ascites (hypervolemia). ^[verbalis-hyponatremia-2013, hoorn-hyponatremia-guidelines-2017]
+- Clinical assessment of volume status is often inaccurate. ^[verbalis-hyponatremia-2013, hoorn-hyponatremia-guidelines-2017]
 
 ## Diagnosis
 #### First line
 - Serum osmolality, glucose, BMP. Urine osmolality and urine Na⁺ (and K⁺), ideally before treatment. ^[verbalis-hyponatremia-2013, hoorn-hyponatremia-guidelines-2017]
 - Euvolemic: AM cortisol and TSH before diagnosing SIADH. ^[verbalis-hyponatremia-2013]
 - Vomiting: urine Cl⁻, since urine Na⁺ can be high from bicarbonaturia. ^[verbalis-hyponatremia-2013]
-- Hyperglycemia: Na⁺ falls about 2.4 mEq/L per 100 mg/dL glucose above normal (1.6 is the older factor, the fall is steeper above 400 mg/dL). ^[hillier-glucose-sodium-1999]
+- Hyperglycemia: Na⁺ falls about 2.4 mEq/L per 100 mg/dL glucose above normal. ^[hillier-glucose-sodium-1999]
+  - 1.6 is the older factor, the fall is steeper above 400 mg/dL.
 
 #### Interpretation
 - Urine osmolality {{threshold:uosm-adh-suppressed}}: ADH suppressed: primary polydipsia or low solute intake. ^[verbalis-hyponatremia-2013, hoorn-hyponatremia-guidelines-2017]
@@ -126,7 +136,11 @@ or. Mild or no symptoms: treat the cause
      - Fluid restriction to 0.5 L/day below the 24-h urine volume ^[verbalis-hyponatremia-2013]
      - Restrict all drinks, not Na⁺ or protein ^[verbalis-hyponatremia-2013]
      - Stop offending drugs ^[verbalis-hyponatremia-2013]
-   - Restriction likely to fail (urine osmolality >500 mOsm/kg, urine Na⁺ + K⁺ above serum Na⁺, urine output <1.5 L/day, or Na⁺ up <2 mEq/L per day on ≤1 L/day): add a drug. ^[verbalis-hyponatremia-2013]
+   - Restriction likely to fail: add a drug. ^[verbalis-hyponatremia-2013]
+     - Urine osmolality >500 mOsm/kg.
+     - Urine Na⁺ + K⁺ above serum Na⁺.
+     - Urine output <1.5 L/day.
+     - Na⁺ up <2 mEq/L per day on ≤1 L/day.
 
    {{dose:urea-hyponatremia}}
    {{dose:tolvaptan-hyponatremia}}
@@ -134,16 +148,21 @@ or. Mild or no symptoms: treat the cause
    - European alternative: low-dose loop diuretic with oral NaCl. ^[hoorn-hyponatremia-guidelines-2017, spasovski-hyponatraemia-2014]
    - Heart failure: fluid restriction to 1 L/day, loop diuretic if overloaded. Tolvaptan if needed. ^[verbalis-hyponatremia-2013]
    - Cirrhosis, hypervolemic, asymptomatic: Na⁺ and water restriction (1–1.5 L/day), adjust diuretics and laxatives, monitor electrolytes. ^[aga-cirrhosis-ascites-2025]
-   - Cirrhosis, recurrent or refractory: multidisciplinary, with the transplant team when appropriate. Options are an IV vasoconstrictor, 3% saline, a vaptan, renal replacement therapy, or TIPS in selected patients. ^[aga-cirrhosis-ascites-2025]
-   - Tolvaptan in cirrhosis: label says avoid (liver injury). US panel: only if benefit outweighs risk (e.g. awaiting transplant). ^[label-samsca-2021, verbalis-hyponatremia-2013]
+   - Cirrhosis, recurrent or refractory: multidisciplinary, with the transplant team when appropriate. ^[aga-cirrhosis-ascites-2025]
+   - Options: an IV vasoconstrictor, 3% saline, a vaptan, renal replacement therapy, or TIPS in selected patients. ^[aga-cirrhosis-ascites-2025]
+   - Tolvaptan in cirrhosis: label says avoid (liver injury). ^[label-samsca-2021, verbalis-hyponatremia-2013]
+     - US panel: only if benefit outweighs risk (e.g. awaiting transplant).
    - Glucocorticoid deficiency: hydrocortisone (stress dose if ill). Hypothyroidism: levothyroxine. ^[verbalis-hyponatremia-2013]
    - Primary polydipsia: reduce intake. Low solute intake: improve nutrition, slowly (rapid correction risk). ^[verbalis-hyponatremia-2013]
 
 #### Correction goals and limits (chronic)
-| Risk of osmotic demyelination | Goal per day | Limit, any 24 h | Limit, 48 h |
-|---|---|---|---|
-| Normal | 4–8 mEq/L | 10–12 mEq/L | 18 mEq/L ^[verbalis-hyponatremia-2013] |
-| High | 4–6 mEq/L | 8 mEq/L | — ^[verbalis-hyponatremia-2013] |
+- **Normal risk of osmotic demyelination:** ^[verbalis-hyponatremia-2013]
+  - Goal per day: 4–8 mEq/L.
+  - Limit in any 24 h: 10–12 mEq/L.
+  - Limit in 48 h: 18 mEq/L.
+- **High risk of osmotic demyelination:** ^[verbalis-hyponatremia-2013]
+  - Goal per day: 4–6 mEq/L.
+  - Limit, same window as above: 8 mEq/L.
 
 - Severe symptoms: the first day's rise can happen in the first 6 h. Then hold further correction until the next day. ^[verbalis-hyponatremia-2013]
 - Rise >8 mEq/L in a day: stop active treatment for the next 24 h. Past the limit, see Overcorrection below. ^[verbalis-hyponatremia-2013]
@@ -151,7 +170,9 @@ or. Mild or no symptoms: treat the cause
 - K⁺ replacement raises Na⁺ too. Count it toward the limit. ^[verbalis-hyponatremia-2013, rondon-berrios-hypertonic-2022]
 
 #### Overcorrection
-- Starting Na⁺ <120 mEq/L: give water or desmopressin once the rise reaches 6–8 mEq/L in the first 24 h. Consider re-lowering if past the limit (not validated in trials). Starting Na⁺ ≥120: intervention probably unnecessary. ^[verbalis-hyponatremia-2013]
+- Starting Na⁺ <120 mEq/L: give water or desmopressin once the rise reaches 6–8 mEq/L in the first 24 h. ^[verbalis-hyponatremia-2013]
+- Consider re-lowering if past the limit (not validated in trials). ^[verbalis-hyponatremia-2013]
+- Starting Na⁺ ≥120: intervention probably unnecessary. ^[verbalis-hyponatremia-2013]
 
 {{dose:desmopressin-hyponatremia}}
 {{dose:d5w-relowering}}
@@ -192,18 +213,25 @@ or. Mild or no symptoms: treat the cause
 
 ### Special Populations: Cirrhosis, heart failure, thiazides
 - Cirrhosis: hyponatremia predicts encephalopathy, hepatorenal syndrome and death. Tolvaptan is avoided because of liver injury. ^[verbalis-hyponatremia-2013]
-- Cirrhosis, hypervolemic, inpatient with severe Na⁺ or symptoms: Na⁺ and water restriction, reduce or stop diuretics and laxatives, plus IV albumin by volume status or an oral vasoconstrictor (e.g. midodrine). Severe symptoms still get 3% saline (see Treatment). ^[aga-cirrhosis-ascites-2025, common-practice]
+- Cirrhosis, hypervolemic, inpatient with severe Na⁺ or symptoms: ^[aga-cirrhosis-ascites-2025, common-practice]
+  - Na⁺ and water restriction, reduce or stop diuretics and laxatives.
+  - Plus IV albumin by volume status or an oral vasoconstrictor (e.g. midodrine).
+  - Severe symptoms still get 3% saline (see Treatment).
 - Cirrhosis workup: diet, diuretics and laxatives, kidney function, GI bleeding, infection (diagnostic paracentesis), thyroid and adrenal function. ^[aga-cirrhosis-ascites-2025]
 - Thiazides: stopping the drug and restoring volume can trigger a rapid water diuresis. Many cases of osmotic demyelination followed. ^[verbalis-hyponatremia-2013]
 - Avoid repeating a thiazide after thiazide-induced hyponatremia. Recheck Na⁺ within days if a diuretic is essential. ^[verbalis-hyponatremia-2013]
 
 ### Complications: Cerebral edema, osmotic demyelination
 - Untreated acute hyponatremia: cerebral edema, seizures, herniation, death. ^[verbalis-hyponatremia-2013]
-- Osmotic demyelination after rapid correction of chronic hyponatremia: in one cohort of Na⁺ <120 mEq/L, 0.5% developed it, nearly all after a rise >8 mEq/L in 24 h. ^[george-ods-2018]
+- Osmotic demyelination can follow rapid correction of chronic hyponatremia. ^[george-ods-2018]
+- In one cohort of Na⁺ <120 mEq/L, 0.5% developed it, nearly all after a rise >8 mEq/L in 24 h. ^[george-ods-2018]
 
 ### Evidence: SALSA, correction speed
 - SALSA (Na⁺ ≤125 mEq/L, symptomatic): 3% boluses vs continuous infusion: overcorrection 17% vs 24% (not significant). Less relowering with boluses. ^[salsa-2021]
-- Observational meta-analysis (Na⁺ <120 mEq/L): faster correction (≥8–10 mEq/L per 24 h) linked to lower mortality than slow correction, without significantly more osmotic demyelination. Confounding is likely, and guideline limits are unchanged. ^[ayus-correction-2025]
+- Observational meta-analysis (Na⁺ <120 mEq/L): ^[ayus-correction-2025]
+  - Faster correction (≥8–10 mEq/L per 24 h) linked to lower mortality than slow correction.
+  - Without significantly more osmotic demyelination.
+  - Confounding is likely, and guideline limits are unchanged.
 - Rapid correction occurred in 41% of patients admitted with Na⁺ <120 mEq/L. Risk higher with lower starting Na⁺ and urine Na⁺ <30 mEq/L. ^[george-ods-2018]
 
 ### Epidemiology and Pathophysiology: Who gets it, ADH

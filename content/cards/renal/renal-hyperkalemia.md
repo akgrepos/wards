@@ -7,9 +7,9 @@ title: Hyperkalemia
 aliases: [high potassium, potassium high, K high, hyperK]
 definition: "Commonly K⁺ ≥5.5 mEq/L. Cutoffs vary by laboratory and by serum vs plasma. ^[kdigo-acute-hyperkalemia-2020]"
 based_on: [ukka-hyperkalaemia-2026, kdigo-acute-hyperkalemia-2020]
-checked: { date: 2026-10-24, by: opus, scope: "Calcium gluconate and chloride doses (rates, label limits, evidence grades, digoxin line) checked against the labels and the UK guideline. Doses left not-verified: albuterol-neb-hyperkalemia, dextrose-10-infusion-hyperkalemia, dextrose-50-hyperkalemia, furosemide-hyperkalemia, insulin-regular-hyperkalemia, patiromer-hyperkalemia, szc-hyperkalemia-initial, szc-hyperkalemia-maintenance", fingerprint: "feca3a25f1c59752" }
+checked: { date: 2026-10-24, by: opus, scope: "Calcium gluconate and chloride doses (rates, label limits, evidence grades, digoxin line) checked against the labels and the UK guideline. Doses left not-verified: albuterol-neb-hyperkalemia, dextrose-10-infusion-hyperkalemia, dextrose-50-hyperkalemia, furosemide-hyperkalemia, insulin-regular-hyperkalemia, patiromer-hyperkalemia, szc-hyperkalemia-initial, szc-hyperkalemia-maintenance", fingerprint: "01961b11c11a88d4", carried: "2026-10-25: Format sweep (bullets split, tables to bullets or scale, society names out of text). Numbers, doses, drugs and sources unchanged." }
 related:
-  conditions: [renal-aki, cardio-ecg-interpretation]
+  conditions: [renal-aki, cardio-ecg-interpretation, renal-electrolyte-repletion, renal-hypokalemia, renal-iv-fluids]
 emergency_hint: Calcium, insulin-dextrose, remove K⁺
 ---
 ## Do Now
@@ -20,7 +20,7 @@ emergency_hint: Calcium, insulin-dextrose, remove K⁺
    {{dose:calcium-gluconate-hyperkalemia}}
 
    - Repeat if ECG changes persist or recur. ^[kdigo-acute-hyperkalemia-2020]
-   - KDIGO suggests: give calcium at {{threshold:k-calcium-without-ecg}} if no ECG or monitor is yet available. ^[kdigo-acute-hyperkalemia-2020]
+   - Suggested: give calcium at {{threshold:k-calcium-without-ecg}} if no ECG or monitor is yet available. ^[kdigo-acute-hyperkalemia-2020]
    - Normal ECG: IV calcium not recommended in moderate hyperkalemia. No UK consensus in severe hyperkalemia. ^[ukka-hyperkalaemia-2026]
 2. Shift K⁺ into cells
    - If: moderate {{threshold:k-moderate}} or severe {{threshold:k-severe}} ^[ukka-hyperkalaemia-2026]
@@ -42,7 +42,7 @@ emergency_hint: Calcium, insulin-dextrose, remove K⁺
 
    - Never albuterol alone for severe hyperkalemia. ^[ukka-hyperkalaemia-2026]
 4. Remove K⁺
-   - Severe: sodium zirconium cyclosilicate (UK guideline recommends). Moderate: consider. ^[ukka-hyperkalaemia-2026]
+   - Severe: sodium zirconium cyclosilicate (recommended in the UK). Moderate: consider. ^[ukka-hyperkalaemia-2026]
 
    {{dose:szc-hyperkalemia-initial}}
 
@@ -55,7 +55,9 @@ emergency_hint: Calcium, insulin-dextrose, remove K⁺
    - Refractory hyperkalemia or hyperkalemia with AKI: nephrology to consider dialysis. ^[kdigo-acute-hyperkalemia-2020, ukka-hyperkalaemia-2026]
 
 :::note
-- Cardiac arrest from suspected hyperkalemia. IV calcium, sodium bicarbonate, and insulin-dextrose: effectiveness not well established (weak recommendations). Inhaled β₂-agonists such as albuterol: not recommended (no benefit). ^[aha-special-circumstances-2025]
+- Cardiac arrest from suspected hyperkalemia: ^[aha-special-circumstances-2025]
+  - IV calcium, sodium bicarbonate, and insulin-dextrose: effectiveness not well established (weak recommendations). ^[aha-special-circumstances-2025]
+  - Inhaled β₂-agonists such as albuterol: not recommended (no benefit). ^[aha-special-circumstances-2025]
 :::
 
 ## At a Glance
@@ -63,7 +65,8 @@ emergency_hint: Calcium, insulin-dextrose, remove K⁺
 - STAT 12-lead ECG at {{threshold:k-ecg-monitoring}}. ^[ukka-hyperkalaemia-2026]
 - A normal ECG does not exclude life-threatening hyperkalemia. ^[kdigo-acute-hyperkalemia-2020]
 - ECG changes: IV calcium first for cardiac membrane stabilization. Does not lower K⁺. ^[ukka-hyperkalaemia-2026, kdigo-acute-hyperkalemia-2020]
-- Insulin-dextrose is the most effective intracellular shift. Monitor glucose for at least 6 h. Longer after repeat insulin doses. ^[ukka-hyperkalaemia-2026]
+- Insulin-dextrose is the most effective intracellular shift: ^[ukka-hyperkalaemia-2026]
+  - Monitor glucose for at least 6 h. Longer after repeat insulin doses.
 - Only binders, diuretics and dialysis eliminate K⁺. Recheck K⁺ for rebound. ^[kdigo-acute-hyperkalemia-2020]
 
 ## Severity
@@ -74,14 +77,20 @@ emergency_hint: Calcium, insulin-dextrose, remove K⁺
 :::
 
 - *Acute* hyperkalemia: K⁺ above the upper limit of normal, not known to be chronic. ^[kdigo-acute-hyperkalemia-2020]
-- No standard severity grading exists. KDIGO grades by K⁺ and ECG changes together. ECG changes at any K⁺ are an emergency. ^[kdigo-acute-hyperkalemia-2020]
+- No standard severity grading exists. Grading uses K⁺ and ECG changes together. ^[kdigo-acute-hyperkalemia-2020]
+- ECG changes at any K⁺ are an emergency. ^[kdigo-acute-hyperkalemia-2020]
 - Continuous cardiac monitoring: {{threshold:k-severe}}, any ECG changes, or {{threshold:k-moderate}} if unwell or rising rapidly. ^[ukka-hyperkalaemia-2026]
 - Severe hyperkalemia: urgent hospital assessment, monitored bed. ^[ukka-hyperkalaemia-2026]
 
 ## Causes
-- **Pseudohyperkalemia:** hemolysis, prolonged tourniquet or fist clenching, clotted sample, marked leukocytosis or thrombocytosis, prolonged transit or cold storage. Normal K⁺ on careful repeat. ^[kdigo-acute-hyperkalemia-2020, ukka-hyperkalaemia-2026]
+- **Pseudohyperkalemia:** ^[kdigo-acute-hyperkalemia-2020, ukka-hyperkalaemia-2026]
+  - Causes: hemolysis, prolonged tourniquet or fist clenching, clotted sample.
+  - Also: marked leukocytosis or thrombocytosis, prolonged transit or cold storage.
+  - Normal K⁺ on careful repeat.
 - **Shift out of cells:** acidosis, catabolism, rhabdomyolysis and tissue injury. β-blockers, digoxin toxicity, succinylcholine. ^[kdigo-acute-hyperkalemia-2020, emcreg-hyperkalemia-2025]
-- **Impaired excretion:** [!cannot-miss] AKI, especially oliguric. Reduced GFR. K⁺-sparing diuretics, MRAs, ACE inhibitors, ARBs, direct renin inhibitors, NSAIDs, heparin, trimethoprim-sulfamethoxazole. ^[kdigo-acute-hyperkalemia-2020, emcreg-hyperkalemia-2025]
+- **Impaired excretion:** [!cannot-miss] ^[kdigo-acute-hyperkalemia-2020, emcreg-hyperkalemia-2025]
+  - AKI, especially oliguric. Reduced GFR.
+  - Drugs: K⁺-sparing diuretics, MRAs, ACE inhibitors, ARBs, direct renin inhibitors, NSAIDs, heparin, trimethoprim-sulfamethoxazole.
 - **Intake:** K⁺ supplements and salt substitutes. Rarely the sole cause with normal renal K⁺ excretion. ^[kdigo-acute-hyperkalemia-2020]
 
 ## Presentation
@@ -124,10 +133,10 @@ emergency_hint: Calcium, insulin-dextrose, remove K⁺
    {{dose:calcium-chloride-hyperkalemia}}
 
    - On hemodialysis with {{threshold:k-severe}} and ECG changes: IV calcium even if dialysis is immediately available. ^[ukka-hyperkalaemia-2026]
-   - KDIGO suggests: give calcium at {{threshold:k-calcium-without-ecg}} if no ECG or monitor is yet available. ^[kdigo-acute-hyperkalemia-2020]
+   - Suggested: give calcium at {{threshold:k-calcium-without-ecg}} if no ECG or monitor is yet available. ^[kdigo-acute-hyperkalemia-2020]
    - Normal ECG: IV calcium not recommended in moderate hyperkalemia. No UK consensus in severe hyperkalemia. ^[ukka-hyperkalaemia-2026]
    - Onset 1–3 min, duration 30–60 min. Repeat if ECG changes persist or recur. ^[kdigo-acute-hyperkalemia-2020]
-   - Evidence for IV calcium is weak. UK grade lowered to 2C in 2026 after the 2025 ILCOR review. ^[ukka-hyperkalaemia-2026]
+   - Evidence for IV calcium is weak. UK grade lowered to 2C in 2026 after a 2025 review. ^[ukka-hyperkalaemia-2026]
 2. Intracellular shift
    - Insulin with dextrose: recommended in severe, suggested in moderate. ^[ukka-hyperkalaemia-2026]
 
@@ -145,21 +154,26 @@ emergency_hint: Calcium, insulin-dextrose, remove K⁺
 
    - Sodium bicarbonate: not routine. Consider only with metabolic acidosis if the sodium load is tolerated. ^[ukka-hyperkalaemia-2026, kdigo-acute-hyperkalemia-2020]
 3. Elimination
-   - Severe: sodium zirconium cyclosilicate (UK guideline recommends). Moderate: consider. ^[ukka-hyperkalaemia-2026]
+   - Severe: sodium zirconium cyclosilicate (recommended in the UK). Moderate: consider. ^[ukka-hyperkalaemia-2026]
 
    {{dose:szc-hyperkalemia-initial}}
 
    - US labels: K⁺ binders are not emergency treatment for life-threatening hyperkalemia (delayed onset). ^[label-lokelma-2024, label-veltassa-2025]
-   - Patiromer: UK guideline option (onset 4–7 h). ^[ukka-hyperkalaemia-2026, label-veltassa-2025]
+   - Patiromer: a UK option (onset 4–7 h). ^[ukka-hyperkalaemia-2026, label-veltassa-2025]
 
    {{dose:patiromer-hyperkalemia}}
 
-   - Calcium polystyrene sulfonate: no longer routine for acute hyperkalemia (UK guideline). ^[ukka-hyperkalaemia-2026]
-   - Sodium polystyrene sulfonate: slow onset (>4 h), unpredictable effect, intestinal necrosis reported. Not for emergencies. Never with sorbitol. ^[ukka-hyperkalaemia-2026, kdigo-acute-hyperkalemia-2020]
-   - Sodium polystyrene sulfonate, US label: lowers K⁺ over hours to days. Alone it may not correct severe or emergency hyperkalemia. Consider dialysis. ^[label-sodium-polystyrene-sulfonate-2025]
-   - Sodium polystyrene sulfonate, US label: contraindicated with hypokalemia, obstructive bowel disease and in neonates. Use only with normal bowel function. Stop if constipation develops. ^[label-sodium-polystyrene-sulfonate-2025]
-   - Sodium polystyrene sulfonate, US label: GI risk factors are intestinal disease or surgery, hypovolemia, renal failure and prematurity. Caution with sodium load in severe heart failure, severe hypertension or marked edema. ^[label-sodium-polystyrene-sulfonate-2025]
-   - Sodium polystyrene sulfonate, US label: give other oral drugs ≥3 h before or after (6 h with gastroparesis). Give upright (aspiration risk). Never with magnesium hydroxide. Monitor K⁺, Ca²⁺ and Mg²⁺. ^[label-sodium-polystyrene-sulfonate-2025]
+   - Calcium polystyrene sulfonate: no longer routine for acute hyperkalemia in the UK. ^[ukka-hyperkalaemia-2026]
+   - Sodium polystyrene sulfonate: slow onset (>4 h), unpredictable effect, intestinal necrosis reported. ^[ukka-hyperkalaemia-2026, kdigo-acute-hyperkalemia-2020]
+   - Sodium polystyrene sulfonate: not for emergencies. Never with sorbitol. ^[ukka-hyperkalaemia-2026, kdigo-acute-hyperkalemia-2020]
+   - Sodium polystyrene sulfonate, US label: lowers K⁺ over hours to days. ^[label-sodium-polystyrene-sulfonate-2025]
+   - Sodium polystyrene sulfonate, US label: alone it may not correct severe or emergency hyperkalemia. Consider dialysis. ^[label-sodium-polystyrene-sulfonate-2025]
+   - Sodium polystyrene sulfonate, US label: contraindicated with hypokalemia, obstructive bowel disease and in neonates. ^[label-sodium-polystyrene-sulfonate-2025]
+   - Sodium polystyrene sulfonate, US label: use only with normal bowel function. Stop if constipation develops. ^[label-sodium-polystyrene-sulfonate-2025]
+   - Sodium polystyrene sulfonate, US label: GI risk factors are intestinal disease or surgery, hypovolemia, renal failure and prematurity. ^[label-sodium-polystyrene-sulfonate-2025]
+   - Sodium polystyrene sulfonate, US label: caution with sodium load in severe heart failure, severe hypertension or marked edema. ^[label-sodium-polystyrene-sulfonate-2025]
+   - Sodium polystyrene sulfonate, US label: give other oral drugs ≥3 h before or after (6 h with gastroparesis). Give upright (aspiration risk). ^[label-sodium-polystyrene-sulfonate-2025]
+   - Sodium polystyrene sulfonate, US label: never with magnesium hydroxide. Monitor K⁺, Ca²⁺ and Mg²⁺. ^[label-sodium-polystyrene-sulfonate-2025]
    - Non-oliguric, especially with volume overload: IV furosemide. ^[kdigo-acute-hyperkalemia-2020, emcreg-hyperkalemia-2025]
 
    {{dose:furosemide-hyperkalemia}}
@@ -168,7 +182,8 @@ emergency_hint: Calcium, insulin-dextrose, remove K⁺
    - Refractory hyperkalemia or hyperkalemia with AKI: nephrology to consider dialysis. ^[kdigo-acute-hyperkalemia-2020, ukka-hyperkalaemia-2026]
 
 #### Hyperkalemic cardiac arrest
-- IV calcium, sodium bicarbonate, and insulin-dextrose: effectiveness not well established (weak recommendations). Inhaled β₂-agonists such as albuterol: not recommended (no benefit). ^[aha-special-circumstances-2025]
+- IV calcium, sodium bicarbonate, and insulin-dextrose: effectiveness not well established (weak recommendations). ^[aha-special-circumstances-2025]
+- Inhaled β₂-agonists such as albuterol: not recommended (no benefit). ^[aha-special-circumstances-2025]
 
 ## Monitor
 :::times{after=first check="K⁺"} K⁺ at least at these times after treating moderate or severe hyperkalemia ^[ukka-hyperkalaemia-2026]
@@ -202,7 +217,8 @@ emergency_hint: Calcium, insulin-dextrose, remove K⁺
 ### Where Guidelines Differ: Insulin dose, patiromer
 :::compare Insulin dose
 - KDIGO 2020: A lower dose gave similar K⁺ lowering with less hypoglycemia. ^[kdigo-acute-hyperkalemia-2020]
-- UK guideline 2026: Keeps the standard dose. Newer studies found lower doses less effective without reliably less hypoglycemia. Evidence insufficient to change the dose. ^[ukka-hyperkalaemia-2026]
+- UK guideline 2026: Keeps the standard dose. ^[ukka-hyperkalaemia-2026]
+- UK guideline: Newer studies found lower doses less effective without reliably less hypoglycemia. Evidence insufficient to change the dose. ^[ukka-hyperkalaemia-2026]
 :::
 
 :::compare Patiromer for acute treatment
@@ -213,7 +229,8 @@ emergency_hint: Calcium, insulin-dextrose, remove K⁺
 ### Special Populations: Digoxin, hemodialysis, lactation
 - Digoxin toxicity: concern about calcium comes from case reports. Limited retrospective data show no clear harm. ^[ukka-hyperkalaemia-2026]
 - Hemodialysis: 1 mEq/L K⁺ bath only if pre-dialysis K⁺ >8.0 mEq/L, with telemetry and K⁺ every 30 min. Switch to 2 mEq/L once K⁺ <7.0 mEq/L. ^[ukka-hyperkalaemia-2026]
-- Lactation: sodium zirconium cyclosilicate, patiromer and sodium polystyrene sulfonate are not orally absorbed. Unlikely to reach breast milk or harm the breastfed infant. No special precautions. ^[lactmed-sodium-zirconium-cyclosilicate-2023, lactmed-patiromer-2018, lactmed-sodium-polystyrene-sulfonate-2021]
+- Lactation: sodium zirconium cyclosilicate, patiromer and sodium polystyrene sulfonate are not orally absorbed. ^[lactmed-sodium-zirconium-cyclosilicate-2023, lactmed-patiromer-2018, lactmed-sodium-polystyrene-sulfonate-2021]
+- Lactation: unlikely to reach breast milk or harm the breastfed infant. No special precautions. ^[lactmed-sodium-zirconium-cyclosilicate-2023, lactmed-patiromer-2018, lactmed-sodium-polystyrene-sulfonate-2021]
 
 ### Complications: Arrhythmia, treatment side effects
 - Arrhythmia, sudden cardiac death. ^[kdigo-acute-hyperkalemia-2020]
@@ -221,10 +238,11 @@ emergency_hint: Calcium, insulin-dextrose, remove K⁺
 
 ### After the Acute Phase: Medication review, binders, diet, repeat K⁺
 - Review K⁺-raising drugs during admission. Weigh recurrence risk before restarting. ^[ukka-hyperkalaemia-2026]
-- UK guideline: withhold RAAS inhibitors during acute illness (sepsis, hypovolemia, AKI) at any severity. ^[ukka-hyperkalaemia-2026]
+- UK: withhold RAAS inhibitors during acute illness (sepsis, hypovolemia, AKI) at any severity. ^[ukka-hyperkalaemia-2026]
 - Stop RAAS inhibitors at {{threshold:k-ecg-monitoring}} if criteria for a K⁺ binder are not met. ^[ukka-hyperkalaemia-2026]
-- KDIGO: consider temporary discontinuation. In chronic hyperkalemia, binders can enable continued RAAS inhibition. ^[kdigo-acute-hyperkalemia-2020, ukka-hyperkalaemia-2026]
-- K⁺ dietary advice for ongoing hyperkalemia with moderate–severe CKD, after non-dietary causes are addressed. Limit processed-food K⁺ additives. Involve a renal dietitian. ^[kdigo-acute-hyperkalemia-2020, ukka-hyperkalaemia-2026]
+- Consider temporary discontinuation. In chronic hyperkalemia, binders can enable continued RAAS inhibition. ^[kdigo-acute-hyperkalemia-2020, ukka-hyperkalaemia-2026]
+- K⁺ dietary advice for ongoing hyperkalemia with moderate–severe CKD, after non-dietary causes are addressed. ^[kdigo-acute-hyperkalemia-2020, ukka-hyperkalaemia-2026]
+- Limit processed-food K⁺ additives. Involve a renal dietitian. ^[kdigo-acute-hyperkalemia-2020, ukka-hyperkalaemia-2026]
 - Repeat K⁺ after discharge for all patients treated in hospital. ^[ukka-hyperkalaemia-2026]
 - Maintenance binder if needed: sodium zirconium cyclosilicate or patiromer. ^[label-lokelma-2024, label-veltassa-2025]
 

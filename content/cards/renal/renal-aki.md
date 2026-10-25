@@ -6,9 +6,10 @@ title: Acute Kidney Injury
 aliases: [AKI, acute renal failure, ARF, rising creatinine, creatinine up, oliguria]
 definition: "Abrupt decrease in kidney function, defined and staged by {{criteria:kdigo-aki}}. ^[kdigo-aki-2012]"
 based_on: [kdigo-aki-2012, nice-aki-2024]
-checked: { date: 2026-10-17, by: owner, scope: "owner review", fingerprint: "bc4a32b8ac688e42", carried: "2026-10-24: Dose row titles shortened to the indication only. Doses and numbers unchanged, the removed wording is kept in the longer indication text." }
+checked: { date: 2026-10-17, by: owner, scope: "owner review", fingerprint: "9ba7b00b5c938c3d", carried: "2026-10-25: Format sweep (bullets split, tables to bullets or scale, society names out of text). Numbers, doses, drugs and sources unchanged." }
 related:
-  conditions: [renal-hyperkalemia, psych-lithium-psychotropic-safety, cardio-adhf, crit-sepsis, pulm-dyspnea]
+  conditions: [renal-hyperkalemia, psych-lithium-psychotropic-safety, cardio-adhf, crit-sepsis, pulm-dyspnea, gi-upper-gi-bleeding, hosp-pain-management, renal-acid-base, renal-electrolyte-repletion, renal-iv-fluids]
+  differential: [heme-anemia]
 ---
 ## At a Glance
 - Diagnose and stage by {{criteria:kdigo-aki}}. Stage by whichever of SCr or UOP is higher. ^[kdigo-aki-2012]
@@ -21,9 +22,12 @@ related:
 ## Definition and Staging
 {{criteria:kdigo-aki}}
 
-- Baseline: prefer a prior SCr. Without one, the lowest SCr this admission is usually at or above the true baseline, so it may understage AKI. Hemodilution after massive resuscitation is the exception. ^[kdigo-aki-2012]
+- Baseline: prefer a prior SCr. ^[kdigo-aki-2012]
+- Without a prior SCr, the lowest SCr this admission is usually at or above the true baseline, so it may understage AKI. ^[kdigo-aki-2012]
+- Hemodilution after massive resuscitation is the exception. ^[kdigo-aki-2012]
 - AKI and CKD often coexist. Evaluate for unrecognized CKD before labeling a rise as acute. ^[kdigo-aki-2012]
-- UOP criteria are less well validated. Interpret with fluid balance and drugs (e.g. ACE inhibitors). ^[kdigo-aki-2012]
+- UOP criteria are less well validated. ^[kdigo-aki-2012]
+- Interpret UOP with fluid balance and drugs (e.g. ACE inhibitors). ^[kdigo-aki-2012]
 - SCr rise without GFR loss: trimethoprim and cimetidine block tubular creatinine secretion. ^[kdigo-aki-controversies-2020, delanaye-trimethoprim-2011]
 
 ## First Steps
@@ -39,15 +43,22 @@ related:
 - Anuria otherwise suggests obstruction, renal arterial or venous occlusion (rapid, irreversible injury) or severe tubular injury. ^[kdigo-aki-2012]
 
 ## Causes
-| Category | Mechanism | Examples |
-|---|---|---|
-| Prerenal | ↓ kidney perfusion | Hypovolemia, hemorrhage, shock, heart failure, cirrhosis, NSAIDs, ACE inhibitors, ARBs, abdominal compartment syndrome ^[kdigo-aki-2012, aha-cardiorenal-2019, aasld-ascites-hrs-2021, moore-aki-core-2018] |
-| Intrinsic: tubular | Ischemic or toxic injury | Sepsis, prolonged hypoperfusion. Aminoglycosides, amphotericin B, contrast. Pigment (myoglobin, hemoglobin) ^[kdigo-aki-2012, moore-aki-core-2018] |
-| Intrinsic: crystal, cast | Intratubular obstruction | Tumor lysis (uric acid), drugs (e.g. acyclovir, methotrexate), myeloma cast nephropathy ^[moore-aki-core-2018] |
-| Intrinsic: interstitial | Immune-mediated, mostly drug-induced | AIN ^[kdigo-aki-2012, muriithi-urine-eos-2013] |
-| Intrinsic: glomerular | Inflammatory glomerular injury | Acute GN, vasculitis ^[kdigo-aki-2012] |
-| Intrinsic: vascular | Microvascular or large-vessel occlusion | Thrombotic microangiopathy, renal arterial or venous occlusion ^[kdigo-aki-2012] |
-| Postrenal | Urinary tract obstruction | Bladder outlet obstruction, bilateral ureteral or solitary kidney obstruction ^[kdigo-aki-2012, nice-aki-2024] |
+- **Prerenal:** ↓ kidney perfusion ^[kdigo-aki-2012, aha-cardiorenal-2019, aasld-ascites-hrs-2021, moore-aki-core-2018]
+  - Examples: hypovolemia, hemorrhage, shock, heart failure, cirrhosis, NSAIDs, ACE inhibitors, ARBs, abdominal compartment syndrome
+- **Intrinsic, tubular:** ischemic or toxic injury ^[kdigo-aki-2012, moore-aki-core-2018]
+  - Examples: sepsis, prolonged hypoperfusion
+  - Examples: aminoglycosides, amphotericin B, contrast
+  - Examples: pigment (myoglobin, hemoglobin)
+- **Intrinsic, crystal or cast:** intratubular obstruction ^[moore-aki-core-2018]
+  - Examples: tumor lysis (uric acid), drugs (e.g. acyclovir, methotrexate), myeloma cast nephropathy
+- **Intrinsic, interstitial:** immune-mediated, mostly drug-induced ^[kdigo-aki-2012, muriithi-urine-eos-2013]
+  - Examples: AIN
+- **Intrinsic, glomerular:** inflammatory glomerular injury ^[kdigo-aki-2012]
+  - Examples: acute GN, vasculitis
+- **Intrinsic, vascular:** microvascular or large-vessel occlusion ^[kdigo-aki-2012]
+  - Examples: thrombotic microangiopathy, renal arterial or venous occlusion
+- **Postrenal:** urinary tract obstruction ^[kdigo-aki-2012, nice-aki-2024]
+  - Examples: bladder outlet obstruction, bilateral ureteral or solitary kidney obstruction
 
 #### Cannot miss
 - Need immediate diagnosis and specific therapy: ^[kdigo-aki-2012]
@@ -91,7 +102,9 @@ related:
 | {{calc:feurea}} (on diuretics) | {{threshold:feurea-prerenal}} | {{threshold:feurea-atn}} ^[carvounis-feurea-2002, gotfried-fe-indices-2012] |
 | Urine Na | {{threshold:urine-na-prerenal}} | {{threshold:urine-na-atn}} ^[miller-urine-indices-1978] |
 | Urine osmolality | {{threshold:urine-osm-prerenal}} | {{threshold:urine-osm-atn}} ^[miller-urine-indices-1978] |
-| Sediment | No granular casts or tubular epithelial cells | Granular casts, tubular epithelial cells ^[perazella-urine-microscopy-2008] |
+
+- Sediment: prerenal shows no granular casts or tubular epithelial cells. ^[perazella-urine-microscopy-2008]
+- Sediment: ATN shows granular casts, tubular epithelial cells. ^[perazella-urine-microscopy-2008]
 
 :::note
 - Values between the prerenal and ATN cutoffs are indeterminate. Many oliguric patients fall between them. ^[miller-urine-indices-1978, gotfried-fe-indices-2012]
@@ -104,14 +117,12 @@ related:
 - BUN:Cr ratio does not distinguish prerenal from intrinsic AKI. ^[manoeuvrier-bcr-2017]
 
 #### Second line, by scenario
-| Suspected | Tests |
-|---|---|
-| Rhabdomyolysis | CK. Heme-positive dipstick without RBCs ^[moore-aki-core-2018] |
-| Hemolysis, TMA | Hemoglobin, platelets, LDH, haptoglobin, bilirubin, smear ^[kdigo-aki-2012, moore-aki-core-2018] |
-| Tumor lysis | Uric acid, phosphate, potassium, calcium ^[moore-aki-core-2018] |
-| Myeloma | SPEP, serum free light chains ^[moore-aki-core-2018] |
-| GN, vasculitis | Serologies. Biopsy if needed for diagnosis ^[kdigo-aki-2012] |
-| Abdominal compartment syndrome | Bladder (intra-abdominal) pressure ^[kdigo-aki-2012] |
+- **Rhabdomyolysis:** CK. Heme-positive dipstick without RBCs ^[moore-aki-core-2018]
+- **Hemolysis, TMA:** hemoglobin, platelets, LDH, haptoglobin, bilirubin, smear ^[kdigo-aki-2012, moore-aki-core-2018]
+- **Tumor lysis:** uric acid, phosphate, potassium, calcium ^[moore-aki-core-2018]
+- **Myeloma:** SPEP, serum free light chains ^[moore-aki-core-2018]
+- **GN, vasculitis:** serologies. Biopsy if needed for diagnosis ^[kdigo-aki-2012]
+- **Abdominal compartment syndrome:** bladder (intra-abdominal) pressure ^[kdigo-aki-2012]
 
 - Suspected AIN: urine eosinophils do not distinguish AIN from other causes. Definitive diagnosis is by kidney biopsy. ^[muriithi-urine-eos-2013]
 
@@ -134,7 +145,8 @@ related:
 - Monitor SCr and UOP. ^[kdigo-aki-2012]
 - Do not use diuretics to prevent AKI. Avoid them for treatment except volume overload. ^[kdigo-aki-2012]
 - Do not use low-dose dopamine. Avoid fenoldopam. ^[kdigo-aki-2012]
-- Standard {{calc:ckd-epi}} assumes steady state. Kinetic estimates ({{calc:kegfr}}, Jelliffe) correlate with measured GFR but agree poorly. ^[pelletier-egfr-aki-2020]
+- Standard {{calc:ckd-epi}} assumes steady state. ^[pelletier-egfr-aki-2020]
+- Kinetic estimates ({{calc:kegfr}}, Jelliffe) correlate with measured GFR but agree poorly. ^[pelletier-egfr-aki-2020]
 - Increase doses again as function recovers to avoid underdosing. ^[kdigo-aki-controversies-2020]
 - Do not restrict protein to delay RRT. Prefer enteral nutrition. ^[kdigo-aki-2012]
 
@@ -178,7 +190,8 @@ related:
 - After recovery, consider nephrology referral if {{calc:ckd-epi}} ≤30. ^[nice-aki-2024]
 
 ### Evidence: Bicarbonate, timing of RRT
-- ICU, metabolic acidemia (pH ≤7.20) with moderate–severe AKI: IV sodium bicarbonate (target pH ≥7.30) did not reduce 90-day mortality. Less RRT use (secondary outcome). ^[bicaricu2-2025, bicar-icu-2018]
+- ICU, metabolic acidemia (pH ≤7.20) with moderate–severe AKI: IV sodium bicarbonate (target pH ≥7.30) did not reduce 90-day mortality. ^[bicaricu2-2025, bicar-icu-2018]
+- Same population: less RRT use with bicarbonate (secondary outcome). ^[bicaricu2-2025, bicar-icu-2018]
 - Critically ill, stage 2–3 without urgent indication: accelerated RRT did not lower 90-day mortality and increased RRT dependence among survivors. ^[starrt-aki-2020]
 
 ## Pearls

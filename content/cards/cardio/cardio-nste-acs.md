@@ -10,7 +10,7 @@ based_on: [acc-aha-acs-2025, esc-acs-2023]
 checked: { date: 2026-10-20, by: owner, scope: "owner review", fingerprint: "c76be1c0791e00f8", carried: "2026-10-25: Format sweep (bullets split, tables to bullets or scale, society names out of text). Numbers, doses, drugs and sources unchanged." }
 related:
   differential: [cardio-chest-pain, pulm-vte-diagnosis]
-  conditions: [cardio-atrial-fibrillation, cardio-adhf, cardio-ecg-interpretation, pulm-copd-exacerbation]
+  conditions: [cardio-atrial-fibrillation, cardio-adhf, cardio-ecg-interpretation, pulm-copd-exacerbation, gi-upper-gi-bleeding, heme-anemia, heme-anticoagulation-management]
   tools: []
 ---
 ## At a Glance

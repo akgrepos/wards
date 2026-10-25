@@ -35,7 +35,7 @@ describe('topic page', () => {
     expect(screen.getAllByText('Nephrology and Urology').length).toBeGreaterThan(0);
     expect(screen.getByText(/Cutoffs vary by laboratory/)).toBeTruthy();
     expect(screen.queryByRole('button', { name: /^Based on/ })).toBeNull();
-    expect(screen.getByText('Updated Oct 24, 2026')).toBeTruthy();
+    expect(screen.getByText('Updated Oct 25, 2026')).toBeTruthy();
   });
 
   it('shows Updated with the later of the stamp and carried dates, no Reviewed label on a card', () => {
@@ -218,7 +218,7 @@ describe('remembered sections', () => {
   });
 
   it('a Cannot miss or Most common tag is the last thing in its bullet, before the source pill', () => {
-    launch('#/card/renal-hyperkalemia');
+    launch('#/card/cardio-adhf');
     const li = screen.getByText('Cannot miss').closest('li') as HTMLElement;
     const kids = Array.from(li.childNodes);
     const tagAt = kids.findIndex((n) => n.textContent === 'Cannot miss');
@@ -262,7 +262,7 @@ describe('remembered sections', () => {
     const notes = [...document.querySelectorAll('.akg-panel--note')].map((n) => n.textContent);
     expect(notes.some((t) => t!.startsWith('Note') && t!.includes('Postrenal AKI is not identified by urine indices'))).toBe(true);
     const indices = screen.getByRole('columnheader', { name: 'ATN' }).closest('table')!;
-    expect(within(indices).getByRole('rowheader', { name: 'Sediment' })).toBeTruthy();
+    expect(within(indices).getByRole('rowheader', { name: 'Urine Na' })).toBeTruthy();
   });
 
   it('a regimen shows its options joined by Or, parts joined by Plus, one dose row per drug', async () => {

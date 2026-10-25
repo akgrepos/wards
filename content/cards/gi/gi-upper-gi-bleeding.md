@@ -7,10 +7,11 @@ title: "Upper Gastrointestinal Bleeding"
 aliases: [UGIB, upper GI bleed, GI bleed, GI bleeding, hematemesis, melena, coffee-ground emesis, black stool, bleeding ulcer, peptic ulcer bleeding, Forrest, Glasgow-Blatchford, AIMS65, PPI drip, pantoprazole drip, erythromycin before EGD, EGD timing, nonvariceal]
 definition: "Bleeding from a source proximal to the ligament of Treitz that is not from esophageal or gastric varices. Peptic ulcer disease is the most common cause. ^[acg-ugib-2021, esge-pub-2026]"
 based_on: [acg-ugib-2021, esge-pub-2026, icg-ugib-2019, acg-cag-antithrombotic-2022, aabb-rbc-2023]
-checked: { date: 2026-10-21, by: opus, scope: "doses and numbers", fingerprint: "6b7f31e3d57e38e4", carried: "2026-10-24: Dose row titles shortened to the indication only. Doses and numbers unchanged, the removed wording is kept in the longer indication text." }
+checked: { date: 2026-10-21, by: opus, scope: "doses and numbers", fingerprint: "20ce99b2c389a47a", carried: "2026-10-25: Format sweep (bullets split, tables to bullets or scale, society names out of text). Numbers, doses, drugs and sources unchanged." }
 related:
-  conditions: [heme-anticoagulation-management, crit-sepsis, crit-hypoxemic-respiratory-failure, renal-aki, cardio-nste-acs]
+  conditions: [heme-anticoagulation-management, crit-sepsis, crit-hypoxemic-respiratory-failure, renal-aki, cardio-nste-acs, hosp-pain-management]
   medications: [ceftriaxone]
+  differential: [heme-anemia]
 emergency_hint: Resuscitate, erythromycin, IV PPI, endoscopy
 ---
 ## Do Now
@@ -38,13 +39,15 @@ emergency_hint: Resuscitate, erythromycin, IV PPI, endoscopy
    - Stop NSAIDs. ^[common-practice]
    - Hold anticoagulants and P2Y12 inhibitors pending endoscopy, with cardiology input for recent stents or acute coronary syndrome. ^[common-practice]
    - Aspirin for secondary cardiovascular prevention: do not hold. If held, restart the day endoscopic hemostasis is confirmed. ^[acg-cag-antithrombotic-2022]
-   - Warfarin needing reversal (life-threatening bleeding or markedly supratherapeutic INR): prothrombin complex concentrate rather than fresh frozen plasma. Other reversal agents are on a later card. ^[acg-cag-antithrombotic-2022]
+   - Warfarin needing reversal (life-threatening bleeding or markedly supratherapeutic INR): prothrombin complex concentrate rather than fresh frozen plasma. ^[acg-cag-antithrombotic-2022]
+   - Other reversal agents are on a later card. ^[acg-cag-antithrombotic-2022]
 6. Call gastroenterology
    - Endoscopy within 24 hours of presentation, after resuscitation. Emergent endoscopy (within 6 hours) only if still unstable despite resuscitation. ^[acg-ugib-2021, esge-pub-2026]
    - Unstable, or ongoing bleeding: ICU or step-down bed. ^[common-practice]
 
 :::note
-- Cirrhosis or stigmata of liver disease: treat as variceal bleeding until proven otherwise (vasoactive drug such as octreotide and IV antibiotic prophylaxis at once, endoscopy within 12 hours). A full variceal card comes later. ^[aasld-portal-htn-2024]
+- Cirrhosis or stigmata of liver disease: treat as variceal bleeding until proven otherwise (vasoactive drug such as octreotide and IV antibiotic prophylaxis at once, endoscopy within 12 hours). ^[aasld-portal-htn-2024]
+- A full variceal card comes later. ^[aasld-portal-htn-2024]
 :::
 
 ## At a Glance
@@ -91,7 +94,8 @@ emergency_hint: Resuscitate, erythromycin, IV PPI, endoscopy
    - Transfuse at {{threshold:ugib-hb-restrictive}}. {{threshold:ugib-hb-cardiovascular}} with preexisting cardiovascular disease. ^[acg-ugib-2021, aabb-rbc-2023]
    - Hypotensive or exsanguinating bleeding: these thresholds do not apply. Transfuse on clinical grounds. ^[acg-ugib-2021, icg-ugib-2019]
 2. Coagulopathy and platelets
-   - Warfarin needing reversal: prothrombin complex concentrate rather than fresh frozen plasma. Routine vitamin K is suggested against (consider it when prolonged reversal is intended). ^[acg-cag-antithrombotic-2022]
+   - Warfarin needing reversal: prothrombin complex concentrate rather than fresh frozen plasma. ^[acg-cag-antithrombotic-2022]
+   - Routine vitamin K is suggested against (consider it when prolonged reversal is intended). ^[acg-cag-antithrombotic-2022]
    - Antiplatelet effect alone: platelet transfusion is not suggested. ^[acg-cag-antithrombotic-2022]
    - Active bleeding with thrombocytopenia: platelet transfusion is common practice. ^[common-practice]
    - Reversal of direct oral anticoagulants and heparin is on a later card. See [[heme-anticoagulation-management|Anticoagulant Selection]]. ^[common-practice]
@@ -100,7 +104,8 @@ emergency_hint: Resuscitate, erythromycin, IV PPI, endoscopy
 
    {{dose:erythromycin-iv-ugib}}
 
-   - High-dose IV PPI may be considered. Do not delay endoscopy. ACG 2021 makes no recommendation for or against. ^[esge-pub-2026, acg-ugib-2021]
+   - High-dose IV PPI may be considered. Do not delay endoscopy. ^[esge-pub-2026, acg-ugib-2021]
+   - The 2021 guideline makes no recommendation for or against. ^[esge-pub-2026, acg-ugib-2021]
 
    {{dose:pantoprazole-iv-ugib-infusion}}
 
@@ -112,20 +117,23 @@ emergency_hint: Resuscitate, erythromycin, IV PPI, endoscopy
    - Methods: bipolar or heater-probe thermal therapy, absolute ethanol injection, clips. Epinephrine injection only combined with a second method. ^[acg-ugib-2021, esge-pub-2026]
    - Adherent clot: remove it and treat what lies beneath if safely possible. ^[esge-pub-2026]
 5. After endoscopy
-   - High-risk stigmata treated endoscopically: high-dose PPI for 72 hours (continuous infusion, or intermittent per ACG), then twice-daily oral PPI to day 14, then once daily. ^[acg-ugib-2021, icg-ugib-2019]
+   - High-risk stigmata treated endoscopically: high-dose PPI for 72 hours (continuous infusion, or intermittent per the guideline). ^[acg-ugib-2021, icg-ugib-2019]
+   - Then twice-daily oral PPI to day 14, then once daily. ^[acg-ugib-2021, icg-ugib-2019]
 
    {{dose:pantoprazole-iv-ugib-infusion}}
    {{dose:pantoprazole-iv-ugib-intermittent}}
    {{dose:esomeprazole-iv-ugib}}
    {{dose:pantoprazole-po-ugib}}
 
-   - Low-risk stigmata (flat spot, clean base): once-daily oral PPI. Early feeding. Prompt discharge may be considered. ^[acg-ugib-2021, icg-ugib-2019]
+   - Low-risk stigmata (flat spot, clean base): once-daily oral PPI. Early feeding. ^[acg-ugib-2021, icg-ugib-2019]
+   - Low-risk stigmata: prompt discharge may be considered. ^[acg-ugib-2021, icg-ugib-2019]
    - Early oral nutrition within 24 hours of durable hemostasis. ^[esge-pub-2026]
 6. Rebleeding or failed endoscopic therapy
    - Repeat endoscopy. A second attempt with an over-the-scope clip may be considered. ^[acg-ugib-2021, esge-pub-2026]
    - Persistent bleeding after repeat endoscopy: transcatheter angiographic embolization. ^[acg-ugib-2021, esge-pub-2026]
    - Surgery when embolization is unavailable or fails. ^[esge-pub-2026]
-   - Selected high-risk ulcers (instability at presentation, posterior duodenal wall, larger than 2 cm, uncertain hemostasis): prophylactic embolization may be considered. ^[esge-pub-2026]
+   - Selected high-risk ulcers: prophylactic embolization may be considered. ^[esge-pub-2026]
+   - Selected: instability at presentation, posterior duodenal wall, larger than 2 cm, uncertain hemostasis. ^[esge-pub-2026]
 7. Prevent recurrence
    - *H. pylori* positive: treat and confirm eradication. Regimens come with the peptic ulcer card. ^[acg-hpylori-2024]
    - Stop NSAIDs. If aspirin or another antithrombotic must continue, keep a PPI with it. ^[icg-ugib-2019]
@@ -150,7 +158,8 @@ emergency_hint: Resuscitate, erythromycin, IV PPI, endoscopy
 :::
 
 ### Special Populations: Antithrombotic agents
-- Aspirin for secondary prevention: continue, or restart the day hemostasis is confirmed. Aspirin for primary prevention: hold and reassess. Little benefit and not advised with high bleeding risk. ^[acg-cag-antithrombotic-2022]
+- Aspirin for secondary prevention: continue, or restart the day hemostasis is confirmed. ^[acg-cag-antithrombotic-2022]
+- Aspirin for primary prevention: hold and reassess. Little benefit and not advised with high bleeding risk. ^[acg-cag-antithrombotic-2022]
 - Anticoagulation: resume as soon as clinically indicated, weighing thromboembolic risk. ^[esge-pub-2026]
 - Recent stent or acute coronary syndrome on dual antiplatelet therapy: involve cardiology before stopping. ^[common-practice]
 

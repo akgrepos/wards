@@ -5,10 +5,10 @@ variant: protocol
 system: renal
 title: "IV Fluids"
 aliases: [IV fluids, IVF, fluids, maintenance fluids, mIVF, fluid bolus, resuscitation, crystalloid, normal saline, NS, 0.9% saline, half normal saline, lactated Ringer's, LR, Ringer's lactate, Plasma-Lyte, balanced crystalloid, D5W, dextrose, albumin, colloid, fluid selection]
-checked: { date: 2026-10-19, by: owner, scope: "owner review", fingerprint: "9593ce9b8cd808a1", carried: "2026-10-24: Dose row titles shortened to the indication only. Doses and numbers unchanged, the removed wording is kept in the longer indication text." }
+checked: { date: 2026-10-19, by: owner, scope: "owner review", fingerprint: "3a59b6d0209d9a97", carried: "2026-10-25: Format sweep (bullets split, tables to bullets or scale, society names out of text). Numbers, doses, drugs and sources unchanged." }
 related:
-  conditions: [renal-aki, renal-hyponatremia, renal-hypokalemia, renal-hyperkalemia]
-  tools: [renal-electrolyte-repletion]
+  conditions: [renal-aki, renal-hyponatremia, renal-hypokalemia, renal-hyperkalemia, endo-dka]
+  tools: [renal-electrolyte-repletion, renal-acid-base]
 ---
 ## At a Glance
 - Prescribe by purpose: resuscitation, routine maintenance, replacement of ongoing losses. Reassess at least daily. ^[nice-iv-fluids-2017]
@@ -18,40 +18,64 @@ related:
 - Avoid hypotonic fluids in acute brain injury. ^[esicm-neuro-fluids-2018]
 
 ## Indications
-| Purpose | When | Fluid |
-|---|---|---|
-| Resuscitation | Hypovolemia or hypoperfusion: SBP <100 mm Hg, HR >90, capillary refill >2 s or cold peripheries, RR >20 | Crystalloid boluses ^[nice-iv-fluids-2017] |
-| Routine maintenance | No oral or enteral route, euvolemic | Water, Na⁺, K⁺, Cl⁻ and glucose to daily needs ^[nice-iv-fluids-2017] |
-| Replacement | Ongoing losses: vomiting, NG drainage, diarrhea, fistulas, drains, polyuria | Match the volume and electrolytes lost, on top of maintenance ^[nice-iv-fluids-2017] |
-| Redistribution | Edema, sepsis, hypoalbuminemia, postoperative fluid shifts | Expert help. Fluid balance often already positive ^[nice-iv-fluids-2017, common-practice] |
+- **Resuscitation:** ^[nice-iv-fluids-2017]
+  - When: hypovolemia or hypoperfusion: SBP <100 mm Hg, HR >90, capillary refill >2 s or cold peripheries, RR >20.
+  - Fluid: crystalloid boluses.
+- **Routine maintenance:** ^[nice-iv-fluids-2017]
+  - When: no oral or enteral route, euvolemic.
+  - Fluid: water, Na⁺, K⁺, Cl⁻ and glucose to daily needs.
+- **Replacement:** ^[nice-iv-fluids-2017]
+  - When: ongoing losses: vomiting, NG drainage, diarrhea, fistulas, drains, polyuria.
+  - Fluid: match the volume and electrolytes lost, on top of maintenance.
+- **Redistribution:** ^[nice-iv-fluids-2017, common-practice]
+  - When: edema, sepsis, hypoalbuminemia, postoperative fluid shifts.
+  - Fluid: expert help. Fluid balance often already positive.
 
 - Fluid is a drug: no fluid for a patient who can drink, and stop as soon as oral intake allows. ^[nice-iv-fluids-2017]
 - Blood loss: blood products, not crystalloid alone. ^[common-practice]
 
 ## Choosing an Option
-| Fluid | Na⁺ | K⁺ | Cl⁻ | Other | mOsm/L |
-|---|---|---|---|---|---|
-| 0.9% NaCl | 154 | 0 | 154 | | 308 ^[label-nacl-2024] |
-| Lactated Ringer's | 130 | 4 | 109 | Lactate 28, Ca²⁺ 2.7 | 273 ^[label-lactated-ringers-2025] |
-| Plasma-Lyte A | 140 | 5 | 98 | Acetate 27, gluconate 23, Mg²⁺ 3 | 294 ^[label-plasmalyte-2019] |
-| 0.45% NaCl | 77 | 0 | 77 | | 154 ^[label-nacl-2024] |
-| D5W | 0 | 0 | 0 | Dextrose 50 g/L (170 kcal/L) | 252 ^[label-dextrose-5-2025] |
-| 3% NaCl | 513 | 0 | 513 | | 1027 ^[label-nacl-hypertonic-2018] |
-| Albumin 5%, 25% | 130–160 | | | 25%: ≈5× its volume of plasma | ^[label-albumin-25-2025, label-flexbumin-2024] |
-
-- Electrolytes in mEq/L. ^[label-nacl-2024]
+- **Units:** electrolytes in mEq/L. ^[label-nacl-2024]
+- **0.9% NaCl:** ^[label-nacl-2024]
+  - Na⁺ 154 and K⁺ 0 and Cl⁻ 154.
+  - mOsm/L: 308.
+- **Lactated Ringer's:** ^[label-lactated-ringers-2025]
+  - Na⁺ 130 and K⁺ 4 and Cl⁻ 109.
+  - Lactate 28, Ca²⁺ 2.7.
+  - mOsm/L: 273.
+- **Plasma-Lyte A:** ^[label-plasmalyte-2019]
+  - Na⁺ 140 and K⁺ 5 and Cl⁻ 98.
+  - Acetate 27, gluconate 23, Mg²⁺ 3.
+  - mOsm/L: 294.
+- **0.45% NaCl:** ^[label-nacl-2024]
+  - Na⁺ 77 and K⁺ 0 and Cl⁻ 77.
+  - mOsm/L: 154.
+- **D5W:** ^[label-dextrose-5-2025]
+  - Na⁺ 0 and K⁺ 0 and Cl⁻ 0.
+  - Dextrose 50 g/L (170 kcal/L).
+  - mOsm/L: 252.
+- **3% NaCl:** ^[label-nacl-hypertonic-2018]
+  - Na⁺ 513 and K⁺ 0 and Cl⁻ 513.
+  - mOsm/L: 1027.
+- **Albumin 5%, 25%:** ^[label-albumin-25-2025, label-flexbumin-2024]
+  - Na⁺ 130–160.
+  - 25%: ≈5× its volume of plasma.
 
 :::compare Balanced crystalloid vs saline
 - Balanced (LR, Plasma-Lyte): Suggested over saline in sepsis (less new kidney replacement therapy, probably slightly lower mortality on meta-analysis, confidence interval crossing 1). Fewer major adverse kidney events in one large ICU trial. Mortality differences small or absent in single trials. ^[ssc-sepsis-2026, smart-2018, plus-2022, basics-2021]
 - 0.9% saline: Large volumes cause hyperchloremic metabolic acidosis. Suggested in sepsis with traumatic brain injury and often preferred in other brain injury or raised ICP (LR is slightly hypotonic). ^[ssc-sepsis-2026, label-nacl-2024, smart-2018, common-practice]
 :::
 
-- LR and Plasma-Lyte contain K⁺ near plasma levels. In a secondary analysis of SMART, they did not cause more severe hyperkalemia than saline in critically ill patients with hyperkalemia or AKI. ^[label-lactated-ringers-2025, toporek-hyperkalemia-2021]
-- LR label: avoid with or at risk of hyperkalemia unless monitored. Avoid in severe hepatic impairment (lactate is metabolized less, worsening anion-gap acidosis). ^[label-lactated-ringers-2025]
+- LR and Plasma-Lyte contain K⁺ near plasma levels. ^[label-lactated-ringers-2025, toporek-hyperkalemia-2021]
+- In a secondary analysis of a large ICU trial, they did not cause more severe hyperkalemia than saline in critically ill patients with hyperkalemia or AKI. ^[label-lactated-ringers-2025, toporek-hyperkalemia-2021]
+- LR label: avoid with or at risk of hyperkalemia unless monitored. ^[label-lactated-ringers-2025]
+- LR label: avoid in severe hepatic impairment (lactate is metabolized less, worsening anion-gap acidosis). ^[label-lactated-ringers-2025]
 - LR contains calcium: flush the line between LR and ceftriaxone (contraindicated together in neonates). Don't share a line with citrated blood. ^[label-lactated-ringers-2025]
 - LR may confound serum lactate in severe metabolic acidosis. Judge the patient, not lactate alone. ^[label-lactated-ringers-2025]
 - D5W and 0.45% NaCl are hypotonic in the body: free water for hypernatremia, never for resuscitation. ^[label-dextrose-5-2025, label-nacl-2024, esicm-neuro-fluids-2018]
-- Colloids: against hydroxyethyl starch and gelatin. In sepsis, crystalloid alone suggested over adding albumin (albumin may suit after large crystalloid volumes or in cirrhosis, avoid in traumatic brain injury). ^[ssc-sepsis-2026]
+- Colloids: against hydroxyethyl starch and gelatin. ^[ssc-sepsis-2026]
+- In sepsis, crystalloid alone suggested over adding albumin. ^[ssc-sepsis-2026]
+- Albumin may suit after large crystalloid volumes or in cirrhosis, avoid in traumatic brain injury. ^[ssc-sepsis-2026]
 - Albumin not suggested to raise serum albumin, to aid diuresis, for intradialytic hypotension, or for repeated infusions in decompensated cirrhosis. ^[ictmg-albumin-2024, attire-2021]
 
 ## Dosing and Protocol
@@ -64,14 +88,19 @@ related:
 
 {{dose:crystalloid-sepsis}}
 
-- Beyond the first boluses: dynamic measures (passive leg raise, stroke volume), capillary refill and serial lactate guide more fluid. Vasopressors when hypotension persists. With persistent hypoperfusion after the initial volume, a liberal or a restrictive strategy is acceptable. ^[ssc-sepsis-2026, clovers-2023]
-- Septic shock after the acute resuscitation phase: active fluid removal suggested, a weak recommendation (diuretics first, ultrafiltration if they are not enough). ^[ssc-sepsis-2026]
+- Beyond the first boluses: dynamic measures (passive leg raise, stroke volume), capillary refill and serial lactate guide more fluid. ^[ssc-sepsis-2026, clovers-2023]
+- Vasopressors when hypotension persists. ^[ssc-sepsis-2026, clovers-2023]
+- With persistent hypoperfusion after the initial volume, a liberal or a restrictive strategy is acceptable. ^[ssc-sepsis-2026, clovers-2023]
+- Septic shock after the acute resuscitation phase: active fluid removal suggested, a weak recommendation. ^[ssc-sepsis-2026]
+- Fluid removal: diuretics first, ultrafiltration if they are not enough. ^[ssc-sepsis-2026]
 
 #### Maintenance
 {{dose:maintenance-fluid}}
 
-- Choice: isotonic crystalloid or a hypotonic regimen with K⁺. Isotonic fluid gives a more positive fluid balance and hyperchloremia, hypotonic fluid more mild hyponatremia. ^[nice-iv-fluids-2017, topmast-2019]
-- Plain LR or saline gives no glucose and little K⁺: add glucose and K⁺ to meet daily needs, K⁺ only as premixed bags. In hypokalemia, give KCl in saline rather than dextrose. ^[nice-iv-fluids-2017, label-lactated-ringers-2025, kardalas-hypokalemia-2018]
+- Choice: isotonic crystalloid or a hypotonic regimen with K⁺. ^[nice-iv-fluids-2017, topmast-2019]
+- Isotonic fluid gives a more positive fluid balance and hyperchloremia, hypotonic fluid more mild hyponatremia. ^[nice-iv-fluids-2017, topmast-2019]
+- Plain LR or saline gives no glucose and little K⁺: add glucose and K⁺ to meet daily needs, K⁺ only as premixed bags. ^[nice-iv-fluids-2017, label-lactated-ringers-2025]
+- In hypokalemia, give KCl in saline rather than dextrose. ^[kardalas-hypokalemia-2018]
 - Daily needs for K⁺ and Na⁺: see the maintenance dose sheet. Replete deficits separately ([[renal-electrolyte-repletion|Electrolyte Repletion]]). ^[nice-iv-fluids-2017]
 
 #### Replacement
@@ -106,7 +135,11 @@ related:
 - Fluids with Cl⁻ >120 mEq/L (e.g. 0.9% saline): check serum Cl⁻ daily. Reassess if hyperchloremia or acidemia develops. ^[nice-iv-fluids-2017]
 - Urine Na⁺ <30 mEq/L may mean total-body Na⁺ depletion (unreliable on diuretics or with kidney disease). ^[nice-iv-fluids-2017]
 - Signs of overload (edema, crackles, rising JVP, hypoxemia): stop or reduce fluids. ^[nice-iv-fluids-2017, label-flexbumin-2024]
-- Report as fluid-related harm: Na⁺ <130 mEq/L during or within 24 h of IV fluids, Na⁺ ≥155 mEq/L on saline, K⁺ >5.5 or <3.0 mEq/L, pulmonary edema within 6 h. ^[nice-iv-fluids-2017]
+- Report as fluid-related harm: ^[nice-iv-fluids-2017]
+  - Na⁺ <130 mEq/L during or within 24 h of IV fluids.
+  - Na⁺ ≥155 mEq/L on saline.
+  - K⁺ >5.5 or <3.0 mEq/L.
+  - Pulmonary edema within 6 h.
 - Albumin: infuse slowly when blood volume is normal (rate limit in the dose sheets). Stop at the first sign of overload. ^[label-flexbumin-2024, label-albumin-25-2025]
 
 ## Special Populations
@@ -136,7 +169,8 @@ related:
 - SMART (ICU, n=15,802): balanced crystalloid reduced death, new dialysis or persistent kidney dysfunction at 30 days, 14.3% vs 15.4%. ^[smart-2018]
 - SALT-ED (non-ICU, n=13,347): no difference in hospital-free days. Fewer major adverse kidney events with balanced crystalloid. ^[salt-ed-2018]
 - BaSICS (n=11,052) and PLUS (n=5037): no difference in 90-day mortality (BaSICS 26.4% vs 27.2%, PLUS 21.8% vs 22.0%). ^[basics-2021, plus-2022]
-- Meta-analysis (6 low-risk-of-bias trials, 34,450 patients): 90-day mortality RR 0.96 (0.91–1.01) with balanced crystalloid. A small benefit is probable but unproven. ^[hammond-balanced-2022]
+- Meta-analysis (6 low-risk-of-bias trials, 34,450 patients): 90-day mortality RR 0.96 (0.91–1.01) with balanced crystalloid. ^[hammond-balanced-2022]
+- A small benefit is probable but unproven. ^[hammond-balanced-2022]
 - CLOVERS (sepsis-induced hypotension after 1–3 L): restrictive, early-vasopressor strategy vs liberal fluids: 90-day mortality 14.0% vs 14.9%. ^[clovers-2023]
 - SAFE (n=6997): 4% albumin vs saline in ICU: no difference in 28-day mortality. ^[safe-2004]
 - SAFE-TBI: albumin increased 24-month mortality in traumatic brain injury (33.2% vs 20.4%). ^[safe-tbi-2007]
