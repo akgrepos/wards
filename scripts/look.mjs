@@ -163,7 +163,8 @@ try {
       const label = `${r.name} (${scheme})`
       await page.goto(BASE + r.hash, { waitUntil: 'networkidle' })
       if (r.storage) { // saved lists to show: set them, then reload
-        await page.evaluate((o) => { for (const [k, v] of Object.entries(o)) localStorage.setItem(k, JSON.stringify(v)) }, r.storage)
+        // (also forget a search typed on an earlier route, which the page keeps in its history entry)
+        await page.evaluate((o) => { history.replaceState(null, ''); for (const [k, v] of Object.entries(o)) localStorage.setItem(k, JSON.stringify(v)) }, r.storage)
         await page.reload({ waitUntil: 'networkidle' })
       }
       try {

@@ -15,7 +15,8 @@ const merge = (data: Content['data']) => {
 };
 
 /** Tests and tools: put the whole content in at once, as if every card had been opened. */
-export function seedFullContent(full: Content) {
+export function seedFullContent(full: Content, search?: Content['search']) {
+  if (search) content.search = search;
   content.cards.splice(0, content.cards.length, ...full.cards);
   merge(full.data);
   for (const c of full.cards) loaded.add(c.id);
@@ -168,23 +169,5 @@ export function pathwayHomes(): { id: string; title: string; summary?: string; c
 export const pathwayCard = (id: string): string | undefined => (content.data.pathway?.[id] as Pathway | undefined)?.card;
 export const pathwaysFor = (cardId: string) => pathwayHomes().filter((h) => h.card.id === cardId);
 
-// Basic search over card titles and aliases (full search across sections, drugs and tools comes later).
-// Every word typed must match the start of a word in the title or an alias; title matches rank first.
-const norm = (s: string) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
-export function searchCards(query: string): Card[] {
-  const words = norm(query).split(' ').filter(Boolean);
-  if (!words.length) return [];
-  const matches = (text: string) => {
-    const t = ' ' + norm(text);
-    return words.every((w) => t.includes(' ' + w));
-  };
-  const scored: { card: Card; score: number }[] = [];
-  for (const card of content.cards) {
-    const title = norm(card.title);
-    let score = 0;
-    if (matches(card.title)) score = title.startsWith(words.join(' ')) ? 3 : 2;
-    else if (card.aliases.some(matches)) score = 1;
-    if (score) scored.push({ card, score });
-  }
-  return scored.sort((a, b) => b.score - a.score || alpha(a.card, b.card)).map((s) => s.card);
-}
+/** Lower case, no accents, letters and digits only: how titles and typed words are compared in search. */
+export const norm = (s: string) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();

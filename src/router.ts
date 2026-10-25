@@ -242,6 +242,15 @@ export function rememberQuery(q: string) {
 }
 export const rememberedQuery = () => stateNow()?.q ?? '';
 
+/** A search result opened a card at a section: that section is tinted briefly once it is on screen (CardScreen takes the request). */
+let flash: { id: string; section: string } | null = null;
+export const requestFlash = (id: string, section: string) => { flash = { id, section }; };
+export function takeFlash(id: string, section: string) {
+  const mine = flash?.id === id && flash.section === section;
+  flash = null;
+  return mine;
+}
+
 /** Drop the section part of the address once it has been shown, so Back to this page keeps its scroll position instead. */
 export function forgetSection(id: string) {
   history.replaceState(history.state, '', href.card(id));

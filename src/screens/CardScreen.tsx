@@ -2,7 +2,7 @@ import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { AKG } from '../design/akg';
 import { cardSources, cardTypeLabel, content, getCard, getSystem, titleCase, usesCalc } from '../content';
 import type { Card, Source } from '../content/types';
-import { forgetSection, href, isReturning, parseRoute, restoreScroll } from '../router';
+import { forgetSection, href, isReturning, parseRoute, restoreScroll, takeFlash } from '../router';
 import { sectionSymbol, sectionTone, TONED_CARD_TYPES } from '../content/section-tones';
 import { addRecent, getCardScroll, setCardScroll } from '../storage';
 import { slug } from '../../scripts/content/pathway.mjs';
@@ -97,6 +97,12 @@ export function CardScreen({ id, section, anchor }: { id: string; section?: stri
     if (section) {
       forgetSection(id);
       jump(section, false, anchor);
+      if (takeFlash(id, section)) {
+        // A More Information subsection is its own box; every other section (and More Information itself) is one.
+        const el = document.getElementById(sections.some((s) => s.subsections.some((x) => x.key === section)) ? `sub-${section}` : `sec-${section}`);
+        el?.classList.add('search-flash');
+        window.setTimeout(() => el?.classList.remove('search-flash'), 2000);
+      }
       return;
     }
     const y = getCardScroll(id);

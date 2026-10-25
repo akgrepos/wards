@@ -153,7 +153,7 @@ describe('search', () => {
     await act(async () => { fireEvent.click(screen.getByRole('button', { name: 'Search' })); });
     await tick();
     expect(location.hash).toBe('#/search');
-    fireEvent.change(screen.getByPlaceholderText('Search Wards'), { target: { value: 'hyperK' } });
+    fireEvent.change(screen.getByPlaceholderText('Search cards, drugs, calculators'), { target: { value: 'hyperK' } });
     expect(screen.getAllByRole('link').some((a) => a.getAttribute('href') === '#/card/renal-hyperkalemia')).toBe(true);
     const historyBack = vi.spyOn(history, 'back').mockImplementation(() => {});
     fireEvent.click(screen.getByRole('button', { name: 'Close Search' }));
@@ -163,7 +163,7 @@ describe('search', () => {
   it('says so when nothing matches', () => {
     launch('#/search');
     render(<App />);
-    fireEvent.change(screen.getByPlaceholderText('Search Wards'), { target: { value: 'zzzz' } });
+    fireEvent.change(screen.getByPlaceholderText('Search cards, drugs, calculators'), { target: { value: 'zzzz' } });
     expect(screen.getByText('No Results')).toBeTruthy();
   });
 });

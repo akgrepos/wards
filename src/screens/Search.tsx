@@ -1,10 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { AKG } from '../design/akg';
-import { cardTypeLabel, getSystem, searchCards } from '../content';
-import type { Card } from '../content/types';
-import { goBack, href, rememberQuery, rememberedQuery } from '../router';
+import { content, loadCard } from '../content';
+import { search, type GroupKey, type Hit } from '../content/search';
+import { goBack, href, parseRoute, rememberQuery, rememberedQuery, requestFlash } from '../router';
 import { addSearch, clearSearches, getSearches, useStored } from '../storage';
+import { openCalculator } from '../ui/Calculator';
 import { icons } from '../ui/icons';
+import { useSheet } from '../ui/SheetHost';
 import { Empty, Screen } from './common';
 
 export const SEARCH_INPUT_ID = 'search-input';
@@ -36,20 +38,37 @@ function useVisibleArea() {
   return area;
 }
 
-const subtitle = (c: Card) => `${cardTypeLabel(c)} · ${getSystem(c.system)?.title ?? ''}`;
+// How many results a group shows before its Show More row.
+const SHOWN = 3;
 
-// Search: titles and aliases of every page. The field sits at the bottom (iOS); Close returns to the previous screen.
+// Search: card titles and aliases, drugs (and the cards whose doses use them), section headings and calculators, grouped.
+// The field sits at the bottom (iOS); Close returns to the previous screen.
 export function SearchScreen() {
   const [q, setQ] = useState(rememberedQuery);
+  const [expanded, setExpanded] = useState<ReadonlySet<GroupKey>>(new Set());
   const area = useVisibleArea();
-  const results = searchCards(q);
+  const sheet = useSheet();
+  const results = useMemo(() => search(q, content), [q]);
   const searches = useStored(getSearches);
-  const groups = [
-    { header: 'Rapids', cards: results.filter((c) => c.emergency) },
-    { header: 'Topics', cards: results.filter((c) => c.type !== 'medication') },
-    { header: 'Drugs', cards: results.filter((c) => c.type === 'medication') },
-  ].filter((g) => g.cards.length > 0);
-  const change = (v: string) => { setQ(v); rememberQuery(v); };
+  const change = (v: string) => { setQ(v); rememberQuery(v); setExpanded(new Set()); };
+  const openTool = (h: Hit) => { loadCard(h.cardId).then(() => openCalculator(sheet, h.tool!), () => {}); };
+  const row = (h: Hit) => (
+    <AKG.ListRow
+      key={h.id}
+      className="search-result"
+      title={<AKG.Highlight text={h.title} query={q} />}
+      subtitle={h.markSubtitle ? <AKG.Highlight text={h.subtitle} query={q} /> : h.subtitle}
+      chevron={!h.tool}
+      {...(h.tool ? { onClick: () => openTool(h) } : { href: href.card(h.cardId, h.section) })}
+    />
+  );
+  // Opening a result counts as a search; a result inside a card opens it at that section, tinted for a moment.
+  const openedResult = (el: HTMLElement) => {
+    if (!q.trim() || !el.closest('.search-result')) return;
+    addSearch(q);
+    const r = parseRoute(el.closest('a')?.getAttribute('href') ?? '');
+    if (r.name === 'card' && r.section) requestFlash(r.id, r.section);
+  };
   // The page behind stays still, so the bar can't ride along when there's nothing (or little) to scroll.
   useEffect(() => AKG.lockScroll(), []);
   useEffect(() => {
@@ -59,8 +78,7 @@ export function SearchScreen() {
     <div className="search-screen" style={area ? { top: area.top, height: area.height } : undefined}>
       <div className="search-scroll">
         <Screen title="Search">
-          {/* Opening a result counts as a search. */}
-          <div onClickCapture={(e) => { if (q.trim() && (e.target as HTMLElement).closest('a')) addSearch(q); }}>
+          <div onClickCapture={(e) => openedResult(e.target as HTMLElement)}>
           {!q.trim() ? (
             <AKG.List
               header="Recent Searches"
@@ -73,24 +91,28 @@ export function SearchScreen() {
                 searches.map((t) => <AKG.ListRow key={t} title={t} onClick={() => change(t)} />)
               )}
             </AKG.List>
-          ) : results.length === 0 ? (
-            <Empty title="No Results" description={`No pages match “${q.trim()}”. Check the spelling or try another term.`} />
+          ) : results.groups.length === 0 ? (
+            <Empty title="No Results" description={`Nothing in Wards matches “${q.trim()}”. Check the spelling, or try a drug name, a topic, a section heading or a calculator.`} />
           ) : (
-            <>
-              {groups.map((g) => (
-                <AKG.List key={g.header} header={g.header}>
-                  {g.cards.map((c) => (
-                    <AKG.ListRow
-                      key={c.id}
-                      title={<AKG.Highlight text={c.title} query={q} />}
-                      subtitle={g.header === 'Rapids' ? `Rapids · ${getSystem(c.system)?.title ?? ''}` : subtitle(c)}
-                      chevron
-                      href={g.header === 'Rapids' ? href.emergency(c.id) : href.card(c.id)}
-                    />
-                  ))}
-                </AKG.List>
-              ))}
-            </>
+            results.oneLetter ? (
+              <>
+                <AKG.List>{results.groups[0].hits.map(row)}</AKG.List>
+                <p className="ios-footnote secondary search-note">Keep typing to search drugs, section headings and calculators.</p>
+              </>
+            ) : (
+              results.groups.map((g) => {
+                const open = expanded.has(g.key);
+                const more = g.hits.length - SHOWN;
+                return (
+                  <AKG.List key={g.key} header={g.label}>
+                    {(open || more <= 0 ? g.hits : g.hits.slice(0, SHOWN)).map(row)}
+                    {!open && more > 0 && (
+                      <AKG.ListRow className="search-more" action title={`Show ${more} More`} onClick={() => setExpanded(new Set([...expanded, g.key]))} />
+                    )}
+                  </AKG.List>
+                );
+              })
+            )
           )}
           </div>
         </Screen>
@@ -100,7 +122,7 @@ export function SearchScreen() {
         <AKG.SearchField
           id={SEARCH_INPUT_ID}
           variant="glass"
-          placeholder="Search Wards"
+          placeholder="Search cards, drugs, calculators"
           value={q}
           onChange={(e) => change(e.target.value)}
           enterKeyHint="search"
