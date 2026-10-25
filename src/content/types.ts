@@ -48,14 +48,11 @@ export type Drug = {
   kidney_liver: string; label_source: string; sources: string[];
 };
 // A calculator or score on MDCalc (docs/DATA-TYPES.md, 12b), linked from every sentence that names it.
-export type CalcBand = { label: string; range: string; from?: number; to?: number; risk?: string; action?: string; high?: boolean };
-export type CalcBandSet = { title?: string; bands: CalcBand[] };
 export type CalcInput = { id: string; label: string; unit: string; min: number; max: number; optional?: boolean };
 export type CalcResultDef = { fn: string; label: string; unit: string; decimals: number; needs: string[] };
-// The in-app calculator of a score (a checklist with points and bands) or a formula (docs/DATA-TYPES.md, 7).
+// The in-app calculator of a formula (docs/DATA-TYPES.md, 7).
 export type Calculator = {
-  kind: 'checklist' | 'formula'; heading: string; notes?: string[];
-  with?: string; items?: { label: string; points: number }[]; bandSets?: CalcBandSet[];
+  kind: 'formula'; heading: string; notes?: string[];
   expression?: string; inputs?: CalcInput[]; results?: CalcResultDef[]; reference?: string;
 };
 export type Calc = { name: string; short: string; url: string; match: string[]; sources?: string[]; calculator?: Calculator };

@@ -127,8 +127,8 @@ describe('content checks', () => {
   });
   it('requires a verification note on every in-app calculator', () => {
     const base = JSON.parse(JSON.stringify(real));
-    delete base.data.calc['curb-65'].verification;
-    expect(checkContent(base).join(' ')).toMatch(/curb-65.yaml: has no "verification" note/);
+    delete base.data.calc['anion-gap'].verification;
+    expect(checkContent(base).join(' ')).toMatch(/anion-gap.yaml: has no "verification" note/);
   });
 });
 

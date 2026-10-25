@@ -6,7 +6,7 @@ title: "Chest Pain"
 aliases: [chest pain, chest discomfort, chest tightness, chest pressure, angina, HEART, HEART score, ADD-RS, aortic dissection, tension pneumothorax, Boerhaave, esophageal rupture, pericarditis, tamponade, costochondritis, GERD, rule out MI, rule out ACS, coronary CT angiography, stress test, cannot-miss chest pain, undifferentiated chest pain]
 definition: "Acute chest pain or equivalent discomfort needing a time-sensitive search for life-threatening causes: acute coronary syndrome, pulmonary embolism, aortic dissection, tension pneumothorax, esophageal rupture, pericardial tamponade. ^[aha-acc-chest-pain-2021]"
 based_on: [aha-acc-chest-pain-2021, acc-aha-acs-2025, udmi-2026]
-checked: { date: 2026-10-21, by: opus, scope: "doses and numbers", fingerprint: "5525abd2995bf262" }
+checked: { date: 2026-10-21, by: opus, scope: "doses and numbers", fingerprint: "27080c0f2732a985", carried: "2026-10-24: No card text changed. The Wells and CURB-65 point lists and bands were removed from their calc files, which now only link to MDCalc. Every dose and number on the card is unchanged." }
 related:
   differential: [cardio-nste-acs, pulm-vte-diagnosis, cardio-adhf, cardio-atrial-fibrillation, id-cap, pulm-copd-exacerbation]
   conditions: [crit-hypoxemic-respiratory-failure, crit-sepsis]

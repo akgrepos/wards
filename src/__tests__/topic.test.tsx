@@ -295,13 +295,15 @@ describe('MDCalc links', () => {
     launch('#/card/endo-dka');
     expect(screen.getAllByRole('button', { name: 'Anion gap' }).length).toBeGreaterThan(0);
   });
-  it('a score with an in-app calculator opens it, with the MDCalc link as its last row', () => {
+  it('a formula with an in-app calculator opens it, with the MDCalc link as its last row', () => {
+    launch('#/card/endo-dka');
+    fireEvent.click(screen.getAllByRole('button', { name: 'Anion gap' })[0]);
+    expect(screen.getByRole('link', { name: /on MDCalc/ }).getAttribute('href')).toContain('mdcalc.com');
+  });
+  it('a risk score is only an MDCalc link, not an in-app sheet', () => {
     launch('#/card/id-cap');
-    fireEvent.click(screen.getAllByRole('button', { name: 'CURB-65' })[0]);
-    expect(screen.getByText('CURB-65 pneumonia severity')).toBeTruthy();
-    fireEvent.click(screen.getByText('Age ≥65 years'));
-    expect(screen.getByText('1 point')).toBeTruthy();
-    expect(screen.getByRole('link', { name: /CURB-65 on MDCalc/ }).getAttribute('href')).toContain('mdcalc.com');
+    expect(screen.queryByRole('button', { name: 'CURB-65' })).toBeNull();
+    expect(screen.getAllByRole('link', { name: /^CURB-65\. Opens MDCalc/ })[0].getAttribute('href')).toContain('mdcalc.com');
   });
   it('a card without scores has no such note', () => {
     launch('#/card/renal-iv-fluids');
