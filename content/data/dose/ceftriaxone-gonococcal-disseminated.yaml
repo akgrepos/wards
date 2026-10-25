@@ -12,7 +12,6 @@ boxed_warning: None
 cautions:
   - Add doxycycline if chlamydia is not excluded.
   - "Gonococcal meningitis or endocarditis: 1–2 g IV every 12–24 hours, 10–14 days for meningitis and more than 4 weeks for endocarditis, set with infectious diseases."
-  - Not with calcium-containing IV solutions in the same line.
 sources: [cdc-sti-2021, label-ceftriaxone-2026]
 verification:
   source: cdc-sti-2021

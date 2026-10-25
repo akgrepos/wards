@@ -7,7 +7,7 @@ title: Community-Acquired Pneumonia
 aliases: [CAP, pneumonia, PNA, community acquired pneumonia, lobar pneumonia, lower respiratory tract infection, LRTI, severe CAP]
 definition: "Pneumonia acquired outside the hospital: compatible symptoms with a new infiltrate on chest imaging. ^[idsa-ats-cap-2019]"
 based_on: [ats-cap-2025, idsa-ats-cap-2019]
-checked: { date: 2026-10-19, by: owner, scope: "owner review", fingerprint: "f197773df5f44cce", carried: "2026-10-24: ceftriaxone drug record added. Its warnings now show on the dose sheets. The record was Opus-checked against the label on 2026-10-24. Card text and doses are unchanged." }
+checked: { date: 2026-10-19, by: owner, scope: "owner review", fingerprint: "856fb2cbaf43aeb7", carried: "2026-10-24: ceftriaxone dose rows: short title, per-dose calcium line moved to the drug record, no clinical change" }
 related:
   differential: []
   conditions: [id-complicated-uti, id-cellulitis]

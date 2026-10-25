@@ -12,7 +12,6 @@ duration: Up to 5 days, or until discharge if sooner
 boxed_warning: None
 cautions:
   - Start at presentation with the bleed. Stop once bleeding is controlled if there is no active infection.
-  - Not with calcium-containing IV solutions in the same line.
 notes: "The 2021 guidance set a maximum of 7 days."
 sources: [aasld-portal-htn-2024, aasld-ascites-hrs-2021, label-ceftriaxone-2026]
 verification:

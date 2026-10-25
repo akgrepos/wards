@@ -18,8 +18,6 @@ adjustments:
   - when: Hemodialysis or peritoneal dialysis
     change: No supplemental dose after dialysis (label)
 cautions:
-  - No dose change for kidney or liver impairment alone (label).
-  - Not with calcium-containing IV solutions in the same line.
   - Does not cover MRSA, Enterococcus or Pseudomonas.
 notes: "CAP: 1–2 g daily. Cellulitis: within the label range. Complicated UTI: 1–2 g daily. Intra-abdominal infection: 1–2 g daily plus metronidazole."
 sources:
