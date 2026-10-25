@@ -3,7 +3,7 @@ id: cardio-nste-acs
 type: topic
 system: cardio
 subsection: Ischemic Heart Disease
-title: "Acute Coronary Syndrome: NSTEMI and Unstable Angina"
+title: "Acute Coronary Syndrome"
 aliases: [NSTE-ACS, NSTEMI, non-ST-elevation myocardial infarction, unstable angina, UA, ACS, acute coronary syndrome, heart attack, MI, myocardial infarction, type 1 MI, type 2 MI, primary MI, secondary MI, procedure-related MI, myocardial injury, MINOCA, troponin, DAPT, dual antiplatelet therapy, GRACE]
 definition: "Acute myocardial ischemia without persistent ST-segment elevation: NSTEMI with acute myocardial injury (a rise and/or fall of cardiac troponin, at least one value above the sex-specific 99th percentile), unstable angina without it. ^[acc-aha-acs-2025, udmi-2026]"
 based_on: [acc-aha-acs-2025, esc-acs-2023]

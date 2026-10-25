@@ -11,7 +11,7 @@ Settled 2026-10-17; page layout updated 2026-10-18 for the approved redesign (to
 - One-line definition, with its source
 - "Checked" date (from the front matter `checked.date`; nothing is shown for a draft). No "Based on" line (removed 2026-10-18, owner): the per-line source tags and All Sources name the guidelines
 - Search aliases (hidden; used by search)
-- Top right: the **quote-mark** button (Show Sources: off when a page opens; while on it is highlighted and every line ends in one source pill), the **Contents** button (a menu of the page's sections, the one being read checked, plus Collapse All / Expand All), in one group. Topics with an emergency also get a red **Rapids** button (the Rapids tab's symbol, `staroflife.fill`) that opens the Do Now pop-up: the steps and doses, Start Timed Mode and Open Full Emergency; it is hidden when there is none. No row of section buttons.
+- Top right: the **Contents** button (list-bullet icon), a menu of the page's sections with the one being read checked, then **Show Sources** / **Hide Sources** (quote-mark icon; off each time a page opens; while on, every line ends in one source pill) and Collapse All / Expand All. Topics with an emergency also get a red **Do Now** button (the Rapids tab's symbol, `staroflife.fill`) beside it, in the same group, that opens the Do Now pop-up: the steps and doses, Start Timed Mode and Open Full Emergency; it is hidden when there is none. No row of section buttons.
 
 **At a Glance** (always first)
 - 3–6 bullets: the bottom line you need in 15 seconds at the bedside
@@ -21,7 +21,7 @@ Settled 2026-10-17; page layout updated 2026-10-18 for the approved redesign (to
 - Every section has a 44pt heading that closes and opens it; all start open. Which sections are closed, and where the page was scrolled, are remembered per page on the phone.
 - A section that doesn't apply is left out rather than shown empty, so the order of the remaining ones never changes
 - No source line ends a section (removed 2026-10-19, owner): sources are shown per line on demand, and All Sources lists them all.
-- **Sources per line, on demand** (2026-10-19): with the quote-mark button on, each line (bullet, paragraph, table row, step, note) ends in one pill: its first source and "+N" for the rest, or the stethoscope or check marker when no source is named. Tapping a pill opens a sheet that quotes the line, then lists its sources.
+- **Sources per line, on demand** (2026-10-19): with Show Sources on (Contents menu), each line (bullet, paragraph, table row, step, note) ends in one pill: its first source and "+N" for the rest, or the stethoscope or check marker when no source is named. Tapping a pill opens a sheet that quotes the line, then lists its sources.
 
 **More Information** (after the main sections)
 - The deeper material, as rows that open in place (closed at first), each with a short description: for topics, Where Guidelines Differ, Special Populations, Complications, After the Acute Phase, Evidence, Why the Treatment Order, Epidemiology and Pathophysiology

@@ -3,7 +3,7 @@ id: crit-sepsis
 type: topic
 system: crit
 subsection: Shock and Sepsis
-title: Sepsis and Septic Shock
+title: "Sepsis"
 aliases: [sepsis, septic shock, severe sepsis, SIRS, qSOFA, SOFA, NEWS, Sepsis-3, distributive shock, vasopressors, pressors, norepinephrine, levophed, vasopressin, stress-dose steroids, hydrocortisone, lactate, hour-1 bundle, SEP-1, code sepsis, refractory septic shock]
 definition: "Life-threatening organ dysfunction caused by a dysregulated host response to infection. Septic shock adds a vasopressor requirement for MAP ≥65 mm Hg and lactate >2 mmol/L despite adequate fluids. ^[sepsis-3-2016]"
 based_on: [ssc-sepsis-2026, sepsis-3-2016]
