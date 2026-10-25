@@ -1,7 +1,7 @@
 // Content checks, run on every pull request (npm run content:check) and in the tests.
 // Each rule comes from docs/CARD-TYPES.md and docs/DATA-TYPES.md.
 import { checkVerification } from './verification.mjs';
-import { CARD_TYPES, CALC_FIELDS, MDCALC_URL, DATA_TYPES, DOSE_FIELDS, CALC_FORMULAS, REGIMEN_FIELDS, REGIMEN_OPTION_FIELDS, SHARED_SECTIONS, UNITS, DOSE_IN_TEXT, MAX_TABLE_COLUMNS, WIDE_TABLE_EXCEPTIONS, MAX_ALIASES, REVIEW_MAX_AGE_MONTHS, CHECKED_BY, MAX_INDICATION_LENGTH } from './schema.mjs';
+import { CARD_TYPES, CALC_FIELDS, MDCALC_URL, DATA_TYPES, DOSE_FIELDS, CALC_FORMULAS, REGIMEN_FIELDS, REGIMEN_OPTION_FIELDS, SHARED_SECTIONS, UNITS, DOSE_IN_TEXT, MAX_TABLE_COLUMNS, WIDE_TABLE_EXCEPTIONS, MAX_ALIASES, REVIEW_MAX_AGE_MONTHS, CHECKED_BY, MAX_INDICATION_LENGTH, DRUG_FIELDS } from './schema.mjs';
 import { TAGS, parseInline } from './inline.mjs';
 import { onsetMinutes } from './onset.mjs';
 import { emergencySteps, offsetMinutes, stepDoses } from './emergency.mjs';
@@ -43,6 +43,30 @@ function* runs(blocks) {
 // Every block, steps' contents included.
 function* allBlocks(blocks) {
   for (const b of blocks) { yield b; if (b.t === 'steps') for (const it of b.items) yield* allBlocks(it.blocks); }
+}
+
+// A drug record: the drug-wide facts a dose sheet shows once for every dose that points at it (docs/DATA-TYPES.md, 2b).
+export function checkDrug(item, data) {
+  const out = [];
+  for (const f of Object.keys(item)) if (f !== '_file' && !DRUG_FIELDS.includes(f)) out.push(`unknown drug field "${f}" (see docs/DATA-TYPES.md)`);
+  const text = (v) => typeof v === 'string' && v.trim();
+  const cited = (x, at) => {
+    if (!x || typeof x !== 'object' || !text(x.text)) { out.push(`${at} must be { text, sources }`); return; }
+    if (!Array.isArray(x.sources) || !x.sources.length) out.push(`${at} has no sources`);
+    for (const s of x.sources ?? []) if (!data.source?.[s]) out.push(`${at} cites unknown source "${s}"`);
+    if (DOSE_IN_TEXT.test(x.text)) out.push(`${at} has a dose typed as text ("${x.text.match(DOSE_IN_TEXT)[0]}"); doses live on the dose items`);
+  };
+  for (const f of ['name', 'class', 'kidney_liver']) if (item[f] !== undefined && !text(item[f])) out.push(`"${f}" must be text`);
+  for (const f of ['brands', 'aliases']) if (item[f] !== undefined && (!Array.isArray(item[f]) || item[f].some((x) => !text(x)))) out.push(`"${f}" must be a list of names`);
+  if (item.boxed_warning !== undefined && item.boxed_warning !== 'None') cited(item.boxed_warning, 'boxed_warning (write "None" when the label has none)');
+  if (item.cautions !== undefined && !Array.isArray(item.cautions)) out.push('cautions must be a list of { text, sources }');
+  for (const [i, c] of (Array.isArray(item.cautions) ? item.cautions : []).entries()) cited(c, `caution ${i + 1}`);
+  if (text(item.kidney_liver) && DOSE_IN_TEXT.test(item.kidney_liver)) out.push(`kidney_liver has a dose typed as text ("${item.kidney_liver.match(DOSE_IN_TEXT)[0]}"); a dose adjustment belongs on the dose`);
+  const label = data.source?.[item.label_source];
+  if (item.label_source !== undefined && !label) out.push(`label_source "${item.label_source}" is not a source`);
+  else if (label && label.kind !== 'prescribing-information') out.push(`label_source "${item.label_source}" must be a prescribing-information source`);
+  if (item.label_source && Array.isArray(item.sources) && !item.sources.includes(item.label_source)) out.push('sources must include the label');
+  return out;
 }
 
 // A cutoff's pop-up shows its name, value, unit, sources and `note`. Only the note can add anything the reader
@@ -333,7 +357,7 @@ export function checkContent({ systems, cards, data, unchecked = [] }) {
       }
       if (item.unit && !UNITS.includes(item.unit)) err(where, `unit "${item.unit}" is not a recognized US unit`);
       if (kind === 'dose') {
-        if (item.drug && !cards.some((k) => k.id === item.drug)) err(where, `drug card "${item.drug}" does not exist`);
+        if (item.drug !== undefined && (typeof item.drug !== 'string' || !data.drug?.[item.drug])) err(where, `drug "${item.drug}" does not exist (a dose's "drug" is the id of a file in content/data/drug/)`);
         if (!item.frequency && !item.rate) err(where, 'needs a "frequency" or a "rate"');
         for (const f of Object.keys(item)) if (f !== '_file' && !DOSE_FIELDS.includes(f)) err(where, `unknown dose field "${f}" (see docs/DATA-TYPES.md)`);
         const alt = item.alternative;
@@ -345,6 +369,7 @@ export function checkContent({ systems, cards, data, unchecked = [] }) {
         for (const m of checkVerification(item, data)) err(where, m);
         if (item.cautions !== undefined && (!Array.isArray(item.cautions) || item.cautions.some((x) => typeof x !== 'string'))) err(where, 'cautions must be a list of short sentences');
       }
+      if (kind === 'drug') for (const m of checkDrug(item, data)) err(where, m);
       // A regimen: options joined by "or", each a list of parts given together; a part is a dose id or a list of dose
       // ids (any one of them). Its words never carry a dose: the dose rows do.
       if (kind === 'regimen') {
@@ -432,6 +457,10 @@ export function checkWarnings({ cards, data }, { today = new Date() } = {}) {
   // Sources nothing cites.
   const cited = JSON.stringify([cards, { ...data, source: undefined }]);
   for (const [id, s] of Object.entries(data.source ?? {})) if (!cited.includes(`"${id}"`)) warn(s._file ?? id, `unused source: "${id}" is cited by no card or data item; delete it if it is orphaned (docs/CONTENT-FORMAT.md, "Consistency rules")`);
+
+  // A drug record no dose points to does nothing.
+  const pointedAt = new Set(Object.values(data.dose ?? {}).map((d) => d.drug));
+  for (const [id, d] of Object.entries(data.drug ?? {})) if (!pointedAt.has(id)) warn(d._file ?? id, `unused drug record: no dose has "drug: ${id}"; point its doses at it or delete it (docs/DATA-TYPES.md, 2b)`);
 
   for (const c of cards) {
     if ((c.aliases ?? []).length > MAX_ALIASES) warn(c.file, `alias bloat: ${c.aliases.length} aliases (over ${MAX_ALIASES}); keep only the words a clinician would actually search (docs/CONTENT-FORMAT.md, "Consistency rules")`);

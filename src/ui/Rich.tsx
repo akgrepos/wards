@@ -1,7 +1,7 @@
 import { createContext, Fragment, useContext, useState, type ReactNode } from 'react';
 import { AKG } from '../design/akg';
 import { content, getCard, titleCase, isMarkerSource, pathwaysFor, useCardLoad } from '../content';
-import type { Block, Calc, Card, ContainerItem, Criteria, Dose, Inline, ListItem, Regimen, Section, Source, Threshold } from '../content/types';
+import type { Block, Calc, Card, ContainerItem, Criteria, Dose, Drug, Inline, ListItem, Regimen, Section, Source, Threshold } from '../content/types';
 import { parseInline, TAGS } from '../../scripts/content/inline.mjs';
 import { onsetRows } from '../../scripts/content/onset.mjs';
 import { slug } from '../../scripts/content/pathway.mjs';
@@ -20,6 +20,7 @@ export const INTERACTION_CHECKER = 'https://reference.medscape.com/drug-interact
 
 const src = (id: string) => content.data.source?.[id] as Source | undefined;
 const doseItem = (id: string) => content.data.dose?.[id] as Dose | undefined;
+const drugRecord = (id?: string) => (id ? (content.data.drug?.[id] as Drug | undefined) : undefined);
 
 // ---- Sources ----
 
@@ -199,11 +200,15 @@ function DoseSection({ title, children }: { title: string; children: ReactNode }
   );
 }
 
+// Every source the drug's lines on a dose sheet cite, so the sheet's source pills cover them.
+const drugSources = (g: Drug) => [...(g.boxed_warning === 'None' ? [] : g.boxed_warning.sources), ...(g.cautions ?? []).flatMap((c) => c.sources), g.label_source];
+
 function DoseSheet({ id }: { id: string }) {
   const sheet = useSheet();
   const d = doseItem(id);
   if (!d) return null;
   const alt = d.alternative ? doseItem(d.alternative.dose) : undefined;
+  const drug = drugRecord(d.drug);
   const onset = [d.onset, d.lasts].filter(Boolean).join(' · ');
   const who = [d.population, d.route].filter(Boolean).join(' · ');
   const facts: [string, string | undefined][] = [
@@ -239,10 +244,19 @@ function DoseSheet({ id }: { id: string }) {
           </AKG.ValueRow>
         </DoseSection>
       )}
+      {drug && (
+        <DoseSection title={`${drug.name} warnings`}>
+          <ul className="rich-list">
+            {drug.boxed_warning !== 'None' && <li><strong>Boxed warning</strong> <span>{drug.boxed_warning.text}</span></li>}
+            {drug.cautions?.map((c, i) => <li key={i}>{c.text}</li>)}
+            <li><strong>Kidney and liver</strong> <span>{drug.kidney_liver}</span></li>
+          </ul>
+        </DoseSection>
+      )}
       {(d.cautions?.length || d.boxed_warning) ? (
         <DoseSection title="Cautions">
           <ul className="rich-list">
-            {d.boxed_warning && <li><strong>Boxed warning</strong> <span>{d.boxed_warning}</span></li>}
+            {d.boxed_warning && (!drug || hasBoxedWarning(d)) && <li><strong>Boxed warning</strong> <span>{d.boxed_warning}</span></li>}
             {d.cautions?.map((c, i) => <li key={i}>{c}</li>)}
           </ul>
         </DoseSection>
@@ -257,7 +271,7 @@ function DoseSheet({ id }: { id: string }) {
         />
         {d.drug && getCard(d.drug) && <AKG.ListRow title={`Open ${getCard(d.drug)!.title}`} chevron href={href.card(d.drug)} />}
       </AKG.List>
-      <SheetSources ids={d.sources} />
+      <SheetSources ids={drug ? [...new Set([...d.sources, ...drugSources(drug)])] : d.sources} />
     </div>
   );
 }

@@ -2,7 +2,7 @@
 // paragraph or table row, where the app turns them into a pill. A marker anywhere else (for example between the cells
 // of a table row) is left in the displayed words. Walks every string a card or data item can show and fails on a
 // leftover "^[" or a known source id.
-const SKIP_KEYS = new Set(['file', '_file', 'id', 'url', 'href', 'link', 'citation', 'match', 'card', 'sources', 'source', 'verification', 'basedOn', 'related', 'dataset']);
+const SKIP_KEYS = new Set(['file', '_file', 'id', 'url', 'href', 'link', 'citation', 'match', 'card', 'sources', 'source', 'label_source', 'verification', 'basedOn', 'related', 'dataset']);
 
 function* strings(v, path = '') {
   if (typeof v === 'string') yield [path, v];

@@ -405,3 +405,54 @@ describe('no source text shown', () => {
     expect(checkContent(JSON.parse(JSON.stringify(real))).filter((e: string) => /source text shown/.test(e))).toEqual([]);
   });
 });
+
+describe('drug records', () => {
+  const copy = () => JSON.parse(JSON.stringify(real));
+  const errors = (base: ReturnType<typeof copy>) => checkContent(base).join('\n');
+
+  it('the real ceftriaxone record passes and has doses pointing to it', () => {
+    expect(errors(copy())).toBe('');
+    const base = copy();
+    expect(base.data.drug.ceftriaxone.boxed_warning).toBe('None');
+    expect((Object.values(base.data.dose) as { drug?: string }[]).some((d) => d.drug === 'ceftriaxone')).toBe(true);
+  });
+  it('rejects a dose whose drug is not a drug record', () => {
+    const base = copy();
+    base.data.dose['ceftriaxone-iv'].drug = 'no-such-drug';
+    expect(errors(base)).toMatch(/ceftriaxone-iv[\s\S]*drug "no-such-drug" does not exist/);
+  });
+  it('a dose may leave drug out', () => {
+    expect(withDose({})).toBe('');
+    expect(withDose({ drug: 'ceftriaxone' })).toBe('');
+  });
+  it('checks the record: fields, a source on every warning, a label source, no typed doses', () => {
+    const base = copy();
+    const d = base.data.drug.ceftriaxone;
+    d.surprise = 1;
+    d.cautions = [{ text: 'No source here', sources: [] }, { text: 'Bad source', sources: ['no-such-source'] }, 'plain string', { text: 'Give 5 mg first', sources: ['label-ceftriaxone-2026'] }];
+    d.boxed_warning = { text: 'Serious', sources: [] };
+    d.label_source = 'aaaai-drug-allergy-2022';
+    d.sources = ['label-ceftriaxone-2026'];
+    const out = errors(base);
+    expect(out).toMatch(/unknown drug field "surprise"/);
+    expect(out).toMatch(/caution 1 has no sources/);
+    expect(out).toMatch(/caution 2 cites unknown source "no-such-source"/);
+    expect(out).toMatch(/caution 3 must be \{ text, sources \}/);
+    expect(out).toMatch(/caution 4 has a dose typed as text/);
+    expect(out).toMatch(/boxed_warning[\s\S]* has no sources/);
+    expect(out).toMatch(/must be a prescribing-information source/);
+    expect(out).toMatch(/sources must include the label/);
+  });
+  it('requires the main fields', () => {
+    const base = copy();
+    delete base.data.drug.ceftriaxone.kidney_liver;
+    delete base.data.drug.ceftriaxone.boxed_warning;
+    expect(errors(base)).toMatch(/missing "boxed_warning"[\s\S]*missing "kidney_liver"|missing "kidney_liver"[\s\S]*missing "boxed_warning"/);
+  });
+  it('warns on a drug record no dose uses, and not on the real one', () => {
+    const base = copy();
+    expect(checkWarnings(base).join('\n')).not.toMatch(/unused drug record/);
+    base.data.drug.orphan = { ...base.data.drug.ceftriaxone, _file: 'content/data/drug/orphan.yaml' };
+    expect(checkWarnings(base).join('\n')).toMatch(/orphan\.yaml: unused drug record: no dose has "drug: orphan"/);
+  });
+});

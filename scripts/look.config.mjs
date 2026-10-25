@@ -11,6 +11,7 @@ export const ROUTES = [
   { name: 'condition-aki-diagnosis', hash: '#/card/renal-aki/diagnosis' },
   { name: 'condition-aki-link-sheet', hash: '#/card/renal-aki', steps: [{ click: 'Hyperkalemia' }] },
   { name: 'medication-ceftriaxone', hash: '#/card/ceftriaxone' },
+  { name: 'dose-sheet-drug-warnings', hash: '#/card/ceftriaxone', steps: [{ click: 'Pneumonia, cellulitis' }] },
   { name: 'rapids-list', hash: '#/emergencies' },
   { name: 'rapids-dka', hash: '#/emergency/endo-dka' },
   { name: 'rapids-dka-timed', hash: '#/emergency/endo-dka', steps: [{ click: 'Start Timed Mode' }] },
