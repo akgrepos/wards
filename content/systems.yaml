@@ -5,16 +5,16 @@
 - { id: pulm, title: "Pulmonology", subsections: ["Obstructive Lung Disease"] }
 - { id: crit, title: "Critical Care", subsections: ["Shock and Sepsis"] }
 - { id: gi, title: "Gastroenterology", subsections: ["Gastrointestinal Bleeding"] }
-- { id: liver, title: "Liver and Biliary" }
+- { id: liver, title: "Hepatology" }
 - { id: renal, title: "Nephrology and Urology", subsections: ["Electrolyte Disorders"] }
 - { id: id, title: "Infectious Disease", subsections: ["Respiratory Infections", "Skin and Soft Tissue Infections", "Urinary Tract Infections"] }
 - { id: heme, title: "Hematology" }
 - { id: onc, title: "Oncology" }
 - { id: endo, title: "Endocrinology", subsections: ["Diabetes and Glucose"] }
-- { id: rheum, title: "Rheumatology and Musculoskeletal" }
+- { id: rheum, title: "Rheumatology" }
 - { id: neuro, title: "Neurology", subsections: ["Altered Mental Status"] }
 - { id: psych, title: "Psychiatry" }
-- { id: derm, title: "Skin, Allergy, Eye and ENT" }
-- { id: wh, title: "Women's Health and Pregnancy" }
+- { id: derm, title: "Dermatology" }
+- { id: wh, title: "OB/GYN" }
 - { id: hosp, title: "Hospital Medicine" }
 - { id: library, title: "Library", library: true }
