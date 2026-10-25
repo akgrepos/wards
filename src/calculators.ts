@@ -1,12 +1,6 @@
 // The arithmetic of the in-app calculators (docs/DATA-TYPES.md, 7). The items, points, bands and normal ranges are data
 // (content/data/calc/*.yaml); only the formulas live here. Nothing is saved.
-import type { CalcBand, CalcBandSet, CalcResultDef } from './content/types';
-
-export const totalPoints = (points: number[], checked: boolean[]) => points.reduce((sum, p, i) => sum + (checked[i] ? p : 0), 0);
-
-/** The band holding a total (bands have inclusive `from` and `to`; a missing end is open). */
-export const bandFor = (set: CalcBandSet, total: number): CalcBand | undefined =>
-  set.bands.find((b) => (b.from === undefined || total >= b.from) && (b.to === undefined || total <= b.to));
+import type { CalcResultDef } from './content/types';
 
 type Values = Record<string, number>;
 const FORMULAS: Record<string, (v: Values) => number> = {

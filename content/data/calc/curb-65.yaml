@@ -3,23 +3,6 @@ short: "CURB-65"
 url: https://www.mdcalc.com/calc/324/curb-65-score-pneumonia-severity
 match: ["CURB-65"]
 sources: [lim-curb65-2003, idsa-ats-cap-2019]
-calculator:
-  kind: checklist
-  heading: CURB-65 pneumonia severity
-  items:
-    - { label: "Confusion (new disorientation to person, place or time)", points: 1 }
-    - { label: "BUN ≥20 mg/dL (urea >7 mmol/L)", points: 1 }
-    - { label: "Respiratory rate ≥30 breaths/min", points: 1 }
-    - { label: "Systolic BP <90 or diastolic BP ≤60 mm Hg", points: 1 }
-    - { label: "Age ≥65 years", points: 1 }
-  bandSets:
-    - bands:
-        - { from: 0, to: 1, range: "0–1", label: "Low risk", risk: "30-day mortality 0.7% at 0, 3.2% at 1", action: "Likely suitable for outpatient treatment." }
-        - { from: 2, to: 2, range: "2", label: "Intermediate risk", risk: "30-day mortality 3.0%", action: "Short inpatient stay or closely supervised outpatient treatment." }
-        - { from: 3, to: 5, range: "3–5", label: "High risk", risk: "30-day mortality 17% at 3, 41.5% at 4, 57% at 5", action: "Manage in hospital as severe pneumonia.", high: true }
-  notes:
-    - "ATS/IDSA 2019 prefers {{calc:psi-port}} over this score to decide on hospitalization, and advises that neither tool decides ICU admission. Use with clinical judgment."
-    - "Urea >7 mmol/L converted to BUN (×2.8): 19.6, written as ≥20 mg/dL. Mortality figures are from the 2003 derivation and validation cohorts."
 verification:
   source: lim-curb65-2003
   read: not-verified

@@ -89,7 +89,7 @@ const numbers = (v) => String(v).match(/\d+(\.\d+)?/g) ?? [];
 // The in-app calculator of a score or formula: its items, points, bands and formulas must be complete and sourced.
 function calcTexts(item) {
   const c = item.calculator ?? {};
-  return [...(c.notes ?? []), ...(c.items ?? []).map((i) => i?.label), ...(c.bandSets ?? []).flatMap((b) => (b?.bands ?? []).flatMap((x) => [x?.label, x?.risk, x?.action]))];
+  return [...(c.notes ?? [])];
 }
 export function checkCalculator(item, data) {
   const out = [];
@@ -100,32 +100,7 @@ export function checkCalculator(item, data) {
   for (const sid of item.sources ?? []) if (!data.source?.[sid]) out.push(`calculator source "${sid}" does not exist`);
   if (!nonEmpty(c.heading)) out.push('calculator needs a "heading"');
   if (c.notes !== undefined && (!Array.isArray(c.notes) || c.notes.some((n) => !nonEmpty(n)))) out.push('calculator notes are a list of sentences');
-  if (c.kind === 'checklist') {
-    if (!Array.isArray(c.items) || !c.items.length) return [...out, 'a checklist calculator needs "items"'];
-    if (c.items.length > 10) out.push('a calculator has at most ten items');
-    for (const [i, x] of c.items.entries()) if (!nonEmpty(x?.label) || typeof x?.points !== 'number' || (x.points * 2) % 1 !== 0) out.push(`item ${i + 1} needs a label and points (whole or half numbers)`);
-    if (!Array.isArray(c.bandSets) || !c.bandSets.length) return [...out, 'a checklist calculator needs "bandSets"'];
-    const pts = c.items.map((x) => x.points);
-    const lo = pts.filter((p) => p < 0).reduce((a, b) => a + b, 0), hi = pts.filter((p) => p > 0).reduce((a, b) => a + b, 0);
-    for (const [k, set] of c.bandSets.entries()) {
-      if (!Array.isArray(set?.bands) || !set.bands.length) { out.push(`band set ${k + 1} needs "bands"`); continue; }
-      for (const b of set.bands) {
-        if (!nonEmpty(b?.label) || !nonEmpty(b?.range)) out.push(`band set ${k + 1}: every band needs a label and a range`);
-        for (const f of ['from', 'to']) if (b?.[f] !== undefined && typeof b[f] !== 'number') out.push(`band set ${k + 1}: "${f}" must be a number`);
-      }
-      // Every possible total falls in exactly one band.
-      const step = pts.some((p) => p % 1 !== 0) ? 0.5 : 1;
-      for (let t = lo; t <= hi; t += step) {
-        const hits = set.bands.filter((b) => (b.from === undefined || t >= b.from) && (b.to === undefined || t <= b.to)).length;
-        if (hits !== 1) { out.push(`band set ${k + 1}: a total of ${t} falls in ${hits} bands (needs exactly one)`); break; }
-      }
-    }
-    if (c.with !== undefined) {
-      const o = data.calc?.[c.with]?.calculator;
-      if (!o || o.kind !== 'checklist') out.push(`"with" names "${c.with}", which is not a checklist calculator`);
-      else if (o.with !== item._file?.replace(/.*[\\/]/, '').replace(/\.yaml$/, '')) out.push('"with" must be reciprocal');
-    }
-  } else if (c.kind === 'formula') {
+  if (c.kind === 'formula') {
     if (!nonEmpty(c.expression)) out.push('a formula calculator needs "expression" (the formula in words)');
     if (!nonEmpty(c.reference)) out.push('a formula calculator needs "reference" (normal range or caution)');
     const ids = (c.inputs ?? []).map((x) => x?.id);
@@ -137,7 +112,7 @@ export function checkCalculator(item, data) {
       if (!nonEmpty(r?.label) || !nonEmpty(r?.unit) || typeof r?.decimals !== 'number') out.push(`result "${r?.fn}" needs label, unit and decimals`);
       if (!Array.isArray(r?.needs) || r.needs.some((n) => !ids.includes(n))) out.push(`result "${r?.fn}": "needs" must list input ids`);
     }
-  } else out.push('calculator "kind" is checklist or formula');
+  } else out.push('calculator "kind" is formula');
   return out;
 }
 
