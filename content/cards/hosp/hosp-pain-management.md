@@ -3,7 +3,7 @@ id: hosp-pain-management
 type: reference
 variant: protocol
 system: hosp
-title: Acute Pain and Opioid Conversion in the Hospitalized Adult
+title: "Acute Pain"
 aliases: [pain management, acute pain, analgesia, multimodal analgesia, opioid conversion, opioid equivalents, equianalgesic, morphine milligram equivalents, MME, opioid rotation, opioid switching, opioid-naive, opioid-tolerant, PCA, patient-controlled analgesia, morphine, hydromorphone, Dilaudid, oxycodone, fentanyl, methadone, ketorolac, Toradol, acetaminophen, Tylenol, ibuprofen, celecoxib, NSAID, naloxone, Narcan, opioid-induced constipation, bowel regimen, senna, MiraLAX, methylnaltrexone, respiratory depression, sedation scale, POSS, breakthrough pain, postoperative pain, cross-tolerance]
 checked: { date: 2026-10-22, by: opus, scope: "doses and numbers", fingerprint: "d7d74bd72300519f" }
 contents_sub: [dosing]

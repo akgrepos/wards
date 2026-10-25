@@ -13,6 +13,13 @@ The essentials for writing or fixing a card. Read this first; open the full guid
 - `###` headings only inside More Information (fixed subsections; `### Title: short description`, at most 60 characters).
 - Emergencies: a `## Do Now` page (2-8 steps, `If:` first and once); see CONTENT-FORMAT.
 
+## Writing style (content:check warns, never fails)
+- Parallel items each get their own bullet in the same shape (for example every cause is `- **Category:** causes`; every criterion has the same pattern).
+- No several cases joined in one bullet ("X in A; Y in B; Z in C"): one bullet per case.
+- One idea per bullet.
+- The same wording for the same kind of item across cards (the same phrase for a monitoring line, a contraindication, a when-to-escalate line).
+- Titles name the condition only ("Acute Coronary Syndrome"); the other names are search aliases.
+
 ## Lines and sources
 - Every content line ends `^[source-id, …]` (ids from `content/data/source/`), except lines that are only an insert. Sub-bullets without their own source use the parent's.
 - Markers instead of names: `^[common-practice]` (stethoscope); the unnamed-reference check (green check) is a last resort. Never name outside reference tools or the handbook.

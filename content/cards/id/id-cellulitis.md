@@ -3,7 +3,7 @@ id: id-cellulitis
 type: topic
 system: id
 subsection: Skin and Soft Tissue Infections
-title: Cellulitis and Erysipelas
+title: "Cellulitis"
 aliases: [cellulitis, erysipelas, SSTI, skin and soft tissue infection, skin infection, nonpurulent cellulitis, purulent cellulitis, leg cellulitis, abscess, necrotizing fasciitis, nec fasc]
 definition: "Acute bacterial infection of the dermis and subcutaneous tissue (cellulitis) or the upper dermis and superficial lymphatics (erysipelas), without abscess. ^[idsa-ssti-2014]"
 based_on: [idsa-ssti-2014]

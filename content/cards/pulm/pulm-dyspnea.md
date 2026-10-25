@@ -2,7 +2,7 @@
 id: pulm-dyspnea
 type: topic
 system: pulm
-title: "Dyspnea: Acute"
+title: "Dyspnea"
 aliases: [dyspnea, shortness of breath, SOB, breathlessness, short of breath, difficulty breathing, respiratory distress, tachypnea, acute dyspnea, acute-on-chronic dyspnea, increased work of breathing, BNP, NT-proBNP, natriuretic peptide, point-of-care ultrasound, POCUS, lung ultrasound, B-lines]
 definition: "Subjective breathing discomfort of acute onset or acute worsening in an adult, needing a time-sensitive search for life-threatening cardiac, pulmonary, airway and vascular causes. ^[common-practice]"
 based_on: [acp-pocus-2021, esc-hf-2026, aha-acc-pe-2026, ats-nirs-2026, bts-oxygen-2017]

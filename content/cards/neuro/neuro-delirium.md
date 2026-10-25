@@ -3,7 +3,7 @@ id: neuro-delirium
 type: topic
 system: neuro
 subsection: Altered Mental Status
-title: Delirium in the Hospitalized Adult
+title: "Delirium"
 aliases: [delirium, acute confusion, acute encephalopathy, altered mental status, agitation, ICU delirium, hypoactive delirium, hyperactive delirium, sundowning, CAM, CAM-ICU, 4AT, RASS, haloperidol, HELP, postoperative delirium, toxic metabolic encephalopathy]
 definition: "An acute, fluctuating disturbance of attention, awareness and cognition that is a direct physiologic consequence of another medical condition, medication, substance or toxin, and is not explained by a preexisting neurocognitive disorder. ^[apa-delirium-2025, nice-delirium-2023]"
 based_on: [apa-delirium-2025, padis-2025, nice-delirium-2023, ags-beers-2023]

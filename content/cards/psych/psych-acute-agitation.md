@@ -2,7 +2,7 @@
 id: psych-acute-agitation
 type: topic
 system: psych
-title: "Acute Agitation in the Hospitalized Adult"
+title: "Acute Agitation"
 aliases: [agitated patient, combative patient, violent patient, aggression, acute agitation, behavioral emergency, rapid tranquilization, chemical restraint, physical restraint, restraints, verbal de-escalation, code gray, security, olanzapine, ziprasidone, lorazepam, midazolam, droperidol, ketamine, Haldol, Zyprexa, Geodon, Ativan, B52, BARS, akathisia, acute dystonia, sitter, one-to-one observation]
 definition: "A state of heightened psychomotor arousal, from restlessness to threats or violence, that is a symptom of a medical, substance-related or psychiatric cause and needs a safe, stepwise response that treats the cause first. ^[aaep-beta-medical-2012, acep-severe-agitation-2023]"
 emergency_hint: Safety, glucose and oxygen, de-escalate, medicate
