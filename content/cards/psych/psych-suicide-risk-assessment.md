@@ -31,19 +31,19 @@ related:
 ## Severity
 - Triage with the {{calc:c-ssrs}} (SAFE-T) places the patient from the answers: ^[columbia-safet-cssrs-2026]
 
-| Risk | Features | Action |
-|---|---|---|
-| High | Ideation with intent, or intent with a plan, in the past month (items 4 or 5). Or suicidal behavior within the past 3 months | Start the psychiatric admission process. Stay with the patient until transfer. Document the outcome of the emergency psychiatric evaluation ^[columbia-safet-cssrs-2026] |
-| Moderate | Ideation with a method but no plan, intent or behavior in the past month (item 3). Or suicidal behavior more than 3 months ago. Or multiple risk factors and few protective factors | Use clinical judgment to decide if further evaluation is needed. Outpatient referral ^[columbia-safet-cssrs-2026] |
-| Low | Wish to die or ideation without method, intent, plan or behavior (items 1 or 2). Or modifiable risk factors and strong protective factors. Or no history of ideation or behavior | Outpatient referral ^[columbia-safet-cssrs-2026] |
+:::scale Risk level, SAFE-T ^[columbia-safet-cssrs-2026]
+- Low: Wish to die or ideation without method, intent, plan or behavior (items 1 or 2). Or modifiable risk factors and strong protective factors. Or no history of ideation or behavior. Action: Outpatient referral ^[columbia-safet-cssrs-2026]
+- Moderate: Ideation with a method but no plan, intent or behavior in the past month (item 3). Or suicidal behavior more than 3 months ago. Or multiple risk factors and few protective factors. Action: Use clinical judgment to decide if further evaluation is needed. Outpatient referral ^[columbia-safet-cssrs-2026]
+- High: Ideation with intent, or intent with a plan, in the past month (items 4 or 5). Or suicidal behavior within the past 3 months. Action: Start the psychiatric admission process. Stay with the patient until transfer. Document the outcome of the emergency psychiatric evaluation ^[columbia-safet-cssrs-2026]
+:::
 
 - The VA/DoD guideline gives an example scheme that separates acute risk from chronic risk. It found no evidence to favor one stratification tool over another. ^[vadod-suicide-2024]
 
-| Acute risk | Features | Action |
-|---|---|---|
-| High | Ideation with intent, and unable to keep self safe without outside help. Often a plan, access to lethal means or a recent attempt | Typically psychiatric hospitalization, voluntary or involuntary ^[vadod-suicide-2024] |
-| Intermediate | Ideation, and able to keep self safe independently. Often no intent because of a reason for living, and able to follow a safety plan | Consider voluntary hospitalization if the drivers of risk respond to inpatient treatment. Otherwise outpatient care with frequent contact, reassessment, a safety plan and lethal means counseling ^[vadod-suicide-2024] |
-| Low | Possible ideation, no current intent, no specific current plan, no recent preparatory behavior. Patient, clinician and family are confident the patient can stay safe | Reduce chronic risk. Outpatient treatment if indicated ^[vadod-suicide-2024] |
+:::scale Acute risk, VA/DoD ^[vadod-suicide-2024]
+- Low: Possible ideation, no current intent, no specific current plan, no recent preparatory behavior. Patient, clinician and family are confident the patient can stay safe. Action: Reduce chronic risk. Outpatient treatment if indicated ^[vadod-suicide-2024]
+- Intermediate: Ideation, and able to keep self safe independently. Often no intent because of a reason for living, and able to follow a safety plan. Action: Consider voluntary hospitalization if the drivers of risk respond to inpatient treatment. Otherwise outpatient care with frequent contact, reassessment, a safety plan and lethal means counseling ^[vadod-suicide-2024]
+- High: Ideation with intent, and unable to keep self safe without outside help. Often a plan, access to lethal means or a recent attempt. Action: Typically psychiatric hospitalization, voluntary or involuntary ^[vadod-suicide-2024]
+:::
 
 - Chronic risk: ^[vadod-suicide-2024]
   - High: chronic medical or mental health conditions, chronic pain, chronic ideation, prior attempts, substance use disorder, few reasons for living, few coping skills, unstable psychosocial status. Needs routine follow-up, a well-developed safety plan and lethal means counseling. ^[vadod-suicide-2024]
