@@ -18,8 +18,8 @@ cautions:
   - "The label lists heart block as a contraindication. Torsades with heart block or long pauses needs pacing ready."
   - "Repeated doses: check patellar reflexes and breathing. IV calcium reverses magnesium toxicity."
 notes: "2 g IV is first-line for torsades whatever the serum magnesium, repeated if torsades persists. The rate is resuscitation practice, not on the label."
-sources: [aha-torsades-2010, label-mgso4-2021, aha-acls-2025]
+sources: [aha-accf-qt-2010, label-mgso4-2021, aha-acls-2025]
 verification:
-  source: aha-torsades-2010
+  source: aha-accf-qt-2010
   read: full-text
   date: 2026-10-25
