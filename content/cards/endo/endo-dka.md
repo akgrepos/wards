@@ -3,8 +3,8 @@ id: endo-dka
 type: topic
 system: endo
 subsection: Diabetes and Glucose
-title: Diabetic Ketoacidosis and Hyperosmolar Hyperglycemic State
-aliases: [DKA, diabetic ketoacidosis, HHS, hyperosmolar hyperglycemic state, HHNK, hyperosmolar nonketotic, hyperglycemic crisis, euglycemic DKA, euDKA, SGLT2 inhibitor DKA, ketoacidosis, insulin drip, insulin infusion, two-bag, beta-hydroxybutyrate, BHB]
+title: "DKA and HHS"
+aliases: [DKA, diabetic ketoacidosis, HHS, hyperosmolar hyperglycemic state, HHNK, hyperosmolar nonketotic, hyperglycemic crisis, euglycemic DKA, euDKA, SGLT2 inhibitor DKA, ketoacidosis, insulin drip, insulin infusion, two-bag, beta-hydroxybutyrate, BHB, Diabetic Ketoacidosis and Hyperosmolar Hyperglycemic State, hyperosmolar]
 definition: "Hyperglycemic crises: DKA is hyperglycemia (or known diabetes) with ketosis and metabolic acidosis. HHS is severe hyperglycemia with hyperosmolality without significant ketoacidosis. ^[ada-hyperglycemic-crises-2024]"
 based_on: [ada-hyperglycemic-crises-2024, ada-soc-hospital-2026]
 checked: { date: 2026-10-21, by: owner, scope: "owner review", fingerprint: "2358d2dacb303c71" }
