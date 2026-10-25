@@ -55,6 +55,9 @@ export function CardScreen({ id, section, anchor }: { id: string; section?: stri
   const anyOpen = collapsible.some((k) => state.isOpen(k, true)) || subs.some((k) => state.isOpen(k, false));
 
   const pending = useRef<{ el: string; smooth: boolean } | null>(null);
+  // Leaving the page drops a scroll still waiting for its section, so the timers and frames left behind stop at once
+  // instead of looking at a page that is gone (in tests the environment is torn down and `document` disappears).
+  useEffect(() => () => { pending.current = null; }, []);
   const scrollToPending = () => {
     const p = pending.current;
     const node = p && document.getElementById(p.el);
