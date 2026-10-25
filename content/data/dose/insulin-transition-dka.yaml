@@ -19,5 +19,5 @@ notes: "Doses from the IV requirement (stable hourly rates) can overestimate nee
 sources: [ada-hyperglycemic-crises-2024, ada-soc-hospital-2026]
 verification:
   source: ada-hyperglycemic-crises-2024
-  read: not-verified
-  date: 2026-10-23
+  read: full-text
+  date: 2026-10-25

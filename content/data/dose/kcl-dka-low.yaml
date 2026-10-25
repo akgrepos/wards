@@ -15,5 +15,5 @@ cautions:
 sources: [ada-hyperglycemic-crises-2024, label-kcl-injection-2026]
 verification:
   source: ada-hyperglycemic-crises-2024
-  read: not-verified
-  date: 2026-10-23
+  read: full-text
+  date: 2026-10-25
