@@ -7,7 +7,7 @@ amount: "1–2"
 unit: g
 rate: "over 1–2 hours when stable (no faster than 1 g per hour). Over 5–60 minutes for severe symptoms"
 repeat: "As needed by level. With repeated doses check patellar reflexes and breathing before each"
-max: "US label: generally no faster than 150 mg per minute. Faster only for life-threatening symptoms (seizures, ventricular arrhythmia, torsades de pointes)"
+max: "US label: generally no faster than 150 mg per minute. The only exception the label names is severe eclampsia with seizures. For torsades, see the torsades dose: the faster rate rests on resuscitation guidance, not the label"
 alternative:
   dose: mgso4-iv-infusion
   when: "Severe symptomatic hypomagnesemia, after this dose"
@@ -21,4 +21,4 @@ sources: [label-mgso4-2021, adomako-magnesium-2024, hansen-magnesium-icu-2018]
 verification:
   source: label-mgso4-2021
   read: not-verified
-  date: 2026-10-23
+  date: 2026-10-25
