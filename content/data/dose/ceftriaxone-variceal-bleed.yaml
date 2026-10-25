@@ -1,6 +1,6 @@
 drug: ceftriaxone
 drug_name: Ceftriaxone
-indication: Variceal bleeding prophylaxis
+indication: Infection prophylaxis in variceal bleeding
 indication_detail: Antibiotic prophylaxis in cirrhosis with acute variceal bleeding
 population: Adults
 route: IV
@@ -11,10 +11,11 @@ rate: over 30 minutes
 duration: Up to 5 days, or until discharge if sooner
 boxed_warning: None
 cautions:
-  - Start at presentation with the bleed. Stop when the bleeding has resolved and vasoactive drugs are stopped.
+  - Start at presentation with the bleed. Stop once bleeding is controlled if there is no active infection.
+  - Not with calcium-containing IV solutions in the same line.
 notes: "The 2021 guidance set a maximum of 7 days."
 sources: [aasld-portal-htn-2024, aasld-ascites-hrs-2021, label-ceftriaxone-2026]
 verification:
   source: aasld-portal-htn-2024
   read: full-text
-  date: 2026-10-23
+  date: 2026-10-24

@@ -14,9 +14,9 @@ adjustments:
 cautions:
   - Add doxycycline for 7 days if chlamydia is not excluded.
   - Ceftriaxone has no activity against Chlamydia trachomatis.
-notes: "No reliable alternative exists for pharyngeal gonorrhea. For cephalosporin allergy, the guideline offers gentamicin plus azithromycin."
+notes: "No reliable alternative exists for pharyngeal gonorrhea. Cephalosporin allergy: gentamicin plus azithromycin."
 sources: [cdc-sti-2021, label-ceftriaxone-2026]
 verification:
   source: cdc-sti-2021
   read: full-text
-  date: 2026-10-23
+  date: 2026-10-24

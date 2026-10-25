@@ -12,6 +12,7 @@ boxed_warning: None
 cautions:
   - "Oral doxycycline is an alternative for neurologic Lyme (meningitis, cranial neuropathy, radiculoneuropathy)."
   - "Symptomatic bradycardia in carditis: temporary pacing, not a permanent pacemaker."
+  - Not with calcium-containing IV solutions in the same line.
 sources: [idsa-lyme-2020, label-ceftriaxone-2026]
 verification:
   source: idsa-lyme-2020

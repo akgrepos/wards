@@ -18,9 +18,10 @@ cautions:
   - Community-acquired infection only. For nosocomial or health care–associated infection, recent broad-spectrum antibiotics, or sepsis, use piperacillin-tazobactam or meropenem per local resistance.
   - Inoculate ascitic fluid into blood-culture bottles at the bedside before the first dose. Narrow to the culture result.
   - Repeat paracentesis at 2 days. A neutrophil fall under 25% means no response, so broaden coverage and look for secondary peritonitis.
-  - Give albumin with it (see Albumin 25%).
-  - This is not the 1 g dose used for variceal-bleed prophylaxis.
-notes: "The AASLD guidance names a third-generation cephalosporin as first line and gives no ceftriaxone dose for treatment. 2 g every 24 hours sits inside the label range of 1–2 g daily."
+  - "Give IV albumin with it: 1.5 g/kg on day 1 and 1 g/kg on day 3."
+  - This is not the 1 g dose used for infection prophylaxis in variceal bleeding.
+  - Not with calcium-containing IV solutions in the same line.
+notes: "First-line therapy for community-acquired SBP is a third-generation cephalosporin. 2 g every 24 hours is within the label's usual 1–2 g daily."
 sources: [aasld-ascites-hrs-2021, label-ceftriaxone-2026]
 verification:
   source: aasld-ascites-hrs-2021
