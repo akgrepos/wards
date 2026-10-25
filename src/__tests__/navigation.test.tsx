@@ -82,7 +82,7 @@ describe('reopening the last page', () => {
     reopenLastPage();
     const historyBack = vi.spyOn(history, 'back');
     render(<App />);
-    expect(back().getAttribute('aria-label')).toBe('Back to Kidney, Electrolytes and Urology');
+    expect(back().getAttribute('aria-label')).toBe('Back to Nephrology and Urology');
     await act(async () => { fireEvent.click(back()); });
     expect(location.hash).toBe('#/system/renal');
     expect(back().getAttribute('aria-label')).toBe('Back to Topics');
@@ -117,7 +117,7 @@ describe('tabs', () => {
   it('show each tab’s first page', async () => {
     launch('#/');
     render(<App />);
-    expect(screen.getAllByText('Kidney, Electrolytes and Urology').length).toBeGreaterThan(0);
+    expect(screen.getAllByText('Nephrology and Urology').length).toBeGreaterThan(0);
     await act(async () => { fireEvent.click(screen.getByRole('tab', { name: 'Library' })); });
     expect(screen.getByText('Medscape Drug Interaction Checker')).toBeTruthy();
     await act(async () => { fireEvent.click(screen.getByRole('tab', { name: 'Rapids' })); });

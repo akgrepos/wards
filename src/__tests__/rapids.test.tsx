@@ -41,7 +41,7 @@ describe('Rapids addresses', () => {
   it('the Rapids tab lists the emergency by system with its hint, and opens its page', async () => {
     launch('#/emergencies');
     render(<App />);
-    expect(screen.getByText('Kidney, Electrolytes and Urology')).toBeTruthy();
+    expect(screen.getByText('Nephrology and Urology')).toBeTruthy();
     const row = screen.getByText('Calcium, insulin-dextrose, remove K⁺').closest('a')!;
     expect(row.getAttribute('href')).toBe('#/emergency/renal-hyperkalemia');
   });

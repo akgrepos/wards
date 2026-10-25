@@ -120,7 +120,7 @@ The layouts for types 3–8 were proposed with the redesign and approved by the 
 ## Part 3 — Worked example: Hyperkalemia (condition card)
 *(Headings only, to show the shape.)*
 
-- Header: Condition · Kidney, Electrolytes and Urology · definition · checked date
+- Header: Condition · Nephrology and Urology · definition · checked date
 - **At a Glance** · **Severity** (scale mild / moderate / severe; monitoring) · **Causes** (one grouped list: pseudohyperkalemia, shift out of cells, impaired excretion (cannot miss), intake) · **Presentation** (symptoms; ECG progression) · **Diagnosis**
 - **Treatment:** numbered steps: membrane stabilization · intracellular shift · elimination, each with its dose rows; Compare Onset and Duration row; hyperkalemic cardiac arrest
 - **Monitor:** K⁺ recheck times; glucose times after insulin (timelines) · **Escalation**
