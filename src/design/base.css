@@ -200,7 +200,12 @@ html[data-timed] .pw-zoom { bottom: calc(env(safe-area-inset-bottom) + var(--tab
 /* Opens with the design system's own fade (same timing as its alerts); none with Reduce Motion. */
 .search-screen { animation: akg-fade-in 200ms ease-out; }
 @media (prefers-reduced-motion: reduce) { .search-screen { animation: none; } }
+/* While Search is open the page behind is pinned (iOS ignores overflow: hidden alone), so nothing can drag or shift it. */
+html.search-open, html.search-open body { position: fixed; inset: 0; width: 100%; overflow: hidden; overscroll-behavior: none; }
 .search-scroll { flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; }
+/* The bar and field ignore drags (a tap still focuses the field); 16px minimum so iOS never zooms in on focus. */
+.akg-bottom-bar.search-bar { touch-action: none; }
+.search-bar .akg-search-field__input { font-size: max(16px, calc(17 * var(--akg-text-unit, 1px))); }
 /* Always a little taller than the box, so a drag scrolls this list (and stops here) even when the box is empty. */
 .search-scroll .screen-page { min-height: calc(100% + 1px); }
 .search-scroll .screen-body { padding-bottom: var(--space-24); }

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { AKG } from '../design/akg';
 import { content, loadCard } from '../content';
 import { search, type GroupKey, type Hit } from '../content/search';
@@ -7,6 +7,7 @@ import { addSearch, clearSearches, getSearches, useStored } from '../storage';
 import { openCalculator } from '../ui/Calculator';
 import { icons } from '../ui/icons';
 import { useSheet } from '../ui/SheetHost';
+import { SCROLL_CLASS, isKeyboardOpen, lockPage, useDragGuard, useVisibleArea } from '../searchLayout';
 import { Empty, Screen } from './common';
 
 export const SEARCH_INPUT_ID = 'search-input';
@@ -19,25 +20,6 @@ export function FocusProxy() {
 }
 export const focusProxy = () => document.getElementById(FOCUS_PROXY_ID)?.focus();
 
-// The part of the screen not covered by the keyboard. iOS shrinks the visible area instead of the page, and scrolls
-// the page to show a focused field, so the search screen follows the visible area itself.
-function useVisibleArea() {
-  const read = () => {
-    const vv = window.visualViewport;
-    return vv ? { top: Math.round(vv.offsetTop), height: Math.round(vv.height) } : null;
-  };
-  const [area, setArea] = useState(read);
-  useEffect(() => {
-    const vv = window.visualViewport;
-    if (!vv) return;
-    const update = () => setArea(read());
-    vv.addEventListener('resize', update);
-    vv.addEventListener('scroll', update);
-    return () => { vv.removeEventListener('resize', update); vv.removeEventListener('scroll', update); };
-  }, []);
-  return area;
-}
-
 // How many results a group shows before its Show More row.
 const SHOWN = 3;
 
@@ -48,7 +30,9 @@ export function SearchScreen() {
   const [expanded, setExpanded] = useState<ReadonlySet<GroupKey>>(new Set());
   const area = useVisibleArea();
   // The keyboard covers the home-indicator strip, so the bar stops reserving room for it (see .search-keyboard).
-  const keyboardOpen = !!area && window.innerHeight - area.height > 120;
+  const keyboardOpen = isKeyboardOpen(area, window.innerHeight);
+  const box = useRef<HTMLDivElement>(null);
+  useDragGuard(box);
   const sheet = useSheet();
   const results = useMemo(() => search(q, content), [q]);
   const searches = useStored(getSearches);
@@ -71,14 +55,14 @@ export function SearchScreen() {
     const r = parseRoute(el.closest('a')?.getAttribute('href') ?? '');
     if (r.name === 'card' && r.section) requestFlash(r.id, r.section);
   };
-  // The page behind stays still, so the bar can't ride along when there's nothing (or little) to scroll.
-  useEffect(() => AKG.lockScroll(), []);
+  // The page behind is pinned, so a drag or the keyboard opening can't move it (and the bar and cursor with it).
+  useEffect(() => lockPage(), []);
   useEffect(() => {
     if (document.activeElement?.id === FOCUS_PROXY_ID) document.getElementById(SEARCH_INPUT_ID)?.focus();
   }, []);
   return (
-    <div className={`search-screen${keyboardOpen ? ' search-keyboard' : ''}`} style={area ? { top: area.top, height: area.height } : undefined}>
-      <div className="search-scroll">
+    <div ref={box} className={`search-screen${keyboardOpen ? ' search-keyboard' : ''}`} style={area ? { top: area.top, height: area.height } : undefined}>
+      <div className={SCROLL_CLASS}>
         <Screen title="Search">
           <div onClickCapture={(e) => openedResult(e.target as HTMLElement)}>
           {!q.trim() ? (
