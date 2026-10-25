@@ -5,8 +5,8 @@ variant: protocol
 system: psych
 title: "Lithium and Psychotropic Safety"
 aliases: [lithium, lithium carbonate, Lithobid, lithium level, lithium toxicity, lithium poisoning, lithium overdose, lithium dialysis, mood stabilizer, valproate, valproic acid, divalproex, Depakote, valproate level, valproate ammonia, carbamazepine, Tegretol, HLA-B*1502, clozapine, Clozaril, clozapine ANC, clozapine neutropenia, clozapine myocarditis, antipsychotic QT monitoring, metabolic monitoring, psychotropic safety, psychiatric medication safety]
-based_on: [label-lithium-2025, extrip-lithium-2015, canmat-isbd-2018, nice-cg185-2025, aha-torsades-2010, label-divalproex-2026, label-clozapine-2026, fda-clozapine-rems-2025, label-tegretol-2026, label-ziprasidone-2026, label-haloperidol-inj-2026, periop-lithium-2026, gitlin-lithium-2016, lactmed-lithium-2026, lactmed-valproic-acid-2026, lactmed-carbamazepine-2024]
-checked: { date: 2026-10-25, by: opus, scope: "doses and numbers, Opus check of tier A claims against label and guideline text", fingerprint: "19ad47f385e51a3b", carried: "2026-10-25: Format sweep (bullets split, tables to bullets or scale, society names out of text). Numbers, doses, drugs and sources unchanged." }
+based_on: [label-lithium-2025, extrip-lithium-2015, canmat-isbd-2018, nice-cg185-2025, aha-accf-qt-2010, label-divalproex-2026, label-clozapine-2026, fda-clozapine-rems-2025, label-tegretol-2026, label-ziprasidone-2026, label-haloperidol-inj-2026, periop-lithium-2026, gitlin-lithium-2016, lactmed-lithium-2026, lactmed-valproic-acid-2026, lactmed-carbamazepine-2024]
+checked: { date: 2026-10-25, by: opus, scope: "doses and numbers, Opus check of tier A claims against label and guideline text", fingerprint: "c4cfe2e8d7395120", carried: "2026-10-25: Two ids for the same 2010 statement merged into one. Wording and citation unchanged." }
 related:
   conditions: [psych-serotonin-syndrome-nms, psych-acute-agitation, renal-aki, renal-hyponatremia, psych-suicide-risk-assessment, cardio-qt-prolongation]
   tools: [cardio-ecg-interpretation]
@@ -16,7 +16,7 @@ related:
 - Draw a lithium level as a trough, about 12 hours after the last dose. ^[label-lithium-2025, canmat-isbd-2018]
 - Diuretics, NSAIDs, renin-angiotensin system antagonists and metronidazole raise lithium levels. So do dehydration and sodium loss. ^[label-lithium-2025, gitlin-lithium-2016]
 - Hemodialysis for lithium: level >4.0 mEq/L with impaired kidney function, or decreased consciousness, seizures or life-threatening dysrhythmias at any level. ^[extrip-lithium-2015]
-- QT interval safety: ^[aha-torsades-2010]
+- QT interval safety: ^[aha-accf-qt-2010]
   - {{calc:qtc}} >500 ms, or a rise of at least 60 ms from baseline after an at-risk drug, needs prompt action.
   - If signs of impending torsades appear, stop the drug and replace potassium and magnesium.
 - Clozapine still needs ANC checks after the REMS ended in 2025. Valproate: check an ammonia level for unexplained lethargy, vomiting or altered mental status. ^[fda-clozapine-rems-2025, label-divalproex-2026]
@@ -92,15 +92,15 @@ related:
    - Stop when lithium is <1.0 mEq/L or clinical improvement is apparent, or after at least 6 hours if a level is not readily measurable. ^[extrip-lithium-2015]
    - After stopping, repeat levels over 12 hours to decide on another session. Extended-release products can rebound. ^[extrip-lithium-2015]
 5. {{calc:qtc}} safety with antipsychotics and other QT-prolonging drugs
-   - {{calc:qtc}} >500 ms is highly abnormal. After an at-risk drug, {{calc:qtc}} >500 ms or a rise of at least 60 ms from baseline needs prompt action. ^[aha-torsades-2010]
-   - In patients on ECG monitoring, a reasonable strategy is to document the {{calc:qtc}} before starting and at least every 8 to 12 hours after: ^[aha-torsades-2010]
+   - {{calc:qtc}} >500 ms is highly abnormal. After an at-risk drug, {{calc:qtc}} >500 ms or a rise of at least 60 ms from baseline needs prompt action. ^[aha-accf-qt-2010]
+   - In patients on ECG monitoring, a reasonable strategy is to document the {{calc:qtc}} before starting and at least every 8 to 12 hours after: ^[aha-accf-qt-2010]
      - Starting the drug.
      - A dose increase.
      - An overdose.
-   - Risk factors: older age, female sex, heart disease, hypokalemia, hypomagnesemia, kidney or liver dysfunction, bradycardia, more than one QT-prolonging drug. ^[aha-torsades-2010]
-   - If ECG signs of impending torsades appear: stop the drug, replace potassium and give magnesium. ^[aha-torsades-2010]
-   - Keep potassium and magnesium normal in hospitalized patients at risk. ^[aha-torsades-2010]
-   - Bazett overcorrects at faster heart rates, particularly above 85 beats per minute. ^[aha-torsades-2010]
+   - Risk factors: older age, female sex, heart disease, hypokalemia, hypomagnesemia, kidney or liver dysfunction, bradycardia, more than one QT-prolonging drug. ^[aha-accf-qt-2010]
+   - If ECG signs of impending torsades appear: stop the drug, replace potassium and give magnesium. ^[aha-accf-qt-2010]
+   - Keep potassium and magnesium normal in hospitalized patients at risk. ^[aha-accf-qt-2010]
+   - Bazett overcorrects at faster heart rates, particularly above 85 beats per minute. ^[aha-accf-qt-2010]
    - Ziprasidone is contraindicated with known QT prolongation, recent acute myocardial infarction or uncompensated heart failure. ^[label-ziprasidone-2026]
    - Ziprasidone is also contraindicated with a drug whose label lists QT prolongation as a contraindication or boxed or bolded warning. ^[label-ziprasidone-2026]
    - Stop ziprasidone for a persistent {{calc:qtc}} >500 ms. ^[label-ziprasidone-2026]
