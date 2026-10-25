@@ -25,5 +25,9 @@ const arg = process.argv[2];
     process.exit(1);
   }
   const cards = cardsUsing(splitContent(content), kind, id);
+  if (kind === 'drug') {
+    const doses = Object.entries(content.data.dose ?? {}).filter(([, d]) => d.drug === id).map(([k]) => k).sort();
+    console.log(`drug:${id} has ${doses.length} dose${doses.length === 1 ? '' : 's'}${doses.length ? `: ${doses.join(', ')}` : ''}.`);
+  }
   console.log(cards.length ? `${kind}:${id} is used by ${cards.length} card${cards.length === 1 ? '' : 's'}:\n${cards.map((c) => `  - ${c}`).join('\n')}` : `${kind}:${id} is not used by any card.`);
 }

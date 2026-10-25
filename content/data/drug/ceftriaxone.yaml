@@ -1,0 +1,17 @@
+name: Ceftriaxone
+class: Third-generation cephalosporin
+brands: [Rocephin]
+aliases: [CTX]
+boxed_warning: None
+cautions:
+  - text: Never mix with calcium-containing IV solutions in the same line (precipitation). Contraindicated in neonates up to 28 days who need or may need calcium-containing IV solutions, because fatal crystal deposition in the lungs and kidneys has occurred.
+    sources: [label-ceftriaxone-2026]
+  - text: Contraindicated in premature neonates up to a postmenstrual age of 41 weeks and in hyperbilirubinemic neonates (it displaces bilirubin from albumin).
+    sources: [label-ceftriaxone-2026]
+  - text: Contraindicated with IV solutions containing lidocaine. Lidocaine as the solvent is allowed only for IM use.
+    sources: [label-ceftriaxone-2026]
+  - text: Contraindicated with hypersensitivity to any cephalosporin. A penicillin allergy label alone rarely rules it out, so check the reaction history.
+    sources: [label-ceftriaxone-2026, aaaai-drug-allergy-2022]
+kidney_liver: No dose change for kidney or liver impairment alone, including in dialysis. The maximum is lower when liver dysfunction and significant kidney disease coexist (see Adjust on the dose). Neurotoxicity (encephalopathy, seizures) has occurred in severe kidney impairment. Monitor closely and stop if it occurs.
+label_source: label-ceftriaxone-2026
+sources: [label-ceftriaxone-2026, aaaai-drug-allergy-2022]

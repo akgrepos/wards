@@ -41,6 +41,12 @@ export type Dose = {
   alternative?: { dose: string; when?: string }; adjustments?: { when: string; change: string }[];
   cautions?: string[]; notes?: string; sources: string[];
 };
+// A drug record (docs/DATA-TYPES.md, 2b): what holds for the drug whatever it is given for. A dose points to it with `drug`.
+export type CitedLine = { text: string; sources: string[] };
+export type Drug = {
+  name: string; class: string; brands?: string[]; aliases?: string[]; boxed_warning: 'None' | CitedLine; cautions?: CitedLine[];
+  kidney_liver: string; label_source: string; sources: string[];
+};
 // A calculator or score on MDCalc (docs/DATA-TYPES.md, 12b), linked from every sentence that names it.
 export type CalcBand = { label: string; range: string; from?: number; to?: number; risk?: string; action?: string; high?: boolean };
 export type CalcBandSet = { title?: string; bands: CalcBand[] };

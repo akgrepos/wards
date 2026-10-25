@@ -179,6 +179,9 @@ export const DOSE_FIELDS = [
   'cautions', 'notes', 'sources', 'verification',
 ];
 
+// Every field a drug record can have. `boxed_warning` is "None" or { text, sources }; each caution is { text, sources }.
+export const DRUG_FIELDS = ['name', 'class', 'brands', 'aliases', 'boxed_warning', 'cautions', 'kidney_liver', 'label_source', 'sources'];
+
 // The title of a dose row on a medication card (the dose's `indication`) is at most this many characters; longer wording goes in `indication_detail`.
 export const MAX_INDICATION_LENGTH = 70;
 
@@ -201,6 +204,8 @@ export const DATA_TYPES = {
   source: { required: ['kind', 'short', 'title', 'year'], sourced: false },
   // A dose needs a frequency or a rate (e.g. "over 10 minutes"); the dose sheet fields are listed in DOSE_FIELDS.
   dose: { required: ['drug_name', 'indication', 'route', 'amount', 'unit'], sourced: true },
+  // A drug record (docs/DATA-TYPES.md, 2b): the facts that hold for the drug whatever it is given for. Doses point to it with `drug:`.
+  drug: { required: ['name', 'class', 'boxed_warning', 'kidney_liver', 'label_source'], sourced: true },
   threshold: { required: ['name', 'value', 'unit'], sourced: true },
   // A focused pathway (docs/DATA-TYPES.md, 9): a levelled flowchart on a grid that supplements its card.
   pathway: { required: ['title', 'card', 'columns', 'start', 'nodes'], sourced: true },
