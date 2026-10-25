@@ -316,11 +316,11 @@ describe('consistency rules', () => {
     expect(errorsOf(addCard({}, kp(wide)))).toMatch(/table width: "At a Glance" has a 5-column table/);
     expect(errorsOf(addCard({}, kp('| A | B |\n|---|---|\n| 1 | 2 | ^[example-guideline-a]')))).not.toMatch(/table width/);
   });
-  it('allows a planned link and warns about it; related links should be reciprocal', () => {
+  it('allows a planned link and warns about it; related links must be reciprocal (an error)', () => {
     const planned = addCard({}, kp('- See [[not-written-yet]]. ^[example-guideline-a]'));
     expect(errorsOf(planned)).not.toMatch(/unknown card/);
     expect(warnings(planned)).toMatch(/planned links: \[\[not-written-yet\]\]/);
-    expect(warnings(addCard({ related: { see: ['renal-aki'] } }))).toMatch(/test.md: related rule, renal-aki/);
+    expect(errorsOf(addCard({ related: { see: ['renal-aki'] } }))).toMatch(/test.md: related rule, renal-aki/);
   });
   it('warns when checked is over 12 months old', () => {
     const base = addCard({ checked: { date: '2025-01-15', by: 'owner', scope: 'owner review' } });
