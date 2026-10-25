@@ -10,7 +10,7 @@ based_on: [aaep-beta-medical-2012, aaep-beta-deescalation-2012, aaep-beta-psycho
 checked: { date: 2026-10-23, by: opus, scope: "doses and numbers", fingerprint: "7399ad3e165dd69a", carried: "2026-10-25: Format sweep (bullets split, tables to bullets or scale, society names out of text). Numbers, doses, drugs and sources unchanged." }
 related:
   differential: [neuro-delirium, neuro-alcohol-withdrawal]
-  conditions: [crit-hypoxemic-respiratory-failure, renal-hyponatremia, crit-sepsis, id-complicated-uti, hosp-pain-management, psych-serotonin-syndrome-nms, psych-suicide-risk-assessment, psych-lithium-psychotropic-safety]
+  conditions: [crit-hypoxemic-respiratory-failure, renal-hyponatremia, crit-sepsis, id-complicated-uti, hosp-pain-management, psych-serotonin-syndrome-nms, psych-suicide-risk-assessment, psych-lithium-psychotropic-safety, cardio-qt-prolongation]
   tools: []
 ---
 ## Do Now
