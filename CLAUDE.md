@@ -25,6 +25,7 @@ The owner, a physician, is the only user. No coding experience: explain steps pl
 Never write files or run scripts with heredocs: they can hang and leave a stuck background task. Use Write and Edit, run scripts from files, and leave no background task running at the end of a turn.
 
 ## Hard rules
+- PR text, titles, screenshots and commit messages never contain absolute home-folder paths (use `~/`) or the owner's name.
 - No patient information (PHI) anywhere; the site and repo are public. Nothing sensitive or institution-internal (internal protocols, phone or pager numbers). `npm run privacy:check` runs in CI.
 - **Stay anonymous.** Never put the owner's name, email or computer name in files, commits or PRs; say "the owner". Commits are authored as `akgrepos <338781722+akgrepos@users.noreply.github.com>` (this repo's git config); a check rejects any other author.
 - Never name or cite AMBOSS, OpenEvidence or the reference handbook in the app, card content or repo, and never copy the handbook. Copyrighted reference material (the handbook PDF, the HIG text) stays in `~/Documents/Wards-reference/`, never in the repo.
