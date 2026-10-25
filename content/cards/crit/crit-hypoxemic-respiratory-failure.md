@@ -9,7 +9,7 @@ based_on: [ats-nirs-2026, ssc-sepsis-2026, ards-global-definition-2024, ats-ards
 checked: { date: 2026-10-21, by: owner, scope: "owner review", fingerprint: "e9f6db329b36ad90", carried: "2026-10-25: Format sweep (bullets split, tables to bullets or scale, society names out of text). Numbers, doses, drugs and sources unchanged." }
 related:
   differential: [pulm-copd-exacerbation, pulm-vte-diagnosis, id-cap, cardio-adhf, pulm-dyspnea]
-  conditions: [crit-sepsis, psych-acute-agitation, cardio-chest-pain, gi-upper-gi-bleeding, renal-acid-base]
+  conditions: [crit-sepsis, psych-acute-agitation, cardio-chest-pain, gi-upper-gi-bleeding, renal-acid-base, neuro-delirium]
   tools: []
 emergency_hint: "Airway, O₂, find the cause, HFNC, intubate early"
 ---

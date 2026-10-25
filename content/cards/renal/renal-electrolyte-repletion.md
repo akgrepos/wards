@@ -8,7 +8,7 @@ aliases: [electrolyte replacement, replete electrolytes, lytes, potassium replet
 checked: { date: 2026-10-19, by: owner, scope: "owner review", fingerprint: "dbe74e5427dd589a", carried: "2026-10-25: Format sweep (bullets split, tables to bullets or scale, society names out of text). Numbers, doses, drugs and sources unchanged." }
 contents_sub: [dosing]
 related:
-  conditions: [renal-hyperkalemia, renal-aki, endo-dka]
+  conditions: [renal-hyperkalemia, renal-aki, endo-dka, neuro-alcohol-withdrawal]
   tools: [renal-hypokalemia, renal-iv-fluids]
 ---
 ## At a Glance

@@ -7,10 +7,10 @@ title: Community-Acquired Pneumonia
 aliases: [CAP, pneumonia, PNA, community acquired pneumonia, lobar pneumonia, lower respiratory tract infection, LRTI, severe CAP]
 definition: "Pneumonia acquired outside the hospital: compatible symptoms with a new infiltrate on chest imaging. ^[idsa-ats-cap-2019]"
 based_on: [ats-cap-2025, idsa-ats-cap-2019]
-checked: { date: 2026-10-24, by: opus, scope: "CURB-65 lines and the corrected dialysis rows of piperacillin-tazobactam and cefepime checked against NICE NG250, Lim 2003 and the labels. Doses left not-verified: amoxicillin-cap, amoxicillin-clavulanate-cap, ampicillin-sulbactam-cap, azithromycin-iv-cap, azithromycin-po-cap, cefepime-cap, cefpodoxime-cap, ceftaroline-iv, doxycycline-100, hydrocortisone-severe-cap, levofloxacin-750, linezolid-600, meropenem-1g, moxifloxacin-cap, oseltamivir-influenza, piperacillin-tazobactam-cap, vancomycin-iv", fingerprint: "80915cfd1e4cc437" }
+checked: { date: 2026-10-24, by: opus, scope: "CURB-65 lines and the corrected dialysis rows of piperacillin-tazobactam and cefepime checked against NICE NG250, Lim 2003 and the labels. Doses left not-verified: amoxicillin-cap, amoxicillin-clavulanate-cap, ampicillin-sulbactam-cap, azithromycin-iv-cap, azithromycin-po-cap, cefepime-cap, cefpodoxime-cap, ceftaroline-iv, doxycycline-100, hydrocortisone-severe-cap, levofloxacin-750, linezolid-600, meropenem-1g, moxifloxacin-cap, oseltamivir-influenza, piperacillin-tazobactam-cap, vancomycin-iv", fingerprint: "0a0f32c0b5cff749", carried: "2026-10-25: Format sweep (bullets split, tables to bullets or scale, society names out of text). Numbers, doses, drugs and sources unchanged." }
 related:
   differential: [cardio-chest-pain, crit-hypoxemic-respiratory-failure, pulm-copd-exacerbation, pulm-dyspnea, pulm-vte-diagnosis]
-  conditions: [id-complicated-uti, id-cellulitis, crit-sepsis]
+  conditions: [id-complicated-uti, id-cellulitis, crit-sepsis, id-empiric-antimicrobials]
   tools: []
   medications: [ceftriaxone]
 ---
@@ -18,7 +18,10 @@ related:
 - Diagnosis needs a new infiltrate on imaging. A positive viral test does not exclude bacterial coinfection. ^[idsa-ats-cap-2019, ats-cap-2025]
 - Severity by {{criteria:idsa-ats-severe-cap}}. Site of care by {{calc:psi-port}} (preferred) or {{calc:curb-65}} plus judgment. ^[idsa-ats-cap-2019]
 - Inpatient, not severe: β-lactam plus macrolide, or a respiratory fluoroquinolone alone. Severe: β-lactam plus macrolide or fluoroquinolone. ^[idsa-ats-cap-2019]
-- MRSA or *Pseudomonas* coverage: add it for a prior respiratory isolate (within 1 year), or in severe CAP after hospitalization with IV antibiotics in the last 90 days. Culture and de-escalate. ^[idsa-ats-cap-2019]
+- MRSA or *Pseudomonas* coverage: add it for either of: ^[idsa-ats-cap-2019]
+  - A prior respiratory isolate (within 1 year). ^[idsa-ats-cap-2019]
+  - Severe CAP after hospitalization with IV antibiotics in the last 90 days. ^[idsa-ats-cap-2019]
+  - Culture and de-escalate. ^[idsa-ats-cap-2019]
 - Short courses once clinically stable: 3–5 days if not severe, at least 5 days if severe. ^[ats-cap-2025]
 - Systemic corticosteroids for severe CAP, not for nonsevere CAP or influenza. ^[ats-cap-2025, sccm-corticosteroids-2024]
 
@@ -38,12 +41,16 @@ related:
   - 2: intermediate risk (3–15%). Mortality 3%. ^[nice-ng250-2025, lim-curb65-2003]
   - 3–5: high risk (over 15%). Mortality 17% at 3, 41.5% at 4 and 57% at 5. ^[nice-ng250-2025, lim-curb65-2003]
 - Direct ICU admission: hypotension needing vasopressors or respiratory failure needing mechanical ventilation. ^[idsa-ats-cap-2019]
-- Otherwise, use the minor criteria with judgment to decide on ICU, step-down or telemetry. Ward patients later transferred to the ICU do worse than those admitted there directly. ^[idsa-ats-cap-2019]
+- Otherwise, use the minor criteria with judgment to decide on ICU, step-down or telemetry. ^[idsa-ats-cap-2019]
+- Ward patients later transferred to the ICU do worse than those admitted there directly. ^[idsa-ats-cap-2019]
 
 ## Causes
-- **Bacterial:** [!most-common] *Streptococcus pneumoniae*. *Haemophilus influenzae*, *Moraxella catarrhalis*, *Staphylococcus aureus*, *Legionella*, *Mycoplasma pneumoniae*, *Chlamydia pneumoniae*. ^[idsa-ats-cap-2019]
+- **Bacterial:** [!most-common] *Streptococcus pneumoniae*. Others: ^[idsa-ats-cap-2019]
+  - *Haemophilus influenzae*, *Moraxella catarrhalis*, *Staphylococcus aureus*, *Legionella*, *Mycoplasma pneumoniae*, *Chlamydia pneumoniae*. ^[idsa-ats-cap-2019]
 - **Viral:** influenza, SARS-CoV-2 and other respiratory viruses. Bacterial coinfection occurs but most have none. ^[idsa-ats-cap-2019, idsa-cap-position-2025]
-- **Resistant organisms:** [!cannot-miss] MRSA and *Pseudomonas aeruginosa*: strongest risk factors are a prior respiratory isolate (within 1 year) and hospitalization with IV antibiotics in the last 90 days. ^[idsa-ats-cap-2019]
+- **Resistant organisms:** [!cannot-miss] MRSA and *Pseudomonas aeruginosa*. Strongest risk factors: ^[idsa-ats-cap-2019]
+  - A prior respiratory isolate (within 1 year). ^[idsa-ats-cap-2019]
+  - Hospitalization with IV antibiotics in the last 90 days. ^[idsa-ats-cap-2019]
 - **MRSA clues:** post-influenza pneumonia, cavitation or necrotizing pneumonia, empyema. ^[idsa-ats-cap-2019, common-practice]
 - **Aspiration:** anaerobes are uncommon. Cover them only for lung abscess or empyema. ^[idsa-ats-cap-2019]
 - **Mimics:** heart failure, pulmonary embolism, atelectasis, aspiration pneumonitis, organizing pneumonia, malignancy, drug reaction. ^[common-practice]
@@ -60,9 +67,14 @@ related:
 - Lung ultrasound by a trained operator is an acceptable alternative to radiography. ^[ats-cap-2025]
 
 #### Microbiology (inpatients)
-- Severe CAP, or empiric MRSA or *Pseudomonas* coverage, or either organism previously isolated, or hospitalized with IV antibiotics in the last 90 days: blood cultures and sputum Gram stain and culture before antibiotics. ^[idsa-ats-cap-2019]
+- Blood cultures and sputum Gram stain and culture before antibiotics, for any of: ^[idsa-ats-cap-2019]
+  - Severe CAP. ^[idsa-ats-cap-2019]
+  - Empiric MRSA or *Pseudomonas* coverage. ^[idsa-ats-cap-2019]
+  - Either organism previously isolated. ^[idsa-ats-cap-2019]
+  - Hospitalized with IV antibiotics in the last 90 days. ^[idsa-ats-cap-2019]
 - Intubated: endotracheal aspirate for Gram stain and culture promptly. ^[idsa-ats-cap-2019]
-- Severe CAP: pneumococcal and *Legionella* urinary antigens, plus *Legionella* culture or PCR of lower respiratory secretions. *Legionella* testing also with an outbreak or recent travel. ^[idsa-ats-cap-2019]
+- Severe CAP: pneumococcal and *Legionella* urinary antigens, plus *Legionella* culture or PCR of lower respiratory secretions. ^[idsa-ats-cap-2019]
+- *Legionella* testing also with an outbreak or recent travel. ^[idsa-ats-cap-2019]
 - MRSA nasal PCR when covering MRSA: negative favors stopping MRSA coverage. ^[idsa-ats-cap-2019]
 - Influenza molecular test when influenza is circulating. Test for SARS-CoV-2 during community transmission. ^[idsa-ats-cap-2019, common-practice]
 - Not routine in nonsevere CAP without these risks: blood cultures, sputum culture, urinary antigens. ^[idsa-ats-cap-2019]
@@ -84,7 +96,9 @@ related:
 
 2. Add MRSA or *Pseudomonas* coverage only with risk factors
    - Prior respiratory isolate of either organism (within 1 year): add coverage and culture. ^[idsa-ats-cap-2019]
-   - Hospitalization with IV antibiotics in the last 90 days plus locally validated risk factors: severe CAP, add coverage. Nonsevere CAP, culture and add only if positive (MRSA: or if the nasal PCR is positive). ^[idsa-ats-cap-2019]
+   - Hospitalization with IV antibiotics in the last 90 days plus locally validated risk factors: ^[idsa-ats-cap-2019]
+     - Severe CAP: add coverage. ^[idsa-ats-cap-2019]
+     - Nonsevere CAP: culture and add only if positive (MRSA: or if the nasal PCR is positive). ^[idsa-ats-cap-2019]
 
    {{regimen:cap-mrsa}}
 
@@ -95,7 +109,9 @@ related:
 3. Respiratory virus positive
    - Influenza: oseltamivir for all inpatients with CAP and influenza, regardless of symptom duration. ^[idsa-ats-cap-2019]
    - Influenza with CAP: standard antibacterial therapy too (strong recommendation). ^[idsa-ats-cap-2019]
-   - Other viruses: ATS suggests antibacterials for all inpatients. IDSA favors deciding case by case in nonsevere illness (see Where Guidelines Differ). ^[ats-cap-2025, idsa-cap-position-2025]
+   - Other viruses: guidelines differ (see Where Guidelines Differ). ^[ats-cap-2025, idsa-cap-position-2025]
+     - One suggests antibacterials for all inpatients. ^[ats-cap-2025, idsa-cap-position-2025]
+     - Another favors deciding case by case in nonsevere illness. ^[ats-cap-2025, idsa-cap-position-2025]
 
    {{dose:oseltamivir-influenza}}
 
