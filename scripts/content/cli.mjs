@@ -32,4 +32,5 @@ if (errors.length) {
   console.error(`Content problems (${errors.length}):\n- ` + errors.join('\n- '));
   process.exit(1);
 }
-console.log(`Content OK: ${content.cards.length} cards, ${Object.values(content.data).reduce((n, d) => n + Object.keys(d).length, 0)} data items.`);
+const examples = content.cards.filter((c) => c.example).length;
+console.log(`Content OK: ${content.cards.length - examples} cards${examples ? ` (+${examples} example)` : ''}, ${Object.values(content.data).reduce((n, d) => n + Object.keys(d).length, 0)} data items.`);

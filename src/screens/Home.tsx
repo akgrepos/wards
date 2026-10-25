@@ -48,7 +48,7 @@ export function SettingsScreen() {
   const [confirm, setConfirm] = useState(false);
   return (
     <Screen title="Settings" back={{ label: 'Topics', fallback: href.home() }}>
-      <AKG.List header="About">
+      <AKG.List header="About" footer="A personal reference written for its owner. Not medical advice. Cards are checked against their cited sources by an automated clinical review on the date shown and are not individually reviewed by the owner. Check doses against the current label and guideline before use.">
         <AKG.ListRow title="Version" detail={APP_VERSION} />
       </AKG.List>
       <AKG.List header="On This iPhone" footer="Recent and where you were on each page are kept only on this iPhone. Nothing is sent anywhere.">

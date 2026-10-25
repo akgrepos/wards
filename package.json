@@ -24,8 +24,6 @@
     "status": "node scripts/status.mjs",
     "look": "node scripts/look.mjs",
     "tidy": "node scripts/tidy.mjs",
-    "review:oe-batches": "node scripts/review-oe-batches.mjs",
-    "review:oe-read": "node scripts/review-oe-read.mjs",
     "review:precheck": "node scripts/review-precheck.mjs"
   },
   "dependencies": {

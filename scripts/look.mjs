@@ -208,7 +208,7 @@ try {
     const sheet = await ctx0(browser, w)
     await sheet.setContent(html)
     await sheet.screenshot({ path: out, fullPage: true })
-    console.log(`Contact sheet: ${out}`)
+    console.log(`Contact sheet: ${out.replace(homedir(), '~')}`)
   }
   await browser.close()
 } finally {
