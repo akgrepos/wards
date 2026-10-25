@@ -5,7 +5,7 @@ boxed_warning: None
 cautions:
   - text: "Sedation and anticholinergic effects (dry mouth, urinary retention, blurred vision, constipation). Additive with other CNS depressants and anticholinergic drugs."
     sources: [label-cyproheptadine-2026]
-  - text: "Contraindicated with MAO inhibitor therapy, narrow-angle glaucoma, symptomatic prostatic hypertrophy, bladder neck obstruction, stenosing peptic ulcer, and in older, debilitated patients per the label."
+  - text: "Contraindicated with MAO inhibitor therapy, angle-closure glaucoma, stenosing peptic ulcer, symptomatic prostatic hypertrophy, bladder neck obstruction, pyloroduodenal obstruction, in older debilitated patients, in newborns and during breastfeeding per the label."
     sources: [label-cyproheptadine-2026]
 kidney_liver: "The label gives no kidney or liver dose adjustment."
 label_source: label-cyproheptadine-2026

@@ -1,3 +1,2 @@
 # Draft cards that may ship without a "checked" stamp, one card id per line.
 # The Opus check removes the line and adds `checked:` to the card (docs/CARD-WRITING-CHEATSHEET.md, "Checked").
-psych-serotonin-syndrome-nms

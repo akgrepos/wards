@@ -2,21 +2,22 @@ drug: bromocriptine
 drug_name: Bromocriptine
 brand: Parlodel
 indication: Neuroleptic malignant syndrome
-indication_detail: Moderate to severe NMS, with supportive care. Off-label.
+indication_detail: Moderate to severe NMS, with supportive care and benzodiazepines. Off-label.
 population: Adults
-route: oral or nasogastric tube
+route: oral or nasogastric tube (no parenteral form)
 amount: 2.5
 unit: mg
-frequency: "every 8 hours, titrated up to 40 mg a day in divided doses"
-give_when: Moderate to severe NMS not controlled by supportive care and benzodiazepines
-duration: "Continue until the syndrome resolves, then taper over days"
-max: "40 mg a day"
+frequency: "2 to 3 times a day, raised by 2.5 mg every 24 hours until response"
+give_when: Moderate to severe NMS
+duration: "Continue for 10 days after symptoms are controlled, then taper slowly. Continue 2–3 weeks after a depot antipsychotic"
+max: "45 mg a day"
 cautions:
-  - "Do not use if serotonin syndrome is possible. It can worsen it."
+  - "Confirm NMS first. Not for serotonin syndrome."
   - "May worsen psychosis and cause hypotension."
-notes: "Case-report and case-series evidence only. Doses follow the NMS reviews. The label does not cover NMS."
-sources: [pileggi-nms-2016, kuhlwilm-nms-2020, label-bromocriptine-2026]
+  - "Stopping too early can bring NMS back."
+notes: "Case-report and case-series evidence only. Start, titration, ceiling and duration from the 2021 review text. Its staging table uses a lower ceiling of 15 mg a day. The label does not cover NMS."
+sources: [wadoo-nms-2021, pileggi-nms-2016, label-bromocriptine-2026]
 verification:
-  source: pileggi-nms-2016
-  read: not-verified
+  source: wadoo-nms-2021
+  read: full-text
   date: 2026-10-25

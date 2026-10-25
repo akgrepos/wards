@@ -4,8 +4,9 @@ type: topic
 system: psych
 title: "Serotonin Syndrome and Neuroleptic Malignant Syndrome"
 aliases: [serotonin syndrome, serotonin toxicity, serotonin storm, SS, neuroleptic malignant syndrome, NMS, Hunter criteria, hyperthermia with rigidity, clonus, lead-pipe rigidity, drug-induced hyperthermia, cyproheptadine, dantrolene, bromocriptine, antipsychotic rechallenge, linezolid toxicity, methylene blue toxicity, malignant catatonia, anticholinergic toxicity, malignant hyperthermia]
-definition: "Two drug-induced hyperthermic emergencies: serotonin syndrome, from excess serotonergic activity (clonus, hyperreflexia, tremor, agitation, diaphoresis), and neuroleptic malignant syndrome, from dopamine blockade or dopamine agonist withdrawal (lead-pipe rigidity, fever, altered mental status, autonomic instability, raised creatine kinase). ^[chiew-ss-2025, gurrera-nms-2011]"
-based_on: [chiew-ss-2025, gurrera-nms-2011, pileggi-nms-2016, kuhlwilm-nms-2020]
+definition: "Two drug-induced hyperthermic emergencies: serotonin syndrome, from excess serotonergic activity (clonus, hyperreflexia, tremor, agitation, diaphoresis), and neuroleptic malignant syndrome, from dopamine blockade or dopamine agonist withdrawal (lead-pipe rigidity, fever, altered mental status, autonomic instability, raised creatine kinase). ^[chiew-ss-2025, gurrera-nms-2011, wadoo-nms-2021]"
+based_on: [chiew-ss-2025, isbister-ss-2007, scotton-ss-2019, gurrera-nms-2011, wadoo-nms-2021, kuhlwilm-nms-2020]
+checked: { date: 2026-10-25, by: opus, scope: "Doses, Hunter and NMS consensus criteria, NMS staging, ICU triggers and care-changing claims checked against Chiew 2025, Isbister 2007, Scotton 2019, Wadoo 2021, the Gurrera 2011 table and 2017 validation, Kuhlwilm 2020, Suekane 2026 and the labels. Boyer 2005 and the Dunkley and Gurrera full texts not read.", fingerprint: "7ca904fb7fae3925" }
 related:
   differential: [neuro-delirium, psych-acute-agitation]
   conditions: [crit-sepsis]
@@ -13,139 +14,156 @@ related:
   medications: []
 ---
 ## At a Glance
-- Both are drug-induced, can reach life-threatening hyperthermia and rigidity within hours, and are told apart at the bedside by the drug history, the speed of onset and the neuromuscular examination. ^[chiew-ss-2025, pileggi-nms-2016]
-- Serotonin syndrome shows clonus, hyperreflexia and tremor, develops within hours of a serotonergic drug change and usually resolves within 24 hours of stopping it. ^[chiew-ss-2025, dunkley-hunter-2003]
-- NMS shows lead-pipe rigidity with slowed reflexes, develops over days after a dopamine antagonist is started or raised (or a dopamine agonist is stopped) and lasts days to weeks. ^[pileggi-nms-2016, gurrera-nms-2011]
-- First steps are the same: stop the offending drug, give supportive care and IV fluids, control agitation and rigidity with benzodiazepines, and cool actively. Antipyretics do not work. ^[chiew-ss-2025, pileggi-nms-2016, common-practice]
-- Temperature above 40°C, severe rigidity or respiratory compromise needs sedation, paralysis and intubation in an ICU. ^[chiew-ss-2025, common-practice]
-- Cyproheptadine is only for serotonin syndrome, bromocriptine and dantrolene are only for severe NMS, and the evidence for all three is weak. ^[chiew-ss-2025, kuhlwilm-nms-2020]
+- Both are drug-induced and can cause life-threatening hyperthermia and rigidity. They are told apart by the drug history, the speed of onset and the neuromuscular examination. ^[chiew-ss-2025, isbister-ss-2007, scotton-ss-2019]
+- Serotonin syndrome shows clonus, hyperreflexia and tremor, develops within hours of a serotonergic drug change and usually improves within 24 hours of stopping it. ^[chiew-ss-2025, isbister-ss-2007]
+- NMS shows lead-pipe rigidity and bradykinesia without clonus, develops over days after a dopamine antagonist is started or raised (or a dopamine agonist is stopped) and takes about 7 to 10 days to resolve. ^[isbister-ss-2007, scotton-ss-2019, wadoo-nms-2021]
+- First steps are the same: stop the offending drug, give supportive care and fluids, control agitation and rigidity with benzodiazepines, and cool actively. ^[chiew-ss-2025, wadoo-nms-2021]
+- Serotonin syndrome with temperature >39°C and rigidity, agitation or altered consciousness needs early paralysis and intubation. Moderate or severe NMS needs ICU care. ^[chiew-ss-2025, wadoo-nms-2021]
+- Cyproheptadine is only for serotonin syndrome, bromocriptine and dantrolene only for moderate to severe NMS, and the evidence for all three is weak. ^[chiew-ss-2025, wadoo-nms-2021, kuhlwilm-nms-2020]
 
 ## Severity
 {{criteria:hunter-serotonin-toxicity-2003}}
 
 {{criteria:nms-delphi-2011}}
 
-- Mild serotonin syndrome: tremor, hyperreflexia, diaphoresis, agitation, with normal temperature. Moderate: clonus and temperature up to 40°C. Severe: temperature above 40°C with rigidity, a rapid rise and altered consciousness. ^[chiew-ss-2025, isbister-ss-2007]
-- Hunter criteria were validated in overdose only. Clonus is the key finding. ^[chiew-ss-2025]
-- NMS has no validated cutoff. The consensus score ranks likelihood only. ^[gurrera-nms-2011]
-- Level of care: ^[chiew-ss-2025, pileggi-nms-2016, common-practice]
-  - ICU for temperature >40°C or rising rapidly, rigidity that limits ventilation, hemodynamic instability, or rising creatine kinase with kidney injury ^[chiew-ss-2025, pileggi-nms-2016, common-practice]
-  - Telemetry or observation unit for mild, improving serotonin syndrome ^[chiew-ss-2025, common-practice]
+- Serotonin syndrome severity: ^[isbister-ss-2007, chiew-ss-2025]
+  - Mild: features that may or may not concern the patient ^[isbister-ss-2007]
+  - Moderate: significant distress that deserves treatment but is not life-threatening ^[isbister-ss-2007]
+  - Severe: a medical emergency with a rapidly rising temperature >40°C, muscle rigidity and multiple organ failure ^[isbister-ss-2007, chiew-ss-2025]
+- The Hunter criteria were derived in single-SSRI overdoses and tested in 2,222 serotonergic overdoses. In patients on stable therapeutic doses they justify only holding or reducing the drug, not specific treatment. ^[chiew-ss-2025]
+- NMS severity (staging used for level of care): ^[wadoo-nms-2021]
+  - Mild: mild rigidity, catatonia or confusion, temperature ≤38°C, heart rate ≤100 ^[wadoo-nms-2021]
+  - Moderate: moderate rigidity, catatonia or confusion, temperature 38–40°C, heart rate 100–120 ^[wadoo-nms-2021]
+  - Severe: severe rigidity, catatonia or coma, temperature ≥40°C, heart rate ≥120 ^[wadoo-nms-2021]
+- Level of care: ^[chiew-ss-2025, wadoo-nms-2021]
+  - ICU for severe serotonin syndrome and for moderate or severe NMS ^[chiew-ss-2025, wadoo-nms-2021]
+  - Medical unit with continuous monitoring of blood pressure, cardiac rhythm and oxygen saturation for mild NMS ^[wadoo-nms-2021]
+  - Mild serotonin syndrome: hold or reduce the serotonergic drug and treat symptoms with benzodiazepines ^[chiew-ss-2025]
 
 ## Causes
-- **Serotonergic drugs:** [!most-common] SSRIs, SNRIs, tricyclic antidepressants, MAOIs (including linezolid, methylene blue, selegiline), lithium, trazodone, buspirone. Highest risk when two are combined, especially an MAOI with another serotonergic drug. ^[chiew-ss-2025, isbister-ss-2007]
-- **Opioids and analgesics:** meperidine, tramadol, methadone, fentanyl, dextromethorphan. ^[chiew-ss-2025, isbister-ss-2007]
-- **Other serotonergic exposures:** triptans, ondansetron, metoclopramide, valproate, St John's wort, MDMA, amphetamines, cocaine, tryptophan. ^[chiew-ss-2025, isbister-ss-2007]
-- **Dopamine antagonists (NMS):** [!cannot-miss] haloperidol and other antipsychotics, metoclopramide, prochlorperazine, promethazine, droperidol. Highest risk with high doses, rapid titration, intramuscular injection and depot forms. ^[pileggi-nms-2016, gurrera-nms-2011]
-- **Dopamine agonist withdrawal (NMS):** abrupt stop or reduction of levodopa, other dopamine agonists or amantadine, including a missed dose in the hospital. ^[pileggi-nms-2016, gurrera-nms-2011]
-- **NMS risk factors:** dehydration, agitation, catatonia, iron deficiency, prior NMS and combining antipsychotics with lithium. ^[pileggi-nms-2016]
+- **Serotonergic drugs:** [!most-common] SSRIs, SNRIs, serotonergic tricyclics (clomipramine, imipramine), MAOIs (including linezolid, methylene blue, selegiline), lithium, trazodone, buspirone, mirtazapine. Severe toxicity occurs almost only with combinations, especially an MAOI with another serotonergic drug. ^[isbister-ss-2007, scotton-ss-2019, chiew-ss-2025]
+- **Opioids and cough medicine:** meperidine, tramadol, methadone, fentanyl, dextromethorphan. ^[isbister-ss-2007, scotton-ss-2019]
+- **Other serotonergic exposures:** triptans, St John's wort, tryptophan, MDMA, amphetamines, cocaine. ^[isbister-ss-2007, scotton-ss-2019]
+- **Dopamine antagonists (NMS):** [!cannot-miss] haloperidol and other antipsychotics (atypicals less often), metoclopramide, prochlorperazine, promethazine. Highest risk right after a start or dose increase, and with high-potency or high doses, rapid titration, parenteral use and antipsychotic polypharmacy. ^[wadoo-nms-2021]
+- **Dopamine agonist withdrawal (NMS):** abrupt stop or reduction of levodopa or other antiparkinsonian drugs, including missed doses in the hospital. ^[wadoo-nms-2021, label-bromocriptine-2026]
+- **NMS risk factors:** prior NMS, catatonia, dehydration, agitation, exhaustion, iron deficiency, restraints, and lithium or other psychotropics added to an antipsychotic. ^[wadoo-nms-2021]
 
 ## Presentation
-- Serotonin syndrome: ^[chiew-ss-2025, dunkley-hunter-2003]
-  - Onset within hours, about 60% within 6 hours of the change or overdose ^[chiew-ss-2025]
-  - Neuromuscular: clonus (spontaneous, inducible or ocular), hyperreflexia, tremor, and in severe cases rigidity that is worse in the legs ^[chiew-ss-2025, dunkley-hunter-2003]
-  - Autonomic and mental status: agitation, diaphoresis, mydriasis, tachycardia, diarrhea, hyperactive bowel sounds ^[chiew-ss-2025, isbister-ss-2007]
-- NMS: ^[pileggi-nms-2016, gurrera-nms-2011]
-  - Onset over 1 to 3 days ^[pileggi-nms-2016]
-  - Lead-pipe rigidity, fever, altered mental status (often mutism or stupor), autonomic instability (labile blood pressure, tachycardia, diaphoresis) ^[pileggi-nms-2016, gurrera-nms-2011]
-  - Creatine kinase usually raised, often leukocytosis, with myoglobinuria and kidney injury in severe cases ^[pileggi-nms-2016, gurrera-nms-2011]
-- Telling them apart: ^[chiew-ss-2025, pileggi-nms-2016, common-practice]
+- Serotonin syndrome: ^[chiew-ss-2025, isbister-ss-2007]
+  - Onset within hours: about 30% within 1 hour and 60% within 6 hours of the drug change or overdose ^[chiew-ss-2025]
+  - Neuromuscular: clonus (spontaneous, inducible or ocular), hyperreflexia, tremor, myoclonus, greater in the legs than the arms. Truncal rigidity in severe cases. ^[chiew-ss-2025, isbister-ss-2007]
+  - Autonomic and mental status: agitation, confusion, diaphoresis, mydriasis, tachycardia, hyperthermia, diarrhea, hyperactive bowel sounds ^[chiew-ss-2025, isbister-ss-2007, scotton-ss-2019]
+- NMS: ^[wadoo-nms-2021, gurrera-nms-2011]
+  - Onset over days, 96% within the first 4 weeks of starting the drug. The risk is highest right after a start or dose increase. ^[wadoo-nms-2021]
+  - Lead-pipe rigidity, fever, altered mental status (stupor to coma, mutism), autonomic instability (labile blood pressure, tachycardia, diaphoresis, incontinence) ^[wadoo-nms-2021, gurrera-nms-2011]
+  - Creatine kinase usually raised, often leukocytosis and low serum iron, with myoglobinuria and kidney injury in severe cases ^[wadoo-nms-2021]
+- Telling them apart: ^[scotton-ss-2019, isbister-ss-2007, wadoo-nms-2021]
 
 | Feature | Serotonin syndrome | NMS | Anticholinergic toxicity |
 |---|---|---|---|
-| Trigger | Serotonergic drug added, raised or overdosed | Dopamine antagonist started or raised, or dopamine agonist stopped | Anticholinergic drug or plant ^[chiew-ss-2025, pileggi-nms-2016, common-practice] |
-| Onset | Hours | Days | Hours ^[chiew-ss-2025, pileggi-nms-2016, common-practice] |
-| Tone and reflexes | Clonus, ↑ reflexes, tremor | Lead-pipe rigidity, ↓ or = reflexes | = tone, no clonus ^[chiew-ss-2025, pileggi-nms-2016, common-practice] |
-| Skin and bowel | Diaphoresis, hyperactive bowel sounds | Diaphoresis | Dry skin, ↓ bowel sounds, urinary retention ^[chiew-ss-2025, pileggi-nms-2016, common-practice] |
-| Resolution | Usually within 24 hours | Days to weeks | Hours ^[chiew-ss-2025, pileggi-nms-2016, common-practice] |
+| Trigger | Serotonergic drug added, raised or overdosed | Dopamine antagonist started or raised, or dopamine agonist stopped | Anticholinergic drug ^[scotton-ss-2019, wadoo-nms-2021] |
+| Onset | Hours (<24 h) | Days to weeks | Hours (<24 h) ^[scotton-ss-2019, chiew-ss-2025] |
+| Tone and reflexes | Clonus, ↑ reflexes, tremor | Lead-pipe rigidity, bradykinesia, no clonus | = tone and reflexes ^[scotton-ss-2019, isbister-ss-2007] |
+| Skin and bowel | Diaphoresis, ↑ bowel sounds | Diaphoresis, ↓ bowel sounds | Dry skin, ↓ bowel sounds, urinary retention ^[scotton-ss-2019, wadoo-nms-2021] |
+| Resolution | Most within 24 hours | About 7 to 10 days | Hours to days ^[scotton-ss-2019, isbister-ss-2007, wadoo-nms-2021] |
 
-- Pupils are large in serotonin syndrome and anticholinergic toxicity. Hunter criteria exclude a neuroleptic started or raised just before onset. ^[chiew-ss-2025, common-practice]
-- Other causes that change management: ^[common-practice]
-  - Malignant hyperthermia: recent volatile anesthetic or succinylcholine. Dantrolene is first line. ^[common-practice, label-dantrium-iv-2026]
-  - Malignant catatonia: catatonic signs before treatment. Benzodiazepines and ECT, and antipsychotics worsen it. ^[common-practice]
-  - Sepsis and CNS infection: cultures, lumbar puncture if meningismus. See [[crit-sepsis|sepsis]]. ^[common-practice]
-  - Heat stroke, thyrotoxicosis and withdrawal from alcohol, benzodiazepines or baclofen. ^[common-practice]
+- Pupils are large in serotonin syndrome and anticholinergic toxicity. ^[scotton-ss-2019]
+- In unwell inpatients, therapeutic fentanyl, ondansetron or metoclopramide is often blamed for serotonin syndrome when another diagnosis explains the findings. ^[chiew-ss-2025]
+- Other causes that change management: ^[wadoo-nms-2021, scotton-ss-2019]
+  - Malignant hyperthermia: during or after a volatile anesthetic or succinylcholine. Dantrolene is the treatment. ^[scotton-ss-2019, wadoo-nms-2021, label-dantrium-iv-2026]
+  - Malignant catatonia: can look the same as NMS, with catatonic signs in the weeks before. Lorazepam and ECT treat it. ^[wadoo-nms-2021]
+  - Sepsis and CNS infection: cultures, and lumbar puncture if infection is suspected. See [[crit-sepsis|sepsis]]. ^[wadoo-nms-2021]
+  - Heat stroke, thyrotoxicosis, nonconvulsive status epilepticus, stimulant toxicity, and withdrawal from alcohol, drugs or intrathecal baclofen. ^[wadoo-nms-2021, isbister-ss-2007, scotton-ss-2019]
 
 ## Diagnosis
-- Serotonin syndrome is a clinical diagnosis: the exposure history plus the Hunter criteria. ^[chiew-ss-2025, dunkley-hunter-2003]
-- NMS is a clinical diagnosis of exclusion built on the exposure, fever, rigidity, mental status change and raised creatine kinase. ^[gurrera-nms-2011]
-- Ask about every drug started or raised in the last weeks: prescriptions, over-the-counter cough medicine, supplements, recreational drugs, linezolid and methylene blue. ^[chiew-ss-2025, common-practice]
-- Check: temperature (core), vital signs, glucose, ECG, BMP with calcium and magnesium, creatine kinase, liver panel, CBC, coagulation tests, lactate, urinalysis for myoglobin, toxicology as indicated. ^[pileggi-nms-2016, common-practice]
-- Add by clinical clues: blood and urine cultures, lumbar puncture, head imaging, thyroid studies, drug levels (lithium, salicylate). ^[common-practice]
-- Serotonin syndrome has no confirmatory test. A raised creatine kinase, metabolic acidosis, leukocytosis, raised aminotransferases and kidney injury mark severity. ^[chiew-ss-2025]
+- Serotonin syndrome is a clinical diagnosis: the exposure history plus the Hunter criteria. No test confirms it. ^[chiew-ss-2025]
+- NMS is a clinical diagnosis of exclusion built on the exposure, fever, rigidity, mental status change and raised creatine kinase. ^[wadoo-nms-2021, gurrera-nms-2011]
+- Ask about every drug started or raised in the last weeks: prescriptions, cold remedies, supplements, recreational drugs, linezolid and methylene blue. ^[scotton-ss-2019, common-practice]
+- Check: core temperature, vital signs, glucose, ECG, BMP with calcium and magnesium, creatine kinase, liver panel, CBC, coagulation tests, lactate, urinalysis for myoglobin, toxicology as indicated. ^[wadoo-nms-2021, common-practice]
+- Add by clinical clues: blood, urine and CSF cultures, head imaging, EEG, thyroid studies, lithium level, urine toxicology. ^[wadoo-nms-2021]
+- Leukocytosis, raised aminotransferases, raised creatine kinase and metabolic acidosis occur in severe cases of both syndromes, so they do not separate them. ^[scotton-ss-2019]
+- Creatine kinase is often raised in febrile patients on antipsychotics who do not have NMS. ^[wadoo-nms-2021]
 
 ## Treatment
 1. Stop the offending drugs
    - Stop all serotonergic drugs, even when the diagnosis is unclear. ^[chiew-ss-2025]
-   - Stop all dopamine antagonists, including antiemetics. Restart dopamine agonists that were withdrawn. ^[pileggi-nms-2016]
-   - Review for interactions and a long half-life that will prolong the course. ^[chiew-ss-2025, common-practice]
+   - Stop all antipsychotics and other dopamine antagonists, including promethazine and metoclopramide. ^[wadoo-nms-2021]
+   - Restart a withdrawn levodopa or dopamine agonist. ^[wadoo-nms-2021, common-practice]
+   - Drugs with long half-lives or active metabolites, such as fluoxetine, prolong the course. ^[chiew-ss-2025, scotton-ss-2019]
 
 2. Supportive care
-   - Continuous monitoring of vital signs, oxygen saturation and core temperature. ^[chiew-ss-2025, common-practice]
-   - IV crystalloid for volume, rhabdomyolysis and autonomic instability. Replace potassium and treat acidosis as needed. ^[pileggi-nms-2016, common-practice]
-   - Remove restraints, which cause isometric contraction, lactic acidosis and hyperthermia. ^[chiew-ss-2025]
-   - Venous thromboembolism prophylaxis when immobile. ^[pileggi-nms-2016]
+   - Continuous monitoring of blood pressure, cardiac rhythm and oxygen saturation. ^[wadoo-nms-2021]
+   - IV crystalloid for hydration, rhabdomyolysis and autonomic instability. ^[wadoo-nms-2021, common-practice]
+   - Avoid physical restraints, which cause isometric contraction, lactic acidosis and hyperthermia. ^[scotton-ss-2019]
+   - Venous thromboembolism prophylaxis when immobile. ^[wadoo-nms-2021]
+   - Serotonin syndrome with labile blood pressure: short-acting agents if benzodiazepines are not enough. Avoid propranolol, which causes hypotension and masks tachycardia. ^[scotton-ss-2019]
 
 3. Benzodiazepines
-   - First line for agitation, tremor and rigidity in both syndromes. Titrate to calm. ^[chiew-ss-2025, pileggi-nms-2016]
+   - First line for agitation in serotonin syndrome and for agitation, rigidity and fever in NMS. Titrate to calm with normal vital signs. ^[chiew-ss-2025, scotton-ss-2019, wadoo-nms-2021]
 
    {{dose:lorazepam-agitation-adult}}
 
+   {{dose:lorazepam-nms}}
+
 4. Cooling
-   - Hyperthermia comes from muscle activity, so antipyretics such as acetaminophen do not work. ^[chiew-ss-2025]
-   - Use sedation and external cooling (cooling blankets, ice packs, evaporative cooling) for temperature up to 40°C. ^[chiew-ss-2025, pileggi-nms-2016]
-   - Above 40°C, or rising fast, or with rigidity: sedate, paralyze with a nondepolarizing agent, intubate and ventilate. Avoid succinylcholine, which risks hyperkalemia in rhabdomyolysis. ^[chiew-ss-2025, isbister-ss-2007]
+   - In serotonin syndrome the heat comes from muscle activity, so antipyretics have little effect. ^[scotton-ss-2019]
+   - Treat drug-induced hyperthermia with sedation (IV benzodiazepines) and active cooling (fans with water sprays, ice packs, cooling blankets or ice-water submersion). ^[chiew-ss-2025]
+   - Temperature >39°C with agitation, altered consciousness or rigidity, or no response to cooling: early paralysis and intubation are essential. ^[chiew-ss-2025]
+   - Paralyze with a nondepolarizing agent. Succinylcholine can worsen rhabdomyolysis and cause hyperkalemic arrhythmias. ^[scotton-ss-2019]
 
 5. Serotonin syndrome: cyproheptadine if benzodiazepines are not enough
-   - A 5-HT2A antagonist, oral only (crush and give by nasogastric tube if needed). Benefit is unproven and sedation helps. ^[chiew-ss-2025, boyer-ss-2005]
+   - A 5-HT2A antagonist, oral only, so of limited use in severe toxicity. Benefit over supportive care is unproven, and its sedation usually helps. ^[isbister-ss-2007, chiew-ss-2025]
 
    {{dose:cyproheptadine-serotonin-syndrome}}
 
-   - Parenteral chlorpromazine is reported in case series. Hypotension and NMS risk limit it. ^[chiew-ss-2025]
-   - Avoid bromocriptine, which can worsen serotonin syndrome. Dantrolene did not help in animal studies. Avoid propranolol, which can mask tachycardia and cause hypotension. ^[chiew-ss-2025, boyer-ss-2005]
+   - Parenteral chlorpromazine is an option for sedation in severe toxicity once NMS is excluded. Give volume first, since hypotension is the main adverse effect. Evidence is case reports. ^[isbister-ss-2007, chiew-ss-2025, common-practice]
+   - Dantrolene and propranolol did not prevent death in animal studies. Bromocriptine is not used. ^[chiew-ss-2025, common-practice]
 
-6. NMS: dopamine agonist or dantrolene for moderate to severe disease
-   - For severe rigidity or hyperthermia that persists despite benzodiazepines, cooling and fluids. Evidence is case reports and series only. ^[kuhlwilm-nms-2020, pileggi-nms-2016]
-   - Pooled case series found no significant mortality difference overall, but lower mortality with dantrolene, bromocriptine or ECT in severe cases. ^[kuhlwilm-nms-2020]
-   - A 2026 national cohort linked dantrolene to higher in-hospital mortality (adjusted OR 2.03), likely because it was given to the sickest patients. ^[suekane-dantrolene-nms-2026]
+6. NMS: bromocriptine, dantrolene or ECT
+   - Bromocriptine for moderate NMS, with dantrolene added for severe NMS. Evidence is case reports and series only. ^[wadoo-nms-2021, pileggi-nms-2016]
+   - Pooled case reports found no mortality difference overall, but lower mortality with dantrolene, bromocriptine or ECT in severe cases. ^[kuhlwilm-nms-2020]
+   - A 2026 Japanese ICU cohort linked early dantrolene to higher in-hospital mortality (adjusted OR 2.03). ^[suekane-dantrolene-nms-2026]
 
    {{dose:bromocriptine-nms}}
 
    {{dose:dantrolene-nms}}
 
-   - ECT for refractory NMS or malignant catatonia, through psychiatry. ^[kuhlwilm-nms-2020, pileggi-nms-2016]
+   - ECT, through psychiatry, if no improvement after 48 hours of drug treatment, or first when malignant catatonia cannot be excluded or catatonic features are prominent. ^[wadoo-nms-2021, kuhlwilm-nms-2020]
 
 ## Monitor
-- Reassess every 1 to 2 hours at first: temperature, tone, clonus, mental status, heart rate and blood pressure. ^[chiew-ss-2025, common-practice]
-- Creatine kinase, creatinine, potassium and urine output every 6 to 12 hours until creatine kinase falls. ^[pileggi-nms-2016, common-practice]
-- Serotonin syndrome: most improve within 24 hours of stopping the drug. Drugs with long half-lives or active metabolites prolong it. ^[chiew-ss-2025]
-- NMS: resolves in about 1 to 2 weeks, longer after a depot antipsychotic. ^[pileggi-nms-2016]
-- Observe an exposure with suspected mild serotonin syndrome at least 6 hours. ^[chiew-ss-2025, common-practice]
+- Reassess temperature, tone, clonus, mental status, heart rate and blood pressure often in the first hours, since serotonin toxicity can worsen over hours. ^[isbister-ss-2007, chiew-ss-2025]
+- Trend creatine kinase, creatinine, potassium and urine output until creatine kinase falls. ^[common-practice]
+- Serotonin syndrome: most improve within 24 hours of stopping the drug. Drugs with long half-lives or active metabolites prolong it. ^[chiew-ss-2025, isbister-ss-2007]
+- Observe moderate serotonin toxicity for 6 hours, and for 12 hours after a slow-release drug such as venlafaxine. ^[isbister-ss-2007]
+- NMS: patients recover within an average of 7 to 10 days of stopping the antipsychotic, longer after a long-acting injection. ^[wadoo-nms-2021]
 
 ## Escalation
-- ICU: temperature >40°C or rising, rigidity limiting ventilation, instability, creatine kinase rising with kidney injury. ^[chiew-ss-2025, pileggi-nms-2016, common-practice]
+- ICU: serotonin syndrome with temperature >39°C and rigidity, and NMS with temperature ≥38°C, heart rate ≥100 or more than mild rigidity. ^[chiew-ss-2025, wadoo-nms-2021]
 - Poison control or toxicology: suspected serotonin syndrome from an overdose, linezolid or methylene blue, or refractory to benzodiazepines. ^[common-practice]
-- Psychiatry: restarting an antipsychotic after NMS, catatonia, or ECT for refractory NMS. ^[pileggi-nms-2016, common-practice]
+- Psychiatry: catatonia, ECT for NMS, or restarting an antipsychotic after NMS. ^[wadoo-nms-2021, common-practice]
 - Nephrology: rhabdomyolysis with oliguria or hyperkalemia. ^[common-practice]
 
 ## More Information
 ### After the Acute Phase: Restarting an antipsychotic after NMS
-- Whether to restart at all: use the lowest-risk plan with psychiatry, and consider treating without an antipsychotic if possible. ^[pileggi-nms-2016, common-practice]
-- Wait at least 2 weeks after full resolution. ^[pileggi-nms-2016]
-- Choose a different, lower-potency or second-generation agent, titrate slowly and monitor temperature, rigidity, creatine kinase and vital signs. ^[pileggi-nms-2016]
-- Avoid depot antipsychotics and dehydration. ^[pileggi-nms-2016, common-practice]
-- Recurrence can occur, so tell the patient and record the episode in the chart. ^[pileggi-nms-2016, common-practice]
-- After serotonin syndrome: restart a serotonergic agent only if needed, one at a time, at a low dose, once the course has resolved. ^[chiew-ss-2025, common-practice]
+- Reduce the need first: optimize other psychotropics so a lower antipsychotic dose or none is needed. ^[wadoo-nms-2021]
+- Wait at least 2 weeks after full recovery, ideally as an inpatient. The washout period matters more for recurrence than the agent chosen. ^[wadoo-nms-2021, pileggi-nms-2016]
+- Generally choose a different antipsychotic with low D2 affinity. Start low and advance slowly toward the target dose. ^[wadoo-nms-2021, pileggi-nms-2016]
+- Watch for fever, autonomic instability, mental status change, extrapyramidal symptoms and dehydration, with serial white cell count and creatine kinase. ^[wadoo-nms-2021]
+- Stop the antipsychotic if fever, rigidity or labile blood pressure appear. ^[wadoo-nms-2021]
+- Treat agitation with benzodiazepines, since agitation raises NMS risk. ^[wadoo-nms-2021]
+- Recurrence risk with re-exposure is about 30% and can come at any time, so tell the patient and record the episode. ^[wadoo-nms-2021, pileggi-nms-2016, common-practice]
+- After serotonin syndrome: restart a serotonergic drug only if needed, one at a time, at a low dose, once the episode has resolved. ^[common-practice]
 
 ### Evidence: Key studies
-- Hunter criteria (2003): 84% sensitive and 97% specific against a toxicologist's diagnosis in overdose. ^[dunkley-hunter-2003]
-- Delphi consensus (2011): international experts ranked the NMS criteria and set the priority points. ^[gurrera-nms-2011]
-- Kuhlwilm case series (2020, 405 cases): no overall difference in mortality between dantrolene, bromocriptine, ECT and supportive care. Lower mortality with specific therapy in severe cases. ^[kuhlwilm-nms-2020]
-- Suekane cohort (2026): dantrolene associated with higher mortality (confounded by severity). ^[suekane-dantrolene-nms-2026]
+- Hunter criteria (2003): derived from 473 single-SSRI overdoses and tested in 2,222 serotonergic overdoses. More sensitive (84% vs 75%) and specific (97% vs 96%) than Sternbach's criteria against a toxicologist's diagnosis. ^[dunkley-hunter-2003, chiew-ss-2025]
+- Delphi consensus (2011): 17 experts from 4 specialties agreed on the NMS criteria, their priority points and critical values. ^[gurrera-nms-2011]
+- Validation study (2017, 221 cases): a cutoff of 74 points agreed best with modified DSM-IV-TR criteria (sensitivity 69.6%, specificity 90.7%). ^[gurrera-nms-validation-2017]
+- Kuhlwilm case series (2020, 405 cases): no overall mortality difference between dantrolene, bromocriptine, ECT and supportive care. Lower mortality with specific therapy in severe cases, and the lowest with ECT. ^[kuhlwilm-nms-2020]
+- Suekane cohort (2026, 2,234 ICU patients): dantrolene within 2 days of admission was associated with higher in-hospital mortality and longer ICU and hospital stays. Observational. ^[suekane-dantrolene-nms-2026]
 
 ## Pearls
-- Clonus points to serotonin syndrome and lead-pipe rigidity with slow reflexes points to NMS. ^[chiew-ss-2025, pileggi-nms-2016]
-- Ask for the drug start dates: hours for serotonin syndrome, days for NMS. ^[chiew-ss-2025, pileggi-nms-2016]
-- Antipyretics do not lower the temperature in either syndrome. ^[chiew-ss-2025]
-- Do not give haloperidol for the agitation of serotonin syndrome. Use a benzodiazepine. ^[chiew-ss-2025, common-practice]
-- Missed levodopa doses in a hospitalized patient with Parkinson disease can cause NMS. ^[pileggi-nms-2016]
+- Clonus points to serotonin syndrome, and lead-pipe rigidity with bradykinesia points to NMS. ^[isbister-ss-2007, scotton-ss-2019]
+- Ask for the drug start dates: hours for serotonin syndrome, days to weeks for NMS. ^[chiew-ss-2025, scotton-ss-2019]
+- Antipyretics do little for the hyperthermia of serotonin syndrome. Cool and sedate. ^[scotton-ss-2019, chiew-ss-2025]
+- While NMS is still possible, treat agitation with a benzodiazepine, not an antipsychotic. ^[wadoo-nms-2021, common-practice]
+- Missed levodopa doses in a hospitalized patient with Parkinson disease can cause an NMS-like syndrome. ^[wadoo-nms-2021, label-bromocriptine-2026]

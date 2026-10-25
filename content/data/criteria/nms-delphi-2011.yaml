@@ -4,14 +4,14 @@ short: NMS criteria
 logic: "Priority points from the Delphi consensus (maximum 100):"
 columns: [Criterion, Points]
 rows:
-  - ["Exposure to a dopamine antagonist within 72 hours, or dopamine agonist withdrawal within 24 hours", "20"]
+  - ["Exposure to a dopamine antagonist, or dopamine agonist withdrawal, within the past 72 hours", "20"]
   - ["Hyperthermia: temperature >100.4°F (38.0°C) on at least 2 occasions, oral", "18"]
   - ["Rigidity", "17"]
   - ["Altered mental status (reduced or fluctuating consciousness)", "13"]
   - ["Creatine kinase at least 4 times the upper limit of normal", "10"]
-  - ["Sympathetic lability: blood pressure ≥25% above baseline, blood pressure swings (diastolic ≥20 or systolic ≥25 mmHg in 24 hours), diaphoresis or urinary incontinence", "10"]
+  - ["Sympathetic lability, at least 2 of: systolic or diastolic blood pressure ≥25% above baseline, blood pressure swings (diastolic ≥20 or systolic ≥25 mmHg within 24 hours), diaphoresis, urinary incontinence", "10"]
   - ["Hypermetabolism: heart rate ≥25% above baseline and respiratory rate ≥50% above baseline", "5"]
   - ["Negative workup for infectious, toxic, metabolic and neurologic causes", "7"]
 notes:
-  - "The panel did not set a diagnostic cutoff. A higher total means higher likelihood. The authors advise validating the criteria before clinical use."
-sources: [gurrera-nms-2011]
+  - "The 2011 panel set no diagnostic cutoff and advised validation before clinical use. A 2017 validation study agreed best with modified DSM-IV-TR criteria at ≥74 points (sensitivity 69.6%, specificity 90.7%)."
+sources: [gurrera-nms-2011, gurrera-nms-validation-2017]
