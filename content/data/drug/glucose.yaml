@@ -10,5 +10,4 @@ cautions:
   - text: Hypoglycemia can recur while insulin or a sulfonylurea is still acting. Keep rechecking and follow with food.
     sources: [ada-soc-glycemic-2026]
 kidney_liver: No dose change for kidney or liver impairment.
-label_source: label-dextrose-50-2026
-sources: [label-dextrose-50-2026, ada-soc-glycemic-2026, ada-soc-hospital-2026]
+sources: [ada-soc-glycemic-2026, ada-soc-hospital-2026]

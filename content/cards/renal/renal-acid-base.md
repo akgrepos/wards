@@ -5,7 +5,7 @@ variant: interpretation
 system: renal
 title: "Acid-Base Interpretation"
 aliases: [acid-base, acid base, ABG, arterial blood gas, VBG, blood gas, BMP, metabolic acidosis, metabolic alkalosis, respiratory acidosis, respiratory alkalosis, mixed acid-base, anion gap, AG, delta gap, delta-delta, delta ratio, Winter's formula, Winters, compensation, osmolar gap, osmolal gap, non-gap acidosis, hyperchloremic acidosis, NAGMA, HAGMA, bicarbonate, HCO3, PaCO2, pH, acidemia, alkalemia, Henderson-Hasselbalch]
-checked: { date: 2026-10-21, by: opus, scope: "doses and numbers", fingerprint: "f1d35728e77341ec", carried: "2026-10-24: Dose sheets now take the drug-wide warnings from drug records (stage 4b). Doses and numbers on the card are unchanged." }
+checked: { date: 2026-10-21, by: opus, scope: "doses and numbers", fingerprint: "f603b8b411833345", carried: "2026-10-24: Dose corrections (stage 4b PR C): the changed dose and drug-record lines were checked against the labels and guidelines by an Opus helper. The rest of the card is unchanged." }
 related:
   conditions: [endo-dka, renal-aki, crit-hypoxemic-respiratory-failure, pulm-copd-exacerbation]
   tools: [renal-iv-fluids]

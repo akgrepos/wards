@@ -15,11 +15,13 @@ adjustments:
   - when: CrCl <11 mL/min
     change: 1 g every 24 hours
   - when: Hemodialysis
-    change: 1 g on day 1, then 500 mg every 24 hours, after dialysis
+    change: 1 g every 24 hours, after dialysis on dialysis days
+  - when: Peritoneal dialysis (CAPD)
+    change: 2 g every 48 hours
 sources:
   - idsa-ats-cap-2019
-  - label-cefepime-2024
+  - label-cefepime-2026
 verification:
-  source: label-cefepime-2024
+  source: label-cefepime-2026
   read: not-verified
   date: 2026-10-23

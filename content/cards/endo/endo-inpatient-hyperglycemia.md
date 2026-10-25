@@ -6,7 +6,7 @@ title: "Hyperglycemia"
 aliases: [inpatient hyperglycemia, hospital hyperglycemia, high blood sugar, high glucose, stress hyperglycemia, steroid-induced hyperglycemia, glucocorticoid hyperglycemia, sliding scale, SSI, correction insulin, basal-bolus, basal plus, insulin orders, inpatient diabetes, hypoglycemia, glucose targets, tube feeds insulin]
 definition: "Any blood glucose >140 mg/dL in a hospitalized patient. Insulin is started or intensified for persistent glucose ≥180 mg/dL. ^[ada-soc-hospital-2026]"
 based_on: [ada-soc-hospital-2026, endocrine-hospital-hyperglycemia-2022, sccm-glycemic-2024]
-checked: { date: 2026-10-21, by: owner, scope: "owner review", fingerprint: "7944e7abd2af36bb", carried: "2026-10-24: Dose row titles shortened to the indication only. Doses and numbers unchanged, the removed wording is kept in the longer indication text." }
+checked: { date: 2026-10-21, by: owner, scope: "owner review", fingerprint: "ec7428adaec3678a", carried: "2026-10-24: Dose corrections (stage 4b PR C): the changed dose and drug-record lines were checked against the labels and guidelines by an Opus helper. The rest of the card is unchanged." }
 related:
   conditions: [endo-dka, crit-sepsis]
 ---

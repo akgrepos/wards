@@ -11,12 +11,12 @@ frequency: "every 1–4 hours as needed while the CIWA-Ar is 10 or higher (commo
 give_when: CIWA-Ar ≥10 when a benzodiazepine with less hepatic metabolism is wanted
 cautions:
   - "Not labeled for alcohol withdrawal. The injection is labeled for status epilepticus and preanesthetic use."
-  - "Injection label: not recommended in hepatic or renal failure. Use with caution in mild to moderate hepatic disease. Any benzodiazepine can precipitate hepatic encephalopathy."
+  - "Injection label: not recommended in hepatic or renal failure, and use with caution in mild to moderate hepatic disease. Tablet label: like all benzodiazepines, it may worsen hepatic encephalopathy. Use with caution in severe hepatic insufficiency or encephalopathy."
   - "Shorter-acting: breakthrough and rebound symptoms, including seizures, are more likely. ASAM advises frequent reassessment or a fixed-dose schedule with a gradual taper."
   - "Requirements can be far higher: ASAM cites uncontrolled symptoms after 30–40 mg in the first 3–4 hours as resistant withdrawal."
   - "IV: dilute 1:1 before injection and give slowly. The injection contains propylene glycol and benzyl alcohol. With repeated high IV doses watch for hyponatremia and metabolic acidosis."
 notes: "The 1–2 mg dose and interval are common practice, not a guideline or label regimen. Lorazepam is glucuronidated without CYP oxidation. In the label's study, cirrhosis did not change clearance of a single 2 mg IV dose. ASAM: benzodiazepines that are not metabolized hepatically (lorazepam, oxazepam) may be more appropriate in significant liver disease."
-sources: [asam-alcohol-withdrawal-2020, label-ativan-inj-2026, common-practice]
+sources: [asam-alcohol-withdrawal-2020, label-ativan-inj-2026, label-ativan-tablets-2025, common-practice]
 verification:
   source: label-ativan-inj-2026
   read: not-verified

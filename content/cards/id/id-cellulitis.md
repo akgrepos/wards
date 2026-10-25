@@ -7,7 +7,7 @@ title: "Cellulitis"
 aliases: [cellulitis, erysipelas, SSTI, skin and soft tissue infection, skin infection, nonpurulent cellulitis, purulent cellulitis, leg cellulitis, abscess, necrotizing fasciitis, nec fasc]
 definition: "Acute bacterial infection of the dermis and subcutaneous tissue (cellulitis) or the upper dermis and superficial lymphatics (erysipelas), without abscess. ^[idsa-ssti-2014]"
 based_on: [idsa-ssti-2014]
-checked: { date: 2026-10-19, by: owner, scope: "owner review", fingerprint: "830f10b501a79990", carried: "2026-10-24: Dose row titles shortened to the indication only. Doses and numbers unchanged, the removed wording is kept in the longer indication text." }
+checked: { date: 2026-10-19, by: owner, scope: "owner review", fingerprint: "21278180595e1918", carried: "2026-10-24: Dose corrections (stage 4b PR C): the changed dose and drug-record lines were checked against the labels and guidelines by an Opus helper. The rest of the card is unchanged." }
 related:
   differential: []
   conditions: [id-cap, id-complicated-uti]
