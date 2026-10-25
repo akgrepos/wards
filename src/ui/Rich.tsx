@@ -537,10 +537,15 @@ export function Inlines({ xs, plain }: { xs: Inline[]; plain?: boolean }) {
 // Plain text with inserts and links (used inside flowcharts and criteria).
 export const RichText = ({ text }: { text?: string }) => (text ? <Inlines xs={parseInline(text)} /> : null);
 
+// A "Cannot miss" or "Most common" chip sits at the end of its bullet, not inside the sentence. A bullet with two chips
+// (one per group of causes) keeps each where it is written, since the end could not say which group it belongs to.
 function Item({ it }: { it: ListItem }) {
+  const tags = it.inlines.filter((x) => x.t === 'tag');
+  const atEnd = tags.length === 1;
   return (
     <li>
-      <Inlines xs={it.inlines} />
+      <Inlines xs={atEnd ? it.inlines.filter((x) => x.t !== 'tag') : it.inlines} />
+      {atEnd && <Inlines xs={tags} />}
       <LinePill ids={it.sources} quote={it.inlines} />
       {it.children.length > 0 && <ul>{it.children.map((c, i) => <Item key={i} it={c} />)}</ul>}
     </li>

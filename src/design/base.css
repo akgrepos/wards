@@ -61,8 +61,8 @@ h1, p { margin: 0; }
 .akg-content-section p, .rich-list li, .akg-panel p { overflow-wrap: break-word; }
 /* One nesting level (HIG): sub-items under their lead-in, open circles, the same text color. */
 .rich-list ul { margin: var(--space-4) 0 0; padding-left: 1.1em; display: flex; flex-direction: column; gap: var(--space-4); list-style: circle; }
-/* A "Cannot miss" or "Most common" tag after a cause's name. */
-.inline-tag { margin: 0 var(--space-2); vertical-align: 0.1em; }
+/* A "Cannot miss" or "Most common" tag at the end of a cause's bullet. */
+.inline-tag { margin: 0 var(--space-2) 0 var(--space-4); vertical-align: 0.1em; }
 .onset-row { margin: 0; }
 .akg-content-section p { margin: 0; }
 .subheading { margin: var(--space-4) 0 0; scroll-margin-top: calc(env(safe-area-inset-top) + var(--scroll-margin-top)); }
@@ -349,9 +349,11 @@ html[data-timed] .timed-page .screen-body.timed-body { padding-bottom: calc(env(
 .akg-sheet__scrim, .akg-sheet__bar { touch-action: none; }
 .akg-sheet__content { overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
 
-/* Tables: words stay whole (owner, 2026-10-24). No mid-word breaks or hyphens; a column is at least as wide as its
-   longest word, and a wide table scrolls sideways (the design system's own fade shows there is more). */
-.akg-table .akg-table__table th, .akg-table .akg-table__table td { overflow-wrap: normal; word-break: normal; hyphens: none; min-width: 8em; }
+/* Tables: words stay whole (owner, 2026-10-24). No mid-word breaks or hyphens; a column is as narrow as its longest word,
+   headers wrap like cells, and a table wider than the screen still scrolls sideways (the design system's own fade shows
+   there is more). The design system sets nowrap headers and a 7em minimum, which cut the third column on a 375 px phone. */
+.akg-table .akg-table__table th, .akg-table .akg-table__table td { overflow-wrap: normal; word-break: normal; hyphens: none; min-width: 0; }
+.akg-table .akg-table__table thead th { white-space: normal; }
 .akg-table--sticky .akg-table__table th:first-child, .akg-table--sticky .akg-table__table td:first-child { max-width: 55vw; hyphens: none; overflow-wrap: normal; }
 .cov-compare-row > * { hyphens: none; }
 

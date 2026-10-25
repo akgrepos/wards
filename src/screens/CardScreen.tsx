@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { Fragment, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { AKG } from '../design/akg';
 import { cardSources, cardTypeLabel, content, getCard, getSystem, titleCase, usesCalc } from '../content';
 import type { Card, Source } from '../content/types';
@@ -51,6 +51,7 @@ export function CardScreen({ id, section, anchor }: { id: string; section?: stri
   const titleRef = useRef<HTMLHeadingElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
   const sections = card?.sections ?? [];
+  const hasGlance = sections.some((s) => s.key === 'at-a-glance');
   const toned = !!card && TONED_CARD_TYPES.includes(card.type);
   const symbolOf = (key: string) => (toned ? sectionSymbol(key) : undefined);
   const toneOf = (key: string) => (toned ? sectionTone(key) : undefined);
@@ -214,9 +215,9 @@ export function CardScreen({ id, section, anchor }: { id: string; section?: stri
             {card.definition && <p className="ios-callout secondary"><Inlines xs={card.definition.inlines} /><LinePill ids={card.definition.sources} quote={card.definition.inlines} /></p>}
             {/* No "Based on" line (owner, 2026-10-18): each section's source line and All Sources name the guidelines. */}
             {card.checked && <p className="ios-caption-1 secondary">{updatedLabel(updatedDate(card.checked))}</p>}
-            {/* The card's pathways (focused flowcharts that supplement it) open from under the title, one row each
-                (owner, 2026-10-20). */}
-            <PathwayRows cardId={card.id} />
+            {/* The card's pathways (focused flowcharts that supplement it) open from a row, one each (owner, 2026-10-20): under
+                At a Glance, so the summary comes first; under the title when a card has no At a Glance. */}
+            {!hasGlance && <PathwayRows cardId={card.id} />}
             {card.example && <AKG.Callout variant="info">Development sample with placeholder content. Not shown in the published app.</AKG.Callout>}
           </header>
         }
@@ -263,8 +264,8 @@ export function CardScreen({ id, section, anchor }: { id: string; section?: stri
               </div>
             </AKG.ContentSection>
           ) : (
+            <Fragment key={s.key}>
             <AKG.ContentSection
-              key={s.key}
               id={`sec-${s.key}`}
               variant="card"
               tone={toneOf(s.key)}
@@ -276,6 +277,8 @@ export function CardScreen({ id, section, anchor }: { id: string; section?: stri
             >
               <LineSources section={titleCase(s.title)}><AnchorScope section={s.key}><Blocks blocks={s.blocks} /></AnchorScope></LineSources>
             </AKG.ContentSection>
+            {s.key === 'at-a-glance' && <PathwayRows cardId={card.id} />}
+            </Fragment>
           ),
         )}
         </DoseDisplay>

@@ -164,6 +164,13 @@ describe('card format', () => {
     expect(b[0].items[0].blocks!.map((x) => x.t)).toEqual(['list', 'insert']);
     expect(b[1].items.map((x) => x.text)).toEqual(['1 h', '2 h']);
   });
+  it('keeps sub-bullets nested under their lead-in inside a numbered step, at any indent', () => {
+    for (const pad of ['  ', '   ', '    ']) {
+      const [steps] = parseBlocks(['1. Treat', `${pad}- SIADH:`, `${pad}  - Restrict fluids`, `${pad}  - Stop drugs`, `${pad}- Heart failure: loop diuretic`]) as unknown as { items: { blocks: { items: { children: unknown[] }[] }[] }[] }[];
+      const list = steps.items[0].blocks[0];
+      expect(list.items.map((i) => i.children.length)).toEqual([2, 0]);
+    }
+  });
   it('the migrated cards use the new sections', () => {
     const hk = real.cards.find((c) => (c as { id: string }).id === 'renal-hyperkalemia') as unknown as { sections: { key: string; subsections: { key: string }[] }[] };
     expect(hk.sections.map((s) => s.key)).toEqual(['at-a-glance', 'severity', 'causes', 'presentation', 'diagnosis', 'treatment', 'monitor', 'escalation', 'more', 'pearls']);

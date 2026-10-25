@@ -98,7 +98,10 @@ export function parseBlocks(lines) {
         const alt = lines[i].startsWith('or.');
         i++;
         const body = [];
-        while (i < lines.length && (!lines[i].trim() || /^\s{2,}\S/.test(lines[i]))) { body.push(lines[i].replace(/^ {1,4}/, '')); i++; }
+        while (i < lines.length && (!lines[i].trim() || /^\s{2,}\S/.test(lines[i]))) { body.push(lines[i]); i++; }
+        // Take off the step's own indent (its least-indented line) and keep the rest, so sub-bullets stay nested under their lead-in.
+        const indent = Math.min(4, ...body.filter((l) => l.trim()).map((l) => l.match(/^ */)[0].length));
+        body.forEach((l, k) => { body[k] = l.slice(Math.min(indent, l.match(/^ */)[0].length)); });
         items.push({ inlines: parseInline(text), sources, blocks: parseBlocks(body), ...(alt ? { alt: true } : {}) });
         while (i < lines.length && !lines[i].trim()) i++;
       }

@@ -48,6 +48,16 @@ export function search(query: string, content: Content): Results {
     return t.startsWith(q) ? 3 : 2;
   };
 
+  /** Several words typed: at least one starts a word in the heading, and each of the others starts a word in the heading, the card's title or one of its aliases. */
+  const hasViaCard = (heading: string, card: Card) => {
+    if (words.length < 2) return false;
+    const h = ' ' + norm(heading);
+    const ctx = [card.title, ...card.aliases].map((t) => ' ' + norm(t));
+    const inHeading = words.filter((w) => h.includes(' ' + w));
+    if (!inHeading.length) return false;
+    return words.every((w) => h.includes(' ' + w) || ctx.some((t) => t.includes(' ' + w)));
+  };
+
   const cardHits: Scored[] = [];
   const drugHits: Scored[] = [];
   for (const c of cards) {
@@ -86,8 +96,10 @@ export function search(query: string, content: Content): Results {
 
   for (const [ci, key, title, parent] of idx?.sections ?? []) {
     const card = cardAt(ci);
-    const score = card && rank(title);
-    if (!card || !score) continue;
+    if (!card) continue;
+    // A heading alone, or a heading with its card: "PE severity" finds Severity in the card whose alias is "PE".
+    const score = rank(title) || (hasViaCard(title, card) ? 1 : 0);
+    if (!score) continue;
     sectionHits.push({ score, tie: `${title}\0${card.title}`, hit: { id: `section:${card.id}:${key}`, title, subtitle: parent ? `${parent} · ${card.title}` : card.title, cardId: card.id, section: key } });
   }
 
