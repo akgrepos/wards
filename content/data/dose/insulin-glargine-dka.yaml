@@ -7,7 +7,7 @@ population: Adults
 route: SC
 amount: 0.15–0.3
 unit: units/kg
-frequency: once daily
+frequency: once daily, or split into two equal doses
 give_when: "Early during the IV infusion, or continue the usual home basal dose"
 cautions:
   - "Some clinicians avoid it for hypoglycemia and hypokalemia risk."
@@ -15,5 +15,5 @@ notes: "Shortened infusion time and length of stay and prevented rebound hypergl
 sources: [ada-hyperglycemic-crises-2024, ada-soc-hospital-2026, label-lantus-2025]
 verification:
   source: ada-hyperglycemic-crises-2024
-  read: not-verified
-  date: 2026-10-23
+  read: full-text
+  date: 2026-10-25

@@ -8,9 +8,12 @@ amount: 20–30
 unit: mmol
 rate: "added to the IV fluids (peripheral: no faster than 6.8 mmol per hour)"
 give_when: "Not routine: only with weakness, respiratory or cardiac compromise and a very low phosphate"
+cautions:
+  - "The potassium in the product counts toward the potassium dose: use only when K⁺ is below 4 mEq/L, and reduce the potassium in the fluids to match."
+  - "Label contraindications: hyperkalemia and severe kidney impairment (eGFR <30 mL/min)."
 notes: "Phosphate falls with insulin. Routine replacement does not improve outcomes."
 sources: [ada-hyperglycemic-crises-2024, label-kphos-injection-2026]
 verification:
   source: ada-hyperglycemic-crises-2024
-  read: not-verified
-  date: 2026-10-23
+  read: full-text
+  date: 2026-10-25

@@ -7,7 +7,7 @@ title: "DKA and HHS"
 aliases: [DKA, diabetic ketoacidosis, HHS, hyperosmolar hyperglycemic state, HHNK, hyperosmolar nonketotic, hyperglycemic crisis, euglycemic DKA, euDKA, SGLT2 inhibitor DKA, ketoacidosis, insulin drip, insulin infusion, two-bag, beta-hydroxybutyrate, BHB, Diabetic Ketoacidosis and Hyperosmolar Hyperglycemic State, hyperosmolar]
 definition: "Hyperglycemic crises: DKA is hyperglycemia (or known diabetes) with ketosis and metabolic acidosis. HHS is severe hyperglycemia with hyperosmolality without significant ketoacidosis. ^[ada-hyperglycemic-crises-2024]"
 based_on: [ada-hyperglycemic-crises-2024, ada-soc-hospital-2026]
-checked: { date: 2026-10-21, by: owner, scope: "owner review", fingerprint: "fa93fbd73387547a", carried: "2026-10-24: Dose corrections (stage 4b PR C): the changed dose and drug-record lines were checked against the labels and guidelines by an Opus helper. The rest of the card is unchanged." }
+checked: { date: 2026-10-25, by: opus, scope: "doses and numbers, with an independent full check of the card against the 2024 consensus text and figures and the 2026 hospital chapter. Doses left not-verified: enoxaparin-prophylaxis", fingerprint: "fcc890f08eb37692" }
 related:
   differential: []
   conditions: [endo-inpatient-hyperglycemia, crit-sepsis, renal-hypokalemia, renal-iv-fluids, renal-electrolyte-repletion]
@@ -21,7 +21,7 @@ emergency_hint: "Fluids, potassium, then insulin"
 
    {{dose:crystalloid-dka}}
 
-2. Potassium before insulin
+2. Potassium (first if K⁺ <3.5)
    - If: K⁺ ≤5.0 mEq/L, once urine output is established ^[ada-hyperglycemic-crises-2024]
    - Check: K⁺ <3.5 mEq/L: replace first and hold insulin. ^[ada-hyperglycemic-crises-2024]
 
@@ -90,10 +90,10 @@ or. Insulin infusion, HHS
   - Nausea, vomiting and abdominal pain (over half) ^[ada-hyperglycemic-crises-2024]
   - Kussmaul respirations, fruity breath ^[ada-hyperglycemic-crises-2024]
   - Usually alert ^[ada-hyperglycemic-crises-2024]
-- HHS: ^[ada-hyperglycemic-crises-2024, common-practice]
-  - Develops over days to a week ^[ada-hyperglycemic-crises-2024, common-practice]
-  - Profound dehydration ^[ada-hyperglycemic-crises-2024, common-practice]
-  - Confusion, lethargy, focal deficits or seizures ^[ada-hyperglycemic-crises-2024, common-practice]
+- HHS: ^[ada-hyperglycemic-crises-2024, ada-soc-hospital-2026]
+  - Develops over days to a week ^[ada-hyperglycemic-crises-2024, ada-soc-hospital-2026]
+  - Profound dehydration ^[ada-hyperglycemic-crises-2024, ada-soc-hospital-2026]
+  - Confusion, lethargy, focal deficits or seizures ^[ada-hyperglycemic-crises-2024, ada-soc-hospital-2026]
 - Abdominal pain that persists after correcting dehydration and acidosis needs its own workup. ^[ada-hyperglycemic-crises-2024]
 
 ## Diagnosis
@@ -171,7 +171,7 @@ or. Insulin infusion, HHS
 
    {{dose:enoxaparin-prophylaxis}}
 
-   - Stop SGLT2 inhibitors. Do not restart in the hospital. ^[ada-hyperglycemic-crises-2024]
+   - Stop SGLT2 inhibitors and give none during the admission. After discharge, do not routinely restart them in type 2 diabetes. ^[ada-hyperglycemic-crises-2024]
 
 ## Monitor
 :::times{after=insulin-regular-dka check=Glucose unit=h} Glucose every 1–2 hours on insulin, hours ^[ada-hyperglycemic-crises-2024]
@@ -214,7 +214,7 @@ or. Insulin infusion, HHS
 
 :::compare HHS insulin
 - US-led consensus 2024: fixed-rate insulin from the start (lower rate without ketoacidosis). ^[ada-hyperglycemic-crises-2024]
-- UK 2022: insulin from the start only with ketonemia (β-hydroxybutyrate >1.0 mmol/L). Otherwise start once fluids are adequate and glucose stops falling. ^[jbds-hhs-2022]
+- UK 2022: insulin from the start only with significant ketonemia (β-hydroxybutyrate >3.0 mmol/L or urine ketones >2+). Otherwise start once fluids are adequate and glucose stops falling. ^[jbds-hhs-2022]
 :::
 
 ### Special Populations: SGLT2 inhibitors, pregnancy, kidney failure
@@ -232,12 +232,12 @@ or. Insulin infusion, HHS
 ### Complications: Hypoglycemia, hypokalemia, edema
 - Hypoglycemia in 16–28% of patients. Reduce it with glucose checks every 1–2 hours, lowering insulin and adding dextrose at glucose <250 mg/dL. ^[ada-hyperglycemic-crises-2024]
 - Hypokalemia. Severe hypokalemia raises mortality. ^[ada-hyperglycemic-crises-2024]
-- Cerebral edema: rare in adults but often fatal. Mannitol or hypertonic saline without delaying for imaging. ^[ada-hyperglycemic-crises-2024, jbds-dka-2023]
+- Cerebral edema: rare in adults but often fatal. Keep a low threshold for brain imaging. Mannitol or hypertonic saline without delaying for imaging. ^[ada-hyperglycemic-crises-2024, jbds-dka-2023]
 - Osmotic demyelination in HHS with rapid sodium shifts. ^[ada-hyperglycemic-crises-2024]
 - Arterial and venous thrombosis, AKI (about half), rhabdomyolysis. ^[ada-hyperglycemic-crises-2024, jbds-dka-2023]
 
 ### After the Acute Phase: Prevent recurrence
-- Readmission is common, half within 2 weeks. Follow-up within 2–4 weeks. ^[ada-hyperglycemic-crises-2024]
+- Readmission is common, and about half of those within 30 days come within 2 weeks. Follow-up within 2–4 weeks. ^[ada-hyperglycemic-crises-2024]
 - Education: insulin technique, glucose and blood ketone monitoring, sick-day rules (never stop basal insulin), when to seek care. ^[ada-hyperglycemic-crises-2024, ada-soc-glycemic-2026]
 - Offer CGM at discharge. Ensure insulin and supplies are affordable and in hand. ^[ada-hyperglycemic-crises-2024]
 - Screen for depression and social needs. Psychological support for recurrent DKA. ^[ada-hyperglycemic-crises-2024]
@@ -248,7 +248,7 @@ or. Insulin infusion, HHS
 
 ### Epidemiology and Pathophysiology: Insulin deficiency
 - DKA: absolute insulin deficiency and counterregulatory hormones drive lipolysis and ketogenesis. HHS: residual insulin prevents ketosis while osmotic diuresis causes severe dehydration. ^[ada-hyperglycemic-crises-2024]
-- About a third of crises are mixed DKA/HHS. HHS mortality is 5–10 times that of DKA. ^[ada-hyperglycemic-crises-2024]
+- About a third of crises are mixed DKA/HHS. Inpatient mortality is higher in HHS and highest in mixed DKA/HHS (about 5% and 8%, versus 3% in DKA). ^[ada-hyperglycemic-crises-2024]
 
 ## Pearls
 - A normal or high K⁺ on arrival hides a large total-body deficit. ^[ada-hyperglycemic-crises-2024]
