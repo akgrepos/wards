@@ -22,6 +22,7 @@
     "changelog": "node scripts/changelog.mjs",
     "card:new": "node scripts/card-new.mjs",
     "brief": "node scripts/brief.mjs",
+    "sources:due": "node scripts/sources-due.mjs",
     "look": "node scripts/look.mjs",
     "tidy": "node scripts/tidy.mjs",
     "review:precheck": "node scripts/review-precheck.mjs",
