@@ -10,6 +10,7 @@ import { checkMedia } from './media.mjs';
 import { checkCoverage } from './coverage.mjs';
 import { checkSemicolons } from './semicolons.mjs';
 import { ruleFindings } from './rules.mjs';
+import { proseFindings } from './prose.mjs';
 import { inlineText, runs, allBlocks } from './walk.mjs';
 import { checkStraySources } from './stray-sources.mjs';
 
@@ -390,6 +391,8 @@ export function checkContent({ systems, cards, data, unchecked = [] }) {
   errors.push(...checkStraySources({ cards, data }));
   // Format rules: errors for every card (rules.mjs).
   errors.push(...ruleFindings({ cards, data, unchecked }).filter((f) => f.isNew).map((f) => f.message));
+  // Prose rules: unsafe abbreviations are errors (prose.mjs); the style rules are warnings (checkWarnings).
+  errors.push(...proseFindings({ cards }).filter((f) => f.severity === 'error').map((f) => f.message));
   return errors;
 }
 
@@ -398,6 +401,7 @@ export function checkWarnings({ cards, data, unchecked = [] }, { today = new Dat
   const out = [];
   const warn = (where, msg) => out.push(`${where}: ${msg}`);
   out.push(...ruleFindings({ cards, data, unchecked }).filter((f) => !f.isNew).map((f) => f.message));
+  out.push(...proseFindings({ cards }).filter((f) => f.severity === 'warn').map((f) => f.message));
   const ids = new Set(cards.map((c) => c.id));
   const byId = new Map(cards.map((c) => [c.id, c]));
 

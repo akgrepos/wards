@@ -5,6 +5,7 @@ import { loadContent } from './load.mjs';
 import { checkContent, checkWarnings } from './check.mjs';
 import { checkFingerprints } from './checked.mjs';
 import { ruleFindings, ruleSummary, RULES } from './rules.mjs';
+import { proseFindings, proseSummary, PROSE_RULES } from './prose.mjs';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
 const content = loadContent(root, { includeExamples: true });
@@ -16,6 +17,7 @@ const HINTS = [
   [/names rule|title rule|related rule|alias rule/, 'Rule: no society, guideline or study names in card text; titles up to 32 characters; related cards link both ways; aliases are words, not bare numbers. Read docs/CARD-WRITING-CHEATSHEET.md "Writing style".'],
   [/duplicate alias|alias bloat/, 'Rule: an alias belongs to one card. Read docs/CARD-WRITING-CHEATSHEET.md "Consistency rules".'],
   [/subsection vocabulary/, `Rule: a condition card's subsection is one of its system's names in content/systems.yaml. Read docs/CARD-WRITING-CHEATSHEET.md "Consistency rules".`],
+  [/abbreviation rule/, 'Rule: no ISMP "do not use" abbreviations (U for units, IU, QD, QOD, trailing zero, missing leading zero, µg, MS, MSO4, MgSO4, D/C, DC, HS). Read docs/CARD-WRITING-CHEATSHEET.md "Abbreviations".'],
   [/semicolon rule/, 'Rule: no semicolons in card text; a list becomes bullets, a clause join becomes two sentences. Read docs/CARD-WRITING-CHEATSHEET.md "No semicolons".'],
   [/tags rule/, 'Rule: [!cannot-miss] and [!most-common] go only on causes in the Causes section. Read docs/CARD-WRITING-CHEATSHEET.md "Consistency rules".'],
   [/table width/, 'Rule: tables are at most four columns. Read docs/CARD-WRITING-CHEATSHEET.md "Consistency rules".'],
@@ -31,7 +33,12 @@ const hint = (m) => HINTS.find(([re]) => re.test(m))?.[1];
 const errors = checkContent(content).map((m) => { const h = hint(m); return h ? `${m}\n    ${h}` : m; });
 // Fingerprints need every reference to resolve, so they are checked only once the rest passes.
 if (!errors.length) errors.push(...checkFingerprints(content));
-const warnings = checkWarnings(content);
+const allWarnings = checkWarnings(content);
+// The prose style rules fire on most existing cards, so the default output is one count per rule; --prose lists every place.
+const PROSE_WARNING = new RegExp(`: (?:${Object.values(PROSE_RULES).join('|')}),`);
+const warnings = process.argv.includes('--prose') ? allWarnings : allWarnings.filter((m) => !PROSE_WARNING.test(m));
+const proseWarn = proseSummary(proseFindings(content)).filter((r) => r.severity === 'warn' && r.cards);
+if (!process.argv.includes('--prose') && proseWarn.length) console.warn('Prose warnings (these do not fail the check; npm run content:check -- --prose lists each place):\n' + proseWarn.map((r) => `- ${PROSE_RULES[r.rule].padEnd(24)} ${String(r.cards).padStart(2)} cards, ${r.places} places`).join('\n') + '\n');
 if (warnings.length) console.warn(`Content warnings (${warnings.length}, these do not fail the check):\n- ` + warnings.join('\n- ') + '\n');
 // How many existing cards each format rule flags: the to-do list for the sweep. Cards in unchecked.txt get errors instead.
 const summary = ruleSummary(ruleFindings(content)).filter((r) => r.cards);
