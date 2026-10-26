@@ -26,7 +26,7 @@ export function checkStraySources({ cards, data }) {
   const ids = Object.keys(data.source ?? {});
   const hit = (file, path, text) => {
     const bad = strayInText(text, ids);
-    if (bad) errors.push(`${file}: source text shown: ${path || 'text'} contains "${bad}" in plain text. Put sources at the end of the line or table row, one marker per row (docs/CONTENT-FORMAT.md, "Sources go at the end")`);
+    if (bad) errors.push(`${file}: source text shown: ${path || 'text'} contains "${bad}" in plain text. Put sources at the end of the line or table row, one marker per row (docs/CARD-WRITING-CHEATSHEET.md, "Sources go at the end")`);
   };
   for (const c of cards) for (const [p, s] of strings(c)) hit(c.file, p, s);
   for (const [type, items] of Object.entries(data)) {

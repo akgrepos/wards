@@ -1,4 +1,4 @@
-// Severity-ladder lint (docs/CONTENT-FORMAT.md, "Severity"). A ladder written as bullets ("- Mild: …", "- Severe: …") loses its
+// Severity-ladder lint (docs/CARD-WRITING-CHEATSHEET.md, "Severity"). A ladder written as bullets ("- Mild: …", "- Severe: …") loses its
 // color codes; it should be a :::scale block. rules.mjs turns these lines into findings.
 const LEVEL = /^\s*[-*]\s+(mild|moderate|severe)\s*:/i;
 const OPEN = /^:::scale\b/;

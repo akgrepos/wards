@@ -1,5 +1,5 @@
 # A focused pathway (owner, 2026-10-23): the choice of medication and route for acute agitation, by cause. Text and doses
-# come from the card's own lines and dose items. Format: docs/CONTENT-FORMAT.md, "Pathways".
+# come from the card's own lines and dose items. Format: docs/CARD-WRITING-CHEATSHEET.md, "Pathways".
 title: Medication
 card: psych-acute-agitation
 summary: Oral versus IM, by cause

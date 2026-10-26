@@ -2,7 +2,7 @@
 # tree that supplements the card. Each question's answers sit side by side in the row below it, each leading to its
 # own box or the next question. Text and doses come from the
 # card's own lines and dose items (a line that is only {{dose:…}} shows the card's dose row). Grid: "at: [column,
-# row]" and "span" (columns wide). Format: docs/CONTENT-FORMAT.md, "Pathways".
+# row]" and "span" (columns wide). Format: docs/CARD-WRITING-CHEATSHEET.md, "Pathways".
 title: Treatment
 card: renal-hyperkalemia
 summary: Stabilize, shift, remove, monitor

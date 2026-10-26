@@ -20,7 +20,7 @@ export function checkSemicolons({ cards, data }) {
   const hit = (file, path, text) => {
     if (!hasSemicolon(text)) return;
     const at = text.replace(ENTITY, '').replace(URL_RE, '').indexOf(';');
-    errors.push(`${file}: semicolon rule: ${path || 'text'} has a semicolon near "${text.replace(ENTITY, '').slice(Math.max(0, at - 25), at + 25).trim()}"; use bullets for a list or two sentences for a clause join (docs/CONTENT-FORMAT.md, "No semicolons")`);
+    errors.push(`${file}: semicolon rule: ${path || 'text'} has a semicolon near "${text.replace(ENTITY, '').slice(Math.max(0, at - 25), at + 25).trim()}"; use bullets for a list or two sentences for a clause join (docs/CARD-WRITING-CHEATSHEET.md, "No semicolons")`);
   };
   for (const c of cards) for (const [p, s] of strings(c)) hit(c.file, p, s);
   for (const [type, items] of Object.entries(data)) {

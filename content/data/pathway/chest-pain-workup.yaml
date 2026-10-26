@@ -1,6 +1,6 @@
 # A focused pathway (owner, 2026-10-21): the first-hour workup of undifferentiated chest pain as a decision tree that supplements the card.
 # ECG and bedside check first, then dissection screen, then the troponin pathway. Text comes from the card's own lines.
-# Format: docs/CONTENT-FORMAT.md, "Pathways".
+# Format: docs/CARD-WRITING-CHEATSHEET.md, "Pathways".
 title: First-Hour Workup
 card: cardio-chest-pain
 summary: ECG, dissection screen, troponin pathway

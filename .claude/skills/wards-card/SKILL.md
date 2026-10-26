@@ -13,7 +13,7 @@ You write ONE card and ship ONE PR in this chat. The owner is a physician with n
 - A card that needs a new card type, data type or section kind: STOP and ask. A card that needs a new screen or layout: say "this needs a mock-up" and let the owner decide.
 
 ## 2. Read narrowly
-`CLAUDE.md`, `docs/CARD-WRITING-CHEATSHEET.md`, then `docs/CARD-TYPES.md`, `DATA-TYPES.md`, `CONTENT-FORMAT.md` only as needed. Copy a live card of the same type and the `#/example` content. Keep context lean: the packet stays in files, read rows by id, stay under about 150k tokens.
+`CLAUDE.md`, `docs/CARD-WRITING-CHEATSHEET.md`, then `docs/CARD-TYPES.md` and `DATA-TYPES.md` only as needed. Copy a live card of the same type and the `#/example` content. Keep context lean: the packet stays in files, read rows by id, stay under about 150k tokens.
 
 ## 3. Research
 1. **Reference-chapter step (kept, owner's decision 2026-10-25; every card).** An aid for prose, organization and scope, never a source of facts. Haiku, low effort: extract the matching chapter of the local reference PDF in `~/Documents/Wards-reference/` with `swift scripts/card/pdftext.swift in.pdf out.txt` into a scratch folder outside the repo, then return ONLY the chapter's headings as a bedside coverage checklist and its reference list as leads for the guideline search. Nothing is copied, quoted or named, and no specific fact, number or line from it goes into a card. It never replaces a guideline quote: every claim still needs its own newest-guideline source.

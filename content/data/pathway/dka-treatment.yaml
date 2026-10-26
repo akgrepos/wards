@@ -1,6 +1,6 @@
 # A focused pathway (owner, 2026-10-21): the treatment of DKA and HHS as a levelled flowchart that supplements the
 # card. Fluids, then potassium, then insulin by type of crisis, dextrose, bicarbonate, monitoring and resolution. Text
-# and doses come from the card's own lines and dose items. Format: docs/CONTENT-FORMAT.md, "Pathways".
+# and doses come from the card's own lines and dose items. Format: docs/CARD-WRITING-CHEATSHEET.md, "Pathways".
 title: Treatment
 card: endo-dka
 summary: Fluids, potassium, insulin, dextrose, resolve

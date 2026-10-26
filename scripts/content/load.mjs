@@ -1,5 +1,5 @@
 // Reads content/ into one plain object the app can bundle: systems, cards (parsed into sections and blocks) and data items.
-// Card syntax (see docs/CONTENT-FORMAT.md): YAML front matter, "## Section" headings from the card type,
+// Card syntax (see docs/CARD-WRITING-CHEATSHEET.md): YAML front matter, "## Section" headings from the card type,
 // "### Subsection" inside More Information, {{type:id}} inserts, [[card-id]] links, ^[source-id, …] at the end of a line.
 import { readFileSync, readdirSync, existsSync, statSync } from 'node:fs';
 import { join, relative, basename } from 'node:path';
