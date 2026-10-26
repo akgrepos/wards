@@ -66,7 +66,11 @@ Everything for writing or fixing a card, in one file. Part 1 is the short versio
 - `content/systems.yaml`: the 16 systems and the Library, in display order (quote titles that contain commas).
 - `content/cards/<system>/<card-id>.md`: one file per card.
 - `content/data/<type>/<item-id>.yaml`: one file per shared data item. Types so far: `source`, `dose`, `threshold`, `criteria`, `regimen`, `pathway`. A `criteria` item (a formal definition or staging system) has `name`, `title` (required: what the box defines plus the year of one of its cited sources, written "SIADH diagnostic criteria, 2013"; the content check enforces both), `short` (the words shown when it's inserted in a sentence), optional `logic` ("Any of:"), `items`, `columns` and `rows` (a table), `layout` (`columns` by default, or `stacked`) with `tones` (a staging or severity table: `stacked` plus one of `yellow`, `orange`, `red` per row, in order; the data sets the color, never the column name), `notes`, and `sources`. On a line of its own it shows in full (items in an indigo Criteria box; a `layout: stacked` table as tinted severity bands; notes in a brown Note box); inside a sentence it shows its `short` name and opens in a sheet. Dose fields: `DATA-TYPES.md`.
-- `content/examples/`: development-only samples (placeholder content). They appear while developing and are never in the published app.
+- `content/examples/`: development-only samples (placeholder content). They appear while developing (`npm run dev`, then open `#/card/example-condition`) and are never in the published app.
+- **Copy a live card of the same type for the layout.** Examples of each block:
+  - `:::note` · gi-upper-gi-bleeding · `:::scale` · pulm-dyspnea · `:::compare` · heme-anemia · `:::times` · renal-hypokalemia · `:::onset` · renal-hyperkalemia
+  - `## Do Now` · gi-upper-gi-bleeding · `or.` alternative steps · cardio-adhf · `contents_sub` · renal-electrolyte-repletion
+  - `{{regimen:}}` · id-cellulitis · `{{criteria:}}` · heme-anemia · `{{media:}}` · cardio-ecg-interpretation
 
 ## A card file
 ```markdown
