@@ -8,7 +8,7 @@ aliases: [pain management, acute pain, analgesia, multimodal analgesia, opioid c
 checked: { date: 2026-10-22, by: opus, scope: "doses and numbers", fingerprint: "eb1af3c7e0e5d57e", carried: "2026-10-25: 2026-10-25: Shared drug record for methadone added (opioid withdrawal card). Card wording, doses and citations unchanged." }
 contents_sub: [dosing]
 related:
-  conditions: [neuro-delirium, renal-aki, gi-upper-gi-bleeding, heme-anticoagulation-management, psych-acute-agitation, psych-opioid-withdrawal]
+  conditions: [neuro-delirium, renal-aki, gi-upper-gi-bleeding, heme-anticoagulation-management, psych-acute-agitation, psych-opioid-withdrawal, psych-oud]
 ---
 ## At a Glance
 - Treat pain multimodally: scheduled acetaminophen, an NSAID when safe, and nonpharmacologic measures. Add opioids only when needed, at the lowest effective dose. ^[chou-postop-pain-2016, cdc-opioid-2022]

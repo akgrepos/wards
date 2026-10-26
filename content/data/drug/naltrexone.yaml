@@ -1,0 +1,16 @@
+name: Naltrexone
+class: Opioid antagonist
+brands: [Vivitrol, Revia]
+boxed_warning: None
+cautions:
+  - text: "Blocks opioid effect. Opioids taken to overcome the block can cause fatal overdose, and tolerance is lower after detoxification, after a missed dose and after stopping."
+    sources: [label-vivitrol-2026, label-naltrexone-tablets-2026]
+  - text: "Can precipitate severe withdrawal, enough to need hospitalization, in a patient who is not opioid-free. A naloxone challenge may help but does not exclude it."
+    sources: [label-vivitrol-2026, label-naltrexone-tablets-2026]
+  - text: "Hepatitis and liver dysfunction have been reported. Stop it for symptoms or signs of acute hepatitis."
+    sources: [label-vivitrol-2026, label-naltrexone-tablets-2026]
+  - text: "Contraindicated with opioid analgesics, current opioid dependence, acute opioid withdrawal, a failed naloxone challenge or a positive urine opioid screen."
+    sources: [label-vivitrol-2026, label-naltrexone-tablets-2026]
+kidney_liver: "Oral exposure rises several-fold with cirrhosis. The injection needs no change in mild or moderate liver impairment. Use caution in kidney impairment."
+label_source: label-vivitrol-2026
+sources: [label-vivitrol-2026, label-naltrexone-tablets-2026]

@@ -1,0 +1,15 @@
+drug: naltrexone
+drug_name: Naltrexone
+indication: Opioid blockade, oral
+indication_detail: Blockade of exogenous opioids in a patient who is opioid-free. Oral naltrexone is not recommended except in limited circumstances.
+population: Adults
+route: PO
+amount: 50
+unit: mg
+frequency: "once daily. Start with 25 mg, then 50 mg daily if no withdrawal signs."
+give_when: "At least 7 to 10 days opioid-free for a patient previously dependent on short-acting opioids"
+sources: [label-naltrexone-tablets-2026, asam-oud-2020]
+verification:
+  source: label-naltrexone-tablets-2026
+  read: fda-label
+  date: 2026-10-25

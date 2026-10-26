@@ -1,0 +1,21 @@
+drug: buprenorphine
+drug_name: Buprenorphine extended-release
+brand: Brixadi
+indication: Opioid use disorder, weekly injection
+indication_detail: Weekly subcutaneous injection for moderate to severe opioid use disorder. A monthly form comes as 64, 96 and 128 mg.
+population: Adults
+route: SC
+amount: 16–32
+unit: mg
+frequency: "once weekly. New to buprenorphine: 16 mg after a tolerated test dose, then 8 mg more within 3 days for a 24 mg first week. Adjust at weekly visits, maximum 32 mg a week."
+give_when: "After a single dose of a transmucosal buprenorphine product, or when already on buprenorphine. Patients not on buprenorphine get a 4 mg transmucosal test dose at objective mild to moderate withdrawal."
+boxed_warning: "Serious harm or death could result if administered intravenously. Available only through a restricted program (REMS)."
+adjustments:
+  - when: "Moderate or severe hepatic impairment"
+    change: "Not a candidate, because buprenorphine levels cannot be lowered quickly"
+notes: "The monthly form has a maximum of 128 mg. The label has a table for switching from transmucosal doses."
+sources: [label-brixadi-2026]
+verification:
+  source: label-brixadi-2026
+  read: fda-label
+  date: 2026-10-25

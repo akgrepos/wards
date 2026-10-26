@@ -11,7 +11,7 @@ emergency_hint: "Magnesium, shock if it persists, stop QT drugs"
 checked: { date: 2026-10-25, by: opus, scope: "doses, numbers and care-changing claims, with an omissions pass", fingerprint: "9718c9f3cd5fc134", carried: "2026-10-25: Two ids for the same 2010 statement merged into one. Wording and citation unchanged." }
 related:
   differential: []
-  conditions: [cardio-ecg-interpretation, renal-hypokalemia, renal-electrolyte-repletion, psych-opioid-withdrawal]
+  conditions: [cardio-ecg-interpretation, renal-hypokalemia, renal-electrolyte-repletion, psych-opioid-withdrawal, psych-oud]
   tools: [psych-lithium-psychotropic-safety, psych-acute-agitation]
 ---
 ## Do Now

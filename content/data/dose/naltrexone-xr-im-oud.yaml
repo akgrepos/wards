@@ -1,0 +1,22 @@
+drug: naltrexone
+drug_name: Naltrexone extended-release
+brand: Vivitrol
+indication: Opioid use disorder, relapse prevention
+indication_detail: Prevention of relapse to opioid dependence after opioid detoxification, in a patient who is opioid-free.
+population: Adults
+route: IM
+amount: 380
+unit: mg
+frequency: "every 4 weeks, deep gluteal injection, alternating buttocks"
+give_when: "Only after at least 7 to 10 days opioid-free. Patients coming off buprenorphine or methadone can stay vulnerable to precipitated withdrawal for up to 2 weeks."
+cautions:
+  - "Patients coming off buprenorphine or methadone can have precipitated withdrawal for as long as 2 weeks."
+  - "Tolerance is reduced. Overdose can be fatal at the end of a dosing interval, after a missed dose or after stopping."
+  - "Injection site reactions can be severe."
+  - "Use caution with thrombocytopenia or a coagulation disorder."
+  - "For emergency pain, the label suggests regional analgesia or non-opioid analgesics."
+sources: [label-vivitrol-2026, asam-oud-2020]
+verification:
+  source: label-vivitrol-2026
+  read: fda-label
+  date: 2026-10-25

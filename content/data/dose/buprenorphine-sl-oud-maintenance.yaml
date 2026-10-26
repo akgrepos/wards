@@ -1,0 +1,21 @@
+drug: buprenorphine
+drug_name: Buprenorphine and naloxone
+brand: Suboxone
+indication: Opioid use disorder, maintenance
+indication_detail: Daily sublingual maintenance after induction. Doses are of buprenorphine in the buprenorphine and naloxone film.
+population: Adults
+route: SL
+amount: 16
+unit: mg
+frequency: "once daily after induction, then adjust to the patient's response"
+max: "Usual maintenance range is 4 to 24 mg a day."
+adjustments:
+  - when: "Severe hepatic impairment"
+    change: "Avoid the combination. It may not suit moderate impairment."
+cautions:
+  - "Higher doses, 24 to 32 mg a day, may help patients with heavy fentanyl exposure."
+sources: [label-suboxone-film-2026, asam-oud-2020, asam-hpso-buprenorphine-2023]
+verification:
+  source: label-suboxone-film-2026
+  read: fda-label
+  date: 2026-10-25
