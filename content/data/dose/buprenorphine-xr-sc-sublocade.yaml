@@ -1,0 +1,22 @@
+drug: buprenorphine
+drug_name: Buprenorphine extended-release
+brand: Sublocade
+indication: Opioid use disorder, monthly injection
+indication_detail: Monthly subcutaneous injection for moderate to severe opioid use disorder in a patient already treated with buprenorphine.
+population: Adults
+route: SC
+amount: 300
+unit: mg
+frequency: "two initial doses, the second 1 week to 1 month after the first, then 100 mg monthly at least 26 days apart. Raising maintenance to 300 mg monthly may be considered."
+give_when: "After a single tolerated dose (for example 4 mg) of transmucosal buprenorphine, or when already on buprenorphine. A patient on 8 to 24 mg daily can start directly at 300 mg."
+boxed_warning: "Serious harm or death could result if administered intravenously. Available only through a restricted program (REMS), given only by a healthcare provider."
+adjustments:
+  - when: "Moderate or severe hepatic impairment"
+    change: "Not a candidate, because buprenorphine levels cannot be lowered quickly"
+cautions:
+  - "Subcutaneous injection into the abdomen, thigh, buttock or back of the upper arm."
+sources: [label-sublocade-2026]
+verification:
+  source: label-sublocade-2026
+  read: fda-label
+  date: 2026-10-25

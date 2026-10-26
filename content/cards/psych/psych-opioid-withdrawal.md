@@ -9,7 +9,7 @@ based_on: [asam-oud-2020, asam-hpso-buprenorphine-2023, jno-hospital-moud-consen
 checked: { date: 2026-10-25, by: opus, scope: "doses, numbers and care-changing claims, with an omissions pass. Not readable: JAMA review full text (abstract only), LactMed on NCBI (read via PubChem summaries), TIP 63 2021 edition (2020 update read), ASAM 2020 Parts 5 onward.", fingerprint: "eda364d1773f1386" }
 related:
   differential: [neuro-alcohol-withdrawal]
-  conditions: [cardio-qt-prolongation, hosp-pain-management]
+  conditions: [cardio-qt-prolongation, hosp-pain-management, psych-oud]
   tools: []
   medications: []
 ---
