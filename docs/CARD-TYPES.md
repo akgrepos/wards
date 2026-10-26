@@ -70,10 +70,31 @@ A disease or syndrome (a **condition**), or a symptom, sign or abnormal result (
 6. **Presentation**: symptoms, atypical presentations; for symptoms, the focused history and examination that discriminate between causes
 7. **Diagnosis**: initial tests and why; interpretation and thresholds (result → likely causes tables, with their limits in a Note box); further testing; low-value tests to avoid
 8. **Treatment**: numbered steps (immediate, then definitive, by severity or subtype); dose rows ⟨inserted⟩. For a symptom: common initial orders (orders only, not tests; one line links to the first-line tests in Diagnosis), then initial management while the cause is being found.
-9. **Monitor**: what to trend and when (timelines of recheck times), targets, expected response, triggers to escalate
-10. **Escalation**: which specialty and when (general criteria, never institution-specific)
+9. **Monitor**: what is checked, how, when, and the action: rechecks (timelines of recheck times), targets, expected response, stop rules. Each line reads What, When, Action.
+10. **Escalation**: the trigger, the named service or level of care, and what to have ready for the call (general criteria, never institution-specific)
 11. **More Information**: Where Guidelines Differ · Special Populations (kidney or liver disease, pregnancy, older adults, immunocompromised, drug-specific) · Complications · After the Acute Phase (discharge, follow-up, long-term management, prevention) · Evidence (key studies, one line each) · Why the Treatment Order · Epidemiology and Pathophysiology
 12. Pearls · Related · Sources
+
+**One home for each kind of fact (2026-10-26).** Each Topic section owns one kind of fact:
+
+| Section | Owns | Does not hold |
+|---|---|---|
+| Definition and Staging | What it is, diagnostic criteria, disease stages | Triage scales, workup |
+| First Steps | Immediate assessment and stabilization when the cause is unknown | Full workup, condition-specific therapy |
+| Severity | Grades, risk bands, triage scales, level of care | Interventions |
+| Causes | Etiologies as nouns, mimics | Review or consider wording, workup |
+| Presentation | History and exam findings | How to investigate them |
+| Diagnosis | Named initial orders, then conditional orders with their trigger, what a result changes | Treatment |
+| Treatment | Interventions for suspected or confirmed disease: who, drug, route, timing, pre-start checks, what next if it fails | Evidence, label detail, rechecks, stop rules |
+| Monitor | What is checked, how, when, and the action: rechecks, targets, stop rules | First actions |
+| Escalation | Trigger, named service or level of care, what to have ready | Anything already in Severity or Treatment |
+| More Information | Evidence, label detail, guideline differences, rationale | Any warning needed to act safely |
+
+- A fact has one home. A second mention is a short pointer or link, never a copy.
+- Anything needed before a drug is started (a contraindication, a baseline test) stays with the dose in Treatment. Rechecks, targets and stop rules go in Monitor.
+- A warning that prevents an unsafe action stays visible in Treatment or Monitor, not only in More Information. Evidence numbers (odds ratios, grades) and drug-label text go in More Information.
+- Reference and Medication cards follow the same one-home rule; their section purposes differ by variant (Part 2).
+- **Header definition:** one sentence, no length cap, that says what it is and what separates it from lookalikes, keeping any defining qualifier. No causes, no treatment.
 
 ### 2. Reference card [R]
 Interpretation guides, protocols and principles, in fixed variants so they still feel familiar. More Information: Evidence.

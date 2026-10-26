@@ -27,6 +27,41 @@ Everything for writing or fixing a card, in one file. Part 1 is the short versio
 - A severity ladder or risk-level table is always a `:::scale` block (least to most severe, one band per level). Never nested bullets or a gray table. Tones (`layout: stacked`) exist only in shared criteria files.
 - Card text never names a guideline, society or study (for example "per ACEP" or "NICE says"). The `^[id]` source markers carry the attribution. Criteria and score names stay (Hunter criteria, Sepsis-3, CURB-65).
 
+## Say the action (owner-approved 2026-10-26)
+Cards are resident-level and executable: a reader can place the order from the line. Where each fact lives: CARD-TYPES Part 2, "One home for each kind of fact".
+1. Name the actual order, drug, route or action, never a category. Labs by name (CBC, BMP, hepatic function panel, POCT glucose, TSH, B12, folate, ammonia). Drug levels by drug. Imaging by modality and contrast. LP with the CSF studies listed. Drugs by name, never "medication".
+2. One independent action per line. A list is a lead-in ending in a colon with one item per sub-bullet.
+3. Initial orders first, then conditional orders, each with its trigger.
+4. Section grammar. Causes: nouns. Diagnosis: the order, then what a result changes. Treatment: intervention, who, drug, route, timing, pre-start checks, next step if it fails. Monitor: What, When, Action. Escalation: trigger, named service, what to have ready.
+5. Intervals (q6h, daily) appear only when sourced. No "frequently". If it truly varies, give the trigger.
+6. No filler: no sentences about who does the work, no linking commentary, no "evidence suggests".
+7. Treatment lines start with the action or the "if" condition.
+8. Header definition: what it is and what separates it from lookalikes. No causes, no treatment.
+9. Links: link the first mention in a section of anything with a live card (with the section when useful), not every repeat. A card not yet written stays plain text.
+10. Sentence case for step titles, scale band names, table headings and "Label: text" lines. Table headings are short nouns with no end punctuation. A table says what it compares and for which patients (caption).
+- **Practical details** (an interval, route, drug order, who to call) that no guideline or label gives: the `wards-card` skill, step 3, rule C, says where they may come from and how they are confirmed and marked.
+
+## Abbreviations
+- **Use freely:** BP, HR, RR, SpO₂, ECG, CBC, BMP, CMP, CT, MRI, EEG, LP, IV, IM, PO, SL, PRN, POCT, ICU, ED, NPO, QTc, UA, CXR, ABG, VBG, INR, aPTT, TSH, BUN, QRS, PR, AKI, CKD, UTI, COPD, GI, CNS, DKA, and drug-class initials only where a resident would never pause (NSAID, SSRI). LFTs only when the panel is listed.
+- **Spell out at first use:** anything else (for example hepatic function panel, not HFP). Drug names are never abbreviated.
+- **Never use (build error), the ISMP list:** U or u for units, IU, QD, QOD, a trailing zero (5.0 mg), a missing leading zero (.5 mg), µg (write mcg), MS, MSO4, MgSO4, D/C, HS.
+- **Ambiguous (owner-approved defaults):**
+
+| Abbreviation | Problem | Default |
+|---|---|---|
+| SBP | Systolic BP or spontaneous bacterial peritonitis | Write "systolic BP" and "spontaneous bacterial peritonitis" |
+| tele | Informal | Write "telemetry" |
+| MI, CHF | MI also means mitral insufficiency, CHF is dated | MI allowed, write "heart failure" |
+| PE | Pulmonary embolism or physical exam | Write "pulmonary embolism" |
+| LFTs | Which panel? | Name the panel |
+| EKG | Duplicates ECG | ECG only |
+| DC, D/C | Discharge or discontinue | Never |
+| TID, BID, q6h | Dosing frequency | Doses only, with the interval sourced |
+| mg/kg/dose | Clear | Allowed |
+
+## Voice
+Imperative for actions, present tense for findings. No passive reported speech ("Hospital experts rated..."). No process talk. Guideline names only in Where Guidelines Differ and Evidence (already allowed).
+
 ## Lines and sources
 - Every content line ends `^[source-id, …]` (ids from `content/data/source/`), except lines that are only an insert. Sub-bullets without their own source use the parent's.
 - Markers instead of names: `^[common-practice]` (stethoscope); the unnamed-reference check (green check) is a last resort. Never name outside reference tools or the handbook.
