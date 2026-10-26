@@ -5,8 +5,8 @@ system: psych
 title: "Opioid Use Disorder"
 aliases: [opioid use disorder, OUD, opioid addiction, opioid dependence, opiate addiction, heroin use, fentanyl use disorder, MOUD, medications for opioid use disorder, MAT, medication-assisted treatment, buprenorphine maintenance, methadone maintenance, Sublocade, Brixadi, Vivitrol, extended-release naltrexone, XR-naltrexone, long-acting buprenorphine, injectable buprenorphine, harm reduction, naloxone kit, overdose prevention, injection drug use, people who inject drugs, opioid treatment program, OTP, methadone clinic]
 definition: "A chronic brain disorder of problematic opioid use that ranges from mild to severe, diagnosed from a checklist of symptoms. Medication treatment lowers overdose and all-cause mortality. ^[asam-oud-2020, jama-moud-withdrawal-review-2026]"
-based_on: [asam-oud-2020, asam-hpso-buprenorphine-2023, jno-hospital-moud-consensus-2026, jama-moud-withdrawal-review-2026, label-suboxone-film-2026, label-sublocade-2026, label-brixadi-2026, label-vivitrol-2026, label-naltrexone-tablets-2026, label-methadone-2026, acog-co-711-2017, lactmed-naltrexone-2023]
-checked: { date: 2026-10-25, by: opus, scope: "doses, numbers and care-changing claims, with an omissions pass. Not readable: JAMA review and hospital consensus (abstracts only), TIP 63 2021, ACOG CO 711, LactMed methadone and buprenorphine re-read, DSM-5 criteria counts (omitted).", fingerprint: "b10cbc1619b21cfe" }
+based_on: [asam-oud-2020, asam-hpso-buprenorphine-2023, jno-hospital-moud-consensus-2026, jama-moud-withdrawal-review-2026, label-suboxone-film-2026, label-sublocade-2026, label-brixadi-2026, label-vivitrol-2026, label-naltrexone-tablets-2026, label-methadone-2026, acog-co-711-2017, lactmed-naltrexone-2023, cdc-oud-diagnosis-2024]
+checked: { date: 2026-10-25, by: opus, scope: "doses, numbers and care-changing claims, with an omissions pass. Severity bands checked against the CDC diagnosis page (DSM-5 criteria counts). TIP 63 criteria exhibit not readable. Not readable: JAMA review and hospital consensus (abstracts only), TIP 63 2021, ACOG CO 711, LactMed methadone and buprenorphine re-read.", fingerprint: "f0ba5f5100fbdcdf" }
 related:
   differential: []
   conditions: [psych-opioid-withdrawal, hosp-pain-management, cardio-qt-prolongation]
@@ -22,7 +22,15 @@ related:
 - Every patient treated for or with a history of opioid use disorder leaves with naloxone. ^[asam-oud-2020]
 
 ## Definition and Staging
-- Diagnosis rests on a symptom checklist, and severity ranges from mild to severe. ^[asam-oud-2020]
+- Diagnosis rests on at least 2 of the 11 DSM-5 criteria within a year. ^[cdc-oud-diagnosis-2024]
+- Tolerance and withdrawal do not count in a patient taking opioids only under appropriate medical supervision. ^[cdc-oud-diagnosis-2024]
+
+## Severity
+:::scale Criteria met
+- Mild: 2–3 criteria ^[cdc-oud-diagnosis-2024]
+- Moderate: 4–5 criteria ^[cdc-oud-diagnosis-2024]
+- Severe: 6 or more criteria ^[cdc-oud-diagnosis-2024]
+:::
 
 ## Diagnosis
 #### Assess
