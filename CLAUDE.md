@@ -23,6 +23,7 @@ The owner, a physician, is the only user, with no coding experience: explain pla
 ## Hard rules
 - No patient information (PHI) and nothing institution-internal; the site and repo are public. `npm run privacy:check` runs in CI.
 - **Stay anonymous.** Never put the owner's name, email or computer name in files, commits, PRs or screenshots; say "the owner". Never write an absolute home-folder path; use `~/`. Commits are authored as `akgrepos <338781722+akgrepos@users.noreply.github.com>`.
+- Practical details no guideline or label gives (interval, route, drug order, who to call) may restate handbook facts in Claude's own words, marked `common-practice` once the owner confirms them (`wards-card` skill, rule C).
 - Never name or cite AMBOSS, OpenEvidence or the reference handbook in the app, card content or repo, and never copy the handbook. Copyrighted material stays in `~/Documents/Wards-reference/`.
 
 ## Stack
