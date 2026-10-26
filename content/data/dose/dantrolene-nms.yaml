@@ -12,10 +12,10 @@ give_when: Severe NMS, with benzodiazepines and bromocriptine
 max: "10 mg/kg a day"
 duration: "Usually stopped once symptoms begin to resolve, because of hepatotoxicity"
 cautions:
-  - "A 2026 Japanese ICU cohort linked early dantrolene to higher in-hospital mortality and longer stays. Observational, so confounding by severity is possible."
+  - "Evidence is mixed. Some reviews report higher mortality with dantrolene alone."
   - "The label states it is not indicated for NMS and patients may die despite treatment."
 notes: "Dose from the 2021 NMS review. The label dose is for malignant hyperthermia (1 mg/kg minimum, to a cumulative 10 mg/kg). Not used in serotonin syndrome."
-sources: [wadoo-nms-2021, label-dantrium-iv-2026, suekane-dantrolene-nms-2026]
+sources: [wadoo-nms-2021, label-dantrium-iv-2026]
 verification:
   source: wadoo-nms-2021
   read: full-text
