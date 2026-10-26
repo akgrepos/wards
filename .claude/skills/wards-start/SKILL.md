@@ -11,7 +11,7 @@ One chat is one task. This skill only orients; it reads nothing but the brief.
 2. Tell the owner in a few plain lines: how many cards exist (and the newest ones), what is in flight (open PRs, check state, auto-merge on or off), what shipped last, anything owed by the owner.
 3. Ask "What now?" in one pop-up. Options: the top three BACKLOG items from the brief, plus "something else". Plain words, no jargon.
 4. When the owner picks:
-   - **A new card:** first look for the topic in the brief's card index (ids and titles). If a card on that topic exists, say so and offer to update it instead; never suggest a card the index already shows. Then use the card skill if it exists in `.claude/skills/`; if not, follow `docs/CARD-WRITING-CHEATSHEET.md` and the rules in `CLAUDE.md`.
+   - **A new card:** first look for the topic in the brief's card index (ids and titles). If a card on that topic exists, say so and offer to update it instead; never suggest a card the index already shows. Then use the `wards-card` skill.
    - **A fix:** do it in this chat through a branch and PR; the tier is set by `npm run pr:tier`.
    - **Anything else:** do it in this chat, or start one child session only for a long autonomous job (a batch of cards or a sweep), with a brief of a skill name plus a list.
 5. Read `DECISIONS.md` in the notes folder (`~/Documents/Wards-reference/notes/`) only if the task touches a product or clinical decision, and read only the rows that matter.
