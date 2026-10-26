@@ -7,6 +7,7 @@ import YAML from 'yaml';
 import { CARD_TYPES } from './schema.mjs';
 import { parseInline } from './inline.mjs';
 import { severityLadderLines } from './severity.mjs';
+import { deepNestLines } from './prose.mjs';
 
 export { parseInline };
 
@@ -192,6 +193,7 @@ export function parseCard(file, root) {
     file: relative(root, file),
     scaffold: src.includes('SCAFFOLD:'),
     severityLines: severityLadderLines(src),
+    nestedLines: deepNestLines(src),
     id: meta.id ?? basename(file, '.md'),
     type: meta.type,
     variant: meta.variant ?? null,
