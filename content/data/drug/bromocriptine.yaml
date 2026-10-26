@@ -3,6 +3,8 @@ class: Dopamine agonist (ergot derivative)
 brands: [Parlodel, Cycloset]
 boxed_warning: None
 cautions:
+  - text: "Contraindicated with uncontrolled hypertension or sensitivity to ergot alkaloids. The label says not to use it during lactation in postpartum women."
+    sources: [label-bromocriptine-2026]
   - text: "Symptomatic hypotension can occur, and syncope has been reported early in therapy. Check blood pressure."
     sources: [label-bromocriptine-2026]
   - text: "Hallucinations, psychotic disorders and sudden sleep onset can occur. Use caution with a history of psychosis."

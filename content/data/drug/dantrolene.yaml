@@ -11,6 +11,8 @@ cautions:
     sources: [label-dantrium-iv-2026]
   - text: "Cardiovascular collapse with marked hyperkalemia has been reported in patients receiving dantrolene with calcium channel blockers. Do not combine IV dantrolene with a calcium channel blocker such as verapamil."
     sources: [label-dantrium-iv-2026]
+  - text: "Found in breast milk at low levels after repeated IV doses. The label advises stopping either breastfeeding or the drug."
+    sources: [label-dantrium-iv-2026]
 kidney_liver: "The label gives no kidney dose adjustment. Watch liver tests with repeated use."
 label_source: label-dantrium-iv-2026
 sources: [label-dantrium-iv-2026]

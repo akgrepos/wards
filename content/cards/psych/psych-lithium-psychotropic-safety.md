@@ -5,8 +5,8 @@ variant: protocol
 system: psych
 title: "Lithium and Psychotropic Safety"
 aliases: [lithium, lithium carbonate, Lithobid, lithium level, lithium toxicity, lithium poisoning, lithium overdose, lithium dialysis, mood stabilizer, valproate, valproic acid, divalproex, Depakote, valproate level, valproate ammonia, carbamazepine, Tegretol, HLA-B*1502, clozapine, Clozaril, clozapine ANC, clozapine neutropenia, clozapine myocarditis, antipsychotic QT monitoring, metabolic monitoring, psychotropic safety, psychiatric medication safety]
-based_on: [label-lithium-2025, extrip-lithium-2015, canmat-isbd-2018, nice-cg185-2025, aha-accf-qt-2010, label-divalproex-2026, label-clozapine-2026, fda-clozapine-rems-2025, label-tegretol-2026, label-ziprasidone-2026, label-haloperidol-inj-2026, periop-lithium-2026, gitlin-lithium-2016, lactmed-lithium-2026, lactmed-valproic-acid-2026, lactmed-carbamazepine-2024]
-checked: { date: 2026-10-25, by: opus, scope: "doses and numbers, Opus check of tier A claims against label and guideline text", fingerprint: "c4cfe2e8d7395120", carried: "2026-10-25: Two ids for the same 2010 statement merged into one. Wording and citation unchanged." }
+based_on: [label-lithium-2025, extrip-lithium-2015, canmat-isbd-2018, nice-cg185-2025, aha-accf-qt-2010, label-divalproex-2026, label-clozapine-2026, fda-clozapine-rems-2025, label-tegretol-2026, label-ziprasidone-2026, label-haloperidol-inj-2026, periop-lithium-2026, ctrc-charcoal-2026, isbd-older-lithium-2026, lactmed-lithium-2026, lactmed-valproic-acid-2026, lactmed-carbamazepine-2024]
+checked: { date: 2026-10-25, by: opus, scope: "Re-review 2026-10-25. Doses, thresholds and care-changing claims checked against the lithium, valproate, carbamazepine, clozapine, ziprasidone and haloperidol labels, EXTRIP 2015, CANMAT 2018, NICE CG185 (2025), the 2010 AHA/ACCF QT statement, LactMed and two 2026 consensus and review papers. Evidence grading applied and omissions pass done.", fingerprint: "1c96138bcabfb603" }
 related:
   conditions: [psych-serotonin-syndrome-nms, psych-acute-agitation, renal-aki, renal-hyponatremia, psych-suicide-risk-assessment, cardio-qt-prolongation]
   tools: [cardio-ecg-interpretation]
@@ -14,7 +14,7 @@ related:
 ## At a Glance
 - Lithium toxicity starts close to the therapeutic range. Toxic concentrations (≥1.5 mEq/L) sit near the acute-mania target of 0.8 to 1.2 mEq/L. ^[label-lithium-2025]
 - Draw a lithium level as a trough, about 12 hours after the last dose. ^[label-lithium-2025, canmat-isbd-2018]
-- Diuretics, NSAIDs, renin-angiotensin system antagonists and metronidazole raise lithium levels. So do dehydration and sodium loss. ^[label-lithium-2025, gitlin-lithium-2016]
+- Diuretics, NSAIDs, renin-angiotensin system antagonists and metronidazole raise lithium levels. So do dehydration and sodium loss. ^[label-lithium-2025]
 - Hemodialysis for lithium: level >4.0 mEq/L with impaired kidney function, or decreased consciousness, seizures or life-threatening dysrhythmias at any level. ^[extrip-lithium-2015]
 - QT interval safety: ^[aha-accf-qt-2010]
   - {{calc:qtc}} >500 ms, or a rise of at least 60 ms from baseline after an at-risk drug, needs prompt action.
@@ -40,12 +40,16 @@ related:
   - Hold or stop: {{calc:cockcroft-gault}} <30 mL/min (not recommended).
   - Protracted sweating, diarrhea or dehydration: reduce or hold and give fluid and salt.
   - Also hold or stop for toxicity.
+  - Avoid in known or suspected Brugada syndrome.
 - **Valproate:** ^[label-divalproex-2026]
   - Before starting: CBC, coagulation tests, liver tests.
+  - Do not start: liver disease or significant liver dysfunction, POLG mitochondrial disorders, urea cycle disorders.
   - Hold or stop: pancreatitis, rising ammonia with symptoms, hemorrhage or a hemostasis disorder.
 - **Carbamazepine:** ^[label-tegretol-2026]
   - Before starting: HLA-B*1502 screen if at-risk ancestry, CBC, liver tests.
-  - Hold or stop: HLA-B*1502 positive (unless benefit clearly outweighs risk), prior bone marrow depression.
+  - Do not start: prior bone marrow depression, HLA-B*1502 positive (unless benefit clearly outweighs risk).
+  - Do not combine with nefazodone. Stop an MAO inhibitor at least 14 days before starting.
+  - Stop at the first sign of a rash unless it is clearly not drug related.
 - **Clozapine:** ^[label-clozapine-2026]
   - Before starting: ANC ≥1500/μL (≥1000/μL with documented benign ethnic neutropenia).
   - ANC 500 to 999/μL: interrupt, with hematology consultation.
@@ -74,23 +78,25 @@ related:
    - Obtain levels about 5 days after a dose change. ^[canmat-isbd-2018]
    - SGLT2 inhibitors may lower lithium levels. Check levels more often when one starts or its dose changes. ^[label-lithium-2025]
 2. Recognize lithium toxicity (severity bands above)
-   - Chronic toxicity can be prominent at concentrations as low as 1.5 mEq/L. ^[extrip-lithium-2015]
-   - Causes: overdose, or anything that changes salt and water balance (new interacting drugs, dehydration, infection with fever). ^[gitlin-lithium-2016]
+   - In chronic toxicity, neurologic signs can be prominent at levels as low as 1.5 mEq/L. ^[extrip-lithium-2015]
+   - Above 3 mEq/L, seizures, coma and irreversible brain damage can follow. ^[label-lithium-2025]
+   - Causes: overdose, interacting drugs, and dehydration from sweating, diarrhea or fever. ^[label-lithium-2025]
 3. Treat lithium toxicity
-   - Stop lithium. In mild toxicity, discontinuation may suffice. ^[gitlin-lithium-2016]
+   - Mild toxicity: lowering the dose or stopping lithium usually suffices. ^[label-lithium-2025]
    - Correct volume depletion and electrolyte imbalance. Volume resuscitation uses intravenous isotonic saline. ^[label-lithium-2025, extrip-lithium-2015]
-   - Activated charcoal does not bind lithium. ^[extrip-lithium-2015, label-lithium-2025]
+   - Watch for hypernatremia while giving normal saline. ^[label-lithium-2025]
+   - Activated charcoal has no role in lithium poisoning. It does not bind lithium. ^[ctrc-charcoal-2026, extrip-lithium-2015, label-lithium-2025]
    - Whole bowel irrigation with polyethylene glycol may be performed after an ingestion. Sodium polystyrene sulfonate has no clearly demonstrable role. ^[extrip-lithium-2015]
    - Hemodialysis is the treatment of choice for severe toxicity. ^[label-lithium-2025]
-4. Hemodialysis criteria (EXTRIP)
+4. Hemodialysis criteria
    - Recommended: lithium >4.0 mEq/L with impaired kidney function, or decreased consciousness, seizures or life-threatening dysrhythmias at any level. ^[extrip-lithium-2015]
    - Suggested: lithium >5.0 mEq/L, significant confusion, or an expected time to reach <1.0 mEq/L of more than 36 hours with optimal management. ^[extrip-lithium-2015]
    - Impaired kidney function here means {{calc:ckd-epi}} <45 mL/min per 1.73 m², or stage 2 or 3 acute kidney injury. ^[extrip-lithium-2015]
-   - Without a baseline, EXTRIP counts serum creatinine of 2 mg/dL (1.5 mg/dL in older or low-muscle-mass adults) as impaired. ^[extrip-lithium-2015]
+   - Without a baseline, a serum creatinine of 2 mg/dL (1.5 mg/dL in older or low-muscle-mass adults) counts as impaired. ^[extrip-lithium-2015]
    - Oliguria or anuria should raise suspicion at any creatinine. ^[extrip-lithium-2015]
    - Intermittent hemodialysis is preferred. CRRT is acceptable if it is not available. ^[extrip-lithium-2015]
    - Stop when lithium is <1.0 mEq/L or clinical improvement is apparent, or after at least 6 hours if a level is not readily measurable. ^[extrip-lithium-2015]
-   - After stopping, repeat levels over 12 hours to decide on another session. Extended-release products can rebound. ^[extrip-lithium-2015]
+   - After stopping, repeat levels over 12 hours to decide on another session. Levels can rebound, especially with extended-release products. ^[extrip-lithium-2015, label-lithium-2025]
 5. {{calc:qtc}} safety with antipsychotics and other QT-prolonging drugs
    - {{calc:qtc}} >500 ms is highly abnormal. After an at-risk drug, {{calc:qtc}} >500 ms or a rise of at least 60 ms from baseline needs prompt action. ^[aha-accf-qt-2010]
    - In patients on ECG monitoring, a reasonable strategy is to document the {{calc:qtc}} before starting and at least every 8 to 12 hours after: ^[aha-accf-qt-2010]
@@ -119,6 +125,7 @@ related:
    - Acute-phase target: 50 to 100 mcg/mL, 3 to 5 days after a dose change. ^[canmat-isbd-2018]
    - Carbapenems lower valproate concentrations. Monitor levels after starting one. ^[label-divalproex-2026]
    - If pancreatitis is diagnosed, valproate should ordinarily be stopped. ^[label-divalproex-2026]
+   - Fatal liver failure has occurred, usually in the first 6 months. Check liver tests before starting and often in that period. ^[label-divalproex-2026]
 7. Carbamazepine safety
    - Usual adult therapeutic levels are 4 to 12 mcg/mL. ^[label-tegretol-2026]
    - Hyponatremia is more likely in older adults and with diuretics. ^[label-tegretol-2026]
@@ -131,7 +138,7 @@ related:
    - Fever of 38.5 °C or higher: interrupt clozapine and obtain an ANC. ^[label-clozapine-2026]
    - One day of doses missed: resume at 40% to 50% of the previous dosage, to limit hypotension, bradycardia and syncope. ^[label-clozapine-2026]
    - Two days missed: resume at about 25% of the previous dosage. ^[label-clozapine-2026]
-   - Longer gaps: restart from the initial titration dose. ^[label-clozapine-2026]
+   - Longer gaps: restart at the starting dose. If tolerated, it can be raised back faster than the first titration. ^[label-clozapine-2026]
    - Reduce the dose to one-third with strong CYP1A2 inhibitors (fluvoxamine, ciprofloxacin). Consider a reduction when tobacco smoke exposure stops. ^[label-clozapine-2026]
    - Screen for constipation first. Reports range from constipation to paralytic ileus. ^[label-clozapine-2026]
 
@@ -163,6 +170,7 @@ related:
   - Emergency surgery: stop lithium and check a level as soon as possible.
   - Recheck lithium level, creatinine and electrolytes on day 1 after surgery, and the level 1 week after restarting.
   - Avoid NSAIDs for pain. Manage intravenous hydration carefully.
+  - Lithium may prolong neuromuscular blockade. ^[label-lithium-2025]
   - A few days of subtherapeutic lithium usually carries less risk than acute toxicity.
 - Antipsychotic metabolic monitoring: ^[canmat-isbd-2018, nice-cg185-2025]
   - Weight monthly for 3 months, then every 3 months. Blood pressure, fasting glucose and lipids at 3 and 6 months, then yearly.
@@ -173,12 +181,14 @@ related:
 ## Special Populations
 - Kidney disease: lithium is not recommended with {{calc:cockcroft-gault}} <30 mL/min. ^[label-lithium-2025]
 - Older adults: lithium toxicity can appear at levels other patients tolerate. Valproate needs a lower starting dose. ^[label-lithium-2025, label-divalproex-2026]
+- Age 60 and over: lithium levels of 0.82 to 1.00 mEq/L were linked to more side effects, and 1.20 to 1.25 mEq/L to overt toxicity (observational data). ^[isbd-older-lithium-2026]
 - Pregnancy and lithium: it may cause harm, with early reports of cardiovascular malformations including Ebstein's anomaly. ^[label-lithium-2025]
 - If lithium continues in pregnancy, monitor levels because renal clearance rises. Lower or stop it 2 to 3 days before delivery. ^[label-lithium-2025]
 - Pregnancy and valproate: major congenital malformations and neurodevelopmental effects. Avoid in women who may become pregnant unless other drugs fail. ^[label-divalproex-2026, canmat-isbd-2018]
+- Valproate in men around conception has a possible link to neurodevelopmental disorders in their children. ^[nice-cg185-2025]
 - Pregnancy and carbamazepine: can cause fetal harm. ^[label-tegretol-2026]
 - Breastfeeding and lithium: the label advises against it. ^[label-lithium-2025, lactmed-lithium-2026]
-- Most sources accept it in healthy full-term infants, especially over 2 months old and with lithium alone. ^[label-lithium-2025, lactmed-lithium-2026]
+- Most sources accept it in healthy full-term infants, especially over 2 months old and with lithium alone. ^[lactmed-lithium-2026]
 - If breastfeeding on lithium, check maternal levels often after delivery and lower the dose as needed. ^[lactmed-lithium-2026]
 - Watch the infant closely, with lithium level, creatinine, BUN and TSH if signs appear. ^[lactmed-lithium-2026]
 - Breastfeeding and valproate: milk levels are low and it is not a reason to stop breastfeeding. Watch the infant for jaundice and unusual bruising or bleeding. ^[lactmed-valproic-acid-2026]
@@ -186,14 +196,15 @@ related:
 - Dementia-related psychosis: antipsychotics carry a boxed warning for increased mortality. ^[label-ziprasidone-2026, label-haloperidol-inj-2026]
 
 ## More Information
-### Evidence: Hemodialysis criteria quality
-- EXTRIP rated the evidence very low for all recommendations, drawn from 156 case reports and case series (235 patients). ^[extrip-lithium-2015]
+### Evidence: Dialysis and surgery advice
+- Evidence for every hemodialysis criterion is rated very low, drawn from 156 case reports and case series (235 patients). ^[extrip-lithium-2015]
+- The perioperative risk tiers are multidisciplinary expert recommendations built on clinical practice and existing guidelines, not trials. ^[periop-lithium-2026]
 
 ## Pearls
 - Lithium toxicity can be mistaken for general illness or postoperative recovery. ^[periop-lithium-2026]
 - Delay risks chronic toxicity and irreversible cerebellar damage (SILENT). ^[periop-lithium-2026]
 - Lithium plus an antipsychotic has caused neurologic reactions from extrapyramidal symptoms to neuroleptic malignant syndrome. ^[label-lithium-2025]
 - Lithium can also precipitate serotonin syndrome (see [[psych-serotonin-syndrome-nms|serotonin syndrome and NMS]]). ^[label-lithium-2025]
-- Lithium plus thiazide: reduce the lithium dose by about a third and recheck in a few days. ^[gitlin-lithium-2016]
+- Lithium plus a diuretic: check lithium and electrolytes more often, and lower the lithium dose by level and response. ^[label-lithium-2025]
 - Valproate can cause hypothermia, with or without hyperammonemia, and DRESS. ^[label-divalproex-2026]
 - Tobacco smoke induces CYP1A2. Consider reducing the clozapine dose when smoking stops, for example on admission to a smoke-free unit. ^[label-clozapine-2026]

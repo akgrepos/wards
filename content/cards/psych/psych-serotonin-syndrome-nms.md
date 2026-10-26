@@ -6,7 +6,7 @@ title: "Serotonin Syndrome and NMS"
 aliases: [serotonin syndrome, serotonin toxicity, serotonin storm, SS, neuroleptic malignant syndrome, NMS, Hunter criteria, hyperthermia with rigidity, clonus, lead-pipe rigidity, drug-induced hyperthermia, cyproheptadine, dantrolene, bromocriptine, antipsychotic rechallenge, linezolid toxicity, methylene blue toxicity, malignant catatonia, anticholinergic toxicity, malignant hyperthermia]
 definition: "Two drug-induced hyperthermic emergencies: serotonin syndrome, from excess serotonergic activity (clonus, hyperreflexia, tremor, agitation, diaphoresis), and neuroleptic malignant syndrome, from dopamine blockade or dopamine agonist withdrawal (lead-pipe rigidity, fever, altered mental status, autonomic instability, raised creatine kinase). ^[chiew-ss-2025, gurrera-nms-2011, wadoo-nms-2021]"
 based_on: [chiew-ss-2025, isbister-ss-2007, scotton-ss-2019, gurrera-nms-2011, wadoo-nms-2021, kuhlwilm-nms-2020]
-checked: { date: 2026-10-25, by: opus, scope: "Doses, Hunter and NMS consensus criteria, NMS staging, ICU triggers and care-changing claims checked against Chiew 2025, Isbister 2007, Scotton 2019, Wadoo 2021, the Gurrera 2011 table and 2017 validation, Kuhlwilm 2020, Suekane 2026 and the labels. Boyer 2005 and the Dunkley and Gurrera full texts not read.", fingerprint: "59fe6596fb184de5", carried: "2026-10-25: Format sweep (bullets split, tables to bullets or scale, society names out of text). Numbers, doses, drugs and sources unchanged." }
+checked: { date: 2026-10-25, by: opus, scope: "Re-review 2026-10-25. Doses, Hunter and NMS criteria, NMS staging, ICU triggers and care-changing claims checked against Chiew 2025, Isbister 2007, Scotton 2019 (full text), Wadoo 2021, Gurrera 2011, Kuhlwilm 2020 and the bromocriptine, dantrolene and cyproheptadine labels. Evidence grading applied and the single dantrolene cohort reduced to one unnamed line. LactMed not read.", fingerprint: "819a0d2f91d98649" }
 related:
   differential: [neuro-delirium, psych-acute-agitation]
   conditions: [crit-sepsis, psych-lithium-psychotropic-safety]
@@ -162,7 +162,8 @@ related:
 6. NMS: bromocriptine, dantrolene or ECT
    - Bromocriptine for moderate NMS, with dantrolene added for severe NMS. Evidence is case reports and series only. ^[wadoo-nms-2021, pileggi-nms-2016]
    - Pooled case reports found no mortality difference overall, but lower mortality with dantrolene, bromocriptine or ECT in severe cases. ^[kuhlwilm-nms-2020]
-   - A 2026 Japanese ICU cohort linked early dantrolene to higher in-hospital mortality (adjusted OR 2.03). ^[suekane-dantrolene-nms-2026]
+   - Evidence for dantrolene is mixed. Some reviews report higher mortality with dantrolene alone. ^[wadoo-nms-2021]
+   - Limited evidence: one large observational ICU cohort linked early dantrolene to higher in-hospital mortality. Confounding is possible. ^[suekane-dantrolene-nms-2026]
 
    {{dose:bromocriptine-nms}}
 
@@ -200,10 +201,8 @@ related:
 - They were more sensitive (84% vs 75%) and specific (97% vs 96%) than Sternbach's criteria against a toxicologist's diagnosis. ^[dunkley-hunter-2003, chiew-ss-2025]
 - Delphi consensus (2011): 17 experts from 4 specialties agreed on the NMS criteria, their priority points and critical values. ^[gurrera-nms-2011]
 - Validation study (2017, 221 cases): a cutoff of 74 points agreed best with modified DSM-IV-TR criteria (sensitivity 69.6%, specificity 90.7%). ^[gurrera-nms-validation-2017]
-- Kuhlwilm case series (2020, 405 cases): no overall mortality difference between dantrolene, bromocriptine, ECT and supportive care. ^[kuhlwilm-nms-2020]
+- Systematic case-series analysis (2020, 405 cases): no overall mortality difference between dantrolene, bromocriptine, ECT and supportive care. ^[kuhlwilm-nms-2020]
 - Mortality was lower with specific therapy in severe cases, and lowest with ECT. ^[kuhlwilm-nms-2020]
-- Suekane cohort (2026, 2,234 ICU patients): dantrolene within 2 days of admission was associated with higher in-hospital mortality. ^[suekane-dantrolene-nms-2026]
-- It was also associated with longer ICU and hospital stays. The study was observational. ^[suekane-dantrolene-nms-2026]
 
 ## Pearls
 - Clonus points to serotonin syndrome, and lead-pipe rigidity with bradykinesia points to NMS. ^[isbister-ss-2007, scotton-ss-2019]
