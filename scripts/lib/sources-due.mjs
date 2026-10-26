@@ -47,7 +47,9 @@ export function cardTexts(root) {
 /** Sources oldest first, then by number of citing cards (most first). Each row: { id, year, kind, cards: [card ids] }. */
 export function sourcesDue(root, limit = 12) {
   const texts = cardTexts(root)
-  const rows = refreshableSources(root).map((s) => ({ ...s, cards: [...texts].filter(([, t]) => t.includes(s.id)).map(([id]) => id) }))
+  // Whole-id match, so "label-x-2020" does not count a card that only cites "label-x-2020-b".
+  const cites = (text, id) => new RegExp(`(?<![\\w-])${id.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(?![\\w-])`).test(text)
+  const rows = refreshableSources(root).map((s) => ({ ...s, cards: [...texts].filter(([, t]) => cites(t, s.id)).map(([id]) => id) }))
   return rows
     .filter((r) => r.cards.length)
     .sort((a, b) => a.year - b.year || b.cards.length - a.cards.length || a.id.localeCompare(b.id))
