@@ -7,7 +7,7 @@ title: "Delirium"
 aliases: [delirium, acute confusion, acute encephalopathy, altered mental status, agitation, ICU delirium, hypoactive delirium, hyperactive delirium, sundowning, CAM, CAM-ICU, 4AT, RASS, haloperidol, HELP, postoperative delirium, toxic metabolic encephalopathy]
 definition: "An acute, fluctuating disturbance of attention, awareness and cognition that is a direct physiologic consequence of another medical condition, medication, substance or toxin, and is not explained by a preexisting neurocognitive disorder. ^[apa-delirium-2025, nice-delirium-2023]"
 based_on: [apa-delirium-2025, padis-2025, nice-delirium-2023, ags-beers-2023]
-checked: { date: 2026-10-22, by: opus, scope: "doses and numbers", fingerprint: "aa3c2cf56cf4d733", carried: "2026-10-25: Format sweep (bullets split, tables to bullets or scale, society names out of text). Numbers, doses, drugs and sources unchanged." }
+checked: { date: 2026-10-26, by: opus, scope: "prose restructure, orders and monitor. The helper read from memory, no source text. Doses left not-verified: haloperidol-delirium-low, haloperidol-delirium-icu, dexmedetomidine-icu-delirium", fingerprint: "c440c088526e8feb" }
 related:
   differential: [psych-acute-agitation, psych-serotonin-syndrome-nms, psych-suicide-risk-assessment]
   conditions: [crit-hypoxemic-respiratory-failure, renal-hyponatremia, id-complicated-uti, crit-sepsis, hosp-pain-management, neuro-alcohol-withdrawal]
@@ -32,8 +32,6 @@ related:
 - Level of care: ^[apa-delirium-2025, common-practice]
   - ICU for ventilated or hemodynamically unstable patients ^[apa-delirium-2025, common-practice]
   - One-to-one observation or a sitter for wandering or danger to self ^[apa-delirium-2025, common-practice]
-  - Restraints only as a last resort ^[apa-delirium-2025, common-practice]
-- Rate agitation and sedation with the {{calc:rass}} in the ICU (target light sedation, most studies defined it as {{calc:rass|RASS}} −2 to +1). ^[padis-2018]
 
 ## Causes
 - **Medications:** [!most-common] ^[ags-beers-2023, apa-delirium-2025, common-practice]
@@ -43,9 +41,9 @@ related:
 - **Infection:** [!cannot-miss] ^[nice-delirium-2023, common-practice]
   - Urinary ([[id-complicated-uti|complicated UTI]]), pneumonia, bloodstream infection ([[crit-sepsis|sepsis]]) ^[nice-delirium-2023, common-practice]
   - Skin, meningitis or encephalitis, C. difficile ^[nice-delirium-2023, common-practice]
-- **Hypoxemia and hypercapnia:** [[crit-hypoxemic-respiratory-failure|hypoxemic respiratory failure]], COPD exacerbation, heart failure. ^[nice-delirium-2023, common-practice]
+- **Hypoxemia and hypercapnia:** [[crit-hypoxemic-respiratory-failure|hypoxemic respiratory failure]], [[pulm-copd-exacerbation|COPD exacerbation]], heart failure. ^[nice-delirium-2023, common-practice]
 - **Metabolic:** ^[nice-delirium-2023, common-practice]
-  - [[renal-hyponatremia|Hyponatremia]], hypernatremia, hypoglycemia, hyperglycemia, hypercalcemia ^[nice-delirium-2023, common-practice]
+  - [[renal-hyponatremia|Hyponatremia]], hypernatremia, hypoglycemia, [[endo-inpatient-hyperglycemia|hyperglycemia]], hypercalcemia ^[nice-delirium-2023, common-practice]
   - Uremia, hepatic encephalopathy, thyroid disease, hypothermia ^[nice-delirium-2023, common-practice]
 - **Withdrawal and intoxication:** [!cannot-miss] ^[apa-delirium-2025, common-practice]
   - Alcohol and benzodiazepine withdrawal ([[neuro-alcohol-withdrawal|alcohol withdrawal delirium]]) ^[apa-delirium-2025, common-practice]
@@ -63,26 +61,35 @@ related:
 - Acute onset (hours to days) with fluctuation, worse at night. ^[apa-delirium-2025, inouye-cam-1990]
 - Features: inattention, disorganized thinking, altered level of consciousness, disorientation, perceptual disturbance. ^[apa-delirium-2025, inouye-cam-1990]
 - Hyperactive: agitation, restlessness, hallucinations, pulling at lines. Easily recognized. ^[common-practice]
-- Hypoactive: drowsy, withdrawn, slowed. Frequently missed or mistaken for depression, fatigue or dementia. ^[common-practice]
+- Hypoactive: drowsy, withdrawn, slowed. Often missed or mistaken for depression, fatigue or dementia. ^[common-practice]
 - Mixed: alternates between the two. ^[common-practice]
-- Ask family or staff for the baseline: a change from baseline is the key. ^[nice-delirium-2023]
+- Baseline from family or staff: a change from baseline is the key. ^[nice-delirium-2023]
 - Dementia raises the risk and can mask delirium: new inattention, a change in alertness or a rapid change from baseline suggests superimposed delirium. ^[nice-delirium-2023, common-practice]
 
 ## Diagnosis
 #### Screening and assessment
 - Screen at admission, daily and with any acute change in patients at risk. ^[nice-delirium-2023, padis-2018]
-- Ward: {{calc:4at}}. ICU or recovery: {{calc:cam-icu}} or ICDSC. ^[nice-delirium-2023, padis-2018]
-- Confirm with a clinician's assessment of the {{calc:cam-icu}} or CAM features and a review of DSM-5-TR criteria. ^[nice-delirium-2023, apa-delirium-2025]
-- Sedation level first: assess the {{calc:rass}}. At {{calc:rass|RASS}} −4 or −5 the {{calc:cam-icu}} cannot be done, so reassess later. ^[ely-camicu-2001, padis-2018]
+- Ward: {{calc:4at}}. ICU or recovery: {{calc:cam-icu}} or the Intensive Care Delirium Screening Checklist. ^[nice-delirium-2023, padis-2018]
+- A positive screen is confirmed by a clinician's assessment of the {{calc:cam-icu}} or CAM features and the DSM-5-TR criteria. ^[nice-delirium-2023, apa-delirium-2025]
+- ICU: assess the {{calc:rass}} first. At {{calc:rass|RASS}} −4 or −5 the {{calc:cam-icu}} cannot be done, so reassess later. ^[ely-camicu-2001, padis-2018]
 
-#### Workup of reversible causes
-- History, collateral and medication review (including recent starts, doses and withdrawal). ^[nice-delirium-2023, common-practice]
-- Vital signs with oxygen saturation, glucose, and a full physical examination with a neurologic examination. ^[nice-delirium-2023, common-practice]
-- Initial tests: BMP (sodium, calcium, creatinine), glucose, CBC, ECG, oxygen saturation or blood gas. ^[common-practice]
-- Urinalysis with culture when symptoms or signs suggest infection. ^[common-practice]
-- Add by clinical clues: blood cultures, chest radiograph, liver panel and ammonia, thyroid studies, magnesium, phosphate, B12, drug levels, toxicology. ^[common-practice]
-- Bladder scan for retention and rectal examination for impaction. ^[common-practice]
-- Neuroimaging, lumbar puncture or EEG only for focal findings, fever with meningismus, seizure concern, head trauma or no cause found. ^[common-practice]
+#### Initial orders
+- Every new delirium: ^[nice-delirium-2023, common-practice]
+  - Vital signs with SpO₂, temperature and POCT glucose ^[nice-delirium-2023, common-practice]
+  - Full physical and neurologic examination, with bladder scan for retention and rectal examination for impaction ^[nice-delirium-2023, common-practice]
+  - BMP (sodium, calcium, creatinine), CBC, ECG ^[common-practice]
+  - Medication history from the chart and family: recent starts, dose changes and stopped drugs ^[nice-delirium-2023, common-practice]
+
+#### Orders by trigger
+- Urinary symptoms or signs: UA with urine culture. ^[common-practice]
+- Fever, hypotension or suspected infection: blood cultures and CXR. ^[common-practice]
+- Low SpO₂ or suspected CO₂ retention: ABG or VBG. ^[common-practice]
+- No cause after the initial orders: hepatic function panel, ammonia, TSH, magnesium, phosphate, B12 and a urine toxicology screen. ^[common-practice]
+- Digoxin, lithium or an antiepileptic on the medication list: that drug level. ^[common-practice]
+- Focal deficit, head trauma or no cause found: CT head without contrast. ^[common-practice]
+- Fever with meningismus or suspected encephalitis: blood cultures and empiric antimicrobials without waiting for CT or LP. ^[common-practice]
+  - CT head first (altered consciousness), then LP with CSF cell count, protein, glucose, Gram stain, culture and herpes simplex virus PCR ^[common-practice]
+- Seizure concern: EEG. ^[common-practice]
 
 #### Avoid
 - Screening only by orientation or by the Mini-Mental State Examination. They miss delirium, which needs attention testing. ^[common-practice]
@@ -90,63 +97,66 @@ related:
 
 ## Treatment
 1. Treat causes
-   - Find and treat the precipitant: infection, hypoxemia, metabolic derangement, pain, retention, constipation, withdrawal. ^[apa-delirium-2025, nice-delirium-2023]
-   - Medication review: stop or reduce anticholinergics, benzodiazepines, Z-drugs, opioids, H2 blockers and corticosteroids where possible. Substitute safer drugs. ^[ags-beers-2023, apa-delirium-2025]
-   - Treat pain, with acetaminophen and regional or opioid-sparing options before systemic opioids. ^[ags-beers-2023, padis-2018]
-   - Alcohol use: consider withdrawal in daily drinkers. ^[common-practice]
-   - Give thiamine before glucose when Wernicke encephalopathy is possible (see [[neuro-alcohol-withdrawal|alcohol withdrawal]]). ^[common-practice]
+   - Treat each cause found: ^[apa-delirium-2025, nice-delirium-2023]
+     - Antimicrobials for infection, oxygen for hypoxemia, correction of sodium and glucose ^[apa-delirium-2025, nice-delirium-2023]
+     - Bladder drainage for retention, bowel regimen for constipation ^[apa-delirium-2025, nice-delirium-2023]
+   - Stop or reduce anticholinergics, benzodiazepines, Z-drugs, opioids, H2 blockers and corticosteroids where possible. ^[ags-beers-2023, apa-delirium-2025]
+   - Treat pain with acetaminophen and regional or opioid-sparing options before systemic opioids. ^[ags-beers-2023, padis-2018]
+   - Daily drinker: assess for withdrawal with the {{calc:ciwa-ar}} (see [[neuro-alcohol-withdrawal|alcohol withdrawal]]). ^[common-practice]
+   - The {{calc:ciwa-ar|CIWA-Ar}} relies on the patient's answers, so it underrates withdrawal once delirium is present. ^[common-practice]
+   - Give IV thiamine before or with glucose when Wernicke encephalopathy is possible. Never delay glucose for hypoglycemia. ^[common-practice]
 
 2. Nonpharmacologic bundle (first line for everyone)
    - Reorientation, familiar objects, clock and calendar, family presence, consistent staff. ^[nice-delirium-2023, apa-delirium-2025]
    - Glasses, hearing aids and dentures in place. Adequate lighting. ^[nice-delirium-2023]
    - Sleep protection: lights and noise down at night, cluster care, no night-time vitals if stable, daylight and activity by day. ^[nice-delirium-2023, padis-2018]
-   - Early mobilization and avoiding immobility. Avoid tethers (remove catheters, lines and telemetry as soon as possible). ^[nice-delirium-2023, padis-2018]
+   - Early mobilization. Remove catheters, lines and telemetry as soon as possible. ^[nice-delirium-2023, padis-2018]
    - Hydration, nutrition, bowel and bladder care, oxygen when hypoxemic. ^[nice-delirium-2023]
-   - Avoid physical restraints. Use a sitter or family. ^[apa-delirium-2025]
-   - Structured multicomponent programs lower delirium incidence in older adults (OR 0.47). ^[help-meta-2018]
+   - Sitter or family presence for wandering or danger to self. Restraints only as a last resort. ^[apa-delirium-2025]
 
 3. De-escalation
    - Calm, brief, simple communication. Reassure, do not argue with delusions. ^[nice-delirium-2023, apa-delirium-2025]
-   - Address needs (pain, toileting, thirst). ^[nice-delirium-2023, apa-delirium-2025]
-   - Attempt de-escalation before any drug. ^[nice-delirium-2023, apa-delirium-2025]
+   - Address pain, toileting and thirst. ^[nice-delirium-2023, apa-delirium-2025]
 
 4. Antipsychotic for severe agitation (last resort)
-   - Only for severe distress or danger to the patient or others, after de-escalation and cause treatment. Not to prevent delirium or shorten it. ^[apa-delirium-2025, nice-delirium-2023]
-   - Lowest dose, shortest time (usually 1 week or less), with a short-term order that forces reassessment. ^[apa-delirium-2025, nice-delirium-2023]
-   - Before the first dose: baseline {{calc:qtc}}, potassium, magnesium and QT-prolonging drugs reviewed. ^[aha-accf-qt-2010, label-haloperidol-inj-2026]
-   - A {{calc:qtc|QTc}} >500 ms carries a 2- to 3-fold torsades risk. ^[aha-accf-qt-2010, label-haloperidol-inj-2026]
-   - After a dose, a {{calc:qtc|QTc}} >500 ms or a rise of ≥60 ms from baseline calls for prompt action. ^[aha-accf-qt-2010]
-   - Stop or switch the drug, correct electrolytes, review interacting drugs. ^[aha-accf-qt-2010]
-   - Haloperidol injection is not approved for IV use. If given IV, monitor the ECG. ^[label-haloperidol-inj-2026]
+   - Give the lowest dose only for severe distress or danger to the patient or others, after de-escalation and cause treatment. Never to prevent or shorten delirium. ^[apa-delirium-2025, nice-delirium-2023]
+   - Before the first dose: baseline {{calc:qtc}}, potassium and magnesium. Review other QT-prolonging drugs and stop them where possible. ^[aha-accf-qt-2010, label-haloperidol-inj-2026]
+   - Haloperidol is contraindicated in Parkinson disease and dementia with Lewy bodies. ^[label-haloperidol-inj-2026, nice-delirium-2023]
+   - In dementia, every antipsychotic carries a boxed warning for increased mortality. ^[label-haloperidol-inj-2026, label-zyprexa-2026]
+   - Avoid olanzapine IM with a parenteral benzodiazepine. ^[label-zyprexa-2026]
 
    {{dose:haloperidol-delirium-low}}
 
-   - ICU with ECG monitoring (the dose studied in an ICU trial, the 2025 update makes no recommendation for or against antipsychotics). ^[aid-icu-2022, padis-2025]
+   - ICU with continuous ECG monitoring (the label does not approve IV haloperidol, and guidelines differ, see More Information): ^[aid-icu-2022, label-haloperidol-inj-2026]
 
    {{dose:haloperidol-delirium-icu}}
 
-   - Haloperidol is contraindicated in Parkinson disease and dementia with Lewy bodies. ^[label-haloperidol-inj-2026, nice-delirium-2023]
-   - Atypical antipsychotics carry the same dementia boxed warning, and low-dose haloperidol and atypicals have similar efficacy and side-effect rates. ^[label-zyprexa-2026, esaic-pod-2024]
-   - Olanzapine IM should not be combined with a parenteral benzodiazepine. ^[label-zyprexa-2026]
-   - Stop the antipsychotic once symptoms resolve and do not continue it at discharge. ^[apa-delirium-2025, nice-delirium-2023]
+   - If severe agitation persists at the lowest dose, call psychiatry (see Escalation). ^[apa-delirium-2025, common-practice]
 
 5. Sedation in the ventilated patient
-   - Prefer dexmedetomidine to benzodiazepines for sedation, and the 2025 update suggests it over propofol (conditional). ^[padis-2018, padis-2025, apa-delirium-2025]
-   - Dexmedetomidine for delirium-related agitation that prevents weaning or extubation. ^[padis-2018]
+   - Use dexmedetomidine rather than a benzodiazepine, and for delirium-related agitation that prevents weaning or extubation. ^[padis-2018, padis-2025, apa-delirium-2025]
 
    {{dose:dexmedetomidine-icu-delirium}}
 
 6. Benzodiazepines
    - Avoid for delirium. Use for alcohol or sedative withdrawal, catatonia, neuroleptic malignant syndrome, serotonin syndrome and seizure. ^[apa-delirium-2025, esaic-pod-2024]
-   - Melatonin and ramelteon: advised against for prevention or treatment. ^[apa-delirium-2025, padis-2025]
-   - The 2025 update conditionally suggests melatonin. The evidence conflicts. ^[apa-delirium-2025, padis-2025]
+
+7. Melatonin and ramelteon
+   - Do not use to prevent or treat delirium. The guidelines conflict (see More Information). ^[apa-delirium-2025, padis-2025]
 
 ## Monitor
-- Reassess delirium at least every shift and with any change: {{calc:4at}} or {{calc:cam-icu}}, and {{calc:rass}} in the ICU. ^[padis-2018, nice-delirium-2023]
-- After any antipsychotic: sedation, blood pressure, extrapyramidal signs. ^[aha-accf-qt-2010, label-haloperidol-inj-2026]
-- ECG with {{calc:qtc}} after dose increases or if other QT-prolonging drugs are added. ^[aha-accf-qt-2010, label-haloperidol-inj-2026]
-- Expected course: days to weeks. Resolution lags the cause. ^[common-practice]
-- Daily review of the antipsychotic, benzodiazepine and anticholinergic orders. Stop as the delirium clears. ^[apa-delirium-2025]
+- Delirium screen: ^[padis-2018, nice-delirium-2023]
+  - What: {{calc:4at}} on the ward, {{calc:cam-icu}} in the ICU ^[padis-2018, nice-delirium-2023]
+  - When: every shift and with any change ^[padis-2018, nice-delirium-2023]
+  - Action: a positive screen restarts the cause search (Diagnosis) ^[padis-2018, nice-delirium-2023]
+- Sedation depth: {{calc:rass}} with each ICU screen. Target light sedation (most studies defined it as {{calc:rass|RASS}} −2 to +1). ^[padis-2018]
+- {{calc:qtc}} on antipsychotics: ^[aha-accf-qt-2010, label-haloperidol-inj-2026]
+  - When: after any dose increase and when another QT-prolonging drug is added ^[aha-accf-qt-2010, label-haloperidol-inj-2026]
+  - Action: if >500 ms or up ≥60 ms from baseline, stop or switch the drug, correct potassium and magnesium and stop other QT-prolonging drugs ^[aha-accf-qt-2010]
+- Before each repeat antipsychotic dose: sedation, BP and extrapyramidal signs. ^[aha-accf-qt-2010, label-haloperidol-inj-2026]
+- Review antipsychotic, benzodiazepine and anticholinergic orders each day. ^[apa-delirium-2025, nice-delirium-2023]
+  - Action: stop the antipsychotic once symptoms resolve (usually within 1 week) ^[apa-delirium-2025, nice-delirium-2023]
+  - Action: do not continue the antipsychotic at discharge ^[apa-delirium-2025, nice-delirium-2023]
 
 ## Escalation
 - Psychiatry or geriatrics: ^[apa-delirium-2025, common-practice]
@@ -170,7 +180,7 @@ related:
 :::
 
 ### Special Populations: Older adults, postoperative, dementia
-- Older adults: avoid these in those with or at high risk of delirium. ^[ags-beers-2023]
+- Older adults: avoid these in those with or at high risk of delirium. [!also-above] ^[ags-beers-2023]
   - Anticholinergics, antipsychotics, benzodiazepines, Z-drugs ^[ags-beers-2023]
   - Corticosteroids, H2 blockers and opioids ^[ags-beers-2023]
 - Antipsychotics in older adults only if nonpharmacologic options failed and there is substantial risk of harm. ^[ags-beers-2023]
@@ -178,14 +188,14 @@ related:
   - No drug prophylaxis ^[esaic-pod-2024]
   - Multicomponent nonpharmacologic care for all at-risk patients ^[esaic-pod-2024]
   - Low-dose haloperidol only if nonpharmacologic measures fail ^[esaic-pod-2024]
-- Dementia: antipsychotics carry a boxed warning for increased mortality. ^[label-haloperidol-inj-2026]
+- Atypical antipsychotics: low-dose haloperidol and atypicals have similar efficacy and side-effect rates. ^[esaic-pod-2024]
 
 ### Complications: Outcomes
 - Falls, pressure injury, aspiration, longer stay, loss of independence, and persistent cognitive decline. ^[apa-delirium-2025, common-practice]
+- Expected course: days to weeks. Resolution lags the cause. ^[common-practice]
 
 ### After the Acute Phase: Discharge
 - Document delirium in the discharge summary and tell the family. Arrange follow-up of cognition. ^[apa-delirium-2025]
-- Review medicines at transitions and stop antipsychotics started in hospital. ^[apa-delirium-2025]
 
 ### Evidence: Key trials
 - AID-ICU (2022): IV haloperidol in ICU delirium did not significantly raise days alive and out of hospital at 90 days. ^[aid-icu-2022]
@@ -193,6 +203,7 @@ related:
 - MIND-USA (2018): IV haloperidol and ziprasidone did not increase days alive without delirium or coma versus placebo (89% hypoactive delirium). ^[mind-usa-2018]
 - A2B (2025): dexmedetomidine did not speed extubation compared with propofol and caused more agitation and bradycardia. ^[a2b-2025]
 - HELP meta-analysis (2018): multicomponent programs lowered delirium incidence (OR 0.47). ^[help-meta-2018]
+- A {{calc:qtc|QTc}} >500 ms carries a 2- to 3-fold torsades risk. ^[aha-accf-qt-2010, label-haloperidol-inj-2026]
 
 ### Why the Treatment Order: Cause and environment first
 - Delirium is a symptom of a physiologic insult. Treating the cause and removing deliriogenic drugs works, and drugs treat only the behavior. ^[apa-delirium-2025, nice-delirium-2023]

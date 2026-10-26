@@ -22,7 +22,7 @@ export const PROSE_RULES = {
 export const PROSE_ERRORS = new Set(['abbreviation', 'warninghome']);
 // Cards written before the warning-home rule: their findings stay warnings until the specialty sweep reaches the card.
 // Remove a card's id from this list when it is swept, and its findings become errors. Every card not listed gets errors.
-export const WARNING_HOME_UNSWEPT = new Set(['cardio-adhf', 'cardio-atrial-fibrillation', 'cardio-chest-pain', 'cardio-nste-acs', 'endo-dka', 'endo-inpatient-hyperglycemia', 'gi-upper-gi-bleeding', 'heme-anemia', 'heme-anticoagulation-management', 'heme-vte-prophylaxis', 'id-cap', 'id-complicated-uti', 'id-empiric-antimicrobials', 'neuro-alcohol-withdrawal', 'neuro-delirium', 'psych-acute-agitation', 'psych-opioid-withdrawal', 'psych-oud', 'psych-suicide-risk-assessment', 'pulm-dyspnea', 'pulm-vte-diagnosis', 'renal-hypokalemia', 'renal-hyponatremia']);
+export const WARNING_HOME_UNSWEPT = new Set(['cardio-adhf', 'cardio-atrial-fibrillation', 'cardio-chest-pain', 'cardio-nste-acs', 'endo-dka', 'endo-inpatient-hyperglycemia', 'gi-upper-gi-bleeding', 'heme-anemia', 'heme-anticoagulation-management', 'heme-vte-prophylaxis', 'id-cap', 'id-complicated-uti', 'id-empiric-antimicrobials', 'neuro-alcohol-withdrawal', 'psych-acute-agitation', 'psych-opioid-withdrawal', 'psych-oud', 'psych-suicide-risk-assessment', 'pulm-dyspnea', 'pulm-vte-diagnosis', 'renal-hypokalemia', 'renal-hyponatremia']);
 export const MAX_TREATMENT_BULLETS = 25;
 
 // Text a reader sees: words, bold and italic, and the label of a link that has one. Inserts and bare links show another card's or record's words.
