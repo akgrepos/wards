@@ -1,6 +1,6 @@
 # A focused pathway: the workup of anemia in the hospitalized adult as a decision tree that supplements the card.
 # Rule out bleeding, hemolysis and microangiopathy first, then split by MCV and reticulocytes.
-# Format: docs/CONTENT-FORMAT.md, "Pathways".
+# Format: docs/CARD-WRITING-CHEATSHEET.md, "Pathways".
 title: Workup
 card: heme-anemia
 summary: Rule out bleeding and hemolysis, then MCV and reticulocytes

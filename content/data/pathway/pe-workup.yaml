@@ -1,7 +1,7 @@
 # A focused pathway (owner, 2026-10-21): the workup of suspected PE as a decision tree that supplements the card.
 # Unstable patients branch right; stable patients go by clinical probability, PERC, D-dimer with YEARS, then imaging.
 # Text comes from the card's own lines. Grid: "at: [column, row]" and "span" (columns wide).
-# Format: docs/CONTENT-FORMAT.md, "Pathways".
+# Format: docs/CARD-WRITING-CHEATSHEET.md, "Pathways".
 title: PE Workup
 card: pulm-vte-diagnosis
 summary: Probability, PERC, D-dimer with YEARS, CTPA

@@ -129,11 +129,11 @@ function cardFindings(c, { data, byId }) {
 
   // Related cards point both ways.
   const missing = [...new Set(Object.values(c.related ?? {}).flat())].filter((id) => byId.has(id) && !Object.values(byId.get(id).related ?? {}).flat().includes(c.id));
-  add('related', missing, (x) => `${x.join(', ')} ${x.length === 1 ? 'does' : 'do'} not list this card back in related (docs/CONTENT-FORMAT.md, "Consistency rules")`);
+  add('related', missing, (x) => `${x.join(', ')} ${x.length === 1 ? 'does' : 'do'} not list this card back in related (docs/CARD-WRITING-CHEATSHEET.md, "Consistency rules")`);
 
   // An alias written as a bare number in the front matter (988, not "988") is read as a number, and search cannot match it.
   const bare = (c.aliases ?? []).filter((a) => typeof a !== 'string' && /^\d+$/.test(String(a).trim()));
-  add('alias', bare, (x) => `alias ${x.join(', ')} is a bare number; put it in quotes ("${x[0]}") or add words a clinician would search (docs/CONTENT-FORMAT.md, "Consistency rules")`);
+  add('alias', bare, (x) => `alias ${x.join(', ')} is a bare number; put it in quotes ("${x[0]}") or add words a clinician would search (docs/CARD-WRITING-CHEATSHEET.md, "Consistency rules")`);
   return found;
 }
 

@@ -122,8 +122,8 @@ export function checkContent({ systems, cards, data, unchecked = [] }) {
     if (c.group === 'condition' && c.subsection && !c.example) {
       // Subsection names come from a fixed list per system, so near-duplicates ("Heart Failure" and "Heart Failure and Cardiomyopathy") can't creep in.
       const allowedSubs = systems.find((x) => x.id === c.system)?.subsections;
-      if (!allowedSubs) err(where, `subsection vocabulary: system "${c.system}" has no "subsections" list in content/systems.yaml; add the allowed names there first (docs/CONTENT-FORMAT.md, "Consistency rules")`);
-      else if (!allowedSubs.includes(c.subsection)) err(where, `subsection vocabulary: "${c.subsection}" is not an allowed subsection of "${c.system}" (use ${allowedSubs.map((x) => `"${x}"`).join(', ')}, or add the new name to content/systems.yaml first; docs/CONTENT-FORMAT.md, "Consistency rules")`);
+      if (!allowedSubs) err(where, `subsection vocabulary: system "${c.system}" has no "subsections" list in content/systems.yaml; add the allowed names there first (docs/CARD-WRITING-CHEATSHEET.md, "Consistency rules")`);
+      else if (!allowedSubs.includes(c.subsection)) err(where, `subsection vocabulary: "${c.subsection}" is not an allowed subsection of "${c.system}" (use ${allowedSubs.map((x) => `"${x}"`).join(', ')}, or add the new name to content/systems.yaml first; docs/CARD-WRITING-CHEATSHEET.md, "Consistency rules")`);
     }
     if (c.group !== 'condition' && c.subsection) err(where, 'only topic cards have a subsection; reference and medication cards are listed in their own groups');
     if (!systemIds.has(c.system)) err(where, `unknown system "${c.system}"`);
@@ -265,27 +265,27 @@ export function checkContent({ systems, cards, data, unchecked = [] }) {
     // Tags mark a cause, so they live only in Causes, and a cause category never repeats the tag's own words.
     for (const sec of c.sections) {
       for (const b of allBlocks([...sec.blocks, ...(sec.subsections ?? []).flatMap((x) => x.blocks)])) {
-        if (sec.key !== 'causes') for (const r of runs([b])) if (r.inlines.some((x) => x.t === 'tag')) err(where, `tags rule: "${sec.title}" uses a [!cannot-miss] / [!most-common] tag; tags go only on causes in the Causes section (docs/CONTENT-FORMAT.md, "Consistency rules")`);
+        if (sec.key !== 'causes') for (const r of runs([b])) if (r.inlines.some((x) => x.t === 'tag')) err(where, `tags rule: "${sec.title}" uses a [!cannot-miss] / [!most-common] tag; tags go only on causes in the Causes section (docs/CARD-WRITING-CHEATSHEET.md, "Consistency rules")`);
         if (sec.key === 'causes' && b.t === 'list') for (const it of b.items) {
           const cat = it.inlines.find((x) => x.t === 'strong')?.v?.replace(/:\s*$/, '');
-          if (cat && /cannot[\s-]*miss|most[\s-]*common/i.test(cat)) err(where, `tags rule: the cause category "${cat}" repeats a tag; name the category by what the causes are and put [!cannot-miss] / [!most-common] on the cause (docs/CONTENT-FORMAT.md, "Consistency rules")`);
+          if (cat && /cannot[\s-]*miss|most[\s-]*common/i.test(cat)) err(where, `tags rule: the cause category "${cat}" repeats a tag; name the category by what the causes are and put [!cannot-miss] / [!most-common] on the cause (docs/CARD-WRITING-CHEATSHEET.md, "Consistency rules")`);
         }
       }
     }
-    // Tables stay at most four columns wide (docs/CONTENT-FORMAT.md, "Consistency rules") unless listed as a deliberate exception.
+    // Tables stay at most four columns wide (docs/CARD-WRITING-CHEATSHEET.md, "Consistency rules") unless listed as a deliberate exception.
     for (const { title, blocks } of parts) for (const b of allBlocks(blocks)) {
-      if (b.t === 'table' && b.header.length > MAX_TABLE_COLUMNS && !(WIDE_TABLE_EXCEPTIONS[c.id] ?? []).includes(title)) err(where, `table width: "${title}" has a ${b.header.length}-column table; tables are at most ${MAX_TABLE_COLUMNS} columns (split it, or ask the owner for an exception; docs/CONTENT-FORMAT.md, "Consistency rules")`);
+      if (b.t === 'table' && b.header.length > MAX_TABLE_COLUMNS && !(WIDE_TABLE_EXCEPTIONS[c.id] ?? []).includes(title)) err(where, `table width: "${title}" has a ${b.header.length}-column table; tables are at most ${MAX_TABLE_COLUMNS} columns (split it, or ask the owner for an exception; docs/CARD-WRITING-CHEATSHEET.md, "Consistency rules")`);
     }
     for (const [group, ids] of Object.entries(c.related ?? {})) {
       for (const id of ids ?? []) if (!cards.some((k) => k.id === id)) err(where, `related (${group}) lists unknown card "${id}"`);
     }
   }
 
-  // An alias belongs to one card, or search can't tell which card a word means (docs/CONTENT-FORMAT.md, "Consistency rules").
+  // An alias belongs to one card, or search can't tell which card a word means (docs/CARD-WRITING-CHEATSHEET.md, "Consistency rules").
   const aliasOwner = new Map();
   for (const c of cards) for (const a of c.aliases ?? []) {
     const k = String(a).trim().toLowerCase();
-    if (aliasOwner.has(k)) err(c.file, `duplicate alias: "${a}" is also an alias of ${aliasOwner.get(k)}; keep it on the best card or make it more specific (docs/CONTENT-FORMAT.md, "Consistency rules")`);
+    if (aliasOwner.has(k)) err(c.file, `duplicate alias: "${a}" is also an alias of ${aliasOwner.get(k)}; keep it on the best card or make it more specific (docs/CARD-WRITING-CHEATSHEET.md, "Consistency rules")`);
     else aliasOwner.set(k, c.id);
   }
 
@@ -403,24 +403,24 @@ export function checkWarnings({ cards, data, unchecked = [] }, { today = new Dat
 
   // Sources nothing cites.
   const cited = JSON.stringify([cards, { ...data, source: undefined }]);
-  for (const [id, s] of Object.entries(data.source ?? {})) if (!cited.includes(`"${id}"`)) warn(s._file ?? id, `unused source: "${id}" is cited by no card or data item; delete it if it is orphaned (docs/CONTENT-FORMAT.md, "Consistency rules")`);
+  for (const [id, s] of Object.entries(data.source ?? {})) if (!cited.includes(`"${id}"`)) warn(s._file ?? id, `unused source: "${id}" is cited by no card or data item; delete it if it is orphaned (docs/CARD-WRITING-CHEATSHEET.md, "Consistency rules")`);
 
   // A drug record no dose points to does nothing.
   const pointedAt = new Set(Object.values(data.dose ?? {}).map((d) => d.drug));
   for (const [id, d] of Object.entries(data.drug ?? {})) if (!pointedAt.has(id)) warn(d._file ?? id, `unused drug record: no dose has "drug: ${id}"; point its doses at it or delete it (docs/DATA-TYPES.md, 2b)`);
 
   for (const c of cards) {
-    if ((c.aliases ?? []).length > MAX_ALIASES) warn(c.file, `alias bloat: ${c.aliases.length} aliases (over ${MAX_ALIASES}); keep only the words a clinician would actually search (docs/CONTENT-FORMAT.md, "Consistency rules")`);
+    if ((c.aliases ?? []).length > MAX_ALIASES) warn(c.file, `alias bloat: ${c.aliases.length} aliases (over ${MAX_ALIASES}); keep only the words a clinician would actually search (docs/CARD-WRITING-CHEATSHEET.md, "Consistency rules")`);
     // Planned links: [[card]] to a card that doesn't exist yet. The app shows them as plain words.
     const planned = new Set();
     const scan = (blocks) => { for (const b of allBlocks(blocks)) for (const r of runs([b])) for (const x of r.inlines) if (x.t === 'link' && !ids.has(x.id)) planned.add(x.id); };
     for (const sec of c.sections) scan([...sec.blocks, ...(sec.subsections ?? []).flatMap((x) => x.blocks)]);
     if (c.emergency) scan(c.emergency.blocks);
     for (const x of c.definition?.inlines ?? []) if (x.t === 'link' && !ids.has(x.id)) planned.add(x.id);
-    if (planned.size) warn(c.file, `planned links: [[${[...planned].join(']], [[')}]] point to cards that don't exist yet; they show as plain text until the card is written (docs/CONTENT-FORMAT.md, "Consistency rules")`);
+    if (planned.size) warn(c.file, `planned links: [[${[...planned].join(']], [[')}]] point to cards that don't exist yet; they show as plain text until the card is written (docs/CARD-WRITING-CHEATSHEET.md, "Consistency rules")`);
     if (c.checked?.date && /^\d{4}-\d{2}-\d{2}$/.test(c.checked.date)) {
       const limit = new Date(today); limit.setMonth(limit.getMonth() - REVIEW_MAX_AGE_MONTHS);
-      if (new Date(c.checked.date) < limit) warn(c.file, `checked ${c.checked.date} is over ${REVIEW_MAX_AGE_MONTHS} months old; re-check the card against the newest guidelines and update the date (docs/CONTENT-FORMAT.md, "Consistency rules")`);
+      if (new Date(c.checked.date) < limit) warn(c.file, `checked ${c.checked.date} is over ${REVIEW_MAX_AGE_MONTHS} months old; re-check the card against the newest guidelines and update the date (docs/CARD-WRITING-CHEATSHEET.md, "Consistency rules")`);
     }
     // Every dose in Do Now should also be in Treatment, so the page and the emergency never disagree.
     const treatment = c.sections.find((s) => s.key === 'treatment');
@@ -433,7 +433,7 @@ export function checkWarnings({ cards, data, unchecked = [] }, { today = new Dat
       const doNow = new Set();
       emergencySteps(c.emergency.blocks, []).forEach((st) => stepDoses(st).forEach((d) => doNow.add(d)));
       const absent = [...doNow].filter((d) => !have.has(d));
-      if (absent.length) warn(c.file, `Do Now dose not in Treatment: ${absent.join(', ')}; the Treatment section should list every Do Now dose (docs/CONTENT-FORMAT.md, "Consistency rules")`);
+      if (absent.length) warn(c.file, `Do Now dose not in Treatment: ${absent.join(', ')}; the Treatment section should list every Do Now dose (docs/CARD-WRITING-CHEATSHEET.md, "Consistency rules")`);
     }
   }
   return out;

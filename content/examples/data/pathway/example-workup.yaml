@@ -1,4 +1,4 @@
-# Example pathway (format: docs/CONTENT-FORMAT.md, "Pathways"): a decision tree that supplements its card.
+# Example pathway (format: docs/CARD-WRITING-CHEATSHEET.md, "Pathways"): a decision tree that supplements its card.
 # Boxes sit on a grid ("at: [column, row]", "span" columns wide); a question is a heading and its answers sit side
 # by side in the row below it; only questions branch. Text comes from the card; a line that is only {{dose:…}}
 # shows the card's own dose row.

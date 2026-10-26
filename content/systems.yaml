@@ -1,6 +1,6 @@
 # The 16 systems, in display order. Card files name their system by id.
 # "subsections" is the allowed list of a system's condition-card subsections (a card's `subsection` must be one of them);
-# to use a new name, add it here first (docs/CONTENT-FORMAT.md).
+# to use a new name, add it here first (docs/CARD-WRITING-CHEATSHEET.md).
 - { id: cardio, title: "Cardiology", subsections: ["Arrhythmias", "Heart Failure and Cardiomyopathy", "Ischemic Heart Disease"] }
 - { id: pulm, title: "Pulmonology", subsections: ["Obstructive Lung Disease"] }
 - { id: crit, title: "Critical Care", subsections: ["Shock and Sepsis"] }

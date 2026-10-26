@@ -73,8 +73,8 @@ export const CARD_TYPES = {
     ],
     more: [S('microbiology', 'Microbiology'), EVIDENCE],
   },
-  // Reserved: procedure, score, exam and test (and the organism and communication variants above) have no cards yet.
-  // Build when the first card needs it (docs/CARD-TYPES.md); content:check still accepts them so a first card is a content change only.
+  // Not documented, no cards yet: procedure, score, exam and test (and the organism and communication variants above).
+  // A first card of one of these stops and asks the owner; content:check still accepts them so a first card is a content change only.
   procedure: {
     label: 'Procedure',
     sections: [
@@ -166,7 +166,7 @@ export const DRUG_FIELDS = ['name', 'class', 'brands', 'aliases', 'boxed_warning
 // The title of a dose row on a medication card (the dose's `indication`) is at most this many characters; longer wording goes in `indication_detail`.
 export const MAX_INDICATION_LENGTH = 70;
 
-// Tables are at most four columns wide so they stay readable on a phone (docs/CONTENT-FORMAT.md, "Consistency rules"). A wider one is
+// Tables are at most four columns wide so they stay readable on a phone (docs/CARD-WRITING-CHEATSHEET.md, "Consistency rules"). A wider one is
 // allowed only when it is listed here, by card id and section title, as a deliberate owner-approved exception.
 export const MAX_TABLE_COLUMNS = 4;
 export const WIDE_TABLE_EXCEPTIONS = { 'renal-iv-fluids': ['Choosing an Option'] };

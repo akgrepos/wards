@@ -19,7 +19,7 @@ Settled 2026-10-17. **Data types** are the shared pieces of information that eac
 
 ## The 16 data types
 
-**Built:** source, dose, drug record, regimen, threshold, criteria set, pathway, coverage, media, calculator link. **Reserved: build when the first card needs it:** reference value, score (calculators use `calc`), grading scale, term, clinical finding, test accuracy, interaction, recommendation.
+**Built:** source, dose, drug record, regimen, threshold, criteria set, pathway, coverage, media, calculator link.
 
 **Where a new item lives.** A threshold, criteria set or regimen used by one card is written inside that card and shared only when a second card uses it. Exception: criteria that back an in-app calculator stay shared files. Existing shared items do not move.
 
@@ -84,7 +84,7 @@ A single named cutoff that drives decisions.
 - Kept separate so the same cutoff is never written two ways
 
 ### 6. Criteria set
-Definitions, criteria and staging are always in the app, in a titled box; scores and formulas follow CONTENT-FORMAT, "Scores, criteria and formulas".
+Definitions, criteria and staging are always in the app, in a titled box; scores and formulas follow CARD-WRITING-CHEATSHEET, "Scores, criteria and formulas".
 A formal definition or diagnostic criteria with their logic.
 - Fields: name · **title** (required; what it defines + source year, e.g. "SIADH diagnostic criteria, 2013"; the year must be a cited source's) · items (major/minor or lettered) · logic (e.g. "2 major, or 1 major + 3 minor") · stages or grades · sources
 - Examples: KDIGO AKI stages, Sepsis-3, modified Duke criteria, SIRS
@@ -92,7 +92,7 @@ A formal definition or diagnostic criteria with their logic.
 - Home: the topic card it defines. Inserted elsewhere.
 
 ### 7. Score
-Which scores and formulas get an in-app version, and which only an MDCalc link: see CONTENT-FORMAT, "Scores, criteria and formulas".
+Which scores and formulas get an in-app version, and which only an MDCalc link: see CARD-WRITING-CHEATSHEET, "Scores, criteria and formulas".
 Everything a calculator needs.
 - Fields: inputs · calculation · result · validated population · limitations · sources
 - Built (2026-10-21): stored inside the score's calculator file (`content/data/calc/<id>.yaml`, 12b) as `sources` (required) plus a `calculator` block; the MDCalc link stays the last row. Tapping the score's name, or the "Calculate" button in its criteria box (same id), opens a bottom sheet; nothing is saved.
@@ -111,7 +111,7 @@ Ordinal scales used in exams and documentation.
 ### 9. Pathway (focused flowchart)
 A short decision tree for one sequential task on a card (2026-10-20; decision-tree look 2026-10-21): diagnostic (a workup), treatment, or mixed. Boxes may end in a diagnosis, a next test or a treatment. It supplements the card; a card may have several.
 - Fields: title · card · summary (one line for its rows) · columns · start · levels (numbered rows, `{ title, row }`) · nodes (kinds: start, question, do, urgent, note, result), each placed on a grid (`at: [column, row]`, `span` columns wide) · questions' answers (label, optional detail, its own grid place, next box) · text lines from the card (a line that is only `{{dose:id}}` shows the card's own dose row) · at most two links per box · sources
-- Display: its own full-screen page; a question is a short heading and its answers are decision buttons side by side under it, each leading to another question or to a step box; tap any answer at any time to choose it (filled with a checkmark; the other answers turn gray and everything only they lead to fades; tap again to undo; Clear forgets all); lines leave a box straight down, turn once just above the box they point to and join there; pinch or − + to zoom; Current Step frames the next unanswered question. Format: CONTENT-FORMAT.md, "Pathways".
+- Display: its own full-screen page; a question is a short heading and its answers are decision buttons side by side under it, each leading to another question or to a step box; tap any answer at any time to choose it (filled with a checkmark; the other answers turn gray and everything only they lead to fades; tap again to undo; Clear forgets all); lines leave a box straight down, turn once just above the box they point to and join there; pinch or − + to zoom; Current Step frames the next unanswered question. Format: CARD-WRITING-CHEATSHEET.md, "Pathways".
 - Home: its own page, opened from a "Pathway" row under its card's title and from the Library's Pathways; never inserted into a card
 
 ### 10. Coverage

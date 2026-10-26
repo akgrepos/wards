@@ -1,6 +1,6 @@
 # A focused pathway (owner, 2026-10-21): the first-hour workup of acute dyspnea as a decision tree that supplements the card.
 # Stabilize first, then tests, then route to the card that owns the cause. Text comes from the card's own lines.
-# Format: docs/CONTENT-FORMAT.md, "Pathways".
+# Format: docs/CARD-WRITING-CHEATSHEET.md, "Pathways".
 title: First-Hour Workup
 card: pulm-dyspnea
 summary: Stabilize, core tests, route to the cause

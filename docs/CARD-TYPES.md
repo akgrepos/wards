@@ -1,6 +1,6 @@
 # Card types
 
-Settled 2026-10-17; page layout updated 2026-10-18 for the approved redesign (topic pages), and 2026-10-19 for the AKI card redesign (sources per line, one color per job, pathways as their own pages). Defines **3 card types in use (Topic, Reference, Medication)**, each with a fixed set of sections in a fixed order; five more types are reserved (below). Condition and Approach were merged into one Topic type on 2026-10-24. Shared data (doses, lab values, scores, criteria and similar) appears as **⟨inserted⟩** blocks: content that lives elsewhere and is shown in place, never retyped. How to write the files: `CONTENT-FORMAT.md`.
+Settled 2026-10-17; page layout updated 2026-10-18 for the approved redesign (topic pages), and 2026-10-19 for the AKI card redesign (sources per line, one color per job, pathways as their own pages). Defines **3 card types in use (Topic, Reference, Medication)**, each with a fixed set of sections in a fixed order; a new kind of card stops and asks the owner. Condition and Approach were merged into one Topic type on 2026-10-24. Shared data (doses, lab values, scores, criteria and similar) appears as **⟨inserted⟩** blocks: content that lives elsewhere and is shown in place, never retyped. How to write the files: the cheat sheet (Part 2).
 
 ---
 
@@ -46,7 +46,7 @@ Settled 2026-10-17; page layout updated 2026-10-18 for the approved redesign (to
 - Guideline recommendation grades (e.g. "Class I, Level A") are not shown (decided)
 
 **Emergency page (Rapids)** (2026-10-19, Phase 4)
-- For a topic with a `## Do Now` section (`CONTENT-FORMAT.md`). Listed in the Rapids tab by system, with its one-line hint.
+- For a topic with a `## Do Now` section (`CARD-WRITING-CHEATSHEET.md`, "An emergency (Do Now)"). Listed in the Rapids tab by system, with its one-line hint.
 - Red "Rapids" tag, title, **Start Timed Mode** (accent color, not red), then **Do Now**: red numbered steps, each with its "If …" condition line, a Check box for what to check first, one drug per dose row (each opens its dose sheet; an alternative shows under it), warnings as tags, short notes; Note boxes after the steps; one source line for the section (Sources UKKA '26 · KDIGO '20 …).
 - Top right: the Topics tab's symbol opens the topic pop-up (At a Glance, then Open Full Topic). One pop-up at a time.
 - **Timed Mode** (full screen, no tab bar): the elapsed time in a red timer capsule at the top; Minimize (chevron down) keeps it running in a bar above the tab bar on every screen, which returns to the same step; progress, the current step's condition, Check box and large doses ("Give", "Then Give"), Skip and Mark Given (accent), "Mark … Given Instead" for an alternative; Due Next (from the topic's recheck times) and a log with clock time and time since start, with Undo. End Timed Mode (red text) asks first, then shows a summary: what was given and when, what's due next, Copy Summary and Done. Kept only on the phone, cleared on Done; the timer survives the app closing.
@@ -55,7 +55,7 @@ Settled 2026-10-17; page layout updated 2026-10-18 for the approved redesign (to
 
 ## Part 2 — The card types
 
-**In use:** Topic, Reference, Medication. **Reserved: build when the first card needs it:** Procedure, Score, Physical exam, Diagnostic test, and the Organism and Communication variants of Reference. Their layouts below were approved in principle; adjust them when the first card of each is written. The score calculator is already covered by shared `calc` items, and a score or test is a Reference card until a first one proves otherwise.
+**In use:** Topic, Reference, Medication. A new type, variant or section kind stops and asks the owner. A score or test is a Reference card until the owner approves a new type.
 
 Each type lists its sections in order (after At a Glance), then its More Information subsections. Pearls, Related and Sources end every card. The substructure under each section is guidance for what goes there.
 
@@ -76,33 +76,18 @@ A disease or syndrome (a **condition**), or a symptom, sign or abnormal result (
 12. Pearls · Related · Sources
 
 ### 2. Reference card [R]
-Interpretation guides, protocols and principles, in fixed variants so they still feel familiar. More Information: Microbiology (organism variant) · Evidence.
+Interpretation guides, protocols and principles, in fixed variants so they still feel familiar. More Information: Evidence.
 
 - **Interpretation variant** (ECG, acid–base, PFTs, urinalysis, chest x-ray, fluid analysis): Normal Values ⟨inserted⟩ · Stepwise Method (numbered) · Patterns and What They Mean (table) · Worked Examples (ECGs and images ⟨inserted⟩)
 - **Protocol variant** (IV fluids, electrolyte repletion, insulin, VTE prophylaxis, transfusion, anticoagulation management): Indications · Choosing an Option (comparison) · Dosing and Protocol ⟨inserted⟩ · Monitoring and Adjustment · Special Populations
-- **Organism variant** (MRSA, Pseudomonas, ESBL organisms, Candida, and others): Where It Comes From and Risk Factors · Infections It Causes (links) · Resistance Patterns · Treatment Options (⟨inserted⟩ coverage; doses ⟨inserted⟩) · Infection-Control Precautions; Microbiology under More Information
 - **Chart variant** (antimicrobial coverage, empiric therapy by infection, glucocorticoid equivalents, opioid conversions): How to Read the Chart · Chart (a matrix generated from shared data, never typed by hand) · Caveats
-- **Communication variant** (goals of care, code status, capacity): When It Applies · Framework (steps) · Suggested Phrasing · Legal and Ethical Points (general, not state-specific)
 
-### 3. Procedure card [P] (reserved)
-1. **At a Glance** · 2. **Indications** · 3. **Contraindications** (absolute · relative) · 4. **Preparation** (consent points, equipment checklist, positioning, landmarks and ultrasound views) · 5. **Technique** (numbered steps, one action per step, with images) · 6. **After the Procedure** (care; samples and how to interpret them) · 7. **Complications** (frequency · recognition · management) · 8. **Troubleshooting** · 9. **Procedure Note Checklist** (indication, consent, time-out, site and laterality, technique and ultrasound use, samples sent, estimated blood loss, complications, plan) · More Information: Evidence · Pearls · Related · Sources
-
-### 4. Medication card [M]
+### 3. Medication card [M]
 The **only home** for doses. Each indication's dose is a dose item that other cards insert as a dose row.
 
 - **Single drug:** At a Glance · **Dosing** (one dose row per indication) · **Dose Adjustment** (kidney function by CrCl or eGFR band, liver function, dialysis, weight) · **Administration** (IV rates, dilution, timing, oral notes) · **Contraindications and Boxed Warnings** · **Adverse Effects** (common · serious) · **Interactions** (major only, plus Check Interactions) · **Monitor** (what · when · target) · More Information: Pregnancy and Lactation · Overdose and Reversal · Evidence. Header extras: generic name (common brand names) · class. Sources: guideline and official prescribing information.
 - **Drug class variant** (e.g. beta-lactams, DOACs, loop diuretics, SGLT2 inhibitors): At a Glance · Mechanism and Shared Effects · Members Compared (table, links to each drug card) · Class-Wide Cautions · Choosing Within the Class. **No doses on class cards.**
 
-### 5. Score / calculator card [S] (reserved)
-At a Glance (what it estimates and for whom) · **When to Use** (the population it was validated in) · **Calculator** (interactive; MDCalc link) · **Interpretation** (score → risk → action) · More Information: Limitations · Evidence (derivation and validation studies, and the guideline that recommends it)
-
-### 6. Physical exam card [E] (reserved)
-Supports documentation wording. At a Glance · **Technique** · **Normal Findings** (documentation-ready wording) · **Abnormal Findings** (finding · wording · what it suggests, likelihood ratios where studied · link) · **Grading Scales** ⟨inserted⟩ · **Special Maneuvers** (how · positive finding · accuracy) · More Information: Evidence
-
-### 7. Diagnostic test card [D] (reserved)
-How to use a test; lives in Library › Labs. At a Glance · **When to Order** (and when not to) · **Interpretation** (cutoffs and reference values ⟨inserted⟩; adjusted thresholds) · **Test Accuracy** (sensitivity, specificity, likelihood ratios, by setting) · **False Positives and False Negatives** · **Practical Notes** (sample, timing, turnaround, repeat testing) · More Information: What It Measures · Evidence
-
-The layouts for the reserved types were proposed with the redesign and approved by the owner (2026-10-18); adjust them when the first card of each type is written. The Organism and Communication variants of Reference are reserved the same way.
 
 ---
 
@@ -120,7 +105,6 @@ The layouts for the reserved types were proposed with the redesign and approved 
 
 ## Decisions (2026-10-17)
 1. Recommendation grades: **not shown**; source number only.
-2. Procedure cards (reserved): **include a short procedure-note checklist**.
 3. Key points (now At a Glance): **3–6 bullets**.
 4. Epidemiology and pathophysiology: **collapsed by default** (now under More Information).
 5. Additions: **"Common initial orders" in approach cards**; no discharge checklist for now.
@@ -136,7 +120,7 @@ The layouts for the reserved types were proposed with the redesign and approved 
 1. No "Based on" line in the header; `based_on` stays optional in the front matter (not shown).
 2. Nested bullets (one level) for items with sub-items; links woven into the sentence.
 3. Approach cards: first-line tests live in Diagnosis with what each result means; Common initial orders holds only non-test orders plus a link to those tests.
-4. Condition cards: Causes as one grouped list; "cannot miss" as a tag (only on causes, never as a category name; CONTENT-FORMAT "Consistency rules").
+4. Condition cards: Causes as one grouped list; "cannot miss" as a tag (only on causes, never as a category name; CARD-WRITING-CHEATSHEET "Consistency rules").
 5. Onset and duration comparisons open from a row (`:::onset`), not a table on the page.
 
-- **Consistency (2026-10-23):** `subsection` comes from the system's list in `content/systems.yaml`; tables are at most four columns; every card follows CONTENT-FORMAT "Consistency rules".
+- **Consistency (2026-10-23):** `subsection` comes from the system's list in `content/systems.yaml`; tables are at most four columns; every card follows CARD-WRITING-CHEATSHEET "Consistency rules".

@@ -1,7 +1,7 @@
 # A focused pathway (owner, 2026-10-20; decision-tree layout 2026-10-21): the cause workup of AKI as a decision tree
 # that supplements the card. Confirm, then postrenal, prerenal and intrinsic causes; each question's answers sit side
 # by side in the row below it. Text and doses come from the card's own lines and dose items.
-# Format: docs/CONTENT-FORMAT.md, "Pathways".
+# Format: docs/CARD-WRITING-CHEATSHEET.md, "Pathways".
 title: Cause Workup
 card: renal-aki
 summary: Confirm, then postrenal, prerenal, intrinsic
