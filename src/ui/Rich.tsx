@@ -2,7 +2,7 @@ import { createContext, Fragment, useContext, useState, type ReactNode } from 'r
 import { AKG } from '../design/akg';
 import { content, getCard, titleCase, isMarkerSource, pathwaysFor, useCardLoad } from '../content';
 import type { Block, Calc, Card, ContainerItem, Criteria, Dose, Drug, Inline, ListItem, Regimen, Section, Source, Threshold } from '../content/types';
-import { parseInline, TAGS } from '../../scripts/content/inline.mjs';
+import { parseInline, TAGS, ALSO_ABOVE } from '../../scripts/content/inline.mjs';
 import { onsetRows } from '../../scripts/content/onset.mjs';
 import { slug } from '../../scripts/content/pathway.mjs';
 import { href, parseRoute } from '../router';
@@ -523,6 +523,7 @@ export function Inlines({ xs, plain }: { xs: Inline[]; plain?: boolean }) {
     <>
       {xs.map((x, i) => {
         if (x.t === 'insert') return <Insert key={i} kind={x.kind} id={x.id} label={x.label} plain={plain} />;
+        if (x.t === 'tag' && x.v === ALSO_ABOVE) return null;
         if (x.t === 'tag') return <AKG.Tag key={i} className="inline-tag" variant={x.v === 'cannot-miss' ? 'critical' : 'neutral'}>{TAGS[x.v] ?? x.v}</AKG.Tag>;
         if (x.t !== 'link') return x.t === 'strong' ? <strong key={i}>{x.v}</strong> : x.t === 'em' ? <em key={i}>{x.v}</em> : <Fragment key={i}>{x.v}</Fragment>;
         const c = getCard(x.id);
@@ -540,7 +541,7 @@ export const RichText = ({ text }: { text?: string }) => (text ? <Inlines xs={pa
 // A "Cannot miss" or "Most common" chip sits at the end of its bullet, not inside the sentence. A bullet with two chips
 // (one per group of causes) keeps each where it is written, since the end could not say which group it belongs to.
 function Item({ it }: { it: ListItem }) {
-  const tags = it.inlines.filter((x) => x.t === 'tag');
+  const tags = it.inlines.filter((x) => x.t === 'tag' && x.v !== ALSO_ABOVE);
   const atEnd = tags.length === 1;
   return (
     <li>

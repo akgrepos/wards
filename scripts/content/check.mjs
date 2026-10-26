@@ -2,7 +2,7 @@
 // Each rule comes from docs/CARD-TYPES.md and docs/DATA-TYPES.md.
 import { checkVerification } from './verification.mjs';
 import { CARD_TYPES, CALC_FIELDS, MDCALC_URL, DATA_TYPES, DOSE_FIELDS, CALC_FORMULAS, REGIMEN_FIELDS, REGIMEN_OPTION_FIELDS, SHARED_SECTIONS, UNITS, DOSE_IN_TEXT, MAX_TABLE_COLUMNS, WIDE_TABLE_EXCEPTIONS, MAX_ALIASES, REVIEW_MAX_AGE_MONTHS, CHECKED_BY, MAX_INDICATION_LENGTH, DRUG_FIELDS } from './schema.mjs';
-import { TAGS, parseInline } from './inline.mjs';
+import { TAGS, ALSO_ABOVE, parseInline } from './inline.mjs';
 import { onsetMinutes } from './onset.mjs';
 import { emergencySteps, offsetMinutes, stepDoses } from './emergency.mjs';
 import { checkPathway } from './pathway.mjs';
@@ -229,7 +229,7 @@ export function checkContent({ systems, cards, data, unchecked = [] }) {
             if (!target) { /* planned link: see checkWarnings */ }
             else if (x.section && !target.sections.some((t) => t.key === x.section || t.subsections?.some((u) => u.key === x.section))) err(where, `"${title}" links to unknown section "${x.section}" of "${x.id}"`);
           }
-          if (x.t === 'tag' && !TAGS[x.v]) err(where, `"${title}": unknown tag "[!${x.v}]" (use ${Object.keys(TAGS).map((k) => `[!${k}]`).join(' or ')})`);
+          if (x.t === 'tag' && !TAGS[x.v] && x.v !== ALSO_ABOVE) err(where, `"${title}": unknown tag "[!${x.v}]" (use ${Object.keys(TAGS).map((k) => `[!${k}]`).join(' or ')})`);
         }
       }
       for (const b of allBlocks(blocks)) {
@@ -266,7 +266,7 @@ export function checkContent({ systems, cards, data, unchecked = [] }) {
     // Tags mark a cause, so they live only in Causes, and a cause category never repeats the tag's own words.
     for (const sec of c.sections) {
       for (const b of allBlocks([...sec.blocks, ...(sec.subsections ?? []).flatMap((x) => x.blocks)])) {
-        if (sec.key !== 'causes') for (const r of runs([b])) if (r.inlines.some((x) => x.t === 'tag')) err(where, `tags rule: "${sec.title}" uses a [!cannot-miss] / [!most-common] tag; tags go only on causes in the Causes section (docs/CARD-WRITING-CHEATSHEET.md, "Consistency rules")`);
+        if (sec.key !== 'causes') for (const r of runs([b])) if (r.inlines.some((x) => x.t === 'tag' && !(x.v === ALSO_ABOVE && sec.key === 'more'))) err(where, `tags rule: "${sec.title}" uses a [!cannot-miss] / [!most-common] tag; tags go only on causes in the Causes section (docs/CARD-WRITING-CHEATSHEET.md, "Consistency rules")`);
         if (sec.key === 'causes' && b.t === 'list') for (const it of b.items) {
           const cat = it.inlines.find((x) => x.t === 'strong')?.v?.replace(/:\s*$/, '');
           if (cat && /cannot[\s-]*miss|most[\s-]*common/i.test(cat)) err(where, `tags rule: the cause category "${cat}" repeats a tag; name the category by what the causes are and put [!cannot-miss] / [!most-common] on the cause (docs/CARD-WRITING-CHEATSHEET.md, "Consistency rules")`);

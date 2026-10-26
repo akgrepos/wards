@@ -166,3 +166,23 @@ describe('capitalization rule (warning)', () => {
     expect(rules(card('1. Give fluids early\n  - 1 L now'))).toEqual([]);
   });
 });
+
+describe('warning-home rule (error)', () => {
+  const more = (lines, extra = {}) => ({ ...card('- x'), id: 'new-card', sections: [{ key: 'more', title: 'More Information', blocks: parseBlocks(lines.split('\n')), subsections: [] }], ...extra });
+  it('is an error for an unmarked danger line in More Information', () => {
+    expect(found(more('- Fondaparinux is contraindicated.'))[0]).toMatchObject({ rule: 'warninghome', severity: 'error' });
+    expect(rules(more('- Do not restart the drug.'))).toEqual(['warninghome']);
+    expect(rules(more('- Avoid NSAIDs.'))).toEqual(['warninghome']);
+  });
+  it('passes a line marked [!also-above], its sub-bullets, and lines with no danger word', () => {
+    expect(rules(more('- Fondaparinux is contraindicated. [!also-above]'))).toEqual([]);
+    expect(rules(more('- Never use these: [!also-above]\n  - drug a'))).toEqual([]);
+    expect(rules(more('- Evidence is mixed.'))).toEqual([]);
+  });
+  it('does not read Treatment', () => {
+    expect(rules(card('- Avoid NSAIDs.'))).toEqual([]);
+  });
+  it('stays a warning for a card on the unswept list', () => {
+    expect(found(more('- Avoid NSAIDs.', { id: 'cardio-adhf' }))[0].severity).toBe('warn');
+  });
+});

@@ -4,6 +4,8 @@
 // Calculators: {{calc:curb-65}} or {{calc:anion-gap|Anion gap}} (the words shown, when they differ from the calculator's own).
 // Tags: [!cannot-miss], [!most-common] (a small label after a cause).
 export const TAGS = { 'cannot-miss': 'Cannot miss', 'most-common': 'Most common' };
+// An author marker, never shown: a warning line in More Information that Treatment or Monitor already carries ([!also-above]).
+export const ALSO_ABOVE = 'also-above';
 
 export function parseInline(text) {
   const out = [];

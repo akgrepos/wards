@@ -3,6 +3,7 @@
 // Only card prose is read: the text of lines, definitions, table headings and step titles. Dose, calculator and other inserts,
 // ids, links' targets and the shared data files are never read, so a unit string in a dose record is never flagged.
 import { allBlocks, runs } from './walk.mjs';
+import { ALSO_ABOVE } from './inline.mjs';
 
 const DOC = '(docs/CARD-WRITING-CHEATSHEET.md, "Abbreviations" and "Writing style")';
 
@@ -15,9 +16,13 @@ export const PROSE_RULES = {
   monitor: 'monitor rule',
   nesting: 'nesting rule',
   caps: 'capitalization rule',
+  warninghome: 'warning-home rule',
 };
 // Errors fail the build. Everything else is a warning.
-export const PROSE_ERRORS = new Set(['abbreviation']);
+export const PROSE_ERRORS = new Set(['abbreviation', 'warninghome']);
+// Cards written before the warning-home rule: their findings stay warnings until the specialty sweep reaches the card.
+// Remove a card's id from this list when it is swept, and its findings become errors. Every card not listed gets errors.
+export const WARNING_HOME_UNSWEPT = new Set(['cardio-adhf', 'cardio-atrial-fibrillation', 'cardio-chest-pain', 'cardio-nste-acs', 'endo-dka', 'endo-inpatient-hyperglycemia', 'gi-upper-gi-bleeding', 'heme-anemia', 'heme-anticoagulation-management', 'heme-vte-prophylaxis', 'id-cap', 'id-complicated-uti', 'id-empiric-antimicrobials', 'neuro-alcohol-withdrawal', 'neuro-delirium', 'psych-acute-agitation', 'psych-opioid-withdrawal', 'psych-oud', 'psych-suicide-risk-assessment', 'pulm-dyspnea', 'pulm-vte-diagnosis', 'renal-hypokalemia', 'renal-hyponatremia']);
 export const MAX_TREATMENT_BULLETS = 25;
 
 // Text a reader sees: words, bold and italic, and the label of a link that has one. Inserts and bare links show another card's or record's words.
@@ -68,6 +73,9 @@ export function vagueIn(text) {
 // "medication" used on its own, as a stand-in for a named drug. Bold labels ("Medications:") name a Causes group and are fine.
 const MEDICATION = /\bmedications?\b(?!\s+(?:reconciliation|list|history|adherence|error|safety))/i;
 
+// Words that make a More Information line a warning someone could need to act safely.
+const DANGER = /\b(?:contraindicat\w*|do not|don't|must not|never|avoid(?:s|ed)?|boxed warning|black[- ]box)\b/i;
+
 // Heading and title style: sentence case, so a second capitalised word in a short title or heading is the tell.
 export function titleCase(t) {
   const words = t.replace(/[(),:;.]/g, ' ').split(/\s+/).filter(Boolean);
@@ -116,7 +124,7 @@ const jaccard = (a, b) => { let n = 0; for (const w of a) if (b.has(w)) n++; ret
 
 function cardFindings(c, { cards }) {
   const found = [];
-  const add = (rule, items, describe) => { if (items.length) found.push({ rule, severity: PROSE_ERRORS.has(rule) ? 'error' : 'warn', count: items.length, message: `${c.file}: ${PROSE_RULES[rule]}, ${describe(items)}` }); };
+  const add = (rule, items, describe) => { if (items.length) found.push({ rule, severity: PROSE_ERRORS.has(rule) && !(rule === 'warninghome' && WARNING_HOME_UNSWEPT.has(c.id)) ? 'error' : 'warn', count: items.length, message: `${c.file}: ${PROSE_RULES[rule]}, ${describe(items)}` }); };
   const where = places(c);
 
   // ERROR: unsafe abbreviations, in definitions, lines, table headings and step titles.
@@ -126,6 +134,21 @@ function cardFindings(c, { cards }) {
   const banned = [];
   for (const { section, text } of texts) for (const [name, re, fix] of BANNED) { const m = text.match(re); if (m) banned.push({ name, fix, section, near: show(text.slice(Math.max(0, m.index - 15), m.index + m[0].length + 15).trim()) }); }
   add('abbreviation', banned, (x) => `${x.length} unsafe abbreviation${x.length === 1 ? '' : 's'}: ${x.slice(0, 4).map((b) => `${b.name} in ${b.section} near ${b.near} (${b.fix})`).join('; ')}${x.length > 4 ? '; …' : ''} ${DOC}`);
+
+  // ERROR: a safety warning that lives only in More Information. The author marks the line [!also-above] to say Treatment or
+  // Monitor already carries it (a judgment the check cannot make); an unmarked danger line fails the build.
+  const homeless = [];
+  for (const s of c.sections.filter((q) => q.key === 'more')) {
+    for (const b of [...allBlocks(s.blocks), ...(s.subsections ?? []).flatMap((x) => [...allBlocks(x.blocks)])]) {
+      const lines = b.t === 'list' ? b.items.flatMap((i) => [i, ...i.children.map((k) => ({ ...k, parent: i }))]) : b.t === 'paragraph' ? [b] : [];
+      for (const it of lines) {
+        const marked = [it, it.parent].some((x) => x?.inlines?.some((y) => y.t === 'tag' && y.v === ALSO_ABOVE));
+        const t = textOf(it.inlines).trim();
+        if (!marked && DANGER.test(t)) homeless.push(show(t));
+      }
+    }
+  }
+  add('warninghome', homeless, (x) => `${x.length} warning${x.length === 1 ? '' : 's'} in More Information not marked [!also-above], for example ${x[0]}; put the warning in Treatment or Monitor and mark this line [!also-above] ${DOC}`);
 
   // WARNINGS
   const vague = [];
@@ -221,6 +244,6 @@ export function proseFindings({ cards }) {
 export function proseSummary(findings) {
   return Object.keys(PROSE_RULES).map((rule) => {
     const hits = findings.filter((f) => f.rule === rule);
-    return { rule, severity: PROSE_ERRORS.has(rule) ? 'error' : 'warn', cards: hits.length, places: hits.reduce((n, f) => n + f.count, 0) };
+    return { rule, severity: hits.some((f) => f.severity === 'error') || (PROSE_ERRORS.has(rule) && !hits.length) ? 'error' : 'warn', cards: hits.length, places: hits.reduce((n, f) => n + f.count, 0) };
   });
 }
