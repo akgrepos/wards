@@ -85,7 +85,7 @@ describe('dose sheet', () => {
   it('a dose written as a pill sits inside its sentence, opens the sheet, which flags an unverified dose', async () => {
     launch('#/card/neuro-delirium');
     const pill = screen.getByRole('button', { name: /^Haloperidol 0.125–0.25 mg PO or IM as needed, not yet independently verified/ });
-    expect(pill.closest('li')!.textContent).toMatch(/^Older or frail adults on the ward: Haloperidol 0.125–0.25 mg PO or IM as needed/);
+    expect(pill.closest('li')!.textContent).toMatch(/Older or frail adults: Haloperidol 0.125–0.25 mg PO or IM as needed/);
     expect(pill.className).toMatch(/dose-pill/);
     await act(async () => { fireEvent.click(pill); });
     expect(within(dialog()).getByText('Not yet independently verified')).toBeTruthy();
