@@ -44,6 +44,7 @@ One drug, one indication, one population. The only place a dose is written.
   - cautions [`cautions`]: a list of short sentences
   - notes [`notes`] · sources [`sources`]
 - Home: the medication card. Inserted into topic, protocol and pathway steps, always as its own **dose row** (one drug per row).
+- Optional `route_short` and `frequency_short`: short wording for the dose pill (e.g. "PO or IM", "as needed"); without them the pill uses the full route and frequency. A card writes `{{dose:id|pill}}` inside a sentence for a pill (2026-10-27); a dose on its own line is still a row. A dose whose `verification.read` is `not-verified` shows a dashed orange outline on the pill and a "Not yet independently verified" tag on the sheet.
 - Shown as: the dose row (on a topic or protocol card: drug name over "amount unit route rate frequency"; on a **medication card**: the `indication` as the bold title, "amount unit route frequency" in semibold under it, then one gray line of population, rate, maximum and a short duration; a duration over 60 characters appears only on the sheet); tapping opens the **dose sheet**: "Dose" bar title, the drug as heading, the fields above, the alternative (tap to open it), cautions, Check Interactions (Medscape's free checker, opens in Safari) and a source line.
 
 ### 2b. Drug record (added 2026-10-24)

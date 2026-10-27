@@ -35,11 +35,12 @@ export type Card = {
 export type System = { id: string; title: string; library?: boolean; subsections?: string[] };
 export type Source = { kind: string; short: string; title: string; year: number; society?: string; citation?: string; url?: string };
 export type Dose = {
-  drug?: string; drug_name: string; brand?: string; indication: string; indication_detail?: string; population?: string; route: string;
-  amount: string | number; unit: string; frequency?: string; rate?: string; give_when?: string; repeat?: string;
+  drug?: string; drug_name: string; brand?: string; indication: string; indication_detail?: string; population?: string; route: string; route_short?: string;
+  amount: string | number; unit: string; frequency?: string; frequency_short?: string; rate?: string; give_when?: string; repeat?: string;
   onset?: string; lasts?: string; duration?: string; max?: string; boxed_warning?: string;
   alternative?: { dose: string; when?: string }; adjustments?: { when: string; change: string }[];
   cautions?: string[]; notes?: string; sources: string[];
+  verification?: { source: string; read: string; date?: string };
 };
 // A drug record (docs/DATA-TYPES.md, 2b): what holds for the drug whatever it is given for. A dose points to it with `drug`.
 export type CitedLine = { text: string; sources: string[] };

@@ -155,7 +155,7 @@ export const SHARED_SECTIONS = ['more', 'pearls'];
 
 // Every field a dose item can have, so a misspelled field is caught. The sheet shows them in this order.
 export const DOSE_FIELDS = [
-  'drug', 'drug_name', 'brand', 'indication', 'indication_detail', 'population', 'route', 'amount', 'unit', 'frequency', 'rate',
+  'drug', 'drug_name', 'brand', 'indication', 'indication_detail', 'population', 'route', 'route_short', 'amount', 'unit', 'frequency', 'frequency_short', 'rate',
   'give_when', 'repeat', 'onset', 'lasts', 'duration', 'max', 'boxed_warning', 'alternative', 'adjustments',
   'cautions', 'notes', 'sources', 'verification',
 ];

@@ -72,7 +72,7 @@ Imperative for actions, present tense for findings. No passive reported speech (
 - Single-use thresholds, criteria and regimens are written inside the card and shared only on a second use. Exception: criteria that back an in-app calculator stay shared files.
 
 ## Inserts and links
-- `{{dose:id}}` alone on a line (never a typed dose such as "40 mg"). `{{regimen:id}}`, `{{criteria:id}}`, `{{media:id}}` alone on a line. Thresholds and `{{calc:id}}` go inside sentences.
+- `{{dose:id}}` alone on a line (never a typed dose such as "40 mg"). Or `{{dose:id|pill}}` inside a sentence (2026-10-27): a tappable pill with the drug, amount, route and frequency that opens the dose sheet; write the sentence around it, one pill per drug per line, and give the dose a `route_short` and `frequency_short` if its full wording is long. `{{regimen:id}}`, `{{criteria:id}}`, `{{media:id}}` alone on a line. Thresholds and `{{calc:id}}` go inside sentences.
 - Every named score or calculator is `{{calc:id}}` (MDCalc link; add `content/data/calc/<id>.yaml` first, copy the real address).
 - Cards never insert pathways; a pathway file points to its card with `card:` and shows as a row under the title.
 - Links inside the sentence: `[[card-id|label]]`, `[[card-id/section|label]]`.

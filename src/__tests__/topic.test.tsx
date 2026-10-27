@@ -82,6 +82,15 @@ const showSources = async () => {
 };
 
 describe('dose sheet', () => {
+  it('a dose written as a pill sits inside its sentence, opens the sheet and flags an unverified dose', async () => {
+    launch('#/card/neuro-delirium');
+    const pill = screen.getByRole('button', { name: /^Haloperidol 0.125–0.25 mg PO or IM as needed, not yet independently verified/ });
+    expect(pill.closest('li')!.textContent).toMatch(/^Older or frail adults on the ward: Haloperidol 0.125–0.25 mg PO or IM as needed/);
+    expect(pill.className).toMatch(/dose-pill--unverified/);
+    await act(async () => { fireEvent.click(pill); });
+    expect(within(dialog()).getByText('Not yet independently verified')).toBeTruthy();
+  });
+
   it('shows the drug, its fields, the alternative, interactions and sources', async () => {
     launch('#/card/renal-hyperkalemia');
     await act(async () => { fireEvent.click(screen.getAllByRole('button', { name: /^Calcium gluconate 10% 30 mL IV over 10 minutes/ })[0]); });

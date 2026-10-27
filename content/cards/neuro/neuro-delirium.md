@@ -7,7 +7,7 @@ title: "Delirium"
 aliases: [delirium, acute confusion, acute encephalopathy, altered mental status, agitation, ICU delirium, hypoactive delirium, hyperactive delirium, sundowning, CAM, CAM-ICU, 4AT, RASS, haloperidol, HELP, postoperative delirium, toxic metabolic encephalopathy]
 definition: "An acute, fluctuating disturbance of attention, awareness and cognition that is a direct physiologic consequence of another medical condition, medication, substance or toxin, and is not explained by a preexisting neurocognitive disorder. ^[apa-delirium-2025, nice-delirium-2023]"
 based_on: [apa-delirium-2025, padis-2025, nice-delirium-2023, ags-beers-2023]
-checked: { date: 2026-10-27, by: opus, scope: "second-opinion edits (meningitis and encephalitis orders, CT before LP, UA, withdrawal timing, thiamine). Read from memory and an outside source search, no guideline text except the alcohol withdrawal notes. Doses left not-verified: dexmedetomidine-icu-delirium, haloperidol-delirium-icu, haloperidol-delirium-low", fingerprint: "fc6fdcae60e793b6" }
+checked: { date: 2026-10-27, by: opus, scope: "second-opinion edits (meningitis and encephalitis orders, CT before LP, UA, withdrawal timing, thiamine). Read from memory and an outside source search, no guideline text except the alcohol withdrawal notes. Doses left not-verified: dexmedetomidine-icu-delirium, haloperidol-delirium-icu, haloperidol-delirium-low", fingerprint: "d64cac8b9fb2a2be", carried: "2026-10-27: Dose pill display: doses moved into sentences and short route/frequency wording added. No clinical content changed" }
 related:
   differential: [psych-acute-agitation, psych-serotonin-syndrome-nms, psych-suicide-risk-assessment]
   conditions: [crit-hypoxemic-respiratory-failure, renal-hyponatremia, id-complicated-uti, crit-sepsis, hosp-pain-management, neuro-alcohol-withdrawal]
@@ -141,18 +141,13 @@ related:
    - In dementia, every antipsychotic carries a boxed warning for increased mortality. ^[label-haloperidol-inj-2026, label-zyprexa-2026]
    - Avoid olanzapine IM with a parenteral benzodiazepine. ^[label-zyprexa-2026]
 
-   {{dose:haloperidol-delirium-low}}
-
-   - ICU with continuous ECG monitoring (the label does not approve IV haloperidol, and guidelines differ, see More Information): ^[aid-icu-2022, label-haloperidol-inj-2026]
-
-   {{dose:haloperidol-delirium-icu}}
+   - Older or frail adults on the ward: {{dose:haloperidol-delirium-low|pill}}. Reassess before any repeat dose. ^[esaic-pod-2024, label-haloperidol-inj-2026]
+   - ICU with continuous ECG monitoring (the label does not approve IV haloperidol, and guidelines differ, see More Information): {{dose:haloperidol-delirium-icu|pill}}. ^[aid-icu-2022, label-haloperidol-inj-2026]
 
    - If severe agitation persists at the lowest dose, call psychiatry (see Escalation). ^[apa-delirium-2025, common-practice]
 
 5. Sedation in the ventilated patient
-   - Use dexmedetomidine rather than a benzodiazepine, and for delirium-related agitation that prevents weaning or extubation. ^[padis-2018, padis-2025, apa-delirium-2025]
-
-   {{dose:dexmedetomidine-icu-delirium}}
+   - Use {{dose:dexmedetomidine-icu-delirium|pill}} rather than a benzodiazepine, and for delirium-related agitation that prevents weaning or extubation. ^[padis-2018, padis-2025, apa-delirium-2025]
 
 6. Benzodiazepines
    - Avoid for delirium. Use for alcohol or sedative withdrawal, catatonia, neuroleptic malignant syndrome, serotonin syndrome and seizure. ^[apa-delirium-2025, esaic-pod-2024]

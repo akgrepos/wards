@@ -367,3 +367,9 @@ html[data-timed] .timed-page .screen-body.timed-body { padding-bottom: calc(env(
 .card-link::after { content: ""; position: absolute; left: 50%; top: 50%; width: max(100%, var(--tap-target)); height: var(--tap-target); transform: translate(-50%, -50%); }
 /* Dose rows titled by condition (medication cards): a flat list inside the card, hairlines between rows. */
 .dose-rows:has(.akg-value-row--list) { gap: 0; }
+
+/* A dose inside a sentence: a tinted pill that wraps with the words; dashed orange outline while not independently verified. */
+.akg-tappable-value.dose-pill { background: color-mix(in srgb, var(--system-blue) 16%, transparent); color: var(--tinted-label); font-weight: 600; padding: 2px 9px; margin: 0; border: 1.5px solid transparent; border-radius: 13px; text-decoration: none; }
+.akg-tappable-value.dose-pill:active { background: color-mix(in srgb, var(--system-blue) 30%, transparent); }
+.dose-pill__chevron { margin-left: 3px; opacity: 0.7; }
+.akg-tappable-value.dose-pill--unverified { border: 1.5px dashed var(--system-orange); }

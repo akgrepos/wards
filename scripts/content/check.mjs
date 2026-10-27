@@ -219,7 +219,7 @@ export function checkContent({ systems, cards, data, unchecked = [] }) {
         if ((factual || r.timesTitle) && r.sources.length === 0 && !r.inlines.some((x) => x.t === 'insert')) err(where, `"${title}": a line has no source ("${text.slice(0, 60)}…")`);
         for (const x of r.inlines) {
           if (x.t === 'insert' && !data[x.kind]?.[x.id]) err(where, `"${title}" inserts unknown ${x.kind} "${x.id}"`);
-          if (x.t === 'insert' && x.kind === 'dose') err(where, `"${title}": put each dose on a line of its own ({{dose:${x.id}}}), so it shows as one dose row`);
+          if (x.t === 'insert' && x.kind === 'dose' && x.label !== 'pill') err(where, `"${title}": put each dose on a line of its own ({{dose:${x.id}}}) so it shows as one dose row, or write {{dose:${x.id}|pill}} inside a sentence`);
           if (x.t === 'insert' && x.kind === 'regimen') err(where, `"${title}": put each regimen on a line of its own ({{regimen:${x.id}}}), so it shows in full`);
           if (x.t === 'insert' && x.kind === 'coverage') err(where, `"${title}": put each coverage grid on a line of its own ({{coverage:${x.id}}})`);
           if (x.t === 'insert' && x.kind === 'media') err(where, `"${title}": put each figure on a line of its own ({{media:${x.id}}})`);
@@ -309,6 +309,7 @@ export function checkContent({ systems, cards, data, unchecked = [] }) {
         if (alt !== undefined && (typeof alt !== 'object' || !alt.dose)) err(where, 'alternative needs "dose" (a dose id) and optional "when"');
         if (alt?.dose && !data.dose?.[alt.dose]) err(where, `alternative dose "${alt.dose}" does not exist`);
         if (alt?.dose === id) err(where, 'a dose cannot be its own alternative');
+        for (const f of ['route_short', 'frequency_short']) if (item[f] !== undefined && (typeof item[f] !== 'string' || !item[f].trim())) err(where, `${f} must be text (the short wording shown in the dose pill)`);
         if (item.indication_detail !== undefined && (typeof item.indication_detail !== 'string' || !item.indication_detail.trim())) err(where, 'indication_detail must be text (the longer wording of the indication, shown on the dose sheet)');
         if (medicationDoses.has(id) && typeof item.indication === 'string' && item.indication.length > MAX_INDICATION_LENGTH) err(where, `indication is the title of a dose row on a medication card, so keep it to ${MAX_INDICATION_LENGTH} characters (it has ${item.indication.length}); move the long wording to "indication_detail"`);
         for (const m of checkVerification(item, data)) err(where, m);
