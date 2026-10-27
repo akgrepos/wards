@@ -17,13 +17,23 @@ export const PROSE_RULES = {
   nesting: 'nesting rule',
   caps: 'capitalization rule',
   warninghome: 'warning-home rule',
+  target: 'numeric-target rule',
+  escalation: 'escalation rule',
+  pearls: 'pearls rule',
+  labeltext: 'label-text rule',
 };
 // Errors fail the build. Everything else is a warning.
-export const PROSE_ERRORS = new Set(['abbreviation', 'warninghome']);
+export const PROSE_ERRORS = new Set(['abbreviation', 'warninghome', 'vague']);
 // Cards written before the warning-home rule: their findings stay warnings until the specialty sweep reaches the card.
 // Remove a card's id from this list when it is swept, and its findings become errors. Every card not listed gets errors.
 export const WARNING_HOME_UNSWEPT = new Set(['cardio-adhf', 'cardio-atrial-fibrillation', 'cardio-chest-pain', 'cardio-nste-acs', 'endo-dka', 'endo-inpatient-hyperglycemia', 'gi-upper-gi-bleeding', 'heme-anemia', 'heme-anticoagulation-management', 'heme-vte-prophylaxis', 'id-cap', 'id-complicated-uti', 'id-empiric-antimicrobials', 'neuro-alcohol-withdrawal', 'psych-acute-agitation', 'psych-opioid-withdrawal', 'psych-oud', 'psych-suicide-risk-assessment', 'pulm-dyspnea', 'pulm-vte-diagnosis', 'renal-hypokalemia', 'renal-hyponatremia']);
+// Cards written before the filler-verb and commentary rules (2026-10-27): their vague wording stays a warning until the
+// specialty sweep reaches the card. Remove a card's id when it is swept. Every card not listed gets errors.
+export const VAGUE_UNSWEPT = new Set(['cardio-adhf', 'cardio-atrial-fibrillation', 'cardio-chest-pain', 'cardio-ecg-interpretation', 'cardio-nste-acs', 'cardio-qt-prolongation', 'crit-hypoxemic-respiratory-failure', 'crit-sepsis', 'endo-dka', 'endo-inpatient-hyperglycemia', 'gi-upper-gi-bleeding', 'heme-anemia', 'heme-anticoagulation-management', 'heme-vte-prophylaxis', 'hosp-pain-management', 'ceftriaxone', 'id-cap', 'id-cellulitis', 'id-complicated-uti', 'id-empiric-antimicrobials', 'neuro-alcohol-withdrawal', 'neuro-delirium', 'psych-acute-agitation', 'psych-lithium-psychotropic-safety', 'psych-opioid-withdrawal', 'psych-oud', 'psych-serotonin-syndrome-nms', 'psych-suicide-risk-assessment', 'pulm-copd-exacerbation', 'pulm-dyspnea', 'renal-aki', 'renal-electrolyte-repletion', 'renal-hyperkalemia', 'renal-hyponatremia', 'renal-iv-fluids']);
+const GRANDFATHERED = { warninghome: WARNING_HOME_UNSWEPT, vague: VAGUE_UNSWEPT };
 export const MAX_TREATMENT_BULLETS = 25;
+export const MAX_DIAGNOSIS_BULLETS = 25;
+export const MAX_PEARLS = 3;
 
 // Text a reader sees: words, bold and italic, and the label of a link that has one. Inserts and bare links show another card's or record's words.
 const textOf = (inlines) => (inlines ?? []).map((x) => (x.t === 'link' ? x.label ?? '' : x.t === 'insert' || x.t === 'tag' ? ' ' : x.v ?? '')).join('');
@@ -62,6 +72,10 @@ const VAGUE = [
   [/\bconsider(?:s|ed|ing)?\b/i, '"consider": say what to do, or when'],
   [/\breview(?:s|ed|ing)?\b/i, '"review": name the order or action'],
   [/\bbrain imaging\b/i, '"brain imaging": name the modality (CT head without contrast, MRI brain)'],
+  [/\baddress(?:es|ed|ing)?\b/i, '"address": name the order or action'],
+  [/\bensur(?:e|es|ed|ing)\b/i, '"ensure": name the order or action'],
+  [/\bsupportive care\b|\bsupport(?:s|ed|ing)?\s+(?:the\s+)?(?:patient|family|caregivers?)\b/i, '"support" or "supportive care": name the order or action'],
+  [/\bin that (?:it|they|he|she|the)\b|\bit is (?:important|essential|crucial)\b|\bnote that\b|\bevidence suggests\b|\bcan contribute\b/i, 'commentary: state the finding or the order and cut the explanation'],
 ];
 const REVIEW_OK = /(?:systematic|narrative|cochrane|literature|peer)\s+reviews?\b/i;
 export function vagueIn(text) {
@@ -124,7 +138,7 @@ const jaccard = (a, b) => { let n = 0; for (const w of a) if (b.has(w)) n++; ret
 
 function cardFindings(c, { cards }) {
   const found = [];
-  const add = (rule, items, describe) => { if (items.length) found.push({ rule, severity: PROSE_ERRORS.has(rule) && !(rule === 'warninghome' && WARNING_HOME_UNSWEPT.has(c.id)) ? 'error' : 'warn', count: items.length, message: `${c.file}: ${PROSE_RULES[rule]}, ${describe(items)}` }); };
+  const add = (rule, items, describe) => { if (items.length) found.push({ rule, severity: PROSE_ERRORS.has(rule) && !GRANDFATHERED[rule]?.has(c.id) ? 'error' : 'warn', count: items.length, message: `${c.file}: ${PROSE_RULES[rule]}, ${describe(items)}` }); };
   const where = places(c);
 
   // ERROR: unsafe abbreviations, in definitions, lines, table headings and step titles.
@@ -232,6 +246,46 @@ function cardFindings(c, { cards }) {
     }
   }
   add('caps', caps, (x) => `${x.length} heading${x.length === 1 ? '' : 's'} not in sentence case, for example ${x[0]} ${DOC}`);
+
+  // Diagnosis that has grown past a phone-sized list: link out to the card that owns the workup.
+  const diag = where.filter((p) => p.key === 'diagnosis');
+  const diagBullets = diag.reduce((n, p) => n + p.blocks.filter((b) => b.t === 'list').reduce((m, b) => m + b.items.reduce((k, i) => k + 1 + i.children.length, 0), 0), 0);
+  if (diagBullets > MAX_DIAGNOSIS_BULLETS) add('length', [diagBullets], (x) => `Diagnosis has ${x[0]} bullets (about ${MAX_DIAGNOSIS_BULLETS} at most); link to the card that owns the workup and keep the first order ${DOC}`);
+
+  // A target: "correct potassium" or "keep sodium" with no number and no interval in Treatment or Monitor.
+  const targets = [];
+  for (const p of where.filter((q) => q.key === 'treatment' || q.key === 'monitor')) {
+    for (const r of runsOf(p.blocks)) {
+      if (r.header) continue;
+      const t = textOf(r.inlines).trim();
+      if (/\b(?:correct|replete|normalize|keep|maintain)\b[^.]*\b(?:potassium|magnesium|sodium|calcium|phosphate|glucose|electrolytes?)\b/i.test(t) && !/\d/.test(t)) targets.push(show(t));
+    }
+  }
+  add('target', targets, (x) => `${x.length} line${x.length === 1 ? '' : 's'} without a target value, for example ${x[0]}; write the number (for example potassium above 4) ${DOC}`);
+
+  // Escalation says what to have ready for the call.
+  const esc = where.filter((p) => p.key === 'escalation');
+  if (esc.length && !esc.some((p) => runsOf(p.blocks).some((r) => /\b(?:have ready|know before|before (?:you )?call(?:ing)?|have the following)\b/i.test(textOf(r.inlines))))) add('escalation', [1], () => `Escalation has no "have ready" line; say what to know before the call, or leave the section out ${DOC}`);
+
+  // Pearls: at most three, each new information.
+  const pearls = where.filter((p) => p.key === 'pearls');
+  const pearlLines = pearls.flatMap((p) => p.blocks.flatMap((b) => (b.t === 'list' ? b.items : b.t === 'paragraph' ? [b] : [])));
+  if (pearlLines.length > MAX_PEARLS) add('pearls', [pearlLines.length], (x) => `${x[0]} pearls (${MAX_PEARLS} at most); keep the ones that add something new ${DOC}`);
+  const dupPearls = [];
+  for (const it of pearlLines) {
+    const tk = tokens(textOf(it.inlines));
+    if (tk.size < 5) continue;
+    for (const p of where.filter((q) => q.key !== 'pearls' && q.key !== 'emergency')) {
+      const twin = p.blocks.flatMap((b) => (b.t === 'list' ? b.items.flatMap((i) => [i, ...i.children]) : b.t === 'paragraph' ? [b] : [])).find((o) => jaccard(tokens(textOf(o.inlines)), tk) >= 0.6);
+      if (twin) { dupPearls.push(`${show(textOf(it.inlines).trim())} (also in ${p.section})`); break; }
+    }
+  }
+  add('pearls', dupPearls, (x) => `${x.length} pearl${x.length === 1 ? '' : 's'} repeat a line above, for example ${x[0]}; a pearl is new information ${DOC}`);
+
+  // Label caveats belong in the dose insert, not in Treatment.
+  const labelText = [];
+  for (const p of where.filter((q) => q.key === 'treatment')) for (const r of runsOf(p.blocks)) { const t = textOf(r.inlines).trim(); if (!r.header && /\b(?:the label|label does not|not approved|off-label)\b/i.test(t)) labelText.push(show(t)); }
+  add('labeltext', labelText, (x) => `${x.length} Treatment line${x.length === 1 ? '' : 's'} with label text, for example ${x[0]}; put the label caveat in the dose insert ${DOC}`);
   return found;
 }
 

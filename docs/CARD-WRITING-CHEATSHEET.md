@@ -39,6 +39,15 @@ Cards are resident-level and executable: a reader can place the order from the l
 8. Header definition: what it is and what separates it from lookalikes. No causes, no treatment.
 9. Links: link the first mention in a section of anything with a live card (with the section when useful), not every repeat. A card not yet written stays plain text.
 10. Sentence case for step titles, scale band names, table headings and "Label: text" lines. Table headings are short nouns with no end punctuation. A table says what it compares and for which patients (caption).
+11. **Drug choices (owner-approved 2026-10-27).** When a drug has alternatives, Treatment lists the first-line drug, then the alternative for a named situation (for example a contraindication), then the step-up with its interval. Each drug has its own dose insert.
+12. **Numeric targets.** Every "correct X", "keep X" or "monitor X" names the target value and the interval (for example potassium above 4, QTc under 500 ms, daily). No bare "correct potassium".
+13. **Escalation.** It names only services not already named in Treatment, and says what to have ready for the call. Otherwise the section is left out.
+14. **Pearls.** At most 3, each new information, never a repeat of a bullet above. A pearl that restates At a Glance or Treatment is cut.
+15. **Link out.** A workup that another card owns or will own becomes a short pointer plus the first order. Diagnosis stays under about 25 bullets.
+16. **Filler verbs.** Do not write "review", "address", "ensure", "consider", "supportive care" or "support" in place of an order. Say the order.
+17. **Cause completeness.** Causes are ordered life-threatening first. The omissions pass checks the card against a cannot-miss list for the topic (for delirium: withdrawal, Wernicke, hypoxia, hypoglycemia, hypoperfusion, hyper- and hypothermia, hypertensive encephalopathy, intracranial bleed, infection including meningitis, metabolic, poisoning, seizure).
+18. **Commentary.** Drop sentences that explain or reassure ("in that it predicts", "it is important", "note that", "can contribute"). A finding or an order, nothing else.
+19. **Label caveats.** Text about the label ("not approved IV", "the label does not") lives in the dose insert, not in Treatment.
 - **Practical details** (an interval, route, drug order, who to call) that no guideline or label gives: the `wards-card` skill, step 3, rule C, says where they may come from (library books and two web sources count as confirmed, judgment goes to the Opus check) and how they are marked.
 
 ## Abbreviations

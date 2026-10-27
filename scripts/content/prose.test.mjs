@@ -67,7 +67,7 @@ describe('abbreviation rule (error)', () => {
   });
 });
 
-describe('vague-word rule (warning)', () => {
+describe('vague-word rule (error, warning for unswept cards)', () => {
   it('finds the vague words', () => {
     expect(vagueIn('Monitor closely.')).toHaveLength(1);
     expect(vagueIn('Check frequently.')).toHaveLength(1);
@@ -83,8 +83,60 @@ describe('vague-word rule (warning)', () => {
     expect(rules(card('- **Medications:** anticholinergics'))).toEqual([]);
     expect(rules(card('- Do a medication reconciliation.'))).toEqual([]);
   });
-  it('is a warning', () => {
-    expect(found(card('- Consider CT.'))[0].severity).toBe('warn');
+  it('finds the filler verbs and commentary (2026-10-27)', () => {
+    expect(vagueIn('Address pain and toileting.')).toHaveLength(1);
+    expect(vagueIn('Ensure adequate hydration.')).toHaveLength(1);
+    expect(vagueIn('Give supportive care.')).toHaveLength(1);
+    expect(vagueIn('It is a medical emergency in that it predicts death.')).toHaveLength(1);
+    expect(vagueIn('Note that the dose varies.')).toHaveLength(1);
+    expect(vagueIn('In that trial, mortality was lower.')).toEqual([]);
+  });
+  it('is an error for a swept card and a warning while the card is still in VAGUE_UNSWEPT', () => {
+    expect(found(card('- Consider CT.'))[0].severity).toBe('error');
+    expect(found({ ...card('- Consider CT.'), id: 'cardio-adhf' })[0].severity).toBe('warn');
+  });
+});
+
+describe('numeric-target rule (warning)', () => {
+  it('wants a number when a line says to correct or keep an electrolyte', () => {
+    expect(rules(card('- Correct potassium and magnesium.'))).toEqual(['target']);
+    expect(rules(card('- Keep potassium above 4 and magnesium above 2.'))).toEqual([]);
+    expect(rules(card('- Correct potassium.', { key: 'diagnosis', title: 'Diagnosis' }))).toEqual([]);
+  });
+});
+
+describe('escalation rule (warning)', () => {
+  const esc = (t) => card(t, { key: 'escalation', title: 'Escalation' });
+  it('wants a line saying what to have ready', () => {
+    expect(rules(esc('- Psychiatry: severe agitation.'))).toEqual(['escalation']);
+    expect(rules(esc('- Psychiatry: severe agitation.\n- Have ready: workup so far and the medication list.'))).toEqual([]);
+  });
+});
+
+describe('pearls rule (warning)', () => {
+  const pearls = (t) => card(t, { key: 'pearls', title: 'Pearls' });
+  it('allows three pearls and flags a fourth', () => {
+    expect(rules(pearls('- A pearl about alpha.\n- A pearl about beta.\n- A pearl about gamma.'))).toEqual([]);
+    expect(rules(pearls('- A pearl about alpha.\n- A pearl about beta.\n- A pearl about gamma.\n- A pearl about delta.'))).toEqual(['pearls']);
+  });
+  it('flags a pearl that repeats a line in another section', () => {
+    const c = { ...card('- Check the QTc before and after haloperidol.'), sections: [{ key: 'treatment', title: 'Treatment', blocks: parseBlocks(['- Check the QTc before and after haloperidol.']), subsections: [] }, { key: 'pearls', title: 'Pearls', blocks: parseBlocks(['- Check the QTc before and after haloperidol.']), subsections: [] }] };
+    expect(rules(c)).toContain('pearls');
+  });
+});
+
+describe('label-text rule (warning)', () => {
+  it('keeps label caveats out of Treatment', () => {
+    expect(rules(card('- IV haloperidol (the label does not approve IV use).'))).toEqual(['labeltext']);
+    expect(rules(card('- Give haloperidol IV with ECG monitoring.'))).toEqual([]);
+  });
+});
+
+describe('diagnosis length rule (warning)', () => {
+  const bullets = (n) => Array.from({ length: n }, (_, i) => `- Order ${i} now.`).join('\n');
+  it('flags more than 25 Diagnosis bullets', () => {
+    expect(rules(card(bullets(26), { key: 'diagnosis', title: 'Diagnosis' }))).toEqual(['length']);
+    expect(rules(card(bullets(25), { key: 'diagnosis', title: 'Diagnosis' }))).toEqual([]);
   });
 });
 

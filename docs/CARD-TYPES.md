@@ -93,6 +93,7 @@ A disease or syndrome (a **condition**), or a symptom, sign or abnormal result (
 - A fact has one home. A second mention is a short pointer or link, never a copy.
 - Anything needed before a drug is started (a contraindication, a baseline test) stays with the dose in Treatment. Rechecks, targets and stop rules go in Monitor.
 - A warning that prevents an unsafe action stays visible in Treatment or Monitor, not only in More Information. Evidence numbers (odds ratios, grades) and drug-label text go in More Information.
+- **Treatment with drug choices:** first-line drug, then the alternative for a named situation, then the step-up with its interval (cheat sheet, "Say the action", 11). **Escalation:** only services not already named in Treatment, and what to have ready, or the section is left out. **Pearls:** at most 3, new information only. **Diagnosis:** under about 25 bullets; a workup another card owns is a pointer plus the first order.
 - Reference and Medication cards follow the same one-home rule; their section purposes differ by variant (Part 2).
 - **Header definition:** one sentence, no length cap, that says what it is and what separates it from lookalikes, keeping any defining qualifier. No causes, no treatment.
 
