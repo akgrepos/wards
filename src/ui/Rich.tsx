@@ -454,10 +454,10 @@ function Insert({ kind, id, plain, label }: { kind: string; id: string; plain?: 
   if (!item) return <span className="missing">[missing {kind}: {id}]</span>;
   if (kind === 'dose') {
     const d = item as unknown as Dose;
-    // `{{dose:id|pill}}` in a sentence: a pill with the dose, a dashed outline while it is not independently verified.
+    // `{{dose:id|pill}}` in a sentence: a pill with the dose (the unverified tag lives in the dose sheet).
     if (label === 'pill') {
       return (
-        <AKG.TappableValue className={`dose-pill${isUnverified(d) ? ' dose-pill--unverified' : ''}`} onClick={() => openDose(sheet, id)} aria-label={`${dosePill(d)}${isUnverified(d) ? ', not yet independently verified' : ''}. Opens dose details.`}>
+        <AKG.TappableValue className="dose-pill" onClick={() => openDose(sheet, id)} aria-label={`${dosePill(d)}${isUnverified(d) ? ', not yet independently verified' : ''}. Opens dose details.`}>
           {dosePill(d)}<span className="dose-pill__chevron" aria-hidden="true">›</span>
         </AKG.TappableValue>
       );

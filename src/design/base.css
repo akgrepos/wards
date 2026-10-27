@@ -368,8 +368,8 @@ html[data-timed] .timed-page .screen-body.timed-body { padding-bottom: calc(env(
 /* Dose rows titled by condition (medication cards): a flat list inside the card, hairlines between rows. */
 .dose-rows:has(.akg-value-row--list) { gap: 0; }
 
-/* A dose inside a sentence: a tinted pill that wraps with the words; dashed orange outline while not independently verified. */
-.akg-tappable-value.dose-pill { background: color-mix(in srgb, var(--system-blue) 16%, transparent); color: var(--tinted-label); font-weight: 600; padding: 2px 9px; margin: 0; border: 1.5px solid transparent; border-radius: 13px; text-decoration: none; }
+/* A dose inside a sentence: a tinted pill that wraps with the words. No vertical padding or border, so the tint never grows
+   past the line and wrapped lines never touch; the 44 pt tap area is the invisible ::after from TappableValue. */
+.akg-tappable-value.dose-pill { background: color-mix(in srgb, var(--system-blue) 16%, transparent); color: var(--tinted-label); font-weight: 600; padding: 0 8px; margin: 0; border: 0; border-radius: 10px; text-decoration: none; }
 .akg-tappable-value.dose-pill:active { background: color-mix(in srgb, var(--system-blue) 30%, transparent); }
 .dose-pill__chevron { margin-left: 3px; opacity: 0.7; }
-.akg-tappable-value.dose-pill--unverified { border: 1.5px dashed var(--system-orange); }

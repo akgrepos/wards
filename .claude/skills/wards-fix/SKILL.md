@@ -14,6 +14,7 @@ One fix, one branch, one PR. Haiku for plain fixes with exact instructions; step
    - Tier 0 or 1 (typo, wording): if the checker says the stamp is stale, `npm run checked:carry -- <card-id> "<reason>"`.
    - Tier 2 (a dose, number, threshold or citation on a clinical line, or a new card): run the Opus check on the changed claims only (quote, location, omissions glance), then `npm run checked:stamp -- <card-id> ...`. Cards the owner looked over before 2026-10-25 get this Opus check only on a clinical edit, not on a format-only fix.
 5. **Retire a card** (`/wards-fix retire <card>`): move the file to `content/retired/`, remove links to it (the reciprocity rule forces this), free its aliases, run the checks; the build refuses dangling references.
+   - A visible design change (CSS, layout, component): last step before pushing, `npm run sim-look -- '<route>' --dark` and read the screenshots (CLAUDE.md, PRs and testing).
 6. **Ship:** commit as the configured author; `git rebase origin/main` (never merge main in); push (`--force-with-lease` after a rebase); open the PR in plain words (no `/Users/` paths, no owner name); `gh pr merge <n> --rebase --auto`; verify `gh pr view <n> --json autoMergeRequest` after every push. Never merge with a failing check. Plain card or text edits merge on green checks; code PRs get `/code-review` at low effort.
 
 No heredocs; leave no background task running. Say what changed and the PR link; nothing waits.
