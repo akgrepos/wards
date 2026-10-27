@@ -7,7 +7,7 @@ title: "Delirium"
 aliases: [delirium, acute confusion, acute encephalopathy, altered mental status, agitation, ICU delirium, hypoactive delirium, hyperactive delirium, sundowning, CAM, CAM-ICU, 4AT, RASS, haloperidol, HELP, postoperative delirium, toxic metabolic encephalopathy]
 definition: "An acute, fluctuating disturbance of attention, awareness and cognition that is a direct physiologic consequence of another medical condition, medication, substance or toxin, and is not explained by a preexisting neurocognitive disorder. ^[apa-delirium-2025, nice-delirium-2023]"
 based_on: [apa-delirium-2025, padis-2025, nice-delirium-2023, ags-beers-2023]
-checked: { date: 2026-10-27, by: opus, scope: "outside-check fixes (UA, meningitis and CT-first, alcohol withdrawal, thiamine). The helper read from memory, no source text. Doses left not-verified: dexmedetomidine-icu-delirium, haloperidol-delirium-icu, haloperidol-delirium-low", fingerprint: "a6a8a3e8980e60cf" }
+checked: { date: 2026-10-27, by: opus, scope: "second-opinion edits (meningitis and encephalitis orders, CT before LP, UA, withdrawal timing, thiamine). Read from memory and an outside source search, no guideline text except the alcohol withdrawal notes. Doses left not-verified: dexmedetomidine-icu-delirium, haloperidol-delirium-icu, haloperidol-delirium-low", fingerprint: "fc6fdcae60e793b6" }
 related:
   differential: [psych-acute-agitation, psych-serotonin-syndrome-nms, psych-suicide-risk-assessment]
   conditions: [crit-hypoxemic-respiratory-failure, renal-hyponatremia, id-complicated-uti, crit-sepsis, hosp-pain-management, neuro-alcohol-withdrawal]
@@ -81,20 +81,28 @@ related:
   - Medication history from the chart and family: recent starts, dose changes and stopped drugs ^[nice-delirium-2023, common-practice]
 
 #### Orders by trigger
-- Urinary symptoms, or fever, rigors or hypotension with no other source: UA with urine culture. Do not send a UA for delirium alone. ^[idsa-asb-2019, common-practice]
+- Urinary symptoms, or fever, rigors or hypotension with no other source: UA with urine culture. ^[idsa-asb-2019, common-practice]
+  - Do not routinely send a UA for delirium alone. With a urinary catheter or spinal cord injury, send one if no other cause is found. ^[idsa-asb-2019, idsa-cauti-2009, common-practice]
+  - Bacteriuria in delirium without urinary or systemic signs is not by itself a reason for antibiotics. ^[idsa-asb-2019]
 - Fever, hypotension or suspected infection: blood cultures and CXR. ^[common-practice]
 - Low SpO₂ or suspected CO₂ retention: ABG or VBG. ^[common-practice]
 - No cause after the initial orders: hepatic function panel, ammonia, TSH, magnesium, phosphate, B12 and a urine toxicology screen. ^[common-practice]
 - Digoxin, lithium or an antiepileptic on the medication list: that drug level. ^[common-practice]
 - Focal deficit, head trauma or no cause found: CT head without contrast. ^[common-practice]
-- Fever with meningismus or suspected encephalitis: blood cultures and empiric antimicrobials now, never delayed for CT or LP. ^[idsa-meningitis-2004]
-  - Suspected bacterial meningitis: dexamethasone just before or with the first antibiotic dose. Suspected encephalitis: add IV acyclovir. ^[idsa-meningitis-2004, common-practice]
+- Suspected meningitis or encephalitis: blood cultures and [[id-empiric-antimicrobials|empiric antimicrobials]] now, never delayed for CT or LP. ^[idsa-meningitis-2004]
+  - Suspect it with fever, headache, neck stiffness or altered mental status. Neck stiffness is often absent. ^[common-practice]
+  - After neurosurgery, a shunt or drain, or penetrating head trauma, use the healthcare-associated regimen. ^[idsa-meningitis-2004, idsa-ventriculitis-2017]
+  - Suspected community-acquired bacterial meningitis: dexamethasone just before or with the first antibiotic dose. ^[idsa-meningitis-2004]
+    - Not once antibiotics have already been given ^[idsa-meningitis-2004]
+    - Continue it only for gram-positive diplococci on Gram stain or pneumococcus on culture ^[idsa-meningitis-2004]
+  - Suspected encephalitis: add IV acyclovir. Adjust for kidney function and check creatinine. ^[idsa-meningitis-2004, common-practice]
   - LP with CSF opening pressure, cell count, protein, glucose, Gram stain, culture and herpes simplex virus PCR. ^[idsa-meningitis-2004, common-practice]
   - CT head before the LP if any of: ^[idsa-meningitis-2004]
     - Immunocompromise, or known brain disease (mass, stroke, focal infection) ^[idsa-meningitis-2004]
     - New seizure within the past week, papilledema or a focal deficit ^[idsa-meningitis-2004]
     - Abnormal level of consciousness ^[idsa-meningitis-2004]
-  - Delirium itself counts as an abnormal level of consciousness, so most patients on this card get CT first. Antimicrobials still go in before the scan. ^[idsa-meningitis-2004]
+  - No cutoff defines abnormal consciousness. Other guidelines draw the line at a {{calc:gcs}} of 12 or less, or below 10. ^[idsa-meningitis-2004, common-practice]
+  - If unsure, scan first. Antimicrobials still go in before the scan. ^[common-practice]
 - Seizure concern: EEG. ^[common-practice]
 
 #### Avoid
@@ -109,9 +117,10 @@ related:
    - Stop or reduce anticholinergics, benzodiazepines, Z-drugs, opioids, H2 blockers and corticosteroids where possible. ^[ags-beers-2023, apa-delirium-2025]
    - Treat pain with acetaminophen and regional or opioid-sparing options before systemic opioids. ^[ags-beers-2023, padis-2018]
    - Daily drinker: ask the time of the last drink and look for tremor, sweating, tachycardia and hypertension (see [[neuro-alcohol-withdrawal|alcohol withdrawal]]). ^[asam-alcohol-withdrawal-2020]
-     - Withdrawal delirium usually starts 48 to 96 hours after the last drink. ^[asam-alcohol-withdrawal-2020]
+     - Withdrawal delirium usually starts 72 to 96 hours after the last drink and lasts hours to 2 to 3 days. ^[asam-alcohol-withdrawal-2020]
    - Once delirium is present, do not use the {{calc:ciwa-ar|CIWA-Ar}}, which relies on the patient's answers. Track sedation and agitation with the {{calc:rass}} and delirium with the {{calc:cam-icu}}. ^[asam-alcohol-withdrawal-2020]
-   - Give IV thiamine when Wernicke encephalopathy is possible. The order relative to glucose does not matter, and glucose is never delayed for hypoglycemia. ^[common-practice]
+   - Give IV thiamine when Wernicke encephalopathy is possible, ideally before or with glucose. Never delay glucose for hypoglycemia. ^[asam-alcohol-withdrawal-2020, common-practice]
+   - Do not run a prolonged dextrose infusion in an at-risk patient without thiamine. ^[common-practice]
 
 2. Nonpharmacologic bundle (first line for everyone)
    - Reorientation, familiar objects, clock and calendar, family presence, consistent staff. ^[nice-delirium-2023, apa-delirium-2025]
