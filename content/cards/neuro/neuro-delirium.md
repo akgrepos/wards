@@ -7,7 +7,7 @@ title: "Delirium"
 aliases: [delirium, acute confusion, acute encephalopathy, altered mental status, agitation, ICU delirium, hypoactive delirium, hyperactive delirium, sundowning, CAM, CAM-ICU, 4AT, RASS, haloperidol, HELP, postoperative delirium, toxic metabolic encephalopathy]
 definition: "An acute, fluctuating disturbance of attention, awareness and cognition that is a direct physiologic consequence of another medical condition, medication, substance or toxin, and is not explained by a preexisting neurocognitive disorder. ^[apa-delirium-2025, nice-delirium-2023]"
 based_on: [apa-delirium-2025, padis-2025, nice-delirium-2023, ags-beers-2023]
-checked: { date: 2026-10-26, by: opus, scope: "prose restructure, orders and monitor. The helper read from memory, no source text. Doses left not-verified: haloperidol-delirium-low, haloperidol-delirium-icu, dexmedetomidine-icu-delirium", fingerprint: "c440c088526e8feb" }
+checked: { date: 2026-10-27, by: opus, scope: "outside-check fixes (UA, meningitis and CT-first, alcohol withdrawal, thiamine). The helper read from memory, no source text. Doses left not-verified: dexmedetomidine-icu-delirium, haloperidol-delirium-icu, haloperidol-delirium-low", fingerprint: "a6a8a3e8980e60cf" }
 related:
   differential: [psych-acute-agitation, psych-serotonin-syndrome-nms, psych-suicide-risk-assessment]
   conditions: [crit-hypoxemic-respiratory-failure, renal-hyponatremia, id-complicated-uti, crit-sepsis, hosp-pain-management, neuro-alcohol-withdrawal]
@@ -81,14 +81,20 @@ related:
   - Medication history from the chart and family: recent starts, dose changes and stopped drugs ^[nice-delirium-2023, common-practice]
 
 #### Orders by trigger
-- Urinary symptoms or signs: UA with urine culture. ^[common-practice]
+- Urinary symptoms, or fever, rigors or hypotension with no other source: UA with urine culture. Do not send a UA for delirium alone. ^[idsa-asb-2019, common-practice]
 - Fever, hypotension or suspected infection: blood cultures and CXR. ^[common-practice]
 - Low SpO₂ or suspected CO₂ retention: ABG or VBG. ^[common-practice]
 - No cause after the initial orders: hepatic function panel, ammonia, TSH, magnesium, phosphate, B12 and a urine toxicology screen. ^[common-practice]
 - Digoxin, lithium or an antiepileptic on the medication list: that drug level. ^[common-practice]
 - Focal deficit, head trauma or no cause found: CT head without contrast. ^[common-practice]
-- Fever with meningismus or suspected encephalitis: blood cultures and empiric antimicrobials without waiting for CT or LP. ^[common-practice]
-  - CT head first (altered consciousness), then LP with CSF cell count, protein, glucose, Gram stain, culture and herpes simplex virus PCR ^[common-practice]
+- Fever with meningismus or suspected encephalitis: blood cultures and empiric antimicrobials now, never delayed for CT or LP. ^[idsa-meningitis-2004]
+  - Suspected bacterial meningitis: dexamethasone just before or with the first antibiotic dose. Suspected encephalitis: add IV acyclovir. ^[idsa-meningitis-2004, common-practice]
+  - LP with CSF opening pressure, cell count, protein, glucose, Gram stain, culture and herpes simplex virus PCR. ^[idsa-meningitis-2004, common-practice]
+  - CT head before the LP if any of: ^[idsa-meningitis-2004]
+    - Immunocompromise, or known brain disease (mass, stroke, focal infection) ^[idsa-meningitis-2004]
+    - New seizure within the past week, papilledema or a focal deficit ^[idsa-meningitis-2004]
+    - Abnormal level of consciousness ^[idsa-meningitis-2004]
+  - Delirium itself counts as an abnormal level of consciousness, so most patients on this card get CT first. Antimicrobials still go in before the scan. ^[idsa-meningitis-2004]
 - Seizure concern: EEG. ^[common-practice]
 
 #### Avoid
@@ -102,9 +108,10 @@ related:
      - Bladder drainage for retention, bowel regimen for constipation ^[apa-delirium-2025, nice-delirium-2023]
    - Stop or reduce anticholinergics, benzodiazepines, Z-drugs, opioids, H2 blockers and corticosteroids where possible. ^[ags-beers-2023, apa-delirium-2025]
    - Treat pain with acetaminophen and regional or opioid-sparing options before systemic opioids. ^[ags-beers-2023, padis-2018]
-   - Daily drinker: assess for withdrawal with the {{calc:ciwa-ar}} (see [[neuro-alcohol-withdrawal|alcohol withdrawal]]). ^[common-practice]
-   - The {{calc:ciwa-ar|CIWA-Ar}} relies on the patient's answers, so it underrates withdrawal once delirium is present. ^[common-practice]
-   - Give IV thiamine before or with glucose when Wernicke encephalopathy is possible. Never delay glucose for hypoglycemia. ^[common-practice]
+   - Daily drinker: ask the time of the last drink and look for tremor, sweating, tachycardia and hypertension (see [[neuro-alcohol-withdrawal|alcohol withdrawal]]). ^[asam-alcohol-withdrawal-2020]
+     - Withdrawal delirium usually starts 48 to 96 hours after the last drink. ^[asam-alcohol-withdrawal-2020]
+   - Once delirium is present, do not use the {{calc:ciwa-ar|CIWA-Ar}}, which relies on the patient's answers. Track sedation and agitation with the {{calc:rass}} and delirium with the {{calc:cam-icu}}. ^[asam-alcohol-withdrawal-2020]
+   - Give IV thiamine when Wernicke encephalopathy is possible. The order relative to glucose does not matter, and glucose is never delayed for hypoglycemia. ^[common-practice]
 
 2. Nonpharmacologic bundle (first line for everyone)
    - Reorientation, familiar objects, clock and calendar, family presence, consistent staff. ^[nice-delirium-2023, apa-delirium-2025]
