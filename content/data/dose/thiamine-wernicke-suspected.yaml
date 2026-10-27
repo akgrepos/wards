@@ -4,9 +4,11 @@ indication: Suspected Wernicke encephalopathy
 indication_detail: Suspected Wernicke encephalopathy (confusion, ataxia, ophthalmoplegia) or high-risk presentation.
 population: Adults
 route: IV
+route_short: IV
 amount: 200–500
 unit: mg
 frequency: "every 8 hours"
+frequency_short: q8h
 duration: "Not standardized. Continue while signs improve, then step down to a maintenance dose"
 give_when: Suspected Wernicke encephalopathy, or ICU signs that mimic or mask it (such as delirium). Do not delay glucose
 cautions:

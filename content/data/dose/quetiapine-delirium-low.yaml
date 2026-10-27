@@ -1,0 +1,25 @@
+drug: quetiapine
+drug_name: Quetiapine
+brand: Seroquel
+indication: Delirium with severe agitation, Parkinson disease or Lewy body dementia
+indication_detail: Off-label antipsychotic for delirium with severe agitation after de-escalation has failed. The choice when haloperidol must be avoided.
+population: Adults on the ward
+route: oral only
+route_short: PO
+amount: 12.5–25
+unit: mg
+frequency: as needed, no more often than every 2 hours (peak effect about 1.5 hours). Reassess sedation before each repeat dose
+frequency_short: PRN
+give_when: Severe distress or danger to self or others that de-escalation did not settle
+max: "No guideline maximum for delirium. After more than 2 doses, call psychiatry"
+duration: "Shortest possible. Stop once symptoms resolve, usually within 1 week"
+cautions:
+  - "Orthostatic hypotension and sedation: check BP before each repeat dose."
+  - "Boxed warning: increased mortality in older adults with dementia."
+  - "Baseline {{calc:qtc}}, potassium above 4 and magnesium above 2 before the first dose."
+notes: "Ward practice dose. Delirium is not a labeled indication and no label or guideline in this app gives the dose."
+sources: [apa-delirium-2025, common-practice]
+verification:
+  source: common-practice
+  read: common-practice
+  date: 2026-10-27
