@@ -5,9 +5,11 @@ indication: Delirium with severe agitation
 indication_detail: Off-label for delirium with severe agitation or risk of harm after de-escalation has failed.
 population: Older or frail adults on the ward (the ESAIC starting suggestion for older patients). Younger adults may need more
 route: Oral or IM bolus (the guideline gives no route, IV is not approved by the label)
+route_short: PO or IM
 amount: 0.125–0.25
 unit: mg
 frequency: as needed, reassess before any repeat dose
+frequency_short: as needed
 give_when: Severe distress or danger to self or others that de-escalation did not settle, after contributing causes are addressed
 max: "ESAIC guideline (older postoperative adults): under 3 mg a day, as mortality rose at 6 mg a day or more. Label maximum 20 mg a day for acute agitation in schizophrenia (debilitated or geriatric patients may need less)"
 duration: "Shortest possible. Stop once symptoms resolve, usually within days (NICE: 1 week or less)"

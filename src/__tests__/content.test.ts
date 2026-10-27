@@ -59,6 +59,8 @@ describe('content checks', () => {
   it('puts every dose on a line of its own, never inside a sentence', () => {
     expect(withCard(kp('- Give {{dose:example-drug-standard}} now ^[example-guideline-a]')).join()).toMatch(/on a line of its own/);
     expect(withCard(kp('\n{{dose:example-drug-standard}}'))).toEqual([]);
+    // A pill is the one way a dose goes inside a sentence.
+    expect(withCard(kp('- Give {{dose:example-drug-standard|pill}} now ^[example-guideline-a]'))).toEqual([]);
   });
   it('checks regimens: known doses, known fields, no typed doses, inserted on a line of its own', () => {
     expect(withRegimen({})).toBe('');

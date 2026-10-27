@@ -117,7 +117,7 @@ export function plainText(xs: Inline[]): string {
       if (!item) return '';
       if (x.kind === 'threshold') return `${item.value} ${item.unit}`;
       if (x.kind === 'criteria') return String(item.short);
-      if (x.kind === 'dose') return String(item.drug_name);
+      if (x.kind === 'dose') return x.label === 'pill' ? dosePill(item as unknown as Dose) : String(item.drug_name);
       if (x.kind === 'regimen') return String(item.name);
       if (x.kind === 'calc') return x.label ?? String(item.short);
       return String(item.title ?? item.name ?? '');
@@ -165,6 +165,11 @@ export function LinePill({ ids, quote }: { ids: string[]; quote: Inline[] | stri
 export function doseValue(d: Dose) {
   return [`${amountWithUnit(d.amount, d.unit)} ${d.route}`, d.rate, d.frequency].filter(Boolean).join(' ');
 }
+// The dose inside a sentence: the drug, amount and the short route and frequency (their full wording is on the sheet).
+export function dosePill(d: Dose) {
+  return [d.drug_name, `${amountWithUnit(d.amount, d.unit)} ${d.route_short ?? d.route}`, d.frequency_short ?? d.frequency].filter(Boolean).join(' ');
+}
+const isUnverified = (d: Dose) => d.verification?.read === 'not-verified';
 export function doseLine(d: Dose) {
   return `${d.drug_name} ${doseValue(d)}`;
 }
@@ -221,6 +226,7 @@ function DoseSheet({ id }: { id: string }) {
   return (
     <div className="detail-sheet dose-sheet">
       <div className="dose-head">
+        {isUnverified(d) && <AKG.Tag variant="warning">Not yet independently verified</AKG.Tag>}
         {who && <p className="ios-subheadline">{who}</p>}
         <p className="ios-title-2-emphasized">{amountWithUnit(d.amount, d.unit)}</p>
         {d.frequency && <p className="ios-subheadline secondary">{d.frequency}</p>}
@@ -447,8 +453,16 @@ function Insert({ kind, id, plain, label }: { kind: string; id: string; plain?: 
   const item = content.data[kind]?.[id];
   if (!item) return <span className="missing">[missing {kind}: {id}]</span>;
   if (kind === 'dose') {
-    // Only flowcharts put a dose inside a sentence: the drug's name here, its dose row under the step.
     const d = item as unknown as Dose;
+    // `{{dose:id|pill}}` in a sentence: a pill with the dose, a dashed outline while it is not independently verified.
+    if (label === 'pill') {
+      return (
+        <AKG.TappableValue className={`dose-pill${isUnverified(d) ? ' dose-pill--unverified' : ''}`} onClick={() => openDose(sheet, id)} aria-label={`${dosePill(d)}${isUnverified(d) ? ', not yet independently verified' : ''}. Opens dose details.`}>
+          {dosePill(d)}<span className="dose-pill__chevron" aria-hidden="true">›</span>
+        </AKG.TappableValue>
+      );
+    }
+    // Flowcharts put the drug's name in a sentence, its dose row under the step.
     return <AKG.TappableValue onClick={() => openDose(sheet, id)}>{d.drug_name}</AKG.TappableValue>;
   }
   if (kind === 'threshold') {
