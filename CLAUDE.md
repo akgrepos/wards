@@ -11,9 +11,8 @@ The owner, a physician, is the only user, with no coding experience: explain pla
 ## Cards and content
 - Three card types (Topic, Reference, Medication); a card needing a new type, data type or section kind stops and asks the owner. Every dose names its `drug:`. Calculators only for true formulas; scores link to MDCalc.
 - Claude writes clinical content from the newest final guidelines, cited with their markers; pregnancy and lactation from LactMed. Text is written for the reader, never about the writing process.
-- **Review:** the chat drafts, then one independent Opus helper checks every dose, number, threshold and care-changing claim, plus an omissions pass, and fixes the card; `npm run checked:stamp` records it. Say exactly what was done. Cards the owner looked over before 2026-10-25 are never "independently reviewed".
+- **Review:** the chat drafts. Haiku finds the quote or book passage behind every dose, number, threshold and care-changing claim; a script checks guideline quotes word for word and a Sonnet helper checks each book-based line against its passage. One independent Opus helper checks only what rests on Claude's own judgment, runs the omissions pass and fixes the card; `npm run checked:stamp` records it. Say exactly what was done. Cards the owner looked over before 2026-10-25 are never "independently reviewed".
 - "Updated <date>" is a date, not a claim of review. `pr:tier` sets the tier: typo 0, prose 1, doses, numbers or a new card 2 (needs the stamp).
-- OpenEvidence is optional, one batch per card; the owner types and pastes by hand, and nothing automated ever touches it.
 
 ## PRs and testing
 - One branch and PR per task, never on `main`; any chat may make a small edit this way. Rebase (`git rebase origin/main`, `git push --force-with-lease`), never merge `main` in. Merge with `gh pr merge --rebase --auto` only, never with a failing check; confirm auto-merge is still on after every push.
@@ -23,8 +22,8 @@ The owner, a physician, is the only user, with no coding experience: explain pla
 ## Hard rules
 - No patient information (PHI) and nothing institution-internal; the site and repo are public. `npm run privacy:check` runs in CI.
 - **Stay anonymous.** Never put the owner's name, email or computer name in files, commits, PRs or screenshots; say "the owner". Never write an absolute home-folder path; use `~/`. Commits are authored as `akgrepos <338781722+akgrepos@users.noreply.github.com>`.
-- Practical details no guideline or label gives (interval, route, drug order, who to call) may restate handbook facts in Claude's own words, marked `common-practice` once the owner confirms them (`wards-card` skill, rule C).
-- Never name or cite AMBOSS, OpenEvidence or the reference handbook in the app, card content or repo, and never copy the handbook. Copyrighted material stays in `~/Documents/Wards-reference/`.
+- Practical details no guideline or label gives (interval, route, drug order, who to call) may restate facts from the library books (White Book, Pocket Medicine) and the two web sources in `~/Documents/Wards-reference/library/WEB-SOURCES.md` in Claude's own words, marked `common-practice`. The owner does not confirm them by hand (`wards-card` skill, rule C).
+- Never name or cite AMBOSS, OpenEvidence, the White Book, Pocket Medicine, WikEM or Point of Care Medicine in the app, card content or repo, and never copy their text. Copyrighted material stays in `~/Documents/Wards-reference/`.
 
 ## Stack
 React + TypeScript + Vite PWA, offline; GitHub Actions publish `main` to Pages (the owner taps Reload on "Update Ready"). How to run it: `README.md`. Repo https://github.com/akgrepos/wards, live https://akgrepos.github.io/wards/

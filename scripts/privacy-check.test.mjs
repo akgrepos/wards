@@ -21,6 +21,7 @@ describe('privacy check', () => {
   })
   it('flags banned names case-insensitively, except on allowlisted files', () => {
     expect(scan('see amboss and OPENEVIDENCE and white book')).toHaveLength(3)
+    expect(scan('see Pocket Medicine, WikEM and pointofcaremedicine.com')).toHaveLength(3)
     expect(scan('Never name AMBOSS', 'CLAUDE.md')).toEqual([])
   })
   it('flags private terms from the optional local file', () => {

@@ -39,7 +39,7 @@ Cards are resident-level and executable: a reader can place the order from the l
 8. Header definition: what it is and what separates it from lookalikes. No causes, no treatment.
 9. Links: link the first mention in a section of anything with a live card (with the section when useful), not every repeat. A card not yet written stays plain text.
 10. Sentence case for step titles, scale band names, table headings and "Label: text" lines. Table headings are short nouns with no end punctuation. A table says what it compares and for which patients (caption).
-- **Practical details** (an interval, route, drug order, who to call) that no guideline or label gives: the `wards-card` skill, step 3, rule C, says where they may come from and how they are confirmed and marked.
+- **Practical details** (an interval, route, drug order, who to call) that no guideline or label gives: the `wards-card` skill, step 3, rule C, says where they may come from (library books and two web sources count as confirmed, judgment goes to the Opus check) and how they are marked.
 
 ## Abbreviations
 - **Use freely:** BP, HR, RR, SpO₂, ECG, CBC, BMP, CMP, CT, MRI, EEG, LP, IV, IM, PO, SL, PRN, POCT, ICU, ED, NPO, QTc, UA, CXR, ABG, VBG, INR, aPTT, TSH, BUN, QRS, PR, AKI, CKD, UTI, COPD, GI, CNS, DKA, and drug-class initials only where a resident would never pause (NSAID, SSRI). LFTs only when the panel is listed.
@@ -64,7 +64,7 @@ Imperative for actions, present tense for findings. No passive reported speech (
 
 ## Lines and sources
 - Every content line ends `^[source-id, …]` (ids from `content/data/source/`), except lines that are only an insert. Sub-bullets without their own source use the parent's.
-- Markers instead of names: `^[common-practice]` (stethoscope); the unnamed-reference check (green check) is a last resort. Never name outside reference tools or the handbook.
+- Markers instead of names: `^[common-practice]` (stethoscope); the unnamed-reference check (green check) is a last resort. Never name outside reference tools or books (see CLAUDE.md).
 - Write as if the reader sees only the final card: no process talk ("the guidance names…", "not read", review notes). Pregnancy and lactation come from LactMed.
 - Tags: `[!cannot-miss]`, `[!most-common]` (after a cause's colon).
 - Causes: `- **Category:** causes ^[source]`.
@@ -88,7 +88,7 @@ Imperative for actions, present tense for findings. No passive reported speech (
 - `[!cannot-miss]` / `[!most-common]` only on causes in Causes; never name a category "Cannot miss" or "Most common".
 - `[!also-above]` (never shown) goes only on a More Information line that holds a warning (contraindicated, avoid, do not, never, boxed warning) which Treatment or Monitor already carries. An unmarked warning line in More Information is a build error; put the warning in Treatment or Monitor first.
 - **Table symbols:** `↑` high/raised, `↓` low, `=` normal, `↕` variable, `< > ≤ ≥` for thresholds (`<100`, not "below 100"). Tables only, never for names like "low-risk" or "high-gap". Details: Part 2.
-- **Checked.** A card is Checked when the owner or an independent Opus helper verified its doses, numbers and care-changing claims against sources. The Opus step runs `npm run checked:stamp -- <card-id> [--scope "…"] [--read <dose-id>=<read>@<source-id>] [--open <dose-id>,…]`: it refuses while any of the card's doses still says `not-verified` unless a `--read` gives its real state or `--open` names it as left open on purpose. It writes the stamp (date, `by: opus`, scope and the fingerprint of the card's doses, numbers and drug facts) and updates each dose's `verification` to what Opus read. The header then reads "Checked <date>". Never stamp a card nobody checked, and never type the stamp by hand.
+- **Checked.** A card is Checked when every dose, number and care-changing claim is traced to a verified guideline or label quote or a checked book passage, and an independent Opus helper checked the lines resting on judgment plus the omissions pass (or the owner verified it). The Opus step runs `npm run checked:stamp -- <card-id> [--scope "…"] [--read <dose-id>=<read>@<source-id>] [--open <dose-id>,…]`: it refuses while any of the card's doses still says `not-verified` unless a `--read` gives its real state or `--open` names it as left open on purpose. It writes the stamp (date, `by: opus`, scope and the fingerprint of the card's doses, numbers and drug facts) and updates each dose's `verification` to what Opus read. The header then reads "Checked <date>". Never stamp a card nobody checked, and never type the stamp by hand.
 - If a later edit changes the fingerprint, `content:check` fails. Re-check and stamp again, or, when nothing clinical changed, `npm run checked:carry -- <card-id> "<reason>"`. A new card, or a change to a dose, number, threshold or a citation on a clinical line, is tier 2 in `npm run pr:tier` and needs one of the two.
 - A draft that is not yet checked has its id in `content/unchecked.txt` (`npm run card:new` adds it). The Opus step removes the line and adds the stamp; `content:check` fails a card with neither.
 - Tables: at most 3 columns (see Writing style). `[[card]]` to an unwritten card is allowed (warning, shows as plain text). Related cards go both ways.

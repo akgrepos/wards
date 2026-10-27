@@ -10,7 +10,7 @@ import { homedir } from 'node:os'
 import { join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
-const BANNED_WORDS = ['AMBOSS', 'OpenEvidence', 'White Book']
+const BANNED_WORDS = ['AMBOSS', 'OpenEvidence', 'White Book', 'Pocket Medicine', 'WikEM', 'Point of Care Medicine', 'pointofcaremedicine']
 
 // Files that may name the banned words, by exact path. Keep this as short as possible.
 export const WORD_ALLOWLIST = new Set(['CLAUDE.md'])
