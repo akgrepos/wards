@@ -1,0 +1,17 @@
+name: Quetiapine
+class: Second-generation (atypical) antipsychotic
+brands: [Seroquel]
+boxed_warning:
+  text: "Older adults with dementia-related psychosis treated with antipsychotics have an increased risk of death. Quetiapine is not approved for dementia-related psychosis. A second boxed warning covers suicidal thoughts in children and young adults."
+  sources: [common-practice]
+cautions:
+  - text: "Orthostatic hypotension, sedation and falls. Check BP before each repeat dose."
+    sources: [common-practice]
+  - text: "QTc prolongation. Check the QTc and correct potassium and magnesium before starting."
+    sources: [common-practice]
+  - text: "Strong CYP3A4 inhibitors (clarithromycin, ritonavir, azole antifungals) raise levels. Phenytoin, carbamazepine and rifampin lower them."
+    sources: [common-practice]
+  - text: "Neuroleptic malignant syndrome, seizures and anticholinergic effects (constipation, urinary retention) can occur."
+    sources: [common-practice]
+sources: [common-practice]
+kidney_liver: "No dose change for kidney impairment. In liver impairment start at the low end and increase slowly. Older adults generally need lower doses."

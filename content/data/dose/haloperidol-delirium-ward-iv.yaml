@@ -1,0 +1,25 @@
+drug: haloperidol
+drug_name: Haloperidol
+brand: Haldol
+indication: Delirium with severe agitation, ward
+indication_detail: Off-label for delirium with severe agitation or risk of harm after de-escalation has failed and the cause is being treated.
+population: Adults on the ward
+route: IV with ECG monitoring (the label does not approve IV use)
+route_short: IV
+amount: 0.25–0.5
+unit: mg
+frequency: every 30 to 60 minutes as needed. Reassess before each repeat dose
+frequency_short: q30–60 min PRN
+give_when: Severe distress or danger to self or others that de-escalation did not settle
+max: "No guideline maximum for delirium. After more than 2 doses, call psychiatry"
+duration: "Shortest possible. Stop once symptoms resolve, usually within 1 week"
+cautions:
+  - "Baseline {{calc:qtc}}, potassium above 4 and magnesium above 2 before the first dose."
+  - "Not for Parkinson disease or dementia with Lewy bodies. Use quetiapine."
+  - "Oral option: 0.5–1 mg by mouth every 4 hours as needed."
+notes: "Ward practice dose. Delirium is not a labeled indication and no guideline gives a ward IV dose. APA advises starting at half or less of a usual adult starting dose. Older or frail adults: see the lower dose."
+sources: [apa-delirium-2025, label-haloperidol-inj-2026, common-practice]
+verification:
+  source: common-practice
+  read: common-practice
+  date: 2026-10-27
