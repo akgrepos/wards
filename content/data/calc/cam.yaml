@@ -1,0 +1,26 @@
+name: Confusion Assessment Method (CAM)
+short: "CAM"
+match: ["CAM"]
+sources: [inouye-cam-1990]
+calculator:
+  kind: score
+  heading: Confusion Assessment Method (CAM)
+  use:
+    when: "A bedside check of a patient with suspected delirium."
+    not: "In ventilated patients use the {{calc:cam-icu}}."
+    why: "It turns the bedside findings into a yes or no for delirium."
+    how: "Mark each of the four features present or absent. Delirium needs features 1 and 2, plus 3 or 4."
+  items:
+    - { id: onset, label: "1. Acute onset and fluctuating course", choices: [{ label: "Absent", points: 0 }, { label: "Present", points: 1 }] }
+    - { id: inattention, label: "2. Inattention", choices: [{ label: "Absent", points: 0 }, { label: "Present", points: 1 }] }
+    - { id: thinking, label: "3. Disorganized thinking", choices: [{ label: "Absent", points: 0 }, { label: "Present", points: 1 }] }
+    - { id: loc, label: "4. Altered level of consciousness", choices: [{ label: "Absent", points: 0 }, { label: "Present", points: 1 }] }
+  rule:
+    all: [onset, inattention]
+    any: [thinking, loc]
+    yes: "Positive: delirium."
+    no: "Negative: the features do not show delirium."
+verification:
+  source: inouye-cam-1990
+  read: not-verified
+  date: 2026-10-28

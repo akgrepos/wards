@@ -9,5 +9,5 @@ items:
   - "**Altered level of consciousness:** anything other than alert (vigilant, lethargic, stuporous, comatose)"
 notes:
   - "Inattention is tested at the bedside, for example by reciting the months backward."
-  - "In ventilated patients use the {{calc:cam-icu}} (which adds a {{calc:rass}} step) rather than the CAM."
+  - "In ventilated patients use the {{calc:cam-icu}} (which adds a {{calc:rass}} step) rather than this one."
 sources: [inouye-cam-1990, ely-camicu-2001]
