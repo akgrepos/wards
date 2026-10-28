@@ -4,6 +4,7 @@
 // ids, links' targets and the shared data files are never read, so a unit string in a dose record is never flagged.
 import { allBlocks, runs } from './walk.mjs';
 import { ALSO_ABOVE } from './inline.mjs';
+import { dosePillCount, isMonitorItem, monitorKind } from './display.mjs';
 
 const DOC = '(docs/CARD-WRITING-CHEATSHEET.md, "Abbreviations" and "Writing style")';
 
@@ -21,6 +22,9 @@ export const PROSE_RULES = {
   escalation: 'escalation rule',
   pearls: 'pearls rule',
   labeltext: 'label-text rule',
+  criteriayear: 'criteria-year rule',
+  actionlabel: 'action-label rule',
+  dosepills: 'dose-pill rule',
 };
 // Errors fail the build. Everything else is a warning.
 export const PROSE_ERRORS = new Set(['abbreviation', 'warninghome', 'vague']);
@@ -286,12 +290,42 @@ function cardFindings(c, { cards }) {
   const labelText = [];
   for (const p of where.filter((q) => q.key === 'treatment')) for (const r of runsOf(p.blocks)) { const t = textOf(r.inlines).trim(); if (!r.header && /\b(?:the label|label does not|not approved|off-label)\b/i.test(t)) labelText.push(show(t)); }
   add('labeltext', labelText, (x) => `${x.length} Treatment line${x.length === 1 ? '' : 's'} with label text, for example ${x[0]}; put the label caveat in the dose insert ${DOC}`);
+  // The word "Action" is never shown to the reader. Under What/When/Action sub-items the display turns it into "Then"
+  // (src/ui/Rich.tsx); anywhere else an "Action:" line, a bold "Action" label or an "Action" table heading would show.
+  const actions = [];
+  for (const p of where) for (const b of p.blocks) {
+    if (b.t === 'list') for (const it of b.items) {
+      const own = isMonitorItem(it) ? [] : [it, ...it.children];
+      for (const x of own) if (monitorKind(x.inlines)?.kind === 'action' || x.inlines.some((y) => y.t === 'strong' && /^action:?$/i.test(y.v.trim()))) actions.push(`${p.section}: ${show(textOf(x.inlines).trim())}`);
+    }
+    if (b.t === 'paragraph' && monitorKind(b.inlines)?.kind === 'action') actions.push(`${p.section}: ${show(textOf(b.inlines).trim())}`);
+    if (b.t === 'table') for (const h of b.header) if (/^action$/i.test(textOf(h).trim())) actions.push(`${p.section}: table heading "Action"`);
+  }
+  add('actionlabel', actions, (x) => `${x.length} visible "Action" label${x.length === 1 ? '' : 's'}, for example ${x[0]}; use What, When and Action sub-items under one title (shown as Check, When, Then) or say the action in words ${DOC}`);
+
+  // One dose per line: a list item with two or more dose pills reads as a run-on.
+  const pills = [];
+  for (const p of where) for (const b of p.blocks) if (b.t === 'list') for (const it of b.items) for (const x of [it, ...it.children]) if (dosePillCount(x.inlines) >= 2) pills.push(`${p.section}: ${show(textOf(x.inlines).trim())}`);
+  add('dosepills', pills, (x) => `${x.length} list item${x.length === 1 ? '' : 's'} with two or more dose pills, for example ${x[0]}; give each dose its own line ${DOC}`);
   return found;
 }
 
 // All prose findings: { rule, severity, count, message, card }.
-export function proseFindings({ cards }) {
-  return cards.flatMap((c) => cardFindings(c, { cards }).map((f) => ({ ...f, card: c.id })));
+export function proseFindings({ cards, data }) {
+  return [...cards.flatMap((c) => cardFindings(c, { cards }).map((f) => ({ ...f, card: c.id }))), ...criteriaFindings(data ?? {})];
+}
+
+// A year in criteria text (the score's own name, items, rows, notes) is citation detail: it belongs on the source, not in what the reader scores.
+// "criteria:<id>" stands in for a card in the finding. The criteria's `name`, `short` and `sources` are not read.
+const YEAR = /(?<![\d.])(?:19|20)\d{2}(?![\d])/;
+function criteriaFindings(data) {
+  const out = [];
+  for (const [id, c] of Object.entries(data.criteria ?? {})) {
+    const texts = [c.title, c.logic, ...(c.items ?? []), ...(c.columns ?? []), ...(c.rows ?? []).flat(), ...(c.notes ?? [])].filter((t) => typeof t === 'string');
+    const hits = texts.filter((t) => YEAR.test(t));
+    if (hits.length) out.push({ rule: 'criteriayear', severity: 'warn', count: hits.length, card: `criteria:${id}`, message: `content/data/criteria/${id}.yaml: ${PROSE_RULES.criteriayear}, ${hits.length} four-digit year${hits.length === 1 ? '' : 's'} in criteria text, for example ${show(hits[0])}; the year belongs on the source, not in the criteria ${DOC}` });
+  }
+  return out;
 }
 
 // One row per rule: how many cards and how many places it flags.
