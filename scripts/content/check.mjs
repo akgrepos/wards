@@ -402,7 +402,7 @@ export function checkWarnings({ cards, data, unchecked = [] }, { today = new Dat
   const out = [];
   const warn = (where, msg) => out.push(`${where}: ${msg}`);
   out.push(...ruleFindings({ cards, data, unchecked }).filter((f) => !f.isNew).map((f) => f.message));
-  out.push(...proseFindings({ cards }).filter((f) => f.severity === 'warn').map((f) => f.message));
+  out.push(...proseFindings({ cards, data }).filter((f) => f.severity === 'warn').map((f) => f.message));
   const ids = new Set(cards.map((c) => c.id));
   const byId = new Map(cards.map((c) => [c.id, c]));
 

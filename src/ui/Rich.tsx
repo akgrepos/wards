@@ -4,6 +4,7 @@ import { content, getCard, titleCase, isMarkerSource, pathwaysFor, useCardLoad }
 import type { Block, Calc, Card, ContainerItem, Criteria, Dose, Drug, Inline, ListItem, Regimen, Section, Source, Threshold } from '../content/types';
 import { parseInline, TAGS, ALSO_ABOVE } from '../../scripts/content/inline.mjs';
 import { onsetRows } from '../../scripts/content/onset.mjs';
+import { bandsOf, doseOnlyItem, isMonitorItem, labelSplit, MONITOR_WORD, monitorKind, numberedPrefix } from '../../scripts/content/display.mjs';
 import { slug } from '../../scripts/content/pathway.mjs';
 import { href, parseRoute } from '../router';
 import { useSheet, type ShowSheet } from './SheetHost';
@@ -385,14 +386,53 @@ function RegimenBlock({ id }: { id: string }) {
 // indigo Criteria box; a table with `layout: stacked` as tinted bands (yellow, orange, red from its `tones`, severity only),
 // any other table as a table; the notes in a brown Note box. One color per kind of information (owner, 2026-10-19).
 const TONE = { yellow: 'mild', orange: 'moderate', red: 'severe' } as const;
+
+// Score bands: one line each, a range pill and what it means.
+function BandLines({ bands }: { bands: { range: string; text: string }[] }) {
+  return (
+    <div className="band-lines">
+      {bands.map((b, i) => (
+        <div key={i} className="band-line">
+          <span className="range-pill">{b.range}</span>
+          <span className="band-line__text"><RichText text={cap(b.text) as string} /></span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+// Criteria items: a number written in the text ("1. Alertness: …") is the item's own number (no bullet beside it), and a
+// "Label: explanation" item shows the label in the primary color and the explanation in gray.
+function CriteriaItems({ items }: { items: string[] }) {
+  const nums = items.map(numberedPrefix);
+  const numbered = nums.every(Boolean);
+  const List = numbered ? 'ol' : 'ul';
+  return (
+    <List className={`ios-body rich-list${numbered ? ' rich-list--numbered' : ''}`}>
+      {items.map((t, i) => {
+        const text = nums[i]?.rest ?? t;
+        const l = labelSplit(text);
+        return (
+          <li key={i} value={nums[i]?.n}>
+            {l ? <><span className="li-label">{l.label}</span> <span className="li-rest"><RichText text={l.rest} /></span></> : <RichText text={text} />}
+          </li>
+        );
+      })}
+    </List>
+  );
+}
 function CriteriaBody({ c, id }: { c: Criteria; id?: string }) {
   const sheet = useSheet();
   // A score or formula that has an MDCalc page ends its box with that link (a calculator file with the same id).
   const calc = id ? (content.data.calc?.[id] as Calc | undefined) : undefined;
   const stacked = !!(c.rows?.length && c.layout === 'stacked' && c.tones);
+  // No "Table" title and no shaded header row here: the criteria's own box already names what this is.
   const table = c.rows?.length && !stacked ? (
-    <AKG.Table stickyFirstColumn shadedHeader label="Table" columns={(c.columns ?? []).map((h, i) => <RichText key={i} text={h} />)} rows={c.rows.map((r, i) => ({ key: i, cells: r.map((t, j) => <RichText key={j} text={t} />) }))} />
+    <AKG.Table stickyFirstColumn columns={(c.columns ?? []).map((h, i) => <RichText key={i} text={h} />)} rows={c.rows.map((r, i) => ({ key: i, cells: r.map((t, j) => <RichText key={j} text={t} />) }))} />
   ) : null;
+  // Notes written as score bands ("4 or more: …. 1–3: …. 0: …") show as lines with a range pill, inside the criteria box.
+  const bands = (c.notes ?? []).map(bandsOf);
+  const notes = (c.notes ?? []).filter((_, i) => !bands[i]);
   return (
     <div className="criteria">
       {stacked && !c.logic && !c.items?.length ? (
@@ -401,8 +441,9 @@ function CriteriaBody({ c, id }: { c: Criteria; id?: string }) {
       ) : (
       <AKG.Panel tone="definition" label={calc ? 'Score' : 'Criteria'} title={c.title}>
         {c.logic && <p className="ios-subheadline-emphasized">{c.logic}</p>}
-        {c.items?.length ? <ul className="ios-body rich-list">{c.items.map((t, i) => <li key={i}><RichText text={t} /></li>)}</ul> : null}
+        {c.items?.length ? <CriteriaItems items={c.items} /> : null}
         {table}
+        {bands.map((b, i) => b && <BandLines key={i} bands={b} />)}
         {calc && <p className="ios-body"><CalcLink c={calc} label={`${calc.short} on MDCalc`} /></p>}
         {calc && id && hasCalculator(id) && <AKG.Button variant="tinted" block onClick={() => openCalculator(sheet, id)}>Calculate</AKG.Button>}
       </AKG.Panel>
@@ -414,9 +455,9 @@ function CriteriaBody({ c, id }: { c: Criteria; id?: string }) {
           rows={c.rows!.map((r, i) => ({ key: i, grade: <RichText text={/^\d+$/.test(r[0]) ? `${c.columns?.[0]} ${r[0]}` : r[0]} />, tone: TONE[c.tones![i]], values: r.slice(1).map((t, j) => ({ label: <RichText text={c.columns?.[j + 1]} />, value: <RichText text={t} /> })) }))}
         />
       ) : null}
-      {c.notes?.length ? (
+      {notes.length ? (
         <AKG.Panel tone="note" label="Note">
-          {c.notes.map((t, i) => <p key={i} className="ios-body"><RichText text={t} /><LinePill ids={c.sources} quote={t} /></p>)}
+          {notes.map((t, i) => <p key={i} className="ios-body"><RichText text={t} /><LinePill ids={c.sources} quote={t} /></p>)}
         </AKG.Panel>
       ) : null}
     </div>
@@ -554,17 +595,85 @@ export const RichText = ({ text }: { text?: string }) => (text ? <Inlines xs={pa
 
 // A "Cannot miss" or "Most common" chip sits at the end of its bullet, not inside the sentence. A bullet with two chips
 // (one per group of causes) keeps each where it is written, since the end could not say which group it belongs to.
-function Item({ it }: { it: ListItem }) {
+// "**Label:** explanation": the label is semibold in the primary color, the explanation gray. An item that is only a dose,
+// or a label and doses, puts each dose on its own line.
+function Item({ it, number }: { it: ListItem; number?: number }) {
   const tags = it.inlines.filter((x) => x.t === 'tag' && x.v !== ALSO_ABOVE);
   const atEnd = tags.length === 1;
+  const xs = atEnd ? it.inlines.filter((x) => x.t !== 'tag') : it.inlines;
+  const doses = doseOnlyItem(xs);
+  const first = xs[0];
+  const labelled = !doses && first?.t === 'strong' && first.v.endsWith(':');
   return (
-    <li>
-      <Inlines xs={atEnd ? it.inlines.filter((x) => x.t !== 'tag') : it.inlines} />
+    <li className={doses ? 'li-doses' : undefined} value={number}>
+      {doses ? (
+        <>
+          {doses.label.length > 0 && <span className="li-label"><Inlines xs={doses.label} /></span>}
+          {doses.pills.map((p, i) => <span key={i} className="dose-line"><Inlines xs={[p]} /></span>)}
+        </>
+      ) : labelled ? (
+        <>
+          <span className="li-label">{first.v}</span>
+          {xs.length > 1 && <span className="li-rest"> <Inlines xs={xs.slice(1).map((x, i) => (i === 0 && x.t === 'text' ? { ...x, v: x.v.replace(/^\s+/, '') } : x))} /></span>}
+        </>
+      ) : <Inlines xs={xs} />}
       {atEnd && <Inlines xs={tags} />}
       <LinePill ids={it.sources} quote={it.inlines} />
-      {it.children.length > 0 && <ul>{it.children.map((c, i) => <Item key={i} it={c} />)}</ul>}
+      {it.children.length > 0 && <ListView items={it.children} nested />}
     </li>
   );
+}
+
+// A list of items written "1. …", "2. …" under bullets shows its own numbers and no bullets; every other list is bullets.
+function ListView({ items, nested }: { items: ListItem[]; nested?: boolean }) {
+  const nums = items.map((it) => (it.inlines[0]?.t === 'text' ? numberedPrefix(it.inlines[0].v) : null));
+  const numbered = items.length > 1 && nums.every(Boolean);
+  const Tag = numbered ? 'ol' : 'ul';
+  const cls = nested ? undefined : 'ios-body rich-list';
+  return (
+    <Tag className={numbered ? `${cls ?? ''} rich-list--numbered`.trim() : cls}>
+      {items.map((it, i) => <Item key={i} it={numbered ? { ...it, inlines: [{ t: 'text', v: nums[i]!.rest }, ...it.inlines.slice(1)] } : it} number={numbered ? nums[i]!.n : undefined} />)}
+    </Tag>
+  );
+}
+
+const MONITOR_ICON = {
+  what: <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8" /><circle cx="12" cy="12" r="2.5" /></svg>,
+  when: <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 2" /></svg>,
+  action: <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>,
+};
+
+// The Monitor convention (docs/CARD-TYPES.md, Monitor): an item with What, When and Action lines under it shows its title,
+// then one line each with a small icon and a word: Check, When, Then. The word "Action" is never shown.
+function MonitorItem({ it }: { it: ListItem }) {
+  const title = it.inlines.filter((x) => x.t !== 'tag').map((x, i, a) => (i === a.length - 1 && x.t === 'text' ? { ...x, v: x.v.replace(/[:\s]+$/, '') } : x));
+  return (
+    <div className="monitor-item">
+      <p className="monitor-item__title"><Inlines xs={title.map((x) => (x.t === 'strong' ? { ...x, v: x.v.replace(/:\s*$/, '') } : x))} /><LinePill ids={it.sources} quote={it.inlines} /></p>
+      {it.children.map((c, i) => {
+        const k = monitorKind(c.inlines)!;
+        const rest = c.inlines.map((x, j) => (j === 0 && x.t === 'text' ? { ...x, v: cap(x.v.slice(k.skip)) as string } : x));
+        return (
+          <p key={i} className={`monitor-line monitor-line--${k.kind}`}>
+            <span className="monitor-line__icon">{MONITOR_ICON[k.kind as keyof typeof MONITOR_ICON]}</span>
+            <span><span className="monitor-line__word">{MONITOR_WORD[k.kind as keyof typeof MONITOR_WORD]}</span> <Inlines xs={rest} /><LinePill ids={c.sources.length ? c.sources : it.sources} quote={c.inlines} /></span>
+          </p>
+        );
+      })}
+    </div>
+  );
+}
+
+// Runs of monitor items show as blocks; the other items of the same list stay a bullet list.
+function ListBlock({ items }: { items: ListItem[] }) {
+  const out: ReactNode[] = [];
+  for (let i = 0; i < items.length; i++) {
+    const monitor = isMonitorItem(items[i]);
+    const run = [items[i]];
+    while (i + 1 < items.length && isMonitorItem(items[i + 1]) === monitor) run.push(items[++i]);
+    out.push(monitor ? <div key={i} className="monitor-list ios-body">{run.map((it, j) => <MonitorItem key={j} it={it} />)}</div> : <ListView key={i} items={run} />);
+  }
+  return <>{out}</>;
 }
 
 // A card's pathways, one row each, under the card's title and on its Rapids page.
@@ -686,7 +795,7 @@ export function Blocks({ blocks }: { blocks: Block[] }) {
 
 function BlockView({ b }: { b: Block }) {
   if (b.t === 'paragraph') return <p className="ios-body"><Inlines xs={b.inlines} /><LinePill ids={b.sources} quote={b.inlines} /></p>;
-  if (b.t === 'list') return <ul className="ios-body rich-list">{b.items.map((it, j) => <Item key={j} it={it} />)}</ul>;
+  if (b.t === 'list') return <ListBlock items={b.items} />;
   if (b.t === 'subheading') return <Subheading text={b.text} />;
   if (b.t === 'steps') {
     return (

@@ -70,7 +70,7 @@ A disease or syndrome (a **condition**), or a symptom, sign or abnormal result (
 6. **Presentation**: symptoms, atypical presentations; for symptoms, the focused history and examination that discriminate between causes
 7. **Diagnosis**: initial tests and why; interpretation and thresholds (result → likely causes tables, with their limits in a Note box); further testing; low-value tests to avoid
 8. **Treatment**: numbered steps (immediate, then definitive, by severity or subtype); dose rows ⟨inserted⟩. For a symptom: common initial orders (orders only, not tests; one line links to the first-line tests in Diagnosis), then initial management while the cause is being found.
-9. **Monitor**: what is checked, how, when, and the action: rechecks (timelines of recheck times), targets, expected response, stop rules. Each line reads What, When, Action.
+9. **Monitor**: what is checked, how, when, and the action: rechecks (timelines of recheck times), targets, expected response, stop rules. Each item reads What, When, Action (`- What:`, `- When:`, `- Action:` sub-items). The app shows them as Check, When and Then, with an icon each; the word "Action" is never shown.
 10. **Escalation**: the trigger, the named service or level of care, and what to have ready for the call (general criteria, never institution-specific)
 11. **More Information**: Where Guidelines Differ · Special Populations (kidney or liver disease, pregnancy, older adults, immunocompromised, drug-specific) · Complications · After the Acute Phase (discharge, follow-up, long-term management, prevention) · Evidence (key studies, one line each) · Why the Treatment Order · Epidemiology and Pathophysiology
 12. Pearls · Related · Sources
