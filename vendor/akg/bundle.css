@@ -2616,10 +2616,10 @@ button.akg-sheet__grabber::after { content: ""; position: absolute; left: -20px;
 .akg-panel__body { display: flex; flex-direction: column; gap: var(--space-8); min-width: 0; }
 .akg-panel__body > p, .akg-panel__body > ul, .akg-panel__body > ol { margin: 0; }
 .akg-panel--definition { background: color-mix(in srgb, var(--system-indigo) 10%, transparent); --akg-panel-label: color-mix(in srgb, var(--system-indigo) 80%, var(--label)); }
-.akg-panel--note { background: color-mix(in srgb, var(--system-brown) 16%, transparent); --akg-panel-label: color-mix(in srgb, var(--system-brown) 70%, var(--label)); }
+.akg-panel--note { background: var(--fill-quaternary); --akg-panel-label: var(--label-secondary); }
 .akg-panel--quote { font-size: calc(15 * var(--akg-t)); line-height: calc(20 * var(--akg-t)); }
 [data-theme$="dark"] .akg-panel--definition { background: color-mix(in srgb, var(--system-indigo) 22%, transparent); --akg-panel-label: color-mix(in srgb, var(--system-indigo) 55%, var(--label)); }
-[data-theme$="dark"] .akg-panel--note { background: color-mix(in srgb, var(--system-brown) 26%, transparent); --akg-panel-label: color-mix(in srgb, var(--system-brown) 55%, var(--label)); }
+
 [data-theme^="macos"] .akg-panel { padding: var(--space-8) var(--space-10); border-radius: 10px; font-size: 13px; line-height: 16px; }
 [data-theme^="macos"] .akg-panel__title { font-size: 13px; line-height: 16px; }
 [data-theme^="macos"] .akg-panel__label { font-size: 10px; line-height: 13px; }
@@ -2783,3 +2783,36 @@ button.akg-link { margin: 0; padding: 0; border: 0; background: none; font: inhe
 .akg-value-row--list + .akg-value-row--list { border-top: 0.5px solid var(--separator); }
 .akg-value-row--list.akg-value-row--interactive:active { background: var(--fill-tertiary); }
 .akg-value-row--list .akg-value-row__value { font-weight: 600; }
+
+
+/* StepList density="inline": the number is a small badge on the title line, and the step's content uses the full width (no gutter beside it). */
+.akg-step-list--inline .akg-step { display: grid; grid-template-columns: auto 1fr; column-gap: var(--space-8); align-items: start; padding-left: var(--space-16); padding-right: var(--space-16); }
+.akg-step-list--inline .akg-step + .akg-step::before { left: var(--space-16); }
+.akg-step-list--inline .akg-step__body { display: contents; }
+.akg-step-list--inline .akg-step__marker { grid-column: 1; grid-row: 1; width: 22px; height: 22px; margin-top: 0; font-size: calc(12 * var(--akg-t)); }
+.akg-step-list--inline .akg-step__title, .akg-step-list--inline .akg-step__condition { grid-column: 2; grid-row: 1; align-self: center; min-width: 0; }
+.akg-step-list--inline .akg-step__content { grid-column: 1 / -1; }
+
+/* LabelledText: "Label: explanation" inside a line. The label is semibold in the primary color; the explanation is secondary. */
+.akg-labelled__label { font-weight: 600; color: var(--label); }
+.akg-labelled__text { color: var(--label-secondary); }
+
+/* BandList: score bands as lines, one range pill and its meaning each; the pills share one column so the meanings line up. */
+.akg-band-list { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: var(--space-8); column-gap: var(--space-8); align-items: start; font-family: var(--font-sans); color: var(--label); }
+.akg-band-list__row { display: contents; }
+.akg-range-pill { box-sizing: border-box; padding: 1px 6px; border-radius: var(--radius-full); background: var(--fill-secondary); text-align: center; font-weight: 600; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.akg-band-list__text { min-width: 0; overflow-wrap: break-word; }
+
+/* MonitorList: what to check, when, and what to do next. An item's title, then Check, When and Then lines, each a small icon and a word (an icon never stands alone). */
+.akg-monitor-list { display: flex; flex-direction: column; font-family: var(--font-sans); color: var(--label); }
+.akg-monitor-item { padding: var(--space-8) 0; border-top: 0.5px solid var(--separator); }
+.akg-monitor-item:first-child { border-top: 0; padding-top: 0; }
+.akg-monitor-item:last-child { padding-bottom: 0; }
+.akg-monitor-item__title { margin: 0 0 var(--space-4); font-weight: 600; overflow-wrap: break-word; }
+.akg-monitor-line { display: flex; gap: var(--space-8); align-items: flex-start; margin: 0; padding: 2px 0; color: var(--label-secondary); overflow-wrap: break-word; }
+.akg-monitor-line > span:last-child { min-width: 0; }
+.akg-monitor-line--then { color: var(--label); }
+.akg-monitor-line__icon { flex: none; display: inline-flex; width: 1.1em; height: 1.1em; margin-top: 0.2em; color: var(--label-tertiary); }
+.akg-monitor-line--then .akg-monitor-line__icon { color: var(--tinted-label); }
+.akg-monitor-line__icon svg { width: 100%; height: 100%; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.akg-monitor-line__word { font-weight: 600; color: var(--label); }

@@ -1,4 +1,4 @@
-/* @ds-bundle: {"format":4,"namespace":"AKG","components":[{"name":"Button"},{"name":"Toggle"},{"name":"Checkbox"},{"name":"RadioGroup"},{"name":"SegmentedControl"},{"name":"PopUpButton"},{"name":"Stepper"},{"name":"TextField"},{"name":"SearchField"},{"name":"ComboBox"},{"name":"Slider"},{"name":"DatePicker"},{"name":"ColorWell"},{"name":"List"},{"name":"GroupBox"},{"name":"DisclosureGroup"},{"name":"ProgressIndicator"},{"name":"EmptyState"},{"name":"Notification"},{"name":"Tooltip"},{"name":"TabBar"},{"name":"Toolbar"},{"name":"Sidebar"},{"name":"PageControl"},{"name":"Window"},{"name":"Sheet"},{"name":"Alert"},{"name":"ActionSheet"},{"name":"Menu"},{"name":"Popover"},{"name":"Callout"},{"name":"SourcePill"},{"name":"ContentSection"},{"name":"Flowchart"},{"name":"TappableValue"},{"name":"InlineButton"},{"name":"Table"},{"name":"Figure"},{"name":"Banner"},{"name":"BottomBar"},{"name":"Highlight"},{"name":"ShareButton"},{"name":"NumberField"},{"name":"SourceLine"},{"name":"StepList"},{"name":"ValueRow"},{"name":"Tag"},{"name":"ScaleBar"},{"name":"Panel"},{"name":"GradeList"},{"name":"ComparisonGrid"},{"name":"TimePoints"},{"name":"TimerCapsule"},{"name":"CoverageMark"},{"name":"CoverageStrip"}]} */
+/* @ds-bundle: {"format":4,"namespace":"AKG","components":[{"name":"Button"},{"name":"Toggle"},{"name":"Checkbox"},{"name":"RadioGroup"},{"name":"SegmentedControl"},{"name":"PopUpButton"},{"name":"Stepper"},{"name":"TextField"},{"name":"SearchField"},{"name":"ComboBox"},{"name":"Slider"},{"name":"DatePicker"},{"name":"ColorWell"},{"name":"List"},{"name":"GroupBox"},{"name":"DisclosureGroup"},{"name":"ProgressIndicator"},{"name":"EmptyState"},{"name":"Notification"},{"name":"Tooltip"},{"name":"TabBar"},{"name":"Toolbar"},{"name":"Sidebar"},{"name":"PageControl"},{"name":"Window"},{"name":"Sheet"},{"name":"Alert"},{"name":"ActionSheet"},{"name":"Menu"},{"name":"Popover"},{"name":"Callout"},{"name":"SourcePill"},{"name":"ContentSection"},{"name":"Flowchart"},{"name":"TappableValue"},{"name":"InlineButton"},{"name":"Table"},{"name":"Figure"},{"name":"Banner"},{"name":"BottomBar"},{"name":"Highlight"},{"name":"ShareButton"},{"name":"NumberField"},{"name":"SourceLine"},{"name":"StepList"},{"name":"ValueRow"},{"name":"Tag"},{"name":"ScaleBar"},{"name":"Panel"},{"name":"GradeList"},{"name":"ComparisonGrid"},{"name":"TimePoints"},{"name":"TimerCapsule"},{"name":"CoverageMark"},{"name":"CoverageStrip"},{"name":"BandList"},{"name":"MonitorList"},{"name":"LabelledText"}]} */
 /* Shared helpers — used by every AKG component. */
 (function (AKG) {
   // Join class names, skipping falsy values.
@@ -2896,7 +2896,7 @@
   // tint: accent (default) or critical (system red, for urgent sequences). Numbers come from the order of the steps.
   function StepList(props) {
     var rest = omit(props, ["tint", "start", "density", "strong", "className", "children"]);
-    rest.className = AKG.cx("akg-step-list", "akg-step-list--" + (props.tint || "accent"), props.density === "compact" && "akg-step-list--compact", props.strong && "akg-step-list--strong", props.className);
+    rest.className = AKG.cx("akg-step-list", "akg-step-list--" + (props.tint || "accent"), props.density === "compact" && "akg-step-list--compact", props.density === "inline" && "akg-step-list--inline", props.strong && "akg-step-list--strong", props.className);
     var n = props.start != null ? props.start : 1, i = 0;
     return h("ol", rest, R.Children.map(props.children, function (child) {
       if (!R.isValidElement(child)) return child;
@@ -3203,4 +3203,53 @@
     }));
   }
   AKG.CoverageStrip = CoverageStrip;
+})(window.AKG = window.AKG || {});
+
+
+/* LabelledText, BandList, MonitorList — reading-text patterns that give card text its hierarchy from plain data. */
+(function (AKG) {
+  var h = window.React.createElement;
+  function omit(props, keys) { var r = {}; for (var k in props) if (keys.indexOf(k) < 0) r[k] = props[k]; return r; }
+
+  // "Label: explanation" in running text: the label semibold in the primary color, the explanation secondary.
+  function LabelledText(props) {
+    var rest = omit(props, ["label", "className", "children"]);
+    rest.className = AKG.cx("akg-labelled", props.className);
+    return h("span", rest, h("span", { className: "akg-labelled__label" }, props.label), props.children != null ? [" ", h("span", { key: "t", className: "akg-labelled__text" }, props.children)] : null);
+  }
+  AKG.LabelledText = LabelledText;
+
+  // Score bands: bands = [{ range: "4 or more", children: "Possible delirium" }], one line each.
+  function BandList(props) {
+    var rest = omit(props, ["bands", "className"]);
+    rest.className = AKG.cx("akg-band-list", props.className);
+    return h("div", rest, (props.bands || []).map(function (b, i) {
+      return h("div", { key: i, className: "akg-band-list__row" },
+        h("span", { className: "akg-range-pill" }, b.range),
+        h("span", { className: "akg-band-list__text" }, b.children));
+    }));
+  }
+  AKG.BandList = BandList;
+
+  var IC = {
+    check: [h("circle", { key: 1, cx: 12, cy: 12, r: 8 }), h("circle", { key: 2, cx: 12, cy: 12, r: 2.5 })],
+    when: [h("circle", { key: 1, cx: 12, cy: 12, r: 9 }), h("path", { key: 2, d: "M12 7v5l3 2" })],
+    then: [h("path", { key: 1, d: "M5 12h14M13 6l6 6-6 6" })]
+  };
+  var WORD = { check: "Check", when: "When", then: "Then" };
+  // items = [{ title, lines: [{ kind: "check" | "when" | "then", children }] }]. The word is always shown beside its icon.
+  function MonitorList(props) {
+    var rest = omit(props, ["items", "className"]);
+    rest.className = AKG.cx("akg-monitor-list", props.className);
+    return h("div", rest, (props.items || []).map(function (it, i) {
+      return h("div", { key: i, className: "akg-monitor-item" },
+        h("p", { className: "akg-monitor-item__title" }, it.title),
+        (it.lines || []).map(function (l, j) {
+          return h("p", { key: j, className: "akg-monitor-line akg-monitor-line--" + l.kind },
+            h("span", { className: "akg-monitor-line__icon" }, h("svg", { viewBox: "0 0 24 24", "aria-hidden": "true" }, IC[l.kind])),
+            h("span", null, h("span", { className: "akg-monitor-line__word" }, l.word || WORD[l.kind]), " ", l.children));
+        }));
+    }));
+  }
+  AKG.MonitorList = MonitorList;
 })(window.AKG = window.AKG || {});

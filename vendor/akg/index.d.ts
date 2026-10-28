@@ -1164,8 +1164,8 @@ export interface StepListProps extends React.OlHTMLAttributes<HTMLOListElement> 
   tint?: 'accent' | 'critical';
   /** First number. Default 1. */
   start?: number;
-  /** compact: 12pt side padding and an 8pt gap beside the number (default 16 and 12). */
-  density?: 'default' | 'compact';
+  /** compact: 12pt side padding and an 8pt gap beside the number (default 16 and 12). inline: the number is a small badge on the title line and the step's content uses the full width (no gutter); for dense steps on a narrow phone card. */
+  density?: 'default' | 'compact' | 'inline';
   /** Condition and details at full label color, titles 17pt, for steps people act on. */
   strong?: boolean;
   /** Step elements. */
@@ -1258,7 +1258,7 @@ export interface CheckRowProps extends Omit<React.ButtonHTMLAttributes<HTMLButto
 export declare function CheckRow(props: CheckRowProps): React.ReactElement;
 
 export interface PanelProps extends React.HTMLAttributes<HTMLDivElement> {
-  /** definition: indigo (criteria, definitions); note: brown (notes, caveats); plain: light gray; quote: light gray, for a quoted passage. Default plain. */
+  /** definition: indigo (criteria, definitions); note: neutral gray (notes, caveats; color is kept for criteria, severity and warnings); plain: light gray; quote: light gray, for a quoted passage. Default plain. */
   tone?: 'definition' | 'note' | 'plain' | 'quote';
   /** One word naming the kind of information ("Criteria", "Note"), small and uppercase. Always give one, except for a quote. */
   label?: React.ReactNode;
@@ -1375,4 +1375,27 @@ export interface CoverageStripProps extends React.HTMLAttributes<HTMLSpanElement
 /** A row of coverage shapes with short headings under each, for a compact profile of one item across several others. Wraps to more lines at larger Text Sizes. Pair it with a legend that names the three shapes. */
 export declare function CoverageStrip(props: CoverageStripProps): React.ReactElement;
 
-declare global { interface Window { AKG: { Button: typeof Button; Toggle: typeof Toggle; Checkbox: typeof Checkbox; RadioGroup: typeof RadioGroup; Radio: typeof Radio; SegmentedControl: typeof SegmentedControl; PopUpButton: typeof PopUpButton; Stepper: typeof Stepper; TextField: typeof TextField; SearchField: typeof SearchField; ComboBox: typeof ComboBox; Slider: typeof Slider; DatePicker: typeof DatePicker; ColorWell: typeof ColorWell; List: typeof List; ListRow: typeof ListRow; GroupBox: typeof GroupBox; DisclosureGroup: typeof DisclosureGroup; DisclosureButton: typeof DisclosureButton; ProgressIndicator: typeof ProgressIndicator; EmptyState: typeof EmptyState; Notification: typeof Notification; Tooltip: typeof Tooltip; TabBar: typeof TabBar; Toolbar: typeof Toolbar; ToolbarGroup: typeof ToolbarGroup; ToolbarButton: typeof ToolbarButton; Sidebar: typeof Sidebar; SidebarSection: typeof SidebarSection; SidebarItem: typeof SidebarItem; PageControl: typeof PageControl; Window: typeof Window; Sheet: typeof Sheet; Alert: typeof Alert; ActionSheet: typeof ActionSheet; Menu: typeof Menu; MenuItem: typeof MenuItem; MenuSeparator: typeof MenuSeparator; MenuSection: typeof MenuSection; Popover: typeof Popover; Callout: typeof Callout; SourcePill: typeof SourcePill; ContentSection: typeof ContentSection; SectionBar: typeof SectionBar; Flowchart: typeof Flowchart; TappableValue: typeof TappableValue; InlineButton: typeof InlineButton; Table: typeof Table; Figure: typeof Figure; Banner: typeof Banner; BottomBar: typeof BottomBar; Highlight: typeof Highlight; ShareButton: typeof ShareButton; NumberField: typeof NumberField; IconTile: typeof IconTile; SourceLine: typeof SourceLine; StepList: typeof StepList; Step: typeof Step; ValueRow: typeof ValueRow; Tag: typeof Tag; ScaleBar: typeof ScaleBar; Panel: typeof Panel; CheckRow: typeof CheckRow; GradeList: typeof GradeList; ComparisonGrid: typeof ComparisonGrid; TimePoints: typeof TimePoints; TimerCapsule: typeof TimerCapsule; CoverageMark: typeof CoverageMark; CoverageStrip: typeof CoverageStrip; useSectionState: typeof useSectionState; useElapsed: typeof useElapsed; formatElapsed: typeof formatElapsed; speakElapsed: typeof speakElapsed; useScrolledPast: typeof useScrolledPast; lockScroll: typeof lockScroll; useEscape: typeof useEscape; cx(...c: any[]): string; platform(el?: Element): 'ios' | 'macos' } } }
+export interface LabelledTextProps extends Omit<React.HTMLAttributes<HTMLSpanElement>, 'children'> {
+  /** The label, with its colon ("Onset:"). */
+  label: React.ReactNode;
+  /** The explanation, in the secondary color. */
+  children?: React.ReactNode;
+}
+/** "Label: explanation" in running text: the label semibold in the primary color, the explanation in the secondary color. */
+export declare function LabelledText(props: LabelledTextProps): React.ReactElement;
+
+export interface BandListProps extends React.HTMLAttributes<HTMLDivElement> {
+  /** One line per band: the range as written ("4 or more", "1–3", "0") and what it means. */
+  bands: { range: string; children: React.ReactNode }[];
+}
+/** Score bands as separate lines, each a range pill and its meaning; the pills share a column. Not a paragraph. */
+export declare function BandList(props: BandListProps): React.ReactElement;
+
+export interface MonitorListProps extends React.HTMLAttributes<HTMLDivElement> {
+  /** Each item: its title, then lines of kind check (what), when (how often) or then (what to do). */
+  items: { title: React.ReactNode; lines: { kind: 'check' | 'when' | 'then'; word?: string; children: React.ReactNode }[] }[];
+}
+/** What to check, when, and what to do next: a title, then lines each with a small icon and a word (Check, When, Then). */
+export declare function MonitorList(props: MonitorListProps): React.ReactElement;
+
+declare global { interface Window { AKG: { Button: typeof Button; Toggle: typeof Toggle; Checkbox: typeof Checkbox; RadioGroup: typeof RadioGroup; Radio: typeof Radio; SegmentedControl: typeof SegmentedControl; PopUpButton: typeof PopUpButton; Stepper: typeof Stepper; TextField: typeof TextField; SearchField: typeof SearchField; ComboBox: typeof ComboBox; Slider: typeof Slider; DatePicker: typeof DatePicker; ColorWell: typeof ColorWell; List: typeof List; ListRow: typeof ListRow; GroupBox: typeof GroupBox; DisclosureGroup: typeof DisclosureGroup; DisclosureButton: typeof DisclosureButton; ProgressIndicator: typeof ProgressIndicator; EmptyState: typeof EmptyState; Notification: typeof Notification; Tooltip: typeof Tooltip; TabBar: typeof TabBar; Toolbar: typeof Toolbar; ToolbarGroup: typeof ToolbarGroup; ToolbarButton: typeof ToolbarButton; Sidebar: typeof Sidebar; SidebarSection: typeof SidebarSection; SidebarItem: typeof SidebarItem; PageControl: typeof PageControl; Window: typeof Window; Sheet: typeof Sheet; Alert: typeof Alert; ActionSheet: typeof ActionSheet; Menu: typeof Menu; MenuItem: typeof MenuItem; MenuSeparator: typeof MenuSeparator; MenuSection: typeof MenuSection; Popover: typeof Popover; Callout: typeof Callout; SourcePill: typeof SourcePill; ContentSection: typeof ContentSection; SectionBar: typeof SectionBar; Flowchart: typeof Flowchart; TappableValue: typeof TappableValue; InlineButton: typeof InlineButton; Table: typeof Table; Figure: typeof Figure; Banner: typeof Banner; BottomBar: typeof BottomBar; Highlight: typeof Highlight; ShareButton: typeof ShareButton; NumberField: typeof NumberField; IconTile: typeof IconTile; SourceLine: typeof SourceLine; StepList: typeof StepList; Step: typeof Step; ValueRow: typeof ValueRow; Tag: typeof Tag; ScaleBar: typeof ScaleBar; Panel: typeof Panel; CheckRow: typeof CheckRow; GradeList: typeof GradeList; ComparisonGrid: typeof ComparisonGrid; TimePoints: typeof TimePoints; TimerCapsule: typeof TimerCapsule; CoverageMark: typeof CoverageMark; CoverageStrip: typeof CoverageStrip; LabelledText: typeof LabelledText; BandList: typeof BandList; MonitorList: typeof MonitorList; useSectionState: typeof useSectionState; useElapsed: typeof useElapsed; formatElapsed: typeof formatElapsed; speakElapsed: typeof speakElapsed; useScrolledPast: typeof useScrolledPast; lockScroll: typeof lockScroll; useEscape: typeof useEscape; cx(...c: any[]): string; platform(el?: Element): 'ios' | 'macos' } } }
