@@ -4,7 +4,7 @@ import { content, getCard, titleCase, isMarkerSource, pathwaysFor, useCardLoad }
 import type { Block, Calc, Card, ContainerItem, Criteria, Dose, Drug, Inline, ListItem, Regimen, Section, Source, Threshold } from '../content/types';
 import { parseInline, TAGS, ALSO_ABOVE } from '../../scripts/content/inline.mjs';
 import { onsetRows } from '../../scripts/content/onset.mjs';
-import { bandsOf, doseOnlyItem, isMonitorItem, labelSplit, MONITOR_WORD, monitorKind, numberedPrefix } from '../../scripts/content/display.mjs';
+import { bandsOf, doseOnlyItem, isMonitorItem, labelSplit, monitorKind, numberedPrefix } from '../../scripts/content/display.mjs';
 import { slug } from '../../scripts/content/pathway.mjs';
 import { href, parseRoute } from '../router';
 import { useSheet, type ShowSheet } from './SheetHost';
@@ -387,19 +387,10 @@ function RegimenBlock({ id }: { id: string }) {
 // any other table as a table; the notes in a brown Note box. One color per kind of information (owner, 2026-10-19).
 const TONE = { yellow: 'mild', orange: 'moderate', red: 'severe' } as const;
 
-// Score bands: one line each, a range pill and what it means.
-function BandLines({ bands }: { bands: { range: string; text: string }[] }) {
-  return (
-    <div className="band-lines">
-      {bands.map((b, i) => (
-        <div key={i} className="band-line">
-          <span className="range-pill">{b.range}</span>
-          <span className="band-line__text"><RichText text={cap(b.text) as string} /></span>
-        </div>
-      ))}
-    </div>
-  );
-}
+// Score bands: one line each, a range pill and what it means (AKG.BandList).
+const BandLines = ({ bands }: { bands: { range: string; text: string }[] }) => (
+  <AKG.BandList bands={bands.map((b) => ({ range: b.range, children: <RichText text={cap(b.text) as string} /> }))} />
+);
 
 // Criteria items: a number written in the text ("1. Alertness: …") is the item's own number (no bullet beside it), and a
 // "Label: explanation" item shows the label in the primary color and the explanation in gray.
@@ -414,7 +405,7 @@ function CriteriaItems({ items }: { items: string[] }) {
         const l = labelSplit(text);
         return (
           <li key={i} value={nums[i]?.n}>
-            {l ? <><span className="li-label">{l.label}</span> <span className="li-rest"><RichText text={l.rest} /></span></> : <RichText text={text} />}
+            {l ? <AKG.LabelledText label={l.label}><RichText text={l.rest} /></AKG.LabelledText> : <RichText text={text} />}
           </li>
         );
       })}
@@ -600,7 +591,10 @@ export const RichText = ({ text }: { text?: string }) => (text ? <Inlines xs={pa
 function Item({ it, number }: { it: ListItem; number?: number }) {
   const tags = it.inlines.filter((x) => x.t === 'tag' && x.v !== ALSO_ABOVE);
   const atEnd = tags.length === 1;
-  const xs = atEnd ? it.inlines.filter((x) => x.t !== 'tag') : it.inlines;
+  const plain = atEnd ? it.inlines.filter((x) => x.t !== 'tag') : it.inlines;
+  // "Have ready:" in Escalation is a fixed label (docs/CARD-WRITING-CHEATSHEET.md): it gets the label look without markup.
+  const ready = plain[0]?.t === 'text' && /^Have ready:/.test(plain[0].v);
+  const xs: Inline[] = ready ? [{ t: 'strong', v: 'Have ready:' }, { t: 'text', v: plain[0].t === 'text' ? plain[0].v.slice('Have ready:'.length) : '' }, ...plain.slice(1)] : plain;
   const doses = doseOnlyItem(xs);
   const first = xs[0];
   const labelled = !doses && first?.t === 'strong' && first.v.endsWith(':');
@@ -608,13 +602,12 @@ function Item({ it, number }: { it: ListItem; number?: number }) {
     <li className={doses ? 'li-doses' : undefined} value={number}>
       {doses ? (
         <>
-          {doses.label.length > 0 && <span className="li-label"><Inlines xs={doses.label} /></span>}
+          {doses.label.length > 0 && <span className="li-label"><AKG.LabelledText label={<Inlines xs={doses.label} />} /></span>}
           {doses.pills.map((p, i) => <span key={i} className="dose-line"><Inlines xs={[p]} /></span>)}
         </>
       ) : labelled ? (
         <>
-          <span className="li-label">{first.v}</span>
-          {xs.length > 1 && <span className="li-rest"> <Inlines xs={xs.slice(1).map((x, i) => (i === 0 && x.t === 'text' ? { ...x, v: x.v.replace(/^\s+/, '') } : x))} /></span>}
+          {xs.length > 1 ? <AKG.LabelledText label={first.v}><Inlines xs={xs.slice(1).map((x, i) => (i === 0 && x.t === 'text' ? { ...x, v: x.v.replace(/^\s+/, '') } : x))} /></AKG.LabelledText> : <AKG.LabelledText label={first.v} />}
         </>
       ) : <Inlines xs={xs} />}
       {atEnd && <Inlines xs={tags} />}
@@ -637,32 +630,18 @@ function ListView({ items, nested }: { items: ListItem[]; nested?: boolean }) {
   );
 }
 
-const MONITOR_ICON = {
-  what: <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8" /><circle cx="12" cy="12" r="2.5" /></svg>,
-  when: <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 2" /></svg>,
-  action: <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>,
-};
+const MONITOR_KIND = { what: 'check', when: 'when', action: 'then' } as const;
 
 // The Monitor convention (docs/CARD-TYPES.md, Monitor): an item with What, When and Action lines under it shows its title,
-// then one line each with a small icon and a word: Check, When, Then. The word "Action" is never shown.
-function MonitorItem({ it }: { it: ListItem }) {
-  const title = it.inlines.filter((x) => x.t !== 'tag').map((x, i, a) => (i === a.length - 1 && x.t === 'text' ? { ...x, v: x.v.replace(/[:\s]+$/, '') } : x));
-  return (
-    <div className="monitor-item">
-      <p className="monitor-item__title"><Inlines xs={title.map((x) => (x.t === 'strong' ? { ...x, v: x.v.replace(/:\s*$/, '') } : x))} /><LinePill ids={it.sources} quote={it.inlines} /></p>
-      {it.children.map((c, i) => {
-        const k = monitorKind(c.inlines)!;
-        const rest = c.inlines.map((x, j) => (j === 0 && x.t === 'text' ? { ...x, v: cap(x.v.slice(k.skip)) as string } : x));
-        return (
-          <p key={i} className={`monitor-line monitor-line--${k.kind}`}>
-            <span className="monitor-line__icon">{MONITOR_ICON[k.kind as keyof typeof MONITOR_ICON]}</span>
-            <span><span className="monitor-line__word">{MONITOR_WORD[k.kind as keyof typeof MONITOR_WORD]}</span> <Inlines xs={rest} /><LinePill ids={c.sources.length ? c.sources : it.sources} quote={c.inlines} /></span>
-          </p>
-        );
-      })}
-    </div>
-  );
-}
+// then Check, When and Then lines (AKG.MonitorList). The word "Action" is never shown.
+const monitorItem = (it: ListItem) => ({
+  title: <><Inlines xs={it.inlines.filter((x) => x.t !== 'tag').map((x, i, a) => (i === a.length - 1 && x.t === 'text' ? { ...x, v: x.v.replace(/[:\s]+$/, '') } : x.t === 'strong' ? { ...x, v: x.v.replace(/:\s*$/, '') } : x))} /><LinePill ids={it.sources} quote={it.inlines} /></>,
+  lines: it.children.map((c) => {
+    const k = monitorKind(c.inlines)!;
+    const rest = c.inlines.map((x, j) => (j === 0 && x.t === 'text' ? { ...x, v: cap(x.v.slice(k.skip)) as string } : x));
+    return { kind: MONITOR_KIND[k.kind as keyof typeof MONITOR_KIND], children: <><Inlines xs={rest} /><LinePill ids={c.sources.length ? c.sources : it.sources} quote={c.inlines} /></> };
+  }),
+});
 
 // Runs of monitor items show as blocks; the other items of the same list stay a bullet list.
 function ListBlock({ items }: { items: ListItem[] }) {
@@ -671,7 +650,7 @@ function ListBlock({ items }: { items: ListItem[] }) {
     const monitor = isMonitorItem(items[i]);
     const run = [items[i]];
     while (i + 1 < items.length && isMonitorItem(items[i + 1]) === monitor) run.push(items[++i]);
-    out.push(monitor ? <div key={i} className="monitor-list ios-body">{run.map((it, j) => <MonitorItem key={j} it={it} />)}</div> : <ListView key={i} items={run} />);
+    out.push(monitor ? <AKG.MonitorList key={i} className="ios-body" items={run.map(monitorItem)} /> : <ListView key={i} items={run} />);
   }
   return <>{out}</>;
 }
@@ -800,7 +779,7 @@ function BlockView({ b }: { b: Block }) {
   if (b.t === 'steps') {
     return (
       <div className="steps-bleed">
-        <AKG.StepList density="compact" strong>
+        <AKG.StepList density="inline" strong>
           {b.items.map((it, j) => <StepItem key={j} it={it} number={stepNumbers(b.items)[j]} />)}
         </AKG.StepList>
       </div>

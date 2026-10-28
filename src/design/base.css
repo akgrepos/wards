@@ -374,58 +374,25 @@ html[data-timed] .timed-page .screen-body.timed-body { padding-bottom: calc(env(
 .akg-tappable-value.dose-pill:active { background: color-mix(in srgb, var(--system-blue) 30%, transparent); }
 .dose-pill__chevron { margin-left: 3px; opacity: 0.7; }
 
-/* ---- Card format v2: hierarchy from the text itself ---- */
-
-/* "**Label:** explanation": the label is semibold in the primary color, the explanation gray. */
-.li-label { font-weight: 600; color: var(--label); }
-.li-rest { color: var(--label-secondary); }
-.li-label strong { font-weight: 600; }
+/* ---- Card format v2: card text patterns live in the design system (AKG.LabelledText, BandList, MonitorList, StepList density="inline", Panel note) ---- */
 
 /* A list written "1. …" shows its numbers, never a bullet beside them. */
 .rich-list--numbered { list-style: decimal; }
 .rich-list--numbered > li::marker { color: var(--label-secondary); font-weight: 600; font-variant-numeric: tabular-nums; }
 
 /* A dose alone, or after a label, sits on its own line; the label above it. */
-.rich-list > .li-doses, .rich-list li.li-doses { display: list-item; }
 .li-doses > .li-label { display: block; }
 .dose-line { display: block; margin-top: var(--space-4); }
 .dose-line + .dose-line { margin-top: var(--space-8); }
 
-/* Notes are neutral gray (system fill), not a color: color is kept for criteria, severity and warnings. */
-.akg-panel--note, [data-theme$="dark"] .akg-panel--note { background: var(--fill-quaternary); --akg-panel-label: var(--label-secondary); }
+/* Steps in a card section: the number is a badge on the title line (the design system's inline density); the content gets a little air under it. */
+.steps-bleed .step-body { margin-top: var(--space-4); }
 
-/* Score bands: a range pill and what it means, one line each. */
-.band-lines { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: var(--space-8) var(--space-12); align-items: start; }
-.band-line { display: contents; }
-.range-pill { justify-self: start; box-sizing: border-box; text-align: center; min-width: 100%; padding: 1px var(--space-8); border-radius: 99px; background: var(--fill-secondary); color: var(--label); font-weight: 600; font-variant-numeric: tabular-nums; white-space: nowrap; }
-.band-line__text { min-width: 0; }
-.band-lines { column-gap: var(--space-8); }
-.range-pill { padding-left: 6px; padding-right: 6px; }
+/* A run of Monitor items sits apart from the bullets around it. */
+.akg-monitor-list { margin: var(--space-4) 0; }
+
 /* A criteria table's item column takes the room the score column leaves (the general 55vw cap wastes it on a phone). */
 .criteria .akg-table--sticky .akg-table__table th:first-child, .criteria .akg-table--sticky .akg-table__table td:first-child { max-width: none; }
 .criteria .akg-table__table td:last-child, .criteria .akg-table__table th:last-child { white-space: nowrap; width: 1%; padding-left: var(--space-8); }
 .criteria .akg-table__table { width: 100%; }
 .criteria .akg-table__table td:first-child, .criteria .akg-table__table th:first-child { width: 99%; }
-
-/* Steps in a card section: the number is a small badge on the title line, so the step's text uses the full width. */
-.steps-bleed .akg-step { display: grid; grid-template-columns: auto 1fr; column-gap: var(--space-8); align-items: start; padding-left: var(--space-16); padding-right: var(--space-16); }
-.steps-bleed .akg-step + .akg-step::before { left: var(--space-16); }
-.steps-bleed .akg-step__body { display: contents; }
-.steps-bleed .akg-step__marker { grid-column: 1; grid-row: 1; width: 22px; height: 22px; margin-top: 0; font-size: calc(12 * var(--akg-t)); }
-.steps-bleed .akg-step__title { grid-column: 2; grid-row: 1; align-self: center; min-width: 0; }
-.steps-bleed .akg-step__condition, .steps-bleed .akg-step__content { grid-column: 1 / -1; }
-.steps-bleed .step-body { margin-top: var(--space-4); }
-
-/* Monitor: an item's title, then Check, When and Then lines, each a small icon and a word. */
-.monitor-list { display: flex; flex-direction: column; }
-.monitor-item { padding: var(--space-8) 0; border-top: 0.5px solid var(--separator); }
-.monitor-item:first-child { border-top: 0; padding-top: 0; }
-.monitor-item:last-child { padding-bottom: 0; }
-.monitor-item__title { font-weight: 600; margin-bottom: var(--space-4); overflow-wrap: break-word; }
-.monitor-line { display: flex; gap: var(--space-8); align-items: flex-start; margin: 0; padding: 2px 0; color: var(--label-secondary); overflow-wrap: break-word; }
-.monitor-line > span:last-child { min-width: 0; }
-.monitor-line--action { color: var(--label); }
-.monitor-line__icon { flex: none; display: inline-flex; width: 1.1em; height: 1.1em; margin-top: 0.2em; color: var(--label-tertiary); }
-.monitor-line--action .monitor-line__icon { color: var(--tinted-label); }
-.monitor-line__icon svg { width: 100%; height: 100%; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
-.monitor-line__word { font-weight: 600; color: var(--label); }
