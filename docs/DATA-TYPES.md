@@ -99,6 +99,7 @@ Everything a calculator needs.
 - Built (2026-10-21): stored inside the score's calculator file (`content/data/calc/<id>.yaml`, 12b) as `sources` (required) plus a `calculator` block; the MDCalc link stays the last row. Tapping the score's name, or the "Calculate" button in its criteria box (same id), opens a bottom sheet; nothing is saved.
   - Only simple formulas get an in-app calculator (serum osmolality, anion gap, corrected sodium, Winter's formula; later FeNa, FeUrea, A-a gradient).
   - Scores whose result is a percentage or risk (Wells, CURB-65) link out to MDCalc and have no `calculator` block.
+  - `kind: score` (2026-10-28): `use` (when, not, why, how: the pop-up), `items` (id, label, `choices` with label and points), then `bands` (min, max, text; every total from 0 to the maximum falls in exactly one) or a yes/no `rule` (all, any, yes, no). The sheet opens on the pop-up with a big MDCalc button; "Score it" opens the picker with a running total and Clear; nothing is saved.
   - `kind: formula`: `expression` (words), `inputs` (id, label, US unit, min, max, optional), `results` (`fn` from the formulas in `src/calculators.ts`, label, unit, decimals, `needs`), `reference` (normal range or caution).
   - Also: `heading`, `notes`. The content check requires sources that exist and results that use known formulas and inputs.
 - Home: the score card. Inserted interactively into topic cards.

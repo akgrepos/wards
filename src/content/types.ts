@@ -52,9 +52,14 @@ export type Drug = {
 export type CalcInput = { id: string; label: string; unit: string; min: number; max: number; optional?: boolean };
 export type CalcResultDef = { fn: string; label: string; unit: string; decimals: number; needs: string[] };
 // The in-app calculator of a formula (docs/DATA-TYPES.md, 7).
+export type ScoreItem = { id: string; label: string; choices: { label: string; points: number }[] };
 export type Calculator = {
-  kind: 'formula'; heading: string; notes?: string[];
+  kind: 'formula' | 'score'; heading: string; notes?: string[];
   expression?: string; inputs?: CalcInput[]; results?: CalcResultDef[]; reference?: string;
+  // A score (kind: score): a pop-up first (use), then items with choices; the total maps to `bands`, or a yes/no `rule` when no points are added.
+  use?: { when: string; not: string; why: string; how: string };
+  items?: ScoreItem[]; bands?: { min: number; max: number; text: string }[];
+  rule?: { all: string[]; any: string[]; yes: string; no: string };
 };
 export type Calc = { name: string; short: string; url: string; match: string[]; sources?: string[]; calculator?: Calculator };
 // A word the app defines (docs/DATA-TYPES.md, 12). `snippet` (on a term that names a `card`) is what a link to that card shows first.

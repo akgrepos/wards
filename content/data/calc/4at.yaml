@@ -2,3 +2,33 @@ name: 4AT delirium screen
 short: "4AT"
 url: https://www.mdcalc.com/calc/3982/4-test-delirium-assessment
 match: ["4AT"]
+sources: [tieges-4at-2021, nice-delirium-2023]
+calculator:
+  kind: score
+  heading: 4AT delirium screen
+  use:
+    when: "Screening for delirium on the ward, including in patients who may also have dementia."
+    not: "In ventilated ICU patients use the {{calc:cam-icu}}. A positive screen is not a diagnosis: assess the patient."
+    why: "Hypoactive delirium is the most commonly missed form. A structured screen catches it."
+    how: "Pick one answer for each of the four items. The total (0 to 12) gives the result."
+  items:
+    - id: alertness
+      label: "Alertness (normal includes briefly sleepy on waking)"
+      choices: [{ label: "Normal", points: 0 }, { label: "Clearly abnormal", points: 4 }]
+    - id: orientation
+      label: "Orientation (age, date of birth, place, year)"
+      choices: [{ label: "No errors", points: 0 }, { label: "1 error", points: 1 }, { label: "2 or more, or untestable", points: 2 }]
+    - id: attention
+      label: "Attention (months of the year backward)"
+      choices: [{ label: "7 or more correct", points: 0 }, { label: "Fewer than 7, or refuses", points: 1 }, { label: "Untestable", points: 2 }]
+    - id: acute
+      label: "Acute change or fluctuating course in alertness, cognition or behavior within the past 2 weeks, still present in the past 24 hours"
+      choices: [{ label: "No", points: 0 }, { label: "Yes", points: 4 }]
+  bands:
+    - { min: 4, max: 12, text: "Possible delirium (with or without cognitive impairment)." }
+    - { min: 1, max: 3, text: "Possible cognitive impairment." }
+    - { min: 0, max: 0, text: "Delirium or severe cognitive impairment unlikely (delirium still possible if item 4 information is incomplete)." }
+verification:
+  source: tieges-4at-2021
+  read: not-verified
+  date: 2026-10-28

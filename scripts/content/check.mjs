@@ -124,7 +124,7 @@ const numbers = (v) => String(v).match(/\d+(\.\d+)?/g) ?? [];
 // The in-app calculator of a score or formula: its items, points, bands and formulas must be complete and sourced.
 function calcTexts(item) {
   const c = item.calculator ?? {};
-  return [...(c.notes ?? [])];
+  return [...(c.notes ?? []), ...Object.values(c.use ?? {}), ...(c.items ?? []).flatMap((x) => [x.label, ...(x.choices ?? []).map((ch) => ch.label)]), ...(c.bands ?? []).map((b) => b.text), ...(c.rule ? [c.rule.yes, c.rule.no] : [])].filter((t) => typeof t === 'string');
 }
 export function checkCalculator(item, data) {
   const out = [];
@@ -147,7 +147,29 @@ export function checkCalculator(item, data) {
       if (!nonEmpty(r?.label) || !nonEmpty(r?.unit) || typeof r?.decimals !== 'number') out.push(`result "${r?.fn}" needs label, unit and decimals`);
       if (!Array.isArray(r?.needs) || r.needs.some((n) => !ids.includes(n))) out.push(`result "${r?.fn}": "needs" must list input ids`);
     }
-  } else out.push('calculator "kind" is formula');
+  } else if (c.kind === 'score') {
+    for (const k of ['when', 'not', 'why', 'how']) if (!nonEmpty(c.use?.[k])) out.push(`a score needs use.${k} (the pop-up: when to use, when not, why, how)`);
+    const ids = (c.items ?? []).map((x) => x?.id);
+    if (!ids.length) out.push('a score needs "items"');
+    if (new Set(ids).size !== ids.length) out.push('score item ids must be unique');
+    for (const x of c.items ?? []) {
+      if (!x?.id || !nonEmpty(x.label)) out.push(`score item "${x?.id}" needs id and label`);
+      if (!Array.isArray(x?.choices) || x.choices.length < 2 || x.choices.some((ch) => !nonEmpty(ch?.label) || typeof ch?.points !== 'number')) out.push(`score item "${x?.id}" needs at least 2 choices, each with a label and points`);
+    }
+    const max = (c.items ?? []).reduce((t, x) => t + Math.max(...(x?.choices ?? []).map((ch) => ch?.points ?? 0)), 0);
+    if (c.rule) {
+      for (const id of [...(c.rule.all ?? []), ...(c.rule.any ?? [])]) if (!ids.includes(id)) out.push(`rule names unknown item "${id}"`);
+      if (!nonEmpty(c.rule.yes) || !nonEmpty(c.rule.no)) out.push('a rule needs "yes" and "no" result text');
+    } else {
+      if (!Array.isArray(c.bands) || !c.bands.length) out.push('a score needs "bands" (or a "rule")');
+      // Every possible total from 0 to the maximum must fall in exactly one band.
+      for (let t = 0; t <= max; t++) {
+        const n = (c.bands ?? []).filter((b) => t >= b?.min && t <= b?.max).length;
+        if (n !== 1) out.push(`total ${t} falls in ${n} bands (each total from 0 to ${max} needs exactly one)`);
+      }
+      for (const b of c.bands ?? []) if (typeof b?.min !== 'number' || typeof b?.max !== 'number' || !nonEmpty(b?.text)) out.push('each band needs min, max and text');
+    }
+  } else out.push('calculator "kind" is formula or score');
   return out;
 }
 
