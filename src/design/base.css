@@ -383,6 +383,15 @@ html[data-timed] .timed-page .screen-body.timed-body { padding-bottom: calc(env(
 .rich-list--numbered { list-style: decimal; }
 .rich-list--numbered > li::marker { color: var(--label-secondary); font-weight: 600; font-variant-numeric: tabular-nums; }
 
+/* "Label: explanation": gray is only for notes, so the explanation reads at full strength on every line (owner, 2026-10-28). */
+.akg-labelled__text { color: var(--label); }
+
+/* A run of dose-only bullets is one card of drug rows. */
+.dose-rows--run { background: var(--fill-quaternary); border-radius: var(--radius-grouped); overflow: hidden; margin: var(--space-8) 0; }
+.dose-rows--run .akg-value-row--list { padding-inline: var(--space-16); }
+/* The situation ("First line") sits above the drug name, small and uppercase. */
+.dose-run__tag { display: block; font-size: 12px; line-height: 16px; font-weight: 600; letter-spacing: 0.03em; text-transform: uppercase; color: var(--label-secondary); }
+
 /* A dose alone, or after a label, sits on its own line; the label above it. */
 .li-doses > .li-label { display: block; }
 .dose-line { display: block; margin-top: var(--space-4); }

@@ -13,17 +13,30 @@ export const calcItem = (id: string) => content.data.calc?.[id] as Calc | undefi
 export const hasCalculator = (id: string) => !!calcItem(id)?.calculator;
 
 export const openCalculator = (sheet: ShowSheet, id: string) =>
-  sheet({ title: 'Calculator', body: <CalculatorSheet id={id} />, detent: 'large' });
+  sheet({ title: 'Calculator', body: <CalculatorSheet id={id} />, detent: calcItem(id)?.calculator ? 'large' : 'medium' });
 
 export function CalculatorSheet({ id }: { id: string }) {
   const c = calcItem(id)!;
-  if (c.calculator!.kind === 'score') return <ScoreSheet c={c} />;
+  if (!c.calculator) return <MdcalcSheet c={c} />;
+  if (c.calculator.kind === 'score') return <ScoreSheet c={c} />;
   return (
     <div className="calc-sheet">
       <h3 className="ios-headline">{c.calculator!.heading}</h3>
       <Formula c={c} />
       <p className="ios-body"><CalcLink c={c} label={`${c.short[0].toUpperCase()}${c.short.slice(1)} on MDCalc`} /></p>
       {c.calculator!.notes?.map((n, i) => <p key={i} className="ios-footnote secondary"><RichText text={n} /></p>)}
+      <SheetSources ids={c.sources ?? []} />
+    </div>
+  );
+}
+
+// A score or calculator the app does not run itself: its name, then one button to MDCalc.
+function MdcalcSheet({ c }: { c: Calc }) {
+  return (
+    <div className="calc-sheet">
+      <h3 className="ios-headline">{c.name}</h3>
+      <AKG.Button variant="prominent" block onClick={() => window.open(c.url, '_blank', 'noopener,noreferrer')}>Open MDCalc</AKG.Button>
+      <p className="ios-footnote secondary">Opens MDCalc in Safari and needs internet.</p>
       <SheetSources ids={c.sources ?? []} />
     </div>
   );
@@ -77,7 +90,7 @@ function ScoreSheet({ c }: { c: Calc }) {
               <p className="ios-body"><RichText text={k.use![f]} /></p>
             </div>
           ))}
-          <AKG.Button variant="prominent" block onClick={() => setPicking(true)}>Score it</AKG.Button>
+          <AKG.Button variant="prominent" block onClick={() => setPicking(true)}>Score</AKG.Button>
           {c.url && <>
             <AKG.Button variant="tinted" block onClick={() => window.open(c.url, '_blank', 'noopener,noreferrer')}>{c.short} on MDCalc</AKG.Button>
             <p className="ios-footnote secondary">Opens MDCalc in Safari and needs internet.</p>

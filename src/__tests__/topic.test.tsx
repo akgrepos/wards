@@ -82,13 +82,18 @@ const showSources = async () => {
 };
 
 describe('dose sheet', () => {
-  it('a dose written as a pill sits inside its sentence, opens the sheet, which flags an unverified dose', async () => {
+  it('a dose that is a bullet of its own shows as a drug row, opens the sheet, which flags an unverified dose', async () => {
     launch('#/card/neuro-delirium');
-    const pill = screen.getByRole('button', { name: /^Haloperidol 0.125–0.25 mg PO or IM as needed, not yet independently verified/ });
-    expect(pill.closest('li')!.textContent).toMatch(/Older or frail adults: Haloperidol 0.125–0.25 mg PO or IM as needed/);
-    expect(pill.className).toMatch(/dose-pill/);
-    await act(async () => { fireEvent.click(pill); });
+    const row = screen.getByRole('button', { name: /^Older or frail adults: Haloperidol 0.125–0.25 mg PO or IM as needed, not yet independently verified/ });
+    expect(row.closest('.dose-rows--run')).toBeTruthy();
+    expect(row.textContent).toMatch(/Haloperidol/);
+    expect(row.textContent).toMatch(/Older or frail adults/);
+    await act(async () => { fireEvent.click(row); });
     expect(within(dialog()).getByText('Not yet independently verified')).toBeTruthy();
+  });
+  it('a dose inside a sentence stays a pill', () => {
+    launch('#/card/neuro-delirium');
+    expect(document.querySelector('.dose-pill')).toBeTruthy();
   });
 
   it('shows the drug, its fields, the alternative, interactions and sources', async () => {
@@ -200,7 +205,7 @@ describe('remembered sections', () => {
   it('values are tappable only when the pop-up adds something the line does not show', async () => {
     launch('#/card/renal-hyperkalemia');
     const scale = document.querySelector('.scale-block') as HTMLElement;
-    expect(within(scale).queryAllByRole('button')).toHaveLength(0);
+    expect(within(scale).queryAllByRole('button').filter((b) => !b.classList.contains('calc-link'))).toHaveLength(0);
     // Stacked bands (name over detail), never side by side.
     expect(scale.querySelectorAll('.akg-grade-list--bands .akg-grade-list__band').length).toBeGreaterThanOrEqual(2);
     expect(scale.querySelector('.akg-grade-list__name')?.textContent).toBeTruthy();
@@ -213,7 +218,7 @@ describe('remembered sections', () => {
     // AKI: the urinary indices table is plain; the contrast eGFR cutoffs add a caveat, so they open a pop-up.
     launch('#/card/renal-aki');
     const table = screen.getByText(/\(on diuretics\)/).closest('table') as HTMLElement;
-    expect(within(table).queryAllByRole('button')).toHaveLength(0);
+    expect(within(table).queryAllByRole('button').filter((b) => !b.classList.contains('calc-link'))).toHaveLength(0);
     expect(within(table).getByText('<1 %')).toBeTruthy();
     fireEvent.click(screen.getByRole('button', { name: '<30 mL/min/1.73 m²' }));
     await tick();
@@ -301,12 +306,11 @@ describe('remembered sections', () => {
 });
 
 describe('MDCalc links', () => {
-  it('a score named on a card is a link that opens MDCalc outside the app, and the card says so', () => {
+  it('a score named on a card opens a pop-up first, and the pop-up has the MDCalc button', async () => {
     launch('#/card/id-cap');
-    const curb = screen.getAllByRole('link', { name: /^PSI\. Opens MDCalc in Safari, needs internet\.$/ })[0];
-    expect(curb.getAttribute('href')).toBe('https://www.mdcalc.com/calc/33/psi-port-score-pneumonia-severity-index-cap');
-    expect(curb.getAttribute('target')).toBe('_blank');
-    expect(curb.getAttribute('rel')).toContain('noopener');
+    fireEvent.click(screen.getAllByRole('button', { name: /^PSI\. Opens details\.$/ })[0]);
+    await tick();
+    fireEvent.click(within(dialog()).getByRole('button', { name: 'Open MDCalc' }));
     expect(screen.getByText(/open MDCalc in Safari and need internet/)).toBeTruthy();
   });
   it('keeps the words the content used, such as a capital letter', () => {
@@ -318,10 +322,12 @@ describe('MDCalc links', () => {
     fireEvent.click(screen.getAllByRole('button', { name: 'Anion gap' })[0]);
     expect(screen.getByRole('link', { name: /on MDCalc/ }).getAttribute('href')).toContain('mdcalc.com');
   });
-  it('a risk score is only an MDCalc link, not an in-app sheet', () => {
+  it('a risk score that is not built in has only an Open MDCalc button in its pop-up', async () => {
     launch('#/card/id-cap');
-    expect(screen.queryByRole('button', { name: 'CURB-65' })).toBeNull();
-    expect(screen.getAllByRole('link', { name: /^CURB-65\. Opens MDCalc/ })[0].getAttribute('href')).toContain('mdcalc.com');
+    fireEvent.click(screen.getAllByRole('button', { name: /^CURB-65\. Opens details/ })[0]);
+    await tick();
+    expect(within(dialog()).getByRole('button', { name: 'Open MDCalc' })).toBeTruthy();
+    expect(within(dialog()).queryByRole('button', { name: 'Score' })).toBeNull();
   });
   it('a card without scores has no such note', () => {
     launch('#/card/renal-iv-fluids');
