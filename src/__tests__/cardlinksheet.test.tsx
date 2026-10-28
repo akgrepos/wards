@@ -16,7 +16,7 @@ describe('card link sheet', () => {
     expect(screen.queryByText('Card')).toBeNull();
   });
   it('an MDCalc link keeps its name, opens outside the app and shows an arrow', () => {
-    render(<p><Inlines xs={parseInline('{{calc:4at}}')} /></p>);
+    render(<p><Inlines xs={parseInline('{{calc:cam-icu}}')} /></p>);
     const a = screen.getByRole('link');
     expect(a.getAttribute('target')).toBe('_blank');
     expect(a.getAttribute('aria-label')).toMatch(/MDCalc/);
