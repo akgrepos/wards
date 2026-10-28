@@ -12,7 +12,7 @@ import { splitContent } from './split.mjs';
 
 const base = process.argv[2] ?? 'origin/main';
 const root = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
-const composed = (dir) => splitContent(loadContent(dir, { includeExamples: false, tag: true })).cards;
+const composed = (dir) => splitContent(loadContent(dir, { includeExamples: false })).cards;
 
 const tmp = mkdtempSync(join(tmpdir(), 'wards-base-'));
 let before;

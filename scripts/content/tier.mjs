@@ -15,7 +15,7 @@ import { classifyCard, gateCard, highest } from './tier-rules.mjs';
 const root = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
 const git = (args, opts = {}) => execFileSync('git', args, { cwd: root, encoding: 'utf8', maxBuffer: 256 * 1024 * 1024, ...opts });
 
-const composed = (dir) => { const c = loadContent(dir, { includeExamples: true, tag: true }); return { content: c, split: splitContent(c) }; };
+const composed = (dir) => { const c = loadContent(dir, { includeExamples: true }); return { content: c, split: splitContent(c) }; };
 
 function composedAt(ref) {
   const tmp = mkdtempSync(join(tmpdir(), 'wards-base-'));
