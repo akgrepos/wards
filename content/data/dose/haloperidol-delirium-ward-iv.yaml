@@ -6,7 +6,7 @@ indication_detail: Off-label for delirium with severe agitation or risk of harm 
 population: Adults on the ward
 route: IV with ECG monitoring (the label does not approve IV use)
 route_short: IV
-amount: 0.25–0.5
+amount: 0.5–1
 unit: mg
 frequency: every 30 to 60 minutes as needed. Reassess before each repeat dose
 frequency_short: q30–60 min PRN
