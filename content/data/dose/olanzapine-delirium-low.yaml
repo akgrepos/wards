@@ -11,13 +11,13 @@ unit: mg
 frequency: as needed, no more often than every 4 hours. Reassess before each repeat dose
 frequency_short: PRN
 give_when: Severe distress or danger to self or others that de-escalation did not settle
-max: "No guideline maximum for delirium. After more than 2 doses, call psychiatry"
+max: "No guideline maximum for delirium. After >2 doses, call psychiatry"
 duration: "Shortest possible. Stop once symptoms resolve, usually within 1 week"
 cautions:
   - "Do not give IM olanzapine with a parenteral benzodiazepine (label)."
   - "Sedating, with less extrapyramidal risk than haloperidol. Anticholinergic effects can worsen delirium."
   - "Not for Parkinson disease or dementia with Lewy bodies: it worsens parkinsonism. Use quetiapine."
-  - "Baseline {{calc:qtc}}, potassium above 4 and magnesium above 2 before the first dose."
+  - "Baseline {{calc:qtc}}, potassium >4 and magnesium >2 before the first dose."
 notes: "Ward practice dose. Delirium is not a labeled indication. Older or debilitated adults: use the low end."
 sources: [label-zyprexa-2026, apa-delirium-2025, common-practice]
 verification:
