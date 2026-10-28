@@ -15,6 +15,8 @@ function refs(value, byId, found) {
   } else if (Array.isArray(value)) {
     for (const v of value) refs(v, byId, found);
   } else if (value && typeof value === 'object') {
+    // A tagged term (terms.mjs) points to its file by kind and id; a term id never matches a plain word (an alias, a label).
+    if (value.t === 'insert' && value.kind === 'term') found.add(`term/${value.id}`);
     for (const v of Object.values(value)) refs(v, byId, found);
   }
 }
@@ -28,6 +30,7 @@ export function splitContent(content) {
     for (const [id, item] of Object.entries(list)) {
       const key = `${kind}/${id}`;
       items.set(key, withoutFile(item));
+      if (kind === 'term') continue;
       byId.set(id, [...(byId.get(id) ?? []), key]);
     }
   }
@@ -72,7 +75,17 @@ export function splitContent(content) {
   const pathways = {};
   for (const [id, p] of Object.entries(content.data.pathway ?? {})) pathways[id] = { title: p.title, summary: p.summary, card: p.card };
 
+  // Every term travels in the index (the Glossary and search list them all; a link to a card shows its term's snippet),
+  // with the sources they cite, so a term's sheet can name them without opening a card.
+  const terms = {};
+  const termSources = {};
+  for (const [id] of Object.entries(content.data.term ?? {})) {
+    const t = items.get(`term/${id}`);
+    terms[id] = t;
+    for (const sid of t.sources ?? []) if (items.has(`source/${sid}`)) termSources[sid] = items.get(`source/${sid}`);
+  }
+
   const search = buildSearchIndex(content, { refs, byId, items });
 
-  return { index: { systems: content.systems, cards: lite, data: { pathway: pathways }, search }, cards, files: content.cards.map((c) => c.file) };
+  return { index: { systems: content.systems, cards: lite, data: { pathway: pathways, term: terms, source: termSources }, search }, cards, files: content.cards.map((c) => c.file) };
 }

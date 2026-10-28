@@ -1,0 +1,8 @@
+term: delirium tremens
+aliases:
+  - DTs
+definition: Severe alcohol withdrawal with disorientation, agitation, hallucinations, fast heart rate, high blood pressure, fever and sweating. It begins 48 to 96 hours after the last drink and lasts 5 to 7 days.
+group: neuro
+card: neuro-alcohol-withdrawal
+sources:
+  - common-practice

@@ -1,0 +1,9 @@
+term: euglycemic DKA
+aliases:
+  - euDKA
+  - euglycemic diabetic ketoacidosis
+definition: Diabetic ketoacidosis without a markedly raised glucose. Seen with SGLT2 inhibitors, alcohol-related liver disease and pregnancy.
+group: endo
+card: endo-dka
+sources:
+  - common-practice

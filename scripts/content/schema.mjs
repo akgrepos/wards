@@ -201,7 +201,11 @@ export const DATA_TYPES = {
   coverage: { required: ['title', 'levels', 'columns', 'rows'], sourced: true },
   // An ECG recording or a drawn ECG, shown as a figure (docs/DATA-TYPES.md, 11. Media).
   media: { required: ['kind', 'title', 'alt', 'caption', 'illustrates'], sourced: true },
+  // A word the app defines (docs/DATA-TYPES.md, 12): tagged into card text at build time, listed in the Glossary.
+  term: { required: ['term', 'definition', 'group'], sourced: true },
 };
+export const TERM_FIELDS = ['term', 'aliases', 'definition', 'group', 'card', 'snippet', 'sources'];
+export const TERM_SNIPPET_LINES = [2, 4];
 
 // Every field a regimen and each of its options can have.
 export const REGIMEN_FIELDS = ['name', 'indication', 'setting', 'options', 'duration', 'notes', 'sources'];

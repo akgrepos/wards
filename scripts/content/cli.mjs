@@ -2,13 +2,13 @@
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { loadContent } from './load.mjs';
-import { checkContent, checkWarnings } from './check.mjs';
+import { checkContent, checkWarnings, wantedCards } from './check.mjs';
 import { checkFingerprints } from './checked.mjs';
 import { ruleFindings, ruleSummary, RULES } from './rules.mjs';
 import { proseFindings, proseSummary, PROSE_RULES } from './prose.mjs';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
-const content = loadContent(root, { includeExamples: true });
+const content = loadContent(root, { includeExamples: true, tag: false });
 // Each problem gets a one-line pointer to the rule it enforces and the doc to read (first matching hint).
 const HINTS = [
   [/bullet rule|parallel rule/, 'Rule: a bullet is one idea, at most two sentences and about 160 characters; parallel items share one shape. Read docs/CARD-WRITING-CHEATSHEET.md "Writing style".'],
@@ -40,6 +40,8 @@ const warnings = process.argv.includes('--prose') ? allWarnings : allWarnings.fi
 const proseWarn = proseSummary(proseFindings(content)).filter((r) => r.severity === 'warn' && r.cards);
 if (!process.argv.includes('--prose') && proseWarn.length) console.warn('Prose warnings (these do not fail the check; npm run content:check -- --prose lists each place):\n' + proseWarn.map((r) => `- ${PROSE_RULES[r.rule].padEnd(24)} ${String(r.cards).padStart(2)} cards, ${r.places} places`).join('\n') + '\n');
 if (warnings.length) console.warn(`Content warnings (${warnings.length}, these do not fail the check):\n- ` + warnings.join('\n- ') + '\n');
+const wanted = wantedCards(content.cards);
+if (wanted.length) console.warn(`Wanted cards (linked from other cards, not written yet; a link to one shows as plain words until it exists):\n` + wanted.map(([id, n]) => `- ${id.padEnd(40)} linked from ${n} card${n === 1 ? '' : 's'}`).join('\n') + '\n');
 // How many existing cards each format rule flags: the to-do list for the sweep. Cards in unchecked.txt get errors instead.
 const summary = ruleSummary(ruleFindings(content)).filter((r) => r.cards);
 if (summary.length) console.warn('Format rules, existing cards flagged until the sweep:\n' + summary.map((r) => `- ${RULES[r.rule].padEnd(14)} ${String(r.cards).padStart(2)} cards, ${r.places} places`).join('\n') + '\n');

@@ -1,0 +1,8 @@
+term: neuroleptic malignant syndrome
+aliases:
+  - NMS
+definition: A dangerous reaction to a dopamine blocker, usually within 72 hours of exposure. Fever above 38.0 °C on at least two oral readings, with profuse sweating, sets it apart from other antipsychotic side effects. Rigidity and a raised CK come with it.
+group: psych
+card: psych-serotonin-syndrome-nms
+sources:
+  - apa-dsm-5-tr-2022

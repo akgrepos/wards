@@ -17,7 +17,7 @@ function wardsContent(includeExamples: boolean, refuseBadContent: boolean) {
   let all: ReturnType<typeof loadContent> | null = null;
   let split: ReturnType<typeof splitContent> | null = null;
   const build = () => {
-    all = loadContent(process.cwd(), { includeExamples });
+    all = loadContent(process.cwd(), { includeExamples, tag: true });
     split = splitContent(all);
   };
   type Res = { setHeader(k: string, v: string): void; end(b: string): void; statusCode: number };
@@ -27,7 +27,7 @@ function wardsContent(includeExamples: boolean, refuseBadContent: boolean) {
       build();
       // The build refuses bad references (and every other content rule), so a broken card can never be published.
       if (!refuseBadContent) return;
-      const errors = checkContent(loadContent(process.cwd(), { includeExamples: true }) as never);
+      const errors = checkContent(loadContent(process.cwd(), { includeExamples: true, tag: false }) as never);
       if (errors.length) throw new Error(`Content problems (${errors.length}):\n- ` + errors.join('\n- '));
     },
     resolveId: (s: string) => (s === id || s === fullId ? '\0' + s : null),

@@ -84,7 +84,8 @@ Imperative for actions, present tense for findings. No passive reported speech (
 - `{{dose:id}}` alone on a line (never a typed dose such as "40 mg"). Or `{{dose:id|pill}}` inside a sentence (2026-10-27): a tappable pill with the drug, amount, route and frequency that opens the dose sheet; write the sentence around it, one pill per drug per line, and give the dose a `route_short` and `frequency_short` if its full wording is long. `{{regimen:id}}`, `{{criteria:id}}`, `{{media:id}}` alone on a line. Thresholds and `{{calc:id}}` go inside sentences.
 - Every named score or calculator is `{{calc:id}}` (MDCalc link; add `content/data/calc/<id>.yaml` first, copy the real address).
 - Cards never insert pathways; a pathway file points to its card with `card:` and shows as a row under the title.
-- Links inside the sentence: `[[card-id|label]]`, `[[card-id/section|label]]`.
+- Links inside the sentence: `[[card-id|label]]`, `[[card-id/section|label]]`. A link without a section opens a sheet: the key points of a term file that names the card (`snippet`), else At a Glance. A link that names a section opens that section.
+- **Terms are never tagged by hand** (2026-10-28). The build turns the first mention of a term (or alias) in each section into a tap-to-define word; bold, links, pills, headings and Do Now are skipped. Write the word plainly. To stop it at one spot, put a backslash before the word (`\catatonia`). To add a term, add `content/data/term/<id>.yaml` (docs/DATA-TYPES.md, 12), never edit a card. Terms the cards do not use give a warning, and `npm run content:check` lists "wanted cards" (linked, not written).
 
 ## Formatting
 - Bullets (one nesting level), numbered steps `1. Step title` with indented content, `or. Step title` for an alternative, tables with sources at row end.

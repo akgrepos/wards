@@ -1,7 +1,7 @@
 // Content checks, run on every pull request (npm run content:check) and in the tests.
 // Each rule comes from docs/CARD-TYPES.md and docs/DATA-TYPES.md.
 import { checkVerification } from './verification.mjs';
-import { CARD_TYPES, CALC_FIELDS, MDCALC_URL, DATA_TYPES, DOSE_FIELDS, CALC_FORMULAS, REGIMEN_FIELDS, REGIMEN_OPTION_FIELDS, SHARED_SECTIONS, UNITS, DOSE_IN_TEXT, MAX_TABLE_COLUMNS, WIDE_TABLE_EXCEPTIONS, MAX_ALIASES, REVIEW_MAX_AGE_MONTHS, CHECKED_BY, MAX_INDICATION_LENGTH, DRUG_FIELDS } from './schema.mjs';
+import { CARD_TYPES, CALC_FIELDS, MDCALC_URL, DATA_TYPES, DOSE_FIELDS, CALC_FORMULAS, REGIMEN_FIELDS, REGIMEN_OPTION_FIELDS, SHARED_SECTIONS, UNITS, DOSE_IN_TEXT, MAX_TABLE_COLUMNS, WIDE_TABLE_EXCEPTIONS, MAX_ALIASES, REVIEW_MAX_AGE_MONTHS, CHECKED_BY, MAX_INDICATION_LENGTH, DRUG_FIELDS, TERM_FIELDS, TERM_SNIPPET_LINES } from './schema.mjs';
 import { TAGS, ALSO_ABOVE, parseInline } from './inline.mjs';
 import { onsetMinutes } from './onset.mjs';
 import { emergencySteps, offsetMinutes, stepDoses } from './emergency.mjs';
@@ -13,6 +13,71 @@ import { ruleFindings } from './rules.mjs';
 import { proseFindings } from './prose.mjs';
 import { inlineText, runs, allBlocks } from './walk.mjs';
 import { checkStraySources } from './stray-sources.mjs';
+import { tagTerms, strayBackslashes, termNames } from './terms.mjs';
+
+// A term (docs/DATA-TYPES.md, 12): a word the app defines. Its definition is a clinical claim, so it is sourced like any line.
+export function checkTerm(id, item, { cards, data, systems }) {
+  const out = [];
+  const text = (v) => typeof v === 'string' && v.trim();
+  for (const f of Object.keys(item)) if (f !== '_file' && !TERM_FIELDS.includes(f)) out.push(`unknown term field "${f}" (use ${TERM_FIELDS.join(', ')})`);
+  if (item.term !== undefined && !text(item.term)) out.push('"term" must be text');
+  if (item.aliases !== undefined && (!Array.isArray(item.aliases) || item.aliases.some((a) => !text(a)))) out.push('"aliases" must be a list of words');
+  if (item.definition !== undefined && !text(item.definition)) out.push('"definition" must be text');
+  else if (text(item.definition) && item.definition.length > 260) out.push(`"definition" is ${item.definition.length} characters; keep it to one or two lines (260 at most)`);
+  if (text(item.definition) && DOSE_IN_TEXT.test(item.definition)) out.push(`"definition" has a dose typed as text ("${item.definition.match(DOSE_IN_TEXT)[0]}"); a definition carries no dose`);
+  if (text(item.group) && !systems.some((s) => s.id === item.group)) out.push(`"group" must be a system id from content/systems.yaml (got "${item.group}")`);
+  if (item.card !== undefined && !cards.some((c) => c.id === item.card)) out.push(`"card" is "${item.card}", which is not a card (a term for an unwritten card cannot name it yet)`);
+  if (item.snippet !== undefined) {
+    const [lo, hi] = TERM_SNIPPET_LINES;
+    if (!item.card) out.push('"snippet" needs "card": the card whose links show it');
+    if (!Array.isArray(item.snippet) || item.snippet.length < lo || item.snippet.length > hi || item.snippet.some((l) => !text(l))) out.push(`"snippet" is a list of ${lo} to ${hi} short lines`);
+    else for (const l of item.snippet) {
+      if (DOSE_IN_TEXT.test(l)) out.push(`a snippet line has a dose typed as text ("${l.match(DOSE_IN_TEXT)[0]}"); a snippet carries no dose`);
+      if (l.includes(';')) out.push(`a snippet line has a semicolon ("${l.slice(0, 40)}"); write two sentences or two lines`);
+    }
+  }
+  return out;
+}
+
+// Names that must belong to one term, and one snippet per card, across all terms.
+function checkTermNames(terms) {
+  const out = [];
+  const owner = new Map();
+  const snippetOf = new Map();
+  for (const [id, t] of Object.entries(terms ?? {})) {
+    for (const name of termNames(t)) {
+      const k = name.toLowerCase();
+      if (owner.has(k) && owner.get(k) !== id) out.push(`${t._file}: "${name}" is also a name of the term "${owner.get(k)}"; one word can mean only one term`);
+      else owner.set(k, id);
+    }
+    if (t.snippet && t.card) {
+      if (snippetOf.has(t.card)) out.push(`${t._file}: the card "${t.card}" already has a snippet on the term "${snippetOf.get(t.card)}"; a card shows one`);
+      else snippetOf.set(t.card, id);
+    }
+  }
+  return out;
+}
+
+/** Terms and where they end up in the cards (a copy is tagged; the cards are not changed). Map term id → Set of card ids. */
+export function termUses(cards, terms) {
+  const copy = structuredClone(cards);
+  return { uses: tagTerms(copy, terms), tagged: copy };
+}
+
+/** Cards that are linked but not written: id → how many cards link to them. */
+export function wantedCards(cards) {
+  const ids = new Set(cards.map((c) => c.id));
+  const want = new Map();
+  for (const c of cards) {
+    const seen = new Set();
+    const scan = (blocks) => { for (const b of allBlocks(blocks)) for (const r of runs([b])) for (const x of r.inlines) if (x.t === 'link' && !ids.has(x.id)) seen.add(x.id); };
+    for (const sec of c.sections) scan([...sec.blocks, ...(sec.subsections ?? []).flatMap((x) => x.blocks)]);
+    if (c.emergency) scan(c.emergency.blocks);
+    for (const x of c.definition?.inlines ?? []) if (x.t === 'link' && !ids.has(x.id)) seen.add(x.id);
+    for (const id of seen) want.set(id, (want.get(id) ?? 0) + 1);
+  }
+  return [...want].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
+}
 
 const DOSE_ONLY = /^\{\{\s*dose\s*:\s*([a-z0-9-]+)\s*\}\}$/;
 
@@ -316,6 +381,7 @@ export function checkContent({ systems, cards, data, unchecked = [] }) {
         if (item.cautions !== undefined && (!Array.isArray(item.cautions) || item.cautions.some((x) => typeof x !== 'string'))) err(where, 'cautions must be a list of short sentences');
       }
       if (kind === 'drug') for (const m of checkDrug(item, data)) err(where, m);
+      if (kind === 'term') for (const m of checkTerm(id, item, { cards, data, systems })) err(where, m);
       // A regimen: options joined by "or", each a list of parts given together; a part is a dose id or a list of dose
       // ids (any one of them). Its words never carry a dose: the dose rows do.
       if (kind === 'regimen') {
@@ -387,6 +453,8 @@ export function checkContent({ systems, cards, data, unchecked = [] }) {
       if (noteRepeats(t.note, `${u.text} ${t.name} ${t.unit}`)) err(where, `the note mostly repeats what ${u.where} already says; remove it (the value then shows plain) or say only what the line doesn't`);
     }
   }
+  errors.push(...checkTermNames(data.term));
+  errors.push(...strayBackslashes(termUses(cards, data.term).tagged));
   errors.push(...checkSemicolons({ cards, data }));
   errors.push(...checkStraySources({ cards, data }));
   // Format rules: errors for every card (rules.mjs).
@@ -408,6 +476,11 @@ export function checkWarnings({ cards, data, unchecked = [] }, { today = new Dat
   // Sources nothing cites.
   const cited = JSON.stringify([cards, { ...data, source: undefined }]);
   for (const [id, s] of Object.entries(data.source ?? {})) if (!cited.includes(`"${id}"`)) warn(s._file ?? id, `unused source: "${id}" is cited by no card or data item; delete it if it is orphaned (docs/CARD-WRITING-CHEATSHEET.md, "Consistency rules")`);
+
+  // A term no card uses is a word nobody reads.
+  const { uses } = termUses(cards, data.term);
+  const linked = new Set(JSON.stringify(cards.map((c) => [c.sections, c.emergency, c.definition])).match(/"t":"link","id":"[a-z0-9-]+"/g)?.map((m) => m.slice(17, -1)));
+  for (const [id, t] of Object.entries(data.term ?? {})) if (!uses.has(id) && !(t.card && linked.has(t.card))) warn(t._file ?? id, `unused term: no card mentions "${id}" or its aliases (and none links to its card); add the words people write as aliases or delete it (docs/DATA-TYPES.md, 12)`);
 
   // A drug record no dose points to does nothing.
   const pointedAt = new Set(Object.values(data.dose ?? {}).map((d) => d.drug));
