@@ -11,7 +11,7 @@ import { useSheet, type ShowSheet } from './SheetHost';
 import { icons } from './icons';
 import { MediaFigure } from './Ecg';
 import { CoverageBlock } from './Coverage';
-import { hasCalculator, openCalculator } from './Calculator';
+import { openCalculator } from './Calculator';
 
 // "5–10%" without a space; every other unit after a space ("0.1 units/kg/h").
 const amountWithUnit = (amount: string | number, unit: string) => (unit === '%' ? `${amount}%` : `${amount} ${unit}`);
@@ -167,6 +167,8 @@ export function doseValue(d: Dose) {
   return [`${amountWithUnit(d.amount, d.unit)} ${d.route}`, d.rate, d.frequency].filter(Boolean).join(' ');
 }
 // The dose inside a sentence: the drug, amount and the short route and frequency (their full wording is on the sheet).
+// The dose without the drug name, in the short route and frequency (a drug row has the name above it).
+export const doseShort = (d: Dose) => [`${amountWithUnit(d.amount, d.unit)} ${d.route_short ?? d.route}`, d.frequency_short ?? d.frequency].filter(Boolean).join(' ');
 export function dosePill(d: Dose) {
   return [d.drug_name, `${amountWithUnit(d.amount, d.unit)} ${d.route_short ?? d.route}`, d.frequency_short ?? d.frequency].filter(Boolean).join(' ');
 }
@@ -413,7 +415,6 @@ function CriteriaItems({ items }: { items: string[] }) {
   );
 }
 function CriteriaBody({ c, id }: { c: Criteria; id?: string }) {
-  const sheet = useSheet();
   // A score or formula that has an MDCalc page ends its box with that link (a calculator file with the same id).
   const calc = id ? (content.data.calc?.[id] as Calc | undefined) : undefined;
   const stacked = !!(c.rows?.length && c.layout === 'stacked' && c.tones);
@@ -435,8 +436,8 @@ function CriteriaBody({ c, id }: { c: Criteria; id?: string }) {
         {c.items?.length ? <CriteriaItems items={c.items} /> : null}
         {table}
         {bands.map((b, i) => b && <BandLines key={i} bands={b} />)}
-        {calc?.url && <p className="ios-body"><CalcLink c={calc} label={`${calc.short} on MDCalc`} /></p>}
-        {calc && id && hasCalculator(id) && <AKG.Button variant="tinted" block onClick={() => openCalculator(sheet, id)}>Calculate</AKG.Button>}
+        {/* One way in: the score's pill (or link). It opens the pop-up, which carries the Score and MDCalc buttons. */}
+        {calc && id && (calc.calculator || calc.url) && <p className="ios-body"><Insert kind="calc" id={id} /></p>}
       </AKG.Panel>
       )}
       {stacked ? (
@@ -471,11 +472,14 @@ export const openCriteria = (sheet: ShowSheet, c: Criteria, id?: string) => shee
 // A cutoff is tappable only when its pop-up adds something the line doesn't show: a `note` (owner's rule, 2026-10-19;
 // the content check rejects notes that repeat the line).
 // A named score or calculator: the words are a link to its MDCalc page, in the card-link look (dotted blue underline) with a small outward arrow at the end. It opens in Safari (a Done button returns to Wards) and needs internet; offline the page simply doesn't load.
-export function CalcLink({ c, label }: { c: Calc; label?: string }) {
+// With `onOpen` (a score named in a card) it is a button that opens the score's pop-up first, which holds the "Open MDCalc" button.
+export function CalcLink({ c, label, onOpen }: { c: Calc; label?: string; onOpen?: () => void }) {
   const text = label ?? c.short;
+  const inner = <>{text.replace(/\S+$/, '')}<span className="calc-link__tail">{text.match(/\S+$/)?.[0]}<span className="calc-link__mark" aria-hidden="true">{icons.arrowUpRight}</span></span></>;
+  if (onOpen) return <button type="button" className="card-link calc-link" onClick={onOpen} aria-label={`${text}${c.name.includes(c.short) ? '' : `, ${c.name}`}. Opens details.`}>{inner}</button>;
   return (
     <a className="card-link calc-link" href={c.url} target="_blank" rel="noopener noreferrer" aria-label={`${text}${c.name.includes(c.short) ? '' : `, ${c.name}`}. Opens MDCalc in Safari, needs internet.`}>
-      {text.replace(/\S+$/, '')}<span className="calc-link__tail">{text.match(/\S+$/)?.[0]}<span className="calc-link__mark" aria-hidden="true">{icons.arrowUpRight}</span></span>
+      {inner}
     </a>
   );
 }
@@ -511,7 +515,10 @@ function Insert({ kind, id, plain, label }: { kind: string; id: string; plain?: 
     const cc = item as unknown as Calc;
     return <AKG.InlineButton icon={icons.plusForwardslashMinus} onClick={() => openCalculator(sheet, id)}>{label ?? cc.short}</AKG.InlineButton>;
   }
-  if (kind === 'calc') return <CalcLink c={item as unknown as Calc} label={label} />;
+  if (kind === 'calc') {
+    const cc = item as unknown as Calc;
+    return <CalcLink c={cc} label={label} onOpen={cc.url ? () => openCalculator(sheet, id) : undefined} />;
+  }
   if (kind === 'term') return <TermMention id={id} label={label ?? (item as unknown as Term).term} plain={plain} />;
   if (kind === 'criteria') {
     const c = item as unknown as Criteria;
@@ -688,12 +695,49 @@ const monitorItem = (it: ListItem) => ({
 });
 
 // Runs of monitor items show as blocks; the other items of the same list stay a bullet list.
+// Bullets that are only a dose, or a label and doses ("First line: …"), show as drug rows: the drug over its dose, the
+// label under it, tap for the dose sheet. A run of such bullets is one card of rows (owner's choice A, 2026-10-28).
+const doseRunOf = (it: ListItem) => (it.children.length ? null : doseOnlyItem(it.inlines.filter((x) => x.t !== 'tag')));
+function DoseRun({ items }: { items: ListItem[] }) {
+  const sheet = useSheet();
+  return (
+    <div className="dose-rows dose-rows--run">
+      {items.flatMap((it, i) => {
+        const run = doseRunOf(it)!;
+        const label = run.label.map((x) => ('v' in x ? x.v : '')).join('').replace(/[\s:]+$/, '');
+        return run.pills.map((p, j) => {
+          const d = p.t === 'insert' ? doseItem(p.id) : undefined;
+          if (!d || p.t !== 'insert') return <span key={`${i}-${j}`} className="missing">[missing dose]</span>;
+          return (
+            <AKG.ValueRow
+              key={`${i}-${j}`}
+              layout="list"
+              title={<>{label && <span className="dose-run__tag">{label}</span>}{d.drug_name}</>}
+              value={doseShort(d)}
+              onClick={() => openDose(sheet, p.id)}
+              aria-label={`${label ? `${label}: ` : ''}${d.drug_name} ${doseShort(d)}${isUnverified(d) ? ', not yet independently verified' : ''}. Opens dose details.`}
+            >
+              <LinePill ids={it.sources} quote={it.inlines} />
+            </AKG.ValueRow>
+          );
+        });
+      })}
+    </div>
+  );
+}
+
 function ListBlock({ items }: { items: ListItem[] }) {
   const out: ReactNode[] = [];
   for (let i = 0; i < items.length; i++) {
+    if (doseRunOf(items[i])) {
+      const run = [items[i]];
+      while (i + 1 < items.length && doseRunOf(items[i + 1])) run.push(items[++i]);
+      out.push(<DoseRun key={i} items={run} />);
+      continue;
+    }
     const monitor = isMonitorItem(items[i]);
     const run = [items[i]];
-    while (i + 1 < items.length && isMonitorItem(items[i + 1]) === monitor) run.push(items[++i]);
+    while (i + 1 < items.length && isMonitorItem(items[i + 1]) === monitor && !doseRunOf(items[i + 1])) run.push(items[++i]);
     out.push(monitor ? <AKG.MonitorList key={i} className="ios-body" items={run.map(monitorItem)} /> : <ListView key={i} items={run} />);
   }
   return <>{out}</>;

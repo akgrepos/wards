@@ -15,11 +15,10 @@ describe('card link sheet', () => {
     expect(screen.getAllByText(card.title).length).toBeGreaterThan(0);
     expect(screen.queryByText('Card')).toBeNull();
   });
-  it('an MDCalc link keeps its name, opens outside the app and shows an arrow', () => {
+  it('a score named on a card keeps its name, shows an arrow and opens its pop-up', () => {
     render(<p><Inlines xs={parseInline('{{calc:cam-icu}}')} /></p>);
-    const a = screen.getByRole('link');
-    expect(a.getAttribute('target')).toBe('_blank');
-    expect(a.getAttribute('aria-label')).toMatch(/MDCalc/);
-    expect(a.querySelector('.calc-link__mark svg')).toBeTruthy();
+    const b = screen.getByRole('button');
+    expect(b.getAttribute('aria-label')).toMatch(/Opens details/);
+    expect(b.querySelector('.calc-link__mark svg')).toBeTruthy();
   });
 });
