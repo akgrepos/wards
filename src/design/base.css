@@ -403,7 +403,9 @@ html[data-timed] .timed-page .screen-body.timed-body { padding-bottom: calc(env(
 .range-pill { padding-left: 6px; padding-right: 6px; }
 /* A criteria table's item column takes the room the score column leaves (the general 55vw cap wastes it on a phone). */
 .criteria .akg-table--sticky .akg-table__table th:first-child, .criteria .akg-table--sticky .akg-table__table td:first-child { max-width: none; }
-.criteria .akg-table__table td:last-child, .criteria .akg-table__table th:last-child { white-space: nowrap; }
+.criteria .akg-table__table td:last-child, .criteria .akg-table__table th:last-child { white-space: nowrap; width: 1%; padding-left: var(--space-8); }
+.criteria .akg-table__table { width: 100%; }
+.criteria .akg-table__table td:first-child, .criteria .akg-table__table th:first-child { width: 99%; }
 
 /* Steps in a card section: the number is a small badge on the title line, so the step's text uses the full width. */
 .steps-bleed .akg-step { display: grid; grid-template-columns: auto 1fr; column-gap: var(--space-8); align-items: start; padding-left: var(--space-16); padding-right: var(--space-16); }
