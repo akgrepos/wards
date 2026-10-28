@@ -24,7 +24,7 @@ The owner, a physician, is the only user, with no coding experience: explain pla
 ## Hard rules
 - No patient information (PHI) and nothing institution-internal; the site and repo are public. `npm run privacy:check` runs in CI.
 - **Stay anonymous.** Never put the owner's name, email or computer name in files, commits, PRs or screenshots; say "the owner". Never write an absolute home-folder path; use `~/`. Commits are authored as `akgrepos <338781722+akgrepos@users.noreply.github.com>`.
-- Practical details no guideline or label gives (interval, route, drug order, who to call) may restate facts from the library books (White Book, Pocket Medicine) and the two web sources in `~/Documents/Wards-reference/library/WEB-SOURCES.md` in Claude's own words, marked `common-practice`. The owner does not confirm them by hand (`wards-card` skill, rule C).
+- Practical details no guideline or label gives (interval, route, drug order, who to call) may restate facts from the library books (the first book, then the second, in the order in WEB-SOURCES.md), the two web sources and, for scores only, MDCalc (all in `~/Documents/Wards-reference/library/WEB-SOURCES.md`) in Claude's own words, marked `common-practice`; the newest final guideline or label then verifies, and wins a disagreement. The owner does not confirm them by hand (`wards-card` skill, rule C).
 - Never name or cite AMBOSS, OpenEvidence, the White Book, Pocket Medicine, WikEM or Point of Care Medicine in the app, card content or repo, and never copy their text. Copyrighted material stays in `~/Documents/Wards-reference/`.
 
 ## Stack
