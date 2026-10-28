@@ -7,7 +7,7 @@ The owner, a physician, is the only user, with no coding experience: explain pla
 - **Prioritize efficiency and minimum usage:** use the lowest model and effort that can accomplish the task; step up only if it fails.
 - The chat does the work itself. Models: Sonnet builds and drafts, Haiku does quotes, sweeps and plain fixes (step up if it fails), Opus does the clinical check and design critiques. A child session only for a long autonomous job (a batch or sweep), briefed as a skill name plus a list. At most one background job beside the chat; two sessions never edit the same files.
 - **State:** `BACKLOG.md` and `DECISIONS.md` (product and clinical decisions only) are the only hand-written state, in `~/Documents/Wards-reference/notes/`; everything else is generated. Write a decision there before the chat closes. Scripts live in the repo, prose outside. Skills: `.claude/skills/`.
-- Card guides: `docs/CARD-WRITING-CHEATSHEET.md` first, then `CARD-TYPES.md` and `DATA-TYPES.md`. Design: AKG Design System and Apple's HIG; mock-ups copy `~/Documents/Wards-reference/mockup-template/`.
+- Card guides: `docs/CARD-WRITING-CHEATSHEET.md` first, then `CARD-TYPES.md` and `DATA-TYPES.md`. Design: AKG Design System and Apple's HIG; mock-ups copy `~/Documents/Wards-reference/mockup-template/`. Any visible change follows the `wards-design` skill.
 
 ## Cards and content
 - Three card types (Topic, Reference, Medication); a card needing a new type, data type or section kind stops and asks the owner. Every dose names its `drug:`. Calculators only for true formulas; scores link to MDCalc.
