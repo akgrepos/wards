@@ -349,9 +349,8 @@ export function checkContent({ systems, cards, data, unchecked = [] }) {
       if (kind === 'calc' && item.calculator !== undefined) for (const m of checkCalculator(item, data)) err(where, m);
       if (kind === 'criteria' && !(item.items?.length || item.rows?.length)) err(where, 'needs items or rows');
       if (kind === 'criteria') {
-        // The box title says what the set defines and the source year (owner, 2026-10-21): "SIADH diagnostic criteria, 2013".
-        if (typeof item.title === 'string' && !/, (19|20)\d\d$/.test(item.title.trim())) err(where, '"title" must end with the source year, like "SIADH diagnostic criteria, 2013"')
-        else if (typeof item.title === 'string' && !(item.sources ?? []).some((sid) => String(data.source?.[sid]?.year) === item.title.trim().slice(-4))) err(where, '"title" year must be the year of one of its cited sources');
+        // The box title says what the set defines. A year is no longer wanted in it (owner, 2026-10-27); an old one must still match a cited source.
+        if (typeof item.title === 'string' && /, (19|20)\d\d$/.test(item.title.trim()) && !(item.sources ?? []).some((sid) => String(data.source?.[sid]?.year) === item.title.trim().slice(-4))) err(where, '"title" year must be the year of one of its cited sources');
         const lay = item.layout ?? 'columns';
         if (!['columns', 'stacked'].includes(lay)) err(where, '"layout" is columns or stacked');
         if (lay === 'stacked') {

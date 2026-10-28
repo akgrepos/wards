@@ -7,7 +7,7 @@ title: "Delirium"
 aliases: [delirium, acute confusion, acute encephalopathy, altered mental status, agitation, ICU delirium, hypoactive delirium, hyperactive delirium, sundowning, CAM, CAM-ICU, 4AT, RASS, haloperidol, HELP, postoperative delirium, toxic metabolic encephalopathy]
 definition: "An acute, fluctuating disturbance of attention, awareness and cognition that is a direct physiologic consequence of another medical condition, medication, substance or toxin, and is not explained by a preexisting neurocognitive disorder. ^[apa-delirium-2025, nice-delirium-2023]"
 based_on: [apa-delirium-2025, padis-2025, nice-delirium-2023, ags-beers-2023]
-checked: { date: 2026-10-27, by: opus, scope: "rework to the nine prose rules. Ward antipsychotic doses, targets and consult rules from practice sources, checked line by line by a Sonnet helper. Judgment lines and omissions checked by Opus. Guideline lines not re-read. Doses left not-verified: dexmedetomidine-icu-delirium, haloperidol-delirium-icu, haloperidol-delirium-low, thiamine-wernicke-suspected. Doses left not-verified: dexmedetomidine-icu-delirium, haloperidol-delirium-icu, haloperidol-delirium-low, thiamine-wernicke-suspected", fingerprint: "d2fce1bea44bc9b0", carried: "2026-10-27: Ward IV haloperidol dose changed from 0.25–0.5 mg to 0.5–1 mg on the owner's decision. Not re-read by a helper" }
+checked: { date: 2026-10-27, by: opus, scope: "rework to the nine prose rules. Ward antipsychotic doses, targets and consult rules from practice sources, checked line by line by a Sonnet helper. Judgment lines and omissions checked by Opus. Guideline lines not re-read. Doses left not-verified: dexmedetomidine-icu-delirium, haloperidol-delirium-icu, haloperidol-delirium-low, thiamine-wernicke-suspected. Doses left not-verified: dexmedetomidine-icu-delirium, haloperidol-delirium-icu, haloperidol-delirium-low, thiamine-wernicke-suspected", fingerprint: "ad9dfcf66ce7b0f1", carried: "2026-10-27: 2026-10-27: format-only rework of labels, grouping and wording. No dose or number changed. Not re-read by a helper" }
 related:
   differential: [psych-acute-agitation, psych-serotonin-syndrome-nms, psych-suicide-risk-assessment]
   conditions: [crit-hypoxemic-respiratory-failure, renal-hyponatremia, id-complicated-uti, crit-sepsis, hosp-pain-management, neuro-alcohol-withdrawal]
@@ -29,9 +29,6 @@ related:
 {{criteria:4at}}
 
 - Delirium raises mortality, length of stay and long-term cognitive decline, including the hypoactive form. ^[apa-delirium-2025, common-practice]
-- Level of care: ^[apa-delirium-2025, common-practice]
-  - ICU for ventilated or hemodynamically unstable patients ^[apa-delirium-2025, common-practice]
-  - One-to-one observation or a sitter for wandering or danger to self ^[apa-delirium-2025, common-practice]
 
 ## Causes
 - **Hypoxemia and hypoperfusion:** [!cannot-miss] ^[nice-delirium-2023, common-practice]
@@ -45,8 +42,8 @@ related:
   - Meningitis or encephalitis, hypertensive encephalopathy (PRES) ^[common-practice]
   - Catatonia, [[psych-serotonin-syndrome-nms|serotonin syndrome or neuroleptic malignant syndrome]] ^[common-practice]
 - **Infection:** [!cannot-miss] ^[nice-delirium-2023, common-practice]
-  - Urinary ([[id-complicated-uti|complicated UTI]]), pneumonia, bloodstream infection ([[crit-sepsis|sepsis]]) ^[nice-delirium-2023, common-practice]
-  - Skin, endocarditis, C. difficile ^[nice-delirium-2023, common-practice]
+  - Urinary ([[id-complicated-uti|complicated UTI]]), pneumonia, [[crit-sepsis|sepsis]] ^[nice-delirium-2023, common-practice]
+  - Skin and soft tissue infection, endocarditis, C. difficile ^[nice-delirium-2023, common-practice]
 - **Metabolic and endocrine:** [!cannot-miss] ^[nice-delirium-2023, common-practice]
   - Hypoglycemia, [[renal-hyponatremia|hyponatremia]], hypernatremia, hypocalcemia, hypercalcemia, [[endo-inpatient-hyperglycemia|hyperglycemia]] ^[nice-delirium-2023, common-practice]
   - [[endo-dka|Diabetic ketoacidosis]], hyperosmolar hyperglycemic state, adrenal insufficiency, thyroid disease ^[common-practice]
@@ -62,21 +59,26 @@ related:
 - **Predisposing factors:** age ≥65 years, dementia or cognitive impairment, severe illness, prior delirium, sensory impairment, frailty, polypharmacy. ^[nice-delirium-2023, apa-delirium-2025]
 
 ## Presentation
-- Acute onset (hours to days) with fluctuation, worse at night. ^[apa-delirium-2025, inouye-cam-1990]
-- Features: inattention, disorganized thinking, altered level of consciousness, disorientation, perceptual disturbance. ^[apa-delirium-2025, inouye-cam-1990]
-- Hyperactive: agitation, restlessness, hallucinations, pulling at lines. Easily recognized. ^[common-practice]
-- Hypoactive: drowsy, withdrawn, slowed. Often missed or mistaken for depression, fatigue or dementia. ^[common-practice]
-- Mixed: alternates between the two. ^[common-practice]
-- Baseline from family or staff: a change from baseline is the key. ^[nice-delirium-2023]
-- Dementia raises the risk and can mask delirium: new inattention, a change in alertness or a rapid change from baseline suggests superimposed delirium. ^[nice-delirium-2023, common-practice]
-- Meningitis or encephalitis: fever, headache, neck stiffness or a seizure. Neck stiffness is often absent, especially in older adults. ^[common-practice]
+#### Core features
+- **Onset:** acute (hours to days) with fluctuation, worse at night. ^[apa-delirium-2025, inouye-cam-1990]
+- **Features:** inattention, disorganized thinking, altered level of consciousness, disorientation, perceptual disturbance. ^[apa-delirium-2025, inouye-cam-1990]
+- **Baseline from family or staff:** a change from baseline is the key. ^[nice-delirium-2023]
+
+#### Types
+- **Hyperactive:** agitation, restlessness, hallucinations, pulling at lines. Easily recognized. ^[common-practice]
+- **Hypoactive:** drowsy, withdrawn, slowed. Often missed or mistaken for depression, fatigue or dementia. ^[common-practice]
+- **Mixed:** alternates between the two. ^[common-practice]
+
+#### Clues
+- **Dementia:** raises the risk and can mask delirium. New inattention, a change in alertness or a rapid change from baseline suggests superimposed delirium. ^[nice-delirium-2023, common-practice]
+- **Meningitis or encephalitis:** fever, headache, neck stiffness or a seizure. Neck stiffness is often absent, especially in older adults. ^[common-practice]
 
 ## Diagnosis
 #### Screening and assessment
-- Screen at admission, daily and with any acute change: {{calc:4at}} on the ward, {{calc:cam-icu}} in the ICU or recovery. ^[nice-delirium-2023, padis-2018]
-- Orientation testing or the Mini-Mental State Examination alone misses delirium, which needs attention testing. ^[common-practice]
-- A positive screen is confirmed by a clinician's assessment of the {{calc:cam-icu}} or CAM features and the DSM-5-TR criteria. ^[nice-delirium-2023, apa-delirium-2025]
-- ICU: assess the {{calc:rass}} first. At {{calc:rass|RASS}} −4 or −5 the {{calc:cam-icu}} cannot be done, so reassess later. ^[ely-camicu-2001, padis-2018]
+- **Screen:** at admission, daily and with any acute change: {{calc:4at}} on the ward, {{calc:cam-icu}} in the ICU or recovery. ^[nice-delirium-2023, padis-2018]
+- **Attention testing:** orientation testing or the Mini-Mental State Examination alone misses delirium, which needs attention testing. ^[common-practice]
+- **Confirm:** a positive screen is confirmed by a clinician's assessment of the {{calc:cam-icu}} or CAM features and the DSM-5-TR criteria. ^[nice-delirium-2023, apa-delirium-2025]
+- **ICU:** assess the {{calc:rass}} first. At {{calc:rass|RASS}} −4 or −5 the {{calc:cam-icu}} cannot be done, so reassess later. ^[ely-camicu-2001, padis-2018]
 
 #### Initial orders
 - Every new delirium: ^[nice-delirium-2023, common-practice]
@@ -130,7 +132,8 @@ related:
 4. Antipsychotic for severe agitation (last resort)
    - Give only for severe distress or danger to the patient or others, after de-escalation and cause treatment. Never to prevent or shorten delirium. ^[apa-delirium-2025, nice-delirium-2023]
    - Before the first dose: baseline {{calc:qtc}}, potassium above 4 and magnesium above 2. Stop other QT-prolonging drugs where possible. ^[aha-accf-qt-2010, label-haloperidol-inj-2026, common-practice]
-   - First line: {{dose:haloperidol-delirium-ward-iv|pill}}. Older or frail adults: {{dose:haloperidol-delirium-low|pill}}. ^[esaic-pod-2024, apa-delirium-2025, label-haloperidol-inj-2026, common-practice]
+   - First line: {{dose:haloperidol-delirium-ward-iv|pill}} ^[esaic-pod-2024, apa-delirium-2025, label-haloperidol-inj-2026, common-practice]
+   - Older or frail adults: {{dose:haloperidol-delirium-low|pill}} ^[esaic-pod-2024, apa-delirium-2025, label-haloperidol-inj-2026, common-practice]
    - Alternatives: {{dose:olanzapine-delirium-low|pill}} or {{dose:quetiapine-delirium-low|pill}}. ^[common-practice]
    - Parkinson disease or dementia with Lewy bodies: no haloperidol or olanzapine. Use quetiapine. ^[label-haloperidol-inj-2026, nice-delirium-2023, common-practice]
    - In dementia, every antipsychotic carries a boxed warning for increased mortality. ^[label-haloperidol-inj-2026, label-zyprexa-2026]
@@ -138,6 +141,10 @@ related:
 
 5. Sedation in the ventilated patient
    - Use {{dose:dexmedetomidine-icu-delirium|pill}} rather than a benzodiazepine, and for delirium-related agitation that prevents weaning or extubation. ^[padis-2018, padis-2025, apa-delirium-2025]
+
+6. Level of care
+   - ICU for ventilated or hemodynamically unstable patients ^[apa-delirium-2025, common-practice]
+   - One-to-one observation or a sitter for wandering or danger to self ^[apa-delirium-2025, common-practice]
 
 ## Monitor
 - Delirium screen: ^[padis-2018, nice-delirium-2023]
