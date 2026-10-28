@@ -1,0 +1,8 @@
+term: hyperosmolar hyperglycemic state
+aliases:
+  - HHS
+definition: Severe hyperglycemia with hyperosmolality and without significant ketoacidosis.
+group: endo
+card: endo-dka
+sources:
+  - ada-hyperglycemic-crises-2024

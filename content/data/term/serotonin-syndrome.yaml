@@ -1,0 +1,8 @@
+term: serotonin syndrome
+aliases:
+  - serotonin toxicity
+definition: Exposure to a serotonergic drug leading to altered mental status, neuromuscular hyperreactivity (tremor, clonus, hyperreflexia) and autonomic instability (fast heart rate and breathing, sweating, dilated pupils, fever, diarrhea).
+group: psych
+card: psych-serotonin-syndrome-nms
+sources:
+  - common-practice

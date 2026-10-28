@@ -129,10 +129,13 @@ Images, ECGs and diagrams.
 - **Diagram:** drawn in the app's style · what it's based on (source) (not built yet)
 - Home: the ECG or imaging library (later); inserted into cards with a line that is only `{{media:id}}`
 
-### 12. Term
-A word the app knows.
-- Fields: preferred term · aliases and abbreviations (for search) · short definition
-- Powers: search, the abbreviations reference, and tap-to-define
+### 12. Term (built 2026-10-28)
+A word the app defines. One file per term, `content/data/term/<id>.yaml`.
+- Fields: `term` (the name, lower case unless a proper noun) · `aliases` (other spellings and abbreviations; a capitalized abbreviation such as DKA matches only in capitals) · `definition` (one or two lines, 260 characters at most, no dose) · `group` (a system id, for the Glossary) · `sources` (required: the definition is a clinical claim, so it is cited like a card line; `common-practice` for a practical detail no guideline gives) · optional `card` (the card of a condition) and `snippet` (2 to 4 short lines of the very high yield facts, only with `card`)
+- **Tagging is automatic** (`scripts/content/terms.mjs`, run when the content loads). In every section (and every More Information subsection) the first mention of a term or alias becomes a tap-to-define word with a gray dotted underline (the design system's TappableValue). Skipped: links, `{{dose}}` and `{{calc}}` pills, bold or italic words, headings, table headers, the definition under the title, Do Now, and the card's own title or term. A backslash before a word turns tagging off for that spot.
+- **Link pop-ups:** a `[[card-id|label]]` link first looks for a term with `card: card-id` and a `snippet`, and shows the snippet in the bottom sheet (medium height, with "Open full card"); with none it shows At a Glance as before. A link naming a section is unchanged. One card has at most one snippet.
+- **Glossary:** Library › Glossary, generated from the files, grouped by system, searchable. Terms are also found by the app search (group "Terms").
+- `npm run content:check` fails when one name or alias belongs to two terms, a term has no sources, the group is not a system, the snippet is not 2 to 4 lines or has no card, or a backslash is left over; it warns about terms no card uses and prints the "wanted cards" (linked but not written).
 
 ---
 

@@ -8,6 +8,7 @@ import { CARD_TYPES } from './schema.mjs';
 import { parseInline } from './inline.mjs';
 import { severityLadderLines } from './severity.mjs';
 import { deepNestLines } from './prose.mjs';
+import { tagTerms } from './terms.mjs';
 
 export { parseInline };
 
@@ -234,7 +235,8 @@ function loadUnchecked(dir) {
 }
 
 // Loads everything. includeExamples adds content/examples (development only; never shipped).
-export function loadContent(root, { includeExamples = false } = {}) {
+// By default the cards stay as written (the content checks and stamps read them that way); `tag: true` tags terms into them (terms.mjs), as the app and the tier comparison need.
+export function loadContent(root, { includeExamples = false, tag = false } = {}) {
   const dir = join(root, 'content');
   const systems = YAML.parse(readFileSync(join(dir, 'systems.yaml'), 'utf8'));
   const cardFiles = [...walk(join(dir, 'cards'), '.md'), ...(includeExamples ? walk(join(dir, 'examples'), '.md') : [])];
@@ -252,5 +254,6 @@ export function loadContent(root, { includeExamples = false } = {}) {
       }
     }
   }
+  if (tag) tagTerms(cards, data.term);
   return { systems, cards, data, unchecked: loadUnchecked(dir) };
 }

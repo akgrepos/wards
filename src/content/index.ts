@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import content from 'virtual:wards-content';
 import { CARD_TYPES } from '../../scripts/content/schema.mjs';
-import type { Block, Card, Content, Inline, ListItem, Pathway } from './types';
+import type { Block, Card, Content, Inline, ListItem, Pathway, Term } from './types';
 
 // `content` starts as the small index: every card's title, aliases and section names, but no text, and no data (doses,
 // criteria …). A card's file (cards/<id>.json) is fetched when it opens; loadCard() puts its text and the data it uses in here,
@@ -63,6 +63,10 @@ export const cardTypeLabel = (c: Card) => c.type === 'topic' ? (c.group === 'con
 
 export function getCard(id: string) {
   return content.cards.find((c) => c.id === id);
+}
+/** The id of the term whose snippet a link to this card shows (null when there is none: the link then shows At a glance). */
+export function snippetTermFor(cardId: string): string | null {
+  return Object.entries((content.data.term ?? {}) as Record<string, Term>).find(([, t]) => t.card === cardId && t.snippet?.length)?.[0] ?? null;
 }
 export function getSystem(id: string) {
   return content.systems.find((s) => s.id === id);

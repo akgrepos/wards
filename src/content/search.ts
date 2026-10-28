@@ -1,12 +1,12 @@
 import { cardTypeLabel, norm } from './index';
-import type { Card, Content } from './types';
+import type { Card, Content, Term } from './types';
 
 // Search over card titles and aliases, section headings and the smaller names inside sections, drug names (with the cards whose doses use them) and calculators.
 // The rows come from the index built with the content (scripts/content/search-index.mjs); no card text is searched.
 // Every word typed must match the start of a word; a match at the start of the text ranks first.
 
-export type GroupKey = 'cards' | 'drugs' | 'sections' | 'tools';
-export const GROUP_LABELS: Record<GroupKey, string> = { cards: 'Cards', drugs: 'Drugs', sections: 'Sections', tools: 'Tools' };
+export type GroupKey = 'cards' | 'terms' | 'drugs' | 'sections' | 'tools';
+export const GROUP_LABELS: Record<GroupKey, string> = { cards: 'Cards', terms: 'Terms', drugs: 'Drugs', sections: 'Sections', tools: 'Tools' };
 
 export type Hit = {
   id: string;
@@ -21,6 +21,8 @@ export type Hit = {
   section?: string;
   /** A calculator that opens in place of a card. */
   tool?: string;
+  /** A term (Glossary) that opens its definition sheet. */
+  term?: string;
 };
 export type Results = { oneLetter: boolean; groups: { key: GroupKey; label: string; hits: Hit[] }[] };
 
@@ -139,6 +141,19 @@ export function search(query: string, content: Content): Results {
     sectionHits.push({ score: score - 0.5 + inCard(card), tie: `${text}\0${card.title}`, hit: { id: `label:${card.id}:${key}:${n}`, title: text, subtitle: `${parent ? `${parent} · ` : ''}${heading} · ${card.title}`, cardId: card.id, section: key } });
   });
 
+  const termHits: Scored[] = [];
+  for (const [id, t] of Object.entries((content.data.term ?? {}) as Record<string, Term>)) {
+    let score = rank(t.term);
+    let alias: string | undefined;
+    if (!score) {
+      alias = (t.aliases ?? []).find((a) => rank(a));
+      if (alias) score = 1;
+    }
+    if (!score) continue;
+    const base = `Term · ${content.systems.find((s) => s.id === t.group)?.title ?? ''}`;
+    termHits.push({ score, tie: t.term, hit: { id: `term:${id}`, title: t.term.charAt(0).toUpperCase() + t.term.slice(1), subtitle: alias ? `${base} · also called “${alias}”` : base, markSubtitle: !!alias, cardId: t.card ?? '', term: id } });
+  }
+
   for (const [id, name, short, others, cardIdx] of idx?.tools ?? []) {
     const score = Math.max(rank(name), rank(short), ...others.split('|').filter(Boolean).map(rank));
     const used = cardIdx.map(cardAt).filter(Boolean);
@@ -150,6 +165,7 @@ export function search(query: string, content: Content): Results {
   const hits = (list: Scored[]) => [...list].sort(byScore).map((s) => s.hit);
   const groups: Results['groups'] = [
     { key: 'cards' as const, hits: hits(cardHits) },
+    { key: 'terms' as const, hits: hits(termHits) },
     // A drug's own card comes first, then each dose in another card.
     { key: 'drugs' as const, hits: [...hits(drugHits), ...hits(doseHits)] },
     { key: 'sections' as const, hits: hits(sectionHits) },

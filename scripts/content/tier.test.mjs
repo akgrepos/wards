@@ -92,6 +92,6 @@ describe('stamp editing', () => {
 describe('real content', () => {
   it('every stamped card matches its fingerprint', () => {
     const root = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
-    expect(checkFingerprints(loadContent(root, { includeExamples: true }))).toEqual([]);
+    expect(checkFingerprints(loadContent(root, { includeExamples: true, tag: false }))).toEqual([]);
   });
 });

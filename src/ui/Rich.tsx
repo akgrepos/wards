@@ -1,7 +1,7 @@
 import { createContext, Fragment, useContext, useState, type ReactNode } from 'react';
 import { AKG } from '../design/akg';
-import { content, getCard, titleCase, isMarkerSource, pathwaysFor, useCardLoad } from '../content';
-import type { Block, Calc, Card, ContainerItem, Criteria, Dose, Drug, Inline, ListItem, Regimen, Section, Source, Threshold } from '../content/types';
+import { content, getCard, titleCase, isMarkerSource, pathwaysFor, snippetTermFor, useCardLoad } from '../content';
+import type { Block, Calc, Card, ContainerItem, Criteria, Dose, Drug, Inline, ListItem, Regimen, Section, Source, Term, Threshold } from '../content/types';
 import { parseInline, TAGS, ALSO_ABOVE } from '../../scripts/content/inline.mjs';
 import { onsetRows } from '../../scripts/content/onset.mjs';
 import { bandsOf, doseOnlyItem, isMonitorItem, labelSplit, monitorKind, numberedPrefix } from '../../scripts/content/display.mjs';
@@ -512,6 +512,7 @@ function Insert({ kind, id, plain, label }: { kind: string; id: string; plain?: 
     return <AKG.InlineButton icon={icons.plusForwardslashMinus} onClick={() => openCalculator(sheet, id)}>{label ?? cc.short}</AKG.InlineButton>;
   }
   if (kind === 'calc') return <CalcLink c={item as unknown as Calc} label={label} />;
+  if (kind === 'term') return <TermMention id={id} label={label ?? (item as unknown as Term).term} plain={plain} />;
   if (kind === 'criteria') {
     const c = item as unknown as Criteria;
     return <AKG.TappableValue onClick={() => openCriteria(sheet, c, id)}>{c.short}</AKG.TappableValue>;
@@ -552,12 +553,55 @@ function CardPartSheet({ card, part }: { card: Card; part?: Section }) {
   );
 }
 
+// ---- Terms ----
+
+// A word the app defines (docs/DATA-TYPES.md, 12). In a sentence it has a gray dotted underline (the design system's TappableValue, 44 pt hit area) and opens the term's sheet.
+// The sheet holds the definition and, for a condition, its very high yield facts and a row that opens the full card.
+function TermSheet({ id, snippetOnly }: { id: string; snippetOnly?: boolean }) {
+  const t = content.data.term?.[id] as unknown as Term | undefined;
+  if (!t) return null;
+  const card = t.card ? getCard(t.card) : undefined;
+  return (
+    <div className="detail-sheet term-sheet">
+      {!snippetOnly && <p className="ios-body">{t.definition}</p>}
+      {t.snippet && (
+        <ul className="term-snippet ios-body">
+          {t.snippet.map((l, i) => <li key={i}><RichText text={l} /></li>)}
+        </ul>
+      )}
+      <SheetSources ids={t.sources} />
+      {card && (
+        <AKG.List className="card-part-open">
+          <AKG.ListRow title={`Open full ${card.title}`} href={href.card(card.id)} />
+        </AKG.List>
+      )}
+    </div>
+  );
+}
+export function openTerm(sheet: ShowSheet, id: string, snippetOnly?: boolean) {
+  const t = content.data.term?.[id] as unknown as Term | undefined;
+  if (!t) return;
+  sheet({
+    title: snippetOnly ? (getCard(t.card ?? '')?.title ?? t.term) : 'Definition',
+    heading: snippetOnly ? 'Key points' : t.term.charAt(0).toUpperCase() + t.term.slice(1),
+    body: <TermSheet id={id} snippetOnly={snippetOnly} />,
+  });
+}
+function TermMention({ id, label, plain }: { id: string; label: string; plain?: boolean }) {
+  const sheet = useSheet();
+  if (plain) return <>{label}</>;
+  return <AKG.TappableValue aria-label={`${label}. Opens definition.`} onClick={() => openTerm(sheet, id)}>{label}</AKG.TappableValue>;
+}
+
 function CardLink({ card, section, label }: { card: Card; section?: string | null; label: string }) {
   const sheet = useSheet();
   const from = useContext(AnchorCtx);
   const open = () => {
     const r = parseRoute(location.hash);
     if (section && r.name === 'card' && r.id === card.id) { dispatchEvent(new CustomEvent(JUMP_EVENT, { detail: section })); return; }
+    // A condition with a snippet (a term file naming this card) shows its key points first; a link naming a section opens that section.
+    const snippet = !section ? snippetTermFor(card.id) : null;
+    if (snippet) { openTerm(sheet, snippet, true); return; }
     const part = pickSection(card, section, from);
     sheet({ title: card.title, heading: part ? titleCase(part.title) : card.title, body: <CardPartSheet card={card} part={part} /> });
   };

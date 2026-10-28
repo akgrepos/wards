@@ -1,0 +1,12 @@
+term: diabetic ketoacidosis
+aliases:
+  - DKA
+definition: Hyperglycemia (or known diabetes) with ketosis and metabolic acidosis.
+group: endo
+card: endo-dka
+snippet:
+  - Fluids first. Heart failure, dialysis or older age need smaller boluses and frequent reassessment.
+  - "Potassium before insulin when it is low. Below 3.5 mEq/L, replace it first and hold insulin. At 5.0 or below, give it once urine output is established. Above 5.0, none: recheck every 2 hours."
+  - Insulin infusion once potassium is above 3.5 mEq/L. This applies to DKA, mixed DKA and HHS, and HHS without significant ketoacidosis.
+sources:
+  - ada-hyperglycemic-crises-2024

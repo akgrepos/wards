@@ -5,6 +5,7 @@ import { search, type GroupKey, type Hit } from '../content/search';
 import { goBack, href, parseRoute, rememberQuery, rememberedQuery, requestFlash } from '../router';
 import { addMiss, addSearch, clearSearches, getSearches, useStored } from '../storage';
 import { openCalculator } from '../ui/Calculator';
+import { openTerm } from '../ui/Rich';
 import { icons } from '../ui/icons';
 import { useSheet } from '../ui/SheetHost';
 import { SCROLL_CLASS, isKeyboardOpen, lockPage, useDragGuard, useVisibleArea } from '../searchLayout';
@@ -60,8 +61,8 @@ export function SearchScreen() {
       className="search-result"
       title={<AKG.Highlight text={h.title} query={q} />}
       subtitle={h.markSubtitle ? <AKG.Highlight text={h.subtitle} query={q} /> : h.subtitle}
-      chevron={!h.tool}
-      {...(h.tool ? { onClick: () => openTool(h) } : { href: href.card(h.cardId, h.section) })}
+      chevron={!h.tool && !h.term}
+      {...(h.term ? { onClick: () => openTerm(sheet, h.term!) } : h.tool ? { onClick: () => openTool(h) } : { href: href.card(h.cardId, h.section) })}
     />
   );
   // Opening a result counts as a search; a result inside a card opens it at that section, tinted for a moment.
