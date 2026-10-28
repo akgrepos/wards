@@ -7,7 +7,7 @@ title: "Delirium"
 aliases: [delirium, acute confusion, acute encephalopathy, altered mental status, agitation, ICU delirium, hypoactive delirium, hyperactive delirium, sundowning, CAM, CAM-ICU, 4AT, RASS, haloperidol, HELP, postoperative delirium, toxic metabolic encephalopathy]
 definition: "An acute, fluctuating disturbance of attention, awareness and cognition that is a direct physiologic consequence of another medical condition, medication, substance or toxin, and is not explained by a preexisting neurocognitive disorder. ^[apa-delirium-2025, nice-delirium-2023]"
 based_on: [apa-delirium-2025, padis-2025, nice-delirium-2023, ags-beers-2023]
-checked: { date: 2026-10-27, by: opus, scope: "rework to the nine prose rules. Ward antipsychotic doses, targets and consult rules from practice sources, checked line by line by a Sonnet helper. Judgment lines and omissions checked by Opus. Guideline lines not re-read. Doses left not-verified: dexmedetomidine-icu-delirium, haloperidol-delirium-icu, haloperidol-delirium-low, thiamine-wernicke-suspected. Doses left not-verified: dexmedetomidine-icu-delirium, haloperidol-delirium-icu, haloperidol-delirium-low, thiamine-wernicke-suspected", fingerprint: "4e93c29040288c24", carried: "2026-10-28: 4AT calculator data added for the interactive score. Card text, doses and criteria unchanged" }
+checked: { date: 2026-10-27, by: opus, scope: "rework to the nine prose rules. Ward antipsychotic doses, targets and consult rules from practice sources, checked line by line by a Sonnet helper. Judgment lines and omissions checked by Opus. Guideline lines not re-read. Doses left not-verified: dexmedetomidine-icu-delirium, haloperidol-delirium-icu, haloperidol-delirium-low, thiamine-wernicke-suspected. Doses left not-verified: dexmedetomidine-icu-delirium, haloperidol-delirium-icu, haloperidol-delirium-low, thiamine-wernicke-suspected", fingerprint: "c547839034903ccf", carried: "2026-10-28: CAM score data added and the CAM mention linked. No dose or number changed. Not re-read by a helper" }
 related:
   differential: [psych-acute-agitation, psych-serotonin-syndrome-nms, psych-suicide-risk-assessment]
   conditions: [crit-hypoxemic-respiratory-failure, renal-hyponatremia, id-complicated-uti, crit-sepsis, hosp-pain-management, neuro-alcohol-withdrawal]
@@ -77,7 +77,7 @@ related:
 #### Screening and assessment
 - **Screen:** at admission, daily and with any acute change: {{calc:4at}} on the ward, {{calc:cam-icu}} in the ICU or recovery. ^[nice-delirium-2023, padis-2018]
 - **Attention testing:** orientation testing or the Mini-Mental State Examination alone misses delirium, which needs attention testing. ^[common-practice]
-- **Confirm:** a positive screen is confirmed by a clinician's assessment of the {{calc:cam-icu}} or CAM features and the DSM-5-TR criteria. ^[nice-delirium-2023, apa-delirium-2025]
+- **Confirm:** a positive screen is confirmed by a clinician's assessment of the {{calc:cam-icu}} or {{calc:cam}} features and the DSM-5-TR criteria. ^[nice-delirium-2023, apa-delirium-2025]
 - **ICU:** assess the {{calc:rass}} first. At {{calc:rass|RASS}} −4 or −5 the {{calc:cam-icu}} cannot be done, so reassess later. ^[ely-camicu-2001, padis-2018]
 
 #### Initial orders

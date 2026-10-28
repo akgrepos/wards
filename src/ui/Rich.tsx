@@ -435,7 +435,7 @@ function CriteriaBody({ c, id }: { c: Criteria; id?: string }) {
         {c.items?.length ? <CriteriaItems items={c.items} /> : null}
         {table}
         {bands.map((b, i) => b && <BandLines key={i} bands={b} />)}
-        {calc && <p className="ios-body"><CalcLink c={calc} label={`${calc.short} on MDCalc`} /></p>}
+        {calc?.url && <p className="ios-body"><CalcLink c={calc} label={`${calc.short} on MDCalc`} /></p>}
         {calc && id && hasCalculator(id) && <AKG.Button variant="tinted" block onClick={() => openCalculator(sheet, id)}>Calculate</AKG.Button>}
       </AKG.Panel>
       )}

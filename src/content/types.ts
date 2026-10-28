@@ -61,7 +61,7 @@ export type Calculator = {
   items?: ScoreItem[]; bands?: { min: number; max: number; text: string }[];
   rule?: { all: string[]; any: string[]; yes: string; no: string };
 };
-export type Calc = { name: string; short: string; url: string; match: string[]; sources?: string[]; calculator?: Calculator };
+export type Calc = { name: string; short: string; url?: string; match: string[]; sources?: string[]; calculator?: Calculator };
 // A word the app defines (docs/DATA-TYPES.md, 12). `snippet` (on a term that names a `card`) is what a link to that card shows first.
 export type Term = { term: string; aliases?: string[]; definition: string; group: string; card?: string; snippet?: string[]; sources: string[] };
 export type Threshold = { name: string; value: string | number; unit: string; note?: string; sources: string[] };

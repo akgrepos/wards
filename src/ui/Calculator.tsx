@@ -78,8 +78,10 @@ function ScoreSheet({ c }: { c: Calc }) {
             </div>
           ))}
           <AKG.Button variant="prominent" block onClick={() => setPicking(true)}>Score it</AKG.Button>
-          <AKG.Button variant="tinted" block onClick={() => window.open(c.url, '_blank', 'noopener,noreferrer')}>{c.short} on MDCalc</AKG.Button>
-          <p className="ios-footnote secondary">Opens MDCalc in Safari and needs internet.</p>
+          {c.url && <>
+            <AKG.Button variant="tinted" block onClick={() => window.open(c.url, '_blank', 'noopener,noreferrer')}>{c.short} on MDCalc</AKG.Button>
+            <p className="ios-footnote secondary">Opens MDCalc in Safari and needs internet.</p>
+          </>}
         </>
       )}
       {k.notes?.map((n, i) => <p key={i} className="ios-footnote secondary"><RichText text={n} /></p>)}

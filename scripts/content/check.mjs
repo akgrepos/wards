@@ -427,10 +427,11 @@ export function checkContent({ systems, cards, data, unchecked = [] }) {
       if (kind === 'calc') {
         if (item.calculator) for (const m of checkVerification(item, data)) err(where, m);
         for (const f of Object.keys(item)) if (f !== '_file' && !CALC_FIELDS.includes(f)) err(where, `unknown calculator field "${f}" (use ${CALC_FIELDS.join(', ')})`);
+        if (item.url === undefined && item.calculator?.kind !== 'score') err(where, 'url is required: an MDCalc page (only an in-app score may go without one)');
         if (typeof item.url === 'string' && !MDCALC_URL.test(item.url)) err(where, 'url must be an MDCalc calculator page: https://www.mdcalc.com/calc/<number>/<name>');
         if (!Array.isArray(item.match) || !item.match.length || item.match.some((x) => typeof x !== 'string' || !x.trim())) err(where, '"match" is a list of the words that name this calculator in the content');
         for (const [oid, o] of Object.entries(items)) {
-          if (oid < id && o.url === item.url) err(where, `has the same url as calculator "${oid}"`);
+          if (oid < id && item.url && o.url === item.url) err(where, `has the same url as calculator "${oid}"`);
           if (oid !== id) for (const term of item.match ?? []) if ((o.match ?? []).some((t) => String(t).toLowerCase() === String(term).toLowerCase())) err(where, `"${term}" is also a match word of calculator "${oid}"`);
         }
       }
