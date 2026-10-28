@@ -18,7 +18,7 @@ The owner, a physician, is the only user, with no coding experience: explain pla
 ## PRs and testing
 - One branch and PR per task, never on `main`; any chat may make a small edit this way. Rebase (`git rebase origin/main`, `git push --force-with-lease`), never merge `main` in. Merge with `gh pr merge --rebase --auto` only, never with a failing check; confirm auto-merge is still on after every push.
 - Test in proportion: card or text edits merge on green checks; a new kind of screen gets `npm run look` and a design critique; code PRs get `/code-review` at low effort; the installed app is checked on the owner's iPhone. No accessibility work.
-- **A design change (anything visible: CSS, layout, a component) gets a look in Mobile Safari in the iPhone simulator as the last step before pushing:** `npm run sim-look -- '<route>' --dark`, then open the screenshots it prints and say what you saw. Not the desktop browser, not the installed app. Card text edits and code with no visible change skip it.
+- **A design change (anything visible: CSS, layout, a component) gets a look in Playwright WebKit (the Safari engine, iPhone width) as the last step before pushing (owner, 2026-10-28, replaces the simulator):** `npm run page-shots -- '<route>' --dark`, then open the slices it prints and say what you saw. No simulator. Card text edits and code with no visible change skip it. Keep a design PR to one pattern: smaller PRs, one look each.
 - Shell: no heredocs (they hang); use Write and Edit, run scripts from files, leave no background task running.
 
 ## Hard rules
