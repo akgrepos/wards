@@ -7,7 +7,7 @@ title: "Delirium"
 aliases: [delirium, acute confusion, acute encephalopathy, altered mental status, agitation, ICU delirium, hypoactive delirium, hyperactive delirium, sundowning, CAM, CAM-ICU, 4AT, RASS, haloperidol, HELP, postoperative delirium, toxic metabolic encephalopathy]
 definition: "An acute, fluctuating disturbance of attention, awareness and cognition that is a direct physiologic consequence of another medical condition, medication, substance or toxin, and is not explained by a preexisting neurocognitive disorder. ^[apa-delirium-2025, nice-delirium-2023]"
 based_on: [apa-delirium-2025, padis-2025, nice-delirium-2023, ags-beers-2023]
-checked: { date: 2026-10-27, by: opus, scope: "rework to the nine prose rules. Ward antipsychotic doses, targets and consult rules from practice sources, checked line by line by a Sonnet helper. Judgment lines and omissions checked by Opus. Guideline lines not re-read. Doses left not-verified: dexmedetomidine-icu-delirium, haloperidol-delirium-icu, haloperidol-delirium-low, thiamine-wernicke-suspected. Doses left not-verified: dexmedetomidine-icu-delirium, haloperidol-delirium-icu, haloperidol-delirium-low, thiamine-wernicke-suspected", fingerprint: "c547839034903ccf", carried: "2026-10-28: CAM score data added and the CAM mention linked. No dose or number changed. Not re-read by a helper" }
+checked: { date: 2026-10-27, by: opus, scope: "rework to the nine prose rules. Ward antipsychotic doses, targets and consult rules from practice sources, checked line by line by a Sonnet helper. Judgment lines and omissions checked by Opus. Guideline lines not re-read. Doses left not-verified: dexmedetomidine-icu-delirium, haloperidol-delirium-icu, haloperidol-delirium-low, thiamine-wernicke-suspected. Doses left not-verified: dexmedetomidine-icu-delirium, haloperidol-delirium-icu, haloperidol-delirium-low, thiamine-wernicke-suspected", fingerprint: "167c86e326363a8b", carried: "2026-10-28: Wording only: symbols for above/more than, BMP and exam wording. No clinical change" }
 related:
   differential: [psych-acute-agitation, psych-serotonin-syndrome-nms, psych-suicide-risk-assessment]
   conditions: [crit-hypoxemic-respiratory-failure, renal-hyponatremia, id-complicated-uti, crit-sepsis, hosp-pain-management, neuro-alcohol-withdrawal]
@@ -83,8 +83,8 @@ related:
 #### Initial orders
 - Every new delirium: ^[nice-delirium-2023, common-practice]
   - Vital signs with SpO₂, temperature and POCT glucose ^[nice-delirium-2023, common-practice]
-  - Full physical and neurologic examination, with bladder scan for retention and rectal examination for impaction ^[nice-delirium-2023, common-practice]
-  - BMP (sodium, calcium, creatinine), CBC, ECG ^[common-practice]
+  - Full physical and neuro exam, with bladder scan for retention and rectal exam for impaction ^[nice-delirium-2023, common-practice]
+  - BMP, CBC, ECG ^[common-practice]
   - Medication history from the chart and family: recent starts, dose changes and stopped drugs ^[nice-delirium-2023, common-practice]
 
 #### Orders by trigger
@@ -131,7 +131,7 @@ related:
 
 4. Antipsychotic for severe agitation (last resort)
    - Give only for severe distress or danger to the patient or others, after de-escalation and cause treatment. Never to prevent or shorten delirium. ^[apa-delirium-2025, nice-delirium-2023]
-   - Before the first dose: baseline {{calc:qtc}}, potassium above 4 and magnesium above 2. Stop other QT-prolonging drugs where possible. ^[aha-accf-qt-2010, label-haloperidol-inj-2026, common-practice]
+   - Before the first dose: baseline {{calc:qtc}}, potassium >4 and magnesium >2. Stop other QT-prolonging drugs where possible. ^[aha-accf-qt-2010, label-haloperidol-inj-2026, common-practice]
    - First line: {{dose:haloperidol-delirium-ward-iv|pill}} ^[esaic-pod-2024, apa-delirium-2025, label-haloperidol-inj-2026, common-practice]
    - Older or frail adults: {{dose:haloperidol-delirium-low|pill}} ^[esaic-pod-2024, apa-delirium-2025, label-haloperidol-inj-2026, common-practice]
    - Alternatives: {{dose:olanzapine-delirium-low|pill}} or {{dose:quetiapine-delirium-low|pill}}. ^[common-practice]
@@ -155,7 +155,7 @@ related:
 - {{calc:qtc}}, potassium and magnesium on antipsychotics: ^[aha-accf-qt-2010, label-haloperidol-inj-2026, common-practice]
   - When: daily, and after any dose increase or added QT-prolonging drug ^[aha-accf-qt-2010, label-haloperidol-inj-2026, common-practice]
   - Action: if {{calc:qtc|QTc}} >500 ms or up ≥60 ms from baseline, stop or switch the drug and stop other QT-prolonging drugs ^[aha-accf-qt-2010]
-  - Action: replete potassium to above 4 and magnesium to above 2 ^[common-practice]
+  - Action: replete potassium to >4 and magnesium to >2 ^[common-practice]
 - Before each repeat antipsychotic dose, check sedation, BP and extrapyramidal signs. Hold it for oversedation, hypotension, rigidity or akathisia. ^[label-haloperidol-inj-2026, common-practice]
 - Each day, stop any antipsychotic, benzodiazepine or anticholinergic that is no longer needed. ^[apa-delirium-2025, nice-delirium-2023]
   - Action: stop the antipsychotic once symptoms resolve (usually within 1 week) ^[apa-delirium-2025, nice-delirium-2023]
@@ -163,7 +163,7 @@ related:
 
 ## Escalation
 - Psychiatry or geriatrics: ^[apa-delirium-2025, common-practice]
-  - More than 2 antipsychotic doses needed, or severe agitation not controlled at the lowest dose ^[apa-delirium-2025, common-practice]
+  - >2 antipsychotic doses needed, or severe agitation not controlled at the lowest dose ^[apa-delirium-2025, common-practice]
   - Diagnostic uncertainty between delirium and a primary psychiatric disorder ^[apa-delirium-2025, common-practice]
   - Catatonia, dementia, Parkinson disease or a prolonged {{calc:qtc|QTc}} ^[apa-delirium-2025, common-practice]
   - Have ready: the workup done so far and the current medication list ^[common-practice]

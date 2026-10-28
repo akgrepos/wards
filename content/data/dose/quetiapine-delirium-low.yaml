@@ -11,12 +11,12 @@ unit: mg
 frequency: as needed, no more often than every 2 hours (peak effect about 1.5 hours). Reassess sedation before each repeat dose
 frequency_short: PRN
 give_when: Severe distress or danger to self or others that de-escalation did not settle
-max: "No guideline maximum for delirium. After more than 2 doses, call psychiatry"
+max: "No guideline maximum for delirium. After >2 doses, call psychiatry"
 duration: "Shortest possible. Stop once symptoms resolve, usually within 1 week"
 cautions:
   - "Orthostatic hypotension and sedation: check BP before each repeat dose."
   - "Boxed warning: increased mortality in older adults with dementia."
-  - "Baseline {{calc:qtc}}, potassium above 4 and magnesium above 2 before the first dose."
+  - "Baseline {{calc:qtc}}, potassium >4 and magnesium >2 before the first dose."
 notes: "Ward practice dose. Delirium is not a labeled indication and no label or guideline in this app gives the dose."
 sources: [apa-delirium-2025, common-practice]
 verification:
