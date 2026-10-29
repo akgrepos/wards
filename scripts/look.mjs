@@ -168,7 +168,7 @@ try {
         await page.reload({ waitUntil: 'networkidle' })
       }
       try {
-        for (const step of r.steps ?? []) await page.getByRole('button', { name: step.click }).first().click({ timeout: 5000 })
+        for (const step of r.steps ?? []) await page.getByRole('button', { name: step.click }).or(page.getByRole('radio', { name: step.click })).first().click({ timeout: 5000 })
       } catch (e) {
         fail(label, `could not do step ${JSON.stringify(r.steps)}: ${e.message.split('\n')[0]}`)
       }
