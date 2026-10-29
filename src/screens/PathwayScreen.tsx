@@ -273,6 +273,7 @@ export function PathwayScreen({ id }: { id: string }) {
   // if needed (never below a readable 60%). The left edge keeps a sliver of the step before. Used on opening, by
   // Current Step, by the Step button and after an answer.
   const READABLE = 0.6;
+  const OVERVIEW = 0.5; // Whole map's zoom when the whole map doesn't fit: titles still read at this size
   const BELOW = 120; // the floating controls and tab bar cover this much of the viewport's bottom
   const frame = (nid: string | undefined, smooth: boolean) => {
     const vp = viewport.current, pl = plane.current; if (!vp || !pl || !nid || !p) return;
@@ -316,8 +317,17 @@ export function PathwayScreen({ id }: { id: string }) {
     const vp = viewport.current;
     if (mode === 'map' && mapFit.current && vp && size.w && (size.w !== mapFit.current.w || size.h !== mapFit.current.h)) {
       mapFit.current = null;
-      apply(minZoom(), 0, 0); setScale(live.current);
-      vp.scrollLeft = 0; vp.scrollTop = 0;
+      // Overview: the whole map if it fits at a readable size, else a readable zoom you pan, centered on "You are here".
+      const s1 = Math.min(1, Math.max(minZoom(), OVERVIEW));
+      apply(s1, 0, 0); setScale(live.current);
+      const pl = plane.current, sz = sizer.current, rs = hereIds.current.map((k) => els.current.get(k)?.getBoundingClientRect()).filter((r): r is DOMRect => !!r);
+      if (pl && sz && rs.length) {
+        const pr = pl.getBoundingClientRect(), k0 = pl.offsetWidth ? pr.width / pl.offsetWidth : 1;
+        const cx = ((Math.min(...rs.map((r) => r.left)) + Math.max(...rs.map((r) => r.right))) / 2 - pr.left) / k0;
+        const cy = ((Math.min(...rs.map((r) => r.top)) + Math.max(...rs.map((r) => r.bottom))) / 2 - pr.top) / k0;
+        vp.scrollLeft = Math.max(0, cx * s1 + sz.offsetLeft - vp.clientWidth / 2);
+        vp.scrollTop = Math.max(0, cy * s1 - (vp.clientHeight - BELOW) / 2);
+      } else { vp.scrollLeft = 0; vp.scrollTop = 0; }
     }
     const al = afterLayout.current;
     if (mode === 'step' && al && size.w && (size.w !== al.w || size.h !== al.h)) {
