@@ -161,6 +161,12 @@ export function PathwayScreen({ id }: { id: string }) {
   const [textSize, setTextSize] = useState(0);
   const [awayFromStep, setAway] = useState(false);
   const [mode, setMode] = useState<'step' | 'map'>('step');
+  // The box Step view is framing (for the back tab), and where it sits in Whole map ("You are here").
+  const [framedId, setFramedId] = useState<string | undefined>();
+  const [here, setHere] = useState<{ x: number; y: number; w: number; h: number } | null>(null);
+  const hereIds = useRef<string[]>([]);
+  const afterLayout = useRef<{ nid: string; w: number; h: number } | null>(null); // a box to frame once Step view's layout is back
+  const mapFit = useRef<{ w: number; h: number } | null>(null); // set while waiting to fit Whole map
   const viewport = useRef<HTMLDivElement>(null);
   const sizer = useRef<HTMLDivElement>(null);
   const plane = useRef<HTMLDivElement>(null);
@@ -222,8 +228,16 @@ export function PathwayScreen({ id }: { id: string }) {
       const lane = Math.max(a.x + a.w, b.x + b.w) + half;
       return { d: `M${a.x + a.w},${ay} H${lane} V${by} H${b.x + b.w}`, state, arrow };
     }).filter((x): x is Line => !!x));
+    // Whole map: outline the group Step view was framing.
+    if (mode === 'map') {
+      const rs = hereIds.current.map(at).filter((r): r is NonNullable<ReturnType<typeof at>> => !!r);
+      if (rs.length) {
+        const x0 = Math.min(...rs.map((r) => r.x)), y0 = Math.min(...rs.map((r) => r.y));
+        setHere({ x: x0, y: y0, w: Math.max(...rs.map((r) => r.x + r.w)) - x0, h: Math.max(...rs.map((r) => r.y + r.h)) - y0 });
+      }
+    }
     if (pl.offsetWidth !== size.w || pl.offsetHeight !== size.h) setSize({ w: pl.offsetWidth, h: pl.offsetHeight });
-  }, [routeKey, edges, textSize]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [routeKey, edges, textSize, mode]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Text Size changes reflow the boxes: measure again.
   useEffect(() => {
@@ -261,36 +275,55 @@ export function PathwayScreen({ id }: { id: string }) {
   const BELOW = 120; // the floating controls and tab bar cover this much of the viewport's bottom
   const frame = (nid: string | undefined, smooth: boolean) => {
     const vp = viewport.current, pl = plane.current; if (!vp || !pl || !nid || !p) return;
-    selfMove.current = Date.now(); setAway(false); setMode('step');
+    selfMove.current = Date.now(); setAway(false); setMode('step'); setFramedId(nid);
     const pr = pl.getBoundingClientRect(), k0 = pl.offsetWidth ? pr.width / pl.offsetWidth : 1;
     const n = p.nodes[nid];
     const ids = [nid, ...(asks(n) ? (n.answers ?? []).map((_, j) => `${nid}#${j}`) : n.next ? [n.next] : [])];
+    hereIds.current = ids;
     const rs = ids.map((k) => els.current.get(k)?.getBoundingClientRect()).filter((r): r is DOMRect => !!r);
     if (!rs.length) return;
     const x0 = Math.min(...rs.map((r) => r.left)), x1 = Math.max(...rs.map((r) => r.right));
     const y0 = Math.min(...rs.map((r) => r.top)), y1 = Math.max(...rs.map((r) => r.bottom));
     const box = { x: (x0 - pr.left) / k0, w: (x1 - x0) / k0, y: (y0 - pr.top) / k0, h: (y1 - y0) / k0 };
     const room = Math.max(120, vp.clientHeight - BELOW);
-    const want = Math.min(openScale.current, Math.max(READABLE, Math.min((vp.clientWidth - 40) / box.w, room / box.h)));
+    const want = Math.min(openScale.current, Math.max(READABLE, Math.min((vp.clientWidth - 64) / box.w, room / box.h)));
     if (Math.abs(want - live.current) > 0.01) { apply(want, vp.clientWidth / 2, 0); setScale(want); }
     const sz = sizer.current!, s1 = live.current;
-    const left = Math.max(0, box.x * s1 + sz.offsetLeft - 28), top = Math.max(0, (box.y + box.h / 2) * s1 - room / 2);
+    const left = Math.max(0, box.x * s1 + sz.offsetLeft - 52), top = Math.max(0, (box.y + box.h / 2) * s1 - room / 2);
     if (smooth && vp.scrollTo) vp.scrollTo({ left, top, behavior: glide() }); else { vp.scrollLeft = left; vp.scrollTop = top; }
   };
-  // Whole map: everything at once, your place outlined by the framing you left.
+  // Whole map: every box shrinks to a block, so everything fits at once. The layout changes, so the fit waits for the
+  // new size (see the effect below); "You are here" outlines the group Step view was framing.
   const showMap = () => {
-    const vp = viewport.current; if (!vp) return;
-    selfMove.current = Date.now(); setAway(false); setMode('map');
-    apply(minZoom(), 0, 0); setScale(live.current);
-    vp.scrollLeft = 0; vp.scrollTop = 0;
+    selfMove.current = Date.now(); setAway(false);
+    mapFit.current = { w: size.w, h: size.h };
+    setMode('map');
+  };
+  // Back in Step view the full-size layout returns first, then the box is framed.
+  const toStep = (nid: string | undefined, smooth = true) => {
+    if (!nid) return;
+    if (mode === 'map') { afterLayout.current = { nid, w: size.w, h: size.h }; setMode('step'); } else frame(nid, smooth);
   };
   // In Whole map a tap opens that box in Step view instead of answering.
   const onMapTap = (e: React.MouseEvent) => {
     if (mode !== 'map') return;
     e.preventDefault(); e.stopPropagation();
     const t = e.target as Node;
-    for (const [k, el] of els.current) if (el.contains(t)) { frame(k.split('#')[0], true); return; }
+    for (const [k, el] of els.current) if (el.contains(t)) { toStep(k.split('#')[0]); return; }
   };
+  useEffect(() => {
+    const vp = viewport.current;
+    if (mode === 'map' && mapFit.current && vp && size.w && (size.w !== mapFit.current.w || size.h !== mapFit.current.h)) {
+      mapFit.current = null;
+      apply(minZoom(), 0, 0); setScale(live.current);
+      vp.scrollLeft = 0; vp.scrollTop = 0;
+    }
+    const al = afterLayout.current;
+    if (mode === 'step' && al && size.w && (size.w !== al.w || size.h !== al.h)) {
+      afterLayout.current = null;
+      requestAnimationFrame(() => frame(al.nid, false));
+    }
+  }, [mode, size.w, size.h]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // First visit: the whole width if it fits at a readable size, else full size; the start box centered.
   // A return: where it was left.
@@ -399,7 +432,7 @@ export function PathwayScreen({ id }: { id: string }) {
     return () => { vp.removeEventListener('scroll', onScroll); cancelAnimationFrame(frameId); };
   }, [id]);
 
-  const toCurrent = () => frame(stepId, true);
+  const toCurrent = () => toStep(stepId);
 
   // Text Size changed while open (or since the place was saved): boxes reflowed, so frame the current step again.
   const seenTextSize = useRef(textSize);
@@ -433,8 +466,14 @@ export function PathwayScreen({ id }: { id: string }) {
     answered.current = choices[nid] === j ? null : nid;
     setChoices(choose(p, choices, nid, j));
   };
-  const clear = () => { setChoices({}); frame(p.start, true); };
+  const clear = () => { setChoices({}); toStep(p.start); };
   const s = scale || 1;
+  // The step before the one Step view is framing: the nearest answered question to its left, shown as a tab.
+  const levelOf = (k: string) => p.nodes[k].at[1];
+  const prevQ = framedId && p.nodes[framedId]
+    ? Object.entries(choices).filter(([q, j]) => p.nodes[q] && possible.has(answerKey(q, j)) && levelOf(q) < levelOf(framedId)).sort(([a], [b]) => levelOf(b) - levelOf(a))[0]
+    : undefined;
+  const prev = prevQ ? { q: prevQ[0], label: p.nodes[prevQ[0]].answers?.[prevQ[1]]?.label ?? '' } : undefined;
   // Sideways: a box's row (level) runs left to right, its column (lane) top to bottom.
   const cell = (at: [number, number], span = 1): CSSProperties => ({ gridColumn: at[1] + 1, gridRow: `${at[0] + 1} / span ${span}` });
   const levels = 1 + Math.max(...Object.values(p.nodes).flatMap((n) => [n.at[1], ...(n.answers ?? []).map((a) => a.at[1])]));
@@ -452,7 +491,7 @@ export function PathwayScreen({ id }: { id: string }) {
       </div>
       <div className="pw-viewport" ref={viewport}>
         <div className="pw-sizer" ref={sizer} style={{ width: size.w * s, height: size.h * s }}>
-          <div className="pw-plane" ref={plane} style={{ transform: `scale(${s})`, visibility: scale ? 'visible' : 'hidden' }} role="group" aria-label={`${title} pathway`} onClickCapture={onMapTap}>
+          <div className={`pw-plane${mode === 'map' ? ' pw-plane--map' : ''}`} ref={plane} style={{ transform: `scale(${s})`, visibility: scale ? 'visible' : 'hidden' }} role="group" aria-label={`${title} pathway`} onClickCapture={onMapTap}>
             <svg className="pw-lines" width={size.w} height={size.h} aria-hidden="true">
               <defs>
                 <marker id="pw-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse" markerUnits="strokeWidth"><path d="M0,1 L9,5 L0,9 z" className="pw-arrow" /></marker>
@@ -467,7 +506,7 @@ export function PathwayScreen({ id }: { id: string }) {
               {Object.entries(p.nodes).sort(([, a], [, b]) => a.at[1] - b.at[1] || a.at[0] - b.at[0]).flatMap(([nid, n]) => {
                 const state = stateOf(nid);
                 const box = (
-                  <div key={nid} ref={reg(nid)} className={`pw-cell${asks(n) ? ' pw-cell--question' : ''}${state === 'off' ? ' pw-cell--off' : ''}`} style={cell(n.at, n.span)}>
+                  <div key={nid} ref={reg(nid)} className={`pw-cell${asks(n) ? ' pw-cell--question' : ''}${state === 'off' ? ' pw-cell--off' : state === 'on' ? ' pw-cell--on' : ''}`} style={cell(n.at, n.span)}>
                     {asks(n) ? <Question id={nid} node={n} current={nid === current} /> : <Box id={nid} node={n} state={state} />}
                   </div>
                 );
@@ -477,7 +516,7 @@ export function PathwayScreen({ id }: { id: string }) {
                   // a checkmark. Another answer chosen, or the question ruled out: gray, still tappable.
                   const selected = choices[nid] != null ? choices[nid] === j : possible.has(nid) ? undefined : false;
                   return (
-                    <div key={answerKey(nid, j)} ref={reg(answerKey(nid, j))} className={`pw-cell pw-answer${possible.has(nid) ? '' : ' pw-answer--off'}`} data-question={nid} style={cell(a.at, a.span)}>
+                    <div key={answerKey(nid, j)} ref={reg(answerKey(nid, j))} className={`pw-cell pw-answer${possible.has(nid) ? '' : ' pw-answer--off'}${choices[nid] === j ? ' pw-cell--on' : ''}`} data-question={nid} style={cell(a.at, a.span)}>
                       <AKG.Button variant="choice" block selected={selected} subtitle={a.detail ? <Plain text={a.detail} /> : undefined} aria-describedby={`pw-q-${nid}`} onClick={() => pick(nid, j)}>
                         {a.label}
                       </AKG.Button>
@@ -486,6 +525,11 @@ export function PathwayScreen({ id }: { id: string }) {
                 })];
               })}
             </div>
+            {mode === 'map' && here && (
+              <div className="pw-here" style={{ left: here.x - 6, top: here.y - 6, width: here.w + 12, height: here.h + 12 }} aria-hidden="true">
+                <span className="pw-here__chip">You are here</span>
+              </div>
+            )}
             {p.sources.length > 0 && (
               <div className="pw-foot">
                 <SourcePills ids={p.sources} onOpen={() => openSources(sheet, p.sources, title)} />
@@ -494,6 +538,12 @@ export function PathwayScreen({ id }: { id: string }) {
           </div>
         </div>
       </div>
+      {mode === 'step' && prev && (
+        <button type="button" className="pw-prev" onClick={() => toStep(prev.q)} aria-label={`Back to ${p.nodes[prev.q].title}`}>
+          <span className="pw-prev__chev" aria-hidden="true">{icons.chevronBackward}</span>
+          <span className="pw-prev__label">{prev.label}</span>
+        </button>
+      )}
       <div className="pw-zoom">
         {awayFromStep && stepId ? <AKG.ToolbarButton className="pw-current" onClick={toCurrent}>Current Step</AKG.ToolbarButton> : <span />}
         <AKG.SegmentedControl
@@ -502,7 +552,7 @@ export function PathwayScreen({ id }: { id: string }) {
           aria-label="Map view"
           options={[{ value: 'step', label: 'Step' }, { value: 'map', label: 'Whole map' }]}
           value={mode}
-          onChange={(v) => (v === 'map' ? showMap() : frame(stepId ?? p.start, true))}
+          onChange={(v) => (v === 'map' ? showMap() : toStep(framedId ?? stepId ?? p.start))}
         />
       </div>
     </div>
