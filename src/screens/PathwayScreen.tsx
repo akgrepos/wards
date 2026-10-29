@@ -167,6 +167,7 @@ export function PathwayScreen({ id }: { id: string }) {
   const hereIds = useRef<string[]>([]);
   const afterLayout = useRef<{ nid: string; w: number; h: number } | null>(null); // a box to frame once Step view's layout is back
   const mapFit = useRef<{ w: number; h: number } | null>(null); // set while waiting to fit Whole map
+  const modeSwitchAt = useRef(0);
   const viewport = useRef<HTMLDivElement>(null);
   const sizer = useRef<HTMLDivElement>(null);
   const plane = useRef<HTMLDivElement>(null);
@@ -295,14 +296,14 @@ export function PathwayScreen({ id }: { id: string }) {
   // Whole map: every box shrinks to a block, so everything fits at once. The layout changes, so the fit waits for the
   // new size (see the effect below); "You are here" outlines the group Step view was framing.
   const showMap = () => {
-    selfMove.current = Date.now(); setAway(false);
+    selfMove.current = Date.now(); modeSwitchAt.current = Date.now(); setAway(false);
     mapFit.current = { w: size.w, h: size.h };
     setMode('map');
   };
   // Back in Step view the full-size layout returns first, then the box is framed.
   const toStep = (nid: string | undefined, smooth = true) => {
     if (!nid) return;
-    if (mode === 'map') { afterLayout.current = { nid, w: size.w, h: size.h }; setMode('step'); } else frame(nid, smooth);
+    if (mode === 'map') { modeSwitchAt.current = Date.now(); afterLayout.current = { nid, w: size.w, h: size.h }; setMode('step'); } else frame(nid, smooth);
   };
   // In Whole map a tap opens that box in Step view instead of answering.
   const onMapTap = (e: React.MouseEvent) => {
@@ -439,6 +440,8 @@ export function PathwayScreen({ id }: { id: string }) {
   useEffect(() => {
     if (seenTextSize.current === textSize) return;
     seenTextSize.current = textSize;
+    // A reflow caused by switching Step and Whole map is not a Text Size change.
+    if (mode === 'map' || Date.now() - modeSwitchAt.current < 1500) return;
     requestAnimationFrame(() => frame(stepId, false));
   }, [textSize]); // eslint-disable-line react-hooks/exhaustive-deps
   // A saved place only fits the Text Size it was saved at.
