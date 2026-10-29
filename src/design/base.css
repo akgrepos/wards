@@ -90,7 +90,7 @@ h1, p { margin: 0; }
 .pw-arrow--on { fill: var(--accent); }
 .pw-grid { position: relative; display: grid; column-gap: 2rem; row-gap: 0.25rem; align-items: center; }
 .pw-cell { position: relative; min-width: 0; contain: layout; transition: opacity 0.2s, filter 0.2s; }
-.pw-question { justify-self: center; display: flex; flex-direction: column; align-items: center; gap: var(--space-4); text-align: center; text-wrap: balance; }
+.pw-question { box-sizing: border-box; justify-self: stretch; display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-4); padding: var(--space-12) var(--space-16); border: 1.5px dashed var(--label-tertiary); border-radius: var(--radius-grouped); text-align: left; }
 .pw-question h2, .pw-question p { margin: 0; overflow-wrap: break-word; color: var(--label-secondary); }
 .pw-question .akg-value-row, .pw-question .dose-row { text-align: left; align-self: stretch; }
 .pw-box { box-sizing: border-box; display: flex; flex-direction: column; gap: var(--space-8); padding: var(--space-14) var(--space-16); border-radius: var(--radius-grouped); background: var(--background-grouped-secondary); }
@@ -121,7 +121,7 @@ h1, p { margin: 0; }
 .pw-plane--map { --pw-level: 9.5rem; }
 .pw-plane--map .pw-grid { column-gap: 1.25rem; row-gap: 0.25rem; }
 .pw-plane--map .pw-box > :not(h2), .pw-plane--map .pw-question > :not(h2), .pw-plane--map .akg-button__subtitle, .pw-plane--map .pw-foot { display: none; }
-.pw-plane--map .pw-box { padding: var(--space-8) var(--space-12); }
+.pw-plane--map .pw-box, .pw-plane--map .pw-question { padding: var(--space-8) var(--space-12); }
 .pw-here { position: absolute; z-index: 2; box-sizing: border-box; border: 2.5px solid var(--accent); border-radius: 0.75rem; pointer-events: none; }
 .pw-here__chip { position: absolute; left: -2px; bottom: 100%; margin-bottom: 0.25rem; padding: 0.125rem 0.5rem; border-radius: 0.625rem; background: var(--accent); color: #fff; font-size: 0.8125rem; font-weight: 600; line-height: 1.25; white-space: nowrap; }
 html[data-timed] .pw-zoom { bottom: calc(env(safe-area-inset-bottom) + var(--tab-bar-inset) + var(--tab-bar-height) + var(--tab-bar-accessory-height) + var(--space-20)); }
