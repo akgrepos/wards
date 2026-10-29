@@ -1,6 +1,6 @@
 # Example pathway (format: docs/CARD-WRITING-CHEATSHEET.md, "Pathways"): a decision tree that supplements its card.
-# Boxes sit on a grid ("at: [column, row]", "span" columns wide); a question is a heading and its answers sit side
-# by side in the row below it; only questions branch. Text comes from the card; a line that is only {{dose:…}}
+# Boxes sit on a grid ("at: [column, row]": row is the level, drawn left to right; column is the lane, drawn top to
+# bottom; "span" lanes tall); a question is a heading and its answers stack in the level after it; only questions branch. Text comes from the card; a line that is only {{dose:…}}
 # shows the card's own dose row.
 title: Workup
 card: example-condition

@@ -10,9 +10,11 @@ import { useSheet } from '../ui/SheetHost';
 import { icons } from '../ui/icons';
 import { NotFoundScreen } from './Tabs';
 
-// A pathway (owner, 2026-10-20; simplified 2026-10-21): a short decision tree that supplements its card, like a
-// teaching flowchart. A question is a short heading; its answers are decisions side by side under it, each leading
-// to another question or to a step (the card's own words and dose rows, with a link back only where it helps).
+// A pathway (owner, 2026-10-20; simplified 2026-10-21; turned sideways 2026-10-29): a short decision tree that
+// supplements its card, like a teaching flowchart. Levels run left to right and a question's answers stack top to
+// bottom beside it, each leading to another question or to a step (the card's own words and dose rows, with a link
+// back only where it helps). The Step | Whole map switch sets the zoom: Step frames the current question with its
+// answers at reading size; Whole map fits everything, and a tap there opens that box in Step view.
 // Tap a decision to choose it: it fills in with a checkmark, the other answers on that level turn gray, everything
 // only they lead to fades, and your route's lines turn bold. Any decision can be tapped at any time; tap a chosen
 // one again to undo. Pinch or − + to zoom; Current Step jumps to the next question you haven't answered. Choices,
@@ -158,6 +160,7 @@ export function PathwayScreen({ id }: { id: string }) {
   const [lines, setLines] = useState<Line[]>([]);
   const [textSize, setTextSize] = useState(0);
   const [awayFromStep, setAway] = useState(false);
+  const [mode, setMode] = useState<'step' | 'map'>('step');
   const viewport = useRef<HTMLDivElement>(null);
   const sizer = useRef<HTMLDivElement>(null);
   const plane = useRef<HTMLDivElement>(null);
@@ -203,26 +206,21 @@ export function PathwayScreen({ id }: { id: string }) {
       const r = el.getBoundingClientRect();
       return { x: (r.left - pr.left) / k0, y: (r.top - pr.top) / k0, w: r.width / k0, h: r.height / k0 };
     };
-    const half = parseFloat(getComputedStyle(g).rowGap || '32') / 2;
+    const half = parseFloat(getComputedStyle(g).columnGap || '32') / 2;
     setLines(edges.map((e) => {
       const a = at(e.from), b = at(e.to);
       if (!a || !b) return null;
       const ends = [stateOf(e.from), stateOf(e.to)];
       const state: State = ends.includes('off') ? 'off' : ends.every((s) => s === 'on') ? 'on' : 'open', arrow = true;
-      const ax = a.x + a.w / 2, bx = b.x + b.w / 2;
-      if (b.y >= a.y + a.h) {
-        const y1 = a.y + a.h, y2 = b.y;
-        if (Math.abs(ax - bx) < 1) return { d: `M${ax},${y1} V${y2}`, state, arrow };
-        const m = Math.round(y2 - half);
-        return { d: `M${ax},${y1} V${m} H${bx} V${y2}`, state, arrow };
+      const ay = a.y + a.h / 2, by = b.y + b.h / 2;
+      if (b.x >= a.x + a.w) {
+        const x1 = a.x + a.w, x2 = b.x;
+        if (Math.abs(ay - by) < 1) return { d: `M${x1},${ay} H${x2}`, state, arrow };
+        const m = Math.round(x2 - half);
+        return { d: `M${x1},${ay} H${m} V${by} H${x2}`, state, arrow };
       }
-      if (b.x >= a.x + a.w || b.x + b.w <= a.x) {
-        const right = b.x >= a.x + a.w;
-        const y = Math.min(Math.max(b.y + b.h / 2, a.y + 16), a.y + a.h - 16);
-        return { d: `M${right ? a.x + a.w : a.x},${y} H${right ? b.x : b.x + b.w}`, state, arrow };
-      }
-      const lane = Math.max(a.x + a.w, b.x + b.w) + 16;
-      return { d: `M${a.x + a.w},${a.y + 20} H${lane} V${b.y + 20} H${b.x + b.w}`, state, arrow };
+      const lane = Math.max(a.x + a.w, b.x + b.w) + half;
+      return { d: `M${a.x + a.w},${ay} H${lane} V${by} H${b.x + b.w}`, state, arrow };
     }).filter((x): x is Line => !!x));
     if (pl.offsetWidth !== size.w || pl.offsetHeight !== size.h) setSize({ w: pl.offsetWidth, h: pl.offsetHeight });
   }, [routeKey, edges, textSize]); // eslint-disable-line react-hooks/exhaustive-deps
@@ -236,12 +234,12 @@ export function PathwayScreen({ id }: { id: string }) {
     return () => ro.disconnect();
   }, []);
 
-  // The whole width at once, when it's readable; otherwise full size.
+  // The whole map at once, in both directions (Whole map).
   const fitScale = () => {
-    const vw = viewport.current?.clientWidth ?? 0;
-    return size.w && vw ? Math.min(1, vw / size.w) : 1;
+    const vw = viewport.current?.clientWidth ?? 0, vh = viewport.current?.clientHeight ?? 0;
+    return size.w && size.h && vw && vh ? Math.min(1, vw / size.w, vh / size.h) : 1;
   };
-  const minZoom = () => Math.min(fitScale(), 0.5);
+  const minZoom = () => fitScale();
 
   // ---- Zoom. The chart is drawn once at full size and scaled; the page scrolls natively at any zoom. ----
   // Set the zoom to s1, keeping the chart point under (fx, fy) (viewport pixels) where it is.
@@ -255,32 +253,43 @@ export function PathwayScreen({ id }: { id: string }) {
     vp.scrollLeft = px * s1 + sz.offsetLeft - fx; vp.scrollTop = py * s1 - fy;
   };
   const clamp = (s: number) => Math.min(MAX_ZOOM, Math.max(minZoom(), s));
-  const zoomBy = (k: number) => {
-    const vp = viewport.current; if (!vp) return;
-    apply(clamp(live.current * k), vp.clientWidth / 2, vp.clientHeight / 3);
-    setScale(live.current);
-    setAway(true);
-  };
 
-  // Frame a box: a question with all its answers side by side, zoomed out if needed (never below a readable 60%),
-  // or any other box centered at the opening zoom. Used on opening, by Current Step, and after an answer.
+  // Step view: frame a question with all its answers stacked beside it (a step with the box it leads to), zoomed out
+  // if needed (never below a readable 60%). The left edge keeps a sliver of the step before. Used on opening, by
+  // Current Step, by the Step button and after an answer.
   const READABLE = 0.6;
+  const BELOW = 120; // the floating controls and tab bar cover this much of the viewport's bottom
   const frame = (nid: string | undefined, smooth: boolean) => {
     const vp = viewport.current, pl = plane.current; if (!vp || !pl || !nid || !p) return;
-    selfMove.current = Date.now(); setAway(false);
+    selfMove.current = Date.now(); setAway(false); setMode('step');
     const pr = pl.getBoundingClientRect(), k0 = pl.offsetWidth ? pr.width / pl.offsetWidth : 1;
-    const ids = [nid, ...(asks(p.nodes[nid]) ? (p.nodes[nid].answers ?? []).map((_, j) => `${nid}#${j}`) : [])];
+    const n = p.nodes[nid];
+    const ids = [nid, ...(asks(n) ? (n.answers ?? []).map((_, j) => `${nid}#${j}`) : n.next ? [n.next] : [])];
     const rs = ids.map((k) => els.current.get(k)?.getBoundingClientRect()).filter((r): r is DOMRect => !!r);
     if (!rs.length) return;
-    const x0 = Math.min(...rs.map((r) => r.left)), x1 = Math.max(...rs.map((r) => r.right)), y0 = rs[0].top;
-    const box = { x: (x0 - pr.left) / k0, w: (x1 - x0) / k0, y: (y0 - pr.top) / k0 };
-    const want = Math.min(openScale.current, Math.max(READABLE, (vp.clientWidth - 32) / box.w));
+    const x0 = Math.min(...rs.map((r) => r.left)), x1 = Math.max(...rs.map((r) => r.right));
+    const y0 = Math.min(...rs.map((r) => r.top)), y1 = Math.max(...rs.map((r) => r.bottom));
+    const box = { x: (x0 - pr.left) / k0, w: (x1 - x0) / k0, y: (y0 - pr.top) / k0, h: (y1 - y0) / k0 };
+    const room = Math.max(120, vp.clientHeight - BELOW);
+    const want = Math.min(openScale.current, Math.max(READABLE, Math.min((vp.clientWidth - 40) / box.w, room / box.h)));
     if (Math.abs(want - live.current) > 0.01) { apply(want, vp.clientWidth / 2, 0); setScale(want); }
     const sz = sizer.current!, s1 = live.current;
-    // Center the group, but never cut off the question's own left edge.
-    const qr = rs[0], qx = (qr.left - pr.left) / k0;
-    const left = Math.min(box.x * s1 + sz.offsetLeft + (box.w * s1) / 2 - vp.clientWidth / 2, qx * s1 + sz.offsetLeft - 16), top = Math.max(0, box.y * s1 - 24);
+    const left = Math.max(0, box.x * s1 + sz.offsetLeft - 28), top = Math.max(0, (box.y + box.h / 2) * s1 - room / 2);
     if (smooth && vp.scrollTo) vp.scrollTo({ left, top, behavior: glide() }); else { vp.scrollLeft = left; vp.scrollTop = top; }
+  };
+  // Whole map: everything at once, your place outlined by the framing you left.
+  const showMap = () => {
+    const vp = viewport.current; if (!vp) return;
+    selfMove.current = Date.now(); setAway(false); setMode('map');
+    apply(minZoom(), 0, 0); setScale(live.current);
+    vp.scrollLeft = 0; vp.scrollTop = 0;
+  };
+  // In Whole map a tap opens that box in Step view instead of answering.
+  const onMapTap = (e: React.MouseEvent) => {
+    if (mode !== 'map') return;
+    e.preventDefault(); e.stopPropagation();
+    const t = e.target as Node;
+    for (const [k, el] of els.current) if (el.contains(t)) { frame(k.split('#')[0], true); return; }
   };
 
   // First visit: the whole width if it fits at a readable size, else full size; the start box centered.
@@ -293,13 +302,7 @@ export function PathwayScreen({ id }: { id: string }) {
     if (scale) return;
     const s = openScale.current;
     live.current = s;
-    if (!pending.current) {
-      const st = els.current.get(p?.start ?? ''), pl = plane.current;
-      const pr = pl?.getBoundingClientRect(), r = st?.getBoundingClientRect();
-      const k0 = pl?.offsetWidth && pr ? pr.width / pl.offsetWidth : 1;
-      const mid = r && pr ? (r.left + r.width / 2 - pr.left) / k0 : 0;
-      pending.current = { x: mid * s - vp.clientWidth / 2, y: 0 };
-    }
+    if (!pending.current) pending.current = { x: 0, y: 0 };
     setScale(s);
   }, [size.w]); // eslint-disable-line react-hooks/exhaustive-deps
   const framed = useRef(saved?.left != null);
@@ -307,7 +310,7 @@ export function PathwayScreen({ id }: { id: string }) {
     const vp = viewport.current, to = pending.current;
     if (vp && to && scale && size.w) { vp.scrollLeft = Math.max(0, to.x); vp.scrollTop = Math.max(0, to.y); pending.current = null; }
     // First visit: frame the first question with its answers.
-    if (vp && scale && size.w && !framed.current) { framed.current = true; frame(current ?? p?.start, false); vp.scrollTop = 0; }
+    if (vp && scale && size.w && !framed.current) { framed.current = true; frame(current ?? p?.start, false); }
   }, [scale, size.w]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Pinch: while two fingers are down the page stops scrolling and the chart is previewed with one transform (no
@@ -382,11 +385,6 @@ export function PathwayScreen({ id }: { id: string }) {
   // The box to come back to: the next open question or, with every question answered, where the last answer leads.
   const lastChosen = p ? Object.entries(choices).filter(([q, j]) => possible.has(answerKey(q, j))).sort(([a], [b]) => p.nodes[b].at[1] - p.nodes[a].at[1])[0] : undefined;
   const stepId = current ?? (lastChosen && p ? p.nodes[lastChosen[0]].answers?.[lastChosen[1]]?.to : undefined);
-  // A box's place in the scrolled page (viewport scroll units).
-  const where = (el: HTMLElement) => {
-    const vp = viewport.current!, r = el.getBoundingClientRect(), v = vp.getBoundingClientRect();
-    return { x: r.left - v.left + vp.scrollLeft, y: r.top - v.top + vp.scrollTop, w: r.width };
-  };
   // Current Step shows once you've moved or zoomed the chart yourself, and hides after it (or an answer) frames the
   // current box. Scrolls the app starts itself (framing, gliding after an answer) don't count.
   const selfMove = useRef(0);
@@ -426,14 +424,7 @@ export function PathwayScreen({ id }: { id: string }) {
     if (!q || !p) return;
     const j = choices[q];
     const to = j != null ? p.nodes[q].answers?.[j]?.to : undefined;
-    if (!to) return;
-    if (asks(p.nodes[to])) { frame(to, true); return; }
-    const vp = viewport.current, el = els.current.get(to);
-    if (!vp || !el) return;
-    const b = where(el);
-    const left = b.w > vp.clientWidth ? b.x - 16 : b.x + b.w / 2 - vp.clientWidth / 2;
-    selfMove.current = Date.now();
-    vp.scrollTo?.({ left, top: Math.max(0, b.y - 96), behavior: glide() });
+    if (to) frame(to, true);
   }, [routeKey]); // eslint-disable-line react-hooks/exhaustive-deps
 
   if (!p || !card) return <NotFoundScreen />;
@@ -444,7 +435,9 @@ export function PathwayScreen({ id }: { id: string }) {
   };
   const clear = () => { setChoices({}); frame(p.start, true); };
   const s = scale || 1;
-  const cell = (at: [number, number], span = 1): CSSProperties => ({ gridColumn: `${at[0] + 1} / span ${span}`, gridRow: at[1] + 1 });
+  // Sideways: a box's row (level) runs left to right, its column (lane) top to bottom.
+  const cell = (at: [number, number], span = 1): CSSProperties => ({ gridColumn: at[1] + 1, gridRow: `${at[0] + 1} / span ${span}` });
+  const levels = 1 + Math.max(...Object.values(p.nodes).flatMap((n) => [n.at[1], ...(n.answers ?? []).map((a) => a.at[1])]));
 
   return (
     <div className="pw-map-page">
@@ -459,7 +452,7 @@ export function PathwayScreen({ id }: { id: string }) {
       </div>
       <div className="pw-viewport" ref={viewport}>
         <div className="pw-sizer" ref={sizer} style={{ width: size.w * s, height: size.h * s }}>
-          <div className="pw-plane" ref={plane} style={{ transform: `scale(${s})`, visibility: scale ? 'visible' : 'hidden' }} role="group" aria-label={`${title} pathway`}>
+          <div className="pw-plane" ref={plane} style={{ transform: `scale(${s})`, visibility: scale ? 'visible' : 'hidden' }} role="group" aria-label={`${title} pathway`} onClickCapture={onMapTap}>
             <svg className="pw-lines" width={size.w} height={size.h} aria-hidden="true">
               <defs>
                 <marker id="pw-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse" markerUnits="strokeWidth"><path d="M0,1 L9,5 L0,9 z" className="pw-arrow" /></marker>
@@ -470,7 +463,7 @@ export function PathwayScreen({ id }: { id: string }) {
                 <path key={i} d={l.d} className={`pw-line pw-line--${l.state}`} markerEnd={l.arrow ? `url(#${l.state === 'on' ? 'pw-arrow-on' : 'pw-arrow'})` : undefined} />
               ))}
             </svg>
-            <div className="pw-grid" ref={grid} style={{ gridTemplateColumns: `repeat(${p.columns}, var(--pw-col))` }}>
+            <div className="pw-grid" ref={grid} style={{ gridTemplateColumns: `repeat(${levels}, var(--pw-level))`, gridTemplateRows: `repeat(${p.columns}, minmax(var(--pw-unit), auto))` }}>
               {Object.entries(p.nodes).sort(([, a], [, b]) => a.at[1] - b.at[1] || a.at[0] - b.at[0]).flatMap(([nid, n]) => {
                 const state = stateOf(nid);
                 const box = (
@@ -503,10 +496,14 @@ export function PathwayScreen({ id }: { id: string }) {
       </div>
       <div className="pw-zoom">
         {awayFromStep && stepId ? <AKG.ToolbarButton className="pw-current" onClick={toCurrent}>Current Step</AKG.ToolbarButton> : <span />}
-        <AKG.ToolbarGroup>
-          <AKG.ToolbarButton icon={icons.minus} aria-label="Zoom Out" disabled={s <= minZoom() + 0.001} onClick={() => zoomBy(1 / 1.25)} />
-          <AKG.ToolbarButton icon={icons.plus} aria-label="Zoom In" disabled={s >= MAX_ZOOM - 0.001} onClick={() => zoomBy(1.25)} />
-        </AKG.ToolbarGroup>
+        <AKG.SegmentedControl
+          className="pw-mode"
+          size="large"
+          aria-label="Map view"
+          options={[{ value: 'step', label: 'Step' }, { value: 'map', label: 'Whole map' }]}
+          value={mode}
+          onChange={(v) => (v === 'map' ? showMap() : frame(stepId ?? p.start, true))}
+        />
       </div>
     </div>
   );
