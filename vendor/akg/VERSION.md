@@ -28,4 +28,4 @@ https://claude.ai/artifact/GWFUZ6rCthpEuhMik4Jiru
 | 2026-10-17 | 1792291889-0945 (fourth pass + SourcePill markers, HIG review: viewport sheets with drag and detents, 44pt touch areas, modal basics, title-once toolbar; TappableValue, Table, Figure, Banner, BottomBar, Highlight, ShareButton, NumberField) | `project/tokens.json`, `project/components/bundle.css`, `bundle.js`, `index.d.ts` |
 | 2026-10-17 | 1792284958-f879 (third pass: Text Size support; Callout, SourcePill, ContentSection + SectionBar, Flowchart) | `project/tokens.json`, `project/components/bundle.css`, `bundle.js`, `index.d.ts` |
 
-To update: read the artifact, copy the same four files here, run `npm run tokens`, update this table, and test in the simulator.
+To update: read the artifact, copy the same four files here, run `npm run tokens`, update this table, and check it with `npm run look`.

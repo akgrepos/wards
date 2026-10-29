@@ -24,7 +24,6 @@
     "brief": "node scripts/brief.mjs",
     "sources:due": "node scripts/sources-due.mjs",
     "look": "node scripts/look.mjs",
-    "sim-look": "node scripts/sim-look.mjs",
     "tidy": "node scripts/tidy.mjs",
     "review:precheck": "node scripts/review-precheck.mjs",
     "card:proof": "node scripts/card/format-proof.mjs",

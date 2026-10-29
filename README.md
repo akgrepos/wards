@@ -20,7 +20,7 @@ Decisions and working notes are kept outside the repo, in the owner's private no
 
 ## For Claude: running it
 
-- `npm ci` once, then `npm run build` and `npm run preview -- --strictPort` to serve the built app at `http://localhost:4173/wards/` (the simulator reaches it at the same address).
+- `npm ci` once, then `npm run build` and `npm run preview -- --strictPort` to serve the built app at `http://localhost:4173/wards/`.
 - `npm test`, `npm run typecheck`. Updating the design system copy: see `vendor/akg/VERSION.md`. Regenerating icons after editing `public/favicon.svg`: `npm run icons`.
 
 ### Workflow scripts (for Claude sessions, one call each)
