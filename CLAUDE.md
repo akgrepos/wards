@@ -1,6 +1,6 @@
 # Notes for Claude
 
-The owner, a physician, is the only user, with no coding experience: explain plainly. Build only what was asked; propose options, wait for a decision. A personal reference the owner checks against protocols and attendings.
+The owner, a physician, is the only user, with no coding experience: explain plainly. Build only what was asked; propose options, wait for a decision. A personal reference the owner checks against protocols and attendings, used equally in the workroom (look up, plan, write, learn) and at the bedside in a hurry; neither use is primary.
 
 ## How a chat works
 - **One chat per task**, opened by the owner. Start with the `wards-start` skill: `npm run brief` prints the card index, open PRs, last merges, top of BACKLOG and what the owner owes. Never propose a card the index shows exists.

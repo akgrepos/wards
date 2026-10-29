@@ -14,7 +14,7 @@ Settled 2026-10-17; page layout updated 2026-10-18 for the approved redesign (to
 - Top right: the **Contents** button (list-bullet icon), a menu of the page's sections with the one being read checked, then **Show Sources** / **Hide Sources** (quote-mark icon; off each time a page opens; while on, every line ends in one source pill) and Collapse All / Expand All. Topics with an emergency also get a red **Do Now** button (the Rapids tab's symbol, `staroflife.fill`) beside it, in the same group, that opens the Do Now pop-up: the steps and doses, Start Timed Mode and Open Full Emergency; it is hidden when there is none. No row of section buttons.
 
 **At a Glance** (always first)
-- 3–6 bullets: the bottom line you need in 15 seconds at the bedside
+- 3–6 bullets: the bottom line, readable in seconds when rushed at the bedside; the sections below hold the depth for reading, planning and learning in the workroom. Both uses are equal (owner, 2026-10-28).
 
 **Body**
 - The card type's sections, **always in the same order** (Part 2)
